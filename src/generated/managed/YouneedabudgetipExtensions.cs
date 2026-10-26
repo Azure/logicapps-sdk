@@ -4,6 +4,8 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youneedabudgetip
 {
+    using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -13,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youneedabudgetip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "youneedabudgetip")]
         public IBodyWorkflowAction<UserResponse, ApiConnectionActionConfiguration> GetUser()
         {
-            var apiCallPath = "/user";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserResponse>(callPayload);
+            return new DeferredBodyAction<UserResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/user";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UserResponse>(callPayload);
+            });
         }
     }
 

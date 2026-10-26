@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ventipixassetandinventory
 {
     using System.Linq.Expressions;
@@ -12,14 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ventipixassetandinventory
     public class VentipixassetandinventoryActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ventipixassetandinventory")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetListItems(Expression<Func<string>> listIDDynamic, Expression<Func<string>> barcodeValue, Expression<Func<string>> location = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetListItems(Expression<Func<string>> listIdDynamic, Expression<Func<string>> barcodeValue, Expression<Func<string>> location = null)
         {
-            var __workflow_listIDDynamic = WorkflowExpression.Compile(listIDDynamic, nameof(listIDDynamic), required: true);
+            var __workflow_listIdDynamic = WorkflowExpression.Compile(listIdDynamic, nameof(listIdDynamic), required: true);
             var __workflow_barcodeValue = WorkflowExpression.Compile(barcodeValue, nameof(barcodeValue), required: true);
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/app/flow/fetchsert/{0}", __workflow_listIDDynamic.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/app/flow/fetchsert/{0}", __workflow_listIdDynamic.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["barcode_value"] = ExpressionConverter.Convert(__workflow_barcodeValue);
@@ -30,13 +31,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ventipixassetandinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ventipixassetandinventory")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateListItem(Expression<Func<string>> listIDDynamic, Expression<Func<object>> dynamicListSchema = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateListItem(Expression<Func<string>> listIdDynamic, Expression<Func<object>> dynamicListSchema = null)
         {
-            var __workflow_listIDDynamic = WorkflowExpression.Compile(listIDDynamic, nameof(listIDDynamic), required: true);
+            var __workflow_listIdDynamic = WorkflowExpression.Compile(listIdDynamic, nameof(listIdDynamic), required: true);
             var __workflow_dynamicListSchema = WorkflowExpression.Compile(dynamicListSchema, nameof(dynamicListSchema), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/app/flow/fetchsert/{0}", __workflow_listIDDynamic.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/app/flow/fetchsert/{0}", __workflow_listIdDynamic.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicListSchema);

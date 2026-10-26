@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberday")]
         public IBodyWorkflowAction<GetSystemsResponseItem[], ApiConnectionActionConfiguration> GetSystems()
         {
-            var apiCallPath = "/api/external/systems/topics/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSystemsResponseItem[]>(callPayload);
+            return new DeferredBodyAction<GetSystemsResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/external/systems/topics/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetSystemsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberday")]
@@ -140,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
     public class GetSystemsResponseItem
     {
         [JsonProperty("id")]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("assigned_user")]
         public GetSystemsResponseItemAssignedUserType AssignedUser { get; set; }
@@ -269,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
     public class GetSystemsResponseItemAssignedUserType
     {
         [JsonProperty("id")]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -305,7 +309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
     public class AddSystemResponse
     {
         [JsonProperty("id")]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }

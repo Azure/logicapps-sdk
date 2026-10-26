@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
 {
     using System.Linq.Expressions;
@@ -12,12 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
     public class SmartcommondemanddocActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartcommondemanddoc")]
-        public IBodyWorkflowAction<GenerateDocumentResponse, ApiConnectionActionConfiguration> GenerateDocument(Expression<Func<bool>> includeDocumentData, Expression<Func<string>> bodytransactionData, Expression<Func<int>> bodybatchConfigResId, Expression<Func<int>> bodyprojectID = null, Expression<Func<int>> bodytransactionRange = null, Expression<Func<bodytransactionDataTypeInput>> bodytransactionDataType = null, Expression<Func<bodypropertiesInputItem[]>> bodyproperties = null)
+        public IBodyWorkflowAction<GenerateDocumentResponse, ApiConnectionActionConfiguration> GenerateDocument(Expression<Func<bool>> includeDocumentData, Expression<Func<string>> bodytransactionData, Expression<Func<int>> bodybatchConfigResId, Expression<Func<int>> bodyprojectId = null, Expression<Func<int>> bodytransactionRange = null, Expression<Func<bodytransactionDataTypeInput>> bodytransactionDataType = null, Expression<Func<bodypropertiesInputItem[]>> bodyproperties = null)
         {
             var __workflow_includeDocumentData = WorkflowExpression.Compile(includeDocumentData, nameof(includeDocumentData), required: true);
             var __workflow_bodytransactionData = WorkflowExpression.Compile(bodytransactionData, nameof(bodytransactionData), required: true);
             var __workflow_bodybatchConfigResId = WorkflowExpression.Compile(bodybatchConfigResId, nameof(bodybatchConfigResId), required: true);
-            var __workflow_bodyprojectID = WorkflowExpression.Compile(bodyprojectID, nameof(bodyprojectID), required: false);
+            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: false);
             var __workflow_bodytransactionRange = WorkflowExpression.Compile(bodytransactionRange, nameof(bodytransactionRange), required: false);
             var __workflow_bodytransactionDataType = WorkflowExpression.Compile(bodytransactionDataType, nameof(bodytransactionDataType), required: false);
             var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
@@ -31,9 +32,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (__workflow_bodyprojectID != null)
+                if (__workflow_bodyprojectId != null)
                 {
-                    body["projectId"] = ExpressionConverter.ConvertO(__workflow_bodyprojectID);
+                    body["projectId"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
                     bodypropCount++;
                 }
 
@@ -228,10 +229,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
         public string[] Args { get; set; }
 
         [JsonProperty("msgID")]
-        public int MsgID { get; set; }
+        public int MsgId { get; set; }
 
         [JsonProperty("destID")]
-        public int DestID { get; set; }
+        public int DestId { get; set; }
 
         [JsonProperty("msgType")]
         public string MsgType { get; set; }
@@ -246,16 +247,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
         public int TransactionNo { get; set; }
 
         [JsonProperty("packageID")]
-        public int PackageID { get; set; }
+        public int PackageId { get; set; }
 
         [JsonProperty("batchID")]
-        public int BatchID { get; set; }
+        public int BatchId { get; set; }
 
         [JsonProperty("docID")]
-        public int DocID { get; set; }
+        public int DocId { get; set; }
 
         [JsonProperty("channelID")]
-        public int ChannelID { get; set; }
+        public int ChannelId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

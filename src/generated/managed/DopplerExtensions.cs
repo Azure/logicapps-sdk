@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
 {
     using System.Linq.Expressions;
@@ -394,10 +395,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
         public IBodyWorkflowAction<DopplerProjectRolesListResponse, ApiConnectionActionConfiguration> DopplerProjectRolesList()
         {
-            var apiCallPath = "/v3/projects/roles";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DopplerProjectRolesListResponse>(callPayload);
+            return new DeferredBodyAction<DopplerProjectRolesListResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v3/projects/roles";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DopplerProjectRolesListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]

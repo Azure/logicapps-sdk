@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zeptomail")]
         public IBodyWorkflowAction<GetMailAgentResponse, ApiConnectionActionConfiguration> GetMailAgent()
         {
-            var apiCallPath = "/portal/v1.0/mailagents";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetMailAgentResponse>(callPayload);
+            return new DeferredBodyAction<GetMailAgentResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/portal/v1.0/mailagents";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetMailAgentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zeptomail")]
@@ -345,7 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         public GetProcessedEmailsResponseDataTypeDetailsTypeItemEmailInfoType EmailInfo { get; set; }
 
         [JsonProperty("request_id")]
-        public string RequestID { get; set; }
+        public string RequestId { get; set; }
     }
 
     public class GetProcessedEmailsResponseDataTypeDetailsTypeItemEmailInfoType
@@ -411,7 +415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         public string StatusMessage { get; set; }
 
         [JsonProperty("request_id")]
-        public string RequestID { get; set; }
+        public string RequestId { get; set; }
     }
 
     public class SuccessMessageDataTypeItem

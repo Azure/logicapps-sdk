@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
 {
     using System.Linq.Expressions;
@@ -14,19 +15,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IBodyWorkflowAction<GetApprovalsResponseItem[], ApiConnectionActionConfiguration> GetApprovals()
         {
-            var apiCallPath = "/approvals";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetApprovalsResponseItem[]>(callPayload);
+            return new DeferredBodyAction<GetApprovalsResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/approvals";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetApprovalsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Approve(Expression<Func<string>> approvalID)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Approve(Expression<Func<string>> approvalId)
         {
-            var __workflow_approvalID = WorkflowExpression.Compile(approvalID, nameof(approvalID), required: true);
+            var __workflow_approvalId = WorkflowExpression.Compile(approvalId, nameof(approvalId), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/approvals/{0}/approve", __workflow_approvalID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/approvals/{0}/approve", __workflow_approvalId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -34,12 +38,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Reject(Expression<Func<string>> approvalID)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Reject(Expression<Func<string>> approvalId)
         {
-            var __workflow_approvalID = WorkflowExpression.Compile(approvalID, nameof(approvalID), required: true);
+            var __workflow_approvalId = WorkflowExpression.Compile(approvalId, nameof(approvalId), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/approvals/{0}", __workflow_approvalID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/approvals/{0}", __workflow_approvalId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -47,13 +51,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ArchiveTeam(Expression<Func<string>> groupID, Expression<Func<bool>> bodysharePointReadOnly)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ArchiveTeam(Expression<Func<string>> groupId, Expression<Func<bool>> bodysharePointReadOnly)
         {
-            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_bodysharePointReadOnly = WorkflowExpression.Compile(bodysharePointReadOnly, nameof(bodysharePointReadOnly), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/archive", __workflow_groupID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/archive", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -70,12 +74,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteTeam(Expression<Func<string>> groupID)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteTeam(Expression<Func<string>> groupId)
         {
-            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}", __workflow_groupID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -83,14 +87,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ChangeTagValue(Expression<Func<string>> groupID, Expression<Func<string>> contentid = null, Expression<Func<string>> contentvalue = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ChangeTagValue(Expression<Func<string>> groupId, Expression<Func<string>> contentid = null, Expression<Func<string>> contentvalue = null)
         {
-            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_contentid = WorkflowExpression.Compile(contentid, nameof(contentid), required: false);
             var __workflow_contentvalue = WorkflowExpression.Compile(contentvalue, nameof(contentvalue), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/change-tag-value", __workflow_groupID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/change-tag-value", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var content = new JObject();
@@ -117,12 +121,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RemoveAllUsersExeptOwners(Expression<Func<string>> groupID)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RemoveAllUsersExeptOwners(Expression<Func<string>> groupId)
         {
-            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/remove-all-users-not-owner", __workflow_groupID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/remove-all-users-not-owner", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -130,13 +134,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RemoveAllUsersExceptOneOwner(Expression<Func<string>> groupID, Expression<Func<string>> bodyownerId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RemoveAllUsersExceptOneOwner(Expression<Func<string>> groupId, Expression<Func<string>> bodyownerId = null)
         {
-            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_bodyownerId = WorkflowExpression.Compile(bodyownerId, nameof(bodyownerId), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/remove-all-users-except-selected-owner", __workflow_groupID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/remove-all-users-except-selected-owner", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -157,12 +161,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RemoveGuests(Expression<Func<string>> groupID)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RemoveGuests(Expression<Func<string>> groupId)
         {
-            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/remove-all-guests", __workflow_groupID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/remove-all-guests", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -170,13 +174,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RemoveUser(Expression<Func<string>> groupID, Expression<Func<string>> bodyuserId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RemoveUser(Expression<Func<string>> groupId, Expression<Func<string>> bodyuserId = null)
         {
-            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/remove-user", __workflow_groupID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/remove-user", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -197,13 +201,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ChangeRoleToMember(Expression<Func<string>> groupID, Expression<Func<string>> bodyuserId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ChangeRoleToMember(Expression<Func<string>> groupId, Expression<Func<string>> bodyuserId = null)
         {
-            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/change-role-to-member", __workflow_groupID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/change-role-to-member", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -224,13 +228,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ChangeRoleToOwner(Expression<Func<string>> groupID, Expression<Func<string>> bodyuserId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ChangeRoleToOwner(Expression<Func<string>> groupId, Expression<Func<string>> bodyuserId = null)
         {
-            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/change-role-to-owner", __workflow_groupID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/change-role-to-owner", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -251,13 +255,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ExtendExpirationDate(Expression<Func<string>> groupID, Expression<Func<string>> bodyweeks = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ExtendExpirationDate(Expression<Func<string>> groupId, Expression<Func<string>> bodyweeks = null)
         {
-            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_bodyweeks = WorkflowExpression.Compile(bodyweeks, nameof(bodyweeks), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/extend-expiration", __workflow_groupID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/extend-expiration", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -288,13 +292,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetTagValue(Expression<Func<string>> groupID, Expression<Func<string>> tagID)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetTagValue(Expression<Func<string>> groupId, Expression<Func<string>> tagId)
         {
-            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
-            var __workflow_tagID = WorkflowExpression.Compile(tagID, nameof(tagID), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/attribute/{1}", __workflow_groupID.WithUrlEncoding(1), __workflow_tagID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/attribute/{1}", __workflow_groupId.WithUrlEncoding(1), __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);

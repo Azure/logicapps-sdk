@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
 {
     using System.Linq.Expressions;
@@ -14,19 +15,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
         public IBodyWorkflowAction<MeGetResponse, ApiConnectionActionConfiguration> MeGet()
         {
-            var apiCallPath = "/me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MeGetResponse>(callPayload);
+            return new DeferredBodyAction<MeGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<MeGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
         public IBodyWorkflowAction<ListsGetResponse, ApiConnectionActionConfiguration> ListsGet()
         {
-            var apiCallPath = "/lists";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListsGetResponse>(callPayload);
+            return new DeferredBodyAction<ListsGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/lists";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListsGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
@@ -81,10 +88,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
         public IBodyWorkflowAction<ContactsGetResponse, ApiConnectionActionConfiguration> ContactsGet()
         {
-            var apiCallPath = "/contacts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ContactsGetResponse>(callPayload);
+            return new DeferredBodyAction<ContactsGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/contacts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ContactsGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
@@ -172,10 +182,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
         public IBodyWorkflowAction<CampaignsGetResponse, ApiConnectionActionConfiguration> CampaignsGet()
         {
-            var apiCallPath = "/campaigns";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CampaignsGetResponse>(callPayload);
+            return new DeferredBodyAction<CampaignsGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/campaigns";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CampaignsGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]

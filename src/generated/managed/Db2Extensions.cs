@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Db2
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Db2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "db2")]
         public IBodyWorkflowAction<TablesList, ApiConnectionActionConfiguration> GetTables()
         {
-            var apiCallPath = "/datasets/default/tables";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TablesList>(callPayload);
+            return new DeferredBodyAction<TablesList, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/datasets/default/tables";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TablesList>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "db2")]

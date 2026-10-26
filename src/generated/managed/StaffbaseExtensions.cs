@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
 {
     using System.Linq.Expressions;
@@ -14,21 +15,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IBodyWorkflowAction<ChannelsGetListResponse, ApiConnectionActionConfiguration> ChannelsGetList()
         {
-            var apiCallPath = "/channels";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChannelsGetListResponse>(callPayload);
+            return new DeferredBodyAction<ChannelsGetListResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/channels";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ChannelsGetListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
-        public IBodyWorkflowAction<ChannelsGetPostsResponse, ApiConnectionActionConfiguration> ChannelsGetPosts(Expression<Func<string>> channelID, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<ChannelsGetPostsResponse, ApiConnectionActionConfiguration> ChannelsGetPosts(Expression<Func<string>> channelId, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_channelID = WorkflowExpression.Compile(channelID, nameof(channelID), required: true);
+            var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<ChannelsGetPostsResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/channels/{0}/posts", __workflow_channelID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/channels/{0}/posts", __workflow_channelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_limit != null)
@@ -40,22 +44,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ChannelsPost(Expression<Func<string>> channelID, Expression<Func<string>> bodyexternalID = null, Expression<Func<bodycontentsInputItem[]>> bodycontents = null, Expression<Func<string>> bodypublished = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ChannelsPost(Expression<Func<string>> channelId, Expression<Func<string>> bodyexternalId = null, Expression<Func<bodycontentsInputItem[]>> bodycontents = null, Expression<Func<string>> bodypublished = null)
         {
-            var __workflow_channelID = WorkflowExpression.Compile(channelID, nameof(channelID), required: true);
-            var __workflow_bodyexternalID = WorkflowExpression.Compile(bodyexternalID, nameof(bodyexternalID), required: false);
+            var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: true);
+            var __workflow_bodyexternalId = WorkflowExpression.Compile(bodyexternalId, nameof(bodyexternalId), required: false);
             var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: false);
             var __workflow_bodypublished = WorkflowExpression.Compile(bodypublished, nameof(bodypublished), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/channels/{0}/posts", __workflow_channelID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/channels/{0}/posts", __workflow_channelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (__workflow_bodyexternalID != null)
+                if (__workflow_bodyexternalId != null)
                 {
-                    body["externalID"] = ExpressionConverter.ConvertO(__workflow_bodyexternalID);
+                    body["externalID"] = ExpressionConverter.ConvertO(__workflow_bodyexternalId);
                     bodypropCount++;
                 }
 
@@ -125,12 +129,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
-        public IBodyWorkflowAction<MediaData, ApiConnectionActionConfiguration> MediaGetByID(Expression<Func<string>> mediumID)
+        public IBodyWorkflowAction<MediaData, ApiConnectionActionConfiguration> MediaGetById(Expression<Func<string>> mediumId)
         {
-            var __workflow_mediumID = WorkflowExpression.Compile(mediumID, nameof(mediumID), required: true);
+            var __workflow_mediumId = WorkflowExpression.Compile(mediumId, nameof(mediumId), required: true);
             return new DeferredBodyAction<MediaData, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/media/{0}", __workflow_mediumID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/media/{0}", __workflow_mediumId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MediaData>(callPayload);
@@ -138,12 +142,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MediaDelete(Expression<Func<string>> mediumID)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MediaDelete(Expression<Func<string>> mediumId)
         {
-            var __workflow_mediumID = WorkflowExpression.Compile(mediumID, nameof(mediumID), required: true);
+            var __workflow_mediumId = WorkflowExpression.Compile(mediumId, nameof(mediumId), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/media/{0}", __workflow_mediumID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/media/{0}", __workflow_mediumId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -227,12 +231,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
-        public IBodyWorkflowAction<PostData, ApiConnectionActionConfiguration> PostsGetByID(Expression<Func<string>> pageID)
+        public IBodyWorkflowAction<PostData, ApiConnectionActionConfiguration> PostsGetById(Expression<Func<string>> pageId)
         {
-            var __workflow_pageID = WorkflowExpression.Compile(pageID, nameof(pageID), required: true);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             return new DeferredBodyAction<PostData, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/posts/{0}", __workflow_pageID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/posts/{0}", __workflow_pageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PostData>(callPayload);
@@ -240,12 +244,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
-        public IBodyWorkflowAction<PostsDeleteResponse, ApiConnectionActionConfiguration> PostsDelete(Expression<Func<string>> pageID)
+        public IBodyWorkflowAction<PostsDeleteResponse, ApiConnectionActionConfiguration> PostsDelete(Expression<Func<string>> pageId)
         {
-            var __workflow_pageID = WorkflowExpression.Compile(pageID, nameof(pageID), required: true);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             return new DeferredBodyAction<PostsDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/posts/{0}", __workflow_pageID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/posts/{0}", __workflow_pageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<PostsDeleteResponse>(callPayload);
@@ -253,21 +257,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostsPut(Expression<Func<string>> pageID, Expression<Func<string>> bodyexternalID = null, Expression<Func<bodycontentsInputItem2[]>> bodycontents = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostsPut(Expression<Func<string>> pageId, Expression<Func<string>> bodyexternalId = null, Expression<Func<bodycontentsInputItem2[]>> bodycontents = null)
         {
-            var __workflow_pageID = WorkflowExpression.Compile(pageID, nameof(pageID), required: true);
-            var __workflow_bodyexternalID = WorkflowExpression.Compile(bodyexternalID, nameof(bodyexternalID), required: false);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_bodyexternalId = WorkflowExpression.Compile(bodyexternalId, nameof(bodyexternalId), required: false);
             var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/posts/{0}", __workflow_pageID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/posts/{0}", __workflow_pageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (__workflow_bodyexternalID != null)
+                if (__workflow_bodyexternalId != null)
                 {
-                    body["externalID"] = ExpressionConverter.ConvertO(__workflow_bodyexternalID);
+                    body["externalID"] = ExpressionConverter.ConvertO(__workflow_bodyexternalId);
                     bodypropCount++;
                 }
 
@@ -345,12 +349,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
-        public IBodyWorkflowAction<UserData, ApiConnectionActionConfiguration> UserGetByID(Expression<Func<string>> userID)
+        public IBodyWorkflowAction<UserData, ApiConnectionActionConfiguration> UserGetById(Expression<Func<string>> userId)
         {
-            var __workflow_userID = WorkflowExpression.Compile(userID, nameof(userID), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<UserData, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}", __workflow_userID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<UserData>(callPayload);
@@ -358,12 +362,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UserDelete(Expression<Func<string>> userID)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UserDelete(Expression<Func<string>> userId)
         {
-            var __workflow_userID = WorkflowExpression.Compile(userID, nameof(userID), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}", __workflow_userID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -371,11 +375,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
-        public IBodyWorkflowAction<UserData, ApiConnectionActionConfiguration> UserPut(Expression<Func<string>> userID, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyexternalID = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodypublicEmailAddress = null, Expression<Func<string>> bodyconfiglocale = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null, Expression<Func<string[]>> bodygroupIDs = null, Expression<Func<string>> bodyposition = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodyphoneNumber = null, Expression<Func<string>> bodycreated = null, Expression<Func<string>> bodyupdated = null, Expression<Func<string>> bodyactivated = null)
+        public IBodyWorkflowAction<UserData, ApiConnectionActionConfiguration> UserPut(Expression<Func<string>> userId, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyexternalId = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodypublicEmailAddress = null, Expression<Func<string>> bodyconfiglocale = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null, Expression<Func<string[]>> bodygroupIDs = null, Expression<Func<string>> bodyposition = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodyphoneNumber = null, Expression<Func<string>> bodycreated = null, Expression<Func<string>> bodyupdated = null, Expression<Func<string>> bodyactivated = null)
         {
-            var __workflow_userID = WorkflowExpression.Compile(userID, nameof(userID), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodyexternalID = WorkflowExpression.Compile(bodyexternalID, nameof(bodyexternalID), required: false);
+            var __workflow_bodyexternalId = WorkflowExpression.Compile(bodyexternalId, nameof(bodyexternalId), required: false);
             var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
             var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
             var __workflow_bodypublicEmailAddress = WorkflowExpression.Compile(bodypublicEmailAddress, nameof(bodypublicEmailAddress), required: false);
@@ -391,7 +395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
             var __workflow_bodyactivated = WorkflowExpression.Compile(bodyactivated, nameof(bodyactivated), required: false);
             return new DeferredBodyAction<UserData, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}", __workflow_userID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -402,9 +406,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyexternalID != null)
+                if (__workflow_bodyexternalId != null)
                 {
-                    body["externalID"] = ExpressionConverter.ConvertO(__workflow_bodyexternalID);
+                    body["externalID"] = ExpressionConverter.ConvertO(__workflow_bodyexternalId);
                     bodypropCount++;
                 }
 
@@ -504,12 +508,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UserPostRecovery(Expression<Func<string>> userID)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UserPostRecovery(Expression<Func<string>> userId)
         {
-            var __workflow_userID = WorkflowExpression.Compile(userID, nameof(userID), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/recovery", __workflow_userID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/recovery", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
@@ -519,10 +523,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
         public IWorkflowAction<ApiConnectionActionConfiguration> ProxyVersionGet()
         {
-            var apiCallPath = "/version";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/version";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 
@@ -554,7 +561,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         public ChannelsGetListResponseDataTypeItemConfigType Config { get; set; }
 
         [JsonProperty("spaceID")]
-        public string SpaceID { get; set; }
+        public string SpaceId { get; set; }
 
         [JsonProperty("created")]
         public string Created { get; set; }
@@ -647,7 +654,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         public AuthorObjectAvatarTypeThumbType Thumb { get; set; }
 
         [JsonProperty("publicID")]
-        public string PublicID { get; set; }
+        public string PublicId { get; set; }
     }
 
     public class AuthorObjectAvatarTypeOriginalType
@@ -860,7 +867,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         public string Id { get; set; }
 
         [JsonProperty("parentID")]
-        public string ParentID { get; set; }
+        public string ParentId { get; set; }
 
         [JsonProperty("parentType")]
         public string ParentType { get; set; }
@@ -869,7 +876,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         public string Text { get; set; }
 
         [JsonProperty("rootID")]
-        public string RootID { get; set; }
+        public string RootId { get; set; }
 
         [JsonProperty("author")]
         public AuthorObject Author { get; set; }
@@ -928,13 +935,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         public string Id { get; set; }
 
         [JsonProperty("ownerID")]
-        public string OwnerID { get; set; }
+        public string OwnerId { get; set; }
 
         [JsonProperty("parentID")]
-        public string ParentID { get; set; }
+        public string ParentId { get; set; }
 
         [JsonProperty("publicID")]
-        public string PublicID { get; set; }
+        public string PublicId { get; set; }
 
         [JsonProperty("resourceInfo")]
         public MediaDataResourceInfoType ResourceInfo { get; set; }
@@ -1092,7 +1099,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         public string Id { get; set; }
 
         [JsonProperty("externalID")]
-        public string ExternalID { get; set; }
+        public string ExternalId { get; set; }
 
         [JsonProperty("firstName")]
         public string FirstName { get; set; }

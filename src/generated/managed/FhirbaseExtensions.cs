@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
 {
     using System.Linq.Expressions;
@@ -194,20 +195,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETAppointmentIDResponse, ApiConnectionActionConfiguration> GETAppointmentID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETAppointmentIdResponse, ApiConnectionActionConfiguration> GETAppointmentId(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETAppointmentIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETAppointmentIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Appointment/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETAppointmentIDResponse>(callPayload);
+                return new ApiConnectionAction<GETAppointmentIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEAppointmentIDResponse, ApiConnectionActionConfiguration> DELETEAppointmentID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodyparticipantInputItem[]>> bodyparticipant = null)
+        public IBodyWorkflowAction<DELETEAppointmentIdResponse, ApiConnectionActionConfiguration> DELETEAppointmentId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodyparticipantInputItem[]>> bodyparticipant = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -218,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodytextdiv = WorkflowExpression.Compile(bodytextdiv, nameof(bodytextdiv), required: false);
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             var __workflow_bodyparticipant = WorkflowExpression.Compile(bodyparticipant, nameof(bodyparticipant), required: false);
-            return new DeferredBodyAction<DELETEAppointmentIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DELETEAppointmentIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Appointment/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -294,12 +295,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionAction<DELETEAppointmentIDResponse>(callPayload);
+                return new ApiConnectionAction<DELETEAppointmentIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTAppointmentIDResponse, ApiConnectionActionConfiguration> PUTAppointmentID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodyparticipantInputItem[]>> bodyparticipant = null)
+        public IBodyWorkflowAction<PUTAppointmentIdResponse, ApiConnectionActionConfiguration> PUTAppointmentId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodyparticipantInputItem[]>> bodyparticipant = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -310,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodytextdiv = WorkflowExpression.Compile(bodytextdiv, nameof(bodytextdiv), required: false);
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             var __workflow_bodyparticipant = WorkflowExpression.Compile(bodyparticipant, nameof(bodyparticipant), required: false);
-            return new DeferredBodyAction<PUTAppointmentIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PUTAppointmentIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Appointment/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -386,34 +387,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionAction<PUTAppointmentIDResponse>(callPayload);
+                return new ApiConnectionAction<PUTAppointmentIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETAppointmentIDVERSIONResponse, ApiConnectionActionConfiguration> GETAppointmentIDVERSION(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETAppointmentIdVERSIONResponse, ApiConnectionActionConfiguration> GETAppointmentIdVERSION(Expression<Func<string>> id, Expression<Func<string>> vid)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
-            return new DeferredBodyAction<GETAppointmentIDVERSIONResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETAppointmentIdVERSIONResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Appointment/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETAppointmentIDVERSIONResponse>(callPayload);
+                return new ApiConnectionAction<GETAppointmentIdVERSIONResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETAppointmentIDHistoryResponse, ApiConnectionActionConfiguration> GETAppointmentIDHistory(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETAppointmentIdHistoryResponse, ApiConnectionActionConfiguration> GETAppointmentIdHistory(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETAppointmentIDHistoryResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETAppointmentIdHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Appointment/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETAppointmentIDHistoryResponse>(callPayload);
+                return new ApiConnectionAction<GETAppointmentIdHistoryResponse>(callPayload);
             });
         }
 
@@ -560,20 +561,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETAppointmentResponseIDResponse, ApiConnectionActionConfiguration> GETAppointmentResponseID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETAppointmentResponseIdResponse, ApiConnectionActionConfiguration> GETAppointmentResponseId(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETAppointmentResponseIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETAppointmentResponseIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AppointmentResponse/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETAppointmentResponseIDResponse>(callPayload);
+                return new ApiConnectionAction<GETAppointmentResponseIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEAppointmentResponseIDResponse, ApiConnectionActionConfiguration> DELETEAppointmentResponseID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodyappointmentreference = null, Expression<Func<string>> bodyappointmentdisplay = null, Expression<Func<string>> bodyactorreference = null, Expression<Func<string>> bodyactordisplay = null, Expression<Func<string>> bodyparticipantStatus = null)
+        public IBodyWorkflowAction<DELETEAppointmentResponseIdResponse, ApiConnectionActionConfiguration> DELETEAppointmentResponseId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodyappointmentreference = null, Expression<Func<string>> bodyappointmentdisplay = null, Expression<Func<string>> bodyactorreference = null, Expression<Func<string>> bodyactordisplay = null, Expression<Func<string>> bodyparticipantStatus = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -587,7 +588,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyactorreference = WorkflowExpression.Compile(bodyactorreference, nameof(bodyactorreference), required: false);
             var __workflow_bodyactordisplay = WorkflowExpression.Compile(bodyactordisplay, nameof(bodyactordisplay), required: false);
             var __workflow_bodyparticipantStatus = WorkflowExpression.Compile(bodyparticipantStatus, nameof(bodyparticipantStatus), required: false);
-            return new DeferredBodyAction<DELETEAppointmentResponseIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DELETEAppointmentResponseIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AppointmentResponse/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -697,12 +698,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionAction<DELETEAppointmentResponseIDResponse>(callPayload);
+                return new ApiConnectionAction<DELETEAppointmentResponseIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTAppointmentResponseIDResponse, ApiConnectionActionConfiguration> PUTAppointmentResponseID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodyappointmentreference = null, Expression<Func<string>> bodyappointmentdisplay = null, Expression<Func<string>> bodyactorreference = null, Expression<Func<string>> bodyactordisplay = null, Expression<Func<string>> bodyparticipantStatus = null)
+        public IBodyWorkflowAction<PUTAppointmentResponseIdResponse, ApiConnectionActionConfiguration> PUTAppointmentResponseId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodyappointmentreference = null, Expression<Func<string>> bodyappointmentdisplay = null, Expression<Func<string>> bodyactorreference = null, Expression<Func<string>> bodyactordisplay = null, Expression<Func<string>> bodyparticipantStatus = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -716,7 +717,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyactorreference = WorkflowExpression.Compile(bodyactorreference, nameof(bodyactorreference), required: false);
             var __workflow_bodyactordisplay = WorkflowExpression.Compile(bodyactordisplay, nameof(bodyactordisplay), required: false);
             var __workflow_bodyparticipantStatus = WorkflowExpression.Compile(bodyparticipantStatus, nameof(bodyparticipantStatus), required: false);
-            return new DeferredBodyAction<PUTAppointmentResponseIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PUTAppointmentResponseIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AppointmentResponse/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -826,44 +827,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionAction<PUTAppointmentResponseIDResponse>(callPayload);
+                return new ApiConnectionAction<PUTAppointmentResponseIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETAppointmentResponseIDVersionResponse, ApiConnectionActionConfiguration> GETAppointmentResponseIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETAppointmentResponseIdVersionResponse, ApiConnectionActionConfiguration> GETAppointmentResponseIdVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
-            return new DeferredBodyAction<GETAppointmentResponseIDVersionResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETAppointmentResponseIdVersionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AppointmentResponse/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETAppointmentResponseIDVersionResponse>(callPayload);
+                return new ApiConnectionAction<GETAppointmentResponseIdVersionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETAppointmentResponseIDHistoryResponse, ApiConnectionActionConfiguration> GETAppointmentResponseIDHistory(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETAppointmentResponseIdHistoryResponse, ApiConnectionActionConfiguration> GETAppointmentResponseIdHistory(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETAppointmentResponseIDHistoryResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETAppointmentResponseIdHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AppointmentResponse/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETAppointmentResponseIDHistoryResponse>(callPayload);
+                return new ApiConnectionAction<GETAppointmentResponseIdHistoryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETAppointmentResponseHistoryResponse, ApiConnectionActionConfiguration> GETAppointmentResponseHistory()
         {
-            var apiCallPath = "/AppointmentResponse/_history";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETAppointmentResponseHistoryResponse>(callPayload);
+            return new DeferredBodyAction<GETAppointmentResponseHistoryResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/AppointmentResponse/_history";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GETAppointmentResponseHistoryResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -1036,20 +1040,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETDeviceIDResponse, ApiConnectionActionConfiguration> GETDeviceID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETDeviceIdResponse, ApiConnectionActionConfiguration> GETDeviceId(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETDeviceIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETDeviceIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Device/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETDeviceIDResponse>(callPayload);
+                return new ApiConnectionAction<GETDeviceIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEDeviceIDResponse, ApiConnectionActionConfiguration> DELETEDeviceID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null)
+        public IBodyWorkflowAction<DELETEDeviceIdResponse, ApiConnectionActionConfiguration> DELETEDeviceId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -1059,7 +1063,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
             var __workflow_bodytextdiv = WorkflowExpression.Compile(bodytextdiv, nameof(bodytextdiv), required: false);
             var __workflow_bodyidentifier = WorkflowExpression.Compile(bodyidentifier, nameof(bodyidentifier), required: false);
-            return new DeferredBodyAction<DELETEDeviceIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DELETEDeviceIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Device/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -1129,12 +1133,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionAction<DELETEDeviceIDResponse>(callPayload);
+                return new ApiConnectionAction<DELETEDeviceIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTDeviceIDResponse, ApiConnectionActionConfiguration> PUTDeviceID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null)
+        public IBodyWorkflowAction<PUTDeviceIdResponse, ApiConnectionActionConfiguration> PUTDeviceId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -1144,7 +1148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodytextstatus = WorkflowExpression.Compile(bodytextstatus, nameof(bodytextstatus), required: false);
             var __workflow_bodytextdiv = WorkflowExpression.Compile(bodytextdiv, nameof(bodytextdiv), required: false);
             var __workflow_bodyidentifier = WorkflowExpression.Compile(bodyidentifier, nameof(bodyidentifier), required: false);
-            return new DeferredBodyAction<PUTDeviceIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PUTDeviceIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Device/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -1214,44 +1218,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionAction<PUTDeviceIDResponse>(callPayload);
+                return new ApiConnectionAction<PUTDeviceIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETDeviceIDVERSIONResponse, ApiConnectionActionConfiguration> GETDeviceIDVERSION(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETDeviceIdVERSIONResponse, ApiConnectionActionConfiguration> GETDeviceIdVERSION(Expression<Func<string>> id, Expression<Func<string>> vid)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
-            return new DeferredBodyAction<GETDeviceIDVERSIONResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETDeviceIdVERSIONResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Device/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETDeviceIDVERSIONResponse>(callPayload);
+                return new ApiConnectionAction<GETDeviceIdVERSIONResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETDeviceIDHISTORYResponse, ApiConnectionActionConfiguration> GETDeviceIDHISTORY(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETDeviceIdHISTORYResponse, ApiConnectionActionConfiguration> GETDeviceIdHISTORY(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETDeviceIDHISTORYResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETDeviceIdHISTORYResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Device/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETDeviceIDHISTORYResponse>(callPayload);
+                return new ApiConnectionAction<GETDeviceIdHISTORYResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETDeviceHISTORYResponse, ApiConnectionActionConfiguration> GETDeviceHISTORY()
         {
-            var apiCallPath = "/Device/_history";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETDeviceHISTORYResponse>(callPayload);
+            return new DeferredBodyAction<GETDeviceHISTORYResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/Device/_history";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GETDeviceHISTORYResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -1440,20 +1447,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETEncounterIDResponse, ApiConnectionActionConfiguration> GETEncounterID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETEncounterIdResponse, ApiConnectionActionConfiguration> GETEncounterId(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETEncounterIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETEncounterIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Encounter/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETEncounterIDResponse>(callPayload);
+                return new ApiConnectionAction<GETEncounterIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEEncounterIDResponse, ApiConnectionActionConfiguration> DELETEEncounterID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyClasssystem = null, Expression<Func<string>> bodyClasscode = null, Expression<Func<bodytypeInputItem[]>> bodytype = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<bodyparticipantInputItem2[]>> bodyparticipant = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyserviceProviderreference = null, Expression<Func<string>> bodyserviceProviderdisplay = null)
+        public IBodyWorkflowAction<DELETEEncounterIdResponse, ApiConnectionActionConfiguration> DELETEEncounterId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyClasssystem = null, Expression<Func<string>> bodyClasscode = null, Expression<Func<bodytypeInputItem[]>> bodytype = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<bodyparticipantInputItem2[]>> bodyparticipant = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyserviceProviderreference = null, Expression<Func<string>> bodyserviceProviderdisplay = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -1471,7 +1478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyperiodend = WorkflowExpression.Compile(bodyperiodend, nameof(bodyperiodend), required: false);
             var __workflow_bodyserviceProviderreference = WorkflowExpression.Compile(bodyserviceProviderreference, nameof(bodyserviceProviderreference), required: false);
             var __workflow_bodyserviceProviderdisplay = WorkflowExpression.Compile(bodyserviceProviderdisplay, nameof(bodyserviceProviderdisplay), required: false);
-            return new DeferredBodyAction<DELETEEncounterIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DELETEEncounterIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Encounter/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -1613,12 +1620,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionAction<DELETEEncounterIDResponse>(callPayload);
+                return new ApiConnectionAction<DELETEEncounterIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTEncounterIDResponse, ApiConnectionActionConfiguration> PUTEncounterID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyClasssystem = null, Expression<Func<string>> bodyClasscode = null, Expression<Func<bodytypeInputItem[]>> bodytype = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<bodyparticipantInputItem2[]>> bodyparticipant = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyserviceProviderreference = null, Expression<Func<string>> bodyserviceProviderdisplay = null)
+        public IBodyWorkflowAction<PUTEncounterIdResponse, ApiConnectionActionConfiguration> PUTEncounterId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyClasssystem = null, Expression<Func<string>> bodyClasscode = null, Expression<Func<bodytypeInputItem[]>> bodytype = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<bodyparticipantInputItem2[]>> bodyparticipant = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyserviceProviderreference = null, Expression<Func<string>> bodyserviceProviderdisplay = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -1636,7 +1643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyperiodend = WorkflowExpression.Compile(bodyperiodend, nameof(bodyperiodend), required: false);
             var __workflow_bodyserviceProviderreference = WorkflowExpression.Compile(bodyserviceProviderreference, nameof(bodyserviceProviderreference), required: false);
             var __workflow_bodyserviceProviderdisplay = WorkflowExpression.Compile(bodyserviceProviderdisplay, nameof(bodyserviceProviderdisplay), required: false);
-            return new DeferredBodyAction<PUTEncounterIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PUTEncounterIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Encounter/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -1778,44 +1785,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionAction<PUTEncounterIDResponse>(callPayload);
+                return new ApiConnectionAction<PUTEncounterIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETEncounterIDVersionResponse, ApiConnectionActionConfiguration> GETEncounterIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETEncounterIdVersionResponse, ApiConnectionActionConfiguration> GETEncounterIdVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
-            return new DeferredBodyAction<GETEncounterIDVersionResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETEncounterIdVersionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Encounter/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETEncounterIDVersionResponse>(callPayload);
+                return new ApiConnectionAction<GETEncounterIdVersionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETEncounterIDHISTORYResponse, ApiConnectionActionConfiguration> GETEncounterIDHISTORY(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETEncounterIdHISTORYResponse, ApiConnectionActionConfiguration> GETEncounterIdHISTORY(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETEncounterIDHISTORYResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETEncounterIdHISTORYResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Encounter/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETEncounterIDHISTORYResponse>(callPayload);
+                return new ApiConnectionAction<GETEncounterIdHISTORYResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETEncounterHISTORYResponse, ApiConnectionActionConfiguration> GETEncounterHISTORY()
         {
-            var apiCallPath = "/Encounter/_history";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETEncounterHISTORYResponse>(callPayload);
+            return new DeferredBodyAction<GETEncounterHISTORYResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/Encounter/_history";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GETEncounterHISTORYResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -2004,20 +2014,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETFlagIDResponse, ApiConnectionActionConfiguration> GETFlagID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETFlagIdResponse, ApiConnectionActionConfiguration> GETFlagId(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETFlagIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETFlagIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Flag/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETFlagIDResponse>(callPayload);
+                return new ApiConnectionAction<GETFlagIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEFlagIDResponse, ApiConnectionActionConfiguration> DELETEFlagID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<bodyidentifierInputItem2[]>> bodyidentifier = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyauthorreference = null, Expression<Func<string>> bodyauthordisplay = null)
+        public IBodyWorkflowAction<DELETEFlagIdResponse, ApiConnectionActionConfiguration> DELETEFlagId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<bodyidentifierInputItem2[]>> bodyidentifier = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyauthorreference = null, Expression<Func<string>> bodyauthordisplay = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -2035,7 +2045,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyperiodend = WorkflowExpression.Compile(bodyperiodend, nameof(bodyperiodend), required: false);
             var __workflow_bodyauthorreference = WorkflowExpression.Compile(bodyauthorreference, nameof(bodyauthorreference), required: false);
             var __workflow_bodyauthordisplay = WorkflowExpression.Compile(bodyauthordisplay, nameof(bodyauthordisplay), required: false);
-            return new DeferredBodyAction<DELETEFlagIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DELETEFlagIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Flag/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -2177,12 +2187,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionAction<DELETEFlagIDResponse>(callPayload);
+                return new ApiConnectionAction<DELETEFlagIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTFlagIDResponse, ApiConnectionActionConfiguration> PUTFlagID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<bodyidentifierInputItem2[]>> bodyidentifier = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyauthorreference = null, Expression<Func<string>> bodyauthordisplay = null)
+        public IBodyWorkflowAction<PUTFlagIdResponse, ApiConnectionActionConfiguration> PUTFlagId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<bodyidentifierInputItem2[]>> bodyidentifier = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyauthorreference = null, Expression<Func<string>> bodyauthordisplay = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -2200,7 +2210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodyperiodend = WorkflowExpression.Compile(bodyperiodend, nameof(bodyperiodend), required: false);
             var __workflow_bodyauthorreference = WorkflowExpression.Compile(bodyauthorreference, nameof(bodyauthorreference), required: false);
             var __workflow_bodyauthordisplay = WorkflowExpression.Compile(bodyauthordisplay, nameof(bodyauthordisplay), required: false);
-            return new DeferredBodyAction<PUTFlagIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PUTFlagIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Flag/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -2342,44 +2352,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionAction<PUTFlagIDResponse>(callPayload);
+                return new ApiConnectionAction<PUTFlagIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETFlagIDVersionResponse, ApiConnectionActionConfiguration> GETFlagIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETFlagIdVersionResponse, ApiConnectionActionConfiguration> GETFlagIdVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
-            return new DeferredBodyAction<GETFlagIDVersionResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETFlagIdVersionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Flag/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETFlagIDVersionResponse>(callPayload);
+                return new ApiConnectionAction<GETFlagIdVersionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETFlagIDHistoryResponse, ApiConnectionActionConfiguration> GETFlagIDHistory(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETFlagIdHistoryResponse, ApiConnectionActionConfiguration> GETFlagIdHistory(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETFlagIDHistoryResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETFlagIdHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Flag/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETFlagIDHistoryResponse>(callPayload);
+                return new ApiConnectionAction<GETFlagIdHistoryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETFlagHISTORYResponse, ApiConnectionActionConfiguration> GETFlagHISTORY()
         {
-            var apiCallPath = "/Flag/_history";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETFlagHISTORYResponse>(callPayload);
+            return new DeferredBodyAction<GETFlagHISTORYResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/Flag/_history";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GETFlagHISTORYResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -2502,20 +2515,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETLocationIDResponse, ApiConnectionActionConfiguration> GETLocationID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETLocationIdResponse, ApiConnectionActionConfiguration> GETLocationId(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETLocationIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETLocationIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Location/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETLocationIDResponse>(callPayload);
+                return new ApiConnectionAction<GETLocationIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETELocationIDResponse, ApiConnectionActionConfiguration> DELETELocationID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymode = null, Expression<Func<string>> bodypartOfreference = null, Expression<Func<string>> bodypartOfdisplay = null)
+        public IBodyWorkflowAction<DELETELocationIdResponse, ApiConnectionActionConfiguration> DELETELocationId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymode = null, Expression<Func<string>> bodypartOfreference = null, Expression<Func<string>> bodypartOfdisplay = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -2527,7 +2540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodymode = WorkflowExpression.Compile(bodymode, nameof(bodymode), required: false);
             var __workflow_bodypartOfreference = WorkflowExpression.Compile(bodypartOfreference, nameof(bodypartOfreference), required: false);
             var __workflow_bodypartOfdisplay = WorkflowExpression.Compile(bodypartOfdisplay, nameof(bodypartOfdisplay), required: false);
-            return new DeferredBodyAction<DELETELocationIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DELETELocationIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Location/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -2609,12 +2622,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionAction<DELETELocationIDResponse>(callPayload);
+                return new ApiConnectionAction<DELETELocationIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTLocationIDResponse, ApiConnectionActionConfiguration> PUTLocationID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymode = null, Expression<Func<string>> bodypartOfreference = null, Expression<Func<string>> bodypartOfdisplay = null)
+        public IBodyWorkflowAction<PUTLocationIdResponse, ApiConnectionActionConfiguration> PUTLocationId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymode = null, Expression<Func<string>> bodypartOfreference = null, Expression<Func<string>> bodypartOfdisplay = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -2626,7 +2639,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodymode = WorkflowExpression.Compile(bodymode, nameof(bodymode), required: false);
             var __workflow_bodypartOfreference = WorkflowExpression.Compile(bodypartOfreference, nameof(bodypartOfreference), required: false);
             var __workflow_bodypartOfdisplay = WorkflowExpression.Compile(bodypartOfdisplay, nameof(bodypartOfdisplay), required: false);
-            return new DeferredBodyAction<PUTLocationIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PUTLocationIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Location/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -2708,44 +2721,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionAction<PUTLocationIDResponse>(callPayload);
+                return new ApiConnectionAction<PUTLocationIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETLocationIDVersionResponse, ApiConnectionActionConfiguration> GETLocationIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETLocationIdVersionResponse, ApiConnectionActionConfiguration> GETLocationIdVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
-            return new DeferredBodyAction<GETLocationIDVersionResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETLocationIdVersionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Location/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETLocationIDVersionResponse>(callPayload);
+                return new ApiConnectionAction<GETLocationIdVersionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETLocationIDHistoryResponse, ApiConnectionActionConfiguration> GETLocationIDHistory(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETLocationIdHistoryResponse, ApiConnectionActionConfiguration> GETLocationIdHistory(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETLocationIDHistoryResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETLocationIdHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Location/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETLocationIDHistoryResponse>(callPayload);
+                return new ApiConnectionAction<GETLocationIdHistoryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETLocationHistoryResponse, ApiConnectionActionConfiguration> GETLocationHistory()
         {
-            var apiCallPath = "/Location/_history";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETLocationHistoryResponse>(callPayload);
+            return new DeferredBodyAction<GETLocationHistoryResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/Location/_history";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GETLocationHistoryResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -2845,20 +2861,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPatientIDResponse, ApiConnectionActionConfiguration> GETPatientID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETPatientIdResponse, ApiConnectionActionConfiguration> GETPatientId(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETPatientIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETPatientIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Patient/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETPatientIDResponse>(callPayload);
+                return new ApiConnectionAction<GETPatientIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEPatientIDResponse, ApiConnectionActionConfiguration> DELETEPatientID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodynameInputItem[]>> bodyname = null, Expression<Func<bodytelecomInputItem[]>> bodytelecom = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<bool>> bodydeceasedBoolean = null, Expression<Func<bodyaddressInputItem[]>> bodyaddress = null)
+        public IBodyWorkflowAction<DELETEPatientIdResponse, ApiConnectionActionConfiguration> DELETEPatientId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodynameInputItem[]>> bodyname = null, Expression<Func<bodytelecomInputItem[]>> bodytelecom = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<bool>> bodydeceasedBoolean = null, Expression<Func<bodyaddressInputItem[]>> bodyaddress = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -2870,7 +2886,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodybirthDate = WorkflowExpression.Compile(bodybirthDate, nameof(bodybirthDate), required: false);
             var __workflow_bodydeceasedBoolean = WorkflowExpression.Compile(bodydeceasedBoolean, nameof(bodydeceasedBoolean), required: false);
             var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: false);
-            return new DeferredBodyAction<DELETEPatientIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DELETEPatientIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Patient/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -2936,12 +2952,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionAction<DELETEPatientIDResponse>(callPayload);
+                return new ApiConnectionAction<DELETEPatientIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTPatientIDResponse, ApiConnectionActionConfiguration> PUTPatientID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodynameInputItem[]>> bodyname = null, Expression<Func<bodytelecomInputItem[]>> bodytelecom = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<bool>> bodydeceasedBoolean = null, Expression<Func<bodyaddressInputItem[]>> bodyaddress = null)
+        public IBodyWorkflowAction<PUTPatientIdResponse, ApiConnectionActionConfiguration> PUTPatientId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodynameInputItem[]>> bodyname = null, Expression<Func<bodytelecomInputItem[]>> bodytelecom = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<bool>> bodydeceasedBoolean = null, Expression<Func<bodyaddressInputItem[]>> bodyaddress = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -2953,7 +2969,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodybirthDate = WorkflowExpression.Compile(bodybirthDate, nameof(bodybirthDate), required: false);
             var __workflow_bodydeceasedBoolean = WorkflowExpression.Compile(bodydeceasedBoolean, nameof(bodydeceasedBoolean), required: false);
             var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: false);
-            return new DeferredBodyAction<PUTPatientIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PUTPatientIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Patient/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -3019,44 +3035,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionAction<PUTPatientIDResponse>(callPayload);
+                return new ApiConnectionAction<PUTPatientIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPatientIDVersionResponse, ApiConnectionActionConfiguration> GETPatientIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETPatientIdVersionResponse, ApiConnectionActionConfiguration> GETPatientIdVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
-            return new DeferredBodyAction<GETPatientIDVersionResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETPatientIdVersionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Patient/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETPatientIDVersionResponse>(callPayload);
+                return new ApiConnectionAction<GETPatientIdVersionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPatientIDHistoryResponse, ApiConnectionActionConfiguration> GETPatientIDHistory(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETPatientIdHistoryResponse, ApiConnectionActionConfiguration> GETPatientIdHistory(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETPatientIDHistoryResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETPatientIdHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Patient/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETPatientIDHistoryResponse>(callPayload);
+                return new ApiConnectionAction<GETPatientIdHistoryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETPatientHistoryResponse, ApiConnectionActionConfiguration> GETPatientHistory()
         {
-            var apiCallPath = "/Patient/_history";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETPatientHistoryResponse>(callPayload);
+            return new DeferredBodyAction<GETPatientHistoryResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/Patient/_history";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GETPatientHistoryResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -3185,20 +3204,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPersonIDResponse, ApiConnectionActionConfiguration> GETPersonID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETPersonIdResponse, ApiConnectionActionConfiguration> GETPersonId(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETPersonIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETPersonIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Person/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETPersonIDResponse>(callPayload);
+                return new ApiConnectionAction<GETPersonIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEPersonIDResponse, ApiConnectionActionConfiguration> DELETEPersonID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<bodynameInputItem[]>> bodyname = null, Expression<Func<bodytelecomInputItem2[]>> bodytelecom = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<bodyaddressInputItem2[]>> bodyaddress = null, Expression<Func<string>> bodymanagingOrganizationreference = null, Expression<Func<string>> bodymanagingOrganizationdisplay = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodylinkInputItem[]>> bodylink = null)
+        public IBodyWorkflowAction<DELETEPersonIdResponse, ApiConnectionActionConfiguration> DELETEPersonId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<bodynameInputItem[]>> bodyname = null, Expression<Func<bodytelecomInputItem2[]>> bodytelecom = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<bodyaddressInputItem2[]>> bodyaddress = null, Expression<Func<string>> bodymanagingOrganizationreference = null, Expression<Func<string>> bodymanagingOrganizationdisplay = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodylinkInputItem[]>> bodylink = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -3212,7 +3231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodymanagingOrganizationdisplay = WorkflowExpression.Compile(bodymanagingOrganizationdisplay, nameof(bodymanagingOrganizationdisplay), required: false);
             var __workflow_bodyactive = WorkflowExpression.Compile(bodyactive, nameof(bodyactive), required: false);
             var __workflow_bodylink = WorkflowExpression.Compile(bodylink, nameof(bodylink), required: false);
-            return new DeferredBodyAction<DELETEPersonIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DELETEPersonIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Person/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -3298,12 +3317,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionAction<DELETEPersonIDResponse>(callPayload);
+                return new ApiConnectionAction<DELETEPersonIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTPersonIDResponse, ApiConnectionActionConfiguration> PUTPersonID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<bodynameInputItem[]>> bodyname = null, Expression<Func<bodytelecomInputItem2[]>> bodytelecom = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<bodyaddressInputItem2[]>> bodyaddress = null, Expression<Func<string>> bodymanagingOrganizationreference = null, Expression<Func<string>> bodymanagingOrganizationdisplay = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodylinkInputItem[]>> bodylink = null)
+        public IBodyWorkflowAction<PUTPersonIdResponse, ApiConnectionActionConfiguration> PUTPersonId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<bodynameInputItem[]>> bodyname = null, Expression<Func<bodytelecomInputItem2[]>> bodytelecom = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<bodyaddressInputItem2[]>> bodyaddress = null, Expression<Func<string>> bodymanagingOrganizationreference = null, Expression<Func<string>> bodymanagingOrganizationdisplay = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodylinkInputItem[]>> bodylink = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -3317,7 +3336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodymanagingOrganizationdisplay = WorkflowExpression.Compile(bodymanagingOrganizationdisplay, nameof(bodymanagingOrganizationdisplay), required: false);
             var __workflow_bodyactive = WorkflowExpression.Compile(bodyactive, nameof(bodyactive), required: false);
             var __workflow_bodylink = WorkflowExpression.Compile(bodylink, nameof(bodylink), required: false);
-            return new DeferredBodyAction<PUTPersonIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PUTPersonIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Person/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -3403,44 +3422,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionAction<PUTPersonIDResponse>(callPayload);
+                return new ApiConnectionAction<PUTPersonIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPersonIDVersionResponse, ApiConnectionActionConfiguration> GETPersonIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETPersonIdVersionResponse, ApiConnectionActionConfiguration> GETPersonIdVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
-            return new DeferredBodyAction<GETPersonIDVersionResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETPersonIdVersionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Person/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETPersonIDVersionResponse>(callPayload);
+                return new ApiConnectionAction<GETPersonIdVersionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPersonIDHistoryResponse, ApiConnectionActionConfiguration> GETPersonIDHistory(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETPersonIdHistoryResponse, ApiConnectionActionConfiguration> GETPersonIdHistory(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETPersonIDHistoryResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETPersonIdHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Person/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETPersonIDHistoryResponse>(callPayload);
+                return new ApiConnectionAction<GETPersonIdHistoryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETPersonHistoryResponse, ApiConnectionActionConfiguration> GETPersonHistory()
         {
-            var apiCallPath = "/Person/_history";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETPersonHistoryResponse>(callPayload);
+            return new DeferredBodyAction<GETPersonHistoryResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/Person/_history";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GETPersonHistoryResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
@@ -3526,20 +3548,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPractitionerIDResponse, ApiConnectionActionConfiguration> GETPractitionerID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETPractitionerIdResponse, ApiConnectionActionConfiguration> GETPractitionerId(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETPractitionerIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETPractitionerIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Practitioner/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETPractitionerIDResponse>(callPayload);
+                return new ApiConnectionAction<GETPractitionerIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEPractitionerIDResponse, ApiConnectionActionConfiguration> DELETEPractitionerID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodynameInputItem2[]>> bodyname = null, Expression<Func<bodytelecomInputItem2[]>> bodytelecom = null, Expression<Func<bodyaddressInputItem222[]>> bodyaddress = null, Expression<Func<string>> bodygender = null)
+        public IBodyWorkflowAction<DELETEPractitionerIdResponse, ApiConnectionActionConfiguration> DELETEPractitionerId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodynameInputItem2[]>> bodyname = null, Expression<Func<bodytelecomInputItem2[]>> bodytelecom = null, Expression<Func<bodyaddressInputItem222[]>> bodyaddress = null, Expression<Func<string>> bodygender = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -3552,7 +3574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodytelecom = WorkflowExpression.Compile(bodytelecom, nameof(bodytelecom), required: false);
             var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: false);
             var __workflow_bodygender = WorkflowExpression.Compile(bodygender, nameof(bodygender), required: false);
-            return new DeferredBodyAction<DELETEPractitionerIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DELETEPractitionerIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Practitioner/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -3632,12 +3654,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionAction<DELETEPractitionerIDResponse>(callPayload);
+                return new ApiConnectionAction<DELETEPractitionerIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTPractitionerIDResponse, ApiConnectionActionConfiguration> PUTPractitionerID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodynameInputItem2[]>> bodyname = null, Expression<Func<bodytelecomInputItem2[]>> bodytelecom = null, Expression<Func<bodyaddressInputItem222[]>> bodyaddress = null, Expression<Func<string>> bodygender = null)
+        public IBodyWorkflowAction<PUTPractitionerIdResponse, ApiConnectionActionConfiguration> PUTPractitionerId(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodynameInputItem2[]>> bodyname = null, Expression<Func<bodytelecomInputItem2[]>> bodytelecom = null, Expression<Func<bodyaddressInputItem222[]>> bodyaddress = null, Expression<Func<string>> bodygender = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: false);
@@ -3650,7 +3672,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
             var __workflow_bodytelecom = WorkflowExpression.Compile(bodytelecom, nameof(bodytelecom), required: false);
             var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: false);
             var __workflow_bodygender = WorkflowExpression.Compile(bodygender, nameof(bodygender), required: false);
-            return new DeferredBodyAction<PUTPractitionerIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PUTPractitionerIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Practitioner/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -3730,44 +3752,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionAction<PUTPractitionerIDResponse>(callPayload);
+                return new ApiConnectionAction<PUTPractitionerIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPractitionerIDVersionResponse, ApiConnectionActionConfiguration> GETPractitionerIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETPractitionerIdVersionResponse, ApiConnectionActionConfiguration> GETPractitionerIdVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_vid = WorkflowExpression.Compile(vid, nameof(vid), required: true);
-            return new DeferredBodyAction<GETPractitionerIDVersionResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETPractitionerIdVersionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Practitioner/{0}/_history/{1}", __workflow_id.WithUrlEncoding(1), __workflow_vid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETPractitionerIDVersionResponse>(callPayload);
+                return new ApiConnectionAction<GETPractitionerIdVersionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPractitionerIDHistoryResponse, ApiConnectionActionConfiguration> GETPractitionerIDHistory(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETPractitionerIdHistoryResponse, ApiConnectionActionConfiguration> GETPractitionerIdHistory(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETPractitionerIDHistoryResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GETPractitionerIdHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Practitioner/{0}/_history", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETPractitionerIDHistoryResponse>(callPayload);
+                return new ApiConnectionAction<GETPractitionerIdHistoryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETPractitionerHistoryResponse, ApiConnectionActionConfiguration> GETPractitionerHistory()
         {
-            var apiCallPath = "/Practitioner/_history";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETPractitionerHistoryResponse>(callPayload);
+            return new DeferredBodyAction<GETPractitionerHistoryResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/Practitioner/_history";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GETPractitionerHistoryResponse>(callPayload);
+            });
         }
     }
 
@@ -4222,7 +4247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Code { get; set; }
     }
 
-    public class GETAppointmentIDResponse
+    public class GETAppointmentIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -4231,19 +4256,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETAppointmentIDResponseMetaType Meta { get; set; }
+        public GETAppointmentIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETAppointmentIDResponseTextType Text { get; set; }
+        public GETAppointmentIdResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("participant")]
-        public GETAppointmentIDResponseParticipantTypeItem[] Participant { get; set; }
+        public GETAppointmentIdResponseParticipantTypeItem[] Participant { get; set; }
     }
 
-    public class GETAppointmentIDResponseMetaType
+    public class GETAppointmentIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -4252,7 +4277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETAppointmentIDResponseTextType
+    public class GETAppointmentIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -4261,10 +4286,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETAppointmentIDResponseParticipantTypeItem
+    public class GETAppointmentIdResponseParticipantTypeItem
     {
         [JsonProperty("actor")]
-        public GETAppointmentIDResponseParticipantTypeItemActorType Actor { get; set; }
+        public GETAppointmentIdResponseParticipantTypeItemActorType Actor { get; set; }
 
         [JsonProperty("required")]
         public string Required { get; set; }
@@ -4273,10 +4298,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Status { get; set; }
 
         [JsonProperty("type")]
-        public GETAppointmentIDResponseParticipantTypeItemTypeTypeItem[] Type { get; set; }
+        public GETAppointmentIdResponseParticipantTypeItemTypeTypeItem[] Type { get; set; }
     }
 
-    public class GETAppointmentIDResponseParticipantTypeItemActorType
+    public class GETAppointmentIdResponseParticipantTypeItemActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4285,13 +4310,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETAppointmentIDResponseParticipantTypeItemTypeTypeItem
+    public class GETAppointmentIdResponseParticipantTypeItemTypeTypeItem
     {
         [JsonProperty("coding")]
-        public GETAppointmentIDResponseParticipantTypeItemTypeTypeItemCodingTypeItem[] Coding { get; set; }
+        public GETAppointmentIdResponseParticipantTypeItemTypeTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETAppointmentIDResponseParticipantTypeItemTypeTypeItemCodingTypeItem
+    public class GETAppointmentIdResponseParticipantTypeItemTypeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4300,7 +4325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Code { get; set; }
     }
 
-    public class DELETEAppointmentIDResponse
+    public class DELETEAppointmentIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -4309,19 +4334,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEAppointmentIDResponseMetaType Meta { get; set; }
+        public DELETEAppointmentIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETEAppointmentIDResponseTextType Text { get; set; }
+        public DELETEAppointmentIdResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("participant")]
-        public DELETEAppointmentIDResponseParticipantTypeItem[] Participant { get; set; }
+        public DELETEAppointmentIdResponseParticipantTypeItem[] Participant { get; set; }
     }
 
-    public class DELETEAppointmentIDResponseMetaType
+    public class DELETEAppointmentIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -4330,7 +4355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class DELETEAppointmentIDResponseTextType
+    public class DELETEAppointmentIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -4339,10 +4364,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class DELETEAppointmentIDResponseParticipantTypeItem
+    public class DELETEAppointmentIdResponseParticipantTypeItem
     {
         [JsonProperty("actor")]
-        public DELETEAppointmentIDResponseParticipantTypeItemActorType Actor { get; set; }
+        public DELETEAppointmentIdResponseParticipantTypeItemActorType Actor { get; set; }
 
         [JsonProperty("required")]
         public string Required { get; set; }
@@ -4351,10 +4376,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Status { get; set; }
 
         [JsonProperty("type")]
-        public DELETEAppointmentIDResponseParticipantTypeItemTypeTypeItem[] Type { get; set; }
+        public DELETEAppointmentIdResponseParticipantTypeItemTypeTypeItem[] Type { get; set; }
     }
 
-    public class DELETEAppointmentIDResponseParticipantTypeItemActorType
+    public class DELETEAppointmentIdResponseParticipantTypeItemActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4363,13 +4388,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEAppointmentIDResponseParticipantTypeItemTypeTypeItem
+    public class DELETEAppointmentIdResponseParticipantTypeItemTypeTypeItem
     {
         [JsonProperty("coding")]
-        public DELETEAppointmentIDResponseParticipantTypeItemTypeTypeItemCodingTypeItem[] Coding { get; set; }
+        public DELETEAppointmentIdResponseParticipantTypeItemTypeTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETEAppointmentIDResponseParticipantTypeItemTypeTypeItemCodingTypeItem
+    public class DELETEAppointmentIdResponseParticipantTypeItemTypeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4378,7 +4403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Code { get; set; }
     }
 
-    public class PUTAppointmentIDResponse
+    public class PUTAppointmentIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -4387,19 +4412,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public PUTAppointmentIDResponseMetaType Meta { get; set; }
+        public PUTAppointmentIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public PUTAppointmentIDResponseTextType Text { get; set; }
+        public PUTAppointmentIdResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("participant")]
-        public PUTAppointmentIDResponseParticipantTypeItem[] Participant { get; set; }
+        public PUTAppointmentIdResponseParticipantTypeItem[] Participant { get; set; }
     }
 
-    public class PUTAppointmentIDResponseMetaType
+    public class PUTAppointmentIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -4408,7 +4433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class PUTAppointmentIDResponseTextType
+    public class PUTAppointmentIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -4417,10 +4442,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class PUTAppointmentIDResponseParticipantTypeItem
+    public class PUTAppointmentIdResponseParticipantTypeItem
     {
         [JsonProperty("actor")]
-        public PUTAppointmentIDResponseParticipantTypeItemActorType Actor { get; set; }
+        public PUTAppointmentIdResponseParticipantTypeItemActorType Actor { get; set; }
 
         [JsonProperty("required")]
         public string Required { get; set; }
@@ -4429,10 +4454,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Status { get; set; }
 
         [JsonProperty("type")]
-        public PUTAppointmentIDResponseParticipantTypeItemTypeTypeItem[] Type { get; set; }
+        public PUTAppointmentIdResponseParticipantTypeItemTypeTypeItem[] Type { get; set; }
     }
 
-    public class PUTAppointmentIDResponseParticipantTypeItemActorType
+    public class PUTAppointmentIdResponseParticipantTypeItemActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4441,13 +4466,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTAppointmentIDResponseParticipantTypeItemTypeTypeItem
+    public class PUTAppointmentIdResponseParticipantTypeItemTypeTypeItem
     {
         [JsonProperty("coding")]
-        public PUTAppointmentIDResponseParticipantTypeItemTypeTypeItemCodingTypeItem[] Coding { get; set; }
+        public PUTAppointmentIdResponseParticipantTypeItemTypeTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTAppointmentIDResponseParticipantTypeItemTypeTypeItemCodingTypeItem
+    public class PUTAppointmentIdResponseParticipantTypeItemTypeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4456,7 +4481,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Code { get; set; }
     }
 
-    public class GETAppointmentIDVERSIONResponse
+    public class GETAppointmentIdVERSIONResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -4465,19 +4490,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETAppointmentIDVERSIONResponseMetaType Meta { get; set; }
+        public GETAppointmentIdVERSIONResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETAppointmentIDVERSIONResponseTextType Text { get; set; }
+        public GETAppointmentIdVERSIONResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("participant")]
-        public GETAppointmentIDVERSIONResponseParticipantTypeItem[] Participant { get; set; }
+        public GETAppointmentIdVERSIONResponseParticipantTypeItem[] Participant { get; set; }
     }
 
-    public class GETAppointmentIDVERSIONResponseMetaType
+    public class GETAppointmentIdVERSIONResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -4486,7 +4511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETAppointmentIDVERSIONResponseTextType
+    public class GETAppointmentIdVERSIONResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -4495,10 +4520,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETAppointmentIDVERSIONResponseParticipantTypeItem
+    public class GETAppointmentIdVERSIONResponseParticipantTypeItem
     {
         [JsonProperty("actor")]
-        public GETAppointmentIDVERSIONResponseParticipantTypeItemActorType Actor { get; set; }
+        public GETAppointmentIdVERSIONResponseParticipantTypeItemActorType Actor { get; set; }
 
         [JsonProperty("required")]
         public string Required { get; set; }
@@ -4507,10 +4532,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Status { get; set; }
 
         [JsonProperty("type")]
-        public GETAppointmentIDVERSIONResponseParticipantTypeItemTypeTypeItem[] Type { get; set; }
+        public GETAppointmentIdVERSIONResponseParticipantTypeItemTypeTypeItem[] Type { get; set; }
     }
 
-    public class GETAppointmentIDVERSIONResponseParticipantTypeItemActorType
+    public class GETAppointmentIdVERSIONResponseParticipantTypeItemActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4519,13 +4544,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETAppointmentIDVERSIONResponseParticipantTypeItemTypeTypeItem
+    public class GETAppointmentIdVERSIONResponseParticipantTypeItemTypeTypeItem
     {
         [JsonProperty("coding")]
-        public GETAppointmentIDVERSIONResponseParticipantTypeItemTypeTypeItemCodingTypeItem[] Coding { get; set; }
+        public GETAppointmentIdVERSIONResponseParticipantTypeItemTypeTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETAppointmentIDVERSIONResponseParticipantTypeItemTypeTypeItemCodingTypeItem
+    public class GETAppointmentIdVERSIONResponseParticipantTypeItemTypeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4534,7 +4559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Code { get; set; }
     }
 
-    public class GETAppointmentIDHistoryResponse
+    public class GETAppointmentIdHistoryResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -4543,19 +4568,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETAppointmentIDHistoryResponseMetaType Meta { get; set; }
+        public GETAppointmentIdHistoryResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETAppointmentIDHistoryResponseTextType Text { get; set; }
+        public GETAppointmentIdHistoryResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("participant")]
-        public GETAppointmentIDHistoryResponseParticipantTypeItem[] Participant { get; set; }
+        public GETAppointmentIdHistoryResponseParticipantTypeItem[] Participant { get; set; }
     }
 
-    public class GETAppointmentIDHistoryResponseMetaType
+    public class GETAppointmentIdHistoryResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -4564,7 +4589,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETAppointmentIDHistoryResponseTextType
+    public class GETAppointmentIdHistoryResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -4573,10 +4598,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETAppointmentIDHistoryResponseParticipantTypeItem
+    public class GETAppointmentIdHistoryResponseParticipantTypeItem
     {
         [JsonProperty("actor")]
-        public GETAppointmentIDHistoryResponseParticipantTypeItemActorType Actor { get; set; }
+        public GETAppointmentIdHistoryResponseParticipantTypeItemActorType Actor { get; set; }
 
         [JsonProperty("required")]
         public string Required { get; set; }
@@ -4585,10 +4610,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Status { get; set; }
 
         [JsonProperty("type")]
-        public GETAppointmentIDHistoryResponseParticipantTypeItemTypeTypeItem[] Type { get; set; }
+        public GETAppointmentIdHistoryResponseParticipantTypeItemTypeTypeItem[] Type { get; set; }
     }
 
-    public class GETAppointmentIDHistoryResponseParticipantTypeItemActorType
+    public class GETAppointmentIdHistoryResponseParticipantTypeItemActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4597,13 +4622,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETAppointmentIDHistoryResponseParticipantTypeItemTypeTypeItem
+    public class GETAppointmentIdHistoryResponseParticipantTypeItemTypeTypeItem
     {
         [JsonProperty("coding")]
-        public GETAppointmentIDHistoryResponseParticipantTypeItemTypeTypeItemCodingTypeItem[] Coding { get; set; }
+        public GETAppointmentIdHistoryResponseParticipantTypeItemTypeTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETAppointmentIDHistoryResponseParticipantTypeItemTypeTypeItemCodingTypeItem
+    public class GETAppointmentIdHistoryResponseParticipantTypeItemTypeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4783,7 +4808,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETAppointmentResponseIDResponse
+    public class GETAppointmentResponseIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -4792,22 +4817,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETAppointmentResponseIDResponseMetaType Meta { get; set; }
+        public GETAppointmentResponseIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETAppointmentResponseIDResponseTextType Text { get; set; }
+        public GETAppointmentResponseIdResponseTextType Text { get; set; }
 
         [JsonProperty("appointment")]
-        public GETAppointmentResponseIDResponseAppointmentType Appointment { get; set; }
+        public GETAppointmentResponseIdResponseAppointmentType Appointment { get; set; }
 
         [JsonProperty("actor")]
-        public GETAppointmentResponseIDResponseActorType Actor { get; set; }
+        public GETAppointmentResponseIdResponseActorType Actor { get; set; }
 
         [JsonProperty("participantStatus")]
         public string ParticipantStatus { get; set; }
     }
 
-    public class GETAppointmentResponseIDResponseMetaType
+    public class GETAppointmentResponseIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -4816,7 +4841,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETAppointmentResponseIDResponseTextType
+    public class GETAppointmentResponseIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -4825,7 +4850,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETAppointmentResponseIDResponseAppointmentType
+    public class GETAppointmentResponseIdResponseAppointmentType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4834,7 +4859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETAppointmentResponseIDResponseActorType
+    public class GETAppointmentResponseIdResponseActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4843,7 +4868,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEAppointmentResponseIDResponse
+    public class DELETEAppointmentResponseIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -4852,22 +4877,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEAppointmentResponseIDResponseMetaType Meta { get; set; }
+        public DELETEAppointmentResponseIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETEAppointmentResponseIDResponseTextType Text { get; set; }
+        public DELETEAppointmentResponseIdResponseTextType Text { get; set; }
 
         [JsonProperty("appointment")]
-        public DELETEAppointmentResponseIDResponseAppointmentType Appointment { get; set; }
+        public DELETEAppointmentResponseIdResponseAppointmentType Appointment { get; set; }
 
         [JsonProperty("actor")]
-        public DELETEAppointmentResponseIDResponseActorType Actor { get; set; }
+        public DELETEAppointmentResponseIdResponseActorType Actor { get; set; }
 
         [JsonProperty("participantStatus")]
         public string ParticipantStatus { get; set; }
     }
 
-    public class DELETEAppointmentResponseIDResponseMetaType
+    public class DELETEAppointmentResponseIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -4876,7 +4901,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class DELETEAppointmentResponseIDResponseTextType
+    public class DELETEAppointmentResponseIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -4885,7 +4910,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class DELETEAppointmentResponseIDResponseAppointmentType
+    public class DELETEAppointmentResponseIdResponseAppointmentType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4894,7 +4919,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEAppointmentResponseIDResponseActorType
+    public class DELETEAppointmentResponseIdResponseActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4903,7 +4928,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTAppointmentResponseIDResponse
+    public class PUTAppointmentResponseIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -4912,22 +4937,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public PUTAppointmentResponseIDResponseMetaType Meta { get; set; }
+        public PUTAppointmentResponseIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public PUTAppointmentResponseIDResponseTextType Text { get; set; }
+        public PUTAppointmentResponseIdResponseTextType Text { get; set; }
 
         [JsonProperty("appointment")]
-        public PUTAppointmentResponseIDResponseAppointmentType Appointment { get; set; }
+        public PUTAppointmentResponseIdResponseAppointmentType Appointment { get; set; }
 
         [JsonProperty("actor")]
-        public PUTAppointmentResponseIDResponseActorType Actor { get; set; }
+        public PUTAppointmentResponseIdResponseActorType Actor { get; set; }
 
         [JsonProperty("participantStatus")]
         public string ParticipantStatus { get; set; }
     }
 
-    public class PUTAppointmentResponseIDResponseMetaType
+    public class PUTAppointmentResponseIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -4936,7 +4961,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class PUTAppointmentResponseIDResponseTextType
+    public class PUTAppointmentResponseIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -4945,7 +4970,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class PUTAppointmentResponseIDResponseAppointmentType
+    public class PUTAppointmentResponseIdResponseAppointmentType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4954,7 +4979,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTAppointmentResponseIDResponseActorType
+    public class PUTAppointmentResponseIdResponseActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4963,7 +4988,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETAppointmentResponseIDVersionResponse
+    public class GETAppointmentResponseIdVersionResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -4972,22 +4997,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETAppointmentResponseIDVersionResponseMetaType Meta { get; set; }
+        public GETAppointmentResponseIdVersionResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETAppointmentResponseIDVersionResponseTextType Text { get; set; }
+        public GETAppointmentResponseIdVersionResponseTextType Text { get; set; }
 
         [JsonProperty("appointment")]
-        public GETAppointmentResponseIDVersionResponseAppointmentType Appointment { get; set; }
+        public GETAppointmentResponseIdVersionResponseAppointmentType Appointment { get; set; }
 
         [JsonProperty("actor")]
-        public GETAppointmentResponseIDVersionResponseActorType Actor { get; set; }
+        public GETAppointmentResponseIdVersionResponseActorType Actor { get; set; }
 
         [JsonProperty("participantStatus")]
         public string ParticipantStatus { get; set; }
     }
 
-    public class GETAppointmentResponseIDVersionResponseMetaType
+    public class GETAppointmentResponseIdVersionResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -4996,7 +5021,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETAppointmentResponseIDVersionResponseTextType
+    public class GETAppointmentResponseIdVersionResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -5005,7 +5030,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETAppointmentResponseIDVersionResponseAppointmentType
+    public class GETAppointmentResponseIdVersionResponseAppointmentType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -5014,7 +5039,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETAppointmentResponseIDVersionResponseActorType
+    public class GETAppointmentResponseIdVersionResponseActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -5023,7 +5048,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETAppointmentResponseIDHistoryResponse
+    public class GETAppointmentResponseIdHistoryResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -5032,22 +5057,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETAppointmentResponseIDHistoryResponseMetaType Meta { get; set; }
+        public GETAppointmentResponseIdHistoryResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETAppointmentResponseIDHistoryResponseTextType Text { get; set; }
+        public GETAppointmentResponseIdHistoryResponseTextType Text { get; set; }
 
         [JsonProperty("appointment")]
-        public GETAppointmentResponseIDHistoryResponseAppointmentType Appointment { get; set; }
+        public GETAppointmentResponseIdHistoryResponseAppointmentType Appointment { get; set; }
 
         [JsonProperty("actor")]
-        public GETAppointmentResponseIDHistoryResponseActorType Actor { get; set; }
+        public GETAppointmentResponseIdHistoryResponseActorType Actor { get; set; }
 
         [JsonProperty("participantStatus")]
         public string ParticipantStatus { get; set; }
     }
 
-    public class GETAppointmentResponseIDHistoryResponseMetaType
+    public class GETAppointmentResponseIdHistoryResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -5056,7 +5081,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETAppointmentResponseIDHistoryResponseTextType
+    public class GETAppointmentResponseIdHistoryResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -5065,7 +5090,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETAppointmentResponseIDHistoryResponseAppointmentType
+    public class GETAppointmentResponseIdHistoryResponseAppointmentType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -5074,7 +5099,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETAppointmentResponseIDHistoryResponseActorType
+    public class GETAppointmentResponseIdHistoryResponseActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -5443,7 +5468,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETDeviceIDResponse
+    public class GETDeviceIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -5452,10 +5477,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETDeviceIDResponseMetaType Meta { get; set; }
+        public GETDeviceIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("udiCarrier")]
-        public GETDeviceIDResponseUdiCarrierTypeItem[] UdiCarrier { get; set; }
+        public GETDeviceIdResponseUdiCarrierTypeItem[] UdiCarrier { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -5476,16 +5501,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string SerialNumber { get; set; }
 
         [JsonProperty("deviceName")]
-        public GETDeviceIDResponseDeviceNameTypeItem[] DeviceName { get; set; }
+        public GETDeviceIdResponseDeviceNameTypeItem[] DeviceName { get; set; }
 
         [JsonProperty("type")]
-        public GETDeviceIDResponseTypeType Type { get; set; }
+        public GETDeviceIdResponseTypeType Type { get; set; }
 
         [JsonProperty("patient")]
-        public GETDeviceIDResponsePatientType Patient { get; set; }
+        public GETDeviceIdResponsePatientType Patient { get; set; }
     }
 
-    public class GETDeviceIDResponseMetaType
+    public class GETDeviceIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -5494,7 +5519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETDeviceIDResponseUdiCarrierTypeItem
+    public class GETDeviceIdResponseUdiCarrierTypeItem
     {
         [JsonProperty("deviceIdentifier")]
         public string DeviceIdentifier { get; set; }
@@ -5503,7 +5528,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string CarrierHRF { get; set; }
     }
 
-    public class GETDeviceIDResponseDeviceNameTypeItem
+    public class GETDeviceIdResponseDeviceNameTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -5512,16 +5537,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Type { get; set; }
     }
 
-    public class GETDeviceIDResponseTypeType
+    public class GETDeviceIdResponseTypeType
     {
         [JsonProperty("coding")]
-        public GETDeviceIDResponseTypeTypeCodingTypeItem[] Coding { get; set; }
+        public GETDeviceIdResponseTypeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETDeviceIDResponseTypeTypeCodingTypeItem
+    public class GETDeviceIdResponseTypeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5533,13 +5558,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETDeviceIDResponsePatientType
+    public class GETDeviceIdResponsePatientType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class DELETEDeviceIDResponse
+    public class DELETEDeviceIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -5548,16 +5573,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEDeviceIDResponseMetaType Meta { get; set; }
+        public DELETEDeviceIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETEDeviceIDResponseTextType Text { get; set; }
+        public DELETEDeviceIdResponseTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public DELETEDeviceIDResponseIdentifierTypeItem[] Identifier { get; set; }
+        public DELETEDeviceIdResponseIdentifierTypeItem[] Identifier { get; set; }
     }
 
-    public class DELETEDeviceIDResponseMetaType
+    public class DELETEDeviceIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -5566,7 +5591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class DELETEDeviceIDResponseTextType
+    public class DELETEDeviceIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -5575,7 +5600,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class DELETEDeviceIDResponseIdentifierTypeItem
+    public class DELETEDeviceIdResponseIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5593,7 +5618,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Value { get; set; }
     }
 
-    public class PUTDeviceIDResponse
+    public class PUTDeviceIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -5602,16 +5627,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public PUTDeviceIDResponseMetaType Meta { get; set; }
+        public PUTDeviceIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public PUTDeviceIDResponseTextType Text { get; set; }
+        public PUTDeviceIdResponseTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public PUTDeviceIDResponseIdentifierTypeItem[] Identifier { get; set; }
+        public PUTDeviceIdResponseIdentifierTypeItem[] Identifier { get; set; }
     }
 
-    public class PUTDeviceIDResponseMetaType
+    public class PUTDeviceIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -5620,7 +5645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class PUTDeviceIDResponseTextType
+    public class PUTDeviceIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -5629,7 +5654,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class PUTDeviceIDResponseIdentifierTypeItem
+    public class PUTDeviceIdResponseIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5638,7 +5663,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Value { get; set; }
     }
 
-    public class GETDeviceIDVERSIONResponse
+    public class GETDeviceIdVERSIONResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -5647,16 +5672,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETDeviceIDVERSIONResponseMetaType Meta { get; set; }
+        public GETDeviceIdVERSIONResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETDeviceIDVERSIONResponseTextType Text { get; set; }
+        public GETDeviceIdVERSIONResponseTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public GETDeviceIDVERSIONResponseIdentifierTypeItem[] Identifier { get; set; }
+        public GETDeviceIdVERSIONResponseIdentifierTypeItem[] Identifier { get; set; }
     }
 
-    public class GETDeviceIDVERSIONResponseMetaType
+    public class GETDeviceIdVERSIONResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -5665,7 +5690,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETDeviceIDVERSIONResponseTextType
+    public class GETDeviceIdVERSIONResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -5674,7 +5699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETDeviceIDVERSIONResponseIdentifierTypeItem
+    public class GETDeviceIdVERSIONResponseIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5683,7 +5708,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Value { get; set; }
     }
 
-    public class GETDeviceIDHISTORYResponse
+    public class GETDeviceIdHISTORYResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -5692,16 +5717,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETDeviceIDHISTORYResponseMetaType Meta { get; set; }
+        public GETDeviceIdHISTORYResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETDeviceIDHISTORYResponseTextType Text { get; set; }
+        public GETDeviceIdHISTORYResponseTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public GETDeviceIDHISTORYResponseIdentifierTypeItem[] Identifier { get; set; }
+        public GETDeviceIdHISTORYResponseIdentifierTypeItem[] Identifier { get; set; }
     }
 
-    public class GETDeviceIDHISTORYResponseMetaType
+    public class GETDeviceIdHISTORYResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -5710,7 +5735,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETDeviceIDHISTORYResponseTextType
+    public class GETDeviceIdHISTORYResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -5719,7 +5744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETDeviceIDHISTORYResponseIdentifierTypeItem
+    public class GETDeviceIdHISTORYResponseIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6112,7 +6137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETEncounterIDResponse
+    public class GETEncounterIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -6121,31 +6146,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETEncounterIDResponseMetaType Meta { get; set; }
+        public GETEncounterIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("class")]
-        public GETEncounterIDResponseClassType Class { get; set; }
+        public GETEncounterIdResponseClassType Class { get; set; }
 
         [JsonProperty("type")]
-        public GETEncounterIDResponseTypeTypeItem[] Type { get; set; }
+        public GETEncounterIdResponseTypeTypeItem[] Type { get; set; }
 
         [JsonProperty("subject")]
-        public GETEncounterIDResponseSubjectType Subject { get; set; }
+        public GETEncounterIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("participant")]
-        public GETEncounterIDResponseParticipantTypeItem[] Participant { get; set; }
+        public GETEncounterIdResponseParticipantTypeItem[] Participant { get; set; }
 
         [JsonProperty("period")]
-        public GETEncounterIDResponsePeriodType Period { get; set; }
+        public GETEncounterIdResponsePeriodType Period { get; set; }
 
         [JsonProperty("serviceProvider")]
-        public GETEncounterIDResponseServiceProviderType ServiceProvider { get; set; }
+        public GETEncounterIdResponseServiceProviderType ServiceProvider { get; set; }
     }
 
-    public class GETEncounterIDResponseMetaType
+    public class GETEncounterIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -6154,7 +6179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETEncounterIDResponseClassType
+    public class GETEncounterIdResponseClassType
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6163,16 +6188,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Code { get; set; }
     }
 
-    public class GETEncounterIDResponseTypeTypeItem
+    public class GETEncounterIdResponseTypeTypeItem
     {
         [JsonProperty("coding")]
-        public GETEncounterIDResponseTypeTypeItemCodingTypeItem[] Coding { get; set; }
+        public GETEncounterIdResponseTypeTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETEncounterIDResponseTypeTypeItemCodingTypeItem
+    public class GETEncounterIdResponseTypeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6184,7 +6209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETEncounterIDResponseSubjectType
+    public class GETEncounterIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6193,13 +6218,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETEncounterIDResponseParticipantTypeItem
+    public class GETEncounterIdResponseParticipantTypeItem
     {
         [JsonProperty("individual")]
-        public GETEncounterIDResponseParticipantTypeItemIndividualType Individual { get; set; }
+        public GETEncounterIdResponseParticipantTypeItemIndividualType Individual { get; set; }
     }
 
-    public class GETEncounterIDResponseParticipantTypeItemIndividualType
+    public class GETEncounterIdResponseParticipantTypeItemIndividualType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6208,7 +6233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETEncounterIDResponsePeriodType
+    public class GETEncounterIdResponsePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -6217,7 +6242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string End { get; set; }
     }
 
-    public class GETEncounterIDResponseServiceProviderType
+    public class GETEncounterIdResponseServiceProviderType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6226,7 +6251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEEncounterIDResponse
+    public class DELETEEncounterIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -6235,31 +6260,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEEncounterIDResponseMetaType Meta { get; set; }
+        public DELETEEncounterIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("class")]
-        public DELETEEncounterIDResponseClassType Class { get; set; }
+        public DELETEEncounterIdResponseClassType Class { get; set; }
 
         [JsonProperty("type")]
-        public DELETEEncounterIDResponseTypeTypeItem[] Type { get; set; }
+        public DELETEEncounterIdResponseTypeTypeItem[] Type { get; set; }
 
         [JsonProperty("subject")]
-        public DELETEEncounterIDResponseSubjectType Subject { get; set; }
+        public DELETEEncounterIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("participant")]
-        public DELETEEncounterIDResponseParticipantTypeItem[] Participant { get; set; }
+        public DELETEEncounterIdResponseParticipantTypeItem[] Participant { get; set; }
 
         [JsonProperty("period")]
-        public DELETEEncounterIDResponsePeriodType Period { get; set; }
+        public DELETEEncounterIdResponsePeriodType Period { get; set; }
 
         [JsonProperty("serviceProvider")]
-        public DELETEEncounterIDResponseServiceProviderType ServiceProvider { get; set; }
+        public DELETEEncounterIdResponseServiceProviderType ServiceProvider { get; set; }
     }
 
-    public class DELETEEncounterIDResponseMetaType
+    public class DELETEEncounterIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -6268,7 +6293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class DELETEEncounterIDResponseClassType
+    public class DELETEEncounterIdResponseClassType
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6277,16 +6302,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Code { get; set; }
     }
 
-    public class DELETEEncounterIDResponseTypeTypeItem
+    public class DELETEEncounterIdResponseTypeTypeItem
     {
         [JsonProperty("coding")]
-        public DELETEEncounterIDResponseTypeTypeItemCodingTypeItem[] Coding { get; set; }
+        public DELETEEncounterIdResponseTypeTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETEEncounterIDResponseTypeTypeItemCodingTypeItem
+    public class DELETEEncounterIdResponseTypeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6298,7 +6323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEEncounterIDResponseSubjectType
+    public class DELETEEncounterIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6307,13 +6332,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEEncounterIDResponseParticipantTypeItem
+    public class DELETEEncounterIdResponseParticipantTypeItem
     {
         [JsonProperty("individual")]
-        public DELETEEncounterIDResponseParticipantTypeItemIndividualType Individual { get; set; }
+        public DELETEEncounterIdResponseParticipantTypeItemIndividualType Individual { get; set; }
     }
 
-    public class DELETEEncounterIDResponseParticipantTypeItemIndividualType
+    public class DELETEEncounterIdResponseParticipantTypeItemIndividualType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6322,7 +6347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEEncounterIDResponsePeriodType
+    public class DELETEEncounterIdResponsePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -6331,7 +6356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string End { get; set; }
     }
 
-    public class DELETEEncounterIDResponseServiceProviderType
+    public class DELETEEncounterIdResponseServiceProviderType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6340,7 +6365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTEncounterIDResponse
+    public class PUTEncounterIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -6349,31 +6374,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public PUTEncounterIDResponseMetaType Meta { get; set; }
+        public PUTEncounterIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("class")]
-        public PUTEncounterIDResponseClassType Class { get; set; }
+        public PUTEncounterIdResponseClassType Class { get; set; }
 
         [JsonProperty("type")]
-        public PUTEncounterIDResponseTypeTypeItem[] Type { get; set; }
+        public PUTEncounterIdResponseTypeTypeItem[] Type { get; set; }
 
         [JsonProperty("subject")]
-        public PUTEncounterIDResponseSubjectType Subject { get; set; }
+        public PUTEncounterIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("participant")]
-        public PUTEncounterIDResponseParticipantTypeItem[] Participant { get; set; }
+        public PUTEncounterIdResponseParticipantTypeItem[] Participant { get; set; }
 
         [JsonProperty("period")]
-        public PUTEncounterIDResponsePeriodType Period { get; set; }
+        public PUTEncounterIdResponsePeriodType Period { get; set; }
 
         [JsonProperty("serviceProvider")]
-        public PUTEncounterIDResponseServiceProviderType ServiceProvider { get; set; }
+        public PUTEncounterIdResponseServiceProviderType ServiceProvider { get; set; }
     }
 
-    public class PUTEncounterIDResponseMetaType
+    public class PUTEncounterIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -6382,7 +6407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class PUTEncounterIDResponseClassType
+    public class PUTEncounterIdResponseClassType
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6391,16 +6416,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Code { get; set; }
     }
 
-    public class PUTEncounterIDResponseTypeTypeItem
+    public class PUTEncounterIdResponseTypeTypeItem
     {
         [JsonProperty("coding")]
-        public PUTEncounterIDResponseTypeTypeItemCodingTypeItem[] Coding { get; set; }
+        public PUTEncounterIdResponseTypeTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class PUTEncounterIDResponseTypeTypeItemCodingTypeItem
+    public class PUTEncounterIdResponseTypeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6412,7 +6437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTEncounterIDResponseSubjectType
+    public class PUTEncounterIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6421,13 +6446,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTEncounterIDResponseParticipantTypeItem
+    public class PUTEncounterIdResponseParticipantTypeItem
     {
         [JsonProperty("individual")]
-        public PUTEncounterIDResponseParticipantTypeItemIndividualType Individual { get; set; }
+        public PUTEncounterIdResponseParticipantTypeItemIndividualType Individual { get; set; }
     }
 
-    public class PUTEncounterIDResponseParticipantTypeItemIndividualType
+    public class PUTEncounterIdResponseParticipantTypeItemIndividualType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6436,7 +6461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTEncounterIDResponsePeriodType
+    public class PUTEncounterIdResponsePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -6445,7 +6470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string End { get; set; }
     }
 
-    public class PUTEncounterIDResponseServiceProviderType
+    public class PUTEncounterIdResponseServiceProviderType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6454,7 +6479,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETEncounterIDVersionResponse
+    public class GETEncounterIdVersionResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -6463,31 +6488,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETEncounterIDVersionResponseMetaType Meta { get; set; }
+        public GETEncounterIdVersionResponseMetaType Meta { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("class")]
-        public GETEncounterIDVersionResponseClassType Class { get; set; }
+        public GETEncounterIdVersionResponseClassType Class { get; set; }
 
         [JsonProperty("type")]
-        public GETEncounterIDVersionResponseTypeTypeItem[] Type { get; set; }
+        public GETEncounterIdVersionResponseTypeTypeItem[] Type { get; set; }
 
         [JsonProperty("subject")]
-        public GETEncounterIDVersionResponseSubjectType Subject { get; set; }
+        public GETEncounterIdVersionResponseSubjectType Subject { get; set; }
 
         [JsonProperty("participant")]
-        public GETEncounterIDVersionResponseParticipantTypeItem[] Participant { get; set; }
+        public GETEncounterIdVersionResponseParticipantTypeItem[] Participant { get; set; }
 
         [JsonProperty("period")]
-        public GETEncounterIDVersionResponsePeriodType Period { get; set; }
+        public GETEncounterIdVersionResponsePeriodType Period { get; set; }
 
         [JsonProperty("serviceProvider")]
-        public GETEncounterIDVersionResponseServiceProviderType ServiceProvider { get; set; }
+        public GETEncounterIdVersionResponseServiceProviderType ServiceProvider { get; set; }
     }
 
-    public class GETEncounterIDVersionResponseMetaType
+    public class GETEncounterIdVersionResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -6496,7 +6521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETEncounterIDVersionResponseClassType
+    public class GETEncounterIdVersionResponseClassType
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6505,16 +6530,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Code { get; set; }
     }
 
-    public class GETEncounterIDVersionResponseTypeTypeItem
+    public class GETEncounterIdVersionResponseTypeTypeItem
     {
         [JsonProperty("coding")]
-        public GETEncounterIDVersionResponseTypeTypeItemCodingTypeItem[] Coding { get; set; }
+        public GETEncounterIdVersionResponseTypeTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETEncounterIDVersionResponseTypeTypeItemCodingTypeItem
+    public class GETEncounterIdVersionResponseTypeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6526,7 +6551,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETEncounterIDVersionResponseSubjectType
+    public class GETEncounterIdVersionResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6535,13 +6560,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETEncounterIDVersionResponseParticipantTypeItem
+    public class GETEncounterIdVersionResponseParticipantTypeItem
     {
         [JsonProperty("individual")]
-        public GETEncounterIDVersionResponseParticipantTypeItemIndividualType Individual { get; set; }
+        public GETEncounterIdVersionResponseParticipantTypeItemIndividualType Individual { get; set; }
     }
 
-    public class GETEncounterIDVersionResponseParticipantTypeItemIndividualType
+    public class GETEncounterIdVersionResponseParticipantTypeItemIndividualType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6550,7 +6575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETEncounterIDVersionResponsePeriodType
+    public class GETEncounterIdVersionResponsePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -6559,7 +6584,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string End { get; set; }
     }
 
-    public class GETEncounterIDVersionResponseServiceProviderType
+    public class GETEncounterIdVersionResponseServiceProviderType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6568,7 +6593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETEncounterIDHISTORYResponse
+    public class GETEncounterIdHISTORYResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -6577,31 +6602,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETEncounterIDHISTORYResponseMetaType Meta { get; set; }
+        public GETEncounterIdHISTORYResponseMetaType Meta { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("class")]
-        public GETEncounterIDHISTORYResponseClassType Class { get; set; }
+        public GETEncounterIdHISTORYResponseClassType Class { get; set; }
 
         [JsonProperty("type")]
-        public GETEncounterIDHISTORYResponseTypeTypeItem[] Type { get; set; }
+        public GETEncounterIdHISTORYResponseTypeTypeItem[] Type { get; set; }
 
         [JsonProperty("subject")]
-        public GETEncounterIDHISTORYResponseSubjectType Subject { get; set; }
+        public GETEncounterIdHISTORYResponseSubjectType Subject { get; set; }
 
         [JsonProperty("participant")]
-        public GETEncounterIDHISTORYResponseParticipantTypeItem[] Participant { get; set; }
+        public GETEncounterIdHISTORYResponseParticipantTypeItem[] Participant { get; set; }
 
         [JsonProperty("period")]
-        public GETEncounterIDHISTORYResponsePeriodType Period { get; set; }
+        public GETEncounterIdHISTORYResponsePeriodType Period { get; set; }
 
         [JsonProperty("serviceProvider")]
-        public GETEncounterIDHISTORYResponseServiceProviderType ServiceProvider { get; set; }
+        public GETEncounterIdHISTORYResponseServiceProviderType ServiceProvider { get; set; }
     }
 
-    public class GETEncounterIDHISTORYResponseMetaType
+    public class GETEncounterIdHISTORYResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -6610,7 +6635,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETEncounterIDHISTORYResponseClassType
+    public class GETEncounterIdHISTORYResponseClassType
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6619,16 +6644,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Code { get; set; }
     }
 
-    public class GETEncounterIDHISTORYResponseTypeTypeItem
+    public class GETEncounterIdHISTORYResponseTypeTypeItem
     {
         [JsonProperty("coding")]
-        public GETEncounterIDHISTORYResponseTypeTypeItemCodingTypeItem[] Coding { get; set; }
+        public GETEncounterIdHISTORYResponseTypeTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETEncounterIDHISTORYResponseTypeTypeItemCodingTypeItem
+    public class GETEncounterIdHISTORYResponseTypeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6640,7 +6665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETEncounterIDHISTORYResponseSubjectType
+    public class GETEncounterIdHISTORYResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6649,13 +6674,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETEncounterIDHISTORYResponseParticipantTypeItem
+    public class GETEncounterIdHISTORYResponseParticipantTypeItem
     {
         [JsonProperty("individual")]
-        public GETEncounterIDHISTORYResponseParticipantTypeItemIndividualType Individual { get; set; }
+        public GETEncounterIdHISTORYResponseParticipantTypeItemIndividualType Individual { get; set; }
     }
 
-    public class GETEncounterIDHISTORYResponseParticipantTypeItemIndividualType
+    public class GETEncounterIdHISTORYResponseParticipantTypeItemIndividualType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6664,7 +6689,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETEncounterIDHISTORYResponsePeriodType
+    public class GETEncounterIdHISTORYResponsePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -6673,7 +6698,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string End { get; set; }
     }
 
-    public class GETEncounterIDHISTORYResponseServiceProviderType
+    public class GETEncounterIdHISTORYResponseServiceProviderType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7069,7 +7094,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETFlagIDResponse
+    public class GETFlagIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7078,31 +7103,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public GETFlagIDResponseTextType Text { get; set; }
+        public GETFlagIdResponseTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public GETFlagIDResponseIdentifierTypeItem[] Identifier { get; set; }
+        public GETFlagIdResponseIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public GETFlagIDResponseCategoryTypeItem[] Category { get; set; }
+        public GETFlagIdResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public GETFlagIDResponseCodeType Code { get; set; }
+        public GETFlagIdResponseCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public GETFlagIDResponseSubjectType Subject { get; set; }
+        public GETFlagIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("period")]
-        public GETFlagIDResponsePeriodType Period { get; set; }
+        public GETFlagIdResponsePeriodType Period { get; set; }
 
         [JsonProperty("author")]
-        public GETFlagIDResponseAuthorType Author { get; set; }
+        public GETFlagIdResponseAuthorType Author { get; set; }
     }
 
-    public class GETFlagIDResponseTextType
+    public class GETFlagIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7111,22 +7136,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETFlagIDResponseIdentifierTypeItem
+    public class GETFlagIdResponseIdentifierTypeItem
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class GETFlagIDResponseCategoryTypeItem
+    public class GETFlagIdResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public GETFlagIDResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public GETFlagIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETFlagIDResponseCategoryTypeItemCodingTypeItem
+    public class GETFlagIdResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7138,16 +7163,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETFlagIDResponseCodeType
+    public class GETFlagIdResponseCodeType
     {
         [JsonProperty("coding")]
-        public GETFlagIDResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public GETFlagIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETFlagIDResponseCodeTypeCodingTypeItem
+    public class GETFlagIdResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7159,7 +7184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETFlagIDResponseSubjectType
+    public class GETFlagIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7168,7 +7193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETFlagIDResponsePeriodType
+    public class GETFlagIdResponsePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -7177,7 +7202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string End { get; set; }
     }
 
-    public class GETFlagIDResponseAuthorType
+    public class GETFlagIdResponseAuthorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7186,7 +7211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEFlagIDResponse
+    public class DELETEFlagIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7195,31 +7220,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public DELETEFlagIDResponseTextType Text { get; set; }
+        public DELETEFlagIdResponseTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public DELETEFlagIDResponseIdentifierTypeItem[] Identifier { get; set; }
+        public DELETEFlagIdResponseIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public DELETEFlagIDResponseCategoryTypeItem[] Category { get; set; }
+        public DELETEFlagIdResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public DELETEFlagIDResponseCodeType Code { get; set; }
+        public DELETEFlagIdResponseCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public DELETEFlagIDResponseSubjectType Subject { get; set; }
+        public DELETEFlagIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("period")]
-        public DELETEFlagIDResponsePeriodType Period { get; set; }
+        public DELETEFlagIdResponsePeriodType Period { get; set; }
 
         [JsonProperty("author")]
-        public DELETEFlagIDResponseAuthorType Author { get; set; }
+        public DELETEFlagIdResponseAuthorType Author { get; set; }
     }
 
-    public class DELETEFlagIDResponseTextType
+    public class DELETEFlagIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7228,22 +7253,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class DELETEFlagIDResponseIdentifierTypeItem
+    public class DELETEFlagIdResponseIdentifierTypeItem
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class DELETEFlagIDResponseCategoryTypeItem
+    public class DELETEFlagIdResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public DELETEFlagIDResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public DELETEFlagIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETEFlagIDResponseCategoryTypeItemCodingTypeItem
+    public class DELETEFlagIdResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7255,16 +7280,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEFlagIDResponseCodeType
+    public class DELETEFlagIdResponseCodeType
     {
         [JsonProperty("coding")]
-        public DELETEFlagIDResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public DELETEFlagIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETEFlagIDResponseCodeTypeCodingTypeItem
+    public class DELETEFlagIdResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7276,7 +7301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEFlagIDResponseSubjectType
+    public class DELETEFlagIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7285,7 +7310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEFlagIDResponsePeriodType
+    public class DELETEFlagIdResponsePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -7294,7 +7319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string End { get; set; }
     }
 
-    public class DELETEFlagIDResponseAuthorType
+    public class DELETEFlagIdResponseAuthorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7303,7 +7328,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTFlagIDResponse
+    public class PUTFlagIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7312,31 +7337,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public PUTFlagIDResponseTextType Text { get; set; }
+        public PUTFlagIdResponseTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public PUTFlagIDResponseIdentifierTypeItem[] Identifier { get; set; }
+        public PUTFlagIdResponseIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public PUTFlagIDResponseCategoryTypeItem[] Category { get; set; }
+        public PUTFlagIdResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public PUTFlagIDResponseCodeType Code { get; set; }
+        public PUTFlagIdResponseCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public PUTFlagIDResponseSubjectType Subject { get; set; }
+        public PUTFlagIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("period")]
-        public PUTFlagIDResponsePeriodType Period { get; set; }
+        public PUTFlagIdResponsePeriodType Period { get; set; }
 
         [JsonProperty("author")]
-        public PUTFlagIDResponseAuthorType Author { get; set; }
+        public PUTFlagIdResponseAuthorType Author { get; set; }
     }
 
-    public class PUTFlagIDResponseTextType
+    public class PUTFlagIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7345,22 +7370,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class PUTFlagIDResponseIdentifierTypeItem
+    public class PUTFlagIdResponseIdentifierTypeItem
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class PUTFlagIDResponseCategoryTypeItem
+    public class PUTFlagIdResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public PUTFlagIDResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public PUTFlagIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class PUTFlagIDResponseCategoryTypeItemCodingTypeItem
+    public class PUTFlagIdResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7372,16 +7397,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTFlagIDResponseCodeType
+    public class PUTFlagIdResponseCodeType
     {
         [JsonProperty("coding")]
-        public PUTFlagIDResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public PUTFlagIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class PUTFlagIDResponseCodeTypeCodingTypeItem
+    public class PUTFlagIdResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7393,7 +7418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTFlagIDResponseSubjectType
+    public class PUTFlagIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7402,7 +7427,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTFlagIDResponsePeriodType
+    public class PUTFlagIdResponsePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -7411,7 +7436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string End { get; set; }
     }
 
-    public class PUTFlagIDResponseAuthorType
+    public class PUTFlagIdResponseAuthorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7420,7 +7445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETFlagIDVersionResponse
+    public class GETFlagIdVersionResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7429,31 +7454,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public GETFlagIDVersionResponseTextType Text { get; set; }
+        public GETFlagIdVersionResponseTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public GETFlagIDVersionResponseIdentifierTypeItem[] Identifier { get; set; }
+        public GETFlagIdVersionResponseIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public GETFlagIDVersionResponseCategoryTypeItem[] Category { get; set; }
+        public GETFlagIdVersionResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public GETFlagIDVersionResponseCodeType Code { get; set; }
+        public GETFlagIdVersionResponseCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public GETFlagIDVersionResponseSubjectType Subject { get; set; }
+        public GETFlagIdVersionResponseSubjectType Subject { get; set; }
 
         [JsonProperty("period")]
-        public GETFlagIDVersionResponsePeriodType Period { get; set; }
+        public GETFlagIdVersionResponsePeriodType Period { get; set; }
 
         [JsonProperty("author")]
-        public GETFlagIDVersionResponseAuthorType Author { get; set; }
+        public GETFlagIdVersionResponseAuthorType Author { get; set; }
     }
 
-    public class GETFlagIDVersionResponseTextType
+    public class GETFlagIdVersionResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7462,22 +7487,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETFlagIDVersionResponseIdentifierTypeItem
+    public class GETFlagIdVersionResponseIdentifierTypeItem
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class GETFlagIDVersionResponseCategoryTypeItem
+    public class GETFlagIdVersionResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public GETFlagIDVersionResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public GETFlagIdVersionResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETFlagIDVersionResponseCategoryTypeItemCodingTypeItem
+    public class GETFlagIdVersionResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7489,16 +7514,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETFlagIDVersionResponseCodeType
+    public class GETFlagIdVersionResponseCodeType
     {
         [JsonProperty("coding")]
-        public GETFlagIDVersionResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public GETFlagIdVersionResponseCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETFlagIDVersionResponseCodeTypeCodingTypeItem
+    public class GETFlagIdVersionResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7510,7 +7535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETFlagIDVersionResponseSubjectType
+    public class GETFlagIdVersionResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7519,7 +7544,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETFlagIDVersionResponsePeriodType
+    public class GETFlagIdVersionResponsePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -7528,7 +7553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string End { get; set; }
     }
 
-    public class GETFlagIDVersionResponseAuthorType
+    public class GETFlagIdVersionResponseAuthorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7537,7 +7562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETFlagIDHistoryResponse
+    public class GETFlagIdHistoryResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7546,31 +7571,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public GETFlagIDHistoryResponseTextType Text { get; set; }
+        public GETFlagIdHistoryResponseTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public GETFlagIDHistoryResponseIdentifierTypeItem[] Identifier { get; set; }
+        public GETFlagIdHistoryResponseIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public GETFlagIDHistoryResponseCategoryTypeItem[] Category { get; set; }
+        public GETFlagIdHistoryResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public GETFlagIDHistoryResponseCodeType Code { get; set; }
+        public GETFlagIdHistoryResponseCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public GETFlagIDHistoryResponseSubjectType Subject { get; set; }
+        public GETFlagIdHistoryResponseSubjectType Subject { get; set; }
 
         [JsonProperty("period")]
-        public GETFlagIDHistoryResponsePeriodType Period { get; set; }
+        public GETFlagIdHistoryResponsePeriodType Period { get; set; }
 
         [JsonProperty("author")]
-        public GETFlagIDHistoryResponseAuthorType Author { get; set; }
+        public GETFlagIdHistoryResponseAuthorType Author { get; set; }
     }
 
-    public class GETFlagIDHistoryResponseTextType
+    public class GETFlagIdHistoryResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7579,22 +7604,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETFlagIDHistoryResponseIdentifierTypeItem
+    public class GETFlagIdHistoryResponseIdentifierTypeItem
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class GETFlagIDHistoryResponseCategoryTypeItem
+    public class GETFlagIdHistoryResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public GETFlagIDHistoryResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public GETFlagIdHistoryResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETFlagIDHistoryResponseCategoryTypeItemCodingTypeItem
+    public class GETFlagIdHistoryResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7606,16 +7631,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETFlagIDHistoryResponseCodeType
+    public class GETFlagIdHistoryResponseCodeType
     {
         [JsonProperty("coding")]
-        public GETFlagIDHistoryResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public GETFlagIdHistoryResponseCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETFlagIDHistoryResponseCodeTypeCodingTypeItem
+    public class GETFlagIdHistoryResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7627,7 +7652,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETFlagIDHistoryResponseSubjectType
+    public class GETFlagIdHistoryResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7636,7 +7661,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETFlagIDHistoryResponsePeriodType
+    public class GETFlagIdHistoryResponsePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -7645,7 +7670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string End { get; set; }
     }
 
-    public class GETFlagIDHistoryResponseAuthorType
+    public class GETFlagIdHistoryResponseAuthorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7855,7 +7880,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETLocationIDResponse
+    public class GETLocationIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7864,7 +7889,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public GETLocationIDResponseTextType Text { get; set; }
+        public GETLocationIdResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7876,10 +7901,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Mode { get; set; }
 
         [JsonProperty("partOf")]
-        public GETLocationIDResponsePartOfType PartOf { get; set; }
+        public GETLocationIdResponsePartOfType PartOf { get; set; }
     }
 
-    public class GETLocationIDResponseTextType
+    public class GETLocationIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7888,7 +7913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETLocationIDResponsePartOfType
+    public class GETLocationIdResponsePartOfType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7897,7 +7922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETELocationIDResponse
+    public class DELETELocationIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7906,7 +7931,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public DELETELocationIDResponseTextType Text { get; set; }
+        public DELETELocationIdResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7918,10 +7943,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Mode { get; set; }
 
         [JsonProperty("partOf")]
-        public DELETELocationIDResponsePartOfType PartOf { get; set; }
+        public DELETELocationIdResponsePartOfType PartOf { get; set; }
     }
 
-    public class DELETELocationIDResponseTextType
+    public class DELETELocationIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7930,7 +7955,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class DELETELocationIDResponsePartOfType
+    public class DELETELocationIdResponsePartOfType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7939,7 +7964,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTLocationIDResponse
+    public class PUTLocationIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7948,7 +7973,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public PUTLocationIDResponseTextType Text { get; set; }
+        public PUTLocationIdResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7960,10 +7985,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Mode { get; set; }
 
         [JsonProperty("partOf")]
-        public PUTLocationIDResponsePartOfType PartOf { get; set; }
+        public PUTLocationIdResponsePartOfType PartOf { get; set; }
     }
 
-    public class PUTLocationIDResponseTextType
+    public class PUTLocationIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7972,7 +7997,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class PUTLocationIDResponsePartOfType
+    public class PUTLocationIdResponsePartOfType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7981,7 +8006,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETLocationIDVersionResponse
+    public class GETLocationIdVersionResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7990,7 +8015,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public GETLocationIDVersionResponseTextType Text { get; set; }
+        public GETLocationIdVersionResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -8002,10 +8027,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Mode { get; set; }
 
         [JsonProperty("partOf")]
-        public GETLocationIDVersionResponsePartOfType PartOf { get; set; }
+        public GETLocationIdVersionResponsePartOfType PartOf { get; set; }
     }
 
-    public class GETLocationIDVersionResponseTextType
+    public class GETLocationIdVersionResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -8014,7 +8039,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETLocationIDVersionResponsePartOfType
+    public class GETLocationIdVersionResponsePartOfType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -8023,7 +8048,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETLocationIDHistoryResponse
+    public class GETLocationIdHistoryResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8032,7 +8057,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public GETLocationIDHistoryResponseTextType Text { get; set; }
+        public GETLocationIdHistoryResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -8044,10 +8069,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Mode { get; set; }
 
         [JsonProperty("partOf")]
-        public GETLocationIDHistoryResponsePartOfType PartOf { get; set; }
+        public GETLocationIdHistoryResponsePartOfType PartOf { get; set; }
     }
 
-    public class GETLocationIDHistoryResponseTextType
+    public class GETLocationIdHistoryResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -8056,7 +8081,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETLocationIDHistoryResponsePartOfType
+    public class GETLocationIdHistoryResponsePartOfType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -8461,7 +8486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Start { get; set; }
     }
 
-    public class GETPatientIDResponse
+    public class GETPatientIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8470,25 +8495,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETPatientIDResponseMetaType Meta { get; set; }
+        public GETPatientIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("link")]
-        public GETPatientIDResponseLinkTypeItem[] Link { get; set; }
+        public GETPatientIdResponseLinkTypeItem[] Link { get; set; }
 
         [JsonProperty("entry")]
-        public GETPatientIDResponseEntryTypeItem[] Entry { get; set; }
+        public GETPatientIdResponseEntryTypeItem[] Entry { get; set; }
     }
 
-    public class GETPatientIDResponseMetaType
+    public class GETPatientIdResponseMetaType
     {
         [JsonProperty("lastUpdated")]
         public string LastUpdated { get; set; }
     }
 
-    public class GETPatientIDResponseLinkTypeItem
+    public class GETPatientIdResponseLinkTypeItem
     {
         [JsonProperty("relation")]
         public string Relation { get; set; }
@@ -8497,19 +8522,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Url { get; set; }
     }
 
-    public class GETPatientIDResponseEntryTypeItem
+    public class GETPatientIdResponseEntryTypeItem
     {
         [JsonProperty("fullUrl")]
         public string FullUrl { get; set; }
 
         [JsonProperty("resource")]
-        public GETPatientIDResponseEntryTypeItemResourceType Resource { get; set; }
+        public GETPatientIdResponseEntryTypeItemResourceType Resource { get; set; }
 
         [JsonProperty("search")]
-        public GETPatientIDResponseEntryTypeItemSearchType Search { get; set; }
+        public GETPatientIdResponseEntryTypeItemSearchType Search { get; set; }
     }
 
-    public class GETPatientIDResponseEntryTypeItemResourceType
+    public class GETPatientIdResponseEntryTypeItemResourceType
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8518,22 +8543,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETPatientIDResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
+        public GETPatientIdResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETPatientIDResponseEntryTypeItemResourceTypeTextType Text { get; set; }
+        public GETPatientIdResponseEntryTypeItemResourceTypeTextType Text { get; set; }
 
         [JsonProperty("extension")]
-        public GETPatientIDResponseEntryTypeItemResourceTypeExtensionTypeItem[] Extension { get; set; }
+        public GETPatientIdResponseEntryTypeItemResourceTypeExtensionTypeItem[] Extension { get; set; }
 
         [JsonProperty("identifier")]
-        public GETPatientIDResponseEntryTypeItemResourceTypeIdentifierTypeItem[] Identifier { get; set; }
+        public GETPatientIdResponseEntryTypeItemResourceTypeIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("name")]
-        public GETPatientIDResponseEntryTypeItemResourceTypeNameTypeItem[] Name { get; set; }
+        public GETPatientIdResponseEntryTypeItemResourceTypeNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public GETPatientIDResponseEntryTypeItemResourceTypeTelecomTypeItem[] Telecom { get; set; }
+        public GETPatientIdResponseEntryTypeItemResourceTypeTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
@@ -8542,10 +8567,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string BirthDate { get; set; }
 
         [JsonProperty("address")]
-        public GETPatientIDResponseEntryTypeItemResourceTypeAddressTypeItem[] Address { get; set; }
+        public GETPatientIdResponseEntryTypeItemResourceTypeAddressTypeItem[] Address { get; set; }
     }
 
-    public class GETPatientIDResponseEntryTypeItemResourceTypeMetaType
+    public class GETPatientIdResponseEntryTypeItemResourceTypeMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -8554,7 +8579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETPatientIDResponseEntryTypeItemResourceTypeTextType
+    public class GETPatientIdResponseEntryTypeItemResourceTypeTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -8563,28 +8588,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETPatientIDResponseEntryTypeItemResourceTypeExtensionTypeItem
+    public class GETPatientIdResponseEntryTypeItemResourceTypeExtensionTypeItem
     {
         [JsonProperty("url")]
         public string Url { get; set; }
 
         [JsonProperty("valueCodeableConcept")]
-        public GETPatientIDResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptType ValueCodeableConcept { get; set; }
+        public GETPatientIdResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptType ValueCodeableConcept { get; set; }
 
         [JsonProperty("valueCode")]
         public string ValueCode { get; set; }
     }
 
-    public class GETPatientIDResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptType
+    public class GETPatientIdResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptType
     {
         [JsonProperty("coding")]
-        public GETPatientIDResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public GETPatientIdResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETPatientIDResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptTypeCodingTypeItem
+    public class GETPatientIdResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -8596,7 +8621,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETPatientIDResponseEntryTypeItemResourceTypeIdentifierTypeItem
+    public class GETPatientIdResponseEntryTypeItemResourceTypeIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -8605,7 +8630,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Value { get; set; }
     }
 
-    public class GETPatientIDResponseEntryTypeItemResourceTypeNameTypeItem
+    public class GETPatientIdResponseEntryTypeItemResourceTypeNameTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -8620,7 +8645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Given { get; set; }
     }
 
-    public class GETPatientIDResponseEntryTypeItemResourceTypeTelecomTypeItem
+    public class GETPatientIdResponseEntryTypeItemResourceTypeTelecomTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -8632,7 +8657,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Use { get; set; }
     }
 
-    public class GETPatientIDResponseEntryTypeItemResourceTypeAddressTypeItem
+    public class GETPatientIdResponseEntryTypeItemResourceTypeAddressTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -8653,13 +8678,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Country { get; set; }
     }
 
-    public class GETPatientIDResponseEntryTypeItemSearchType
+    public class GETPatientIdResponseEntryTypeItemSearchType
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
     }
 
-    public class DELETEPatientIDResponse
+    public class DELETEPatientIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8671,10 +8696,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public bool Active { get; set; }
 
         [JsonProperty("name")]
-        public DELETEPatientIDResponseNameTypeItem[] Name { get; set; }
+        public DELETEPatientIdResponseNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public DELETEPatientIDResponseTelecomTypeItem[] Telecom { get; set; }
+        public DELETEPatientIdResponseTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
@@ -8686,10 +8711,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public bool DeceasedBoolean { get; set; }
 
         [JsonProperty("address")]
-        public DELETEPatientIDResponseAddressTypeItem[] Address { get; set; }
+        public DELETEPatientIdResponseAddressTypeItem[] Address { get; set; }
     }
 
-    public class DELETEPatientIDResponseNameTypeItem
+    public class DELETEPatientIdResponseNameTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -8701,7 +8726,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Given { get; set; }
     }
 
-    public class DELETEPatientIDResponseTelecomTypeItem
+    public class DELETEPatientIdResponseTelecomTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -8716,7 +8741,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public int Rank { get; set; }
     }
 
-    public class DELETEPatientIDResponseAddressTypeItem
+    public class DELETEPatientIdResponseAddressTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -8743,16 +8768,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string PostalCode { get; set; }
 
         [JsonProperty("period")]
-        public DELETEPatientIDResponseAddressTypeItemPeriodType Period { get; set; }
+        public DELETEPatientIdResponseAddressTypeItemPeriodType Period { get; set; }
     }
 
-    public class DELETEPatientIDResponseAddressTypeItemPeriodType
+    public class DELETEPatientIdResponseAddressTypeItemPeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
     }
 
-    public class PUTPatientIDResponse
+    public class PUTPatientIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8764,10 +8789,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public bool Active { get; set; }
 
         [JsonProperty("name")]
-        public PUTPatientIDResponseNameTypeItem[] Name { get; set; }
+        public PUTPatientIdResponseNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public PUTPatientIDResponseTelecomTypeItem[] Telecom { get; set; }
+        public PUTPatientIdResponseTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
@@ -8779,10 +8804,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public bool DeceasedBoolean { get; set; }
 
         [JsonProperty("address")]
-        public PUTPatientIDResponseAddressTypeItem[] Address { get; set; }
+        public PUTPatientIdResponseAddressTypeItem[] Address { get; set; }
     }
 
-    public class PUTPatientIDResponseNameTypeItem
+    public class PUTPatientIdResponseNameTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -8794,7 +8819,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Given { get; set; }
     }
 
-    public class PUTPatientIDResponseTelecomTypeItem
+    public class PUTPatientIdResponseTelecomTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -8809,7 +8834,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public int Rank { get; set; }
     }
 
-    public class PUTPatientIDResponseAddressTypeItem
+    public class PUTPatientIdResponseAddressTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -8836,16 +8861,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string PostalCode { get; set; }
 
         [JsonProperty("period")]
-        public PUTPatientIDResponseAddressTypeItemPeriodType Period { get; set; }
+        public PUTPatientIdResponseAddressTypeItemPeriodType Period { get; set; }
     }
 
-    public class PUTPatientIDResponseAddressTypeItemPeriodType
+    public class PUTPatientIdResponseAddressTypeItemPeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
     }
 
-    public class GETPatientIDVersionResponse
+    public class GETPatientIdVersionResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8854,25 +8879,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETPatientIDVersionResponseMetaType Meta { get; set; }
+        public GETPatientIdVersionResponseMetaType Meta { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("link")]
-        public GETPatientIDVersionResponseLinkTypeItem[] Link { get; set; }
+        public GETPatientIdVersionResponseLinkTypeItem[] Link { get; set; }
 
         [JsonProperty("entry")]
-        public GETPatientIDVersionResponseEntryTypeItem[] Entry { get; set; }
+        public GETPatientIdVersionResponseEntryTypeItem[] Entry { get; set; }
     }
 
-    public class GETPatientIDVersionResponseMetaType
+    public class GETPatientIdVersionResponseMetaType
     {
         [JsonProperty("lastUpdated")]
         public string LastUpdated { get; set; }
     }
 
-    public class GETPatientIDVersionResponseLinkTypeItem
+    public class GETPatientIdVersionResponseLinkTypeItem
     {
         [JsonProperty("relation")]
         public string Relation { get; set; }
@@ -8881,19 +8906,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Url { get; set; }
     }
 
-    public class GETPatientIDVersionResponseEntryTypeItem
+    public class GETPatientIdVersionResponseEntryTypeItem
     {
         [JsonProperty("fullUrl")]
         public string FullUrl { get; set; }
 
         [JsonProperty("resource")]
-        public GETPatientIDVersionResponseEntryTypeItemResourceType Resource { get; set; }
+        public GETPatientIdVersionResponseEntryTypeItemResourceType Resource { get; set; }
 
         [JsonProperty("search")]
-        public GETPatientIDVersionResponseEntryTypeItemSearchType Search { get; set; }
+        public GETPatientIdVersionResponseEntryTypeItemSearchType Search { get; set; }
     }
 
-    public class GETPatientIDVersionResponseEntryTypeItemResourceType
+    public class GETPatientIdVersionResponseEntryTypeItemResourceType
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8902,22 +8927,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETPatientIDVersionResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
+        public GETPatientIdVersionResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETPatientIDVersionResponseEntryTypeItemResourceTypeTextType Text { get; set; }
+        public GETPatientIdVersionResponseEntryTypeItemResourceTypeTextType Text { get; set; }
 
         [JsonProperty("extension")]
-        public GETPatientIDVersionResponseEntryTypeItemResourceTypeExtensionTypeItem[] Extension { get; set; }
+        public GETPatientIdVersionResponseEntryTypeItemResourceTypeExtensionTypeItem[] Extension { get; set; }
 
         [JsonProperty("identifier")]
-        public GETPatientIDVersionResponseEntryTypeItemResourceTypeIdentifierTypeItem[] Identifier { get; set; }
+        public GETPatientIdVersionResponseEntryTypeItemResourceTypeIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("name")]
-        public GETPatientIDVersionResponseEntryTypeItemResourceTypeNameTypeItem[] Name { get; set; }
+        public GETPatientIdVersionResponseEntryTypeItemResourceTypeNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public GETPatientIDVersionResponseEntryTypeItemResourceTypeTelecomTypeItem[] Telecom { get; set; }
+        public GETPatientIdVersionResponseEntryTypeItemResourceTypeTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
@@ -8926,10 +8951,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string BirthDate { get; set; }
 
         [JsonProperty("address")]
-        public GETPatientIDVersionResponseEntryTypeItemResourceTypeAddressTypeItem[] Address { get; set; }
+        public GETPatientIdVersionResponseEntryTypeItemResourceTypeAddressTypeItem[] Address { get; set; }
     }
 
-    public class GETPatientIDVersionResponseEntryTypeItemResourceTypeMetaType
+    public class GETPatientIdVersionResponseEntryTypeItemResourceTypeMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -8938,7 +8963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETPatientIDVersionResponseEntryTypeItemResourceTypeTextType
+    public class GETPatientIdVersionResponseEntryTypeItemResourceTypeTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -8947,28 +8972,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETPatientIDVersionResponseEntryTypeItemResourceTypeExtensionTypeItem
+    public class GETPatientIdVersionResponseEntryTypeItemResourceTypeExtensionTypeItem
     {
         [JsonProperty("url")]
         public string Url { get; set; }
 
         [JsonProperty("valueCodeableConcept")]
-        public GETPatientIDVersionResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptType ValueCodeableConcept { get; set; }
+        public GETPatientIdVersionResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptType ValueCodeableConcept { get; set; }
 
         [JsonProperty("valueCode")]
         public string ValueCode { get; set; }
     }
 
-    public class GETPatientIDVersionResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptType
+    public class GETPatientIdVersionResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptType
     {
         [JsonProperty("coding")]
-        public GETPatientIDVersionResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public GETPatientIdVersionResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETPatientIDVersionResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptTypeCodingTypeItem
+    public class GETPatientIdVersionResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -8980,7 +9005,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETPatientIDVersionResponseEntryTypeItemResourceTypeIdentifierTypeItem
+    public class GETPatientIdVersionResponseEntryTypeItemResourceTypeIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -8989,7 +9014,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Value { get; set; }
     }
 
-    public class GETPatientIDVersionResponseEntryTypeItemResourceTypeNameTypeItem
+    public class GETPatientIdVersionResponseEntryTypeItemResourceTypeNameTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -9004,7 +9029,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Given { get; set; }
     }
 
-    public class GETPatientIDVersionResponseEntryTypeItemResourceTypeTelecomTypeItem
+    public class GETPatientIdVersionResponseEntryTypeItemResourceTypeTelecomTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9016,7 +9041,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Use { get; set; }
     }
 
-    public class GETPatientIDVersionResponseEntryTypeItemResourceTypeAddressTypeItem
+    public class GETPatientIdVersionResponseEntryTypeItemResourceTypeAddressTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -9037,13 +9062,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Country { get; set; }
     }
 
-    public class GETPatientIDVersionResponseEntryTypeItemSearchType
+    public class GETPatientIdVersionResponseEntryTypeItemSearchType
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
     }
 
-    public class GETPatientIDHistoryResponse
+    public class GETPatientIdHistoryResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -9052,25 +9077,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETPatientIDHistoryResponseMetaType Meta { get; set; }
+        public GETPatientIdHistoryResponseMetaType Meta { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("link")]
-        public GETPatientIDHistoryResponseLinkTypeItem[] Link { get; set; }
+        public GETPatientIdHistoryResponseLinkTypeItem[] Link { get; set; }
 
         [JsonProperty("entry")]
-        public GETPatientIDHistoryResponseEntryTypeItem[] Entry { get; set; }
+        public GETPatientIdHistoryResponseEntryTypeItem[] Entry { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseMetaType
+    public class GETPatientIdHistoryResponseMetaType
     {
         [JsonProperty("lastUpdated")]
         public string LastUpdated { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseLinkTypeItem
+    public class GETPatientIdHistoryResponseLinkTypeItem
     {
         [JsonProperty("relation")]
         public string Relation { get; set; }
@@ -9079,19 +9104,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Url { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseEntryTypeItem
+    public class GETPatientIdHistoryResponseEntryTypeItem
     {
         [JsonProperty("fullUrl")]
         public string FullUrl { get; set; }
 
         [JsonProperty("resource")]
-        public GETPatientIDHistoryResponseEntryTypeItemResourceType Resource { get; set; }
+        public GETPatientIdHistoryResponseEntryTypeItemResourceType Resource { get; set; }
 
         [JsonProperty("search")]
-        public GETPatientIDHistoryResponseEntryTypeItemSearchType Search { get; set; }
+        public GETPatientIdHistoryResponseEntryTypeItemSearchType Search { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseEntryTypeItemResourceType
+    public class GETPatientIdHistoryResponseEntryTypeItemResourceType
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -9100,22 +9125,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETPatientIDHistoryResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
+        public GETPatientIdHistoryResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETPatientIDHistoryResponseEntryTypeItemResourceTypeTextType Text { get; set; }
+        public GETPatientIdHistoryResponseEntryTypeItemResourceTypeTextType Text { get; set; }
 
         [JsonProperty("extension")]
-        public GETPatientIDHistoryResponseEntryTypeItemResourceTypeExtensionTypeItem[] Extension { get; set; }
+        public GETPatientIdHistoryResponseEntryTypeItemResourceTypeExtensionTypeItem[] Extension { get; set; }
 
         [JsonProperty("identifier")]
-        public GETPatientIDHistoryResponseEntryTypeItemResourceTypeIdentifierTypeItem[] Identifier { get; set; }
+        public GETPatientIdHistoryResponseEntryTypeItemResourceTypeIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("name")]
-        public GETPatientIDHistoryResponseEntryTypeItemResourceTypeNameTypeItem[] Name { get; set; }
+        public GETPatientIdHistoryResponseEntryTypeItemResourceTypeNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public GETPatientIDHistoryResponseEntryTypeItemResourceTypeTelecomTypeItem[] Telecom { get; set; }
+        public GETPatientIdHistoryResponseEntryTypeItemResourceTypeTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
@@ -9124,10 +9149,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string BirthDate { get; set; }
 
         [JsonProperty("address")]
-        public GETPatientIDHistoryResponseEntryTypeItemResourceTypeAddressTypeItem[] Address { get; set; }
+        public GETPatientIdHistoryResponseEntryTypeItemResourceTypeAddressTypeItem[] Address { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseEntryTypeItemResourceTypeMetaType
+    public class GETPatientIdHistoryResponseEntryTypeItemResourceTypeMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -9136,7 +9161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseEntryTypeItemResourceTypeTextType
+    public class GETPatientIdHistoryResponseEntryTypeItemResourceTypeTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -9145,28 +9170,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseEntryTypeItemResourceTypeExtensionTypeItem
+    public class GETPatientIdHistoryResponseEntryTypeItemResourceTypeExtensionTypeItem
     {
         [JsonProperty("url")]
         public string Url { get; set; }
 
         [JsonProperty("valueCodeableConcept")]
-        public GETPatientIDHistoryResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptType ValueCodeableConcept { get; set; }
+        public GETPatientIdHistoryResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptType ValueCodeableConcept { get; set; }
 
         [JsonProperty("valueCode")]
         public string ValueCode { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptType
+    public class GETPatientIdHistoryResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptType
     {
         [JsonProperty("coding")]
-        public GETPatientIDHistoryResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public GETPatientIdHistoryResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptTypeCodingTypeItem
+    public class GETPatientIdHistoryResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9178,7 +9203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseEntryTypeItemResourceTypeIdentifierTypeItem
+    public class GETPatientIdHistoryResponseEntryTypeItemResourceTypeIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9187,7 +9212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Value { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseEntryTypeItemResourceTypeNameTypeItem
+    public class GETPatientIdHistoryResponseEntryTypeItemResourceTypeNameTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -9202,7 +9227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Given { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseEntryTypeItemResourceTypeTelecomTypeItem
+    public class GETPatientIdHistoryResponseEntryTypeItemResourceTypeTelecomTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9214,7 +9239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Use { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseEntryTypeItemResourceTypeAddressTypeItem
+    public class GETPatientIdHistoryResponseEntryTypeItemResourceTypeAddressTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -9235,7 +9260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Country { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseEntryTypeItemSearchType
+    public class GETPatientIdHistoryResponseEntryTypeItemSearchType
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
@@ -9682,7 +9707,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETPersonIDResponse
+    public class GETPersonIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -9691,10 +9716,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("name")]
-        public GETPersonIDResponseNameTypeItem[] Name { get; set; }
+        public GETPersonIdResponseNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public GETPersonIDResponseTelecomTypeItem[] Telecom { get; set; }
+        public GETPersonIdResponseTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
@@ -9703,19 +9728,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string BirthDate { get; set; }
 
         [JsonProperty("address")]
-        public GETPersonIDResponseAddressTypeItem[] Address { get; set; }
+        public GETPersonIdResponseAddressTypeItem[] Address { get; set; }
 
         [JsonProperty("managingOrganization")]
-        public GETPersonIDResponseManagingOrganizationType ManagingOrganization { get; set; }
+        public GETPersonIdResponseManagingOrganizationType ManagingOrganization { get; set; }
 
         [JsonProperty("active")]
         public bool Active { get; set; }
 
         [JsonProperty("link")]
-        public GETPersonIDResponseLinkTypeItem[] Link { get; set; }
+        public GETPersonIdResponseLinkTypeItem[] Link { get; set; }
     }
 
-    public class GETPersonIDResponseNameTypeItem
+    public class GETPersonIdResponseNameTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -9727,7 +9752,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Given { get; set; }
     }
 
-    public class GETPersonIDResponseTelecomTypeItem
+    public class GETPersonIdResponseTelecomTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9739,7 +9764,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Use { get; set; }
     }
 
-    public class GETPersonIDResponseAddressTypeItem
+    public class GETPersonIdResponseAddressTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -9754,7 +9779,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string State { get; set; }
     }
 
-    public class GETPersonIDResponseManagingOrganizationType
+    public class GETPersonIdResponseManagingOrganizationType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -9763,16 +9788,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETPersonIDResponseLinkTypeItem
+    public class GETPersonIdResponseLinkTypeItem
     {
         [JsonProperty("target")]
-        public GETPersonIDResponseLinkTypeItemTargetType Target { get; set; }
+        public GETPersonIdResponseLinkTypeItemTargetType Target { get; set; }
 
         [JsonProperty("assurance")]
         public string Assurance { get; set; }
     }
 
-    public class GETPersonIDResponseLinkTypeItemTargetType
+    public class GETPersonIdResponseLinkTypeItemTargetType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -9781,7 +9806,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEPersonIDResponse
+    public class DELETEPersonIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -9790,10 +9815,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("name")]
-        public DELETEPersonIDResponseNameTypeItem[] Name { get; set; }
+        public DELETEPersonIdResponseNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public DELETEPersonIDResponseTelecomTypeItem[] Telecom { get; set; }
+        public DELETEPersonIdResponseTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
@@ -9802,19 +9827,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string BirthDate { get; set; }
 
         [JsonProperty("address")]
-        public DELETEPersonIDResponseAddressTypeItem[] Address { get; set; }
+        public DELETEPersonIdResponseAddressTypeItem[] Address { get; set; }
 
         [JsonProperty("managingOrganization")]
-        public DELETEPersonIDResponseManagingOrganizationType ManagingOrganization { get; set; }
+        public DELETEPersonIdResponseManagingOrganizationType ManagingOrganization { get; set; }
 
         [JsonProperty("active")]
         public bool Active { get; set; }
 
         [JsonProperty("link")]
-        public DELETEPersonIDResponseLinkTypeItem[] Link { get; set; }
+        public DELETEPersonIdResponseLinkTypeItem[] Link { get; set; }
     }
 
-    public class DELETEPersonIDResponseNameTypeItem
+    public class DELETEPersonIdResponseNameTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -9826,7 +9851,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Given { get; set; }
     }
 
-    public class DELETEPersonIDResponseTelecomTypeItem
+    public class DELETEPersonIdResponseTelecomTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9838,7 +9863,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Use { get; set; }
     }
 
-    public class DELETEPersonIDResponseAddressTypeItem
+    public class DELETEPersonIdResponseAddressTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -9853,7 +9878,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string State { get; set; }
     }
 
-    public class DELETEPersonIDResponseManagingOrganizationType
+    public class DELETEPersonIdResponseManagingOrganizationType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -9862,16 +9887,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEPersonIDResponseLinkTypeItem
+    public class DELETEPersonIdResponseLinkTypeItem
     {
         [JsonProperty("target")]
-        public DELETEPersonIDResponseLinkTypeItemTargetType Target { get; set; }
+        public DELETEPersonIdResponseLinkTypeItemTargetType Target { get; set; }
 
         [JsonProperty("assurance")]
         public string Assurance { get; set; }
     }
 
-    public class DELETEPersonIDResponseLinkTypeItemTargetType
+    public class DELETEPersonIdResponseLinkTypeItemTargetType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -9880,7 +9905,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTPersonIDResponse
+    public class PUTPersonIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -9889,10 +9914,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("name")]
-        public PUTPersonIDResponseNameTypeItem[] Name { get; set; }
+        public PUTPersonIdResponseNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public PUTPersonIDResponseTelecomTypeItem[] Telecom { get; set; }
+        public PUTPersonIdResponseTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
@@ -9901,19 +9926,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string BirthDate { get; set; }
 
         [JsonProperty("address")]
-        public PUTPersonIDResponseAddressTypeItem[] Address { get; set; }
+        public PUTPersonIdResponseAddressTypeItem[] Address { get; set; }
 
         [JsonProperty("managingOrganization")]
-        public PUTPersonIDResponseManagingOrganizationType ManagingOrganization { get; set; }
+        public PUTPersonIdResponseManagingOrganizationType ManagingOrganization { get; set; }
 
         [JsonProperty("active")]
         public bool Active { get; set; }
 
         [JsonProperty("link")]
-        public PUTPersonIDResponseLinkTypeItem[] Link { get; set; }
+        public PUTPersonIdResponseLinkTypeItem[] Link { get; set; }
     }
 
-    public class PUTPersonIDResponseNameTypeItem
+    public class PUTPersonIdResponseNameTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -9925,7 +9950,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Given { get; set; }
     }
 
-    public class PUTPersonIDResponseTelecomTypeItem
+    public class PUTPersonIdResponseTelecomTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9937,7 +9962,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Use { get; set; }
     }
 
-    public class PUTPersonIDResponseAddressTypeItem
+    public class PUTPersonIdResponseAddressTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -9952,7 +9977,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string State { get; set; }
     }
 
-    public class PUTPersonIDResponseManagingOrganizationType
+    public class PUTPersonIdResponseManagingOrganizationType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -9961,16 +9986,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTPersonIDResponseLinkTypeItem
+    public class PUTPersonIdResponseLinkTypeItem
     {
         [JsonProperty("target")]
-        public PUTPersonIDResponseLinkTypeItemTargetType Target { get; set; }
+        public PUTPersonIdResponseLinkTypeItemTargetType Target { get; set; }
 
         [JsonProperty("assurance")]
         public string Assurance { get; set; }
     }
 
-    public class PUTPersonIDResponseLinkTypeItemTargetType
+    public class PUTPersonIdResponseLinkTypeItemTargetType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -9979,7 +10004,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETPersonIDVersionResponse
+    public class GETPersonIdVersionResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -9988,10 +10013,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("name")]
-        public GETPersonIDVersionResponseNameTypeItem[] Name { get; set; }
+        public GETPersonIdVersionResponseNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public GETPersonIDVersionResponseTelecomTypeItem[] Telecom { get; set; }
+        public GETPersonIdVersionResponseTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
@@ -10000,19 +10025,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string BirthDate { get; set; }
 
         [JsonProperty("address")]
-        public GETPersonIDVersionResponseAddressTypeItem[] Address { get; set; }
+        public GETPersonIdVersionResponseAddressTypeItem[] Address { get; set; }
 
         [JsonProperty("managingOrganization")]
-        public GETPersonIDVersionResponseManagingOrganizationType ManagingOrganization { get; set; }
+        public GETPersonIdVersionResponseManagingOrganizationType ManagingOrganization { get; set; }
 
         [JsonProperty("active")]
         public bool Active { get; set; }
 
         [JsonProperty("link")]
-        public GETPersonIDVersionResponseLinkTypeItem[] Link { get; set; }
+        public GETPersonIdVersionResponseLinkTypeItem[] Link { get; set; }
     }
 
-    public class GETPersonIDVersionResponseNameTypeItem
+    public class GETPersonIdVersionResponseNameTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -10024,7 +10049,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Given { get; set; }
     }
 
-    public class GETPersonIDVersionResponseTelecomTypeItem
+    public class GETPersonIdVersionResponseTelecomTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10036,7 +10061,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Use { get; set; }
     }
 
-    public class GETPersonIDVersionResponseAddressTypeItem
+    public class GETPersonIdVersionResponseAddressTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -10051,7 +10076,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string State { get; set; }
     }
 
-    public class GETPersonIDVersionResponseManagingOrganizationType
+    public class GETPersonIdVersionResponseManagingOrganizationType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -10060,16 +10085,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETPersonIDVersionResponseLinkTypeItem
+    public class GETPersonIdVersionResponseLinkTypeItem
     {
         [JsonProperty("target")]
-        public GETPersonIDVersionResponseLinkTypeItemTargetType Target { get; set; }
+        public GETPersonIdVersionResponseLinkTypeItemTargetType Target { get; set; }
 
         [JsonProperty("assurance")]
         public string Assurance { get; set; }
     }
 
-    public class GETPersonIDVersionResponseLinkTypeItemTargetType
+    public class GETPersonIdVersionResponseLinkTypeItemTargetType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -10078,7 +10103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETPersonIDHistoryResponse
+    public class GETPersonIdHistoryResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -10087,10 +10112,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("name")]
-        public GETPersonIDHistoryResponseNameTypeItem[] Name { get; set; }
+        public GETPersonIdHistoryResponseNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public GETPersonIDHistoryResponseTelecomTypeItem[] Telecom { get; set; }
+        public GETPersonIdHistoryResponseTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
@@ -10099,19 +10124,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string BirthDate { get; set; }
 
         [JsonProperty("address")]
-        public GETPersonIDHistoryResponseAddressTypeItem[] Address { get; set; }
+        public GETPersonIdHistoryResponseAddressTypeItem[] Address { get; set; }
 
         [JsonProperty("managingOrganization")]
-        public GETPersonIDHistoryResponseManagingOrganizationType ManagingOrganization { get; set; }
+        public GETPersonIdHistoryResponseManagingOrganizationType ManagingOrganization { get; set; }
 
         [JsonProperty("active")]
         public bool Active { get; set; }
 
         [JsonProperty("link")]
-        public GETPersonIDHistoryResponseLinkTypeItem[] Link { get; set; }
+        public GETPersonIdHistoryResponseLinkTypeItem[] Link { get; set; }
     }
 
-    public class GETPersonIDHistoryResponseNameTypeItem
+    public class GETPersonIdHistoryResponseNameTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -10123,7 +10148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Given { get; set; }
     }
 
-    public class GETPersonIDHistoryResponseTelecomTypeItem
+    public class GETPersonIdHistoryResponseTelecomTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10135,7 +10160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Use { get; set; }
     }
 
-    public class GETPersonIDHistoryResponseAddressTypeItem
+    public class GETPersonIdHistoryResponseAddressTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -10150,7 +10175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string State { get; set; }
     }
 
-    public class GETPersonIDHistoryResponseManagingOrganizationType
+    public class GETPersonIdHistoryResponseManagingOrganizationType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -10159,16 +10184,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETPersonIDHistoryResponseLinkTypeItem
+    public class GETPersonIdHistoryResponseLinkTypeItem
     {
         [JsonProperty("target")]
-        public GETPersonIDHistoryResponseLinkTypeItemTargetType Target { get; set; }
+        public GETPersonIdHistoryResponseLinkTypeItemTargetType Target { get; set; }
 
         [JsonProperty("assurance")]
         public string Assurance { get; set; }
     }
 
-    public class GETPersonIDHistoryResponseLinkTypeItemTargetType
+    public class GETPersonIdHistoryResponseLinkTypeItemTargetType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -10597,7 +10622,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETPractitionerIDResponse
+    public class GETPractitionerIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -10606,28 +10631,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETPractitionerIDResponseMetaType Meta { get; set; }
+        public GETPractitionerIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("identifier")]
-        public GETPractitionerIDResponseIdentifierTypeItem[] Identifier { get; set; }
+        public GETPractitionerIdResponseIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("active")]
         public bool Active { get; set; }
 
         [JsonProperty("name")]
-        public GETPractitionerIDResponseNameTypeItem[] Name { get; set; }
+        public GETPractitionerIdResponseNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public GETPractitionerIDResponseTelecomTypeItem[] Telecom { get; set; }
+        public GETPractitionerIdResponseTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("address")]
-        public GETPractitionerIDResponseAddressTypeItem[] Address { get; set; }
+        public GETPractitionerIdResponseAddressTypeItem[] Address { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
     }
 
-    public class GETPractitionerIDResponseMetaType
+    public class GETPractitionerIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -10636,7 +10661,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETPractitionerIDResponseIdentifierTypeItem
+    public class GETPractitionerIdResponseIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10645,7 +10670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Value { get; set; }
     }
 
-    public class GETPractitionerIDResponseNameTypeItem
+    public class GETPractitionerIdResponseNameTypeItem
     {
         [JsonProperty("family")]
         public string Family { get; set; }
@@ -10657,7 +10682,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Prefix { get; set; }
     }
 
-    public class GETPractitionerIDResponseTelecomTypeItem
+    public class GETPractitionerIdResponseTelecomTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10669,7 +10694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Use { get; set; }
     }
 
-    public class GETPractitionerIDResponseAddressTypeItem
+    public class GETPractitionerIdResponseAddressTypeItem
     {
         [JsonProperty("line")]
         public string[] Line { get; set; }
@@ -10687,7 +10712,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Country { get; set; }
     }
 
-    public class DELETEPractitionerIDResponse
+    public class DELETEPractitionerIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -10696,25 +10721,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public DELETEPractitionerIDResponseTextType Text { get; set; }
+        public DELETEPractitionerIdResponseTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public DELETEPractitionerIDResponseIdentifierTypeItem[] Identifier { get; set; }
+        public DELETEPractitionerIdResponseIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("active")]
         public bool Active { get; set; }
 
         [JsonProperty("name")]
-        public DELETEPractitionerIDResponseNameTypeItem[] Name { get; set; }
+        public DELETEPractitionerIdResponseNameTypeItem[] Name { get; set; }
 
         [JsonProperty("address")]
-        public DELETEPractitionerIDResponseAddressTypeItem[] Address { get; set; }
+        public DELETEPractitionerIdResponseAddressTypeItem[] Address { get; set; }
 
         [JsonProperty("qualification")]
-        public DELETEPractitionerIDResponseQualificationTypeItem[] Qualification { get; set; }
+        public DELETEPractitionerIdResponseQualificationTypeItem[] Qualification { get; set; }
     }
 
-    public class DELETEPractitionerIDResponseTextType
+    public class DELETEPractitionerIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -10723,7 +10748,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class DELETEPractitionerIDResponseIdentifierTypeItem
+    public class DELETEPractitionerIdResponseIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10732,7 +10757,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Value { get; set; }
     }
 
-    public class DELETEPractitionerIDResponseNameTypeItem
+    public class DELETEPractitionerIdResponseNameTypeItem
     {
         [JsonProperty("family")]
         public string Family { get; set; }
@@ -10744,7 +10769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Prefix { get; set; }
     }
 
-    public class DELETEPractitionerIDResponseAddressTypeItem
+    public class DELETEPractitionerIdResponseAddressTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -10762,22 +10787,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string PostalCode { get; set; }
     }
 
-    public class DELETEPractitionerIDResponseQualificationTypeItem
+    public class DELETEPractitionerIdResponseQualificationTypeItem
     {
         [JsonProperty("identifier")]
-        public DELETEPractitionerIDResponseQualificationTypeItemIdentifierTypeItem[] Identifier { get; set; }
+        public DELETEPractitionerIdResponseQualificationTypeItemIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("code")]
-        public DELETEPractitionerIDResponseQualificationTypeItemCodeType Code { get; set; }
+        public DELETEPractitionerIdResponseQualificationTypeItemCodeType Code { get; set; }
 
         [JsonProperty("period")]
-        public DELETEPractitionerIDResponseQualificationTypeItemPeriodType Period { get; set; }
+        public DELETEPractitionerIdResponseQualificationTypeItemPeriodType Period { get; set; }
 
         [JsonProperty("issuer")]
-        public DELETEPractitionerIDResponseQualificationTypeItemIssuerType Issuer { get; set; }
+        public DELETEPractitionerIdResponseQualificationTypeItemIssuerType Issuer { get; set; }
     }
 
-    public class DELETEPractitionerIDResponseQualificationTypeItemIdentifierTypeItem
+    public class DELETEPractitionerIdResponseQualificationTypeItemIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10786,16 +10811,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Value { get; set; }
     }
 
-    public class DELETEPractitionerIDResponseQualificationTypeItemCodeType
+    public class DELETEPractitionerIdResponseQualificationTypeItemCodeType
     {
         [JsonProperty("coding")]
-        public DELETEPractitionerIDResponseQualificationTypeItemCodeTypeCodingTypeItem[] Coding { get; set; }
+        public DELETEPractitionerIdResponseQualificationTypeItemCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETEPractitionerIDResponseQualificationTypeItemCodeTypeCodingTypeItem
+    public class DELETEPractitionerIdResponseQualificationTypeItemCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10807,13 +10832,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEPractitionerIDResponseQualificationTypeItemPeriodType
+    public class DELETEPractitionerIdResponseQualificationTypeItemPeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
     }
 
-    public class DELETEPractitionerIDResponseQualificationTypeItemIssuerType
+    public class DELETEPractitionerIdResponseQualificationTypeItemIssuerType
     {
         [JsonProperty("display")]
         public string Display { get; set; }
@@ -10837,7 +10862,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Country { get; set; }
     }
 
-    public class PUTPractitionerIDResponse
+    public class PUTPractitionerIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -10846,28 +10871,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public PUTPractitionerIDResponseMetaType Meta { get; set; }
+        public PUTPractitionerIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("identifier")]
-        public PUTPractitionerIDResponseIdentifierTypeItem[] Identifier { get; set; }
+        public PUTPractitionerIdResponseIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("active")]
         public bool Active { get; set; }
 
         [JsonProperty("name")]
-        public PUTPractitionerIDResponseNameTypeItem[] Name { get; set; }
+        public PUTPractitionerIdResponseNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public PUTPractitionerIDResponseTelecomTypeItem[] Telecom { get; set; }
+        public PUTPractitionerIdResponseTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("address")]
-        public PUTPractitionerIDResponseAddressTypeItem[] Address { get; set; }
+        public PUTPractitionerIdResponseAddressTypeItem[] Address { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
     }
 
-    public class PUTPractitionerIDResponseMetaType
+    public class PUTPractitionerIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -10876,7 +10901,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class PUTPractitionerIDResponseIdentifierTypeItem
+    public class PUTPractitionerIdResponseIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10885,7 +10910,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Value { get; set; }
     }
 
-    public class PUTPractitionerIDResponseNameTypeItem
+    public class PUTPractitionerIdResponseNameTypeItem
     {
         [JsonProperty("family")]
         public string Family { get; set; }
@@ -10897,7 +10922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Prefix { get; set; }
     }
 
-    public class PUTPractitionerIDResponseTelecomTypeItem
+    public class PUTPractitionerIdResponseTelecomTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10909,7 +10934,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Use { get; set; }
     }
 
-    public class PUTPractitionerIDResponseAddressTypeItem
+    public class PUTPractitionerIdResponseAddressTypeItem
     {
         [JsonProperty("line")]
         public string[] Line { get; set; }
@@ -10927,7 +10952,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Country { get; set; }
     }
 
-    public class GETPractitionerIDVersionResponse
+    public class GETPractitionerIdVersionResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -10936,28 +10961,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETPractitionerIDVersionResponseMetaType Meta { get; set; }
+        public GETPractitionerIdVersionResponseMetaType Meta { get; set; }
 
         [JsonProperty("identifier")]
-        public GETPractitionerIDVersionResponseIdentifierTypeItem[] Identifier { get; set; }
+        public GETPractitionerIdVersionResponseIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("active")]
         public bool Active { get; set; }
 
         [JsonProperty("name")]
-        public GETPractitionerIDVersionResponseNameTypeItem[] Name { get; set; }
+        public GETPractitionerIdVersionResponseNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public GETPractitionerIDVersionResponseTelecomTypeItem[] Telecom { get; set; }
+        public GETPractitionerIdVersionResponseTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("address")]
-        public GETPractitionerIDVersionResponseAddressTypeItem[] Address { get; set; }
+        public GETPractitionerIdVersionResponseAddressTypeItem[] Address { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
     }
 
-    public class GETPractitionerIDVersionResponseMetaType
+    public class GETPractitionerIdVersionResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -10966,7 +10991,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETPractitionerIDVersionResponseIdentifierTypeItem
+    public class GETPractitionerIdVersionResponseIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10975,7 +11000,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Value { get; set; }
     }
 
-    public class GETPractitionerIDVersionResponseNameTypeItem
+    public class GETPractitionerIdVersionResponseNameTypeItem
     {
         [JsonProperty("family")]
         public string Family { get; set; }
@@ -10987,7 +11012,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Prefix { get; set; }
     }
 
-    public class GETPractitionerIDVersionResponseTelecomTypeItem
+    public class GETPractitionerIdVersionResponseTelecomTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10999,7 +11024,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Use { get; set; }
     }
 
-    public class GETPractitionerIDVersionResponseAddressTypeItem
+    public class GETPractitionerIdVersionResponseAddressTypeItem
     {
         [JsonProperty("line")]
         public string[] Line { get; set; }
@@ -11017,7 +11042,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Country { get; set; }
     }
 
-    public class GETPractitionerIDHistoryResponse
+    public class GETPractitionerIdHistoryResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -11026,28 +11051,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETPractitionerIDHistoryResponseMetaType Meta { get; set; }
+        public GETPractitionerIdHistoryResponseMetaType Meta { get; set; }
 
         [JsonProperty("identifier")]
-        public GETPractitionerIDHistoryResponseIdentifierTypeItem[] Identifier { get; set; }
+        public GETPractitionerIdHistoryResponseIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("active")]
         public bool Active { get; set; }
 
         [JsonProperty("name")]
-        public GETPractitionerIDHistoryResponseNameTypeItem[] Name { get; set; }
+        public GETPractitionerIdHistoryResponseNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public GETPractitionerIDHistoryResponseTelecomTypeItem[] Telecom { get; set; }
+        public GETPractitionerIdHistoryResponseTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("address")]
-        public GETPractitionerIDHistoryResponseAddressTypeItem[] Address { get; set; }
+        public GETPractitionerIdHistoryResponseAddressTypeItem[] Address { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
     }
 
-    public class GETPractitionerIDHistoryResponseMetaType
+    public class GETPractitionerIdHistoryResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -11056,7 +11081,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETPractitionerIDHistoryResponseIdentifierTypeItem
+    public class GETPractitionerIdHistoryResponseIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -11065,7 +11090,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Value { get; set; }
     }
 
-    public class GETPractitionerIDHistoryResponseNameTypeItem
+    public class GETPractitionerIdHistoryResponseNameTypeItem
     {
         [JsonProperty("family")]
         public string Family { get; set; }
@@ -11077,7 +11102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Prefix { get; set; }
     }
 
-    public class GETPractitionerIDHistoryResponseTelecomTypeItem
+    public class GETPractitionerIdHistoryResponseTelecomTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -11089,7 +11114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Use { get; set; }
     }
 
-    public class GETPractitionerIDHistoryResponseAddressTypeItem
+    public class GETPractitionerIdHistoryResponseAddressTypeItem
     {
         [JsonProperty("line")]
         public string[] Line { get; set; }

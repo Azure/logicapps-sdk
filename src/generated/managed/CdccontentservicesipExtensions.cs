@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
 {
     using System.Linq.Expressions;
@@ -99,46 +100,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         public IBodyWorkflowAction<MediaTypesResponse, ApiConnectionActionConfiguration> MediaTypes()
         {
-            var apiCallPath = "/resources/mediatypes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MediaTypesResponse>(callPayload);
+            return new DeferredBodyAction<MediaTypesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/resources/mediatypes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<MediaTypesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         public IBodyWorkflowAction<TopicsResponse, ApiConnectionActionConfiguration> Topics()
         {
-            var apiCallPath = "/resources/topics";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TopicsResponse>(callPayload);
+            return new DeferredBodyAction<TopicsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/resources/topics";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TopicsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         public IBodyWorkflowAction<AudiencesResponse, ApiConnectionActionConfiguration> Audiences()
         {
-            var apiCallPath = "/resources/audiences";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AudiencesResponse>(callPayload);
+            return new DeferredBodyAction<AudiencesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/resources/audiences";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AudiencesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         public IBodyWorkflowAction<TagsResponse, ApiConnectionActionConfiguration> Tags()
         {
-            var apiCallPath = "/resources/tags";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TagsResponse>(callPayload);
+            return new DeferredBodyAction<TagsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/resources/tags";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TagsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<TagGetResponse, ApiConnectionActionConfiguration> TagGet(Expression<Func<string>> tAGID)
+        public IBodyWorkflowAction<TagGetResponse, ApiConnectionActionConfiguration> TagGet(Expression<Func<string>> tAGId)
         {
-            var __workflow_tAGID = WorkflowExpression.Compile(tAGID, nameof(tAGID), required: true);
+            var __workflow_tAGId = WorkflowExpression.Compile(tAGId, nameof(tAGId), required: true);
             return new DeferredBodyAction<TagGetResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/resources/tags/{0}", __workflow_tAGID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/resources/tags/{0}", __workflow_tAGId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TagGetResponse>(callPayload);
@@ -146,12 +159,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<MediaTagResponse, ApiConnectionActionConfiguration> MediaTag(Expression<Func<string>> tAGID)
+        public IBodyWorkflowAction<MediaTagResponse, ApiConnectionActionConfiguration> MediaTag(Expression<Func<string>> tAGId)
         {
-            var __workflow_tAGID = WorkflowExpression.Compile(tAGID, nameof(tAGID), required: true);
+            var __workflow_tAGId = WorkflowExpression.Compile(tAGId, nameof(tAGId), required: true);
             return new DeferredBodyAction<MediaTagResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/resources/tags/{0}/media", __workflow_tAGID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/resources/tags/{0}/media", __workflow_tAGId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<MediaTagResponse>(callPayload);
@@ -159,12 +172,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<TagRelatedResponse, ApiConnectionActionConfiguration> TagRelated(Expression<Func<string>> tAGID)
+        public IBodyWorkflowAction<TagRelatedResponse, ApiConnectionActionConfiguration> TagRelated(Expression<Func<string>> tAGId)
         {
-            var __workflow_tAGID = WorkflowExpression.Compile(tAGID, nameof(tAGID), required: true);
+            var __workflow_tAGId = WorkflowExpression.Compile(tAGId, nameof(tAGId), required: true);
             return new DeferredBodyAction<TagRelatedResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/resources/tags/{0}/related", __workflow_tAGID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/resources/tags/{0}/related", __workflow_tAGId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<TagRelatedResponse>(callPayload);
@@ -174,46 +187,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         public IBodyWorkflowAction<TagTypesResponse, ApiConnectionActionConfiguration> TagTypes()
         {
-            var apiCallPath = "/resources/tagtypes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TagTypesResponse>(callPayload);
+            return new DeferredBodyAction<TagTypesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/resources/tagtypes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TagTypesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         public IBodyWorkflowAction<LanguageResponse, ApiConnectionActionConfiguration> Language()
         {
-            var apiCallPath = "/resources/languages";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<LanguageResponse>(callPayload);
+            return new DeferredBodyAction<LanguageResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/resources/languages";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<LanguageResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         public IBodyWorkflowAction<OrganizationResponse, ApiConnectionActionConfiguration> Organization()
         {
-            var apiCallPath = "/resources/organizations";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<OrganizationResponse>(callPayload);
+            return new DeferredBodyAction<OrganizationResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/resources/organizations";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<OrganizationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         public IBodyWorkflowAction<OrganizationTypeResponse, ApiConnectionActionConfiguration> OrganizationType()
         {
-            var apiCallPath = "/resources/organizationtypes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<OrganizationTypeResponse>(callPayload);
+            return new DeferredBodyAction<OrganizationTypeResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/resources/organizationtypes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<OrganizationTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         public IBodyWorkflowAction<SourceResponse, ApiConnectionActionConfiguration> Source()
         {
-            var apiCallPath = "/resources/sources";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SourceResponse>(callPayload);
+            return new DeferredBodyAction<SourceResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/resources/sources";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SourceResponse>(callPayload);
+            });
         }
     }
 

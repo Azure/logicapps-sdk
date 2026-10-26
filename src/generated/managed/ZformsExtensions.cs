@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zforms
 {
     using System.Linq.Expressions;
@@ -14,11 +15,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zforms")]
         public IBodyWorkflowAction<GetAvailableFormsResponse, ApiConnectionActionConfiguration> GetAvailableForms()
         {
-            var apiCallPath = "/api/zforms";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["zf_service"] = Convert.ToString("MSPowerAutomate");
-            return new ApiConnectionAction<GetAvailableFormsResponse>(callPayload);
+            return new DeferredBodyAction<GetAvailableFormsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/zforms";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["zf_service"] = Convert.ToString("MSPowerAutomate");
+                return new ApiConnectionAction<GetAvailableFormsResponse>(callPayload);
+            });
         }
     }
 

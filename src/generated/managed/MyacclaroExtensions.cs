@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myacclaro
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myacclaro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myacclaro")]
         public IBodyWorkflowAction<GetAllSupportedOrderTypesResponse, ApiConnectionActionConfiguration> GetAllSupportedOrderTypes()
         {
-            var apiCallPath = "/info/order-types";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAllSupportedOrderTypesResponse>(callPayload);
+            return new DeferredBodyAction<GetAllSupportedOrderTypesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/info/order-types";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetAllSupportedOrderTypesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myacclaro")]

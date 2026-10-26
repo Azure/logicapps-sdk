@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Transform2all
 {
     using System.Linq.Expressions;
@@ -12,10 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Transform2all
     public class Transform2allActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "transform2all")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Transform(Expression<Func<string>> bodybase64Content, Expression<Func<string>> bodyconfigId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Transform(Expression<Func<string>> bodyconfigId, Expression<Func<string>> bodybase64Content)
         {
-            var __workflow_bodybase64Content = WorkflowExpression.Compile(bodybase64Content, nameof(bodybase64Content), required: true);
             var __workflow_bodyconfigId = WorkflowExpression.Compile(bodyconfigId, nameof(bodyconfigId), required: true);
+            var __workflow_bodybase64Content = WorkflowExpression.Compile(bodybase64Content, nameof(bodybase64Content), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/1.0/translate";
@@ -24,9 +25,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Transform2all
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["base64Content"] = ExpressionConverter.ConvertO(__workflow_bodybase64Content);
-                bodypropCount++;
                 body["configId"] = ExpressionConverter.ConvertO(__workflow_bodyconfigId);
+                bodypropCount++;
+                body["base64Content"] = ExpressionConverter.ConvertO(__workflow_bodybase64Content);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         public IBodyWorkflowAction<List[], ApiConnectionActionConfiguration> GetAllLists()
         {
-            var apiCallPath = "/lists";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<List[]>(callPayload);
+            return new DeferredBodyAction<List[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/lists";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<List[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
@@ -62,46 +66,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         public IBodyWorkflowAction<Item[], ApiConnectionActionConfiguration> GetItems()
         {
-            var apiCallPath = "/items";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Item[]>(callPayload);
+            return new DeferredBodyAction<Item[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/items";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Item[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         public IBodyWorkflowAction<SentIssue, ApiConnectionActionConfiguration> GetLatestIssue()
         {
-            var apiCallPath = "/issues/latest";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SentIssue>(callPayload);
+            return new DeferredBodyAction<SentIssue, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/issues/latest";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SentIssue>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         public IBodyWorkflowAction<SentIssue[], ApiConnectionActionConfiguration> GetAllSentIssues()
         {
-            var apiCallPath = "/issues";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SentIssue[]>(callPayload);
+            return new DeferredBodyAction<SentIssue[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/issues";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SentIssue[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         public IBodyWorkflowAction<Issue[], ApiConnectionActionConfiguration> GetCurrentIssue()
         {
-            var apiCallPath = "/issues/current";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Issue[]>(callPayload);
+            return new DeferredBodyAction<Issue[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/issues/current";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Issue[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         public IBodyWorkflowAction<Subscriber[], ApiConnectionActionConfiguration> GetAllSubscribers()
         {
-            var apiCallPath = "/subscribers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Subscriber[]>(callPayload);
+            return new DeferredBodyAction<Subscriber[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/subscribers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Subscriber[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
@@ -193,10 +212,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         public IBodyWorkflowAction<Subscriber[], ApiConnectionActionConfiguration> GetUnsubscribed()
         {
-            var apiCallPath = "/subscribers/unsubscribed";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Subscriber[]>(callPayload);
+            return new DeferredBodyAction<Subscriber[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/subscribers/unsubscribed";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Subscriber[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
@@ -259,10 +281,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         public IBodyWorkflowAction<Account, ApiConnectionActionConfiguration> GetProfileURL()
         {
-            var apiCallPath = "/accounts/me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Account>(callPayload);
+            return new DeferredBodyAction<Account, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/accounts/me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Account>(callPayload);
+            });
         }
     }
 

@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
 {
     using System.Linq.Expressions;
@@ -404,10 +405,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<ListTasksResponseV2, ApiConnectionActionConfiguration> ListMyTasks()
         {
-            var apiCallPath = "/v1.0/me/planner/tasks";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListTasksResponseV2>(callPayload);
+            return new DeferredBodyAction<ListTasksResponseV2, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1.0/me/planner/tasks";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListTasksResponseV2>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
@@ -739,10 +743,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
 
         public IBodyWorkflowTrigger<ListTasksResponseV2, ApiConnectionTriggerConfiguration> OnTaskAssignedToMe(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v1.0/me/planner/ontaskassignedtome_trigger/tasks";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<ListTasksResponseV2, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/v1.0/me/planner/ontaskassignedtome_trigger/tasks";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

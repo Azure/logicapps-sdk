@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
 {
     using System.Linq.Expressions;
@@ -455,7 +456,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
         EUR,
         GBP,
         HKD,
-        IDR,
+        [EnumMember(Value = "IDR")]
+        IdR,
         INR,
         JPY,
         KRW,

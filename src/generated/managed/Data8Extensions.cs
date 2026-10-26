@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
 {
     using System.Linq.Expressions;
@@ -447,14 +448,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsDeceasedResponse, ApiConnectionActionConfiguration> IsDeceased(Expression<Func<string>> bodyrecordnamesurname, Expression<Func<string[]>> bodyrecordaddresslines, Expression<Func<bool>> bodymarketing, Expression<Func<string>> bodyrecordnametitle = null, Expression<Func<string>> bodyrecordnameforename = null, Expression<Func<string>> bodyrecordnamemiddleName = null, Expression<Func<bodyoptionsmatchLevelInput>> bodyoptionsmatchLevel = null)
+        public IBodyWorkflowAction<IsDeceasedResponse, ApiConnectionActionConfiguration> IsDeceased(Expression<Func<string>> bodyRecordnamesurname, Expression<Func<string[]>> bodyRecordaddresslines, Expression<Func<bool>> bodymarketing, Expression<Func<string>> bodyRecordnametitle = null, Expression<Func<string>> bodyRecordnameforename = null, Expression<Func<string>> bodyRecordnamemiddleName = null, Expression<Func<bodyoptionsmatchLevelInput>> bodyoptionsmatchLevel = null)
         {
-            var __workflow_bodyrecordnamesurname = WorkflowExpression.Compile(bodyrecordnamesurname, nameof(bodyrecordnamesurname), required: true);
-            var __workflow_bodyrecordaddresslines = WorkflowExpression.Compile(bodyrecordaddresslines, nameof(bodyrecordaddresslines), required: true);
+            var __workflow_bodyRecordnamesurname = WorkflowExpression.Compile(bodyRecordnamesurname, nameof(bodyRecordnamesurname), required: true);
+            var __workflow_bodyRecordaddresslines = WorkflowExpression.Compile(bodyRecordaddresslines, nameof(bodyRecordaddresslines), required: true);
             var __workflow_bodymarketing = WorkflowExpression.Compile(bodymarketing, nameof(bodymarketing), required: true);
-            var __workflow_bodyrecordnametitle = WorkflowExpression.Compile(bodyrecordnametitle, nameof(bodyrecordnametitle), required: false);
-            var __workflow_bodyrecordnameforename = WorkflowExpression.Compile(bodyrecordnameforename, nameof(bodyrecordnameforename), required: false);
-            var __workflow_bodyrecordnamemiddleName = WorkflowExpression.Compile(bodyrecordnamemiddleName, nameof(bodyrecordnamemiddleName), required: false);
+            var __workflow_bodyRecordnametitle = WorkflowExpression.Compile(bodyRecordnametitle, nameof(bodyRecordnametitle), required: false);
+            var __workflow_bodyRecordnameforename = WorkflowExpression.Compile(bodyRecordnameforename, nameof(bodyRecordnameforename), required: false);
+            var __workflow_bodyRecordnamemiddleName = WorkflowExpression.Compile(bodyRecordnamemiddleName, nameof(bodyRecordnamemiddleName), required: false);
             var __workflow_bodyoptionsmatchLevel = WorkflowExpression.Compile(bodyoptionsmatchLevel, nameof(bodyoptionsmatchLevel), required: false);
             return new DeferredBodyAction<IsDeceasedResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -463,49 +464,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                var recordObject = new JObject();
-                var recordObjectpropCount = 0;
+                var @recordObject = new JObject();
+                var @recordObjectpropCount = 0;
                 var nameObject = new JObject();
                 var nameObjectpropCount = 0;
-                if (__workflow_bodyrecordnametitle != null)
+                if (__workflow_bodyRecordnametitle != null)
                 {
-                    nameObject["Title"] = ExpressionConverter.ConvertO(__workflow_bodyrecordnametitle);
+                    nameObject["Title"] = ExpressionConverter.ConvertO(__workflow_bodyRecordnametitle);
                     nameObjectpropCount++;
                 }
 
-                if (__workflow_bodyrecordnameforename != null)
+                if (__workflow_bodyRecordnameforename != null)
                 {
-                    nameObject["Forename"] = ExpressionConverter.ConvertO(__workflow_bodyrecordnameforename);
+                    nameObject["Forename"] = ExpressionConverter.ConvertO(__workflow_bodyRecordnameforename);
                     nameObjectpropCount++;
                 }
 
-                if (__workflow_bodyrecordnamemiddleName != null)
+                if (__workflow_bodyRecordnamemiddleName != null)
                 {
-                    nameObject["MiddleName"] = ExpressionConverter.ConvertO(__workflow_bodyrecordnamemiddleName);
+                    nameObject["MiddleName"] = ExpressionConverter.ConvertO(__workflow_bodyRecordnamemiddleName);
                     nameObjectpropCount++;
                 }
 
                 nameObjectpropCount++;
-                nameObject["Surname"] = ExpressionConverter.ConvertO(__workflow_bodyrecordnamesurname);
+                nameObject["Surname"] = ExpressionConverter.ConvertO(__workflow_bodyRecordnamesurname);
                 if (nameObjectpropCount > 0)
                 {
-                    recordObject["Name"] = nameObject;
-                    recordObjectpropCount++;
+                    @recordObject["Name"] = nameObject;
+                    @recordObjectpropCount++;
                 }
 
                 var addressObject = new JObject();
                 var addressObjectpropCount = 0;
                 addressObjectpropCount++;
-                addressObject["Lines"] = ExpressionConverter.ConvertO(__workflow_bodyrecordaddresslines);
+                addressObject["Lines"] = ExpressionConverter.ConvertO(__workflow_bodyRecordaddresslines);
                 if (addressObjectpropCount > 0)
                 {
-                    recordObject["Address"] = addressObject;
-                    recordObjectpropCount++;
+                    @recordObject["Address"] = addressObject;
+                    @recordObjectpropCount++;
                 }
 
-                if (recordObjectpropCount > 0)
+                if (@recordObjectpropCount > 0)
                 {
-                    body["record"] = recordObject;
+                    body["record"] = @recordObject;
                     bodypropCount++;
                 }
 
@@ -1198,7 +1199,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public SearchPredictiveAddressResponseStatusType Status { get; set; }
         public SearchPredictiveAddressResponseResultsTypeItem[] Results { get; set; }
         public int Count { get; set; }
-        public string SessionID { get; set; }
+
+        [JsonProperty("SessionID")]
+        public string SessionId { get; set; }
     }
 
     public class SearchPredictiveAddressResponseStatusType
@@ -1228,7 +1231,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public DrilldownPredictiveAddressResponseStatusType Status { get; set; }
         public DrilldownPredictiveAddressResponseResultsTypeItem[] Results { get; set; }
         public int Count { get; set; }
-        public string SessionID { get; set; }
+
+        [JsonProperty("SessionID")]
+        public string SessionId { get; set; }
     }
 
     public class DrilldownPredictiveAddressResponseStatusType

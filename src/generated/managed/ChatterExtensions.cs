@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
 {
     using System.Linq.Expressions;
@@ -12,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
     public class ChatterActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
-        public IBodyWorkflowAction<CreatePostInGroupResponse, ApiConnectionActionConfiguration> CreatePostInGroup(Expression<Func<string>> bodygroupID, Expression<Func<string>> createPostInGroupText)
+        public IBodyWorkflowAction<CreatePostInGroupResponse, ApiConnectionActionConfiguration> CreatePostInGroup(Expression<Func<string>> bodygroupId, Expression<Func<string>> createPostInGroupText)
         {
-            var __workflow_bodygroupID = WorkflowExpression.Compile(bodygroupID, nameof(bodygroupID), required: true);
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: true);
             var __workflow_createPostInGroupText = WorkflowExpression.Compile(createPostInGroupText, nameof(createPostInGroupText), required: true);
             return new DeferredBodyAction<CreatePostInGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -25,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["subjectId"] = ExpressionConverter.ConvertO(__workflow_bodygroupID);
+                body["subjectId"] = ExpressionConverter.ConvertO(__workflow_bodygroupId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -49,10 +50,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
-        public IBodyWorkflowAction<GroupMemberResponse, ApiConnectionActionConfiguration> AddUserToGroup(Expression<Func<string>> groupId, Expression<Func<string>> bodysalesforceUserID)
+        public IBodyWorkflowAction<GroupMemberResponse, ApiConnectionActionConfiguration> AddUserToGroup(Expression<Func<string>> groupId, Expression<Func<string>> bodysalesforceUserId)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
-            var __workflow_bodysalesforceUserID = WorkflowExpression.Compile(bodysalesforceUserID, nameof(bodysalesforceUserID), required: true);
+            var __workflow_bodysalesforceUserId = WorkflowExpression.Compile(bodysalesforceUserId, nameof(bodysalesforceUserId), required: true);
             return new DeferredBodyAction<GroupMemberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/data/v38.0/chatter/groups/{0}/members", __workflow_groupId.WithUrlEncoding(1)));
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["userId"] = ExpressionConverter.ConvertO(__workflow_bodysalesforceUserID);
+                body["userId"] = ExpressionConverter.ConvertO(__workflow_bodysalesforceUserId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -128,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         public CreatePostInGroupResponseHeaderType Header { get; set; }
 
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("modifiedDate")]
         public string ModifiedDate { get; set; }
@@ -152,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         public string DisplayName { get; set; }
 
         [JsonProperty("id")]
-        public string UserID { get; set; }
+        public string UserId { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -200,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         public string Description { get; set; }
 
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -224,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         public string DisplayName { get; set; }
 
         [JsonProperty("id")]
-        public string UserID { get; set; }
+        public string UserId { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -260,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
     public class GroupMemberResponse
     {
         [JsonProperty("id")]
-        public string MemberID { get; set; }
+        public string MemberId { get; set; }
 
         [JsonProperty("role")]
         public string Role { get; set; }
@@ -281,7 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         public string DisplayName { get; set; }
 
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -320,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         public GetPostResponseHeaderType Header { get; set; }
 
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("modifiedDate")]
         public string ModifiedDate { get; set; }
@@ -359,7 +360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         public string Description { get; set; }
 
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -395,7 +396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         public ListPostsByGroupResponseElementsTypeItemHeaderType Header { get; set; }
 
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("modifiedDate")]
         public string ModifiedDate { get; set; }
@@ -434,7 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         public string Description { get; set; }
 
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }

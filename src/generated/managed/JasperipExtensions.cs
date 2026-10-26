@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
 {
     using System.Linq.Expressions;
@@ -258,10 +259,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<TemplatesGetResponse, ApiConnectionActionConfiguration> TemplatesGet()
         {
-            var apiCallPath = "/v1/templates";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TemplatesGetResponse>(callPayload);
+            return new DeferredBodyAction<TemplatesGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/templates";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TemplatesGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
@@ -390,10 +394,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<KnowledgePostResponse, ApiConnectionActionConfiguration> Knowledge(Expression<Func<string>> bodyname, Expression<Func<string>> bodyfile, Expression<Func<bodysettingsappVisibilityInput>> bodysettingsappVisibility = null)
+        public IBodyWorkflowAction<KnowledgePostResponse, ApiConnectionActionConfiguration> Knowledge(Expression<Func<string>> bodyname, Expression<Func<string>> bodyFile, Expression<Func<bodysettingsappVisibilityInput>> bodysettingsappVisibility = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: true);
+            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: true);
             var __workflow_bodysettingsappVisibility = WorkflowExpression.Compile(bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
             return new DeferredBodyAction<KnowledgePostResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -437,7 +441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
                 bodypropCount++;
                 body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                 bodypropCount++;
-                body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
+                body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -474,12 +478,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<KnowledgePatchResponse, ApiConnectionActionConfiguration> KnowledgePatch(Expression<Func<string>> knowledgeId, Expression<Func<string>> bodysettingsappVisibility = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyfile = null)
+        public IBodyWorkflowAction<KnowledgePatchResponse, ApiConnectionActionConfiguration> KnowledgePatch(Expression<Func<string>> knowledgeId, Expression<Func<string>> bodysettingsappVisibility = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyFile = null)
         {
             var __workflow_knowledgeId = WorkflowExpression.Compile(knowledgeId, nameof(knowledgeId), required: true);
             var __workflow_bodysettingsappVisibility = WorkflowExpression.Compile(bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
             return new DeferredBodyAction<KnowledgePatchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/knowledge/{0}", __workflow_knowledgeId.WithUrlEncoding(1)));
@@ -515,9 +519,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyfile != null)
+                if (__workflow_bodyFile != null)
                 {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
+                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
                     bodypropCount++;
                 }
 
@@ -533,10 +537,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<TonesGetResponseItem[], ApiConnectionActionConfiguration> TonesGet()
         {
-            var apiCallPath = "/v1/tones";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TonesGetResponseItem[]>(callPayload);
+            return new DeferredBodyAction<TonesGetResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/tones";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TonesGetResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]

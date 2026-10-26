@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
 {
     using System.Linq.Expressions;
@@ -2349,7 +2350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO, ApiConnectionActionConfiguration> OpportunityCreate(Expression<Func<string>> bodyname, Expression<Func<string>> bodycloseDate, Expression<Func<string>> bodytypeId = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodyaccountId = null, Expression<Func<double>> bodyamount = null, Expression<Func<string>> bodyforecastCategoryId = null, Expression<Func<string>> bodysalesPipelineId = null, Expression<Func<int>> bodyprobability = null, Expression<Func<int>> bodyscore = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyquoteId = null, Expression<Func<string>> bodyopportunityStatusId = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodyaccountSourceTypeId = null, Expression<Func<string>> bodynextStep = null, Expression<Func<bool>> bodybudgetConfirmed = null, Expression<Func<bool>> bodydiscoveryCompleted = null, Expression<Func<double>> bodyexpectedRevenue = null, Expression<Func<string>> bodylossReasonId = null, Expression<Func<bool>> bodyprivate = null)
+        public IBodyWorkflowAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO, ApiConnectionActionConfiguration> OpportunityCreate(Expression<Func<string>> bodyname, Expression<Func<string>> bodycloseDate, Expression<Func<string>> bodytypeId = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodyaccountId = null, Expression<Func<double>> bodyamount = null, Expression<Func<string>> bodyforecastCategoryId = null, Expression<Func<string>> bodysalesPipelineId = null, Expression<Func<int>> bodyprobability = null, Expression<Func<int>> bodyscore = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyquoteId = null, Expression<Func<string>> bodyopportunityStatusId = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodyaccountSourceTypeId = null, Expression<Func<string>> bodynextStep = null, Expression<Func<bool>> bodybudgetConfirmed = null, Expression<Func<bool>> bodydiscoveryCompleted = null, Expression<Func<double>> bodyexpectedRevenue = null, Expression<Func<string>> bodylossReasonId = null, Expression<Func<bool>> bodyPrivate = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodycloseDate = WorkflowExpression.Compile(bodycloseDate, nameof(bodycloseDate), required: true);
@@ -2371,7 +2372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_bodydiscoveryCompleted = WorkflowExpression.Compile(bodydiscoveryCompleted, nameof(bodydiscoveryCompleted), required: false);
             var __workflow_bodyexpectedRevenue = WorkflowExpression.Compile(bodyexpectedRevenue, nameof(bodyexpectedRevenue), required: false);
             var __workflow_bodylossReasonId = WorkflowExpression.Compile(bodylossReasonId, nameof(bodylossReasonId), required: false);
-            var __workflow_bodyprivate = WorkflowExpression.Compile(bodyprivate, nameof(bodyprivate), required: false);
+            var __workflow_bodyPrivate = WorkflowExpression.Compile(bodyPrivate, nameof(bodyPrivate), required: false);
             return new DeferredBodyAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Opportunity";
@@ -2491,9 +2492,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyprivate != null)
+                if (__workflow_bodyPrivate != null)
                 {
-                    body["private"] = ExpressionConverter.ConvertO(__workflow_bodyprivate);
+                    body["private"] = ExpressionConverter.ConvertO(__workflow_bodyPrivate);
                     bodypropCount++;
                 }
 
@@ -2541,7 +2542,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO, ApiConnectionActionConfiguration> OpportunityUpdate(Expression<Func<string>> id, Expression<Func<string>> bodytypeId = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodyaccountId = null, Expression<Func<string>> bodyname = null, Expression<Func<double>> bodyamount = null, Expression<Func<string>> bodyforecastCategoryId = null, Expression<Func<string>> bodycloseDate = null, Expression<Func<int>> bodyprobability = null, Expression<Func<int>> bodyscore = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodysalesPipelineId = null, Expression<Func<string>> bodyquoteId = null, Expression<Func<string>> bodyopportunityStatusId = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodyaccountSourceTypeId = null, Expression<Func<string>> bodynextStep = null, Expression<Func<bool>> bodybudgetConfirmed = null, Expression<Func<bool>> bodydiscoveryCompleted = null, Expression<Func<double>> bodyexpectedRevenue = null, Expression<Func<string>> bodylossReasonId = null, Expression<Func<bool>> bodyprivate = null, Expression<Func<string>> bodylastModifiedBy = null)
+        public IBodyWorkflowAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO, ApiConnectionActionConfiguration> OpportunityUpdate(Expression<Func<string>> id, Expression<Func<string>> bodytypeId = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodyaccountId = null, Expression<Func<string>> bodyname = null, Expression<Func<double>> bodyamount = null, Expression<Func<string>> bodyforecastCategoryId = null, Expression<Func<string>> bodycloseDate = null, Expression<Func<int>> bodyprobability = null, Expression<Func<int>> bodyscore = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodysalesPipelineId = null, Expression<Func<string>> bodyquoteId = null, Expression<Func<string>> bodyopportunityStatusId = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodyaccountSourceTypeId = null, Expression<Func<string>> bodynextStep = null, Expression<Func<bool>> bodybudgetConfirmed = null, Expression<Func<bool>> bodydiscoveryCompleted = null, Expression<Func<double>> bodyexpectedRevenue = null, Expression<Func<string>> bodylossReasonId = null, Expression<Func<bool>> bodyPrivate = null, Expression<Func<string>> bodylastModifiedBy = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodytypeId = WorkflowExpression.Compile(bodytypeId, nameof(bodytypeId), required: false);
@@ -2564,7 +2565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_bodydiscoveryCompleted = WorkflowExpression.Compile(bodydiscoveryCompleted, nameof(bodydiscoveryCompleted), required: false);
             var __workflow_bodyexpectedRevenue = WorkflowExpression.Compile(bodyexpectedRevenue, nameof(bodyexpectedRevenue), required: false);
             var __workflow_bodylossReasonId = WorkflowExpression.Compile(bodylossReasonId, nameof(bodylossReasonId), required: false);
-            var __workflow_bodyprivate = WorkflowExpression.Compile(bodyprivate, nameof(bodyprivate), required: false);
+            var __workflow_bodyPrivate = WorkflowExpression.Compile(bodyPrivate, nameof(bodyPrivate), required: false);
             var __workflow_bodylastModifiedBy = WorkflowExpression.Compile(bodylastModifiedBy, nameof(bodylastModifiedBy), required: false);
             return new DeferredBodyAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO, ApiConnectionActionConfiguration>(() =>
             {
@@ -2693,9 +2694,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyprivate != null)
+                if (__workflow_bodyPrivate != null)
                 {
-                    body["private"] = ExpressionConverter.ConvertO(__workflow_bodyprivate);
+                    body["private"] = ExpressionConverter.ConvertO(__workflow_bodyPrivate);
                     bodypropCount++;
                 }
 
@@ -5780,34 +5781,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string Email { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CustomerApiFeaturesAccountsAccountDTOAiSentimentType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyaiSentimentInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4
     }
 
     public class CustomerApiFeaturesContactsContact

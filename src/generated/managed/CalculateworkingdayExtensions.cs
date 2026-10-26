@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
 {
     using System.Linq.Expressions;
@@ -152,10 +153,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
         public IBodyWorkflowAction<CountryResponse, ApiConnectionActionConfiguration> Country()
         {
-            var apiCallPath = "/bank-holidays.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CountryResponse>(callPayload);
+            return new DeferredBodyAction<CountryResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/bank-holidays.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CountryResponse>(callPayload);
+            });
         }
     }
 

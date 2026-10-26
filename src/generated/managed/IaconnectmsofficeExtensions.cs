@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 {
     using System.Linq.Expressions;
@@ -6207,14 +6208,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSExcelCheckOLEObjectResponse, ApiConnectionActionConfiguration> MSExcelCheckOLEObject(Expression<Func<string>> mSExcelCheckOLEObjectoLEObjectName, Expression<Func<string>> mSExcelCheckOLEObjectworkflow, Expression<Func<int>> mSExcelCheckOLEObjecthandle = null, Expression<Func<string>> mSExcelCheckOLEObjectworkbookName = null, Expression<Func<string>> mSExcelCheckOLEObjectworksheetName = null, Expression<Func<bool>> mSExcelCheckOLEObjectchecked = null, Expression<Func<bool>> mSExcelCheckOLEObjectrunInBackground = null)
+        public IBodyWorkflowAction<MSExcelCheckOLEObjectResponse, ApiConnectionActionConfiguration> MSExcelCheckOLEObject(Expression<Func<string>> mSExcelCheckOLEObjectoLEObjectName, Expression<Func<string>> mSExcelCheckOLEObjectworkflow, Expression<Func<int>> mSExcelCheckOLEObjecthandle = null, Expression<Func<string>> mSExcelCheckOLEObjectworkbookName = null, Expression<Func<string>> mSExcelCheckOLEObjectworksheetName = null, Expression<Func<bool>> mSExcelCheckOLEObjectChecked = null, Expression<Func<bool>> mSExcelCheckOLEObjectrunInBackground = null)
         {
             var __workflow_mSExcelCheckOLEObjectoLEObjectName = WorkflowExpression.Compile(mSExcelCheckOLEObjectoLEObjectName, nameof(mSExcelCheckOLEObjectoLEObjectName), required: true);
             var __workflow_mSExcelCheckOLEObjectworkflow = WorkflowExpression.Compile(mSExcelCheckOLEObjectworkflow, nameof(mSExcelCheckOLEObjectworkflow), required: true);
             var __workflow_mSExcelCheckOLEObjecthandle = WorkflowExpression.Compile(mSExcelCheckOLEObjecthandle, nameof(mSExcelCheckOLEObjecthandle), required: false);
             var __workflow_mSExcelCheckOLEObjectworkbookName = WorkflowExpression.Compile(mSExcelCheckOLEObjectworkbookName, nameof(mSExcelCheckOLEObjectworkbookName), required: false);
             var __workflow_mSExcelCheckOLEObjectworksheetName = WorkflowExpression.Compile(mSExcelCheckOLEObjectworksheetName, nameof(mSExcelCheckOLEObjectworksheetName), required: false);
-            var __workflow_mSExcelCheckOLEObjectchecked = WorkflowExpression.Compile(mSExcelCheckOLEObjectchecked, nameof(mSExcelCheckOLEObjectchecked), required: false);
+            var __workflow_mSExcelCheckOLEObjectChecked = WorkflowExpression.Compile(mSExcelCheckOLEObjectChecked, nameof(mSExcelCheckOLEObjectChecked), required: false);
             var __workflow_mSExcelCheckOLEObjectrunInBackground = WorkflowExpression.Compile(mSExcelCheckOLEObjectrunInBackground, nameof(mSExcelCheckOLEObjectrunInBackground), required: false);
             return new DeferredBodyAction<MSExcelCheckOLEObjectResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -6253,11 +6254,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
 
                 mSExcelCheckOLEObjectpropCount++;
                 mSExcelCheckOLEObject["OLEObjectName"] = ExpressionConverter.ConvertO(__workflow_mSExcelCheckOLEObjectoLEObjectName);
-                if (__workflow_mSExcelCheckOLEObjectchecked != null)
+                if (__workflow_mSExcelCheckOLEObjectChecked != null)
                 {
-                    if (__workflow_mSExcelCheckOLEObjectchecked != null)
+                    if (__workflow_mSExcelCheckOLEObjectChecked != null)
                     {
-                        mSExcelCheckOLEObject["Checked"] = ExpressionConverter.ConvertO(__workflow_mSExcelCheckOLEObjectchecked);
+                        mSExcelCheckOLEObject["Checked"] = ExpressionConverter.ConvertO(__workflow_mSExcelCheckOLEObjectChecked);
                         mSExcelCheckOLEObjectpropCount++;
                     }
 
@@ -7201,9 +7202,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MSOutlookMarkEmailAsRead(Expression<Func<string>> mSOutlookMarkEmailAsReadentryID, Expression<Func<string>> mSOutlookMarkEmailAsReadworkflow, Expression<Func<bool>> mSOutlookMarkEmailAsReadread = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MSOutlookMarkEmailAsRead(Expression<Func<string>> mSOutlookMarkEmailAsReadentryId, Expression<Func<string>> mSOutlookMarkEmailAsReadworkflow, Expression<Func<bool>> mSOutlookMarkEmailAsReadread = null)
         {
-            var __workflow_mSOutlookMarkEmailAsReadentryID = WorkflowExpression.Compile(mSOutlookMarkEmailAsReadentryID, nameof(mSOutlookMarkEmailAsReadentryID), required: true);
+            var __workflow_mSOutlookMarkEmailAsReadentryId = WorkflowExpression.Compile(mSOutlookMarkEmailAsReadentryId, nameof(mSOutlookMarkEmailAsReadentryId), required: true);
             var __workflow_mSOutlookMarkEmailAsReadworkflow = WorkflowExpression.Compile(mSOutlookMarkEmailAsReadworkflow, nameof(mSOutlookMarkEmailAsReadworkflow), required: true);
             var __workflow_mSOutlookMarkEmailAsReadread = WorkflowExpression.Compile(mSOutlookMarkEmailAsReadread, nameof(mSOutlookMarkEmailAsReadread), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -7214,7 +7215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 var mSOutlookMarkEmailAsRead = new JObject();
                 var mSOutlookMarkEmailAsReadpropCount = 0;
                 mSOutlookMarkEmailAsReadpropCount++;
-                mSOutlookMarkEmailAsRead["EntryID"] = ExpressionConverter.ConvertO(__workflow_mSOutlookMarkEmailAsReadentryID);
+                mSOutlookMarkEmailAsRead["EntryID"] = ExpressionConverter.ConvertO(__workflow_mSOutlookMarkEmailAsReadentryId);
                 if (__workflow_mSOutlookMarkEmailAsReadread != null)
                 {
                     if (__workflow_mSOutlookMarkEmailAsReadread != null)
@@ -7243,9 +7244,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSOutlookGetEmailBodyResponse, ApiConnectionActionConfiguration> MSOutlookGetEmailBody(Expression<Func<string>> mSOutlookGetEmailBodyentryID, Expression<Func<string>> mSOutlookGetEmailBodyworkflow, Expression<Func<bool>> mSOutlookGetEmailBodyclickAllowButtonIfRequired = null)
+        public IBodyWorkflowAction<MSOutlookGetEmailBodyResponse, ApiConnectionActionConfiguration> MSOutlookGetEmailBody(Expression<Func<string>> mSOutlookGetEmailBodyentryId, Expression<Func<string>> mSOutlookGetEmailBodyworkflow, Expression<Func<bool>> mSOutlookGetEmailBodyclickAllowButtonIfRequired = null)
         {
-            var __workflow_mSOutlookGetEmailBodyentryID = WorkflowExpression.Compile(mSOutlookGetEmailBodyentryID, nameof(mSOutlookGetEmailBodyentryID), required: true);
+            var __workflow_mSOutlookGetEmailBodyentryId = WorkflowExpression.Compile(mSOutlookGetEmailBodyentryId, nameof(mSOutlookGetEmailBodyentryId), required: true);
             var __workflow_mSOutlookGetEmailBodyworkflow = WorkflowExpression.Compile(mSOutlookGetEmailBodyworkflow, nameof(mSOutlookGetEmailBodyworkflow), required: true);
             var __workflow_mSOutlookGetEmailBodyclickAllowButtonIfRequired = WorkflowExpression.Compile(mSOutlookGetEmailBodyclickAllowButtonIfRequired, nameof(mSOutlookGetEmailBodyclickAllowButtonIfRequired), required: false);
             return new DeferredBodyAction<MSOutlookGetEmailBodyResponse, ApiConnectionActionConfiguration>(() =>
@@ -7256,7 +7257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 var mSOutlookGetEmailBody = new JObject();
                 var mSOutlookGetEmailBodypropCount = 0;
                 mSOutlookGetEmailBodypropCount++;
-                mSOutlookGetEmailBody["EntryID"] = ExpressionConverter.ConvertO(__workflow_mSOutlookGetEmailBodyentryID);
+                mSOutlookGetEmailBody["EntryID"] = ExpressionConverter.ConvertO(__workflow_mSOutlookGetEmailBodyentryId);
                 if (__workflow_mSOutlookGetEmailBodyclickAllowButtonIfRequired != null)
                 {
                     if (__workflow_mSOutlookGetEmailBodyclickAllowButtonIfRequired != null)
@@ -7285,9 +7286,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSOutlookGetEmailAttachmentFilenamesResponse, ApiConnectionActionConfiguration> MSOutlookGetEmailAttachmentFilenames(Expression<Func<string>> mSOutlookGetEmailAttachmentFilenamesentryID, Expression<Func<string>> mSOutlookGetEmailAttachmentFilenamesworkflow, Expression<Func<bool>> mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired = null)
+        public IBodyWorkflowAction<MSOutlookGetEmailAttachmentFilenamesResponse, ApiConnectionActionConfiguration> MSOutlookGetEmailAttachmentFilenames(Expression<Func<string>> mSOutlookGetEmailAttachmentFilenamesentryId, Expression<Func<string>> mSOutlookGetEmailAttachmentFilenamesworkflow, Expression<Func<bool>> mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired = null)
         {
-            var __workflow_mSOutlookGetEmailAttachmentFilenamesentryID = WorkflowExpression.Compile(mSOutlookGetEmailAttachmentFilenamesentryID, nameof(mSOutlookGetEmailAttachmentFilenamesentryID), required: true);
+            var __workflow_mSOutlookGetEmailAttachmentFilenamesentryId = WorkflowExpression.Compile(mSOutlookGetEmailAttachmentFilenamesentryId, nameof(mSOutlookGetEmailAttachmentFilenamesentryId), required: true);
             var __workflow_mSOutlookGetEmailAttachmentFilenamesworkflow = WorkflowExpression.Compile(mSOutlookGetEmailAttachmentFilenamesworkflow, nameof(mSOutlookGetEmailAttachmentFilenamesworkflow), required: true);
             var __workflow_mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired = WorkflowExpression.Compile(mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired, nameof(mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired), required: false);
             return new DeferredBodyAction<MSOutlookGetEmailAttachmentFilenamesResponse, ApiConnectionActionConfiguration>(() =>
@@ -7298,7 +7299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 var mSOutlookGetEmailAttachmentFilenames = new JObject();
                 var mSOutlookGetEmailAttachmentFilenamespropCount = 0;
                 mSOutlookGetEmailAttachmentFilenamespropCount++;
-                mSOutlookGetEmailAttachmentFilenames["EntryID"] = ExpressionConverter.ConvertO(__workflow_mSOutlookGetEmailAttachmentFilenamesentryID);
+                mSOutlookGetEmailAttachmentFilenames["EntryID"] = ExpressionConverter.ConvertO(__workflow_mSOutlookGetEmailAttachmentFilenamesentryId);
                 if (__workflow_mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired != null)
                 {
                     if (__workflow_mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired != null)
@@ -7327,9 +7328,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IBodyWorkflowAction<MSOutlookSaveEmailAttachmentsAsFileResponse, ApiConnectionActionConfiguration> MSOutlookSaveEmailAttachmentsAsFile(Expression<Func<string>> mSOutlookSaveEmailAttachmentsAsFileentryID, Expression<Func<string>> mSOutlookSaveEmailAttachmentsAsFileworkflow, Expression<Func<string>> mSOutlookSaveEmailAttachmentsAsFilesaveFolderPath = null, Expression<Func<bool>> mSOutlookSaveEmailAttachmentsAsFilecreateFolder = null, Expression<Func<string>> mSOutlookSaveEmailAttachmentsAsFileonlySaveAttachmentsMatchingWildcard = null, Expression<Func<bool>> mSOutlookSaveEmailAttachmentsAsFilesaveHiddenAttachments = null, Expression<Func<bool>> mSOutlookSaveEmailAttachmentsAsFileclickAllowButtonIfRequired = null)
+        public IBodyWorkflowAction<MSOutlookSaveEmailAttachmentsAsFileResponse, ApiConnectionActionConfiguration> MSOutlookSaveEmailAttachmentsAsFile(Expression<Func<string>> mSOutlookSaveEmailAttachmentsAsFileentryId, Expression<Func<string>> mSOutlookSaveEmailAttachmentsAsFileworkflow, Expression<Func<string>> mSOutlookSaveEmailAttachmentsAsFilesaveFolderPath = null, Expression<Func<bool>> mSOutlookSaveEmailAttachmentsAsFilecreateFolder = null, Expression<Func<string>> mSOutlookSaveEmailAttachmentsAsFileonlySaveAttachmentsMatchingWildcard = null, Expression<Func<bool>> mSOutlookSaveEmailAttachmentsAsFilesaveHiddenAttachments = null, Expression<Func<bool>> mSOutlookSaveEmailAttachmentsAsFileclickAllowButtonIfRequired = null)
         {
-            var __workflow_mSOutlookSaveEmailAttachmentsAsFileentryID = WorkflowExpression.Compile(mSOutlookSaveEmailAttachmentsAsFileentryID, nameof(mSOutlookSaveEmailAttachmentsAsFileentryID), required: true);
+            var __workflow_mSOutlookSaveEmailAttachmentsAsFileentryId = WorkflowExpression.Compile(mSOutlookSaveEmailAttachmentsAsFileentryId, nameof(mSOutlookSaveEmailAttachmentsAsFileentryId), required: true);
             var __workflow_mSOutlookSaveEmailAttachmentsAsFileworkflow = WorkflowExpression.Compile(mSOutlookSaveEmailAttachmentsAsFileworkflow, nameof(mSOutlookSaveEmailAttachmentsAsFileworkflow), required: true);
             var __workflow_mSOutlookSaveEmailAttachmentsAsFilesaveFolderPath = WorkflowExpression.Compile(mSOutlookSaveEmailAttachmentsAsFilesaveFolderPath, nameof(mSOutlookSaveEmailAttachmentsAsFilesaveFolderPath), required: false);
             var __workflow_mSOutlookSaveEmailAttachmentsAsFilecreateFolder = WorkflowExpression.Compile(mSOutlookSaveEmailAttachmentsAsFilecreateFolder, nameof(mSOutlookSaveEmailAttachmentsAsFilecreateFolder), required: false);
@@ -7344,7 +7345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 var mSOutlookSaveEmailAttachmentsAsFile = new JObject();
                 var mSOutlookSaveEmailAttachmentsAsFilepropCount = 0;
                 mSOutlookSaveEmailAttachmentsAsFilepropCount++;
-                mSOutlookSaveEmailAttachmentsAsFile["EntryID"] = ExpressionConverter.ConvertO(__workflow_mSOutlookSaveEmailAttachmentsAsFileentryID);
+                mSOutlookSaveEmailAttachmentsAsFile["EntryID"] = ExpressionConverter.ConvertO(__workflow_mSOutlookSaveEmailAttachmentsAsFileentryId);
                 if (__workflow_mSOutlookSaveEmailAttachmentsAsFilesaveFolderPath != null)
                 {
                     mSOutlookSaveEmailAttachmentsAsFile["SaveFolderPath"] = ExpressionConverter.ConvertO(__workflow_mSOutlookSaveEmailAttachmentsAsFilesaveFolderPath);
@@ -7417,9 +7418,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MSOutlookDeleteEmail(Expression<Func<string>> mSOutlookDeleteEmailentryID, Expression<Func<string>> mSOutlookDeleteEmailworkflow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MSOutlookDeleteEmail(Expression<Func<string>> mSOutlookDeleteEmailentryId, Expression<Func<string>> mSOutlookDeleteEmailworkflow)
         {
-            var __workflow_mSOutlookDeleteEmailentryID = WorkflowExpression.Compile(mSOutlookDeleteEmailentryID, nameof(mSOutlookDeleteEmailentryID), required: true);
+            var __workflow_mSOutlookDeleteEmailentryId = WorkflowExpression.Compile(mSOutlookDeleteEmailentryId, nameof(mSOutlookDeleteEmailentryId), required: true);
             var __workflow_mSOutlookDeleteEmailworkflow = WorkflowExpression.Compile(mSOutlookDeleteEmailworkflow, nameof(mSOutlookDeleteEmailworkflow), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -7429,7 +7430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 var mSOutlookDeleteEmail = new JObject();
                 var mSOutlookDeleteEmailpropCount = 0;
                 mSOutlookDeleteEmailpropCount++;
-                mSOutlookDeleteEmail["EntryID"] = ExpressionConverter.ConvertO(__workflow_mSOutlookDeleteEmailentryID);
+                mSOutlookDeleteEmail["EntryID"] = ExpressionConverter.ConvertO(__workflow_mSOutlookDeleteEmailentryId);
                 mSOutlookDeleteEmailpropCount++;
                 mSOutlookDeleteEmail["Workflow"] = ExpressionConverter.ConvertO(__workflow_mSOutlookDeleteEmailworkflow);
                 if (mSOutlookDeleteEmailpropCount > 0)
@@ -7442,9 +7443,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MSOutlookMoveEmail(Expression<Func<string>> mSOutlookMoveEmailentryID, Expression<Func<string>> mSOutlookMoveEmailworkflow, Expression<Func<string>> mSOutlookMoveEmaildestinationFolder = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MSOutlookMoveEmail(Expression<Func<string>> mSOutlookMoveEmailentryId, Expression<Func<string>> mSOutlookMoveEmailworkflow, Expression<Func<string>> mSOutlookMoveEmaildestinationFolder = null)
         {
-            var __workflow_mSOutlookMoveEmailentryID = WorkflowExpression.Compile(mSOutlookMoveEmailentryID, nameof(mSOutlookMoveEmailentryID), required: true);
+            var __workflow_mSOutlookMoveEmailentryId = WorkflowExpression.Compile(mSOutlookMoveEmailentryId, nameof(mSOutlookMoveEmailentryId), required: true);
             var __workflow_mSOutlookMoveEmailworkflow = WorkflowExpression.Compile(mSOutlookMoveEmailworkflow, nameof(mSOutlookMoveEmailworkflow), required: true);
             var __workflow_mSOutlookMoveEmaildestinationFolder = WorkflowExpression.Compile(mSOutlookMoveEmaildestinationFolder, nameof(mSOutlookMoveEmaildestinationFolder), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -7455,7 +7456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 var mSOutlookMoveEmail = new JObject();
                 var mSOutlookMoveEmailpropCount = 0;
                 mSOutlookMoveEmailpropCount++;
-                mSOutlookMoveEmail["EntryID"] = ExpressionConverter.ConvertO(__workflow_mSOutlookMoveEmailentryID);
+                mSOutlookMoveEmail["EntryID"] = ExpressionConverter.ConvertO(__workflow_mSOutlookMoveEmailentryId);
                 if (__workflow_mSOutlookMoveEmaildestinationFolder != null)
                 {
                     mSOutlookMoveEmail["DestinationFolder"] = ExpressionConverter.ConvertO(__workflow_mSOutlookMoveEmaildestinationFolder);
@@ -7660,9 +7661,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MSOutlookReplyToEmail(Expression<Func<string>> mSOutlookReplyToEmailentryID, Expression<Func<string>> mSOutlookReplyToEmailworkflow, Expression<Func<bool>> mSOutlookReplyToEmailreplyToAll = null, Expression<Func<mSOutlookReplyToEmailbodyFormatInput>> mSOutlookReplyToEmailbodyFormat = null, Expression<Func<string>> mSOutlookReplyToEmailbody = null, Expression<Func<string>> mSOutlookReplyToEmailhTMLBody = null, Expression<Func<string>> mSOutlookReplyToEmailrTFBody = null, Expression<Func<string>> mSOutlookReplyToEmailattachmentFilenamesJSON = null, Expression<Func<bool>> mSOutlookReplyToEmaildontSendIfAttachmentFilenameMissing = null, Expression<Func<bool>> mSOutlookReplyToEmailclickAllowButtonIfRequired = null, Expression<Func<string>> mSOutlookReplyToEmailvotingOptions = null, Expression<Func<string>> mSOutlookReplyToEmailsendAsSMTPAddress = null, Expression<Func<bool>> mSOutlookReplyToEmailbodyContainsStoredPassword = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MSOutlookReplyToEmail(Expression<Func<string>> mSOutlookReplyToEmailentryId, Expression<Func<string>> mSOutlookReplyToEmailworkflow, Expression<Func<bool>> mSOutlookReplyToEmailreplyToAll = null, Expression<Func<mSOutlookReplyToEmailbodyFormatInput>> mSOutlookReplyToEmailbodyFormat = null, Expression<Func<string>> mSOutlookReplyToEmailbody = null, Expression<Func<string>> mSOutlookReplyToEmailhTMLBody = null, Expression<Func<string>> mSOutlookReplyToEmailrTFBody = null, Expression<Func<string>> mSOutlookReplyToEmailattachmentFilenamesJSON = null, Expression<Func<bool>> mSOutlookReplyToEmaildontSendIfAttachmentFilenameMissing = null, Expression<Func<bool>> mSOutlookReplyToEmailclickAllowButtonIfRequired = null, Expression<Func<string>> mSOutlookReplyToEmailvotingOptions = null, Expression<Func<string>> mSOutlookReplyToEmailsendAsSMTPAddress = null, Expression<Func<bool>> mSOutlookReplyToEmailbodyContainsStoredPassword = null)
         {
-            var __workflow_mSOutlookReplyToEmailentryID = WorkflowExpression.Compile(mSOutlookReplyToEmailentryID, nameof(mSOutlookReplyToEmailentryID), required: true);
+            var __workflow_mSOutlookReplyToEmailentryId = WorkflowExpression.Compile(mSOutlookReplyToEmailentryId, nameof(mSOutlookReplyToEmailentryId), required: true);
             var __workflow_mSOutlookReplyToEmailworkflow = WorkflowExpression.Compile(mSOutlookReplyToEmailworkflow, nameof(mSOutlookReplyToEmailworkflow), required: true);
             var __workflow_mSOutlookReplyToEmailreplyToAll = WorkflowExpression.Compile(mSOutlookReplyToEmailreplyToAll, nameof(mSOutlookReplyToEmailreplyToAll), required: false);
             var __workflow_mSOutlookReplyToEmailbodyFormat = WorkflowExpression.Compile(mSOutlookReplyToEmailbodyFormat, nameof(mSOutlookReplyToEmailbodyFormat), required: false);
@@ -7683,7 +7684,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 var mSOutlookReplyToEmail = new JObject();
                 var mSOutlookReplyToEmailpropCount = 0;
                 mSOutlookReplyToEmailpropCount++;
-                mSOutlookReplyToEmail["EntryID"] = ExpressionConverter.ConvertO(__workflow_mSOutlookReplyToEmailentryID);
+                mSOutlookReplyToEmail["EntryID"] = ExpressionConverter.ConvertO(__workflow_mSOutlookReplyToEmailentryId);
                 if (__workflow_mSOutlookReplyToEmailreplyToAll != null)
                 {
                     if (__workflow_mSOutlookReplyToEmailreplyToAll != null)
@@ -7802,9 +7803,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MSOutlookForwardEmail(Expression<Func<string>> mSOutlookForwardEmailentryID, Expression<Func<string>> mSOutlookForwardEmailworkflow, Expression<Func<string>> mSOutlookForwardEmailto = null, Expression<Func<string>> mSOutlookForwardEmailcC = null, Expression<Func<string>> mSOutlookForwardEmailbCC = null, Expression<Func<bool>> mSOutlookForwardEmailoverrideSubject = null, Expression<Func<string>> mSOutlookForwardEmailsubject = null, Expression<Func<bool>> mSOutlookForwardEmailoverrideBody = null, Expression<Func<mSOutlookForwardEmailbodyFormatInput>> mSOutlookForwardEmailbodyFormat = null, Expression<Func<string>> mSOutlookForwardEmailbody = null, Expression<Func<string>> mSOutlookForwardEmailhTMLBody = null, Expression<Func<string>> mSOutlookForwardEmailrTFBody = null, Expression<Func<bool>> mSOutlookForwardEmailclickAllowButtonIfRequired = null, Expression<Func<string>> mSOutlookForwardEmailvotingOptions = null, Expression<Func<string>> mSOutlookForwardEmailsendAsSMTPAddress = null, Expression<Func<bool>> mSOutlookForwardEmailincludeExistingHiddenAttachments = null, Expression<Func<bool>> mSOutlookForwardEmailincludeExistingVisibleAttachments = null, Expression<Func<string>> mSOutlookForwardEmailattachmentFilenamesJSON = null, Expression<Func<bool>> mSOutlookForwardEmaildontSendIfAttachmentFilenameMissing = null, Expression<Func<bool>> mSOutlookForwardEmailbodyContainsStoredPassword = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MSOutlookForwardEmail(Expression<Func<string>> mSOutlookForwardEmailentryId, Expression<Func<string>> mSOutlookForwardEmailworkflow, Expression<Func<string>> mSOutlookForwardEmailto = null, Expression<Func<string>> mSOutlookForwardEmailcC = null, Expression<Func<string>> mSOutlookForwardEmailbCC = null, Expression<Func<bool>> mSOutlookForwardEmailoverrideSubject = null, Expression<Func<string>> mSOutlookForwardEmailsubject = null, Expression<Func<bool>> mSOutlookForwardEmailoverrideBody = null, Expression<Func<mSOutlookForwardEmailbodyFormatInput>> mSOutlookForwardEmailbodyFormat = null, Expression<Func<string>> mSOutlookForwardEmailbody = null, Expression<Func<string>> mSOutlookForwardEmailhTMLBody = null, Expression<Func<string>> mSOutlookForwardEmailrTFBody = null, Expression<Func<bool>> mSOutlookForwardEmailclickAllowButtonIfRequired = null, Expression<Func<string>> mSOutlookForwardEmailvotingOptions = null, Expression<Func<string>> mSOutlookForwardEmailsendAsSMTPAddress = null, Expression<Func<bool>> mSOutlookForwardEmailincludeExistingHiddenAttachments = null, Expression<Func<bool>> mSOutlookForwardEmailincludeExistingVisibleAttachments = null, Expression<Func<string>> mSOutlookForwardEmailattachmentFilenamesJSON = null, Expression<Func<bool>> mSOutlookForwardEmaildontSendIfAttachmentFilenameMissing = null, Expression<Func<bool>> mSOutlookForwardEmailbodyContainsStoredPassword = null)
         {
-            var __workflow_mSOutlookForwardEmailentryID = WorkflowExpression.Compile(mSOutlookForwardEmailentryID, nameof(mSOutlookForwardEmailentryID), required: true);
+            var __workflow_mSOutlookForwardEmailentryId = WorkflowExpression.Compile(mSOutlookForwardEmailentryId, nameof(mSOutlookForwardEmailentryId), required: true);
             var __workflow_mSOutlookForwardEmailworkflow = WorkflowExpression.Compile(mSOutlookForwardEmailworkflow, nameof(mSOutlookForwardEmailworkflow), required: true);
             var __workflow_mSOutlookForwardEmailto = WorkflowExpression.Compile(mSOutlookForwardEmailto, nameof(mSOutlookForwardEmailto), required: false);
             var __workflow_mSOutlookForwardEmailcC = WorkflowExpression.Compile(mSOutlookForwardEmailcC, nameof(mSOutlookForwardEmailcC), required: false);
@@ -7832,7 +7833,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
                 var mSOutlookForwardEmail = new JObject();
                 var mSOutlookForwardEmailpropCount = 0;
                 mSOutlookForwardEmailpropCount++;
-                mSOutlookForwardEmail["EntryID"] = ExpressionConverter.ConvertO(__workflow_mSOutlookForwardEmailentryID);
+                mSOutlookForwardEmail["EntryID"] = ExpressionConverter.ConvertO(__workflow_mSOutlookForwardEmailentryId);
                 if (__workflow_mSOutlookForwardEmailto != null)
                 {
                     mSOutlookForwardEmail["To"] = ExpressionConverter.ConvertO(__workflow_mSOutlookForwardEmailto);
@@ -9308,7 +9309,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
     public class MSOutlookGetFirstEmailResponse
     {
         public int NumberOfEmailsMatchFilter { get; set; }
-        public string EmailEntryID { get; set; }
+
+        [JsonProperty("EmailEntryID")]
+        public string EmailEntryId { get; set; }
         public string SenderEmailType { get; set; }
         public string SenderEmailAddress { get; set; }
         public string ReceivedByName { get; set; }

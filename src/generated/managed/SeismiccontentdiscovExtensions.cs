@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
 {
     using System.Linq.Expressions;
@@ -46,19 +47,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiccontentdiscov")]
         public IBodyWorkflowAction<SeismicDocCenterContentItem[], ApiConnectionActionConfiguration> GetUserFavorites()
         {
-            var apiCallPath = "/integration/v2/users/favorites";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SeismicDocCenterContentItem[]>(callPayload);
+            return new DeferredBodyAction<SeismicDocCenterContentItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/integration/v2/users/favorites";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SeismicDocCenterContentItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiccontentdiscov")]
         public IBodyWorkflowAction<SeismicDocCenterContentItem[], ApiConnectionActionConfiguration> GetUserRecentContents()
         {
-            var apiCallPath = "/integration/v2/users/recents";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SeismicDocCenterContentItem[]>(callPayload);
+            return new DeferredBodyAction<SeismicDocCenterContentItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/integration/v2/users/recents";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SeismicDocCenterContentItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiccontentdiscov")]

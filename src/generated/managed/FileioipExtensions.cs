@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
 {
     using System.Linq.Expressions;
@@ -36,9 +37,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
-        public IBodyWorkflowAction<FileUploadResponse, ApiConnectionActionConfiguration> FileUpload(Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyexpires = null, Expression<Func<int>> bodymaxDownloads = null, Expression<Func<bool>> bodyautoDelete = null)
+        public IBodyWorkflowAction<FileUploadResponse, ApiConnectionActionConfiguration> FileUpload(Expression<Func<string>> bodyFile = null, Expression<Func<string>> bodyexpires = null, Expression<Func<int>> bodymaxDownloads = null, Expression<Func<bool>> bodyautoDelete = null)
         {
-            var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
             var __workflow_bodyexpires = WorkflowExpression.Compile(bodyexpires, nameof(bodyexpires), required: false);
             var __workflow_bodymaxDownloads = WorkflowExpression.Compile(bodymaxDownloads, nameof(bodymaxDownloads), required: false);
             var __workflow_bodyautoDelete = WorkflowExpression.Compile(bodyautoDelete, nameof(bodyautoDelete), required: false);
@@ -49,9 +50,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (__workflow_bodyfile != null)
+                if (__workflow_bodyFile != null)
                 {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
+                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
                     bodypropCount++;
                 }
 
@@ -83,10 +84,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
-        public IBodyWorkflowAction<FileUpdateResponse, ApiConnectionActionConfiguration> FileUpdate(Expression<Func<string>> key, Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyexpires = null, Expression<Func<int>> bodymaxDownloads = null, Expression<Func<bool>> bodyautoDelete = null)
+        public IBodyWorkflowAction<FileUpdateResponse, ApiConnectionActionConfiguration> FileUpdate(Expression<Func<string>> key, Expression<Func<string>> bodyFile = null, Expression<Func<string>> bodyexpires = null, Expression<Func<int>> bodymaxDownloads = null, Expression<Func<bool>> bodyautoDelete = null)
         {
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
-            var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
             var __workflow_bodyexpires = WorkflowExpression.Compile(bodyexpires, nameof(bodyexpires), required: false);
             var __workflow_bodymaxDownloads = WorkflowExpression.Compile(bodymaxDownloads, nameof(bodymaxDownloads), required: false);
             var __workflow_bodyautoDelete = WorkflowExpression.Compile(bodyautoDelete, nameof(bodyautoDelete), required: false);
@@ -97,9 +98,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (__workflow_bodyfile != null)
+                if (__workflow_bodyFile != null)
                 {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
+                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
                     bodypropCount++;
                 }
 
@@ -146,10 +147,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
         public IBodyWorkflowAction<MeResponse, ApiConnectionActionConfiguration> Me()
         {
-            var apiCallPath = "/me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MeResponse>(callPayload);
+            return new DeferredBodyAction<MeResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<MeResponse>(callPayload);
+            });
         }
     }
 

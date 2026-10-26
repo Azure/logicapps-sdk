@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 {
     using System.Linq.Expressions;
@@ -1068,122 +1069,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<ShortDocumentProfileResponseBody, ApiConnectionActionConfiguration> UploadDocument(Expression<Func<string>> libraryId, Expression<Func<string>> folderId, Expression<Func<bool>> inheritProfileFromFolder, Expression<Func<object>> file, Expression<Func<bool>> keepLocked = null, Expression<Func<string>> comment = null, Expression<Func<string>> author = null, Expression<Func<string>> @operator = null, Expression<Func<string>> @class = null, Expression<Func<string>> subclass = null, Expression<Func<defaultSecurityInput>> defaultSecurity = null, Expression<Func<bool>> isHipaa = null, Expression<Func<int>> retainDays = null, Expression<Func<string>> fileCreateDate = null, Expression<Func<string>> fileEditDate = null, Expression<Func<string>> custom1 = null, Expression<Func<string>> custom2 = null, Expression<Func<string>> custom3 = null, Expression<Func<string>> custom4 = null, Expression<Func<string>> custom5 = null, Expression<Func<string>> custom6 = null, Expression<Func<string>> custom7 = null, Expression<Func<string>> custom8 = null, Expression<Func<string>> custom9 = null, Expression<Func<string>> custom10 = null, Expression<Func<string>> custom11 = null, Expression<Func<string>> custom12 = null, Expression<Func<string>> custom13 = null, Expression<Func<string>> custom14 = null, Expression<Func<string>> custom15 = null, Expression<Func<string>> custom16 = null, Expression<Func<double>> custom17 = null, Expression<Func<double>> custom18 = null, Expression<Func<double>> custom19 = null, Expression<Func<double>> custom20 = null, Expression<Func<string>> custom21 = null, Expression<Func<string>> custom22 = null, Expression<Func<string>> custom23 = null, Expression<Func<string>> custom24 = null, Expression<Func<bool>> custom25 = null, Expression<Func<bool>> custom26 = null, Expression<Func<bool>> custom27 = null, Expression<Func<bool>> custom28 = null, Expression<Func<string>> custom29 = null, Expression<Func<string>> custom30 = null)
-        {
-            var __workflow_libraryId = WorkflowExpression.Compile(libraryId, nameof(libraryId), required: true);
-            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
-            var __workflow_inheritProfileFromFolder = WorkflowExpression.Compile(inheritProfileFromFolder, nameof(inheritProfileFromFolder), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            var __workflow_keepLocked = WorkflowExpression.Compile(keepLocked, nameof(keepLocked), required: false);
-            var __workflow_comment = WorkflowExpression.Compile(comment, nameof(comment), required: false);
-            var __workflow_author = WorkflowExpression.Compile(author, nameof(author), required: false);
-            var __workflow_operator = WorkflowExpression.Compile(@operator, nameof(@operator), required: false);
-            var __workflow_class = WorkflowExpression.Compile(@class, nameof(@class), required: false);
-            var __workflow_subclass = WorkflowExpression.Compile(subclass, nameof(subclass), required: false);
-            var __workflow_defaultSecurity = WorkflowExpression.Compile(defaultSecurity, nameof(defaultSecurity), required: false);
-            var __workflow_isHipaa = WorkflowExpression.Compile(isHipaa, nameof(isHipaa), required: false);
-            var __workflow_retainDays = WorkflowExpression.Compile(retainDays, nameof(retainDays), required: false);
-            var __workflow_fileCreateDate = WorkflowExpression.Compile(fileCreateDate, nameof(fileCreateDate), required: false);
-            var __workflow_fileEditDate = WorkflowExpression.Compile(fileEditDate, nameof(fileEditDate), required: false);
-            var __workflow_custom1 = WorkflowExpression.Compile(custom1, nameof(custom1), required: false);
-            var __workflow_custom2 = WorkflowExpression.Compile(custom2, nameof(custom2), required: false);
-            var __workflow_custom3 = WorkflowExpression.Compile(custom3, nameof(custom3), required: false);
-            var __workflow_custom4 = WorkflowExpression.Compile(custom4, nameof(custom4), required: false);
-            var __workflow_custom5 = WorkflowExpression.Compile(custom5, nameof(custom5), required: false);
-            var __workflow_custom6 = WorkflowExpression.Compile(custom6, nameof(custom6), required: false);
-            var __workflow_custom7 = WorkflowExpression.Compile(custom7, nameof(custom7), required: false);
-            var __workflow_custom8 = WorkflowExpression.Compile(custom8, nameof(custom8), required: false);
-            var __workflow_custom9 = WorkflowExpression.Compile(custom9, nameof(custom9), required: false);
-            var __workflow_custom10 = WorkflowExpression.Compile(custom10, nameof(custom10), required: false);
-            var __workflow_custom11 = WorkflowExpression.Compile(custom11, nameof(custom11), required: false);
-            var __workflow_custom12 = WorkflowExpression.Compile(custom12, nameof(custom12), required: false);
-            var __workflow_custom13 = WorkflowExpression.Compile(custom13, nameof(custom13), required: false);
-            var __workflow_custom14 = WorkflowExpression.Compile(custom14, nameof(custom14), required: false);
-            var __workflow_custom15 = WorkflowExpression.Compile(custom15, nameof(custom15), required: false);
-            var __workflow_custom16 = WorkflowExpression.Compile(custom16, nameof(custom16), required: false);
-            var __workflow_custom17 = WorkflowExpression.Compile(custom17, nameof(custom17), required: false);
-            var __workflow_custom18 = WorkflowExpression.Compile(custom18, nameof(custom18), required: false);
-            var __workflow_custom19 = WorkflowExpression.Compile(custom19, nameof(custom19), required: false);
-            var __workflow_custom20 = WorkflowExpression.Compile(custom20, nameof(custom20), required: false);
-            var __workflow_custom21 = WorkflowExpression.Compile(custom21, nameof(custom21), required: false);
-            var __workflow_custom22 = WorkflowExpression.Compile(custom22, nameof(custom22), required: false);
-            var __workflow_custom23 = WorkflowExpression.Compile(custom23, nameof(custom23), required: false);
-            var __workflow_custom24 = WorkflowExpression.Compile(custom24, nameof(custom24), required: false);
-            var __workflow_custom25 = WorkflowExpression.Compile(custom25, nameof(custom25), required: false);
-            var __workflow_custom26 = WorkflowExpression.Compile(custom26, nameof(custom26), required: false);
-            var __workflow_custom27 = WorkflowExpression.Compile(custom27, nameof(custom27), required: false);
-            var __workflow_custom28 = WorkflowExpression.Compile(custom28, nameof(custom28), required: false);
-            var __workflow_custom29 = WorkflowExpression.Compile(custom29, nameof(custom29), required: false);
-            var __workflow_custom30 = WorkflowExpression.Compile(custom30, nameof(custom30), required: false);
-            return new DeferredBodyAction<ShortDocumentProfileResponseBody, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/uploadDocument";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["accept"] = Convert.ToString("application/json");
-                return new ApiConnectionAction<ShortDocumentProfileResponseBody>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<ShortDocumentProfileResponseBody, ApiConnectionActionConfiguration> UpdateOrCreateNewDocVersion(Expression<Func<updateOrCreateInput>> updateOrCreate, Expression<Func<string>> documentId, Expression<Func<object>> file, Expression<Func<bool>> keepLocked = null, Expression<Func<string>> comment = null, Expression<Func<string>> name = null, Expression<Func<string>> author = null, Expression<Func<string>> @operator = null, Expression<Func<string>> @class = null, Expression<Func<string>> subclass = null, Expression<Func<defaultSecurityInput>> defaultSecurity = null, Expression<Func<bool>> isHipaa = null, Expression<Func<int>> retainDays = null, Expression<Func<string>> fileCreateDate = null, Expression<Func<string>> fileEditDate = null, Expression<Func<string>> custom1 = null, Expression<Func<string>> custom2 = null, Expression<Func<string>> custom3 = null, Expression<Func<string>> custom4 = null, Expression<Func<string>> custom5 = null, Expression<Func<string>> custom6 = null, Expression<Func<string>> custom7 = null, Expression<Func<string>> custom8 = null, Expression<Func<string>> custom9 = null, Expression<Func<string>> custom10 = null, Expression<Func<string>> custom11 = null, Expression<Func<string>> custom12 = null, Expression<Func<string>> custom13 = null, Expression<Func<string>> custom14 = null, Expression<Func<string>> custom15 = null, Expression<Func<string>> custom16 = null, Expression<Func<double>> custom17 = null, Expression<Func<double>> custom18 = null, Expression<Func<double>> custom19 = null, Expression<Func<double>> custom20 = null, Expression<Func<string>> custom21 = null, Expression<Func<string>> custom22 = null, Expression<Func<string>> custom23 = null, Expression<Func<string>> custom24 = null, Expression<Func<bool>> custom25 = null, Expression<Func<bool>> custom26 = null, Expression<Func<bool>> custom27 = null, Expression<Func<bool>> custom28 = null, Expression<Func<string>> custom29 = null, Expression<Func<string>> custom30 = null)
-        {
-            var __workflow_updateOrCreate = WorkflowExpression.Compile(updateOrCreate, nameof(updateOrCreate), required: true);
-            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            var __workflow_keepLocked = WorkflowExpression.Compile(keepLocked, nameof(keepLocked), required: false);
-            var __workflow_comment = WorkflowExpression.Compile(comment, nameof(comment), required: false);
-            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
-            var __workflow_author = WorkflowExpression.Compile(author, nameof(author), required: false);
-            var __workflow_operator = WorkflowExpression.Compile(@operator, nameof(@operator), required: false);
-            var __workflow_class = WorkflowExpression.Compile(@class, nameof(@class), required: false);
-            var __workflow_subclass = WorkflowExpression.Compile(subclass, nameof(subclass), required: false);
-            var __workflow_defaultSecurity = WorkflowExpression.Compile(defaultSecurity, nameof(defaultSecurity), required: false);
-            var __workflow_isHipaa = WorkflowExpression.Compile(isHipaa, nameof(isHipaa), required: false);
-            var __workflow_retainDays = WorkflowExpression.Compile(retainDays, nameof(retainDays), required: false);
-            var __workflow_fileCreateDate = WorkflowExpression.Compile(fileCreateDate, nameof(fileCreateDate), required: false);
-            var __workflow_fileEditDate = WorkflowExpression.Compile(fileEditDate, nameof(fileEditDate), required: false);
-            var __workflow_custom1 = WorkflowExpression.Compile(custom1, nameof(custom1), required: false);
-            var __workflow_custom2 = WorkflowExpression.Compile(custom2, nameof(custom2), required: false);
-            var __workflow_custom3 = WorkflowExpression.Compile(custom3, nameof(custom3), required: false);
-            var __workflow_custom4 = WorkflowExpression.Compile(custom4, nameof(custom4), required: false);
-            var __workflow_custom5 = WorkflowExpression.Compile(custom5, nameof(custom5), required: false);
-            var __workflow_custom6 = WorkflowExpression.Compile(custom6, nameof(custom6), required: false);
-            var __workflow_custom7 = WorkflowExpression.Compile(custom7, nameof(custom7), required: false);
-            var __workflow_custom8 = WorkflowExpression.Compile(custom8, nameof(custom8), required: false);
-            var __workflow_custom9 = WorkflowExpression.Compile(custom9, nameof(custom9), required: false);
-            var __workflow_custom10 = WorkflowExpression.Compile(custom10, nameof(custom10), required: false);
-            var __workflow_custom11 = WorkflowExpression.Compile(custom11, nameof(custom11), required: false);
-            var __workflow_custom12 = WorkflowExpression.Compile(custom12, nameof(custom12), required: false);
-            var __workflow_custom13 = WorkflowExpression.Compile(custom13, nameof(custom13), required: false);
-            var __workflow_custom14 = WorkflowExpression.Compile(custom14, nameof(custom14), required: false);
-            var __workflow_custom15 = WorkflowExpression.Compile(custom15, nameof(custom15), required: false);
-            var __workflow_custom16 = WorkflowExpression.Compile(custom16, nameof(custom16), required: false);
-            var __workflow_custom17 = WorkflowExpression.Compile(custom17, nameof(custom17), required: false);
-            var __workflow_custom18 = WorkflowExpression.Compile(custom18, nameof(custom18), required: false);
-            var __workflow_custom19 = WorkflowExpression.Compile(custom19, nameof(custom19), required: false);
-            var __workflow_custom20 = WorkflowExpression.Compile(custom20, nameof(custom20), required: false);
-            var __workflow_custom21 = WorkflowExpression.Compile(custom21, nameof(custom21), required: false);
-            var __workflow_custom22 = WorkflowExpression.Compile(custom22, nameof(custom22), required: false);
-            var __workflow_custom23 = WorkflowExpression.Compile(custom23, nameof(custom23), required: false);
-            var __workflow_custom24 = WorkflowExpression.Compile(custom24, nameof(custom24), required: false);
-            var __workflow_custom25 = WorkflowExpression.Compile(custom25, nameof(custom25), required: false);
-            var __workflow_custom26 = WorkflowExpression.Compile(custom26, nameof(custom26), required: false);
-            var __workflow_custom27 = WorkflowExpression.Compile(custom27, nameof(custom27), required: false);
-            var __workflow_custom28 = WorkflowExpression.Compile(custom28, nameof(custom28), required: false);
-            var __workflow_custom29 = WorkflowExpression.Compile(custom29, nameof(custom29), required: false);
-            var __workflow_custom30 = WorkflowExpression.Compile(custom30, nameof(custom30), required: false);
-            return new DeferredBodyAction<ShortDocumentProfileResponseBody, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/updateOrCreateNewDocVersion";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["accept"] = Convert.ToString("application/json");
-                return new ApiConnectionAction<ShortDocumentProfileResponseBody>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DownloadDocument(Expression<Func<string>> bodydocumentId, Expression<Func<bool>> bodylatest = null)
         {
             var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
@@ -1270,14 +1155,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
+        public IBodyWorkflowAction<GetContainerChildrenResponse, ApiConnectionActionConfiguration> GetContainerChildren(Expression<Func<string>> bodycontainerId, Expression<Func<string>> bodycursor = null)
+        {
+            var __workflow_bodycontainerId = WorkflowExpression.Compile(bodycontainerId, nameof(bodycontainerId), required: true);
+            var __workflow_bodycursor = WorkflowExpression.Compile(bodycursor, nameof(bodycursor), required: false);
+            return new DeferredBodyAction<GetContainerChildrenResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/getContainerChildren";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["containerId"] = ExpressionConverter.ConvertO(__workflow_bodycontainerId);
+                if (__workflow_bodycursor != null)
+                {
+                    body["cursor"] = ExpressionConverter.ConvertO(__workflow_bodycursor);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<GetContainerChildrenResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
+        public IBodyWorkflowAction<GetContainerProfileResponseBody, ApiConnectionActionConfiguration> GetContainerProfile(Expression<Func<string>> bodycontainerId)
+        {
+            var __workflow_bodycontainerId = WorkflowExpression.Compile(bodycontainerId, nameof(bodycontainerId), required: true);
+            return new DeferredBodyAction<GetContainerProfileResponseBody, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/getContainerProfile";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["containerId"] = ExpressionConverter.ConvertO(__workflow_bodycontainerId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<GetContainerProfileResponseBody>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<GetLibrariesResponse, ApiConnectionActionConfiguration> GetLibraries()
         {
-            var apiCallPath = "/getLibraries";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["showAllLibraries"] = Convert.ToString(false);
-            callPayload.Queries["hidePreferredLibrary"] = Convert.ToString(false);
-            return new ApiConnectionAction<GetLibrariesResponse>(callPayload);
+            return new DeferredBodyAction<GetLibrariesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/getLibraries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["showAllLibraries"] = Convert.ToString(false);
+                callPayload.Queries["hidePreferredLibrary"] = Convert.ToString(false);
+                return new ApiConnectionAction<GetLibrariesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
@@ -2091,6 +2030,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                 }
 
                 return new ApiConnectionAction<CopyDocumentResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
+        public IBodyWorkflowAction<CreateFormLinkResponse, ApiConnectionActionConfiguration> CreateFormLink(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyformId, Expression<Func<string>> bodysecurity, Expression<Func<string>> bodyexpiresAt = null, Expression<Func<object>> bodylinkData = null)
+        {
+            var __workflow_bodylibraryId = WorkflowExpression.Compile(bodylibraryId, nameof(bodylibraryId), required: true);
+            var __workflow_bodyformId = WorkflowExpression.Compile(bodyformId, nameof(bodyformId), required: true);
+            var __workflow_bodysecurity = WorkflowExpression.Compile(bodysecurity, nameof(bodysecurity), required: true);
+            var __workflow_bodyexpiresAt = WorkflowExpression.Compile(bodyexpiresAt, nameof(bodyexpiresAt), required: false);
+            var __workflow_bodylinkData = WorkflowExpression.Compile(bodylinkData, nameof(bodylinkData), required: false);
+            return new DeferredBodyAction<CreateFormLinkResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/createFormLink";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["libraryId"] = ExpressionConverter.ConvertO(__workflow_bodylibraryId);
+                bodypropCount++;
+                body["formId"] = ExpressionConverter.ConvertO(__workflow_bodyformId);
+                if (__workflow_bodyexpiresAt != null)
+                {
+                    body["expires_at"] = ExpressionConverter.ConvertO(__workflow_bodyexpiresAt);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["security"] = ExpressionConverter.ConvertO(__workflow_bodysecurity);
+                if (__workflow_bodylinkData != null)
+                {
+                    body["link_data"] = ExpressionConverter.ConvertO(__workflow_bodylinkData);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateFormLinkResponse>(callPayload);
             });
         }
 
@@ -2979,7 +2960,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             });
         }
 
-        public IBodyWorkflowTrigger<MultipleSelectedWorkspacesResponse, ApiConnectionTriggerConfiguration> MultipleSelectedWorkspaces(Expression<Func<string>> bodyworkflowName, Expression<Func<string>> bodydescription, Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyformId, Expression<Func<string>> bodyusers = null, Expression<Func<string>> bodygroups = null, Expression<Func<bool>> bodywaitForCompletion = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MultipleSelectedWorkspacesResponse, ApiConnectionTriggerConfiguration> MultipleSelectedWorkspaces(Expression<Func<string>> bodyworkflowName, Expression<Func<string>> bodydescription, Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyformId, Expression<Func<string>> bodyusers = null, Expression<Func<string>> bodygroups = null, Expression<Func<bool>> bodyshowFormPerObject = null, Expression<Func<bool>> bodywaitForCompletion = null, FlowRecurrence recurrence = null)
+        {
+            var __workflow_bodyworkflowName = WorkflowExpression.Compile(bodyworkflowName, nameof(bodyworkflowName), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
+            var __workflow_bodylibraryId = WorkflowExpression.Compile(bodylibraryId, nameof(bodylibraryId), required: true);
+            var __workflow_bodyformId = WorkflowExpression.Compile(bodyformId, nameof(bodyformId), required: true);
+            var __workflow_bodyusers = WorkflowExpression.Compile(bodyusers, nameof(bodyusers), required: false);
+            var __workflow_bodygroups = WorkflowExpression.Compile(bodygroups, nameof(bodygroups), required: false);
+            var __workflow_bodyshowFormPerObject = WorkflowExpression.Compile(bodyshowFormPerObject, nameof(bodyshowFormPerObject), required: false);
+            var __workflow_bodywaitForCompletion = WorkflowExpression.Compile(bodywaitForCompletion, nameof(bodywaitForCompletion), required: false);
+            return new DeferredBodyTrigger<MultipleSelectedWorkspacesResponse, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/hooks/register/multipleSelectedWorkspaces";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["workflowName"] = ExpressionConverter.ConvertO(__workflow_bodyworkflowName);
+                bodypropCount++;
+                body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                bodypropCount++;
+                body["libraryId"] = ExpressionConverter.ConvertO(__workflow_bodylibraryId);
+                bodypropCount++;
+                body["formId"] = ExpressionConverter.ConvertO(__workflow_bodyformId);
+                if (__workflow_bodyusers != null)
+                {
+                    body["users"] = ExpressionConverter.ConvertO(__workflow_bodyusers);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodygroups != null)
+                {
+                    body["groups"] = ExpressionConverter.ConvertO(__workflow_bodygroups);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyshowFormPerObject != null)
+                {
+                    if (__workflow_bodyshowFormPerObject != null)
+                    {
+                        body["showFormPerObject"] = ExpressionConverter.ConvertO(__workflow_bodyshowFormPerObject);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["showFormPerObject"] = false;
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodywaitForCompletion != null)
+                {
+                    if (__workflow_bodywaitForCompletion != null)
+                    {
+                        body["waitForCompletion"] = ExpressionConverter.ConvertO(__workflow_bodywaitForCompletion);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["waitForCompletion"] = false;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<MultipleSelectedWorkspacesResponse>(callPayload, recurrence: recurrence);
+            });
+        }
+
+        public IBodyWorkflowTrigger<RegisterGenericWorkflowResponse, ApiConnectionTriggerConfiguration> RegisterGenericWorkflow(Expression<Func<string>> bodyworkflowName, Expression<Func<string>> bodydescription, Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyformId, Expression<Func<string>> bodyusers = null, Expression<Func<string>> bodygroups = null, Expression<Func<bool>> bodywaitForCompletion = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyworkflowName = WorkflowExpression.Compile(bodyworkflowName, nameof(bodyworkflowName), required: true);
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
@@ -2988,9 +3049,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             var __workflow_bodyusers = WorkflowExpression.Compile(bodyusers, nameof(bodyusers), required: false);
             var __workflow_bodygroups = WorkflowExpression.Compile(bodygroups, nameof(bodygroups), required: false);
             var __workflow_bodywaitForCompletion = WorkflowExpression.Compile(bodywaitForCompletion, nameof(bodywaitForCompletion), required: false);
-            return new DeferredBodyTrigger<MultipleSelectedWorkspacesResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<RegisterGenericWorkflowResponse, ApiConnectionTriggerConfiguration>(() =>
             {
-                var apiCallPath = "/hooks/register/multipleSelectedWorkspaces";
+                var apiCallPath = "/hooks/register/genericWorkflow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -3038,7 +3099,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<MultipleSelectedWorkspacesResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<RegisterGenericWorkflowResponse>(callPayload, recurrence: recurrence);
+            });
+        }
+
+        public IBodyWorkflowTrigger<RegisterFormWorkflowResponse, ApiConnectionTriggerConfiguration> RegisterFormWorkflow(Expression<Func<string>> bodyworkflowName, Expression<Func<string>> bodydescription, Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyformId, FlowRecurrence recurrence = null)
+        {
+            var __workflow_bodyworkflowName = WorkflowExpression.Compile(bodyworkflowName, nameof(bodyworkflowName), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
+            var __workflow_bodylibraryId = WorkflowExpression.Compile(bodylibraryId, nameof(bodylibraryId), required: true);
+            var __workflow_bodyformId = WorkflowExpression.Compile(bodyformId, nameof(bodyformId), required: true);
+            return new DeferredBodyTrigger<RegisterFormWorkflowResponse, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/hooks/register/formWorkflow";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["workflowName"] = ExpressionConverter.ConvertO(__workflow_bodyworkflowName);
+                bodypropCount++;
+                body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                bodypropCount++;
+                body["libraryId"] = ExpressionConverter.ConvertO(__workflow_bodylibraryId);
+                bodypropCount++;
+                body["formId"] = ExpressionConverter.ConvertO(__workflow_bodyformId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<RegisterFormWorkflowResponse>(callPayload, recurrence: recurrence);
             });
         }
     }
@@ -3738,8 +3831,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum defaultSecurityInput
     {
-        [EnumMember(Value = "inherit")]
-        Inherit,
         [EnumMember(Value = "private")]
         Private,
         [EnumMember(Value = "view")]
@@ -3986,154 +4077,154 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         WorkspaceShortcut
     }
 
-    public class ShortDocumentProfileResponseBody
+    public class GetUserDetailsResponse
     {
         [JsonProperty("data")]
-        public ShortDocumentProfile Data { get; set; }
+        public UserProfile Data { get; set; }
     }
 
-    public class ShortDocumentProfile
+    public class UserProfile
     {
-        [JsonProperty("author")]
-        public string Author { get; set; }
+        [JsonProperty("allow_logon")]
+        public bool AllowLogon { get; set; }
 
-        [JsonProperty("author_description")]
-        public string AuthorDescription { get; set; }
+        [JsonProperty("custom1")]
+        public string Custom1 { get; set; }
 
-        [JsonProperty("bcc")]
-        public string Bcc { get; set; }
+        [JsonProperty("custom2")]
+        public string Custom2 { get; set; }
 
-        [JsonProperty("cc")]
-        public string Cc { get; set; }
+        [JsonProperty("custom3")]
+        public string Custom3 { get; set; }
 
-        [JsonProperty("class")]
-        public string Class { get; set; }
+        [JsonProperty("directory_id")]
+        public string DirectoryId { get; set; }
 
-        [JsonProperty("class_description")]
-        public string ClassDescription { get; set; }
-
-        [JsonProperty("comment")]
-        public string Comment { get; set; }
-
-        [JsonProperty("content_type")]
-        public string ContentType { get; set; }
-
-        [JsonProperty("create_date")]
-        public string CreateDate { get; set; }
-
-        [JsonProperty("database")]
-        public string Database { get; set; }
-
-        [JsonProperty("default_security")]
-        public ShortDocumentProfileDefaultSecurityType DefaultSecurity { get; set; }
-
-        [JsonProperty("document_number")]
-        public int DocumentNumber { get; set; }
-
-        [JsonProperty("document_url")]
-        public string DocumentUrl { get; set; }
+        [JsonProperty("distinguished_name")]
+        public string DistinguishedName { get; set; }
 
         [JsonProperty("edit_date")]
         public string EditDate { get; set; }
 
-        [JsonProperty("edit_profile_date")]
-        public string EditProfileDate { get; set; }
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("exch_autodiscover")]
+        public string ExchAutodiscover { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
 
-        [JsonProperty("file_create_date")]
-        public string FileCreateDate { get; set; }
+        [JsonProperty("failed_logins")]
+        public int FailedLogins { get; set; }
 
-        [JsonProperty("file_edit_date")]
-        public string FileEditDate { get; set; }
+        [JsonProperty("fax")]
+        public string Fax { get; set; }
 
-        [JsonProperty("from")]
-        public string From { get; set; }
+        [JsonProperty("force_password_change")]
+        public bool ForcePasswordChange { get; set; }
 
-        [JsonProperty("full_file_name")]
-        public string FullFileName { get; set; }
+        [JsonProperty("full_name")]
+        public string FullName { get; set; }
 
-        [JsonProperty("has_attachment")]
-        public bool HasAttachment { get; set; }
-
-        [JsonProperty("basic_properties")]
-        public string BasicProperties { get; set; }
+        [JsonProperty("general")]
+        public string General { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
 
-        [JsonProperty("indexable")]
-        public bool Indexable { get; set; }
-
-        [JsonProperty("is_checked_out")]
-        public bool IsCheckedOut { get; set; }
-
-        [JsonProperty("is_declared")]
-        public bool IsDeclared { get; set; }
-
         [JsonProperty("is_external")]
         public bool IsExternal { get; set; }
 
-        [JsonProperty("is_external_as_normal")]
-        public bool IsExternalAsNormal { get; set; }
+        [JsonProperty("last_sync_ts")]
+        public string LastSyncTs { get; set; }
 
-        [JsonProperty("is_hipaa")]
-        public bool IsHipaa { get; set; }
+        [JsonProperty("location")]
+        public string Location { get; set; }
 
-        [JsonProperty("is_in_use")]
-        public bool IsInUse { get; set; }
+        [JsonProperty("password_never_expire")]
+        public bool PasswordNeverExpire { get; set; }
 
-        [JsonProperty("iwl")]
-        public string Iwl { get; set; }
+        [JsonProperty("phone")]
+        public string Phone { get; set; }
 
-        [JsonProperty("last_user")]
-        public string LastUser { get; set; }
+        [JsonProperty("preferred_library")]
+        public string PreferredLibrary { get; set; }
 
-        [JsonProperty("last_user_description")]
-        public string LastUserDescription { get; set; }
+        [JsonProperty("pwd_changed_ts")]
+        public string PwdChangedTs { get; set; }
+
+        [JsonProperty("ssid")]
+        public string Ssid { get; set; }
+
+        [JsonProperty("user_domain")]
+        public string UserDomain { get; set; }
+
+        [JsonProperty("user_id_ex")]
+        public string UserIdEx { get; set; }
+
+        [JsonProperty("user_nos")]
+        public int UserNos { get; set; }
+
+        [JsonProperty("user_num")]
+        public int UserNum { get; set; }
+    }
+
+    public class GetContainerChildrenResponse
+    {
+        [JsonProperty("data")]
+        public GetContainerChildrenResponseDataType Data { get; set; }
+    }
+
+    public class GetContainerChildrenResponseDataType
+    {
+        [JsonProperty("total_count")]
+        public int TotalCount { get; set; }
+
+        [JsonProperty("cursor")]
+        public string Cursor { get; set; }
+
+        [JsonProperty("overflow")]
+        public bool Overflow { get; set; }
+
+        [JsonProperty("children")]
+        public GetContainerChildrenResponseDataTypeChildrenTypeItem[] Children { get; set; }
+    }
+
+    public class GetContainerChildrenResponseDataTypeChildrenTypeItem
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("operator")]
-        public string Operator { get; set; }
+        [JsonProperty("wstype")]
+        public string Wstype { get; set; }
 
-        [JsonProperty("operator_description")]
-        public string OperatorDescription { get; set; }
-
-        [JsonProperty("received_date")]
-        public string ReceivedDate { get; set; }
-
-        [JsonProperty("retain_days")]
-        public int RetainDays { get; set; }
-
-        [JsonProperty("sent_date")]
-        public string SentDate { get; set; }
-
-        [JsonProperty("size")]
-        public int Size { get; set; }
+        [JsonProperty("class")]
+        public string Class { get; set; }
 
         [JsonProperty("subclass")]
         public string Subclass { get; set; }
+    }
 
-        [JsonProperty("subclass_description")]
-        public string SubclassDescription { get; set; }
+    public class GetContainerProfileResponseBody
+    {
+        [JsonProperty("data")]
+        public ContainerProfile Data { get; set; }
+    }
 
-        [JsonProperty("to")]
-        public string To { get; set; }
+    public class ContainerProfile
+    {
+        [JsonProperty("basic_properties")]
+        public string BasicProperties { get; set; }
 
-        [JsonProperty("type")]
-        public string Type { get; set; }
+        [JsonProperty("container_type")]
+        public ContainerProfileContainerTypeType ContainerType { get; set; }
 
-        [JsonProperty("type_description")]
-        public string TypeDescription { get; set; }
-
-        [JsonProperty("version")]
-        public int Version { get; set; }
-
-        [JsonProperty("wstype")]
-        public ShortDocumentProfileWstypeType Wstype { get; set; }
+        [JsonProperty("container_url")]
+        public string ContainerUrl { get; set; }
 
         [JsonProperty("custom1")]
         public string Custom1 { get; set; }
@@ -4266,10 +4357,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
         [JsonProperty("custom30_description")]
         public string Custom30Description { get; set; }
+
+        [JsonProperty("database")]
+        public string Database { get; set; }
+
+        [JsonProperty("default_security")]
+        public ContainerProfileDefaultSecurityType DefaultSecurity { get; set; }
+
+        [JsonProperty("edit_date")]
+        public string EditDate { get; set; }
+
+        [JsonProperty("has_subfolders")]
+        public bool HasSubfolders { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("owner")]
+        public string Owner { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ShortDocumentProfileDefaultSecurityType
+    public enum ContainerProfileContainerTypeType
+    {
+        [EnumMember(Value = "workspace")]
+        Workspace,
+        [EnumMember(Value = "workspace_shortcut")]
+        WorkspaceShortcut,
+        [EnumMember(Value = "regular_folder")]
+        RegularFolder,
+        [EnumMember(Value = "folder_shortcut")]
+        FolderShortcut,
+        [EnumMember(Value = "search_folder")]
+        SearchFolder,
+        [EnumMember(Value = "tab")]
+        Tab,
+        [EnumMember(Value = "category")]
+        Category,
+        [EnumMember(Value = "my_matters")]
+        MyMatters,
+        [EnumMember(Value = "my_favorites")]
+        MyFavorites
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ContainerProfileDefaultSecurityType
     {
         [EnumMember(Value = "inherit")]
         Inherit,
@@ -4279,129 +4414,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         View,
         [EnumMember(Value = "public")]
         Public
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ShortDocumentProfileWstypeType
-    {
-        [EnumMember(Value = "document")]
-        Document,
-        [EnumMember(Value = "folder")]
-        Folder,
-        [EnumMember(Value = "workspace")]
-        Workspace,
-        [EnumMember(Value = "email")]
-        Email,
-        [EnumMember(Value = "document_shortcut")]
-        DocumentShortcut,
-        [EnumMember(Value = "folder_shortcut")]
-        FolderShortcut,
-        [EnumMember(Value = "workspace_shortcut")]
-        WorkspaceShortcut,
-        [EnumMember(Value = "user")]
-        User
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum updateOrCreateInput
-    {
-        [EnumMember(Value = "Update Current Version")]
-        UpdateCurrentVersion,
-        [EnumMember(Value = "Create New Version")]
-        CreateNewVersion
-    }
-
-    public class GetUserDetailsResponse
-    {
-        [JsonProperty("data")]
-        public UserProfile Data { get; set; }
-    }
-
-    public class UserProfile
-    {
-        [JsonProperty("allow_logon")]
-        public bool AllowLogon { get; set; }
-
-        [JsonProperty("custom1")]
-        public string Custom1 { get; set; }
-
-        [JsonProperty("custom2")]
-        public string Custom2 { get; set; }
-
-        [JsonProperty("custom3")]
-        public string Custom3 { get; set; }
-
-        [JsonProperty("directory_id")]
-        public string DirectoryId { get; set; }
-
-        [JsonProperty("distinguished_name")]
-        public string DistinguishedName { get; set; }
-
-        [JsonProperty("edit_date")]
-        public string EditDate { get; set; }
-
-        [JsonProperty("email")]
-        public string Email { get; set; }
-
-        [JsonProperty("exch_autodiscover")]
-        public string ExchAutodiscover { get; set; }
-
-        [JsonProperty("extension")]
-        public string Extension { get; set; }
-
-        [JsonProperty("failed_logins")]
-        public int FailedLogins { get; set; }
-
-        [JsonProperty("fax")]
-        public string Fax { get; set; }
-
-        [JsonProperty("force_password_change")]
-        public bool ForcePasswordChange { get; set; }
-
-        [JsonProperty("full_name")]
-        public string FullName { get; set; }
-
-        [JsonProperty("general")]
-        public string General { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("is_external")]
-        public bool IsExternal { get; set; }
-
-        [JsonProperty("last_sync_ts")]
-        public string LastSyncTs { get; set; }
-
-        [JsonProperty("location")]
-        public string Location { get; set; }
-
-        [JsonProperty("password_never_expire")]
-        public bool PasswordNeverExpire { get; set; }
-
-        [JsonProperty("phone")]
-        public string Phone { get; set; }
-
-        [JsonProperty("preferred_library")]
-        public string PreferredLibrary { get; set; }
-
-        [JsonProperty("pwd_changed_ts")]
-        public string PwdChangedTs { get; set; }
-
-        [JsonProperty("ssid")]
-        public string Ssid { get; set; }
-
-        [JsonProperty("user_domain")]
-        public string UserDomain { get; set; }
-
-        [JsonProperty("user_id_ex")]
-        public string UserIdEx { get; set; }
-
-        [JsonProperty("user_nos")]
-        public int UserNos { get; set; }
-
-        [JsonProperty("user_num")]
-        public int UserNum { get; set; }
     }
 
     public class GetLibrariesResponse
@@ -4801,6 +4813,322 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FullDocumentProfileWstypeType
+    {
+        [EnumMember(Value = "document")]
+        Document,
+        [EnumMember(Value = "folder")]
+        Folder,
+        [EnumMember(Value = "workspace")]
+        Workspace,
+        [EnumMember(Value = "email")]
+        Email,
+        [EnumMember(Value = "document_shortcut")]
+        DocumentShortcut,
+        [EnumMember(Value = "folder_shortcut")]
+        FolderShortcut,
+        [EnumMember(Value = "workspace_shortcut")]
+        WorkspaceShortcut,
+        [EnumMember(Value = "user")]
+        User
+    }
+
+    public class ShortDocumentProfileResponseBody
+    {
+        [JsonProperty("data")]
+        public ShortDocumentProfile Data { get; set; }
+    }
+
+    public class ShortDocumentProfile
+    {
+        [JsonProperty("author")]
+        public string Author { get; set; }
+
+        [JsonProperty("author_description")]
+        public string AuthorDescription { get; set; }
+
+        [JsonProperty("bcc")]
+        public string Bcc { get; set; }
+
+        [JsonProperty("cc")]
+        public string Cc { get; set; }
+
+        [JsonProperty("class")]
+        public string Class { get; set; }
+
+        [JsonProperty("class_description")]
+        public string ClassDescription { get; set; }
+
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
+
+        [JsonProperty("content_type")]
+        public string ContentType { get; set; }
+
+        [JsonProperty("create_date")]
+        public string CreateDate { get; set; }
+
+        [JsonProperty("database")]
+        public string Database { get; set; }
+
+        [JsonProperty("default_security")]
+        public ShortDocumentProfileDefaultSecurityType DefaultSecurity { get; set; }
+
+        [JsonProperty("document_number")]
+        public int DocumentNumber { get; set; }
+
+        [JsonProperty("document_url")]
+        public string DocumentUrl { get; set; }
+
+        [JsonProperty("edit_date")]
+        public string EditDate { get; set; }
+
+        [JsonProperty("edit_profile_date")]
+        public string EditProfileDate { get; set; }
+
+        [JsonProperty("extension")]
+        public string Extension { get; set; }
+
+        [JsonProperty("file_create_date")]
+        public string FileCreateDate { get; set; }
+
+        [JsonProperty("file_edit_date")]
+        public string FileEditDate { get; set; }
+
+        [JsonProperty("from")]
+        public string From { get; set; }
+
+        [JsonProperty("full_file_name")]
+        public string FullFileName { get; set; }
+
+        [JsonProperty("has_attachment")]
+        public bool HasAttachment { get; set; }
+
+        [JsonProperty("basic_properties")]
+        public string BasicProperties { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("indexable")]
+        public bool Indexable { get; set; }
+
+        [JsonProperty("is_checked_out")]
+        public bool IsCheckedOut { get; set; }
+
+        [JsonProperty("is_declared")]
+        public bool IsDeclared { get; set; }
+
+        [JsonProperty("is_external")]
+        public bool IsExternal { get; set; }
+
+        [JsonProperty("is_external_as_normal")]
+        public bool IsExternalAsNormal { get; set; }
+
+        [JsonProperty("is_hipaa")]
+        public bool IsHipaa { get; set; }
+
+        [JsonProperty("is_in_use")]
+        public bool IsInUse { get; set; }
+
+        [JsonProperty("iwl")]
+        public string Iwl { get; set; }
+
+        [JsonProperty("last_user")]
+        public string LastUser { get; set; }
+
+        [JsonProperty("last_user_description")]
+        public string LastUserDescription { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("operator")]
+        public string Operator { get; set; }
+
+        [JsonProperty("operator_description")]
+        public string OperatorDescription { get; set; }
+
+        [JsonProperty("received_date")]
+        public string ReceivedDate { get; set; }
+
+        [JsonProperty("retain_days")]
+        public int RetainDays { get; set; }
+
+        [JsonProperty("sent_date")]
+        public string SentDate { get; set; }
+
+        [JsonProperty("size")]
+        public int Size { get; set; }
+
+        [JsonProperty("subclass")]
+        public string Subclass { get; set; }
+
+        [JsonProperty("subclass_description")]
+        public string SubclassDescription { get; set; }
+
+        [JsonProperty("to")]
+        public string To { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("type_description")]
+        public string TypeDescription { get; set; }
+
+        [JsonProperty("version")]
+        public int Version { get; set; }
+
+        [JsonProperty("wstype")]
+        public ShortDocumentProfileWstypeType Wstype { get; set; }
+
+        [JsonProperty("custom1")]
+        public string Custom1 { get; set; }
+
+        [JsonProperty("custom1_description")]
+        public string Custom1Description { get; set; }
+
+        [JsonProperty("custom2")]
+        public string Custom2 { get; set; }
+
+        [JsonProperty("custom2_description")]
+        public string Custom2Description { get; set; }
+
+        [JsonProperty("custom3")]
+        public string Custom3 { get; set; }
+
+        [JsonProperty("custom3_description")]
+        public string Custom3Description { get; set; }
+
+        [JsonProperty("custom4")]
+        public string Custom4 { get; set; }
+
+        [JsonProperty("custom4_description")]
+        public string Custom4Description { get; set; }
+
+        [JsonProperty("custom5")]
+        public string Custom5 { get; set; }
+
+        [JsonProperty("custom5_description")]
+        public string Custom5Description { get; set; }
+
+        [JsonProperty("custom6")]
+        public string Custom6 { get; set; }
+
+        [JsonProperty("custom6_description")]
+        public string Custom6Description { get; set; }
+
+        [JsonProperty("custom7")]
+        public string Custom7 { get; set; }
+
+        [JsonProperty("custom7_description")]
+        public string Custom7Description { get; set; }
+
+        [JsonProperty("custom8")]
+        public string Custom8 { get; set; }
+
+        [JsonProperty("custom8_description")]
+        public string Custom8Description { get; set; }
+
+        [JsonProperty("custom9")]
+        public string Custom9 { get; set; }
+
+        [JsonProperty("custom9_description")]
+        public string Custom9Description { get; set; }
+
+        [JsonProperty("custom10")]
+        public string Custom10 { get; set; }
+
+        [JsonProperty("custom10_description")]
+        public string Custom10Description { get; set; }
+
+        [JsonProperty("custom11")]
+        public string Custom11 { get; set; }
+
+        [JsonProperty("custom11_description")]
+        public string Custom11Description { get; set; }
+
+        [JsonProperty("custom12")]
+        public string Custom12 { get; set; }
+
+        [JsonProperty("custom12_description")]
+        public string Custom12Description { get; set; }
+
+        [JsonProperty("custom13")]
+        public string Custom13 { get; set; }
+
+        [JsonProperty("custom14")]
+        public string Custom14 { get; set; }
+
+        [JsonProperty("custom15")]
+        public string Custom15 { get; set; }
+
+        [JsonProperty("custom16")]
+        public string Custom16 { get; set; }
+
+        [JsonProperty("custom17")]
+        public double Custom17 { get; set; }
+
+        [JsonProperty("custom18")]
+        public double Custom18 { get; set; }
+
+        [JsonProperty("custom19")]
+        public double Custom19 { get; set; }
+
+        [JsonProperty("custom20")]
+        public double Custom20 { get; set; }
+
+        [JsonProperty("custom21")]
+        public string Custom21 { get; set; }
+
+        [JsonProperty("custom22")]
+        public string Custom22 { get; set; }
+
+        [JsonProperty("custom23")]
+        public string Custom23 { get; set; }
+
+        [JsonProperty("custom24")]
+        public string Custom24 { get; set; }
+
+        [JsonProperty("custom25")]
+        public bool Custom25 { get; set; }
+
+        [JsonProperty("custom26")]
+        public bool Custom26 { get; set; }
+
+        [JsonProperty("custom27")]
+        public bool Custom27 { get; set; }
+
+        [JsonProperty("custom28")]
+        public bool Custom28 { get; set; }
+
+        [JsonProperty("custom29")]
+        public string Custom29 { get; set; }
+
+        [JsonProperty("custom29_description")]
+        public string Custom29Description { get; set; }
+
+        [JsonProperty("custom30")]
+        public string Custom30 { get; set; }
+
+        [JsonProperty("custom30_description")]
+        public string Custom30Description { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ShortDocumentProfileDefaultSecurityType
+    {
+        [EnumMember(Value = "inherit")]
+        Inherit,
+        [EnumMember(Value = "private")]
+        Private,
+        [EnumMember(Value = "view")]
+        View,
+        [EnumMember(Value = "public")]
+        Public
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ShortDocumentProfileWstypeType
     {
         [EnumMember(Value = "document")]
         Document,
@@ -5769,6 +6097,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         WorkspaceShortcut,
         [EnumMember(Value = "user")]
         User
+    }
+
+    public class CreateFormLinkResponse
+    {
+        [JsonProperty("data")]
+        public CreateFormLinkResponseDataType Data { get; set; }
+    }
+
+    public class CreateFormLinkResponseDataType
+    {
+        [JsonProperty("link_url")]
+        public string LinkUrl { get; set; }
     }
 
     public class CoreEMPropertiesResponseBody
@@ -8120,6 +8460,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
     {
         [JsonProperty("data")]
         public JToken Data { get; set; }
+    }
+
+    public class RegisterGenericWorkflowResponse
+    {
+        [JsonProperty("data")]
+        public string Data { get; set; }
+    }
+
+    public class RegisterFormWorkflowResponse
+    {
+        [JsonProperty("data")]
+        public string Data { get; set; }
     }
 }
 

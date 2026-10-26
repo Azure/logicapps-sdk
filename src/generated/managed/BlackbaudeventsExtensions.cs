@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
 {
     using System.Linq.Expressions;
@@ -57,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
-        public IBodyWorkflowAction<EventApiCreatedEvent, ApiConnectionActionConfiguration> CreateEvent(Expression<Func<string>> bodyeventName, Expression<Func<string>> bodycategorycategory, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyendTime = null, Expression<Func<string>> bodylookupID = null, Expression<Func<int>> bodycapacity = null, Expression<Func<double>> bodygoal = null, Expression<Func<string>> bodycampaignID = null, Expression<Func<string>> bodyfundID = null, Expression<Func<bool>> bodyinactive = null)
+        public IBodyWorkflowAction<EventApiCreatedEvent, ApiConnectionActionConfiguration> CreateEvent(Expression<Func<string>> bodyeventName, Expression<Func<string>> bodycategorycategory, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyendTime = null, Expression<Func<string>> bodylookupId = null, Expression<Func<int>> bodycapacity = null, Expression<Func<double>> bodygoal = null, Expression<Func<string>> bodycampaignId = null, Expression<Func<string>> bodyfundId = null, Expression<Func<bool>> bodyinactive = null)
         {
             var __workflow_bodyeventName = WorkflowExpression.Compile(bodyeventName, nameof(bodyeventName), required: true);
             var __workflow_bodycategorycategory = WorkflowExpression.Compile(bodycategorycategory, nameof(bodycategorycategory), required: true);
@@ -66,11 +67,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: false);
             var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
             var __workflow_bodyendTime = WorkflowExpression.Compile(bodyendTime, nameof(bodyendTime), required: false);
-            var __workflow_bodylookupID = WorkflowExpression.Compile(bodylookupID, nameof(bodylookupID), required: false);
+            var __workflow_bodylookupId = WorkflowExpression.Compile(bodylookupId, nameof(bodylookupId), required: false);
             var __workflow_bodycapacity = WorkflowExpression.Compile(bodycapacity, nameof(bodycapacity), required: false);
             var __workflow_bodygoal = WorkflowExpression.Compile(bodygoal, nameof(bodygoal), required: false);
-            var __workflow_bodycampaignID = WorkflowExpression.Compile(bodycampaignID, nameof(bodycampaignID), required: false);
-            var __workflow_bodyfundID = WorkflowExpression.Compile(bodyfundID, nameof(bodyfundID), required: false);
+            var __workflow_bodycampaignId = WorkflowExpression.Compile(bodycampaignId, nameof(bodycampaignId), required: false);
+            var __workflow_bodyfundId = WorkflowExpression.Compile(bodyfundId, nameof(bodyfundId), required: false);
             var __workflow_bodyinactive = WorkflowExpression.Compile(bodyinactive, nameof(bodyinactive), required: false);
             return new DeferredBodyAction<EventApiCreatedEvent, ApiConnectionActionConfiguration>(() =>
             {
@@ -117,9 +118,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                     bodypropCount++;
                 }
 
-                if (__workflow_bodylookupID != null)
+                if (__workflow_bodylookupId != null)
                 {
-                    body["lookup_id"] = ExpressionConverter.ConvertO(__workflow_bodylookupID);
+                    body["lookup_id"] = ExpressionConverter.ConvertO(__workflow_bodylookupId);
                     bodypropCount++;
                 }
 
@@ -135,15 +136,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                     bodypropCount++;
                 }
 
-                if (__workflow_bodycampaignID != null)
+                if (__workflow_bodycampaignId != null)
                 {
-                    body["campaign_id"] = ExpressionConverter.ConvertO(__workflow_bodycampaignID);
+                    body["campaign_id"] = ExpressionConverter.ConvertO(__workflow_bodycampaignId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyfundID != null)
+                if (__workflow_bodyfundId != null)
                 {
-                    body["fund_id"] = ExpressionConverter.ConvertO(__workflow_bodyfundID);
+                    body["fund_id"] = ExpressionConverter.ConvertO(__workflow_bodyfundId);
                     bodypropCount++;
                 }
 
@@ -176,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditEvent(Expression<Func<string>> eventId, Expression<Func<string>> bodycategorycategory, Expression<Func<string>> bodyeventName = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyendTime = null, Expression<Func<string>> bodylookupID = null, Expression<Func<int>> bodycapacity = null, Expression<Func<double>> bodygoal = null, Expression<Func<string>> bodycampaignID = null, Expression<Func<string>> bodyfundID = null, Expression<Func<bool>> bodyinactive = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditEvent(Expression<Func<string>> eventId, Expression<Func<string>> bodycategorycategory, Expression<Func<string>> bodyeventName = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyendTime = null, Expression<Func<string>> bodylookupId = null, Expression<Func<int>> bodycapacity = null, Expression<Func<double>> bodygoal = null, Expression<Func<string>> bodycampaignId = null, Expression<Func<string>> bodyfundId = null, Expression<Func<bool>> bodyinactive = null)
         {
             var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
             var __workflow_bodycategorycategory = WorkflowExpression.Compile(bodycategorycategory, nameof(bodycategorycategory), required: true);
@@ -186,11 +187,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: false);
             var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
             var __workflow_bodyendTime = WorkflowExpression.Compile(bodyendTime, nameof(bodyendTime), required: false);
-            var __workflow_bodylookupID = WorkflowExpression.Compile(bodylookupID, nameof(bodylookupID), required: false);
+            var __workflow_bodylookupId = WorkflowExpression.Compile(bodylookupId, nameof(bodylookupId), required: false);
             var __workflow_bodycapacity = WorkflowExpression.Compile(bodycapacity, nameof(bodycapacity), required: false);
             var __workflow_bodygoal = WorkflowExpression.Compile(bodygoal, nameof(bodygoal), required: false);
-            var __workflow_bodycampaignID = WorkflowExpression.Compile(bodycampaignID, nameof(bodycampaignID), required: false);
-            var __workflow_bodyfundID = WorkflowExpression.Compile(bodyfundID, nameof(bodyfundID), required: false);
+            var __workflow_bodycampaignId = WorkflowExpression.Compile(bodycampaignId, nameof(bodycampaignId), required: false);
+            var __workflow_bodyfundId = WorkflowExpression.Compile(bodyfundId, nameof(bodyfundId), required: false);
             var __workflow_bodyinactive = WorkflowExpression.Compile(bodyinactive, nameof(bodyinactive), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -245,9 +246,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                     bodypropCount++;
                 }
 
-                if (__workflow_bodylookupID != null)
+                if (__workflow_bodylookupId != null)
                 {
-                    body["lookup_id"] = ExpressionConverter.ConvertO(__workflow_bodylookupID);
+                    body["lookup_id"] = ExpressionConverter.ConvertO(__workflow_bodylookupId);
                     bodypropCount++;
                 }
 
@@ -263,15 +264,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                     bodypropCount++;
                 }
 
-                if (__workflow_bodycampaignID != null)
+                if (__workflow_bodycampaignId != null)
                 {
-                    body["campaign_id"] = ExpressionConverter.ConvertO(__workflow_bodycampaignID);
+                    body["campaign_id"] = ExpressionConverter.ConvertO(__workflow_bodycampaignId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyfundID != null)
+                if (__workflow_bodyfundId != null)
                 {
-                    body["fund_id"] = ExpressionConverter.ConvertO(__workflow_bodyfundID);
+                    body["fund_id"] = ExpressionConverter.ConvertO(__workflow_bodyfundId);
                     bodypropCount++;
                 }
 
@@ -304,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
-        public IBodyWorkflowAction<EventApiCreatedEventAttachment, ApiConnectionActionConfiguration> CreateEventAttachment(Expression<Func<string>> eventId, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodyuRL = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodyfileID = null, Expression<Func<string>> bodythumbnailID = null, Expression<Func<string[]>> bodytags = null)
+        public IBodyWorkflowAction<EventApiCreatedEventAttachment, ApiConnectionActionConfiguration> CreateEventAttachment(Expression<Func<string>> eventId, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodyuRL = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodyfileId = null, Expression<Func<string>> bodythumbnailId = null, Expression<Func<string[]>> bodytags = null)
         {
             var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
@@ -312,8 +313,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
             var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
             var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
             var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: false);
-            var __workflow_bodyfileID = WorkflowExpression.Compile(bodyfileID, nameof(bodyfileID), required: false);
-            var __workflow_bodythumbnailID = WorkflowExpression.Compile(bodythumbnailID, nameof(bodythumbnailID), required: false);
+            var __workflow_bodyfileId = WorkflowExpression.Compile(bodyfileId, nameof(bodyfileId), required: false);
+            var __workflow_bodythumbnailId = WorkflowExpression.Compile(bodythumbnailId, nameof(bodythumbnailId), required: false);
             var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
             return new DeferredBodyAction<EventApiCreatedEventAttachment, ApiConnectionActionConfiguration>(() =>
             {
@@ -348,15 +349,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyfileID != null)
+                if (__workflow_bodyfileId != null)
                 {
-                    body["file_id"] = ExpressionConverter.ConvertO(__workflow_bodyfileID);
+                    body["file_id"] = ExpressionConverter.ConvertO(__workflow_bodyfileId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodythumbnailID != null)
+                if (__workflow_bodythumbnailId != null)
                 {
-                    body["thumbnail_id"] = ExpressionConverter.ConvertO(__workflow_bodythumbnailID);
+                    body["thumbnail_id"] = ExpressionConverter.ConvertO(__workflow_bodythumbnailId);
                     bodypropCount++;
                 }
 
@@ -573,12 +574,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
-        public IBodyWorkflowAction<EventApiCreatedParticipant, ApiConnectionActionConfiguration> CreateParticipant(Expression<Func<string>> eventId, Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodyparticipationLevelparticipationLevel, Expression<Func<string>> bodyhostID = null, Expression<Func<bodyrSVPStatusInput>> bodyrSVPStatus = null, Expression<Func<bool>> bodyattended = null, Expression<Func<bodyinvitationStatusInput>> bodyinvitationStatus = null, Expression<Func<int>> bodyrSVPDateday = null, Expression<Func<int>> bodyrSVPDatemonth = null, Expression<Func<int>> bodyrSVPDateyear = null, Expression<Func<int>> bodyinvitationDateday = null, Expression<Func<int>> bodyinvitationDatemonth = null, Expression<Func<int>> bodyinvitationDateyear = null, Expression<Func<string>> bodysummaryNote = null)
+        public IBodyWorkflowAction<EventApiCreatedParticipant, ApiConnectionActionConfiguration> CreateParticipant(Expression<Func<string>> eventId, Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodyparticipationLevelparticipationLevel, Expression<Func<string>> bodyhostId = null, Expression<Func<bodyrSVPStatusInput>> bodyrSVPStatus = null, Expression<Func<bool>> bodyattended = null, Expression<Func<bodyinvitationStatusInput>> bodyinvitationStatus = null, Expression<Func<int>> bodyrSVPDateday = null, Expression<Func<int>> bodyrSVPDatemonth = null, Expression<Func<int>> bodyrSVPDateyear = null, Expression<Func<int>> bodyinvitationDateday = null, Expression<Func<int>> bodyinvitationDatemonth = null, Expression<Func<int>> bodyinvitationDateyear = null, Expression<Func<string>> bodysummaryNote = null)
         {
             var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
-            var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: true);
+            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
             var __workflow_bodyparticipationLevelparticipationLevel = WorkflowExpression.Compile(bodyparticipationLevelparticipationLevel, nameof(bodyparticipationLevelparticipationLevel), required: true);
-            var __workflow_bodyhostID = WorkflowExpression.Compile(bodyhostID, nameof(bodyhostID), required: false);
+            var __workflow_bodyhostId = WorkflowExpression.Compile(bodyhostId, nameof(bodyhostId), required: false);
             var __workflow_bodyrSVPStatus = WorkflowExpression.Compile(bodyrSVPStatus, nameof(bodyrSVPStatus), required: false);
             var __workflow_bodyattended = WorkflowExpression.Compile(bodyattended, nameof(bodyattended), required: false);
             var __workflow_bodyinvitationStatus = WorkflowExpression.Compile(bodyinvitationStatus, nameof(bodyinvitationStatus), required: false);
@@ -597,10 +598,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentID);
-                if (__workflow_bodyhostID != null)
+                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
+                if (__workflow_bodyhostId != null)
                 {
-                    body["host_id"] = ExpressionConverter.ConvertO(__workflow_bodyhostID);
+                    body["host_id"] = ExpressionConverter.ConvertO(__workflow_bodyhostId);
                     bodypropCount++;
                 }
 
@@ -736,12 +737,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditParticipant(Expression<Func<string>> participantId, Expression<Func<string>> bodyparticipationLevelparticipationLevel, Expression<Func<string>> bodyconstituentID = null, Expression<Func<string>> bodyhostID = null, Expression<Func<bodyrSVPStatusInput>> bodyrSVPStatus = null, Expression<Func<bool>> bodyattended = null, Expression<Func<bodyinvitationStatusInput>> bodyinvitationStatus = null, Expression<Func<int>> bodyrSVPDateday = null, Expression<Func<int>> bodyrSVPDatemonth = null, Expression<Func<int>> bodyrSVPDateyear = null, Expression<Func<int>> bodyinvitationDateday = null, Expression<Func<int>> bodyinvitationDatemonth = null, Expression<Func<int>> bodyinvitationDateyear = null, Expression<Func<string>> bodysummaryNote = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditParticipant(Expression<Func<string>> participantId, Expression<Func<string>> bodyparticipationLevelparticipationLevel, Expression<Func<string>> bodyconstituentId = null, Expression<Func<string>> bodyhostId = null, Expression<Func<bodyrSVPStatusInput>> bodyrSVPStatus = null, Expression<Func<bool>> bodyattended = null, Expression<Func<bodyinvitationStatusInput>> bodyinvitationStatus = null, Expression<Func<int>> bodyrSVPDateday = null, Expression<Func<int>> bodyrSVPDatemonth = null, Expression<Func<int>> bodyrSVPDateyear = null, Expression<Func<int>> bodyinvitationDateday = null, Expression<Func<int>> bodyinvitationDatemonth = null, Expression<Func<int>> bodyinvitationDateyear = null, Expression<Func<string>> bodysummaryNote = null)
         {
             var __workflow_participantId = WorkflowExpression.Compile(participantId, nameof(participantId), required: true);
             var __workflow_bodyparticipationLevelparticipationLevel = WorkflowExpression.Compile(bodyparticipationLevelparticipationLevel, nameof(bodyparticipationLevelparticipationLevel), required: true);
-            var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: false);
-            var __workflow_bodyhostID = WorkflowExpression.Compile(bodyhostID, nameof(bodyhostID), required: false);
+            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: false);
+            var __workflow_bodyhostId = WorkflowExpression.Compile(bodyhostId, nameof(bodyhostId), required: false);
             var __workflow_bodyrSVPStatus = WorkflowExpression.Compile(bodyrSVPStatus, nameof(bodyrSVPStatus), required: false);
             var __workflow_bodyattended = WorkflowExpression.Compile(bodyattended, nameof(bodyattended), required: false);
             var __workflow_bodyinvitationStatus = WorkflowExpression.Compile(bodyinvitationStatus, nameof(bodyinvitationStatus), required: false);
@@ -759,15 +760,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (__workflow_bodyconstituentID != null)
+                if (__workflow_bodyconstituentId != null)
                 {
-                    body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentID);
+                    body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyhostID != null)
+                if (__workflow_bodyhostId != null)
                 {
-                    body["host_id"] = ExpressionConverter.ConvertO(__workflow_bodyhostID);
+                    body["host_id"] = ExpressionConverter.ConvertO(__workflow_bodyhostId);
                     bodypropCount++;
                 }
 
@@ -887,10 +888,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
-        public IBodyWorkflowAction<EventApiCreatedParticipantDonation, ApiConnectionActionConfiguration> CreateParticipantDonation(Expression<Func<string>> participantId, Expression<Func<string>> bodygiftID)
+        public IBodyWorkflowAction<EventApiCreatedParticipantDonation, ApiConnectionActionConfiguration> CreateParticipantDonation(Expression<Func<string>> participantId, Expression<Func<string>> bodygiftId)
         {
             var __workflow_participantId = WorkflowExpression.Compile(participantId, nameof(participantId), required: true);
-            var __workflow_bodygiftID = WorkflowExpression.Compile(bodygiftID, nameof(bodygiftID), required: true);
+            var __workflow_bodygiftId = WorkflowExpression.Compile(bodygiftId, nameof(bodygiftId), required: true);
             return new DeferredBodyAction<EventApiCreatedParticipantDonation, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participants/{0}/donations", __workflow_participantId.WithUrlEncoding(1)));
@@ -899,7 +900,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["gift_id"] = ExpressionConverter.ConvertO(__workflow_bodygiftID);
+                body["gift_id"] = ExpressionConverter.ConvertO(__workflow_bodygiftId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -930,10 +931,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
-        public IBodyWorkflowAction<EventApiCreatedParticipantFeePayment, ApiConnectionActionConfiguration> CreateParticipantFeePayment(Expression<Func<string>> participantId, Expression<Func<string>> bodygiftID, Expression<Func<double>> bodyappliedAmount)
+        public IBodyWorkflowAction<EventApiCreatedParticipantFeePayment, ApiConnectionActionConfiguration> CreateParticipantFeePayment(Expression<Func<string>> participantId, Expression<Func<string>> bodygiftId, Expression<Func<double>> bodyappliedAmount)
         {
             var __workflow_participantId = WorkflowExpression.Compile(participantId, nameof(participantId), required: true);
-            var __workflow_bodygiftID = WorkflowExpression.Compile(bodygiftID, nameof(bodygiftID), required: true);
+            var __workflow_bodygiftId = WorkflowExpression.Compile(bodygiftId, nameof(bodygiftId), required: true);
             var __workflow_bodyappliedAmount = WorkflowExpression.Compile(bodyappliedAmount, nameof(bodyappliedAmount), required: true);
             return new DeferredBodyAction<EventApiCreatedParticipantFeePayment, ApiConnectionActionConfiguration>(() =>
             {
@@ -943,7 +944,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["gift_id"] = ExpressionConverter.ConvertO(__workflow_bodygiftID);
+                body["gift_id"] = ExpressionConverter.ConvertO(__workflow_bodygiftId);
                 bodypropCount++;
                 body["applied_amount"] = ExpressionConverter.ConvertO(__workflow_bodyappliedAmount);
                 if (bodypropCount > 0)
@@ -976,10 +977,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
-        public IBodyWorkflowAction<EventApiCreatedParticipantFee, ApiConnectionActionConfiguration> CreateParticipantFee(Expression<Func<string>> participantId, Expression<Func<string>> bodyeventID, Expression<Func<string>> bodyfee, Expression<Func<int>> bodyquantity, Expression<Func<double>> bodyfeeAmount, Expression<Func<double>> bodycontributionAmount, Expression<Func<int>> bodydateday = null, Expression<Func<int>> bodydatemonth = null, Expression<Func<int>> bodydateyear = null)
+        public IBodyWorkflowAction<EventApiCreatedParticipantFee, ApiConnectionActionConfiguration> CreateParticipantFee(Expression<Func<string>> participantId, Expression<Func<string>> bodyeventId, Expression<Func<string>> bodyfee, Expression<Func<int>> bodyquantity, Expression<Func<double>> bodyfeeAmount, Expression<Func<double>> bodycontributionAmount, Expression<Func<int>> bodydateday = null, Expression<Func<int>> bodydatemonth = null, Expression<Func<int>> bodydateyear = null)
         {
             var __workflow_participantId = WorkflowExpression.Compile(participantId, nameof(participantId), required: true);
-            var __workflow_bodyeventID = WorkflowExpression.Compile(bodyeventID, nameof(bodyeventID), required: true);
+            var __workflow_bodyeventId = WorkflowExpression.Compile(bodyeventId, nameof(bodyeventId), required: true);
             var __workflow_bodyfee = WorkflowExpression.Compile(bodyfee, nameof(bodyfee), required: true);
             var __workflow_bodyquantity = WorkflowExpression.Compile(bodyquantity, nameof(bodyquantity), required: true);
             var __workflow_bodyfeeAmount = WorkflowExpression.Compile(bodyfeeAmount, nameof(bodyfeeAmount), required: true);
@@ -995,7 +996,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["event_id"] = ExpressionConverter.ConvertO(__workflow_bodyeventID);
+                body["event_id"] = ExpressionConverter.ConvertO(__workflow_bodyeventId);
                 bodypropCount++;
                 body["event_fee_id"] = ExpressionConverter.ConvertO(__workflow_bodyfee);
                 bodypropCount++;
@@ -1053,10 +1054,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudevents")]
-        public IBodyWorkflowAction<EventApiCreatedParticipantOption, ApiConnectionActionConfiguration> CreateParticipantOption(Expression<Func<string>> participantId, Expression<Func<string>> bodyeventID, Expression<Func<string>> bodyoption, Expression<Func<object>> bodyoptionValue)
+        public IBodyWorkflowAction<EventApiCreatedParticipantOption, ApiConnectionActionConfiguration> CreateParticipantOption(Expression<Func<string>> participantId, Expression<Func<string>> bodyeventId, Expression<Func<string>> bodyoption, Expression<Func<object>> bodyoptionValue)
         {
             var __workflow_participantId = WorkflowExpression.Compile(participantId, nameof(participantId), required: true);
-            var __workflow_bodyeventID = WorkflowExpression.Compile(bodyeventID, nameof(bodyeventID), required: true);
+            var __workflow_bodyeventId = WorkflowExpression.Compile(bodyeventId, nameof(bodyeventId), required: true);
             var __workflow_bodyoption = WorkflowExpression.Compile(bodyoption, nameof(bodyoption), required: true);
             var __workflow_bodyoptionValue = WorkflowExpression.Compile(bodyoptionValue, nameof(bodyoptionValue), required: true);
             return new DeferredBodyAction<EventApiCreatedParticipantOption, ApiConnectionActionConfiguration>(() =>
@@ -1067,7 +1068,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["event_id"] = ExpressionConverter.ConvertO(__workflow_bodyeventID);
+                body["event_id"] = ExpressionConverter.ConvertO(__workflow_bodyeventId);
                 bodypropCount++;
                 body["event_participant_option_id"] = ExpressionConverter.ConvertO(__workflow_bodyoption);
                 bodypropCount++;
@@ -1098,7 +1099,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiEventListEntry
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1119,7 +1120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public EventApiEventCategory Category { get; set; }
 
         [JsonProperty("lookup_id")]
-        public string LookupID { get; set; }
+        public string LookupId { get; set; }
 
         [JsonProperty("capacity")]
         public int Capacity { get; set; }
@@ -1155,7 +1156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiEventCategory
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1167,13 +1168,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiCreatedEvent
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 
     public class EventApiEvent
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1197,7 +1198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public EventApiEventCategory Category { get; set; }
 
         [JsonProperty("lookup_id")]
-        public string LookupID { get; set; }
+        public string LookupId { get; set; }
 
         [JsonProperty("location")]
         public EventApiLocation Location { get; set; }
@@ -1209,10 +1210,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public double Goal { get; set; }
 
         [JsonProperty("campaign_id")]
-        public string CampaignID { get; set; }
+        public string CampaignId { get; set; }
 
         [JsonProperty("fund_id")]
-        public string FundID { get; set; }
+        public string FundId { get; set; }
 
         [JsonProperty("inactive")]
         public bool Inactive { get; set; }
@@ -1254,7 +1255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiLocality
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1263,7 +1264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiAdministrativeArea
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1275,7 +1276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiSubAdministrativeArea
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1284,7 +1285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiCountry
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("display_name")]
         public string DisplayName { get; set; }
@@ -1305,10 +1306,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiEventAttachment
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("parent_id")]
-        public string EventID { get; set; }
+        public string EventId { get; set; }
 
         [JsonProperty("type")]
         public EventApiEventAttachmentTypeType Type { get; set; }
@@ -1326,10 +1327,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public string FileName { get; set; }
 
         [JsonProperty("file_id")]
-        public string FileID { get; set; }
+        public string FileId { get; set; }
 
         [JsonProperty("thumbnail_id")]
-        public string ThumbnailID { get; set; }
+        public string ThumbnailId { get; set; }
 
         [JsonProperty("thumbnail_url")]
         public string ThumbnailURL { get; set; }
@@ -1354,7 +1355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiCreatedEventAttachment
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1376,7 +1377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiEventFee
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1394,7 +1395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiCreatedEventFee
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 
     public class EventApiApiCollectionOfEventParticipantOption
@@ -1409,7 +1410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiEventParticipantOption
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1456,7 +1457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiEventParticipantOptionListOption
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1468,7 +1469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiCreatedEventParticipantOption
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1500,10 +1501,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiParticipantListEntry
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("contact_id")]
-        public string ContactID { get; set; }
+        public string ContactId { get; set; }
 
         [JsonProperty("rsvp_status")]
         public EventApiParticipantListEntryRSVPStatusType RSVPStatus { get; set; }
@@ -1539,7 +1540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public string Suffix { get; set; }
 
         [JsonProperty("lookup_id")]
-        public string LookupID { get; set; }
+        public string LookupId { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -1637,7 +1638,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiParticipationLevel
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1649,10 +1650,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiParticipantListEntryHostType
     {
         [JsonProperty("contact_id")]
-        public string ContactID { get; set; }
+        public string ContactId { get; set; }
 
         [JsonProperty("participant_id")]
-        public string ParticipantID { get; set; }
+        public string ParticipantId { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1661,10 +1662,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiParticipantListParticipantSummary
     {
         [JsonProperty("contact_id")]
-        public string ContactID { get; set; }
+        public string ContactId { get; set; }
 
         [JsonProperty("participant_id")]
-        public string ParticipantID { get; set; }
+        public string ParticipantId { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1679,7 +1680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiMembershipCategory
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1708,7 +1709,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiCreatedParticipant
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1734,16 +1735,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiParticipant
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("constituent_id")]
-        public string ConstituentID { get; set; }
+        public string ConstituentId { get; set; }
 
         [JsonProperty("event_id")]
-        public string EventID { get; set; }
+        public string EventId { get; set; }
 
         [JsonProperty("host_id")]
-        public string HostID { get; set; }
+        public string HostId { get; set; }
 
         [JsonProperty("rsvp_status")]
         public EventApiParticipantRSVPStatusType RSVPStatus { get; set; }
@@ -1829,16 +1830,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiParticipantDonation
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("gift_id")]
-        public string GiftID { get; set; }
+        public string GiftId { get; set; }
     }
 
     public class EventApiCreatedParticipantDonation
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 
     public class EventApiApiCollectionOfParticipantFeePayment
@@ -1853,13 +1854,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiParticipantFeePayment
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("participant_id")]
-        public string ParticipantID { get; set; }
+        public string ParticipantId { get; set; }
 
         [JsonProperty("gift_id")]
-        public string GiftID { get; set; }
+        public string GiftId { get; set; }
 
         [JsonProperty("applied_amount")]
         public double AppliedAmount { get; set; }
@@ -1868,7 +1869,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiCreatedParticipantFeePayment
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 
     public class EventApiApiCollectionOfParticipantFee
@@ -1883,10 +1884,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiParticipantFee
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("participant_id")]
-        public string ParticipantID { get; set; }
+        public string ParticipantId { get; set; }
 
         [JsonProperty("quantity")]
         public int Quantity { get; set; }
@@ -1919,7 +1920,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiCreatedParticipantFee
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 
     public class EventApiApiCollectionOfParticipantOption
@@ -1934,16 +1935,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiParticipantOption
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("participant_id")]
-        public string ParticipantID { get; set; }
+        public string ParticipantId { get; set; }
 
         [JsonProperty("event_id")]
-        public string EventID { get; set; }
+        public string EventId { get; set; }
 
         [JsonProperty("event_participant_option_id")]
-        public string EventParticipantOptionID { get; set; }
+        public string EventParticipantOptionId { get; set; }
 
         [JsonProperty("option_value")]
         public string Value { get; set; }
@@ -1970,7 +1971,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     public class EventApiCreatedParticipantOption
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 }
 

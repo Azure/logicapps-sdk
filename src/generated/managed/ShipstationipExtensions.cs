@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstationip
 {
     using System.Linq.Expressions;
@@ -14,19 +15,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shipstationip")]
         public IBodyWorkflowAction<StoresResponseItem[], ApiConnectionActionConfiguration> StoresGet()
         {
-            var apiCallPath = "/stores";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<StoresResponseItem[]>(callPayload);
+            return new DeferredBodyAction<StoresResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/stores";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<StoresResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shipstationip")]
         public IBodyWorkflowAction<MarketplacesResponseItem[], ApiConnectionActionConfiguration> StoresMarketplacesGet()
         {
-            var apiCallPath = "/stores/marketplaces";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MarketplacesResponseItem[]>(callPayload);
+            return new DeferredBodyAction<MarketplacesResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/stores/marketplaces";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<MarketplacesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shipstationip")]

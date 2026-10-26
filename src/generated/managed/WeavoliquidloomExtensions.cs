@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
 {
     using System.Linq.Expressions;
@@ -387,10 +388,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EdiToJson(Expression<Func<string>> bodyinputString, Expression<Func<string>> bodyliquidTemplate, Expression<Func<string>> bodylogFileName = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EdiToJson(Expression<Func<string>> bodyinputString, Expression<Func<string>> bodyliquidTemplate = null, Expression<Func<string>> bodylogFileName = null)
         {
             var __workflow_bodyinputString = WorkflowExpression.Compile(bodyinputString, nameof(bodyinputString), required: true);
-            var __workflow_bodyliquidTemplate = WorkflowExpression.Compile(bodyliquidTemplate, nameof(bodyliquidTemplate), required: true);
+            var __workflow_bodyliquidTemplate = WorkflowExpression.Compile(bodyliquidTemplate, nameof(bodyliquidTemplate), required: false);
             var __workflow_bodylogFileName = WorkflowExpression.Compile(bodylogFileName, nameof(bodylogFileName), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
@@ -401,8 +402,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
                 var bodypropCount = 0;
                 bodypropCount++;
                 body["inputString"] = ExpressionConverter.ConvertO(__workflow_bodyinputString);
-                bodypropCount++;
-                body["liquidTemplate"] = ExpressionConverter.ConvertO(__workflow_bodyliquidTemplate);
+                if (__workflow_bodyliquidTemplate != null)
+                {
+                    body["liquidTemplate"] = ExpressionConverter.ConvertO(__workflow_bodyliquidTemplate);
+                    bodypropCount++;
+                }
+
                 if (__workflow_bodylogFileName != null)
                 {
                     body["logFileName"] = ExpressionConverter.ConvertO(__workflow_bodylogFileName);
@@ -419,10 +424,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EdiToText(Expression<Func<string>> bodyinputString, Expression<Func<string>> bodyliquidTemplate, Expression<Func<string>> bodylogFileName = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EdiToText(Expression<Func<string>> bodyinputString, Expression<Func<string>> bodyliquidTemplate = null, Expression<Func<string>> bodylogFileName = null)
         {
             var __workflow_bodyinputString = WorkflowExpression.Compile(bodyinputString, nameof(bodyinputString), required: true);
-            var __workflow_bodyliquidTemplate = WorkflowExpression.Compile(bodyliquidTemplate, nameof(bodyliquidTemplate), required: true);
+            var __workflow_bodyliquidTemplate = WorkflowExpression.Compile(bodyliquidTemplate, nameof(bodyliquidTemplate), required: false);
             var __workflow_bodylogFileName = WorkflowExpression.Compile(bodylogFileName, nameof(bodylogFileName), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
@@ -433,8 +438,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
                 var bodypropCount = 0;
                 bodypropCount++;
                 body["inputString"] = ExpressionConverter.ConvertO(__workflow_bodyinputString);
-                bodypropCount++;
-                body["liquidTemplate"] = ExpressionConverter.ConvertO(__workflow_bodyliquidTemplate);
+                if (__workflow_bodyliquidTemplate != null)
+                {
+                    body["liquidTemplate"] = ExpressionConverter.ConvertO(__workflow_bodyliquidTemplate);
+                    bodypropCount++;
+                }
+
                 if (__workflow_bodylogFileName != null)
                 {
                     body["logFileName"] = ExpressionConverter.ConvertO(__workflow_bodylogFileName);
@@ -451,10 +460,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> XmlToXml11(Expression<Func<string>> bodyinputString, Expression<Func<string>> bodyliquidTemplate, Expression<Func<string>> bodylogFileName = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> XmlToXml11(Expression<Func<string>> bodyinputString, Expression<Func<string>> bodyliquidTemplate = null, Expression<Func<string>> bodylogFileName = null)
         {
             var __workflow_bodyinputString = WorkflowExpression.Compile(bodyinputString, nameof(bodyinputString), required: true);
-            var __workflow_bodyliquidTemplate = WorkflowExpression.Compile(bodyliquidTemplate, nameof(bodyliquidTemplate), required: true);
+            var __workflow_bodyliquidTemplate = WorkflowExpression.Compile(bodyliquidTemplate, nameof(bodyliquidTemplate), required: false);
             var __workflow_bodylogFileName = WorkflowExpression.Compile(bodylogFileName, nameof(bodylogFileName), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
@@ -465,8 +474,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
                 var bodypropCount = 0;
                 bodypropCount++;
                 body["inputString"] = ExpressionConverter.ConvertO(__workflow_bodyinputString);
-                bodypropCount++;
-                body["liquidTemplate"] = ExpressionConverter.ConvertO(__workflow_bodyliquidTemplate);
+                if (__workflow_bodyliquidTemplate != null)
+                {
+                    body["liquidTemplate"] = ExpressionConverter.ConvertO(__workflow_bodyliquidTemplate);
+                    bodypropCount++;
+                }
+
                 if (__workflow_bodylogFileName != null)
                 {
                     body["logFileName"] = ExpressionConverter.ConvertO(__workflow_bodylogFileName);

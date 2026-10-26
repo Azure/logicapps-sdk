@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
 {
     using System.Linq.Expressions;
@@ -269,10 +270,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         public Attachment[] Attachments { get; set; }
 
         [JsonProperty("Id")]
-        public string MessageID { get; set; }
-
-        [JsonProperty("ThreadId")]
-        public string ThreadID { get; set; }
+        public string MessageId { get; set; }
+        public string ThreadId { get; set; }
     }
 
     public class Attachment

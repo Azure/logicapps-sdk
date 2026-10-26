@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
         public IBodyWorkflowAction<Team[], ApiConnectionActionConfiguration> Teams()
         {
-            var apiCallPath = "/teams";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Team[]>(callPayload);
+            return new DeferredBodyAction<Team[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/teams";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Team[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]

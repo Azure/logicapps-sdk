@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Donotcallreportcallsip
 {
     using System.Linq.Expressions;
@@ -64,15 +65,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Donotcallreportcallsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "donotcallreportcallsip")]
-        public IBodyWorkflowAction<ComplaintIDResponse, ApiConnectionActionConfiguration> ComplaintID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ComplaintIdResponse, ApiConnectionActionConfiguration> ComplaintId(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ComplaintIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ComplaintIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/dnc-complaints/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<ComplaintIDResponse>(callPayload);
+                return new ApiConnectionAction<ComplaintIdResponse>(callPayload);
             });
         }
     }
@@ -163,19 +164,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Donotcallreportcallsip
         ASC
     }
 
-    public class ComplaintIDResponse
+    public class ComplaintIdResponse
     {
         [JsonProperty("data")]
-        public ComplaintIDResponseDataTypeItem[] Data { get; set; }
+        public ComplaintIdResponseDataTypeItem[] Data { get; set; }
 
         [JsonProperty("meta")]
-        public ComplaintIDResponseMetaType Meta { get; set; }
+        public ComplaintIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("links")]
-        public ComplaintIDResponseLinksType Links { get; set; }
+        public ComplaintIdResponseLinksType Links { get; set; }
     }
 
-    public class ComplaintIDResponseDataTypeItem
+    public class ComplaintIdResponseDataTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -184,13 +185,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Donotcallreportcallsip
         public string Id { get; set; }
 
         [JsonProperty("attributes")]
-        public ComplaintIDResponseDataTypeItemAttributesType Attributes { get; set; }
+        public ComplaintIdResponseDataTypeItemAttributesType Attributes { get; set; }
 
         [JsonProperty("links")]
-        public ComplaintIDResponseDataTypeItemLinksType Links { get; set; }
+        public ComplaintIdResponseDataTypeItemLinksType Links { get; set; }
     }
 
-    public class ComplaintIDResponseDataTypeItemAttributesType
+    public class ComplaintIdResponseDataTypeItemAttributesType
     {
         [JsonProperty("company-phone-number")]
         public string CompanyPhoneNumber { get; set; }
@@ -217,13 +218,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Donotcallreportcallsip
         public string RecordedMessageOrRobocall { get; set; }
     }
 
-    public class ComplaintIDResponseDataTypeItemLinksType
+    public class ComplaintIdResponseDataTypeItemLinksType
     {
         [JsonProperty("self")]
         public string Self { get; set; }
     }
 
-    public class ComplaintIDResponseMetaType
+    public class ComplaintIdResponseMetaType
     {
         [JsonProperty("records-this-page")]
         public int RecordsThisPage { get; set; }
@@ -232,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Donotcallreportcallsip
         public int RecordTotal { get; set; }
     }
 
-    public class ComplaintIDResponseLinksType
+    public class ComplaintIdResponseLinksType
     {
         [JsonProperty("self")]
         public string Self { get; set; }

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
 {
     using System.Linq.Expressions;
@@ -11,19 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
 
     public class CloudmersiveActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersive")]
-        public IBodyWorkflowAction<VirusScanResult, ApiConnectionActionConfiguration> ScanFile(Expression<Func<string>> inputFile)
-        {
-            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: true);
-            return new DeferredBodyAction<VirusScanResult, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/virus/scan/file";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<VirusScanResult>(callPayload);
-            });
-        }
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersive")]
         public IBodyWorkflowAction<WebsiteScanResult, ApiConnectionActionConfiguration> ScanWebsite(Expression<Func<string>> inputurl = null)
         {
@@ -53,18 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
 
     public class CloudmersiveTriggers([ConnectionName] string connectionId)
     {
-    }
-
-    public class VirusScanResult
-    {
-        public bool CleanResult { get; set; }
-        public VirusFound[] FoundViruses { get; set; }
-    }
-
-    public class VirusFound
-    {
-        public string FileName { get; set; }
-        public string VirusName { get; set; }
     }
 
     public class WebsiteScanResult

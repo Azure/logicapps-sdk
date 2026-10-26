@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
 {
     using System.Linq.Expressions;
@@ -221,13 +222,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdatePartiesFields(Expression<Func<string>> templateIDDynamic, Expression<Func<object>> dynamicTemplateSchema = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdatePartiesFields(Expression<Func<string>> templateIdDynamic, Expression<Func<object>> dynamicTemplateSchema = null)
         {
-            var __workflow_templateIDDynamic = WorkflowExpression.Compile(templateIDDynamic, nameof(templateIDDynamic), required: true);
+            var __workflow_templateIdDynamic = WorkflowExpression.Compile(templateIdDynamic, nameof(templateIdDynamic), required: true);
             var __workflow_dynamicTemplateSchema = WorkflowExpression.Compile(dynamicTemplateSchema, nameof(dynamicTemplateSchema), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/updatepartiesfields/{0}", __workflow_templateIDDynamic.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/updatepartiesfields/{0}", __workflow_templateIdDynamic.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicTemplateSchema);
@@ -236,13 +237,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdatePartiesProperties(Expression<Func<string>> templateIDDynamic, Expression<Func<object>> dynamicTemplateMetaSchema = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdatePartiesProperties(Expression<Func<string>> templateIdDynamic, Expression<Func<object>> dynamicTemplateMetaSchema = null)
         {
-            var __workflow_templateIDDynamic = WorkflowExpression.Compile(templateIDDynamic, nameof(templateIDDynamic), required: true);
+            var __workflow_templateIdDynamic = WorkflowExpression.Compile(templateIdDynamic, nameof(templateIdDynamic), required: true);
             var __workflow_dynamicTemplateMetaSchema = WorkflowExpression.Compile(dynamicTemplateMetaSchema, nameof(dynamicTemplateMetaSchema), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/updatepartiesproperties/{0}", __workflow_templateIDDynamic.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/updatepartiesproperties/{0}", __workflow_templateIdDynamic.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicTemplateMetaSchema);
@@ -352,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddParty(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodypartyEmail, Expression<Func<bodypartyRoleInput>> bodypartyRole, Expression<Func<string>> bodyfirstname = null, Expression<Func<string>> bodylastname = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodymobile = null, Expression<Func<string>> bodypersonalNumber = null, Expression<Func<double>> bodysignOrder = null, Expression<Func<bodydeliveryMethodInput>> bodydeliveryMethod = null, Expression<Func<bodyauthenticationToViewInput>> bodyauthenticationToView = null, Expression<Func<bodyauthenticationToViewArchivedInput>> bodyauthenticationToViewArchived = null, Expression<Func<bodyauthenticationToSignInput>> bodyauthenticationToSign = null, Expression<Func<bodyconfirmationInput>> bodyconfirmation = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddParty(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodypartyEmail, Expression<Func<bodypartyRoleInput>> bodypartyRole, Expression<Func<string>> bodyfirstname = null, Expression<Func<string>> bodylastname = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodymobile = null, Expression<Func<string>> bodypersonalNumber = null, Expression<Func<double>> bodysignOrder = null, Expression<Func<bodydeliveryMethodInput>> bodydeliveryMethod = null, Expression<Func<string>> bodyauthenticationToView = null, Expression<Func<string>> bodyauthenticationToViewArchived = null, Expression<Func<string>> bodyauthenticationToSign = null, Expression<Func<bodyconfirmationInput>> bodyconfirmation = null)
         {
             var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
             var __workflow_bodypartyEmail = WorkflowExpression.Compile(bodypartyEmail, nameof(bodypartyEmail), required: true);
@@ -508,11 +509,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetAuthorAttachment(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodyattachmentName, Expression<Func<bodyrequiredInput>> bodyrequired, Expression<Func<bodyaddToSealedFileInput>> bodyaddToSealedFile, Expression<Func<string>> bodyfileId = null, Expression<Func<string>> bodypdfContent = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetAuthorAttachment(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodyattachmentName, Expression<Func<bodyRequiredInput>> bodyRequired, Expression<Func<bodyaddToSealedFileInput>> bodyaddToSealedFile, Expression<Func<string>> bodyfileId = null, Expression<Func<string>> bodypdfContent = null)
         {
             var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
             var __workflow_bodyattachmentName = WorkflowExpression.Compile(bodyattachmentName, nameof(bodyattachmentName), required: true);
-            var __workflow_bodyrequired = WorkflowExpression.Compile(bodyrequired, nameof(bodyrequired), required: true);
+            var __workflow_bodyRequired = WorkflowExpression.Compile(bodyRequired, nameof(bodyRequired), required: true);
             var __workflow_bodyaddToSealedFile = WorkflowExpression.Compile(bodyaddToSealedFile, nameof(bodyaddToSealedFile), required: true);
             var __workflow_bodyfileId = WorkflowExpression.Compile(bodyfileId, nameof(bodyfileId), required: false);
             var __workflow_bodypdfContent = WorkflowExpression.Compile(bodypdfContent, nameof(bodypdfContent), required: false);
@@ -534,7 +535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                 bodypropCount++;
                 body["attachmentName"] = ExpressionConverter.ConvertO(__workflow_bodyattachmentName);
                 bodypropCount++;
-                body["required"] = ExpressionConverter.ConvertO(__workflow_bodyrequired);
+                body["required"] = ExpressionConverter.ConvertO(__workflow_bodyRequired);
                 bodypropCount++;
                 body["addToSealedFile"] = ExpressionConverter.ConvertO(__workflow_bodyaddToSealedFile);
                 if (__workflow_bodypdfContent != null)
@@ -601,11 +602,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
 
         public IBodyWorkflowTrigger<PollSignedDocumentsResponse, ApiConnectionTriggerConfiguration> PollSignedDocuments(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/polling/signed";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["pollTime"] = Convert.ToString("init");
-            return new ApiConnectionTrigger<PollSignedDocumentsResponse>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<PollSignedDocumentsResponse, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/polling/signed";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<PollSignedDocumentsResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -645,69 +648,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyauthenticationToViewInput
-    {
-        [EnumMember(Value = "standard")]
-        Standard,
-        [EnumMember(Value = "sms_pin")]
-        SmsPin,
-        [EnumMember(Value = "se_bankid")]
-        SeBankid,
-        [EnumMember(Value = "no_bankid")]
-        NoBankid,
-        [EnumMember(Value = "dk_nemid")]
-        DkNemid,
-        [EnumMember(Value = "fi_tupas")]
-        FiTupas,
-        [EnumMember(Value = "verimi")]
-        Verimi,
-        [EnumMember(Value = "nl_idin")]
-        NlIdin
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyauthenticationToViewArchivedInput
-    {
-        [EnumMember(Value = "standard")]
-        Standard,
-        [EnumMember(Value = "sms_pin")]
-        SmsPin,
-        [EnumMember(Value = "se_bankid")]
-        SeBankid,
-        [EnumMember(Value = "no_bankid")]
-        NoBankid,
-        [EnumMember(Value = "dk_nemid")]
-        DkNemid,
-        [EnumMember(Value = "fi_tupas")]
-        FiTupas,
-        [EnumMember(Value = "verimi")]
-        Verimi,
-        [EnumMember(Value = "nl_idin")]
-        NlIdin
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyauthenticationToSignInput
-    {
-        [EnumMember(Value = "standard")]
-        Standard,
-        [EnumMember(Value = "sms_pin")]
-        SmsPin,
-        [EnumMember(Value = "se_bankid")]
-        SeBankid,
-        [EnumMember(Value = "no_bankid")]
-        NoBankid,
-        [EnumMember(Value = "dk_nemid")]
-        DkNemid,
-        [EnumMember(Value = "fi_tupas")]
-        FiTupas,
-        [EnumMember(Value = "onfido_document_check")]
-        OnfidoDocumentCheck,
-        [EnumMember(Value = "onfido_document_and_photo_check")]
-        OnfidoDocumentAndPhotoCheck
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyconfirmationInput
     {
         [EnumMember(Value = "email")]
@@ -725,7 +665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyrequiredInput
+    public enum bodyRequiredInput
     {
         Yes,
         No
@@ -740,15 +680,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
 
     public class PollSignedDocumentsResponse
     {
-        [JsonProperty("pollTime")]
-        public string PollTime { get; set; }
-
         [JsonProperty("documents")]
         public PollSignedDocumentsResponseDocumentsTypeItem[] Documents { get; set; }
     }
 
     public class PollSignedDocumentsResponseDocumentsTypeItem
     {
+        [JsonProperty("mtime")]
+        public string Mtime { get; set; }
+
         [JsonProperty("documentId")]
         public string DocumentId { get; set; }
     }

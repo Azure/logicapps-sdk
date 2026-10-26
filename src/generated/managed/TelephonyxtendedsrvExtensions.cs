@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 {
     using System.Linq.Expressions;
@@ -12,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
     public class TelephonyxtendedsrvActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Raw(Expression<Func<string>> bodyuserID, Expression<Func<string>> bodypath, Expression<Func<string>> bodypayload = null, Expression<Func<acceptInput>> accept = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Raw(Expression<Func<string>> bodyuserId, Expression<Func<string>> bodypath, Expression<Func<string>> bodypayload = null, Expression<Func<acceptInput>> accept = null)
         {
-            var __workflow_bodyuserID = WorkflowExpression.Compile(bodyuserID, nameof(bodyuserID), required: true);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: true);
             var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
             var __workflow_bodypayload = WorkflowExpression.Compile(bodypayload, nameof(bodypayload), required: false);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: false);
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["userId"] = ExpressionConverter.ConvertO(__workflow_bodyuserID);
+                body["userId"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
                 bodypropCount++;
                 body["path"] = ExpressionConverter.ConvertO(__workflow_bodypath);
                 if (__workflow_bodypayload != null)
@@ -122,10 +123,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ToggleAgentACDState(Expression<Func<string>> bodyagentACDState, Expression<Func<string>> bodyuserID = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ToggleAgentACDState(Expression<Func<string>> bodyagentACDState, Expression<Func<string>> bodyuserId = null)
         {
             var __workflow_bodyagentACDState = WorkflowExpression.Compile(bodyagentACDState, nameof(bodyagentACDState), required: true);
-            var __workflow_bodyuserID = WorkflowExpression.Compile(bodyuserID, nameof(bodyuserID), required: false);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ACD-Toggle";
@@ -136,9 +137,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
                 var bodypropCount = 0;
                 bodypropCount++;
                 body["agentACDState"] = ExpressionConverter.ConvertO(__workflow_bodyagentACDState);
-                if (__workflow_bodyuserID != null)
+                if (__workflow_bodyuserId != null)
                 {
-                    body["userID"] = ExpressionConverter.ConvertO(__workflow_bodyuserID);
+                    body["userID"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
                     bodypropCount++;
                 }
 
@@ -152,10 +153,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CallNew(Expression<Func<string>> bodyaddress, Expression<Func<string>> bodyuserID = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CallNew(Expression<Func<string>> bodyaddress, Expression<Func<string>> bodyuserId = null)
         {
             var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: true);
-            var __workflow_bodyuserID = WorkflowExpression.Compile(bodyuserID, nameof(bodyuserID), required: false);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Call-New";
@@ -163,9 +164,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (__workflow_bodyuserID != null)
+                if (__workflow_bodyuserId != null)
                 {
-                    body["userID"] = ExpressionConverter.ConvertO(__workflow_bodyuserID);
+                    body["userID"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
                     bodypropCount++;
                 }
 

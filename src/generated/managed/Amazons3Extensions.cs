@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
 {
     using System.Linq.Expressions;
@@ -14,19 +15,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3")]
         public IBodyWorkflowAction<S3RegionCollection, ApiConnectionActionConfiguration> ListRegions()
         {
-            var apiCallPath = "/regions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<S3RegionCollection>(callPayload);
+            return new DeferredBodyAction<S3RegionCollection, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/regions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<S3RegionCollection>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3")]
         public IBodyWorkflowAction<S3BucketCollection, ApiConnectionActionConfiguration> ListBuckets()
         {
-            var apiCallPath = "/buckets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<S3BucketCollection>(callPayload);
+            return new DeferredBodyAction<S3BucketCollection, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/buckets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<S3BucketCollection>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3")]

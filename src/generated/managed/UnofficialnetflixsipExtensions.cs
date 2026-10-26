@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
 {
     using System.Linq.Expressions;
@@ -116,19 +117,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
         public IBodyWorkflowAction<GenresResponse, ApiConnectionActionConfiguration> Genres()
         {
-            var apiCallPath = "/genres";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GenresResponse>(callPayload);
+            return new DeferredBodyAction<GenresResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/genres";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GenresResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
         public IBodyWorkflowAction<CountriesResponse, ApiConnectionActionConfiguration> Countries()
         {
-            var apiCallPath = "/countries";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CountriesResponse>(callPayload);
+            return new DeferredBodyAction<CountriesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/countries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CountriesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]

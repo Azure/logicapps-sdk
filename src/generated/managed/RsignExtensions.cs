@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
 {
     using System.Linq.Expressions;
@@ -225,7 +226,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
 
     public class bodytemplateRoleRecipientMappingInputItem
     {
-        public string RoleID { get; set; }
+        [JsonProperty("RoleID")]
+        public string RoleId { get; set; }
         public string RecipientEmail { get; set; }
         public string RecipientName { get; set; }
 
@@ -295,7 +297,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
     public class GetEnvelopeStatusInfoResponseDataTypeItem
     {
         public string EnvelopeCode { get; set; }
-        public string EnvelopeID { get; set; }
+
+        [JsonProperty("EnvelopeID")]
+        public string EnvelopeId { get; set; }
         public string Subject { get; set; }
         public string Status { get; set; }
         public bool IsEnvelopeComplete { get; set; }
@@ -310,15 +314,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
 
     public class GetEnvelopeStatusInfoResponseDataTypeItemRecipientDetailsTypeItem
     {
-        public string RecipientID { get; set; }
-        public string RecipientTypeID { get; set; }
+        [JsonProperty("RecipientID")]
+        public string RecipientId { get; set; }
+
+        [JsonProperty("RecipientTypeID")]
+        public string RecipientTypeId { get; set; }
         public string RecipientType { get; set; }
         public string RecipientName { get; set; }
         public string Email { get; set; }
         public int Order { get; set; }
-
-        [JsonProperty("StatusId")]
-        public string StatusID { get; set; }
+        public string StatusId { get; set; }
         public string SigningStatus { get; set; }
         public string LastModifiedDate { get; set; }
     }
@@ -372,9 +377,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
 
     public class GetTemplateInfoResponseTemplateBasicInfoTypeDocumentListTypeItemDocumentContentDetailsTypeItem
     {
-        public string ControlID { get; set; }
+        [JsonProperty("ControlID")]
+        public string ControlId { get; set; }
         public string ControlName { get; set; }
-        public string ControlHtmlID { get; set; }
+
+        [JsonProperty("ControlHtmlID")]
+        public string ControlHtmlId { get; set; }
         public string GroupName { get; set; }
         public string Label { get; set; }
         public int PageNo { get; set; }
@@ -387,13 +395,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
 
     public class GetTemplateInfoResponseTemplateBasicInfoTypeTemplateRoleListTypeItem
     {
-        public string RoleID { get; set; }
+        [JsonProperty("RoleID")]
+        public string RoleId { get; set; }
         public string RoleName { get; set; }
         public int Order { get; set; }
         public string RecipientEmail { get; set; }
         public string RecipientName { get; set; }
-        public string RecipientTypeID { get; set; }
-        public string RecipientID { get; set; }
+
+        [JsonProperty("RecipientTypeID")]
+        public string RecipientTypeId { get; set; }
+
+        [JsonProperty("RecipientID")]
+        public string RecipientId { get; set; }
         public string RecipientType { get; set; }
         public string CcSignerType { get; set; }
         public string CultureInfo { get; set; }

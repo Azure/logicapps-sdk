@@ -4,6 +4,8 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ukbankholidays
 {
+    using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -13,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ukbankholidays
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ukbankholidays")]
         public IBodyWorkflowAction<AllKingdomHolidaysResponse, ApiConnectionActionConfiguration> AllKingdomHolidays()
         {
-            var apiCallPath = "/bank-holidays.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AllKingdomHolidaysResponse>(callPayload);
+            return new DeferredBodyAction<AllKingdomHolidaysResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/bank-holidays.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AllKingdomHolidaysResponse>(callPayload);
+            });
         }
     }
 

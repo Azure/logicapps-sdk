@@ -4,6 +4,8 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corporatebuzzwordip
 {
+    using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -13,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corporatebuzzwordip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corporatebuzzwordip")]
         public IBodyWorkflowAction<PhraseResponse, ApiConnectionActionConfiguration> Phrase()
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PhraseResponse>(callPayload);
+            return new DeferredBodyAction<PhraseResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PhraseResponse>(callPayload);
+            });
         }
     }
 

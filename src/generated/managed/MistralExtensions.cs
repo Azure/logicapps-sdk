@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
 {
     using System.Linq.Expressions;
@@ -171,10 +172,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mistral")]
         public IBodyWorkflowAction<ModelList, ApiConnectionActionConfiguration> ListModels()
         {
-            var apiCallPath = "/models";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ModelList>(callPayload);
+            return new DeferredBodyAction<ModelList, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/models";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ModelList>(callPayload);
+            });
         }
     }
 

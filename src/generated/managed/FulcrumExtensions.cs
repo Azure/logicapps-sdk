@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
 {
     using System.Linq.Expressions;
@@ -272,19 +273,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<SingleRecordResponse, ApiConnectionActionConfiguration> RecordsCreate(Expression<Func<object>> bodyrecordgeometrycoordinates, Expression<Func<bodyrecordgeometrytypeInput>> bodyrecordgeometrytype, Expression<Func<string>> contentType = null, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null, Expression<Func<string>> bodyrecordassignedToId = null, Expression<Func<string>> bodyrecordformId = null, Expression<Func<double>> bodyrecordlatitude = null, Expression<Func<double>> bodyrecordlongitude = null, Expression<Func<string>> bodyrecordprojectId = null, Expression<Func<string>> bodyrecordstatus = null)
+        public IBodyWorkflowAction<SingleRecordResponse, ApiConnectionActionConfiguration> RecordsCreate(Expression<Func<object>> bodyRecordgeometrycoordinates, Expression<Func<bodyRecordgeometrytypeInput>> bodyRecordgeometrytype, Expression<Func<string>> contentType = null, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null, Expression<Func<string>> bodyRecordassignedToId = null, Expression<Func<string>> bodyRecordformId = null, Expression<Func<double>> bodyRecordlatitude = null, Expression<Func<double>> bodyRecordlongitude = null, Expression<Func<string>> bodyRecordprojectId = null, Expression<Func<string>> bodyRecordstatus = null)
         {
-            var __workflow_bodyrecordgeometrycoordinates = WorkflowExpression.Compile(bodyrecordgeometrycoordinates, nameof(bodyrecordgeometrycoordinates), required: true);
-            var __workflow_bodyrecordgeometrytype = WorkflowExpression.Compile(bodyrecordgeometrytype, nameof(bodyrecordgeometrytype), required: true);
+            var __workflow_bodyRecordgeometrycoordinates = WorkflowExpression.Compile(bodyRecordgeometrycoordinates, nameof(bodyRecordgeometrycoordinates), required: true);
+            var __workflow_bodyRecordgeometrytype = WorkflowExpression.Compile(bodyRecordgeometrytype, nameof(bodyRecordgeometrytype), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             var __workflow_xSkipWorkflows = WorkflowExpression.Compile(xSkipWorkflows, nameof(xSkipWorkflows), required: false);
             var __workflow_xSkipWebhooks = WorkflowExpression.Compile(xSkipWebhooks, nameof(xSkipWebhooks), required: false);
-            var __workflow_bodyrecordassignedToId = WorkflowExpression.Compile(bodyrecordassignedToId, nameof(bodyrecordassignedToId), required: false);
-            var __workflow_bodyrecordformId = WorkflowExpression.Compile(bodyrecordformId, nameof(bodyrecordformId), required: false);
-            var __workflow_bodyrecordlatitude = WorkflowExpression.Compile(bodyrecordlatitude, nameof(bodyrecordlatitude), required: false);
-            var __workflow_bodyrecordlongitude = WorkflowExpression.Compile(bodyrecordlongitude, nameof(bodyrecordlongitude), required: false);
-            var __workflow_bodyrecordprojectId = WorkflowExpression.Compile(bodyrecordprojectId, nameof(bodyrecordprojectId), required: false);
-            var __workflow_bodyrecordstatus = WorkflowExpression.Compile(bodyrecordstatus, nameof(bodyrecordstatus), required: false);
+            var __workflow_bodyRecordassignedToId = WorkflowExpression.Compile(bodyRecordassignedToId, nameof(bodyRecordassignedToId), required: false);
+            var __workflow_bodyRecordformId = WorkflowExpression.Compile(bodyRecordformId, nameof(bodyRecordformId), required: false);
+            var __workflow_bodyRecordlatitude = WorkflowExpression.Compile(bodyRecordlatitude, nameof(bodyRecordlatitude), required: false);
+            var __workflow_bodyRecordlongitude = WorkflowExpression.Compile(bodyRecordlongitude, nameof(bodyRecordlongitude), required: false);
+            var __workflow_bodyRecordprojectId = WorkflowExpression.Compile(bodyRecordprojectId, nameof(bodyRecordprojectId), required: false);
+            var __workflow_bodyRecordstatus = WorkflowExpression.Compile(bodyRecordstatus, nameof(bodyRecordstatus), required: false);
             return new DeferredBodyAction<SingleRecordResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/records.json";
@@ -301,67 +302,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
                     callPayload.Headers["X-SkipWebhooks"] = ExpressionConverter.Convert(__workflow_xSkipWebhooks);
                 var body = new JObject();
                 var bodypropCount = 0;
-                var recordObject = new JObject();
-                var recordObjectpropCount = 0;
-                if (__workflow_bodyrecordassignedToId != null)
+                var @recordObject = new JObject();
+                var @recordObjectpropCount = 0;
+                if (__workflow_bodyRecordassignedToId != null)
                 {
-                    recordObject["assigned_to_id"] = ExpressionConverter.ConvertO(__workflow_bodyrecordassignedToId);
-                    recordObjectpropCount++;
+                    @recordObject["assigned_to_id"] = ExpressionConverter.ConvertO(__workflow_bodyRecordassignedToId);
+                    @recordObjectpropCount++;
                 }
 
-                if (__workflow_bodyrecordformId != null)
+                if (__workflow_bodyRecordformId != null)
                 {
-                    recordObject["form_id"] = ExpressionConverter.ConvertO(__workflow_bodyrecordformId);
-                    recordObjectpropCount++;
+                    @recordObject["form_id"] = ExpressionConverter.ConvertO(__workflow_bodyRecordformId);
+                    @recordObjectpropCount++;
                 }
 
                 var formValuesObject = new JObject();
                 var formValuesObjectpropCount = 0;
                 if (formValuesObjectpropCount > 0)
                 {
-                    recordObject["form_values"] = formValuesObject;
-                    recordObjectpropCount++;
+                    @recordObject["form_values"] = formValuesObject;
+                    @recordObjectpropCount++;
                 }
 
                 var geometryObject = new JObject();
                 var geometryObjectpropCount = 0;
                 geometryObjectpropCount++;
-                geometryObject["coordinates"] = ExpressionConverter.ConvertO(__workflow_bodyrecordgeometrycoordinates);
+                geometryObject["coordinates"] = ExpressionConverter.ConvertO(__workflow_bodyRecordgeometrycoordinates);
                 geometryObjectpropCount++;
-                geometryObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyrecordgeometrytype);
+                geometryObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyRecordgeometrytype);
                 if (geometryObjectpropCount > 0)
                 {
-                    recordObject["geometry"] = geometryObject;
-                    recordObjectpropCount++;
+                    @recordObject["geometry"] = geometryObject;
+                    @recordObjectpropCount++;
                 }
 
-                if (__workflow_bodyrecordlatitude != null)
+                if (__workflow_bodyRecordlatitude != null)
                 {
-                    recordObject["latitude"] = ExpressionConverter.ConvertO(__workflow_bodyrecordlatitude);
-                    recordObjectpropCount++;
+                    @recordObject["latitude"] = ExpressionConverter.ConvertO(__workflow_bodyRecordlatitude);
+                    @recordObjectpropCount++;
                 }
 
-                if (__workflow_bodyrecordlongitude != null)
+                if (__workflow_bodyRecordlongitude != null)
                 {
-                    recordObject["longitude"] = ExpressionConverter.ConvertO(__workflow_bodyrecordlongitude);
-                    recordObjectpropCount++;
+                    @recordObject["longitude"] = ExpressionConverter.ConvertO(__workflow_bodyRecordlongitude);
+                    @recordObjectpropCount++;
                 }
 
-                if (__workflow_bodyrecordprojectId != null)
+                if (__workflow_bodyRecordprojectId != null)
                 {
-                    recordObject["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyrecordprojectId);
-                    recordObjectpropCount++;
+                    @recordObject["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyRecordprojectId);
+                    @recordObjectpropCount++;
                 }
 
-                if (__workflow_bodyrecordstatus != null)
+                if (__workflow_bodyRecordstatus != null)
                 {
-                    recordObject["status"] = ExpressionConverter.ConvertO(__workflow_bodyrecordstatus);
-                    recordObjectpropCount++;
+                    @recordObject["status"] = ExpressionConverter.ConvertO(__workflow_bodyRecordstatus);
+                    @recordObjectpropCount++;
                 }
 
-                if (recordObjectpropCount > 0)
+                if (@recordObjectpropCount > 0)
                 {
-                    body["record"] = recordObject;
+                    body["record"] = @recordObject;
                     bodypropCount++;
                 }
 
@@ -409,19 +410,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<SingleRecordResponse, ApiConnectionActionConfiguration> RecordsPartialUpdate(Expression<Func<string>> recordId, Expression<Func<object>> bodyrecordgeometrycoordinates, Expression<Func<bodyrecordgeometrytypeInput>> bodyrecordgeometrytype, Expression<Func<string>> contentType = null, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null, Expression<Func<string>> bodyrecordassignedToId = null, Expression<Func<double>> bodyrecordlatitude = null, Expression<Func<double>> bodyrecordlongitude = null, Expression<Func<string>> bodyrecordprojectId = null, Expression<Func<string>> bodyrecordstatus = null)
+        public IBodyWorkflowAction<SingleRecordResponse, ApiConnectionActionConfiguration> RecordsPartialUpdate(Expression<Func<string>> recordId, Expression<Func<object>> bodyRecordgeometrycoordinates, Expression<Func<bodyRecordgeometrytypeInput>> bodyRecordgeometrytype, Expression<Func<string>> contentType = null, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null, Expression<Func<string>> bodyRecordassignedToId = null, Expression<Func<double>> bodyRecordlatitude = null, Expression<Func<double>> bodyRecordlongitude = null, Expression<Func<string>> bodyRecordprojectId = null, Expression<Func<string>> bodyRecordstatus = null)
         {
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
-            var __workflow_bodyrecordgeometrycoordinates = WorkflowExpression.Compile(bodyrecordgeometrycoordinates, nameof(bodyrecordgeometrycoordinates), required: true);
-            var __workflow_bodyrecordgeometrytype = WorkflowExpression.Compile(bodyrecordgeometrytype, nameof(bodyrecordgeometrytype), required: true);
+            var __workflow_bodyRecordgeometrycoordinates = WorkflowExpression.Compile(bodyRecordgeometrycoordinates, nameof(bodyRecordgeometrycoordinates), required: true);
+            var __workflow_bodyRecordgeometrytype = WorkflowExpression.Compile(bodyRecordgeometrytype, nameof(bodyRecordgeometrytype), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             var __workflow_xSkipWorkflows = WorkflowExpression.Compile(xSkipWorkflows, nameof(xSkipWorkflows), required: false);
             var __workflow_xSkipWebhooks = WorkflowExpression.Compile(xSkipWebhooks, nameof(xSkipWebhooks), required: false);
-            var __workflow_bodyrecordassignedToId = WorkflowExpression.Compile(bodyrecordassignedToId, nameof(bodyrecordassignedToId), required: false);
-            var __workflow_bodyrecordlatitude = WorkflowExpression.Compile(bodyrecordlatitude, nameof(bodyrecordlatitude), required: false);
-            var __workflow_bodyrecordlongitude = WorkflowExpression.Compile(bodyrecordlongitude, nameof(bodyrecordlongitude), required: false);
-            var __workflow_bodyrecordprojectId = WorkflowExpression.Compile(bodyrecordprojectId, nameof(bodyrecordprojectId), required: false);
-            var __workflow_bodyrecordstatus = WorkflowExpression.Compile(bodyrecordstatus, nameof(bodyrecordstatus), required: false);
+            var __workflow_bodyRecordassignedToId = WorkflowExpression.Compile(bodyRecordassignedToId, nameof(bodyRecordassignedToId), required: false);
+            var __workflow_bodyRecordlatitude = WorkflowExpression.Compile(bodyRecordlatitude, nameof(bodyRecordlatitude), required: false);
+            var __workflow_bodyRecordlongitude = WorkflowExpression.Compile(bodyRecordlongitude, nameof(bodyRecordlongitude), required: false);
+            var __workflow_bodyRecordprojectId = WorkflowExpression.Compile(bodyRecordprojectId, nameof(bodyRecordprojectId), required: false);
+            var __workflow_bodyRecordstatus = WorkflowExpression.Compile(bodyRecordstatus, nameof(bodyRecordstatus), required: false);
             return new DeferredBodyAction<SingleRecordResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/records/{0}.json", __workflow_recordId.WithUrlEncoding(1)));
@@ -438,61 +439,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
                     callPayload.Headers["X-SkipWebhooks"] = ExpressionConverter.Convert(__workflow_xSkipWebhooks);
                 var body = new JObject();
                 var bodypropCount = 0;
-                var recordObject = new JObject();
-                var recordObjectpropCount = 0;
-                if (__workflow_bodyrecordassignedToId != null)
+                var @recordObject = new JObject();
+                var @recordObjectpropCount = 0;
+                if (__workflow_bodyRecordassignedToId != null)
                 {
-                    recordObject["assigned_to_id"] = ExpressionConverter.ConvertO(__workflow_bodyrecordassignedToId);
-                    recordObjectpropCount++;
+                    @recordObject["assigned_to_id"] = ExpressionConverter.ConvertO(__workflow_bodyRecordassignedToId);
+                    @recordObjectpropCount++;
                 }
 
                 var formValuesObject = new JObject();
                 var formValuesObjectpropCount = 0;
                 if (formValuesObjectpropCount > 0)
                 {
-                    recordObject["form_values"] = formValuesObject;
-                    recordObjectpropCount++;
+                    @recordObject["form_values"] = formValuesObject;
+                    @recordObjectpropCount++;
                 }
 
                 var geometryObject = new JObject();
                 var geometryObjectpropCount = 0;
                 geometryObjectpropCount++;
-                geometryObject["coordinates"] = ExpressionConverter.ConvertO(__workflow_bodyrecordgeometrycoordinates);
+                geometryObject["coordinates"] = ExpressionConverter.ConvertO(__workflow_bodyRecordgeometrycoordinates);
                 geometryObjectpropCount++;
-                geometryObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyrecordgeometrytype);
+                geometryObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyRecordgeometrytype);
                 if (geometryObjectpropCount > 0)
                 {
-                    recordObject["geometry"] = geometryObject;
-                    recordObjectpropCount++;
+                    @recordObject["geometry"] = geometryObject;
+                    @recordObjectpropCount++;
                 }
 
-                if (__workflow_bodyrecordlatitude != null)
+                if (__workflow_bodyRecordlatitude != null)
                 {
-                    recordObject["latitude"] = ExpressionConverter.ConvertO(__workflow_bodyrecordlatitude);
-                    recordObjectpropCount++;
+                    @recordObject["latitude"] = ExpressionConverter.ConvertO(__workflow_bodyRecordlatitude);
+                    @recordObjectpropCount++;
                 }
 
-                if (__workflow_bodyrecordlongitude != null)
+                if (__workflow_bodyRecordlongitude != null)
                 {
-                    recordObject["longitude"] = ExpressionConverter.ConvertO(__workflow_bodyrecordlongitude);
-                    recordObjectpropCount++;
+                    @recordObject["longitude"] = ExpressionConverter.ConvertO(__workflow_bodyRecordlongitude);
+                    @recordObjectpropCount++;
                 }
 
-                if (__workflow_bodyrecordprojectId != null)
+                if (__workflow_bodyRecordprojectId != null)
                 {
-                    recordObject["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyrecordprojectId);
-                    recordObjectpropCount++;
+                    @recordObject["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyRecordprojectId);
+                    @recordObjectpropCount++;
                 }
 
-                if (__workflow_bodyrecordstatus != null)
+                if (__workflow_bodyRecordstatus != null)
                 {
-                    recordObject["status"] = ExpressionConverter.ConvertO(__workflow_bodyrecordstatus);
-                    recordObjectpropCount++;
+                    @recordObject["status"] = ExpressionConverter.ConvertO(__workflow_bodyRecordstatus);
+                    @recordObjectpropCount++;
                 }
 
-                if (recordObjectpropCount > 0)
+                if (@recordObjectpropCount > 0)
                 {
-                    body["record"] = recordObject;
+                    body["record"] = @recordObject;
                     bodypropCount++;
                 }
 
@@ -506,20 +507,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RecordsUpdate(Expression<Func<string>> recordId, Expression<Func<object>> bodyrecordgeometrycoordinates, Expression<Func<bodyrecordgeometrytypeInput>> bodyrecordgeometrytype, Expression<Func<string>> contentType = null, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null, Expression<Func<string>> bodyrecordassignedToId = null, Expression<Func<string>> bodyrecordformId = null, Expression<Func<double>> bodyrecordlatitude = null, Expression<Func<double>> bodyrecordlongitude = null, Expression<Func<string>> bodyrecordprojectId = null, Expression<Func<string>> bodyrecordstatus = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RecordsUpdate(Expression<Func<string>> recordId, Expression<Func<object>> bodyRecordgeometrycoordinates, Expression<Func<bodyRecordgeometrytypeInput>> bodyRecordgeometrytype, Expression<Func<string>> contentType = null, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null, Expression<Func<string>> bodyRecordassignedToId = null, Expression<Func<string>> bodyRecordformId = null, Expression<Func<double>> bodyRecordlatitude = null, Expression<Func<double>> bodyRecordlongitude = null, Expression<Func<string>> bodyRecordprojectId = null, Expression<Func<string>> bodyRecordstatus = null)
         {
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
-            var __workflow_bodyrecordgeometrycoordinates = WorkflowExpression.Compile(bodyrecordgeometrycoordinates, nameof(bodyrecordgeometrycoordinates), required: true);
-            var __workflow_bodyrecordgeometrytype = WorkflowExpression.Compile(bodyrecordgeometrytype, nameof(bodyrecordgeometrytype), required: true);
+            var __workflow_bodyRecordgeometrycoordinates = WorkflowExpression.Compile(bodyRecordgeometrycoordinates, nameof(bodyRecordgeometrycoordinates), required: true);
+            var __workflow_bodyRecordgeometrytype = WorkflowExpression.Compile(bodyRecordgeometrytype, nameof(bodyRecordgeometrytype), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             var __workflow_xSkipWorkflows = WorkflowExpression.Compile(xSkipWorkflows, nameof(xSkipWorkflows), required: false);
             var __workflow_xSkipWebhooks = WorkflowExpression.Compile(xSkipWebhooks, nameof(xSkipWebhooks), required: false);
-            var __workflow_bodyrecordassignedToId = WorkflowExpression.Compile(bodyrecordassignedToId, nameof(bodyrecordassignedToId), required: false);
-            var __workflow_bodyrecordformId = WorkflowExpression.Compile(bodyrecordformId, nameof(bodyrecordformId), required: false);
-            var __workflow_bodyrecordlatitude = WorkflowExpression.Compile(bodyrecordlatitude, nameof(bodyrecordlatitude), required: false);
-            var __workflow_bodyrecordlongitude = WorkflowExpression.Compile(bodyrecordlongitude, nameof(bodyrecordlongitude), required: false);
-            var __workflow_bodyrecordprojectId = WorkflowExpression.Compile(bodyrecordprojectId, nameof(bodyrecordprojectId), required: false);
-            var __workflow_bodyrecordstatus = WorkflowExpression.Compile(bodyrecordstatus, nameof(bodyrecordstatus), required: false);
+            var __workflow_bodyRecordassignedToId = WorkflowExpression.Compile(bodyRecordassignedToId, nameof(bodyRecordassignedToId), required: false);
+            var __workflow_bodyRecordformId = WorkflowExpression.Compile(bodyRecordformId, nameof(bodyRecordformId), required: false);
+            var __workflow_bodyRecordlatitude = WorkflowExpression.Compile(bodyRecordlatitude, nameof(bodyRecordlatitude), required: false);
+            var __workflow_bodyRecordlongitude = WorkflowExpression.Compile(bodyRecordlongitude, nameof(bodyRecordlongitude), required: false);
+            var __workflow_bodyRecordprojectId = WorkflowExpression.Compile(bodyRecordprojectId, nameof(bodyRecordprojectId), required: false);
+            var __workflow_bodyRecordstatus = WorkflowExpression.Compile(bodyRecordstatus, nameof(bodyRecordstatus), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/records/{0}.json", __workflow_recordId.WithUrlEncoding(1)));
@@ -536,67 +537,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
                     callPayload.Headers["X-SkipWebhooks"] = ExpressionConverter.Convert(__workflow_xSkipWebhooks);
                 var body = new JObject();
                 var bodypropCount = 0;
-                var recordObject = new JObject();
-                var recordObjectpropCount = 0;
-                if (__workflow_bodyrecordassignedToId != null)
+                var @recordObject = new JObject();
+                var @recordObjectpropCount = 0;
+                if (__workflow_bodyRecordassignedToId != null)
                 {
-                    recordObject["assigned_to_id"] = ExpressionConverter.ConvertO(__workflow_bodyrecordassignedToId);
-                    recordObjectpropCount++;
+                    @recordObject["assigned_to_id"] = ExpressionConverter.ConvertO(__workflow_bodyRecordassignedToId);
+                    @recordObjectpropCount++;
                 }
 
-                if (__workflow_bodyrecordformId != null)
+                if (__workflow_bodyRecordformId != null)
                 {
-                    recordObject["form_id"] = ExpressionConverter.ConvertO(__workflow_bodyrecordformId);
-                    recordObjectpropCount++;
+                    @recordObject["form_id"] = ExpressionConverter.ConvertO(__workflow_bodyRecordformId);
+                    @recordObjectpropCount++;
                 }
 
                 var formValuesObject = new JObject();
                 var formValuesObjectpropCount = 0;
                 if (formValuesObjectpropCount > 0)
                 {
-                    recordObject["form_values"] = formValuesObject;
-                    recordObjectpropCount++;
+                    @recordObject["form_values"] = formValuesObject;
+                    @recordObjectpropCount++;
                 }
 
                 var geometryObject = new JObject();
                 var geometryObjectpropCount = 0;
                 geometryObjectpropCount++;
-                geometryObject["coordinates"] = ExpressionConverter.ConvertO(__workflow_bodyrecordgeometrycoordinates);
+                geometryObject["coordinates"] = ExpressionConverter.ConvertO(__workflow_bodyRecordgeometrycoordinates);
                 geometryObjectpropCount++;
-                geometryObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyrecordgeometrytype);
+                geometryObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyRecordgeometrytype);
                 if (geometryObjectpropCount > 0)
                 {
-                    recordObject["geometry"] = geometryObject;
-                    recordObjectpropCount++;
+                    @recordObject["geometry"] = geometryObject;
+                    @recordObjectpropCount++;
                 }
 
-                if (__workflow_bodyrecordlatitude != null)
+                if (__workflow_bodyRecordlatitude != null)
                 {
-                    recordObject["latitude"] = ExpressionConverter.ConvertO(__workflow_bodyrecordlatitude);
-                    recordObjectpropCount++;
+                    @recordObject["latitude"] = ExpressionConverter.ConvertO(__workflow_bodyRecordlatitude);
+                    @recordObjectpropCount++;
                 }
 
-                if (__workflow_bodyrecordlongitude != null)
+                if (__workflow_bodyRecordlongitude != null)
                 {
-                    recordObject["longitude"] = ExpressionConverter.ConvertO(__workflow_bodyrecordlongitude);
-                    recordObjectpropCount++;
+                    @recordObject["longitude"] = ExpressionConverter.ConvertO(__workflow_bodyRecordlongitude);
+                    @recordObjectpropCount++;
                 }
 
-                if (__workflow_bodyrecordprojectId != null)
+                if (__workflow_bodyRecordprojectId != null)
                 {
-                    recordObject["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyrecordprojectId);
-                    recordObjectpropCount++;
+                    @recordObject["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyRecordprojectId);
+                    @recordObjectpropCount++;
                 }
 
-                if (__workflow_bodyrecordstatus != null)
+                if (__workflow_bodyRecordstatus != null)
                 {
-                    recordObject["status"] = ExpressionConverter.ConvertO(__workflow_bodyrecordstatus);
-                    recordObjectpropCount++;
+                    @recordObject["status"] = ExpressionConverter.ConvertO(__workflow_bodyRecordstatus);
+                    @recordObjectpropCount++;
                 }
 
-                if (recordObjectpropCount > 0)
+                if (@recordObjectpropCount > 0)
                 {
-                    body["record"] = recordObject;
+                    body["record"] = @recordObject;
                     bodypropCount++;
                 }
 
@@ -1343,7 +1344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyrecordgeometrytypeInput
+    public enum bodyRecordgeometrytypeInput
     {
         Point,
         LineString,
@@ -1887,13 +1888,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
     public class FulcrumWebhookPayload
     {
         [JsonProperty("id")]
-        public string EventID { get; set; }
+        public string EventId { get; set; }
 
         [JsonProperty("type")]
         public string EventType { get; set; }
 
         [JsonProperty("owner_id")]
-        public string OwnerID { get; set; }
+        public string OwnerId { get; set; }
 
         [JsonProperty("data")]
         public JToken EventData { get; set; }

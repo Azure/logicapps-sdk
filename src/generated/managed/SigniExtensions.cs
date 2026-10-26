@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
 {
     using System.Linq.Expressions;
@@ -218,10 +219,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetRevisionListPdf(Expression<Func<string>> workspaceId, Expression<Func<string>> bodycontractID = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetRevisionListPdf(Expression<Func<string>> workspaceId, Expression<Func<string>> bodycontractId = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
-            var __workflow_bodycontractID = WorkflowExpression.Compile(bodycontractID, nameof(bodycontractID), required: false);
+            var __workflow_bodycontractId = WorkflowExpression.Compile(bodycontractId, nameof(bodycontractId), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/contract/revisionList";
@@ -230,9 +231,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
                 callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(__workflow_workspaceId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (__workflow_bodycontractID != null)
+                if (__workflow_bodycontractId != null)
                 {
-                    body["contract_id"] = ExpressionConverter.ConvertO(__workflow_bodycontractID);
+                    body["contract_id"] = ExpressionConverter.ConvertO(__workflow_bodycontractId);
                     bodypropCount++;
                 }
 
@@ -262,14 +263,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
         public IBodyWorkflowAction<GetWorkspacesV2ResponseItem[], ApiConnectionActionConfiguration> GetWorkspaces()
         {
-            var apiCallPath = "/v2/workspaces";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetWorkspacesV2ResponseItem[]>(callPayload);
+            return new DeferredBodyAction<GetWorkspacesV2ResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v2/workspaces";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetWorkspacesV2ResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
-        public IBodyWorkflowAction<SignContractFromProvidedFileV2Response, ApiConnectionActionConfiguration> SignContractFromProvidedFile(Expression<Func<string>> workspaceId, Expression<Func<int>> bodysignatureSignerPage, Expression<Func<string>> bodysignerEMail, Expression<Func<bodysignerTypeInput>> bodysignerType, Expression<Func<string>> bodycontractSignDate, Expression<Func<string>> bodyauthorEMail, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodycontractName, Expression<Func<string>> bodysignerPhone, Expression<Func<string>> bodyfile, Expression<Func<string>> bodysignerSurname, Expression<Func<string>> bodysignerFirstName, Expression<Func<int>> bodysignatureSignerX, Expression<Func<bool>> bodysignerShouldSign, Expression<Func<int>> bodysignatureSignerY, Expression<Func<bool>> bodyauthorShouldSign, Expression<Func<int>> bodysignatureAuthorPage = null, Expression<Func<string>> bodysignerDateOfBirth = null, Expression<Func<string>> bodysignerStreet = null, Expression<Func<string>> bodysignerVATID = null, Expression<Func<string>> bodysignerCity = null, Expression<Func<string>> bodysignerCompanyName = null, Expression<Func<int>> bodysignatureAuthorX = null, Expression<Func<string>> bodysignerCompanyID = null, Expression<Func<string>> bodysignerZIP = null, Expression<Func<int>> bodysignatureAuthorY = null, Expression<Func<string>> bodycontractNumber = null, Expression<Func<string>> bodycontractSignLocation = null)
+        public IBodyWorkflowAction<SignContractFromProvidedFileV2Response, ApiConnectionActionConfiguration> SignContractFromProvidedFile(Expression<Func<string>> workspaceId, Expression<Func<int>> bodysignatureSignerPage, Expression<Func<string>> bodysignerEMail, Expression<Func<bodysignerTypeInput>> bodysignerType, Expression<Func<string>> bodycontractSignDate, Expression<Func<string>> bodyauthorEMail, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodycontractName, Expression<Func<string>> bodysignerPhone, Expression<Func<string>> bodyFile, Expression<Func<string>> bodysignerSurname, Expression<Func<string>> bodysignerFirstName, Expression<Func<int>> bodysignatureSignerX, Expression<Func<bool>> bodysignerShouldSign, Expression<Func<int>> bodysignatureSignerY, Expression<Func<bool>> bodyauthorShouldSign, Expression<Func<int>> bodysignatureAuthorPage = null, Expression<Func<string>> bodysignerDateOfBirth = null, Expression<Func<string>> bodysignerStreet = null, Expression<Func<string>> bodysignerVATId = null, Expression<Func<string>> bodysignerCity = null, Expression<Func<string>> bodysignerCompanyName = null, Expression<Func<int>> bodysignatureAuthorX = null, Expression<Func<string>> bodysignerCompanyId = null, Expression<Func<string>> bodysignerZIP = null, Expression<Func<int>> bodysignatureAuthorY = null, Expression<Func<string>> bodycontractNumber = null, Expression<Func<string>> bodycontractSignLocation = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_bodysignatureSignerPage = WorkflowExpression.Compile(bodysignatureSignerPage, nameof(bodysignatureSignerPage), required: true);
@@ -280,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
             var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
             var __workflow_bodycontractName = WorkflowExpression.Compile(bodycontractName, nameof(bodycontractName), required: true);
             var __workflow_bodysignerPhone = WorkflowExpression.Compile(bodysignerPhone, nameof(bodysignerPhone), required: true);
-            var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: true);
+            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: true);
             var __workflow_bodysignerSurname = WorkflowExpression.Compile(bodysignerSurname, nameof(bodysignerSurname), required: true);
             var __workflow_bodysignerFirstName = WorkflowExpression.Compile(bodysignerFirstName, nameof(bodysignerFirstName), required: true);
             var __workflow_bodysignatureSignerX = WorkflowExpression.Compile(bodysignatureSignerX, nameof(bodysignatureSignerX), required: true);
@@ -290,11 +294,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
             var __workflow_bodysignatureAuthorPage = WorkflowExpression.Compile(bodysignatureAuthorPage, nameof(bodysignatureAuthorPage), required: false);
             var __workflow_bodysignerDateOfBirth = WorkflowExpression.Compile(bodysignerDateOfBirth, nameof(bodysignerDateOfBirth), required: false);
             var __workflow_bodysignerStreet = WorkflowExpression.Compile(bodysignerStreet, nameof(bodysignerStreet), required: false);
-            var __workflow_bodysignerVATID = WorkflowExpression.Compile(bodysignerVATID, nameof(bodysignerVATID), required: false);
+            var __workflow_bodysignerVATId = WorkflowExpression.Compile(bodysignerVATId, nameof(bodysignerVATId), required: false);
             var __workflow_bodysignerCity = WorkflowExpression.Compile(bodysignerCity, nameof(bodysignerCity), required: false);
             var __workflow_bodysignerCompanyName = WorkflowExpression.Compile(bodysignerCompanyName, nameof(bodysignerCompanyName), required: false);
             var __workflow_bodysignatureAuthorX = WorkflowExpression.Compile(bodysignatureAuthorX, nameof(bodysignatureAuthorX), required: false);
-            var __workflow_bodysignerCompanyID = WorkflowExpression.Compile(bodysignerCompanyID, nameof(bodysignerCompanyID), required: false);
+            var __workflow_bodysignerCompanyId = WorkflowExpression.Compile(bodysignerCompanyId, nameof(bodysignerCompanyId), required: false);
             var __workflow_bodysignerZIP = WorkflowExpression.Compile(bodysignerZIP, nameof(bodysignerZIP), required: false);
             var __workflow_bodysignatureAuthorY = WorkflowExpression.Compile(bodysignatureAuthorY, nameof(bodysignatureAuthorY), required: false);
             var __workflow_bodycontractNumber = WorkflowExpression.Compile(bodycontractNumber, nameof(bodycontractNumber), required: false);
@@ -337,9 +341,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
                     bodypropCount++;
                 }
 
-                if (__workflow_bodysignerVATID != null)
+                if (__workflow_bodysignerVATId != null)
                 {
-                    body["dic"] = ExpressionConverter.ConvertO(__workflow_bodysignerVATID);
+                    body["dic"] = ExpressionConverter.ConvertO(__workflow_bodysignerVATId);
                     bodypropCount++;
                 }
 
@@ -362,7 +366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
                 body["last_document"] = true;
                 bodypropCount++;
                 bodypropCount++;
-                body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
+                body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
                 bodypropCount++;
                 body["lastname_signer"] = ExpressionConverter.ConvertO(__workflow_bodysignerSurname);
                 if (__workflow_bodysignerCompanyName != null)
@@ -379,9 +383,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
 
                 bodypropCount++;
                 body["firstname_signer"] = ExpressionConverter.ConvertO(__workflow_bodysignerFirstName);
-                if (__workflow_bodysignerCompanyID != null)
+                if (__workflow_bodysignerCompanyId != null)
                 {
-                    body["ic"] = ExpressionConverter.ConvertO(__workflow_bodysignerCompanyID);
+                    body["ic"] = ExpressionConverter.ConvertO(__workflow_bodysignerCompanyId);
                     bodypropCount++;
                 }
 
@@ -635,7 +639,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public string[] Attachments { get; set; }
 
         [JsonProperty("contract_id")]
-        public int ContractID { get; set; }
+        public int ContractId { get; set; }
     }
 
     public class SignContractFromProvidedFileV2NewResponseNotificationsTypeItem
@@ -665,13 +669,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public double OrderOfParty { get; set; }
 
         [JsonProperty("dic")]
-        public string SignerVATID { get; set; }
+        public string SignerVATId { get; set; }
 
         [JsonProperty("email")]
         public string SignerEmail { get; set; }
 
         [JsonProperty("ic")]
-        public string SignerCompanyID { get; set; }
+        public string SignerCompanyId { get; set; }
 
         [JsonProperty("positions")]
         public bodypeopleInputItemPositionsTypeItem[] Positions { get; set; }
@@ -795,7 +799,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public string[] Attachments { get; set; }
 
         [JsonProperty("contract_id")]
-        public int ContractID { get; set; }
+        public int ContractId { get; set; }
     }
 
     public class SignContractFromProvidedFileV2NewWaitResponseNotificationsTypeItem
@@ -825,13 +829,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public double OrderOfParty { get; set; }
 
         [JsonProperty("dic")]
-        public string SignerVATID { get; set; }
+        public string SignerVATId { get; set; }
 
         [JsonProperty("email")]
         public string SignerEmail { get; set; }
 
         [JsonProperty("ic")]
-        public string SignerCompanyID { get; set; }
+        public string SignerCompanyId { get; set; }
 
         [JsonProperty("positions")]
         public bodypeopleInputItemPositionsTypeItem[] Positions { get; set; }
@@ -873,7 +877,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public GetContractDetailV2ResponseSignerDataType SignerData { get; set; }
 
         [JsonProperty("contract_id")]
-        public string ContractID { get; set; }
+        public string ContractId { get; set; }
 
         [JsonProperty("state")]
         public string State { get; set; }
@@ -909,7 +913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public string File { get; set; }
 
         [JsonProperty("contract_id")]
-        public string ContractID { get; set; }
+        public string ContractId { get; set; }
     }
 
     public class GetTemplatesV2Response
@@ -957,7 +961,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
     public class SignContractFromProvidedFileV2Response
     {
         [JsonProperty("contract_id")]
-        public string ContractID { get; set; }
+        public string ContractId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -974,7 +978,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
     public class SignContractFromTemplateV2Response
     {
         [JsonProperty("contract_id")]
-        public string ContractID { get; set; }
+        public string ContractId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

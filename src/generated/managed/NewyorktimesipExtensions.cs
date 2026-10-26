@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
 {
     using System.Linq.Expressions;
@@ -326,15 +327,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
         public string Format { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum periodInput
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "30")]
-        _30
+        _1 = 1,
+        _7 = 7,
+        _30 = 30
     }
 }
 

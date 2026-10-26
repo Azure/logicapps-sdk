@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
 {
     using System.Linq.Expressions;
@@ -95,10 +96,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<ModelsGetResponse, ApiConnectionActionConfiguration> ModelsGet()
         {
-            var apiCallPath = "/v1/models";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ModelsGetResponse>(callPayload);
+            return new DeferredBodyAction<ModelsGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/models";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ModelsGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
@@ -365,39 +369,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<AudioTranscriptionPostResponse, ApiConnectionActionConfiguration> AudioTranscription(Expression<Func<object>> file, Expression<Func<string>> model, Expression<Func<string>> language = null, Expression<Func<string>> prompt = null, Expression<Func<double>> temperature = null)
-        {
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
-            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
-            var __workflow_prompt = WorkflowExpression.Compile(prompt, nameof(prompt), required: false);
-            var __workflow_temperature = WorkflowExpression.Compile(temperature, nameof(temperature), required: false);
-            return new DeferredBodyAction<AudioTranscriptionPostResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/v1/audio/transcriptions";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<AudioTranscriptionPostResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<AudioTranslationPostResponse, ApiConnectionActionConfiguration> AudioTranslation(Expression<Func<object>> file, Expression<Func<string>> model, Expression<Func<string>> prompt = null, Expression<Func<double>> temperature = null)
-        {
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
-            var __workflow_prompt = WorkflowExpression.Compile(prompt, nameof(prompt), required: false);
-            var __workflow_temperature = WorkflowExpression.Compile(temperature, nameof(temperature), required: false);
-            return new DeferredBodyAction<AudioTranslationPostResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/v1/audio/translations";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<AudioTranslationPostResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<ImagePostResponse, ApiConnectionActionConfiguration> Image(Expression<Func<string>> bodyprompt, Expression<Func<bodymodelInput>> bodymodel = null, Expression<Func<int>> bodyn = null, Expression<Func<bodyqualityInput>> bodyquality = null, Expression<Func<bodysizeInput>> bodysize = null, Expression<Func<bodystyleInput>> bodystyle = null, Expression<Func<string>> bodyuser = null)
         {
             var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: true);
@@ -490,42 +461,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
                 }
 
                 return new ApiConnectionAction<ImagePostResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<ImageEditPostResponse, ApiConnectionActionConfiguration> ImageEdit(Expression<Func<object>> image, Expression<Func<string>> prompt = null, Expression<Func<object>> mask = null, Expression<Func<string>> model = null, Expression<Func<int>> n = null, Expression<Func<sizeInput>> size = null, Expression<Func<string>> user = null)
-        {
-            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: true);
-            var __workflow_prompt = WorkflowExpression.Compile(prompt, nameof(prompt), required: false);
-            var __workflow_mask = WorkflowExpression.Compile(mask, nameof(mask), required: false);
-            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: false);
-            var __workflow_n = WorkflowExpression.Compile(n, nameof(n), required: false);
-            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            var __workflow_user = WorkflowExpression.Compile(user, nameof(user), required: false);
-            return new DeferredBodyAction<ImageEditPostResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/v1/images/edits";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<ImageEditPostResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<ImageVariationPostResponse, ApiConnectionActionConfiguration> ImageVariation(Expression<Func<object>> image, Expression<Func<string>> model = null, Expression<Func<int>> n = null, Expression<Func<sizeInput>> size = null, Expression<Func<string>> user = null)
-        {
-            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: true);
-            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: false);
-            var __workflow_n = WorkflowExpression.Compile(n, nameof(n), required: false);
-            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
-            var __workflow_user = WorkflowExpression.Compile(user, nameof(user), required: false);
-            return new DeferredBodyAction<ImageVariationPostResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/v1/images/variations";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<ImageVariationPostResponse>(callPayload);
             });
         }
     }
@@ -1017,18 +952,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         Flac
     }
 
-    public class AudioTranscriptionPostResponse
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class AudioTranslationPostResponse
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
     public class ImagePostResponse
     {
         [JsonProperty("created")]
@@ -1078,53 +1001,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         Vivid,
         [EnumMember(Value = "natural")]
         Natural
-    }
-
-    public class ImageEditPostResponse
-    {
-        [JsonProperty("created")]
-        public int Created { get; set; }
-
-        [JsonProperty("data")]
-        public ImageEditPostResponseDataTypeItem[] Data { get; set; }
-    }
-
-    public class ImageEditPostResponseDataTypeItem
-    {
-        [JsonProperty("url")]
-        public string Url { get; set; }
-
-        [JsonProperty("revised_prompt")]
-        public string RevisedPrompt { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sizeInput
-    {
-        [EnumMember(Value = "1024x1024")]
-        _1024x1024,
-        [EnumMember(Value = "256x256")]
-        _256x256,
-        [EnumMember(Value = "512x512")]
-        _512x512
-    }
-
-    public class ImageVariationPostResponse
-    {
-        [JsonProperty("created")]
-        public int Created { get; set; }
-
-        [JsonProperty("data")]
-        public ImageVariationPostResponseDataTypeItem[] Data { get; set; }
-    }
-
-    public class ImageVariationPostResponseDataTypeItem
-    {
-        [JsonProperty("url")]
-        public string Url { get; set; }
-
-        [JsonProperty("revised_prompt")]
-        public string RevisedPrompt { get; set; }
     }
 }
 

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
 {
     using System.Linq.Expressions;
@@ -222,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<MessageRo, ApiConnectionActionConfiguration> AddMessage(Expression<Func<string>> thingId, Expression<Func<string>> messageRobody, Expression<Func<string>> messageRocreationDate, Expression<Func<string>> messageRoerrorMessage, Expression<Func<double>> messageRolatitude, Expression<Func<double>> messageRolongitude, Expression<Func<string>> messageRometadata, Expression<Func<int>> messageRonumber, Expression<Func<messageRoprocessedInput>> messageRoprocessed, Expression<Func<string>> messageRothingname, Expression<Func<string>> messageRotimestamp, Expression<Func<string>> messageRotopic, Expression<Func<string>> messageRoid = null, Expression<Func<bool>> messageRolinkabsolute = null, Expression<Func<string>> messageRolinkauthority = null, Expression<Func<string>> messageRolinkfragment = null, Expression<Func<string>> messageRolinkhost = null, Expression<Func<bool>> messageRolinkopaque = null, Expression<Func<string>> messageRolinkpath = null, Expression<Func<int>> messageRolinkport = null, Expression<Func<string>> messageRolinkquery = null, Expression<Func<string>> messageRolinkrawAuthority = null, Expression<Func<string>> messageRolinkrawFragment = null, Expression<Func<string>> messageRolinkrawPath = null, Expression<Func<string>> messageRolinkrawQuery = null, Expression<Func<string>> messageRolinkrawSchemeSpecificPart = null, Expression<Func<string>> messageRolinkrawUserInfo = null, Expression<Func<string>> messageRolinkscheme = null, Expression<Func<string>> messageRolinkschemeSpecificPart = null, Expression<Func<string>> messageRolinkuserInfo = null, Expression<Func<bool>> messageRorawMeasurementsarray = null, Expression<Func<bool>> messageRorawMeasurementsbigDecimal = null, Expression<Func<bool>> messageRorawMeasurementsbigInteger = null, Expression<Func<bool>> messageRorawMeasurementsbinary = null, Expression<Func<bool>> messageRorawMeasurementsboolean = null, Expression<Func<bool>> messageRorawMeasurementscontainerNode = null, Expression<Func<bool>> messageRorawMeasurementsdouble = null, Expression<Func<bool>> messageRorawMeasurementsfloat = null, Expression<Func<bool>> messageRorawMeasurementsfloatingPointNumber = null, Expression<Func<bool>> messageRorawMeasurementsint = null, Expression<Func<bool>> messageRorawMeasurementsintegralNumber = null, Expression<Func<bool>> messageRorawMeasurementsLong = null, Expression<Func<bool>> messageRorawMeasurementsmissingNode = null, Expression<Func<messageRorawMeasurementsnodeTypeInput>> messageRorawMeasurementsnodeType = null, Expression<Func<bool>> messageRorawMeasurementsnull = null, Expression<Func<bool>> messageRorawMeasurementsnumber = null, Expression<Func<bool>> messageRorawMeasurementsObject = null, Expression<Func<bool>> messageRorawMeasurementspojo = null, Expression<Func<bool>> messageRorawMeasurementsShort = null, Expression<Func<bool>> messageRorawMeasurementstextual = null, Expression<Func<bool>> messageRorawMeasurementsvalueNode = null, Expression<Func<string>> messageRothingdisplayName = null, Expression<Func<string>> messageRothingfixedName = null, Expression<Func<string>> messageRothingid = null, Expression<Func<int>> messageRothingnbAlerts = null, Expression<Func<ThingTagRo[]>> messageRothingtags = null)
+        public IBodyWorkflowAction<MessageRo, ApiConnectionActionConfiguration> AddMessage(Expression<Func<string>> thingId, Expression<Func<string>> messageRobody, Expression<Func<string>> messageRocreationDate, Expression<Func<string>> messageRoerrorMessage, Expression<Func<double>> messageRolatitude, Expression<Func<double>> messageRolongitude, Expression<Func<string>> messageRometadata, Expression<Func<int>> messageRonumber, Expression<Func<messageRoprocessedInput>> messageRoprocessed, Expression<Func<string>> messageRothingname, Expression<Func<string>> messageRotimestamp, Expression<Func<string>> messageRotopic, Expression<Func<string>> messageRoid = null, Expression<Func<bool>> messageRolinkabsolute = null, Expression<Func<string>> messageRolinkauthority = null, Expression<Func<string>> messageRolinkfragment = null, Expression<Func<string>> messageRolinkhost = null, Expression<Func<bool>> messageRolinkopaque = null, Expression<Func<string>> messageRolinkpath = null, Expression<Func<int>> messageRolinkport = null, Expression<Func<string>> messageRolinkquery = null, Expression<Func<string>> messageRolinkrawAuthority = null, Expression<Func<string>> messageRolinkrawFragment = null, Expression<Func<string>> messageRolinkrawPath = null, Expression<Func<string>> messageRolinkrawQuery = null, Expression<Func<string>> messageRolinkrawSchemeSpecificPart = null, Expression<Func<string>> messageRolinkrawUserInfo = null, Expression<Func<string>> messageRolinkscheme = null, Expression<Func<string>> messageRolinkschemeSpecificPart = null, Expression<Func<string>> messageRolinkuserInfo = null, Expression<Func<bool>> messageRorawMeasurementsarray = null, Expression<Func<bool>> messageRorawMeasurementsbigDecimal = null, Expression<Func<bool>> messageRorawMeasurementsbigInteger = null, Expression<Func<bool>> messageRorawMeasurementsbinary = null, Expression<Func<bool>> messageRorawMeasurementsboolean = null, Expression<Func<bool>> messageRorawMeasurementscontainerNode = null, Expression<Func<bool>> messageRorawMeasurementsDouble = null, Expression<Func<bool>> messageRorawMeasurementsFloat = null, Expression<Func<bool>> messageRorawMeasurementsfloatingPointNumber = null, Expression<Func<bool>> messageRorawMeasurementsInt = null, Expression<Func<bool>> messageRorawMeasurementsintegralNumber = null, Expression<Func<bool>> messageRorawMeasurementsLong = null, Expression<Func<bool>> messageRorawMeasurementsmissingNode = null, Expression<Func<messageRorawMeasurementsnodeTypeInput>> messageRorawMeasurementsnodeType = null, Expression<Func<bool>> messageRorawMeasurementsNull = null, Expression<Func<bool>> messageRorawMeasurementsnumber = null, Expression<Func<bool>> messageRorawMeasurementsObject = null, Expression<Func<bool>> messageRorawMeasurementspojo = null, Expression<Func<bool>> messageRorawMeasurementsShort = null, Expression<Func<bool>> messageRorawMeasurementstextual = null, Expression<Func<bool>> messageRorawMeasurementsvalueNode = null, Expression<Func<string>> messageRothingdisplayName = null, Expression<Func<string>> messageRothingfixedName = null, Expression<Func<string>> messageRothingid = null, Expression<Func<int>> messageRothingnbAlerts = null, Expression<Func<ThingTagRo[]>> messageRothingtags = null)
         {
             var __workflow_thingId = WorkflowExpression.Compile(thingId, nameof(thingId), required: true);
             var __workflow_messageRobody = WorkflowExpression.Compile(messageRobody, nameof(messageRobody), required: true);
@@ -260,15 +261,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_messageRorawMeasurementsbinary = WorkflowExpression.Compile(messageRorawMeasurementsbinary, nameof(messageRorawMeasurementsbinary), required: false);
             var __workflow_messageRorawMeasurementsboolean = WorkflowExpression.Compile(messageRorawMeasurementsboolean, nameof(messageRorawMeasurementsboolean), required: false);
             var __workflow_messageRorawMeasurementscontainerNode = WorkflowExpression.Compile(messageRorawMeasurementscontainerNode, nameof(messageRorawMeasurementscontainerNode), required: false);
-            var __workflow_messageRorawMeasurementsdouble = WorkflowExpression.Compile(messageRorawMeasurementsdouble, nameof(messageRorawMeasurementsdouble), required: false);
-            var __workflow_messageRorawMeasurementsfloat = WorkflowExpression.Compile(messageRorawMeasurementsfloat, nameof(messageRorawMeasurementsfloat), required: false);
+            var __workflow_messageRorawMeasurementsDouble = WorkflowExpression.Compile(messageRorawMeasurementsDouble, nameof(messageRorawMeasurementsDouble), required: false);
+            var __workflow_messageRorawMeasurementsFloat = WorkflowExpression.Compile(messageRorawMeasurementsFloat, nameof(messageRorawMeasurementsFloat), required: false);
             var __workflow_messageRorawMeasurementsfloatingPointNumber = WorkflowExpression.Compile(messageRorawMeasurementsfloatingPointNumber, nameof(messageRorawMeasurementsfloatingPointNumber), required: false);
-            var __workflow_messageRorawMeasurementsint = WorkflowExpression.Compile(messageRorawMeasurementsint, nameof(messageRorawMeasurementsint), required: false);
+            var __workflow_messageRorawMeasurementsInt = WorkflowExpression.Compile(messageRorawMeasurementsInt, nameof(messageRorawMeasurementsInt), required: false);
             var __workflow_messageRorawMeasurementsintegralNumber = WorkflowExpression.Compile(messageRorawMeasurementsintegralNumber, nameof(messageRorawMeasurementsintegralNumber), required: false);
             var __workflow_messageRorawMeasurementsLong = WorkflowExpression.Compile(messageRorawMeasurementsLong, nameof(messageRorawMeasurementsLong), required: false);
             var __workflow_messageRorawMeasurementsmissingNode = WorkflowExpression.Compile(messageRorawMeasurementsmissingNode, nameof(messageRorawMeasurementsmissingNode), required: false);
             var __workflow_messageRorawMeasurementsnodeType = WorkflowExpression.Compile(messageRorawMeasurementsnodeType, nameof(messageRorawMeasurementsnodeType), required: false);
-            var __workflow_messageRorawMeasurementsnull = WorkflowExpression.Compile(messageRorawMeasurementsnull, nameof(messageRorawMeasurementsnull), required: false);
+            var __workflow_messageRorawMeasurementsNull = WorkflowExpression.Compile(messageRorawMeasurementsNull, nameof(messageRorawMeasurementsNull), required: false);
             var __workflow_messageRorawMeasurementsnumber = WorkflowExpression.Compile(messageRorawMeasurementsnumber, nameof(messageRorawMeasurementsnumber), required: false);
             var __workflow_messageRorawMeasurementsObject = WorkflowExpression.Compile(messageRorawMeasurementsObject, nameof(messageRorawMeasurementsObject), required: false);
             var __workflow_messageRorawMeasurementspojo = WorkflowExpression.Compile(messageRorawMeasurementspojo, nameof(messageRorawMeasurementspojo), required: false);
@@ -465,15 +466,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (__workflow_messageRorawMeasurementsdouble != null)
+                if (__workflow_messageRorawMeasurementsDouble != null)
                 {
-                    rawMeasurementsObject["double"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementsdouble);
+                    rawMeasurementsObject["double"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementsDouble);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (__workflow_messageRorawMeasurementsfloat != null)
+                if (__workflow_messageRorawMeasurementsFloat != null)
                 {
-                    rawMeasurementsObject["float"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementsfloat);
+                    rawMeasurementsObject["float"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementsFloat);
                     rawMeasurementsObjectpropCount++;
                 }
 
@@ -483,9 +484,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (__workflow_messageRorawMeasurementsint != null)
+                if (__workflow_messageRorawMeasurementsInt != null)
                 {
-                    rawMeasurementsObject["int"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementsint);
+                    rawMeasurementsObject["int"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementsInt);
                     rawMeasurementsObjectpropCount++;
                 }
 
@@ -513,9 +514,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (__workflow_messageRorawMeasurementsnull != null)
+                if (__workflow_messageRorawMeasurementsNull != null)
                 {
-                    rawMeasurementsObject["null"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementsnull);
+                    rawMeasurementsObject["null"] = ExpressionConverter.ConvertO(__workflow_messageRorawMeasurementsNull);
                     rawMeasurementsObjectpropCount++;
                 }
 
@@ -674,7 +675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<SiteRo[], ApiConnectionActionConfiguration> CreateSite(Expression<Func<bool>> nodearray = null, Expression<Func<bool>> nodebigDecimal = null, Expression<Func<bool>> nodebigInteger = null, Expression<Func<bool>> nodebinary = null, Expression<Func<bool>> nodeboolean = null, Expression<Func<bool>> nodecontainerNode = null, Expression<Func<bool>> nodedouble = null, Expression<Func<bool>> nodefloat = null, Expression<Func<bool>> nodefloatingPointNumber = null, Expression<Func<bool>> nodeint = null, Expression<Func<bool>> nodeintegralNumber = null, Expression<Func<bool>> nodeLong = null, Expression<Func<bool>> nodemissingNode = null, Expression<Func<nodenodeTypeInput>> nodenodeType = null, Expression<Func<bool>> nodenull = null, Expression<Func<bool>> nodenumber = null, Expression<Func<bool>> nodeObject = null, Expression<Func<bool>> nodepojo = null, Expression<Func<bool>> nodeShort = null, Expression<Func<bool>> nodetextual = null, Expression<Func<bool>> nodevalueNode = null)
+        public IBodyWorkflowAction<SiteRo[], ApiConnectionActionConfiguration> CreateSite(Expression<Func<bool>> nodearray = null, Expression<Func<bool>> nodebigDecimal = null, Expression<Func<bool>> nodebigInteger = null, Expression<Func<bool>> nodebinary = null, Expression<Func<bool>> nodeboolean = null, Expression<Func<bool>> nodecontainerNode = null, Expression<Func<bool>> nodeDouble = null, Expression<Func<bool>> nodeFloat = null, Expression<Func<bool>> nodefloatingPointNumber = null, Expression<Func<bool>> nodeInt = null, Expression<Func<bool>> nodeintegralNumber = null, Expression<Func<bool>> nodeLong = null, Expression<Func<bool>> nodemissingNode = null, Expression<Func<nodenodeTypeInput>> nodenodeType = null, Expression<Func<bool>> nodeNull = null, Expression<Func<bool>> nodenumber = null, Expression<Func<bool>> nodeObject = null, Expression<Func<bool>> nodepojo = null, Expression<Func<bool>> nodeShort = null, Expression<Func<bool>> nodetextual = null, Expression<Func<bool>> nodevalueNode = null)
         {
             var __workflow_nodearray = WorkflowExpression.Compile(nodearray, nameof(nodearray), required: false);
             var __workflow_nodebigDecimal = WorkflowExpression.Compile(nodebigDecimal, nameof(nodebigDecimal), required: false);
@@ -682,15 +683,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_nodebinary = WorkflowExpression.Compile(nodebinary, nameof(nodebinary), required: false);
             var __workflow_nodeboolean = WorkflowExpression.Compile(nodeboolean, nameof(nodeboolean), required: false);
             var __workflow_nodecontainerNode = WorkflowExpression.Compile(nodecontainerNode, nameof(nodecontainerNode), required: false);
-            var __workflow_nodedouble = WorkflowExpression.Compile(nodedouble, nameof(nodedouble), required: false);
-            var __workflow_nodefloat = WorkflowExpression.Compile(nodefloat, nameof(nodefloat), required: false);
+            var __workflow_nodeDouble = WorkflowExpression.Compile(nodeDouble, nameof(nodeDouble), required: false);
+            var __workflow_nodeFloat = WorkflowExpression.Compile(nodeFloat, nameof(nodeFloat), required: false);
             var __workflow_nodefloatingPointNumber = WorkflowExpression.Compile(nodefloatingPointNumber, nameof(nodefloatingPointNumber), required: false);
-            var __workflow_nodeint = WorkflowExpression.Compile(nodeint, nameof(nodeint), required: false);
+            var __workflow_nodeInt = WorkflowExpression.Compile(nodeInt, nameof(nodeInt), required: false);
             var __workflow_nodeintegralNumber = WorkflowExpression.Compile(nodeintegralNumber, nameof(nodeintegralNumber), required: false);
             var __workflow_nodeLong = WorkflowExpression.Compile(nodeLong, nameof(nodeLong), required: false);
             var __workflow_nodemissingNode = WorkflowExpression.Compile(nodemissingNode, nameof(nodemissingNode), required: false);
             var __workflow_nodenodeType = WorkflowExpression.Compile(nodenodeType, nameof(nodenodeType), required: false);
-            var __workflow_nodenull = WorkflowExpression.Compile(nodenull, nameof(nodenull), required: false);
+            var __workflow_nodeNull = WorkflowExpression.Compile(nodeNull, nameof(nodeNull), required: false);
             var __workflow_nodenumber = WorkflowExpression.Compile(nodenumber, nameof(nodenumber), required: false);
             var __workflow_nodeObject = WorkflowExpression.Compile(nodeObject, nameof(nodeObject), required: false);
             var __workflow_nodepojo = WorkflowExpression.Compile(nodepojo, nameof(nodepojo), required: false);
@@ -740,15 +741,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     nodepropCount++;
                 }
 
-                if (__workflow_nodedouble != null)
+                if (__workflow_nodeDouble != null)
                 {
-                    node["double"] = ExpressionConverter.ConvertO(__workflow_nodedouble);
+                    node["double"] = ExpressionConverter.ConvertO(__workflow_nodeDouble);
                     nodepropCount++;
                 }
 
-                if (__workflow_nodefloat != null)
+                if (__workflow_nodeFloat != null)
                 {
-                    node["float"] = ExpressionConverter.ConvertO(__workflow_nodefloat);
+                    node["float"] = ExpressionConverter.ConvertO(__workflow_nodeFloat);
                     nodepropCount++;
                 }
 
@@ -758,9 +759,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     nodepropCount++;
                 }
 
-                if (__workflow_nodeint != null)
+                if (__workflow_nodeInt != null)
                 {
-                    node["int"] = ExpressionConverter.ConvertO(__workflow_nodeint);
+                    node["int"] = ExpressionConverter.ConvertO(__workflow_nodeInt);
                     nodepropCount++;
                 }
 
@@ -788,9 +789,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     nodepropCount++;
                 }
 
-                if (__workflow_nodenull != null)
+                if (__workflow_nodeNull != null)
                 {
-                    node["null"] = ExpressionConverter.ConvertO(__workflow_nodenull);
+                    node["null"] = ExpressionConverter.ConvertO(__workflow_nodeNull);
                     nodepropCount++;
                 }
 
@@ -1069,20 +1070,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<ResponseEntity, ApiConnectionActionConfiguration> AddThingsCsv(Expression<Func<object>> file)
-        {
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            return new DeferredBodyAction<ResponseEntity, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/api/things";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<ResponseEntity>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<SingleThingRo[], ApiConnectionActionConfiguration> AssociateThingsWithProduct(Expression<Func<bool>> jsonarray = null, Expression<Func<bool>> jsonbigDecimal = null, Expression<Func<bool>> jsonbigInteger = null, Expression<Func<bool>> jsonbinary = null, Expression<Func<bool>> jsonboolean = null, Expression<Func<bool>> jsoncontainerNode = null, Expression<Func<bool>> jsondouble = null, Expression<Func<bool>> jsonfloat = null, Expression<Func<bool>> jsonfloatingPointNumber = null, Expression<Func<bool>> jsonint = null, Expression<Func<bool>> jsonintegralNumber = null, Expression<Func<bool>> jsonLong = null, Expression<Func<bool>> jsonmissingNode = null, Expression<Func<jsonnodeTypeInput>> jsonnodeType = null, Expression<Func<bool>> jsonnull = null, Expression<Func<bool>> jsonnumber = null, Expression<Func<bool>> jsonObject = null, Expression<Func<bool>> jsonpojo = null, Expression<Func<bool>> jsonShort = null, Expression<Func<bool>> jsontextual = null, Expression<Func<bool>> jsonvalueNode = null)
+        public IBodyWorkflowAction<SingleThingRo[], ApiConnectionActionConfiguration> AssociateThingsWithProduct(Expression<Func<bool>> jsonarray = null, Expression<Func<bool>> jsonbigDecimal = null, Expression<Func<bool>> jsonbigInteger = null, Expression<Func<bool>> jsonbinary = null, Expression<Func<bool>> jsonboolean = null, Expression<Func<bool>> jsoncontainerNode = null, Expression<Func<bool>> jsonDouble = null, Expression<Func<bool>> jsonFloat = null, Expression<Func<bool>> jsonfloatingPointNumber = null, Expression<Func<bool>> jsonInt = null, Expression<Func<bool>> jsonintegralNumber = null, Expression<Func<bool>> jsonLong = null, Expression<Func<bool>> jsonmissingNode = null, Expression<Func<jsonnodeTypeInput>> jsonnodeType = null, Expression<Func<bool>> jsonNull = null, Expression<Func<bool>> jsonnumber = null, Expression<Func<bool>> jsonObject = null, Expression<Func<bool>> jsonpojo = null, Expression<Func<bool>> jsonShort = null, Expression<Func<bool>> jsontextual = null, Expression<Func<bool>> jsonvalueNode = null)
         {
             var __workflow_jsonarray = WorkflowExpression.Compile(jsonarray, nameof(jsonarray), required: false);
             var __workflow_jsonbigDecimal = WorkflowExpression.Compile(jsonbigDecimal, nameof(jsonbigDecimal), required: false);
@@ -1090,15 +1078,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_jsonbinary = WorkflowExpression.Compile(jsonbinary, nameof(jsonbinary), required: false);
             var __workflow_jsonboolean = WorkflowExpression.Compile(jsonboolean, nameof(jsonboolean), required: false);
             var __workflow_jsoncontainerNode = WorkflowExpression.Compile(jsoncontainerNode, nameof(jsoncontainerNode), required: false);
-            var __workflow_jsondouble = WorkflowExpression.Compile(jsondouble, nameof(jsondouble), required: false);
-            var __workflow_jsonfloat = WorkflowExpression.Compile(jsonfloat, nameof(jsonfloat), required: false);
+            var __workflow_jsonDouble = WorkflowExpression.Compile(jsonDouble, nameof(jsonDouble), required: false);
+            var __workflow_jsonFloat = WorkflowExpression.Compile(jsonFloat, nameof(jsonFloat), required: false);
             var __workflow_jsonfloatingPointNumber = WorkflowExpression.Compile(jsonfloatingPointNumber, nameof(jsonfloatingPointNumber), required: false);
-            var __workflow_jsonint = WorkflowExpression.Compile(jsonint, nameof(jsonint), required: false);
+            var __workflow_jsonInt = WorkflowExpression.Compile(jsonInt, nameof(jsonInt), required: false);
             var __workflow_jsonintegralNumber = WorkflowExpression.Compile(jsonintegralNumber, nameof(jsonintegralNumber), required: false);
             var __workflow_jsonLong = WorkflowExpression.Compile(jsonLong, nameof(jsonLong), required: false);
             var __workflow_jsonmissingNode = WorkflowExpression.Compile(jsonmissingNode, nameof(jsonmissingNode), required: false);
             var __workflow_jsonnodeType = WorkflowExpression.Compile(jsonnodeType, nameof(jsonnodeType), required: false);
-            var __workflow_jsonnull = WorkflowExpression.Compile(jsonnull, nameof(jsonnull), required: false);
+            var __workflow_jsonNull = WorkflowExpression.Compile(jsonNull, nameof(jsonNull), required: false);
             var __workflow_jsonnumber = WorkflowExpression.Compile(jsonnumber, nameof(jsonnumber), required: false);
             var __workflow_jsonObject = WorkflowExpression.Compile(jsonObject, nameof(jsonObject), required: false);
             var __workflow_jsonpojo = WorkflowExpression.Compile(jsonpojo, nameof(jsonpojo), required: false);
@@ -1148,15 +1136,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     jsonpropCount++;
                 }
 
-                if (__workflow_jsondouble != null)
+                if (__workflow_jsonDouble != null)
                 {
-                    json["double"] = ExpressionConverter.ConvertO(__workflow_jsondouble);
+                    json["double"] = ExpressionConverter.ConvertO(__workflow_jsonDouble);
                     jsonpropCount++;
                 }
 
-                if (__workflow_jsonfloat != null)
+                if (__workflow_jsonFloat != null)
                 {
-                    json["float"] = ExpressionConverter.ConvertO(__workflow_jsonfloat);
+                    json["float"] = ExpressionConverter.ConvertO(__workflow_jsonFloat);
                     jsonpropCount++;
                 }
 
@@ -1166,9 +1154,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     jsonpropCount++;
                 }
 
-                if (__workflow_jsonint != null)
+                if (__workflow_jsonInt != null)
                 {
-                    json["int"] = ExpressionConverter.ConvertO(__workflow_jsonint);
+                    json["int"] = ExpressionConverter.ConvertO(__workflow_jsonInt);
                     jsonpropCount++;
                 }
 
@@ -1196,9 +1184,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     jsonpropCount++;
                 }
 
-                if (__workflow_jsonnull != null)
+                if (__workflow_jsonNull != null)
                 {
-                    json["null"] = ExpressionConverter.ConvertO(__workflow_jsonnull);
+                    json["null"] = ExpressionConverter.ConvertO(__workflow_jsonNull);
                     jsonpropCount++;
                 }
 
@@ -1295,7 +1283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<ThingRo, ApiConnectionActionConfiguration> PutThing(Expression<Func<string>> id, Expression<Func<string>> thingRoname, Expression<Func<string>> thingRositeaddress, Expression<Func<string>> thingRositecity, Expression<Func<string>> thingRositename, Expression<Func<string>> thingRositepostalCode, Expression<Func<string>> thingRoapplicationid = null, Expression<Func<string>> thingRoapplicationlink = null, Expression<Func<string>> thingRoapplicationname = null, Expression<Func<string>> thingRoconnectivityid = null, Expression<Func<string>> thingRoconnectivityrawStatus = null, Expression<Func<thingRoconnectivitystatusInput>> thingRoconnectivitystatus = null, Expression<Func<thingRoconnectivitytypeInput>> thingRoconnectivitytype = null, Expression<Func<CustomFieldRo[]>> thingRocustomFields = null, Expression<Func<string>> thingRocustomModelcolor = null, Expression<Func<string>> thingRocustomModelicon = null, Expression<Func<string>> thingRocustomModelid = null, Expression<Func<string>> thingRocustomModellink = null, Expression<Func<string>> thingRocustomModelname = null, Expression<Func<string>> thingRodescription = null, Expression<Func<int>> thingRodevicebatteryLevel = null, Expression<Func<thingRodevicebatteryStatusInput>> thingRodevicebatteryStatus = null, Expression<Func<string>> thingRodevicedeviceType = null, Expression<Func<string>> thingRodeviceid = null, Expression<Func<string>> thingRodevicemanufacturer = null, Expression<Func<int>> thingRodevicememoryFree = null, Expression<Func<int>> thingRodevicememoryTotal = null, Expression<Func<string>> thingRodevicemodel = null, Expression<Func<string>> thingRodevicemodelNumber = null, Expression<Func<string>> thingRodevicename = null, Expression<Func<string>> thingRodeviceserialNumber = null, Expression<Func<thingRodevicestatusInput>> thingRodevicestatus = null, Expression<Func<string>> thingRodisplayName = null, Expression<Func<bool>> thingRodynamicGps = null, Expression<Func<double>> thingRofixedLatitude = null, Expression<Func<double>> thingRofixedLongitude = null, Expression<Func<string>> thingRofixedName = null, Expression<Func<string>> thingRoid = null, Expression<Func<int>> thingRolastActivityDate = null, Expression<Func<double>> thingRolastLatitude = null, Expression<Func<double>> thingRolastLongitude = null, Expression<Func<bool>> thingRolastMeasurementsarray = null, Expression<Func<bool>> thingRolastMeasurementsbigDecimal = null, Expression<Func<bool>> thingRolastMeasurementsbigInteger = null, Expression<Func<bool>> thingRolastMeasurementsbinary = null, Expression<Func<bool>> thingRolastMeasurementsboolean = null, Expression<Func<bool>> thingRolastMeasurementscontainerNode = null, Expression<Func<bool>> thingRolastMeasurementsdouble = null, Expression<Func<bool>> thingRolastMeasurementsfloat = null, Expression<Func<bool>> thingRolastMeasurementsfloatingPointNumber = null, Expression<Func<bool>> thingRolastMeasurementsint = null, Expression<Func<bool>> thingRolastMeasurementsintegralNumber = null, Expression<Func<bool>> thingRolastMeasurementsLong = null, Expression<Func<bool>> thingRolastMeasurementsmissingNode = null, Expression<Func<thingRolastMeasurementsnodeTypeInput>> thingRolastMeasurementsnodeType = null, Expression<Func<bool>> thingRolastMeasurementsnull = null, Expression<Func<bool>> thingRolastMeasurementsnumber = null, Expression<Func<bool>> thingRolastMeasurementsObject = null, Expression<Func<bool>> thingRolastMeasurementspojo = null, Expression<Func<bool>> thingRolastMeasurementsShort = null, Expression<Func<bool>> thingRolastMeasurementstextual = null, Expression<Func<bool>> thingRolastMeasurementsvalueNode = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsarray = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsbigDecimal = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsbigInteger = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsbinary = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsboolean = null, Expression<Func<bool>> thingRolastMeasurementsTimestampscontainerNode = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsdouble = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsfloat = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsfloatingPointNumber = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsint = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsintegralNumber = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsLong = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsmissingNode = null, Expression<Func<thingRolastMeasurementsTimestampsnodeTypeInput>> thingRolastMeasurementsTimestampsnodeType = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsnull = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsnumber = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsObject = null, Expression<Func<bool>> thingRolastMeasurementsTimestampspojo = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsShort = null, Expression<Func<bool>> thingRolastMeasurementsTimestampstextual = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsvalueNode = null, Expression<Func<int>> thingRolastMessageDate = null, Expression<Func<int>> thingRomessageActivityTimeoutPeriod = null, Expression<Func<int>> thingRonbAlerts = null, Expression<Func<thingRoproductconnectivityTypesInputItem[]>> thingRoproductconnectivityTypes = null, Expression<Func<bool>> thingRoproductgenerateLinks = null, Expression<Func<string>> thingRoproductid = null, Expression<Func<string>> thingRoproductlink = null, Expression<Func<bool>> thingRoproductmanufacturergenerateLinks = null, Expression<Func<string>> thingRoproductmanufacturerid = null, Expression<Func<string>> thingRoproductmanufacturerlink = null, Expression<Func<string>> thingRoproductmanufacturername = null, Expression<Func<string>> thingRoproductmodelcolor = null, Expression<Func<bool>> thingRoproductmodelgenerateLinks = null, Expression<Func<string>> thingRoproductmodelicon = null, Expression<Func<string>> thingRoproductmodelid = null, Expression<Func<bool>> thingRoproductmodelisCustomModel = null, Expression<Func<bool>> thingRoproductmodellinkabsolute = null, Expression<Func<string>> thingRoproductmodellinkauthority = null, Expression<Func<string>> thingRoproductmodellinkfragment = null, Expression<Func<string>> thingRoproductmodellinkhost = null, Expression<Func<bool>> thingRoproductmodellinkopaque = null, Expression<Func<string>> thingRoproductmodellinkpath = null, Expression<Func<int>> thingRoproductmodellinkport = null, Expression<Func<string>> thingRoproductmodellinkquery = null, Expression<Func<string>> thingRoproductmodellinkrawAuthority = null, Expression<Func<string>> thingRoproductmodellinkrawFragment = null, Expression<Func<string>> thingRoproductmodellinkrawPath = null, Expression<Func<string>> thingRoproductmodellinkrawQuery = null, Expression<Func<string>> thingRoproductmodellinkrawSchemeSpecificPart = null, Expression<Func<string>> thingRoproductmodellinkrawUserInfo = null, Expression<Func<string>> thingRoproductmodellinkscheme = null, Expression<Func<string>> thingRoproductmodellinkschemeSpecificPart = null, Expression<Func<string>> thingRoproductmodellinkuserInfo = null, Expression<Func<string>> thingRoproductmodelname = null, Expression<Func<string>> thingRoproductname = null, Expression<Func<string>> thingRoproductreference = null, Expression<Func<string>> thingRositeid = null, Expression<Func<double>> thingRositelatitude = null, Expression<Func<double>> thingRositelongitude = null, Expression<Func<string>> thingRosourceId = null, Expression<Func<thingRostatusInput>> thingRostatus = null, Expression<Func<ThingTagRo[]>> thingRotags = null)
+        public IBodyWorkflowAction<ThingRo, ApiConnectionActionConfiguration> PutThing(Expression<Func<string>> id, Expression<Func<string>> thingRoname, Expression<Func<string>> thingRositeaddress, Expression<Func<string>> thingRositecity, Expression<Func<string>> thingRositename, Expression<Func<string>> thingRositepostalCode, Expression<Func<string>> thingRoapplicationid = null, Expression<Func<string>> thingRoapplicationlink = null, Expression<Func<string>> thingRoapplicationname = null, Expression<Func<string>> thingRoconnectivityid = null, Expression<Func<string>> thingRoconnectivityrawStatus = null, Expression<Func<thingRoconnectivitystatusInput>> thingRoconnectivitystatus = null, Expression<Func<thingRoconnectivitytypeInput>> thingRoconnectivitytype = null, Expression<Func<CustomFieldRo[]>> thingRocustomFields = null, Expression<Func<string>> thingRocustomModelcolor = null, Expression<Func<string>> thingRocustomModelicon = null, Expression<Func<string>> thingRocustomModelid = null, Expression<Func<string>> thingRocustomModellink = null, Expression<Func<string>> thingRocustomModelname = null, Expression<Func<string>> thingRodescription = null, Expression<Func<int>> thingRodevicebatteryLevel = null, Expression<Func<thingRodevicebatteryStatusInput>> thingRodevicebatteryStatus = null, Expression<Func<string>> thingRodevicedeviceType = null, Expression<Func<string>> thingRodeviceid = null, Expression<Func<string>> thingRodevicemanufacturer = null, Expression<Func<int>> thingRodevicememoryFree = null, Expression<Func<int>> thingRodevicememoryTotal = null, Expression<Func<string>> thingRodevicemodel = null, Expression<Func<string>> thingRodevicemodelNumber = null, Expression<Func<string>> thingRodevicename = null, Expression<Func<string>> thingRodeviceserialNumber = null, Expression<Func<thingRodevicestatusInput>> thingRodevicestatus = null, Expression<Func<string>> thingRodisplayName = null, Expression<Func<bool>> thingRodynamicGps = null, Expression<Func<double>> thingRofixedLatitude = null, Expression<Func<double>> thingRofixedLongitude = null, Expression<Func<string>> thingRofixedName = null, Expression<Func<string>> thingRoid = null, Expression<Func<int>> thingRolastActivityDate = null, Expression<Func<double>> thingRolastLatitude = null, Expression<Func<double>> thingRolastLongitude = null, Expression<Func<bool>> thingRolastMeasurementsarray = null, Expression<Func<bool>> thingRolastMeasurementsbigDecimal = null, Expression<Func<bool>> thingRolastMeasurementsbigInteger = null, Expression<Func<bool>> thingRolastMeasurementsbinary = null, Expression<Func<bool>> thingRolastMeasurementsboolean = null, Expression<Func<bool>> thingRolastMeasurementscontainerNode = null, Expression<Func<bool>> thingRolastMeasurementsDouble = null, Expression<Func<bool>> thingRolastMeasurementsFloat = null, Expression<Func<bool>> thingRolastMeasurementsfloatingPointNumber = null, Expression<Func<bool>> thingRolastMeasurementsInt = null, Expression<Func<bool>> thingRolastMeasurementsintegralNumber = null, Expression<Func<bool>> thingRolastMeasurementsLong = null, Expression<Func<bool>> thingRolastMeasurementsmissingNode = null, Expression<Func<thingRolastMeasurementsnodeTypeInput>> thingRolastMeasurementsnodeType = null, Expression<Func<bool>> thingRolastMeasurementsNull = null, Expression<Func<bool>> thingRolastMeasurementsnumber = null, Expression<Func<bool>> thingRolastMeasurementsObject = null, Expression<Func<bool>> thingRolastMeasurementspojo = null, Expression<Func<bool>> thingRolastMeasurementsShort = null, Expression<Func<bool>> thingRolastMeasurementstextual = null, Expression<Func<bool>> thingRolastMeasurementsvalueNode = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsarray = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsbigDecimal = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsbigInteger = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsbinary = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsboolean = null, Expression<Func<bool>> thingRolastMeasurementsTimestampscontainerNode = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsDouble = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsFloat = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsfloatingPointNumber = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsInt = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsintegralNumber = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsLong = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsmissingNode = null, Expression<Func<thingRolastMeasurementsTimestampsnodeTypeInput>> thingRolastMeasurementsTimestampsnodeType = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsNull = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsnumber = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsObject = null, Expression<Func<bool>> thingRolastMeasurementsTimestampspojo = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsShort = null, Expression<Func<bool>> thingRolastMeasurementsTimestampstextual = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsvalueNode = null, Expression<Func<int>> thingRolastMessageDate = null, Expression<Func<int>> thingRomessageActivityTimeoutPeriod = null, Expression<Func<int>> thingRonbAlerts = null, Expression<Func<thingRoproductconnectivityTypesInputItem[]>> thingRoproductconnectivityTypes = null, Expression<Func<bool>> thingRoproductgenerateLinks = null, Expression<Func<string>> thingRoproductid = null, Expression<Func<string>> thingRoproductlink = null, Expression<Func<bool>> thingRoproductmanufacturergenerateLinks = null, Expression<Func<string>> thingRoproductmanufacturerid = null, Expression<Func<string>> thingRoproductmanufacturerlink = null, Expression<Func<string>> thingRoproductmanufacturername = null, Expression<Func<string>> thingRoproductmodelcolor = null, Expression<Func<bool>> thingRoproductmodelgenerateLinks = null, Expression<Func<string>> thingRoproductmodelicon = null, Expression<Func<string>> thingRoproductmodelid = null, Expression<Func<bool>> thingRoproductmodelisCustomModel = null, Expression<Func<bool>> thingRoproductmodellinkabsolute = null, Expression<Func<string>> thingRoproductmodellinkauthority = null, Expression<Func<string>> thingRoproductmodellinkfragment = null, Expression<Func<string>> thingRoproductmodellinkhost = null, Expression<Func<bool>> thingRoproductmodellinkopaque = null, Expression<Func<string>> thingRoproductmodellinkpath = null, Expression<Func<int>> thingRoproductmodellinkport = null, Expression<Func<string>> thingRoproductmodellinkquery = null, Expression<Func<string>> thingRoproductmodellinkrawAuthority = null, Expression<Func<string>> thingRoproductmodellinkrawFragment = null, Expression<Func<string>> thingRoproductmodellinkrawPath = null, Expression<Func<string>> thingRoproductmodellinkrawQuery = null, Expression<Func<string>> thingRoproductmodellinkrawSchemeSpecificPart = null, Expression<Func<string>> thingRoproductmodellinkrawUserInfo = null, Expression<Func<string>> thingRoproductmodellinkscheme = null, Expression<Func<string>> thingRoproductmodellinkschemeSpecificPart = null, Expression<Func<string>> thingRoproductmodellinkuserInfo = null, Expression<Func<string>> thingRoproductmodelname = null, Expression<Func<string>> thingRoproductname = null, Expression<Func<string>> thingRoproductreference = null, Expression<Func<string>> thingRositeid = null, Expression<Func<double>> thingRositelatitude = null, Expression<Func<double>> thingRositelongitude = null, Expression<Func<string>> thingRosourceId = null, Expression<Func<thingRostatusInput>> thingRostatus = null, Expression<Func<ThingTagRo[]>> thingRotags = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_thingRoname = WorkflowExpression.Compile(thingRoname, nameof(thingRoname), required: true);
@@ -1344,15 +1332,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_thingRolastMeasurementsbinary = WorkflowExpression.Compile(thingRolastMeasurementsbinary, nameof(thingRolastMeasurementsbinary), required: false);
             var __workflow_thingRolastMeasurementsboolean = WorkflowExpression.Compile(thingRolastMeasurementsboolean, nameof(thingRolastMeasurementsboolean), required: false);
             var __workflow_thingRolastMeasurementscontainerNode = WorkflowExpression.Compile(thingRolastMeasurementscontainerNode, nameof(thingRolastMeasurementscontainerNode), required: false);
-            var __workflow_thingRolastMeasurementsdouble = WorkflowExpression.Compile(thingRolastMeasurementsdouble, nameof(thingRolastMeasurementsdouble), required: false);
-            var __workflow_thingRolastMeasurementsfloat = WorkflowExpression.Compile(thingRolastMeasurementsfloat, nameof(thingRolastMeasurementsfloat), required: false);
+            var __workflow_thingRolastMeasurementsDouble = WorkflowExpression.Compile(thingRolastMeasurementsDouble, nameof(thingRolastMeasurementsDouble), required: false);
+            var __workflow_thingRolastMeasurementsFloat = WorkflowExpression.Compile(thingRolastMeasurementsFloat, nameof(thingRolastMeasurementsFloat), required: false);
             var __workflow_thingRolastMeasurementsfloatingPointNumber = WorkflowExpression.Compile(thingRolastMeasurementsfloatingPointNumber, nameof(thingRolastMeasurementsfloatingPointNumber), required: false);
-            var __workflow_thingRolastMeasurementsint = WorkflowExpression.Compile(thingRolastMeasurementsint, nameof(thingRolastMeasurementsint), required: false);
+            var __workflow_thingRolastMeasurementsInt = WorkflowExpression.Compile(thingRolastMeasurementsInt, nameof(thingRolastMeasurementsInt), required: false);
             var __workflow_thingRolastMeasurementsintegralNumber = WorkflowExpression.Compile(thingRolastMeasurementsintegralNumber, nameof(thingRolastMeasurementsintegralNumber), required: false);
             var __workflow_thingRolastMeasurementsLong = WorkflowExpression.Compile(thingRolastMeasurementsLong, nameof(thingRolastMeasurementsLong), required: false);
             var __workflow_thingRolastMeasurementsmissingNode = WorkflowExpression.Compile(thingRolastMeasurementsmissingNode, nameof(thingRolastMeasurementsmissingNode), required: false);
             var __workflow_thingRolastMeasurementsnodeType = WorkflowExpression.Compile(thingRolastMeasurementsnodeType, nameof(thingRolastMeasurementsnodeType), required: false);
-            var __workflow_thingRolastMeasurementsnull = WorkflowExpression.Compile(thingRolastMeasurementsnull, nameof(thingRolastMeasurementsnull), required: false);
+            var __workflow_thingRolastMeasurementsNull = WorkflowExpression.Compile(thingRolastMeasurementsNull, nameof(thingRolastMeasurementsNull), required: false);
             var __workflow_thingRolastMeasurementsnumber = WorkflowExpression.Compile(thingRolastMeasurementsnumber, nameof(thingRolastMeasurementsnumber), required: false);
             var __workflow_thingRolastMeasurementsObject = WorkflowExpression.Compile(thingRolastMeasurementsObject, nameof(thingRolastMeasurementsObject), required: false);
             var __workflow_thingRolastMeasurementspojo = WorkflowExpression.Compile(thingRolastMeasurementspojo, nameof(thingRolastMeasurementspojo), required: false);
@@ -1365,15 +1353,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_thingRolastMeasurementsTimestampsbinary = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsbinary, nameof(thingRolastMeasurementsTimestampsbinary), required: false);
             var __workflow_thingRolastMeasurementsTimestampsboolean = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsboolean, nameof(thingRolastMeasurementsTimestampsboolean), required: false);
             var __workflow_thingRolastMeasurementsTimestampscontainerNode = WorkflowExpression.Compile(thingRolastMeasurementsTimestampscontainerNode, nameof(thingRolastMeasurementsTimestampscontainerNode), required: false);
-            var __workflow_thingRolastMeasurementsTimestampsdouble = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsdouble, nameof(thingRolastMeasurementsTimestampsdouble), required: false);
-            var __workflow_thingRolastMeasurementsTimestampsfloat = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsfloat, nameof(thingRolastMeasurementsTimestampsfloat), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsDouble = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsDouble, nameof(thingRolastMeasurementsTimestampsDouble), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsFloat = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsFloat, nameof(thingRolastMeasurementsTimestampsFloat), required: false);
             var __workflow_thingRolastMeasurementsTimestampsfloatingPointNumber = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsfloatingPointNumber, nameof(thingRolastMeasurementsTimestampsfloatingPointNumber), required: false);
-            var __workflow_thingRolastMeasurementsTimestampsint = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsint, nameof(thingRolastMeasurementsTimestampsint), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsInt = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsInt, nameof(thingRolastMeasurementsTimestampsInt), required: false);
             var __workflow_thingRolastMeasurementsTimestampsintegralNumber = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsintegralNumber, nameof(thingRolastMeasurementsTimestampsintegralNumber), required: false);
             var __workflow_thingRolastMeasurementsTimestampsLong = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsLong, nameof(thingRolastMeasurementsTimestampsLong), required: false);
             var __workflow_thingRolastMeasurementsTimestampsmissingNode = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsmissingNode, nameof(thingRolastMeasurementsTimestampsmissingNode), required: false);
             var __workflow_thingRolastMeasurementsTimestampsnodeType = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsnodeType, nameof(thingRolastMeasurementsTimestampsnodeType), required: false);
-            var __workflow_thingRolastMeasurementsTimestampsnull = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsnull, nameof(thingRolastMeasurementsTimestampsnull), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsNull = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsNull, nameof(thingRolastMeasurementsTimestampsNull), required: false);
             var __workflow_thingRolastMeasurementsTimestampsnumber = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsnumber, nameof(thingRolastMeasurementsTimestampsnumber), required: false);
             var __workflow_thingRolastMeasurementsTimestampsObject = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsObject, nameof(thingRolastMeasurementsTimestampsObject), required: false);
             var __workflow_thingRolastMeasurementsTimestampspojo = WorkflowExpression.Compile(thingRolastMeasurementsTimestampspojo, nameof(thingRolastMeasurementsTimestampspojo), required: false);
@@ -1717,15 +1705,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (__workflow_thingRolastMeasurementsdouble != null)
+                if (__workflow_thingRolastMeasurementsDouble != null)
                 {
-                    lastMeasurementsObject["double"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsdouble);
+                    lastMeasurementsObject["double"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsDouble);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (__workflow_thingRolastMeasurementsfloat != null)
+                if (__workflow_thingRolastMeasurementsFloat != null)
                 {
-                    lastMeasurementsObject["float"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsfloat);
+                    lastMeasurementsObject["float"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsFloat);
                     lastMeasurementsObjectpropCount++;
                 }
 
@@ -1735,9 +1723,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (__workflow_thingRolastMeasurementsint != null)
+                if (__workflow_thingRolastMeasurementsInt != null)
                 {
-                    lastMeasurementsObject["int"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsint);
+                    lastMeasurementsObject["int"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsInt);
                     lastMeasurementsObjectpropCount++;
                 }
 
@@ -1765,9 +1753,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (__workflow_thingRolastMeasurementsnull != null)
+                if (__workflow_thingRolastMeasurementsNull != null)
                 {
-                    lastMeasurementsObject["null"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsnull);
+                    lastMeasurementsObject["null"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsNull);
                     lastMeasurementsObjectpropCount++;
                 }
 
@@ -1851,15 +1839,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (__workflow_thingRolastMeasurementsdouble != null)
+                if (__workflow_thingRolastMeasurementsDouble != null)
                 {
-                    lastMeasurementsTimestampsObject["double"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsdouble);
+                    lastMeasurementsTimestampsObject["double"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsDouble);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (__workflow_thingRolastMeasurementsfloat != null)
+                if (__workflow_thingRolastMeasurementsFloat != null)
                 {
-                    lastMeasurementsTimestampsObject["float"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsfloat);
+                    lastMeasurementsTimestampsObject["float"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsFloat);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
@@ -1869,9 +1857,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (__workflow_thingRolastMeasurementsint != null)
+                if (__workflow_thingRolastMeasurementsInt != null)
                 {
-                    lastMeasurementsTimestampsObject["int"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsint);
+                    lastMeasurementsTimestampsObject["int"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsInt);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
@@ -1899,9 +1887,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (__workflow_thingRolastMeasurementsnull != null)
+                if (__workflow_thingRolastMeasurementsNull != null)
                 {
-                    lastMeasurementsTimestampsObject["null"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsnull);
+                    lastMeasurementsTimestampsObject["null"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsNull);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
@@ -2437,21 +2425,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<ResponseEntity, ApiConnectionActionConfiguration> PostCustomFieldImage(Expression<Func<string>> id, Expression<Func<string>> fieldId, Expression<Func<object>> file)
-        {
-            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_fieldId = WorkflowExpression.Compile(fieldId, nameof(fieldId), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            return new DeferredBodyAction<ResponseEntity, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}/custom_fields/{1}/image", __workflow_id.WithUrlEncoding(1), __workflow_fieldId.WithUrlEncoding(1)));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<ResponseEntity>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
         public IBodyWorkflowAction<ResponseEntity, ApiConnectionActionConfiguration> GetThingImage(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -2576,7 +2549,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<MessageRo, ApiConnectionActionConfiguration> CreateThingMessages(Expression<Func<string>> id, Expression<Func<string>> messageRobody, Expression<Func<string>> messageRocreationDate, Expression<Func<string>> messageRoerrorMessage, Expression<Func<double>> messageRolatitude, Expression<Func<double>> messageRolongitude, Expression<Func<string>> messageRometadata, Expression<Func<int>> messageRonumber, Expression<Func<messageRoprocessedInput>> messageRoprocessed, Expression<Func<string>> messageRothingname, Expression<Func<string>> messageRotimestamp, Expression<Func<string>> messageRotopic, Expression<Func<string>> messageRoid = null, Expression<Func<bool>> messageRolinkabsolute = null, Expression<Func<string>> messageRolinkauthority = null, Expression<Func<string>> messageRolinkfragment = null, Expression<Func<string>> messageRolinkhost = null, Expression<Func<bool>> messageRolinkopaque = null, Expression<Func<string>> messageRolinkpath = null, Expression<Func<int>> messageRolinkport = null, Expression<Func<string>> messageRolinkquery = null, Expression<Func<string>> messageRolinkrawAuthority = null, Expression<Func<string>> messageRolinkrawFragment = null, Expression<Func<string>> messageRolinkrawPath = null, Expression<Func<string>> messageRolinkrawQuery = null, Expression<Func<string>> messageRolinkrawSchemeSpecificPart = null, Expression<Func<string>> messageRolinkrawUserInfo = null, Expression<Func<string>> messageRolinkscheme = null, Expression<Func<string>> messageRolinkschemeSpecificPart = null, Expression<Func<string>> messageRolinkuserInfo = null, Expression<Func<bool>> messageRomeasurementsarray = null, Expression<Func<bool>> messageRomeasurementsbigDecimal = null, Expression<Func<bool>> messageRomeasurementsbigInteger = null, Expression<Func<bool>> messageRomeasurementsbinary = null, Expression<Func<bool>> messageRomeasurementsboolean = null, Expression<Func<bool>> messageRomeasurementscontainerNode = null, Expression<Func<bool>> messageRomeasurementsdouble = null, Expression<Func<bool>> messageRomeasurementsfloat = null, Expression<Func<bool>> messageRomeasurementsfloatingPointNumber = null, Expression<Func<bool>> messageRomeasurementsint = null, Expression<Func<bool>> messageRomeasurementsintegralNumber = null, Expression<Func<bool>> messageRomeasurementsLong = null, Expression<Func<bool>> messageRomeasurementsmissingNode = null, Expression<Func<messageRomeasurementsnodeTypeInput>> messageRomeasurementsnodeType = null, Expression<Func<bool>> messageRomeasurementsnull = null, Expression<Func<bool>> messageRomeasurementsnumber = null, Expression<Func<bool>> messageRomeasurementsObject = null, Expression<Func<bool>> messageRomeasurementspojo = null, Expression<Func<bool>> messageRomeasurementsShort = null, Expression<Func<bool>> messageRomeasurementstextual = null, Expression<Func<bool>> messageRomeasurementsvalueNode = null, Expression<Func<bool>> messageRorawMeasurementsarray = null, Expression<Func<bool>> messageRorawMeasurementsbigDecimal = null, Expression<Func<bool>> messageRorawMeasurementsbigInteger = null, Expression<Func<bool>> messageRorawMeasurementsbinary = null, Expression<Func<bool>> messageRorawMeasurementsboolean = null, Expression<Func<bool>> messageRorawMeasurementscontainerNode = null, Expression<Func<bool>> messageRorawMeasurementsdouble = null, Expression<Func<bool>> messageRorawMeasurementsfloat = null, Expression<Func<bool>> messageRorawMeasurementsfloatingPointNumber = null, Expression<Func<bool>> messageRorawMeasurementsint = null, Expression<Func<bool>> messageRorawMeasurementsintegralNumber = null, Expression<Func<bool>> messageRorawMeasurementsLong = null, Expression<Func<bool>> messageRorawMeasurementsmissingNode = null, Expression<Func<messageRorawMeasurementsnodeTypeInput>> messageRorawMeasurementsnodeType = null, Expression<Func<bool>> messageRorawMeasurementsnull = null, Expression<Func<bool>> messageRorawMeasurementsnumber = null, Expression<Func<bool>> messageRorawMeasurementsObject = null, Expression<Func<bool>> messageRorawMeasurementspojo = null, Expression<Func<bool>> messageRorawMeasurementsShort = null, Expression<Func<bool>> messageRorawMeasurementstextual = null, Expression<Func<bool>> messageRorawMeasurementsvalueNode = null, Expression<Func<string>> messageRothingdisplayName = null, Expression<Func<string>> messageRothingfixedName = null, Expression<Func<string>> messageRothingid = null, Expression<Func<int>> messageRothingnbAlerts = null, Expression<Func<ThingTagRo[]>> messageRothingtags = null)
+        public IBodyWorkflowAction<MessageRo, ApiConnectionActionConfiguration> CreateThingMessages(Expression<Func<string>> id, Expression<Func<string>> messageRobody, Expression<Func<string>> messageRocreationDate, Expression<Func<string>> messageRoerrorMessage, Expression<Func<double>> messageRolatitude, Expression<Func<double>> messageRolongitude, Expression<Func<string>> messageRometadata, Expression<Func<int>> messageRonumber, Expression<Func<messageRoprocessedInput>> messageRoprocessed, Expression<Func<string>> messageRothingname, Expression<Func<string>> messageRotimestamp, Expression<Func<string>> messageRotopic, Expression<Func<string>> messageRoid = null, Expression<Func<bool>> messageRolinkabsolute = null, Expression<Func<string>> messageRolinkauthority = null, Expression<Func<string>> messageRolinkfragment = null, Expression<Func<string>> messageRolinkhost = null, Expression<Func<bool>> messageRolinkopaque = null, Expression<Func<string>> messageRolinkpath = null, Expression<Func<int>> messageRolinkport = null, Expression<Func<string>> messageRolinkquery = null, Expression<Func<string>> messageRolinkrawAuthority = null, Expression<Func<string>> messageRolinkrawFragment = null, Expression<Func<string>> messageRolinkrawPath = null, Expression<Func<string>> messageRolinkrawQuery = null, Expression<Func<string>> messageRolinkrawSchemeSpecificPart = null, Expression<Func<string>> messageRolinkrawUserInfo = null, Expression<Func<string>> messageRolinkscheme = null, Expression<Func<string>> messageRolinkschemeSpecificPart = null, Expression<Func<string>> messageRolinkuserInfo = null, Expression<Func<bool>> messageRomeasurementsarray = null, Expression<Func<bool>> messageRomeasurementsbigDecimal = null, Expression<Func<bool>> messageRomeasurementsbigInteger = null, Expression<Func<bool>> messageRomeasurementsbinary = null, Expression<Func<bool>> messageRomeasurementsboolean = null, Expression<Func<bool>> messageRomeasurementscontainerNode = null, Expression<Func<bool>> messageRomeasurementsDouble = null, Expression<Func<bool>> messageRomeasurementsFloat = null, Expression<Func<bool>> messageRomeasurementsfloatingPointNumber = null, Expression<Func<bool>> messageRomeasurementsInt = null, Expression<Func<bool>> messageRomeasurementsintegralNumber = null, Expression<Func<bool>> messageRomeasurementsLong = null, Expression<Func<bool>> messageRomeasurementsmissingNode = null, Expression<Func<messageRomeasurementsnodeTypeInput>> messageRomeasurementsnodeType = null, Expression<Func<bool>> messageRomeasurementsNull = null, Expression<Func<bool>> messageRomeasurementsnumber = null, Expression<Func<bool>> messageRomeasurementsObject = null, Expression<Func<bool>> messageRomeasurementspojo = null, Expression<Func<bool>> messageRomeasurementsShort = null, Expression<Func<bool>> messageRomeasurementstextual = null, Expression<Func<bool>> messageRomeasurementsvalueNode = null, Expression<Func<bool>> messageRorawMeasurementsarray = null, Expression<Func<bool>> messageRorawMeasurementsbigDecimal = null, Expression<Func<bool>> messageRorawMeasurementsbigInteger = null, Expression<Func<bool>> messageRorawMeasurementsbinary = null, Expression<Func<bool>> messageRorawMeasurementsboolean = null, Expression<Func<bool>> messageRorawMeasurementscontainerNode = null, Expression<Func<bool>> messageRorawMeasurementsDouble = null, Expression<Func<bool>> messageRorawMeasurementsFloat = null, Expression<Func<bool>> messageRorawMeasurementsfloatingPointNumber = null, Expression<Func<bool>> messageRorawMeasurementsInt = null, Expression<Func<bool>> messageRorawMeasurementsintegralNumber = null, Expression<Func<bool>> messageRorawMeasurementsLong = null, Expression<Func<bool>> messageRorawMeasurementsmissingNode = null, Expression<Func<messageRorawMeasurementsnodeTypeInput>> messageRorawMeasurementsnodeType = null, Expression<Func<bool>> messageRorawMeasurementsNull = null, Expression<Func<bool>> messageRorawMeasurementsnumber = null, Expression<Func<bool>> messageRorawMeasurementsObject = null, Expression<Func<bool>> messageRorawMeasurementspojo = null, Expression<Func<bool>> messageRorawMeasurementsShort = null, Expression<Func<bool>> messageRorawMeasurementstextual = null, Expression<Func<bool>> messageRorawMeasurementsvalueNode = null, Expression<Func<string>> messageRothingdisplayName = null, Expression<Func<string>> messageRothingfixedName = null, Expression<Func<string>> messageRothingid = null, Expression<Func<int>> messageRothingnbAlerts = null, Expression<Func<ThingTagRo[]>> messageRothingtags = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_messageRobody = WorkflowExpression.Compile(messageRobody, nameof(messageRobody), required: true);
@@ -2614,15 +2587,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_messageRomeasurementsbinary = WorkflowExpression.Compile(messageRomeasurementsbinary, nameof(messageRomeasurementsbinary), required: false);
             var __workflow_messageRomeasurementsboolean = WorkflowExpression.Compile(messageRomeasurementsboolean, nameof(messageRomeasurementsboolean), required: false);
             var __workflow_messageRomeasurementscontainerNode = WorkflowExpression.Compile(messageRomeasurementscontainerNode, nameof(messageRomeasurementscontainerNode), required: false);
-            var __workflow_messageRomeasurementsdouble = WorkflowExpression.Compile(messageRomeasurementsdouble, nameof(messageRomeasurementsdouble), required: false);
-            var __workflow_messageRomeasurementsfloat = WorkflowExpression.Compile(messageRomeasurementsfloat, nameof(messageRomeasurementsfloat), required: false);
+            var __workflow_messageRomeasurementsDouble = WorkflowExpression.Compile(messageRomeasurementsDouble, nameof(messageRomeasurementsDouble), required: false);
+            var __workflow_messageRomeasurementsFloat = WorkflowExpression.Compile(messageRomeasurementsFloat, nameof(messageRomeasurementsFloat), required: false);
             var __workflow_messageRomeasurementsfloatingPointNumber = WorkflowExpression.Compile(messageRomeasurementsfloatingPointNumber, nameof(messageRomeasurementsfloatingPointNumber), required: false);
-            var __workflow_messageRomeasurementsint = WorkflowExpression.Compile(messageRomeasurementsint, nameof(messageRomeasurementsint), required: false);
+            var __workflow_messageRomeasurementsInt = WorkflowExpression.Compile(messageRomeasurementsInt, nameof(messageRomeasurementsInt), required: false);
             var __workflow_messageRomeasurementsintegralNumber = WorkflowExpression.Compile(messageRomeasurementsintegralNumber, nameof(messageRomeasurementsintegralNumber), required: false);
             var __workflow_messageRomeasurementsLong = WorkflowExpression.Compile(messageRomeasurementsLong, nameof(messageRomeasurementsLong), required: false);
             var __workflow_messageRomeasurementsmissingNode = WorkflowExpression.Compile(messageRomeasurementsmissingNode, nameof(messageRomeasurementsmissingNode), required: false);
             var __workflow_messageRomeasurementsnodeType = WorkflowExpression.Compile(messageRomeasurementsnodeType, nameof(messageRomeasurementsnodeType), required: false);
-            var __workflow_messageRomeasurementsnull = WorkflowExpression.Compile(messageRomeasurementsnull, nameof(messageRomeasurementsnull), required: false);
+            var __workflow_messageRomeasurementsNull = WorkflowExpression.Compile(messageRomeasurementsNull, nameof(messageRomeasurementsNull), required: false);
             var __workflow_messageRomeasurementsnumber = WorkflowExpression.Compile(messageRomeasurementsnumber, nameof(messageRomeasurementsnumber), required: false);
             var __workflow_messageRomeasurementsObject = WorkflowExpression.Compile(messageRomeasurementsObject, nameof(messageRomeasurementsObject), required: false);
             var __workflow_messageRomeasurementspojo = WorkflowExpression.Compile(messageRomeasurementspojo, nameof(messageRomeasurementspojo), required: false);
@@ -2635,15 +2608,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_messageRorawMeasurementsbinary = WorkflowExpression.Compile(messageRorawMeasurementsbinary, nameof(messageRorawMeasurementsbinary), required: false);
             var __workflow_messageRorawMeasurementsboolean = WorkflowExpression.Compile(messageRorawMeasurementsboolean, nameof(messageRorawMeasurementsboolean), required: false);
             var __workflow_messageRorawMeasurementscontainerNode = WorkflowExpression.Compile(messageRorawMeasurementscontainerNode, nameof(messageRorawMeasurementscontainerNode), required: false);
-            var __workflow_messageRorawMeasurementsdouble = WorkflowExpression.Compile(messageRorawMeasurementsdouble, nameof(messageRorawMeasurementsdouble), required: false);
-            var __workflow_messageRorawMeasurementsfloat = WorkflowExpression.Compile(messageRorawMeasurementsfloat, nameof(messageRorawMeasurementsfloat), required: false);
+            var __workflow_messageRorawMeasurementsDouble = WorkflowExpression.Compile(messageRorawMeasurementsDouble, nameof(messageRorawMeasurementsDouble), required: false);
+            var __workflow_messageRorawMeasurementsFloat = WorkflowExpression.Compile(messageRorawMeasurementsFloat, nameof(messageRorawMeasurementsFloat), required: false);
             var __workflow_messageRorawMeasurementsfloatingPointNumber = WorkflowExpression.Compile(messageRorawMeasurementsfloatingPointNumber, nameof(messageRorawMeasurementsfloatingPointNumber), required: false);
-            var __workflow_messageRorawMeasurementsint = WorkflowExpression.Compile(messageRorawMeasurementsint, nameof(messageRorawMeasurementsint), required: false);
+            var __workflow_messageRorawMeasurementsInt = WorkflowExpression.Compile(messageRorawMeasurementsInt, nameof(messageRorawMeasurementsInt), required: false);
             var __workflow_messageRorawMeasurementsintegralNumber = WorkflowExpression.Compile(messageRorawMeasurementsintegralNumber, nameof(messageRorawMeasurementsintegralNumber), required: false);
             var __workflow_messageRorawMeasurementsLong = WorkflowExpression.Compile(messageRorawMeasurementsLong, nameof(messageRorawMeasurementsLong), required: false);
             var __workflow_messageRorawMeasurementsmissingNode = WorkflowExpression.Compile(messageRorawMeasurementsmissingNode, nameof(messageRorawMeasurementsmissingNode), required: false);
             var __workflow_messageRorawMeasurementsnodeType = WorkflowExpression.Compile(messageRorawMeasurementsnodeType, nameof(messageRorawMeasurementsnodeType), required: false);
-            var __workflow_messageRorawMeasurementsnull = WorkflowExpression.Compile(messageRorawMeasurementsnull, nameof(messageRorawMeasurementsnull), required: false);
+            var __workflow_messageRorawMeasurementsNull = WorkflowExpression.Compile(messageRorawMeasurementsNull, nameof(messageRorawMeasurementsNull), required: false);
             var __workflow_messageRorawMeasurementsnumber = WorkflowExpression.Compile(messageRorawMeasurementsnumber, nameof(messageRorawMeasurementsnumber), required: false);
             var __workflow_messageRorawMeasurementsObject = WorkflowExpression.Compile(messageRorawMeasurementsObject, nameof(messageRorawMeasurementsObject), required: false);
             var __workflow_messageRorawMeasurementspojo = WorkflowExpression.Compile(messageRorawMeasurementspojo, nameof(messageRorawMeasurementspojo), required: false);
@@ -2826,15 +2799,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     measurementsObjectpropCount++;
                 }
 
-                if (__workflow_messageRomeasurementsdouble != null)
+                if (__workflow_messageRomeasurementsDouble != null)
                 {
-                    measurementsObject["double"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsdouble);
+                    measurementsObject["double"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsDouble);
                     measurementsObjectpropCount++;
                 }
 
-                if (__workflow_messageRomeasurementsfloat != null)
+                if (__workflow_messageRomeasurementsFloat != null)
                 {
-                    measurementsObject["float"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsfloat);
+                    measurementsObject["float"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsFloat);
                     measurementsObjectpropCount++;
                 }
 
@@ -2844,9 +2817,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     measurementsObjectpropCount++;
                 }
 
-                if (__workflow_messageRomeasurementsint != null)
+                if (__workflow_messageRomeasurementsInt != null)
                 {
-                    measurementsObject["int"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsint);
+                    measurementsObject["int"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsInt);
                     measurementsObjectpropCount++;
                 }
 
@@ -2874,9 +2847,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     measurementsObjectpropCount++;
                 }
 
-                if (__workflow_messageRomeasurementsnull != null)
+                if (__workflow_messageRomeasurementsNull != null)
                 {
-                    measurementsObject["null"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsnull);
+                    measurementsObject["null"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsNull);
                     measurementsObjectpropCount++;
                 }
 
@@ -2966,15 +2939,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (__workflow_messageRomeasurementsdouble != null)
+                if (__workflow_messageRomeasurementsDouble != null)
                 {
-                    rawMeasurementsObject["double"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsdouble);
+                    rawMeasurementsObject["double"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsDouble);
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (__workflow_messageRomeasurementsfloat != null)
+                if (__workflow_messageRomeasurementsFloat != null)
                 {
-                    rawMeasurementsObject["float"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsfloat);
+                    rawMeasurementsObject["float"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsFloat);
                     rawMeasurementsObjectpropCount++;
                 }
 
@@ -2984,9 +2957,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (__workflow_messageRomeasurementsint != null)
+                if (__workflow_messageRomeasurementsInt != null)
                 {
-                    rawMeasurementsObject["int"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsint);
+                    rawMeasurementsObject["int"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsInt);
                     rawMeasurementsObjectpropCount++;
                 }
 
@@ -3014,9 +2987,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     rawMeasurementsObjectpropCount++;
                 }
 
-                if (__workflow_messageRomeasurementsnull != null)
+                if (__workflow_messageRomeasurementsNull != null)
                 {
-                    rawMeasurementsObject["null"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsnull);
+                    rawMeasurementsObject["null"] = ExpressionConverter.ConvertO(__workflow_messageRomeasurementsNull);
                     rawMeasurementsObjectpropCount++;
                 }
 
@@ -3142,7 +3115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<ResponseEntity, ApiConnectionActionConfiguration> ExecuteThingOperation(Expression<Func<string>> id, Expression<Func<string>> operationId, Expression<Func<bool>> placeholdersValuesarray = null, Expression<Func<bool>> placeholdersValuesbigDecimal = null, Expression<Func<bool>> placeholdersValuesbigInteger = null, Expression<Func<bool>> placeholdersValuesbinary = null, Expression<Func<bool>> placeholdersValuesboolean = null, Expression<Func<bool>> placeholdersValuescontainerNode = null, Expression<Func<bool>> placeholdersValuesdouble = null, Expression<Func<bool>> placeholdersValuesfloat = null, Expression<Func<bool>> placeholdersValuesfloatingPointNumber = null, Expression<Func<bool>> placeholdersValuesint = null, Expression<Func<bool>> placeholdersValuesintegralNumber = null, Expression<Func<bool>> placeholdersValuesLong = null, Expression<Func<bool>> placeholdersValuesmissingNode = null, Expression<Func<placeholdersValuesnodeTypeInput>> placeholdersValuesnodeType = null, Expression<Func<bool>> placeholdersValuesnull = null, Expression<Func<bool>> placeholdersValuesnumber = null, Expression<Func<bool>> placeholdersValuesObject = null, Expression<Func<bool>> placeholdersValuespojo = null, Expression<Func<bool>> placeholdersValuesShort = null, Expression<Func<bool>> placeholdersValuestextual = null, Expression<Func<bool>> placeholdersValuesvalueNode = null)
+        public IBodyWorkflowAction<ResponseEntity, ApiConnectionActionConfiguration> ExecuteThingOperation(Expression<Func<string>> id, Expression<Func<string>> operationId, Expression<Func<bool>> placeholdersValuesarray = null, Expression<Func<bool>> placeholdersValuesbigDecimal = null, Expression<Func<bool>> placeholdersValuesbigInteger = null, Expression<Func<bool>> placeholdersValuesbinary = null, Expression<Func<bool>> placeholdersValuesboolean = null, Expression<Func<bool>> placeholdersValuescontainerNode = null, Expression<Func<bool>> placeholdersValuesDouble = null, Expression<Func<bool>> placeholdersValuesFloat = null, Expression<Func<bool>> placeholdersValuesfloatingPointNumber = null, Expression<Func<bool>> placeholdersValuesInt = null, Expression<Func<bool>> placeholdersValuesintegralNumber = null, Expression<Func<bool>> placeholdersValuesLong = null, Expression<Func<bool>> placeholdersValuesmissingNode = null, Expression<Func<placeholdersValuesnodeTypeInput>> placeholdersValuesnodeType = null, Expression<Func<bool>> placeholdersValuesNull = null, Expression<Func<bool>> placeholdersValuesnumber = null, Expression<Func<bool>> placeholdersValuesObject = null, Expression<Func<bool>> placeholdersValuespojo = null, Expression<Func<bool>> placeholdersValuesShort = null, Expression<Func<bool>> placeholdersValuestextual = null, Expression<Func<bool>> placeholdersValuesvalueNode = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_operationId = WorkflowExpression.Compile(operationId, nameof(operationId), required: true);
@@ -3152,15 +3125,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_placeholdersValuesbinary = WorkflowExpression.Compile(placeholdersValuesbinary, nameof(placeholdersValuesbinary), required: false);
             var __workflow_placeholdersValuesboolean = WorkflowExpression.Compile(placeholdersValuesboolean, nameof(placeholdersValuesboolean), required: false);
             var __workflow_placeholdersValuescontainerNode = WorkflowExpression.Compile(placeholdersValuescontainerNode, nameof(placeholdersValuescontainerNode), required: false);
-            var __workflow_placeholdersValuesdouble = WorkflowExpression.Compile(placeholdersValuesdouble, nameof(placeholdersValuesdouble), required: false);
-            var __workflow_placeholdersValuesfloat = WorkflowExpression.Compile(placeholdersValuesfloat, nameof(placeholdersValuesfloat), required: false);
+            var __workflow_placeholdersValuesDouble = WorkflowExpression.Compile(placeholdersValuesDouble, nameof(placeholdersValuesDouble), required: false);
+            var __workflow_placeholdersValuesFloat = WorkflowExpression.Compile(placeholdersValuesFloat, nameof(placeholdersValuesFloat), required: false);
             var __workflow_placeholdersValuesfloatingPointNumber = WorkflowExpression.Compile(placeholdersValuesfloatingPointNumber, nameof(placeholdersValuesfloatingPointNumber), required: false);
-            var __workflow_placeholdersValuesint = WorkflowExpression.Compile(placeholdersValuesint, nameof(placeholdersValuesint), required: false);
+            var __workflow_placeholdersValuesInt = WorkflowExpression.Compile(placeholdersValuesInt, nameof(placeholdersValuesInt), required: false);
             var __workflow_placeholdersValuesintegralNumber = WorkflowExpression.Compile(placeholdersValuesintegralNumber, nameof(placeholdersValuesintegralNumber), required: false);
             var __workflow_placeholdersValuesLong = WorkflowExpression.Compile(placeholdersValuesLong, nameof(placeholdersValuesLong), required: false);
             var __workflow_placeholdersValuesmissingNode = WorkflowExpression.Compile(placeholdersValuesmissingNode, nameof(placeholdersValuesmissingNode), required: false);
             var __workflow_placeholdersValuesnodeType = WorkflowExpression.Compile(placeholdersValuesnodeType, nameof(placeholdersValuesnodeType), required: false);
-            var __workflow_placeholdersValuesnull = WorkflowExpression.Compile(placeholdersValuesnull, nameof(placeholdersValuesnull), required: false);
+            var __workflow_placeholdersValuesNull = WorkflowExpression.Compile(placeholdersValuesNull, nameof(placeholdersValuesNull), required: false);
             var __workflow_placeholdersValuesnumber = WorkflowExpression.Compile(placeholdersValuesnumber, nameof(placeholdersValuesnumber), required: false);
             var __workflow_placeholdersValuesObject = WorkflowExpression.Compile(placeholdersValuesObject, nameof(placeholdersValuesObject), required: false);
             var __workflow_placeholdersValuespojo = WorkflowExpression.Compile(placeholdersValuespojo, nameof(placeholdersValuespojo), required: false);
@@ -3210,15 +3183,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     placeholdersValuespropCount++;
                 }
 
-                if (__workflow_placeholdersValuesdouble != null)
+                if (__workflow_placeholdersValuesDouble != null)
                 {
-                    placeholdersValues["double"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuesdouble);
+                    placeholdersValues["double"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuesDouble);
                     placeholdersValuespropCount++;
                 }
 
-                if (__workflow_placeholdersValuesfloat != null)
+                if (__workflow_placeholdersValuesFloat != null)
                 {
-                    placeholdersValues["float"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuesfloat);
+                    placeholdersValues["float"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuesFloat);
                     placeholdersValuespropCount++;
                 }
 
@@ -3228,9 +3201,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     placeholdersValuespropCount++;
                 }
 
-                if (__workflow_placeholdersValuesint != null)
+                if (__workflow_placeholdersValuesInt != null)
                 {
-                    placeholdersValues["int"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuesint);
+                    placeholdersValues["int"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuesInt);
                     placeholdersValuespropCount++;
                 }
 
@@ -3258,9 +3231,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     placeholdersValuespropCount++;
                 }
 
-                if (__workflow_placeholdersValuesnull != null)
+                if (__workflow_placeholdersValuesNull != null)
                 {
-                    placeholdersValues["null"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuesnull);
+                    placeholdersValues["null"] = ExpressionConverter.ConvertO(__workflow_placeholdersValuesNull);
                     placeholdersValuespropCount++;
                 }
 
@@ -3310,7 +3283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<SingleThingRo, ApiConnectionActionConfiguration> UpdateThingFixedPosition(Expression<Func<string>> id, Expression<Func<string>> thingRoname, Expression<Func<string>> thingRositeaddress, Expression<Func<string>> thingRositecity, Expression<Func<string>> thingRositename, Expression<Func<string>> thingRositepostalCode, Expression<Func<CustomFieldRo[]>> thingRocustomFields = null, Expression<Func<string>> thingRodescription = null, Expression<Func<string>> thingRodisplayName = null, Expression<Func<bool>> thingRodynamicGps = null, Expression<Func<double>> thingRofixedLatitude = null, Expression<Func<double>> thingRofixedLongitude = null, Expression<Func<string>> thingRofixedName = null, Expression<Func<string>> thingRoid = null, Expression<Func<int>> thingRolastActivityDate = null, Expression<Func<double>> thingRolastLatitude = null, Expression<Func<double>> thingRolastLongitude = null, Expression<Func<bool>> thingRolastMeasurementsarray = null, Expression<Func<bool>> thingRolastMeasurementsbigDecimal = null, Expression<Func<bool>> thingRolastMeasurementsbigInteger = null, Expression<Func<bool>> thingRolastMeasurementsbinary = null, Expression<Func<bool>> thingRolastMeasurementsboolean = null, Expression<Func<bool>> thingRolastMeasurementscontainerNode = null, Expression<Func<bool>> thingRolastMeasurementsdouble = null, Expression<Func<bool>> thingRolastMeasurementsfloat = null, Expression<Func<bool>> thingRolastMeasurementsfloatingPointNumber = null, Expression<Func<bool>> thingRolastMeasurementsint = null, Expression<Func<bool>> thingRolastMeasurementsintegralNumber = null, Expression<Func<bool>> thingRolastMeasurementsLong = null, Expression<Func<bool>> thingRolastMeasurementsmissingNode = null, Expression<Func<thingRolastMeasurementsnodeTypeInput>> thingRolastMeasurementsnodeType = null, Expression<Func<bool>> thingRolastMeasurementsnull = null, Expression<Func<bool>> thingRolastMeasurementsnumber = null, Expression<Func<bool>> thingRolastMeasurementsObject = null, Expression<Func<bool>> thingRolastMeasurementspojo = null, Expression<Func<bool>> thingRolastMeasurementsShort = null, Expression<Func<bool>> thingRolastMeasurementstextual = null, Expression<Func<bool>> thingRolastMeasurementsvalueNode = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsarray = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsbigDecimal = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsbigInteger = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsbinary = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsboolean = null, Expression<Func<bool>> thingRolastMeasurementsTimestampscontainerNode = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsdouble = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsfloat = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsfloatingPointNumber = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsint = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsintegralNumber = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsLong = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsmissingNode = null, Expression<Func<thingRolastMeasurementsTimestampsnodeTypeInput>> thingRolastMeasurementsTimestampsnodeType = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsnull = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsnumber = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsObject = null, Expression<Func<bool>> thingRolastMeasurementsTimestampspojo = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsShort = null, Expression<Func<bool>> thingRolastMeasurementsTimestampstextual = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsvalueNode = null, Expression<Func<int>> thingRolastMessageDate = null, Expression<Func<int>> thingRomessageActivityTimeoutPeriod = null, Expression<Func<int>> thingRonbAlerts = null, Expression<Func<string>> thingRositeid = null, Expression<Func<double>> thingRositelatitude = null, Expression<Func<double>> thingRositelongitude = null, Expression<Func<thingRostatusInput>> thingRostatus = null, Expression<Func<ThingTagRo[]>> thingRotags = null)
+        public IBodyWorkflowAction<SingleThingRo, ApiConnectionActionConfiguration> UpdateThingFixedPosition(Expression<Func<string>> id, Expression<Func<string>> thingRoname, Expression<Func<string>> thingRositeaddress, Expression<Func<string>> thingRositecity, Expression<Func<string>> thingRositename, Expression<Func<string>> thingRositepostalCode, Expression<Func<CustomFieldRo[]>> thingRocustomFields = null, Expression<Func<string>> thingRodescription = null, Expression<Func<string>> thingRodisplayName = null, Expression<Func<bool>> thingRodynamicGps = null, Expression<Func<double>> thingRofixedLatitude = null, Expression<Func<double>> thingRofixedLongitude = null, Expression<Func<string>> thingRofixedName = null, Expression<Func<string>> thingRoid = null, Expression<Func<int>> thingRolastActivityDate = null, Expression<Func<double>> thingRolastLatitude = null, Expression<Func<double>> thingRolastLongitude = null, Expression<Func<bool>> thingRolastMeasurementsarray = null, Expression<Func<bool>> thingRolastMeasurementsbigDecimal = null, Expression<Func<bool>> thingRolastMeasurementsbigInteger = null, Expression<Func<bool>> thingRolastMeasurementsbinary = null, Expression<Func<bool>> thingRolastMeasurementsboolean = null, Expression<Func<bool>> thingRolastMeasurementscontainerNode = null, Expression<Func<bool>> thingRolastMeasurementsDouble = null, Expression<Func<bool>> thingRolastMeasurementsFloat = null, Expression<Func<bool>> thingRolastMeasurementsfloatingPointNumber = null, Expression<Func<bool>> thingRolastMeasurementsInt = null, Expression<Func<bool>> thingRolastMeasurementsintegralNumber = null, Expression<Func<bool>> thingRolastMeasurementsLong = null, Expression<Func<bool>> thingRolastMeasurementsmissingNode = null, Expression<Func<thingRolastMeasurementsnodeTypeInput>> thingRolastMeasurementsnodeType = null, Expression<Func<bool>> thingRolastMeasurementsNull = null, Expression<Func<bool>> thingRolastMeasurementsnumber = null, Expression<Func<bool>> thingRolastMeasurementsObject = null, Expression<Func<bool>> thingRolastMeasurementspojo = null, Expression<Func<bool>> thingRolastMeasurementsShort = null, Expression<Func<bool>> thingRolastMeasurementstextual = null, Expression<Func<bool>> thingRolastMeasurementsvalueNode = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsarray = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsbigDecimal = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsbigInteger = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsbinary = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsboolean = null, Expression<Func<bool>> thingRolastMeasurementsTimestampscontainerNode = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsDouble = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsFloat = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsfloatingPointNumber = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsInt = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsintegralNumber = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsLong = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsmissingNode = null, Expression<Func<thingRolastMeasurementsTimestampsnodeTypeInput>> thingRolastMeasurementsTimestampsnodeType = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsNull = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsnumber = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsObject = null, Expression<Func<bool>> thingRolastMeasurementsTimestampspojo = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsShort = null, Expression<Func<bool>> thingRolastMeasurementsTimestampstextual = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsvalueNode = null, Expression<Func<int>> thingRolastMessageDate = null, Expression<Func<int>> thingRomessageActivityTimeoutPeriod = null, Expression<Func<int>> thingRonbAlerts = null, Expression<Func<string>> thingRositeid = null, Expression<Func<double>> thingRositelatitude = null, Expression<Func<double>> thingRositelongitude = null, Expression<Func<thingRostatusInput>> thingRostatus = null, Expression<Func<ThingTagRo[]>> thingRotags = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_thingRoname = WorkflowExpression.Compile(thingRoname, nameof(thingRoname), required: true);
@@ -3335,15 +3308,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_thingRolastMeasurementsbinary = WorkflowExpression.Compile(thingRolastMeasurementsbinary, nameof(thingRolastMeasurementsbinary), required: false);
             var __workflow_thingRolastMeasurementsboolean = WorkflowExpression.Compile(thingRolastMeasurementsboolean, nameof(thingRolastMeasurementsboolean), required: false);
             var __workflow_thingRolastMeasurementscontainerNode = WorkflowExpression.Compile(thingRolastMeasurementscontainerNode, nameof(thingRolastMeasurementscontainerNode), required: false);
-            var __workflow_thingRolastMeasurementsdouble = WorkflowExpression.Compile(thingRolastMeasurementsdouble, nameof(thingRolastMeasurementsdouble), required: false);
-            var __workflow_thingRolastMeasurementsfloat = WorkflowExpression.Compile(thingRolastMeasurementsfloat, nameof(thingRolastMeasurementsfloat), required: false);
+            var __workflow_thingRolastMeasurementsDouble = WorkflowExpression.Compile(thingRolastMeasurementsDouble, nameof(thingRolastMeasurementsDouble), required: false);
+            var __workflow_thingRolastMeasurementsFloat = WorkflowExpression.Compile(thingRolastMeasurementsFloat, nameof(thingRolastMeasurementsFloat), required: false);
             var __workflow_thingRolastMeasurementsfloatingPointNumber = WorkflowExpression.Compile(thingRolastMeasurementsfloatingPointNumber, nameof(thingRolastMeasurementsfloatingPointNumber), required: false);
-            var __workflow_thingRolastMeasurementsint = WorkflowExpression.Compile(thingRolastMeasurementsint, nameof(thingRolastMeasurementsint), required: false);
+            var __workflow_thingRolastMeasurementsInt = WorkflowExpression.Compile(thingRolastMeasurementsInt, nameof(thingRolastMeasurementsInt), required: false);
             var __workflow_thingRolastMeasurementsintegralNumber = WorkflowExpression.Compile(thingRolastMeasurementsintegralNumber, nameof(thingRolastMeasurementsintegralNumber), required: false);
             var __workflow_thingRolastMeasurementsLong = WorkflowExpression.Compile(thingRolastMeasurementsLong, nameof(thingRolastMeasurementsLong), required: false);
             var __workflow_thingRolastMeasurementsmissingNode = WorkflowExpression.Compile(thingRolastMeasurementsmissingNode, nameof(thingRolastMeasurementsmissingNode), required: false);
             var __workflow_thingRolastMeasurementsnodeType = WorkflowExpression.Compile(thingRolastMeasurementsnodeType, nameof(thingRolastMeasurementsnodeType), required: false);
-            var __workflow_thingRolastMeasurementsnull = WorkflowExpression.Compile(thingRolastMeasurementsnull, nameof(thingRolastMeasurementsnull), required: false);
+            var __workflow_thingRolastMeasurementsNull = WorkflowExpression.Compile(thingRolastMeasurementsNull, nameof(thingRolastMeasurementsNull), required: false);
             var __workflow_thingRolastMeasurementsnumber = WorkflowExpression.Compile(thingRolastMeasurementsnumber, nameof(thingRolastMeasurementsnumber), required: false);
             var __workflow_thingRolastMeasurementsObject = WorkflowExpression.Compile(thingRolastMeasurementsObject, nameof(thingRolastMeasurementsObject), required: false);
             var __workflow_thingRolastMeasurementspojo = WorkflowExpression.Compile(thingRolastMeasurementspojo, nameof(thingRolastMeasurementspojo), required: false);
@@ -3356,15 +3329,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
             var __workflow_thingRolastMeasurementsTimestampsbinary = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsbinary, nameof(thingRolastMeasurementsTimestampsbinary), required: false);
             var __workflow_thingRolastMeasurementsTimestampsboolean = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsboolean, nameof(thingRolastMeasurementsTimestampsboolean), required: false);
             var __workflow_thingRolastMeasurementsTimestampscontainerNode = WorkflowExpression.Compile(thingRolastMeasurementsTimestampscontainerNode, nameof(thingRolastMeasurementsTimestampscontainerNode), required: false);
-            var __workflow_thingRolastMeasurementsTimestampsdouble = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsdouble, nameof(thingRolastMeasurementsTimestampsdouble), required: false);
-            var __workflow_thingRolastMeasurementsTimestampsfloat = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsfloat, nameof(thingRolastMeasurementsTimestampsfloat), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsDouble = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsDouble, nameof(thingRolastMeasurementsTimestampsDouble), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsFloat = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsFloat, nameof(thingRolastMeasurementsTimestampsFloat), required: false);
             var __workflow_thingRolastMeasurementsTimestampsfloatingPointNumber = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsfloatingPointNumber, nameof(thingRolastMeasurementsTimestampsfloatingPointNumber), required: false);
-            var __workflow_thingRolastMeasurementsTimestampsint = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsint, nameof(thingRolastMeasurementsTimestampsint), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsInt = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsInt, nameof(thingRolastMeasurementsTimestampsInt), required: false);
             var __workflow_thingRolastMeasurementsTimestampsintegralNumber = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsintegralNumber, nameof(thingRolastMeasurementsTimestampsintegralNumber), required: false);
             var __workflow_thingRolastMeasurementsTimestampsLong = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsLong, nameof(thingRolastMeasurementsTimestampsLong), required: false);
             var __workflow_thingRolastMeasurementsTimestampsmissingNode = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsmissingNode, nameof(thingRolastMeasurementsTimestampsmissingNode), required: false);
             var __workflow_thingRolastMeasurementsTimestampsnodeType = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsnodeType, nameof(thingRolastMeasurementsTimestampsnodeType), required: false);
-            var __workflow_thingRolastMeasurementsTimestampsnull = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsnull, nameof(thingRolastMeasurementsTimestampsnull), required: false);
+            var __workflow_thingRolastMeasurementsTimestampsNull = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsNull, nameof(thingRolastMeasurementsTimestampsNull), required: false);
             var __workflow_thingRolastMeasurementsTimestampsnumber = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsnumber, nameof(thingRolastMeasurementsTimestampsnumber), required: false);
             var __workflow_thingRolastMeasurementsTimestampsObject = WorkflowExpression.Compile(thingRolastMeasurementsTimestampsObject, nameof(thingRolastMeasurementsTimestampsObject), required: false);
             var __workflow_thingRolastMeasurementsTimestampspojo = WorkflowExpression.Compile(thingRolastMeasurementsTimestampspojo, nameof(thingRolastMeasurementsTimestampspojo), required: false);
@@ -3490,15 +3463,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (__workflow_thingRolastMeasurementsdouble != null)
+                if (__workflow_thingRolastMeasurementsDouble != null)
                 {
-                    lastMeasurementsObject["double"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsdouble);
+                    lastMeasurementsObject["double"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsDouble);
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (__workflow_thingRolastMeasurementsfloat != null)
+                if (__workflow_thingRolastMeasurementsFloat != null)
                 {
-                    lastMeasurementsObject["float"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsfloat);
+                    lastMeasurementsObject["float"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsFloat);
                     lastMeasurementsObjectpropCount++;
                 }
 
@@ -3508,9 +3481,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (__workflow_thingRolastMeasurementsint != null)
+                if (__workflow_thingRolastMeasurementsInt != null)
                 {
-                    lastMeasurementsObject["int"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsint);
+                    lastMeasurementsObject["int"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsInt);
                     lastMeasurementsObjectpropCount++;
                 }
 
@@ -3538,9 +3511,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     lastMeasurementsObjectpropCount++;
                 }
 
-                if (__workflow_thingRolastMeasurementsnull != null)
+                if (__workflow_thingRolastMeasurementsNull != null)
                 {
-                    lastMeasurementsObject["null"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsnull);
+                    lastMeasurementsObject["null"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsNull);
                     lastMeasurementsObjectpropCount++;
                 }
 
@@ -3624,15 +3597,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (__workflow_thingRolastMeasurementsdouble != null)
+                if (__workflow_thingRolastMeasurementsDouble != null)
                 {
-                    lastMeasurementsTimestampsObject["double"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsdouble);
+                    lastMeasurementsTimestampsObject["double"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsDouble);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (__workflow_thingRolastMeasurementsfloat != null)
+                if (__workflow_thingRolastMeasurementsFloat != null)
                 {
-                    lastMeasurementsTimestampsObject["float"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsfloat);
+                    lastMeasurementsTimestampsObject["float"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsFloat);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
@@ -3642,9 +3615,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (__workflow_thingRolastMeasurementsint != null)
+                if (__workflow_thingRolastMeasurementsInt != null)
                 {
-                    lastMeasurementsTimestampsObject["int"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsint);
+                    lastMeasurementsTimestampsObject["int"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsInt);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
@@ -3672,9 +3645,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
-                if (__workflow_thingRolastMeasurementsnull != null)
+                if (__workflow_thingRolastMeasurementsNull != null)
                 {
-                    lastMeasurementsTimestampsObject["null"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsnull);
+                    lastMeasurementsTimestampsObject["null"] = ExpressionConverter.ConvertO(__workflow_thingRolastMeasurementsNull);
                     lastMeasurementsTimestampsObjectpropCount++;
                 }
 
@@ -5564,151 +5537,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         VIRTUAL
     }
 
-    public class ResponseEntity
-    {
-        [JsonProperty("body")]
-        public JToken Body { get; set; }
-
-        [JsonProperty("statusCode")]
-        public ResponseEntityStatusCodeType StatusCode { get; set; }
-
-        [JsonProperty("statusCodeValue")]
-        public int StatusCodeValue { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ResponseEntityStatusCodeType
-    {
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "102")]
-        _102,
-        [EnumMember(Value = "103")]
-        _103,
-        [EnumMember(Value = "200")]
-        _200,
-        [EnumMember(Value = "201")]
-        _201,
-        [EnumMember(Value = "202")]
-        _202,
-        [EnumMember(Value = "203")]
-        _203,
-        [EnumMember(Value = "204")]
-        _204,
-        [EnumMember(Value = "205")]
-        _205,
-        [EnumMember(Value = "206")]
-        _206,
-        [EnumMember(Value = "207")]
-        _207,
-        [EnumMember(Value = "208")]
-        _208,
-        [EnumMember(Value = "226")]
-        _226,
-        [EnumMember(Value = "300")]
-        _300,
-        [EnumMember(Value = "301")]
-        _301,
-        [EnumMember(Value = "302")]
-        _302,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "304")]
-        _304,
-        [EnumMember(Value = "305")]
-        _305,
-        [EnumMember(Value = "307")]
-        _307,
-        [EnumMember(Value = "308")]
-        _308,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "402")]
-        _402,
-        [EnumMember(Value = "403")]
-        _403,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "405")]
-        _405,
-        [EnumMember(Value = "406")]
-        _406,
-        [EnumMember(Value = "407")]
-        _407,
-        [EnumMember(Value = "408")]
-        _408,
-        [EnumMember(Value = "409")]
-        _409,
-        [EnumMember(Value = "410")]
-        _410,
-        [EnumMember(Value = "411")]
-        _411,
-        [EnumMember(Value = "412")]
-        _412,
-        [EnumMember(Value = "413")]
-        _413,
-        [EnumMember(Value = "414")]
-        _414,
-        [EnumMember(Value = "415")]
-        _415,
-        [EnumMember(Value = "416")]
-        _416,
-        [EnumMember(Value = "417")]
-        _417,
-        [EnumMember(Value = "418")]
-        _418,
-        [EnumMember(Value = "419")]
-        _419,
-        [EnumMember(Value = "420")]
-        _420,
-        [EnumMember(Value = "421")]
-        _421,
-        [EnumMember(Value = "422")]
-        _422,
-        [EnumMember(Value = "423")]
-        _423,
-        [EnumMember(Value = "424")]
-        _424,
-        [EnumMember(Value = "426")]
-        _426,
-        [EnumMember(Value = "428")]
-        _428,
-        [EnumMember(Value = "429")]
-        _429,
-        [EnumMember(Value = "431")]
-        _431,
-        [EnumMember(Value = "451")]
-        _451,
-        [EnumMember(Value = "500")]
-        _500,
-        [EnumMember(Value = "501")]
-        _501,
-        [EnumMember(Value = "502")]
-        _502,
-        [EnumMember(Value = "503")]
-        _503,
-        [EnumMember(Value = "504")]
-        _504,
-        [EnumMember(Value = "505")]
-        _505,
-        [EnumMember(Value = "506")]
-        _506,
-        [EnumMember(Value = "507")]
-        _507,
-        [EnumMember(Value = "508")]
-        _508,
-        [EnumMember(Value = "509")]
-        _509,
-        [EnumMember(Value = "510")]
-        _510,
-        [EnumMember(Value = "511")]
-        _511
-    }
-
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum jsonnodeTypeInput
     {
@@ -6032,6 +5860,151 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         TEXT,
         TEXTEREA,
         FILE
+    }
+
+    public class ResponseEntity
+    {
+        [JsonProperty("body")]
+        public JToken Body { get; set; }
+
+        [JsonProperty("statusCode")]
+        public ResponseEntityStatusCodeType StatusCode { get; set; }
+
+        [JsonProperty("statusCodeValue")]
+        public int StatusCodeValue { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ResponseEntityStatusCodeType
+    {
+        [EnumMember(Value = "100")]
+        _100,
+        [EnumMember(Value = "101")]
+        _101,
+        [EnumMember(Value = "102")]
+        _102,
+        [EnumMember(Value = "103")]
+        _103,
+        [EnumMember(Value = "200")]
+        _200,
+        [EnumMember(Value = "201")]
+        _201,
+        [EnumMember(Value = "202")]
+        _202,
+        [EnumMember(Value = "203")]
+        _203,
+        [EnumMember(Value = "204")]
+        _204,
+        [EnumMember(Value = "205")]
+        _205,
+        [EnumMember(Value = "206")]
+        _206,
+        [EnumMember(Value = "207")]
+        _207,
+        [EnumMember(Value = "208")]
+        _208,
+        [EnumMember(Value = "226")]
+        _226,
+        [EnumMember(Value = "300")]
+        _300,
+        [EnumMember(Value = "301")]
+        _301,
+        [EnumMember(Value = "302")]
+        _302,
+        [EnumMember(Value = "303")]
+        _303,
+        [EnumMember(Value = "304")]
+        _304,
+        [EnumMember(Value = "305")]
+        _305,
+        [EnumMember(Value = "307")]
+        _307,
+        [EnumMember(Value = "308")]
+        _308,
+        [EnumMember(Value = "400")]
+        _400,
+        [EnumMember(Value = "401")]
+        _401,
+        [EnumMember(Value = "402")]
+        _402,
+        [EnumMember(Value = "403")]
+        _403,
+        [EnumMember(Value = "404")]
+        _404,
+        [EnumMember(Value = "405")]
+        _405,
+        [EnumMember(Value = "406")]
+        _406,
+        [EnumMember(Value = "407")]
+        _407,
+        [EnumMember(Value = "408")]
+        _408,
+        [EnumMember(Value = "409")]
+        _409,
+        [EnumMember(Value = "410")]
+        _410,
+        [EnumMember(Value = "411")]
+        _411,
+        [EnumMember(Value = "412")]
+        _412,
+        [EnumMember(Value = "413")]
+        _413,
+        [EnumMember(Value = "414")]
+        _414,
+        [EnumMember(Value = "415")]
+        _415,
+        [EnumMember(Value = "416")]
+        _416,
+        [EnumMember(Value = "417")]
+        _417,
+        [EnumMember(Value = "418")]
+        _418,
+        [EnumMember(Value = "419")]
+        _419,
+        [EnumMember(Value = "420")]
+        _420,
+        [EnumMember(Value = "421")]
+        _421,
+        [EnumMember(Value = "422")]
+        _422,
+        [EnumMember(Value = "423")]
+        _423,
+        [EnumMember(Value = "424")]
+        _424,
+        [EnumMember(Value = "426")]
+        _426,
+        [EnumMember(Value = "428")]
+        _428,
+        [EnumMember(Value = "429")]
+        _429,
+        [EnumMember(Value = "431")]
+        _431,
+        [EnumMember(Value = "451")]
+        _451,
+        [EnumMember(Value = "500")]
+        _500,
+        [EnumMember(Value = "501")]
+        _501,
+        [EnumMember(Value = "502")]
+        _502,
+        [EnumMember(Value = "503")]
+        _503,
+        [EnumMember(Value = "504")]
+        _504,
+        [EnumMember(Value = "505")]
+        _505,
+        [EnumMember(Value = "506")]
+        _506,
+        [EnumMember(Value = "507")]
+        _507,
+        [EnumMember(Value = "508")]
+        _508,
+        [EnumMember(Value = "509")]
+        _509,
+        [EnumMember(Value = "510")]
+        _510,
+        [EnumMember(Value = "511")]
+        _511
     }
 
     public class MeasureTinyRo

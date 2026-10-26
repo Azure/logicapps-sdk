@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
 {
     using System.Linq.Expressions;
@@ -118,10 +119,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
         public IBodyWorkflowAction<GetTideStationsResponse, ApiConnectionActionConfiguration> GetTideStations()
         {
-            var apiCallPath = "/tide/stations";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTideStationsResponse>(callPayload);
+            return new DeferredBodyAction<GetTideStationsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/tide/stations";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetTideStationsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]

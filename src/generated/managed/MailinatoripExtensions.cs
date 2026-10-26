@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
 {
     using System.Linq.Expressions;
@@ -213,19 +214,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
         public IBodyWorkflowAction<StatsGetResponse, ApiConnectionActionConfiguration> StatsGet()
         {
-            var apiCallPath = "/team/stats";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<StatsGetResponse>(callPayload);
+            return new DeferredBodyAction<StatsGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/team/stats";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<StatsGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
         public IBodyWorkflowAction<DomainsGetResponse, ApiConnectionActionConfiguration> DomainsGet()
         {
-            var apiCallPath = "/domains/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DomainsGetResponse>(callPayload);
+            return new DeferredBodyAction<DomainsGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/domains/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DomainsGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]

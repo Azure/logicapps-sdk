@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
 {
     using System.Linq.Expressions;
@@ -235,10 +236,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         public IBodyWorkflowAction<CreateSessionResponse, ApiConnectionActionConfiguration> CreateSession()
         {
-            var apiCallPath = "/CreateSession";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CreateSessionResponse>(callPayload);
+            return new DeferredBodyAction<CreateSessionResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/CreateSession";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CreateSessionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
@@ -536,14 +540,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
 
     public class SapTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<SubscribeResponse, ApiConnectionTriggerConfiguration> Subscribe(Expression<Func<string>> gatewayHost, Expression<Func<string>> gatewayService, Expression<Func<string>> programId, Expression<Func<string[]>> subscriptionsapActions = null, Expression<Func<subscriptioniDOCFormatInput>> subscriptioniDOCFormat = null, Expression<Func<bool>> subscriptionreceiveIDOCsWithUnreleasedSegments = null, Expression<Func<string>> sncPartnerNames = null, Expression<Func<int>> degreeOfParallelism = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SubscribeResponse, ApiConnectionTriggerConfiguration> Subscribe(Expression<Func<string>> gatewayHost, Expression<Func<string>> gatewayService, Expression<Func<string>> programId, Expression<Func<string[]>> subscriptionsapActions = null, Expression<Func<subscriptionidOCFormatInput>> subscriptionidOCFormat = null, Expression<Func<bool>> subscriptionreceiveIdOCsWithUnreleasedSegments = null, Expression<Func<string>> sncPartnerNames = null, Expression<Func<int>> degreeOfParallelism = null, FlowRecurrence recurrence = null)
         {
             var __workflow_gatewayHost = WorkflowExpression.Compile(gatewayHost, nameof(gatewayHost), required: true);
             var __workflow_gatewayService = WorkflowExpression.Compile(gatewayService, nameof(gatewayService), required: true);
             var __workflow_programId = WorkflowExpression.Compile(programId, nameof(programId), required: true);
             var __workflow_subscriptionsapActions = WorkflowExpression.Compile(subscriptionsapActions, nameof(subscriptionsapActions), required: false);
-            var __workflow_subscriptioniDOCFormat = WorkflowExpression.Compile(subscriptioniDOCFormat, nameof(subscriptioniDOCFormat), required: false);
-            var __workflow_subscriptionreceiveIDOCsWithUnreleasedSegments = WorkflowExpression.Compile(subscriptionreceiveIDOCsWithUnreleasedSegments, nameof(subscriptionreceiveIDOCsWithUnreleasedSegments), required: false);
+            var __workflow_subscriptionidOCFormat = WorkflowExpression.Compile(subscriptionidOCFormat, nameof(subscriptionidOCFormat), required: false);
+            var __workflow_subscriptionreceiveIdOCsWithUnreleasedSegments = WorkflowExpression.Compile(subscriptionreceiveIdOCsWithUnreleasedSegments, nameof(subscriptionreceiveIdOCsWithUnreleasedSegments), required: false);
             var __workflow_sncPartnerNames = WorkflowExpression.Compile(sncPartnerNames, nameof(sncPartnerNames), required: false);
             var __workflow_degreeOfParallelism = WorkflowExpression.Compile(degreeOfParallelism, nameof(degreeOfParallelism), required: false);
             return new DeferredBodyTrigger<SubscribeResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -567,15 +571,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
                     subscriptionpropCount++;
                 }
 
-                if (__workflow_subscriptioniDOCFormat != null)
+                if (__workflow_subscriptionidOCFormat != null)
                 {
-                    subscription["IdocFormat"] = ExpressionConverter.ConvertO(__workflow_subscriptioniDOCFormat);
+                    subscription["IdocFormat"] = ExpressionConverter.ConvertO(__workflow_subscriptionidOCFormat);
                     subscriptionpropCount++;
                 }
 
-                if (__workflow_subscriptionreceiveIDOCsWithUnreleasedSegments != null)
+                if (__workflow_subscriptionreceiveIdOCsWithUnreleasedSegments != null)
                 {
-                    subscription["ReceiveIdocsWithUnreleasedSegments"] = ExpressionConverter.ConvertO(__workflow_subscriptionreceiveIDOCsWithUnreleasedSegments);
+                    subscription["ReceiveIdocsWithUnreleasedSegments"] = ExpressionConverter.ConvertO(__workflow_subscriptionreceiveIdOCsWithUnreleasedSegments);
                     subscriptionpropCount++;
                 }
 
@@ -597,10 +601,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         public string[] TheNamesOfTheRFCsInTheTransaction { get; set; }
 
         [JsonProperty("TId")]
-        public string TheTransactionIdentifierTID { get; set; }
+        public string TheTransactionIdentifierTId { get; set; }
 
         [JsonProperty("Guid")]
-        public string TheGUIDFormOfTheTransactionIdentifierTID { get; set; }
+        public string TheGUIdFormOfTheTransactionIdentifierTId { get; set; }
 
         [JsonProperty("QueueName")]
         public string TheQueueName { get; set; }
@@ -676,13 +680,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
     public class IdocStatusResponse
     {
         [JsonProperty("IdocStatus")]
-        public int IDOCStatusCode { get; set; }
+        public int IdOCStatusCode { get; set; }
     }
 
     public class IdocNumbersList
     {
         [JsonProperty("IdocNumbers")]
-        public int[] IDOCNumbers { get; set; }
+        public int[] IdOCNumbers { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -800,7 +804,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum subscriptioniDOCFormatInput
+    public enum subscriptionidOCFormatInput
     {
         MicrosoftLobNamespaceXml,
         SapPlainXml,

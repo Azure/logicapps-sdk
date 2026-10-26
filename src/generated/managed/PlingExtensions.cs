@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
 {
     using System.Linq.Expressions;
@@ -54,10 +55,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pling")]
         public IBodyWorkflowAction<GetProfilesResponseItem[], ApiConnectionActionConfiguration> GetProfiles()
         {
-            var apiCallPath = "/profiles";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetProfilesResponseItem[]>(callPayload);
+            return new DeferredBodyAction<GetProfilesResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/profiles";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetProfilesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pling")]

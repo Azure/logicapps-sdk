@@ -2,9 +2,8 @@
 namespace Microsoft.Azure.Workflows.Sdk.Tests
 {
     using Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip;
-    using Microsoft.Azure.Workflows.Sdk.Connectors.Amazonredshift;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax;
     using Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather;
-    using Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus;
     using Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus;
     using Newtonsoft.Json.Linq;
     using Xunit;
@@ -78,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         {
             var dataset = "#{dataset}";
             var table = "@{table}";
-            var action = new AmazonredshiftActions("connection").GetItems(
+            var action = new DynamicsaxActions("connection").GetItems(
                 () => dataset,
                 () => table);
             var path = ((ApiConnectionActionInput)action.GetActionDefinition("flow").Inputs).Path;
@@ -123,18 +122,5 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 ((ApiConnectionActionInput)action.GetActionDefinition("flow").Inputs).Path);
         }
 
-        [Fact]
-        public void Base64EncodingTransformsTheDescriptorBeforeConversion()
-        {
-            var action = new ServicebusActions("connection").SendMessage(
-                () => "queue",
-                () => WorkflowFunctions.ParseJson("""{"value":1}"""));
-            var inputs = (ApiConnectionActionInput)action.GetActionDefinition("flow").Inputs;
-            var source = ((JObject)inputs.Body)["ContentData"].Value<string>();
-
-            AssertReturnExpression(
-                """base64(json("{\"value\":1}"))""",
-                source);
-        }
     }
 }

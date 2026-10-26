@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
 {
     using System.Linq.Expressions;
@@ -11,40 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
 
     public class HighqActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "highq")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> InsertDocument(Expression<Func<string>> version, Expression<Func<object>> file, Expression<Func<string>> parentfolderid, Expression<Func<string>> filename, Expression<Func<bool>> overrideduplicate = null, Expression<Func<string>> versionnote = null, Expression<Func<string>> progressiveoperkey = null, Expression<Func<string>> dmsdatabasename = null, Expression<Func<string>> dmseditdate = null, Expression<Func<string>> dmsparentfolderid = null, Expression<Func<string>> dmsdocid = null, Expression<Func<string>> dmsversion = null, Expression<Func<string>> notification = null, Expression<Func<string>> batchid = null, Expression<Func<string>> rootfolderid = null)
-        {
-            var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            var __workflow_parentfolderid = WorkflowExpression.Compile(parentfolderid, nameof(parentfolderid), required: true);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: true);
-            var __workflow_overrideduplicate = WorkflowExpression.Compile(overrideduplicate, nameof(overrideduplicate), required: false);
-            var __workflow_versionnote = WorkflowExpression.Compile(versionnote, nameof(versionnote), required: false);
-            var __workflow_progressiveoperkey = WorkflowExpression.Compile(progressiveoperkey, nameof(progressiveoperkey), required: false);
-            var __workflow_dmsdatabasename = WorkflowExpression.Compile(dmsdatabasename, nameof(dmsdatabasename), required: false);
-            var __workflow_dmseditdate = WorkflowExpression.Compile(dmseditdate, nameof(dmseditdate), required: false);
-            var __workflow_dmsparentfolderid = WorkflowExpression.Compile(dmsparentfolderid, nameof(dmsparentfolderid), required: false);
-            var __workflow_dmsdocid = WorkflowExpression.Compile(dmsdocid, nameof(dmsdocid), required: false);
-            var __workflow_dmsversion = WorkflowExpression.Compile(dmsversion, nameof(dmsversion), required: false);
-            var __workflow_notification = WorkflowExpression.Compile(notification, nameof(notification), required: false);
-            var __workflow_batchid = WorkflowExpression.Compile(batchid, nameof(batchid), required: false);
-            var __workflow_rootfolderid = WorkflowExpression.Compile(rootfolderid, nameof(rootfolderid), required: false);
-            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/files/content", __workflow_version.WithUrlEncoding(1)));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["parentfolderid"] = ExpressionConverter.Convert(__workflow_parentfolderid);
-                if (__workflow_overrideduplicate != null)
-                    callPayload.Queries["overrideduplicate"] = ExpressionConverter.Convert(__workflow_overrideduplicate);
-                if (__workflow_batchid != null)
-                    callPayload.Queries["batchid"] = ExpressionConverter.Convert(__workflow_batchid);
-                if (__workflow_rootfolderid != null)
-                    callPayload.Queries["rootfolderid"] = ExpressionConverter.Convert(__workflow_rootfolderid);
-                return new ApiConnectionAction(callPayload);
-            });
-        }
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "highq")]
         public IWorkflowAction<ApiConnectionActionConfiguration> MoveDocuments(Expression<Func<string>> version, Expression<Func<string>> targetfolder, Expression<Func<string>> fileidcsvfileidCSV = null)
         {
@@ -75,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "highq")]
-        public IBodyWorkflowAction<Site, ApiConnectionActionConfiguration> CreateSite(Expression<Func<string>> version, Expression<Func<int>> bodyid = null, Expression<Func<string>> bodysitename = null, Expression<Func<string>> bodyrole = null, Expression<Func<string>> bodysitedescription = null, Expression<Func<string>> bodyenabledmodules = null, Expression<Func<string>> bodysitefolderID = null, Expression<Func<string>> bodysitefolderpermission = null, Expression<Func<string>> bodymodulehomeenable = null, Expression<Func<string>> bodymoduleactivityenable = null, Expression<Func<string>> bodymoduleactivitymicroblog = null, Expression<Func<string>> bodymoduledocumentdocid = null, Expression<Func<string>> bodymoduleblogblogTitle = null, Expression<Func<string>> bodymoduleblogblogContent = null, Expression<Func<int>> bodymoduleblogshowComment = null, Expression<Func<string[]>> bodymoduleblogtagList = null, Expression<Func<int>> bodymoduleblogstatus = null, Expression<Func<int>> bodymoduleblogsiteID = null, Expression<Func<string>> bodymoduleblogauthor = null, Expression<Func<string[]>> bodymoduleblogcategoryList = null, Expression<Func<int>> bodymoduleblognotificationTypeID = null, Expression<Func<string>> bodymoduleblogmessage = null, Expression<Func<int>> bodymoduleblogmessageCode = null, Expression<Func<string>> bodymoduleblogexternalID = null, Expression<Func<string>> bodymoduleblogpublishDate = null, Expression<Func<string>> bodymoduleblogprocesstype = null, Expression<Func<string>> bodymoduleblogenable = null, Expression<Func<int>> bodymodulewikiwikiid = null, Expression<Func<int>> bodymodulewikicurrentversionid = null, Expression<Func<int>> bodymodulewikiparentwikiid = null, Expression<Func<string>> bodymodulewikiwikititle = null, Expression<Func<string>> bodymodulewikiwikicontent = null, Expression<Func<int>> bodymodulewikishowcomment = null, Expression<Func<string>> bodymodulewikicreateddate = null, Expression<Func<string>> bodymodulewikimodifieddate = null, Expression<Func<string>> bodymodulewikitaglist = null, Expression<Func<string>> bodymodulewikiwikipath = null, Expression<Func<int>> bodymodulewikiwikidraftid = null, Expression<Func<string>> bodymodulewikidrafttype = null, Expression<Func<int>> bodymodulewikistatus = null, Expression<Func<int>> bodymodulewikiwikiversionid = null, Expression<Func<string>> bodymoduletaskindex = null, Expression<Func<int>> bodymoduletaskparenttaskid = null, Expression<Func<int>> bodymoduletasktaskid = null, Expression<Func<string>> bodymoduletasktitle = null, Expression<Func<string>> bodymoduletaskdescription = null, Expression<Func<string>> bodymoduletaskduedate = null, Expression<Func<string>> bodymoduletaskstartdate = null, Expression<Func<string>> bodymoduletaskmattermaptaskid = null, Expression<Func<string>> bodymoduletasktype = null, Expression<Func<string>> bodymoduletaskdependenton = null, Expression<Func<string>> bodymoduletaskdaysfromdependent = null, Expression<Func<int>> bodymoduletaskignoreweekend = null, Expression<Func<int>> bodymoduletaskduration = null, Expression<Func<string>> bodymoduletaskresource = null, Expression<Func<string>> bodymoduleEventeventTitle = null, Expression<Func<string>> bodymoduleEventeventContent = null, Expression<Func<int>> bodymoduleEventshowComment = null, Expression<Func<string[]>> bodymoduleEventtagList = null, Expression<Func<int>> bodymoduleEventstatus = null, Expression<Func<int>> bodymoduleEventsiteID = null, Expression<Func<string>> bodymoduleEventcontact = null, Expression<Func<string[]>> bodymoduleEventcategoryList = null, Expression<Func<int>> bodymoduleEventnotificationTypeID = null, Expression<Func<string>> bodymoduleEventmessage = null, Expression<Func<int>> bodymoduleEventmessageCode = null, Expression<Func<string>> bodymoduleEventexternalID = null, Expression<Func<string>> bodymoduleEventstartDate = null, Expression<Func<string>> bodymoduleEventendDate = null, Expression<Func<string>> bodymoduleEventstartTime = null, Expression<Func<string>> bodymoduleEventendTime = null, Expression<Func<string>> bodymoduleEventlocation = null, Expression<Func<string>> bodymoduleEventauthor = null, Expression<Func<string>> bodymoduleEventprocesstype = null, Expression<Func<string>> bodymoduleEventenable = null, Expression<Func<int>> bodymoduleisheetid = null, Expression<Func<string>> bodymoduleisheettitle = null, Expression<Func<string>> bodymoduleisheetdescription = null, Expression<Func<string>> bodymoduleisheetstatus = null, Expression<Func<string>> bodymoduleisheetaccesstype = null, Expression<Func<string>> bodymoduleisheettype = null, Expression<Func<string>> bodymoduleisheetviewlink = null, Expression<Func<string>> bodymoduleisheetallowsections = null, Expression<Func<string>> bodymoduleisheetallowlookup = null, Expression<Func<string>> bodymoduleisheetdisplayisheet = null, Expression<Func<string>> bodymoduleisheetsearchasdefaultview = null, Expression<Func<string>> bodymoduleisheetenableversion = null, Expression<Func<string>> bodymoduleisheetenablesheetalerter = null, Expression<Func<string>> bodymoduleisheetalertercondition = null, Expression<Func<string>> bodymoduleisheetoverrideitemmodifieddate = null, Expression<Func<string>> bodymoduleisheetenablebulkinsertupdate = null, Expression<Func<string>> bodymoduleisheetfielddescriptions = null, Expression<Func<string>> bodymoduleisheetenablerowlocking = null, Expression<Func<string>> bodymoduleisheetsetcharlimittruncatemultilinetextenabled = null, Expression<Func<string>> bodymoduleisheetsetcharlimittruncatemultilinetextval = null, Expression<Func<string>> bodymoduleisheetallowchoicelistvaluesforreuse = null, Expression<Func<string>> bodymoduleisheetallowscorelistvaluesforreuse = null, Expression<Func<string>> bodymoduleisheetallowIsheetComments = null, Expression<Func<int>> bodymoduleisheetshareRecordsLimit = null, Expression<Func<int>> bodymoduleisheetshareRecordsLimitEnabled = null, Expression<Func<string>> bodymoduleisheetenableIsheetAddRecordFormSharing = null, Expression<Func<string>> bodymoduleisheetrecordcount = null, Expression<Func<int>> bodymoduleisheetsheettypeid = null, Expression<Func<string>> bodymoduleqaenable = null, Expression<Func<PersonDBO[]>> bodymodulepeopleperson = null, Expression<Func<string>> bodymodulecontractexpressenable = null, Expression<Func<string>> bodyadminnote = null, Expression<Func<string>> bodystartdate = null, Expression<Func<string>> bodyenddate = null, Expression<Func<string>> bodycreateddate = null, Expression<Func<string>> bodyarchiveddate = null, Expression<Func<string>> bodyclientno = null, Expression<Func<string>> bodymatterno = null, Expression<Func<string>> bodylandingpage = null, Expression<Func<string>> bodylink = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodystatusid = null, Expression<Func<string>> bodysize = null, Expression<Func<string>> bodybillingnotes = null, Expression<Func<string>> bodybillingnextinvoicedate = null, Expression<Func<string>> bodybillinglastinvoicedate = null, Expression<Func<string>> bodyfilepagecount = null, Expression<Func<string>> bodymaxpagecount = null, Expression<Func<string>> bodysitehttplink = null, Expression<Func<int>> bodyisSyncable = null, Expression<Func<string>> bodyenforceusergroups = null, Expression<Func<string>> bodycsvSiteCategory = null, Expression<Func<string>> bodysiteNameInDefaultLanguage = null, Expression<Func<int>> bodyvisible = null, Expression<Func<string>> bodysiteLogoName = null, Expression<Func<int>> bodysiteLogoFileSize = null, Expression<Func<int>> bodysiteLogoHeight = null, Expression<Func<int>> bodysiteLogoWidth = null, Expression<Func<int>> bodysiteStatus = null, Expression<Func<int>> bodyapplySiteTerms = null, Expression<Func<string>> bodysiteTerm = null, Expression<Func<int>> bodytermType = null, Expression<Func<int>> bodynextLoginSiteTerms = null, Expression<Func<int>> bodydefaultSiteTermsEnable = null, Expression<Func<int>> bodyadvancedQAPermission = null, Expression<Func<int>> bodyisInternal = null, Expression<Func<int>> bodypsm = null, Expression<Func<string>> bodysiteLabelDisplay = null, Expression<Func<int>> bodyallowSiteAdministration = null, Expression<Func<int>> bodysiteLevelPasswordEnable = null, Expression<Func<int>> bodysiteLevelPasscodeEnable = null, Expression<Func<int>> bodypasscodeUsingAuthApp = null, Expression<Func<string>> bodysitePassword = null, Expression<Func<int>> bodyipRestrictionEnable = null, Expression<Func<string>> bodyavailableIP = null, Expression<Func<int>> bodyhighqDrive = null, Expression<Func<int>> bodyapplySiteHomePage = null, Expression<Func<string>> bodysiteHomePage = null, Expression<Func<int>> bodysiteHomePageType = null, Expression<Func<int>> bodynextLoginSiteHomePage = null, Expression<Func<int>> bodyapplyDisplayContent = null, Expression<Func<string>> bodydisplayContent = null, Expression<Func<int>> bodyrssSecurity = null, Expression<Func<int>> bodyencryptedPassword = null, Expression<Func<string>> bodyavailableIPRangeCSV = null, Expression<Func<int>> bodysiteModuleID = null, Expression<Func<int>> bodyicalSecurity = null, Expression<Func<string>> bodydefaultDisplayContent = null, Expression<Func<int>> bodydefaultEmailAlert = null, Expression<Func<int>> bodyexcelReportFooter = null, Expression<Func<string>> bodyexcelReportFooterText = null, Expression<Func<string>> bodyannouncementMLJSON = null, Expression<Func<int>> bodytemplateType = null, Expression<Func<int>> bodytemplateLicence = null, Expression<Func<string>> bodyopenChannelAppID = null, Expression<Func<int>> bodyitemid = null, Expression<Func<int>> bodysitemetadatasheetid = null, Expression<Func<bool>> bodymysite = null, Expression<Func<string>> bodylastaccesseddate = null, Expression<Func<int>> bodydefaultViewerMetaDataTab = null, Expression<Func<int>> bodydocumentMetadataViewId = null, Expression<Func<int>> bodyfolderMetadataViewId = null, Expression<Func<int>> bodydocSort = null, Expression<Func<int>> bodyfolderSort = null, Expression<Func<int>> bodydefaultFolderRenderView = null, Expression<Func<int>> bodyisTaskAttachmentDefault = null, Expression<Func<int>> bodytaskAttachmentDefaultFolderId = null, Expression<Func<string>> bodyfavourite = null, Expression<Func<bool>> bodyenabledocumentredaction = null, Expression<Func<int>> bodymentiongroups = null, Expression<Func<bool>> bodyenablefilerelationships = null, Expression<Func<int>> bodyfilerelationshipsitepermissionlevel = null)
+        public IBodyWorkflowAction<Site, ApiConnectionActionConfiguration> CreateSite(Expression<Func<string>> version, Expression<Func<int>> bodyid = null, Expression<Func<string>> bodysitename = null, Expression<Func<string>> bodyrole = null, Expression<Func<string>> bodysitedescription = null, Expression<Func<string>> bodyenabledmodules = null, Expression<Func<string>> bodysitefolderId = null, Expression<Func<string>> bodysitefolderpermission = null, Expression<Func<string>> bodymodulehomeenable = null, Expression<Func<string>> bodymoduleactivityenable = null, Expression<Func<string>> bodymoduleactivitymicroblog = null, Expression<Func<string>> bodymoduledocumentdocid = null, Expression<Func<string>> bodymoduleblogblogTitle = null, Expression<Func<string>> bodymoduleblogblogContent = null, Expression<Func<int>> bodymoduleblogshowComment = null, Expression<Func<string[]>> bodymoduleblogtagList = null, Expression<Func<int>> bodymoduleblogstatus = null, Expression<Func<int>> bodymoduleblogsiteId = null, Expression<Func<string>> bodymoduleblogauthor = null, Expression<Func<string[]>> bodymoduleblogcategoryList = null, Expression<Func<int>> bodymoduleblognotificationTypeId = null, Expression<Func<string>> bodymoduleblogmessage = null, Expression<Func<int>> bodymoduleblogmessageCode = null, Expression<Func<string>> bodymoduleblogexternalId = null, Expression<Func<string>> bodymoduleblogpublishDate = null, Expression<Func<string>> bodymoduleblogprocesstype = null, Expression<Func<string>> bodymoduleblogenable = null, Expression<Func<int>> bodymodulewikiwikiid = null, Expression<Func<int>> bodymodulewikicurrentversionid = null, Expression<Func<int>> bodymodulewikiparentwikiid = null, Expression<Func<string>> bodymodulewikiwikititle = null, Expression<Func<string>> bodymodulewikiwikicontent = null, Expression<Func<int>> bodymodulewikishowcomment = null, Expression<Func<string>> bodymodulewikicreateddate = null, Expression<Func<string>> bodymodulewikimodifieddate = null, Expression<Func<string>> bodymodulewikitaglist = null, Expression<Func<string>> bodymodulewikiwikipath = null, Expression<Func<int>> bodymodulewikiwikidraftid = null, Expression<Func<string>> bodymodulewikidrafttype = null, Expression<Func<int>> bodymodulewikistatus = null, Expression<Func<int>> bodymodulewikiwikiversionid = null, Expression<Func<string>> bodymoduletaskindex = null, Expression<Func<int>> bodymoduletaskparenttaskid = null, Expression<Func<int>> bodymoduletasktaskid = null, Expression<Func<string>> bodymoduletasktitle = null, Expression<Func<string>> bodymoduletaskdescription = null, Expression<Func<string>> bodymoduletaskduedate = null, Expression<Func<string>> bodymoduletaskstartdate = null, Expression<Func<string>> bodymoduletaskmattermaptaskid = null, Expression<Func<string>> bodymoduletasktype = null, Expression<Func<string>> bodymoduletaskdependenton = null, Expression<Func<string>> bodymoduletaskdaysfromdependent = null, Expression<Func<int>> bodymoduletaskignoreweekend = null, Expression<Func<int>> bodymoduletaskduration = null, Expression<Func<string>> bodymoduletaskresource = null, Expression<Func<string>> bodymoduleEventeventTitle = null, Expression<Func<string>> bodymoduleEventeventContent = null, Expression<Func<int>> bodymoduleEventshowComment = null, Expression<Func<string[]>> bodymoduleEventtagList = null, Expression<Func<int>> bodymoduleEventstatus = null, Expression<Func<int>> bodymoduleEventsiteId = null, Expression<Func<string>> bodymoduleEventcontact = null, Expression<Func<string[]>> bodymoduleEventcategoryList = null, Expression<Func<int>> bodymoduleEventnotificationTypeId = null, Expression<Func<string>> bodymoduleEventmessage = null, Expression<Func<int>> bodymoduleEventmessageCode = null, Expression<Func<string>> bodymoduleEventexternalId = null, Expression<Func<string>> bodymoduleEventstartDate = null, Expression<Func<string>> bodymoduleEventendDate = null, Expression<Func<string>> bodymoduleEventstartTime = null, Expression<Func<string>> bodymoduleEventendTime = null, Expression<Func<string>> bodymoduleEventlocation = null, Expression<Func<string>> bodymoduleEventauthor = null, Expression<Func<string>> bodymoduleEventprocesstype = null, Expression<Func<string>> bodymoduleEventenable = null, Expression<Func<int>> bodymoduleisheetid = null, Expression<Func<string>> bodymoduleisheettitle = null, Expression<Func<string>> bodymoduleisheetdescription = null, Expression<Func<string>> bodymoduleisheetstatus = null, Expression<Func<string>> bodymoduleisheetaccesstype = null, Expression<Func<string>> bodymoduleisheettype = null, Expression<Func<string>> bodymoduleisheetviewlink = null, Expression<Func<string>> bodymoduleisheetallowsections = null, Expression<Func<string>> bodymoduleisheetallowlookup = null, Expression<Func<string>> bodymoduleisheetdisplayisheet = null, Expression<Func<string>> bodymoduleisheetsearchasdefaultview = null, Expression<Func<string>> bodymoduleisheetenableversion = null, Expression<Func<string>> bodymoduleisheetenablesheetalerter = null, Expression<Func<string>> bodymoduleisheetalertercondition = null, Expression<Func<string>> bodymoduleisheetoverrideitemmodifieddate = null, Expression<Func<string>> bodymoduleisheetenablebulkinsertupdate = null, Expression<Func<string>> bodymoduleisheetfielddescriptions = null, Expression<Func<string>> bodymoduleisheetenablerowlocking = null, Expression<Func<string>> bodymoduleisheetsetcharlimittruncatemultilinetextenabled = null, Expression<Func<string>> bodymoduleisheetsetcharlimittruncatemultilinetextval = null, Expression<Func<string>> bodymoduleisheetallowchoicelistvaluesforreuse = null, Expression<Func<string>> bodymoduleisheetallowscorelistvaluesforreuse = null, Expression<Func<string>> bodymoduleisheetallowIsheetComments = null, Expression<Func<int>> bodymoduleisheetshareRecordsLimit = null, Expression<Func<int>> bodymoduleisheetshareRecordsLimitEnabled = null, Expression<Func<string>> bodymoduleisheetenableIsheetAddRecordFormSharing = null, Expression<Func<string>> bodymoduleisheetrecordcount = null, Expression<Func<int>> bodymoduleisheetsheettypeid = null, Expression<Func<string>> bodymoduleqaenable = null, Expression<Func<PersonDBO[]>> bodymodulepeopleperson = null, Expression<Func<string>> bodymodulecontractexpressenable = null, Expression<Func<string>> bodyadminnote = null, Expression<Func<string>> bodystartdate = null, Expression<Func<string>> bodyenddate = null, Expression<Func<string>> bodycreateddate = null, Expression<Func<string>> bodyarchiveddate = null, Expression<Func<string>> bodyclientno = null, Expression<Func<string>> bodymatterno = null, Expression<Func<string>> bodylandingpage = null, Expression<Func<string>> bodylink = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodystatusid = null, Expression<Func<string>> bodysize = null, Expression<Func<string>> bodybillingnotes = null, Expression<Func<string>> bodybillingnextinvoicedate = null, Expression<Func<string>> bodybillinglastinvoicedate = null, Expression<Func<string>> bodyfilepagecount = null, Expression<Func<string>> bodymaxpagecount = null, Expression<Func<string>> bodysitehttplink = null, Expression<Func<int>> bodyisSyncable = null, Expression<Func<string>> bodyenforceusergroups = null, Expression<Func<string>> bodycsvSiteCategory = null, Expression<Func<string>> bodysiteNameInDefaultLanguage = null, Expression<Func<int>> bodyvisible = null, Expression<Func<string>> bodysiteLogoName = null, Expression<Func<int>> bodysiteLogoFileSize = null, Expression<Func<int>> bodysiteLogoHeight = null, Expression<Func<int>> bodysiteLogoWidth = null, Expression<Func<int>> bodysiteStatus = null, Expression<Func<int>> bodyapplySiteTerms = null, Expression<Func<string>> bodysiteTerm = null, Expression<Func<int>> bodytermType = null, Expression<Func<int>> bodynextLoginSiteTerms = null, Expression<Func<int>> bodydefaultSiteTermsEnable = null, Expression<Func<int>> bodyadvancedQAPermission = null, Expression<Func<int>> bodyisInternal = null, Expression<Func<int>> bodypsm = null, Expression<Func<string>> bodysiteLabelDisplay = null, Expression<Func<int>> bodyallowSiteAdministration = null, Expression<Func<int>> bodysiteLevelPasswordEnable = null, Expression<Func<int>> bodysiteLevelPasscodeEnable = null, Expression<Func<int>> bodypasscodeUsingAuthApp = null, Expression<Func<string>> bodysitePassword = null, Expression<Func<int>> bodyipRestrictionEnable = null, Expression<Func<string>> bodyavailableIP = null, Expression<Func<int>> bodyhighqDrive = null, Expression<Func<int>> bodyapplySiteHomePage = null, Expression<Func<string>> bodysiteHomePage = null, Expression<Func<int>> bodysiteHomePageType = null, Expression<Func<int>> bodynextLoginSiteHomePage = null, Expression<Func<int>> bodyapplyDisplayContent = null, Expression<Func<string>> bodydisplayContent = null, Expression<Func<int>> bodyrssSecurity = null, Expression<Func<int>> bodyencryptedPassword = null, Expression<Func<string>> bodyavailableIPRangeCSV = null, Expression<Func<int>> bodysiteModuleId = null, Expression<Func<int>> bodyicalSecurity = null, Expression<Func<string>> bodydefaultDisplayContent = null, Expression<Func<int>> bodydefaultEmailAlert = null, Expression<Func<int>> bodyexcelReportFooter = null, Expression<Func<string>> bodyexcelReportFooterText = null, Expression<Func<string>> bodyannouncementMLJSON = null, Expression<Func<int>> bodytemplateType = null, Expression<Func<int>> bodytemplateLicence = null, Expression<Func<string>> bodyopenChannelAppId = null, Expression<Func<int>> bodyitemid = null, Expression<Func<int>> bodysitemetadatasheetid = null, Expression<Func<bool>> bodymysite = null, Expression<Func<string>> bodylastaccesseddate = null, Expression<Func<int>> bodydefaultViewerMetaDataTab = null, Expression<Func<int>> bodydocumentMetadataViewId = null, Expression<Func<int>> bodyfolderMetadataViewId = null, Expression<Func<int>> bodydocSort = null, Expression<Func<int>> bodyfolderSort = null, Expression<Func<int>> bodydefaultFolderRenderView = null, Expression<Func<int>> bodyisTaskAttachmentDefault = null, Expression<Func<int>> bodytaskAttachmentDefaultFolderId = null, Expression<Func<string>> bodyfavourite = null, Expression<Func<bool>> bodyenabledocumentredaction = null, Expression<Func<int>> bodymentiongroups = null, Expression<Func<bool>> bodyenablefilerelationships = null, Expression<Func<int>> bodyfilerelationshipsitepermissionlevel = null)
         {
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
@@ -83,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
             var __workflow_bodyrole = WorkflowExpression.Compile(bodyrole, nameof(bodyrole), required: false);
             var __workflow_bodysitedescription = WorkflowExpression.Compile(bodysitedescription, nameof(bodysitedescription), required: false);
             var __workflow_bodyenabledmodules = WorkflowExpression.Compile(bodyenabledmodules, nameof(bodyenabledmodules), required: false);
-            var __workflow_bodysitefolderID = WorkflowExpression.Compile(bodysitefolderID, nameof(bodysitefolderID), required: false);
+            var __workflow_bodysitefolderId = WorkflowExpression.Compile(bodysitefolderId, nameof(bodysitefolderId), required: false);
             var __workflow_bodysitefolderpermission = WorkflowExpression.Compile(bodysitefolderpermission, nameof(bodysitefolderpermission), required: false);
             var __workflow_bodymodulehomeenable = WorkflowExpression.Compile(bodymodulehomeenable, nameof(bodymodulehomeenable), required: false);
             var __workflow_bodymoduleactivityenable = WorkflowExpression.Compile(bodymoduleactivityenable, nameof(bodymoduleactivityenable), required: false);
@@ -94,13 +61,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
             var __workflow_bodymoduleblogshowComment = WorkflowExpression.Compile(bodymoduleblogshowComment, nameof(bodymoduleblogshowComment), required: false);
             var __workflow_bodymoduleblogtagList = WorkflowExpression.Compile(bodymoduleblogtagList, nameof(bodymoduleblogtagList), required: false);
             var __workflow_bodymoduleblogstatus = WorkflowExpression.Compile(bodymoduleblogstatus, nameof(bodymoduleblogstatus), required: false);
-            var __workflow_bodymoduleblogsiteID = WorkflowExpression.Compile(bodymoduleblogsiteID, nameof(bodymoduleblogsiteID), required: false);
+            var __workflow_bodymoduleblogsiteId = WorkflowExpression.Compile(bodymoduleblogsiteId, nameof(bodymoduleblogsiteId), required: false);
             var __workflow_bodymoduleblogauthor = WorkflowExpression.Compile(bodymoduleblogauthor, nameof(bodymoduleblogauthor), required: false);
             var __workflow_bodymoduleblogcategoryList = WorkflowExpression.Compile(bodymoduleblogcategoryList, nameof(bodymoduleblogcategoryList), required: false);
-            var __workflow_bodymoduleblognotificationTypeID = WorkflowExpression.Compile(bodymoduleblognotificationTypeID, nameof(bodymoduleblognotificationTypeID), required: false);
+            var __workflow_bodymoduleblognotificationTypeId = WorkflowExpression.Compile(bodymoduleblognotificationTypeId, nameof(bodymoduleblognotificationTypeId), required: false);
             var __workflow_bodymoduleblogmessage = WorkflowExpression.Compile(bodymoduleblogmessage, nameof(bodymoduleblogmessage), required: false);
             var __workflow_bodymoduleblogmessageCode = WorkflowExpression.Compile(bodymoduleblogmessageCode, nameof(bodymoduleblogmessageCode), required: false);
-            var __workflow_bodymoduleblogexternalID = WorkflowExpression.Compile(bodymoduleblogexternalID, nameof(bodymoduleblogexternalID), required: false);
+            var __workflow_bodymoduleblogexternalId = WorkflowExpression.Compile(bodymoduleblogexternalId, nameof(bodymoduleblogexternalId), required: false);
             var __workflow_bodymoduleblogpublishDate = WorkflowExpression.Compile(bodymoduleblogpublishDate, nameof(bodymoduleblogpublishDate), required: false);
             var __workflow_bodymoduleblogprocesstype = WorkflowExpression.Compile(bodymoduleblogprocesstype, nameof(bodymoduleblogprocesstype), required: false);
             var __workflow_bodymoduleblogenable = WorkflowExpression.Compile(bodymoduleblogenable, nameof(bodymoduleblogenable), required: false);
@@ -137,13 +104,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
             var __workflow_bodymoduleEventshowComment = WorkflowExpression.Compile(bodymoduleEventshowComment, nameof(bodymoduleEventshowComment), required: false);
             var __workflow_bodymoduleEventtagList = WorkflowExpression.Compile(bodymoduleEventtagList, nameof(bodymoduleEventtagList), required: false);
             var __workflow_bodymoduleEventstatus = WorkflowExpression.Compile(bodymoduleEventstatus, nameof(bodymoduleEventstatus), required: false);
-            var __workflow_bodymoduleEventsiteID = WorkflowExpression.Compile(bodymoduleEventsiteID, nameof(bodymoduleEventsiteID), required: false);
+            var __workflow_bodymoduleEventsiteId = WorkflowExpression.Compile(bodymoduleEventsiteId, nameof(bodymoduleEventsiteId), required: false);
             var __workflow_bodymoduleEventcontact = WorkflowExpression.Compile(bodymoduleEventcontact, nameof(bodymoduleEventcontact), required: false);
             var __workflow_bodymoduleEventcategoryList = WorkflowExpression.Compile(bodymoduleEventcategoryList, nameof(bodymoduleEventcategoryList), required: false);
-            var __workflow_bodymoduleEventnotificationTypeID = WorkflowExpression.Compile(bodymoduleEventnotificationTypeID, nameof(bodymoduleEventnotificationTypeID), required: false);
+            var __workflow_bodymoduleEventnotificationTypeId = WorkflowExpression.Compile(bodymoduleEventnotificationTypeId, nameof(bodymoduleEventnotificationTypeId), required: false);
             var __workflow_bodymoduleEventmessage = WorkflowExpression.Compile(bodymoduleEventmessage, nameof(bodymoduleEventmessage), required: false);
             var __workflow_bodymoduleEventmessageCode = WorkflowExpression.Compile(bodymoduleEventmessageCode, nameof(bodymoduleEventmessageCode), required: false);
-            var __workflow_bodymoduleEventexternalID = WorkflowExpression.Compile(bodymoduleEventexternalID, nameof(bodymoduleEventexternalID), required: false);
+            var __workflow_bodymoduleEventexternalId = WorkflowExpression.Compile(bodymoduleEventexternalId, nameof(bodymoduleEventexternalId), required: false);
             var __workflow_bodymoduleEventstartDate = WorkflowExpression.Compile(bodymoduleEventstartDate, nameof(bodymoduleEventstartDate), required: false);
             var __workflow_bodymoduleEventendDate = WorkflowExpression.Compile(bodymoduleEventendDate, nameof(bodymoduleEventendDate), required: false);
             var __workflow_bodymoduleEventstartTime = WorkflowExpression.Compile(bodymoduleEventstartTime, nameof(bodymoduleEventstartTime), required: false);
@@ -237,7 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
             var __workflow_bodyrssSecurity = WorkflowExpression.Compile(bodyrssSecurity, nameof(bodyrssSecurity), required: false);
             var __workflow_bodyencryptedPassword = WorkflowExpression.Compile(bodyencryptedPassword, nameof(bodyencryptedPassword), required: false);
             var __workflow_bodyavailableIPRangeCSV = WorkflowExpression.Compile(bodyavailableIPRangeCSV, nameof(bodyavailableIPRangeCSV), required: false);
-            var __workflow_bodysiteModuleID = WorkflowExpression.Compile(bodysiteModuleID, nameof(bodysiteModuleID), required: false);
+            var __workflow_bodysiteModuleId = WorkflowExpression.Compile(bodysiteModuleId, nameof(bodysiteModuleId), required: false);
             var __workflow_bodyicalSecurity = WorkflowExpression.Compile(bodyicalSecurity, nameof(bodyicalSecurity), required: false);
             var __workflow_bodydefaultDisplayContent = WorkflowExpression.Compile(bodydefaultDisplayContent, nameof(bodydefaultDisplayContent), required: false);
             var __workflow_bodydefaultEmailAlert = WorkflowExpression.Compile(bodydefaultEmailAlert, nameof(bodydefaultEmailAlert), required: false);
@@ -246,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
             var __workflow_bodyannouncementMLJSON = WorkflowExpression.Compile(bodyannouncementMLJSON, nameof(bodyannouncementMLJSON), required: false);
             var __workflow_bodytemplateType = WorkflowExpression.Compile(bodytemplateType, nameof(bodytemplateType), required: false);
             var __workflow_bodytemplateLicence = WorkflowExpression.Compile(bodytemplateLicence, nameof(bodytemplateLicence), required: false);
-            var __workflow_bodyopenChannelAppID = WorkflowExpression.Compile(bodyopenChannelAppID, nameof(bodyopenChannelAppID), required: false);
+            var __workflow_bodyopenChannelAppId = WorkflowExpression.Compile(bodyopenChannelAppId, nameof(bodyopenChannelAppId), required: false);
             var __workflow_bodyitemid = WorkflowExpression.Compile(bodyitemid, nameof(bodyitemid), required: false);
             var __workflow_bodysitemetadatasheetid = WorkflowExpression.Compile(bodysitemetadatasheetid, nameof(bodysitemetadatasheetid), required: false);
             var __workflow_bodymysite = WorkflowExpression.Compile(bodymysite, nameof(bodymysite), required: false);
@@ -301,9 +268,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
                     bodypropCount++;
                 }
 
-                if (__workflow_bodysitefolderID != null)
+                if (__workflow_bodysitefolderId != null)
                 {
-                    body["sitefolderID"] = ExpressionConverter.ConvertO(__workflow_bodysitefolderID);
+                    body["sitefolderID"] = ExpressionConverter.ConvertO(__workflow_bodysitefolderId);
                     bodypropCount++;
                 }
 
@@ -395,9 +362,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
                     blogObjectpropCount++;
                 }
 
-                if (__workflow_bodymoduleblogsiteID != null)
+                if (__workflow_bodymoduleblogsiteId != null)
                 {
-                    blogObject["siteID"] = ExpressionConverter.ConvertO(__workflow_bodymoduleblogsiteID);
+                    blogObject["siteID"] = ExpressionConverter.ConvertO(__workflow_bodymoduleblogsiteId);
                     blogObjectpropCount++;
                 }
 
@@ -413,9 +380,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
                     blogObjectpropCount++;
                 }
 
-                if (__workflow_bodymoduleblognotificationTypeID != null)
+                if (__workflow_bodymoduleblognotificationTypeId != null)
                 {
-                    blogObject["notificationTypeID"] = ExpressionConverter.ConvertO(__workflow_bodymoduleblognotificationTypeID);
+                    blogObject["notificationTypeID"] = ExpressionConverter.ConvertO(__workflow_bodymoduleblognotificationTypeId);
                     blogObjectpropCount++;
                 }
 
@@ -431,9 +398,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
                     blogObjectpropCount++;
                 }
 
-                if (__workflow_bodymoduleblogexternalID != null)
+                if (__workflow_bodymoduleblogexternalId != null)
                 {
-                    blogObject["externalID"] = ExpressionConverter.ConvertO(__workflow_bodymoduleblogexternalID);
+                    blogObject["externalID"] = ExpressionConverter.ConvertO(__workflow_bodymoduleblogexternalId);
                     blogObjectpropCount++;
                 }
 
@@ -677,9 +644,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
                     @eventObjectpropCount++;
                 }
 
-                if (__workflow_bodymoduleEventsiteID != null)
+                if (__workflow_bodymoduleEventsiteId != null)
                 {
-                    @eventObject["siteID"] = ExpressionConverter.ConvertO(__workflow_bodymoduleEventsiteID);
+                    @eventObject["siteID"] = ExpressionConverter.ConvertO(__workflow_bodymoduleEventsiteId);
                     @eventObjectpropCount++;
                 }
 
@@ -695,9 +662,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
                     @eventObjectpropCount++;
                 }
 
-                if (__workflow_bodymoduleEventnotificationTypeID != null)
+                if (__workflow_bodymoduleEventnotificationTypeId != null)
                 {
-                    @eventObject["notificationTypeID"] = ExpressionConverter.ConvertO(__workflow_bodymoduleEventnotificationTypeID);
+                    @eventObject["notificationTypeID"] = ExpressionConverter.ConvertO(__workflow_bodymoduleEventnotificationTypeId);
                     @eventObjectpropCount++;
                 }
 
@@ -713,9 +680,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
                     @eventObjectpropCount++;
                 }
 
-                if (__workflow_bodymoduleEventexternalID != null)
+                if (__workflow_bodymoduleEventexternalId != null)
                 {
-                    @eventObject["externalID"] = ExpressionConverter.ConvertO(__workflow_bodymoduleEventexternalID);
+                    @eventObject["externalID"] = ExpressionConverter.ConvertO(__workflow_bodymoduleEventexternalId);
                     @eventObjectpropCount++;
                 }
 
@@ -1321,9 +1288,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
                     bodypropCount++;
                 }
 
-                if (__workflow_bodysiteModuleID != null)
+                if (__workflow_bodysiteModuleId != null)
                 {
-                    body["siteModuleID"] = ExpressionConverter.ConvertO(__workflow_bodysiteModuleID);
+                    body["siteModuleID"] = ExpressionConverter.ConvertO(__workflow_bodysiteModuleId);
                     bodypropCount++;
                 }
 
@@ -1375,9 +1342,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyopenChannelAppID != null)
+                if (__workflow_bodyopenChannelAppId != null)
                 {
-                    body["openChannelAppID"] = ExpressionConverter.ConvertO(__workflow_bodyopenChannelAppID);
+                    body["openChannelAppID"] = ExpressionConverter.ConvertO(__workflow_bodyopenChannelAppId);
                     bodypropCount++;
                 }
 
@@ -1493,7 +1460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "highq")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateSite(Expression<Func<string>> version, Expression<Func<string>> siteid, Expression<Func<int>> bodyid = null, Expression<Func<string>> bodysitename = null, Expression<Func<string>> bodyrole = null, Expression<Func<string>> bodysitedescription = null, Expression<Func<string>> bodyenabledmodules = null, Expression<Func<string>> bodysitefolderID = null, Expression<Func<string>> bodysitefolderpermission = null, Expression<Func<string>> bodymodulehomeenable = null, Expression<Func<string>> bodymoduleactivityenable = null, Expression<Func<string>> bodymoduleactivitymicroblog = null, Expression<Func<string>> bodymoduledocumentdocid = null, Expression<Func<string>> bodymoduleblogblogTitle = null, Expression<Func<string>> bodymoduleblogblogContent = null, Expression<Func<int>> bodymoduleblogshowComment = null, Expression<Func<string[]>> bodymoduleblogtagList = null, Expression<Func<int>> bodymoduleblogstatus = null, Expression<Func<int>> bodymoduleblogsiteID = null, Expression<Func<string>> bodymoduleblogauthor = null, Expression<Func<string[]>> bodymoduleblogcategoryList = null, Expression<Func<int>> bodymoduleblognotificationTypeID = null, Expression<Func<string>> bodymoduleblogmessage = null, Expression<Func<int>> bodymoduleblogmessageCode = null, Expression<Func<string>> bodymoduleblogexternalID = null, Expression<Func<string>> bodymoduleblogpublishDate = null, Expression<Func<string>> bodymoduleblogprocesstype = null, Expression<Func<string>> bodymoduleblogenable = null, Expression<Func<int>> bodymodulewikiwikiid = null, Expression<Func<int>> bodymodulewikicurrentversionid = null, Expression<Func<int>> bodymodulewikiparentwikiid = null, Expression<Func<string>> bodymodulewikiwikititle = null, Expression<Func<string>> bodymodulewikiwikicontent = null, Expression<Func<int>> bodymodulewikishowcomment = null, Expression<Func<string>> bodymodulewikicreateddate = null, Expression<Func<string>> bodymodulewikimodifieddate = null, Expression<Func<string>> bodymodulewikitaglist = null, Expression<Func<string>> bodymodulewikiwikipath = null, Expression<Func<int>> bodymodulewikiwikidraftid = null, Expression<Func<string>> bodymodulewikidrafttype = null, Expression<Func<int>> bodymodulewikistatus = null, Expression<Func<int>> bodymodulewikiwikiversionid = null, Expression<Func<string>> bodymoduletaskindex = null, Expression<Func<int>> bodymoduletaskparenttaskid = null, Expression<Func<int>> bodymoduletasktaskid = null, Expression<Func<string>> bodymoduletasktitle = null, Expression<Func<string>> bodymoduletaskdescription = null, Expression<Func<string>> bodymoduletaskduedate = null, Expression<Func<string>> bodymoduletaskstartdate = null, Expression<Func<string>> bodymoduletaskmattermaptaskid = null, Expression<Func<string>> bodymoduletasktype = null, Expression<Func<string>> bodymoduletaskdependenton = null, Expression<Func<string>> bodymoduletaskdaysfromdependent = null, Expression<Func<int>> bodymoduletaskignoreweekend = null, Expression<Func<int>> bodymoduletaskduration = null, Expression<Func<string>> bodymoduletaskresource = null, Expression<Func<string>> bodymoduleEventeventTitle = null, Expression<Func<string>> bodymoduleEventeventContent = null, Expression<Func<int>> bodymoduleEventshowComment = null, Expression<Func<string[]>> bodymoduleEventtagList = null, Expression<Func<int>> bodymoduleEventstatus = null, Expression<Func<int>> bodymoduleEventsiteID = null, Expression<Func<string>> bodymoduleEventcontact = null, Expression<Func<string[]>> bodymoduleEventcategoryList = null, Expression<Func<int>> bodymoduleEventnotificationTypeID = null, Expression<Func<string>> bodymoduleEventmessage = null, Expression<Func<int>> bodymoduleEventmessageCode = null, Expression<Func<string>> bodymoduleEventexternalID = null, Expression<Func<string>> bodymoduleEventstartDate = null, Expression<Func<string>> bodymoduleEventendDate = null, Expression<Func<string>> bodymoduleEventstartTime = null, Expression<Func<string>> bodymoduleEventendTime = null, Expression<Func<string>> bodymoduleEventlocation = null, Expression<Func<string>> bodymoduleEventauthor = null, Expression<Func<string>> bodymoduleEventprocesstype = null, Expression<Func<string>> bodymoduleEventenable = null, Expression<Func<int>> bodymoduleisheetid = null, Expression<Func<string>> bodymoduleisheettitle = null, Expression<Func<string>> bodymoduleisheetdescription = null, Expression<Func<string>> bodymoduleisheetstatus = null, Expression<Func<string>> bodymoduleisheetaccesstype = null, Expression<Func<string>> bodymoduleisheettype = null, Expression<Func<string>> bodymoduleisheetviewlink = null, Expression<Func<string>> bodymoduleisheetallowsections = null, Expression<Func<string>> bodymoduleisheetallowlookup = null, Expression<Func<string>> bodymoduleisheetdisplayisheet = null, Expression<Func<string>> bodymoduleisheetsearchasdefaultview = null, Expression<Func<string>> bodymoduleisheetenableversion = null, Expression<Func<string>> bodymoduleisheetenablesheetalerter = null, Expression<Func<string>> bodymoduleisheetalertercondition = null, Expression<Func<string>> bodymoduleisheetoverrideitemmodifieddate = null, Expression<Func<string>> bodymoduleisheetenablebulkinsertupdate = null, Expression<Func<string>> bodymoduleisheetfielddescriptions = null, Expression<Func<string>> bodymoduleisheetenablerowlocking = null, Expression<Func<string>> bodymoduleisheetsetcharlimittruncatemultilinetextenabled = null, Expression<Func<string>> bodymoduleisheetsetcharlimittruncatemultilinetextval = null, Expression<Func<string>> bodymoduleisheetallowchoicelistvaluesforreuse = null, Expression<Func<string>> bodymoduleisheetallowscorelistvaluesforreuse = null, Expression<Func<string>> bodymoduleisheetallowIsheetComments = null, Expression<Func<int>> bodymoduleisheetshareRecordsLimit = null, Expression<Func<int>> bodymoduleisheetshareRecordsLimitEnabled = null, Expression<Func<string>> bodymoduleisheetenableIsheetAddRecordFormSharing = null, Expression<Func<string>> bodymoduleisheetrecordcount = null, Expression<Func<int>> bodymoduleisheetsheettypeid = null, Expression<Func<string>> bodymoduleqaenable = null, Expression<Func<PersonDBO[]>> bodymodulepeopleperson = null, Expression<Func<string>> bodymodulecontractexpressenable = null, Expression<Func<string>> bodyadminnote = null, Expression<Func<string>> bodystartdate = null, Expression<Func<string>> bodyenddate = null, Expression<Func<string>> bodycreateddate = null, Expression<Func<string>> bodyarchiveddate = null, Expression<Func<string>> bodyclientno = null, Expression<Func<string>> bodymatterno = null, Expression<Func<string>> bodylandingpage = null, Expression<Func<string>> bodylink = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodystatusid = null, Expression<Func<string>> bodysize = null, Expression<Func<string>> bodybillingnotes = null, Expression<Func<string>> bodybillingnextinvoicedate = null, Expression<Func<string>> bodybillinglastinvoicedate = null, Expression<Func<string>> bodyfilepagecount = null, Expression<Func<string>> bodymaxpagecount = null, Expression<Func<string>> bodysitehttplink = null, Expression<Func<int>> bodyisSyncable = null, Expression<Func<string>> bodyenforceusergroups = null, Expression<Func<string>> bodycsvSiteCategory = null, Expression<Func<string>> bodysiteNameInDefaultLanguage = null, Expression<Func<int>> bodyvisible = null, Expression<Func<string>> bodysiteLogoName = null, Expression<Func<int>> bodysiteLogoFileSize = null, Expression<Func<int>> bodysiteLogoHeight = null, Expression<Func<int>> bodysiteLogoWidth = null, Expression<Func<int>> bodysiteStatus = null, Expression<Func<int>> bodyapplySiteTerms = null, Expression<Func<string>> bodysiteTerm = null, Expression<Func<int>> bodytermType = null, Expression<Func<int>> bodynextLoginSiteTerms = null, Expression<Func<int>> bodydefaultSiteTermsEnable = null, Expression<Func<int>> bodyadvancedQAPermission = null, Expression<Func<int>> bodyisInternal = null, Expression<Func<int>> bodypsm = null, Expression<Func<string>> bodysiteLabelDisplay = null, Expression<Func<int>> bodyallowSiteAdministration = null, Expression<Func<int>> bodysiteLevelPasswordEnable = null, Expression<Func<int>> bodysiteLevelPasscodeEnable = null, Expression<Func<int>> bodypasscodeUsingAuthApp = null, Expression<Func<string>> bodysitePassword = null, Expression<Func<int>> bodyipRestrictionEnable = null, Expression<Func<string>> bodyavailableIP = null, Expression<Func<int>> bodyhighqDrive = null, Expression<Func<int>> bodyapplySiteHomePage = null, Expression<Func<string>> bodysiteHomePage = null, Expression<Func<int>> bodysiteHomePageType = null, Expression<Func<int>> bodynextLoginSiteHomePage = null, Expression<Func<int>> bodyapplyDisplayContent = null, Expression<Func<string>> bodydisplayContent = null, Expression<Func<int>> bodyrssSecurity = null, Expression<Func<int>> bodyencryptedPassword = null, Expression<Func<string>> bodyavailableIPRangeCSV = null, Expression<Func<int>> bodysiteModuleID = null, Expression<Func<int>> bodyicalSecurity = null, Expression<Func<string>> bodydefaultDisplayContent = null, Expression<Func<int>> bodydefaultEmailAlert = null, Expression<Func<int>> bodyexcelReportFooter = null, Expression<Func<string>> bodyexcelReportFooterText = null, Expression<Func<string>> bodyannouncementMLJSON = null, Expression<Func<int>> bodytemplateType = null, Expression<Func<int>> bodytemplateLicence = null, Expression<Func<string>> bodyopenChannelAppID = null, Expression<Func<int>> bodyitemid = null, Expression<Func<int>> bodysitemetadatasheetid = null, Expression<Func<bool>> bodymysite = null, Expression<Func<string>> bodylastaccesseddate = null, Expression<Func<int>> bodydefaultViewerMetaDataTab = null, Expression<Func<int>> bodydocumentMetadataViewId = null, Expression<Func<int>> bodyfolderMetadataViewId = null, Expression<Func<int>> bodydocSort = null, Expression<Func<int>> bodyfolderSort = null, Expression<Func<int>> bodydefaultFolderRenderView = null, Expression<Func<int>> bodyisTaskAttachmentDefault = null, Expression<Func<int>> bodytaskAttachmentDefaultFolderId = null, Expression<Func<string>> bodyfavourite = null, Expression<Func<bool>> bodyenabledocumentredaction = null, Expression<Func<int>> bodymentiongroups = null, Expression<Func<bool>> bodyenablefilerelationships = null, Expression<Func<int>> bodyfilerelationshipsitepermissionlevel = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateSite(Expression<Func<string>> version, Expression<Func<string>> siteid, Expression<Func<int>> bodyid = null, Expression<Func<string>> bodysitename = null, Expression<Func<string>> bodyrole = null, Expression<Func<string>> bodysitedescription = null, Expression<Func<string>> bodyenabledmodules = null, Expression<Func<string>> bodysitefolderId = null, Expression<Func<string>> bodysitefolderpermission = null, Expression<Func<string>> bodymodulehomeenable = null, Expression<Func<string>> bodymoduleactivityenable = null, Expression<Func<string>> bodymoduleactivitymicroblog = null, Expression<Func<string>> bodymoduledocumentdocid = null, Expression<Func<string>> bodymoduleblogblogTitle = null, Expression<Func<string>> bodymoduleblogblogContent = null, Expression<Func<int>> bodymoduleblogshowComment = null, Expression<Func<string[]>> bodymoduleblogtagList = null, Expression<Func<int>> bodymoduleblogstatus = null, Expression<Func<int>> bodymoduleblogsiteId = null, Expression<Func<string>> bodymoduleblogauthor = null, Expression<Func<string[]>> bodymoduleblogcategoryList = null, Expression<Func<int>> bodymoduleblognotificationTypeId = null, Expression<Func<string>> bodymoduleblogmessage = null, Expression<Func<int>> bodymoduleblogmessageCode = null, Expression<Func<string>> bodymoduleblogexternalId = null, Expression<Func<string>> bodymoduleblogpublishDate = null, Expression<Func<string>> bodymoduleblogprocesstype = null, Expression<Func<string>> bodymoduleblogenable = null, Expression<Func<int>> bodymodulewikiwikiid = null, Expression<Func<int>> bodymodulewikicurrentversionid = null, Expression<Func<int>> bodymodulewikiparentwikiid = null, Expression<Func<string>> bodymodulewikiwikititle = null, Expression<Func<string>> bodymodulewikiwikicontent = null, Expression<Func<int>> bodymodulewikishowcomment = null, Expression<Func<string>> bodymodulewikicreateddate = null, Expression<Func<string>> bodymodulewikimodifieddate = null, Expression<Func<string>> bodymodulewikitaglist = null, Expression<Func<string>> bodymodulewikiwikipath = null, Expression<Func<int>> bodymodulewikiwikidraftid = null, Expression<Func<string>> bodymodulewikidrafttype = null, Expression<Func<int>> bodymodulewikistatus = null, Expression<Func<int>> bodymodulewikiwikiversionid = null, Expression<Func<string>> bodymoduletaskindex = null, Expression<Func<int>> bodymoduletaskparenttaskid = null, Expression<Func<int>> bodymoduletasktaskid = null, Expression<Func<string>> bodymoduletasktitle = null, Expression<Func<string>> bodymoduletaskdescription = null, Expression<Func<string>> bodymoduletaskduedate = null, Expression<Func<string>> bodymoduletaskstartdate = null, Expression<Func<string>> bodymoduletaskmattermaptaskid = null, Expression<Func<string>> bodymoduletasktype = null, Expression<Func<string>> bodymoduletaskdependenton = null, Expression<Func<string>> bodymoduletaskdaysfromdependent = null, Expression<Func<int>> bodymoduletaskignoreweekend = null, Expression<Func<int>> bodymoduletaskduration = null, Expression<Func<string>> bodymoduletaskresource = null, Expression<Func<string>> bodymoduleEventeventTitle = null, Expression<Func<string>> bodymoduleEventeventContent = null, Expression<Func<int>> bodymoduleEventshowComment = null, Expression<Func<string[]>> bodymoduleEventtagList = null, Expression<Func<int>> bodymoduleEventstatus = null, Expression<Func<int>> bodymoduleEventsiteId = null, Expression<Func<string>> bodymoduleEventcontact = null, Expression<Func<string[]>> bodymoduleEventcategoryList = null, Expression<Func<int>> bodymoduleEventnotificationTypeId = null, Expression<Func<string>> bodymoduleEventmessage = null, Expression<Func<int>> bodymoduleEventmessageCode = null, Expression<Func<string>> bodymoduleEventexternalId = null, Expression<Func<string>> bodymoduleEventstartDate = null, Expression<Func<string>> bodymoduleEventendDate = null, Expression<Func<string>> bodymoduleEventstartTime = null, Expression<Func<string>> bodymoduleEventendTime = null, Expression<Func<string>> bodymoduleEventlocation = null, Expression<Func<string>> bodymoduleEventauthor = null, Expression<Func<string>> bodymoduleEventprocesstype = null, Expression<Func<string>> bodymoduleEventenable = null, Expression<Func<int>> bodymoduleisheetid = null, Expression<Func<string>> bodymoduleisheettitle = null, Expression<Func<string>> bodymoduleisheetdescription = null, Expression<Func<string>> bodymoduleisheetstatus = null, Expression<Func<string>> bodymoduleisheetaccesstype = null, Expression<Func<string>> bodymoduleisheettype = null, Expression<Func<string>> bodymoduleisheetviewlink = null, Expression<Func<string>> bodymoduleisheetallowsections = null, Expression<Func<string>> bodymoduleisheetallowlookup = null, Expression<Func<string>> bodymoduleisheetdisplayisheet = null, Expression<Func<string>> bodymoduleisheetsearchasdefaultview = null, Expression<Func<string>> bodymoduleisheetenableversion = null, Expression<Func<string>> bodymoduleisheetenablesheetalerter = null, Expression<Func<string>> bodymoduleisheetalertercondition = null, Expression<Func<string>> bodymoduleisheetoverrideitemmodifieddate = null, Expression<Func<string>> bodymoduleisheetenablebulkinsertupdate = null, Expression<Func<string>> bodymoduleisheetfielddescriptions = null, Expression<Func<string>> bodymoduleisheetenablerowlocking = null, Expression<Func<string>> bodymoduleisheetsetcharlimittruncatemultilinetextenabled = null, Expression<Func<string>> bodymoduleisheetsetcharlimittruncatemultilinetextval = null, Expression<Func<string>> bodymoduleisheetallowchoicelistvaluesforreuse = null, Expression<Func<string>> bodymoduleisheetallowscorelistvaluesforreuse = null, Expression<Func<string>> bodymoduleisheetallowIsheetComments = null, Expression<Func<int>> bodymoduleisheetshareRecordsLimit = null, Expression<Func<int>> bodymoduleisheetshareRecordsLimitEnabled = null, Expression<Func<string>> bodymoduleisheetenableIsheetAddRecordFormSharing = null, Expression<Func<string>> bodymoduleisheetrecordcount = null, Expression<Func<int>> bodymoduleisheetsheettypeid = null, Expression<Func<string>> bodymoduleqaenable = null, Expression<Func<PersonDBO[]>> bodymodulepeopleperson = null, Expression<Func<string>> bodymodulecontractexpressenable = null, Expression<Func<string>> bodyadminnote = null, Expression<Func<string>> bodystartdate = null, Expression<Func<string>> bodyenddate = null, Expression<Func<string>> bodycreateddate = null, Expression<Func<string>> bodyarchiveddate = null, Expression<Func<string>> bodyclientno = null, Expression<Func<string>> bodymatterno = null, Expression<Func<string>> bodylandingpage = null, Expression<Func<string>> bodylink = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodystatusid = null, Expression<Func<string>> bodysize = null, Expression<Func<string>> bodybillingnotes = null, Expression<Func<string>> bodybillingnextinvoicedate = null, Expression<Func<string>> bodybillinglastinvoicedate = null, Expression<Func<string>> bodyfilepagecount = null, Expression<Func<string>> bodymaxpagecount = null, Expression<Func<string>> bodysitehttplink = null, Expression<Func<int>> bodyisSyncable = null, Expression<Func<string>> bodyenforceusergroups = null, Expression<Func<string>> bodycsvSiteCategory = null, Expression<Func<string>> bodysiteNameInDefaultLanguage = null, Expression<Func<int>> bodyvisible = null, Expression<Func<string>> bodysiteLogoName = null, Expression<Func<int>> bodysiteLogoFileSize = null, Expression<Func<int>> bodysiteLogoHeight = null, Expression<Func<int>> bodysiteLogoWidth = null, Expression<Func<int>> bodysiteStatus = null, Expression<Func<int>> bodyapplySiteTerms = null, Expression<Func<string>> bodysiteTerm = null, Expression<Func<int>> bodytermType = null, Expression<Func<int>> bodynextLoginSiteTerms = null, Expression<Func<int>> bodydefaultSiteTermsEnable = null, Expression<Func<int>> bodyadvancedQAPermission = null, Expression<Func<int>> bodyisInternal = null, Expression<Func<int>> bodypsm = null, Expression<Func<string>> bodysiteLabelDisplay = null, Expression<Func<int>> bodyallowSiteAdministration = null, Expression<Func<int>> bodysiteLevelPasswordEnable = null, Expression<Func<int>> bodysiteLevelPasscodeEnable = null, Expression<Func<int>> bodypasscodeUsingAuthApp = null, Expression<Func<string>> bodysitePassword = null, Expression<Func<int>> bodyipRestrictionEnable = null, Expression<Func<string>> bodyavailableIP = null, Expression<Func<int>> bodyhighqDrive = null, Expression<Func<int>> bodyapplySiteHomePage = null, Expression<Func<string>> bodysiteHomePage = null, Expression<Func<int>> bodysiteHomePageType = null, Expression<Func<int>> bodynextLoginSiteHomePage = null, Expression<Func<int>> bodyapplyDisplayContent = null, Expression<Func<string>> bodydisplayContent = null, Expression<Func<int>> bodyrssSecurity = null, Expression<Func<int>> bodyencryptedPassword = null, Expression<Func<string>> bodyavailableIPRangeCSV = null, Expression<Func<int>> bodysiteModuleId = null, Expression<Func<int>> bodyicalSecurity = null, Expression<Func<string>> bodydefaultDisplayContent = null, Expression<Func<int>> bodydefaultEmailAlert = null, Expression<Func<int>> bodyexcelReportFooter = null, Expression<Func<string>> bodyexcelReportFooterText = null, Expression<Func<string>> bodyannouncementMLJSON = null, Expression<Func<int>> bodytemplateType = null, Expression<Func<int>> bodytemplateLicence = null, Expression<Func<string>> bodyopenChannelAppId = null, Expression<Func<int>> bodyitemid = null, Expression<Func<int>> bodysitemetadatasheetid = null, Expression<Func<bool>> bodymysite = null, Expression<Func<string>> bodylastaccesseddate = null, Expression<Func<int>> bodydefaultViewerMetaDataTab = null, Expression<Func<int>> bodydocumentMetadataViewId = null, Expression<Func<int>> bodyfolderMetadataViewId = null, Expression<Func<int>> bodydocSort = null, Expression<Func<int>> bodyfolderSort = null, Expression<Func<int>> bodydefaultFolderRenderView = null, Expression<Func<int>> bodyisTaskAttachmentDefault = null, Expression<Func<int>> bodytaskAttachmentDefaultFolderId = null, Expression<Func<string>> bodyfavourite = null, Expression<Func<bool>> bodyenabledocumentredaction = null, Expression<Func<int>> bodymentiongroups = null, Expression<Func<bool>> bodyenablefilerelationships = null, Expression<Func<int>> bodyfilerelationshipsitepermissionlevel = null)
         {
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
             var __workflow_siteid = WorkflowExpression.Compile(siteid, nameof(siteid), required: true);
@@ -1502,7 +1469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
             var __workflow_bodyrole = WorkflowExpression.Compile(bodyrole, nameof(bodyrole), required: false);
             var __workflow_bodysitedescription = WorkflowExpression.Compile(bodysitedescription, nameof(bodysitedescription), required: false);
             var __workflow_bodyenabledmodules = WorkflowExpression.Compile(bodyenabledmodules, nameof(bodyenabledmodules), required: false);
-            var __workflow_bodysitefolderID = WorkflowExpression.Compile(bodysitefolderID, nameof(bodysitefolderID), required: false);
+            var __workflow_bodysitefolderId = WorkflowExpression.Compile(bodysitefolderId, nameof(bodysitefolderId), required: false);
             var __workflow_bodysitefolderpermission = WorkflowExpression.Compile(bodysitefolderpermission, nameof(bodysitefolderpermission), required: false);
             var __workflow_bodymodulehomeenable = WorkflowExpression.Compile(bodymodulehomeenable, nameof(bodymodulehomeenable), required: false);
             var __workflow_bodymoduleactivityenable = WorkflowExpression.Compile(bodymoduleactivityenable, nameof(bodymoduleactivityenable), required: false);
@@ -1513,13 +1480,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
             var __workflow_bodymoduleblogshowComment = WorkflowExpression.Compile(bodymoduleblogshowComment, nameof(bodymoduleblogshowComment), required: false);
             var __workflow_bodymoduleblogtagList = WorkflowExpression.Compile(bodymoduleblogtagList, nameof(bodymoduleblogtagList), required: false);
             var __workflow_bodymoduleblogstatus = WorkflowExpression.Compile(bodymoduleblogstatus, nameof(bodymoduleblogstatus), required: false);
-            var __workflow_bodymoduleblogsiteID = WorkflowExpression.Compile(bodymoduleblogsiteID, nameof(bodymoduleblogsiteID), required: false);
+            var __workflow_bodymoduleblogsiteId = WorkflowExpression.Compile(bodymoduleblogsiteId, nameof(bodymoduleblogsiteId), required: false);
             var __workflow_bodymoduleblogauthor = WorkflowExpression.Compile(bodymoduleblogauthor, nameof(bodymoduleblogauthor), required: false);
             var __workflow_bodymoduleblogcategoryList = WorkflowExpression.Compile(bodymoduleblogcategoryList, nameof(bodymoduleblogcategoryList), required: false);
-            var __workflow_bodymoduleblognotificationTypeID = WorkflowExpression.Compile(bodymoduleblognotificationTypeID, nameof(bodymoduleblognotificationTypeID), required: false);
+            var __workflow_bodymoduleblognotificationTypeId = WorkflowExpression.Compile(bodymoduleblognotificationTypeId, nameof(bodymoduleblognotificationTypeId), required: false);
             var __workflow_bodymoduleblogmessage = WorkflowExpression.Compile(bodymoduleblogmessage, nameof(bodymoduleblogmessage), required: false);
             var __workflow_bodymoduleblogmessageCode = WorkflowExpression.Compile(bodymoduleblogmessageCode, nameof(bodymoduleblogmessageCode), required: false);
-            var __workflow_bodymoduleblogexternalID = WorkflowExpression.Compile(bodymoduleblogexternalID, nameof(bodymoduleblogexternalID), required: false);
+            var __workflow_bodymoduleblogexternalId = WorkflowExpression.Compile(bodymoduleblogexternalId, nameof(bodymoduleblogexternalId), required: false);
             var __workflow_bodymoduleblogpublishDate = WorkflowExpression.Compile(bodymoduleblogpublishDate, nameof(bodymoduleblogpublishDate), required: false);
             var __workflow_bodymoduleblogprocesstype = WorkflowExpression.Compile(bodymoduleblogprocesstype, nameof(bodymoduleblogprocesstype), required: false);
             var __workflow_bodymoduleblogenable = WorkflowExpression.Compile(bodymoduleblogenable, nameof(bodymoduleblogenable), required: false);
@@ -1556,13 +1523,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
             var __workflow_bodymoduleEventshowComment = WorkflowExpression.Compile(bodymoduleEventshowComment, nameof(bodymoduleEventshowComment), required: false);
             var __workflow_bodymoduleEventtagList = WorkflowExpression.Compile(bodymoduleEventtagList, nameof(bodymoduleEventtagList), required: false);
             var __workflow_bodymoduleEventstatus = WorkflowExpression.Compile(bodymoduleEventstatus, nameof(bodymoduleEventstatus), required: false);
-            var __workflow_bodymoduleEventsiteID = WorkflowExpression.Compile(bodymoduleEventsiteID, nameof(bodymoduleEventsiteID), required: false);
+            var __workflow_bodymoduleEventsiteId = WorkflowExpression.Compile(bodymoduleEventsiteId, nameof(bodymoduleEventsiteId), required: false);
             var __workflow_bodymoduleEventcontact = WorkflowExpression.Compile(bodymoduleEventcontact, nameof(bodymoduleEventcontact), required: false);
             var __workflow_bodymoduleEventcategoryList = WorkflowExpression.Compile(bodymoduleEventcategoryList, nameof(bodymoduleEventcategoryList), required: false);
-            var __workflow_bodymoduleEventnotificationTypeID = WorkflowExpression.Compile(bodymoduleEventnotificationTypeID, nameof(bodymoduleEventnotificationTypeID), required: false);
+            var __workflow_bodymoduleEventnotificationTypeId = WorkflowExpression.Compile(bodymoduleEventnotificationTypeId, nameof(bodymoduleEventnotificationTypeId), required: false);
             var __workflow_bodymoduleEventmessage = WorkflowExpression.Compile(bodymoduleEventmessage, nameof(bodymoduleEventmessage), required: false);
             var __workflow_bodymoduleEventmessageCode = WorkflowExpression.Compile(bodymoduleEventmessageCode, nameof(bodymoduleEventmessageCode), required: false);
-            var __workflow_bodymoduleEventexternalID = WorkflowExpression.Compile(bodymoduleEventexternalID, nameof(bodymoduleEventexternalID), required: false);
+            var __workflow_bodymoduleEventexternalId = WorkflowExpression.Compile(bodymoduleEventexternalId, nameof(bodymoduleEventexternalId), required: false);
             var __workflow_bodymoduleEventstartDate = WorkflowExpression.Compile(bodymoduleEventstartDate, nameof(bodymoduleEventstartDate), required: false);
             var __workflow_bodymoduleEventendDate = WorkflowExpression.Compile(bodymoduleEventendDate, nameof(bodymoduleEventendDate), required: false);
             var __workflow_bodymoduleEventstartTime = WorkflowExpression.Compile(bodymoduleEventstartTime, nameof(bodymoduleEventstartTime), required: false);
@@ -1656,7 +1623,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
             var __workflow_bodyrssSecurity = WorkflowExpression.Compile(bodyrssSecurity, nameof(bodyrssSecurity), required: false);
             var __workflow_bodyencryptedPassword = WorkflowExpression.Compile(bodyencryptedPassword, nameof(bodyencryptedPassword), required: false);
             var __workflow_bodyavailableIPRangeCSV = WorkflowExpression.Compile(bodyavailableIPRangeCSV, nameof(bodyavailableIPRangeCSV), required: false);
-            var __workflow_bodysiteModuleID = WorkflowExpression.Compile(bodysiteModuleID, nameof(bodysiteModuleID), required: false);
+            var __workflow_bodysiteModuleId = WorkflowExpression.Compile(bodysiteModuleId, nameof(bodysiteModuleId), required: false);
             var __workflow_bodyicalSecurity = WorkflowExpression.Compile(bodyicalSecurity, nameof(bodyicalSecurity), required: false);
             var __workflow_bodydefaultDisplayContent = WorkflowExpression.Compile(bodydefaultDisplayContent, nameof(bodydefaultDisplayContent), required: false);
             var __workflow_bodydefaultEmailAlert = WorkflowExpression.Compile(bodydefaultEmailAlert, nameof(bodydefaultEmailAlert), required: false);
@@ -1665,7 +1632,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
             var __workflow_bodyannouncementMLJSON = WorkflowExpression.Compile(bodyannouncementMLJSON, nameof(bodyannouncementMLJSON), required: false);
             var __workflow_bodytemplateType = WorkflowExpression.Compile(bodytemplateType, nameof(bodytemplateType), required: false);
             var __workflow_bodytemplateLicence = WorkflowExpression.Compile(bodytemplateLicence, nameof(bodytemplateLicence), required: false);
-            var __workflow_bodyopenChannelAppID = WorkflowExpression.Compile(bodyopenChannelAppID, nameof(bodyopenChannelAppID), required: false);
+            var __workflow_bodyopenChannelAppId = WorkflowExpression.Compile(bodyopenChannelAppId, nameof(bodyopenChannelAppId), required: false);
             var __workflow_bodyitemid = WorkflowExpression.Compile(bodyitemid, nameof(bodyitemid), required: false);
             var __workflow_bodysitemetadatasheetid = WorkflowExpression.Compile(bodysitemetadatasheetid, nameof(bodysitemetadatasheetid), required: false);
             var __workflow_bodymysite = WorkflowExpression.Compile(bodymysite, nameof(bodymysite), required: false);
@@ -1720,9 +1687,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
                     bodypropCount++;
                 }
 
-                if (__workflow_bodysitefolderID != null)
+                if (__workflow_bodysitefolderId != null)
                 {
-                    body["sitefolderID"] = ExpressionConverter.ConvertO(__workflow_bodysitefolderID);
+                    body["sitefolderID"] = ExpressionConverter.ConvertO(__workflow_bodysitefolderId);
                     bodypropCount++;
                 }
 
@@ -1814,9 +1781,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
                     blogObjectpropCount++;
                 }
 
-                if (__workflow_bodymoduleblogsiteID != null)
+                if (__workflow_bodymoduleblogsiteId != null)
                 {
-                    blogObject["siteID"] = ExpressionConverter.ConvertO(__workflow_bodymoduleblogsiteID);
+                    blogObject["siteID"] = ExpressionConverter.ConvertO(__workflow_bodymoduleblogsiteId);
                     blogObjectpropCount++;
                 }
 
@@ -1832,9 +1799,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
                     blogObjectpropCount++;
                 }
 
-                if (__workflow_bodymoduleblognotificationTypeID != null)
+                if (__workflow_bodymoduleblognotificationTypeId != null)
                 {
-                    blogObject["notificationTypeID"] = ExpressionConverter.ConvertO(__workflow_bodymoduleblognotificationTypeID);
+                    blogObject["notificationTypeID"] = ExpressionConverter.ConvertO(__workflow_bodymoduleblognotificationTypeId);
                     blogObjectpropCount++;
                 }
 
@@ -1850,9 +1817,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
                     blogObjectpropCount++;
                 }
 
-                if (__workflow_bodymoduleblogexternalID != null)
+                if (__workflow_bodymoduleblogexternalId != null)
                 {
-                    blogObject["externalID"] = ExpressionConverter.ConvertO(__workflow_bodymoduleblogexternalID);
+                    blogObject["externalID"] = ExpressionConverter.ConvertO(__workflow_bodymoduleblogexternalId);
                     blogObjectpropCount++;
                 }
 
@@ -2096,9 +2063,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
                     @eventObjectpropCount++;
                 }
 
-                if (__workflow_bodymoduleEventsiteID != null)
+                if (__workflow_bodymoduleEventsiteId != null)
                 {
-                    @eventObject["siteID"] = ExpressionConverter.ConvertO(__workflow_bodymoduleEventsiteID);
+                    @eventObject["siteID"] = ExpressionConverter.ConvertO(__workflow_bodymoduleEventsiteId);
                     @eventObjectpropCount++;
                 }
 
@@ -2114,9 +2081,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
                     @eventObjectpropCount++;
                 }
 
-                if (__workflow_bodymoduleEventnotificationTypeID != null)
+                if (__workflow_bodymoduleEventnotificationTypeId != null)
                 {
-                    @eventObject["notificationTypeID"] = ExpressionConverter.ConvertO(__workflow_bodymoduleEventnotificationTypeID);
+                    @eventObject["notificationTypeID"] = ExpressionConverter.ConvertO(__workflow_bodymoduleEventnotificationTypeId);
                     @eventObjectpropCount++;
                 }
 
@@ -2132,9 +2099,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
                     @eventObjectpropCount++;
                 }
 
-                if (__workflow_bodymoduleEventexternalID != null)
+                if (__workflow_bodymoduleEventexternalId != null)
                 {
-                    @eventObject["externalID"] = ExpressionConverter.ConvertO(__workflow_bodymoduleEventexternalID);
+                    @eventObject["externalID"] = ExpressionConverter.ConvertO(__workflow_bodymoduleEventexternalId);
                     @eventObjectpropCount++;
                 }
 
@@ -2740,9 +2707,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
                     bodypropCount++;
                 }
 
-                if (__workflow_bodysiteModuleID != null)
+                if (__workflow_bodysiteModuleId != null)
                 {
-                    body["siteModuleID"] = ExpressionConverter.ConvertO(__workflow_bodysiteModuleID);
+                    body["siteModuleID"] = ExpressionConverter.ConvertO(__workflow_bodysiteModuleId);
                     bodypropCount++;
                 }
 
@@ -2794,9 +2761,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyopenChannelAppID != null)
+                if (__workflow_bodyopenChannelAppId != null)
                 {
-                    body["openChannelAppID"] = ExpressionConverter.ConvertO(__workflow_bodyopenChannelAppID);
+                    body["openChannelAppID"] = ExpressionConverter.ConvertO(__workflow_bodyopenChannelAppId);
                     bodypropCount++;
                 }
 
@@ -2934,7 +2901,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Enabledmodules { get; set; }
 
         [JsonProperty("sitefolderID")]
-        public string SitefolderID { get; set; }
+        public string SitefolderId { get; set; }
 
         [JsonProperty("sitefolderpermission")]
         public string Sitefolderpermission { get; set; }
@@ -3105,7 +3072,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string AvailableIPRangeCSV { get; set; }
 
         [JsonProperty("siteModuleID")]
-        public int SiteModuleID { get; set; }
+        public int SiteModuleId { get; set; }
 
         [JsonProperty("icalSecurity")]
         public int IcalSecurity { get; set; }
@@ -3132,7 +3099,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public int TemplateLicence { get; set; }
 
         [JsonProperty("openChannelAppID")]
-        public string OpenChannelAppID { get; set; }
+        public string OpenChannelAppId { get; set; }
 
         [JsonProperty("itemid")]
         public int Itemid { get; set; }
@@ -3261,7 +3228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public int Status { get; set; }
 
         [JsonProperty("siteID")]
-        public int SiteID { get; set; }
+        public int SiteId { get; set; }
 
         [JsonProperty("author")]
         public string Author { get; set; }
@@ -3270,7 +3237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string[] CategoryList { get; set; }
 
         [JsonProperty("notificationTypeID")]
-        public int NotificationTypeID { get; set; }
+        public int NotificationTypeId { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -3279,7 +3246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public int MessageCode { get; set; }
 
         [JsonProperty("externalID")]
-        public string ExternalID { get; set; }
+        public string ExternalId { get; set; }
 
         [JsonProperty("publishDate")]
         public string PublishDate { get; set; }
@@ -3399,7 +3366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public int Status { get; set; }
 
         [JsonProperty("siteID")]
-        public int SiteID { get; set; }
+        public int SiteId { get; set; }
 
         [JsonProperty("contact")]
         public string Contact { get; set; }
@@ -3408,7 +3375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string[] CategoryList { get; set; }
 
         [JsonProperty("notificationTypeID")]
-        public int NotificationTypeID { get; set; }
+        public int NotificationTypeId { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -3417,7 +3384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public int MessageCode { get; set; }
 
         [JsonProperty("externalID")]
-        public string ExternalID { get; set; }
+        public string ExternalId { get; set; }
 
         [JsonProperty("startDate")]
         public string StartDate { get; set; }

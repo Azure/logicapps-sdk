@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
 {
     using System.Linq.Expressions;
@@ -12,31 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
     public class ExcelonlinebusinessActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> RunScriptProd(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<string>> scriptId, Expression<Func<object>> scriptParameters = null)
+        public IBodyWorkflowAction<TableMetadata, ApiConnectionActionConfiguration> CreateTable(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> @file, Expression<Func<string>> tabletableRange, Expression<Func<string>> tabletableName = null, Expression<Func<string>> tablecolumnsNames = null)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
             var __workflow_drive = WorkflowExpression.Compile(drive, nameof(drive), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            var __workflow_scriptId = WorkflowExpression.Compile(scriptId, nameof(scriptId), required: true);
-            var __workflow_scriptParameters = WorkflowExpression.Compile(scriptParameters, nameof(scriptParameters), required: false);
-            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/officescripting/api/unattended/run/{0}/{1}", __workflow_drive.WithUrlEncoding(1), __workflow_file.WithUrlEncoding(2)));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["source"] = ExpressionConverter.Convert(__workflow_source);
-                callPayload.Queries["scriptId"] = ExpressionConverter.Convert(__workflow_scriptId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_scriptParameters);
-                return new ApiConnectionAction<JToken>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
-        public IBodyWorkflowAction<TableMetadata, ApiConnectionActionConfiguration> CreateTable(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<string>> tabletableRange, Expression<Func<string>> tabletableName = null, Expression<Func<string>> tablecolumnsNames = null)
-        {
-            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
-            var __workflow_drive = WorkflowExpression.Compile(drive, nameof(drive), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_file = WorkflowExpression.Compile(@file, nameof(@file), required: true);
             var __workflow_tabletableRange = WorkflowExpression.Compile(tabletableRange, nameof(tabletableRange), required: true);
             var __workflow_tabletableName = WorkflowExpression.Compile(tabletableName, nameof(tabletableName), required: false);
             var __workflow_tablecolumnsNames = WorkflowExpression.Compile(tablecolumnsNames, nameof(tablecolumnsNames), required: false);
@@ -72,11 +53,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateIdColumn(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<string>> table, Expression<Func<string>> idColumn = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateIdColumn(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> @file, Expression<Func<string>> table, Expression<Func<string>> idColumn = null)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
             var __workflow_drive = WorkflowExpression.Compile(drive, nameof(drive), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_file = WorkflowExpression.Compile(@file, nameof(@file), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_idColumn = WorkflowExpression.Compile(idColumn, nameof(idColumn), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -94,11 +75,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
-        public IBodyWorkflowAction<ItemsList, ApiConnectionActionConfiguration> GetItems(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> select = null, Expression<Func<dateTimeFormatInput>> dateTimeFormat = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null)
+        public IBodyWorkflowAction<ItemsList, ApiConnectionActionConfiguration> GetItems(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> @file, Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> select = null, Expression<Func<dateTimeFormatInput>> dateTimeFormat = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
             var __workflow_drive = WorkflowExpression.Compile(drive, nameof(drive), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_file = WorkflowExpression.Compile(@file, nameof(@file), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
@@ -135,10 +116,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
-        public IBodyWorkflowAction<CommentsList, ApiConnectionActionConfiguration> GetComments(Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<string>> source = null)
+        public IBodyWorkflowAction<CommentsList, ApiConnectionActionConfiguration> GetComments(Expression<Func<string>> drive, Expression<Func<string>> @file, Expression<Func<string>> source = null)
         {
             var __workflow_drive = WorkflowExpression.Compile(drive, nameof(drive), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_file = WorkflowExpression.Compile(@file, nameof(@file), required: true);
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
             return new DeferredBodyAction<CommentsList, ApiConnectionActionConfiguration>(() =>
             {
@@ -153,10 +134,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
-        public IBodyWorkflowAction<Comment, ApiConnectionActionConfiguration> GetComment(Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<string>> commentid, Expression<Func<string>> source = null)
+        public IBodyWorkflowAction<Comment, ApiConnectionActionConfiguration> GetComment(Expression<Func<string>> drive, Expression<Func<string>> @file, Expression<Func<string>> commentid, Expression<Func<string>> source = null)
         {
             var __workflow_drive = WorkflowExpression.Compile(drive, nameof(drive), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_file = WorkflowExpression.Compile(@file, nameof(@file), required: true);
             var __workflow_commentid = WorkflowExpression.Compile(commentid, nameof(commentid), required: true);
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
             return new DeferredBodyAction<Comment, ApiConnectionActionConfiguration>(() =>
@@ -172,11 +153,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
-        public IBodyWorkflowAction<GetItemResponse, ApiConnectionActionConfiguration> GetItem(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<string>> table, Expression<Func<string>> idColumn, Expression<Func<string>> id, Expression<Func<dateTimeFormatInput>> dateTimeFormat = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null)
+        public IBodyWorkflowAction<GetItemResponse, ApiConnectionActionConfiguration> GetItem(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> @file, Expression<Func<string>> table, Expression<Func<string>> idColumn, Expression<Func<string>> id, Expression<Func<dateTimeFormatInput>> dateTimeFormat = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
             var __workflow_drive = WorkflowExpression.Compile(drive, nameof(drive), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_file = WorkflowExpression.Compile(@file, nameof(@file), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_idColumn = WorkflowExpression.Compile(idColumn, nameof(idColumn), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -201,11 +182,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteItem(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<string>> table, Expression<Func<string>> idColumn, Expression<Func<string>> id)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteItem(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> @file, Expression<Func<string>> table, Expression<Func<string>> idColumn, Expression<Func<string>> id)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
             var __workflow_drive = WorkflowExpression.Compile(drive, nameof(drive), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_file = WorkflowExpression.Compile(@file, nameof(@file), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_idColumn = WorkflowExpression.Compile(idColumn, nameof(idColumn), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -221,11 +202,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
-        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> PatchItem(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<string>> table, Expression<Func<string>> idColumn, Expression<Func<string>> id, Expression<Func<itemInput>> item = null, Expression<Func<dateTimeFormatInput>> dateTimeFormat = null)
+        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> PatchItem(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> @file, Expression<Func<string>> table, Expression<Func<string>> idColumn, Expression<Func<string>> id, Expression<Func<itemInput>> item = null, Expression<Func<dateTimeFormatInput>> dateTimeFormat = null)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
             var __workflow_drive = WorkflowExpression.Compile(drive, nameof(drive), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_file = WorkflowExpression.Compile(@file, nameof(@file), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_idColumn = WorkflowExpression.Compile(idColumn, nameof(idColumn), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -246,11 +227,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
-        public IBodyWorkflowAction<GetAllWorksheetsResponse, ApiConnectionActionConfiguration> GetAllWorksheets(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null)
+        public IBodyWorkflowAction<GetAllWorksheetsResponse, ApiConnectionActionConfiguration> GetAllWorksheets(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> @file, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
             var __workflow_drive = WorkflowExpression.Compile(drive, nameof(drive), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_file = WorkflowExpression.Compile(@file, nameof(@file), required: true);
             var __workflow_extractSensitivityLabel = WorkflowExpression.Compile(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
             var __workflow_fetchSensitivityLabelMetadata = WorkflowExpression.Compile(fetchSensitivityLabelMetadata, nameof(fetchSensitivityLabelMetadata), required: false);
             return new DeferredBodyAction<GetAllWorksheetsResponse, ApiConnectionActionConfiguration>(() =>
@@ -268,11 +249,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
-        public IBodyWorkflowAction<WorksheetMetadata, ApiConnectionActionConfiguration> CreateWorksheet(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<string>> bodyname = null)
+        public IBodyWorkflowAction<WorksheetMetadata, ApiConnectionActionConfiguration> CreateWorksheet(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> @file, Expression<Func<string>> bodyname = null)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
             var __workflow_drive = WorkflowExpression.Compile(drive, nameof(drive), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_file = WorkflowExpression.Compile(@file, nameof(@file), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             return new DeferredBodyAction<WorksheetMetadata, ApiConnectionActionConfiguration>(() =>
             {
@@ -298,11 +279,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
-        public IBodyWorkflowAction<GetTablesResponse, ApiConnectionActionConfiguration> GetTables(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null)
+        public IBodyWorkflowAction<GetTablesResponse, ApiConnectionActionConfiguration> GetTables(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> @file, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
             var __workflow_drive = WorkflowExpression.Compile(drive, nameof(drive), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_file = WorkflowExpression.Compile(@file, nameof(@file), required: true);
             var __workflow_extractSensitivityLabel = WorkflowExpression.Compile(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
             var __workflow_fetchSensitivityLabelMetadata = WorkflowExpression.Compile(fetchSensitivityLabelMetadata, nameof(fetchSensitivityLabelMetadata), required: false);
             return new DeferredBodyAction<GetTablesResponse, ApiConnectionActionConfiguration>(() =>
@@ -320,11 +301,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
-        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> AddRow(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<string>> table, Expression<Func<itemInput>> item = null, Expression<Func<dateTimeFormatInput>> dateTimeFormat = null)
+        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> AddRow(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> @file, Expression<Func<string>> table, Expression<Func<itemInput>> item = null, Expression<Func<dateTimeFormatInput>> dateTimeFormat = null)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
             var __workflow_drive = WorkflowExpression.Compile(drive, nameof(drive), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_file = WorkflowExpression.Compile(@file, nameof(@file), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
             var __workflow_dateTimeFormat = WorkflowExpression.Compile(dateTimeFormat, nameof(dateTimeFormat), required: false);
@@ -338,6 +319,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
                     callPayload.Queries["dateTimeFormat"] = ExpressionConverter.Convert(__workflow_dateTimeFormat);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
                 return new ApiConnectionAction<Item>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonlinebusiness")]
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> RunScriptProd(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> @file, Expression<Func<string>> scriptSource, Expression<Func<string>> scriptDrive, Expression<Func<string>> scriptId, Expression<Func<object>> scriptParameters = null)
+        {
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
+            var __workflow_drive = WorkflowExpression.Compile(drive, nameof(drive), required: true);
+            var __workflow_file = WorkflowExpression.Compile(@file, nameof(@file), required: true);
+            var __workflow_scriptSource = WorkflowExpression.Compile(scriptSource, nameof(scriptSource), required: true);
+            var __workflow_scriptDrive = WorkflowExpression.Compile(scriptDrive, nameof(scriptDrive), required: true);
+            var __workflow_scriptId = WorkflowExpression.Compile(scriptId, nameof(scriptId), required: true);
+            var __workflow_scriptParameters = WorkflowExpression.Compile(scriptParameters, nameof(scriptParameters), required: false);
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/officescripting/api/unattended/run/{0}/{1}/{2}/{3}", __workflow_drive.WithUrlEncoding(1), __workflow_file.WithUrlEncoding(2), __workflow_scriptDrive.WithUrlEncoding(1), __workflow_scriptId.WithUrlEncoding(2)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["source"] = ExpressionConverter.Convert(__workflow_source);
+                callPayload.Queries["scriptSource"] = ExpressionConverter.Convert(__workflow_scriptSource);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_scriptParameters);
+                return new ApiConnectionAction<JToken>(callPayload);
             });
         }
     }

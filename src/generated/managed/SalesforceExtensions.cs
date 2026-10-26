@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<TablesList, ApiConnectionActionConfiguration> GetTables()
         {
-            var apiCallPath = "/datasets/default/tables";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TablesList>(callPayload);
+            return new DeferredBodyAction<TablesList, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/datasets/default/tables";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TablesList>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
@@ -492,12 +496,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<CreateJobResponse, ApiConnectionActionConfiguration> CreateJob(Expression<Func<string>> parametersobject, Expression<Func<parametersoperationInput>> parametersoperation, Expression<Func<string>> parameterscolumnDelimiter = null, Expression<Func<string>> parametersexternalIDFieldName = null, Expression<Func<string>> parameterslineEnding = null, Expression<Func<string>> parameterscontentType = null)
+        public IBodyWorkflowAction<CreateJobResponse, ApiConnectionActionConfiguration> CreateJob(Expression<Func<string>> parametersObject, Expression<Func<parametersoperationInput>> parametersoperation, Expression<Func<string>> parameterscolumnDelimiter = null, Expression<Func<string>> parametersexternalIdFieldName = null, Expression<Func<string>> parameterslineEnding = null, Expression<Func<string>> parameterscontentType = null)
         {
-            var __workflow_parametersobject = WorkflowExpression.Compile(parametersobject, nameof(parametersobject), required: true);
+            var __workflow_parametersObject = WorkflowExpression.Compile(parametersObject, nameof(parametersObject), required: true);
             var __workflow_parametersoperation = WorkflowExpression.Compile(parametersoperation, nameof(parametersoperation), required: true);
             var __workflow_parameterscolumnDelimiter = WorkflowExpression.Compile(parameterscolumnDelimiter, nameof(parameterscolumnDelimiter), required: false);
-            var __workflow_parametersexternalIDFieldName = WorkflowExpression.Compile(parametersexternalIDFieldName, nameof(parametersexternalIDFieldName), required: false);
+            var __workflow_parametersexternalIdFieldName = WorkflowExpression.Compile(parametersexternalIdFieldName, nameof(parametersexternalIdFieldName), required: false);
             var __workflow_parameterslineEnding = WorkflowExpression.Compile(parameterslineEnding, nameof(parameterslineEnding), required: false);
             var __workflow_parameterscontentType = WorkflowExpression.Compile(parameterscontentType, nameof(parameterscontentType), required: false);
             return new DeferredBodyAction<CreateJobResponse, ApiConnectionActionConfiguration>(() =>
@@ -508,7 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
                 var parameters = new JObject();
                 var parameterspropCount = 0;
                 parameterspropCount++;
-                parameters["object"] = ExpressionConverter.ConvertO(__workflow_parametersobject);
+                parameters["object"] = ExpressionConverter.ConvertO(__workflow_parametersObject);
                 parameterspropCount++;
                 parameters["operation"] = ExpressionConverter.ConvertO(__workflow_parametersoperation);
                 if (__workflow_parameterscolumnDelimiter != null)
@@ -517,9 +521,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
                     parameterspropCount++;
                 }
 
-                if (__workflow_parametersexternalIDFieldName != null)
+                if (__workflow_parametersexternalIdFieldName != null)
                 {
-                    parameters["externalIdFieldName"] = ExpressionConverter.ConvertO(__workflow_parametersexternalIDFieldName);
+                    parameters["externalIdFieldName"] = ExpressionConverter.ConvertO(__workflow_parametersexternalIdFieldName);
                     parameterspropCount++;
                 }
 
@@ -713,16 +717,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         public string ContentURL { get; set; }
 
         [JsonProperty("createdById")]
-        public string CreatedByID { get; set; }
+        public string CreatedById { get; set; }
 
         [JsonProperty("createdDate")]
         public string CreatedDate { get; set; }
 
         [JsonProperty("externalIdFieldName")]
-        public string ExternalIDFieldName { get; set; }
+        public string ExternalIdFieldName { get; set; }
 
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("jobType")]
         public JobInfoJobTypeType JobType { get; set; }
@@ -842,7 +846,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         public string ContentURL { get; set; }
 
         [JsonProperty("createdById")]
-        public string CreatedByID { get; set; }
+        public string CreatedById { get; set; }
 
         [JsonProperty("createdDate")]
         public string CreatedDate { get; set; }
@@ -851,7 +855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         public string ExternalFieldName { get; set; }
 
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("jobType")]
         public CheckJobResponseJobTypeType JobType { get; set; }
@@ -1017,7 +1021,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         public string ColumnDelimiter { get; set; }
 
         [JsonProperty("externalIdFieldName")]
-        public string ExternalIDFieldName { get; set; }
+        public string ExternalIdFieldName { get; set; }
 
         [JsonProperty("lineEnding")]
         public string LineEnding { get; set; }

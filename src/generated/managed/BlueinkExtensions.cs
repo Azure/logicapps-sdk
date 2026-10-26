@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
 {
     using System.Linq.Expressions;
@@ -59,10 +60,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
         public IBodyWorkflowAction<ListTemplatesResponse, ApiConnectionActionConfiguration> ListTemplates()
         {
-            var apiCallPath = "/templates/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListTemplatesResponse>(callPayload);
+            return new DeferredBodyAction<ListTemplatesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/templates/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListTemplatesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
@@ -158,19 +162,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
         public IBodyWorkflowAction<GetWebhookSecretResponse, ApiConnectionActionConfiguration> GetWebhookSecret()
         {
-            var apiCallPath = "/webhooks/secret/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetWebhookSecretResponse>(callPayload);
+            return new DeferredBodyAction<GetWebhookSecretResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/webhooks/secret/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetWebhookSecretResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
         public IBodyWorkflowAction<RegenerateWebhookSecretResponse, ApiConnectionActionConfiguration> RegenerateWebhookSecret()
         {
-            var apiCallPath = "/webhooks/secret/regenerate/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RegenerateWebhookSecretResponse>(callPayload);
+            return new DeferredBodyAction<RegenerateWebhookSecretResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/webhooks/secret/regenerate/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<RegenerateWebhookSecretResponse>(callPayload);
+            });
         }
     }
 

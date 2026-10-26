@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
 {
     using System.Linq.Expressions;
@@ -603,40 +604,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
     {
         public IBodyWorkflowTrigger<InboundSMSResponse, ApiConnectionTriggerConfiguration> InboundSMS(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/system/applications/webhooks/type/0";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["x-api-key"] = Convert.ToString("<Secret cannot be exposed in connector artifacts>");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["URL"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredBodyTrigger<InboundSMSResponse, ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/system/applications/webhooks/type/0";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["x-api-key"] = Convert.ToString("<Secret cannot be exposed in connector artifacts>");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["URL"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<InboundSMSResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<InboundSMSResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<OutboundSMSResponse, ApiConnectionTriggerConfiguration> OutboundSMS(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/system/applications/webhooks/type/5";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["x-api-key"] = Convert.ToString("<Secret cannot be exposed in connector artifacts>");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["URL"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredBodyTrigger<OutboundSMSResponse, ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/system/applications/webhooks/type/5";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["x-api-key"] = Convert.ToString("<Secret cannot be exposed in connector artifacts>");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["URL"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<OutboundSMSResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<OutboundSMSResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -644,17 +651,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
     {
         public string FromNumber { get; set; }
         public string ToNumber { get; set; }
-        public int ContactID { get; set; }
+
+        [JsonProperty("ContactID")]
+        public int ContactId { get; set; }
         public int Direction { get; set; }
         public string Message { get; set; }
         public string CreatedDate { get; set; }
-        public int SMSID { get; set; }
+
+        [JsonProperty("SMSID")]
+        public int SMSId { get; set; }
         public double Segments { get; set; }
         public string DeliveredDate { get; set; }
-        public double CampaignID { get; set; }
-        public double ApplicationID { get; set; }
+
+        [JsonProperty("CampaignID")]
+        public double CampaignId { get; set; }
+
+        [JsonProperty("ApplicationID")]
+        public double ApplicationId { get; set; }
         public string ApplicationName { get; set; }
-        public double UserID { get; set; }
+
+        [JsonProperty("UserID")]
+        public double UserId { get; set; }
         public string UserName { get; set; }
         public string ContactName { get; set; }
         public string ProfileURL { get; set; }
@@ -671,7 +688,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
 
     public class SearchContactResponseItem
     {
-        public int ContactID { get; set; }
+        [JsonProperty("ContactID")]
+        public int ContactId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string MobileNumber { get; set; }
@@ -706,7 +724,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         public string LastName { get; set; }
         public string MobileNumber { get; set; }
         public string EmailAddress { get; set; }
-        public int ContactID { get; set; }
+
+        [JsonProperty("ContactID")]
+        public int ContactId { get; set; }
         public string FullName { get; set; }
     }
 
@@ -716,13 +736,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         public string LastName { get; set; }
         public string MobileNumber { get; set; }
         public string EmailAddress { get; set; }
-        public int ContactID { get; set; }
+
+        [JsonProperty("ContactID")]
+        public int ContactId { get; set; }
         public string FullName { get; set; }
     }
 
     public class GetContactByExternalReferenceResponse
     {
-        public int ContactID { get; set; }
+        [JsonProperty("ContactID")]
+        public int ContactId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string MobileNumber { get; set; }
@@ -769,12 +792,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
 
     public class InboundSMSResponseContentTypeSMSType
     {
-        public int ContactID { get; set; }
+        [JsonProperty("ContactID")]
+        public int ContactId { get; set; }
         public string ContactName { get; set; }
         public string DeliveredDate { get; set; }
         public string FromNumber { get; set; }
         public string Message { get; set; }
-        public int SMSID { get; set; }
+
+        [JsonProperty("SMSID")]
+        public int SMSId { get; set; }
         public string ToNumber { get; set; }
     }
 
@@ -796,12 +822,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
 
     public class OutboundSMSResponseContentTypeSMSType
     {
-        public int ContactID { get; set; }
+        [JsonProperty("ContactID")]
+        public int ContactId { get; set; }
         public string ContactName { get; set; }
         public string CreatedDate { get; set; }
         public string FromNumber { get; set; }
         public string Message { get; set; }
-        public int SMSID { get; set; }
+
+        [JsonProperty("SMSID")]
+        public int SMSId { get; set; }
         public string ToNumber { get; set; }
     }
 }

@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotowebinar
 {
     using System.Linq.Expressions;
@@ -95,10 +96,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotowebinar
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotowebinar")]
         public IBodyWorkflowAction<WebinarSummary[], ApiConnectionActionConfiguration> ListWebinars()
         {
-            var apiCallPath = "/organizers/organizerKey/webinars";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<WebinarSummary[]>(callPayload);
+            return new DeferredBodyAction<WebinarSummary[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/organizers/organizerKey/webinars";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<WebinarSummary[]>(callPayload);
+            });
         }
     }
 
@@ -106,10 +110,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotowebinar
     {
         public IBodyWorkflowTrigger<WebinarSummary[], ApiConnectionTriggerConfiguration> OnNewWebinar(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/organizers/organizerKey/webinars";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<WebinarSummary[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<WebinarSummary[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/organizers/organizerKey/webinars";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<WebinarSummary[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<RegistrantSummary[], ApiConnectionTriggerConfiguration> OnNewRegistration(Expression<Func<string>> webinarKey, FlowRecurrence recurrence = null)

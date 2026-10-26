@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 {
     using System.Linq.Expressions;
@@ -12,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
     public class VineforceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
-        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> bodyapiKey, Expression<Func<string>> bodytitle, Expression<Func<string>> bodyfromEmail = null, Expression<Func<string>> bodytoEmail = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityTextInput>> bodypriorityText = null, Expression<Func<string>> bodyassociatedContactEmail = null, Expression<Func<bodyresourceAppNameInput>> bodyresourceAppName = null, Expression<Func<string>> bodyresourceAppUrl = null, Expression<Func<string>> bodyresourceAppID = null, Expression<Func<string>> bodyresourceAppData = null, Expression<Func<string>> bodyreferenceId = null, Expression<Func<string>> bodyreferenceData = null, Expression<Func<string>> bodyreferenceSource = null, Expression<Func<string>> bodyprojectName = null, Expression<Func<string>> bodyprojectSectionName = null, Expression<Func<string>> bodyprojectTags = null, Expression<Func<bodychecklistsInputItem[]>> bodychecklists = null, Expression<Func<bodyfilesInputItem[]>> bodyfiles = null)
+        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> bodyapiKey, Expression<Func<string>> bodytitle, Expression<Func<string>> bodyfromEmail = null, Expression<Func<string>> bodytoEmail = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityTextInput>> bodypriorityText = null, Expression<Func<string>> bodyassociatedContactEmail = null, Expression<Func<bodyresourceAppNameInput>> bodyresourceAppName = null, Expression<Func<string>> bodyresourceAppUrl = null, Expression<Func<string>> bodyresourceAppId = null, Expression<Func<string>> bodyresourceAppData = null, Expression<Func<string>> bodyreferenceId = null, Expression<Func<string>> bodyreferenceData = null, Expression<Func<string>> bodyreferenceSource = null, Expression<Func<string>> bodyprojectName = null, Expression<Func<string>> bodyprojectSectionName = null, Expression<Func<string>> bodyprojectTags = null, Expression<Func<bodychecklistsInputItem[]>> bodychecklists = null, Expression<Func<bodyfilesInputItem[]>> bodyfiles = null)
         {
             var __workflow_bodyapiKey = WorkflowExpression.Compile(bodyapiKey, nameof(bodyapiKey), required: true);
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
@@ -25,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var __workflow_bodyassociatedContactEmail = WorkflowExpression.Compile(bodyassociatedContactEmail, nameof(bodyassociatedContactEmail), required: false);
             var __workflow_bodyresourceAppName = WorkflowExpression.Compile(bodyresourceAppName, nameof(bodyresourceAppName), required: false);
             var __workflow_bodyresourceAppUrl = WorkflowExpression.Compile(bodyresourceAppUrl, nameof(bodyresourceAppUrl), required: false);
-            var __workflow_bodyresourceAppID = WorkflowExpression.Compile(bodyresourceAppID, nameof(bodyresourceAppID), required: false);
+            var __workflow_bodyresourceAppId = WorkflowExpression.Compile(bodyresourceAppId, nameof(bodyresourceAppId), required: false);
             var __workflow_bodyresourceAppData = WorkflowExpression.Compile(bodyresourceAppData, nameof(bodyresourceAppData), required: false);
             var __workflow_bodyreferenceId = WorkflowExpression.Compile(bodyreferenceId, nameof(bodyreferenceId), required: false);
             var __workflow_bodyreferenceData = WorkflowExpression.Compile(bodyreferenceData, nameof(bodyreferenceData), required: false);
@@ -100,9 +101,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyresourceAppID != null)
+                if (__workflow_bodyresourceAppId != null)
                 {
-                    body["resourceAppID"] = ExpressionConverter.ConvertO(__workflow_bodyresourceAppID);
+                    body["resourceAppID"] = ExpressionConverter.ConvertO(__workflow_bodyresourceAppId);
                     bodypropCount++;
                 }
 
@@ -319,10 +320,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
-        public IBodyWorkflowAction<UpdateTaskResponse, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> bodyapiKey, Expression<Func<string>> bodytaskID, Expression<Func<string>> bodytoEmail, Expression<Func<string>> bodytitle, Expression<Func<string>> bodyfromEmail = null, Expression<Func<bodytaskStatusInput>> bodytaskStatus = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityTextInput>> bodypriorityText = null, Expression<Func<string>> bodyassociatedContactEmail = null, Expression<Func<bodyresourceAppNameInput>> bodyresourceAppName = null, Expression<Func<string>> bodyresourceAppUrl = null, Expression<Func<string>> bodyresourceAppID = null, Expression<Func<string>> bodyresourceAppData = null, Expression<Func<string>> bodyreferenceId = null, Expression<Func<string>> bodyreferenceData = null, Expression<Func<string>> bodyreferenceSource = null, Expression<Func<string>> bodyprojectName = null, Expression<Func<string>> bodyprojectSectionName = null, Expression<Func<string>> bodyprojectTags = null, Expression<Func<bodychecklistsInputItem[]>> bodychecklists = null, Expression<Func<bodyfilesInputItem22[]>> bodyfiles = null)
+        public IBodyWorkflowAction<UpdateTaskResponse, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> bodyapiKey, Expression<Func<string>> bodytaskId, Expression<Func<string>> bodytoEmail, Expression<Func<string>> bodytitle, Expression<Func<string>> bodyfromEmail = null, Expression<Func<bodytaskStatusInput>> bodytaskStatus = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityTextInput>> bodypriorityText = null, Expression<Func<string>> bodyassociatedContactEmail = null, Expression<Func<bodyresourceAppNameInput>> bodyresourceAppName = null, Expression<Func<string>> bodyresourceAppUrl = null, Expression<Func<string>> bodyresourceAppId = null, Expression<Func<string>> bodyresourceAppData = null, Expression<Func<string>> bodyreferenceId = null, Expression<Func<string>> bodyreferenceData = null, Expression<Func<string>> bodyreferenceSource = null, Expression<Func<string>> bodyprojectName = null, Expression<Func<string>> bodyprojectSectionName = null, Expression<Func<string>> bodyprojectTags = null, Expression<Func<bodychecklistsInputItem[]>> bodychecklists = null, Expression<Func<bodyfilesInputItem22[]>> bodyfiles = null)
         {
             var __workflow_bodyapiKey = WorkflowExpression.Compile(bodyapiKey, nameof(bodyapiKey), required: true);
-            var __workflow_bodytaskID = WorkflowExpression.Compile(bodytaskID, nameof(bodytaskID), required: true);
+            var __workflow_bodytaskId = WorkflowExpression.Compile(bodytaskId, nameof(bodytaskId), required: true);
             var __workflow_bodytoEmail = WorkflowExpression.Compile(bodytoEmail, nameof(bodytoEmail), required: true);
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             var __workflow_bodyfromEmail = WorkflowExpression.Compile(bodyfromEmail, nameof(bodyfromEmail), required: false);
@@ -334,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
             var __workflow_bodyassociatedContactEmail = WorkflowExpression.Compile(bodyassociatedContactEmail, nameof(bodyassociatedContactEmail), required: false);
             var __workflow_bodyresourceAppName = WorkflowExpression.Compile(bodyresourceAppName, nameof(bodyresourceAppName), required: false);
             var __workflow_bodyresourceAppUrl = WorkflowExpression.Compile(bodyresourceAppUrl, nameof(bodyresourceAppUrl), required: false);
-            var __workflow_bodyresourceAppID = WorkflowExpression.Compile(bodyresourceAppID, nameof(bodyresourceAppID), required: false);
+            var __workflow_bodyresourceAppId = WorkflowExpression.Compile(bodyresourceAppId, nameof(bodyresourceAppId), required: false);
             var __workflow_bodyresourceAppData = WorkflowExpression.Compile(bodyresourceAppData, nameof(bodyresourceAppData), required: false);
             var __workflow_bodyreferenceId = WorkflowExpression.Compile(bodyreferenceId, nameof(bodyreferenceId), required: false);
             var __workflow_bodyreferenceData = WorkflowExpression.Compile(bodyreferenceData, nameof(bodyreferenceData), required: false);
@@ -354,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 bodypropCount++;
                 body["apiKey"] = ExpressionConverter.ConvertO(__workflow_bodyapiKey);
                 bodypropCount++;
-                body["taskID"] = ExpressionConverter.ConvertO(__workflow_bodytaskID);
+                body["taskID"] = ExpressionConverter.ConvertO(__workflow_bodytaskId);
                 if (__workflow_bodyfromEmail != null)
                 {
                     body["fromEmail"] = ExpressionConverter.ConvertO(__workflow_bodyfromEmail);
@@ -413,9 +414,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyresourceAppID != null)
+                if (__workflow_bodyresourceAppId != null)
                 {
-                    body["resourceAppID"] = ExpressionConverter.ConvertO(__workflow_bodyresourceAppID);
+                    body["resourceAppID"] = ExpressionConverter.ConvertO(__workflow_bodyresourceAppId);
                     bodypropCount++;
                 }
 
@@ -939,17 +940,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
-        public IBodyWorkflowAction<GetTaskByResourceExtResponse, ApiConnectionActionConfiguration> GetTaskByResourceExt(Expression<Func<string>> apiKey, Expression<Func<string>> resourceAppID)
+        public IBodyWorkflowAction<GetTaskByResourceExtResponse, ApiConnectionActionConfiguration> GetTaskByResourceExt(Expression<Func<string>> apiKey, Expression<Func<string>> resourceAppId)
         {
             var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
-            var __workflow_resourceAppID = WorkflowExpression.Compile(resourceAppID, nameof(resourceAppID), required: true);
+            var __workflow_resourceAppId = WorkflowExpression.Compile(resourceAppId, nameof(resourceAppId), required: true);
             return new DeferredBodyAction<GetTaskByResourceExtResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/services/app/ExternalTask/GetTaskByResourceExt";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(__workflow_apiKey);
-                callPayload.Queries["ResourceAppID"] = ExpressionConverter.Convert(__workflow_resourceAppID);
+                callPayload.Queries["ResourceAppID"] = ExpressionConverter.Convert(__workflow_resourceAppId);
                 return new ApiConnectionAction<GetTaskByResourceExtResponse>(callPayload);
             });
         }
@@ -1239,17 +1240,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
-        public IBodyWorkflowAction<DeletetaskResponse, ApiConnectionActionConfiguration> Deletetask(Expression<Func<string>> apiKey, Expression<Func<string>> taskID)
+        public IBodyWorkflowAction<DeletetaskResponse, ApiConnectionActionConfiguration> Deletetask(Expression<Func<string>> apiKey, Expression<Func<string>> taskId)
         {
             var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
-            var __workflow_taskID = WorkflowExpression.Compile(taskID, nameof(taskID), required: true);
+            var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<DeletetaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/services/app/ExternalTask/DeleteExternalTask";
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(__workflow_apiKey);
-                callPayload.Queries["TaskID"] = ExpressionConverter.Convert(__workflow_taskID);
+                callPayload.Queries["TaskID"] = ExpressionConverter.Convert(__workflow_taskId);
                 return new ApiConnectionAction<DeletetaskResponse>(callPayload);
             });
         }
@@ -1417,7 +1418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public bool IsError { get; set; }
 
         [JsonProperty("taskID")]
-        public string TaskID { get; set; }
+        public string TaskId { get; set; }
 
         [JsonProperty("errorType")]
         public string ErrorType { get; set; }
@@ -1647,7 +1648,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string TargetUrl { get; set; }
 
         [JsonProperty("projectID")]
-        public string ProjectID { get; set; }
+        public string ProjectId { get; set; }
 
         [JsonProperty("success")]
         public bool Success { get; set; }
@@ -1716,7 +1717,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public bool IsError { get; set; }
 
         [JsonProperty("taskID")]
-        public string TaskID { get; set; }
+        public string TaskId { get; set; }
 
         [JsonProperty("errorType")]
         public string ErrorType { get; set; }
@@ -1951,7 +1952,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string Country { get; set; }
 
         [JsonProperty("taxID")]
-        public string TaxID { get; set; }
+        public string TaxId { get; set; }
 
         [JsonProperty("folderPath")]
         public string FolderPath { get; set; }
@@ -1966,9 +1967,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         [EnumMember(Value = "Account No.")]
         AccountNo,
         [EnumMember(Value = "Tax ID")]
-        TaxID,
+        TaxId,
         [EnumMember(Value = "Company ID")]
-        CompanyID,
+        CompanyId,
         [EnumMember(Value = "Company Name")]
         CompanyName,
         URL
@@ -2016,7 +2017,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public bool Abp { get; set; }
 
         [JsonProperty("taskID")]
-        public string TaskID { get; set; }
+        public string TaskId { get; set; }
 
         [JsonProperty("assigneeEmail")]
         public string AssigneeEmail { get; set; }
@@ -2097,7 +2098,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public bool Abp { get; set; }
 
         [JsonProperty("taskID")]
-        public string TaskID { get; set; }
+        public string TaskId { get; set; }
     }
 
     public class UpdateProjectResponse
@@ -2130,7 +2131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string TargetUrl { get; set; }
 
         [JsonProperty("projectID")]
-        public string ProjectID { get; set; }
+        public string ProjectId { get; set; }
 
         [JsonProperty("success")]
         public bool Success { get; set; }
@@ -2194,7 +2195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public bool Abp { get; set; }
 
         [JsonProperty("taskID")]
-        public string TaskID { get; set; }
+        public string TaskId { get; set; }
 
         [JsonProperty("assigneeEmail")]
         public string AssigneeEmail { get; set; }

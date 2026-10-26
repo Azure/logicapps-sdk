@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
 {
     using System.Linq.Expressions;
@@ -62,10 +63,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
         public IBodyWorkflowAction<ListChannelsResponseV3, ApiConnectionActionConfiguration> ListChannels()
         {
-            var apiCallPath = "/v3/conversations.list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListChannelsResponseV3>(callPayload);
+            return new DeferredBodyAction<ListChannelsResponseV3, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v3/conversations.list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListChannelsResponseV3>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]

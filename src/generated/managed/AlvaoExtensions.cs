@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
 {
     using System.Linq.Expressions;
@@ -106,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
     public class AMObjectExpanded
     {
         [JsonProperty("id")]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -118,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
         public string FullName { get; set; }
 
         [JsonProperty("kindId")]
-        public int KindID { get; set; }
+        public int KindId { get; set; }
 
         [JsonProperty("kindName")]
         public string KindName { get; set; }
@@ -127,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
         public bool Hidden { get; set; }
 
         [JsonProperty("parentObjectId")]
-        public int ParentObjectID { get; set; }
+        public int ParentObjectId { get; set; }
 
         [JsonProperty("properties")]
         public AMObjectExpandedPropertiesTypeItem[] Properties { get; set; }
@@ -136,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
     public class AMObjectExpandedPropertiesTypeItem
     {
         [JsonProperty("id")]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -190,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
         public string OtherContacts { get; set; }
 
         [JsonProperty("id")]
-        public int UserID { get; set; }
+        public int UserId { get; set; }
 
         [JsonProperty("sAMAccountName")]
         public string UsernameForOlderSystems { get; set; }
@@ -223,16 +224,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
         public string Removed { get; set; }
 
         [JsonProperty("managerId")]
-        public int ManagerID { get; set; }
+        public int ManagerId { get; set; }
 
         [JsonProperty("substituteId")]
-        public int SubstituteID { get; set; }
+        public int SubstituteId { get; set; }
 
         [JsonProperty("personalNumber")]
         public string PersonalNumber { get; set; }
 
         [JsonProperty("localeId")]
-        public int PreferredLanguageID { get; set; }
+        public int PreferredLanguageId { get; set; }
 
         [JsonProperty("timezone")]
         public string TimeZone { get; set; }
@@ -250,19 +251,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
         public string LastName { get; set; }
 
         [JsonProperty("sid")]
-        public string SID { get; set; }
+        public string SId { get; set; }
 
         [JsonProperty("adPath")]
         public string ADPath { get; set; }
 
         [JsonProperty("azureAdObjectId")]
-        public string AzureID { get; set; }
+        public string AzureId { get; set; }
     }
 
     public class WebhookCreatedResponse
     {
         [JsonProperty("id")]
-        public int ID { get; set; }
+        public int Id { get; set; }
     }
 }
 

@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "appfigures")]
         public IBodyWorkflowAction<MyProductsResponse, ApiConnectionActionConfiguration> GetMyProducts()
         {
-            var apiCallPath = "/products/mine";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MyProductsResponse>(callPayload);
+            return new DeferredBodyAction<MyProductsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/products/mine";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<MyProductsResponse>(callPayload);
+            });
         }
     }
 
@@ -25,10 +29,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
     {
         public IBodyWorkflowTrigger<Event[], ApiConnectionTriggerConfiguration> OnNewEvent(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/event_trigger/events";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<Event[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<Event[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/event_trigger/events";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<Event[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<ReviewInfo[], ApiConnectionTriggerConfiguration> OnNewReview(Expression<Func<string>> products = null, FlowRecurrence recurrence = null)

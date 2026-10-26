@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
 {
     using System.Linq.Expressions;
@@ -387,7 +388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
     public class Expense
     {
         [JsonProperty("id")]
-        public int ExpenseID { get; set; }
+        public int ExpenseId { get; set; }
 
         [JsonProperty("markup_percent")]
         public string MarkupPercent { get; set; }
@@ -550,7 +551,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         HRK,
         HTG,
         HUF,
-        IDR,
+        [EnumMember(Value = "IDR")]
+        IdR,
         ILS,
         INR,
         IQD,
@@ -826,7 +828,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         HRK,
         HTG,
         HUF,
-        IDR,
+        [EnumMember(Value = "IDR")]
+        IdR,
         ILS,
         INR,
         IQD,
@@ -945,13 +948,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
     public class Invoice
     {
         [JsonProperty("id")]
-        public int InvoiceID { get; set; }
+        public int InvoiceId { get; set; }
 
         [JsonProperty("invoice_number")]
         public string InvoiceNumber { get; set; }
 
         [JsonProperty("accountid")]
-        public string AccountID { get; set; }
+        public string AccountId { get; set; }
 
         [JsonProperty("currency_code")]
         public string _3LetterCurrencyCode { get; set; }
@@ -969,7 +972,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         public string TwoLetterLanguageCode { get; set; }
 
         [JsonProperty("customerid")]
-        public int CustomerID { get; set; }
+        public int CustomerId { get; set; }
 
         [JsonProperty("organization")]
         public string OrganizationInvoiced { get; set; }
@@ -1047,7 +1050,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
     public class Payment
     {
         [JsonProperty("id")]
-        public int PaymentID { get; set; }
+        public int PaymentId { get; set; }
 
         [JsonProperty("type")]
         public string PaymentType { get; set; }
@@ -1059,16 +1062,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         public string PaymentDate { get; set; }
 
         [JsonProperty("clientid")]
-        public int CustomerID { get; set; }
+        public int CustomerId { get; set; }
 
         [JsonProperty("amount")]
         public PaymentAmountType Amount { get; set; }
 
         [JsonProperty("accounting_systemid")]
-        public string AccountID { get; set; }
+        public string AccountId { get; set; }
 
         [JsonProperty("invoiceid")]
-        public int InvoiceID { get; set; }
+        public int InvoiceId { get; set; }
 
         [JsonProperty("updated")]
         public string LastUpdated { get; set; }

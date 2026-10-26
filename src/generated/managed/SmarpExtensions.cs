@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smarp
 {
     using System.Linq.Expressions;
@@ -14,11 +15,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smarp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smarp")]
         public IBodyWorkflowAction<SmarpRetrieveChannelListResponseItem[], ApiConnectionActionConfiguration> SmarpRetrieveChannelList()
         {
-            var apiCallPath = "/publicapi/channel";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<SmarpRetrieveChannelListResponseItem[]>(callPayload);
+            return new DeferredBodyAction<SmarpRetrieveChannelListResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/publicapi/channel";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<SmarpRetrieveChannelListResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smarp")]

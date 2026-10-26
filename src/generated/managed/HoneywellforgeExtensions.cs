@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
 {
     using System.Linq.Expressions;
@@ -86,15 +87,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "honeywellforge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendEventToForge(Expression<Func<string>> projectId, Expression<Func<string>> bodyeventName, Expression<Func<string>> bodyeventType, Expression<Func<string>> bodymessage, Expression<Func<string>> bodycorrelationID, Expression<Func<string>> bodysource, Expression<Func<string>> bodyconnectorID = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendEventToForge(Expression<Func<string>> projectId, Expression<Func<string>> bodyeventName, Expression<Func<string>> bodyeventType, Expression<Func<string>> bodymessage, Expression<Func<string>> bodycorrelationId, Expression<Func<string>> bodysource, Expression<Func<string>> bodyconnectorId = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_bodyeventName = WorkflowExpression.Compile(bodyeventName, nameof(bodyeventName), required: true);
             var __workflow_bodyeventType = WorkflowExpression.Compile(bodyeventType, nameof(bodyeventType), required: true);
             var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
-            var __workflow_bodycorrelationID = WorkflowExpression.Compile(bodycorrelationID, nameof(bodycorrelationID), required: true);
+            var __workflow_bodycorrelationId = WorkflowExpression.Compile(bodycorrelationId, nameof(bodycorrelationId), required: true);
             var __workflow_bodysource = WorkflowExpression.Compile(bodysource, nameof(bodysource), required: true);
-            var __workflow_bodyconnectorID = WorkflowExpression.Compile(bodyconnectorID, nameof(bodyconnectorID), required: false);
+            var __workflow_bodyconnectorId = WorkflowExpression.Compile(bodyconnectorId, nameof(bodyconnectorId), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}/transactionEvent", __workflow_projectId.WithUrlEncoding(1)));
@@ -109,10 +110,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
                 bodypropCount++;
                 body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
                 bodypropCount++;
-                body["corelationId"] = ExpressionConverter.ConvertO(__workflow_bodycorrelationID);
-                if (__workflow_bodyconnectorID != null)
+                body["corelationId"] = ExpressionConverter.ConvertO(__workflow_bodycorrelationId);
+                if (__workflow_bodyconnectorId != null)
                 {
-                    body["connectorId"] = ExpressionConverter.ConvertO(__workflow_bodyconnectorID);
+                    body["connectorId"] = ExpressionConverter.ConvertO(__workflow_bodyconnectorId);
                     bodypropCount++;
                 }
 

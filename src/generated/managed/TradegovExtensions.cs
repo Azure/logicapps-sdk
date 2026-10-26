@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
 {
     using System.Linq.Expressions;
@@ -41,10 +42,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
         public IBodyWorkflowAction<BSPCountResponse, ApiConnectionActionConfiguration> BusinessServiceProvidersCount()
         {
-            var apiCallPath = "/business_service_providers/v1/count";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BSPCountResponse>(callPayload);
+            return new DeferredBodyAction<BSPCountResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/business_service_providers/v1/count";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<BSPCountResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
@@ -98,10 +102,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
         public IBodyWorkflowAction<ScreeningSourcesResponse, ApiConnectionActionConfiguration> ConsolidatedScreeningListSources()
         {
-            var apiCallPath = "/consolidated_screening_list/v1/sources";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ScreeningSourcesResponse>(callPayload);
+            return new DeferredBodyAction<ScreeningSourcesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/consolidated_screening_list/v1/sources";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ScreeningSourcesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
@@ -176,10 +183,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
         public IBodyWorkflowAction<ITAOfficeCountResponse, ApiConnectionActionConfiguration> ITAOfficeLocationsCount()
         {
-            var apiCallPath = "/ita_office_locations/v1/count";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ITAOfficeCountResponse>(callPayload);
+            return new DeferredBodyAction<ITAOfficeCountResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/ita_office_locations/v1/count";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ITAOfficeCountResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
@@ -227,10 +237,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
         public IBodyWorkflowAction<TradeEventCountResponse, ApiConnectionActionConfiguration> TradeEventsCount()
         {
-            var apiCallPath = "/trade_events/v1/count";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TradeEventCountResponse>(callPayload);
+            return new DeferredBodyAction<TradeEventCountResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/trade_events/v1/count";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TradeEventCountResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
@@ -272,10 +285,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
         public IBodyWorkflowAction<TradeLeadsCountResponse, ApiConnectionActionConfiguration> GetTradeLeadsCount()
         {
-            var apiCallPath = "/trade_leads/v1/count";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TradeLeadsCountResponse>(callPayload);
+            return new DeferredBodyAction<TradeLeadsCountResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/trade_leads/v1/count";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TradeLeadsCountResponse>(callPayload);
+            });
         }
     }
 

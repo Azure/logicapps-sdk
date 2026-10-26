@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rss
 {
     using System.Linq.Expressions;
@@ -56,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rss
     public class FeedItem
     {
         [JsonProperty("id")]
-        public string FeedID { get; set; }
+        public string FeedId { get; set; }
 
         [JsonProperty("title")]
         public string FeedTitle { get; set; }

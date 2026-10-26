@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
 {
     using System.Linq.Expressions;
@@ -244,19 +245,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
         public IBodyWorkflowAction<RateLimitResults, ApiConnectionActionConfiguration> RATELIMIT()
         {
-            var apiCallPath = "/rate_limit";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RateLimitResults>(callPayload);
+            return new DeferredBodyAction<RateLimitResults, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/rate_limit";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<RateLimitResults>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
         public IBodyWorkflowAction<PINGResponse, ApiConnectionActionConfiguration> PING()
         {
-            var apiCallPath = "/ping";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PINGResponse>(callPayload);
+            return new DeferredBodyAction<PINGResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/ping";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PINGResponse>(callPayload);
+            });
         }
     }
 

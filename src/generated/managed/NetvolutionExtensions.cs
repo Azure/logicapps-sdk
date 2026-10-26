@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         public IBodyWorkflowAction<GetEmailTemplatesResponse, ApiConnectionActionConfiguration> GetEmailTemplates()
         {
-            var apiCallPath = "/cdp/mail/list-templates";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetEmailTemplatesResponse>(callPayload);
+            return new DeferredBodyAction<GetEmailTemplatesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/cdp/mail/list-templates";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetEmailTemplatesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
@@ -36,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetContactIDFromSuppressionList(Expression<Func<string>> contactId, Expression<Func<string>> listName)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetContactIdFromSuppressionList(Expression<Func<string>> contactId, Expression<Func<string>> listName)
         {
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
             var __workflow_listName = WorkflowExpression.Compile(listName, nameof(listName), required: true);
@@ -52,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PutContactIDToSuppresionList(Expression<Func<string>> contactId, Expression<Func<string>> listName, Expression<Func<string>> timeSpan)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PutContactIdToSuppresionList(Expression<Func<string>> contactId, Expression<Func<string>> listName, Expression<Func<string>> timeSpan)
         {
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
             var __workflow_listName = WorkflowExpression.Compile(listName, nameof(listName), required: true);
@@ -184,11 +188,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
 
     public class GetWishListResponseResultsTypeItem
     {
-        public string CDPContactID { get; set; }
-        public int UserID { get; set; }
-        public int WishListID { get; set; }
+        [JsonProperty("CDPContactID")]
+        public string CDPContactId { get; set; }
+
+        [JsonProperty("UserID")]
+        public int UserId { get; set; }
+
+        [JsonProperty("WishListID")]
+        public int WishListId { get; set; }
         public string LastUpdated { get; set; }
-        public int LanguageID { get; set; }
+
+        [JsonProperty("LanguageID")]
+        public int LanguageId { get; set; }
     }
 
     public class OnNewEventResponse
@@ -199,11 +210,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
 
     public class OnNewEventResponseResultsTypeItem
     {
-        public int LanguageID { get; set; }
+        [JsonProperty("LanguageID")]
+        public int LanguageId { get; set; }
         public string LanguageName { get; set; }
         public string EventName { get; set; }
         public string Timestamp { get; set; }
-        public string CDPContactID { get; set; }
+
+        [JsonProperty("CDPContactID")]
+        public string CDPContactId { get; set; }
         public OnNewEventResponseResultsTypeItemBrowserType Browser { get; set; }
         public OnNewEventResponseResultsTypeItemListType List { get; set; }
         public OnNewEventResponseResultsTypeItemProductType Product { get; set; }
@@ -262,7 +276,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
 
     public class OnNewUserInSegmentResponseResultsTypeItem
     {
-        public string ID { get; set; }
+        [JsonProperty("ID")]
+        public string Id { get; set; }
         public string CreatedDate { get; set; }
         public string EmailAddress { get; set; }
 
@@ -312,7 +327,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
 
     public class OnNewUserInSegmentResponseResultsTypeItemSegmentsTypeItem
     {
-        public int SegmentID { get; set; }
+        [JsonProperty("SegmentID")]
+        public int SegmentId { get; set; }
         public string MemberSince { get; set; }
     }
 }

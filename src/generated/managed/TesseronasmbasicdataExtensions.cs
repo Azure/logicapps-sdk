@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
 {
     using System.Linq.Expressions;
@@ -620,7 +621,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
 
     public class ApiEnterpriseGetEnterprisesResponseEnterprisesTypeItemAddressesTypeItem
     {
-        public int GlobalAddressID { get; set; }
+        [JsonProperty("GlobalAddressID")]
+        public int GlobalAddressId { get; set; }
         public string Street { get; set; }
         public string Postcode { get; set; }
         public string City { get; set; }
@@ -628,7 +630,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
         public string CountyShort { get; set; }
         public string CountryCode { get; set; }
         public string CountryName { get; set; }
-        public int CountryID { get; set; }
+
+        [JsonProperty("CountryID")]
+        public int CountryId { get; set; }
         public string Address1 { get; set; }
         public string Address2 { get; set; }
         public string Address3 { get; set; }
@@ -720,7 +724,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
 
     public class ApiContactGetContactsResponseContactsTypeItemAddressesTypeItem
     {
-        public int GlobalAddressID { get; set; }
+        [JsonProperty("GlobalAddressID")]
+        public int GlobalAddressId { get; set; }
         public string Street { get; set; }
         public string Postcode { get; set; }
         public string City { get; set; }
@@ -728,7 +733,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
         public string CountyShort { get; set; }
         public string CountryCode { get; set; }
         public string CountryName { get; set; }
-        public int CountryID { get; set; }
+
+        [JsonProperty("CountryID")]
+        public int CountryId { get; set; }
         public string Address1 { get; set; }
         public string Address2 { get; set; }
         public string Address3 { get; set; }

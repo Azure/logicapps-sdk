@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.M365updatesapp
 {
     using System.Linq.Expressions;
@@ -29,10 +30,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.M365updatesapp
 
         public IBodyWorkflowTrigger<JToken[], ApiConnectionTriggerConfiguration> ListReceivedReports(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/connector/powerautomate/triggers/reports";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<JToken[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<JToken[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/connector/powerautomate/triggers/reports";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<JToken[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

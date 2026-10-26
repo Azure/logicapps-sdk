@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         public IBodyWorkflowAction<UserProfile, ApiConnectionActionConfiguration> GetUserProfile()
         {
-            var apiCallPath = "/UserProfile";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserProfile>(callPayload);
+            return new DeferredBodyAction<UserProfile, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/UserProfile";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UserProfile>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
@@ -110,15 +114,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddIdeaVote(Expression<Func<string>> ideaID)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddIdeaVote(Expression<Func<string>> ideaId)
         {
-            var __workflow_ideaID = WorkflowExpression.Compile(ideaID, nameof(ideaID), required: true);
+            var __workflow_ideaId = WorkflowExpression.Compile(ideaId, nameof(ideaId), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AddIdeaVote";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["IdeaID"] = ExpressionConverter.Convert(__workflow_ideaID);
+                callPayload.Queries["IdeaID"] = ExpressionConverter.Convert(__workflow_ideaId);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -157,60 +161,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
     {
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewCourseUserNotification(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/NewCourseUserNotification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targeturl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/NewCourseUserNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targeturl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewIdeaNotification(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/NewIdeaNotification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targeturl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/NewIdeaNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targeturl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewCoursePublishedNotification(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/NewCoursePublishedNotification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targeturl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/NewCoursePublishedNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targeturl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 
     public class UserProfile
     {
         [JsonProperty("userID")]
-        public string UserID { get; set; }
+        public string UserId { get; set; }
 
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
@@ -231,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
     public class CourseSummaryResponseCoursesTypeItem
     {
         [JsonProperty("courseID")]
-        public string CourseID { get; set; }
+        public string CourseId { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -252,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         public double Price { get; set; }
 
         [JsonProperty("instructorID")]
-        public string InstructorID { get; set; }
+        public string InstructorId { get; set; }
 
         [JsonProperty("instructorName")]
         public string InstructorName { get; set; }
@@ -291,7 +304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
     public class InstructorSummaryResponseInstructorsTypeItem
     {
         [JsonProperty("instructorID")]
-        public string InstructorID { get; set; }
+        public string InstructorId { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -339,7 +352,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         public int DaysSinceLastAccess { get; set; }
 
         [JsonProperty("courseID")]
-        public string CourseID { get; set; }
+        public string CourseId { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -357,7 +370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         public string Abstract { get; set; }
 
         [JsonProperty("instructorID")]
-        public string InstructorID { get; set; }
+        public string InstructorId { get; set; }
 
         [JsonProperty("instructorName")]
         public string InstructorName { get; set; }
@@ -396,10 +409,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
     public class IdeaSummaryResponseIdeasTypeItem
     {
         [JsonProperty("ideaID")]
-        public string IdeaID { get; set; }
+        public string IdeaId { get; set; }
 
         [JsonProperty("ideaSetID")]
-        public string IdeaSetID { get; set; }
+        public string IdeaSetId { get; set; }
 
         [JsonProperty("idea")]
         public string Idea { get; set; }
@@ -426,7 +439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         public CourseDetailModulesTypeItem[] Modules { get; set; }
 
         [JsonProperty("courseID")]
-        public string CourseID { get; set; }
+        public string CourseId { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -447,7 +460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         public double Price { get; set; }
 
         [JsonProperty("instructorID")]
-        public string InstructorID { get; set; }
+        public string InstructorId { get; set; }
 
         [JsonProperty("instructorName")]
         public string InstructorName { get; set; }
@@ -474,7 +487,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
     public class CourseDetailModulesTypeItem
     {
         [JsonProperty("moduleID")]
-        public string ModuleID { get; set; }
+        public string ModuleId { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -489,7 +502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
     public class CourseDetailModulesTypeItemUnitsTypeItem
     {
         [JsonProperty("unitID")]
-        public string UnitID { get; set; }
+        public string UnitId { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -516,7 +529,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
     public class CourseDetailModulesTypeItemUnitsTypeItemGuestsTypeItem
     {
         [JsonProperty("instructorID")]
-        public string InstructorID { get; set; }
+        public string InstructorId { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -543,16 +556,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         public string TwitterHandle { get; set; }
 
         [JsonProperty("linkedInID")]
-        public string LinkedInID { get; set; }
+        public string LinkedInId { get; set; }
 
         [JsonProperty("gitHubID")]
-        public string GitHubID { get; set; }
+        public string GitHubId { get; set; }
 
         [JsonProperty("facebookUrl")]
         public string FacebookUrl { get; set; }
 
         [JsonProperty("instructorID")]
-        public string InstructorID { get; set; }
+        public string InstructorId { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -567,7 +580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
     public class InstructorDetailCoursesTypeItem
     {
         [JsonProperty("courseID")]
-        public string CourseID { get; set; }
+        public string CourseId { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -588,7 +601,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         public double Price { get; set; }
 
         [JsonProperty("instructorID")]
-        public string InstructorID { get; set; }
+        public string InstructorId { get; set; }
 
         [JsonProperty("instructorName")]
         public string InstructorName { get; set; }
@@ -630,7 +643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
     public class SearchResponseCoursesTypeItem
     {
         [JsonProperty("courseID")]
-        public string CourseID { get; set; }
+        public string CourseId { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -651,7 +664,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         public double Price { get; set; }
 
         [JsonProperty("instructorID")]
-        public string InstructorID { get; set; }
+        public string InstructorId { get; set; }
 
         [JsonProperty("instructorName")]
         public string InstructorName { get; set; }

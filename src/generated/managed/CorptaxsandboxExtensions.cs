@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
 {
     using System.Linq.Expressions;
@@ -668,11 +669,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReturnCalculationDetails(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodyreturnName)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReturnCalculationDetails(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodyreturnName, Expression<Func<bodyformatInput>> bodyformat = null)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
             var __workflow_bodyreturnName = WorkflowExpression.Compile(bodyreturnName, nameof(bodyreturnName), required: true);
+            var __workflow_bodyformat = WorkflowExpression.Compile(bodyformat, nameof(bodyformat), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ReturnCalculationDetails";
@@ -684,6 +686,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
                 var bodypropCount = 0;
                 bodypropCount++;
                 body["returnName"] = ExpressionConverter.ConvertO(__workflow_bodyreturnName);
+                if (__workflow_bodyformat != null)
+                {
+                    if (__workflow_bodyformat != null)
+                    {
+                        body["format"] = ExpressionConverter.ConvertO(__workflow_bodyformat);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["format"] = "JSON";
+                    bodypropCount++;
+                }
+
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -833,6 +851,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
     {
         Xml,
         Pdf
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodyformatInput
+    {
+        JSON,
+        CSV
     }
 }
 

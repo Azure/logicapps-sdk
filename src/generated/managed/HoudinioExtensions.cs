@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
 {
     using System.Linq.Expressions;
@@ -41,15 +42,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "houdinio")]
-        public IBodyWorkflowAction<ScanResult, ApiConnectionActionConfiguration> RetrieveScan(Expression<Func<string>> scanID)
+        public IBodyWorkflowAction<ScanResult, ApiConnectionActionConfiguration> RetrieveScan(Expression<Func<string>> scanId)
         {
-            var __workflow_scanID = WorkflowExpression.Compile(scanID, nameof(scanID), required: true);
+            var __workflow_scanId = WorkflowExpression.Compile(scanId, nameof(scanId), required: true);
             return new DeferredBodyAction<ScanResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/scan/result";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["scanID"] = ExpressionConverter.Convert(__workflow_scanID);
+                callPayload.Queries["scanID"] = ExpressionConverter.Convert(__workflow_scanId);
                 return new ApiConnectionAction<ScanResult>(callPayload);
             });
         }
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
     public class ScanResponse
     {
         [JsonProperty("scanID")]
-        public string ScanID { get; set; }
+        public string ScanId { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -71,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
     public class ScanResult
     {
         [JsonProperty("scanID")]
-        public string ScanID { get; set; }
+        public string ScanId { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }

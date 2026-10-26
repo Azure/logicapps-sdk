@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
 {
     using System.Linq.Expressions;
@@ -187,10 +188,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]
         public IBodyWorkflowAction<Folder[], ApiConnectionActionConfiguration> GetFolders()
         {
-            var apiCallPath = "/folders/get.php";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Folder[]>(callPayload);
+            return new DeferredBodyAction<Folder[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/folders/get.php";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Folder[]>(callPayload);
+            });
         }
     }
 
@@ -198,10 +202,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
     {
         public IBodyWorkflowTrigger<TaskObject[], ApiConnectionTriggerConfiguration> TrigOnNewTask(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/tasks/get.php";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TaskObject[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<TaskObject[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/tasks/get.php";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<TaskObject[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

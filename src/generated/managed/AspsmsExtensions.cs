@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aspsms
 {
     using System.Linq.Expressions;
@@ -43,10 +44,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aspsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aspsms")]
         public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ASPSMSCredits()
         {
-            var apiCallPath = "/ASPSMSCredits";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/ASPSMSCredits";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 

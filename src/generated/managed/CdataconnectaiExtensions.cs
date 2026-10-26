@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdataconnectai
 {
     using System.Linq.Expressions;
@@ -85,10 +86,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdataconnectai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdataconnectai")]
         public IBodyWorkflowAction<OAuthAuthorizationServerMetadataResponse, ApiConnectionActionConfiguration> OAuthAuthorizationServerMetadata()
         {
-            var apiCallPath = "/.well-known/oauth-authorization-server";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<OAuthAuthorizationServerMetadataResponse>(callPayload);
+            return new DeferredBodyAction<OAuthAuthorizationServerMetadataResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/.well-known/oauth-authorization-server";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<OAuthAuthorizationServerMetadataResponse>(callPayload);
+            });
         }
     }
 

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
 {
     using System.Linq.Expressions;
@@ -12,11 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
     public class BlackbaudlistsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudlists")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AppendIDsToList(Expression<Func<bodylistTypeInput>> bodylistType, Expression<Func<string>> bodylist, Expression<Func<string[]>> bodyiDS)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AppendIDsToList(Expression<Func<bodylistTypeInput>> bodylistType, Expression<Func<string>> bodylist, Expression<Func<string[]>> bodyidS)
         {
             var __workflow_bodylistType = WorkflowExpression.Compile(bodylistType, nameof(bodylistType), required: true);
             var __workflow_bodylist = WorkflowExpression.Compile(bodylist, nameof(bodylist), required: true);
-            var __workflow_bodyiDS = WorkflowExpression.Compile(bodyiDS, nameof(bodyiDS), required: true);
+            var __workflow_bodyidS = WorkflowExpression.Compile(bodyidS, nameof(bodyidS), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/list/v1/appendidstolist";
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
                 bodypropCount++;
                 body["list_id"] = ExpressionConverter.ConvertO(__workflow_bodylist);
                 bodypropCount++;
-                body["ids"] = ExpressionConverter.ConvertO(__workflow_bodyiDS);
+                body["ids"] = ExpressionConverter.ConvertO(__workflow_bodyidS);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -40,13 +41,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudlists")]
-        public IBodyWorkflowAction<ListApiCreatedList, ApiConnectionActionConfiguration> CreateListFromIDs(Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription, Expression<Func<bodylistTypeInput>> bodylistType, Expression<Func<bodypermissionsInput>> bodypermissions, Expression<Func<string[]>> bodyiDS)
+        public IBodyWorkflowAction<ListApiCreatedList, ApiConnectionActionConfiguration> CreateListFromIDs(Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription, Expression<Func<bodylistTypeInput>> bodylistType, Expression<Func<bodypermissionsInput>> bodypermissions, Expression<Func<string[]>> bodyidS)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
             var __workflow_bodylistType = WorkflowExpression.Compile(bodylistType, nameof(bodylistType), required: true);
             var __workflow_bodypermissions = WorkflowExpression.Compile(bodypermissions, nameof(bodypermissions), required: true);
-            var __workflow_bodyiDS = WorkflowExpression.Compile(bodyiDS, nameof(bodyiDS), required: true);
+            var __workflow_bodyidS = WorkflowExpression.Compile(bodyidS, nameof(bodyidS), required: true);
             return new DeferredBodyAction<ListApiCreatedList, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/list/v1/createlistfromids";
@@ -63,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
                 bodypropCount++;
                 body["list_permissions"] = ExpressionConverter.ConvertO(__workflow_bodypermissions);
                 bodypropCount++;
-                body["ids"] = ExpressionConverter.ConvertO(__workflow_bodyiDS);
+                body["ids"] = ExpressionConverter.ConvertO(__workflow_bodyidS);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -90,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
     public class ListApiCreatedList
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

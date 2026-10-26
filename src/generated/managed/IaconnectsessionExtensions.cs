@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
 {
     using System.Linq.Expressions;
@@ -128,27 +129,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<KillProcessIDResponse, ApiConnectionActionConfiguration> KillProcessID(Expression<Func<int>> killProcessIDprocessID, Expression<Func<string>> killProcessIDworkflow)
+        public IBodyWorkflowAction<KillProcessIdResponse, ApiConnectionActionConfiguration> KillProcessId(Expression<Func<int>> killProcessIDprocessId, Expression<Func<string>> killProcessIDworkflow)
         {
-            var __workflow_killProcessIDprocessID = WorkflowExpression.Compile(killProcessIDprocessID, nameof(killProcessIDprocessID), required: true);
+            var __workflow_killProcessIDprocessId = WorkflowExpression.Compile(killProcessIDprocessId, nameof(killProcessIDprocessId), required: true);
             var __workflow_killProcessIDworkflow = WorkflowExpression.Compile(killProcessIDworkflow, nameof(killProcessIDworkflow), required: true);
-            return new DeferredBodyAction<KillProcessIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<KillProcessIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/KillProcessID";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var killProcessID = new JObject();
-                var killProcessIDpropCount = 0;
-                killProcessIDpropCount++;
-                killProcessID["ProcessID"] = ExpressionConverter.ConvertO(__workflow_killProcessIDprocessID);
-                killProcessIDpropCount++;
-                killProcessID["Workflow"] = ExpressionConverter.ConvertO(__workflow_killProcessIDworkflow);
-                if (killProcessIDpropCount > 0)
+                var killProcessId = new JObject();
+                var killProcessIdpropCount = 0;
+                killProcessIdpropCount++;
+                killProcessId["ProcessID"] = ExpressionConverter.ConvertO(__workflow_killProcessIDprocessId);
+                killProcessIdpropCount++;
+                killProcessId["Workflow"] = ExpressionConverter.ConvertO(__workflow_killProcessIDworkflow);
+                if (killProcessIdpropCount > 0)
                 {
-                    callPayload.Body = killProcessID;
+                    callPayload.Body = killProcessId;
                 }
 
-                return new ApiConnectionAction<KillProcessIDResponse>(callPayload);
+                return new ApiConnectionAction<KillProcessIdResponse>(callPayload);
             });
         }
 
@@ -222,27 +223,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetProcessByPIDResponse, ApiConnectionActionConfiguration> GetProcessByPID(Expression<Func<int>> getProcessByPIDprocessId, Expression<Func<string>> getProcessByPIDworkflow)
+        public IBodyWorkflowAction<GetProcessByPIdResponse, ApiConnectionActionConfiguration> GetProcessByPId(Expression<Func<int>> getProcessByPIDprocessId, Expression<Func<string>> getProcessByPIDworkflow)
         {
             var __workflow_getProcessByPIDprocessId = WorkflowExpression.Compile(getProcessByPIDprocessId, nameof(getProcessByPIDprocessId), required: true);
             var __workflow_getProcessByPIDworkflow = WorkflowExpression.Compile(getProcessByPIDworkflow, nameof(getProcessByPIDworkflow), required: true);
-            return new DeferredBodyAction<GetProcessByPIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetProcessByPIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Environment/GetProcessByPID";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getProcessByPID = new JObject();
-                var getProcessByPIDpropCount = 0;
-                getProcessByPIDpropCount++;
-                getProcessByPID["ProcessId"] = ExpressionConverter.ConvertO(__workflow_getProcessByPIDprocessId);
-                getProcessByPIDpropCount++;
-                getProcessByPID["Workflow"] = ExpressionConverter.ConvertO(__workflow_getProcessByPIDworkflow);
-                if (getProcessByPIDpropCount > 0)
+                var getProcessByPId = new JObject();
+                var getProcessByPIdpropCount = 0;
+                getProcessByPIdpropCount++;
+                getProcessByPId["ProcessId"] = ExpressionConverter.ConvertO(__workflow_getProcessByPIDprocessId);
+                getProcessByPIdpropCount++;
+                getProcessByPId["Workflow"] = ExpressionConverter.ConvertO(__workflow_getProcessByPIDworkflow);
+                if (getProcessByPIdpropCount > 0)
                 {
-                    callPayload.Body = getProcessByPID;
+                    callPayload.Body = getProcessByPId;
                 }
 
-                return new ApiConnectionAction<GetProcessByPIDResponse>(callPayload);
+                return new ApiConnectionAction<GetProcessByPIdResponse>(callPayload);
             });
         }
 
@@ -9244,19 +9245,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<OrchestratorGetStatusResponse, ApiConnectionActionConfiguration> OrchestratorGetStatus()
         {
-            var apiCallPath = "/OrchestratorController/OrchestratorGetStatus";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<OrchestratorGetStatusResponse>(callPayload);
+            return new DeferredBodyAction<OrchestratorGetStatusResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/OrchestratorController/OrchestratorGetStatus";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<OrchestratorGetStatusResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<OrchestratorGetWorkerAvailabilityStatusOverviewResponse, ApiConnectionActionConfiguration> OrchestratorGetWorkerAvailabilityStatusOverview()
         {
-            var apiCallPath = "/OrchestratorController/OrchestratorGetWorkerAvailabilityStatusOverview";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<OrchestratorGetWorkerAvailabilityStatusOverviewResponse>(callPayload);
+            return new DeferredBodyAction<OrchestratorGetWorkerAvailabilityStatusOverviewResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/OrchestratorController/OrchestratorGetWorkerAvailabilityStatusOverview";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<OrchestratorGetWorkerAvailabilityStatusOverviewResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -11042,7 +11049,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int NumberOfProcessesKilled { get; set; }
     }
 
-    public class KillProcessIDResponse
+    public class KillProcessIdResponse
     {
         public int NumberOfProcessesKilled { get; set; }
     }
@@ -11063,7 +11070,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int NumberOfAgentsFailedToKill { get; set; }
     }
 
-    public class GetProcessByPIDResponse
+    public class GetProcessByPIdResponse
     {
         public bool ProcessRunning { get; set; }
     }

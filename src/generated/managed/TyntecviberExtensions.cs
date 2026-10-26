@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
 {
     using System.Linq.Expressions;
@@ -67,14 +68,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecviber")]
-        public IBodyWorkflowAction<SendViberFileV3Response, ApiConnectionActionConfiguration> SendViberFile(Expression<Func<string>> bodyfrom, Expression<Func<string>> bodyto, Expression<Func<string>> bodymessagePurpose, Expression<Func<string>> bodycontentfileurl, Expression<Func<string>> bodycontentfilefilename, Expression<Func<string>> bodycontentfilefiletype)
+        public IBodyWorkflowAction<SendViberFileV3Response, ApiConnectionActionConfiguration> SendViberFile(Expression<Func<string>> bodyfrom, Expression<Func<string>> bodyto, Expression<Func<string>> bodymessagePurpose, Expression<Func<string>> bodycontentFileurl, Expression<Func<string>> bodycontentFilefilename, Expression<Func<string>> bodycontentFilefiletype)
         {
             var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: true);
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodymessagePurpose = WorkflowExpression.Compile(bodymessagePurpose, nameof(bodymessagePurpose), required: true);
-            var __workflow_bodycontentfileurl = WorkflowExpression.Compile(bodycontentfileurl, nameof(bodycontentfileurl), required: true);
-            var __workflow_bodycontentfilefilename = WorkflowExpression.Compile(bodycontentfilefilename, nameof(bodycontentfilefilename), required: true);
-            var __workflow_bodycontentfilefiletype = WorkflowExpression.Compile(bodycontentfilefiletype, nameof(bodycontentfilefiletype), required: true);
+            var __workflow_bodycontentFileurl = WorkflowExpression.Compile(bodycontentFileurl, nameof(bodycontentFileurl), required: true);
+            var __workflow_bodycontentFilefilename = WorkflowExpression.Compile(bodycontentFilefilename, nameof(bodycontentFilefilename), required: true);
+            var __workflow_bodycontentFilefiletype = WorkflowExpression.Compile(bodycontentFilefiletype, nameof(bodycontentFilefiletype), required: true);
             return new DeferredBodyAction<SendViberFileV3Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/viber/file";
@@ -94,17 +95,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
                 var contentObjectpropCount = 0;
                 contentObject["contentType"] = "file";
                 contentObjectpropCount++;
-                var fileObject = new JObject();
-                var fileObjectpropCount = 0;
-                fileObjectpropCount++;
-                fileObject["url"] = ExpressionConverter.ConvertO(__workflow_bodycontentfileurl);
-                fileObjectpropCount++;
-                fileObject["filename"] = ExpressionConverter.ConvertO(__workflow_bodycontentfilefilename);
-                fileObjectpropCount++;
-                fileObject["filetype"] = ExpressionConverter.ConvertO(__workflow_bodycontentfilefiletype);
-                if (fileObjectpropCount > 0)
+                var @fileObject = new JObject();
+                var @fileObjectpropCount = 0;
+                @fileObjectpropCount++;
+                @fileObject["url"] = ExpressionConverter.ConvertO(__workflow_bodycontentFileurl);
+                @fileObjectpropCount++;
+                @fileObject["filename"] = ExpressionConverter.ConvertO(__workflow_bodycontentFilefilename);
+                @fileObjectpropCount++;
+                @fileObject["filetype"] = ExpressionConverter.ConvertO(__workflow_bodycontentFilefiletype);
+                if (@fileObjectpropCount > 0)
                 {
-                    contentObject["file"] = fileObject;
+                    contentObject["file"] = @fileObject;
                     contentObjectpropCount++;
                 }
 

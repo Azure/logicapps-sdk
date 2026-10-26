@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
 {
     using System.Linq.Expressions;
@@ -103,10 +104,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
         public IBodyWorkflowAction<ListUsersResponse, ApiConnectionActionConfiguration> ListUsers()
         {
-            var apiCallPath = "/users.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListUsersResponse>(callPayload);
+            return new DeferredBodyAction<ListUsersResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/users.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListUsersResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
@@ -127,10 +131,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
     {
         public IBodyWorkflowTrigger<ListProjectsResponse, ApiConnectionTriggerConfiguration> OnNewProject(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/new_project_trigger/projects.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListProjectsResponse>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<ListProjectsResponse, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/new_project_trigger/projects.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<ListProjectsResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<ListIssuesResponse, ApiConnectionTriggerConfiguration> OnNewIssue(Expression<Func<string>> projectId, FlowRecurrence recurrence = null)

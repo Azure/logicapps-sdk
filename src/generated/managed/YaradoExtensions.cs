@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yarado
 {
     using System.Linq.Expressions;
@@ -14,19 +15,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yarado
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yarado")]
         public IBodyWorkflowAction<GetRobotsResponseItem[], ApiConnectionActionConfiguration> GetRobots()
         {
-            var apiCallPath = "/v1/robots";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetRobotsResponseItem[]>(callPayload);
+            return new DeferredBodyAction<GetRobotsResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/robots";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetRobotsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yarado")]
         public IBodyWorkflowAction<GetTaskFilesResponseItem[], ApiConnectionActionConfiguration> GetTaskFiles()
         {
-            var apiCallPath = "/v1/task-files";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTaskFilesResponseItem[]>(callPayload);
+            return new DeferredBodyAction<GetTaskFilesResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/task-files";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetTaskFilesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yarado")]

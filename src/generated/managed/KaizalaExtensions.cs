@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 {
     using System.Linq.Expressions;
@@ -41,49 +42,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 }
 
                 return new ApiConnectionAction<SendMessageResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IBodyWorkflowAction<SendActionResponse, ApiConnectionActionConfiguration> SendActions(Expression<Func<string>> groupId, Expression<Func<actionTypeInput>> actionType = null, Expression<Func<string>> id = null, Expression<Func<object>> requestactionBody = null, Expression<Func<string>> requestsubscribers = null, Expression<Func<sendToAllInput>> sendToAll = null)
-        {
-            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
-            var __workflow_actionType = WorkflowExpression.Compile(actionType, nameof(actionType), required: false);
-            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
-            var __workflow_requestactionBody = WorkflowExpression.Compile(requestactionBody, nameof(requestactionBody), required: false);
-            var __workflow_requestsubscribers = WorkflowExpression.Compile(requestsubscribers, nameof(requestsubscribers), required: false);
-            var __workflow_sendToAll = WorkflowExpression.Compile(sendToAll, nameof(sendToAll), required: false);
-            return new DeferredBodyAction<SendActionResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/groups/{0}/actions", __workflow_groupId.WithUrlEncoding(1)));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_actionType != null)
-                    callPayload.Queries["actionType"] = ExpressionConverter.Convert(__workflow_actionType);
-                if (__workflow_id != null)
-                    callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
-                if (__workflow_sendToAll != null)
-                    callPayload.Queries["sendToAll"] = ExpressionConverter.Convert(__workflow_sendToAll);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (__workflow_requestactionBody != null)
-                {
-                    request["actionBody"] = ExpressionConverter.ConvertO(__workflow_requestactionBody);
-                    requestpropCount++;
-                }
-
-                if (__workflow_requestsubscribers != null)
-                {
-                    request["subscribers"] = ExpressionConverter.ConvertO(__workflow_requestsubscribers);
-                    requestpropCount++;
-                }
-
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
-                return new ApiConnectionAction<SendActionResponse>(callPayload);
             });
         }
 
@@ -405,19 +363,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IBodyWorkflowAction<UploadMediaResponse, ApiConnectionActionConfiguration> UploadMediaFileContent(Expression<Func<object>> fileContent)
-        {
-            var __workflow_fileContent = WorkflowExpression.Compile(fileContent, nameof(fileContent), required: true);
-            return new DeferredBodyAction<UploadMediaResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/v1/media";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<UploadMediaResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IBodyWorkflowAction<UploadMediaResponse, ApiConnectionActionConfiguration> UploadMediaFromURL(Expression<Func<string>> mediaUrlmediaUrl)
         {
             var __workflow_mediaUrlmediaUrl = WorkflowExpression.Compile(mediaUrlmediaUrl, nameof(mediaUrlmediaUrl), required: true);
@@ -442,25 +387,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IBodyWorkflowAction<UploadMediaResponse, ApiConnectionActionConfiguration> UploadMediaFromAttachment()
         {
-            var apiCallPath = "/v1/media/attachment";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            var fileContentObject = new JObject();
-            var fileContentObjectpropCount = 0;
-            if (fileContentObjectpropCount > 0)
+            return new DeferredBodyAction<UploadMediaResponse, ApiConnectionActionConfiguration>(() =>
             {
-                request["fileContent"] = fileContentObject;
-                requestpropCount++;
-            }
+                var apiCallPath = "/v1/media/attachment";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                var fileContentObject = new JObject();
+                var fileContentObjectpropCount = 0;
+                if (fileContentObjectpropCount > 0)
+                {
+                    request["fileContent"] = fileContentObject;
+                    requestpropCount++;
+                }
 
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
 
-            return new ApiConnectionAction<UploadMediaResponse>(callPayload);
+                return new ApiConnectionAction<UploadMediaResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
@@ -473,6 +421,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
+        public IBodyWorkflowAction<SendActionResponse, ApiConnectionActionConfiguration> SendActions(Expression<Func<string>> groupId, Expression<Func<actionTypeInput>> actionType = null, Expression<Func<object>> requestactionBody = null, Expression<Func<string>> requestsubscribers = null, Expression<Func<sendToAllInput>> sendToAll = null)
+        {
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_actionType = WorkflowExpression.Compile(actionType, nameof(actionType), required: false);
+            var __workflow_requestactionBody = WorkflowExpression.Compile(requestactionBody, nameof(requestactionBody), required: false);
+            var __workflow_requestsubscribers = WorkflowExpression.Compile(requestsubscribers, nameof(requestsubscribers), required: false);
+            var __workflow_sendToAll = WorkflowExpression.Compile(sendToAll, nameof(sendToAll), required: false);
+            return new DeferredBodyAction<SendActionResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/actions", __workflow_groupId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["actionType"] = Convert.ToString("Action Package");
+                if (__workflow_actionType != null)
+                    callPayload.Queries["actionType"] = ExpressionConverter.Convert(__workflow_actionType);
+                if (__workflow_sendToAll != null)
+                    callPayload.Queries["sendToAll"] = ExpressionConverter.Convert(__workflow_sendToAll);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (__workflow_requestactionBody != null)
+                {
+                    request["actionBody"] = ExpressionConverter.ConvertO(__workflow_requestactionBody);
+                    requestpropCount++;
+                }
+
+                if (__workflow_requestsubscribers != null)
+                {
+                    request["subscribers"] = ExpressionConverter.ConvertO(__workflow_requestsubscribers);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<SendActionResponse>(callPayload);
             });
         }
     }

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
 {
     using System.Linq.Expressions;
@@ -269,7 +270,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         FI,
         FR,
         HU,
-        ID,
+        [EnumMember(Value = "ID")]
+        Id,
         IT,
         JA,
         KO,

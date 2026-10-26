@@ -4,6 +4,8 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonintensityip
 {
+    using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -13,55 +15,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonintensityip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonintensityip")]
         public IBodyWorkflowAction<GetIntensityResponse, ApiConnectionActionConfiguration> GetIntensity()
         {
-            var apiCallPath = "/intensity";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetIntensityResponse>(callPayload);
+            return new DeferredBodyAction<GetIntensityResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/intensity";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetIntensityResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonintensityip")]
         public IBodyWorkflowAction<GetIntensityFactorsResponse, ApiConnectionActionConfiguration> GetIntensityFactors()
         {
-            var apiCallPath = "/intensity/factors";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetIntensityFactorsResponse>(callPayload);
+            return new DeferredBodyAction<GetIntensityFactorsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/intensity/factors";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetIntensityFactorsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonintensityip")]
         public IBodyWorkflowAction<GetGenerationResponse, ApiConnectionActionConfiguration> GetGeneration()
         {
-            var apiCallPath = "/generation";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetGenerationResponse>(callPayload);
+            return new DeferredBodyAction<GetGenerationResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/generation";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetGenerationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonintensityip")]
         public IBodyWorkflowAction<GetIntensityEnglandResponse, ApiConnectionActionConfiguration> GetIntensityEngland()
         {
-            var apiCallPath = "/regional/england";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetIntensityEnglandResponse>(callPayload);
+            return new DeferredBodyAction<GetIntensityEnglandResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/regional/england";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetIntensityEnglandResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonintensityip")]
         public IBodyWorkflowAction<GetIntensityScotlandResponse, ApiConnectionActionConfiguration> GetIntensityScotland()
         {
-            var apiCallPath = "/regional/scotland";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetIntensityScotlandResponse>(callPayload);
+            return new DeferredBodyAction<GetIntensityScotlandResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/regional/scotland";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetIntensityScotlandResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonintensityip")]
         public IBodyWorkflowAction<GetIntensityWalesResponse, ApiConnectionActionConfiguration> GetIntensityWales()
         {
-            var apiCallPath = "/regional/wales";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetIntensityWalesResponse>(callPayload);
+            return new DeferredBodyAction<GetIntensityWalesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/regional/wales";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetIntensityWalesResponse>(callPayload);
+            });
         }
     }
 

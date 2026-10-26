@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
 {
     using System.Linq.Expressions;
@@ -206,10 +207,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
         public IBodyWorkflowAction<SeismicLiveSendLiveSendSettingsResponse, ApiConnectionActionConfiguration> GetLiveSendSettings()
         {
-            var apiCallPath = "/liveSend/settings";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SeismicLiveSendLiveSendSettingsResponse>(callPayload);
+            return new DeferredBodyAction<SeismicLiveSendLiveSendSettingsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/liveSend/settings";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SeismicLiveSendLiveSendSettingsResponse>(callPayload);
+            });
         }
     }
 

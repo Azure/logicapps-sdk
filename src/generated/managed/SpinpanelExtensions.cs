@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
 {
     using System.Linq.Expressions;
@@ -14,11 +15,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
         public IBodyWorkflowAction<GetLocalesResponse, ApiConnectionActionConfiguration> GetLocales()
         {
-            var apiCallPath = "/directory/v1/locales";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["provider"] = Convert.ToString("spinpanel.platform");
-            return new ApiConnectionAction<GetLocalesResponse>(callPayload);
+            return new DeferredBodyAction<GetLocalesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/directory/v1/locales";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["provider"] = Convert.ToString("spinpanel.platform");
+                return new ApiConnectionAction<GetLocalesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
@@ -110,11 +114,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
         public IBodyWorkflowAction<GetOrganizationsResponse, ApiConnectionActionConfiguration> GetOrganizations()
         {
-            var apiCallPath = "/directory/v1/organizations";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["provider"] = Convert.ToString("spinpanel.users");
-            return new ApiConnectionAction<GetOrganizationsResponse>(callPayload);
+            return new DeferredBodyAction<GetOrganizationsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/directory/v1/organizations";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["provider"] = Convert.ToString("spinpanel.users");
+                return new ApiConnectionAction<GetOrganizationsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
@@ -252,11 +259,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
         public IBodyWorkflowAction<GetGroupsResponse, ApiConnectionActionConfiguration> GetGroups()
         {
-            var apiCallPath = "/directory/v1/usergroups";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["provider"] = Convert.ToString("spinpanel.groups");
-            return new ApiConnectionAction<GetGroupsResponse>(callPayload);
+            return new DeferredBodyAction<GetGroupsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/directory/v1/usergroups";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["provider"] = Convert.ToString("spinpanel.groups");
+                return new ApiConnectionAction<GetGroupsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]

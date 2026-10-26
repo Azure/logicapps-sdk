@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
 {
     using System.Linq.Expressions;
@@ -216,12 +217,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<SPLHistoryResponse, ApiConnectionActionConfiguration> SPLHistory(Expression<Func<string>> sETID)
+        public IBodyWorkflowAction<SPLHistoryResponse, ApiConnectionActionConfiguration> SPLHistory(Expression<Func<string>> sETId)
         {
-            var __workflow_sETID = WorkflowExpression.Compile(sETID, nameof(sETID), required: true);
+            var __workflow_sETId = WorkflowExpression.Compile(sETId, nameof(sETId), required: true);
             return new DeferredBodyAction<SPLHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/spls/{0}/history.json", __workflow_sETID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/spls/{0}/history.json", __workflow_sETId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SPLHistoryResponse>(callPayload);
@@ -229,12 +230,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<SPLMediaResponse, ApiConnectionActionConfiguration> SPLMedia(Expression<Func<string>> sETID)
+        public IBodyWorkflowAction<SPLMediaResponse, ApiConnectionActionConfiguration> SPLMedia(Expression<Func<string>> sETId)
         {
-            var __workflow_sETID = WorkflowExpression.Compile(sETID, nameof(sETID), required: true);
+            var __workflow_sETId = WorkflowExpression.Compile(sETId, nameof(sETId), required: true);
             return new DeferredBodyAction<SPLMediaResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/spls/{0}/media.json", __workflow_sETID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/spls/{0}/media.json", __workflow_sETId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SPLMediaResponse>(callPayload);
@@ -242,12 +243,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<SPLNDCResponse, ApiConnectionActionConfiguration> SPLNDC(Expression<Func<string>> sETID)
+        public IBodyWorkflowAction<SPLNDCResponse, ApiConnectionActionConfiguration> SPLNDC(Expression<Func<string>> sETId)
         {
-            var __workflow_sETID = WorkflowExpression.Compile(sETID, nameof(sETID), required: true);
+            var __workflow_sETId = WorkflowExpression.Compile(sETId, nameof(sETId), required: true);
             return new DeferredBodyAction<SPLNDCResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/spls/{0}/ndcs.json", __workflow_sETID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/spls/{0}/ndcs.json", __workflow_sETId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SPLNDCResponse>(callPayload);
@@ -255,12 +256,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<SPLPackagingResponse, ApiConnectionActionConfiguration> SPLPackaging(Expression<Func<string>> sETID)
+        public IBodyWorkflowAction<SPLPackagingResponse, ApiConnectionActionConfiguration> SPLPackaging(Expression<Func<string>> sETId)
         {
-            var __workflow_sETID = WorkflowExpression.Compile(sETID, nameof(sETID), required: true);
+            var __workflow_sETId = WorkflowExpression.Compile(sETId, nameof(sETId), required: true);
             return new DeferredBodyAction<SPLPackagingResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/spls/{0}/packaging.json", __workflow_sETID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/spls/{0}/packaging.json", __workflow_sETId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<SPLPackagingResponse>(callPayload);

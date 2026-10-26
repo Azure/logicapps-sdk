@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
 {
     using System.Linq.Expressions;
@@ -14,19 +15,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
         public IBodyWorkflowAction<GetAccountDetailsResponse, ApiConnectionActionConfiguration> GetAccountDetails()
         {
-            var apiCallPath = "/account";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAccountDetailsResponse>(callPayload);
+            return new DeferredBodyAction<GetAccountDetailsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/account";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetAccountDetailsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
         public IBodyWorkflowAction<ListDomainsResponseItem[], ApiConnectionActionConfiguration> ListDomains()
         {
-            var apiCallPath = "/domains";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListDomainsResponseItem[]>(callPayload);
+            return new DeferredBodyAction<ListDomainsResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/domains";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListDomainsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]

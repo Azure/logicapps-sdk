@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sessionizeip
 {
     using System.Linq.Expressions;
@@ -12,12 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sessionizeip
     public class SessionizeipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sessionizeip")]
-        public IBodyWorkflowAction<GetSessionsResponseItem[], ApiConnectionActionConfiguration> GetSessions(Expression<Func<string>> iD)
+        public IBodyWorkflowAction<GetSessionsResponseItem[], ApiConnectionActionConfiguration> GetSessions(Expression<Func<string>> id)
         {
-            var __workflow_iD = WorkflowExpression.Compile(iD, nameof(iD), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetSessionsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/view/Sessions", __workflow_iD.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/view/Sessions", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSessionsResponseItem[]>(callPayload);
@@ -25,12 +26,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sessionizeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sessionizeip")]
-        public IBodyWorkflowAction<GetSpeakersResponseItem[], ApiConnectionActionConfiguration> GetSpeakers(Expression<Func<string>> iD)
+        public IBodyWorkflowAction<GetSpeakersResponseItem[], ApiConnectionActionConfiguration> GetSpeakers(Expression<Func<string>> id)
         {
-            var __workflow_iD = WorkflowExpression.Compile(iD, nameof(iD), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetSpeakersResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/view/Speakers", __workflow_iD.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/view/Speakers", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetSpeakersResponseItem[]>(callPayload);

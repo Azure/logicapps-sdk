@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
 {
     using System.Linq.Expressions;
@@ -88,17 +89,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IWorkflowAction<ApiConnectionActionConfiguration> UpdateCase()
         {
-            var apiCallPath = "/v2/updateCase";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var caseModel = new JObject();
-            var caseModelpropCount = 0;
-            if (caseModelpropCount > 0)
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                callPayload.Body = caseModel;
-            }
+                var apiCallPath = "/v2/updateCase";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var caseModel = new JObject();
+                var caseModelpropCount = 0;
+                if (caseModelpropCount > 0)
+                {
+                    callPayload.Body = caseModel;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]

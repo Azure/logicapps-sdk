@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googledrive
 {
     using System.Linq.Expressions;
@@ -104,25 +105,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googledrive
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googledrive")]
-        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> CreateFile(Expression<Func<string>> folderPath, Expression<Func<string>> name, Expression<Func<string>> body = null)
-        {
-            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<BlobMetadata, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/datasets/default/files";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["folderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
-                callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<BlobMetadata>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googledrive")]
         public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> CopyFile(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
@@ -159,10 +141,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googledrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googledrive")]
         public IBodyWorkflowAction<BlobMetadata[], ApiConnectionActionConfiguration> ListRootFolder()
         {
-            var apiCallPath = "/datasets/default/folders";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BlobMetadata[]>(callPayload);
+            return new DeferredBodyAction<BlobMetadata[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/datasets/default/folders";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<BlobMetadata[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googledrive")]
+        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> CreateFile(Expression<Func<string>> folderId, Expression<Func<string>> name, Expression<Func<string>> body = null)
+        {
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<BlobMetadata, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/datasets/default/v2/files";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["folderId"] = ExpressionConverter.Convert(__workflow_folderId);
+                callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
+                callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<BlobMetadata>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googledrive")]
@@ -197,6 +201,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googledrive
         public string Name { get; set; }
         public string DisplayName { get; set; }
         public string Path { get; set; }
+        public string FolderId { get; set; }
+        public string FolderPath { get; set; }
         public string LastModified { get; set; }
         public int Size { get; set; }
         public string MediaType { get; set; }

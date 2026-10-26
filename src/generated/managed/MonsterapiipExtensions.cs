@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
 {
     using System.Linq.Expressions;
@@ -312,9 +313,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
-        public IBodyWorkflowAction<AudioPostResponse, ApiConnectionActionConfiguration> Audio(Expression<Func<string>> bodydatafile = null, Expression<Func<bodydatatranscriptionFormatInput>> bodydatatranscriptionFormat = null)
+        public IBodyWorkflowAction<AudioPostResponse, ApiConnectionActionConfiguration> Audio(Expression<Func<string>> bodydataFile = null, Expression<Func<bodydatatranscriptionFormatInput>> bodydatatranscriptionFormat = null)
         {
-            var __workflow_bodydatafile = WorkflowExpression.Compile(bodydatafile, nameof(bodydatafile), required: false);
+            var __workflow_bodydataFile = WorkflowExpression.Compile(bodydataFile, nameof(bodydataFile), required: false);
             var __workflow_bodydatatranscriptionFormat = WorkflowExpression.Compile(bodydatatranscriptionFormat, nameof(bodydatatranscriptionFormat), required: false);
             return new DeferredBodyAction<AudioPostResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -327,9 +328,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
                 bodypropCount++;
                 var dataObject = new JObject();
                 var dataObjectpropCount = 0;
-                if (__workflow_bodydatafile != null)
+                if (__workflow_bodydataFile != null)
                 {
-                    dataObject["file"] = ExpressionConverter.ConvertO(__workflow_bodydatafile);
+                    dataObject["file"] = ExpressionConverter.ConvertO(__workflow_bodydataFile);
                     dataObjectpropCount++;
                 }
 

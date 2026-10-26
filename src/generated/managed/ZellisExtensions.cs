@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
 {
     using System.Linq.Expressions;
@@ -99,9 +100,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
 
     public class ZellisTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CRUDEntitiy(Expression<Func<string>> bodyevent, Expression<Func<bool>> bodyisEnabled, Expression<Func<bool>> bodyeventTypecreate = null, Expression<Func<bool>> bodyeventTypedelete = null, Expression<Func<bool>> bodyeventTypeupdate = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CRUDEntitiy(Expression<Func<string>> bodyEvent, Expression<Func<bool>> bodyisEnabled, Expression<Func<bool>> bodyeventTypecreate = null, Expression<Func<bool>> bodyeventTypedelete = null, Expression<Func<bool>> bodyeventTypeupdate = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyevent = WorkflowExpression.Compile(bodyevent, nameof(bodyevent), required: true);
+            var __workflow_bodyEvent = WorkflowExpression.Compile(bodyEvent, nameof(bodyEvent), required: true);
             var __workflow_bodyisEnabled = WorkflowExpression.Compile(bodyisEnabled, nameof(bodyisEnabled), required: true);
             var __workflow_bodyeventTypecreate = WorkflowExpression.Compile(bodyeventTypecreate, nameof(bodyeventTypecreate), required: false);
             var __workflow_bodyeventTypedelete = WorkflowExpression.Compile(bodyeventTypedelete, nameof(bodyeventTypedelete), required: false);
@@ -114,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["Event"] = ExpressionConverter.ConvertO(__workflow_bodyevent);
+                body["Event"] = ExpressionConverter.ConvertO(__workflow_bodyEvent);
                 var eventTypeObject = new JObject();
                 var eventTypeObjectpropCount = 0;
                 if (__workflow_bodyeventTypecreate != null)

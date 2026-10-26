@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<PixelsGetResponseItem[], ApiConnectionActionConfiguration> PixelsGet()
         {
-            var apiCallPath = "/api/v1/link/pixel";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PixelsGetResponseItem[]>(callPayload);
+            return new DeferredBodyAction<PixelsGetResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/v1/link/pixel";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PixelsGetResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
@@ -451,10 +455,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<TagsGetResponseItem[], ApiConnectionActionConfiguration> TagsGet()
         {
-            var apiCallPath = "/api/v1/link/tag";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TagsGetResponseItem[]>(callPayload);
+            return new DeferredBodyAction<TagsGetResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/v1/link/tag";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TagsGetResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]

@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         public IBodyWorkflowAction<ListProjectsResponse, ApiConnectionActionConfiguration> ListProjects()
         {
-            var apiCallPath = "/projects.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListProjectsResponse>(callPayload);
+            return new DeferredBodyAction<ListProjectsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/projects.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListProjectsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
@@ -504,95 +508,104 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
     {
         public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> WebhookCreateProject(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook1/webhooks.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["STATUS"] = "OK";
-            bodypropCount++;
-            var webhookObject = new JObject();
-            var webhookObjectpropCount = 0;
-            webhookObject["event"] = "PROJECT.CREATED";
-            webhookObjectpropCount++;
-            webhookObject["status"] = "ACTIVE";
-            webhookObjectpropCount++;
-            webhookObject["url"] = "#{listCallbackUrl()}";
-            webhookObjectpropCount++;
-            if (webhookObjectpropCount > 0)
+            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
             {
-                body["webhook"] = webhookObject;
+                var apiCallPath = "/webhook1/webhooks.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["STATUS"] = "OK";
                 bodypropCount++;
-            }
+                var webhookObject = new JObject();
+                var webhookObjectpropCount = 0;
+                webhookObject["event"] = "PROJECT.CREATED";
+                webhookObjectpropCount++;
+                webhookObject["status"] = "ACTIVE";
+                webhookObjectpropCount++;
+                webhookObject["url"] = "#{listCallbackUrl()}";
+                webhookObjectpropCount++;
+                if (webhookObjectpropCount > 0)
+                {
+                    body["webhook"] = webhookObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> WebhookCreateTask(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook2/webhooks.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["STATUS"] = "OK";
-            bodypropCount++;
-            var webhookObject = new JObject();
-            var webhookObjectpropCount = 0;
-            webhookObject["event"] = "TASK.CREATED";
-            webhookObjectpropCount++;
-            webhookObject["status"] = "ACTIVE";
-            webhookObjectpropCount++;
-            webhookObject["url"] = "#{listCallbackUrl()}";
-            webhookObjectpropCount++;
-            if (webhookObjectpropCount > 0)
+            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
             {
-                body["webhook"] = webhookObject;
+                var apiCallPath = "/webhook2/webhooks.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["STATUS"] = "OK";
                 bodypropCount++;
-            }
+                var webhookObject = new JObject();
+                var webhookObjectpropCount = 0;
+                webhookObject["event"] = "TASK.CREATED";
+                webhookObjectpropCount++;
+                webhookObject["status"] = "ACTIVE";
+                webhookObjectpropCount++;
+                webhookObject["url"] = "#{listCallbackUrl()}";
+                webhookObjectpropCount++;
+                if (webhookObjectpropCount > 0)
+                {
+                    body["webhook"] = webhookObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> WebhookCreateUser(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook3/webhooks.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["STATUS"] = "OK";
-            bodypropCount++;
-            var webhookObject = new JObject();
-            var webhookObjectpropCount = 0;
-            webhookObject["event"] = "USER.CREATED";
-            webhookObjectpropCount++;
-            webhookObject["status"] = "ACTIVE";
-            webhookObjectpropCount++;
-            webhookObject["url"] = "#{listCallbackUrl()}";
-            webhookObjectpropCount++;
-            if (webhookObjectpropCount > 0)
+            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
             {
-                body["webhook"] = webhookObject;
+                var apiCallPath = "/webhook3/webhooks.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["STATUS"] = "OK";
                 bodypropCount++;
-            }
+                var webhookObject = new JObject();
+                var webhookObjectpropCount = 0;
+                webhookObject["event"] = "USER.CREATED";
+                webhookObjectpropCount++;
+                webhookObject["status"] = "ACTIVE";
+                webhookObjectpropCount++;
+                webhookObject["url"] = "#{listCallbackUrl()}";
+                webhookObjectpropCount++;
+                if (webhookObjectpropCount > 0)
+                {
+                    body["webhook"] = webhookObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

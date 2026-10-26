@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
 {
     using System.Linq.Expressions;
@@ -139,10 +140,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
     public class Place
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("mapId")]
-        public string MapID { get; set; }
+        public string MapId { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }

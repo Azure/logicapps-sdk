@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
 {
     using System.Linq.Expressions;
@@ -22,19 +23,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_value);
                 return new ApiConnectionAction<BarcodeLookupResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
-        public IBodyWorkflowAction<BarcodeScanResult, ApiConnectionActionConfiguration> BarcodeScanImage(Expression<Func<object>> imageFile)
-        {
-            var __workflow_imageFile = WorkflowExpression.Compile(imageFile, nameof(imageFile), required: true);
-            return new DeferredBodyAction<BarcodeScanResult, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/barcode/scan/image";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<BarcodeScanResult>(callPayload);
             });
         }
 
@@ -123,13 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
     {
         public string EAN { get; set; }
         public string Title { get; set; }
-    }
-
-    public class BarcodeScanResult
-    {
-        public bool Successful { get; set; }
-        public string BarcodeType { get; set; }
-        public string RawText { get; set; }
     }
 }
 

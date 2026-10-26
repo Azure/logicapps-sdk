@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
 {
     using System.Linq.Expressions;
@@ -72,9 +73,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
-        public IBodyWorkflowAction<ArticleGetPostResponse, ApiConnectionActionConfiguration> ArticleGet(Expression<Func<string>> bodyarticleID = null)
+        public IBodyWorkflowAction<ArticleGetPostResponse, ApiConnectionActionConfiguration> ArticleGet(Expression<Func<string>> bodyarticleId = null)
         {
-            var __workflow_bodyarticleID = WorkflowExpression.Compile(bodyarticleID, nameof(bodyarticleID), required: false);
+            var __workflow_bodyarticleId = WorkflowExpression.Compile(bodyarticleId, nameof(bodyarticleId), required: false);
             return new DeferredBodyAction<ArticleGetPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/get_article";
@@ -82,9 +83,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (__workflow_bodyarticleID != null)
+                if (__workflow_bodyarticleId != null)
                 {
-                    body["articleID"] = ExpressionConverter.ConvertO(__workflow_bodyarticleID);
+                    body["articleID"] = ExpressionConverter.ConvertO(__workflow_bodyarticleId);
                     bodypropCount++;
                 }
 
@@ -144,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
         public string Message { get; set; }
 
         [JsonProperty("articleID")]
-        public string ArticleID { get; set; }
+        public string ArticleId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
