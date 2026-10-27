@@ -1,0 +1,105 @@
+//------------------------------------------------------------
+// Copyright (c) Microsoft Corporation.  All rights reserved.
+//------------------------------------------------------------
+
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms
+{
+    using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
+    using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    public class MicrosoftformsActions([ConnectionName] string connectionId)
+    {
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftforms")]
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetFormResponseById(Expression<Func<string>> formId, Expression<Func<int>> responseId)
+        {
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
+            var __workflow_responseId = WorkflowExpression.Compile(responseId, nameof(responseId), required: true);
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/formapi/api/forms('{0}')/responses", __workflow_formId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["response_id"] = ExpressionConverter.Convert(__workflow_responseId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftforms")]
+        public IBodyWorkflowAction<GetFormDetailsByIdResult, ApiConnectionActionConfiguration> GetFormDetailsById(Expression<Func<string>> formId)
+        {
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
+            return new DeferredBodyAction<GetFormDetailsByIdResult, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/formapi/api/forms('{0}')", __workflow_formId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$select"] = Convert.ToString("title,modifiedDate,createdDate,status,createdBy");
+                return new ApiConnectionAction<GetFormDetailsByIdResult>(callPayload);
+            });
+        }
+    }
+
+    public class MicrosoftformsTriggers([ConnectionName] string connectionId)
+    {
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateFormWebhook(Expression<Func<string>> formId, FlowRecurrence recurrence = null)
+        {
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/formapi/api/forms/{0}/webhooks", __workflow_formId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = new CreateFormWebhookInput().ToJToken();
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
+        }
+    }
+
+    public class GetFormDetailsByIdResult
+    {
+        [JsonProperty("title")]
+        public string FormTitle { get; set; }
+
+        [JsonProperty("modifiedDate")]
+        public string ModifiedDate { get; set; }
+
+        [JsonProperty("createdDate")]
+        public string CreatedDate { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("createdBy")]
+        public string CreatedBy { get; set; }
+    }
+
+    public class CreateFormWebhookInput
+    {
+        [JsonProperty("eventType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string EventType { get; set; } = "responseAdded";
+
+        [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("source", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Source { get; set; } = "ms-connector";
+    }
+}
+
+namespace Microsoft.Azure.Workflows.Sdk
+{
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms;
+
+    public partial class WorkflowManagedActions
+    {
+        public MicrosoftformsActions Microsoftforms(string connectionId) => new MicrosoftformsActions(connectionId);
+    }
+
+    public partial class WorkflowManagedTriggers
+    {
+        public MicrosoftformsTriggers Microsoftforms(string connectionId) => new MicrosoftformsTriggers(connectionId);
+    }
+}

@@ -285,24 +285,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
 
         [JsonProperty("expiresAt")]
         public string ExpiresAt { get; set; }
-
-        [JsonProperty("category")]
-        public CreateEnvelopeInputCategoryType? Category { get; set; }
-
-        [JsonProperty("tags")]
-        public string[] Tags { get; set; }
-
-        [JsonProperty("locale")]
-        public string Language { get; set; }
-
-        [JsonProperty("redirectUrl")]
-        public string RedirectURL { get; set; }
-
-        [JsonProperty("initialsOnEveryPage")]
-        public bool? InitialsOnEveryPage { get; set; }
-
-        [JsonProperty("workspaceId")]
-        public string Workspace { get; set; }
     }
 
     public class EnvelopeField
@@ -377,22 +359,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
         SIMPLE,
         ADVANCED,
         QUALIFIED
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEnvelopeInputCategoryType
-    {
-        CONTRACT,
-        AGREEMENT,
-        INVOICE,
-        LETTER,
-        QUOTE,
-        NDA,
-        HR,
-        LEGAL,
-        REPORT,
-        PROPOSAL,
-        OTHER
     }
 
     public class WebhookSubscription
