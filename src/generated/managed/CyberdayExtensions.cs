@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,97 +23,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberday")]
         public IBodyWorkflowAction<AddSystemResponse> AddSystem(Expression<Func<string>> bodytitle = null)
         {
-            var apiCallPath = "/api/external/systems/topics/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            return new DeferredBodyAction<AddSystemResponse>(() =>
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/external/systems/topics/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodytitle != null)
+                {
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<AddSystemResponse>(callPayload);
+                return new ApiConnectionAction<AddSystemResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberday")]
         public IWorkflowAction AddSystemAdvanced(Expression<Func<string>> bodytitle, Expression<Func<string>> bodyfieldssystemNickname = null, Expression<Func<string>> bodyfieldssystemOwner = null, Expression<Func<string>> bodyfieldssystemAdministrator = null, Expression<Func<string>> bodyfieldscostCenter = null, Expression<Func<string[]>> bodyfieldslinkedSystems = null, Expression<Func<string>> bodyfieldsdataSystemPurpose = null, Expression<Func<string[]>> bodyfieldslinkedSystemProviders = null, Expression<Func<string>> bodyfieldspartnerResponsibilityDetails = null)
         {
-            var apiCallPath = "/api/external/systems/topics/advanced/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            var fieldsObject = new JObject();
-            var fieldsObjectpropCount = 0;
-            if (bodyfieldssystemNickname != null)
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodyfieldssystemNickname = WorkflowExpression.Compile(bodyfieldssystemNickname, nameof(bodyfieldssystemNickname), required: false);
+            var __workflow_bodyfieldssystemOwner = WorkflowExpression.Compile(bodyfieldssystemOwner, nameof(bodyfieldssystemOwner), required: false);
+            var __workflow_bodyfieldssystemAdministrator = WorkflowExpression.Compile(bodyfieldssystemAdministrator, nameof(bodyfieldssystemAdministrator), required: false);
+            var __workflow_bodyfieldscostCenter = WorkflowExpression.Compile(bodyfieldscostCenter, nameof(bodyfieldscostCenter), required: false);
+            var __workflow_bodyfieldslinkedSystems = WorkflowExpression.Compile(bodyfieldslinkedSystems, nameof(bodyfieldslinkedSystems), required: false);
+            var __workflow_bodyfieldsdataSystemPurpose = WorkflowExpression.Compile(bodyfieldsdataSystemPurpose, nameof(bodyfieldsdataSystemPurpose), required: false);
+            var __workflow_bodyfieldslinkedSystemProviders = WorkflowExpression.Compile(bodyfieldslinkedSystemProviders, nameof(bodyfieldslinkedSystemProviders), required: false);
+            var __workflow_bodyfieldspartnerResponsibilityDetails = WorkflowExpression.Compile(bodyfieldspartnerResponsibilityDetails, nameof(bodyfieldspartnerResponsibilityDetails), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                fieldsObject["additional-name"] = ExpressionConverter.ConvertO(bodyfieldssystemNickname);
-                fieldsObjectpropCount++;
-            }
-
-            if (bodyfieldssystemOwner != null)
-            {
-                fieldsObject["additional-owner"] = ExpressionConverter.ConvertO(bodyfieldssystemOwner);
-                fieldsObjectpropCount++;
-            }
-
-            if (bodyfieldssystemAdministrator != null)
-            {
-                fieldsObject["additional-admin"] = ExpressionConverter.ConvertO(bodyfieldssystemAdministrator);
-                fieldsObjectpropCount++;
-            }
-
-            if (bodyfieldscostCenter != null)
-            {
-                fieldsObject["additional-cost"] = ExpressionConverter.ConvertO(bodyfieldscostCenter);
-                fieldsObjectpropCount++;
-            }
-
-            if (bodyfieldslinkedSystems != null)
-            {
-                fieldsObject["additional-linksystems"] = ExpressionConverter.ConvertO(bodyfieldslinkedSystems);
-                fieldsObjectpropCount++;
-            }
-
-            if (bodyfieldsdataSystemPurpose != null)
-            {
-                fieldsObject["units-purpose"] = ExpressionConverter.ConvertO(bodyfieldsdataSystemPurpose);
-                fieldsObjectpropCount++;
-            }
-
-            if (bodyfieldslinkedSystemProviders != null)
-            {
-                fieldsObject["processors-block"] = ExpressionConverter.ConvertO(bodyfieldslinkedSystemProviders);
-                fieldsObjectpropCount++;
-            }
-
-            if (bodyfieldspartnerResponsibilityDetails != null)
-            {
-                fieldsObject["processors-resptext"] = ExpressionConverter.ConvertO(bodyfieldspartnerResponsibilityDetails);
-                fieldsObjectpropCount++;
-            }
-
-            if (fieldsObjectpropCount > 0)
-            {
-                body["fields"] = fieldsObject;
+                var apiCallPath = "/api/external/systems/topics/advanced/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                var fieldsObject = new JObject();
+                var fieldsObjectpropCount = 0;
+                if (__workflow_bodyfieldssystemNickname != null)
+                {
+                    fieldsObject["additional-name"] = ExpressionConverter.ConvertO(__workflow_bodyfieldssystemNickname);
+                    fieldsObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodyfieldssystemOwner != null)
+                {
+                    fieldsObject["additional-owner"] = ExpressionConverter.ConvertO(__workflow_bodyfieldssystemOwner);
+                    fieldsObjectpropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (__workflow_bodyfieldssystemAdministrator != null)
+                {
+                    fieldsObject["additional-admin"] = ExpressionConverter.ConvertO(__workflow_bodyfieldssystemAdministrator);
+                    fieldsObjectpropCount++;
+                }
+
+                if (__workflow_bodyfieldscostCenter != null)
+                {
+                    fieldsObject["additional-cost"] = ExpressionConverter.ConvertO(__workflow_bodyfieldscostCenter);
+                    fieldsObjectpropCount++;
+                }
+
+                if (__workflow_bodyfieldslinkedSystems != null)
+                {
+                    fieldsObject["additional-linksystems"] = ExpressionConverter.ConvertO(__workflow_bodyfieldslinkedSystems);
+                    fieldsObjectpropCount++;
+                }
+
+                if (__workflow_bodyfieldsdataSystemPurpose != null)
+                {
+                    fieldsObject["units-purpose"] = ExpressionConverter.ConvertO(__workflow_bodyfieldsdataSystemPurpose);
+                    fieldsObjectpropCount++;
+                }
+
+                if (__workflow_bodyfieldslinkedSystemProviders != null)
+                {
+                    fieldsObject["processors-block"] = ExpressionConverter.ConvertO(__workflow_bodyfieldslinkedSystemProviders);
+                    fieldsObjectpropCount++;
+                }
+
+                if (__workflow_bodyfieldspartnerResponsibilityDetails != null)
+                {
+                    fieldsObject["processors-resptext"] = ExpressionConverter.ConvertO(__workflow_bodyfieldspartnerResponsibilityDetails);
+                    fieldsObjectpropCount++;
+                }
+
+                if (fieldsObjectpropCount > 0)
+                {
+                    body["fields"] = fieldsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

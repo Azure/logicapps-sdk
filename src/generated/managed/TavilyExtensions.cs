@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,469 +14,521 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
         public IBodyWorkflowAction<SearchPostResponse> Search(Expression<Func<string>> bodyquery, Expression<Func<bodytopicInput>> bodytopic = null, Expression<Func<bodysearchDepthInput>> bodysearchDepth = null, Expression<Func<int>> bodychunksPerSource = null, Expression<Func<int>> bodymaxResults = null, Expression<Func<bodytimeRangeInput>> bodytimeRange = null, Expression<Func<int>> bodydays = null, Expression<Func<bool>> bodyincludeAnswer = null, Expression<Func<bool>> bodyincludeRawContent = null, Expression<Func<bool>> bodyincludeImages = null, Expression<Func<bool>> bodyincludeImageDescriptions = null, Expression<Func<string[]>> bodyincludeDomains = null, Expression<Func<string[]>> bodyexcludeDomains = null)
         {
-            var apiCallPath = "/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["query"] = ExpressionConverter.ConvertO(bodyquery);
-            if (bodytopic != null)
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
+            var __workflow_bodytopic = WorkflowExpression.Compile(bodytopic, nameof(bodytopic), required: false);
+            var __workflow_bodysearchDepth = WorkflowExpression.Compile(bodysearchDepth, nameof(bodysearchDepth), required: false);
+            var __workflow_bodychunksPerSource = WorkflowExpression.Compile(bodychunksPerSource, nameof(bodychunksPerSource), required: false);
+            var __workflow_bodymaxResults = WorkflowExpression.Compile(bodymaxResults, nameof(bodymaxResults), required: false);
+            var __workflow_bodytimeRange = WorkflowExpression.Compile(bodytimeRange, nameof(bodytimeRange), required: false);
+            var __workflow_bodydays = WorkflowExpression.Compile(bodydays, nameof(bodydays), required: false);
+            var __workflow_bodyincludeAnswer = WorkflowExpression.Compile(bodyincludeAnswer, nameof(bodyincludeAnswer), required: false);
+            var __workflow_bodyincludeRawContent = WorkflowExpression.Compile(bodyincludeRawContent, nameof(bodyincludeRawContent), required: false);
+            var __workflow_bodyincludeImages = WorkflowExpression.Compile(bodyincludeImages, nameof(bodyincludeImages), required: false);
+            var __workflow_bodyincludeImageDescriptions = WorkflowExpression.Compile(bodyincludeImageDescriptions, nameof(bodyincludeImageDescriptions), required: false);
+            var __workflow_bodyincludeDomains = WorkflowExpression.Compile(bodyincludeDomains, nameof(bodyincludeDomains), required: false);
+            var __workflow_bodyexcludeDomains = WorkflowExpression.Compile(bodyexcludeDomains, nameof(bodyexcludeDomains), required: false);
+            return new DeferredBodyAction<SearchPostResponse>(() =>
             {
-                if (bodytopic != null)
+                var apiCallPath = "/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
+                if (__workflow_bodytopic != null)
                 {
-                    body["topic"] = ExpressionConverter.ConvertO(bodytopic);
+                    if (__workflow_bodytopic != null)
+                    {
+                        body["topic"] = ExpressionConverter.ConvertO(__workflow_bodytopic);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["topic"] = "general";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["topic"] = "general";
-                bodypropCount++;
-            }
-
-            if (bodysearchDepth != null)
-            {
-                if (bodysearchDepth != null)
+                if (__workflow_bodysearchDepth != null)
                 {
-                    body["search_depth"] = ExpressionConverter.ConvertO(bodysearchDepth);
+                    if (__workflow_bodysearchDepth != null)
+                    {
+                        body["search_depth"] = ExpressionConverter.ConvertO(__workflow_bodysearchDepth);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["search_depth"] = "basic";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["search_depth"] = "basic";
-                bodypropCount++;
-            }
-
-            if (bodychunksPerSource != null)
-            {
-                body["chunks_per_source"] = ExpressionConverter.ConvertO(bodychunksPerSource);
-                bodypropCount++;
-            }
-
-            if (bodymaxResults != null)
-            {
-                if (bodymaxResults != null)
+                if (__workflow_bodychunksPerSource != null)
                 {
-                    body["max_results"] = ExpressionConverter.ConvertO(bodymaxResults);
+                    body["chunks_per_source"] = ExpressionConverter.ConvertO(__workflow_bodychunksPerSource);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["max_results"] = 5;
-                bodypropCount++;
-            }
-
-            if (bodytimeRange != null)
-            {
-                body["time_range"] = ExpressionConverter.ConvertO(bodytimeRange);
-                bodypropCount++;
-            }
-
-            if (bodydays != null)
-            {
-                if (bodydays != null)
+                if (__workflow_bodymaxResults != null)
                 {
-                    body["days"] = ExpressionConverter.ConvertO(bodydays);
+                    if (__workflow_bodymaxResults != null)
+                    {
+                        body["max_results"] = ExpressionConverter.ConvertO(__workflow_bodymaxResults);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["max_results"] = 5;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["days"] = 7;
-                bodypropCount++;
-            }
-
-            if (bodyincludeAnswer != null)
-            {
-                if (bodyincludeAnswer != null)
+                if (__workflow_bodytimeRange != null)
                 {
-                    body["include_answer"] = ExpressionConverter.ConvertO(bodyincludeAnswer);
+                    body["time_range"] = ExpressionConverter.ConvertO(__workflow_bodytimeRange);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["include_answer"] = false;
-                bodypropCount++;
-            }
-
-            if (bodyincludeRawContent != null)
-            {
-                if (bodyincludeRawContent != null)
+                if (__workflow_bodydays != null)
                 {
-                    body["include_raw_content"] = ExpressionConverter.ConvertO(bodyincludeRawContent);
+                    if (__workflow_bodydays != null)
+                    {
+                        body["days"] = ExpressionConverter.ConvertO(__workflow_bodydays);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["days"] = 7;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["include_raw_content"] = false;
-                bodypropCount++;
-            }
-
-            if (bodyincludeImages != null)
-            {
-                if (bodyincludeImages != null)
+                if (__workflow_bodyincludeAnswer != null)
                 {
-                    body["include_images"] = ExpressionConverter.ConvertO(bodyincludeImages);
+                    if (__workflow_bodyincludeAnswer != null)
+                    {
+                        body["include_answer"] = ExpressionConverter.ConvertO(__workflow_bodyincludeAnswer);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["include_answer"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["include_images"] = false;
-                bodypropCount++;
-            }
+                if (__workflow_bodyincludeRawContent != null)
+                {
+                    if (__workflow_bodyincludeRawContent != null)
+                    {
+                        body["include_raw_content"] = ExpressionConverter.ConvertO(__workflow_bodyincludeRawContent);
+                        bodypropCount++;
+                    }
 
-            if (bodyincludeImageDescriptions != null)
-            {
-                body["include_image_descriptions"] = ExpressionConverter.ConvertO(bodyincludeImageDescriptions);
-                bodypropCount++;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["include_raw_content"] = false;
+                    bodypropCount++;
+                }
 
-            if (bodyincludeDomains != null)
-            {
-                body["include_domains"] = ExpressionConverter.ConvertO(bodyincludeDomains);
-                bodypropCount++;
-            }
+                if (__workflow_bodyincludeImages != null)
+                {
+                    if (__workflow_bodyincludeImages != null)
+                    {
+                        body["include_images"] = ExpressionConverter.ConvertO(__workflow_bodyincludeImages);
+                        bodypropCount++;
+                    }
 
-            if (bodyexcludeDomains != null)
-            {
-                body["exclude_domains"] = ExpressionConverter.ConvertO(bodyexcludeDomains);
-                bodypropCount++;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["include_images"] = false;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodyincludeImageDescriptions != null)
+                {
+                    body["include_image_descriptions"] = ExpressionConverter.ConvertO(__workflow_bodyincludeImageDescriptions);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<SearchPostResponse>(callPayload);
+                if (__workflow_bodyincludeDomains != null)
+                {
+                    body["include_domains"] = ExpressionConverter.ConvertO(__workflow_bodyincludeDomains);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyexcludeDomains != null)
+                {
+                    body["exclude_domains"] = ExpressionConverter.ConvertO(__workflow_bodyexcludeDomains);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SearchPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
         public IBodyWorkflowAction<ExtractPostResponse> Extract(Expression<Func<string>> bodyurls, Expression<Func<bool>> bodyincludeImages = null, Expression<Func<bodyextractDepthInput>> bodyextractDepth = null)
         {
-            var apiCallPath = "/extract";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["urls"] = ExpressionConverter.ConvertO(bodyurls);
-            if (bodyincludeImages != null)
+            var __workflow_bodyurls = WorkflowExpression.Compile(bodyurls, nameof(bodyurls), required: true);
+            var __workflow_bodyincludeImages = WorkflowExpression.Compile(bodyincludeImages, nameof(bodyincludeImages), required: false);
+            var __workflow_bodyextractDepth = WorkflowExpression.Compile(bodyextractDepth, nameof(bodyextractDepth), required: false);
+            return new DeferredBodyAction<ExtractPostResponse>(() =>
             {
-                if (bodyincludeImages != null)
+                var apiCallPath = "/extract";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["urls"] = ExpressionConverter.ConvertO(__workflow_bodyurls);
+                if (__workflow_bodyincludeImages != null)
                 {
-                    body["include_images"] = ExpressionConverter.ConvertO(bodyincludeImages);
+                    if (__workflow_bodyincludeImages != null)
+                    {
+                        body["include_images"] = ExpressionConverter.ConvertO(__workflow_bodyincludeImages);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["include_images"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["include_images"] = false;
-                bodypropCount++;
-            }
-
-            if (bodyextractDepth != null)
-            {
-                if (bodyextractDepth != null)
+                if (__workflow_bodyextractDepth != null)
                 {
-                    body["extract_depth"] = ExpressionConverter.ConvertO(bodyextractDepth);
+                    if (__workflow_bodyextractDepth != null)
+                    {
+                        body["extract_depth"] = ExpressionConverter.ConvertO(__workflow_bodyextractDepth);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["extract_depth"] = "basic";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["extract_depth"] = "basic";
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ExtractPostResponse>(callPayload);
+                return new ApiConnectionAction<ExtractPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
         public IBodyWorkflowAction<CrawlPostResponse> Crawl(Expression<Func<string>> bodyurl, Expression<Func<int>> bodymaxDepth = null, Expression<Func<int>> bodymaxBreadth = null, Expression<Func<int>> bodylimit = null, Expression<Func<string>> bodyinstructions = null, Expression<Func<string[]>> bodyselectPaths = null, Expression<Func<string[]>> bodyselectDomains = null, Expression<Func<string[]>> bodyexcludePaths = null, Expression<Func<string[]>> bodyexcludeDomains = null, Expression<Func<bool>> bodyallowExternal = null, Expression<Func<bool>> bodyincludeImages = null, Expression<Func<string[]>> bodycategories = null, Expression<Func<bodyextractDepthInput>> bodyextractDepth = null)
         {
-            var apiCallPath = "/crawl";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyurl);
-            if (bodymaxDepth != null)
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodymaxDepth = WorkflowExpression.Compile(bodymaxDepth, nameof(bodymaxDepth), required: false);
+            var __workflow_bodymaxBreadth = WorkflowExpression.Compile(bodymaxBreadth, nameof(bodymaxBreadth), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyinstructions = WorkflowExpression.Compile(bodyinstructions, nameof(bodyinstructions), required: false);
+            var __workflow_bodyselectPaths = WorkflowExpression.Compile(bodyselectPaths, nameof(bodyselectPaths), required: false);
+            var __workflow_bodyselectDomains = WorkflowExpression.Compile(bodyselectDomains, nameof(bodyselectDomains), required: false);
+            var __workflow_bodyexcludePaths = WorkflowExpression.Compile(bodyexcludePaths, nameof(bodyexcludePaths), required: false);
+            var __workflow_bodyexcludeDomains = WorkflowExpression.Compile(bodyexcludeDomains, nameof(bodyexcludeDomains), required: false);
+            var __workflow_bodyallowExternal = WorkflowExpression.Compile(bodyallowExternal, nameof(bodyallowExternal), required: false);
+            var __workflow_bodyincludeImages = WorkflowExpression.Compile(bodyincludeImages, nameof(bodyincludeImages), required: false);
+            var __workflow_bodycategories = WorkflowExpression.Compile(bodycategories, nameof(bodycategories), required: false);
+            var __workflow_bodyextractDepth = WorkflowExpression.Compile(bodyextractDepth, nameof(bodyextractDepth), required: false);
+            return new DeferredBodyAction<CrawlPostResponse>(() =>
             {
-                body["max_depth"] = ExpressionConverter.ConvertO(bodymaxDepth);
+                var apiCallPath = "/crawl";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodymaxBreadth != null)
-            {
-                if (bodymaxBreadth != null)
+                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
+                if (__workflow_bodymaxDepth != null)
                 {
-                    body["max_breadth"] = ExpressionConverter.ConvertO(bodymaxBreadth);
+                    body["max_depth"] = ExpressionConverter.ConvertO(__workflow_bodymaxDepth);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["max_breadth"] = 20;
-                bodypropCount++;
-            }
-
-            if (bodylimit != null)
-            {
-                if (bodylimit != null)
+                if (__workflow_bodymaxBreadth != null)
                 {
-                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    if (__workflow_bodymaxBreadth != null)
+                    {
+                        body["max_breadth"] = ExpressionConverter.ConvertO(__workflow_bodymaxBreadth);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["max_breadth"] = 20;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["limit"] = 50;
-                bodypropCount++;
-            }
-
-            if (bodyinstructions != null)
-            {
-                body["instructions"] = ExpressionConverter.ConvertO(bodyinstructions);
-                bodypropCount++;
-            }
-
-            if (bodyselectPaths != null)
-            {
-                body["select_paths"] = ExpressionConverter.ConvertO(bodyselectPaths);
-                bodypropCount++;
-            }
-
-            if (bodyselectDomains != null)
-            {
-                body["select_domains"] = ExpressionConverter.ConvertO(bodyselectDomains);
-                bodypropCount++;
-            }
-
-            if (bodyexcludePaths != null)
-            {
-                body["exclude_paths"] = ExpressionConverter.ConvertO(bodyexcludePaths);
-                bodypropCount++;
-            }
-
-            if (bodyexcludeDomains != null)
-            {
-                body["exclude_domains"] = ExpressionConverter.ConvertO(bodyexcludeDomains);
-                bodypropCount++;
-            }
-
-            if (bodyallowExternal != null)
-            {
-                if (bodyallowExternal != null)
+                if (__workflow_bodylimit != null)
                 {
-                    body["allow_external"] = ExpressionConverter.ConvertO(bodyallowExternal);
+                    if (__workflow_bodylimit != null)
+                    {
+                        body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["limit"] = 50;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["allow_external"] = false;
-                bodypropCount++;
-            }
-
-            if (bodyincludeImages != null)
-            {
-                if (bodyincludeImages != null)
+                if (__workflow_bodyinstructions != null)
                 {
-                    body["include_images"] = ExpressionConverter.ConvertO(bodyincludeImages);
+                    body["instructions"] = ExpressionConverter.ConvertO(__workflow_bodyinstructions);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["include_images"] = false;
-                bodypropCount++;
-            }
-
-            if (bodycategories != null)
-            {
-                body["categories"] = ExpressionConverter.ConvertO(bodycategories);
-                bodypropCount++;
-            }
-
-            if (bodyextractDepth != null)
-            {
-                if (bodyextractDepth != null)
+                if (__workflow_bodyselectPaths != null)
                 {
-                    body["extract_depth"] = ExpressionConverter.ConvertO(bodyextractDepth);
+                    body["select_paths"] = ExpressionConverter.ConvertO(__workflow_bodyselectPaths);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["extract_depth"] = "basic";
-                bodypropCount++;
-            }
+                if (__workflow_bodyselectDomains != null)
+                {
+                    body["select_domains"] = ExpressionConverter.ConvertO(__workflow_bodyselectDomains);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodyexcludePaths != null)
+                {
+                    body["exclude_paths"] = ExpressionConverter.ConvertO(__workflow_bodyexcludePaths);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<CrawlPostResponse>(callPayload);
+                if (__workflow_bodyexcludeDomains != null)
+                {
+                    body["exclude_domains"] = ExpressionConverter.ConvertO(__workflow_bodyexcludeDomains);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyallowExternal != null)
+                {
+                    if (__workflow_bodyallowExternal != null)
+                    {
+                        body["allow_external"] = ExpressionConverter.ConvertO(__workflow_bodyallowExternal);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["allow_external"] = false;
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyincludeImages != null)
+                {
+                    if (__workflow_bodyincludeImages != null)
+                    {
+                        body["include_images"] = ExpressionConverter.ConvertO(__workflow_bodyincludeImages);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["include_images"] = false;
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycategories != null)
+                {
+                    body["categories"] = ExpressionConverter.ConvertO(__workflow_bodycategories);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyextractDepth != null)
+                {
+                    if (__workflow_bodyextractDepth != null)
+                    {
+                        body["extract_depth"] = ExpressionConverter.ConvertO(__workflow_bodyextractDepth);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["extract_depth"] = "basic";
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CrawlPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
         public IBodyWorkflowAction<MapPostResponse> Map(Expression<Func<string>> bodyurl, Expression<Func<int>> bodymaxDepth = null, Expression<Func<int>> bodymaxBreadth = null, Expression<Func<int>> bodylimit = null, Expression<Func<string>> bodyinstructions = null, Expression<Func<string[]>> bodyselectPaths = null, Expression<Func<string[]>> bodyselectDomains = null, Expression<Func<string[]>> bodyexcludePaths = null, Expression<Func<string[]>> bodyexcludeDomains = null, Expression<Func<bool>> bodyallowExternal = null, Expression<Func<bodycategoriesInputItem[]>> bodycategories = null)
         {
-            var apiCallPath = "/map";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyurl);
-            if (bodymaxDepth != null)
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodymaxDepth = WorkflowExpression.Compile(bodymaxDepth, nameof(bodymaxDepth), required: false);
+            var __workflow_bodymaxBreadth = WorkflowExpression.Compile(bodymaxBreadth, nameof(bodymaxBreadth), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyinstructions = WorkflowExpression.Compile(bodyinstructions, nameof(bodyinstructions), required: false);
+            var __workflow_bodyselectPaths = WorkflowExpression.Compile(bodyselectPaths, nameof(bodyselectPaths), required: false);
+            var __workflow_bodyselectDomains = WorkflowExpression.Compile(bodyselectDomains, nameof(bodyselectDomains), required: false);
+            var __workflow_bodyexcludePaths = WorkflowExpression.Compile(bodyexcludePaths, nameof(bodyexcludePaths), required: false);
+            var __workflow_bodyexcludeDomains = WorkflowExpression.Compile(bodyexcludeDomains, nameof(bodyexcludeDomains), required: false);
+            var __workflow_bodyallowExternal = WorkflowExpression.Compile(bodyallowExternal, nameof(bodyallowExternal), required: false);
+            var __workflow_bodycategories = WorkflowExpression.Compile(bodycategories, nameof(bodycategories), required: false);
+            return new DeferredBodyAction<MapPostResponse>(() =>
             {
-                if (bodymaxDepth != null)
+                var apiCallPath = "/map";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
+                if (__workflow_bodymaxDepth != null)
                 {
-                    body["max_depth"] = ExpressionConverter.ConvertO(bodymaxDepth);
+                    if (__workflow_bodymaxDepth != null)
+                    {
+                        body["max_depth"] = ExpressionConverter.ConvertO(__workflow_bodymaxDepth);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["max_depth"] = 1;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["max_depth"] = 1;
-                bodypropCount++;
-            }
-
-            if (bodymaxBreadth != null)
-            {
-                if (bodymaxBreadth != null)
+                if (__workflow_bodymaxBreadth != null)
                 {
-                    body["max_breadth"] = ExpressionConverter.ConvertO(bodymaxBreadth);
+                    if (__workflow_bodymaxBreadth != null)
+                    {
+                        body["max_breadth"] = ExpressionConverter.ConvertO(__workflow_bodymaxBreadth);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["max_breadth"] = 20;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["max_breadth"] = 20;
-                bodypropCount++;
-            }
-
-            if (bodylimit != null)
-            {
-                if (bodylimit != null)
+                if (__workflow_bodylimit != null)
                 {
-                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    if (__workflow_bodylimit != null)
+                    {
+                        body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["limit"] = 50;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["limit"] = 50;
-                bodypropCount++;
-            }
-
-            if (bodyinstructions != null)
-            {
-                body["instructions"] = ExpressionConverter.ConvertO(bodyinstructions);
-                bodypropCount++;
-            }
-
-            if (bodyselectPaths != null)
-            {
-                body["select_paths"] = ExpressionConverter.ConvertO(bodyselectPaths);
-                bodypropCount++;
-            }
-
-            if (bodyselectDomains != null)
-            {
-                body["select_domains"] = ExpressionConverter.ConvertO(bodyselectDomains);
-                bodypropCount++;
-            }
-
-            if (bodyexcludePaths != null)
-            {
-                body["exclude_paths"] = ExpressionConverter.ConvertO(bodyexcludePaths);
-                bodypropCount++;
-            }
-
-            if (bodyexcludeDomains != null)
-            {
-                body["exclude_domains"] = ExpressionConverter.ConvertO(bodyexcludeDomains);
-                bodypropCount++;
-            }
-
-            if (bodyallowExternal != null)
-            {
-                if (bodyallowExternal != null)
+                if (__workflow_bodyinstructions != null)
                 {
-                    body["allow_external"] = ExpressionConverter.ConvertO(bodyallowExternal);
+                    body["instructions"] = ExpressionConverter.ConvertO(__workflow_bodyinstructions);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["allow_external"] = false;
-                bodypropCount++;
-            }
+                if (__workflow_bodyselectPaths != null)
+                {
+                    body["select_paths"] = ExpressionConverter.ConvertO(__workflow_bodyselectPaths);
+                    bodypropCount++;
+                }
 
-            if (bodycategories != null)
-            {
-                body["categories"] = ExpressionConverter.ConvertO(bodycategories);
-                bodypropCount++;
-            }
+                if (__workflow_bodyselectDomains != null)
+                {
+                    body["select_domains"] = ExpressionConverter.ConvertO(__workflow_bodyselectDomains);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodyexcludePaths != null)
+                {
+                    body["exclude_paths"] = ExpressionConverter.ConvertO(__workflow_bodyexcludePaths);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<MapPostResponse>(callPayload);
+                if (__workflow_bodyexcludeDomains != null)
+                {
+                    body["exclude_domains"] = ExpressionConverter.ConvertO(__workflow_bodyexcludeDomains);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyallowExternal != null)
+                {
+                    if (__workflow_bodyallowExternal != null)
+                    {
+                        body["allow_external"] = ExpressionConverter.ConvertO(__workflow_bodyallowExternal);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["allow_external"] = false;
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycategories != null)
+                {
+                    body["categories"] = ExpressionConverter.ConvertO(__workflow_bodycategories);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<MapPostResponse>(callPayload);
+            });
         }
     }
 
@@ -529,6 +581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         public string RawContent { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytopicInput
     {
         [EnumMember(Value = "general")]
@@ -537,6 +590,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         News
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysearchDepthInput
     {
         [EnumMember(Value = "basic")]
@@ -545,6 +599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         Advanced
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytimeRangeInput
     {
         [EnumMember(Value = "day")]
@@ -598,6 +653,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         public string Error { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyextractDepthInput
     {
         [EnumMember(Value = "basic")]
@@ -639,6 +695,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         public double ResponseTime { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycategoriesInputItem
     {
         Careers,

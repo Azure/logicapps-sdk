@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,44 +14,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docparser")]
         public IBodyWorkflowAction<UploadDocumentResponse> UploadDocument(Expression<Func<string>> parserId, Expression<Func<object>> file, Expression<Func<string>> remoteId = null)
         {
-            var apiCallPath = String.Format("/document/upload/{0}", ExpressionConverter.ConvertWithUrlEncoding(parserId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (remoteId != null)
-                callPayload.Queries["remote_id"] = ExpressionConverter.Convert(remoteId);
-            return new ApiConnectionAction<UploadDocumentResponse>(callPayload);
+            var __workflow_parserId = WorkflowExpression.Compile(parserId, nameof(parserId), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_remoteId = WorkflowExpression.Compile(remoteId, nameof(remoteId), required: false);
+            return new DeferredBodyAction<UploadDocumentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/upload/{0}", __workflow_parserId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_remoteId != null)
+                    callPayload.Queries["remote_id"] = ExpressionConverter.Convert(__workflow_remoteId);
+                return new ApiConnectionAction<UploadDocumentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docparser")]
         public IBodyWorkflowAction<FetchDocumentResponse> FetchDocument(Expression<Func<string>> parserId, Expression<Func<string>> url, Expression<Func<string>> remoteId = null)
         {
-            var apiCallPath = String.Format("/document/fetch/{0}", ExpressionConverter.ConvertWithUrlEncoding(parserId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
-            if (remoteId != null)
-                callPayload.Queries["remote_id"] = ExpressionConverter.Convert(remoteId);
-            return new ApiConnectionAction<FetchDocumentResponse>(callPayload);
+            var __workflow_parserId = WorkflowExpression.Compile(parserId, nameof(parserId), required: true);
+            var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
+            var __workflow_remoteId = WorkflowExpression.Compile(remoteId, nameof(remoteId), required: false);
+            return new DeferredBodyAction<FetchDocumentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/fetch/{0}", __workflow_parserId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["url"] = ExpressionConverter.Convert(__workflow_url);
+                if (__workflow_remoteId != null)
+                    callPayload.Queries["remote_id"] = ExpressionConverter.Convert(__workflow_remoteId);
+                return new ApiConnectionAction<FetchDocumentResponse>(callPayload);
+            });
         }
     }
 
     public class DocparserTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreateReponse> WebhookCreate(Expression<Func<string>> parserId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreateReponse> WebhookCreate(Expression<Func<string>> parserId, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/webhook/subscribe/{0}/flow", ExpressionConverter.ConvertWithUrlEncoding(parserId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var targetUrl = new JObject();
-            var targetUrlpropCount = 0;
-            targetUrl["target_url"] = "@listCallbackUrl()";
-            targetUrlpropCount++;
-            if (targetUrlpropCount > 0)
+            var __workflow_parserId = WorkflowExpression.Compile(parserId, nameof(parserId), required: true);
+            return new DeferredBodyTrigger<WebhookCreateReponse>(() =>
             {
-                callPayload.Body = targetUrl;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhook/subscribe/{0}/flow", __workflow_parserId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var targetUrl = new JObject();
+                var targetUrlpropCount = 0;
+                targetUrl["target_url"] = "#{listCallbackUrl()}";
+                targetUrlpropCount++;
+                if (targetUrlpropCount > 0)
+                {
+                    callPayload.Body = targetUrl;
+                }
 
-            return new ApiConnectionTrigger<WebhookCreateReponse>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<WebhookCreateReponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

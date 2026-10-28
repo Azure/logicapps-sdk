@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Databoxip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,12 +14,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Databoxip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "databoxip")]
         public IBodyWorkflowAction<DataPostResponse> Data(Expression<Func<bodyInputItem[]>> body = null)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/vnd.databox.v2+json");
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<DataPostResponse>(callPayload);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<DataPostResponse>(() =>
+            {
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/vnd.databox.v2+json");
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<DataPostResponse>(callPayload);
+            });
         }
     }
 

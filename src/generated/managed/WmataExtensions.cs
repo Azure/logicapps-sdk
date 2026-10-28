@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,40 +14,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetNextBusesResponse> GetNextBuses(Expression<Func<string>> stopID)
         {
-            var apiCallPath = "/NextBusService.svc/json/jPredictions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["StopID"] = ExpressionConverter.Convert(stopID);
-            return new ApiConnectionAction<GetNextBusesResponse>(callPayload);
+            var __workflow_stopID = WorkflowExpression.Compile(stopID, nameof(stopID), required: true);
+            return new DeferredBodyAction<GetNextBusesResponse>(() =>
+            {
+                var apiCallPath = "/NextBusService.svc/json/jPredictions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["StopID"] = ExpressionConverter.Convert(__workflow_stopID);
+                return new ApiConnectionAction<GetNextBusesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetBusPositionsResponse> GetBusPositions(Expression<Func<string>> routeID = null, Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<double>> radius = null)
         {
-            var apiCallPath = "/Bus.svc/json/jBusPositions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (routeID != null)
-                callPayload.Queries["RouteID"] = ExpressionConverter.Convert(routeID);
-            if (lat != null)
-                callPayload.Queries["Lat"] = ExpressionConverter.Convert(lat);
-            if (lon != null)
-                callPayload.Queries["Lon"] = ExpressionConverter.Convert(lon);
-            if (radius != null)
-                callPayload.Queries["Radius"] = ExpressionConverter.Convert(radius);
-            return new ApiConnectionAction<GetBusPositionsResponse>(callPayload);
+            var __workflow_routeID = WorkflowExpression.Compile(routeID, nameof(routeID), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_lon = WorkflowExpression.Compile(lon, nameof(lon), required: false);
+            var __workflow_radius = WorkflowExpression.Compile(radius, nameof(radius), required: false);
+            return new DeferredBodyAction<GetBusPositionsResponse>(() =>
+            {
+                var apiCallPath = "/Bus.svc/json/jBusPositions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_routeID != null)
+                    callPayload.Queries["RouteID"] = ExpressionConverter.Convert(__workflow_routeID);
+                if (__workflow_lat != null)
+                    callPayload.Queries["Lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_lon != null)
+                    callPayload.Queries["Lon"] = ExpressionConverter.Convert(__workflow_lon);
+                if (__workflow_radius != null)
+                    callPayload.Queries["Radius"] = ExpressionConverter.Convert(__workflow_radius);
+                return new ApiConnectionAction<GetBusPositionsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetRouteDetailsResponse> GetRouteDetails(Expression<Func<string>> routeID, Expression<Func<string>> date = null)
         {
-            var apiCallPath = "/Bus.svc/json/jRouteDetails";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["RouteID"] = ExpressionConverter.Convert(routeID);
-            if (date != null)
-                callPayload.Queries["Date"] = ExpressionConverter.Convert(date);
-            return new ApiConnectionAction<GetRouteDetailsResponse>(callPayload);
+            var __workflow_routeID = WorkflowExpression.Compile(routeID, nameof(routeID), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
+            return new DeferredBodyAction<GetRouteDetailsResponse>(() =>
+            {
+                var apiCallPath = "/Bus.svc/json/jRouteDetails";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["RouteID"] = ExpressionConverter.Convert(__workflow_routeID);
+                if (__workflow_date != null)
+                    callPayload.Queries["Date"] = ExpressionConverter.Convert(__workflow_date);
+                return new ApiConnectionAction<GetRouteDetailsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
@@ -62,49 +78,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetBusRouteScheduleResponse> GetBusRouteSchedule(Expression<Func<string>> routeID, Expression<Func<string>> date = null)
         {
-            var apiCallPath = "/Bus.svc/json/jRouteSchedule";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["RouteID"] = ExpressionConverter.Convert(routeID);
-            if (date != null)
-                callPayload.Queries["Date"] = ExpressionConverter.Convert(date);
-            return new ApiConnectionAction<GetBusRouteScheduleResponse>(callPayload);
+            var __workflow_routeID = WorkflowExpression.Compile(routeID, nameof(routeID), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
+            return new DeferredBodyAction<GetBusRouteScheduleResponse>(() =>
+            {
+                var apiCallPath = "/Bus.svc/json/jRouteSchedule";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["RouteID"] = ExpressionConverter.Convert(__workflow_routeID);
+                if (__workflow_date != null)
+                    callPayload.Queries["Date"] = ExpressionConverter.Convert(__workflow_date);
+                return new ApiConnectionAction<GetBusRouteScheduleResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetBusStopScheduleResponse> GetBusStopSchedule(Expression<Func<string>> stopID, Expression<Func<string>> date = null)
         {
-            var apiCallPath = "/Bus.svc/json/jStopSchedule";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["StopID"] = ExpressionConverter.Convert(stopID);
-            if (date != null)
-                callPayload.Queries["Date"] = ExpressionConverter.Convert(date);
-            return new ApiConnectionAction<GetBusStopScheduleResponse>(callPayload);
+            var __workflow_stopID = WorkflowExpression.Compile(stopID, nameof(stopID), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
+            return new DeferredBodyAction<GetBusStopScheduleResponse>(() =>
+            {
+                var apiCallPath = "/Bus.svc/json/jStopSchedule";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["StopID"] = ExpressionConverter.Convert(__workflow_stopID);
+                if (__workflow_date != null)
+                    callPayload.Queries["Date"] = ExpressionConverter.Convert(__workflow_date);
+                return new ApiConnectionAction<GetBusStopScheduleResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetBusStopsResponse> GetBusStops(Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<double>> radius = null)
         {
-            var apiCallPath = "/Bus.svc/json/jStops";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lat != null)
-                callPayload.Queries["Lat"] = ExpressionConverter.Convert(lat);
-            if (lon != null)
-                callPayload.Queries["Lon"] = ExpressionConverter.Convert(lon);
-            if (radius != null)
-                callPayload.Queries["Radius"] = ExpressionConverter.Convert(radius);
-            return new ApiConnectionAction<GetBusStopsResponse>(callPayload);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_lon = WorkflowExpression.Compile(lon, nameof(lon), required: false);
+            var __workflow_radius = WorkflowExpression.Compile(radius, nameof(radius), required: false);
+            return new DeferredBodyAction<GetBusStopsResponse>(() =>
+            {
+                var apiCallPath = "/Bus.svc/json/jStops";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_lat != null)
+                    callPayload.Queries["Lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_lon != null)
+                    callPayload.Queries["Lon"] = ExpressionConverter.Convert(__workflow_lon);
+                if (__workflow_radius != null)
+                    callPayload.Queries["Radius"] = ExpressionConverter.Convert(__workflow_radius);
+                return new ApiConnectionAction<GetBusStopsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetNextTrainsResponse> GetNextTrains(Expression<Func<string>> stationCodes)
         {
-            var apiCallPath = String.Format("/StationPrediction.svc/json/GetPrediction/{0}", ExpressionConverter.ConvertWithUrlEncoding(stationCodes, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetNextTrainsResponse>(callPayload);
+            var __workflow_stationCodes = WorkflowExpression.Compile(stationCodes, nameof(stationCodes), required: true);
+            return new DeferredBodyAction<GetNextTrainsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/StationPrediction.svc/json/GetPrediction/{0}", __workflow_stationCodes.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetNextTrainsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
@@ -119,80 +155,112 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetStationParkingResponse> GetStationParking(Expression<Func<string>> stationCode = null)
         {
-            var apiCallPath = "/Rail.svc/json/jStationParking";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (stationCode != null)
-                callPayload.Queries["StationCode"] = ExpressionConverter.Convert(stationCode);
-            return new ApiConnectionAction<GetStationParkingResponse>(callPayload);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
+            return new DeferredBodyAction<GetStationParkingResponse>(() =>
+            {
+                var apiCallPath = "/Rail.svc/json/jStationParking";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_stationCode != null)
+                    callPayload.Queries["StationCode"] = ExpressionConverter.Convert(__workflow_stationCode);
+                return new ApiConnectionAction<GetStationParkingResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetPathBetweenStationsResponse> GetPathBetweenStations(Expression<Func<string>> fromStationCode, Expression<Func<string>> toStationCode)
         {
-            var apiCallPath = "/Rail.svc/json/jPath";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FromStationCode"] = ExpressionConverter.Convert(fromStationCode);
-            callPayload.Queries["ToStationCode"] = ExpressionConverter.Convert(toStationCode);
-            return new ApiConnectionAction<GetPathBetweenStationsResponse>(callPayload);
+            var __workflow_fromStationCode = WorkflowExpression.Compile(fromStationCode, nameof(fromStationCode), required: true);
+            var __workflow_toStationCode = WorkflowExpression.Compile(toStationCode, nameof(toStationCode), required: true);
+            return new DeferredBodyAction<GetPathBetweenStationsResponse>(() =>
+            {
+                var apiCallPath = "/Rail.svc/json/jPath";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FromStationCode"] = ExpressionConverter.Convert(__workflow_fromStationCode);
+                callPayload.Queries["ToStationCode"] = ExpressionConverter.Convert(__workflow_toStationCode);
+                return new ApiConnectionAction<GetPathBetweenStationsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetJsonStationsResponse> GetJsonStations(Expression<Func<string>> lineCode = null)
         {
-            var apiCallPath = "/Rail.svc/json/jStations";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lineCode != null)
-                callPayload.Queries["LineCode"] = ExpressionConverter.Convert(lineCode);
-            return new ApiConnectionAction<GetJsonStationsResponse>(callPayload);
+            var __workflow_lineCode = WorkflowExpression.Compile(lineCode, nameof(lineCode), required: false);
+            return new DeferredBodyAction<GetJsonStationsResponse>(() =>
+            {
+                var apiCallPath = "/Rail.svc/json/jStations";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_lineCode != null)
+                    callPayload.Queries["LineCode"] = ExpressionConverter.Convert(__workflow_lineCode);
+                return new ApiConnectionAction<GetJsonStationsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetStationEntrancesResponse> GetStationEntrances(Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<double>> radius = null)
         {
-            var apiCallPath = "/Rail.svc/json/jStationEntrances";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lat != null)
-                callPayload.Queries["Lat"] = ExpressionConverter.Convert(lat);
-            if (lon != null)
-                callPayload.Queries["Lon"] = ExpressionConverter.Convert(lon);
-            if (radius != null)
-                callPayload.Queries["Radius"] = ExpressionConverter.Convert(radius);
-            return new ApiConnectionAction<GetStationEntrancesResponse>(callPayload);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_lon = WorkflowExpression.Compile(lon, nameof(lon), required: false);
+            var __workflow_radius = WorkflowExpression.Compile(radius, nameof(radius), required: false);
+            return new DeferredBodyAction<GetStationEntrancesResponse>(() =>
+            {
+                var apiCallPath = "/Rail.svc/json/jStationEntrances";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_lat != null)
+                    callPayload.Queries["Lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_lon != null)
+                    callPayload.Queries["Lon"] = ExpressionConverter.Convert(__workflow_lon);
+                if (__workflow_radius != null)
+                    callPayload.Queries["Radius"] = ExpressionConverter.Convert(__workflow_radius);
+                return new ApiConnectionAction<GetStationEntrancesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetStationInfoResponse> GetStationInfo(Expression<Func<string>> stationCode)
         {
-            var apiCallPath = "/Rail.svc/json/jStationInfo";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["StationCode"] = ExpressionConverter.Convert(stationCode);
-            return new ApiConnectionAction<GetStationInfoResponse>(callPayload);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
+            return new DeferredBodyAction<GetStationInfoResponse>(() =>
+            {
+                var apiCallPath = "/Rail.svc/json/jStationInfo";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["StationCode"] = ExpressionConverter.Convert(__workflow_stationCode);
+                return new ApiConnectionAction<GetStationInfoResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetStationTimesResponse> GetStationTimes(Expression<Func<string>> stationCode)
         {
-            var apiCallPath = "/Rail.svc/json/jStationTimes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["StationCode"] = ExpressionConverter.Convert(stationCode);
-            return new ApiConnectionAction<GetStationTimesResponse>(callPayload);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
+            return new DeferredBodyAction<GetStationTimesResponse>(() =>
+            {
+                var apiCallPath = "/Rail.svc/json/jStationTimes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["StationCode"] = ExpressionConverter.Convert(__workflow_stationCode);
+                return new ApiConnectionAction<GetStationTimesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetStationToStationInfoResponse> GetStationToStationInfo(Expression<Func<string>> fromStationCode, Expression<Func<string>> toStationCode)
         {
-            var apiCallPath = "/Rail.svc/json/jSrcStationToDstStationInfo";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FromStationCode"] = ExpressionConverter.Convert(fromStationCode);
-            callPayload.Queries["ToStationCode"] = ExpressionConverter.Convert(toStationCode);
-            return new ApiConnectionAction<GetStationToStationInfoResponse>(callPayload);
+            var __workflow_fromStationCode = WorkflowExpression.Compile(fromStationCode, nameof(fromStationCode), required: true);
+            var __workflow_toStationCode = WorkflowExpression.Compile(toStationCode, nameof(toStationCode), required: true);
+            return new DeferredBodyAction<GetStationToStationInfoResponse>(() =>
+            {
+                var apiCallPath = "/Rail.svc/json/jSrcStationToDstStationInfo";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FromStationCode"] = ExpressionConverter.Convert(__workflow_fromStationCode);
+                callPayload.Queries["ToStationCode"] = ExpressionConverter.Convert(__workflow_toStationCode);
+                return new ApiConnectionAction<GetStationToStationInfoResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
@@ -228,23 +296,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetBusIncidentsResponse> GetBusIncidents(Expression<Func<string>> route = null)
         {
-            var apiCallPath = "/Incidents.svc/json/BusIncidents";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (route != null)
-                callPayload.Queries["Route"] = ExpressionConverter.Convert(route);
-            return new ApiConnectionAction<GetBusIncidentsResponse>(callPayload);
+            var __workflow_route = WorkflowExpression.Compile(route, nameof(route), required: false);
+            return new DeferredBodyAction<GetBusIncidentsResponse>(() =>
+            {
+                var apiCallPath = "/Incidents.svc/json/BusIncidents";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_route != null)
+                    callPayload.Queries["Route"] = ExpressionConverter.Convert(__workflow_route);
+                return new ApiConnectionAction<GetBusIncidentsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetElevatorIncidentsResponse> GetElevatorIncidents(Expression<Func<string>> stationCode = null)
         {
-            var apiCallPath = "/Incidents.svc/json/ElevatorIncidents";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (stationCode != null)
-                callPayload.Queries["StationCode"] = ExpressionConverter.Convert(stationCode);
-            return new ApiConnectionAction<GetElevatorIncidentsResponse>(callPayload);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
+            return new DeferredBodyAction<GetElevatorIncidentsResponse>(() =>
+            {
+                var apiCallPath = "/Incidents.svc/json/ElevatorIncidents";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_stationCode != null)
+                    callPayload.Queries["StationCode"] = ExpressionConverter.Convert(__workflow_stationCode);
+                return new ApiConnectionAction<GetElevatorIncidentsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]

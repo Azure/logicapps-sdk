@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailparser
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,29 +23,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailparser
 
     public class MailparserTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreationResponse> WebhookCreate(Expression<Func<string>> inboxId, Expression<Func<string>> requestBodyOfWebhooklabel = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse> WebhookCreate(Expression<Func<string>> inboxId, Expression<Func<string>> requestBodyOfWebhooklabel = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/inboxes/{0}/dispatcher", ExpressionConverter.ConvertWithUrlEncoding(inboxId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBodyOfWebhook = new JObject();
-            var requestBodyOfWebhookpropCount = 0;
-            requestBodyOfWebhook["target_url"] = "@listCallbackUrl()";
-            requestBodyOfWebhookpropCount++;
-            requestBodyOfWebhook["provider"] = "flow";
-            requestBodyOfWebhookpropCount++;
-            if (requestBodyOfWebhooklabel != null)
+            var __workflow_inboxId = WorkflowExpression.Compile(inboxId, nameof(inboxId), required: true);
+            var __workflow_requestBodyOfWebhooklabel = WorkflowExpression.Compile(requestBodyOfWebhooklabel, nameof(requestBodyOfWebhooklabel), required: false);
+            return new DeferredBodyTrigger<WebhookCreationResponse>(() =>
             {
-                requestBodyOfWebhook["label"] = ExpressionConverter.ConvertO(requestBodyOfWebhooklabel);
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/inboxes/{0}/dispatcher", __workflow_inboxId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBodyOfWebhook = new JObject();
+                var requestBodyOfWebhookpropCount = 0;
+                requestBodyOfWebhook["target_url"] = "#{listCallbackUrl()}";
                 requestBodyOfWebhookpropCount++;
-            }
+                requestBodyOfWebhook["provider"] = "flow";
+                requestBodyOfWebhookpropCount++;
+                if (__workflow_requestBodyOfWebhooklabel != null)
+                {
+                    requestBodyOfWebhook["label"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhooklabel);
+                    requestBodyOfWebhookpropCount++;
+                }
 
-            if (requestBodyOfWebhookpropCount > 0)
-            {
-                callPayload.Body = requestBodyOfWebhook;
-            }
+                if (requestBodyOfWebhookpropCount > 0)
+                {
+                    callPayload.Body = requestBodyOfWebhook;
+                }
 
-            return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

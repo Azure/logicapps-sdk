@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -58,53 +58,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infuraethereumip")]
         public IBodyWorkflowAction<EthGetBalanceResponse> EthGetBalance(Expression<Func<string>> bodyParamsaddress = null, Expression<Func<bodyParamsblockInput>> bodyParamsblock = null)
         {
-            var apiCallPath = "/eth_getBalance";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["jsonrpc"] = "2.0";
-            bodypropCount++;
-            body["method"] = "eth_getBalance";
-            bodypropCount++;
-            body["id"] = 1;
-            bodypropCount++;
-            var @paramsObject = new JObject();
-            var @paramsObjectpropCount = 0;
-            if (bodyParamsaddress != null)
+            var __workflow_bodyParamsaddress = WorkflowExpression.Compile(bodyParamsaddress, nameof(bodyParamsaddress), required: false);
+            var __workflow_bodyParamsblock = WorkflowExpression.Compile(bodyParamsblock, nameof(bodyParamsblock), required: false);
+            return new DeferredBodyAction<EthGetBalanceResponse>(() =>
             {
-                @paramsObject["Address"] = ExpressionConverter.ConvertO(bodyParamsaddress);
-                @paramsObjectpropCount++;
-            }
-
-            if (bodyParamsblock != null)
-            {
-                if (bodyParamsblock != null)
+                var apiCallPath = "/eth_getBalance";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["jsonrpc"] = "2.0";
+                bodypropCount++;
+                body["method"] = "eth_getBalance";
+                bodypropCount++;
+                body["id"] = 1;
+                bodypropCount++;
+                var @paramsObject = new JObject();
+                var @paramsObjectpropCount = 0;
+                if (__workflow_bodyParamsaddress != null)
                 {
-                    @paramsObject["Block"] = ExpressionConverter.ConvertO(bodyParamsblock);
+                    @paramsObject["Address"] = ExpressionConverter.ConvertO(__workflow_bodyParamsaddress);
                     @paramsObjectpropCount++;
                 }
 
-                @paramsObjectpropCount++;
-            }
-            else
-            {
-                @paramsObject["Block"] = "latest";
-                @paramsObjectpropCount++;
-            }
+                if (__workflow_bodyParamsblock != null)
+                {
+                    if (__workflow_bodyParamsblock != null)
+                    {
+                        @paramsObject["Block"] = ExpressionConverter.ConvertO(__workflow_bodyParamsblock);
+                        @paramsObjectpropCount++;
+                    }
 
-            if (@paramsObjectpropCount > 0)
-            {
-                body["params"] = @paramsObject;
-                bodypropCount++;
-            }
+                    @paramsObjectpropCount++;
+                }
+                else
+                {
+                    @paramsObject["Block"] = "latest";
+                    @paramsObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (@paramsObjectpropCount > 0)
+                {
+                    body["params"] = @paramsObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<EthGetBalanceResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<EthGetBalanceResponse>(callPayload);
+            });
         }
     }
 
@@ -130,6 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
         public int Result { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyParamsblockInput
     {
         [EnumMember(Value = "latest")]

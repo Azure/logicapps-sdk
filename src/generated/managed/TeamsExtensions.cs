@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,191 +14,215 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<NewMeetingRespone> CreateTeamsMeeting(Expression<Func<calendaridInput>> calendarid, Expression<Func<string>> itemsubject, Expression<Func<string>> itemtimeZone, Expression<Func<string>> itembodyeventMessageContent = null, Expression<Func<string>> itemstartstartTime = null, Expression<Func<string>> itemendendTime = null, Expression<Func<string>> itemrequiredAttendees = null, Expression<Func<string>> itemoptionalAttendees = null, Expression<Func<string>> itemlocationdisplayName = null, Expression<Func<itemimportanceInput>> itemimportance = null, Expression<Func<itemrecurrencepatternrecurrencePatternInput>> itemrecurrencepatternrecurrencePattern = null, Expression<Func<int>> itemrecurrencepatternrecurrenceInterval = null, Expression<Func<string[]>> itemrecurrencepatterndaysOfWeek = null, Expression<Func<itemrecurrencepatternweekIndexInput>> itemrecurrencepatternweekIndex = null, Expression<Func<string>> itemrecurrencerangerecurrenceStartDate = null, Expression<Func<string>> itemrecurrencerangerecurrenceEndDate = null, Expression<Func<bool>> itemallDayEvent = null, Expression<Func<int>> itempreEventReminderTime = null, Expression<Func<bool>> itemenableReminders = null, Expression<Func<itemstatusShowAsInput>> itemstatusShowAs = null, Expression<Func<bool>> itemrequestResponse = null)
         {
-            var apiCallPath = String.Format("/v1.0/me/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(calendarid, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var item = new JObject();
-            var itempropCount = 0;
-            itempropCount++;
-            item["subject"] = ExpressionConverter.ConvertO(itemsubject);
-            var bodyObject = new JObject();
-            var bodyObjectpropCount = 0;
-            if (itembodyeventMessageContent != null)
+            var __workflow_calendarid = WorkflowExpression.Compile(calendarid, nameof(calendarid), required: true);
+            var __workflow_itemsubject = WorkflowExpression.Compile(itemsubject, nameof(itemsubject), required: true);
+            var __workflow_itemtimeZone = WorkflowExpression.Compile(itemtimeZone, nameof(itemtimeZone), required: true);
+            var __workflow_itembodyeventMessageContent = WorkflowExpression.Compile(itembodyeventMessageContent, nameof(itembodyeventMessageContent), required: false);
+            var __workflow_itemstartstartTime = WorkflowExpression.Compile(itemstartstartTime, nameof(itemstartstartTime), required: false);
+            var __workflow_itemendendTime = WorkflowExpression.Compile(itemendendTime, nameof(itemendendTime), required: false);
+            var __workflow_itemrequiredAttendees = WorkflowExpression.Compile(itemrequiredAttendees, nameof(itemrequiredAttendees), required: false);
+            var __workflow_itemoptionalAttendees = WorkflowExpression.Compile(itemoptionalAttendees, nameof(itemoptionalAttendees), required: false);
+            var __workflow_itemlocationdisplayName = WorkflowExpression.Compile(itemlocationdisplayName, nameof(itemlocationdisplayName), required: false);
+            var __workflow_itemimportance = WorkflowExpression.Compile(itemimportance, nameof(itemimportance), required: false);
+            var __workflow_itemrecurrencepatternrecurrencePattern = WorkflowExpression.Compile(itemrecurrencepatternrecurrencePattern, nameof(itemrecurrencepatternrecurrencePattern), required: false);
+            var __workflow_itemrecurrencepatternrecurrenceInterval = WorkflowExpression.Compile(itemrecurrencepatternrecurrenceInterval, nameof(itemrecurrencepatternrecurrenceInterval), required: false);
+            var __workflow_itemrecurrencepatterndaysOfWeek = WorkflowExpression.Compile(itemrecurrencepatterndaysOfWeek, nameof(itemrecurrencepatterndaysOfWeek), required: false);
+            var __workflow_itemrecurrencepatternweekIndex = WorkflowExpression.Compile(itemrecurrencepatternweekIndex, nameof(itemrecurrencepatternweekIndex), required: false);
+            var __workflow_itemrecurrencerangerecurrenceStartDate = WorkflowExpression.Compile(itemrecurrencerangerecurrenceStartDate, nameof(itemrecurrencerangerecurrenceStartDate), required: false);
+            var __workflow_itemrecurrencerangerecurrenceEndDate = WorkflowExpression.Compile(itemrecurrencerangerecurrenceEndDate, nameof(itemrecurrencerangerecurrenceEndDate), required: false);
+            var __workflow_itemallDayEvent = WorkflowExpression.Compile(itemallDayEvent, nameof(itemallDayEvent), required: false);
+            var __workflow_itempreEventReminderTime = WorkflowExpression.Compile(itempreEventReminderTime, nameof(itempreEventReminderTime), required: false);
+            var __workflow_itemenableReminders = WorkflowExpression.Compile(itemenableReminders, nameof(itemenableReminders), required: false);
+            var __workflow_itemstatusShowAs = WorkflowExpression.Compile(itemstatusShowAs, nameof(itemstatusShowAs), required: false);
+            var __workflow_itemrequestResponse = WorkflowExpression.Compile(itemrequestResponse, nameof(itemrequestResponse), required: false);
+            return new DeferredBodyAction<NewMeetingRespone>(() =>
             {
-                bodyObject["content"] = ExpressionConverter.ConvertO(itembodyeventMessageContent);
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/me/calendars/{0}/events", __workflow_calendarid.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var item = new JObject();
+                var itempropCount = 0;
+                itempropCount++;
+                item["subject"] = ExpressionConverter.ConvertO(__workflow_itemsubject);
+                var bodyObject = new JObject();
+                var bodyObjectpropCount = 0;
+                if (__workflow_itembodyeventMessageContent != null)
+                {
+                    bodyObject["content"] = ExpressionConverter.ConvertO(__workflow_itembodyeventMessageContent);
+                    bodyObjectpropCount++;
+                }
+
+                bodyObject["contentType"] = "html";
                 bodyObjectpropCount++;
-            }
+                if (bodyObjectpropCount > 0)
+                {
+                    item["body"] = bodyObject;
+                    itempropCount++;
+                }
 
-            bodyObject["contentType"] = "html";
-            bodyObjectpropCount++;
-            if (bodyObjectpropCount > 0)
-            {
-                item["body"] = bodyObject;
                 itempropCount++;
-            }
+                item["timeZone"] = ExpressionConverter.ConvertO(__workflow_itemtimeZone);
+                var startObject = new JObject();
+                var startObjectpropCount = 0;
+                if (__workflow_itemstartstartTime != null)
+                {
+                    startObject["dateTime"] = ExpressionConverter.ConvertO(__workflow_itemstartstartTime);
+                    startObjectpropCount++;
+                }
 
-            itempropCount++;
-            item["timeZone"] = ExpressionConverter.ConvertO(itemtimeZone);
-            var startObject = new JObject();
-            var startObjectpropCount = 0;
-            if (itemstartstartTime != null)
-            {
-                startObject["dateTime"] = ExpressionConverter.ConvertO(itemstartstartTime);
-                startObjectpropCount++;
-            }
+                if (startObjectpropCount > 0)
+                {
+                    item["start"] = startObject;
+                    itempropCount++;
+                }
 
-            if (startObjectpropCount > 0)
-            {
-                item["start"] = startObject;
+                var endObject = new JObject();
+                var endObjectpropCount = 0;
+                if (__workflow_itemendendTime != null)
+                {
+                    endObject["dateTime"] = ExpressionConverter.ConvertO(__workflow_itemendendTime);
+                    endObjectpropCount++;
+                }
+
+                if (endObjectpropCount > 0)
+                {
+                    item["end"] = endObject;
+                    itempropCount++;
+                }
+
+                if (__workflow_itemrequiredAttendees != null)
+                {
+                    item["requiredAttendees"] = ExpressionConverter.ConvertO(__workflow_itemrequiredAttendees);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemoptionalAttendees != null)
+                {
+                    item["optionalAttendees"] = ExpressionConverter.ConvertO(__workflow_itemoptionalAttendees);
+                    itempropCount++;
+                }
+
+                var locationObject = new JObject();
+                var locationObjectpropCount = 0;
+                if (__workflow_itemlocationdisplayName != null)
+                {
+                    locationObject["displayName"] = ExpressionConverter.ConvertO(__workflow_itemlocationdisplayName);
+                    locationObjectpropCount++;
+                }
+
+                if (locationObjectpropCount > 0)
+                {
+                    item["location"] = locationObject;
+                    itempropCount++;
+                }
+
+                if (__workflow_itemimportance != null)
+                {
+                    item["importance"] = ExpressionConverter.ConvertO(__workflow_itemimportance);
+                    itempropCount++;
+                }
+
+                var recurrenceObject = new JObject();
+                var recurrenceObjectpropCount = 0;
+                var patternObject = new JObject();
+                var patternObjectpropCount = 0;
+                if (__workflow_itemrecurrencepatternrecurrencePattern != null)
+                {
+                    patternObject["type"] = ExpressionConverter.ConvertO(__workflow_itemrecurrencepatternrecurrencePattern);
+                    patternObjectpropCount++;
+                }
+
+                if (__workflow_itemrecurrencepatternrecurrenceInterval != null)
+                {
+                    patternObject["interval"] = ExpressionConverter.ConvertO(__workflow_itemrecurrencepatternrecurrenceInterval);
+                    patternObjectpropCount++;
+                }
+
+                if (__workflow_itemrecurrencepatterndaysOfWeek != null)
+                {
+                    patternObject["daysOfWeek"] = ExpressionConverter.ConvertO(__workflow_itemrecurrencepatterndaysOfWeek);
+                    patternObjectpropCount++;
+                }
+
+                if (__workflow_itemrecurrencepatternweekIndex != null)
+                {
+                    patternObject["index"] = ExpressionConverter.ConvertO(__workflow_itemrecurrencepatternweekIndex);
+                    patternObjectpropCount++;
+                }
+
+                if (patternObjectpropCount > 0)
+                {
+                    recurrenceObject["pattern"] = patternObject;
+                    recurrenceObjectpropCount++;
+                }
+
+                var rangeObject = new JObject();
+                var rangeObjectpropCount = 0;
+                if (__workflow_itemrecurrencerangerecurrenceStartDate != null)
+                {
+                    rangeObject["startDate"] = ExpressionConverter.ConvertO(__workflow_itemrecurrencerangerecurrenceStartDate);
+                    rangeObjectpropCount++;
+                }
+
+                if (__workflow_itemrecurrencerangerecurrenceEndDate != null)
+                {
+                    rangeObject["endDate"] = ExpressionConverter.ConvertO(__workflow_itemrecurrencerangerecurrenceEndDate);
+                    rangeObjectpropCount++;
+                }
+
+                if (rangeObjectpropCount > 0)
+                {
+                    recurrenceObject["range"] = rangeObject;
+                    recurrenceObjectpropCount++;
+                }
+
+                if (recurrenceObjectpropCount > 0)
+                {
+                    item["recurrence"] = recurrenceObject;
+                    itempropCount++;
+                }
+
+                if (__workflow_itemallDayEvent != null)
+                {
+                    item["isAllDay"] = ExpressionConverter.ConvertO(__workflow_itemallDayEvent);
+                    itempropCount++;
+                }
+
+                if (__workflow_itempreEventReminderTime != null)
+                {
+                    item["reminderMinutesBeforeStart"] = ExpressionConverter.ConvertO(__workflow_itempreEventReminderTime);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemenableReminders != null)
+                {
+                    item["isReminderOn"] = ExpressionConverter.ConvertO(__workflow_itemenableReminders);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemstatusShowAs != null)
+                {
+                    item["showAs"] = ExpressionConverter.ConvertO(__workflow_itemstatusShowAs);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemrequestResponse != null)
+                {
+                    item["responseRequested"] = ExpressionConverter.ConvertO(__workflow_itemrequestResponse);
+                    itempropCount++;
+                }
+
+                item["isOnlineMeeting"] = true;
                 itempropCount++;
-            }
-
-            var endObject = new JObject();
-            var endObjectpropCount = 0;
-            if (itemendendTime != null)
-            {
-                endObject["dateTime"] = ExpressionConverter.ConvertO(itemendendTime);
-                endObjectpropCount++;
-            }
-
-            if (endObjectpropCount > 0)
-            {
-                item["end"] = endObject;
+                item["onlineMeetingProvider"] = "teamsForBusiness";
                 itempropCount++;
-            }
+                if (itempropCount > 0)
+                {
+                    callPayload.Body = item;
+                }
 
-            if (itemrequiredAttendees != null)
-            {
-                item["requiredAttendees"] = ExpressionConverter.ConvertO(itemrequiredAttendees);
-                itempropCount++;
-            }
-
-            if (itemoptionalAttendees != null)
-            {
-                item["optionalAttendees"] = ExpressionConverter.ConvertO(itemoptionalAttendees);
-                itempropCount++;
-            }
-
-            var locationObject = new JObject();
-            var locationObjectpropCount = 0;
-            if (itemlocationdisplayName != null)
-            {
-                locationObject["displayName"] = ExpressionConverter.ConvertO(itemlocationdisplayName);
-                locationObjectpropCount++;
-            }
-
-            if (locationObjectpropCount > 0)
-            {
-                item["location"] = locationObject;
-                itempropCount++;
-            }
-
-            if (itemimportance != null)
-            {
-                item["importance"] = ExpressionConverter.ConvertO(itemimportance);
-                itempropCount++;
-            }
-
-            var recurrenceObject = new JObject();
-            var recurrenceObjectpropCount = 0;
-            var patternObject = new JObject();
-            var patternObjectpropCount = 0;
-            if (itemrecurrencepatternrecurrencePattern != null)
-            {
-                patternObject["type"] = ExpressionConverter.ConvertO(itemrecurrencepatternrecurrencePattern);
-                patternObjectpropCount++;
-            }
-
-            if (itemrecurrencepatternrecurrenceInterval != null)
-            {
-                patternObject["interval"] = ExpressionConverter.ConvertO(itemrecurrencepatternrecurrenceInterval);
-                patternObjectpropCount++;
-            }
-
-            if (itemrecurrencepatterndaysOfWeek != null)
-            {
-                patternObject["daysOfWeek"] = ExpressionConverter.ConvertO(itemrecurrencepatterndaysOfWeek);
-                patternObjectpropCount++;
-            }
-
-            if (itemrecurrencepatternweekIndex != null)
-            {
-                patternObject["index"] = ExpressionConverter.ConvertO(itemrecurrencepatternweekIndex);
-                patternObjectpropCount++;
-            }
-
-            if (patternObjectpropCount > 0)
-            {
-                recurrenceObject["pattern"] = patternObject;
-                recurrenceObjectpropCount++;
-            }
-
-            var rangeObject = new JObject();
-            var rangeObjectpropCount = 0;
-            if (itemrecurrencerangerecurrenceStartDate != null)
-            {
-                rangeObject["startDate"] = ExpressionConverter.ConvertO(itemrecurrencerangerecurrenceStartDate);
-                rangeObjectpropCount++;
-            }
-
-            if (itemrecurrencerangerecurrenceEndDate != null)
-            {
-                rangeObject["endDate"] = ExpressionConverter.ConvertO(itemrecurrencerangerecurrenceEndDate);
-                rangeObjectpropCount++;
-            }
-
-            if (rangeObjectpropCount > 0)
-            {
-                recurrenceObject["range"] = rangeObject;
-                recurrenceObjectpropCount++;
-            }
-
-            if (recurrenceObjectpropCount > 0)
-            {
-                item["recurrence"] = recurrenceObject;
-                itempropCount++;
-            }
-
-            if (itemallDayEvent != null)
-            {
-                item["isAllDay"] = ExpressionConverter.ConvertO(itemallDayEvent);
-                itempropCount++;
-            }
-
-            if (itempreEventReminderTime != null)
-            {
-                item["reminderMinutesBeforeStart"] = ExpressionConverter.ConvertO(itempreEventReminderTime);
-                itempropCount++;
-            }
-
-            if (itemenableReminders != null)
-            {
-                item["isReminderOn"] = ExpressionConverter.ConvertO(itemenableReminders);
-                itempropCount++;
-            }
-
-            if (itemstatusShowAs != null)
-            {
-                item["showAs"] = ExpressionConverter.ConvertO(itemstatusShowAs);
-                itempropCount++;
-            }
-
-            if (itemrequestResponse != null)
-            {
-                item["responseRequested"] = ExpressionConverter.ConvertO(itemrequestResponse);
-                itempropCount++;
-            }
-
-            item["isOnlineMeeting"] = true;
-            itempropCount++;
-            item["onlineMeetingProvider"] = "teamsForBusiness";
-            itempropCount++;
-            if (itempropCount > 0)
-            {
-                callPayload.Body = item;
-            }
-
-            return new ApiConnectionAction<NewMeetingRespone>(callPayload);
+                return new ApiConnectionAction<NewMeetingRespone>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
@@ -222,542 +246,757 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<GetChannelsForGroupResponse> GetChannelsForGroup(Expression<Func<string>> groupId, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null)
         {
-            var apiCallPath = String.Format("/beta/groups/{0}/channels", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            return new ApiConnectionAction<GetChannelsForGroupResponse>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            return new DeferredBodyAction<GetChannelsForGroupResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/groups/{0}/channels", __workflow_groupId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(__workflow_orderby);
+                return new ApiConnectionAction<GetChannelsForGroupResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<CreateChannelResponse> CreateChannel(Expression<Func<string>> groupId, Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription = null)
         {
-            var apiCallPath = String.Format("/beta/groups/{0}/channels", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydescription != null)
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            return new DeferredBodyAction<CreateChannelResponse>(() =>
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/groups/{0}/channels", __workflow_groupId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["displayName"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            bodypropCount++;
-            body["displayName"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateChannelResponse>(callPayload);
+                return new ApiConnectionAction<CreateChannelResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<GetChannelResponse> GetChannel(Expression<Func<string>> groupId, Expression<Func<string>> channelId)
         {
-            var apiCallPath = String.Format("/beta/teams/{0}/channels/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(channelId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetChannelResponse>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: true);
+            return new DeferredBodyAction<GetChannelResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/{0}/channels/{1}", __workflow_groupId.WithUrlEncoding(1), __workflow_channelId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetChannelResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<GetAllChannelsForTeamResponse> GetAllChannelsForTeam(Expression<Func<string>> groupId, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null)
         {
-            var apiCallPath = String.Format("/beta/teams/{0}/allChannels", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            return new ApiConnectionAction<GetAllChannelsForTeamResponse>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            return new DeferredBodyAction<GetAllChannelsForTeamResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/{0}/allChannels", __workflow_groupId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(__workflow_orderby);
+                return new ApiConnectionAction<GetAllChannelsForTeamResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<GetChatsResponse> GetChats(Expression<Func<chatTypeInput>> chatType, Expression<Func<topicInput>> topic)
         {
-            var apiCallPath = String.Format("/flowbot/actions/listchats/chattypes/{0}/topic/{1}/expandmembers/false", ExpressionConverter.ConvertWithUrlEncoding(chatType, 1), ExpressionConverter.ConvertWithUrlEncoding(topic, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetChatsResponse>(callPayload);
+            var __workflow_chatType = WorkflowExpression.Compile(chatType, nameof(chatType), required: true);
+            var __workflow_topic = WorkflowExpression.Compile(topic, nameof(topic), required: true);
+            return new DeferredBodyAction<GetChatsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/flowbot/actions/listchats/chattypes/{0}/topic/{1}/expandmembers/false", __workflow_chatType.WithUrlEncoding(1), __workflow_topic.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetChatsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<GetTagsResponseSchema> GetTags(Expression<Func<string>> groupId)
         {
-            var apiCallPath = String.Format("/beta/teams/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTagsResponseSchema>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            return new DeferredBodyAction<GetTagsResponseSchema>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/{0}/tags", __workflow_groupId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetTagsResponseSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<CreateTagResponseSchema> CreateTag(Expression<Func<string>> groupId, Expression<Func<string>> bodydisplayName, Expression<Func<string>> bodymembersIDs)
         {
-            var apiCallPath = String.Format("/beta/teams/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
-            bodypropCount++;
-            body["members"] = ExpressionConverter.ConvertO(bodymembersIDs);
-            if (bodypropCount > 0)
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: true);
+            var __workflow_bodymembersIDs = WorkflowExpression.Compile(bodymembersIDs, nameof(bodymembersIDs), required: true);
+            return new DeferredBodyAction<CreateTagResponseSchema>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/{0}/tags", __workflow_groupId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["displayName"] = ExpressionConverter.ConvertO(__workflow_bodydisplayName);
+                bodypropCount++;
+                body["members"] = ExpressionConverter.ConvertO(__workflow_bodymembersIDs);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CreateTagResponseSchema>(callPayload);
+                return new ApiConnectionAction<CreateTagResponseSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<AddMemberToTagResponseSchema> AddMemberToTag(Expression<Func<string>> groupId, Expression<Func<string>> tagId, Expression<Func<string>> bodyuserSID)
         {
-            var apiCallPath = String.Format("/beta/teams/{0}/tags/{1}/members", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["userId"] = ExpressionConverter.ConvertO(bodyuserSID);
-            if (bodypropCount > 0)
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
+            var __workflow_bodyuserSID = WorkflowExpression.Compile(bodyuserSID, nameof(bodyuserSID), required: true);
+            return new DeferredBodyAction<AddMemberToTagResponseSchema>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/{0}/tags/{1}/members", __workflow_groupId.WithUrlEncoding(1), __workflow_tagId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["userId"] = ExpressionConverter.ConvertO(__workflow_bodyuserSID);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<AddMemberToTagResponseSchema>(callPayload);
+                return new ApiConnectionAction<AddMemberToTagResponseSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<GetTagMembersResponseSchema> GetTagMembers(Expression<Func<string>> groupId, Expression<Func<string>> tagId)
         {
-            var apiCallPath = String.Format("/beta/teams/{0}/tags/{1}/members", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTagMembersResponseSchema>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
+            return new DeferredBodyAction<GetTagMembersResponseSchema>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/{0}/tags/{1}/members", __workflow_groupId.WithUrlEncoding(1), __workflow_tagId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetTagMembersResponseSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IWorkflowAction DeleteTagMember(Expression<Func<string>> groupId, Expression<Func<string>> tagId, Expression<Func<string>> tagMemberId)
         {
-            var apiCallPath = String.Format("/beta/teams/{0}/tags/{1}/members/{2}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagMemberId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
+            var __workflow_tagMemberId = WorkflowExpression.Compile(tagMemberId, nameof(tagMemberId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/{0}/tags/{1}/members/{2}", __workflow_groupId.WithUrlEncoding(1), __workflow_tagId.WithUrlEncoding(1), __workflow_tagMemberId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IWorkflowAction PostFeedNotification(Expression<Func<posterInput>> poster, Expression<Func<notificationTypeInput>> notificationType, Expression<Func<object>> body = null)
         {
-            var apiCallPath = String.Format("/flowbot/feednotification/poster/{0}/notificationType/{1}", ExpressionConverter.ConvertWithUrlEncoding(poster, 1), ExpressionConverter.ConvertWithUrlEncoding(notificationType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_poster = WorkflowExpression.Compile(poster, nameof(poster), required: true);
+            var __workflow_notificationType = WorkflowExpression.Compile(notificationType, nameof(notificationType), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/flowbot/feednotification/poster/{0}/notificationType/{1}", __workflow_poster.WithUrlEncoding(1), __workflow_notificationType.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<AtMentionTagResponse> AtMentionTag(Expression<Func<string>> groupId, Expression<Func<string>> tagId)
         {
-            var apiCallPath = String.Format("/beta/teams/{0}/tags/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AtMentionTagResponse>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
+            return new DeferredBodyAction<AtMentionTagResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/{0}/tags/{1}", __workflow_groupId.WithUrlEncoding(1), __workflow_tagId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AtMentionTagResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IWorkflowAction DeleteTag(Expression<Func<string>> groupId, Expression<Func<string>> tagId)
         {
-            var apiCallPath = String.Format("/beta/teams/{0}/tags/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/{0}/tags/{1}", __workflow_groupId.WithUrlEncoding(1), __workflow_tagId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<GetMessagesFromChannelResponse> GetMessagesFromChannel(Expression<Func<string>> groupId, Expression<Func<string>> channelId)
         {
-            var apiCallPath = String.Format("/beta/teams/{0}/channels/{1}/messages", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(channelId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetMessagesFromChannelResponse>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: true);
+            return new DeferredBodyAction<GetMessagesFromChannelResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/{0}/channels/{1}/messages", __workflow_groupId.WithUrlEncoding(1), __workflow_channelId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetMessagesFromChannelResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<JToken> GetMessageDetails(Expression<Func<string>> messageId, Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> body = null)
         {
-            var apiCallPath = String.Format("/beta/teams/messages/{0}/messageType/{1}", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1), ExpressionConverter.ConvertWithUrlEncoding(threadType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            var __workflow_threadType = WorkflowExpression.Compile(threadType, nameof(threadType), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/messages/{0}/messageType/{1}", __workflow_messageId.WithUrlEncoding(1), __workflow_threadType.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<ListRepliesResponseSchema> ListRepliesToMessage(Expression<Func<string>> groupId, Expression<Func<string>> channelId, Expression<Func<string>> messageId, Expression<Func<int>> top = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/channels/{1}/messages/{2}/replies", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(channelId, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$top"] = Convert.ToString(20);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            return new ApiConnectionAction<ListRepliesResponseSchema>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            return new DeferredBodyAction<ListRepliesResponseSchema>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/{0}/channels/{1}/messages/{2}/replies", __workflow_groupId.WithUrlEncoding(1), __workflow_channelId.WithUrlEncoding(1), __workflow_messageId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$top"] = Convert.ToString(20);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                return new ApiConnectionAction<ListRepliesResponseSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<ListMembersResponseSchema> ListMembers(Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> body = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/listmembers/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<ListMembersResponseSchema>(callPayload);
+            var __workflow_threadType = WorkflowExpression.Compile(threadType, nameof(threadType), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<ListMembersResponseSchema>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/listmembers/threadType/{0}", __workflow_threadType.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<ListMembersResponseSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IWorkflowAction SubscribeUserMessageWithOptions(Expression<Func<object>> userMessageWithOptionsSubscriptionRequest = null)
         {
-            var apiCallPath = "/flowbot/actions/messagewithoptions/recipienttypes/user/$subscriptions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(userMessageWithOptionsSubscriptionRequest);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_userMessageWithOptionsSubscriptionRequest = WorkflowExpression.Compile(userMessageWithOptionsSubscriptionRequest, nameof(userMessageWithOptionsSubscriptionRequest), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/flowbot/actions/messagewithoptions/recipienttypes/user/$subscriptions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_userMessageWithOptionsSubscriptionRequest);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<GetTeamResponse> GetTeam(Expression<Func<string>> teamId)
         {
-            var apiCallPath = String.Format("/beta/teams/{0}", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTeamResponse>(callPayload);
+            var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
+            return new DeferredBodyAction<GetTeamResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/{0}", __workflow_teamId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetTeamResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<AtMentionUserV1> AtMentionUser(Expression<Func<string>> userId)
         {
-            var apiCallPath = String.Format("/v1.0/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AtMentionUserV1>(callPayload);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            return new DeferredBodyAction<AtMentionUserV1>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/users/{0}", __workflow_userId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AtMentionUserV1>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<NewChatResponse> CreateChat(Expression<Func<string>> itemmembersToAdd, Expression<Func<string>> itemtitle = null)
         {
-            var apiCallPath = "/beta/chats";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var item = new JObject();
-            var itempropCount = 0;
-            if (itemtitle != null)
+            var __workflow_itemmembersToAdd = WorkflowExpression.Compile(itemmembersToAdd, nameof(itemmembersToAdd), required: true);
+            var __workflow_itemtitle = WorkflowExpression.Compile(itemtitle, nameof(itemtitle), required: false);
+            return new DeferredBodyAction<NewChatResponse>(() =>
             {
-                item["topic"] = ExpressionConverter.ConvertO(itemtitle);
+                var apiCallPath = "/beta/chats";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var item = new JObject();
+                var itempropCount = 0;
+                if (__workflow_itemtitle != null)
+                {
+                    item["topic"] = ExpressionConverter.ConvertO(__workflow_itemtitle);
+                    itempropCount++;
+                }
+
                 itempropCount++;
-            }
+                item["members"] = ExpressionConverter.ConvertO(__workflow_itemmembersToAdd);
+                if (itempropCount > 0)
+                {
+                    callPayload.Body = item;
+                }
 
-            itempropCount++;
-            item["members"] = ExpressionConverter.ConvertO(itemmembersToAdd);
-            if (itempropCount > 0)
-            {
-                callPayload.Body = item;
-            }
-
-            return new ApiConnectionAction<NewChatResponse>(callPayload);
+                return new ApiConnectionAction<NewChatResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<CreateATeamResponse> CreateATeam(Expression<Func<string>> bodyteamName, Expression<Func<string>> bodydescription, Expression<Func<bodyvisibilityInput>> bodyvisibility = null)
         {
-            var apiCallPath = "/beta/teams";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["displayName"] = ExpressionConverter.ConvertO(bodyteamName);
-            bodypropCount++;
-            body["description"] = ExpressionConverter.ConvertO(bodydescription);
-            if (bodyvisibility != null)
+            var __workflow_bodyteamName = WorkflowExpression.Compile(bodyteamName, nameof(bodyteamName), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
+            var __workflow_bodyvisibility = WorkflowExpression.Compile(bodyvisibility, nameof(bodyvisibility), required: false);
+            return new DeferredBodyAction<CreateATeamResponse>(() =>
             {
-                if (bodyvisibility != null)
+                var apiCallPath = "/beta/teams";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["displayName"] = ExpressionConverter.ConvertO(__workflow_bodyteamName);
+                bodypropCount++;
+                body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                if (__workflow_bodyvisibility != null)
                 {
-                    body["visibility"] = ExpressionConverter.ConvertO(bodyvisibility);
+                    if (__workflow_bodyvisibility != null)
+                    {
+                        body["visibility"] = ExpressionConverter.ConvertO(__workflow_bodyvisibility);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["visibility"] = "Public";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["visibility"] = "Public";
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateATeamResponse>(callPayload);
+                return new ApiConnectionAction<CreateATeamResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IWorkflowAction AddMemberToTeam(Expression<Func<string>> teamId, Expression<Func<string>> bodyuser, Expression<Func<bool>> bodysetUserAsTeamOwner = null)
         {
-            var apiCallPath = String.Format("/beta/teams/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["userId"] = ExpressionConverter.ConvertO(bodyuser);
-            if (bodysetUserAsTeamOwner != null)
+            var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
+            var __workflow_bodyuser = WorkflowExpression.Compile(bodyuser, nameof(bodyuser), required: true);
+            var __workflow_bodysetUserAsTeamOwner = WorkflowExpression.Compile(bodysetUserAsTeamOwner, nameof(bodysetUserAsTeamOwner), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["owner"] = ExpressionConverter.ConvertO(bodysetUserAsTeamOwner);
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/{0}/members", __workflow_teamId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["userId"] = ExpressionConverter.ConvertO(__workflow_bodyuser);
+                if (__workflow_bodysetUserAsTeamOwner != null)
+                {
+                    body["owner"] = ExpressionConverter.ConvertO(__workflow_bodysetUserAsTeamOwner);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<PostToConversationResponse> PostMessageToConversation(Expression<Func<posterInput>> poster, Expression<Func<string>> location, Expression<Func<object>> body = null)
         {
-            var apiCallPath = String.Format("/beta/teams/conversation/message/poster/{0}/location/{1}", ExpressionConverter.ConvertWithUrlEncoding(poster, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<PostToConversationResponse>(callPayload);
+            var __workflow_poster = WorkflowExpression.Compile(poster, nameof(poster), required: true);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<PostToConversationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/teams/conversation/message/poster/{0}/location/{1}", __workflow_poster.WithUrlEncoding(1), __workflow_location.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<PostToConversationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<PostToConversationResponse> ReplyWithMessageToConversation(Expression<Func<posterInput>> poster, Expression<Func<string>> location, Expression<Func<object>> body = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/conversation/replyWithMessage/poster/{0}/location/{1}", ExpressionConverter.ConvertWithUrlEncoding(poster, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<PostToConversationResponse>(callPayload);
+            var __workflow_poster = WorkflowExpression.Compile(poster, nameof(poster), required: true);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<PostToConversationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/conversation/replyWithMessage/poster/{0}/location/{1}", __workflow_poster.WithUrlEncoding(1), __workflow_location.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<PostToConversationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<PostToConversationResponse> PostCardToConversation(Expression<Func<posterInput>> poster, Expression<Func<string>> location, Expression<Func<object>> body = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/conversation/adaptivecard/poster/{0}/location/{1}", ExpressionConverter.ConvertWithUrlEncoding(poster, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<PostToConversationResponse>(callPayload);
+            var __workflow_poster = WorkflowExpression.Compile(poster, nameof(poster), required: true);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<PostToConversationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/conversation/adaptivecard/poster/{0}/location/{1}", __workflow_poster.WithUrlEncoding(1), __workflow_location.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<PostToConversationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<JToken> PostCardAndWaitForResponse(Expression<Func<posterInput>> poster, Expression<Func<string>> location, Expression<Func<object>> bodybodyrecipient = null, Expression<Func<string>> bodybodymessage = null, Expression<Func<string>> bodybodyupdateMessage = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/conversation/gatherinput/poster/{0}/location/{1}/$subscriptions", ExpressionConverter.ConvertWithUrlEncoding(poster, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["notificationUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            var bodyObject = new JObject();
-            var bodyObjectpropCount = 0;
-            if (bodybodyrecipient != null)
+            var __workflow_poster = WorkflowExpression.Compile(poster, nameof(poster), required: true);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
+            var __workflow_bodybodyrecipient = WorkflowExpression.Compile(bodybodyrecipient, nameof(bodybodyrecipient), required: false);
+            var __workflow_bodybodymessage = WorkflowExpression.Compile(bodybodymessage, nameof(bodybodymessage), required: false);
+            var __workflow_bodybodyupdateMessage = WorkflowExpression.Compile(bodybodyupdateMessage, nameof(bodybodyupdateMessage), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                bodyObject["recipient"] = ExpressionConverter.ConvertO(bodybodyrecipient);
-                bodyObjectpropCount++;
-            }
-
-            if (bodybodymessage != null)
-            {
-                bodyObject["messageBody"] = ExpressionConverter.ConvertO(bodybodymessage);
-                bodyObjectpropCount++;
-            }
-
-            if (bodybodyupdateMessage != null)
-            {
-                if (bodybodyupdateMessage != null)
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/conversation/gatherinput/poster/{0}/location/{1}/$subscriptions", __workflow_poster.WithUrlEncoding(1), __workflow_location.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["notificationUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                var bodyObject = new JObject();
+                var bodyObjectpropCount = 0;
+                if (__workflow_bodybodyrecipient != null)
                 {
-                    bodyObject["updateMessage"] = ExpressionConverter.ConvertO(bodybodyupdateMessage);
+                    bodyObject["recipient"] = ExpressionConverter.ConvertO(__workflow_bodybodyrecipient);
                     bodyObjectpropCount++;
                 }
 
-                bodyObjectpropCount++;
-            }
-            else
-            {
-                bodyObject["updateMessage"] = "Thanks for your response!";
-                bodyObjectpropCount++;
-            }
+                if (__workflow_bodybodymessage != null)
+                {
+                    bodyObject["messageBody"] = ExpressionConverter.ConvertO(__workflow_bodybodymessage);
+                    bodyObjectpropCount++;
+                }
 
-            if (bodyObjectpropCount > 0)
-            {
-                body["body"] = bodyObject;
-                bodypropCount++;
-            }
+                if (__workflow_bodybodyupdateMessage != null)
+                {
+                    if (__workflow_bodybodyupdateMessage != null)
+                    {
+                        bodyObject["updateMessage"] = ExpressionConverter.ConvertO(__workflow_bodybodyupdateMessage);
+                        bodyObjectpropCount++;
+                    }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                    bodyObjectpropCount++;
+                }
+                else
+                {
+                    bodyObject["updateMessage"] = "Thanks for your response!";
+                    bodyObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+                if (bodyObjectpropCount > 0)
+                {
+                    body["body"] = bodyObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<PostToConversationResponse> ReplyWithCardToConversation(Expression<Func<posterInput>> poster, Expression<Func<string>> location, Expression<Func<object>> body = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/conversation/replyWithAdaptivecard/poster/{0}/location/{1}", ExpressionConverter.ConvertWithUrlEncoding(poster, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<PostToConversationResponse>(callPayload);
+            var __workflow_poster = WorkflowExpression.Compile(poster, nameof(poster), required: true);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<PostToConversationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/conversation/replyWithAdaptivecard/poster/{0}/location/{1}", __workflow_poster.WithUrlEncoding(1), __workflow_location.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<PostToConversationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<PostToConversationResponse> UpdateCardInConversation(Expression<Func<posterInput>> poster, Expression<Func<string>> location, Expression<Func<object>> body = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/conversation/updateAdaptivecard/poster/{0}/location/{1}", ExpressionConverter.ConvertWithUrlEncoding(poster, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<PostToConversationResponse>(callPayload);
+            var __workflow_poster = WorkflowExpression.Compile(poster, nameof(poster), required: true);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<PostToConversationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/teams/conversation/updateAdaptivecard/poster/{0}/location/{1}", __workflow_poster.WithUrlEncoding(1), __workflow_location.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<PostToConversationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<JToken> HttpRequest(Expression<Func<string>> uri, Expression<Func<methodInput>> method, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null, Expression<Func<string>> customHeader1 = null, Expression<Func<string>> customHeader2 = null, Expression<Func<string>> customHeader3 = null, Expression<Func<string>> customHeader4 = null, Expression<Func<string>> customHeader5 = null)
         {
-            var apiCallPath = "/httprequest";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Uri"] = ExpressionConverter.Convert(uri);
-            callPayload.Headers["Method"] = ExpressionConverter.Convert(method);
-            callPayload.Headers["ContentType"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["ContentType"] = ExpressionConverter.Convert(contentType);
-            if (customHeader1 != null)
-                callPayload.Headers["CustomHeader1"] = ExpressionConverter.Convert(customHeader1);
-            if (customHeader2 != null)
-                callPayload.Headers["CustomHeader2"] = ExpressionConverter.Convert(customHeader2);
-            if (customHeader3 != null)
-                callPayload.Headers["CustomHeader3"] = ExpressionConverter.Convert(customHeader3);
-            if (customHeader4 != null)
-                callPayload.Headers["CustomHeader4"] = ExpressionConverter.Convert(customHeader4);
-            if (customHeader5 != null)
-                callPayload.Headers["CustomHeader5"] = ExpressionConverter.Convert(customHeader5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_uri = WorkflowExpression.Compile(uri, nameof(uri), required: true);
+            var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_customHeader1 = WorkflowExpression.Compile(customHeader1, nameof(customHeader1), required: false);
+            var __workflow_customHeader2 = WorkflowExpression.Compile(customHeader2, nameof(customHeader2), required: false);
+            var __workflow_customHeader3 = WorkflowExpression.Compile(customHeader3, nameof(customHeader3), required: false);
+            var __workflow_customHeader4 = WorkflowExpression.Compile(customHeader4, nameof(customHeader4), required: false);
+            var __workflow_customHeader5 = WorkflowExpression.Compile(customHeader5, nameof(customHeader5), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/httprequest";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Uri"] = ExpressionConverter.Convert(__workflow_uri);
+                callPayload.Headers["Method"] = ExpressionConverter.Convert(__workflow_method);
+                callPayload.Headers["ContentType"] = Convert.ToString("application/json");
+                if (__workflow_contentType != null)
+                    callPayload.Headers["ContentType"] = ExpressionConverter.Convert(__workflow_contentType);
+                if (__workflow_customHeader1 != null)
+                    callPayload.Headers["CustomHeader1"] = ExpressionConverter.Convert(__workflow_customHeader1);
+                if (__workflow_customHeader2 != null)
+                    callPayload.Headers["CustomHeader2"] = ExpressionConverter.Convert(__workflow_customHeader2);
+                if (__workflow_customHeader3 != null)
+                    callPayload.Headers["CustomHeader3"] = ExpressionConverter.Convert(__workflow_customHeader3);
+                if (__workflow_customHeader4 != null)
+                    callPayload.Headers["CustomHeader4"] = ExpressionConverter.Convert(__workflow_customHeader4);
+                if (__workflow_customHeader5 != null)
+                    callPayload.Headers["CustomHeader5"] = ExpressionConverter.Convert(__workflow_customHeader5);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 
     public class TeamsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnNewChannelMessageResponseItem[]> OnNewChannelMessage(Expression<Func<string>> groupId, Expression<Func<string>> channelId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewChannelMessageResponseItem[]> OnNewChannelMessage(Expression<Func<string>> groupId, Expression<Func<string>> channelId, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/beta/teams/{0}/channels/{1}/messages", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(channelId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$top"] = Convert.ToString(50);
-            return new ApiConnectionTrigger<OnNewChannelMessageResponseItem[]>(callPayload, triggerName, recurrence);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: true);
+            return new DeferredBodyTrigger<OnNewChannelMessageResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/beta/teams/{0}/channels/{1}/messages", __workflow_groupId.WithUrlEncoding(1), __workflow_channelId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$top"] = Convert.ToString(50);
+                return new ApiConnectionTrigger<OnNewChannelMessageResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<OnNewChannelMessageResponseItem[]> OnNewChannelMessageMentioningMe(Expression<Func<string>> groupId, Expression<Func<string>> channelId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewChannelMessageResponseItem[]> OnNewChannelMessageMentioningMe(Expression<Func<string>> groupId, Expression<Func<string>> channelId, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/beta/teams/{0}/channels/{1}/messages_mentioningme", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(channelId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$top"] = Convert.ToString(50);
-            return new ApiConnectionTrigger<OnNewChannelMessageResponseItem[]>(callPayload, triggerName, recurrence);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: true);
+            return new DeferredBodyTrigger<OnNewChannelMessageResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/beta/teams/{0}/channels/{1}/messages_mentioningme", __workflow_groupId.WithUrlEncoding(1), __workflow_channelId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$top"] = Convert.ToString(50);
+                return new ApiConnectionTrigger<OnNewChannelMessageResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger WebhookAtMentionTrigger(Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookAtMentionTrigger(Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> requestBody = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/beta/subscriptions/atmentiontrigger/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(requestBody);
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            var __workflow_threadType = WorkflowExpression.Compile(threadType, nameof(threadType), required: true);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/subscriptions/atmentiontrigger/threadType/{0}", __workflow_threadType.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger WebhookMessageReactionTrigger(Expression<Func<string>> reactionKey, Expression<Func<frequencyInput>> frequency, Expression<Func<runningPolicyInput>> runningPolicy, Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookMessageReactionTrigger(Expression<Func<string>> reactionKey, Expression<Func<frequencyInput>> frequency, Expression<Func<runningPolicyInput>> runningPolicy, Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> requestBody = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/beta/subscriptions/messagereactiontrigger/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["reactionKey"] = ExpressionConverter.Convert(reactionKey);
-            callPayload.Queries["frequency"] = ExpressionConverter.Convert(frequency);
-            callPayload.Queries["runningPolicy"] = ExpressionConverter.Convert(runningPolicy);
-            callPayload.Body = ExpressionConverter.ConvertO(requestBody);
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            var __workflow_reactionKey = WorkflowExpression.Compile(reactionKey, nameof(reactionKey), required: true);
+            var __workflow_frequency = WorkflowExpression.Compile(frequency, nameof(frequency), required: true);
+            var __workflow_runningPolicy = WorkflowExpression.Compile(runningPolicy, nameof(runningPolicy), required: true);
+            var __workflow_threadType = WorkflowExpression.Compile(threadType, nameof(threadType), required: true);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/subscriptions/messagereactiontrigger/threadType/{0}", __workflow_threadType.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["reactionKey"] = ExpressionConverter.Convert(__workflow_reactionKey);
+                callPayload.Queries["frequency"] = ExpressionConverter.Convert(__workflow_frequency);
+                callPayload.Queries["runningPolicy"] = ExpressionConverter.Convert(__workflow_runningPolicy);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger WebhookChatMessageTrigger(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookChatMessageTrigger(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/beta/subscriptions/chatmessagetrigger";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var chatMessageSubscriptionRequest = new JObject();
             var chatMessageSubscriptionRequestpropCount = 0;
-            chatMessageSubscriptionRequest["notificationUrl"] = "@listCallbackUrl()";
+            chatMessageSubscriptionRequest["notificationUrl"] = "#{listCallbackUrl()}";
             chatMessageSubscriptionRequestpropCount++;
             if (chatMessageSubscriptionRequestpropCount > 0)
             {
                 callPayload.Body = chatMessageSubscriptionRequest;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger WebhookKeywordTrigger(Expression<Func<threadTypeInput>> threadType, Expression<Func<string>> search, Expression<Func<object>> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookKeywordTrigger(Expression<Func<threadTypeInput>> threadType, Expression<Func<string>> search, Expression<Func<object>> requestBody = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/beta/subscriptions/keywordtrigger/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$search"] = ExpressionConverter.Convert(search);
-            callPayload.Body = ExpressionConverter.ConvertO(requestBody);
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            var __workflow_threadType = WorkflowExpression.Compile(threadType, nameof(threadType), required: true);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: true);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/subscriptions/keywordtrigger/threadType/{0}", __workflow_threadType.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$search"] = ExpressionConverter.Convert(__workflow_search);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger WebhookNewMessageTrigger(Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookNewMessageTrigger(Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> requestBody = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/beta/subscriptions/newmessagetrigger/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(requestBody);
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            var __workflow_threadType = WorkflowExpression.Compile(threadType, nameof(threadType), required: true);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/subscriptions/newmessagetrigger/threadType/{0}", __workflow_threadType.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<OnGroupMemberChangeResponseItem[]> OnTeamMemberRemoved(Expression<Func<string>> groupId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnGroupMemberChangeResponseItem[]> OnTeamMemberRemoved(Expression<Func<string>> groupId, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/v1.0/groups/removal";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            callPayload.Queries["$select"] = Convert.ToString("members");
-            return new ApiConnectionTrigger<OnGroupMemberChangeResponseItem[]>(callPayload, triggerName, recurrence);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            return new DeferredBodyTrigger<OnGroupMemberChangeResponseItem[]>(() =>
+            {
+                var apiCallPath = "/trigger/v1.0/groups/removal";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
+                callPayload.Queries["$select"] = Convert.ToString("members");
+                return new ApiConnectionTrigger<OnGroupMemberChangeResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<OnGroupMemberChangeResponseItem[]> OnTeamMemberAdded(Expression<Func<string>> groupId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnGroupMemberChangeResponseItem[]> OnTeamMemberAdded(Expression<Func<string>> groupId, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/v1.0/groups/delta";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            callPayload.Queries["$select"] = Convert.ToString("members");
-            return new ApiConnectionTrigger<OnGroupMemberChangeResponseItem[]>(callPayload, triggerName, recurrence);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            return new DeferredBodyTrigger<OnGroupMemberChangeResponseItem[]>(() =>
+            {
+                var apiCallPath = "/trigger/v1.0/groups/delta";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
+                callPayload.Queries["$select"] = Convert.ToString("members");
+                return new ApiConnectionTrigger<OnGroupMemberChangeResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -950,6 +1189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string JoinUrl { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum calendaridInput
     {
         Birthdays,
@@ -958,6 +1198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         UnitedStatesHolidays
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum itemimportanceInput
     {
         [EnumMember(Value = "low")]
@@ -968,6 +1209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum itemrecurrencepatternrecurrencePatternInput
     {
         [EnumMember(Value = "")]
@@ -982,6 +1224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         RelativeYearly
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum itemrecurrencepatternweekIndexInput
     {
         [EnumMember(Value = "")]
@@ -998,6 +1241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         Last
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum itemstatusShowAsInput
     {
         [EnumMember(Value = "free")]
@@ -1095,6 +1339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public GetChannelResponseTheTypeOfTheChannelType TheTypeOfTheChannel { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetChannelResponseTheTypeOfTheChannelType
     {
         [EnumMember(Value = "standard")]
@@ -1152,6 +1397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string ConversationID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum chatTypeInput
     {
         [EnumMember(Value = "all")]
@@ -1164,6 +1410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         OneOnOne
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum topicInput
     {
         [EnumMember(Value = "all")]
@@ -1243,6 +1490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string UserID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum posterInput
     {
         [EnumMember(Value = "Flow bot")]
@@ -1250,6 +1498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         User
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum notificationTypeInput
     {
         [EnumMember(Value = "groupchat")]
@@ -1363,6 +1612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string IdentityProvider { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum threadTypeInput
     {
         [EnumMember(Value = "groupchat")]
@@ -1644,6 +1894,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string NewTeamID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyvisibilityInput
     {
         Private,
@@ -1662,6 +1913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string ConversationID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum methodInput
     {
         GET,
@@ -1671,6 +1923,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         DELETE
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum frequencyInput
     {
         [EnumMember(Value = "Multiple")]
@@ -1679,6 +1932,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         FirstReactionOnlyOnce
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum runningPolicyInput
     {
         Myself,

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,92 +14,109 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "govee")]
         public IBodyWorkflowAction<RunCommandOnDeviceResponse> RunCommandOnDevice(Expression<Func<string>> bodydeviceMACAddress, Expression<Func<string>> bodydeviceModel, Expression<Func<bodycmdcommandNameInput>> bodycmdcommandName = null, Expression<Func<bodyturnInput>> bodyturn = null, Expression<Func<int>> bodybrightness = null, Expression<Func<int>> bodycolorcolorRed = null, Expression<Func<int>> bodycolorcolorGreen = null, Expression<Func<int>> bodycolorcolorBlue = null, Expression<Func<int>> bodycolorTemperature = null)
         {
-            var apiCallPath = "/devices/control";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["device"] = ExpressionConverter.ConvertO(bodydeviceMACAddress);
-            bodypropCount++;
-            body["model"] = ExpressionConverter.ConvertO(bodydeviceModel);
-            var cmdObject = new JObject();
-            var cmdObjectpropCount = 0;
-            if (bodycmdcommandName != null)
+            var __workflow_bodydeviceMACAddress = WorkflowExpression.Compile(bodydeviceMACAddress, nameof(bodydeviceMACAddress), required: true);
+            var __workflow_bodydeviceModel = WorkflowExpression.Compile(bodydeviceModel, nameof(bodydeviceModel), required: true);
+            var __workflow_bodycmdcommandName = WorkflowExpression.Compile(bodycmdcommandName, nameof(bodycmdcommandName), required: false);
+            var __workflow_bodyturn = WorkflowExpression.Compile(bodyturn, nameof(bodyturn), required: false);
+            var __workflow_bodybrightness = WorkflowExpression.Compile(bodybrightness, nameof(bodybrightness), required: false);
+            var __workflow_bodycolorcolorRed = WorkflowExpression.Compile(bodycolorcolorRed, nameof(bodycolorcolorRed), required: false);
+            var __workflow_bodycolorcolorGreen = WorkflowExpression.Compile(bodycolorcolorGreen, nameof(bodycolorcolorGreen), required: false);
+            var __workflow_bodycolorcolorBlue = WorkflowExpression.Compile(bodycolorcolorBlue, nameof(bodycolorcolorBlue), required: false);
+            var __workflow_bodycolorTemperature = WorkflowExpression.Compile(bodycolorTemperature, nameof(bodycolorTemperature), required: false);
+            return new DeferredBodyAction<RunCommandOnDeviceResponse>(() =>
             {
-                cmdObject["name"] = ExpressionConverter.ConvertO(bodycmdcommandName);
-                cmdObjectpropCount++;
-            }
-
-            if (cmdObjectpropCount > 0)
-            {
-                body["cmd"] = cmdObject;
+                var apiCallPath = "/devices/control";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyturn != null)
-            {
-                body["turn"] = ExpressionConverter.ConvertO(bodyturn);
+                body["device"] = ExpressionConverter.ConvertO(__workflow_bodydeviceMACAddress);
                 bodypropCount++;
-            }
+                body["model"] = ExpressionConverter.ConvertO(__workflow_bodydeviceModel);
+                var cmdObject = new JObject();
+                var cmdObjectpropCount = 0;
+                if (__workflow_bodycmdcommandName != null)
+                {
+                    cmdObject["name"] = ExpressionConverter.ConvertO(__workflow_bodycmdcommandName);
+                    cmdObjectpropCount++;
+                }
 
-            if (bodybrightness != null)
-            {
-                body["brightness"] = ExpressionConverter.ConvertO(bodybrightness);
-                bodypropCount++;
-            }
+                if (cmdObjectpropCount > 0)
+                {
+                    body["cmd"] = cmdObject;
+                    bodypropCount++;
+                }
 
-            var colorObject = new JObject();
-            var colorObjectpropCount = 0;
-            if (bodycolorcolorRed != null)
-            {
-                colorObject["r"] = ExpressionConverter.ConvertO(bodycolorcolorRed);
-                colorObjectpropCount++;
-            }
+                if (__workflow_bodyturn != null)
+                {
+                    body["turn"] = ExpressionConverter.ConvertO(__workflow_bodyturn);
+                    bodypropCount++;
+                }
 
-            if (bodycolorcolorGreen != null)
-            {
-                colorObject["g"] = ExpressionConverter.ConvertO(bodycolorcolorGreen);
-                colorObjectpropCount++;
-            }
+                if (__workflow_bodybrightness != null)
+                {
+                    body["brightness"] = ExpressionConverter.ConvertO(__workflow_bodybrightness);
+                    bodypropCount++;
+                }
 
-            if (bodycolorcolorBlue != null)
-            {
-                colorObject["b"] = ExpressionConverter.ConvertO(bodycolorcolorBlue);
-                colorObjectpropCount++;
-            }
+                var colorObject = new JObject();
+                var colorObjectpropCount = 0;
+                if (__workflow_bodycolorcolorRed != null)
+                {
+                    colorObject["r"] = ExpressionConverter.ConvertO(__workflow_bodycolorcolorRed);
+                    colorObjectpropCount++;
+                }
 
-            if (colorObjectpropCount > 0)
-            {
-                body["color"] = colorObject;
-                bodypropCount++;
-            }
+                if (__workflow_bodycolorcolorGreen != null)
+                {
+                    colorObject["g"] = ExpressionConverter.ConvertO(__workflow_bodycolorcolorGreen);
+                    colorObjectpropCount++;
+                }
 
-            if (bodycolorTemperature != null)
-            {
-                body["colorTem"] = ExpressionConverter.ConvertO(bodycolorTemperature);
-                bodypropCount++;
-            }
+                if (__workflow_bodycolorcolorBlue != null)
+                {
+                    colorObject["b"] = ExpressionConverter.ConvertO(__workflow_bodycolorcolorBlue);
+                    colorObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (colorObjectpropCount > 0)
+                {
+                    body["color"] = colorObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<RunCommandOnDeviceResponse>(callPayload);
+                if (__workflow_bodycolorTemperature != null)
+                {
+                    body["colorTem"] = ExpressionConverter.ConvertO(__workflow_bodycolorTemperature);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<RunCommandOnDeviceResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "govee")]
         public IBodyWorkflowAction<GetDeviceInformationResponse> GetDeviceInformation(Expression<Func<string>> device = null, Expression<Func<string>> model = null)
         {
-            var apiCallPath = "/devices";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (device != null)
-                callPayload.Queries["device"] = ExpressionConverter.Convert(device);
-            if (model != null)
-                callPayload.Queries["model"] = ExpressionConverter.Convert(model);
-            return new ApiConnectionAction<GetDeviceInformationResponse>(callPayload);
+            var __workflow_device = WorkflowExpression.Compile(device, nameof(device), required: false);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: false);
+            return new DeferredBodyAction<GetDeviceInformationResponse>(() =>
+            {
+                var apiCallPath = "/devices";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_device != null)
+                    callPayload.Queries["device"] = ExpressionConverter.Convert(__workflow_device);
+                if (__workflow_model != null)
+                    callPayload.Queries["model"] = ExpressionConverter.Convert(__workflow_model);
+                return new ApiConnectionAction<GetDeviceInformationResponse>(callPayload);
+            });
         }
     }
 
@@ -119,6 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
         public JToken Data { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycmdcommandNameInput
     {
         [EnumMember(Value = "turn")]
@@ -131,6 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
         ColorTem
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyturnInput
     {
         [EnumMember(Value = "on")]

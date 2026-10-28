@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,209 +14,292 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<ExchangeData> GetExchanges(Expression<Func<regionInput>> region, Expression<Func<string>> fileId)
         {
-            var apiCallPath = "/exchange/v1/exchanges";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["region"] = ExpressionConverter.Convert(region);
-            callPayload.Queries["fileId"] = ExpressionConverter.Convert(fileId);
-            return new ApiConnectionAction<ExchangeData>(callPayload);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
+            return new DeferredBodyAction<ExchangeData>(() =>
+            {
+                var apiCallPath = "/exchange/v1/exchanges";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["region"] = ExpressionConverter.Convert(__workflow_region);
+                callPayload.Queries["fileId"] = ExpressionConverter.Convert(__workflow_fileId);
+                return new ApiConnectionAction<ExchangeData>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<URLExchangeData> GetExchangesUsinglink(Expression<Func<string>> fileId)
         {
-            var apiCallPath = "/exchange/fake/exchanges";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fileId"] = ExpressionConverter.Convert(fileId);
-            return new ApiConnectionAction<URLExchangeData>(callPayload);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
+            return new DeferredBodyAction<URLExchangeData>(() =>
+            {
+                var apiCallPath = "/exchange/fake/exchanges";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fileId"] = ExpressionConverter.Convert(__workflow_fileId);
+                return new ApiConnectionAction<URLExchangeData>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<AECData> GetAECDesigns(Expression<Func<regionInput>> region, Expression<Func<string>> fileId)
         {
-            var apiCallPath = "/design/v1/designs";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["region"] = ExpressionConverter.Convert(region);
-            callPayload.Queries["fileId"] = ExpressionConverter.Convert(fileId);
-            return new ApiConnectionAction<AECData>(callPayload);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
+            return new DeferredBodyAction<AECData>(() =>
+            {
+                var apiCallPath = "/design/v1/designs";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["region"] = ExpressionConverter.Convert(__workflow_region);
+                callPayload.Queries["fileId"] = ExpressionConverter.Convert(__workflow_fileId);
+                return new ApiConnectionAction<AECData>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<AECData> GetAECDesignsUsinglink(Expression<Func<string>> fileId)
         {
-            var apiCallPath = "/design/v2/designs";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fileId"] = ExpressionConverter.Convert(fileId);
-            return new ApiConnectionAction<AECData>(callPayload);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
+            return new DeferredBodyAction<AECData>(() =>
+            {
+                var apiCallPath = "/design/v2/designs";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fileId"] = ExpressionConverter.Convert(__workflow_fileId);
+                return new ApiConnectionAction<AECData>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<GraphQLParametersResponse> GetFilteredPropertiesCodeBehind(Expression<Func<regionInput>> region, Expression<Func<string>> fileId, Expression<Func<getlatestInput>> getlatest, Expression<Func<filterByInput>> filterBy, Expression<Func<string>> filterValue = null, Expression<Func<string>> parameterfilterValue = null, Expression<Func<selectedUnitTypeInput>> selectedUnitType = null, Expression<Func<string>> selectedUnit = null)
         {
-            var apiCallPath = "/fakeGraphQL/GetFilteredParameters";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["region"] = ExpressionConverter.Convert(region);
-            callPayload.Queries["fileId"] = ExpressionConverter.Convert(fileId);
-            callPayload.Queries["getlatest"] = ExpressionConverter.Convert(getlatest);
-            callPayload.Queries["filterBy"] = ExpressionConverter.Convert(filterBy);
-            if (filterValue != null)
-                callPayload.Queries["filterValue"] = ExpressionConverter.Convert(filterValue);
-            if (parameterfilterValue != null)
-                callPayload.Queries["ParameterfilterValue"] = ExpressionConverter.Convert(parameterfilterValue);
-            callPayload.Queries["selectedUnitType"] = Convert.ToString("imperial");
-            if (selectedUnitType != null)
-                callPayload.Queries["selectedUnitType"] = ExpressionConverter.Convert(selectedUnitType);
-            if (selectedUnit != null)
-                callPayload.Queries["selectedUnit"] = ExpressionConverter.Convert(selectedUnit);
-            return new ApiConnectionAction<GraphQLParametersResponse>(callPayload);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
+            var __workflow_getlatest = WorkflowExpression.Compile(getlatest, nameof(getlatest), required: true);
+            var __workflow_filterBy = WorkflowExpression.Compile(filterBy, nameof(filterBy), required: true);
+            var __workflow_filterValue = WorkflowExpression.Compile(filterValue, nameof(filterValue), required: false);
+            var __workflow_parameterfilterValue = WorkflowExpression.Compile(parameterfilterValue, nameof(parameterfilterValue), required: false);
+            var __workflow_selectedUnitType = WorkflowExpression.Compile(selectedUnitType, nameof(selectedUnitType), required: false);
+            var __workflow_selectedUnit = WorkflowExpression.Compile(selectedUnit, nameof(selectedUnit), required: false);
+            return new DeferredBodyAction<GraphQLParametersResponse>(() =>
+            {
+                var apiCallPath = "/fakeGraphQL/GetFilteredParameters";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["region"] = ExpressionConverter.Convert(__workflow_region);
+                callPayload.Queries["fileId"] = ExpressionConverter.Convert(__workflow_fileId);
+                callPayload.Queries["getlatest"] = ExpressionConverter.Convert(__workflow_getlatest);
+                callPayload.Queries["filterBy"] = ExpressionConverter.Convert(__workflow_filterBy);
+                if (__workflow_filterValue != null)
+                    callPayload.Queries["filterValue"] = ExpressionConverter.Convert(__workflow_filterValue);
+                if (__workflow_parameterfilterValue != null)
+                    callPayload.Queries["ParameterfilterValue"] = ExpressionConverter.Convert(__workflow_parameterfilterValue);
+                callPayload.Queries["selectedUnitType"] = Convert.ToString("imperial");
+                if (__workflow_selectedUnitType != null)
+                    callPayload.Queries["selectedUnitType"] = ExpressionConverter.Convert(__workflow_selectedUnitType);
+                if (__workflow_selectedUnit != null)
+                    callPayload.Queries["selectedUnit"] = ExpressionConverter.Convert(__workflow_selectedUnit);
+                return new ApiConnectionAction<GraphQLParametersResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<GraphQLParametersResponse> GetFilteredPropertiesUsingLink(Expression<Func<string>> fileId, Expression<Func<filterByInput>> filterBy, Expression<Func<string>> filterValue = null, Expression<Func<string>> parameterfilterValue = null, Expression<Func<selectedUnitTypeInput>> selectedUnitType = null, Expression<Func<string>> selectedUnit = null)
         {
-            var apiCallPath = "/fakeGraphQL/url/GetFilteredParameters";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fileId"] = ExpressionConverter.Convert(fileId);
-            callPayload.Queries["filterBy"] = ExpressionConverter.Convert(filterBy);
-            if (filterValue != null)
-                callPayload.Queries["filterValue"] = ExpressionConverter.Convert(filterValue);
-            if (parameterfilterValue != null)
-                callPayload.Queries["ParameterfilterValue"] = ExpressionConverter.Convert(parameterfilterValue);
-            callPayload.Queries["selectedUnitType"] = Convert.ToString("imperial");
-            if (selectedUnitType != null)
-                callPayload.Queries["selectedUnitType"] = ExpressionConverter.Convert(selectedUnitType);
-            if (selectedUnit != null)
-                callPayload.Queries["selectedUnit"] = ExpressionConverter.Convert(selectedUnit);
-            return new ApiConnectionAction<GraphQLParametersResponse>(callPayload);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
+            var __workflow_filterBy = WorkflowExpression.Compile(filterBy, nameof(filterBy), required: true);
+            var __workflow_filterValue = WorkflowExpression.Compile(filterValue, nameof(filterValue), required: false);
+            var __workflow_parameterfilterValue = WorkflowExpression.Compile(parameterfilterValue, nameof(parameterfilterValue), required: false);
+            var __workflow_selectedUnitType = WorkflowExpression.Compile(selectedUnitType, nameof(selectedUnitType), required: false);
+            var __workflow_selectedUnit = WorkflowExpression.Compile(selectedUnit, nameof(selectedUnit), required: false);
+            return new DeferredBodyAction<GraphQLParametersResponse>(() =>
+            {
+                var apiCallPath = "/fakeGraphQL/url/GetFilteredParameters";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fileId"] = ExpressionConverter.Convert(__workflow_fileId);
+                callPayload.Queries["filterBy"] = ExpressionConverter.Convert(__workflow_filterBy);
+                if (__workflow_filterValue != null)
+                    callPayload.Queries["filterValue"] = ExpressionConverter.Convert(__workflow_filterValue);
+                if (__workflow_parameterfilterValue != null)
+                    callPayload.Queries["ParameterfilterValue"] = ExpressionConverter.Convert(__workflow_parameterfilterValue);
+                callPayload.Queries["selectedUnitType"] = Convert.ToString("imperial");
+                if (__workflow_selectedUnitType != null)
+                    callPayload.Queries["selectedUnitType"] = ExpressionConverter.Convert(__workflow_selectedUnitType);
+                if (__workflow_selectedUnit != null)
+                    callPayload.Queries["selectedUnit"] = ExpressionConverter.Convert(__workflow_selectedUnit);
+                return new ApiConnectionAction<GraphQLParametersResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<GraphQLParametersResponseAEC> GetFilteredPropertiesCodeBehindAEC(Expression<Func<regionInput>> region, Expression<Func<string>> fileId, Expression<Func<filterByInput>> filterBy, Expression<Func<string>> filterValue = null, Expression<Func<string>> parameterfilterValue = null, Expression<Func<selectedUnitTypeInput>> selectedUnitType = null, Expression<Func<string>> selectedUnit = null)
         {
-            var apiCallPath = "/fakeGraphQL/GetFilteredParametersAEC";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["region"] = ExpressionConverter.Convert(region);
-            callPayload.Queries["fileId"] = ExpressionConverter.Convert(fileId);
-            callPayload.Queries["filterBy"] = ExpressionConverter.Convert(filterBy);
-            if (filterValue != null)
-                callPayload.Queries["filterValue"] = ExpressionConverter.Convert(filterValue);
-            if (parameterfilterValue != null)
-                callPayload.Queries["ParameterfilterValue"] = ExpressionConverter.Convert(parameterfilterValue);
-            callPayload.Queries["selectedUnitType"] = Convert.ToString("imperial");
-            if (selectedUnitType != null)
-                callPayload.Queries["selectedUnitType"] = ExpressionConverter.Convert(selectedUnitType);
-            if (selectedUnit != null)
-                callPayload.Queries["selectedUnit"] = ExpressionConverter.Convert(selectedUnit);
-            return new ApiConnectionAction<GraphQLParametersResponseAEC>(callPayload);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
+            var __workflow_filterBy = WorkflowExpression.Compile(filterBy, nameof(filterBy), required: true);
+            var __workflow_filterValue = WorkflowExpression.Compile(filterValue, nameof(filterValue), required: false);
+            var __workflow_parameterfilterValue = WorkflowExpression.Compile(parameterfilterValue, nameof(parameterfilterValue), required: false);
+            var __workflow_selectedUnitType = WorkflowExpression.Compile(selectedUnitType, nameof(selectedUnitType), required: false);
+            var __workflow_selectedUnit = WorkflowExpression.Compile(selectedUnit, nameof(selectedUnit), required: false);
+            return new DeferredBodyAction<GraphQLParametersResponseAEC>(() =>
+            {
+                var apiCallPath = "/fakeGraphQL/GetFilteredParametersAEC";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["region"] = ExpressionConverter.Convert(__workflow_region);
+                callPayload.Queries["fileId"] = ExpressionConverter.Convert(__workflow_fileId);
+                callPayload.Queries["filterBy"] = ExpressionConverter.Convert(__workflow_filterBy);
+                if (__workflow_filterValue != null)
+                    callPayload.Queries["filterValue"] = ExpressionConverter.Convert(__workflow_filterValue);
+                if (__workflow_parameterfilterValue != null)
+                    callPayload.Queries["ParameterfilterValue"] = ExpressionConverter.Convert(__workflow_parameterfilterValue);
+                callPayload.Queries["selectedUnitType"] = Convert.ToString("imperial");
+                if (__workflow_selectedUnitType != null)
+                    callPayload.Queries["selectedUnitType"] = ExpressionConverter.Convert(__workflow_selectedUnitType);
+                if (__workflow_selectedUnit != null)
+                    callPayload.Queries["selectedUnit"] = ExpressionConverter.Convert(__workflow_selectedUnit);
+                return new ApiConnectionAction<GraphQLParametersResponseAEC>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<GraphQLParametersResponseAEC> GetFilteredPropertiesAECUsingLink(Expression<Func<string>> fileId, Expression<Func<filterByInput>> filterBy, Expression<Func<string>> filterValue = null, Expression<Func<string>> parameterfilterValue = null, Expression<Func<selectedUnitTypeInput>> selectedUnitType = null, Expression<Func<string>> selectedUnit = null)
         {
-            var apiCallPath = "/fakeGraphQL/URL/GetFilteredParametersAEC";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fileId"] = ExpressionConverter.Convert(fileId);
-            callPayload.Queries["filterBy"] = ExpressionConverter.Convert(filterBy);
-            if (filterValue != null)
-                callPayload.Queries["filterValue"] = ExpressionConverter.Convert(filterValue);
-            if (parameterfilterValue != null)
-                callPayload.Queries["ParameterfilterValue"] = ExpressionConverter.Convert(parameterfilterValue);
-            callPayload.Queries["selectedUnitType"] = Convert.ToString("imperial");
-            if (selectedUnitType != null)
-                callPayload.Queries["selectedUnitType"] = ExpressionConverter.Convert(selectedUnitType);
-            if (selectedUnit != null)
-                callPayload.Queries["selectedUnit"] = ExpressionConverter.Convert(selectedUnit);
-            return new ApiConnectionAction<GraphQLParametersResponseAEC>(callPayload);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
+            var __workflow_filterBy = WorkflowExpression.Compile(filterBy, nameof(filterBy), required: true);
+            var __workflow_filterValue = WorkflowExpression.Compile(filterValue, nameof(filterValue), required: false);
+            var __workflow_parameterfilterValue = WorkflowExpression.Compile(parameterfilterValue, nameof(parameterfilterValue), required: false);
+            var __workflow_selectedUnitType = WorkflowExpression.Compile(selectedUnitType, nameof(selectedUnitType), required: false);
+            var __workflow_selectedUnit = WorkflowExpression.Compile(selectedUnit, nameof(selectedUnit), required: false);
+            return new DeferredBodyAction<GraphQLParametersResponseAEC>(() =>
+            {
+                var apiCallPath = "/fakeGraphQL/URL/GetFilteredParametersAEC";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fileId"] = ExpressionConverter.Convert(__workflow_fileId);
+                callPayload.Queries["filterBy"] = ExpressionConverter.Convert(__workflow_filterBy);
+                if (__workflow_filterValue != null)
+                    callPayload.Queries["filterValue"] = ExpressionConverter.Convert(__workflow_filterValue);
+                if (__workflow_parameterfilterValue != null)
+                    callPayload.Queries["ParameterfilterValue"] = ExpressionConverter.Convert(__workflow_parameterfilterValue);
+                callPayload.Queries["selectedUnitType"] = Convert.ToString("imperial");
+                if (__workflow_selectedUnitType != null)
+                    callPayload.Queries["selectedUnitType"] = ExpressionConverter.Convert(__workflow_selectedUnitType);
+                if (__workflow_selectedUnit != null)
+                    callPayload.Queries["selectedUnit"] = ExpressionConverter.Convert(__workflow_selectedUnit);
+                return new ApiConnectionAction<GraphQLParametersResponseAEC>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<PropertyDefinitionsResponse> GetAECpropertyDefinitionsUsingLink(Expression<Func<string>> fileId)
         {
-            var apiCallPath = "/fakeGraphQL/url/GetAECProperties";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fileId"] = ExpressionConverter.Convert(fileId);
-            return new ApiConnectionAction<PropertyDefinitionsResponse>(callPayload);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
+            return new DeferredBodyAction<PropertyDefinitionsResponse>(() =>
+            {
+                var apiCallPath = "/fakeGraphQL/url/GetAECProperties";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fileId"] = ExpressionConverter.Convert(__workflow_fileId);
+                return new ApiConnectionAction<PropertyDefinitionsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<PropertyDefinitionsResponse> GetDXpropertyDefinitionsUsingLink(Expression<Func<string>> fileId)
         {
-            var apiCallPath = "/fakeGraphQL/url/GetDXProperties";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fileId"] = ExpressionConverter.Convert(fileId);
-            return new ApiConnectionAction<PropertyDefinitionsResponse>(callPayload);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
+            return new DeferredBodyAction<PropertyDefinitionsResponse>(() =>
+            {
+                var apiCallPath = "/fakeGraphQL/url/GetDXProperties";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fileId"] = ExpressionConverter.Convert(__workflow_fileId);
+                return new ApiConnectionAction<PropertyDefinitionsResponse>(callPayload);
+            });
         }
     }
 
     public class AutodeskforgedataexcTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger RegisterWebhookExchangeModified(Expression<Func<regionInput>> region, Expression<Func<string>> hubId, Expression<Func<string>> projectId, Expression<Func<string>> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger RegisterWebhookExchangeModified(Expression<Func<regionInput>> region, Expression<Func<string>> hubId, Expression<Func<string>> projectId, Expression<Func<string>> folderId, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/connector/webhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["region"] = ExpressionConverter.Convert(region);
-            callPayload.Queries["hubId"] = ExpressionConverter.Convert(hubId);
-            callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            callPayload.Queries["folderId"] = ExpressionConverter.Convert(folderId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
+            var __workflow_hubId = WorkflowExpression.Compile(hubId, nameof(hubId), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/connector/webhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["region"] = ExpressionConverter.Convert(__workflow_region);
+                callPayload.Queries["hubId"] = ExpressionConverter.Convert(__workflow_hubId);
+                callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
+                callPayload.Queries["folderId"] = ExpressionConverter.Convert(__workflow_folderId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger RegisterWebhookExchangeAdded(Expression<Func<regionInput>> region, Expression<Func<string>> hubId, Expression<Func<string>> projectId, Expression<Func<string>> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger RegisterWebhookExchangeAdded(Expression<Func<regionInput>> region, Expression<Func<string>> hubId, Expression<Func<string>> projectId, Expression<Func<string>> folderId, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/connector/webhookModified";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["region"] = ExpressionConverter.Convert(region);
-            callPayload.Queries["hubId"] = ExpressionConverter.Convert(hubId);
-            callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            callPayload.Queries["folderId"] = ExpressionConverter.Convert(folderId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
+            var __workflow_hubId = WorkflowExpression.Compile(hubId, nameof(hubId), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/connector/webhookModified";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["region"] = ExpressionConverter.Convert(__workflow_region);
+                callPayload.Queries["hubId"] = ExpressionConverter.Convert(__workflow_hubId);
+                callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
+                callPayload.Queries["folderId"] = ExpressionConverter.Convert(__workflow_folderId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger RegisterWebhookExchangeModifiedUrl(Expression<Func<string>> fileId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger RegisterWebhookExchangeModifiedUrl(Expression<Func<string>> fileId, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/connector/webhookModifiedByUrl";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fileId"] = ExpressionConverter.Convert(fileId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/connector/webhookModifiedByUrl";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fileId"] = ExpressionConverter.Convert(__workflow_fileId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -259,6 +342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         public string LastModified { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum regionInput
     {
         US,
@@ -347,6 +431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         public string NextLink { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum getlatestInput
     {
         [EnumMember(Value = "all")]
@@ -355,6 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         LatestProperties
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum filterByInput
     {
         [EnumMember(Value = "category")]
@@ -367,6 +453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         NoFilter
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum selectedUnitTypeInput
     {
         [EnumMember(Value = "imperial")]

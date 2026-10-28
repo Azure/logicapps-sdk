@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,42 +14,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendpostcards")]
         public IBodyWorkflowAction<UploadMediaResponse> UploadMedia(Expression<Func<string>> bodycontent)
         {
-            var apiCallPath = "/uploads";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["convert"] = Convert.ToString("postcard");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["content"] = ExpressionConverter.ConvertO(bodycontent);
-            if (bodypropCount > 0)
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: true);
+            return new DeferredBodyAction<UploadMediaResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/uploads";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["convert"] = Convert.ToString("postcard");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<UploadMediaResponse>(callPayload);
+                return new ApiConnectionAction<UploadMediaResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendpostcards")]
         public IBodyWorkflowAction<SendPostcardResponse> SendPostcard(Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients, Expression<Func<string[]>> bodyfileUrls)
         {
-            var apiCallPath = "/post/postcards/send";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["recipients"] = ExpressionConverter.ConvertO(bodyrecipients);
-            body["source"] = "MSPowerAutomate-pc";
-            bodypropCount++;
-            bodypropCount++;
-            body["file_urls"] = ExpressionConverter.ConvertO(bodyfileUrls);
-            if (bodypropCount > 0)
+            var __workflow_bodyrecipients = WorkflowExpression.Compile(bodyrecipients, nameof(bodyrecipients), required: true);
+            var __workflow_bodyfileUrls = WorkflowExpression.Compile(bodyfileUrls, nameof(bodyfileUrls), required: true);
+            return new DeferredBodyAction<SendPostcardResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/post/postcards/send";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["recipients"] = ExpressionConverter.ConvertO(__workflow_bodyrecipients);
+                body["source"] = "MSPowerAutomate-pc";
+                bodypropCount++;
+                bodypropCount++;
+                body["file_urls"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrls);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SendPostcardResponse>(callPayload);
+                return new ApiConnectionAction<SendPostcardResponse>(callPayload);
+            });
         }
     }
 

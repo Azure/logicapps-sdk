@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopin
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,40 +14,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopin
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "holopin")]
         public IBodyWorkflowAction<IssuePostResponse> Issue(Expression<Func<string>> id, Expression<Func<string>> bodyemail)
         {
-            var apiCallPath = "/sticker/share";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodypropCount > 0)
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            return new DeferredBodyAction<IssuePostResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/sticker/share";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<IssuePostResponse>(callPayload);
+                return new ApiConnectionAction<IssuePostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "holopin")]
         public IBodyWorkflowAction<UserStickerGetResponse> UserStickerGet(Expression<Func<string>> username)
         {
-            var apiCallPath = "/stickers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["username"] = ExpressionConverter.Convert(username);
-            return new ApiConnectionAction<UserStickerGetResponse>(callPayload);
+            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            return new DeferredBodyAction<UserStickerGetResponse>(() =>
+            {
+                var apiCallPath = "/stickers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_username);
+                return new ApiConnectionAction<UserStickerGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "holopin")]
         public IBodyWorkflowAction<UserBoardGetResponse> UserBoardGet(Expression<Func<string>> user)
         {
-            var apiCallPath = "/user/board";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["user"] = ExpressionConverter.Convert(user);
-            return new ApiConnectionAction<UserBoardGetResponse>(callPayload);
+            var __workflow_user = WorkflowExpression.Compile(user, nameof(user), required: true);
+            return new DeferredBodyAction<UserBoardGetResponse>(() =>
+            {
+                var apiCallPath = "/user/board";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["user"] = ExpressionConverter.Convert(__workflow_user);
+                return new ApiConnectionAction<UserBoardGetResponse>(callPayload);
+            });
         }
     }
 

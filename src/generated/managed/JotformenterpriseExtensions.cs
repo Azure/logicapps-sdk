@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jotformenterprise
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -15,22 +15,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jotformenterprise
 
     public class JotformenterpriseTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookResponse> WebhookTrigger(Expression<Func<string>> workspaceID, Expression<Func<string>> formID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse> WebhookTrigger(Expression<Func<string>> workspaceID, Expression<Func<string>> formID, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/msflow/v2/forms/{0}/webhooks", ExpressionConverter.ConvertWithUrlEncoding(formID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["workspaceID"] = ExpressionConverter.Convert(workspaceID);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackURL"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_workspaceID = WorkflowExpression.Compile(workspaceID, nameof(workspaceID), required: true);
+            var __workflow_formID = WorkflowExpression.Compile(formID, nameof(formID), required: true);
+            return new DeferredBodyTrigger<WebhookResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/msflow/v2/forms/{0}/webhooks", __workflow_formID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["workspaceID"] = ExpressionConverter.Convert(__workflow_workspaceID);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackURL"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<WebhookResponse>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<WebhookResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

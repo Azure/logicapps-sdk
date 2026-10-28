@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -32,137 +32,176 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
         public IBodyWorkflowAction<ListLinksResponseItem[]> ListLinks(Expression<Func<string>> domainId = null, Expression<Func<string>> slashtag = null, Expression<Func<orderByInput>> orderBy = null, Expression<Func<orderDirInput>> orderDir = null, Expression<Func<int>> limit = null, Expression<Func<string>> workspace = null)
         {
-            var apiCallPath = "/links";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (domainId != null)
-                callPayload.Queries["domain.id"] = ExpressionConverter.Convert(domainId);
-            if (slashtag != null)
-                callPayload.Queries["slashtag"] = ExpressionConverter.Convert(slashtag);
-            if (orderBy != null)
-                callPayload.Queries["orderBy"] = ExpressionConverter.Convert(orderBy);
-            if (orderDir != null)
-                callPayload.Queries["orderDir"] = ExpressionConverter.Convert(orderDir);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (workspace != null)
-                callPayload.Headers["Workspace"] = ExpressionConverter.Convert(workspace);
-            return new ApiConnectionAction<ListLinksResponseItem[]>(callPayload);
+            var __workflow_domainId = WorkflowExpression.Compile(domainId, nameof(domainId), required: false);
+            var __workflow_slashtag = WorkflowExpression.Compile(slashtag, nameof(slashtag), required: false);
+            var __workflow_orderBy = WorkflowExpression.Compile(orderBy, nameof(orderBy), required: false);
+            var __workflow_orderDir = WorkflowExpression.Compile(orderDir, nameof(orderDir), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: false);
+            return new DeferredBodyAction<ListLinksResponseItem[]>(() =>
+            {
+                var apiCallPath = "/links";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_domainId != null)
+                    callPayload.Queries["domain.id"] = ExpressionConverter.Convert(__workflow_domainId);
+                if (__workflow_slashtag != null)
+                    callPayload.Queries["slashtag"] = ExpressionConverter.Convert(__workflow_slashtag);
+                if (__workflow_orderBy != null)
+                    callPayload.Queries["orderBy"] = ExpressionConverter.Convert(__workflow_orderBy);
+                if (__workflow_orderDir != null)
+                    callPayload.Queries["orderDir"] = ExpressionConverter.Convert(__workflow_orderDir);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_workspace != null)
+                    callPayload.Headers["Workspace"] = ExpressionConverter.Convert(__workflow_workspace);
+                return new ApiConnectionAction<ListLinksResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
         public IBodyWorkflowAction<CreateLinkResponse> CreateLink(Expression<Func<string>> bodydestination = null, Expression<Func<string>> bodyslashtag = null, Expression<Func<string>> bodydomainid = null, Expression<Func<string>> bodytitle = null)
         {
-            var apiCallPath = "/links";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydestination != null)
+            var __workflow_bodydestination = WorkflowExpression.Compile(bodydestination, nameof(bodydestination), required: false);
+            var __workflow_bodyslashtag = WorkflowExpression.Compile(bodyslashtag, nameof(bodyslashtag), required: false);
+            var __workflow_bodydomainid = WorkflowExpression.Compile(bodydomainid, nameof(bodydomainid), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            return new DeferredBodyAction<CreateLinkResponse>(() =>
             {
-                body["destination"] = ExpressionConverter.ConvertO(bodydestination);
-                bodypropCount++;
-            }
+                var apiCallPath = "/links";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodydestination != null)
+                {
+                    body["destination"] = ExpressionConverter.ConvertO(__workflow_bodydestination);
+                    bodypropCount++;
+                }
 
-            if (bodyslashtag != null)
-            {
-                body["slashtag"] = ExpressionConverter.ConvertO(bodyslashtag);
-                bodypropCount++;
-            }
+                if (__workflow_bodyslashtag != null)
+                {
+                    body["slashtag"] = ExpressionConverter.ConvertO(__workflow_bodyslashtag);
+                    bodypropCount++;
+                }
 
-            var domainObject = new JObject();
-            var domainObjectpropCount = 0;
-            if (bodydomainid != null)
-            {
-                domainObject["id"] = ExpressionConverter.ConvertO(bodydomainid);
-                domainObjectpropCount++;
-            }
+                var domainObject = new JObject();
+                var domainObjectpropCount = 0;
+                if (__workflow_bodydomainid != null)
+                {
+                    domainObject["id"] = ExpressionConverter.ConvertO(__workflow_bodydomainid);
+                    domainObjectpropCount++;
+                }
 
-            if (domainObjectpropCount > 0)
-            {
-                body["domain"] = domainObject;
-                bodypropCount++;
-            }
+                if (domainObjectpropCount > 0)
+                {
+                    body["domain"] = domainObject;
+                    bodypropCount++;
+                }
 
-            if (bodytitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+                if (__workflow_bodytitle != null)
+                {
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CreateLinkResponse>(callPayload);
+                return new ApiConnectionAction<CreateLinkResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
         public IBodyWorkflowAction<ListWorkspacesResponseItem[]> ListWorkspaces(Expression<Func<orderByInput>> orderBy = null, Expression<Func<orderDirInput>> orderDir = null, Expression<Func<int>> limit = null)
         {
-            var apiCallPath = "/workspaces";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (orderBy != null)
-                callPayload.Queries["orderBy"] = ExpressionConverter.Convert(orderBy);
-            if (orderDir != null)
-                callPayload.Queries["orderDir"] = ExpressionConverter.Convert(orderDir);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<ListWorkspacesResponseItem[]>(callPayload);
+            var __workflow_orderBy = WorkflowExpression.Compile(orderBy, nameof(orderBy), required: false);
+            var __workflow_orderDir = WorkflowExpression.Compile(orderDir, nameof(orderDir), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<ListWorkspacesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/workspaces";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_orderBy != null)
+                    callPayload.Queries["orderBy"] = ExpressionConverter.Convert(__workflow_orderBy);
+                if (__workflow_orderDir != null)
+                    callPayload.Queries["orderDir"] = ExpressionConverter.Convert(__workflow_orderDir);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                return new ApiConnectionAction<ListWorkspacesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
         public IBodyWorkflowAction<GetLinkResponse> GetLink(Expression<Func<string>> id, Expression<Func<string>> workspace = null)
         {
-            var apiCallPath = String.Format("/links/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (workspace != null)
-                callPayload.Headers["Workspace"] = ExpressionConverter.Convert(workspace);
-            return new ApiConnectionAction<GetLinkResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: false);
+            return new DeferredBodyAction<GetLinkResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/links/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_workspace != null)
+                    callPayload.Headers["Workspace"] = ExpressionConverter.Convert(__workflow_workspace);
+                return new ApiConnectionAction<GetLinkResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
         public IBodyWorkflowAction<DeleteLinkResponse> DeleteLink(Expression<Func<string>> id, Expression<Func<string>> workspace = null)
         {
-            var apiCallPath = String.Format("/links/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (workspace != null)
-                callPayload.Headers["Workspace"] = ExpressionConverter.Convert(workspace);
-            return new ApiConnectionAction<DeleteLinkResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: false);
+            return new DeferredBodyAction<DeleteLinkResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/links/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_workspace != null)
+                    callPayload.Headers["Workspace"] = ExpressionConverter.Convert(__workflow_workspace);
+                return new ApiConnectionAction<DeleteLinkResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
         public IBodyWorkflowAction<UpdateLinkResponse> UpdateLink(Expression<Func<string>> id, Expression<Func<string>> workspace = null, Expression<Func<string>> bodydestinationURL = null, Expression<Func<string>> bodytitle = null)
         {
-            var apiCallPath = String.Format("/links/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (workspace != null)
-                callPayload.Headers["Workspace"] = ExpressionConverter.Convert(workspace);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydestinationURL != null)
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: false);
+            var __workflow_bodydestinationURL = WorkflowExpression.Compile(bodydestinationURL, nameof(bodydestinationURL), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            return new DeferredBodyAction<UpdateLinkResponse>(() =>
             {
-                body["destination"] = ExpressionConverter.ConvertO(bodydestinationURL);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/links/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_workspace != null)
+                    callPayload.Headers["Workspace"] = ExpressionConverter.Convert(__workflow_workspace);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodydestinationURL != null)
+                {
+                    body["destination"] = ExpressionConverter.ConvertO(__workflow_bodydestinationURL);
+                    bodypropCount++;
+                }
 
-            if (bodytitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+                if (__workflow_bodytitle != null)
+                {
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<UpdateLinkResponse>(callPayload);
+                return new ApiConnectionAction<UpdateLinkResponse>(callPayload);
+            });
         }
     }
 
@@ -323,6 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         public string FullName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum orderByInput
     {
         [EnumMember(Value = "createdAt")]
@@ -331,6 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         UpdatedAt
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum orderDirInput
     {
         [EnumMember(Value = "asc")]

@@ -1,11 +1,11 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
 {
     using System;
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
@@ -16,206 +16,259 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<JToken> CallRfc(Expression<Func<CallRfcInputInputBodyTypeType>> inputBodyType = null, Expression<Func<string>> rfcName = null, Expression<Func<string>> sessionId = null, Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null, Expression<Func<bool>> autoCommit = null, Expression<Func<bool>> safeType = null, Expression<Func<CallRfcInputOutputBodyTypeType>> outputBodyType = null)
         {
-            var serviceProviderParameters = new JObject();
-            if (inputBodyType != null)
+            var __workflow_inputBodyType = WorkflowExpression.Compile(inputBodyType, nameof(inputBodyType), required: false);
+            var __workflow_rfcName = WorkflowExpression.Compile(rfcName, nameof(rfcName), required: false);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
+            var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: false);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: false);
+            var __workflow_autoCommit = WorkflowExpression.Compile(autoCommit, nameof(autoCommit), required: false);
+            var __workflow_safeType = WorkflowExpression.Compile(safeType, nameof(safeType), required: false);
+            var __workflow_outputBodyType = WorkflowExpression.Compile(outputBodyType, nameof(outputBodyType), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                serviceProviderParameters["inputBodyType"] = ExpressionConverter.ConvertO(inputBodyType);
-            }
-            else
-            {
-                serviceProviderParameters["inputBodyType"] = "XML";
-            }
+                var serviceProviderParameters = new JObject();
+                if (__workflow_inputBodyType != null)
+                {
+                    serviceProviderParameters["inputBodyType"] = ExpressionConverter.ConvertO(__workflow_inputBodyType);
+                }
+                else
+                {
+                    serviceProviderParameters["inputBodyType"] = "XML";
+                }
 
-            if (rfcName != null)
-            {
-                serviceProviderParameters["rfcName"] = ExpressionConverter.ConvertO(rfcName);
-            }
+                if (__workflow_rfcName != null)
+                {
+                    serviceProviderParameters["rfcName"] = ExpressionConverter.ConvertO(__workflow_rfcName);
+                }
 
-            if (sessionId != null)
-            {
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-            }
+                if (__workflow_sessionId != null)
+                {
+                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
+                }
 
-            if (tId != null)
-            {
-                serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
-            }
+                if (__workflow_tId != null)
+                {
+                    serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(__workflow_tId);
+                }
 
-            if (queueName != null)
-            {
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            }
+                if (__workflow_queueName != null)
+                {
+                    serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                }
 
-            if (autoCommit != null)
-            {
-                serviceProviderParameters["autoCommit"] = ExpressionConverter.ConvertO(autoCommit);
-            }
+                if (__workflow_autoCommit != null)
+                {
+                    serviceProviderParameters["autoCommit"] = ExpressionConverter.ConvertO(__workflow_autoCommit);
+                }
 
-            if (safeType != null)
-            {
-                serviceProviderParameters["safeType"] = ExpressionConverter.ConvertO(safeType);
-            }
+                if (__workflow_safeType != null)
+                {
+                    serviceProviderParameters["safeType"] = ExpressionConverter.ConvertO(__workflow_safeType);
+                }
 
-            if (outputBodyType != null)
-            {
-                serviceProviderParameters["outputBodyType"] = ExpressionConverter.ConvertO(outputBodyType);
-            }
-            else
-            {
-                serviceProviderParameters["outputBodyType"] = "XML";
-            }
+                if (__workflow_outputBodyType != null)
+                {
+                    serviceProviderParameters["outputBodyType"] = ExpressionConverter.ConvertO(__workflow_outputBodyType);
+                }
+                else
+                {
+                    serviceProviderParameters["outputBodyType"] = "XML";
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "callRfc", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<JToken>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "callRfc", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<JToken>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<CreateRfcTransactionOutput> CreateRfcTransaction(Expression<Func<string>> tId, Expression<Func<string>> queueName = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
-            if (queueName != null)
+            var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: true);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: false);
+            return new DeferredBodyAction<CreateRfcTransactionOutput>(() =>
             {
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(__workflow_tId);
+                if (__workflow_queueName != null)
+                {
+                    serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "createRfcTransaction", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<CreateRfcTransactionOutput>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "createRfcTransaction", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<CreateRfcTransactionOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<GetRfcTransactionOutput> GetRfcTransaction(Expression<Func<string>> tId, Expression<Func<string>> queueName = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
-            if (queueName != null)
+            var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: true);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: false);
+            return new DeferredBodyAction<GetRfcTransactionOutput>(() =>
             {
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(__workflow_tId);
+                if (__workflow_queueName != null)
+                {
+                    serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getRfcTransaction", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetRfcTransactionOutput>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getRfcTransaction", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<GetRfcTransactionOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<AddRfcToTransactionOutput> AddRfcToTransaction(Expression<Func<object>> body, Expression<Func<string>> tId, Expression<Func<string>> queueName = null, Expression<Func<bool>> autoCommit = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
-            serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
-            if (queueName != null)
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: true);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: false);
+            var __workflow_autoCommit = WorkflowExpression.Compile(autoCommit, nameof(autoCommit), required: false);
+            return new DeferredBodyAction<AddRfcToTransactionOutput>(() =>
             {
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["body"] = ExpressionConverter.ConvertO(__workflow_body);
+                serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(__workflow_tId);
+                if (__workflow_queueName != null)
+                {
+                    serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                }
 
-            if (autoCommit != null)
-            {
-                serviceProviderParameters["autoCommit"] = ExpressionConverter.ConvertO(autoCommit);
-            }
+                if (__workflow_autoCommit != null)
+                {
+                    serviceProviderParameters["autoCommit"] = ExpressionConverter.ConvertO(__workflow_autoCommit);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "addRfcToTransaction", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<AddRfcToTransactionOutput>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "addRfcToTransaction", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<AddRfcToTransactionOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<CommitRfcTransactionOutput> CommitRfcTransaction(Expression<Func<string>> tId, Expression<Func<string>> queueName = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
-            if (queueName != null)
+            var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: true);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: false);
+            return new DeferredBodyAction<CommitRfcTransactionOutput>(() =>
             {
-                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(__workflow_tId);
+                if (__workflow_queueName != null)
+                {
+                    serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "commitRfcTransaction", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<CommitRfcTransactionOutput>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "commitRfcTransaction", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<CommitRfcTransactionOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IWorkflowAction ConfirmTransactionId(Expression<Func<string>> tId)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "confirmTransactionId", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(__workflow_tId);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "confirmTransactionId", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<SendIDocOutput> SendIDoc(Expression<Func<SendIDocInputIdocFormatType>> idocFormat, Expression<Func<bool>> confirmTid, Expression<Func<string>> tId = null, Expression<Func<bool>> allowUnreleasedSegmentV2 = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["idocFormat"] = ExpressionConverter.ConvertO(idocFormat);
-            if (tId != null)
+            var __workflow_idocFormat = WorkflowExpression.Compile(idocFormat, nameof(idocFormat), required: true);
+            var __workflow_confirmTid = WorkflowExpression.Compile(confirmTid, nameof(confirmTid), required: true);
+            var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: false);
+            var __workflow_allowUnreleasedSegmentV2 = WorkflowExpression.Compile(allowUnreleasedSegmentV2, nameof(allowUnreleasedSegmentV2), required: false);
+            return new DeferredBodyAction<SendIDocOutput>(() =>
             {
-                serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["idocFormat"] = ExpressionConverter.ConvertO(__workflow_idocFormat);
+                if (__workflow_tId != null)
+                {
+                    serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(__workflow_tId);
+                }
 
-            serviceProviderParameters["confirmTid"] = ExpressionConverter.ConvertO(confirmTid);
-            if (allowUnreleasedSegmentV2 != null)
-            {
-                serviceProviderParameters["allowUnreleasedSegmentV2"] = ExpressionConverter.ConvertO(allowUnreleasedSegmentV2);
-            }
-            else
-            {
-                serviceProviderParameters["allowUnreleasedSegmentV2"] = false;
-            }
+                serviceProviderParameters["confirmTid"] = ExpressionConverter.ConvertO(__workflow_confirmTid);
+                if (__workflow_allowUnreleasedSegmentV2 != null)
+                {
+                    serviceProviderParameters["allowUnreleasedSegmentV2"] = ExpressionConverter.ConvertO(__workflow_allowUnreleasedSegmentV2);
+                }
+                else
+                {
+                    serviceProviderParameters["allowUnreleasedSegmentV2"] = false;
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "sendIDoc", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<SendIDocOutput>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "sendIDoc", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<SendIDocOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<BapiCallMethodOutput> BapiCallMethod(Expression<Func<string>> businessObject, Expression<Func<string>> method, Expression<Func<bool>> autoCommit, Expression<Func<object>> body, Expression<Func<string>> sessionId = null, Expression<Func<bool>> safeType = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["businessObject"] = ExpressionConverter.ConvertO(businessObject);
-            serviceProviderParameters["method"] = ExpressionConverter.ConvertO(method);
-            serviceProviderParameters["autoCommit"] = ExpressionConverter.ConvertO(autoCommit);
-            if (sessionId != null)
+            var __workflow_businessObject = WorkflowExpression.Compile(businessObject, nameof(businessObject), required: true);
+            var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
+            var __workflow_autoCommit = WorkflowExpression.Compile(autoCommit, nameof(autoCommit), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
+            var __workflow_safeType = WorkflowExpression.Compile(safeType, nameof(safeType), required: false);
+            return new DeferredBodyAction<BapiCallMethodOutput>(() =>
             {
-                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["businessObject"] = ExpressionConverter.ConvertO(__workflow_businessObject);
+                serviceProviderParameters["method"] = ExpressionConverter.ConvertO(__workflow_method);
+                serviceProviderParameters["autoCommit"] = ExpressionConverter.ConvertO(__workflow_autoCommit);
+                if (__workflow_sessionId != null)
+                {
+                    serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
+                }
 
-            serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
-            if (safeType != null)
-            {
-                serviceProviderParameters["safeType"] = ExpressionConverter.ConvertO(safeType);
-            }
+                serviceProviderParameters["body"] = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_safeType != null)
+                {
+                    serviceProviderParameters["safeType"] = ExpressionConverter.ConvertO(__workflow_safeType);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "bapiCallMethod", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<BapiCallMethodOutput>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "bapiCallMethod", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<BapiCallMethodOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
@@ -231,204 +284,261 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IWorkflowAction CloseSession(Expression<Func<string>> sessionId)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "closeSession", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "closeSession", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<BapiCommitOutput> BapiCommit(Expression<Func<string>> sessionId, Expression<Func<bool>> wait, Expression<Func<bool>> closeSession)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-            serviceProviderParameters["wait"] = ExpressionConverter.ConvertO(wait);
-            serviceProviderParameters["closeSession"] = ExpressionConverter.ConvertO(closeSession);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
+            var __workflow_wait = WorkflowExpression.Compile(wait, nameof(wait), required: true);
+            var __workflow_closeSession = WorkflowExpression.Compile(closeSession, nameof(closeSession), required: true);
+            return new DeferredBodyAction<BapiCommitOutput>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "bapiCommit", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<BapiCommitOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
+                serviceProviderParameters["wait"] = ExpressionConverter.ConvertO(__workflow_wait);
+                serviceProviderParameters["closeSession"] = ExpressionConverter.ConvertO(__workflow_closeSession);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "bapiCommit", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<BapiCommitOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<BapiRollbackOutput> BapiRollback(Expression<Func<string>> sessionId, Expression<Func<bool>> closeSession)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(sessionId);
-            serviceProviderParameters["closeSession"] = ExpressionConverter.ConvertO(closeSession);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
+            var __workflow_closeSession = WorkflowExpression.Compile(closeSession, nameof(closeSession), required: true);
+            return new DeferredBodyAction<BapiRollbackOutput>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "bapiRollback", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<BapiRollbackOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["sessionId"] = ExpressionConverter.ConvertO(__workflow_sessionId);
+                serviceProviderParameters["closeSession"] = ExpressionConverter.ConvertO(__workflow_closeSession);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "bapiRollback", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<BapiRollbackOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<ReadTableOutput> ReadTable(Expression<Func<string>> tableName, Expression<Func<string[]>> fieldNames = null, Expression<Func<string[]>> whereFilters = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> numberOfRowsToRead = null, Expression<Func<string>> delimiter = null, Expression<Func<ReadTableInputReturnFormatType>> returnFormat = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(tableName);
-            if (fieldNames != null)
+            var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
+            var __workflow_fieldNames = WorkflowExpression.Compile(fieldNames, nameof(fieldNames), required: false);
+            var __workflow_whereFilters = WorkflowExpression.Compile(whereFilters, nameof(whereFilters), required: false);
+            var __workflow_startIndex = WorkflowExpression.Compile(startIndex, nameof(startIndex), required: false);
+            var __workflow_numberOfRowsToRead = WorkflowExpression.Compile(numberOfRowsToRead, nameof(numberOfRowsToRead), required: false);
+            var __workflow_delimiter = WorkflowExpression.Compile(delimiter, nameof(delimiter), required: false);
+            var __workflow_returnFormat = WorkflowExpression.Compile(returnFormat, nameof(returnFormat), required: false);
+            return new DeferredBodyAction<ReadTableOutput>(() =>
             {
-                serviceProviderParameters["fieldNames"] = ExpressionConverter.ConvertO(fieldNames);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
+                if (__workflow_fieldNames != null)
+                {
+                    serviceProviderParameters["fieldNames"] = ExpressionConverter.ConvertO(__workflow_fieldNames);
+                }
 
-            if (whereFilters != null)
-            {
-                serviceProviderParameters["whereFilters"] = ExpressionConverter.ConvertO(whereFilters);
-            }
+                if (__workflow_whereFilters != null)
+                {
+                    serviceProviderParameters["whereFilters"] = ExpressionConverter.ConvertO(__workflow_whereFilters);
+                }
 
-            if (startIndex != null)
-            {
-                serviceProviderParameters["startIndex"] = ExpressionConverter.ConvertO(startIndex);
-            }
+                if (__workflow_startIndex != null)
+                {
+                    serviceProviderParameters["startIndex"] = ExpressionConverter.ConvertO(__workflow_startIndex);
+                }
 
-            if (numberOfRowsToRead != null)
-            {
-                serviceProviderParameters["numberOfRowsToRead"] = ExpressionConverter.ConvertO(numberOfRowsToRead);
-            }
+                if (__workflow_numberOfRowsToRead != null)
+                {
+                    serviceProviderParameters["numberOfRowsToRead"] = ExpressionConverter.ConvertO(__workflow_numberOfRowsToRead);
+                }
 
-            if (delimiter != null)
-            {
-                serviceProviderParameters["delimiter"] = ExpressionConverter.ConvertO(delimiter);
-            }
+                if (__workflow_delimiter != null)
+                {
+                    serviceProviderParameters["delimiter"] = ExpressionConverter.ConvertO(__workflow_delimiter);
+                }
 
-            if (returnFormat != null)
-            {
-                serviceProviderParameters["returnFormat"] = ExpressionConverter.ConvertO(returnFormat);
-            }
-            else
-            {
-                serviceProviderParameters["returnFormat"] = "Json";
-            }
+                if (__workflow_returnFormat != null)
+                {
+                    serviceProviderParameters["returnFormat"] = ExpressionConverter.ConvertO(__workflow_returnFormat);
+                }
+                else
+                {
+                    serviceProviderParameters["returnFormat"] = "Json";
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "readTable", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<ReadTableOutput>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "readTable", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<ReadTableOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<JToken> GetSchemaV2(Expression<Func<GetSchemaV2InputOperationTypeType>> operationType, Expression<Func<string>> fileNamePrefix = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["operationType"] = ExpressionConverter.ConvertO(operationType);
-            if (fileNamePrefix != null)
+            var __workflow_operationType = WorkflowExpression.Compile(operationType, nameof(operationType), required: true);
+            var __workflow_fileNamePrefix = WorkflowExpression.Compile(fileNamePrefix, nameof(fileNamePrefix), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                serviceProviderParameters["fileNamePrefix"] = ExpressionConverter.ConvertO(fileNamePrefix);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["operationType"] = ExpressionConverter.ConvertO(__workflow_operationType);
+                if (__workflow_fileNamePrefix != null)
+                {
+                    serviceProviderParameters["fileNamePrefix"] = ExpressionConverter.ConvertO(__workflow_fileNamePrefix);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getSchemaV2", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<JToken>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getSchemaV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<JToken>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<GetIDocListOutput> GetIDocList(Expression<Func<GetIDocListInputDirectionType>> direction, Expression<Func<string>> tId)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["direction"] = ExpressionConverter.ConvertO(direction);
-            serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(tId);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            var __workflow_direction = WorkflowExpression.Compile(direction, nameof(direction), required: true);
+            var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: true);
+            return new DeferredBodyAction<GetIDocListOutput>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getIDocList", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetIDocListOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["direction"] = ExpressionConverter.ConvertO(__workflow_direction);
+                serviceProviderParameters["tId"] = ExpressionConverter.ConvertO(__workflow_tId);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getIDocList", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<GetIDocListOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<GetIDocStatusOutput> GetIDocStatus(Expression<Func<int>> iDocNumber)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["iDocNumber"] = ExpressionConverter.ConvertO(iDocNumber);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            var __workflow_iDocNumber = WorkflowExpression.Compile(iDocNumber, nameof(iDocNumber), required: true);
+            return new DeferredBodyAction<GetIDocStatusOutput>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getIDocStatus", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetIDocStatusOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["iDocNumber"] = ExpressionConverter.ConvertO(__workflow_iDocNumber);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getIDocStatus", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<GetIDocStatusOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IWorkflowAction RespondToSapServer(Expression<Func<string>> body, Expression<Func<bool>> safeType = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
-            if (safeType != null)
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            var __workflow_safeType = WorkflowExpression.Compile(safeType, nameof(safeType), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                serviceProviderParameters["safeType"] = ExpressionConverter.ConvertO(safeType);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["body"] = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_safeType != null)
+                {
+                    serviceProviderParameters["safeType"] = ExpressionConverter.ConvertO(__workflow_safeType);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "respondToSapServer", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "respondToSapServer", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IWorkflowAction SendExceptionToSapServer(Expression<Func<string>> sendExceptionToSapServerErrorMessage, Expression<Func<string>> sendExceptionToSapServerExceptionName = null, Expression<Func<string>> sendExceptionToSapServerMessageType = null, Expression<Func<string>> sendExceptionToSapServerMessageClass = null, Expression<Func<string>> sendExceptionToSapServerMessageNumber = null, Expression<Func<bool>> sendExceptionToSapServerIsAbapMessage = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["SendExceptionToSapServerErrorMessage"] = ExpressionConverter.ConvertO(sendExceptionToSapServerErrorMessage);
-            if (sendExceptionToSapServerExceptionName != null)
+            var __workflow_sendExceptionToSapServerErrorMessage = WorkflowExpression.Compile(sendExceptionToSapServerErrorMessage, nameof(sendExceptionToSapServerErrorMessage), required: true);
+            var __workflow_sendExceptionToSapServerExceptionName = WorkflowExpression.Compile(sendExceptionToSapServerExceptionName, nameof(sendExceptionToSapServerExceptionName), required: false);
+            var __workflow_sendExceptionToSapServerMessageType = WorkflowExpression.Compile(sendExceptionToSapServerMessageType, nameof(sendExceptionToSapServerMessageType), required: false);
+            var __workflow_sendExceptionToSapServerMessageClass = WorkflowExpression.Compile(sendExceptionToSapServerMessageClass, nameof(sendExceptionToSapServerMessageClass), required: false);
+            var __workflow_sendExceptionToSapServerMessageNumber = WorkflowExpression.Compile(sendExceptionToSapServerMessageNumber, nameof(sendExceptionToSapServerMessageNumber), required: false);
+            var __workflow_sendExceptionToSapServerIsAbapMessage = WorkflowExpression.Compile(sendExceptionToSapServerIsAbapMessage, nameof(sendExceptionToSapServerIsAbapMessage), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                serviceProviderParameters["SendExceptionToSapServerExceptionName"] = ExpressionConverter.ConvertO(sendExceptionToSapServerExceptionName);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["SendExceptionToSapServerErrorMessage"] = ExpressionConverter.ConvertO(__workflow_sendExceptionToSapServerErrorMessage);
+                if (__workflow_sendExceptionToSapServerExceptionName != null)
+                {
+                    serviceProviderParameters["SendExceptionToSapServerExceptionName"] = ExpressionConverter.ConvertO(__workflow_sendExceptionToSapServerExceptionName);
+                }
 
-            if (sendExceptionToSapServerMessageType != null)
-            {
-                serviceProviderParameters["SendExceptionToSapServerMessageType"] = ExpressionConverter.ConvertO(sendExceptionToSapServerMessageType);
-            }
+                if (__workflow_sendExceptionToSapServerMessageType != null)
+                {
+                    serviceProviderParameters["SendExceptionToSapServerMessageType"] = ExpressionConverter.ConvertO(__workflow_sendExceptionToSapServerMessageType);
+                }
 
-            if (sendExceptionToSapServerMessageClass != null)
-            {
-                serviceProviderParameters["SendExceptionToSapServerMessageClass"] = ExpressionConverter.ConvertO(sendExceptionToSapServerMessageClass);
-            }
+                if (__workflow_sendExceptionToSapServerMessageClass != null)
+                {
+                    serviceProviderParameters["SendExceptionToSapServerMessageClass"] = ExpressionConverter.ConvertO(__workflow_sendExceptionToSapServerMessageClass);
+                }
 
-            if (sendExceptionToSapServerMessageNumber != null)
-            {
-                serviceProviderParameters["SendExceptionToSapServerMessageNumber"] = ExpressionConverter.ConvertO(sendExceptionToSapServerMessageNumber);
-            }
+                if (__workflow_sendExceptionToSapServerMessageNumber != null)
+                {
+                    serviceProviderParameters["SendExceptionToSapServerMessageNumber"] = ExpressionConverter.ConvertO(__workflow_sendExceptionToSapServerMessageNumber);
+                }
 
-            if (sendExceptionToSapServerIsAbapMessage != null)
-            {
-                serviceProviderParameters["SendExceptionToSapServerIsAbapMessage"] = ExpressionConverter.ConvertO(sendExceptionToSapServerIsAbapMessage);
-            }
+                if (__workflow_sendExceptionToSapServerIsAbapMessage != null)
+                {
+                    serviceProviderParameters["SendExceptionToSapServerIsAbapMessage"] = ExpressionConverter.ConvertO(__workflow_sendExceptionToSapServerIsAbapMessage);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "sendExceptionToSapServer", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "sendExceptionToSapServer", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<JToken> RunDiagnostics(Expression<Func<RunDiagnosticsInputOperationTypeType>> operationType)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["operationType"] = ExpressionConverter.ConvertO(operationType);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            var __workflow_operationType = WorkflowExpression.Compile(operationType, nameof(operationType), required: true);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "runDiagnostics", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<JToken>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["operationType"] = ExpressionConverter.ConvertO(__workflow_operationType);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "runDiagnostics", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<JToken>(serviceProviderInput);
+            });
         }
     }
 
@@ -436,47 +546,60 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
     {
         public IBodyWorkflowTrigger<SapTriggerOutput> SapTrigger(Expression<Func<SapTriggerInputIdocFormatType>> idocFormat, Expression<Func<int>> degreeOfParallelism, Expression<Func<string>> gatewayHost, Expression<Func<string>> gatewayService, Expression<Func<string>> programId, Expression<Func<string>> sncPartnerNames = null, Expression<Func<bool>> receiveIDocsWithUnreleasedSegmentsV2 = null, Expression<Func<string>> defaultIDocRelease = null, Expression<Func<string>> receivedIDocTypeReleaseMapping = null, Expression<Func<bool>> gatewayWithoutWorkProcess = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["idocFormat"] = ExpressionConverter.ConvertO(idocFormat);
-            if (sncPartnerNames != null)
+            var __workflow_idocFormat = WorkflowExpression.Compile(idocFormat, nameof(idocFormat), required: true);
+            var __workflow_degreeOfParallelism = WorkflowExpression.Compile(degreeOfParallelism, nameof(degreeOfParallelism), required: true);
+            var __workflow_gatewayHost = WorkflowExpression.Compile(gatewayHost, nameof(gatewayHost), required: true);
+            var __workflow_gatewayService = WorkflowExpression.Compile(gatewayService, nameof(gatewayService), required: true);
+            var __workflow_programId = WorkflowExpression.Compile(programId, nameof(programId), required: true);
+            var __workflow_sncPartnerNames = WorkflowExpression.Compile(sncPartnerNames, nameof(sncPartnerNames), required: false);
+            var __workflow_receiveIDocsWithUnreleasedSegmentsV2 = WorkflowExpression.Compile(receiveIDocsWithUnreleasedSegmentsV2, nameof(receiveIDocsWithUnreleasedSegmentsV2), required: false);
+            var __workflow_defaultIDocRelease = WorkflowExpression.Compile(defaultIDocRelease, nameof(defaultIDocRelease), required: false);
+            var __workflow_receivedIDocTypeReleaseMapping = WorkflowExpression.Compile(receivedIDocTypeReleaseMapping, nameof(receivedIDocTypeReleaseMapping), required: false);
+            var __workflow_gatewayWithoutWorkProcess = WorkflowExpression.Compile(gatewayWithoutWorkProcess, nameof(gatewayWithoutWorkProcess), required: false);
+            return new DeferredBodyTrigger<SapTriggerOutput>(() =>
             {
-                serviceProviderParameters["SncPartnerNames"] = ExpressionConverter.ConvertO(sncPartnerNames);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["idocFormat"] = ExpressionConverter.ConvertO(__workflow_idocFormat);
+                if (__workflow_sncPartnerNames != null)
+                {
+                    serviceProviderParameters["SncPartnerNames"] = ExpressionConverter.ConvertO(__workflow_sncPartnerNames);
+                }
 
-            serviceProviderParameters["DegreeOfParallelism"] = ExpressionConverter.ConvertO(degreeOfParallelism);
-            if (receiveIDocsWithUnreleasedSegmentsV2 != null)
-            {
-                serviceProviderParameters["ReceiveIDocsWithUnreleasedSegmentsV2"] = ExpressionConverter.ConvertO(receiveIDocsWithUnreleasedSegmentsV2);
-            }
+                serviceProviderParameters["DegreeOfParallelism"] = ExpressionConverter.ConvertO(__workflow_degreeOfParallelism);
+                if (__workflow_receiveIDocsWithUnreleasedSegmentsV2 != null)
+                {
+                    serviceProviderParameters["ReceiveIDocsWithUnreleasedSegmentsV2"] = ExpressionConverter.ConvertO(__workflow_receiveIDocsWithUnreleasedSegmentsV2);
+                }
 
-            serviceProviderParameters["GatewayHost"] = ExpressionConverter.ConvertO(gatewayHost);
-            serviceProviderParameters["GatewayService"] = ExpressionConverter.ConvertO(gatewayService);
-            serviceProviderParameters["ProgramId"] = ExpressionConverter.ConvertO(programId);
-            if (defaultIDocRelease != null)
-            {
-                serviceProviderParameters["DefaultIDocRelease"] = ExpressionConverter.ConvertO(defaultIDocRelease);
-            }
+                serviceProviderParameters["GatewayHost"] = ExpressionConverter.ConvertO(__workflow_gatewayHost);
+                serviceProviderParameters["GatewayService"] = ExpressionConverter.ConvertO(__workflow_gatewayService);
+                serviceProviderParameters["ProgramId"] = ExpressionConverter.ConvertO(__workflow_programId);
+                if (__workflow_defaultIDocRelease != null)
+                {
+                    serviceProviderParameters["DefaultIDocRelease"] = ExpressionConverter.ConvertO(__workflow_defaultIDocRelease);
+                }
 
-            if (receivedIDocTypeReleaseMapping != null)
-            {
-                serviceProviderParameters["ReceivedIDocTypeReleaseMapping"] = ExpressionConverter.ConvertO(receivedIDocTypeReleaseMapping);
-            }
+                if (__workflow_receivedIDocTypeReleaseMapping != null)
+                {
+                    serviceProviderParameters["ReceivedIDocTypeReleaseMapping"] = ExpressionConverter.ConvertO(__workflow_receivedIDocTypeReleaseMapping);
+                }
 
-            if (gatewayWithoutWorkProcess != null)
-            {
-                serviceProviderParameters["GatewayWithoutWorkProcess"] = ExpressionConverter.ConvertO(gatewayWithoutWorkProcess);
-            }
-            else
-            {
-                serviceProviderParameters["GatewayWithoutWorkProcess"] = true;
-            }
+                if (__workflow_gatewayWithoutWorkProcess != null)
+                {
+                    serviceProviderParameters["GatewayWithoutWorkProcess"] = ExpressionConverter.ConvertO(__workflow_gatewayWithoutWorkProcess);
+                }
+                else
+                {
+                    serviceProviderParameters["GatewayWithoutWorkProcess"] = true;
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "SapTrigger", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<SapTriggerOutput>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "SapTrigger", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderTrigger<SapTriggerOutput>(serviceProviderInput);
+            });
         }
     }
 
@@ -536,7 +659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public string Uuid { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SapTriggerOutputRfcServerContextTypeUnitIdTypeUnitTypeType
     {
         Queued,
@@ -558,7 +681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public string SendingDateTime { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SapTriggerInputIdocFormatType
     {
         MicrosoftLobNamespaceXml,
@@ -566,14 +689,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         FlatFile
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CallRfcInputInputBodyTypeType
     {
         XML,
         JSON
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CallRfcInputOutputBodyTypeType
     {
         XML,
@@ -655,7 +778,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public string QueueName { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendIDocInputIdocFormatType
     {
         MicrosoftLobNamespaceXml,
@@ -840,7 +963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public string Description { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReadTableInputReturnFormatType
     {
         Xml,
@@ -848,7 +971,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         ExpandedJson
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetSchemaV2InputOperationTypeType
     {
         BAPI,
@@ -864,7 +987,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public int[] IDocNumbers { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetIDocListInputDirectionType
     {
         Send,
@@ -877,7 +1000,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public int IDocStatus { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RunDiagnosticsInputOperationTypeType
     {
         [EnumMember(Value = "Fetch RFC Metadata")]

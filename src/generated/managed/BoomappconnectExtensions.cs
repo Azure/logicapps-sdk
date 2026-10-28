@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,400 +14,463 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
         public IBodyWorkflowAction<SMS1Response> SMS1(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodymessageContent = null, Expression<Func<bodyrecipientAddressInputItem[]>> bodyrecipientAddress = null, Expression<Func<bool>> bodypriority = null, Expression<Func<string>> bodyuniqueIdentifier = null, Expression<Func<string>> bodycampaignName = null, Expression<Func<string>> bodycustomParameter = null)
         {
-            var apiCallPath = "/sms1";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfrom != null)
+            var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodymessageContent = WorkflowExpression.Compile(bodymessageContent, nameof(bodymessageContent), required: false);
+            var __workflow_bodyrecipientAddress = WorkflowExpression.Compile(bodyrecipientAddress, nameof(bodyrecipientAddress), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodyuniqueIdentifier = WorkflowExpression.Compile(bodyuniqueIdentifier, nameof(bodyuniqueIdentifier), required: false);
+            var __workflow_bodycampaignName = WorkflowExpression.Compile(bodycampaignName, nameof(bodycampaignName), required: false);
+            var __workflow_bodycustomParameter = WorkflowExpression.Compile(bodycustomParameter, nameof(bodycustomParameter), required: false);
+            return new DeferredBodyAction<SMS1Response>(() =>
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
-                bodypropCount++;
-            }
+                var apiCallPath = "/sms1";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyfrom != null)
+                {
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
+                    bodypropCount++;
+                }
 
-            if (bodymessageContent != null)
-            {
-                body["message_content"] = ExpressionConverter.ConvertO(bodymessageContent);
-                bodypropCount++;
-            }
+                if (__workflow_bodymessageContent != null)
+                {
+                    body["message_content"] = ExpressionConverter.ConvertO(__workflow_bodymessageContent);
+                    bodypropCount++;
+                }
 
-            if (bodyrecipientAddress != null)
-            {
-                body["recipient_address"] = ExpressionConverter.ConvertO(bodyrecipientAddress);
-                bodypropCount++;
-            }
+                if (__workflow_bodyrecipientAddress != null)
+                {
+                    body["recipient_address"] = ExpressionConverter.ConvertO(__workflow_bodyrecipientAddress);
+                    bodypropCount++;
+                }
 
-            if (bodypriority != null)
-            {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
+                if (__workflow_bodypriority != null)
+                {
+                    body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
+                    bodypropCount++;
+                }
 
-            if (bodyuniqueIdentifier != null)
-            {
-                body["unique_identifier"] = ExpressionConverter.ConvertO(bodyuniqueIdentifier);
-                bodypropCount++;
-            }
+                if (__workflow_bodyuniqueIdentifier != null)
+                {
+                    body["unique_identifier"] = ExpressionConverter.ConvertO(__workflow_bodyuniqueIdentifier);
+                    bodypropCount++;
+                }
 
-            if (bodycampaignName != null)
-            {
-                body["campaign_name"] = ExpressionConverter.ConvertO(bodycampaignName);
-                bodypropCount++;
-            }
+                if (__workflow_bodycampaignName != null)
+                {
+                    body["campaign_name"] = ExpressionConverter.ConvertO(__workflow_bodycampaignName);
+                    bodypropCount++;
+                }
 
-            if (bodycustomParameter != null)
-            {
-                body["custom_parameter"] = ExpressionConverter.ConvertO(bodycustomParameter);
-                bodypropCount++;
-            }
+                if (__workflow_bodycustomParameter != null)
+                {
+                    body["custom_parameter"] = ExpressionConverter.ConvertO(__workflow_bodycustomParameter);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SMS1Response>(callPayload);
+                return new ApiConnectionAction<SMS1Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
         public IBodyWorkflowAction<SMS2Response> SMS2(Expression<Func<string>> bodyconversationId = null, Expression<Func<string>> bodymessageContent = null, Expression<Func<bodyrecipientAddressInputItem[]>> bodyrecipientAddress = null, Expression<Func<int>> bodyvalidityPeriod = null, Expression<Func<bool>> bodyopenTicket = null, Expression<Func<string>> bodyemailResponses = null, Expression<Func<string>> bodypushResponses = null, Expression<Func<bool>> bodypriority = null, Expression<Func<string>> bodyuniqueIdentifier = null, Expression<Func<string>> bodycampaignName = null, Expression<Func<string>> bodycustomParameter = null)
         {
-            var apiCallPath = "/sms2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyconversationId != null)
+            var __workflow_bodyconversationId = WorkflowExpression.Compile(bodyconversationId, nameof(bodyconversationId), required: false);
+            var __workflow_bodymessageContent = WorkflowExpression.Compile(bodymessageContent, nameof(bodymessageContent), required: false);
+            var __workflow_bodyrecipientAddress = WorkflowExpression.Compile(bodyrecipientAddress, nameof(bodyrecipientAddress), required: false);
+            var __workflow_bodyvalidityPeriod = WorkflowExpression.Compile(bodyvalidityPeriod, nameof(bodyvalidityPeriod), required: false);
+            var __workflow_bodyopenTicket = WorkflowExpression.Compile(bodyopenTicket, nameof(bodyopenTicket), required: false);
+            var __workflow_bodyemailResponses = WorkflowExpression.Compile(bodyemailResponses, nameof(bodyemailResponses), required: false);
+            var __workflow_bodypushResponses = WorkflowExpression.Compile(bodypushResponses, nameof(bodypushResponses), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodyuniqueIdentifier = WorkflowExpression.Compile(bodyuniqueIdentifier, nameof(bodyuniqueIdentifier), required: false);
+            var __workflow_bodycampaignName = WorkflowExpression.Compile(bodycampaignName, nameof(bodycampaignName), required: false);
+            var __workflow_bodycustomParameter = WorkflowExpression.Compile(bodycustomParameter, nameof(bodycustomParameter), required: false);
+            return new DeferredBodyAction<SMS2Response>(() =>
             {
-                body["conversation_id"] = ExpressionConverter.ConvertO(bodyconversationId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/sms2";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyconversationId != null)
+                {
+                    body["conversation_id"] = ExpressionConverter.ConvertO(__workflow_bodyconversationId);
+                    bodypropCount++;
+                }
 
-            if (bodymessageContent != null)
-            {
-                body["message_content"] = ExpressionConverter.ConvertO(bodymessageContent);
-                bodypropCount++;
-            }
+                if (__workflow_bodymessageContent != null)
+                {
+                    body["message_content"] = ExpressionConverter.ConvertO(__workflow_bodymessageContent);
+                    bodypropCount++;
+                }
 
-            if (bodyrecipientAddress != null)
-            {
-                body["recipient_address"] = ExpressionConverter.ConvertO(bodyrecipientAddress);
-                bodypropCount++;
-            }
+                if (__workflow_bodyrecipientAddress != null)
+                {
+                    body["recipient_address"] = ExpressionConverter.ConvertO(__workflow_bodyrecipientAddress);
+                    bodypropCount++;
+                }
 
-            if (bodyvalidityPeriod != null)
-            {
-                body["validity_period"] = ExpressionConverter.ConvertO(bodyvalidityPeriod);
-                bodypropCount++;
-            }
+                if (__workflow_bodyvalidityPeriod != null)
+                {
+                    body["validity_period"] = ExpressionConverter.ConvertO(__workflow_bodyvalidityPeriod);
+                    bodypropCount++;
+                }
 
-            if (bodyopenTicket != null)
-            {
-                body["open_ticket"] = ExpressionConverter.ConvertO(bodyopenTicket);
-                bodypropCount++;
-            }
+                if (__workflow_bodyopenTicket != null)
+                {
+                    body["open_ticket"] = ExpressionConverter.ConvertO(__workflow_bodyopenTicket);
+                    bodypropCount++;
+                }
 
-            if (bodyemailResponses != null)
-            {
-                body["email_responses"] = ExpressionConverter.ConvertO(bodyemailResponses);
-                bodypropCount++;
-            }
+                if (__workflow_bodyemailResponses != null)
+                {
+                    body["email_responses"] = ExpressionConverter.ConvertO(__workflow_bodyemailResponses);
+                    bodypropCount++;
+                }
 
-            if (bodypushResponses != null)
-            {
-                body["push_responses"] = ExpressionConverter.ConvertO(bodypushResponses);
-                bodypropCount++;
-            }
+                if (__workflow_bodypushResponses != null)
+                {
+                    body["push_responses"] = ExpressionConverter.ConvertO(__workflow_bodypushResponses);
+                    bodypropCount++;
+                }
 
-            if (bodypriority != null)
-            {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
+                if (__workflow_bodypriority != null)
+                {
+                    body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
+                    bodypropCount++;
+                }
 
-            if (bodyuniqueIdentifier != null)
-            {
-                body["unique_identifier"] = ExpressionConverter.ConvertO(bodyuniqueIdentifier);
-                bodypropCount++;
-            }
+                if (__workflow_bodyuniqueIdentifier != null)
+                {
+                    body["unique_identifier"] = ExpressionConverter.ConvertO(__workflow_bodyuniqueIdentifier);
+                    bodypropCount++;
+                }
 
-            if (bodycampaignName != null)
-            {
-                body["campaign_name"] = ExpressionConverter.ConvertO(bodycampaignName);
-                bodypropCount++;
-            }
+                if (__workflow_bodycampaignName != null)
+                {
+                    body["campaign_name"] = ExpressionConverter.ConvertO(__workflow_bodycampaignName);
+                    bodypropCount++;
+                }
 
-            if (bodycustomParameter != null)
-            {
-                body["custom_parameter"] = ExpressionConverter.ConvertO(bodycustomParameter);
-                bodypropCount++;
-            }
+                if (__workflow_bodycustomParameter != null)
+                {
+                    body["custom_parameter"] = ExpressionConverter.ConvertO(__workflow_bodycustomParameter);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SMS2Response>(callPayload);
+                return new ApiConnectionAction<SMS2Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
         public IBodyWorkflowAction<SMS3Response> SMS3(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodymessageContent = null, Expression<Func<bodyrecipientAddressInputItem[]>> bodyrecipientAddress = null, Expression<Func<bool>> bodypriority = null, Expression<Func<string>> bodyuniqueIdentifier = null, Expression<Func<string>> bodycampaignName = null, Expression<Func<string>> bodycustomParameter = null)
         {
-            var apiCallPath = "/sms3";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfrom != null)
+            var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodymessageContent = WorkflowExpression.Compile(bodymessageContent, nameof(bodymessageContent), required: false);
+            var __workflow_bodyrecipientAddress = WorkflowExpression.Compile(bodyrecipientAddress, nameof(bodyrecipientAddress), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodyuniqueIdentifier = WorkflowExpression.Compile(bodyuniqueIdentifier, nameof(bodyuniqueIdentifier), required: false);
+            var __workflow_bodycampaignName = WorkflowExpression.Compile(bodycampaignName, nameof(bodycampaignName), required: false);
+            var __workflow_bodycustomParameter = WorkflowExpression.Compile(bodycustomParameter, nameof(bodycustomParameter), required: false);
+            return new DeferredBodyAction<SMS3Response>(() =>
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
-                bodypropCount++;
-            }
+                var apiCallPath = "/sms3";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyfrom != null)
+                {
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
+                    bodypropCount++;
+                }
 
-            if (bodymessageContent != null)
-            {
-                body["message_content"] = ExpressionConverter.ConvertO(bodymessageContent);
-                bodypropCount++;
-            }
+                if (__workflow_bodymessageContent != null)
+                {
+                    body["message_content"] = ExpressionConverter.ConvertO(__workflow_bodymessageContent);
+                    bodypropCount++;
+                }
 
-            if (bodyrecipientAddress != null)
-            {
-                body["recipient_address"] = ExpressionConverter.ConvertO(bodyrecipientAddress);
-                bodypropCount++;
-            }
+                if (__workflow_bodyrecipientAddress != null)
+                {
+                    body["recipient_address"] = ExpressionConverter.ConvertO(__workflow_bodyrecipientAddress);
+                    bodypropCount++;
+                }
 
-            if (bodypriority != null)
-            {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
+                if (__workflow_bodypriority != null)
+                {
+                    body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
+                    bodypropCount++;
+                }
 
-            if (bodyuniqueIdentifier != null)
-            {
-                body["unique_identifier"] = ExpressionConverter.ConvertO(bodyuniqueIdentifier);
-                bodypropCount++;
-            }
+                if (__workflow_bodyuniqueIdentifier != null)
+                {
+                    body["unique_identifier"] = ExpressionConverter.ConvertO(__workflow_bodyuniqueIdentifier);
+                    bodypropCount++;
+                }
 
-            if (bodycampaignName != null)
-            {
-                body["campaign_name"] = ExpressionConverter.ConvertO(bodycampaignName);
-                bodypropCount++;
-            }
+                if (__workflow_bodycampaignName != null)
+                {
+                    body["campaign_name"] = ExpressionConverter.ConvertO(__workflow_bodycampaignName);
+                    bodypropCount++;
+                }
 
-            if (bodycustomParameter != null)
-            {
-                body["custom_parameter"] = ExpressionConverter.ConvertO(bodycustomParameter);
-                bodypropCount++;
-            }
+                if (__workflow_bodycustomParameter != null)
+                {
+                    body["custom_parameter"] = ExpressionConverter.ConvertO(__workflow_bodycustomParameter);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SMS3Response>(callPayload);
+                return new ApiConnectionAction<SMS3Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
         public IBodyWorkflowAction<VOICEResponse> VOICE(Expression<Func<string>> bodyvoiceIntro = null, Expression<Func<string>> bodyvoiceThankYou = null, Expression<Func<string>> bodyvoiceRedirectMessage = null, Expression<Func<string>> bodyvoiceRedirectNonumber = null, Expression<Func<int>> bodyvoiceRetries = null, Expression<Func<int>> bodyvoiceDelay = null, Expression<Func<string>> bodymessageContent = null, Expression<Func<bodyrecipientAddressInputItem[]>> bodyrecipientAddress = null, Expression<Func<bool>> bodypriority = null, Expression<Func<string>> bodyuniqueIdentifier = null, Expression<Func<string>> bodycampaignName = null, Expression<Func<string>> bodycustomParameter = null)
         {
-            var apiCallPath = "/voice";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyvoiceIntro != null)
+            var __workflow_bodyvoiceIntro = WorkflowExpression.Compile(bodyvoiceIntro, nameof(bodyvoiceIntro), required: false);
+            var __workflow_bodyvoiceThankYou = WorkflowExpression.Compile(bodyvoiceThankYou, nameof(bodyvoiceThankYou), required: false);
+            var __workflow_bodyvoiceRedirectMessage = WorkflowExpression.Compile(bodyvoiceRedirectMessage, nameof(bodyvoiceRedirectMessage), required: false);
+            var __workflow_bodyvoiceRedirectNonumber = WorkflowExpression.Compile(bodyvoiceRedirectNonumber, nameof(bodyvoiceRedirectNonumber), required: false);
+            var __workflow_bodyvoiceRetries = WorkflowExpression.Compile(bodyvoiceRetries, nameof(bodyvoiceRetries), required: false);
+            var __workflow_bodyvoiceDelay = WorkflowExpression.Compile(bodyvoiceDelay, nameof(bodyvoiceDelay), required: false);
+            var __workflow_bodymessageContent = WorkflowExpression.Compile(bodymessageContent, nameof(bodymessageContent), required: false);
+            var __workflow_bodyrecipientAddress = WorkflowExpression.Compile(bodyrecipientAddress, nameof(bodyrecipientAddress), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodyuniqueIdentifier = WorkflowExpression.Compile(bodyuniqueIdentifier, nameof(bodyuniqueIdentifier), required: false);
+            var __workflow_bodycampaignName = WorkflowExpression.Compile(bodycampaignName, nameof(bodycampaignName), required: false);
+            var __workflow_bodycustomParameter = WorkflowExpression.Compile(bodycustomParameter, nameof(bodycustomParameter), required: false);
+            return new DeferredBodyAction<VOICEResponse>(() =>
             {
-                body["voice_intro"] = ExpressionConverter.ConvertO(bodyvoiceIntro);
-                bodypropCount++;
-            }
+                var apiCallPath = "/voice";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyvoiceIntro != null)
+                {
+                    body["voice_intro"] = ExpressionConverter.ConvertO(__workflow_bodyvoiceIntro);
+                    bodypropCount++;
+                }
 
-            if (bodyvoiceThankYou != null)
-            {
-                body["voice_thank_you"] = ExpressionConverter.ConvertO(bodyvoiceThankYou);
-                bodypropCount++;
-            }
+                if (__workflow_bodyvoiceThankYou != null)
+                {
+                    body["voice_thank_you"] = ExpressionConverter.ConvertO(__workflow_bodyvoiceThankYou);
+                    bodypropCount++;
+                }
 
-            if (bodyvoiceRedirectMessage != null)
-            {
-                body["voice_redirect_message"] = ExpressionConverter.ConvertO(bodyvoiceRedirectMessage);
-                bodypropCount++;
-            }
+                if (__workflow_bodyvoiceRedirectMessage != null)
+                {
+                    body["voice_redirect_message"] = ExpressionConverter.ConvertO(__workflow_bodyvoiceRedirectMessage);
+                    bodypropCount++;
+                }
 
-            var voiceRedirectNoObject = new JObject();
-            var voiceRedirectNoObjectpropCount = 0;
-            if (bodyvoiceRedirectNonumber != null)
-            {
-                voiceRedirectNoObject["number"] = ExpressionConverter.ConvertO(bodyvoiceRedirectNonumber);
-                voiceRedirectNoObjectpropCount++;
-            }
+                var voiceRedirectNoObject = new JObject();
+                var voiceRedirectNoObjectpropCount = 0;
+                if (__workflow_bodyvoiceRedirectNonumber != null)
+                {
+                    voiceRedirectNoObject["number"] = ExpressionConverter.ConvertO(__workflow_bodyvoiceRedirectNonumber);
+                    voiceRedirectNoObjectpropCount++;
+                }
 
-            if (voiceRedirectNoObjectpropCount > 0)
-            {
-                body["voice_redirect_no"] = voiceRedirectNoObject;
-                bodypropCount++;
-            }
+                if (voiceRedirectNoObjectpropCount > 0)
+                {
+                    body["voice_redirect_no"] = voiceRedirectNoObject;
+                    bodypropCount++;
+                }
 
-            if (bodyvoiceRetries != null)
-            {
-                body["voice_retries"] = ExpressionConverter.ConvertO(bodyvoiceRetries);
-                bodypropCount++;
-            }
+                if (__workflow_bodyvoiceRetries != null)
+                {
+                    body["voice_retries"] = ExpressionConverter.ConvertO(__workflow_bodyvoiceRetries);
+                    bodypropCount++;
+                }
 
-            if (bodyvoiceDelay != null)
-            {
-                body["voice_delay"] = ExpressionConverter.ConvertO(bodyvoiceDelay);
-                bodypropCount++;
-            }
+                if (__workflow_bodyvoiceDelay != null)
+                {
+                    body["voice_delay"] = ExpressionConverter.ConvertO(__workflow_bodyvoiceDelay);
+                    bodypropCount++;
+                }
 
-            if (bodymessageContent != null)
-            {
-                body["message_content"] = ExpressionConverter.ConvertO(bodymessageContent);
-                bodypropCount++;
-            }
+                if (__workflow_bodymessageContent != null)
+                {
+                    body["message_content"] = ExpressionConverter.ConvertO(__workflow_bodymessageContent);
+                    bodypropCount++;
+                }
 
-            if (bodyrecipientAddress != null)
-            {
-                body["recipient_address"] = ExpressionConverter.ConvertO(bodyrecipientAddress);
-                bodypropCount++;
-            }
+                if (__workflow_bodyrecipientAddress != null)
+                {
+                    body["recipient_address"] = ExpressionConverter.ConvertO(__workflow_bodyrecipientAddress);
+                    bodypropCount++;
+                }
 
-            if (bodypriority != null)
-            {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
+                if (__workflow_bodypriority != null)
+                {
+                    body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
+                    bodypropCount++;
+                }
 
-            if (bodyuniqueIdentifier != null)
-            {
-                body["unique_identifier"] = ExpressionConverter.ConvertO(bodyuniqueIdentifier);
-                bodypropCount++;
-            }
+                if (__workflow_bodyuniqueIdentifier != null)
+                {
+                    body["unique_identifier"] = ExpressionConverter.ConvertO(__workflow_bodyuniqueIdentifier);
+                    bodypropCount++;
+                }
 
-            if (bodycampaignName != null)
-            {
-                body["campaign_name"] = ExpressionConverter.ConvertO(bodycampaignName);
-                bodypropCount++;
-            }
+                if (__workflow_bodycampaignName != null)
+                {
+                    body["campaign_name"] = ExpressionConverter.ConvertO(__workflow_bodycampaignName);
+                    bodypropCount++;
+                }
 
-            if (bodycustomParameter != null)
-            {
-                body["custom_parameter"] = ExpressionConverter.ConvertO(bodycustomParameter);
-                bodypropCount++;
-            }
+                if (__workflow_bodycustomParameter != null)
+                {
+                    body["custom_parameter"] = ExpressionConverter.ConvertO(__workflow_bodycustomParameter);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<VOICEResponse>(callPayload);
+                return new ApiConnectionAction<VOICEResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
         public IBodyWorkflowAction<EMAILResponse> EMAIL(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyemailSubject = null, Expression<Func<string>> bodymessageContent = null, Expression<Func<string[]>> bodyemailAddress = null, Expression<Func<int>> bodyvalidityPeriod = null, Expression<Func<bool>> bodyopenTicket = null, Expression<Func<string>> bodyemailResponses = null, Expression<Func<string>> bodypushResponses = null, Expression<Func<string>> bodyuniqueIdentifier = null, Expression<Func<string>> bodycampaignName = null, Expression<Func<string>> bodycustomParameter = null)
         {
-            var apiCallPath = "/email";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfrom != null)
+            var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyemailSubject = WorkflowExpression.Compile(bodyemailSubject, nameof(bodyemailSubject), required: false);
+            var __workflow_bodymessageContent = WorkflowExpression.Compile(bodymessageContent, nameof(bodymessageContent), required: false);
+            var __workflow_bodyemailAddress = WorkflowExpression.Compile(bodyemailAddress, nameof(bodyemailAddress), required: false);
+            var __workflow_bodyvalidityPeriod = WorkflowExpression.Compile(bodyvalidityPeriod, nameof(bodyvalidityPeriod), required: false);
+            var __workflow_bodyopenTicket = WorkflowExpression.Compile(bodyopenTicket, nameof(bodyopenTicket), required: false);
+            var __workflow_bodyemailResponses = WorkflowExpression.Compile(bodyemailResponses, nameof(bodyemailResponses), required: false);
+            var __workflow_bodypushResponses = WorkflowExpression.Compile(bodypushResponses, nameof(bodypushResponses), required: false);
+            var __workflow_bodyuniqueIdentifier = WorkflowExpression.Compile(bodyuniqueIdentifier, nameof(bodyuniqueIdentifier), required: false);
+            var __workflow_bodycampaignName = WorkflowExpression.Compile(bodycampaignName, nameof(bodycampaignName), required: false);
+            var __workflow_bodycustomParameter = WorkflowExpression.Compile(bodycustomParameter, nameof(bodycustomParameter), required: false);
+            return new DeferredBodyAction<EMAILResponse>(() =>
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
-                bodypropCount++;
-            }
+                var apiCallPath = "/email";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyfrom != null)
+                {
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
+                    bodypropCount++;
+                }
 
-            if (bodyemailSubject != null)
-            {
-                body["email_subject"] = ExpressionConverter.ConvertO(bodyemailSubject);
-                bodypropCount++;
-            }
+                if (__workflow_bodyemailSubject != null)
+                {
+                    body["email_subject"] = ExpressionConverter.ConvertO(__workflow_bodyemailSubject);
+                    bodypropCount++;
+                }
 
-            if (bodymessageContent != null)
-            {
-                body["message_content"] = ExpressionConverter.ConvertO(bodymessageContent);
-                bodypropCount++;
-            }
+                if (__workflow_bodymessageContent != null)
+                {
+                    body["message_content"] = ExpressionConverter.ConvertO(__workflow_bodymessageContent);
+                    bodypropCount++;
+                }
 
-            if (bodyemailAddress != null)
-            {
-                body["email_address"] = ExpressionConverter.ConvertO(bodyemailAddress);
-                bodypropCount++;
-            }
+                if (__workflow_bodyemailAddress != null)
+                {
+                    body["email_address"] = ExpressionConverter.ConvertO(__workflow_bodyemailAddress);
+                    bodypropCount++;
+                }
 
-            if (bodyvalidityPeriod != null)
-            {
-                body["validity_period"] = ExpressionConverter.ConvertO(bodyvalidityPeriod);
-                bodypropCount++;
-            }
+                if (__workflow_bodyvalidityPeriod != null)
+                {
+                    body["validity_period"] = ExpressionConverter.ConvertO(__workflow_bodyvalidityPeriod);
+                    bodypropCount++;
+                }
 
-            if (bodyopenTicket != null)
-            {
-                body["open_ticket"] = ExpressionConverter.ConvertO(bodyopenTicket);
-                bodypropCount++;
-            }
+                if (__workflow_bodyopenTicket != null)
+                {
+                    body["open_ticket"] = ExpressionConverter.ConvertO(__workflow_bodyopenTicket);
+                    bodypropCount++;
+                }
 
-            if (bodyemailResponses != null)
-            {
-                body["email_responses"] = ExpressionConverter.ConvertO(bodyemailResponses);
-                bodypropCount++;
-            }
+                if (__workflow_bodyemailResponses != null)
+                {
+                    body["email_responses"] = ExpressionConverter.ConvertO(__workflow_bodyemailResponses);
+                    bodypropCount++;
+                }
 
-            if (bodypushResponses != null)
-            {
-                body["push_responses"] = ExpressionConverter.ConvertO(bodypushResponses);
-                bodypropCount++;
-            }
+                if (__workflow_bodypushResponses != null)
+                {
+                    body["push_responses"] = ExpressionConverter.ConvertO(__workflow_bodypushResponses);
+                    bodypropCount++;
+                }
 
-            if (bodyuniqueIdentifier != null)
-            {
-                body["unique_identifier"] = ExpressionConverter.ConvertO(bodyuniqueIdentifier);
-                bodypropCount++;
-            }
+                if (__workflow_bodyuniqueIdentifier != null)
+                {
+                    body["unique_identifier"] = ExpressionConverter.ConvertO(__workflow_bodyuniqueIdentifier);
+                    bodypropCount++;
+                }
 
-            if (bodycampaignName != null)
-            {
-                body["campaign_name"] = ExpressionConverter.ConvertO(bodycampaignName);
-                bodypropCount++;
-            }
+                if (__workflow_bodycampaignName != null)
+                {
+                    body["campaign_name"] = ExpressionConverter.ConvertO(__workflow_bodycampaignName);
+                    bodypropCount++;
+                }
 
-            if (bodycustomParameter != null)
-            {
-                body["custom_parameter"] = ExpressionConverter.ConvertO(bodycustomParameter);
-                bodypropCount++;
-            }
+                if (__workflow_bodycustomParameter != null)
+                {
+                    body["custom_parameter"] = ExpressionConverter.ConvertO(__workflow_bodycustomParameter);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<EMAILResponse>(callPayload);
+                return new ApiConnectionAction<EMAILResponse>(callPayload);
+            });
         }
     }
 
     public class BoomappconnectTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<GESTRESPONSESTRIGGERResponse> GESTRESPONSESTRIGGER(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GESTRESPONSESTRIGGERResponse> GESTRESPONSESTRIGGER(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/get_responses";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["ignore_previous"] = Convert.ToString(true);
             callPayload.Queries["mark_as_read"] = Convert.ToString(true);
-            return new ApiConnectionTrigger<GESTRESPONSESTRIGGERResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<GESTRESPONSESTRIGGERResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<GETDRSTRIGGERResponse> GETDRSTRIGGER(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GETDRSTRIGGERResponse> GETDRSTRIGGER(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/get_all_new_drs";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["ignore_previous"] = Convert.ToString(true);
             callPayload.Queries["drs_after"] = Convert.ToString("1990-01-01 00:00:00");
-            return new ApiConnectionTrigger<GETDRSTRIGGERResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<GETDRSTRIGGERResponse>(callPayload, recurrence: recurrence);
         }
     }
 

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usb4sap
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,13 +14,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usb4sap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usb4sap")]
         public IWorkflowAction GetCallExtractMetadata(Expression<Func<string>> filter, Expression<Func<string>> format = null)
         {
-            var apiCallPath = "/sap/opu/odata/ECOS/OBJ2CLOUD_V2_SRV/ET_DatasetSet";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (format != null)
-                callPayload.Queries["$format"] = ExpressionConverter.Convert(format);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/sap/opu/odata/ECOS/OBJ2CLOUD_V2_SRV/ET_DatasetSet";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_format != null)
+                    callPayload.Queries["$format"] = ExpressionConverter.Convert(__workflow_format);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

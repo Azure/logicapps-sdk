@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,659 +14,941 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsUserViewModel> AccountGetCurrentUser(Expression<Func<string>> xApiVersion)
         {
-            var apiCallPath = "/api/Account/GetCurrentUser";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsUserViewModel>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            return new DeferredBodyAction<AIForgedViewModelsUserViewModel>(() =>
+            {
+                var apiCallPath = "/api/Account/GetCurrentUser";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsUserViewModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<string> AccountGetApiKey(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null)
         {
-            var apiCallPath = "/api/Account/GetAPIKey";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/api/Account/GetAPIKey";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_userId != null)
+                    callPayload.Queries["userId"] = ExpressionConverter.Convert(__workflow_userId);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsClassesViewModel> ClassesGet(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null)
         {
-            var apiCallPath = "/api/Classes/Get";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsClassesViewModel>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsClassesViewModel>(() =>
+            {
+                var apiCallPath = "/api/Classes/Get";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_id != null)
+                    callPayload.Queries["Id"] = ExpressionConverter.Convert(__workflow_id);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsClassesViewModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsClassesViewModel[]> ClassesGetByProject(Expression<Func<string>> xApiVersion, Expression<Func<int>> projectId = null)
         {
-            var apiCallPath = "/api/Classes/GetByProject";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsClassesViewModel[]>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsClassesViewModel[]>(() =>
+            {
+                var apiCallPath = "/api/Classes/GetByProject";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_projectId != null)
+                    callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsClassesViewModel[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsClassesViewModel[]> ClassesGetByUser(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> projectId = null)
         {
-            var apiCallPath = "/api/Classes/GetByUser";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
-            if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsClassesViewModel[]>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsClassesViewModel[]>(() =>
+            {
+                var apiCallPath = "/api/Classes/GetByUser";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_userId != null)
+                    callPayload.Queries["userId"] = ExpressionConverter.Convert(__workflow_userId);
+                if (__workflow_projectId != null)
+                    callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsClassesViewModel[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel> DocumentGetDocument(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null)
         {
-            var apiCallPath = "/api/Document/Get";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsDocumentViewModel>(() =>
+            {
+                var apiCallPath = "/api/Document/Get";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel> DocumentGetHierarchy(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null)
         {
-            var apiCallPath = "/api/Document/GetHierarchy";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsDocumentViewModel>(() =>
+            {
+                var apiCallPath = "/api/Document/GetHierarchy";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel> DocumentDelete(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null)
         {
-            var apiCallPath = "/api/Document/Delete";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsDocumentViewModel>(() =>
+            {
+                var apiCallPath = "/api/Document/Delete";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel[]> DocumentGetPreviews(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> projectId = null, Expression<Func<int>> stpdId = null)
         {
-            var apiCallPath = "/api/Document/GetPreviews";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
-            if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel[]>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
+            var __workflow_stpdId = WorkflowExpression.Compile(stpdId, nameof(stpdId), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsDocumentViewModel[]>(() =>
+            {
+                var apiCallPath = "/api/Document/GetPreviews";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_userId != null)
+                    callPayload.Queries["userId"] = ExpressionConverter.Convert(__workflow_userId);
+                if (__workflow_projectId != null)
+                    callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
+                if (__workflow_stpdId != null)
+                    callPayload.Queries["stpdId"] = ExpressionConverter.Convert(__workflow_stpdId);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentDataViewModel[]> DocumentGetImages(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null, Expression<Func<int>> stpdId = null)
         {
-            var apiCallPath = "/api/Document/GetImages";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsDocumentDataViewModel[]>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_stpdId = WorkflowExpression.Compile(stpdId, nameof(stpdId), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsDocumentDataViewModel[]>(() =>
+            {
+                var apiCallPath = "/api/Document/GetImages";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                if (__workflow_stpdId != null)
+                    callPayload.Queries["stpdId"] = ExpressionConverter.Convert(__workflow_stpdId);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsDocumentDataViewModel[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<object> DocumentGetBlobById(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null)
         {
-            var apiCallPath = "/api/Document/GetBlobById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<object>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            return new DeferredBodyAction<object>(() =>
+            {
+                var apiCallPath = "/api/Document/GetBlobById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<object>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<object> DocumentDeleteBlob(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null)
         {
-            var apiCallPath = "/api/Document/DeleteBlob";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<object>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            return new DeferredBodyAction<object>(() =>
+            {
+                var apiCallPath = "/api/Document/DeleteBlob";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<object>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel> DocumentClassify(Expression<Func<string>> xApiVersion, Expression<Func<int>> stpdId = null, Expression<Func<int>> projectId = null, Expression<Func<object>> file = null)
         {
-            var apiCallPath = "/api/Document/Classify";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
-            if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_stpdId = WorkflowExpression.Compile(stpdId, nameof(stpdId), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsDocumentViewModel>(() =>
+            {
+                var apiCallPath = "/api/Document/Classify";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_stpdId != null)
+                    callPayload.Queries["stpdId"] = ExpressionConverter.Convert(__workflow_stpdId);
+                if (__workflow_projectId != null)
+                    callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel> DocumentExtractAndVerify(Expression<Func<string>> xApiVersion, Expression<Func<int>> stpdId = null, Expression<Func<int>> projectId = null, Expression<Func<object>> file = null)
         {
-            var apiCallPath = "/api/Document/ExtractAndVerify";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
-            if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_stpdId = WorkflowExpression.Compile(stpdId, nameof(stpdId), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsDocumentViewModel>(() =>
+            {
+                var apiCallPath = "/api/Document/ExtractAndVerify";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_stpdId != null)
+                    callPayload.Queries["stpdId"] = ExpressionConverter.Convert(__workflow_stpdId);
+                if (__workflow_projectId != null)
+                    callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsClassesViewModel> DocumentGetClassification(Expression<Func<string>> xApiVersion, Expression<Func<int>> stpdId = null, Expression<Func<int>> projectId = null, Expression<Func<int>> docId = null)
         {
-            var apiCallPath = "/api/Document/GetClassification";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
-            if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            if (docId != null)
-                callPayload.Queries["docId"] = ExpressionConverter.Convert(docId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsClassesViewModel>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_stpdId = WorkflowExpression.Compile(stpdId, nameof(stpdId), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
+            var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsClassesViewModel>(() =>
+            {
+                var apiCallPath = "/api/Document/GetClassification";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_stpdId != null)
+                    callPayload.Queries["stpdId"] = ExpressionConverter.Convert(__workflow_stpdId);
+                if (__workflow_projectId != null)
+                    callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
+                if (__workflow_docId != null)
+                    callPayload.Queries["docId"] = ExpressionConverter.Convert(__workflow_docId);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsClassesViewModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel> ParamDefGet(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null)
         {
-            var apiCallPath = "/api/ParamDef/Get";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsParameterDefViewModel>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsParameterDefViewModel>(() =>
+            {
+                var apiCallPath = "/api/ParamDef/Get";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsParameterDefViewModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel> ParamDefGetParentService(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null)
         {
-            var apiCallPath = "/api/ParamDef/GetParentService";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsParameterDefViewModel>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsParameterDefViewModel>(() =>
+            {
+                var apiCallPath = "/api/ParamDef/GetParentService";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsParameterDefViewModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel> ParamDefGetHierachy(Expression<Func<string>> xApiVersion, Expression<Func<int>> projectId = null, Expression<Func<int>> stpdId = null, Expression<Func<bool>> includeCount = null, Expression<Func<bool>> includeSettings = null, Expression<Func<bool>> includeChildren = null)
         {
-            var apiCallPath = "/api/ParamDef/GetHierachy";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
-            callPayload.Queries["includeCount"] = Convert.ToString(false);
-            if (includeCount != null)
-                callPayload.Queries["includeCount"] = ExpressionConverter.Convert(includeCount);
-            callPayload.Queries["includeSettings"] = Convert.ToString(true);
-            if (includeSettings != null)
-                callPayload.Queries["includeSettings"] = ExpressionConverter.Convert(includeSettings);
-            callPayload.Queries["includeChildren"] = Convert.ToString(false);
-            if (includeChildren != null)
-                callPayload.Queries["includeChildren"] = ExpressionConverter.Convert(includeChildren);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsParameterDefViewModel>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
+            var __workflow_stpdId = WorkflowExpression.Compile(stpdId, nameof(stpdId), required: false);
+            var __workflow_includeCount = WorkflowExpression.Compile(includeCount, nameof(includeCount), required: false);
+            var __workflow_includeSettings = WorkflowExpression.Compile(includeSettings, nameof(includeSettings), required: false);
+            var __workflow_includeChildren = WorkflowExpression.Compile(includeChildren, nameof(includeChildren), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsParameterDefViewModel>(() =>
+            {
+                var apiCallPath = "/api/ParamDef/GetHierachy";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_projectId != null)
+                    callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
+                if (__workflow_stpdId != null)
+                    callPayload.Queries["stpdId"] = ExpressionConverter.Convert(__workflow_stpdId);
+                callPayload.Queries["includeCount"] = Convert.ToString(false);
+                if (__workflow_includeCount != null)
+                    callPayload.Queries["includeCount"] = ExpressionConverter.Convert(__workflow_includeCount);
+                callPayload.Queries["includeSettings"] = Convert.ToString(true);
+                if (__workflow_includeSettings != null)
+                    callPayload.Queries["includeSettings"] = ExpressionConverter.Convert(__workflow_includeSettings);
+                callPayload.Queries["includeChildren"] = Convert.ToString(false);
+                if (__workflow_includeChildren != null)
+                    callPayload.Queries["includeChildren"] = ExpressionConverter.Convert(__workflow_includeChildren);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsParameterDefViewModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentParameterViewModel[]> ParametersGet(Expression<Func<string>> xApiVersion, Expression<Func<int>> docId = null, Expression<Func<int>> stpdId = null, Expression<Func<categoryInput>> category = null, Expression<Func<groupingInput>> grouping = null, Expression<Func<bool>> includeverification = null)
         {
-            var apiCallPath = "/api/Parameters/Get";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (docId != null)
-                callPayload.Queries["docId"] = ExpressionConverter.Convert(docId);
-            if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
-            if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            if (grouping != null)
-                callPayload.Queries["grouping"] = ExpressionConverter.Convert(grouping);
-            callPayload.Queries["includeverification"] = Convert.ToString(true);
-            if (includeverification != null)
-                callPayload.Queries["includeverification"] = ExpressionConverter.Convert(includeverification);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsDocumentParameterViewModel[]>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: false);
+            var __workflow_stpdId = WorkflowExpression.Compile(stpdId, nameof(stpdId), required: false);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
+            var __workflow_grouping = WorkflowExpression.Compile(grouping, nameof(grouping), required: false);
+            var __workflow_includeverification = WorkflowExpression.Compile(includeverification, nameof(includeverification), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsDocumentParameterViewModel[]>(() =>
+            {
+                var apiCallPath = "/api/Parameters/Get";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_docId != null)
+                    callPayload.Queries["docId"] = ExpressionConverter.Convert(__workflow_docId);
+                if (__workflow_stpdId != null)
+                    callPayload.Queries["stpdId"] = ExpressionConverter.Convert(__workflow_stpdId);
+                if (__workflow_category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(__workflow_category);
+                if (__workflow_grouping != null)
+                    callPayload.Queries["grouping"] = ExpressionConverter.Convert(__workflow_grouping);
+                callPayload.Queries["includeverification"] = Convert.ToString(true);
+                if (__workflow_includeverification != null)
+                    callPayload.Queries["includeverification"] = ExpressionConverter.Convert(__workflow_includeverification);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsDocumentParameterViewModel[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentParameterViewModel[]> ParametersGetHierarchy(Expression<Func<string>> xApiVersion, Expression<Func<int>> docId = null, Expression<Func<int>> stpdId = null, Expression<Func<bool>> includeverification = null)
         {
-            var apiCallPath = "/api/Parameters/GetHierarchy";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (docId != null)
-                callPayload.Queries["docId"] = ExpressionConverter.Convert(docId);
-            if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
-            callPayload.Queries["includeverification"] = Convert.ToString(true);
-            if (includeverification != null)
-                callPayload.Queries["includeverification"] = ExpressionConverter.Convert(includeverification);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsDocumentParameterViewModel[]>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: false);
+            var __workflow_stpdId = WorkflowExpression.Compile(stpdId, nameof(stpdId), required: false);
+            var __workflow_includeverification = WorkflowExpression.Compile(includeverification, nameof(includeverification), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsDocumentParameterViewModel[]>(() =>
+            {
+                var apiCallPath = "/api/Parameters/GetHierarchy";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_docId != null)
+                    callPayload.Queries["docId"] = ExpressionConverter.Convert(__workflow_docId);
+                if (__workflow_stpdId != null)
+                    callPayload.Queries["stpdId"] = ExpressionConverter.Convert(__workflow_stpdId);
+                callPayload.Queries["includeverification"] = Convert.ToString(true);
+                if (__workflow_includeverification != null)
+                    callPayload.Queries["includeverification"] = ExpressionConverter.Convert(__workflow_includeverification);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsDocumentParameterViewModel[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentParameterViewModel> ParametersDelete(Expression<Func<string>> xApiVersion, Expression<Func<int>> paramid = null)
         {
-            var apiCallPath = "/api/Parameters/Delete";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (paramid != null)
-                callPayload.Queries["paramid"] = ExpressionConverter.Convert(paramid);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsDocumentParameterViewModel>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_paramid = WorkflowExpression.Compile(paramid, nameof(paramid), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsDocumentParameterViewModel>(() =>
+            {
+                var apiCallPath = "/api/Parameters/Delete";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_paramid != null)
+                    callPayload.Queries["paramid"] = ExpressionConverter.Convert(__workflow_paramid);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsDocumentParameterViewModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentParameterViewModel> ParametersGetByVerification(Expression<Func<string>> xApiVersion, Expression<Func<int>> verificationId = null)
         {
-            var apiCallPath = "/api/Parameters/GetByVerification";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (verificationId != null)
-                callPayload.Queries["verificationId"] = ExpressionConverter.Convert(verificationId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsDocumentParameterViewModel>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_verificationId = WorkflowExpression.Compile(verificationId, nameof(verificationId), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsDocumentParameterViewModel>(() =>
+            {
+                var apiCallPath = "/api/Parameters/GetByVerification";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_verificationId != null)
+                    callPayload.Queries["verificationId"] = ExpressionConverter.Convert(__workflow_verificationId);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsDocumentParameterViewModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocParamSummary[]> ParametersGetSummary(Expression<Func<string>> xApiVersion, Expression<Func<int>> projectId = null)
         {
-            var apiCallPath = "/api/Parameters/GetSummary";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsDocParamSummary[]>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsDocParamSummary[]>(() =>
+            {
+                var apiCallPath = "/api/Parameters/GetSummary";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_projectId != null)
+                    callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsDocParamSummary[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentExtraction[]> ParametersExtract(Expression<Func<string>> xApiVersion, Expression<Func<int>> docid = null)
         {
-            var apiCallPath = "/api/Parameters/Extract";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (docid != null)
-                callPayload.Queries["docid"] = ExpressionConverter.Convert(docid);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsDocumentExtraction[]>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_docid = WorkflowExpression.Compile(docid, nameof(docid), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsDocumentExtraction[]>(() =>
+            {
+                var apiCallPath = "/api/Parameters/Extract";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_docid != null)
+                    callPayload.Queries["docid"] = ExpressionConverter.Convert(__workflow_docid);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsDocumentExtraction[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsProjectViewModel[]> ProjectGetByUser(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null)
         {
-            var apiCallPath = "/api/Project/GetByUser";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsProjectViewModel[]>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsProjectViewModel[]>(() =>
+            {
+                var apiCallPath = "/api/Project/GetByUser";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_userId != null)
+                    callPayload.Queries["userId"] = ExpressionConverter.Convert(__workflow_userId);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsProjectViewModel[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsProjectViewModel> ProjectGetUserProject(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> projectId = null)
         {
-            var apiCallPath = "/api/Project/GetUserProject";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
-            if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsProjectViewModel>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsProjectViewModel>(() =>
+            {
+                var apiCallPath = "/api/Project/GetUserProject";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_userId != null)
+                    callPayload.Queries["userId"] = ExpressionConverter.Convert(__workflow_userId);
+                if (__workflow_projectId != null)
+                    callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsProjectViewModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel[]> ProjectGetHierachies(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> projectId = null, Expression<Func<int>> stpdId = null, Expression<Func<int>> groupId = null, Expression<Func<bool>> includeCount = null, Expression<Func<bool>> onlyServices = null, Expression<Func<bool>> includeSettings = null, Expression<Func<bool>> includeChildren = null)
         {
-            var apiCallPath = "/api/Project/GetHierachies";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
-            if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
-            if (groupId != null)
-                callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            callPayload.Queries["includeCount"] = Convert.ToString(false);
-            if (includeCount != null)
-                callPayload.Queries["includeCount"] = ExpressionConverter.Convert(includeCount);
-            callPayload.Queries["onlyServices"] = Convert.ToString(false);
-            if (onlyServices != null)
-                callPayload.Queries["onlyServices"] = ExpressionConverter.Convert(onlyServices);
-            callPayload.Queries["includeSettings"] = Convert.ToString(true);
-            if (includeSettings != null)
-                callPayload.Queries["includeSettings"] = ExpressionConverter.Convert(includeSettings);
-            callPayload.Queries["includeChildren"] = Convert.ToString(false);
-            if (includeChildren != null)
-                callPayload.Queries["includeChildren"] = ExpressionConverter.Convert(includeChildren);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsParameterDefViewModel[]>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
+            var __workflow_stpdId = WorkflowExpression.Compile(stpdId, nameof(stpdId), required: false);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: false);
+            var __workflow_includeCount = WorkflowExpression.Compile(includeCount, nameof(includeCount), required: false);
+            var __workflow_onlyServices = WorkflowExpression.Compile(onlyServices, nameof(onlyServices), required: false);
+            var __workflow_includeSettings = WorkflowExpression.Compile(includeSettings, nameof(includeSettings), required: false);
+            var __workflow_includeChildren = WorkflowExpression.Compile(includeChildren, nameof(includeChildren), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsParameterDefViewModel[]>(() =>
+            {
+                var apiCallPath = "/api/Project/GetHierachies";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_userId != null)
+                    callPayload.Queries["userId"] = ExpressionConverter.Convert(__workflow_userId);
+                if (__workflow_projectId != null)
+                    callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
+                if (__workflow_stpdId != null)
+                    callPayload.Queries["stpdId"] = ExpressionConverter.Convert(__workflow_stpdId);
+                if (__workflow_groupId != null)
+                    callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
+                callPayload.Queries["includeCount"] = Convert.ToString(false);
+                if (__workflow_includeCount != null)
+                    callPayload.Queries["includeCount"] = ExpressionConverter.Convert(__workflow_includeCount);
+                callPayload.Queries["onlyServices"] = Convert.ToString(false);
+                if (__workflow_onlyServices != null)
+                    callPayload.Queries["onlyServices"] = ExpressionConverter.Convert(__workflow_onlyServices);
+                callPayload.Queries["includeSettings"] = Convert.ToString(true);
+                if (__workflow_includeSettings != null)
+                    callPayload.Queries["includeSettings"] = ExpressionConverter.Convert(__workflow_includeSettings);
+                callPayload.Queries["includeChildren"] = Convert.ToString(false);
+                if (__workflow_includeChildren != null)
+                    callPayload.Queries["includeChildren"] = ExpressionConverter.Convert(__workflow_includeChildren);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsParameterDefViewModel[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsProjectViewModel> ProjectGetByName(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<string>> projectName = null)
         {
-            var apiCallPath = "/api/Project/GetByName";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
-            if (projectName != null)
-                callPayload.Queries["projectName"] = ExpressionConverter.Convert(projectName);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsProjectViewModel>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
+            var __workflow_projectName = WorkflowExpression.Compile(projectName, nameof(projectName), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsProjectViewModel>(() =>
+            {
+                var apiCallPath = "/api/Project/GetByName";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_userId != null)
+                    callPayload.Queries["userId"] = ExpressionConverter.Convert(__workflow_userId);
+                if (__workflow_projectName != null)
+                    callPayload.Queries["projectName"] = ExpressionConverter.Convert(__workflow_projectName);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsProjectViewModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel[]> ProjectGetServices(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> projectId = null, Expression<Func<int>> stlfilter = null, Expression<Func<string>> enginefilter = null)
         {
-            var apiCallPath = "/api/Project/GetServices";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
-            if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            if (stlfilter != null)
-                callPayload.Queries["stlfilter"] = ExpressionConverter.Convert(stlfilter);
-            if (enginefilter != null)
-                callPayload.Queries["enginefilter"] = ExpressionConverter.Convert(enginefilter);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsParameterDefViewModel[]>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
+            var __workflow_stlfilter = WorkflowExpression.Compile(stlfilter, nameof(stlfilter), required: false);
+            var __workflow_enginefilter = WorkflowExpression.Compile(enginefilter, nameof(enginefilter), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsParameterDefViewModel[]>(() =>
+            {
+                var apiCallPath = "/api/Project/GetServices";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_userId != null)
+                    callPayload.Queries["userId"] = ExpressionConverter.Convert(__workflow_userId);
+                if (__workflow_projectId != null)
+                    callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
+                if (__workflow_stlfilter != null)
+                    callPayload.Queries["stlfilter"] = ExpressionConverter.Convert(__workflow_stlfilter);
+                if (__workflow_enginefilter != null)
+                    callPayload.Queries["enginefilter"] = ExpressionConverter.Convert(__workflow_enginefilter);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsParameterDefViewModel[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsParameterDefViewModel> ServicesGet(Expression<Func<string>> xApiVersion, Expression<Func<int>> stpdId = null)
         {
-            var apiCallPath = "/api/Services/Get";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsParameterDefViewModel>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_stpdId = WorkflowExpression.Compile(stpdId, nameof(stpdId), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsParameterDefViewModel>(() =>
+            {
+                var apiCallPath = "/api/Services/Get";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_stpdId != null)
+                    callPayload.Queries["stpdId"] = ExpressionConverter.Convert(__workflow_stpdId);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsParameterDefViewModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<string> SystemGetSystemDate(Expression<Func<string>> xApiVersion)
         {
-            var apiCallPath = "/api/System/GetSystemDate";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/api/System/GetSystemDate";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<JToken> SystemGetSystemInfo(Expression<Func<string>> xApiVersion)
         {
-            var apiCallPath = "/api/System/GetSystemInfo";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/api/System/GetSystemInfo";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDataTypeViewModel[]> SystemGetDataTypes(Expression<Func<string>> xApiVersion)
         {
-            var apiCallPath = "/api/System/GetDataTypes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsDataTypeViewModel[]>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            return new DeferredBodyAction<AIForgedViewModelsDataTypeViewModel[]>(() =>
+            {
+                var apiCallPath = "/api/System/GetDataTypes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsDataTypeViewModel[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsEnumDataViewModel[]> SystemGetEnumData(Expression<Func<string>> xApiVersion)
         {
-            var apiCallPath = "/api/System/GetEnumData";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsEnumDataViewModel[]>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            return new DeferredBodyAction<AIForgedViewModelsEnumDataViewModel[]>(() =>
+            {
+                var apiCallPath = "/api/System/GetEnumData";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsEnumDataViewModel[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsVerificationViewModel> VerificationGet(Expression<Func<string>> xApiVersion, Expression<Func<int>> verificationId = null)
         {
-            var apiCallPath = "/api/Verification/Get";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (verificationId != null)
-                callPayload.Queries["verificationId"] = ExpressionConverter.Convert(verificationId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsVerificationViewModel>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_verificationId = WorkflowExpression.Compile(verificationId, nameof(verificationId), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsVerificationViewModel>(() =>
+            {
+                var apiCallPath = "/api/Verification/Get";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_verificationId != null)
+                    callPayload.Queries["verificationId"] = ExpressionConverter.Convert(__workflow_verificationId);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsVerificationViewModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsVerificationViewModel[]> VerificationGetAll(Expression<Func<string>> xApiVersion, Expression<Func<int>> docId = null, Expression<Func<int>> parameterId = null)
         {
-            var apiCallPath = "/api/Verification/GetAll";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (docId != null)
-                callPayload.Queries["docId"] = ExpressionConverter.Convert(docId);
-            if (parameterId != null)
-                callPayload.Queries["parameterId"] = ExpressionConverter.Convert(parameterId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsVerificationViewModel[]>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: false);
+            var __workflow_parameterId = WorkflowExpression.Compile(parameterId, nameof(parameterId), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsVerificationViewModel[]>(() =>
+            {
+                var apiCallPath = "/api/Verification/GetAll";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_docId != null)
+                    callPayload.Queries["docId"] = ExpressionConverter.Convert(__workflow_docId);
+                if (__workflow_parameterId != null)
+                    callPayload.Queries["parameterId"] = ExpressionConverter.Convert(__workflow_parameterId);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsVerificationViewModel[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsVerificationViewModel> VerificationGetLatest(Expression<Func<string>> xApiVersion, Expression<Func<int>> docId = null, Expression<Func<int>> parameterId = null, Expression<Func<int>> pdId = null)
         {
-            var apiCallPath = "/api/Verification/GetLatest";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (docId != null)
-                callPayload.Queries["docId"] = ExpressionConverter.Convert(docId);
-            if (parameterId != null)
-                callPayload.Queries["parameterId"] = ExpressionConverter.Convert(parameterId);
-            if (pdId != null)
-                callPayload.Queries["pdId"] = ExpressionConverter.Convert(pdId);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsVerificationViewModel>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: false);
+            var __workflow_parameterId = WorkflowExpression.Compile(parameterId, nameof(parameterId), required: false);
+            var __workflow_pdId = WorkflowExpression.Compile(pdId, nameof(pdId), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsVerificationViewModel>(() =>
+            {
+                var apiCallPath = "/api/Verification/GetLatest";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_docId != null)
+                    callPayload.Queries["docId"] = ExpressionConverter.Convert(__workflow_docId);
+                if (__workflow_parameterId != null)
+                    callPayload.Queries["parameterId"] = ExpressionConverter.Convert(__workflow_parameterId);
+                if (__workflow_pdId != null)
+                    callPayload.Queries["pdId"] = ExpressionConverter.Convert(__workflow_pdId);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsVerificationViewModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<object> VerificationGetShred(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> docId = null, Expression<Func<int>> parId = null, Expression<Func<int>> verificationId = null, Expression<Func<bool>> inline = null)
         {
-            var apiCallPath = "/api/Verification/GetShred";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
-            if (docId != null)
-                callPayload.Queries["docId"] = ExpressionConverter.Convert(docId);
-            if (parId != null)
-                callPayload.Queries["parId"] = ExpressionConverter.Convert(parId);
-            if (verificationId != null)
-                callPayload.Queries["verificationId"] = ExpressionConverter.Convert(verificationId);
-            callPayload.Queries["inline"] = Convert.ToString(false);
-            if (inline != null)
-                callPayload.Queries["inline"] = ExpressionConverter.Convert(inline);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<object>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
+            var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: false);
+            var __workflow_parId = WorkflowExpression.Compile(parId, nameof(parId), required: false);
+            var __workflow_verificationId = WorkflowExpression.Compile(verificationId, nameof(verificationId), required: false);
+            var __workflow_inline = WorkflowExpression.Compile(inline, nameof(inline), required: false);
+            return new DeferredBodyAction<object>(() =>
+            {
+                var apiCallPath = "/api/Verification/GetShred";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_userId != null)
+                    callPayload.Queries["userId"] = ExpressionConverter.Convert(__workflow_userId);
+                if (__workflow_docId != null)
+                    callPayload.Queries["docId"] = ExpressionConverter.Convert(__workflow_docId);
+                if (__workflow_parId != null)
+                    callPayload.Queries["parId"] = ExpressionConverter.Convert(__workflow_parId);
+                if (__workflow_verificationId != null)
+                    callPayload.Queries["verificationId"] = ExpressionConverter.Convert(__workflow_verificationId);
+                callPayload.Queries["inline"] = Convert.ToString(false);
+                if (__workflow_inline != null)
+                    callPayload.Queries["inline"] = ExpressionConverter.Convert(__workflow_inline);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<object>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsVerificationSummary[]> VerificationGetSummary(Expression<Func<string>> xApiVersion, Expression<Func<int>> projectId = null, Expression<Func<int>> stpdId = null, Expression<Func<int>> pdId = null, Expression<Func<bool>> latestOnly = null)
         {
-            var apiCallPath = "/api/Verification/GetSummary";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
-            if (pdId != null)
-                callPayload.Queries["pdId"] = ExpressionConverter.Convert(pdId);
-            callPayload.Queries["latestOnly"] = Convert.ToString(true);
-            if (latestOnly != null)
-                callPayload.Queries["latestOnly"] = ExpressionConverter.Convert(latestOnly);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsVerificationSummary[]>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
+            var __workflow_stpdId = WorkflowExpression.Compile(stpdId, nameof(stpdId), required: false);
+            var __workflow_pdId = WorkflowExpression.Compile(pdId, nameof(pdId), required: false);
+            var __workflow_latestOnly = WorkflowExpression.Compile(latestOnly, nameof(latestOnly), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsVerificationSummary[]>(() =>
+            {
+                var apiCallPath = "/api/Verification/GetSummary";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_projectId != null)
+                    callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
+                if (__workflow_stpdId != null)
+                    callPayload.Queries["stpdId"] = ExpressionConverter.Convert(__workflow_stpdId);
+                if (__workflow_pdId != null)
+                    callPayload.Queries["pdId"] = ExpressionConverter.Convert(__workflow_pdId);
+                callPayload.Queries["latestOnly"] = Convert.ToString(true);
+                if (__workflow_latestOnly != null)
+                    callPayload.Queries["latestOnly"] = ExpressionConverter.Convert(__workflow_latestOnly);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsVerificationSummary[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsVerificationSummary[]> VerificationGetHeatmap(Expression<Func<string>> xApiVersion, Expression<Func<int>> projectId = null, Expression<Func<int>> stpdId = null, Expression<Func<bool>> latestOnly = null)
         {
-            var apiCallPath = "/api/Verification/GetHeatmap";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
-            callPayload.Queries["latestOnly"] = Convert.ToString(true);
-            if (latestOnly != null)
-                callPayload.Queries["latestOnly"] = ExpressionConverter.Convert(latestOnly);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsVerificationSummary[]>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
+            var __workflow_stpdId = WorkflowExpression.Compile(stpdId, nameof(stpdId), required: false);
+            var __workflow_latestOnly = WorkflowExpression.Compile(latestOnly, nameof(latestOnly), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsVerificationSummary[]>(() =>
+            {
+                var apiCallPath = "/api/Verification/GetHeatmap";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_projectId != null)
+                    callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
+                if (__workflow_stpdId != null)
+                    callPayload.Queries["stpdId"] = ExpressionConverter.Convert(__workflow_stpdId);
+                callPayload.Queries["latestOnly"] = Convert.ToString(true);
+                if (__workflow_latestOnly != null)
+                    callPayload.Queries["latestOnly"] = ExpressionConverter.Convert(__workflow_latestOnly);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsVerificationSummary[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<object> DocumentGetBlob(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> id = null, Expression<Func<typeInput>> type = null)
         {
-            var apiCallPath = "/api/Document/GetBlob";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<object>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            return new DeferredBodyAction<object>(() =>
+            {
+                var apiCallPath = "/api/Document/GetBlob";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_userId != null)
+                    callPayload.Queries["userId"] = ExpressionConverter.Convert(__workflow_userId);
+                if (__workflow_id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                if (__workflow_type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<object>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentDataViewModel[]> DocumentGetData(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> contentType = null, Expression<Func<string>> text = null, Expression<Func<int>> blobid = null, Expression<Func<int>> pageindex = null, Expression<Func<int>> imagesCount = null)
         {
-            var apiCallPath = "/api/Document/GetData";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            if (contentType != null)
-                callPayload.Queries["contentType"] = ExpressionConverter.Convert(contentType);
-            if (text != null)
-                callPayload.Queries["text"] = ExpressionConverter.Convert(text);
-            if (blobid != null)
-                callPayload.Queries["blobid"] = ExpressionConverter.Convert(blobid);
-            if (pageindex != null)
-                callPayload.Queries["pageindex"] = ExpressionConverter.Convert(pageindex);
-            if (imagesCount != null)
-                callPayload.Queries["imagesCount"] = ExpressionConverter.Convert(imagesCount);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsDocumentDataViewModel[]>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: false);
+            var __workflow_blobid = WorkflowExpression.Compile(blobid, nameof(blobid), required: false);
+            var __workflow_pageindex = WorkflowExpression.Compile(pageindex, nameof(pageindex), required: false);
+            var __workflow_imagesCount = WorkflowExpression.Compile(imagesCount, nameof(imagesCount), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsDocumentDataViewModel[]>(() =>
+            {
+                var apiCallPath = "/api/Document/GetData";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                if (__workflow_type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
+                if (__workflow_contentType != null)
+                    callPayload.Queries["contentType"] = ExpressionConverter.Convert(__workflow_contentType);
+                if (__workflow_text != null)
+                    callPayload.Queries["text"] = ExpressionConverter.Convert(__workflow_text);
+                if (__workflow_blobid != null)
+                    callPayload.Queries["blobid"] = ExpressionConverter.Convert(__workflow_blobid);
+                if (__workflow_pageindex != null)
+                    callPayload.Queries["pageindex"] = ExpressionConverter.Convert(__workflow_pageindex);
+                if (__workflow_imagesCount != null)
+                    callPayload.Queries["imagesCount"] = ExpressionConverter.Convert(__workflow_imagesCount);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsDocumentDataViewModel[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel[]> DocumentGetExtended(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> projectId = null, Expression<Func<int>> stpdId = null, Expression<Func<usageInput>> usage = null, Expression<Func<statusInput>> status = null, Expression<Func<string>> classname = null, Expression<Func<string>> filename = null, Expression<Func<string>> filetype = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<int>> masterid = null, Expression<Func<int>> pageNo = null, Expression<Func<int>> pageSize = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<sortDirectionInput>> sortDirection = null, Expression<Func<string>> comment = null, Expression<Func<string>> result = null, Expression<Func<string>> resultId = null, Expression<Func<int>> resultIndex = null, Expression<Func<string>> externalId = null, Expression<Func<string>> docGuid = null)
         {
-            var apiCallPath = "/api/Document/GetExtended";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
-            if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            if (stpdId != null)
-                callPayload.Queries["stpdId"] = ExpressionConverter.Convert(stpdId);
-            if (usage != null)
-                callPayload.Queries["usage"] = ExpressionConverter.Convert(usage);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            if (classname != null)
-                callPayload.Queries["classname"] = ExpressionConverter.Convert(classname);
-            if (filename != null)
-                callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
-            if (filetype != null)
-                callPayload.Queries["filetype"] = ExpressionConverter.Convert(filetype);
-            if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-            if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
-            if (masterid != null)
-                callPayload.Queries["masterid"] = ExpressionConverter.Convert(masterid);
-            if (pageNo != null)
-                callPayload.Queries["pageNo"] = ExpressionConverter.Convert(pageNo);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sortField != null)
-                callPayload.Queries["sortField"] = ExpressionConverter.Convert(sortField);
-            if (sortDirection != null)
-                callPayload.Queries["sortDirection"] = ExpressionConverter.Convert(sortDirection);
-            if (comment != null)
-                callPayload.Queries["comment"] = ExpressionConverter.Convert(comment);
-            if (result != null)
-                callPayload.Queries["result"] = ExpressionConverter.Convert(result);
-            if (resultId != null)
-                callPayload.Queries["resultId"] = ExpressionConverter.Convert(resultId);
-            if (resultIndex != null)
-                callPayload.Queries["resultIndex"] = ExpressionConverter.Convert(resultIndex);
-            if (externalId != null)
-                callPayload.Queries["externalId"] = ExpressionConverter.Convert(externalId);
-            if (docGuid != null)
-                callPayload.Queries["docGuid"] = ExpressionConverter.Convert(docGuid);
-            callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(xApiVersion);
-            return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel[]>(callPayload);
+            var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
+            var __workflow_stpdId = WorkflowExpression.Compile(stpdId, nameof(stpdId), required: false);
+            var __workflow_usage = WorkflowExpression.Compile(usage, nameof(usage), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            var __workflow_classname = WorkflowExpression.Compile(classname, nameof(classname), required: false);
+            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_filetype = WorkflowExpression.Compile(filetype, nameof(filetype), required: false);
+            var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
+            var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
+            var __workflow_masterid = WorkflowExpression.Compile(masterid, nameof(masterid), required: false);
+            var __workflow_pageNo = WorkflowExpression.Compile(pageNo, nameof(pageNo), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_sortField = WorkflowExpression.Compile(sortField, nameof(sortField), required: false);
+            var __workflow_sortDirection = WorkflowExpression.Compile(sortDirection, nameof(sortDirection), required: false);
+            var __workflow_comment = WorkflowExpression.Compile(comment, nameof(comment), required: false);
+            var __workflow_result = WorkflowExpression.Compile(result, nameof(result), required: false);
+            var __workflow_resultId = WorkflowExpression.Compile(resultId, nameof(resultId), required: false);
+            var __workflow_resultIndex = WorkflowExpression.Compile(resultIndex, nameof(resultIndex), required: false);
+            var __workflow_externalId = WorkflowExpression.Compile(externalId, nameof(externalId), required: false);
+            var __workflow_docGuid = WorkflowExpression.Compile(docGuid, nameof(docGuid), required: false);
+            return new DeferredBodyAction<AIForgedViewModelsDocumentViewModel[]>(() =>
+            {
+                var apiCallPath = "/api/Document/GetExtended";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_userId != null)
+                    callPayload.Queries["userId"] = ExpressionConverter.Convert(__workflow_userId);
+                if (__workflow_projectId != null)
+                    callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
+                if (__workflow_stpdId != null)
+                    callPayload.Queries["stpdId"] = ExpressionConverter.Convert(__workflow_stpdId);
+                if (__workflow_usage != null)
+                    callPayload.Queries["usage"] = ExpressionConverter.Convert(__workflow_usage);
+                if (__workflow_status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
+                if (__workflow_classname != null)
+                    callPayload.Queries["classname"] = ExpressionConverter.Convert(__workflow_classname);
+                if (__workflow_filename != null)
+                    callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_filetype != null)
+                    callPayload.Queries["filetype"] = ExpressionConverter.Convert(__workflow_filetype);
+                if (__workflow_start != null)
+                    callPayload.Queries["start"] = ExpressionConverter.Convert(__workflow_start);
+                if (__workflow_end != null)
+                    callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
+                if (__workflow_masterid != null)
+                    callPayload.Queries["masterid"] = ExpressionConverter.Convert(__workflow_masterid);
+                if (__workflow_pageNo != null)
+                    callPayload.Queries["pageNo"] = ExpressionConverter.Convert(__workflow_pageNo);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                if (__workflow_sortField != null)
+                    callPayload.Queries["sortField"] = ExpressionConverter.Convert(__workflow_sortField);
+                if (__workflow_sortDirection != null)
+                    callPayload.Queries["sortDirection"] = ExpressionConverter.Convert(__workflow_sortDirection);
+                if (__workflow_comment != null)
+                    callPayload.Queries["comment"] = ExpressionConverter.Convert(__workflow_comment);
+                if (__workflow_result != null)
+                    callPayload.Queries["result"] = ExpressionConverter.Convert(__workflow_result);
+                if (__workflow_resultId != null)
+                    callPayload.Queries["resultId"] = ExpressionConverter.Convert(__workflow_resultId);
+                if (__workflow_resultIndex != null)
+                    callPayload.Queries["resultIndex"] = ExpressionConverter.Convert(__workflow_resultIndex);
+                if (__workflow_externalId != null)
+                    callPayload.Queries["externalId"] = ExpressionConverter.Convert(__workflow_externalId);
+                if (__workflow_docGuid != null)
+                    callPayload.Queries["docGuid"] = ExpressionConverter.Convert(__workflow_docGuid);
+                callPayload.Headers["X-Api-Version"] = ExpressionConverter.Convert(__workflow_xApiVersion);
+                return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel[]>(callPayload);
+            });
         }
     }
 
@@ -755,6 +1037,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public int Related { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALClassType
     {
         [EnumMember(Value = "0")]
@@ -861,6 +1144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public int TrainedParametersCount { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALDocumentStatus
     {
         [EnumMember(Value = "0")]
@@ -897,6 +1181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _190
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALUsageType
     {
         [EnumMember(Value = "0")]
@@ -919,6 +1204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _99
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALAvailability
     {
         [EnumMember(Value = "0")]
@@ -1060,6 +1346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public double Charge { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALVerificationType
     {
         [EnumMember(Value = "0")]
@@ -1082,6 +1369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _8
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALVerificationStatus
     {
         [EnumMember(Value = "1")]
@@ -1164,6 +1452,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public AIForgedDALAvailability Availability { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALDocumentDataType
     {
         [EnumMember(Value = "0")]
@@ -1274,6 +1563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public string Validation { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALParameterDefinitionStatus
     {
         [EnumMember(Value = "0")]
@@ -1282,6 +1572,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _99
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALParameterDefinitionCategory
     {
         [EnumMember(Value = "0")]
@@ -1310,6 +1601,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _40
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALGroupingType
     {
         [EnumMember(Value = "0")]
@@ -1342,6 +1634,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _99
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALValueType
     {
         [EnumMember(Value = "0")]
@@ -1394,6 +1687,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _99
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALRequiredOption
     {
         [EnumMember(Value = "1")]
@@ -1521,6 +1815,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public string UserId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALSettingType
     {
         [EnumMember(Value = "0")]
@@ -1537,6 +1832,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _10
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALSettingStatus
     {
         [EnumMember(Value = "0")]
@@ -1547,6 +1843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _99
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALOrientation
     {
         [EnumMember(Value = "0")]
@@ -1559,6 +1856,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _3
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALMarkingType
     {
         [EnumMember(Value = "0")]
@@ -1581,6 +1879,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _8
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALOptionStatusFlags
     {
         [EnumMember(Value = "1")]
@@ -1607,6 +1906,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _1024
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum categoryInput
     {
         [EnumMember(Value = "0")]
@@ -1635,6 +1935,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _40
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum groupingInput
     {
         [EnumMember(Value = "0")]
@@ -1838,6 +2139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public AIForgedViewModelsParameterDefViewModel[] Services { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALProjectStatus
     {
         [EnumMember(Value = "0")]
@@ -1882,6 +2184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public string Data { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALDataTypeCategory
     {
         [EnumMember(Value = "1")]
@@ -1936,6 +2239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public string Color { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALEnumType
     {
         [EnumMember(Value = "0")]
@@ -2161,6 +2465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public double Max { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SystemDayOfWeek
     {
         [EnumMember(Value = "0")]
@@ -2179,6 +2484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _6
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         [EnumMember(Value = "0")]
@@ -2193,6 +2499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _11
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum usageInput
     {
         [EnumMember(Value = "0")]
@@ -2215,6 +2522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _99
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
         [EnumMember(Value = "0")]
@@ -2251,6 +2559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _190
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortFieldInput
     {
         [EnumMember(Value = "0")]
@@ -2267,6 +2576,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _5
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortDirectionInput
     {
         [EnumMember(Value = "0")]

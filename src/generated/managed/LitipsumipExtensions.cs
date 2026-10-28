@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Litipsumip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,10 +23,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Litipsumip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "litipsumip")]
         public IBodyWorkflowAction<TextTitleResponse> TextTitle(Expression<Func<titleInput>> title)
         {
-            var apiCallPath = String.Format("/{0}/json", ExpressionConverter.ConvertWithUrlEncoding(title, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TextTitleResponse>(callPayload);
+            var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: true);
+            return new DeferredBodyAction<TextTitleResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/json", __workflow_title.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TextTitleResponse>(callPayload);
+            });
         }
     }
 
@@ -64,6 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Litipsumip
         public string[] Text { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum titleInput
     {
         [EnumMember(Value = "adventures-sherlock-holmes")]

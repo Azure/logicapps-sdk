@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractemailvalidat
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,11 +14,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractemailvalidat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractemailvalidat")]
         public IBodyWorkflowAction<ValidationResponse> Validation(Expression<Func<string>> email)
         {
-            var apiCallPath = "/v1/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email"] = ExpressionConverter.Convert(email);
-            return new ApiConnectionAction<ValidationResponse>(callPayload);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
+            return new DeferredBodyAction<ValidationResponse>(() =>
+            {
+                var apiCallPath = "/v1/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["email"] = ExpressionConverter.Convert(__workflow_email);
+                return new ApiConnectionAction<ValidationResponse>(callPayload);
+            });
         }
     }
 

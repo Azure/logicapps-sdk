@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,47 +14,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docq")]
         public IBodyWorkflowAction<ExtractInformationResponse> ExtractInformation(Expression<Func<string>> bodyimageFileContent = null)
         {
-            var apiCallPath = "/api/Flow/ExtractInformation";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Image Content Type"] = "image/jpeg";
-            bodypropCount++;
-            if (bodyimageFileContent != null)
+            var __workflow_bodyimageFileContent = WorkflowExpression.Compile(bodyimageFileContent, nameof(bodyimageFileContent), required: false);
+            return new DeferredBodyAction<ExtractInformationResponse>(() =>
             {
-                body["Image File Content"] = ExpressionConverter.ConvertO(bodyimageFileContent);
+                var apiCallPath = "/api/Flow/ExtractInformation";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Image Content Type"] = "image/jpeg";
                 bodypropCount++;
-            }
+                if (__workflow_bodyimageFileContent != null)
+                {
+                    body["Image File Content"] = ExpressionConverter.ConvertO(__workflow_bodyimageFileContent);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ExtractInformationResponse>(callPayload);
+                return new ApiConnectionAction<ExtractInformationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docq")]
         public IBodyWorkflowAction<string> GenerateDocument(Expression<Func<string>> bodydocumentInformation, Expression<Func<string>> bodydocumentTemplateContent)
         {
-            var apiCallPath = "/api/Flow/GenerateDocument";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["documentInformation"] = ExpressionConverter.ConvertO(bodydocumentInformation);
-            bodypropCount++;
-            body["templateFile"] = ExpressionConverter.ConvertO(bodydocumentTemplateContent);
-            if (bodypropCount > 0)
+            var __workflow_bodydocumentInformation = WorkflowExpression.Compile(bodydocumentInformation, nameof(bodydocumentInformation), required: true);
+            var __workflow_bodydocumentTemplateContent = WorkflowExpression.Compile(bodydocumentTemplateContent, nameof(bodydocumentTemplateContent), required: true);
+            return new DeferredBodyAction<string>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/Flow/GenerateDocument";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["documentInformation"] = ExpressionConverter.ConvertO(__workflow_bodydocumentInformation);
+                bodypropCount++;
+                body["templateFile"] = ExpressionConverter.ConvertO(__workflow_bodydocumentTemplateContent);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 

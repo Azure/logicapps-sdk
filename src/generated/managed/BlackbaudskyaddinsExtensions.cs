@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,63 +14,74 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudskyaddins")]
         public IBodyWorkflowAction<PowerAutomateUIApiValidateUserIdentityTokenResponse> ValidateUserIdentityToken(Expression<Func<string>> bodyuserIdentityToken, Expression<Func<string>> bodyapplicationID)
         {
-            var apiCallPath = "/powerautomateui/v1/useridentitytoken/validate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["uit"] = ExpressionConverter.ConvertO(bodyuserIdentityToken);
-            bodypropCount++;
-            body["application_id"] = ExpressionConverter.ConvertO(bodyapplicationID);
-            if (bodypropCount > 0)
+            var __workflow_bodyuserIdentityToken = WorkflowExpression.Compile(bodyuserIdentityToken, nameof(bodyuserIdentityToken), required: true);
+            var __workflow_bodyapplicationID = WorkflowExpression.Compile(bodyapplicationID, nameof(bodyapplicationID), required: true);
+            return new DeferredBodyAction<PowerAutomateUIApiValidateUserIdentityTokenResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/powerautomateui/v1/useridentitytoken/validate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["uit"] = ExpressionConverter.ConvertO(__workflow_bodyuserIdentityToken);
+                bodypropCount++;
+                body["application_id"] = ExpressionConverter.ConvertO(__workflow_bodyapplicationID);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PowerAutomateUIApiValidateUserIdentityTokenResponse>(callPayload);
+                return new ApiConnectionAction<PowerAutomateUIApiValidateUserIdentityTokenResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudskyaddins")]
         public IWorkflowAction SendHttpRequest(Expression<Func<bodymethodInput>> bodymethod, Expression<Func<string>> bodyrelativePath, Expression<Func<string>> bodybody = null)
         {
-            var apiCallPath = "/virtual/httprequest";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["method"] = ExpressionConverter.ConvertO(bodymethod);
-            bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodyrelativePath);
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (queryObjectpropCount > 0)
+            var __workflow_bodymethod = WorkflowExpression.Compile(bodymethod, nameof(bodymethod), required: true);
+            var __workflow_bodyrelativePath = WorkflowExpression.Compile(bodyrelativePath, nameof(bodyrelativePath), required: true);
+            var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["query"] = queryObject;
+                var apiCallPath = "/virtual/httprequest";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            if (headersObjectpropCount > 0)
-            {
-                body["headers"] = headersObject;
+                body["method"] = ExpressionConverter.ConvertO(__workflow_bodymethod);
                 bodypropCount++;
-            }
+                body["path"] = ExpressionConverter.ConvertO(__workflow_bodyrelativePath);
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (queryObjectpropCount > 0)
+                {
+                    body["query"] = queryObject;
+                    bodypropCount++;
+                }
 
-            if (bodybody != null)
-            {
-                body["body"] = ExpressionConverter.ConvertO(bodybody);
-                bodypropCount++;
-            }
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                if (headersObjectpropCount > 0)
+                {
+                    body["headers"] = headersObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodybody != null)
+                {
+                    body["body"] = ExpressionConverter.ConvertO(__workflow_bodybody);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 
@@ -99,6 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
         public string EnvironmentID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymethodInput
     {
         GET,

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbauddocuments
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,29 +14,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbauddocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbauddocuments")]
         public IBodyWorkflowAction<ConstituentApiFileDefinition> CreateDocument(Expression<Func<string>> bodyfileName = null, Expression<Func<bool>> bodyincludeThumbnail = null)
         {
-            var apiCallPath = "/constituent/v1/documents";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfileName != null)
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: false);
+            var __workflow_bodyincludeThumbnail = WorkflowExpression.Compile(bodyincludeThumbnail, nameof(bodyincludeThumbnail), required: false);
+            return new DeferredBodyAction<ConstituentApiFileDefinition>(() =>
             {
-                body["file_name"] = ExpressionConverter.ConvertO(bodyfileName);
-                bodypropCount++;
-            }
+                var apiCallPath = "/constituent/v1/documents";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyfileName != null)
+                {
+                    body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                    bodypropCount++;
+                }
 
-            if (bodyincludeThumbnail != null)
-            {
-                body["upload_thumbnail"] = ExpressionConverter.ConvertO(bodyincludeThumbnail);
-                bodypropCount++;
-            }
+                if (__workflow_bodyincludeThumbnail != null)
+                {
+                    body["upload_thumbnail"] = ExpressionConverter.ConvertO(__workflow_bodyincludeThumbnail);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ConstituentApiFileDefinition>(callPayload);
+                return new ApiConnectionAction<ConstituentApiFileDefinition>(callPayload);
+            });
         }
     }
 

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientworkflowauto
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,11 +14,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientworkflowauto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientworkflowauto")]
         public IBodyWorkflowAction<SubmitFormResponse> SubmitForm(Expression<Func<string>> processGuid, Expression<Func<string>> processTaskGuid, Expression<Func<object>> dynamicListSchema = null)
         {
-            var apiCallPath = String.Format("/api/instance/start/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(processGuid, 1), ExpressionConverter.ConvertWithUrlEncoding(processTaskGuid, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(dynamicListSchema);
-            return new ApiConnectionAction<SubmitFormResponse>(callPayload);
+            var __workflow_processGuid = WorkflowExpression.Compile(processGuid, nameof(processGuid), required: true);
+            var __workflow_processTaskGuid = WorkflowExpression.Compile(processTaskGuid, nameof(processTaskGuid), required: true);
+            var __workflow_dynamicListSchema = WorkflowExpression.Compile(dynamicListSchema, nameof(dynamicListSchema), required: false);
+            return new DeferredBodyAction<SubmitFormResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/instance/start/{0}/{1}", __workflow_processGuid.WithUrlEncoding(1), __workflow_processTaskGuid.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicListSchema);
+                return new ApiConnectionAction<SubmitFormResponse>(callPayload);
+            });
         }
     }
 

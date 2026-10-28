@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,215 +14,293 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IWorkflowAction UpdateMyProfile(Expression<Func<string>> bodyaboutMe = null, Expression<Func<string>> bodybirthday = null, Expression<Func<string[]>> bodyinterests = null, Expression<Func<string>> bodymySite = null, Expression<Func<string[]>> bodypastProjects = null, Expression<Func<string[]>> bodyschools = null, Expression<Func<string[]>> bodyskills = null)
         {
-            var apiCallPath = "/codeless/v1.0/me";
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaboutMe != null)
+            var __workflow_bodyaboutMe = WorkflowExpression.Compile(bodyaboutMe, nameof(bodyaboutMe), required: false);
+            var __workflow_bodybirthday = WorkflowExpression.Compile(bodybirthday, nameof(bodybirthday), required: false);
+            var __workflow_bodyinterests = WorkflowExpression.Compile(bodyinterests, nameof(bodyinterests), required: false);
+            var __workflow_bodymySite = WorkflowExpression.Compile(bodymySite, nameof(bodymySite), required: false);
+            var __workflow_bodypastProjects = WorkflowExpression.Compile(bodypastProjects, nameof(bodypastProjects), required: false);
+            var __workflow_bodyschools = WorkflowExpression.Compile(bodyschools, nameof(bodyschools), required: false);
+            var __workflow_bodyskills = WorkflowExpression.Compile(bodyskills, nameof(bodyskills), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["aboutMe"] = ExpressionConverter.ConvertO(bodyaboutMe);
-                bodypropCount++;
-            }
+                var apiCallPath = "/codeless/v1.0/me";
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyaboutMe != null)
+                {
+                    body["aboutMe"] = ExpressionConverter.ConvertO(__workflow_bodyaboutMe);
+                    bodypropCount++;
+                }
 
-            if (bodybirthday != null)
-            {
-                body["birthday"] = ExpressionConverter.ConvertO(bodybirthday);
-                bodypropCount++;
-            }
+                if (__workflow_bodybirthday != null)
+                {
+                    body["birthday"] = ExpressionConverter.ConvertO(__workflow_bodybirthday);
+                    bodypropCount++;
+                }
 
-            if (bodyinterests != null)
-            {
-                body["interests"] = ExpressionConverter.ConvertO(bodyinterests);
-                bodypropCount++;
-            }
+                if (__workflow_bodyinterests != null)
+                {
+                    body["interests"] = ExpressionConverter.ConvertO(__workflow_bodyinterests);
+                    bodypropCount++;
+                }
 
-            if (bodymySite != null)
-            {
-                body["mySite"] = ExpressionConverter.ConvertO(bodymySite);
-                bodypropCount++;
-            }
+                if (__workflow_bodymySite != null)
+                {
+                    body["mySite"] = ExpressionConverter.ConvertO(__workflow_bodymySite);
+                    bodypropCount++;
+                }
 
-            if (bodypastProjects != null)
-            {
-                body["pastProjects"] = ExpressionConverter.ConvertO(bodypastProjects);
-                bodypropCount++;
-            }
+                if (__workflow_bodypastProjects != null)
+                {
+                    body["pastProjects"] = ExpressionConverter.ConvertO(__workflow_bodypastProjects);
+                    bodypropCount++;
+                }
 
-            if (bodyschools != null)
-            {
-                body["schools"] = ExpressionConverter.ConvertO(bodyschools);
-                bodypropCount++;
-            }
+                if (__workflow_bodyschools != null)
+                {
+                    body["schools"] = ExpressionConverter.ConvertO(__workflow_bodyschools);
+                    bodypropCount++;
+                }
 
-            if (bodyskills != null)
-            {
-                body["skills"] = ExpressionConverter.ConvertO(bodyskills);
-                bodypropCount++;
-            }
+                if (__workflow_bodyskills != null)
+                {
+                    body["skills"] = ExpressionConverter.ConvertO(__workflow_bodyskills);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IWorkflowAction UpdateMyPhoto(Expression<Func<string>> contentType, Expression<Func<string>> body = null)
         {
-            var apiCallPath = "/codeless/v1.0/me/photo/$value";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/codeless/v1.0/me/photo/$value";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IBodyWorkflowAction<MyTrendingDocumentsResponse> MyTrendingDocuments(Expression<Func<string>> filter = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null)
         {
-            var apiCallPath = "/codeless/beta/me/insights/trending";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (extractSensitivityLabel != null)
-                callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(extractSensitivityLabel);
-            if (fetchSensitivityLabelMetadata != null)
-                callPayload.Queries["fetchSensitivityLabelMetadata"] = ExpressionConverter.Convert(fetchSensitivityLabelMetadata);
-            return new ApiConnectionAction<MyTrendingDocumentsResponse>(callPayload);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_extractSensitivityLabel = WorkflowExpression.Compile(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
+            var __workflow_fetchSensitivityLabelMetadata = WorkflowExpression.Compile(fetchSensitivityLabelMetadata, nameof(fetchSensitivityLabelMetadata), required: false);
+            return new DeferredBodyAction<MyTrendingDocumentsResponse>(() =>
+            {
+                var apiCallPath = "/codeless/beta/me/insights/trending";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_extractSensitivityLabel != null)
+                    callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(__workflow_extractSensitivityLabel);
+                if (__workflow_fetchSensitivityLabelMetadata != null)
+                    callPayload.Queries["fetchSensitivityLabelMetadata"] = ExpressionConverter.Convert(__workflow_fetchSensitivityLabelMetadata);
+                return new ApiConnectionAction<MyTrendingDocumentsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IBodyWorkflowAction<LinklessEntityListResponseListPerson> RelevantPeople(Expression<Func<string>> userId)
         {
-            var apiCallPath = String.Format("/users/{0}/relevantpeople", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<LinklessEntityListResponseListPerson>(callPayload);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            return new DeferredBodyAction<LinklessEntityListResponseListPerson>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/relevantpeople", __workflow_userId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<LinklessEntityListResponseListPerson>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IBodyWorkflowAction<ClientPhotoMetadata> UserPhotoMetadata(Expression<Func<string>> userId)
         {
-            var apiCallPath = "/users/photo";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
-            return new ApiConnectionAction<ClientPhotoMetadata>(callPayload);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            return new DeferredBodyAction<ClientPhotoMetadata>(() =>
+            {
+                var apiCallPath = "/users/photo";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["userId"] = ExpressionConverter.Convert(__workflow_userId);
+                return new ApiConnectionAction<ClientPhotoMetadata>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IBodyWorkflowAction<TrendingDocumentsResponse> TrendingDocuments(Expression<Func<string>> id, Expression<Func<string>> filter = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null)
         {
-            var apiCallPath = String.Format("/codeless/beta/users/{0}/insights/trending", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (extractSensitivityLabel != null)
-                callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(extractSensitivityLabel);
-            if (fetchSensitivityLabelMetadata != null)
-                callPayload.Queries["fetchSensitivityLabelMetadata"] = ExpressionConverter.Convert(fetchSensitivityLabelMetadata);
-            return new ApiConnectionAction<TrendingDocumentsResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_extractSensitivityLabel = WorkflowExpression.Compile(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
+            var __workflow_fetchSensitivityLabelMetadata = WorkflowExpression.Compile(fetchSensitivityLabelMetadata, nameof(fetchSensitivityLabelMetadata), required: false);
+            return new DeferredBodyAction<TrendingDocumentsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codeless/beta/users/{0}/insights/trending", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_extractSensitivityLabel != null)
+                    callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(__workflow_extractSensitivityLabel);
+                if (__workflow_fetchSensitivityLabelMetadata != null)
+                    callPayload.Queries["fetchSensitivityLabelMetadata"] = ExpressionConverter.Convert(__workflow_fetchSensitivityLabelMetadata);
+                return new ApiConnectionAction<TrendingDocumentsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IBodyWorkflowAction<JToken> HttpRequest(Expression<Func<string>> uri, Expression<Func<methodInput>> method, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null, Expression<Func<string>> customHeader1 = null, Expression<Func<string>> customHeader2 = null, Expression<Func<string>> customHeader3 = null, Expression<Func<string>> customHeader4 = null, Expression<Func<string>> customHeader5 = null)
         {
-            var apiCallPath = "/codeless/httprequest";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Uri"] = ExpressionConverter.Convert(uri);
-            callPayload.Headers["Method"] = ExpressionConverter.Convert(method);
-            callPayload.Headers["ContentType"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["ContentType"] = ExpressionConverter.Convert(contentType);
-            if (customHeader1 != null)
-                callPayload.Headers["CustomHeader1"] = ExpressionConverter.Convert(customHeader1);
-            if (customHeader2 != null)
-                callPayload.Headers["CustomHeader2"] = ExpressionConverter.Convert(customHeader2);
-            if (customHeader3 != null)
-                callPayload.Headers["CustomHeader3"] = ExpressionConverter.Convert(customHeader3);
-            if (customHeader4 != null)
-                callPayload.Headers["CustomHeader4"] = ExpressionConverter.Convert(customHeader4);
-            if (customHeader5 != null)
-                callPayload.Headers["CustomHeader5"] = ExpressionConverter.Convert(customHeader5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_uri = WorkflowExpression.Compile(uri, nameof(uri), required: true);
+            var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_customHeader1 = WorkflowExpression.Compile(customHeader1, nameof(customHeader1), required: false);
+            var __workflow_customHeader2 = WorkflowExpression.Compile(customHeader2, nameof(customHeader2), required: false);
+            var __workflow_customHeader3 = WorkflowExpression.Compile(customHeader3, nameof(customHeader3), required: false);
+            var __workflow_customHeader4 = WorkflowExpression.Compile(customHeader4, nameof(customHeader4), required: false);
+            var __workflow_customHeader5 = WorkflowExpression.Compile(customHeader5, nameof(customHeader5), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/codeless/httprequest";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Uri"] = ExpressionConverter.Convert(__workflow_uri);
+                callPayload.Headers["Method"] = ExpressionConverter.Convert(__workflow_method);
+                callPayload.Headers["ContentType"] = Convert.ToString("application/json");
+                if (__workflow_contentType != null)
+                    callPayload.Headers["ContentType"] = ExpressionConverter.Convert(__workflow_contentType);
+                if (__workflow_customHeader1 != null)
+                    callPayload.Headers["CustomHeader1"] = ExpressionConverter.Convert(__workflow_customHeader1);
+                if (__workflow_customHeader2 != null)
+                    callPayload.Headers["CustomHeader2"] = ExpressionConverter.Convert(__workflow_customHeader2);
+                if (__workflow_customHeader3 != null)
+                    callPayload.Headers["CustomHeader3"] = ExpressionConverter.Convert(__workflow_customHeader3);
+                if (__workflow_customHeader4 != null)
+                    callPayload.Headers["CustomHeader4"] = ExpressionConverter.Convert(__workflow_customHeader4);
+                if (__workflow_customHeader5 != null)
+                    callPayload.Headers["CustomHeader5"] = ExpressionConverter.Convert(__workflow_customHeader5);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IBodyWorkflowAction<DirectReportsV2Response> DirectReports(Expression<Func<string>> id, Expression<Func<string>> select = null, Expression<Func<int>> top = null)
         {
-            var apiCallPath = String.Format("/codeless/v1.0/users/{0}/directReports", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            return new ApiConnectionAction<DirectReportsV2Response>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            return new DeferredBodyAction<DirectReportsV2Response>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codeless/v1.0/users/{0}/directReports", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                return new ApiConnectionAction<DirectReportsV2Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IBodyWorkflowAction<GraphUserV1> Manager(Expression<Func<string>> id, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/codeless/v1.0/users/{0}/manager", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<GraphUserV1>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            return new DeferredBodyAction<GraphUserV1>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codeless/v1.0/users/{0}/manager", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
+                return new ApiConnectionAction<GraphUserV1>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IBodyWorkflowAction<GraphUserV1> MyProfile(Expression<Func<string>> select = null)
         {
-            var apiCallPath = "/codeless/v1.0/me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<GraphUserV1>(callPayload);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            return new DeferredBodyAction<GraphUserV1>(() =>
+            {
+                var apiCallPath = "/codeless/v1.0/me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
+                return new ApiConnectionAction<GraphUserV1>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IBodyWorkflowAction<EntityListResponseIReadOnlyListUser> SearchUser(Expression<Func<string>> searchTerm = null, Expression<Func<int>> top = null, Expression<Func<bool>> isSearchTermRequired = null)
         {
-            var apiCallPath = "/v2/users";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (searchTerm != null)
-                callPayload.Queries["searchTerm"] = ExpressionConverter.Convert(searchTerm);
-            if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-            callPayload.Queries["isSearchTermRequired"] = Convert.ToString(true);
-            if (isSearchTermRequired != null)
-                callPayload.Queries["isSearchTermRequired"] = ExpressionConverter.Convert(isSearchTermRequired);
-            return new ApiConnectionAction<EntityListResponseIReadOnlyListUser>(callPayload);
+            var __workflow_searchTerm = WorkflowExpression.Compile(searchTerm, nameof(searchTerm), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_isSearchTermRequired = WorkflowExpression.Compile(isSearchTermRequired, nameof(isSearchTermRequired), required: false);
+            return new DeferredBodyAction<EntityListResponseIReadOnlyListUser>(() =>
+            {
+                var apiCallPath = "/v2/users";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_searchTerm != null)
+                    callPayload.Queries["searchTerm"] = ExpressionConverter.Convert(__workflow_searchTerm);
+                if (__workflow_top != null)
+                    callPayload.Queries["top"] = ExpressionConverter.Convert(__workflow_top);
+                callPayload.Queries["isSearchTermRequired"] = Convert.ToString(true);
+                if (__workflow_isSearchTermRequired != null)
+                    callPayload.Queries["isSearchTermRequired"] = ExpressionConverter.Convert(__workflow_isSearchTermRequired);
+                return new ApiConnectionAction<EntityListResponseIReadOnlyListUser>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IBodyWorkflowAction<string> UserPhoto(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/codeless/v1.0/users/{0}/photo/$value", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codeless/v1.0/users/{0}/photo/$value", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365users")]
         public IBodyWorkflowAction<GraphUserV1> UserProfile(Expression<Func<string>> id, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/codeless/v1.0/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<GraphUserV1>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            return new DeferredBodyAction<GraphUserV1>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codeless/v1.0/users/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
+                return new ApiConnectionAction<GraphUserV1>(callPayload);
+            });
         }
     }
 
@@ -401,6 +479,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
         public GraphTrending[] Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum methodInput
     {
         GET,

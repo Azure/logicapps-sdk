@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftlearncataip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,28 +14,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftlearncataip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftlearncataip")]
         public IBodyWorkflowAction<GetLearningContentResponse> GetLearningContent(Expression<Func<string>> locale = null, Expression<Func<string>> type = null, Expression<Func<string>> uid = null, Expression<Func<string>> lastModified = null, Expression<Func<string>> popularity = null, Expression<Func<string>> level = null, Expression<Func<string>> role = null, Expression<Func<string>> product = null, Expression<Func<string>> subject = null)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (locale != null)
-                callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            if (uid != null)
-                callPayload.Queries["uid"] = ExpressionConverter.Convert(uid);
-            if (lastModified != null)
-                callPayload.Queries["last_modified"] = ExpressionConverter.Convert(lastModified);
-            if (popularity != null)
-                callPayload.Queries["popularity"] = ExpressionConverter.Convert(popularity);
-            if (level != null)
-                callPayload.Queries["level"] = ExpressionConverter.Convert(level);
-            if (role != null)
-                callPayload.Queries["role"] = ExpressionConverter.Convert(role);
-            if (product != null)
-                callPayload.Queries["product"] = ExpressionConverter.Convert(product);
-            if (subject != null)
-                callPayload.Queries["subject"] = ExpressionConverter.Convert(subject);
-            return new ApiConnectionAction<GetLearningContentResponse>(callPayload);
+            var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: false);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            var __workflow_uid = WorkflowExpression.Compile(uid, nameof(uid), required: false);
+            var __workflow_lastModified = WorkflowExpression.Compile(lastModified, nameof(lastModified), required: false);
+            var __workflow_popularity = WorkflowExpression.Compile(popularity, nameof(popularity), required: false);
+            var __workflow_level = WorkflowExpression.Compile(level, nameof(level), required: false);
+            var __workflow_role = WorkflowExpression.Compile(role, nameof(role), required: false);
+            var __workflow_product = WorkflowExpression.Compile(product, nameof(product), required: false);
+            var __workflow_subject = WorkflowExpression.Compile(subject, nameof(subject), required: false);
+            return new DeferredBodyAction<GetLearningContentResponse>(() =>
+            {
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_locale != null)
+                    callPayload.Queries["locale"] = ExpressionConverter.Convert(__workflow_locale);
+                if (__workflow_type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
+                if (__workflow_uid != null)
+                    callPayload.Queries["uid"] = ExpressionConverter.Convert(__workflow_uid);
+                if (__workflow_lastModified != null)
+                    callPayload.Queries["last_modified"] = ExpressionConverter.Convert(__workflow_lastModified);
+                if (__workflow_popularity != null)
+                    callPayload.Queries["popularity"] = ExpressionConverter.Convert(__workflow_popularity);
+                if (__workflow_level != null)
+                    callPayload.Queries["level"] = ExpressionConverter.Convert(__workflow_level);
+                if (__workflow_role != null)
+                    callPayload.Queries["role"] = ExpressionConverter.Convert(__workflow_role);
+                if (__workflow_product != null)
+                    callPayload.Queries["product"] = ExpressionConverter.Convert(__workflow_product);
+                if (__workflow_subject != null)
+                    callPayload.Queries["subject"] = ExpressionConverter.Convert(__workflow_subject);
+                return new ApiConnectionAction<GetLearningContentResponse>(callPayload);
+            });
         }
     }
 

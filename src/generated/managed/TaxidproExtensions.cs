@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taxidpro
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,35 +14,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taxidpro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taxidpro")]
         public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<string>> country, Expression<Func<string>> tin, Expression<Func<typeInput>> type = null, Expression<Func<localeInput>> locale = null, Expression<Func<bool>> isIrs = null)
         {
-            var apiCallPath = "/validate";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            callPayload.Queries["tin"] = ExpressionConverter.Convert(tin);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            if (locale != null)
-                callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
-            if (isIrs != null)
-                callPayload.Queries["is_irs"] = ExpressionConverter.Convert(isIrs);
-            return new ApiConnectionAction<ValidateResponse>(callPayload);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
+            var __workflow_tin = WorkflowExpression.Compile(tin, nameof(tin), required: true);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: false);
+            var __workflow_isIrs = WorkflowExpression.Compile(isIrs, nameof(isIrs), required: false);
+            return new DeferredBodyAction<ValidateResponse>(() =>
+            {
+                var apiCallPath = "/validate";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
+                callPayload.Queries["tin"] = ExpressionConverter.Convert(__workflow_tin);
+                if (__workflow_type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
+                if (__workflow_locale != null)
+                    callPayload.Queries["locale"] = ExpressionConverter.Convert(__workflow_locale);
+                if (__workflow_isIrs != null)
+                    callPayload.Queries["is_irs"] = ExpressionConverter.Convert(__workflow_isIrs);
+                return new ApiConnectionAction<ValidateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taxidpro")]
         public IBodyWorkflowAction<LookupResponse> Lookup(Expression<Func<string>> country, Expression<Func<string>> tin, Expression<Func<typeInput>> type = null, Expression<Func<localeInput>> locale = null, Expression<Func<bool>> isIrs = null)
         {
-            var apiCallPath = "/lookup";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            callPayload.Queries["tin"] = ExpressionConverter.Convert(tin);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            if (locale != null)
-                callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
-            if (isIrs != null)
-                callPayload.Queries["is_irs"] = ExpressionConverter.Convert(isIrs);
-            return new ApiConnectionAction<LookupResponse>(callPayload);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
+            var __workflow_tin = WorkflowExpression.Compile(tin, nameof(tin), required: true);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: false);
+            var __workflow_isIrs = WorkflowExpression.Compile(isIrs, nameof(isIrs), required: false);
+            return new DeferredBodyAction<LookupResponse>(() =>
+            {
+                var apiCallPath = "/lookup";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
+                callPayload.Queries["tin"] = ExpressionConverter.Convert(__workflow_tin);
+                if (__workflow_type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
+                if (__workflow_locale != null)
+                    callPayload.Queries["locale"] = ExpressionConverter.Convert(__workflow_locale);
+                if (__workflow_isIrs != null)
+                    callPayload.Queries["is_irs"] = ExpressionConverter.Convert(__workflow_isIrs);
+                return new ApiConnectionAction<LookupResponse>(callPayload);
+            });
         }
     }
 
@@ -71,6 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taxidpro
         public string FormatName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         [EnumMember(Value = "individual")]
@@ -81,6 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taxidpro
         Vat
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum localeInput
     {
         [EnumMember(Value = "auto")]

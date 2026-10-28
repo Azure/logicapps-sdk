@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractibanvalidato
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,11 +14,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractibanvalidato
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractibanvalidato")]
         public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<string>> iban)
         {
-            var apiCallPath = "/v1/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["iban"] = ExpressionConverter.Convert(iban);
-            return new ApiConnectionAction<ValidateResponse>(callPayload);
+            var __workflow_iban = WorkflowExpression.Compile(iban, nameof(iban), required: true);
+            return new DeferredBodyAction<ValidateResponse>(() =>
+            {
+                var apiCallPath = "/v1/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["iban"] = ExpressionConverter.Convert(__workflow_iban);
+                return new ApiConnectionAction<ValidateResponse>(callPayload);
+            });
         }
     }
 

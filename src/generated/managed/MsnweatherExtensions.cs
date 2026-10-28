@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,55 +14,83 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msnweather")]
         public IBodyWorkflowAction<CurrentWeather> CurrentWeather(Expression<Func<string>> location, Expression<Func<unitsInput>> units)
         {
-            var apiCallPath = String.Format("/current/{0}", ExpressionConverter.ConvertWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["units"] = ExpressionConverter.Convert(units);
-            return new ApiConnectionAction<CurrentWeather>(callPayload);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
+            var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
+            return new DeferredBodyAction<CurrentWeather>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/current/{0}", __workflow_location.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["units"] = ExpressionConverter.Convert(__workflow_units);
+                return new ApiConnectionAction<CurrentWeather>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msnweather")]
         public IBodyWorkflowAction<WeatherForecast> TodaysForecast(Expression<Func<string>> location, Expression<Func<unitsInput>> units)
         {
-            var apiCallPath = String.Format("/forecast/today/{0}", ExpressionConverter.ConvertWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["units"] = ExpressionConverter.Convert(units);
-            return new ApiConnectionAction<WeatherForecast>(callPayload);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
+            var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
+            return new DeferredBodyAction<WeatherForecast>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/forecast/today/{0}", __workflow_location.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["units"] = ExpressionConverter.Convert(__workflow_units);
+                return new ApiConnectionAction<WeatherForecast>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msnweather")]
         public IBodyWorkflowAction<WeatherForecast> TomorrowsForecast(Expression<Func<string>> location, Expression<Func<unitsInput>> units)
         {
-            var apiCallPath = String.Format("/forecast/tomorrow/{0}", ExpressionConverter.ConvertWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["units"] = ExpressionConverter.Convert(units);
-            return new ApiConnectionAction<WeatherForecast>(callPayload);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
+            var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
+            return new DeferredBodyAction<WeatherForecast>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/forecast/tomorrow/{0}", __workflow_location.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["units"] = ExpressionConverter.Convert(__workflow_units);
+                return new ApiConnectionAction<WeatherForecast>(callPayload);
+            });
         }
     }
 
     public class MsnweatherTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CurrentWeather> OnCurrentWeatherChange(Expression<Func<string>> location, Expression<Func<measureInput>> measure, Expression<Func<whenInput>> when, Expression<Func<double>> target, Expression<Func<string>> units, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CurrentWeather> OnCurrentWeatherChange(Expression<Func<string>> location, Expression<Func<measureInput>> measure, Expression<Func<whenInput>> when, Expression<Func<double>> target, Expression<Func<string>> units, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/current/weather/{0}", ExpressionConverter.ConvertWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Measure"] = ExpressionConverter.Convert(measure);
-            callPayload.Queries["When"] = ExpressionConverter.Convert(when);
-            callPayload.Queries["Target"] = ExpressionConverter.Convert(target);
-            callPayload.Queries["units"] = ExpressionConverter.Convert(units);
-            return new ApiConnectionTrigger<CurrentWeather>(callPayload, triggerName, recurrence);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
+            var __workflow_measure = WorkflowExpression.Compile(measure, nameof(measure), required: true);
+            var __workflow_when = WorkflowExpression.Compile(when, nameof(when), required: true);
+            var __workflow_target = WorkflowExpression.Compile(target, nameof(target), required: true);
+            var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
+            return new DeferredBodyTrigger<CurrentWeather>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/current/weather/{0}", __workflow_location.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Measure"] = ExpressionConverter.Convert(__workflow_measure);
+                callPayload.Queries["When"] = ExpressionConverter.Convert(__workflow_when);
+                callPayload.Queries["Target"] = ExpressionConverter.Convert(__workflow_target);
+                callPayload.Queries["units"] = ExpressionConverter.Convert(__workflow_units);
+                return new ApiConnectionTrigger<CurrentWeather>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<CurrentWeather> OnCurrentConditionsChange(Expression<Func<string>> location, Expression<Func<unitsInput>> units, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CurrentWeather> OnCurrentConditionsChange(Expression<Func<string>> location, Expression<Func<unitsInput>> units, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/current/conditions/{0}", ExpressionConverter.ConvertWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["units"] = ExpressionConverter.Convert(units);
-            return new ApiConnectionTrigger<CurrentWeather>(callPayload, triggerName, recurrence);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
+            var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
+            return new DeferredBodyTrigger<CurrentWeather>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/current/conditions/{0}", __workflow_location.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["units"] = ExpressionConverter.Convert(__workflow_units);
+                return new ApiConnectionTrigger<CurrentWeather>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -174,6 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
         public string DistanceUnits { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum unitsInput
     {
         [EnumMember(Value = "I")]
@@ -353,6 +382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
         public string DistanceUnits { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum measureInput
     {
         Temperature,
@@ -363,6 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
         WindSpeed
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum whenInput
     {
         [EnumMember(Value = "Is equal to")]

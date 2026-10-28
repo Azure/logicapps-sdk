@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpformsbyreenhancedl
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,52 +14,66 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpformsbyreenhancedl
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpformsbyreenhancedl")]
         public IBodyWorkflowAction<GetEntriesResponseItem[]> GetEntries(Expression<Func<string>> formId, Expression<Func<object>> body = null)
         {
-            var apiCallPath = "/resources/entries/query";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["form_id"] = ExpressionConverter.Convert(formId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<GetEntriesResponseItem[]>(callPayload);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<GetEntriesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/resources/entries/query";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["form_id"] = ExpressionConverter.Convert(__workflow_formId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<GetEntriesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpformsbyreenhancedl")]
         public IBodyWorkflowAction<JToken> GetEntry(Expression<Func<string>> id, Expression<Func<string>> formId)
         {
-            var apiCallPath = String.Format("/resources/entries/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["form_id"] = ExpressionConverter.Convert(formId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/resources/entries/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["form_id"] = ExpressionConverter.Convert(__workflow_formId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 
     public class WpformsbyreenhancedlTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateFlow(Expression<Func<string>> bodyformID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateFlow(Expression<Func<string>> bodyformID, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/resources/flows";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["form_id"] = ExpressionConverter.ConvertO(bodyformID);
-            var metaObject = new JObject();
-            var metaObjectpropCount = 0;
-            metaObject["powerAutomateUrl"] = "@listCallbackUrl()";
-            metaObjectpropCount++;
-            if (metaObjectpropCount > 0)
+            var __workflow_bodyformID = WorkflowExpression.Compile(bodyformID, nameof(bodyformID), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                body["meta"] = metaObject;
+                var apiCallPath = "/resources/flows";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["form_id"] = ExpressionConverter.ConvertO(__workflow_bodyformID);
+                var metaObject = new JObject();
+                var metaObjectpropCount = 0;
+                metaObject["powerAutomateUrl"] = "#{listCallbackUrl()}";
+                metaObjectpropCount++;
+                if (metaObjectpropCount > 0)
+                {
+                    body["meta"] = metaObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,146 +14,211 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<UserGetAllResponse> UserGetAll(Expression<Func<string>> auth, Expression<Func<string>> subdomain)
         {
-            var apiCallPath = "/public_api/users";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
-            return new ApiConnectionAction<UserGetAllResponse>(callPayload);
+            var __workflow_auth = WorkflowExpression.Compile(auth, nameof(auth), required: true);
+            var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
+            return new DeferredBodyAction<UserGetAllResponse>(() =>
+            {
+                var apiCallPath = "/public_api/users";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Auth"] = ExpressionConverter.Convert(__workflow_auth);
+                callPayload.Headers["subdomain"] = ExpressionConverter.Convert(__workflow_subdomain);
+                return new ApiConnectionAction<UserGetAllResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<UserDeleteByIdResponse> UserDeleteById(Expression<Func<string>> userId, Expression<Func<string>> auth, Expression<Func<string>> subdomain)
         {
-            var apiCallPath = String.Format("/public_api/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
-            return new ApiConnectionAction<UserDeleteByIdResponse>(callPayload);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_auth = WorkflowExpression.Compile(auth, nameof(auth), required: true);
+            var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
+            return new DeferredBodyAction<UserDeleteByIdResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/public_api/users/{0}", __workflow_userId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Auth"] = ExpressionConverter.Convert(__workflow_auth);
+                callPayload.Headers["subdomain"] = ExpressionConverter.Convert(__workflow_subdomain);
+                return new ApiConnectionAction<UserDeleteByIdResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<PositionGetAllResponse> PositionGetAll(Expression<Func<string>> auth, Expression<Func<string>> subdomain)
         {
-            var apiCallPath = "/public_api/positions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
-            return new ApiConnectionAction<PositionGetAllResponse>(callPayload);
+            var __workflow_auth = WorkflowExpression.Compile(auth, nameof(auth), required: true);
+            var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
+            return new DeferredBodyAction<PositionGetAllResponse>(() =>
+            {
+                var apiCallPath = "/public_api/positions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Auth"] = ExpressionConverter.Convert(__workflow_auth);
+                callPayload.Headers["subdomain"] = ExpressionConverter.Convert(__workflow_subdomain);
+                return new ApiConnectionAction<PositionGetAllResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<PositionCreateResponse> PositionCreate(Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<bodyInputItem[]>> body = null)
         {
-            var apiCallPath = "/public_api/positions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<PositionCreateResponse>(callPayload);
+            var __workflow_auth = WorkflowExpression.Compile(auth, nameof(auth), required: true);
+            var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<PositionCreateResponse>(() =>
+            {
+                var apiCallPath = "/public_api/positions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Auth"] = ExpressionConverter.Convert(__workflow_auth);
+                callPayload.Headers["subdomain"] = ExpressionConverter.Convert(__workflow_subdomain);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<PositionCreateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<PositionDeleteByIdResponse> PositionDeleteById(Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<string>> positionId)
         {
-            var apiCallPath = String.Format("/public_api/positions/{0}", ExpressionConverter.ConvertWithUrlEncoding(positionId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
-            return new ApiConnectionAction<PositionDeleteByIdResponse>(callPayload);
+            var __workflow_auth = WorkflowExpression.Compile(auth, nameof(auth), required: true);
+            var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
+            var __workflow_positionId = WorkflowExpression.Compile(positionId, nameof(positionId), required: true);
+            return new DeferredBodyAction<PositionDeleteByIdResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/public_api/positions/{0}", __workflow_positionId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Auth"] = ExpressionConverter.Convert(__workflow_auth);
+                callPayload.Headers["subdomain"] = ExpressionConverter.Convert(__workflow_subdomain);
+                return new ApiConnectionAction<PositionDeleteByIdResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<PositionUpdateByIdResponse> PositionUpdateById(Expression<Func<string>> positionId, Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<string>> bodyimportId = null, Expression<Func<string>> bodyname = null)
         {
-            var apiCallPath = String.Format("/public_api/positions/{0}", ExpressionConverter.ConvertWithUrlEncoding(positionId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyimportId != null)
+            var __workflow_positionId = WorkflowExpression.Compile(positionId, nameof(positionId), required: true);
+            var __workflow_auth = WorkflowExpression.Compile(auth, nameof(auth), required: true);
+            var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
+            var __workflow_bodyimportId = WorkflowExpression.Compile(bodyimportId, nameof(bodyimportId), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            return new DeferredBodyAction<PositionUpdateByIdResponse>(() =>
             {
-                body["import_id"] = ExpressionConverter.ConvertO(bodyimportId);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/public_api/positions/{0}", __workflow_positionId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Auth"] = ExpressionConverter.Convert(__workflow_auth);
+                callPayload.Headers["subdomain"] = ExpressionConverter.Convert(__workflow_subdomain);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyimportId != null)
+                {
+                    body["import_id"] = ExpressionConverter.ConvertO(__workflow_bodyimportId);
+                    bodypropCount++;
+                }
 
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
+                if (__workflow_bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PositionUpdateByIdResponse>(callPayload);
+                return new ApiConnectionAction<PositionUpdateByIdResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<GroupGetAllResponse> GroupGetAll(Expression<Func<string>> auth, Expression<Func<string>> subdomain)
         {
-            var apiCallPath = "/public_api/groups";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
-            return new ApiConnectionAction<GroupGetAllResponse>(callPayload);
+            var __workflow_auth = WorkflowExpression.Compile(auth, nameof(auth), required: true);
+            var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
+            return new DeferredBodyAction<GroupGetAllResponse>(() =>
+            {
+                var apiCallPath = "/public_api/groups";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Auth"] = ExpressionConverter.Convert(__workflow_auth);
+                callPayload.Headers["subdomain"] = ExpressionConverter.Convert(__workflow_subdomain);
+                return new ApiConnectionAction<GroupGetAllResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<GroupCreateResponse> GroupCreate(Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<bodyInputItem[]>> body = null)
         {
-            var apiCallPath = "/public_api/groups";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<GroupCreateResponse>(callPayload);
+            var __workflow_auth = WorkflowExpression.Compile(auth, nameof(auth), required: true);
+            var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<GroupCreateResponse>(() =>
+            {
+                var apiCallPath = "/public_api/groups";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Auth"] = ExpressionConverter.Convert(__workflow_auth);
+                callPayload.Headers["subdomain"] = ExpressionConverter.Convert(__workflow_subdomain);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<GroupCreateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<GroupDeleteByIdResponse> GroupDeleteById(Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<string>> groupId)
         {
-            var apiCallPath = String.Format("/public_api/groups/{0}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
-            return new ApiConnectionAction<GroupDeleteByIdResponse>(callPayload);
+            var __workflow_auth = WorkflowExpression.Compile(auth, nameof(auth), required: true);
+            var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            return new DeferredBodyAction<GroupDeleteByIdResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/public_api/groups/{0}", __workflow_groupId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Auth"] = ExpressionConverter.Convert(__workflow_auth);
+                callPayload.Headers["subdomain"] = ExpressionConverter.Convert(__workflow_subdomain);
+                return new ApiConnectionAction<GroupDeleteByIdResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<TokenGetResponse> TokenGet(Expression<Func<string>> subdomain, Expression<Func<string>> username, Expression<Func<string>> password, Expression<Func<string>> clientId)
         {
-            var apiCallPath = "/oauth/token";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["grant_type"] = Convert.ToString("password");
-            callPayload.Queries["username"] = ExpressionConverter.Convert(username);
-            callPayload.Queries["password"] = ExpressionConverter.Convert(password);
-            callPayload.Queries["client_id"] = ExpressionConverter.Convert(clientId);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
-            return new ApiConnectionAction<TokenGetResponse>(callPayload);
+            var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
+            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_password = WorkflowExpression.Compile(password, nameof(password), required: true);
+            var __workflow_clientId = WorkflowExpression.Compile(clientId, nameof(clientId), required: true);
+            return new DeferredBodyAction<TokenGetResponse>(() =>
+            {
+                var apiCallPath = "/oauth/token";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["grant_type"] = Convert.ToString("password");
+                callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_username);
+                callPayload.Queries["password"] = ExpressionConverter.Convert(__workflow_password);
+                callPayload.Queries["client_id"] = ExpressionConverter.Convert(__workflow_clientId);
+                callPayload.Headers["subdomain"] = ExpressionConverter.Convert(__workflow_subdomain);
+                return new ApiConnectionAction<TokenGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<MeResponse> Me(Expression<Func<string>> auth, Expression<Func<string>> subdomain)
         {
-            var apiCallPath = "/public_api/me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Auth"] = ExpressionConverter.Convert(auth);
-            callPayload.Headers["subdomain"] = ExpressionConverter.Convert(subdomain);
-            return new ApiConnectionAction<MeResponse>(callPayload);
+            var __workflow_auth = WorkflowExpression.Compile(auth, nameof(auth), required: true);
+            var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
+            return new DeferredBodyAction<MeResponse>(() =>
+            {
+                var apiCallPath = "/public_api/me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Auth"] = ExpressionConverter.Convert(__workflow_auth);
+                callPayload.Headers["subdomain"] = ExpressionConverter.Convert(__workflow_subdomain);
+                return new ApiConnectionAction<MeResponse>(callPayload);
+            });
         }
     }
 

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Progressusadvancedpr
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,16 +14,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Progressusadvancedpr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "progressusadvancedpr")]
         public IWorkflowAction Get(Expression<Func<string>> aPIVersion, Expression<Func<string>> tenantID, Expression<Func<string>> environmentName, Expression<Func<aPINameInput>> aPIName, Expression<Func<string>> aPIVersion2, Expression<Func<string>> companyID, Expression<Func<pluralAPINameInput>> pluralAPIName, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> orderby = null)
         {
-            var apiCallPath = String.Format("/{0}/{1}/{2}/api/progressus/{3}/{4}/companies({5})/{6}", ExpressionConverter.ConvertWithUrlEncoding(aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(tenantID, 1), ExpressionConverter.ConvertWithUrlEncoding(environmentName, 1), ExpressionConverter.ConvertWithUrlEncoding(aPIName, 1), ExpressionConverter.ConvertWithUrlEncoding(aPIVersion2, 1), ExpressionConverter.ConvertWithUrlEncoding(companyID, 1), ExpressionConverter.ConvertWithUrlEncoding(pluralAPIName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_aPIVersion = WorkflowExpression.Compile(aPIVersion, nameof(aPIVersion), required: true);
+            var __workflow_tenantID = WorkflowExpression.Compile(tenantID, nameof(tenantID), required: true);
+            var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
+            var __workflow_aPIName = WorkflowExpression.Compile(aPIName, nameof(aPIName), required: true);
+            var __workflow_aPIVersion2 = WorkflowExpression.Compile(aPIVersion2, nameof(aPIVersion2), required: true);
+            var __workflow_companyID = WorkflowExpression.Compile(companyID, nameof(companyID), required: true);
+            var __workflow_pluralAPIName = WorkflowExpression.Compile(pluralAPIName, nameof(pluralAPIName), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/{2}/api/progressus/{3}/{4}/companies({5})/{6}", __workflow_aPIVersion.WithUrlEncoding(1), __workflow_tenantID.WithUrlEncoding(1), __workflow_environmentName.WithUrlEncoding(1), __workflow_aPIName.WithUrlEncoding(1), __workflow_aPIVersion2.WithUrlEncoding(1), __workflow_companyID.WithUrlEncoding(1), __workflow_pluralAPIName.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(__workflow_orderby);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 
@@ -31,6 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Progressusadvancedpr
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum aPINameInput
     {
         [EnumMember(Value = "resource")]
@@ -57,6 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Progressusadvancedpr
         Integrationsetup
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum pluralAPINameInput
     {
         [EnumMember(Value = "resources")]

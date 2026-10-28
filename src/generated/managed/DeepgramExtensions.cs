@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,75 +14,107 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<TranscribePostResponse> Transcribe(Expression<Func<string>> bodyurl, Expression<Func<modelInput>> model = null, Expression<Func<tierInput>> tier = null, Expression<Func<versionInput>> version = null, Expression<Func<string>> language = null, Expression<Func<bool>> detectLanguage = null, Expression<Func<bool>> punctuate = null, Expression<Func<bool>> profanityFilter = null, Expression<Func<redactInput>> redact = null, Expression<Func<bool>> diarize = null, Expression<Func<string>> diarizeVersion = null, Expression<Func<bool>> smartFormat = null, Expression<Func<bool>> fillerWords = null, Expression<Func<bool>> multichannel = null, Expression<Func<int>> alternatives = null, Expression<Func<string>> search = null, Expression<Func<string>> replace = null, Expression<Func<string>> callback = null, Expression<Func<string>> keywords = null, Expression<Func<bool>> paragraphs = null, Expression<Func<string>> summarize = null, Expression<Func<bool>> detectTopics = null, Expression<Func<bool>> utterances = null, Expression<Func<double>> uttSplit = null, Expression<Func<string>> tag = null, Expression<Func<bool>> numerals = null, Expression<Func<bool>> ner = null, Expression<Func<bool>> measurements = null, Expression<Func<bool>> dictation = null)
         {
-            var apiCallPath = "/listen";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (model != null)
-                callPayload.Queries["model"] = ExpressionConverter.Convert(model);
-            if (tier != null)
-                callPayload.Queries["tier"] = ExpressionConverter.Convert(tier);
-            if (version != null)
-                callPayload.Queries["version"] = ExpressionConverter.Convert(version);
-            if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            if (detectLanguage != null)
-                callPayload.Queries["detect_language"] = ExpressionConverter.Convert(detectLanguage);
-            if (punctuate != null)
-                callPayload.Queries["punctuate"] = ExpressionConverter.Convert(punctuate);
-            if (profanityFilter != null)
-                callPayload.Queries["profanity_filter"] = ExpressionConverter.Convert(profanityFilter);
-            if (redact != null)
-                callPayload.Queries["redact"] = ExpressionConverter.Convert(redact);
-            if (diarize != null)
-                callPayload.Queries["diarize"] = ExpressionConverter.Convert(diarize);
-            if (diarizeVersion != null)
-                callPayload.Queries["diarize_version"] = ExpressionConverter.Convert(diarizeVersion);
-            if (smartFormat != null)
-                callPayload.Queries["smart_format"] = ExpressionConverter.Convert(smartFormat);
-            if (fillerWords != null)
-                callPayload.Queries["filler_words"] = ExpressionConverter.Convert(fillerWords);
-            if (multichannel != null)
-                callPayload.Queries["multichannel"] = ExpressionConverter.Convert(multichannel);
-            if (alternatives != null)
-                callPayload.Queries["alternatives"] = ExpressionConverter.Convert(alternatives);
-            if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-            if (replace != null)
-                callPayload.Queries["replace"] = ExpressionConverter.Convert(replace);
-            if (callback != null)
-                callPayload.Queries["callback"] = ExpressionConverter.Convert(callback);
-            if (keywords != null)
-                callPayload.Queries["keywords"] = ExpressionConverter.Convert(keywords);
-            if (paragraphs != null)
-                callPayload.Queries["paragraphs"] = ExpressionConverter.Convert(paragraphs);
-            if (summarize != null)
-                callPayload.Queries["summarize"] = ExpressionConverter.Convert(summarize);
-            if (detectTopics != null)
-                callPayload.Queries["detect_topics"] = ExpressionConverter.Convert(detectTopics);
-            if (utterances != null)
-                callPayload.Queries["utterances"] = ExpressionConverter.Convert(utterances);
-            if (uttSplit != null)
-                callPayload.Queries["utt_split"] = ExpressionConverter.Convert(uttSplit);
-            if (tag != null)
-                callPayload.Queries["tag"] = ExpressionConverter.Convert(tag);
-            if (numerals != null)
-                callPayload.Queries["numerals"] = ExpressionConverter.Convert(numerals);
-            if (ner != null)
-                callPayload.Queries["ner"] = ExpressionConverter.Convert(ner);
-            if (measurements != null)
-                callPayload.Queries["measurements"] = ExpressionConverter.Convert(measurements);
-            if (dictation != null)
-                callPayload.Queries["dictation"] = ExpressionConverter.Convert(dictation);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyurl);
-            if (bodypropCount > 0)
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: false);
+            var __workflow_tier = WorkflowExpression.Compile(tier, nameof(tier), required: false);
+            var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: false);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
+            var __workflow_detectLanguage = WorkflowExpression.Compile(detectLanguage, nameof(detectLanguage), required: false);
+            var __workflow_punctuate = WorkflowExpression.Compile(punctuate, nameof(punctuate), required: false);
+            var __workflow_profanityFilter = WorkflowExpression.Compile(profanityFilter, nameof(profanityFilter), required: false);
+            var __workflow_redact = WorkflowExpression.Compile(redact, nameof(redact), required: false);
+            var __workflow_diarize = WorkflowExpression.Compile(diarize, nameof(diarize), required: false);
+            var __workflow_diarizeVersion = WorkflowExpression.Compile(diarizeVersion, nameof(diarizeVersion), required: false);
+            var __workflow_smartFormat = WorkflowExpression.Compile(smartFormat, nameof(smartFormat), required: false);
+            var __workflow_fillerWords = WorkflowExpression.Compile(fillerWords, nameof(fillerWords), required: false);
+            var __workflow_multichannel = WorkflowExpression.Compile(multichannel, nameof(multichannel), required: false);
+            var __workflow_alternatives = WorkflowExpression.Compile(alternatives, nameof(alternatives), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_replace = WorkflowExpression.Compile(replace, nameof(replace), required: false);
+            var __workflow_callback = WorkflowExpression.Compile(callback, nameof(callback), required: false);
+            var __workflow_keywords = WorkflowExpression.Compile(keywords, nameof(keywords), required: false);
+            var __workflow_paragraphs = WorkflowExpression.Compile(paragraphs, nameof(paragraphs), required: false);
+            var __workflow_summarize = WorkflowExpression.Compile(summarize, nameof(summarize), required: false);
+            var __workflow_detectTopics = WorkflowExpression.Compile(detectTopics, nameof(detectTopics), required: false);
+            var __workflow_utterances = WorkflowExpression.Compile(utterances, nameof(utterances), required: false);
+            var __workflow_uttSplit = WorkflowExpression.Compile(uttSplit, nameof(uttSplit), required: false);
+            var __workflow_tag = WorkflowExpression.Compile(tag, nameof(tag), required: false);
+            var __workflow_numerals = WorkflowExpression.Compile(numerals, nameof(numerals), required: false);
+            var __workflow_ner = WorkflowExpression.Compile(ner, nameof(ner), required: false);
+            var __workflow_measurements = WorkflowExpression.Compile(measurements, nameof(measurements), required: false);
+            var __workflow_dictation = WorkflowExpression.Compile(dictation, nameof(dictation), required: false);
+            return new DeferredBodyAction<TranscribePostResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/listen";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_model != null)
+                    callPayload.Queries["model"] = ExpressionConverter.Convert(__workflow_model);
+                if (__workflow_tier != null)
+                    callPayload.Queries["tier"] = ExpressionConverter.Convert(__workflow_tier);
+                if (__workflow_version != null)
+                    callPayload.Queries["version"] = ExpressionConverter.Convert(__workflow_version);
+                if (__workflow_language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
+                if (__workflow_detectLanguage != null)
+                    callPayload.Queries["detect_language"] = ExpressionConverter.Convert(__workflow_detectLanguage);
+                if (__workflow_punctuate != null)
+                    callPayload.Queries["punctuate"] = ExpressionConverter.Convert(__workflow_punctuate);
+                if (__workflow_profanityFilter != null)
+                    callPayload.Queries["profanity_filter"] = ExpressionConverter.Convert(__workflow_profanityFilter);
+                if (__workflow_redact != null)
+                    callPayload.Queries["redact"] = ExpressionConverter.Convert(__workflow_redact);
+                if (__workflow_diarize != null)
+                    callPayload.Queries["diarize"] = ExpressionConverter.Convert(__workflow_diarize);
+                if (__workflow_diarizeVersion != null)
+                    callPayload.Queries["diarize_version"] = ExpressionConverter.Convert(__workflow_diarizeVersion);
+                if (__workflow_smartFormat != null)
+                    callPayload.Queries["smart_format"] = ExpressionConverter.Convert(__workflow_smartFormat);
+                if (__workflow_fillerWords != null)
+                    callPayload.Queries["filler_words"] = ExpressionConverter.Convert(__workflow_fillerWords);
+                if (__workflow_multichannel != null)
+                    callPayload.Queries["multichannel"] = ExpressionConverter.Convert(__workflow_multichannel);
+                if (__workflow_alternatives != null)
+                    callPayload.Queries["alternatives"] = ExpressionConverter.Convert(__workflow_alternatives);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_replace != null)
+                    callPayload.Queries["replace"] = ExpressionConverter.Convert(__workflow_replace);
+                if (__workflow_callback != null)
+                    callPayload.Queries["callback"] = ExpressionConverter.Convert(__workflow_callback);
+                if (__workflow_keywords != null)
+                    callPayload.Queries["keywords"] = ExpressionConverter.Convert(__workflow_keywords);
+                if (__workflow_paragraphs != null)
+                    callPayload.Queries["paragraphs"] = ExpressionConverter.Convert(__workflow_paragraphs);
+                if (__workflow_summarize != null)
+                    callPayload.Queries["summarize"] = ExpressionConverter.Convert(__workflow_summarize);
+                if (__workflow_detectTopics != null)
+                    callPayload.Queries["detect_topics"] = ExpressionConverter.Convert(__workflow_detectTopics);
+                if (__workflow_utterances != null)
+                    callPayload.Queries["utterances"] = ExpressionConverter.Convert(__workflow_utterances);
+                if (__workflow_uttSplit != null)
+                    callPayload.Queries["utt_split"] = ExpressionConverter.Convert(__workflow_uttSplit);
+                if (__workflow_tag != null)
+                    callPayload.Queries["tag"] = ExpressionConverter.Convert(__workflow_tag);
+                if (__workflow_numerals != null)
+                    callPayload.Queries["numerals"] = ExpressionConverter.Convert(__workflow_numerals);
+                if (__workflow_ner != null)
+                    callPayload.Queries["ner"] = ExpressionConverter.Convert(__workflow_ner);
+                if (__workflow_measurements != null)
+                    callPayload.Queries["measurements"] = ExpressionConverter.Convert(__workflow_measurements);
+                if (__workflow_dictation != null)
+                    callPayload.Queries["dictation"] = ExpressionConverter.Convert(__workflow_dictation);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<TranscribePostResponse>(callPayload);
+                return new ApiConnectionAction<TranscribePostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
@@ -97,127 +129,184 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<ProjectGetResponse> ProjectGet(Expression<Func<string>> projectId)
         {
-            var apiCallPath = String.Format("/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProjectGetResponse>(callPayload);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            return new DeferredBodyAction<ProjectGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}", __workflow_projectId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ProjectGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<JToken> ProjectDelete(Expression<Func<string>> projectId)
         {
-            var apiCallPath = String.Format("/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}", __workflow_projectId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<ProjectPatchResponse> ProjectPatch(Expression<Func<string>> projectId, Expression<Func<string>> bodyname)
         {
-            var apiCallPath = String.Format("/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodypropCount > 0)
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            return new DeferredBodyAction<ProjectPatchResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}", __workflow_projectId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ProjectPatchResponse>(callPayload);
+                return new ApiConnectionAction<ProjectPatchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<RequestsGetResponse> RequestsGet(Expression<Func<string>> projectId, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> limit = null, Expression<Func<statusInput>> status = null)
         {
-            var apiCallPath = String.Format("/projects/{0}/requests", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-            if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            return new ApiConnectionAction<RequestsGetResponse>(callPayload);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
+            var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            return new DeferredBodyAction<RequestsGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}/requests", __workflow_projectId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_start != null)
+                    callPayload.Queries["start"] = ExpressionConverter.Convert(__workflow_start);
+                if (__workflow_end != null)
+                    callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
+                return new ApiConnectionAction<RequestsGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<RequestGetResponse> RequestGet(Expression<Func<string>> projectId, Expression<Func<string>> requestId)
         {
-            var apiCallPath = String.Format("/projects/{0}/requests/{1}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1), ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RequestGetResponse>(callPayload);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
+            return new DeferredBodyAction<RequestGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}/requests/{1}", __workflow_projectId.WithUrlEncoding(1), __workflow_requestId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<RequestGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<UsageGetResponse> UsageGet(Expression<Func<string>> projectId, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> accessor = null, Expression<Func<string>> tag = null, Expression<Func<methodInput>> method = null, Expression<Func<string>> model = null, Expression<Func<bool>> multichannel = null, Expression<Func<bool>> interimResults = null, Expression<Func<bool>> punctuate = null, Expression<Func<bool>> ner = null, Expression<Func<bool>> utterances = null, Expression<Func<bool>> replace = null, Expression<Func<bool>> profanityFilter = null, Expression<Func<bool>> keywords = null, Expression<Func<bool>> detectTopics = null, Expression<Func<bool>> diarize = null, Expression<Func<bool>> search = null, Expression<Func<bool>> redact = null, Expression<Func<bool>> alternatives = null, Expression<Func<bool>> numerals = null, Expression<Func<bool>> smartFormat = null)
         {
-            var apiCallPath = String.Format("/projects/{0}/usage", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-            if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
-            if (accessor != null)
-                callPayload.Queries["accessor"] = ExpressionConverter.Convert(accessor);
-            if (tag != null)
-                callPayload.Queries["tag"] = ExpressionConverter.Convert(tag);
-            if (method != null)
-                callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-            if (model != null)
-                callPayload.Queries["model"] = ExpressionConverter.Convert(model);
-            if (multichannel != null)
-                callPayload.Queries["multichannel"] = ExpressionConverter.Convert(multichannel);
-            if (interimResults != null)
-                callPayload.Queries["interim_results"] = ExpressionConverter.Convert(interimResults);
-            if (punctuate != null)
-                callPayload.Queries["punctuate"] = ExpressionConverter.Convert(punctuate);
-            if (ner != null)
-                callPayload.Queries["ner"] = ExpressionConverter.Convert(ner);
-            if (utterances != null)
-                callPayload.Queries["utterances"] = ExpressionConverter.Convert(utterances);
-            if (replace != null)
-                callPayload.Queries["replace"] = ExpressionConverter.Convert(replace);
-            if (profanityFilter != null)
-                callPayload.Queries["profanity_filter"] = ExpressionConverter.Convert(profanityFilter);
-            if (keywords != null)
-                callPayload.Queries["keywords"] = ExpressionConverter.Convert(keywords);
-            if (detectTopics != null)
-                callPayload.Queries["detect_topics"] = ExpressionConverter.Convert(detectTopics);
-            if (diarize != null)
-                callPayload.Queries["diarize"] = ExpressionConverter.Convert(diarize);
-            if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-            if (redact != null)
-                callPayload.Queries["redact"] = ExpressionConverter.Convert(redact);
-            if (alternatives != null)
-                callPayload.Queries["alternatives"] = ExpressionConverter.Convert(alternatives);
-            if (numerals != null)
-                callPayload.Queries["numerals"] = ExpressionConverter.Convert(numerals);
-            if (smartFormat != null)
-                callPayload.Queries["smart_format"] = ExpressionConverter.Convert(smartFormat);
-            return new ApiConnectionAction<UsageGetResponse>(callPayload);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
+            var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
+            var __workflow_accessor = WorkflowExpression.Compile(accessor, nameof(accessor), required: false);
+            var __workflow_tag = WorkflowExpression.Compile(tag, nameof(tag), required: false);
+            var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: false);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: false);
+            var __workflow_multichannel = WorkflowExpression.Compile(multichannel, nameof(multichannel), required: false);
+            var __workflow_interimResults = WorkflowExpression.Compile(interimResults, nameof(interimResults), required: false);
+            var __workflow_punctuate = WorkflowExpression.Compile(punctuate, nameof(punctuate), required: false);
+            var __workflow_ner = WorkflowExpression.Compile(ner, nameof(ner), required: false);
+            var __workflow_utterances = WorkflowExpression.Compile(utterances, nameof(utterances), required: false);
+            var __workflow_replace = WorkflowExpression.Compile(replace, nameof(replace), required: false);
+            var __workflow_profanityFilter = WorkflowExpression.Compile(profanityFilter, nameof(profanityFilter), required: false);
+            var __workflow_keywords = WorkflowExpression.Compile(keywords, nameof(keywords), required: false);
+            var __workflow_detectTopics = WorkflowExpression.Compile(detectTopics, nameof(detectTopics), required: false);
+            var __workflow_diarize = WorkflowExpression.Compile(diarize, nameof(diarize), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_redact = WorkflowExpression.Compile(redact, nameof(redact), required: false);
+            var __workflow_alternatives = WorkflowExpression.Compile(alternatives, nameof(alternatives), required: false);
+            var __workflow_numerals = WorkflowExpression.Compile(numerals, nameof(numerals), required: false);
+            var __workflow_smartFormat = WorkflowExpression.Compile(smartFormat, nameof(smartFormat), required: false);
+            return new DeferredBodyAction<UsageGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}/usage", __workflow_projectId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_start != null)
+                    callPayload.Queries["start"] = ExpressionConverter.Convert(__workflow_start);
+                if (__workflow_end != null)
+                    callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
+                if (__workflow_accessor != null)
+                    callPayload.Queries["accessor"] = ExpressionConverter.Convert(__workflow_accessor);
+                if (__workflow_tag != null)
+                    callPayload.Queries["tag"] = ExpressionConverter.Convert(__workflow_tag);
+                if (__workflow_method != null)
+                    callPayload.Queries["method"] = ExpressionConverter.Convert(__workflow_method);
+                if (__workflow_model != null)
+                    callPayload.Queries["model"] = ExpressionConverter.Convert(__workflow_model);
+                if (__workflow_multichannel != null)
+                    callPayload.Queries["multichannel"] = ExpressionConverter.Convert(__workflow_multichannel);
+                if (__workflow_interimResults != null)
+                    callPayload.Queries["interim_results"] = ExpressionConverter.Convert(__workflow_interimResults);
+                if (__workflow_punctuate != null)
+                    callPayload.Queries["punctuate"] = ExpressionConverter.Convert(__workflow_punctuate);
+                if (__workflow_ner != null)
+                    callPayload.Queries["ner"] = ExpressionConverter.Convert(__workflow_ner);
+                if (__workflow_utterances != null)
+                    callPayload.Queries["utterances"] = ExpressionConverter.Convert(__workflow_utterances);
+                if (__workflow_replace != null)
+                    callPayload.Queries["replace"] = ExpressionConverter.Convert(__workflow_replace);
+                if (__workflow_profanityFilter != null)
+                    callPayload.Queries["profanity_filter"] = ExpressionConverter.Convert(__workflow_profanityFilter);
+                if (__workflow_keywords != null)
+                    callPayload.Queries["keywords"] = ExpressionConverter.Convert(__workflow_keywords);
+                if (__workflow_detectTopics != null)
+                    callPayload.Queries["detect_topics"] = ExpressionConverter.Convert(__workflow_detectTopics);
+                if (__workflow_diarize != null)
+                    callPayload.Queries["diarize"] = ExpressionConverter.Convert(__workflow_diarize);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                if (__workflow_redact != null)
+                    callPayload.Queries["redact"] = ExpressionConverter.Convert(__workflow_redact);
+                if (__workflow_alternatives != null)
+                    callPayload.Queries["alternatives"] = ExpressionConverter.Convert(__workflow_alternatives);
+                if (__workflow_numerals != null)
+                    callPayload.Queries["numerals"] = ExpressionConverter.Convert(__workflow_numerals);
+                if (__workflow_smartFormat != null)
+                    callPayload.Queries["smart_format"] = ExpressionConverter.Convert(__workflow_smartFormat);
+                return new ApiConnectionAction<UsageGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<FieldsGetResponse> FieldsGet(Expression<Func<string>> projectId, Expression<Func<string>> start = null, Expression<Func<string>> end = null)
         {
-            var apiCallPath = String.Format("/projects/{0}/usage/fields", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-            if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
-            return new ApiConnectionAction<FieldsGetResponse>(callPayload);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
+            var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
+            return new DeferredBodyAction<FieldsGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}/usage/fields", __workflow_projectId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_start != null)
+                    callPayload.Queries["start"] = ExpressionConverter.Convert(__workflow_start);
+                if (__workflow_end != null)
+                    callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
+                return new ApiConnectionAction<FieldsGetResponse>(callPayload);
+            });
         }
     }
 
@@ -300,6 +389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         public double Confidence { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum modelInput
     {
         [EnumMember(Value = "general")]
@@ -318,6 +408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         Video
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum tierInput
     {
         [EnumMember(Value = "base")]
@@ -328,12 +419,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         Nova
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum versionInput
     {
         [EnumMember(Value = "latest")]
         Latest
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum redactInput
     {
         [EnumMember(Value = "pci")]
@@ -513,6 +606,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         public string Completed { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
         [EnumMember(Value = "succeeded")]
@@ -688,6 +782,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         public int Requests { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum methodInput
     {
         [EnumMember(Value = "sync")]

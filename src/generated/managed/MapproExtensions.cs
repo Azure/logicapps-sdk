@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,88 +14,121 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
         public IBodyWorkflowAction<Place> GetPlaceById(Expression<Func<string>> mapId, Expression<Func<string>> placeId)
         {
-            var apiCallPath = String.Format("/{0}/places/{1}", ExpressionConverter.ConvertWithUrlEncoding(mapId, 1), ExpressionConverter.ConvertWithUrlEncoding(placeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Place>(callPayload);
+            var __workflow_mapId = WorkflowExpression.Compile(mapId, nameof(mapId), required: true);
+            var __workflow_placeId = WorkflowExpression.Compile(placeId, nameof(placeId), required: true);
+            return new DeferredBodyAction<Place>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/places/{1}", __workflow_mapId.WithUrlEncoding(1), __workflow_placeId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Place>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
         public IWorkflowAction DeletePlace(Expression<Func<string>> mapId, Expression<Func<string>> placeId)
         {
-            var apiCallPath = String.Format("/{0}/places/{1}", ExpressionConverter.ConvertWithUrlEncoding(mapId, 1), ExpressionConverter.ConvertWithUrlEncoding(placeId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_mapId = WorkflowExpression.Compile(mapId, nameof(mapId), required: true);
+            var __workflow_placeId = WorkflowExpression.Compile(placeId, nameof(placeId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/places/{1}", __workflow_mapId.WithUrlEncoding(1), __workflow_placeId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
         public IBodyWorkflowAction<Place> UpdatePlace(Expression<Func<string>> mapId, Expression<Func<string>> placeId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodyaddress, Expression<Func<double>> bodylatitude, Expression<Func<double>> bodylongitude, Expression<Func<string>> bodydescription = null)
         {
-            var apiCallPath = String.Format("/{0}/places/{1}", ExpressionConverter.ConvertWithUrlEncoding(mapId, 1), ExpressionConverter.ConvertWithUrlEncoding(placeId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodydescription != null)
+            var __workflow_mapId = WorkflowExpression.Compile(mapId, nameof(mapId), required: true);
+            var __workflow_placeId = WorkflowExpression.Compile(placeId, nameof(placeId), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: true);
+            var __workflow_bodylatitude = WorkflowExpression.Compile(bodylatitude, nameof(bodylatitude), required: true);
+            var __workflow_bodylongitude = WorkflowExpression.Compile(bodylongitude, nameof(bodylongitude), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            return new DeferredBodyAction<Place>(() =>
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/places/{1}", __workflow_mapId.WithUrlEncoding(1), __workflow_placeId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                if (__workflow_bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-            bodypropCount++;
-            body["lat"] = ExpressionConverter.ConvertO(bodylatitude);
-            bodypropCount++;
-            body["lng"] = ExpressionConverter.ConvertO(bodylongitude);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                bodypropCount++;
+                body["address"] = ExpressionConverter.ConvertO(__workflow_bodyaddress);
+                bodypropCount++;
+                body["lat"] = ExpressionConverter.ConvertO(__workflow_bodylatitude);
+                bodypropCount++;
+                body["lng"] = ExpressionConverter.ConvertO(__workflow_bodylongitude);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Place>(callPayload);
+                return new ApiConnectionAction<Place>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
         public IBodyWorkflowAction<Place[]> GetMapPlacesById(Expression<Func<string>> mapId)
         {
-            var apiCallPath = String.Format("/{0}/places", ExpressionConverter.ConvertWithUrlEncoding(mapId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Place[]>(callPayload);
+            var __workflow_mapId = WorkflowExpression.Compile(mapId, nameof(mapId), required: true);
+            return new DeferredBodyAction<Place[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/places", __workflow_mapId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Place[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
         public IBodyWorkflowAction<Place> CreateNewPlace(Expression<Func<string>> mapId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodyaddress, Expression<Func<double>> bodylatitude, Expression<Func<double>> bodylongitude, Expression<Func<string>> bodydescription = null)
         {
-            var apiCallPath = String.Format("/{0}/places", ExpressionConverter.ConvertWithUrlEncoding(mapId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodydescription != null)
+            var __workflow_mapId = WorkflowExpression.Compile(mapId, nameof(mapId), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: true);
+            var __workflow_bodylatitude = WorkflowExpression.Compile(bodylatitude, nameof(bodylatitude), required: true);
+            var __workflow_bodylongitude = WorkflowExpression.Compile(bodylongitude, nameof(bodylongitude), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            return new DeferredBodyAction<Place>(() =>
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/places", __workflow_mapId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                if (__workflow_bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-            bodypropCount++;
-            body["lat"] = ExpressionConverter.ConvertO(bodylatitude);
-            bodypropCount++;
-            body["lng"] = ExpressionConverter.ConvertO(bodylongitude);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                bodypropCount++;
+                body["address"] = ExpressionConverter.ConvertO(__workflow_bodyaddress);
+                bodypropCount++;
+                body["lat"] = ExpressionConverter.ConvertO(__workflow_bodylatitude);
+                bodypropCount++;
+                body["lng"] = ExpressionConverter.ConvertO(__workflow_bodylongitude);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Place>(callPayload);
+                return new ApiConnectionAction<Place>(callPayload);
+            });
         }
     }
 

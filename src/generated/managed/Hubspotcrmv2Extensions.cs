@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,3400 +14,4214 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfCompaniesById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var apiCallPath = "/crm/v3/objects/companies/batch/archive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/companies/batch/archive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ListResponse> List(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/companies";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<ListResponse>(callPayload);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<ListResponse>(() =>
+            {
+                var apiCallPath = "/crm/v3/objects/companies";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(__workflow_properties);
+                if (__workflow_propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(__workflow_propertiesWithHistory);
+                if (__workflow_associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(__workflow_associations);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                return new ApiConnectionAction<ListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<CreateResponse> Create(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
         {
-            var apiCallPath = "/crm/v3/objects/companies";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassociations != null)
+            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
+            return new DeferredBodyAction<CreateResponse>(() =>
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/companies";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyassociations != null)
+                {
+                    body["associations"] = ExpressionConverter.ConvertO(__workflow_bodyassociations);
+                    bodypropCount++;
+                }
 
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CreateResponse>(callPayload);
+                return new ApiConnectionAction<CreateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ReadResponse> Read(Expression<Func<string>> companyId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(companyId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            return new ApiConnectionAction<ReadResponse>(callPayload);
+            var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<ReadResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/companies/{0}", __workflow_companyId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(__workflow_properties);
+                if (__workflow_propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(__workflow_propertiesWithHistory);
+                if (__workflow_associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(__workflow_associations);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                if (__workflow_idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(__workflow_idProperty);
+                return new ApiConnectionAction<ReadResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive(Expression<Func<string>> companyId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(companyId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/companies/{0}", __workflow_companyId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<UpdateResponse> Update(Expression<Func<string>> companyId, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(companyId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
+            var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<UpdateResponse>(() =>
             {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/companies/{0}", __workflow_companyId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(__workflow_idProperty);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<UpdateResponse>(callPayload);
+                return new ApiConnectionAction<UpdateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoCompaniesWithSameTypeResponse> MergeTwoCompaniesWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var apiCallPath = "/crm/v3/objects/companies/merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectIdToMerge != null)
+            var __workflow_bodyobjectIdToMerge = WorkflowExpression.Compile(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            var __workflow_bodyprimaryObjectId = WorkflowExpression.Compile(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            return new DeferredBodyAction<MergeTwoCompaniesWithSameTypeResponse>(() =>
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/companies/merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyobjectIdToMerge != null)
+                {
+                    body["objectIdToMerge"] = ExpressionConverter.ConvertO(__workflow_bodyobjectIdToMerge);
+                    bodypropCount++;
+                }
 
-            if (bodyprimaryObjectId != null)
-            {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
-                bodypropCount++;
-            }
+                if (__workflow_bodyprimaryObjectId != null)
+                {
+                    body["primaryObjectId"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryObjectId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MergeTwoCompaniesWithSameTypeResponse>(callPayload);
+                return new ApiConnectionAction<MergeTwoCompaniesWithSameTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDelete(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/companies/gdpr-delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectId != null)
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: false);
+            var __workflow_bodyidProperty = WorkflowExpression.Compile(bodyidProperty, nameof(bodyidProperty), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/companies/gdpr-delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyobjectId != null)
+                {
+                    body["objectId"] = ExpressionConverter.ConvertO(__workflow_bodyobjectId);
+                    bodypropCount++;
+                }
 
-            if (bodyidProperty != null)
-            {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
-                bodypropCount++;
-            }
+                if (__workflow_bodyidProperty != null)
+                {
+                    body["idProperty"] = ExpressionConverter.ConvertO(__workflow_bodyidProperty);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsCompaniesSearchResponse> PostCrmV3ObjectsCompaniesSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var apiCallPath = "/crm/v3/objects/companies/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyafter != null)
+            var __workflow_bodyafter = WorkflowExpression.Compile(bodyafter, nameof(bodyafter), required: false);
+            var __workflow_bodyfilterGroups = WorkflowExpression.Compile(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
+            return new DeferredBodyAction<PostCrmV3ObjectsCompaniesSearchResponse>(() =>
             {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/companies/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyafter != null)
+                {
+                    body["after"] = ExpressionConverter.ConvertO(__workflow_bodyafter);
+                    bodypropCount++;
+                }
 
-            if (bodyfilterGroups != null)
-            {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfilterGroups != null)
+                {
+                    body["filterGroups"] = ExpressionConverter.ConvertO(__workflow_bodyfilterGroups);
+                    bodypropCount++;
+                }
 
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+                if (__workflow_bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
+                    bodypropCount++;
+                }
 
-            if (bodyproperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+                if (__workflow_bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(__workflow_bodyproperties);
+                    bodypropCount++;
+                }
 
-            if (bodysorts != null)
-            {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
+                if (__workflow_bodysorts != null)
+                {
+                    body["sorts"] = ExpressionConverter.ConvertO(__workflow_bodysorts);
+                    bodypropCount++;
+                }
 
-            if (bodyquery != null)
-            {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                if (__workflow_bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PostCrmV3ObjectsCompaniesSearchResponse>(callPayload);
+                return new ApiConnectionAction<PostCrmV3ObjectsCompaniesSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfContactsById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var apiCallPath = "/crm/v3/objects/contacts/batch/archive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/contacts/batch/archive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List16Response> List16(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/contacts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<List16Response>(callPayload);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<List16Response>(() =>
+            {
+                var apiCallPath = "/crm/v3/objects/contacts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(__workflow_properties);
+                if (__workflow_propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(__workflow_propertiesWithHistory);
+                if (__workflow_associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(__workflow_associations);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                return new ApiConnectionAction<List16Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create17Response> Create17(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
         {
-            var apiCallPath = "/crm/v3/objects/contacts";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassociations != null)
+            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
+            return new DeferredBodyAction<Create17Response>(() =>
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/contacts";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyassociations != null)
+                {
+                    body["associations"] = ExpressionConverter.ConvertO(__workflow_bodyassociations);
+                    bodypropCount++;
+                }
 
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Create17Response>(callPayload);
+                return new ApiConnectionAction<Create17Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read18Response> Read18(Expression<Func<string>> contactId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<Read18Response>(callPayload);
+            var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<Read18Response>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/contacts/{0}", __workflow_contactId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(__workflow_properties);
+                if (__workflow_propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(__workflow_propertiesWithHistory);
+                if (__workflow_associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(__workflow_associations);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                return new ApiConnectionAction<Read18Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive19(Expression<Func<string>> contactId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/contacts/{0}", __workflow_contactId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update20Response> Update20(Expression<Func<string>> contactId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
+            var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
+            return new DeferredBodyAction<Update20Response>(() =>
             {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/contacts/{0}", __workflow_contactId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Update20Response>(callPayload);
+                return new ApiConnectionAction<Update20Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoContactsWithSameTypeResponse> MergeTwoContactsWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var apiCallPath = "/crm/v3/objects/contacts/merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectIdToMerge != null)
+            var __workflow_bodyobjectIdToMerge = WorkflowExpression.Compile(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            var __workflow_bodyprimaryObjectId = WorkflowExpression.Compile(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            return new DeferredBodyAction<MergeTwoContactsWithSameTypeResponse>(() =>
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/contacts/merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyobjectIdToMerge != null)
+                {
+                    body["objectIdToMerge"] = ExpressionConverter.ConvertO(__workflow_bodyobjectIdToMerge);
+                    bodypropCount++;
+                }
 
-            if (bodyprimaryObjectId != null)
-            {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
-                bodypropCount++;
-            }
+                if (__workflow_bodyprimaryObjectId != null)
+                {
+                    body["primaryObjectId"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryObjectId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MergeTwoContactsWithSameTypeResponse>(callPayload);
+                return new ApiConnectionAction<MergeTwoContactsWithSameTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDelete22(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/contacts/gdpr-delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectId != null)
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: false);
+            var __workflow_bodyidProperty = WorkflowExpression.Compile(bodyidProperty, nameof(bodyidProperty), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/contacts/gdpr-delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyobjectId != null)
+                {
+                    body["objectId"] = ExpressionConverter.ConvertO(__workflow_bodyobjectId);
+                    bodypropCount++;
+                }
 
-            if (bodyidProperty != null)
-            {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
-                bodypropCount++;
-            }
+                if (__workflow_bodyidProperty != null)
+                {
+                    body["idProperty"] = ExpressionConverter.ConvertO(__workflow_bodyidProperty);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsContactsSearchResponse> PostCrmV3ObjectsContactsSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var apiCallPath = "/crm/v3/objects/contacts/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyafter != null)
+            var __workflow_bodyafter = WorkflowExpression.Compile(bodyafter, nameof(bodyafter), required: false);
+            var __workflow_bodyfilterGroups = WorkflowExpression.Compile(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
+            return new DeferredBodyAction<PostCrmV3ObjectsContactsSearchResponse>(() =>
             {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/contacts/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyafter != null)
+                {
+                    body["after"] = ExpressionConverter.ConvertO(__workflow_bodyafter);
+                    bodypropCount++;
+                }
 
-            if (bodyfilterGroups != null)
-            {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfilterGroups != null)
+                {
+                    body["filterGroups"] = ExpressionConverter.ConvertO(__workflow_bodyfilterGroups);
+                    bodypropCount++;
+                }
 
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+                if (__workflow_bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
+                    bodypropCount++;
+                }
 
-            if (bodyproperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+                if (__workflow_bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(__workflow_bodyproperties);
+                    bodypropCount++;
+                }
 
-            if (bodysorts != null)
-            {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
+                if (__workflow_bodysorts != null)
+                {
+                    body["sorts"] = ExpressionConverter.ConvertO(__workflow_bodysorts);
+                    bodypropCount++;
+                }
 
-            if (bodyquery != null)
-            {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                if (__workflow_bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PostCrmV3ObjectsContactsSearchResponse>(callPayload);
+                return new ApiConnectionAction<PostCrmV3ObjectsContactsSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfDealsById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var apiCallPath = "/crm/v3/objects/deals/batch/archive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/deals/batch/archive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List28Response> List28(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/deals";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<List28Response>(callPayload);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<List28Response>(() =>
+            {
+                var apiCallPath = "/crm/v3/objects/deals";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(__workflow_properties);
+                if (__workflow_propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(__workflow_propertiesWithHistory);
+                if (__workflow_associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(__workflow_associations);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                return new ApiConnectionAction<List28Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create29Response> Create29(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
         {
-            var apiCallPath = "/crm/v3/objects/deals";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassociations != null)
+            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
+            return new DeferredBodyAction<Create29Response>(() =>
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/deals";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyassociations != null)
+                {
+                    body["associations"] = ExpressionConverter.ConvertO(__workflow_bodyassociations);
+                    bodypropCount++;
+                }
 
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Create29Response>(callPayload);
+                return new ApiConnectionAction<Create29Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read30Response> Read30(Expression<Func<string>> dealId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/deals/{0}", ExpressionConverter.ConvertWithUrlEncoding(dealId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            return new ApiConnectionAction<Read30Response>(callPayload);
+            var __workflow_dealId = WorkflowExpression.Compile(dealId, nameof(dealId), required: true);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Read30Response>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/deals/{0}", __workflow_dealId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(__workflow_properties);
+                if (__workflow_propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(__workflow_propertiesWithHistory);
+                if (__workflow_associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(__workflow_associations);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                if (__workflow_idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(__workflow_idProperty);
+                return new ApiConnectionAction<Read30Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive31(Expression<Func<string>> dealId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/deals/{0}", ExpressionConverter.ConvertWithUrlEncoding(dealId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_dealId = WorkflowExpression.Compile(dealId, nameof(dealId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/deals/{0}", __workflow_dealId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update32Response> Update32(Expression<Func<string>> dealId, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/deals/{0}", ExpressionConverter.ConvertWithUrlEncoding(dealId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
+            var __workflow_dealId = WorkflowExpression.Compile(dealId, nameof(dealId), required: true);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Update32Response>(() =>
             {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/deals/{0}", __workflow_dealId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(__workflow_idProperty);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Update32Response>(callPayload);
+                return new ApiConnectionAction<Update32Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoDealsWithSameTypeResponse> MergeTwoDealsWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var apiCallPath = "/crm/v3/objects/deals/merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectIdToMerge != null)
+            var __workflow_bodyobjectIdToMerge = WorkflowExpression.Compile(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            var __workflow_bodyprimaryObjectId = WorkflowExpression.Compile(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            return new DeferredBodyAction<MergeTwoDealsWithSameTypeResponse>(() =>
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/deals/merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyobjectIdToMerge != null)
+                {
+                    body["objectIdToMerge"] = ExpressionConverter.ConvertO(__workflow_bodyobjectIdToMerge);
+                    bodypropCount++;
+                }
 
-            if (bodyprimaryObjectId != null)
-            {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
-                bodypropCount++;
-            }
+                if (__workflow_bodyprimaryObjectId != null)
+                {
+                    body["primaryObjectId"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryObjectId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MergeTwoDealsWithSameTypeResponse>(callPayload);
+                return new ApiConnectionAction<MergeTwoDealsWithSameTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDelete34(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/deals/gdpr-delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectId != null)
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: false);
+            var __workflow_bodyidProperty = WorkflowExpression.Compile(bodyidProperty, nameof(bodyidProperty), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/deals/gdpr-delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyobjectId != null)
+                {
+                    body["objectId"] = ExpressionConverter.ConvertO(__workflow_bodyobjectId);
+                    bodypropCount++;
+                }
 
-            if (bodyidProperty != null)
-            {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
-                bodypropCount++;
-            }
+                if (__workflow_bodyidProperty != null)
+                {
+                    body["idProperty"] = ExpressionConverter.ConvertO(__workflow_bodyidProperty);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsDealsSearchResponse> PostCrmV3ObjectsDealsSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var apiCallPath = "/crm/v3/objects/deals/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyafter != null)
+            var __workflow_bodyafter = WorkflowExpression.Compile(bodyafter, nameof(bodyafter), required: false);
+            var __workflow_bodyfilterGroups = WorkflowExpression.Compile(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
+            return new DeferredBodyAction<PostCrmV3ObjectsDealsSearchResponse>(() =>
             {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/deals/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyafter != null)
+                {
+                    body["after"] = ExpressionConverter.ConvertO(__workflow_bodyafter);
+                    bodypropCount++;
+                }
 
-            if (bodyfilterGroups != null)
-            {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfilterGroups != null)
+                {
+                    body["filterGroups"] = ExpressionConverter.ConvertO(__workflow_bodyfilterGroups);
+                    bodypropCount++;
+                }
 
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+                if (__workflow_bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
+                    bodypropCount++;
+                }
 
-            if (bodyproperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+                if (__workflow_bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(__workflow_bodyproperties);
+                    bodypropCount++;
+                }
 
-            if (bodysorts != null)
-            {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
+                if (__workflow_bodysorts != null)
+                {
+                    body["sorts"] = ExpressionConverter.ConvertO(__workflow_bodysorts);
+                    bodypropCount++;
+                }
 
-            if (bodyquery != null)
-            {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                if (__workflow_bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PostCrmV3ObjectsDealsSearchResponse>(callPayload);
+                return new ApiConnectionAction<PostCrmV3ObjectsDealsSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfFeesById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var apiCallPath = "/crm/v3/objects/fees/batch/archive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/fees/batch/archive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read40Response> Read40(Expression<Func<string>> feeId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/fees/{0}", ExpressionConverter.ConvertWithUrlEncoding(feeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            return new ApiConnectionAction<Read40Response>(callPayload);
+            var __workflow_feeId = WorkflowExpression.Compile(feeId, nameof(feeId), required: true);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Read40Response>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/fees/{0}", __workflow_feeId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(__workflow_properties);
+                if (__workflow_propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(__workflow_propertiesWithHistory);
+                if (__workflow_associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(__workflow_associations);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                if (__workflow_idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(__workflow_idProperty);
+                return new ApiConnectionAction<Read40Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive41(Expression<Func<string>> feeId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/fees/{0}", ExpressionConverter.ConvertWithUrlEncoding(feeId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_feeId = WorkflowExpression.Compile(feeId, nameof(feeId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/fees/{0}", __workflow_feeId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update42Response> Update42(Expression<Func<string>> feeId, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/fees/{0}", ExpressionConverter.ConvertWithUrlEncoding(feeId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
+            var __workflow_feeId = WorkflowExpression.Compile(feeId, nameof(feeId), required: true);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Update42Response>(() =>
             {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/fees/{0}", __workflow_feeId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(__workflow_idProperty);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Update42Response>(callPayload);
+                return new ApiConnectionAction<Update42Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List43Response> List43(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/fees";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<List43Response>(callPayload);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<List43Response>(() =>
+            {
+                var apiCallPath = "/crm/v3/objects/fees";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(__workflow_properties);
+                if (__workflow_propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(__workflow_propertiesWithHistory);
+                if (__workflow_associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(__workflow_associations);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                return new ApiConnectionAction<List43Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create44Response> Create44(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
         {
-            var apiCallPath = "/crm/v3/objects/fees";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassociations != null)
+            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
+            return new DeferredBodyAction<Create44Response>(() =>
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/fees";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyassociations != null)
+                {
+                    body["associations"] = ExpressionConverter.ConvertO(__workflow_bodyassociations);
+                    bodypropCount++;
+                }
 
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Create44Response>(callPayload);
+                return new ApiConnectionAction<Create44Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoFeesWithSameTypeResponse> MergeTwoFeesWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var apiCallPath = "/crm/v3/objects/fees/merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectIdToMerge != null)
+            var __workflow_bodyobjectIdToMerge = WorkflowExpression.Compile(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            var __workflow_bodyprimaryObjectId = WorkflowExpression.Compile(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            return new DeferredBodyAction<MergeTwoFeesWithSameTypeResponse>(() =>
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/fees/merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyobjectIdToMerge != null)
+                {
+                    body["objectIdToMerge"] = ExpressionConverter.ConvertO(__workflow_bodyobjectIdToMerge);
+                    bodypropCount++;
+                }
 
-            if (bodyprimaryObjectId != null)
-            {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
-                bodypropCount++;
-            }
+                if (__workflow_bodyprimaryObjectId != null)
+                {
+                    body["primaryObjectId"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryObjectId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MergeTwoFeesWithSameTypeResponse>(callPayload);
+                return new ApiConnectionAction<MergeTwoFeesWithSameTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDelete46(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/fees/gdpr-delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectId != null)
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: false);
+            var __workflow_bodyidProperty = WorkflowExpression.Compile(bodyidProperty, nameof(bodyidProperty), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/fees/gdpr-delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyobjectId != null)
+                {
+                    body["objectId"] = ExpressionConverter.ConvertO(__workflow_bodyobjectId);
+                    bodypropCount++;
+                }
 
-            if (bodyidProperty != null)
-            {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
-                bodypropCount++;
-            }
+                if (__workflow_bodyidProperty != null)
+                {
+                    body["idProperty"] = ExpressionConverter.ConvertO(__workflow_bodyidProperty);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsFeesSearchResponse> PostCrmV3ObjectsFeesSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var apiCallPath = "/crm/v3/objects/fees/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyafter != null)
+            var __workflow_bodyafter = WorkflowExpression.Compile(bodyafter, nameof(bodyafter), required: false);
+            var __workflow_bodyfilterGroups = WorkflowExpression.Compile(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
+            return new DeferredBodyAction<PostCrmV3ObjectsFeesSearchResponse>(() =>
             {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/fees/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyafter != null)
+                {
+                    body["after"] = ExpressionConverter.ConvertO(__workflow_bodyafter);
+                    bodypropCount++;
+                }
 
-            if (bodyfilterGroups != null)
-            {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfilterGroups != null)
+                {
+                    body["filterGroups"] = ExpressionConverter.ConvertO(__workflow_bodyfilterGroups);
+                    bodypropCount++;
+                }
 
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+                if (__workflow_bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
+                    bodypropCount++;
+                }
 
-            if (bodyproperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+                if (__workflow_bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(__workflow_bodyproperties);
+                    bodypropCount++;
+                }
 
-            if (bodysorts != null)
-            {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
+                if (__workflow_bodysorts != null)
+                {
+                    body["sorts"] = ExpressionConverter.ConvertO(__workflow_bodysorts);
+                    bodypropCount++;
+                }
 
-            if (bodyquery != null)
-            {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                if (__workflow_bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PostCrmV3ObjectsFeesSearchResponse>(callPayload);
+                return new ApiConnectionAction<PostCrmV3ObjectsFeesSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfGoalTargetsById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var apiCallPath = "/crm/v3/objects/goal_targets/batch/archive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/goal_targets/batch/archive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read52Response> Read52(Expression<Func<string>> goalTargetId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/goal_targets/{0}", ExpressionConverter.ConvertWithUrlEncoding(goalTargetId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            return new ApiConnectionAction<Read52Response>(callPayload);
+            var __workflow_goalTargetId = WorkflowExpression.Compile(goalTargetId, nameof(goalTargetId), required: true);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Read52Response>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/goal_targets/{0}", __workflow_goalTargetId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(__workflow_properties);
+                if (__workflow_propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(__workflow_propertiesWithHistory);
+                if (__workflow_associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(__workflow_associations);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                if (__workflow_idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(__workflow_idProperty);
+                return new ApiConnectionAction<Read52Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive53(Expression<Func<string>> goalTargetId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/goal_targets/{0}", ExpressionConverter.ConvertWithUrlEncoding(goalTargetId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_goalTargetId = WorkflowExpression.Compile(goalTargetId, nameof(goalTargetId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/goal_targets/{0}", __workflow_goalTargetId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update54Response> Update54(Expression<Func<string>> goalTargetId, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/goal_targets/{0}", ExpressionConverter.ConvertWithUrlEncoding(goalTargetId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
+            var __workflow_goalTargetId = WorkflowExpression.Compile(goalTargetId, nameof(goalTargetId), required: true);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Update54Response>(() =>
             {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/goal_targets/{0}", __workflow_goalTargetId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(__workflow_idProperty);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Update54Response>(callPayload);
+                return new ApiConnectionAction<Update54Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List55Response> List55(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/goal_targets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<List55Response>(callPayload);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<List55Response>(() =>
+            {
+                var apiCallPath = "/crm/v3/objects/goal_targets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(__workflow_properties);
+                if (__workflow_propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(__workflow_propertiesWithHistory);
+                if (__workflow_associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(__workflow_associations);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                return new ApiConnectionAction<List55Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create56Response> Create56(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
         {
-            var apiCallPath = "/crm/v3/objects/goal_targets";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassociations != null)
+            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
+            return new DeferredBodyAction<Create56Response>(() =>
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/goal_targets";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyassociations != null)
+                {
+                    body["associations"] = ExpressionConverter.ConvertO(__workflow_bodyassociations);
+                    bodypropCount++;
+                }
 
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Create56Response>(callPayload);
+                return new ApiConnectionAction<Create56Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoGoalTargetsWithSameTypeResponse> MergeTwoGoalTargetsWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var apiCallPath = "/crm/v3/objects/goal_targets/merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectIdToMerge != null)
+            var __workflow_bodyobjectIdToMerge = WorkflowExpression.Compile(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            var __workflow_bodyprimaryObjectId = WorkflowExpression.Compile(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            return new DeferredBodyAction<MergeTwoGoalTargetsWithSameTypeResponse>(() =>
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/goal_targets/merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyobjectIdToMerge != null)
+                {
+                    body["objectIdToMerge"] = ExpressionConverter.ConvertO(__workflow_bodyobjectIdToMerge);
+                    bodypropCount++;
+                }
 
-            if (bodyprimaryObjectId != null)
-            {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
-                bodypropCount++;
-            }
+                if (__workflow_bodyprimaryObjectId != null)
+                {
+                    body["primaryObjectId"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryObjectId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MergeTwoGoalTargetsWithSameTypeResponse>(callPayload);
+                return new ApiConnectionAction<MergeTwoGoalTargetsWithSameTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDelete58(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/goal_targets/gdpr-delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectId != null)
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: false);
+            var __workflow_bodyidProperty = WorkflowExpression.Compile(bodyidProperty, nameof(bodyidProperty), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/goal_targets/gdpr-delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyobjectId != null)
+                {
+                    body["objectId"] = ExpressionConverter.ConvertO(__workflow_bodyobjectId);
+                    bodypropCount++;
+                }
 
-            if (bodyidProperty != null)
-            {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
-                bodypropCount++;
-            }
+                if (__workflow_bodyidProperty != null)
+                {
+                    body["idProperty"] = ExpressionConverter.ConvertO(__workflow_bodyidProperty);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsGoalTargetsSearchResponse> PostCrmV3ObjectsGoalTargetsSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var apiCallPath = "/crm/v3/objects/goal_targets/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyafter != null)
+            var __workflow_bodyafter = WorkflowExpression.Compile(bodyafter, nameof(bodyafter), required: false);
+            var __workflow_bodyfilterGroups = WorkflowExpression.Compile(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
+            return new DeferredBodyAction<PostCrmV3ObjectsGoalTargetsSearchResponse>(() =>
             {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/goal_targets/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyafter != null)
+                {
+                    body["after"] = ExpressionConverter.ConvertO(__workflow_bodyafter);
+                    bodypropCount++;
+                }
 
-            if (bodyfilterGroups != null)
-            {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfilterGroups != null)
+                {
+                    body["filterGroups"] = ExpressionConverter.ConvertO(__workflow_bodyfilterGroups);
+                    bodypropCount++;
+                }
 
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+                if (__workflow_bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
+                    bodypropCount++;
+                }
 
-            if (bodyproperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+                if (__workflow_bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(__workflow_bodyproperties);
+                    bodypropCount++;
+                }
 
-            if (bodysorts != null)
-            {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
+                if (__workflow_bodysorts != null)
+                {
+                    body["sorts"] = ExpressionConverter.ConvertO(__workflow_bodysorts);
+                    bodypropCount++;
+                }
 
-            if (bodyquery != null)
-            {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                if (__workflow_bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PostCrmV3ObjectsGoalTargetsSearchResponse>(callPayload);
+                return new ApiConnectionAction<PostCrmV3ObjectsGoalTargetsSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfLineItemsById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var apiCallPath = "/crm/v3/objects/line_items/batch/archive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/line_items/batch/archive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List64Response> List64(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/line_items";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<List64Response>(callPayload);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<List64Response>(() =>
+            {
+                var apiCallPath = "/crm/v3/objects/line_items";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(__workflow_properties);
+                if (__workflow_propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(__workflow_propertiesWithHistory);
+                if (__workflow_associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(__workflow_associations);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                return new ApiConnectionAction<List64Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create65Response> Create65(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
         {
-            var apiCallPath = "/crm/v3/objects/line_items";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassociations != null)
+            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
+            return new DeferredBodyAction<Create65Response>(() =>
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/line_items";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyassociations != null)
+                {
+                    body["associations"] = ExpressionConverter.ConvertO(__workflow_bodyassociations);
+                    bodypropCount++;
+                }
 
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Create65Response>(callPayload);
+                return new ApiConnectionAction<Create65Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read66Response> Read66(Expression<Func<string>> lineItemId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/line_items/{0}", ExpressionConverter.ConvertWithUrlEncoding(lineItemId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            return new ApiConnectionAction<Read66Response>(callPayload);
+            var __workflow_lineItemId = WorkflowExpression.Compile(lineItemId, nameof(lineItemId), required: true);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Read66Response>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/line_items/{0}", __workflow_lineItemId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(__workflow_properties);
+                if (__workflow_propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(__workflow_propertiesWithHistory);
+                if (__workflow_associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(__workflow_associations);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                if (__workflow_idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(__workflow_idProperty);
+                return new ApiConnectionAction<Read66Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive67(Expression<Func<string>> lineItemId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/line_items/{0}", ExpressionConverter.ConvertWithUrlEncoding(lineItemId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_lineItemId = WorkflowExpression.Compile(lineItemId, nameof(lineItemId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/line_items/{0}", __workflow_lineItemId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update68Response> Update68(Expression<Func<string>> lineItemId, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/line_items/{0}", ExpressionConverter.ConvertWithUrlEncoding(lineItemId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
+            var __workflow_lineItemId = WorkflowExpression.Compile(lineItemId, nameof(lineItemId), required: true);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Update68Response>(() =>
             {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/line_items/{0}", __workflow_lineItemId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(__workflow_idProperty);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Update68Response>(callPayload);
+                return new ApiConnectionAction<Update68Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoLineItemsWithSameTypeResponse> MergeTwoLineItemsWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var apiCallPath = "/crm/v3/objects/line_items/merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectIdToMerge != null)
+            var __workflow_bodyobjectIdToMerge = WorkflowExpression.Compile(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            var __workflow_bodyprimaryObjectId = WorkflowExpression.Compile(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            return new DeferredBodyAction<MergeTwoLineItemsWithSameTypeResponse>(() =>
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/line_items/merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyobjectIdToMerge != null)
+                {
+                    body["objectIdToMerge"] = ExpressionConverter.ConvertO(__workflow_bodyobjectIdToMerge);
+                    bodypropCount++;
+                }
 
-            if (bodyprimaryObjectId != null)
-            {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
-                bodypropCount++;
-            }
+                if (__workflow_bodyprimaryObjectId != null)
+                {
+                    body["primaryObjectId"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryObjectId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MergeTwoLineItemsWithSameTypeResponse>(callPayload);
+                return new ApiConnectionAction<MergeTwoLineItemsWithSameTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDelete70(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/line_items/gdpr-delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectId != null)
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: false);
+            var __workflow_bodyidProperty = WorkflowExpression.Compile(bodyidProperty, nameof(bodyidProperty), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/line_items/gdpr-delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyobjectId != null)
+                {
+                    body["objectId"] = ExpressionConverter.ConvertO(__workflow_bodyobjectId);
+                    bodypropCount++;
+                }
 
-            if (bodyidProperty != null)
-            {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
-                bodypropCount++;
-            }
+                if (__workflow_bodyidProperty != null)
+                {
+                    body["idProperty"] = ExpressionConverter.ConvertO(__workflow_bodyidProperty);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsLineItemsSearchResponse> PostCrmV3ObjectsLineItemsSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var apiCallPath = "/crm/v3/objects/line_items/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyafter != null)
+            var __workflow_bodyafter = WorkflowExpression.Compile(bodyafter, nameof(bodyafter), required: false);
+            var __workflow_bodyfilterGroups = WorkflowExpression.Compile(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
+            return new DeferredBodyAction<PostCrmV3ObjectsLineItemsSearchResponse>(() =>
             {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/line_items/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyafter != null)
+                {
+                    body["after"] = ExpressionConverter.ConvertO(__workflow_bodyafter);
+                    bodypropCount++;
+                }
 
-            if (bodyfilterGroups != null)
-            {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfilterGroups != null)
+                {
+                    body["filterGroups"] = ExpressionConverter.ConvertO(__workflow_bodyfilterGroups);
+                    bodypropCount++;
+                }
 
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+                if (__workflow_bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
+                    bodypropCount++;
+                }
 
-            if (bodyproperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+                if (__workflow_bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(__workflow_bodyproperties);
+                    bodypropCount++;
+                }
 
-            if (bodysorts != null)
-            {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
+                if (__workflow_bodysorts != null)
+                {
+                    body["sorts"] = ExpressionConverter.ConvertO(__workflow_bodysorts);
+                    bodypropCount++;
+                }
 
-            if (bodyquery != null)
-            {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                if (__workflow_bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PostCrmV3ObjectsLineItemsSearchResponse>(callPayload);
+                return new ApiConnectionAction<PostCrmV3ObjectsLineItemsSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetAPageOfOwnersResponse> GetAPageOfOwners(Expression<Func<string>> email, Expression<Func<string>> after = null, Expression<Func<string>> limit = null, Expression<Func<bool>> archived = null)
         {
-            var apiCallPath = "/crm/v3/owners/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email"] = ExpressionConverter.Convert(email);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<GetAPageOfOwnersResponse>(callPayload);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<GetAPageOfOwnersResponse>(() =>
+            {
+                var apiCallPath = "/crm/v3/owners/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["email"] = ExpressionConverter.Convert(__workflow_email);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                return new ApiConnectionAction<GetAPageOfOwnersResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ReadAnOwnerByGivenidOruseridResponse> ReadAnOwnerByGivenidOruserid(Expression<Func<string>> ownerId, Expression<Func<string>> idProperty = null, Expression<Func<bool>> archived = null)
         {
-            var apiCallPath = String.Format("/crm/v3/owners/{0}", ExpressionConverter.ConvertWithUrlEncoding(ownerId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<ReadAnOwnerByGivenidOruseridResponse>(callPayload);
+            var __workflow_ownerId = WorkflowExpression.Compile(ownerId, nameof(ownerId), required: true);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<ReadAnOwnerByGivenidOruseridResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/owners/{0}", __workflow_ownerId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(__workflow_idProperty);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                return new ApiConnectionAction<ReadAnOwnerByGivenidOruseridResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfProductsById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var apiCallPath = "/crm/v3/objects/products/batch/archive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/products/batch/archive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List78Response> List78(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/products";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<List78Response>(callPayload);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<List78Response>(() =>
+            {
+                var apiCallPath = "/crm/v3/objects/products";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(__workflow_properties);
+                if (__workflow_propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(__workflow_propertiesWithHistory);
+                if (__workflow_associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(__workflow_associations);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                return new ApiConnectionAction<List78Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create79Response> Create79(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
         {
-            var apiCallPath = "/crm/v3/objects/products";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassociations != null)
+            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
+            return new DeferredBodyAction<Create79Response>(() =>
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/products";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyassociations != null)
+                {
+                    body["associations"] = ExpressionConverter.ConvertO(__workflow_bodyassociations);
+                    bodypropCount++;
+                }
 
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Create79Response>(callPayload);
+                return new ApiConnectionAction<Create79Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read80Response> Read80(Expression<Func<string>> productId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/products/{0}", ExpressionConverter.ConvertWithUrlEncoding(productId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            return new ApiConnectionAction<Read80Response>(callPayload);
+            var __workflow_productId = WorkflowExpression.Compile(productId, nameof(productId), required: true);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Read80Response>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/products/{0}", __workflow_productId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(__workflow_properties);
+                if (__workflow_propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(__workflow_propertiesWithHistory);
+                if (__workflow_associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(__workflow_associations);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                if (__workflow_idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(__workflow_idProperty);
+                return new ApiConnectionAction<Read80Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive81(Expression<Func<string>> productId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/products/{0}", ExpressionConverter.ConvertWithUrlEncoding(productId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_productId = WorkflowExpression.Compile(productId, nameof(productId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/products/{0}", __workflow_productId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update82Response> Update82(Expression<Func<string>> productId, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/products/{0}", ExpressionConverter.ConvertWithUrlEncoding(productId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
+            var __workflow_productId = WorkflowExpression.Compile(productId, nameof(productId), required: true);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Update82Response>(() =>
             {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/products/{0}", __workflow_productId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(__workflow_idProperty);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Update82Response>(callPayload);
+                return new ApiConnectionAction<Update82Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoProductsWithSameTypeResponse> MergeTwoProductsWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var apiCallPath = "/crm/v3/objects/products/merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectIdToMerge != null)
+            var __workflow_bodyobjectIdToMerge = WorkflowExpression.Compile(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            var __workflow_bodyprimaryObjectId = WorkflowExpression.Compile(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            return new DeferredBodyAction<MergeTwoProductsWithSameTypeResponse>(() =>
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/products/merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyobjectIdToMerge != null)
+                {
+                    body["objectIdToMerge"] = ExpressionConverter.ConvertO(__workflow_bodyobjectIdToMerge);
+                    bodypropCount++;
+                }
 
-            if (bodyprimaryObjectId != null)
-            {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
-                bodypropCount++;
-            }
+                if (__workflow_bodyprimaryObjectId != null)
+                {
+                    body["primaryObjectId"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryObjectId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MergeTwoProductsWithSameTypeResponse>(callPayload);
+                return new ApiConnectionAction<MergeTwoProductsWithSameTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDelete84(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/products/gdpr-delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectId != null)
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: false);
+            var __workflow_bodyidProperty = WorkflowExpression.Compile(bodyidProperty, nameof(bodyidProperty), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/products/gdpr-delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyobjectId != null)
+                {
+                    body["objectId"] = ExpressionConverter.ConvertO(__workflow_bodyobjectId);
+                    bodypropCount++;
+                }
 
-            if (bodyidProperty != null)
-            {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
-                bodypropCount++;
-            }
+                if (__workflow_bodyidProperty != null)
+                {
+                    body["idProperty"] = ExpressionConverter.ConvertO(__workflow_bodyidProperty);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsProductsSearchResponse> PostCrmV3ObjectsProductsSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var apiCallPath = "/crm/v3/objects/products/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyafter != null)
+            var __workflow_bodyafter = WorkflowExpression.Compile(bodyafter, nameof(bodyafter), required: false);
+            var __workflow_bodyfilterGroups = WorkflowExpression.Compile(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
+            return new DeferredBodyAction<PostCrmV3ObjectsProductsSearchResponse>(() =>
             {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/products/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyafter != null)
+                {
+                    body["after"] = ExpressionConverter.ConvertO(__workflow_bodyafter);
+                    bodypropCount++;
+                }
 
-            if (bodyfilterGroups != null)
-            {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfilterGroups != null)
+                {
+                    body["filterGroups"] = ExpressionConverter.ConvertO(__workflow_bodyfilterGroups);
+                    bodypropCount++;
+                }
 
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+                if (__workflow_bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
+                    bodypropCount++;
+                }
 
-            if (bodyproperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+                if (__workflow_bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(__workflow_bodyproperties);
+                    bodypropCount++;
+                }
 
-            if (bodysorts != null)
-            {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
+                if (__workflow_bodysorts != null)
+                {
+                    body["sorts"] = ExpressionConverter.ConvertO(__workflow_bodysorts);
+                    bodypropCount++;
+                }
 
-            if (bodyquery != null)
-            {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                if (__workflow_bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PostCrmV3ObjectsProductsSearchResponse>(callPayload);
+                return new ApiConnectionAction<PostCrmV3ObjectsProductsSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfObjectsById(Expression<Func<string>> objectType, Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}/batch/archive", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
+            var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/{0}/batch/archive", __workflow_objectType.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ReadObjectResponse> ReadObject(Expression<Func<string>> objectType, Expression<Func<string>> objectId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(objectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            return new ApiConnectionAction<ReadObjectResponse>(callPayload);
+            var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
+            var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<ReadObjectResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/{0}/{1}", __workflow_objectType.WithUrlEncoding(1), __workflow_objectId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(__workflow_properties);
+                if (__workflow_propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(__workflow_propertiesWithHistory);
+                if (__workflow_associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(__workflow_associations);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                if (__workflow_idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(__workflow_idProperty);
+                return new ApiConnectionAction<ReadObjectResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveObjectId(Expression<Func<string>> objectType, Expression<Func<string>> objectId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(objectId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
+            var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/{0}/{1}", __workflow_objectType.WithUrlEncoding(1), __workflow_objectId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<UpdateObjectIdResponse> UpdateObjectId(Expression<Func<string>> objectType, Expression<Func<string>> objectId, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(objectId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
+            var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
+            var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<UpdateObjectIdResponse>(() =>
             {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/{0}/{1}", __workflow_objectType.WithUrlEncoding(1), __workflow_objectId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(__workflow_idProperty);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<UpdateObjectIdResponse>(callPayload);
+                return new ApiConnectionAction<UpdateObjectIdResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ListObjectResponse> ListObject(Expression<Func<string>> objectType, Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<ListObjectResponse>(callPayload);
+            var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<ListObjectResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/{0}", __workflow_objectType.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(__workflow_properties);
+                if (__workflow_propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(__workflow_propertiesWithHistory);
+                if (__workflow_associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(__workflow_associations);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                return new ApiConnectionAction<ListObjectResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<CreateObjectIdResponse> CreateObjectId(Expression<Func<string>> objectType, Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassociations != null)
+            var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
+            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
+            return new DeferredBodyAction<CreateObjectIdResponse>(() =>
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/{0}", __workflow_objectType.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyassociations != null)
+                {
+                    body["associations"] = ExpressionConverter.ConvertO(__workflow_bodyassociations);
+                    bodypropCount++;
+                }
 
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CreateObjectIdResponse>(callPayload);
+                return new ApiConnectionAction<CreateObjectIdResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoObjectsWithSameTypeResponse> MergeTwoObjectsWithSameType(Expression<Func<string>> objectType, Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}/merge", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectIdToMerge != null)
+            var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
+            var __workflow_bodyobjectIdToMerge = WorkflowExpression.Compile(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            var __workflow_bodyprimaryObjectId = WorkflowExpression.Compile(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            return new DeferredBodyAction<MergeTwoObjectsWithSameTypeResponse>(() =>
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/{0}/merge", __workflow_objectType.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyobjectIdToMerge != null)
+                {
+                    body["objectIdToMerge"] = ExpressionConverter.ConvertO(__workflow_bodyobjectIdToMerge);
+                    bodypropCount++;
+                }
 
-            if (bodyprimaryObjectId != null)
-            {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
-                bodypropCount++;
-            }
+                if (__workflow_bodyprimaryObjectId != null)
+                {
+                    body["primaryObjectId"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryObjectId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MergeTwoObjectsWithSameTypeResponse>(callPayload);
+                return new ApiConnectionAction<MergeTwoObjectsWithSameTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDeleteObjectType(Expression<Func<string>> objectType, Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}/gdpr-delete", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectId != null)
+            var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: false);
+            var __workflow_bodyidProperty = WorkflowExpression.Compile(bodyidProperty, nameof(bodyidProperty), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/{0}/gdpr-delete", __workflow_objectType.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyobjectId != null)
+                {
+                    body["objectId"] = ExpressionConverter.ConvertO(__workflow_bodyobjectId);
+                    bodypropCount++;
+                }
 
-            if (bodyidProperty != null)
-            {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
-                bodypropCount++;
-            }
+                if (__workflow_bodyidProperty != null)
+                {
+                    body["idProperty"] = ExpressionConverter.ConvertO(__workflow_bodyidProperty);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsObjectTypeSearchResponse> PostCrmV3ObjectsObjectTypeSearch(Expression<Func<string>> objectType, Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}/search", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyafter != null)
+            var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
+            var __workflow_bodyafter = WorkflowExpression.Compile(bodyafter, nameof(bodyafter), required: false);
+            var __workflow_bodyfilterGroups = WorkflowExpression.Compile(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
+            return new DeferredBodyAction<PostCrmV3ObjectsObjectTypeSearchResponse>(() =>
             {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/{0}/search", __workflow_objectType.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyafter != null)
+                {
+                    body["after"] = ExpressionConverter.ConvertO(__workflow_bodyafter);
+                    bodypropCount++;
+                }
 
-            if (bodyfilterGroups != null)
-            {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfilterGroups != null)
+                {
+                    body["filterGroups"] = ExpressionConverter.ConvertO(__workflow_bodyfilterGroups);
+                    bodypropCount++;
+                }
 
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+                if (__workflow_bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
+                    bodypropCount++;
+                }
 
-            if (bodyproperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+                if (__workflow_bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(__workflow_bodyproperties);
+                    bodypropCount++;
+                }
 
-            if (bodysorts != null)
-            {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
+                if (__workflow_bodysorts != null)
+                {
+                    body["sorts"] = ExpressionConverter.ConvertO(__workflow_bodysorts);
+                    bodypropCount++;
+                }
 
-            if (bodyquery != null)
-            {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                if (__workflow_bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PostCrmV3ObjectsObjectTypeSearchResponse>(callPayload);
+                return new ApiConnectionAction<PostCrmV3ObjectsObjectTypeSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfDiscountsById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var apiCallPath = "/crm/v3/objects/discounts/batch/archive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/discounts/batch/archive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read16Response> Read16(Expression<Func<string>> discountId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/discounts/{0}", ExpressionConverter.ConvertWithUrlEncoding(discountId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            return new ApiConnectionAction<Read16Response>(callPayload);
+            var __workflow_discountId = WorkflowExpression.Compile(discountId, nameof(discountId), required: true);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Read16Response>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/discounts/{0}", __workflow_discountId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(__workflow_properties);
+                if (__workflow_propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(__workflow_propertiesWithHistory);
+                if (__workflow_associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(__workflow_associations);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                if (__workflow_idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(__workflow_idProperty);
+                return new ApiConnectionAction<Read16Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive17(Expression<Func<string>> discountId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/discounts/{0}", ExpressionConverter.ConvertWithUrlEncoding(discountId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_discountId = WorkflowExpression.Compile(discountId, nameof(discountId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/discounts/{0}", __workflow_discountId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update18Response> Update18(Expression<Func<string>> discountId, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/discounts/{0}", ExpressionConverter.ConvertWithUrlEncoding(discountId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
+            var __workflow_discountId = WorkflowExpression.Compile(discountId, nameof(discountId), required: true);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Update18Response>(() =>
             {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/discounts/{0}", __workflow_discountId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(__workflow_idProperty);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Update18Response>(callPayload);
+                return new ApiConnectionAction<Update18Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List19Response> List19(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/discounts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<List19Response>(callPayload);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<List19Response>(() =>
+            {
+                var apiCallPath = "/crm/v3/objects/discounts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(__workflow_properties);
+                if (__workflow_propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(__workflow_propertiesWithHistory);
+                if (__workflow_associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(__workflow_associations);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                return new ApiConnectionAction<List19Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create20Response> Create20(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null, Expression<Func<string>> bodypropertiesnostrudcf = null)
         {
-            var apiCallPath = "/crm/v3/objects/discounts";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassociations != null)
+            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
+            var __workflow_bodypropertiesnostrudcf = WorkflowExpression.Compile(bodypropertiesnostrudcf, nameof(bodypropertiesnostrudcf), required: false);
+            return new DeferredBodyAction<Create20Response>(() =>
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/discounts";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyassociations != null)
+                {
+                    body["associations"] = ExpressionConverter.ConvertO(__workflow_bodyassociations);
+                    bodypropCount++;
+                }
 
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (bodypropertiesnostrudcf != null)
-            {
-                propertiesObject["nostrudcf"] = ExpressionConverter.ConvertO(bodypropertiesnostrudcf);
-                propertiesObjectpropCount++;
-            }
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (__workflow_bodypropertiesnostrudcf != null)
+                {
+                    propertiesObject["nostrudcf"] = ExpressionConverter.ConvertO(__workflow_bodypropertiesnostrudcf);
+                    propertiesObjectpropCount++;
+                }
 
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Create20Response>(callPayload);
+                return new ApiConnectionAction<Create20Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoDiscountsWithSameTypeResponse> MergeTwoDiscountsWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var apiCallPath = "/crm/v3/objects/discounts/merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectIdToMerge != null)
+            var __workflow_bodyobjectIdToMerge = WorkflowExpression.Compile(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            var __workflow_bodyprimaryObjectId = WorkflowExpression.Compile(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            return new DeferredBodyAction<MergeTwoDiscountsWithSameTypeResponse>(() =>
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/discounts/merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyobjectIdToMerge != null)
+                {
+                    body["objectIdToMerge"] = ExpressionConverter.ConvertO(__workflow_bodyobjectIdToMerge);
+                    bodypropCount++;
+                }
 
-            if (bodyprimaryObjectId != null)
-            {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
-                bodypropCount++;
-            }
+                if (__workflow_bodyprimaryObjectId != null)
+                {
+                    body["primaryObjectId"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryObjectId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MergeTwoDiscountsWithSameTypeResponse>(callPayload);
+                return new ApiConnectionAction<MergeTwoDiscountsWithSameTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDeleteDiscounts(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/discounts/gdpr-delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectId != null)
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: false);
+            var __workflow_bodyidProperty = WorkflowExpression.Compile(bodyidProperty, nameof(bodyidProperty), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/discounts/gdpr-delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyobjectId != null)
+                {
+                    body["objectId"] = ExpressionConverter.ConvertO(__workflow_bodyobjectId);
+                    bodypropCount++;
+                }
 
-            if (bodyidProperty != null)
-            {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
-                bodypropCount++;
-            }
+                if (__workflow_bodyidProperty != null)
+                {
+                    body["idProperty"] = ExpressionConverter.ConvertO(__workflow_bodyidProperty);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsDiscountsSearchResponse> PostCrmV3ObjectsDiscountsSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var apiCallPath = "/crm/v3/objects/discounts/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyafter != null)
+            var __workflow_bodyafter = WorkflowExpression.Compile(bodyafter, nameof(bodyafter), required: false);
+            var __workflow_bodyfilterGroups = WorkflowExpression.Compile(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
+            return new DeferredBodyAction<PostCrmV3ObjectsDiscountsSearchResponse>(() =>
             {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/discounts/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyafter != null)
+                {
+                    body["after"] = ExpressionConverter.ConvertO(__workflow_bodyafter);
+                    bodypropCount++;
+                }
 
-            if (bodyfilterGroups != null)
-            {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfilterGroups != null)
+                {
+                    body["filterGroups"] = ExpressionConverter.ConvertO(__workflow_bodyfilterGroups);
+                    bodypropCount++;
+                }
 
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+                if (__workflow_bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
+                    bodypropCount++;
+                }
 
-            if (bodyproperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+                if (__workflow_bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(__workflow_bodyproperties);
+                    bodypropCount++;
+                }
 
-            if (bodysorts != null)
-            {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
+                if (__workflow_bodysorts != null)
+                {
+                    body["sorts"] = ExpressionConverter.ConvertO(__workflow_bodysorts);
+                    bodypropCount++;
+                }
 
-            if (bodyquery != null)
-            {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                if (__workflow_bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PostCrmV3ObjectsDiscountsSearchResponse>(callPayload);
+                return new ApiConnectionAction<PostCrmV3ObjectsDiscountsSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfFeedbackSubmissionsById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var apiCallPath = "/crm/v3/objects/feedback_submissions/batch/archive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/feedback_submissions/batch/archive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read28Response> Read28(Expression<Func<string>> feedbackSubmissionId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/feedback_submissions/{0}", ExpressionConverter.ConvertWithUrlEncoding(feedbackSubmissionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            return new ApiConnectionAction<Read28Response>(callPayload);
+            var __workflow_feedbackSubmissionId = WorkflowExpression.Compile(feedbackSubmissionId, nameof(feedbackSubmissionId), required: true);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Read28Response>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/feedback_submissions/{0}", __workflow_feedbackSubmissionId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(__workflow_properties);
+                if (__workflow_propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(__workflow_propertiesWithHistory);
+                if (__workflow_associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(__workflow_associations);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                if (__workflow_idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(__workflow_idProperty);
+                return new ApiConnectionAction<Read28Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive29(Expression<Func<string>> feedbackSubmissionId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/feedback_submissions/{0}", ExpressionConverter.ConvertWithUrlEncoding(feedbackSubmissionId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_feedbackSubmissionId = WorkflowExpression.Compile(feedbackSubmissionId, nameof(feedbackSubmissionId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/feedback_submissions/{0}", __workflow_feedbackSubmissionId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update30Response> Update30(Expression<Func<string>> feedbackSubmissionId, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/feedback_submissions/{0}", ExpressionConverter.ConvertWithUrlEncoding(feedbackSubmissionId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
+            var __workflow_feedbackSubmissionId = WorkflowExpression.Compile(feedbackSubmissionId, nameof(feedbackSubmissionId), required: true);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Update30Response>(() =>
             {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/feedback_submissions/{0}", __workflow_feedbackSubmissionId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(__workflow_idProperty);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Update30Response>(callPayload);
+                return new ApiConnectionAction<Update30Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List31Response> List31(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/feedback_submissions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<List31Response>(callPayload);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<List31Response>(() =>
+            {
+                var apiCallPath = "/crm/v3/objects/feedback_submissions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(__workflow_properties);
+                if (__workflow_propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(__workflow_propertiesWithHistory);
+                if (__workflow_associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(__workflow_associations);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                return new ApiConnectionAction<List31Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create32Response> Create32(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
         {
-            var apiCallPath = "/crm/v3/objects/feedback_submissions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassociations != null)
+            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
+            return new DeferredBodyAction<Create32Response>(() =>
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/feedback_submissions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyassociations != null)
+                {
+                    body["associations"] = ExpressionConverter.ConvertO(__workflow_bodyassociations);
+                    bodypropCount++;
+                }
 
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Create32Response>(callPayload);
+                return new ApiConnectionAction<Create32Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoFeedbackSubmissionsWithSameTypeResponse> MergeTwoFeedbackSubmissionsWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var apiCallPath = "/crm/v3/objects/feedback_submissions/merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectIdToMerge != null)
+            var __workflow_bodyobjectIdToMerge = WorkflowExpression.Compile(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            var __workflow_bodyprimaryObjectId = WorkflowExpression.Compile(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            return new DeferredBodyAction<MergeTwoFeedbackSubmissionsWithSameTypeResponse>(() =>
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/feedback_submissions/merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyobjectIdToMerge != null)
+                {
+                    body["objectIdToMerge"] = ExpressionConverter.ConvertO(__workflow_bodyobjectIdToMerge);
+                    bodypropCount++;
+                }
 
-            if (bodyprimaryObjectId != null)
-            {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
-                bodypropCount++;
-            }
+                if (__workflow_bodyprimaryObjectId != null)
+                {
+                    body["primaryObjectId"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryObjectId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MergeTwoFeedbackSubmissionsWithSameTypeResponse>(callPayload);
+                return new ApiConnectionAction<MergeTwoFeedbackSubmissionsWithSameTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDeleteFeedback(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/feedback_submissions/gdpr-delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectId != null)
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: false);
+            var __workflow_bodyidProperty = WorkflowExpression.Compile(bodyidProperty, nameof(bodyidProperty), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/feedback_submissions/gdpr-delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyobjectId != null)
+                {
+                    body["objectId"] = ExpressionConverter.ConvertO(__workflow_bodyobjectId);
+                    bodypropCount++;
+                }
 
-            if (bodyidProperty != null)
-            {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
-                bodypropCount++;
-            }
+                if (__workflow_bodyidProperty != null)
+                {
+                    body["idProperty"] = ExpressionConverter.ConvertO(__workflow_bodyidProperty);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsFeedbackSubmissionsSearchResponse> PostCrmV3ObjectsFeedbackSubmissionsSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var apiCallPath = "/crm/v3/objects/feedback_submissions/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyafter != null)
+            var __workflow_bodyafter = WorkflowExpression.Compile(bodyafter, nameof(bodyafter), required: false);
+            var __workflow_bodyfilterGroups = WorkflowExpression.Compile(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
+            return new DeferredBodyAction<PostCrmV3ObjectsFeedbackSubmissionsSearchResponse>(() =>
             {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/feedback_submissions/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyafter != null)
+                {
+                    body["after"] = ExpressionConverter.ConvertO(__workflow_bodyafter);
+                    bodypropCount++;
+                }
 
-            if (bodyfilterGroups != null)
-            {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfilterGroups != null)
+                {
+                    body["filterGroups"] = ExpressionConverter.ConvertO(__workflow_bodyfilterGroups);
+                    bodypropCount++;
+                }
 
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+                if (__workflow_bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
+                    bodypropCount++;
+                }
 
-            if (bodyproperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+                if (__workflow_bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(__workflow_bodyproperties);
+                    bodypropCount++;
+                }
 
-            if (bodysorts != null)
-            {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
+                if (__workflow_bodysorts != null)
+                {
+                    body["sorts"] = ExpressionConverter.ConvertO(__workflow_bodysorts);
+                    bodypropCount++;
+                }
 
-            if (bodyquery != null)
-            {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                if (__workflow_bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PostCrmV3ObjectsFeedbackSubmissionsSearchResponse>(callPayload);
+                return new ApiConnectionAction<PostCrmV3ObjectsFeedbackSubmissionsSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfQuotesById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var apiCallPath = "/crm/v3/objects/quotes/batch/archive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/quotes/batch/archive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List40Response> List40(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/quotes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<List40Response>(callPayload);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<List40Response>(() =>
+            {
+                var apiCallPath = "/crm/v3/objects/quotes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(__workflow_properties);
+                if (__workflow_propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(__workflow_propertiesWithHistory);
+                if (__workflow_associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(__workflow_associations);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                return new ApiConnectionAction<List40Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create41Response> Create41(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null, Expression<Func<string>> bodypropertieselit26 = null)
         {
-            var apiCallPath = "/crm/v3/objects/quotes";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassociations != null)
+            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
+            var __workflow_bodypropertieselit26 = WorkflowExpression.Compile(bodypropertieselit26, nameof(bodypropertieselit26), required: false);
+            return new DeferredBodyAction<Create41Response>(() =>
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/quotes";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyassociations != null)
+                {
+                    body["associations"] = ExpressionConverter.ConvertO(__workflow_bodyassociations);
+                    bodypropCount++;
+                }
 
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (bodypropertieselit26 != null)
-            {
-                propertiesObject["elit_26"] = ExpressionConverter.ConvertO(bodypropertieselit26);
-                propertiesObjectpropCount++;
-            }
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (__workflow_bodypropertieselit26 != null)
+                {
+                    propertiesObject["elit_26"] = ExpressionConverter.ConvertO(__workflow_bodypropertieselit26);
+                    propertiesObjectpropCount++;
+                }
 
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Create41Response>(callPayload);
+                return new ApiConnectionAction<Create41Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read42Response> Read42(Expression<Func<string>> quoteId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/quotes/{0}", ExpressionConverter.ConvertWithUrlEncoding(quoteId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            return new ApiConnectionAction<Read42Response>(callPayload);
+            var __workflow_quoteId = WorkflowExpression.Compile(quoteId, nameof(quoteId), required: true);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Read42Response>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/quotes/{0}", __workflow_quoteId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(__workflow_properties);
+                if (__workflow_propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(__workflow_propertiesWithHistory);
+                if (__workflow_associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(__workflow_associations);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                if (__workflow_idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(__workflow_idProperty);
+                return new ApiConnectionAction<Read42Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive43(Expression<Func<string>> quoteId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/quotes/{0}", ExpressionConverter.ConvertWithUrlEncoding(quoteId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_quoteId = WorkflowExpression.Compile(quoteId, nameof(quoteId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/quotes/{0}", __workflow_quoteId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update44Response> Update44(Expression<Func<string>> quoteId, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/quotes/{0}", ExpressionConverter.ConvertWithUrlEncoding(quoteId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
+            var __workflow_quoteId = WorkflowExpression.Compile(quoteId, nameof(quoteId), required: true);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Update44Response>(() =>
             {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/quotes/{0}", __workflow_quoteId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(__workflow_idProperty);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Update44Response>(callPayload);
+                return new ApiConnectionAction<Update44Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoQuotesWithSameTypeResponse> MergeTwoQuotesWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var apiCallPath = "/crm/v3/objects/quotes/merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectIdToMerge != null)
+            var __workflow_bodyobjectIdToMerge = WorkflowExpression.Compile(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            var __workflow_bodyprimaryObjectId = WorkflowExpression.Compile(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            return new DeferredBodyAction<MergeTwoQuotesWithSameTypeResponse>(() =>
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/quotes/merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyobjectIdToMerge != null)
+                {
+                    body["objectIdToMerge"] = ExpressionConverter.ConvertO(__workflow_bodyobjectIdToMerge);
+                    bodypropCount++;
+                }
 
-            if (bodyprimaryObjectId != null)
-            {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
-                bodypropCount++;
-            }
+                if (__workflow_bodyprimaryObjectId != null)
+                {
+                    body["primaryObjectId"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryObjectId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MergeTwoQuotesWithSameTypeResponse>(callPayload);
+                return new ApiConnectionAction<MergeTwoQuotesWithSameTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDeleteQuotes(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/quotes/gdpr-delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectId != null)
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: false);
+            var __workflow_bodyidProperty = WorkflowExpression.Compile(bodyidProperty, nameof(bodyidProperty), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/quotes/gdpr-delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyobjectId != null)
+                {
+                    body["objectId"] = ExpressionConverter.ConvertO(__workflow_bodyobjectId);
+                    bodypropCount++;
+                }
 
-            if (bodyidProperty != null)
-            {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
-                bodypropCount++;
-            }
+                if (__workflow_bodyidProperty != null)
+                {
+                    body["idProperty"] = ExpressionConverter.ConvertO(__workflow_bodyidProperty);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsQuotesSearchResponse> PostCrmV3ObjectsQuotesSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var apiCallPath = "/crm/v3/objects/quotes/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyafter != null)
+            var __workflow_bodyafter = WorkflowExpression.Compile(bodyafter, nameof(bodyafter), required: false);
+            var __workflow_bodyfilterGroups = WorkflowExpression.Compile(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
+            return new DeferredBodyAction<PostCrmV3ObjectsQuotesSearchResponse>(() =>
             {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/quotes/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyafter != null)
+                {
+                    body["after"] = ExpressionConverter.ConvertO(__workflow_bodyafter);
+                    bodypropCount++;
+                }
 
-            if (bodyfilterGroups != null)
-            {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfilterGroups != null)
+                {
+                    body["filterGroups"] = ExpressionConverter.ConvertO(__workflow_bodyfilterGroups);
+                    bodypropCount++;
+                }
 
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+                if (__workflow_bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
+                    bodypropCount++;
+                }
 
-            if (bodyproperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+                if (__workflow_bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(__workflow_bodyproperties);
+                    bodypropCount++;
+                }
 
-            if (bodysorts != null)
-            {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
+                if (__workflow_bodysorts != null)
+                {
+                    body["sorts"] = ExpressionConverter.ConvertO(__workflow_bodysorts);
+                    bodypropCount++;
+                }
 
-            if (bodyquery != null)
-            {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                if (__workflow_bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PostCrmV3ObjectsQuotesSearchResponse>(callPayload);
+                return new ApiConnectionAction<PostCrmV3ObjectsQuotesSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfTaxesById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var apiCallPath = "/crm/v3/objects/taxes/batch/archive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/taxes/batch/archive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List52Response> List52(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/taxes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<List52Response>(callPayload);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<List52Response>(() =>
+            {
+                var apiCallPath = "/crm/v3/objects/taxes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(__workflow_properties);
+                if (__workflow_propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(__workflow_propertiesWithHistory);
+                if (__workflow_associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(__workflow_associations);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                return new ApiConnectionAction<List52Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create53Response> Create53(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
         {
-            var apiCallPath = "/crm/v3/objects/taxes";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassociations != null)
+            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
+            return new DeferredBodyAction<Create53Response>(() =>
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/taxes";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyassociations != null)
+                {
+                    body["associations"] = ExpressionConverter.ConvertO(__workflow_bodyassociations);
+                    bodypropCount++;
+                }
 
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Create53Response>(callPayload);
+                return new ApiConnectionAction<Create53Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read54Response> Read54(Expression<Func<string>> taxId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/taxes/{0}", ExpressionConverter.ConvertWithUrlEncoding(taxId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            return new ApiConnectionAction<Read54Response>(callPayload);
+            var __workflow_taxId = WorkflowExpression.Compile(taxId, nameof(taxId), required: true);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Read54Response>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/taxes/{0}", __workflow_taxId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(__workflow_properties);
+                if (__workflow_propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(__workflow_propertiesWithHistory);
+                if (__workflow_associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(__workflow_associations);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                if (__workflow_idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(__workflow_idProperty);
+                return new ApiConnectionAction<Read54Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive55(Expression<Func<string>> taxId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/taxes/{0}", ExpressionConverter.ConvertWithUrlEncoding(taxId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_taxId = WorkflowExpression.Compile(taxId, nameof(taxId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/taxes/{0}", __workflow_taxId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update56Response> Update56(Expression<Func<string>> taxId, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/taxes/{0}", ExpressionConverter.ConvertWithUrlEncoding(taxId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
+            var __workflow_taxId = WorkflowExpression.Compile(taxId, nameof(taxId), required: true);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Update56Response>(() =>
             {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/taxes/{0}", __workflow_taxId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(__workflow_idProperty);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Update56Response>(callPayload);
+                return new ApiConnectionAction<Update56Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoTaxesWithSameTypeResponse> MergeTwoTaxesWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var apiCallPath = "/crm/v3/objects/taxes/merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectIdToMerge != null)
+            var __workflow_bodyobjectIdToMerge = WorkflowExpression.Compile(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            var __workflow_bodyprimaryObjectId = WorkflowExpression.Compile(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            return new DeferredBodyAction<MergeTwoTaxesWithSameTypeResponse>(() =>
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/taxes/merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyobjectIdToMerge != null)
+                {
+                    body["objectIdToMerge"] = ExpressionConverter.ConvertO(__workflow_bodyobjectIdToMerge);
+                    bodypropCount++;
+                }
 
-            if (bodyprimaryObjectId != null)
-            {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
-                bodypropCount++;
-            }
+                if (__workflow_bodyprimaryObjectId != null)
+                {
+                    body["primaryObjectId"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryObjectId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MergeTwoTaxesWithSameTypeResponse>(callPayload);
+                return new ApiConnectionAction<MergeTwoTaxesWithSameTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDeleteTaxes(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/taxes/gdpr-delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectId != null)
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: false);
+            var __workflow_bodyidProperty = WorkflowExpression.Compile(bodyidProperty, nameof(bodyidProperty), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/taxes/gdpr-delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyobjectId != null)
+                {
+                    body["objectId"] = ExpressionConverter.ConvertO(__workflow_bodyobjectId);
+                    bodypropCount++;
+                }
 
-            if (bodyidProperty != null)
-            {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
-                bodypropCount++;
-            }
+                if (__workflow_bodyidProperty != null)
+                {
+                    body["idProperty"] = ExpressionConverter.ConvertO(__workflow_bodyidProperty);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsTaxesSearchResponse> PostCrmV3ObjectsTaxesSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var apiCallPath = "/crm/v3/objects/taxes/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyafter != null)
+            var __workflow_bodyafter = WorkflowExpression.Compile(bodyafter, nameof(bodyafter), required: false);
+            var __workflow_bodyfilterGroups = WorkflowExpression.Compile(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
+            return new DeferredBodyAction<PostCrmV3ObjectsTaxesSearchResponse>(() =>
             {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/taxes/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyafter != null)
+                {
+                    body["after"] = ExpressionConverter.ConvertO(__workflow_bodyafter);
+                    bodypropCount++;
+                }
 
-            if (bodyfilterGroups != null)
-            {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfilterGroups != null)
+                {
+                    body["filterGroups"] = ExpressionConverter.ConvertO(__workflow_bodyfilterGroups);
+                    bodypropCount++;
+                }
 
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+                if (__workflow_bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
+                    bodypropCount++;
+                }
 
-            if (bodyproperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+                if (__workflow_bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(__workflow_bodyproperties);
+                    bodypropCount++;
+                }
 
-            if (bodysorts != null)
-            {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
+                if (__workflow_bodysorts != null)
+                {
+                    body["sorts"] = ExpressionConverter.ConvertO(__workflow_bodysorts);
+                    bodypropCount++;
+                }
 
-            if (bodyquery != null)
-            {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                if (__workflow_bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PostCrmV3ObjectsTaxesSearchResponse>(callPayload);
+                return new ApiConnectionAction<PostCrmV3ObjectsTaxesSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfTicketsById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var apiCallPath = "/crm/v3/objects/tickets/batch/archive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/tickets/batch/archive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read64Response> Read64(Expression<Func<string>> ticketId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/tickets/{0}", ExpressionConverter.ConvertWithUrlEncoding(ticketId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            return new ApiConnectionAction<Read64Response>(callPayload);
+            var __workflow_ticketId = WorkflowExpression.Compile(ticketId, nameof(ticketId), required: true);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Read64Response>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/tickets/{0}", __workflow_ticketId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(__workflow_properties);
+                if (__workflow_propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(__workflow_propertiesWithHistory);
+                if (__workflow_associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(__workflow_associations);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                if (__workflow_idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(__workflow_idProperty);
+                return new ApiConnectionAction<Read64Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive65(Expression<Func<string>> ticketId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/tickets/{0}", ExpressionConverter.ConvertWithUrlEncoding(ticketId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_ticketId = WorkflowExpression.Compile(ticketId, nameof(ticketId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/tickets/{0}", __workflow_ticketId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update66Response> Update66(Expression<Func<string>> ticketId, Expression<Func<string>> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/tickets/{0}", ExpressionConverter.ConvertWithUrlEncoding(ticketId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
+            var __workflow_ticketId = WorkflowExpression.Compile(ticketId, nameof(ticketId), required: true);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Update66Response>(() =>
             {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/objects/tickets/{0}", __workflow_ticketId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(__workflow_idProperty);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Update66Response>(callPayload);
+                return new ApiConnectionAction<Update66Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List67Response> List67(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/tickets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<List67Response>(callPayload);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<List67Response>(() =>
+            {
+                var apiCallPath = "/crm/v3/objects/tickets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(__workflow_properties);
+                if (__workflow_propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(__workflow_propertiesWithHistory);
+                if (__workflow_associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(__workflow_associations);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                return new ApiConnectionAction<List67Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create68Response> Create68(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
         {
-            var apiCallPath = "/crm/v3/objects/tickets";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassociations != null)
+            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
+            return new DeferredBodyAction<Create68Response>(() =>
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/tickets";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyassociations != null)
+                {
+                    body["associations"] = ExpressionConverter.ConvertO(__workflow_bodyassociations);
+                    bodypropCount++;
+                }
 
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Create68Response>(callPayload);
+                return new ApiConnectionAction<Create68Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoTicketsWithSameTypeResponse> MergeTwoTicketsWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var apiCallPath = "/crm/v3/objects/tickets/merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectIdToMerge != null)
+            var __workflow_bodyobjectIdToMerge = WorkflowExpression.Compile(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            var __workflow_bodyprimaryObjectId = WorkflowExpression.Compile(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            return new DeferredBodyAction<MergeTwoTicketsWithSameTypeResponse>(() =>
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/tickets/merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyobjectIdToMerge != null)
+                {
+                    body["objectIdToMerge"] = ExpressionConverter.ConvertO(__workflow_bodyobjectIdToMerge);
+                    bodypropCount++;
+                }
 
-            if (bodyprimaryObjectId != null)
-            {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
-                bodypropCount++;
-            }
+                if (__workflow_bodyprimaryObjectId != null)
+                {
+                    body["primaryObjectId"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryObjectId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MergeTwoTicketsWithSameTypeResponse>(callPayload);
+                return new ApiConnectionAction<MergeTwoTicketsWithSameTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDeleteTickets(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/tickets/gdpr-delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectId != null)
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: false);
+            var __workflow_bodyidProperty = WorkflowExpression.Compile(bodyidProperty, nameof(bodyidProperty), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/tickets/gdpr-delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyobjectId != null)
+                {
+                    body["objectId"] = ExpressionConverter.ConvertO(__workflow_bodyobjectId);
+                    bodypropCount++;
+                }
 
-            if (bodyidProperty != null)
-            {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
-                bodypropCount++;
-            }
+                if (__workflow_bodyidProperty != null)
+                {
+                    body["idProperty"] = ExpressionConverter.ConvertO(__workflow_bodyidProperty);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsTicketsSearchResponse> PostCrmV3ObjectsTicketsSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var apiCallPath = "/crm/v3/objects/tickets/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyafter != null)
+            var __workflow_bodyafter = WorkflowExpression.Compile(bodyafter, nameof(bodyafter), required: false);
+            var __workflow_bodyfilterGroups = WorkflowExpression.Compile(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
+            return new DeferredBodyAction<PostCrmV3ObjectsTicketsSearchResponse>(() =>
             {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/tickets/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyafter != null)
+                {
+                    body["after"] = ExpressionConverter.ConvertO(__workflow_bodyafter);
+                    bodypropCount++;
+                }
 
-            if (bodyfilterGroups != null)
-            {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfilterGroups != null)
+                {
+                    body["filterGroups"] = ExpressionConverter.ConvertO(__workflow_bodyfilterGroups);
+                    bodypropCount++;
+                }
 
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+                if (__workflow_bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
+                    bodypropCount++;
+                }
 
-            if (bodyproperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+                if (__workflow_bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(__workflow_bodyproperties);
+                    bodypropCount++;
+                }
 
-            if (bodysorts != null)
-            {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
+                if (__workflow_bodysorts != null)
+                {
+                    body["sorts"] = ExpressionConverter.ConvertO(__workflow_bodysorts);
+                    bodypropCount++;
+                }
 
-            if (bodyquery != null)
-            {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                if (__workflow_bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PostCrmV3ObjectsTicketsSearchResponse>(callPayload);
+                return new ApiConnectionAction<PostCrmV3ObjectsTicketsSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ListAssociationTypesResponse> ListAssociationTypes(Expression<Func<string>> fromObjectType, Expression<Func<string>> toObjectType)
         {
-            var apiCallPath = String.Format("/crm/v3/associations/{0}/{1}/types", ExpressionConverter.ConvertWithUrlEncoding(fromObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListAssociationTypesResponse>(callPayload);
+            var __workflow_fromObjectType = WorkflowExpression.Compile(fromObjectType, nameof(fromObjectType), required: true);
+            var __workflow_toObjectType = WorkflowExpression.Compile(toObjectType, nameof(toObjectType), required: true);
+            return new DeferredBodyAction<ListAssociationTypesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/associations/{0}/{1}/types", __workflow_fromObjectType.WithUrlEncoding(1), __workflow_toObjectType.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListAssociationTypesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> DeleteSpecificLabels(Expression<Func<string>> fromObjectType, Expression<Func<string>> toObjectType, Expression<Func<bodyinputsInputItem2[]>> bodyinputs = null)
         {
-            var apiCallPath = String.Format("/crm/v4/associations/{0}/{1}/batch/labels/archive", ExpressionConverter.ConvertWithUrlEncoding(fromObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
+            var __workflow_fromObjectType = WorkflowExpression.Compile(fromObjectType, nameof(fromObjectType), required: true);
+            var __workflow_toObjectType = WorkflowExpression.Compile(toObjectType, nameof(toObjectType), required: true);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v4/associations/{0}/{1}/batch/labels/archive", __workflow_fromObjectType.WithUrlEncoding(1), __workflow_toObjectType.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Delete(Expression<Func<string>> fromObjectType, Expression<Func<string>> toObjectType, Expression<Func<bodyinputsInputItem22[]>> bodyinputs = null)
         {
-            var apiCallPath = String.Format("/crm/v4/associations/{0}/{1}/batch/archive", ExpressionConverter.ConvertWithUrlEncoding(fromObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
+            var __workflow_fromObjectType = WorkflowExpression.Compile(fromObjectType, nameof(fromObjectType), required: true);
+            var __workflow_toObjectType = WorkflowExpression.Compile(toObjectType, nameof(toObjectType), required: true);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v4/associations/{0}/{1}/batch/archive", __workflow_fromObjectType.WithUrlEncoding(1), __workflow_toObjectType.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<CreateDefaultAssociationsResponse> CreateDefaultAssociations(Expression<Func<string>> fromObjectType, Expression<Func<string>> toObjectType, Expression<Func<bodyinputsInputItem222[]>> bodyinputs = null)
         {
-            var apiCallPath = String.Format("/crm/v4/associations/{0}/{1}/batch/associate/default", ExpressionConverter.ConvertWithUrlEncoding(fromObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
+            var __workflow_fromObjectType = WorkflowExpression.Compile(fromObjectType, nameof(fromObjectType), required: true);
+            var __workflow_toObjectType = WorkflowExpression.Compile(toObjectType, nameof(toObjectType), required: true);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<CreateDefaultAssociationsResponse>(() =>
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v4/associations/{0}/{1}/batch/associate/default", __workflow_fromObjectType.WithUrlEncoding(1), __workflow_toObjectType.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CreateDefaultAssociationsResponse>(callPayload);
+                return new ApiConnectionAction<CreateDefaultAssociationsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Delete6(Expression<Func<string>> objectType, Expression<Func<string>> objectId, Expression<Func<string>> toObjectType, Expression<Func<string>> toObjectId)
         {
-            var apiCallPath = String.Format("/crm/v4/objects/{0}/{1}/associations/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(objectId, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
+            var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
+            var __workflow_toObjectType = WorkflowExpression.Compile(toObjectType, nameof(toObjectType), required: true);
+            var __workflow_toObjectId = WorkflowExpression.Compile(toObjectId, nameof(toObjectId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v4/objects/{0}/{1}/associations/{2}/{3}", __workflow_objectType.WithUrlEncoding(1), __workflow_objectId.WithUrlEncoding(1), __workflow_toObjectType.WithUrlEncoding(1), __workflow_toObjectId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create7Response> Create7(Expression<Func<string>> objectType, Expression<Func<string>> objectId, Expression<Func<string>> toObjectType, Expression<Func<string>> toObjectId, Expression<Func<bodyInputItem[]>> body = null)
         {
-            var apiCallPath = String.Format("/crm/v4/objects/{0}/{1}/associations/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(objectId, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<Create7Response>(callPayload);
+            var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
+            var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
+            var __workflow_toObjectType = WorkflowExpression.Compile(toObjectType, nameof(toObjectType), required: true);
+            var __workflow_toObjectId = WorkflowExpression.Compile(toObjectId, nameof(toObjectId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<Create7Response>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v4/objects/{0}/{1}/associations/{2}/{3}", __workflow_objectType.WithUrlEncoding(1), __workflow_objectId.WithUrlEncoding(1), __workflow_toObjectType.WithUrlEncoding(1), __workflow_toObjectId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<Create7Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<CreateDefaultResponse> CreateDefault(Expression<Func<string>> fromObjectType, Expression<Func<string>> fromObjectId, Expression<Func<string>> toObjectType, Expression<Func<string>> toObjectId)
         {
-            var apiCallPath = String.Format("/crm/v4/objects/{0}/{1}/associations/default/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(fromObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(fromObjectId, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CreateDefaultResponse>(callPayload);
+            var __workflow_fromObjectType = WorkflowExpression.Compile(fromObjectType, nameof(fromObjectType), required: true);
+            var __workflow_fromObjectId = WorkflowExpression.Compile(fromObjectId, nameof(fromObjectId), required: true);
+            var __workflow_toObjectType = WorkflowExpression.Compile(toObjectType, nameof(toObjectType), required: true);
+            var __workflow_toObjectId = WorkflowExpression.Compile(toObjectId, nameof(toObjectId), required: true);
+            return new DeferredBodyAction<CreateDefaultResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v4/objects/{0}/{1}/associations/default/{2}/{3}", __workflow_fromObjectType.WithUrlEncoding(1), __workflow_fromObjectId.WithUrlEncoding(1), __workflow_toObjectType.WithUrlEncoding(1), __workflow_toObjectId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CreateDefaultResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ListAssociationsResponse> ListAssociations(Expression<Func<string>> objectType, Expression<Func<string>> objectId, Expression<Func<string>> toObjectType, Expression<Func<string>> after = null, Expression<Func<string>> limit = null)
         {
-            var apiCallPath = String.Format("/crm/v4/objects/{0}/{1}/associations/{2}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(objectId, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<ListAssociationsResponse>(callPayload);
+            var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
+            var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
+            var __workflow_toObjectType = WorkflowExpression.Compile(toObjectType, nameof(toObjectType), required: true);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<ListAssociationsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v4/objects/{0}/{1}/associations/{2}", __workflow_objectType.WithUrlEncoding(1), __workflow_objectId.WithUrlEncoding(1), __workflow_toObjectType.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                return new ApiConnectionAction<ListAssociationsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetAllCardsResponse> GetAllCards(Expression<Func<string>> appId)
         {
-            var apiCallPath = String.Format("/crm/v3/extensions/cards-dev/{0}", ExpressionConverter.ConvertWithUrlEncoding(appId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAllCardsResponse>(callPayload);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
+            return new DeferredBodyAction<GetAllCardsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/extensions/cards-dev/{0}", __workflow_appId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetAllCardsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<CreateANewCardResponse> CreateANewCard(Expression<Func<string>> appId, Expression<Func<string[]>> bodyactionsbaseUrls = null, Expression<Func<bodydisplaypropertiesInputItem[]>> bodydisplayproperties = null, Expression<Func<bodyfetchobjectTypesInputItem[]>> bodyfetchobjectTypes = null, Expression<Func<string>> bodyfetchtargetUrl = null, Expression<Func<string>> bodyfetchcardType = null, Expression<Func<string>> bodyfetchserverlessFunction = null, Expression<Func<string>> bodytitle = null)
         {
-            var apiCallPath = String.Format("/crm/v3/extensions/cards-dev/{0}", ExpressionConverter.ConvertWithUrlEncoding(appId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var actionsObject = new JObject();
-            var actionsObjectpropCount = 0;
-            if (bodyactionsbaseUrls != null)
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
+            var __workflow_bodyactionsbaseUrls = WorkflowExpression.Compile(bodyactionsbaseUrls, nameof(bodyactionsbaseUrls), required: false);
+            var __workflow_bodydisplayproperties = WorkflowExpression.Compile(bodydisplayproperties, nameof(bodydisplayproperties), required: false);
+            var __workflow_bodyfetchobjectTypes = WorkflowExpression.Compile(bodyfetchobjectTypes, nameof(bodyfetchobjectTypes), required: false);
+            var __workflow_bodyfetchtargetUrl = WorkflowExpression.Compile(bodyfetchtargetUrl, nameof(bodyfetchtargetUrl), required: false);
+            var __workflow_bodyfetchcardType = WorkflowExpression.Compile(bodyfetchcardType, nameof(bodyfetchcardType), required: false);
+            var __workflow_bodyfetchserverlessFunction = WorkflowExpression.Compile(bodyfetchserverlessFunction, nameof(bodyfetchserverlessFunction), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            return new DeferredBodyAction<CreateANewCardResponse>(() =>
             {
-                actionsObject["baseUrls"] = ExpressionConverter.ConvertO(bodyactionsbaseUrls);
-                actionsObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/extensions/cards-dev/{0}", __workflow_appId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var actionsObject = new JObject();
+                var actionsObjectpropCount = 0;
+                if (__workflow_bodyactionsbaseUrls != null)
+                {
+                    actionsObject["baseUrls"] = ExpressionConverter.ConvertO(__workflow_bodyactionsbaseUrls);
+                    actionsObjectpropCount++;
+                }
 
-            if (actionsObjectpropCount > 0)
-            {
-                body["actions"] = actionsObject;
-                bodypropCount++;
-            }
+                if (actionsObjectpropCount > 0)
+                {
+                    body["actions"] = actionsObject;
+                    bodypropCount++;
+                }
 
-            var displayObject = new JObject();
-            var displayObjectpropCount = 0;
-            if (bodydisplayproperties != null)
-            {
-                displayObject["properties"] = ExpressionConverter.ConvertO(bodydisplayproperties);
-                displayObjectpropCount++;
-            }
+                var displayObject = new JObject();
+                var displayObjectpropCount = 0;
+                if (__workflow_bodydisplayproperties != null)
+                {
+                    displayObject["properties"] = ExpressionConverter.ConvertO(__workflow_bodydisplayproperties);
+                    displayObjectpropCount++;
+                }
 
-            if (displayObjectpropCount > 0)
-            {
-                body["display"] = displayObject;
-                bodypropCount++;
-            }
+                if (displayObjectpropCount > 0)
+                {
+                    body["display"] = displayObject;
+                    bodypropCount++;
+                }
 
-            var fetchObject = new JObject();
-            var fetchObjectpropCount = 0;
-            if (bodyfetchobjectTypes != null)
-            {
-                fetchObject["objectTypes"] = ExpressionConverter.ConvertO(bodyfetchobjectTypes);
-                fetchObjectpropCount++;
-            }
+                var fetchObject = new JObject();
+                var fetchObjectpropCount = 0;
+                if (__workflow_bodyfetchobjectTypes != null)
+                {
+                    fetchObject["objectTypes"] = ExpressionConverter.ConvertO(__workflow_bodyfetchobjectTypes);
+                    fetchObjectpropCount++;
+                }
 
-            if (bodyfetchtargetUrl != null)
-            {
-                fetchObject["targetUrl"] = ExpressionConverter.ConvertO(bodyfetchtargetUrl);
-                fetchObjectpropCount++;
-            }
+                if (__workflow_bodyfetchtargetUrl != null)
+                {
+                    fetchObject["targetUrl"] = ExpressionConverter.ConvertO(__workflow_bodyfetchtargetUrl);
+                    fetchObjectpropCount++;
+                }
 
-            if (bodyfetchcardType != null)
-            {
-                fetchObject["cardType"] = ExpressionConverter.ConvertO(bodyfetchcardType);
-                fetchObjectpropCount++;
-            }
+                if (__workflow_bodyfetchcardType != null)
+                {
+                    fetchObject["cardType"] = ExpressionConverter.ConvertO(__workflow_bodyfetchcardType);
+                    fetchObjectpropCount++;
+                }
 
-            if (bodyfetchserverlessFunction != null)
-            {
-                fetchObject["serverlessFunction"] = ExpressionConverter.ConvertO(bodyfetchserverlessFunction);
-                fetchObjectpropCount++;
-            }
+                if (__workflow_bodyfetchserverlessFunction != null)
+                {
+                    fetchObject["serverlessFunction"] = ExpressionConverter.ConvertO(__workflow_bodyfetchserverlessFunction);
+                    fetchObjectpropCount++;
+                }
 
-            if (fetchObjectpropCount > 0)
-            {
-                body["fetch"] = fetchObject;
-                bodypropCount++;
-            }
+                if (fetchObjectpropCount > 0)
+                {
+                    body["fetch"] = fetchObject;
+                    bodypropCount++;
+                }
 
-            if (bodytitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+                if (__workflow_bodytitle != null)
+                {
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CreateANewCardResponse>(callPayload);
+                return new ApiConnectionAction<CreateANewCardResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetACardResponse> GetACard(Expression<Func<string>> appId, Expression<Func<string>> cardId)
         {
-            var apiCallPath = String.Format("/crm/v3/extensions/cards-dev/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(appId, 1), ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetACardResponse>(callPayload);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
+            var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
+            return new DeferredBodyAction<GetACardResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/extensions/cards-dev/{0}/{1}", __workflow_appId.WithUrlEncoding(1), __workflow_cardId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetACardResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> DeleteACard(Expression<Func<string>> appId, Expression<Func<string>> cardId)
         {
-            var apiCallPath = String.Format("/crm/v3/extensions/cards-dev/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(appId, 1), ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
+            var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/extensions/cards-dev/{0}/{1}", __workflow_appId.WithUrlEncoding(1), __workflow_cardId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<UpdateACardResponse> UpdateACard(Expression<Func<string>> appId, Expression<Func<string>> cardId, Expression<Func<string>> bodytitle = null, Expression<Func<bodyfetchobjectTypesInputItem[]>> bodyfetchobjectTypes = null, Expression<Func<string>> bodyfetchcardType = null, Expression<Func<string>> bodyfetchtargetUrl = null, Expression<Func<string>> bodyfetchserverlessFunction = null, Expression<Func<bodydisplaypropertiesInputItem[]>> bodydisplayproperties = null, Expression<Func<string[]>> bodyactionsbaseUrls = null)
         {
-            var apiCallPath = String.Format("/crm/v3/extensions/cards-dev/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(appId, 1), ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
+            var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodyfetchobjectTypes = WorkflowExpression.Compile(bodyfetchobjectTypes, nameof(bodyfetchobjectTypes), required: false);
+            var __workflow_bodyfetchcardType = WorkflowExpression.Compile(bodyfetchcardType, nameof(bodyfetchcardType), required: false);
+            var __workflow_bodyfetchtargetUrl = WorkflowExpression.Compile(bodyfetchtargetUrl, nameof(bodyfetchtargetUrl), required: false);
+            var __workflow_bodyfetchserverlessFunction = WorkflowExpression.Compile(bodyfetchserverlessFunction, nameof(bodyfetchserverlessFunction), required: false);
+            var __workflow_bodydisplayproperties = WorkflowExpression.Compile(bodydisplayproperties, nameof(bodydisplayproperties), required: false);
+            var __workflow_bodyactionsbaseUrls = WorkflowExpression.Compile(bodyactionsbaseUrls, nameof(bodyactionsbaseUrls), required: false);
+            return new DeferredBodyAction<UpdateACardResponse>(() =>
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/extensions/cards-dev/{0}/{1}", __workflow_appId.WithUrlEncoding(1), __workflow_cardId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodytitle != null)
+                {
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                    bodypropCount++;
+                }
 
-            var fetchObject = new JObject();
-            var fetchObjectpropCount = 0;
-            if (bodyfetchobjectTypes != null)
-            {
-                fetchObject["objectTypes"] = ExpressionConverter.ConvertO(bodyfetchobjectTypes);
-                fetchObjectpropCount++;
-            }
+                var fetchObject = new JObject();
+                var fetchObjectpropCount = 0;
+                if (__workflow_bodyfetchobjectTypes != null)
+                {
+                    fetchObject["objectTypes"] = ExpressionConverter.ConvertO(__workflow_bodyfetchobjectTypes);
+                    fetchObjectpropCount++;
+                }
 
-            if (bodyfetchcardType != null)
-            {
-                fetchObject["cardType"] = ExpressionConverter.ConvertO(bodyfetchcardType);
-                fetchObjectpropCount++;
-            }
+                if (__workflow_bodyfetchcardType != null)
+                {
+                    fetchObject["cardType"] = ExpressionConverter.ConvertO(__workflow_bodyfetchcardType);
+                    fetchObjectpropCount++;
+                }
 
-            if (bodyfetchtargetUrl != null)
-            {
-                fetchObject["targetUrl"] = ExpressionConverter.ConvertO(bodyfetchtargetUrl);
-                fetchObjectpropCount++;
-            }
+                if (__workflow_bodyfetchtargetUrl != null)
+                {
+                    fetchObject["targetUrl"] = ExpressionConverter.ConvertO(__workflow_bodyfetchtargetUrl);
+                    fetchObjectpropCount++;
+                }
 
-            if (bodyfetchserverlessFunction != null)
-            {
-                fetchObject["serverlessFunction"] = ExpressionConverter.ConvertO(bodyfetchserverlessFunction);
-                fetchObjectpropCount++;
-            }
+                if (__workflow_bodyfetchserverlessFunction != null)
+                {
+                    fetchObject["serverlessFunction"] = ExpressionConverter.ConvertO(__workflow_bodyfetchserverlessFunction);
+                    fetchObjectpropCount++;
+                }
 
-            if (fetchObjectpropCount > 0)
-            {
-                body["fetch"] = fetchObject;
-                bodypropCount++;
-            }
+                if (fetchObjectpropCount > 0)
+                {
+                    body["fetch"] = fetchObject;
+                    bodypropCount++;
+                }
 
-            var displayObject = new JObject();
-            var displayObjectpropCount = 0;
-            if (bodydisplayproperties != null)
-            {
-                displayObject["properties"] = ExpressionConverter.ConvertO(bodydisplayproperties);
-                displayObjectpropCount++;
-            }
+                var displayObject = new JObject();
+                var displayObjectpropCount = 0;
+                if (__workflow_bodydisplayproperties != null)
+                {
+                    displayObject["properties"] = ExpressionConverter.ConvertO(__workflow_bodydisplayproperties);
+                    displayObjectpropCount++;
+                }
 
-            if (displayObjectpropCount > 0)
-            {
-                body["display"] = displayObject;
-                bodypropCount++;
-            }
+                if (displayObjectpropCount > 0)
+                {
+                    body["display"] = displayObject;
+                    bodypropCount++;
+                }
 
-            var actionsObject = new JObject();
-            var actionsObjectpropCount = 0;
-            if (bodyactionsbaseUrls != null)
-            {
-                actionsObject["baseUrls"] = ExpressionConverter.ConvertO(bodyactionsbaseUrls);
-                actionsObjectpropCount++;
-            }
+                var actionsObject = new JObject();
+                var actionsObjectpropCount = 0;
+                if (__workflow_bodyactionsbaseUrls != null)
+                {
+                    actionsObject["baseUrls"] = ExpressionConverter.ConvertO(__workflow_bodyactionsbaseUrls);
+                    actionsObjectpropCount++;
+                }
 
-            if (actionsObjectpropCount > 0)
-            {
-                body["actions"] = actionsObject;
-                bodypropCount++;
-            }
+                if (actionsObjectpropCount > 0)
+                {
+                    body["actions"] = actionsObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<UpdateACardResponse>(callPayload);
+                return new ApiConnectionAction<UpdateACardResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
@@ -3422,271 +4236,351 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetCrmV3ExportsExportAsyncTasksTaskIdStatusResponse> GetCrmV3ExportsExportAsyncTasksTaskIdStatus(Expression<Func<string>> taskId)
         {
-            var apiCallPath = String.Format("/crm/v3/exports/export/async/tasks/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetCrmV3ExportsExportAsyncTasksTaskIdStatusResponse>(callPayload);
+            var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
+            return new DeferredBodyAction<GetCrmV3ExportsExportAsyncTasksTaskIdStatusResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/exports/export/async/tasks/{0}/status", __workflow_taskId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetCrmV3ExportsExportAsyncTasksTaskIdStatusResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<StartAnExportResponse> StartAnExport(Expression<Func<string>> bodyexportName = null, Expression<Func<string>> bodyexportType = null, Expression<Func<string>> bodyformat = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string[]>> bodyobjectProperties = null, Expression<Func<string>> bodyobjectType = null, Expression<Func<string>> bodyassociatedObjectType = null, Expression<Func<bodypublicCrmSearchRequestfiltersInputItem[]>> bodypublicCrmSearchRequestfilters = null, Expression<Func<string>> bodypublicCrmSearchRequestquery = null, Expression<Func<string[]>> bodypublicCrmSearchRequestsorts = null)
         {
-            var apiCallPath = "/crm/v3/exports/export/async";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyexportName != null)
+            var __workflow_bodyexportName = WorkflowExpression.Compile(bodyexportName, nameof(bodyexportName), required: false);
+            var __workflow_bodyexportType = WorkflowExpression.Compile(bodyexportType, nameof(bodyexportType), required: false);
+            var __workflow_bodyformat = WorkflowExpression.Compile(bodyformat, nameof(bodyformat), required: false);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodyobjectProperties = WorkflowExpression.Compile(bodyobjectProperties, nameof(bodyobjectProperties), required: false);
+            var __workflow_bodyobjectType = WorkflowExpression.Compile(bodyobjectType, nameof(bodyobjectType), required: false);
+            var __workflow_bodyassociatedObjectType = WorkflowExpression.Compile(bodyassociatedObjectType, nameof(bodyassociatedObjectType), required: false);
+            var __workflow_bodypublicCrmSearchRequestfilters = WorkflowExpression.Compile(bodypublicCrmSearchRequestfilters, nameof(bodypublicCrmSearchRequestfilters), required: false);
+            var __workflow_bodypublicCrmSearchRequestquery = WorkflowExpression.Compile(bodypublicCrmSearchRequestquery, nameof(bodypublicCrmSearchRequestquery), required: false);
+            var __workflow_bodypublicCrmSearchRequestsorts = WorkflowExpression.Compile(bodypublicCrmSearchRequestsorts, nameof(bodypublicCrmSearchRequestsorts), required: false);
+            return new DeferredBodyAction<StartAnExportResponse>(() =>
             {
-                body["exportName"] = ExpressionConverter.ConvertO(bodyexportName);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/exports/export/async";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyexportName != null)
+                {
+                    body["exportName"] = ExpressionConverter.ConvertO(__workflow_bodyexportName);
+                    bodypropCount++;
+                }
 
-            if (bodyexportType != null)
-            {
-                body["exportType"] = ExpressionConverter.ConvertO(bodyexportType);
-                bodypropCount++;
-            }
+                if (__workflow_bodyexportType != null)
+                {
+                    body["exportType"] = ExpressionConverter.ConvertO(__workflow_bodyexportType);
+                    bodypropCount++;
+                }
 
-            if (bodyformat != null)
-            {
-                body["format"] = ExpressionConverter.ConvertO(bodyformat);
-                bodypropCount++;
-            }
+                if (__workflow_bodyformat != null)
+                {
+                    body["format"] = ExpressionConverter.ConvertO(__workflow_bodyformat);
+                    bodypropCount++;
+                }
 
-            if (bodylanguage != null)
-            {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
-                bodypropCount++;
-            }
+                if (__workflow_bodylanguage != null)
+                {
+                    body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
+                    bodypropCount++;
+                }
 
-            if (bodyobjectProperties != null)
-            {
-                body["objectProperties"] = ExpressionConverter.ConvertO(bodyobjectProperties);
-                bodypropCount++;
-            }
+                if (__workflow_bodyobjectProperties != null)
+                {
+                    body["objectProperties"] = ExpressionConverter.ConvertO(__workflow_bodyobjectProperties);
+                    bodypropCount++;
+                }
 
-            if (bodyobjectType != null)
-            {
-                body["objectType"] = ExpressionConverter.ConvertO(bodyobjectType);
-                bodypropCount++;
-            }
+                if (__workflow_bodyobjectType != null)
+                {
+                    body["objectType"] = ExpressionConverter.ConvertO(__workflow_bodyobjectType);
+                    bodypropCount++;
+                }
 
-            if (bodyassociatedObjectType != null)
-            {
-                body["associatedObjectType"] = ExpressionConverter.ConvertO(bodyassociatedObjectType);
-                bodypropCount++;
-            }
+                if (__workflow_bodyassociatedObjectType != null)
+                {
+                    body["associatedObjectType"] = ExpressionConverter.ConvertO(__workflow_bodyassociatedObjectType);
+                    bodypropCount++;
+                }
 
-            var publicCrmSearchRequestObject = new JObject();
-            var publicCrmSearchRequestObjectpropCount = 0;
-            if (bodypublicCrmSearchRequestfilters != null)
-            {
-                publicCrmSearchRequestObject["filters"] = ExpressionConverter.ConvertO(bodypublicCrmSearchRequestfilters);
-                publicCrmSearchRequestObjectpropCount++;
-            }
+                var publicCrmSearchRequestObject = new JObject();
+                var publicCrmSearchRequestObjectpropCount = 0;
+                if (__workflow_bodypublicCrmSearchRequestfilters != null)
+                {
+                    publicCrmSearchRequestObject["filters"] = ExpressionConverter.ConvertO(__workflow_bodypublicCrmSearchRequestfilters);
+                    publicCrmSearchRequestObjectpropCount++;
+                }
 
-            if (bodypublicCrmSearchRequestquery != null)
-            {
-                publicCrmSearchRequestObject["query"] = ExpressionConverter.ConvertO(bodypublicCrmSearchRequestquery);
-                publicCrmSearchRequestObjectpropCount++;
-            }
+                if (__workflow_bodypublicCrmSearchRequestquery != null)
+                {
+                    publicCrmSearchRequestObject["query"] = ExpressionConverter.ConvertO(__workflow_bodypublicCrmSearchRequestquery);
+                    publicCrmSearchRequestObjectpropCount++;
+                }
 
-            if (bodypublicCrmSearchRequestsorts != null)
-            {
-                publicCrmSearchRequestObject["sorts"] = ExpressionConverter.ConvertO(bodypublicCrmSearchRequestsorts);
-                publicCrmSearchRequestObjectpropCount++;
-            }
+                if (__workflow_bodypublicCrmSearchRequestsorts != null)
+                {
+                    publicCrmSearchRequestObject["sorts"] = ExpressionConverter.ConvertO(__workflow_bodypublicCrmSearchRequestsorts);
+                    publicCrmSearchRequestObjectpropCount++;
+                }
 
-            if (publicCrmSearchRequestObjectpropCount > 0)
-            {
-                body["publicCrmSearchRequest"] = publicCrmSearchRequestObject;
-                bodypropCount++;
-            }
+                if (publicCrmSearchRequestObjectpropCount > 0)
+                {
+                    body["publicCrmSearchRequest"] = publicCrmSearchRequestObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<StartAnExportResponse>(callPayload);
+                return new ApiConnectionAction<StartAnExportResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetTheInformationOnAnyImportResponse> GetTheInformationOnAnyImport(Expression<Func<string>> importId)
         {
-            var apiCallPath = String.Format("/crm/v3/imports/{0}", ExpressionConverter.ConvertWithUrlEncoding(importId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTheInformationOnAnyImportResponse>(callPayload);
+            var __workflow_importId = WorkflowExpression.Compile(importId, nameof(importId), required: true);
+            return new DeferredBodyAction<GetTheInformationOnAnyImportResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/imports/{0}", __workflow_importId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetTheInformationOnAnyImportResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<CancelAnActiveImportResponse> CancelAnActiveImport(Expression<Func<string>> importId)
         {
-            var apiCallPath = String.Format("/crm/v3/imports/{0}/cancel", ExpressionConverter.ConvertWithUrlEncoding(importId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CancelAnActiveImportResponse>(callPayload);
+            var __workflow_importId = WorkflowExpression.Compile(importId, nameof(importId), required: true);
+            return new DeferredBodyAction<CancelAnActiveImportResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/imports/{0}/cancel", __workflow_importId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CancelAnActiveImportResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetActiveImportsResponse> GetActiveImports(Expression<Func<string>> after = null, Expression<Func<string>> before = null, Expression<Func<string>> limit = null)
         {
-            var apiCallPath = "/crm/v3/imports/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<GetActiveImportsResponse>(callPayload);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<GetActiveImportsResponse>(() =>
+            {
+                var apiCallPath = "/crm/v3/imports/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                return new ApiConnectionAction<GetActiveImportsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<StartANewImportResponse> StartANewImport(Expression<Func<string>> contentType)
         {
-            var apiCallPath = "/crm/v3/imports/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            return new ApiConnectionAction<StartANewImportResponse>(callPayload);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            return new DeferredBodyAction<StartANewImportResponse>(() =>
+            {
+                var apiCallPath = "/crm/v3/imports/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                return new ApiConnectionAction<StartANewImportResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetCrmV3ImportsImportIdErrorsGetErrorsResponse> GetCrmV3ImportsImportIdErrorsGetErrors(Expression<Func<string>> importId, Expression<Func<string>> after = null, Expression<Func<string>> limit = null)
         {
-            var apiCallPath = String.Format("/crm/v3/imports/{0}/errors", ExpressionConverter.ConvertWithUrlEncoding(importId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<GetCrmV3ImportsImportIdErrorsGetErrorsResponse>(callPayload);
+            var __workflow_importId = WorkflowExpression.Compile(importId, nameof(importId), required: true);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<GetCrmV3ImportsImportIdErrorsGetErrorsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/imports/{0}/errors", __workflow_importId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                return new ApiConnectionAction<GetCrmV3ImportsImportIdErrorsGetErrorsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<AddAndOrRemoveRecordsFromAListResponse> AddAndOrRemoveRecordsFromAList(Expression<Func<string>> listId, Expression<Func<string[]>> bodyrecordIdsToAdd = null, Expression<Func<string[]>> bodyrecordIdsToRemove = null)
         {
-            var apiCallPath = String.Format("/crm/v3/lists/{0}/memberships/add-and-remove", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyrecordIdsToAdd != null)
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
+            var __workflow_bodyrecordIdsToAdd = WorkflowExpression.Compile(bodyrecordIdsToAdd, nameof(bodyrecordIdsToAdd), required: false);
+            var __workflow_bodyrecordIdsToRemove = WorkflowExpression.Compile(bodyrecordIdsToRemove, nameof(bodyrecordIdsToRemove), required: false);
+            return new DeferredBodyAction<AddAndOrRemoveRecordsFromAListResponse>(() =>
             {
-                body["recordIdsToAdd"] = ExpressionConverter.ConvertO(bodyrecordIdsToAdd);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/lists/{0}/memberships/add-and-remove", __workflow_listId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyrecordIdsToAdd != null)
+                {
+                    body["recordIdsToAdd"] = ExpressionConverter.ConvertO(__workflow_bodyrecordIdsToAdd);
+                    bodypropCount++;
+                }
 
-            if (bodyrecordIdsToRemove != null)
-            {
-                body["recordIdsToRemove"] = ExpressionConverter.ConvertO(bodyrecordIdsToRemove);
-                bodypropCount++;
-            }
+                if (__workflow_bodyrecordIdsToRemove != null)
+                {
+                    body["recordIdsToRemove"] = ExpressionConverter.ConvertO(__workflow_bodyrecordIdsToRemove);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<AddAndOrRemoveRecordsFromAListResponse>(callPayload);
+                return new ApiConnectionAction<AddAndOrRemoveRecordsFromAListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<AddRecordsToAListResponse> AddRecordsToAList(Expression<Func<string>> listId, Expression<Func<string[]>> body = null)
         {
-            var apiCallPath = String.Format("/crm/v3/lists/{0}/memberships/add", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<AddRecordsToAListResponse>(callPayload);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<AddRecordsToAListResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/lists/{0}/memberships/add", __workflow_listId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<AddRecordsToAListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> AddAllRecordsFromASourceListToADestinationList(Expression<Func<string>> listId, Expression<Func<string>> sourceListId)
         {
-            var apiCallPath = String.Format("/crm/v3/lists/{0}/memberships/add-from/{1}", ExpressionConverter.ConvertWithUrlEncoding(listId, 1), ExpressionConverter.ConvertWithUrlEncoding(sourceListId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
+            var __workflow_sourceListId = WorkflowExpression.Compile(sourceListId, nameof(sourceListId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/lists/{0}/memberships/add-from/{1}", __workflow_listId.WithUrlEncoding(1), __workflow_sourceListId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<FetchListMembershipsOrderedByIdResponse> FetchListMembershipsOrderedById(Expression<Func<string>> listId, Expression<Func<string>> after = null, Expression<Func<string>> before = null, Expression<Func<string>> limit = null)
         {
-            var apiCallPath = String.Format("/crm/v3/lists/{0}/memberships", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<FetchListMembershipsOrderedByIdResponse>(callPayload);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<FetchListMembershipsOrderedByIdResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/lists/{0}/memberships", __workflow_listId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                return new ApiConnectionAction<FetchListMembershipsOrderedByIdResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> DeleteAllRecordsFromAList(Expression<Func<string>> listId)
         {
-            var apiCallPath = String.Format("/crm/v3/lists/{0}/memberships", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/lists/{0}/memberships", __workflow_listId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<RemoveRecordsFromAListResponse> RemoveRecordsFromAList(Expression<Func<string>> listId, Expression<Func<string[]>> body = null)
         {
-            var apiCallPath = String.Format("/crm/v3/lists/{0}/memberships/remove", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<RemoveRecordsFromAListResponse>(callPayload);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<RemoveRecordsFromAListResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm/v3/lists/{0}/memberships/remove", __workflow_listId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<RemoveRecordsFromAListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<SearchListsResponse> SearchLists(Expression<Func<string[]>> bodyadditionalProperties = null, Expression<Func<string>> bodyoffset = null, Expression<Func<string>> bodyquery = null, Expression<Func<string>> bodycount = null)
         {
-            var apiCallPath = "/crm/v3/lists/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyadditionalProperties != null)
+            var __workflow_bodyadditionalProperties = WorkflowExpression.Compile(bodyadditionalProperties, nameof(bodyadditionalProperties), required: false);
+            var __workflow_bodyoffset = WorkflowExpression.Compile(bodyoffset, nameof(bodyoffset), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
+            var __workflow_bodycount = WorkflowExpression.Compile(bodycount, nameof(bodycount), required: false);
+            return new DeferredBodyAction<SearchListsResponse>(() =>
             {
-                body["additionalProperties"] = ExpressionConverter.ConvertO(bodyadditionalProperties);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/lists/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyadditionalProperties != null)
+                {
+                    body["additionalProperties"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalProperties);
+                    bodypropCount++;
+                }
 
-            if (bodyoffset != null)
-            {
-                body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
-                bodypropCount++;
-            }
+                if (__workflow_bodyoffset != null)
+                {
+                    body["offset"] = ExpressionConverter.ConvertO(__workflow_bodyoffset);
+                    bodypropCount++;
+                }
 
-            if (bodyquery != null)
-            {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                if (__workflow_bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
+                    bodypropCount++;
+                }
 
-            if (bodycount != null)
-            {
-                body["count"] = ExpressionConverter.ConvertO(bodycount);
-                bodypropCount++;
-            }
+                if (__workflow_bodycount != null)
+                {
+                    body["count"] = ExpressionConverter.ConvertO(__workflow_bodycount);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SearchListsResponse>(callPayload);
+                return new ApiConnectionAction<SearchListsResponse>(callPayload);
+            });
         }
     }
 

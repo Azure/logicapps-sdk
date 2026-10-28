@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,337 +14,393 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<ClientReceiveMessage> GetEmail(Expression<Func<string>> messageId, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> internetMessageId = null)
         {
-            var apiCallPath = String.Format("/Mail/{0}", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["includeAttachments"] = Convert.ToString(false);
-            if (includeAttachments != null)
-                callPayload.Queries["includeAttachments"] = ExpressionConverter.Convert(includeAttachments);
-            if (internetMessageId != null)
-                callPayload.Queries["internetMessageId"] = ExpressionConverter.Convert(internetMessageId);
-            return new ApiConnectionAction<ClientReceiveMessage>(callPayload);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            var __workflow_includeAttachments = WorkflowExpression.Compile(includeAttachments, nameof(includeAttachments), required: false);
+            var __workflow_internetMessageId = WorkflowExpression.Compile(internetMessageId, nameof(internetMessageId), required: false);
+            return new DeferredBodyAction<ClientReceiveMessage>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Mail/{0}", __workflow_messageId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["includeAttachments"] = Convert.ToString(false);
+                if (__workflow_includeAttachments != null)
+                    callPayload.Queries["includeAttachments"] = ExpressionConverter.Convert(__workflow_includeAttachments);
+                if (__workflow_internetMessageId != null)
+                    callPayload.Queries["internetMessageId"] = ExpressionConverter.Convert(__workflow_internetMessageId);
+                return new ApiConnectionAction<ClientReceiveMessage>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction DeleteEmail(Expression<Func<string>> messageId)
         {
-            var apiCallPath = String.Format("/Mail/{0}", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Mail/{0}", __workflow_messageId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<ClientReceiveMessageStringEnums> Move(Expression<Func<string>> messageId, Expression<Func<string>> folderPath)
         {
-            var apiCallPath = String.Format("/Mail/Move/{0}", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
-            return new ApiConnectionAction<ClientReceiveMessageStringEnums>(callPayload);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
+            return new DeferredBodyAction<ClientReceiveMessageStringEnums>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Mail/Move/{0}", __workflow_messageId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["folderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
+                return new ApiConnectionAction<ClientReceiveMessageStringEnums>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction Flag(Expression<Func<string>> messageId)
         {
-            var apiCallPath = String.Format("/Mail/Flag/{0}", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Mail/Flag/{0}", __workflow_messageId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction MarkAsRead(Expression<Func<string>> messageId)
         {
-            var apiCallPath = String.Format("/Mail/MarkAsRead/{0}", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Mail/MarkAsRead/{0}", __workflow_messageId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<string> GetAttachment(Expression<Func<string>> messageId, Expression<Func<string>> attachmentId)
         {
-            var apiCallPath = String.Format("/Mail/{0}/Attachments/{1}", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1), ExpressionConverter.ConvertWithUrlEncoding(attachmentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Mail/{0}/Attachments/{1}", __workflow_messageId.WithUrlEncoding(1), __workflow_attachmentId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<SubscriptionResponse> SendMailWithOptions(Expression<Func<string>> optionsEmailSubscriptionmessageto, Expression<Func<string>> optionsEmailSubscriptionmessagesubject = null, Expression<Func<string>> optionsEmailSubscriptionmessageuserOptions = null, Expression<Func<string>> optionsEmailSubscriptionmessageheaderText = null, Expression<Func<string>> optionsEmailSubscriptionmessageselectionText = null, Expression<Func<string>> optionsEmailSubscriptionmessagebody = null, Expression<Func<optionsEmailSubscriptionmessageimportanceInput>> optionsEmailSubscriptionmessageimportance = null, Expression<Func<ClientSendAttachment[]>> optionsEmailSubscriptionmessageattachments = null, Expression<Func<bool>> optionsEmailSubscriptionmessageuseOnlyHTMLMessage = null, Expression<Func<bool>> optionsEmailSubscriptionmessagehideHTMLMessage = null, Expression<Func<bool>> optionsEmailSubscriptionmessageshowHTMLConfirmationDialog = null)
         {
-            var apiCallPath = "/mailwithoptions/$subscriptions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var optionsEmailSubscription = new JObject();
-            var optionsEmailSubscriptionpropCount = 0;
-            optionsEmailSubscription["NotificationUrl"] = "@listCallbackUrl()";
-            optionsEmailSubscriptionpropCount++;
-            var messageObject = new JObject();
-            var messageObjectpropCount = 0;
-            messageObjectpropCount++;
-            messageObject["To"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionmessageto);
-            if (optionsEmailSubscriptionmessagesubject != null)
+            var __workflow_optionsEmailSubscriptionmessageto = WorkflowExpression.Compile(optionsEmailSubscriptionmessageto, nameof(optionsEmailSubscriptionmessageto), required: true);
+            var __workflow_optionsEmailSubscriptionmessagesubject = WorkflowExpression.Compile(optionsEmailSubscriptionmessagesubject, nameof(optionsEmailSubscriptionmessagesubject), required: false);
+            var __workflow_optionsEmailSubscriptionmessageuserOptions = WorkflowExpression.Compile(optionsEmailSubscriptionmessageuserOptions, nameof(optionsEmailSubscriptionmessageuserOptions), required: false);
+            var __workflow_optionsEmailSubscriptionmessageheaderText = WorkflowExpression.Compile(optionsEmailSubscriptionmessageheaderText, nameof(optionsEmailSubscriptionmessageheaderText), required: false);
+            var __workflow_optionsEmailSubscriptionmessageselectionText = WorkflowExpression.Compile(optionsEmailSubscriptionmessageselectionText, nameof(optionsEmailSubscriptionmessageselectionText), required: false);
+            var __workflow_optionsEmailSubscriptionmessagebody = WorkflowExpression.Compile(optionsEmailSubscriptionmessagebody, nameof(optionsEmailSubscriptionmessagebody), required: false);
+            var __workflow_optionsEmailSubscriptionmessageimportance = WorkflowExpression.Compile(optionsEmailSubscriptionmessageimportance, nameof(optionsEmailSubscriptionmessageimportance), required: false);
+            var __workflow_optionsEmailSubscriptionmessageattachments = WorkflowExpression.Compile(optionsEmailSubscriptionmessageattachments, nameof(optionsEmailSubscriptionmessageattachments), required: false);
+            var __workflow_optionsEmailSubscriptionmessageuseOnlyHTMLMessage = WorkflowExpression.Compile(optionsEmailSubscriptionmessageuseOnlyHTMLMessage, nameof(optionsEmailSubscriptionmessageuseOnlyHTMLMessage), required: false);
+            var __workflow_optionsEmailSubscriptionmessagehideHTMLMessage = WorkflowExpression.Compile(optionsEmailSubscriptionmessagehideHTMLMessage, nameof(optionsEmailSubscriptionmessagehideHTMLMessage), required: false);
+            var __workflow_optionsEmailSubscriptionmessageshowHTMLConfirmationDialog = WorkflowExpression.Compile(optionsEmailSubscriptionmessageshowHTMLConfirmationDialog, nameof(optionsEmailSubscriptionmessageshowHTMLConfirmationDialog), required: false);
+            return new DeferredBodyAction<SubscriptionResponse>(() =>
             {
-                if (optionsEmailSubscriptionmessagesubject != null)
-                {
-                    messageObject["Subject"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionmessagesubject);
-                    messageObjectpropCount++;
-                }
-
-                messageObjectpropCount++;
-            }
-            else
-            {
-                messageObject["Subject"] = "Your input is required";
-                messageObjectpropCount++;
-            }
-
-            if (optionsEmailSubscriptionmessageuserOptions != null)
-            {
-                if (optionsEmailSubscriptionmessageuserOptions != null)
-                {
-                    messageObject["Options"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionmessageuserOptions);
-                    messageObjectpropCount++;
-                }
-
-                messageObjectpropCount++;
-            }
-            else
-            {
-                messageObject["Options"] = "Choice1, Choice2, Choice3";
-                messageObjectpropCount++;
-            }
-
-            if (optionsEmailSubscriptionmessageheaderText != null)
-            {
-                messageObject["HeaderText"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionmessageheaderText);
-                messageObjectpropCount++;
-            }
-
-            if (optionsEmailSubscriptionmessageselectionText != null)
-            {
-                messageObject["SelectionText"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionmessageselectionText);
-                messageObjectpropCount++;
-            }
-
-            if (optionsEmailSubscriptionmessagebody != null)
-            {
-                messageObject["Body"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionmessagebody);
-                messageObjectpropCount++;
-            }
-
-            if (optionsEmailSubscriptionmessageimportance != null)
-            {
-                if (optionsEmailSubscriptionmessageimportance != null)
-                {
-                    messageObject["Importance"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionmessageimportance);
-                    messageObjectpropCount++;
-                }
-
-                messageObjectpropCount++;
-            }
-            else
-            {
-                messageObject["Importance"] = "Normal";
-                messageObjectpropCount++;
-            }
-
-            if (optionsEmailSubscriptionmessageattachments != null)
-            {
-                messageObject["Attachments"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionmessageattachments);
-                messageObjectpropCount++;
-            }
-
-            if (optionsEmailSubscriptionmessageuseOnlyHTMLMessage != null)
-            {
-                messageObject["UseOnlyHTMLMessage"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionmessageuseOnlyHTMLMessage);
-                messageObjectpropCount++;
-            }
-
-            if (optionsEmailSubscriptionmessagehideHTMLMessage != null)
-            {
-                if (optionsEmailSubscriptionmessagehideHTMLMessage != null)
-                {
-                    messageObject["HideHTMLMessage"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionmessagehideHTMLMessage);
-                    messageObjectpropCount++;
-                }
-
-                messageObjectpropCount++;
-            }
-            else
-            {
-                messageObject["HideHTMLMessage"] = false;
-                messageObjectpropCount++;
-            }
-
-            if (optionsEmailSubscriptionmessageshowHTMLConfirmationDialog != null)
-            {
-                if (optionsEmailSubscriptionmessageshowHTMLConfirmationDialog != null)
-                {
-                    messageObject["ShowHTMLConfirmationDialog"] = ExpressionConverter.ConvertO(optionsEmailSubscriptionmessageshowHTMLConfirmationDialog);
-                    messageObjectpropCount++;
-                }
-
-                messageObjectpropCount++;
-            }
-            else
-            {
-                messageObject["ShowHTMLConfirmationDialog"] = false;
-                messageObjectpropCount++;
-            }
-
-            if (messageObjectpropCount > 0)
-            {
-                optionsEmailSubscription["Message"] = messageObject;
+                var apiCallPath = "/mailwithoptions/$subscriptions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var optionsEmailSubscription = new JObject();
+                var optionsEmailSubscriptionpropCount = 0;
+                optionsEmailSubscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 optionsEmailSubscriptionpropCount++;
-            }
+                var messageObject = new JObject();
+                var messageObjectpropCount = 0;
+                messageObjectpropCount++;
+                messageObject["To"] = ExpressionConverter.ConvertO(__workflow_optionsEmailSubscriptionmessageto);
+                if (__workflow_optionsEmailSubscriptionmessagesubject != null)
+                {
+                    if (__workflow_optionsEmailSubscriptionmessagesubject != null)
+                    {
+                        messageObject["Subject"] = ExpressionConverter.ConvertO(__workflow_optionsEmailSubscriptionmessagesubject);
+                        messageObjectpropCount++;
+                    }
 
-            if (optionsEmailSubscriptionpropCount > 0)
-            {
-                callPayload.Body = optionsEmailSubscription;
-            }
+                    messageObjectpropCount++;
+                }
+                else
+                {
+                    messageObject["Subject"] = "Your input is required";
+                    messageObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<SubscriptionResponse>(callPayload);
+                if (__workflow_optionsEmailSubscriptionmessageuserOptions != null)
+                {
+                    if (__workflow_optionsEmailSubscriptionmessageuserOptions != null)
+                    {
+                        messageObject["Options"] = ExpressionConverter.ConvertO(__workflow_optionsEmailSubscriptionmessageuserOptions);
+                        messageObjectpropCount++;
+                    }
+
+                    messageObjectpropCount++;
+                }
+                else
+                {
+                    messageObject["Options"] = "Choice1, Choice2, Choice3";
+                    messageObjectpropCount++;
+                }
+
+                if (__workflow_optionsEmailSubscriptionmessageheaderText != null)
+                {
+                    messageObject["HeaderText"] = ExpressionConverter.ConvertO(__workflow_optionsEmailSubscriptionmessageheaderText);
+                    messageObjectpropCount++;
+                }
+
+                if (__workflow_optionsEmailSubscriptionmessageselectionText != null)
+                {
+                    messageObject["SelectionText"] = ExpressionConverter.ConvertO(__workflow_optionsEmailSubscriptionmessageselectionText);
+                    messageObjectpropCount++;
+                }
+
+                if (__workflow_optionsEmailSubscriptionmessagebody != null)
+                {
+                    messageObject["Body"] = ExpressionConverter.ConvertO(__workflow_optionsEmailSubscriptionmessagebody);
+                    messageObjectpropCount++;
+                }
+
+                if (__workflow_optionsEmailSubscriptionmessageimportance != null)
+                {
+                    if (__workflow_optionsEmailSubscriptionmessageimportance != null)
+                    {
+                        messageObject["Importance"] = ExpressionConverter.ConvertO(__workflow_optionsEmailSubscriptionmessageimportance);
+                        messageObjectpropCount++;
+                    }
+
+                    messageObjectpropCount++;
+                }
+                else
+                {
+                    messageObject["Importance"] = "Normal";
+                    messageObjectpropCount++;
+                }
+
+                if (__workflow_optionsEmailSubscriptionmessageattachments != null)
+                {
+                    messageObject["Attachments"] = ExpressionConverter.ConvertO(__workflow_optionsEmailSubscriptionmessageattachments);
+                    messageObjectpropCount++;
+                }
+
+                if (__workflow_optionsEmailSubscriptionmessageuseOnlyHTMLMessage != null)
+                {
+                    messageObject["UseOnlyHTMLMessage"] = ExpressionConverter.ConvertO(__workflow_optionsEmailSubscriptionmessageuseOnlyHTMLMessage);
+                    messageObjectpropCount++;
+                }
+
+                if (__workflow_optionsEmailSubscriptionmessagehideHTMLMessage != null)
+                {
+                    if (__workflow_optionsEmailSubscriptionmessagehideHTMLMessage != null)
+                    {
+                        messageObject["HideHTMLMessage"] = ExpressionConverter.ConvertO(__workflow_optionsEmailSubscriptionmessagehideHTMLMessage);
+                        messageObjectpropCount++;
+                    }
+
+                    messageObjectpropCount++;
+                }
+                else
+                {
+                    messageObject["HideHTMLMessage"] = false;
+                    messageObjectpropCount++;
+                }
+
+                if (__workflow_optionsEmailSubscriptionmessageshowHTMLConfirmationDialog != null)
+                {
+                    if (__workflow_optionsEmailSubscriptionmessageshowHTMLConfirmationDialog != null)
+                    {
+                        messageObject["ShowHTMLConfirmationDialog"] = ExpressionConverter.ConvertO(__workflow_optionsEmailSubscriptionmessageshowHTMLConfirmationDialog);
+                        messageObjectpropCount++;
+                    }
+
+                    messageObjectpropCount++;
+                }
+                else
+                {
+                    messageObject["ShowHTMLConfirmationDialog"] = false;
+                    messageObjectpropCount++;
+                }
+
+                if (messageObjectpropCount > 0)
+                {
+                    optionsEmailSubscription["Message"] = messageObject;
+                    optionsEmailSubscriptionpropCount++;
+                }
+
+                if (optionsEmailSubscriptionpropCount > 0)
+                {
+                    callPayload.Body = optionsEmailSubscription;
+                }
+
+                return new ApiConnectionAction<SubscriptionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<SubscriptionResponse> SendApprovalMail(Expression<Func<string>> approvalEmailSubscriptionmessageto, Expression<Func<string>> approvalEmailSubscriptionmessagesubject = null, Expression<Func<string>> approvalEmailSubscriptionmessageuserOptions = null, Expression<Func<string>> approvalEmailSubscriptionmessageheaderText = null, Expression<Func<string>> approvalEmailSubscriptionmessageselectionText = null, Expression<Func<string>> approvalEmailSubscriptionmessagebody = null, Expression<Func<approvalEmailSubscriptionmessageimportanceInput>> approvalEmailSubscriptionmessageimportance = null, Expression<Func<ClientSendAttachment[]>> approvalEmailSubscriptionmessageattachments = null, Expression<Func<bool>> approvalEmailSubscriptionmessageuseOnlyHTMLMessage = null, Expression<Func<bool>> approvalEmailSubscriptionmessagehideHTMLMessage = null, Expression<Func<bool>> approvalEmailSubscriptionmessageshowHTMLConfirmationDialog = null)
         {
-            var apiCallPath = "/approvalmail/$subscriptions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var approvalEmailSubscription = new JObject();
-            var approvalEmailSubscriptionpropCount = 0;
-            approvalEmailSubscription["NotificationUrl"] = "@listCallbackUrl()";
-            approvalEmailSubscriptionpropCount++;
-            var messageObject = new JObject();
-            var messageObjectpropCount = 0;
-            messageObjectpropCount++;
-            messageObject["To"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionmessageto);
-            if (approvalEmailSubscriptionmessagesubject != null)
+            var __workflow_approvalEmailSubscriptionmessageto = WorkflowExpression.Compile(approvalEmailSubscriptionmessageto, nameof(approvalEmailSubscriptionmessageto), required: true);
+            var __workflow_approvalEmailSubscriptionmessagesubject = WorkflowExpression.Compile(approvalEmailSubscriptionmessagesubject, nameof(approvalEmailSubscriptionmessagesubject), required: false);
+            var __workflow_approvalEmailSubscriptionmessageuserOptions = WorkflowExpression.Compile(approvalEmailSubscriptionmessageuserOptions, nameof(approvalEmailSubscriptionmessageuserOptions), required: false);
+            var __workflow_approvalEmailSubscriptionmessageheaderText = WorkflowExpression.Compile(approvalEmailSubscriptionmessageheaderText, nameof(approvalEmailSubscriptionmessageheaderText), required: false);
+            var __workflow_approvalEmailSubscriptionmessageselectionText = WorkflowExpression.Compile(approvalEmailSubscriptionmessageselectionText, nameof(approvalEmailSubscriptionmessageselectionText), required: false);
+            var __workflow_approvalEmailSubscriptionmessagebody = WorkflowExpression.Compile(approvalEmailSubscriptionmessagebody, nameof(approvalEmailSubscriptionmessagebody), required: false);
+            var __workflow_approvalEmailSubscriptionmessageimportance = WorkflowExpression.Compile(approvalEmailSubscriptionmessageimportance, nameof(approvalEmailSubscriptionmessageimportance), required: false);
+            var __workflow_approvalEmailSubscriptionmessageattachments = WorkflowExpression.Compile(approvalEmailSubscriptionmessageattachments, nameof(approvalEmailSubscriptionmessageattachments), required: false);
+            var __workflow_approvalEmailSubscriptionmessageuseOnlyHTMLMessage = WorkflowExpression.Compile(approvalEmailSubscriptionmessageuseOnlyHTMLMessage, nameof(approvalEmailSubscriptionmessageuseOnlyHTMLMessage), required: false);
+            var __workflow_approvalEmailSubscriptionmessagehideHTMLMessage = WorkflowExpression.Compile(approvalEmailSubscriptionmessagehideHTMLMessage, nameof(approvalEmailSubscriptionmessagehideHTMLMessage), required: false);
+            var __workflow_approvalEmailSubscriptionmessageshowHTMLConfirmationDialog = WorkflowExpression.Compile(approvalEmailSubscriptionmessageshowHTMLConfirmationDialog, nameof(approvalEmailSubscriptionmessageshowHTMLConfirmationDialog), required: false);
+            return new DeferredBodyAction<SubscriptionResponse>(() =>
             {
-                if (approvalEmailSubscriptionmessagesubject != null)
-                {
-                    messageObject["Subject"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionmessagesubject);
-                    messageObjectpropCount++;
-                }
-
-                messageObjectpropCount++;
-            }
-            else
-            {
-                messageObject["Subject"] = "Approval Request";
-                messageObjectpropCount++;
-            }
-
-            if (approvalEmailSubscriptionmessageuserOptions != null)
-            {
-                if (approvalEmailSubscriptionmessageuserOptions != null)
-                {
-                    messageObject["Options"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionmessageuserOptions);
-                    messageObjectpropCount++;
-                }
-
-                messageObjectpropCount++;
-            }
-            else
-            {
-                messageObject["Options"] = "Approve, Reject";
-                messageObjectpropCount++;
-            }
-
-            if (approvalEmailSubscriptionmessageheaderText != null)
-            {
-                messageObject["HeaderText"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionmessageheaderText);
-                messageObjectpropCount++;
-            }
-
-            if (approvalEmailSubscriptionmessageselectionText != null)
-            {
-                messageObject["SelectionText"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionmessageselectionText);
-                messageObjectpropCount++;
-            }
-
-            if (approvalEmailSubscriptionmessagebody != null)
-            {
-                messageObject["Body"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionmessagebody);
-                messageObjectpropCount++;
-            }
-
-            if (approvalEmailSubscriptionmessageimportance != null)
-            {
-                if (approvalEmailSubscriptionmessageimportance != null)
-                {
-                    messageObject["Importance"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionmessageimportance);
-                    messageObjectpropCount++;
-                }
-
-                messageObjectpropCount++;
-            }
-            else
-            {
-                messageObject["Importance"] = "Normal";
-                messageObjectpropCount++;
-            }
-
-            if (approvalEmailSubscriptionmessageattachments != null)
-            {
-                messageObject["Attachments"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionmessageattachments);
-                messageObjectpropCount++;
-            }
-
-            if (approvalEmailSubscriptionmessageuseOnlyHTMLMessage != null)
-            {
-                messageObject["UseOnlyHTMLMessage"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionmessageuseOnlyHTMLMessage);
-                messageObjectpropCount++;
-            }
-
-            if (approvalEmailSubscriptionmessagehideHTMLMessage != null)
-            {
-                if (approvalEmailSubscriptionmessagehideHTMLMessage != null)
-                {
-                    messageObject["HideHTMLMessage"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionmessagehideHTMLMessage);
-                    messageObjectpropCount++;
-                }
-
-                messageObjectpropCount++;
-            }
-            else
-            {
-                messageObject["HideHTMLMessage"] = false;
-                messageObjectpropCount++;
-            }
-
-            if (approvalEmailSubscriptionmessageshowHTMLConfirmationDialog != null)
-            {
-                if (approvalEmailSubscriptionmessageshowHTMLConfirmationDialog != null)
-                {
-                    messageObject["ShowHTMLConfirmationDialog"] = ExpressionConverter.ConvertO(approvalEmailSubscriptionmessageshowHTMLConfirmationDialog);
-                    messageObjectpropCount++;
-                }
-
-                messageObjectpropCount++;
-            }
-            else
-            {
-                messageObject["ShowHTMLConfirmationDialog"] = false;
-                messageObjectpropCount++;
-            }
-
-            if (messageObjectpropCount > 0)
-            {
-                approvalEmailSubscription["Message"] = messageObject;
+                var apiCallPath = "/approvalmail/$subscriptions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var approvalEmailSubscription = new JObject();
+                var approvalEmailSubscriptionpropCount = 0;
+                approvalEmailSubscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 approvalEmailSubscriptionpropCount++;
-            }
+                var messageObject = new JObject();
+                var messageObjectpropCount = 0;
+                messageObjectpropCount++;
+                messageObject["To"] = ExpressionConverter.ConvertO(__workflow_approvalEmailSubscriptionmessageto);
+                if (__workflow_approvalEmailSubscriptionmessagesubject != null)
+                {
+                    if (__workflow_approvalEmailSubscriptionmessagesubject != null)
+                    {
+                        messageObject["Subject"] = ExpressionConverter.ConvertO(__workflow_approvalEmailSubscriptionmessagesubject);
+                        messageObjectpropCount++;
+                    }
 
-            if (approvalEmailSubscriptionpropCount > 0)
-            {
-                callPayload.Body = approvalEmailSubscription;
-            }
+                    messageObjectpropCount++;
+                }
+                else
+                {
+                    messageObject["Subject"] = "Approval Request";
+                    messageObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<SubscriptionResponse>(callPayload);
+                if (__workflow_approvalEmailSubscriptionmessageuserOptions != null)
+                {
+                    if (__workflow_approvalEmailSubscriptionmessageuserOptions != null)
+                    {
+                        messageObject["Options"] = ExpressionConverter.ConvertO(__workflow_approvalEmailSubscriptionmessageuserOptions);
+                        messageObjectpropCount++;
+                    }
+
+                    messageObjectpropCount++;
+                }
+                else
+                {
+                    messageObject["Options"] = "Approve, Reject";
+                    messageObjectpropCount++;
+                }
+
+                if (__workflow_approvalEmailSubscriptionmessageheaderText != null)
+                {
+                    messageObject["HeaderText"] = ExpressionConverter.ConvertO(__workflow_approvalEmailSubscriptionmessageheaderText);
+                    messageObjectpropCount++;
+                }
+
+                if (__workflow_approvalEmailSubscriptionmessageselectionText != null)
+                {
+                    messageObject["SelectionText"] = ExpressionConverter.ConvertO(__workflow_approvalEmailSubscriptionmessageselectionText);
+                    messageObjectpropCount++;
+                }
+
+                if (__workflow_approvalEmailSubscriptionmessagebody != null)
+                {
+                    messageObject["Body"] = ExpressionConverter.ConvertO(__workflow_approvalEmailSubscriptionmessagebody);
+                    messageObjectpropCount++;
+                }
+
+                if (__workflow_approvalEmailSubscriptionmessageimportance != null)
+                {
+                    if (__workflow_approvalEmailSubscriptionmessageimportance != null)
+                    {
+                        messageObject["Importance"] = ExpressionConverter.ConvertO(__workflow_approvalEmailSubscriptionmessageimportance);
+                        messageObjectpropCount++;
+                    }
+
+                    messageObjectpropCount++;
+                }
+                else
+                {
+                    messageObject["Importance"] = "Normal";
+                    messageObjectpropCount++;
+                }
+
+                if (__workflow_approvalEmailSubscriptionmessageattachments != null)
+                {
+                    messageObject["Attachments"] = ExpressionConverter.ConvertO(__workflow_approvalEmailSubscriptionmessageattachments);
+                    messageObjectpropCount++;
+                }
+
+                if (__workflow_approvalEmailSubscriptionmessageuseOnlyHTMLMessage != null)
+                {
+                    messageObject["UseOnlyHTMLMessage"] = ExpressionConverter.ConvertO(__workflow_approvalEmailSubscriptionmessageuseOnlyHTMLMessage);
+                    messageObjectpropCount++;
+                }
+
+                if (__workflow_approvalEmailSubscriptionmessagehideHTMLMessage != null)
+                {
+                    if (__workflow_approvalEmailSubscriptionmessagehideHTMLMessage != null)
+                    {
+                        messageObject["HideHTMLMessage"] = ExpressionConverter.ConvertO(__workflow_approvalEmailSubscriptionmessagehideHTMLMessage);
+                        messageObjectpropCount++;
+                    }
+
+                    messageObjectpropCount++;
+                }
+                else
+                {
+                    messageObject["HideHTMLMessage"] = false;
+                    messageObjectpropCount++;
+                }
+
+                if (__workflow_approvalEmailSubscriptionmessageshowHTMLConfirmationDialog != null)
+                {
+                    if (__workflow_approvalEmailSubscriptionmessageshowHTMLConfirmationDialog != null)
+                    {
+                        messageObject["ShowHTMLConfirmationDialog"] = ExpressionConverter.ConvertO(__workflow_approvalEmailSubscriptionmessageshowHTMLConfirmationDialog);
+                        messageObjectpropCount++;
+                    }
+
+                    messageObjectpropCount++;
+                }
+                else
+                {
+                    messageObject["ShowHTMLConfirmationDialog"] = false;
+                    messageObjectpropCount++;
+                }
+
+                if (messageObjectpropCount > 0)
+                {
+                    approvalEmailSubscription["Message"] = messageObject;
+                    approvalEmailSubscriptionpropCount++;
+                }
+
+                if (approvalEmailSubscriptionpropCount > 0)
+                {
+                    callPayload.Body = approvalEmailSubscription;
+                }
+
+                return new ApiConnectionAction<SubscriptionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -359,10 +415,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction CalendarDeleteItem(Expression<Func<string>> table, Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/datasets/calendars/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/calendars/tables/{0}/items/{1}", __workflow_table.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
@@ -377,1444 +438,1745 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<EntityListResponseContactResponse> ContactGetItems(Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
-            var apiCallPath = String.Format("/datasets/contacts/tables/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionAction<EntityListResponseContactResponse>(callPayload);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            return new DeferredBodyAction<EntityListResponseContactResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/contacts/tables/{0}/items", __workflow_table.WithUrlEncoding(2)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(__workflow_orderby);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
+                return new ApiConnectionAction<EntityListResponseContactResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<ContactResponse> ContactPostItem(Expression<Func<string>> table, Expression<Func<string>> itemgivenName, Expression<Func<string[]>> itemhomePhones, Expression<Func<string>> itemid = null, Expression<Func<string>> itemparentFolderId = null, Expression<Func<string>> itembirthday = null, Expression<Func<string>> itemfileAs = null, Expression<Func<string>> itemdisplayName = null, Expression<Func<string>> iteminitials = null, Expression<Func<string>> itemmiddleName = null, Expression<Func<string>> itemnickname = null, Expression<Func<string>> itemsurname = null, Expression<Func<string>> itemtitle = null, Expression<Func<string>> itemgeneration = null, Expression<Func<EmailAddress[]>> itememailAddresses = null, Expression<Func<string[]>> itemiMAddresses = null, Expression<Func<string>> itemjobTitle = null, Expression<Func<string>> itemcompanyName = null, Expression<Func<string>> itemdepartment = null, Expression<Func<string>> itemofficeLocation = null, Expression<Func<string>> itemprofession = null, Expression<Func<string>> itembusinessHomePage = null, Expression<Func<string>> itemassistantName = null, Expression<Func<string>> itemmanager = null, Expression<Func<string[]>> itembusinessPhones = null, Expression<Func<string>> itemmobilePhone = null, Expression<Func<string>> itemhomeAddressstreet = null, Expression<Func<string>> itemhomeAddresscity = null, Expression<Func<string>> itemhomeAddressstate = null, Expression<Func<string>> itemhomeAddresscountryOrRegion = null, Expression<Func<string>> itemhomeAddresspostalCode = null, Expression<Func<string>> itembusinessAddressstreet = null, Expression<Func<string>> itembusinessAddresscity = null, Expression<Func<string>> itembusinessAddressstate = null, Expression<Func<string>> itembusinessAddresscountryOrRegion = null, Expression<Func<string>> itembusinessAddresspostalCode = null, Expression<Func<string>> itemotherAddressstreet = null, Expression<Func<string>> itemotherAddresscity = null, Expression<Func<string>> itemotherAddressstate = null, Expression<Func<string>> itemotherAddresscountryOrRegion = null, Expression<Func<string>> itemotherAddresspostalCode = null, Expression<Func<string>> itemyomiCompanyName = null, Expression<Func<string>> itemyomiGivenName = null, Expression<Func<string>> itemyomiSurname = null, Expression<Func<string[]>> itemcategories = null, Expression<Func<string>> itemchangeKey = null, Expression<Func<string>> itemcreatedTime = null, Expression<Func<string>> itemlastModifiedTime = null)
         {
-            var apiCallPath = String.Format("/datasets/contacts/tables/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var item = new JObject();
-            var itempropCount = 0;
-            if (itemid != null)
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_itemgivenName = WorkflowExpression.Compile(itemgivenName, nameof(itemgivenName), required: true);
+            var __workflow_itemhomePhones = WorkflowExpression.Compile(itemhomePhones, nameof(itemhomePhones), required: true);
+            var __workflow_itemid = WorkflowExpression.Compile(itemid, nameof(itemid), required: false);
+            var __workflow_itemparentFolderId = WorkflowExpression.Compile(itemparentFolderId, nameof(itemparentFolderId), required: false);
+            var __workflow_itembirthday = WorkflowExpression.Compile(itembirthday, nameof(itembirthday), required: false);
+            var __workflow_itemfileAs = WorkflowExpression.Compile(itemfileAs, nameof(itemfileAs), required: false);
+            var __workflow_itemdisplayName = WorkflowExpression.Compile(itemdisplayName, nameof(itemdisplayName), required: false);
+            var __workflow_iteminitials = WorkflowExpression.Compile(iteminitials, nameof(iteminitials), required: false);
+            var __workflow_itemmiddleName = WorkflowExpression.Compile(itemmiddleName, nameof(itemmiddleName), required: false);
+            var __workflow_itemnickname = WorkflowExpression.Compile(itemnickname, nameof(itemnickname), required: false);
+            var __workflow_itemsurname = WorkflowExpression.Compile(itemsurname, nameof(itemsurname), required: false);
+            var __workflow_itemtitle = WorkflowExpression.Compile(itemtitle, nameof(itemtitle), required: false);
+            var __workflow_itemgeneration = WorkflowExpression.Compile(itemgeneration, nameof(itemgeneration), required: false);
+            var __workflow_itememailAddresses = WorkflowExpression.Compile(itememailAddresses, nameof(itememailAddresses), required: false);
+            var __workflow_itemiMAddresses = WorkflowExpression.Compile(itemiMAddresses, nameof(itemiMAddresses), required: false);
+            var __workflow_itemjobTitle = WorkflowExpression.Compile(itemjobTitle, nameof(itemjobTitle), required: false);
+            var __workflow_itemcompanyName = WorkflowExpression.Compile(itemcompanyName, nameof(itemcompanyName), required: false);
+            var __workflow_itemdepartment = WorkflowExpression.Compile(itemdepartment, nameof(itemdepartment), required: false);
+            var __workflow_itemofficeLocation = WorkflowExpression.Compile(itemofficeLocation, nameof(itemofficeLocation), required: false);
+            var __workflow_itemprofession = WorkflowExpression.Compile(itemprofession, nameof(itemprofession), required: false);
+            var __workflow_itembusinessHomePage = WorkflowExpression.Compile(itembusinessHomePage, nameof(itembusinessHomePage), required: false);
+            var __workflow_itemassistantName = WorkflowExpression.Compile(itemassistantName, nameof(itemassistantName), required: false);
+            var __workflow_itemmanager = WorkflowExpression.Compile(itemmanager, nameof(itemmanager), required: false);
+            var __workflow_itembusinessPhones = WorkflowExpression.Compile(itembusinessPhones, nameof(itembusinessPhones), required: false);
+            var __workflow_itemmobilePhone = WorkflowExpression.Compile(itemmobilePhone, nameof(itemmobilePhone), required: false);
+            var __workflow_itemhomeAddressstreet = WorkflowExpression.Compile(itemhomeAddressstreet, nameof(itemhomeAddressstreet), required: false);
+            var __workflow_itemhomeAddresscity = WorkflowExpression.Compile(itemhomeAddresscity, nameof(itemhomeAddresscity), required: false);
+            var __workflow_itemhomeAddressstate = WorkflowExpression.Compile(itemhomeAddressstate, nameof(itemhomeAddressstate), required: false);
+            var __workflow_itemhomeAddresscountryOrRegion = WorkflowExpression.Compile(itemhomeAddresscountryOrRegion, nameof(itemhomeAddresscountryOrRegion), required: false);
+            var __workflow_itemhomeAddresspostalCode = WorkflowExpression.Compile(itemhomeAddresspostalCode, nameof(itemhomeAddresspostalCode), required: false);
+            var __workflow_itembusinessAddressstreet = WorkflowExpression.Compile(itembusinessAddressstreet, nameof(itembusinessAddressstreet), required: false);
+            var __workflow_itembusinessAddresscity = WorkflowExpression.Compile(itembusinessAddresscity, nameof(itembusinessAddresscity), required: false);
+            var __workflow_itembusinessAddressstate = WorkflowExpression.Compile(itembusinessAddressstate, nameof(itembusinessAddressstate), required: false);
+            var __workflow_itembusinessAddresscountryOrRegion = WorkflowExpression.Compile(itembusinessAddresscountryOrRegion, nameof(itembusinessAddresscountryOrRegion), required: false);
+            var __workflow_itembusinessAddresspostalCode = WorkflowExpression.Compile(itembusinessAddresspostalCode, nameof(itembusinessAddresspostalCode), required: false);
+            var __workflow_itemotherAddressstreet = WorkflowExpression.Compile(itemotherAddressstreet, nameof(itemotherAddressstreet), required: false);
+            var __workflow_itemotherAddresscity = WorkflowExpression.Compile(itemotherAddresscity, nameof(itemotherAddresscity), required: false);
+            var __workflow_itemotherAddressstate = WorkflowExpression.Compile(itemotherAddressstate, nameof(itemotherAddressstate), required: false);
+            var __workflow_itemotherAddresscountryOrRegion = WorkflowExpression.Compile(itemotherAddresscountryOrRegion, nameof(itemotherAddresscountryOrRegion), required: false);
+            var __workflow_itemotherAddresspostalCode = WorkflowExpression.Compile(itemotherAddresspostalCode, nameof(itemotherAddresspostalCode), required: false);
+            var __workflow_itemyomiCompanyName = WorkflowExpression.Compile(itemyomiCompanyName, nameof(itemyomiCompanyName), required: false);
+            var __workflow_itemyomiGivenName = WorkflowExpression.Compile(itemyomiGivenName, nameof(itemyomiGivenName), required: false);
+            var __workflow_itemyomiSurname = WorkflowExpression.Compile(itemyomiSurname, nameof(itemyomiSurname), required: false);
+            var __workflow_itemcategories = WorkflowExpression.Compile(itemcategories, nameof(itemcategories), required: false);
+            var __workflow_itemchangeKey = WorkflowExpression.Compile(itemchangeKey, nameof(itemchangeKey), required: false);
+            var __workflow_itemcreatedTime = WorkflowExpression.Compile(itemcreatedTime, nameof(itemcreatedTime), required: false);
+            var __workflow_itemlastModifiedTime = WorkflowExpression.Compile(itemlastModifiedTime, nameof(itemlastModifiedTime), required: false);
+            return new DeferredBodyAction<ContactResponse>(() =>
             {
-                item["Id"] = ExpressionConverter.ConvertO(itemid);
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/contacts/tables/{0}/items", __workflow_table.WithUrlEncoding(2)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var item = new JObject();
+                var itempropCount = 0;
+                if (__workflow_itemid != null)
+                {
+                    item["Id"] = ExpressionConverter.ConvertO(__workflow_itemid);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemparentFolderId != null)
+                {
+                    item["ParentFolderId"] = ExpressionConverter.ConvertO(__workflow_itemparentFolderId);
+                    itempropCount++;
+                }
+
+                if (__workflow_itembirthday != null)
+                {
+                    item["Birthday"] = ExpressionConverter.ConvertO(__workflow_itembirthday);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemfileAs != null)
+                {
+                    item["FileAs"] = ExpressionConverter.ConvertO(__workflow_itemfileAs);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemdisplayName != null)
+                {
+                    item["DisplayName"] = ExpressionConverter.ConvertO(__workflow_itemdisplayName);
+                    itempropCount++;
+                }
+
                 itempropCount++;
-            }
+                item["GivenName"] = ExpressionConverter.ConvertO(__workflow_itemgivenName);
+                if (__workflow_iteminitials != null)
+                {
+                    item["Initials"] = ExpressionConverter.ConvertO(__workflow_iteminitials);
+                    itempropCount++;
+                }
 
-            if (itemparentFolderId != null)
-            {
-                item["ParentFolderId"] = ExpressionConverter.ConvertO(itemparentFolderId);
+                if (__workflow_itemmiddleName != null)
+                {
+                    item["MiddleName"] = ExpressionConverter.ConvertO(__workflow_itemmiddleName);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemnickname != null)
+                {
+                    item["NickName"] = ExpressionConverter.ConvertO(__workflow_itemnickname);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemsurname != null)
+                {
+                    item["Surname"] = ExpressionConverter.ConvertO(__workflow_itemsurname);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemtitle != null)
+                {
+                    item["Title"] = ExpressionConverter.ConvertO(__workflow_itemtitle);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemgeneration != null)
+                {
+                    item["Generation"] = ExpressionConverter.ConvertO(__workflow_itemgeneration);
+                    itempropCount++;
+                }
+
+                if (__workflow_itememailAddresses != null)
+                {
+                    item["EmailAddresses"] = ExpressionConverter.ConvertO(__workflow_itememailAddresses);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemiMAddresses != null)
+                {
+                    item["ImAddresses"] = ExpressionConverter.ConvertO(__workflow_itemiMAddresses);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemjobTitle != null)
+                {
+                    item["JobTitle"] = ExpressionConverter.ConvertO(__workflow_itemjobTitle);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemcompanyName != null)
+                {
+                    item["CompanyName"] = ExpressionConverter.ConvertO(__workflow_itemcompanyName);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemdepartment != null)
+                {
+                    item["Department"] = ExpressionConverter.ConvertO(__workflow_itemdepartment);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemofficeLocation != null)
+                {
+                    item["OfficeLocation"] = ExpressionConverter.ConvertO(__workflow_itemofficeLocation);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemprofession != null)
+                {
+                    item["Profession"] = ExpressionConverter.ConvertO(__workflow_itemprofession);
+                    itempropCount++;
+                }
+
+                if (__workflow_itembusinessHomePage != null)
+                {
+                    item["BusinessHomePage"] = ExpressionConverter.ConvertO(__workflow_itembusinessHomePage);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemassistantName != null)
+                {
+                    item["AssistantName"] = ExpressionConverter.ConvertO(__workflow_itemassistantName);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemmanager != null)
+                {
+                    item["Manager"] = ExpressionConverter.ConvertO(__workflow_itemmanager);
+                    itempropCount++;
+                }
+
                 itempropCount++;
-            }
+                item["HomePhones"] = ExpressionConverter.ConvertO(__workflow_itemhomePhones);
+                if (__workflow_itembusinessPhones != null)
+                {
+                    item["BusinessPhones"] = ExpressionConverter.ConvertO(__workflow_itembusinessPhones);
+                    itempropCount++;
+                }
 
-            if (itembirthday != null)
-            {
-                item["Birthday"] = ExpressionConverter.ConvertO(itembirthday);
-                itempropCount++;
-            }
+                if (__workflow_itemmobilePhone != null)
+                {
+                    item["MobilePhone1"] = ExpressionConverter.ConvertO(__workflow_itemmobilePhone);
+                    itempropCount++;
+                }
 
-            if (itemfileAs != null)
-            {
-                item["FileAs"] = ExpressionConverter.ConvertO(itemfileAs);
-                itempropCount++;
-            }
+                var homeAddressObject = new JObject();
+                var homeAddressObjectpropCount = 0;
+                if (__workflow_itemhomeAddressstreet != null)
+                {
+                    homeAddressObject["Street"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddressstreet);
+                    homeAddressObjectpropCount++;
+                }
 
-            if (itemdisplayName != null)
-            {
-                item["DisplayName"] = ExpressionConverter.ConvertO(itemdisplayName);
-                itempropCount++;
-            }
+                if (__workflow_itemhomeAddresscity != null)
+                {
+                    homeAddressObject["City"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresscity);
+                    homeAddressObjectpropCount++;
+                }
 
-            itempropCount++;
-            item["GivenName"] = ExpressionConverter.ConvertO(itemgivenName);
-            if (iteminitials != null)
-            {
-                item["Initials"] = ExpressionConverter.ConvertO(iteminitials);
-                itempropCount++;
-            }
+                if (__workflow_itemhomeAddressstate != null)
+                {
+                    homeAddressObject["State"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddressstate);
+                    homeAddressObjectpropCount++;
+                }
 
-            if (itemmiddleName != null)
-            {
-                item["MiddleName"] = ExpressionConverter.ConvertO(itemmiddleName);
-                itempropCount++;
-            }
+                if (__workflow_itemhomeAddresscountryOrRegion != null)
+                {
+                    homeAddressObject["CountryOrRegion"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresscountryOrRegion);
+                    homeAddressObjectpropCount++;
+                }
 
-            if (itemnickname != null)
-            {
-                item["NickName"] = ExpressionConverter.ConvertO(itemnickname);
-                itempropCount++;
-            }
+                if (__workflow_itemhomeAddresspostalCode != null)
+                {
+                    homeAddressObject["PostalCode"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresspostalCode);
+                    homeAddressObjectpropCount++;
+                }
 
-            if (itemsurname != null)
-            {
-                item["Surname"] = ExpressionConverter.ConvertO(itemsurname);
-                itempropCount++;
-            }
+                if (homeAddressObjectpropCount > 0)
+                {
+                    item["HomeAddress"] = homeAddressObject;
+                    itempropCount++;
+                }
 
-            if (itemtitle != null)
-            {
-                item["Title"] = ExpressionConverter.ConvertO(itemtitle);
-                itempropCount++;
-            }
+                var businessAddressObject = new JObject();
+                var businessAddressObjectpropCount = 0;
+                if (__workflow_itemhomeAddressstreet != null)
+                {
+                    businessAddressObject["Street"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddressstreet);
+                    businessAddressObjectpropCount++;
+                }
 
-            if (itemgeneration != null)
-            {
-                item["Generation"] = ExpressionConverter.ConvertO(itemgeneration);
-                itempropCount++;
-            }
+                if (__workflow_itemhomeAddresscity != null)
+                {
+                    businessAddressObject["City"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresscity);
+                    businessAddressObjectpropCount++;
+                }
 
-            if (itememailAddresses != null)
-            {
-                item["EmailAddresses"] = ExpressionConverter.ConvertO(itememailAddresses);
-                itempropCount++;
-            }
+                if (__workflow_itemhomeAddressstate != null)
+                {
+                    businessAddressObject["State"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddressstate);
+                    businessAddressObjectpropCount++;
+                }
 
-            if (itemiMAddresses != null)
-            {
-                item["ImAddresses"] = ExpressionConverter.ConvertO(itemiMAddresses);
-                itempropCount++;
-            }
+                if (__workflow_itemhomeAddresscountryOrRegion != null)
+                {
+                    businessAddressObject["CountryOrRegion"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresscountryOrRegion);
+                    businessAddressObjectpropCount++;
+                }
 
-            if (itemjobTitle != null)
-            {
-                item["JobTitle"] = ExpressionConverter.ConvertO(itemjobTitle);
-                itempropCount++;
-            }
+                if (__workflow_itemhomeAddresspostalCode != null)
+                {
+                    businessAddressObject["PostalCode"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresspostalCode);
+                    businessAddressObjectpropCount++;
+                }
 
-            if (itemcompanyName != null)
-            {
-                item["CompanyName"] = ExpressionConverter.ConvertO(itemcompanyName);
-                itempropCount++;
-            }
+                if (businessAddressObjectpropCount > 0)
+                {
+                    item["BusinessAddress"] = businessAddressObject;
+                    itempropCount++;
+                }
 
-            if (itemdepartment != null)
-            {
-                item["Department"] = ExpressionConverter.ConvertO(itemdepartment);
-                itempropCount++;
-            }
+                var otherAddressObject = new JObject();
+                var otherAddressObjectpropCount = 0;
+                if (__workflow_itemhomeAddressstreet != null)
+                {
+                    otherAddressObject["Street"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddressstreet);
+                    otherAddressObjectpropCount++;
+                }
 
-            if (itemofficeLocation != null)
-            {
-                item["OfficeLocation"] = ExpressionConverter.ConvertO(itemofficeLocation);
-                itempropCount++;
-            }
+                if (__workflow_itemhomeAddresscity != null)
+                {
+                    otherAddressObject["City"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresscity);
+                    otherAddressObjectpropCount++;
+                }
 
-            if (itemprofession != null)
-            {
-                item["Profession"] = ExpressionConverter.ConvertO(itemprofession);
-                itempropCount++;
-            }
+                if (__workflow_itemhomeAddressstate != null)
+                {
+                    otherAddressObject["State"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddressstate);
+                    otherAddressObjectpropCount++;
+                }
 
-            if (itembusinessHomePage != null)
-            {
-                item["BusinessHomePage"] = ExpressionConverter.ConvertO(itembusinessHomePage);
-                itempropCount++;
-            }
+                if (__workflow_itemhomeAddresscountryOrRegion != null)
+                {
+                    otherAddressObject["CountryOrRegion"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresscountryOrRegion);
+                    otherAddressObjectpropCount++;
+                }
 
-            if (itemassistantName != null)
-            {
-                item["AssistantName"] = ExpressionConverter.ConvertO(itemassistantName);
-                itempropCount++;
-            }
+                if (__workflow_itemhomeAddresspostalCode != null)
+                {
+                    otherAddressObject["PostalCode"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresspostalCode);
+                    otherAddressObjectpropCount++;
+                }
 
-            if (itemmanager != null)
-            {
-                item["Manager"] = ExpressionConverter.ConvertO(itemmanager);
-                itempropCount++;
-            }
+                if (otherAddressObjectpropCount > 0)
+                {
+                    item["OtherAddress"] = otherAddressObject;
+                    itempropCount++;
+                }
 
-            itempropCount++;
-            item["HomePhones"] = ExpressionConverter.ConvertO(itemhomePhones);
-            if (itembusinessPhones != null)
-            {
-                item["BusinessPhones"] = ExpressionConverter.ConvertO(itembusinessPhones);
-                itempropCount++;
-            }
+                if (__workflow_itemyomiCompanyName != null)
+                {
+                    item["YomiCompanyName"] = ExpressionConverter.ConvertO(__workflow_itemyomiCompanyName);
+                    itempropCount++;
+                }
 
-            if (itemmobilePhone != null)
-            {
-                item["MobilePhone1"] = ExpressionConverter.ConvertO(itemmobilePhone);
-                itempropCount++;
-            }
+                if (__workflow_itemyomiGivenName != null)
+                {
+                    item["YomiGivenName"] = ExpressionConverter.ConvertO(__workflow_itemyomiGivenName);
+                    itempropCount++;
+                }
 
-            var homeAddressObject = new JObject();
-            var homeAddressObjectpropCount = 0;
-            if (itemhomeAddressstreet != null)
-            {
-                homeAddressObject["Street"] = ExpressionConverter.ConvertO(itemhomeAddressstreet);
-                homeAddressObjectpropCount++;
-            }
+                if (__workflow_itemyomiSurname != null)
+                {
+                    item["YomiSurname"] = ExpressionConverter.ConvertO(__workflow_itemyomiSurname);
+                    itempropCount++;
+                }
 
-            if (itemhomeAddresscity != null)
-            {
-                homeAddressObject["City"] = ExpressionConverter.ConvertO(itemhomeAddresscity);
-                homeAddressObjectpropCount++;
-            }
+                if (__workflow_itemcategories != null)
+                {
+                    item["Categories"] = ExpressionConverter.ConvertO(__workflow_itemcategories);
+                    itempropCount++;
+                }
 
-            if (itemhomeAddressstate != null)
-            {
-                homeAddressObject["State"] = ExpressionConverter.ConvertO(itemhomeAddressstate);
-                homeAddressObjectpropCount++;
-            }
+                if (__workflow_itemchangeKey != null)
+                {
+                    item["ChangeKey"] = ExpressionConverter.ConvertO(__workflow_itemchangeKey);
+                    itempropCount++;
+                }
 
-            if (itemhomeAddresscountryOrRegion != null)
-            {
-                homeAddressObject["CountryOrRegion"] = ExpressionConverter.ConvertO(itemhomeAddresscountryOrRegion);
-                homeAddressObjectpropCount++;
-            }
+                if (__workflow_itemcreatedTime != null)
+                {
+                    item["DateTimeCreated"] = ExpressionConverter.ConvertO(__workflow_itemcreatedTime);
+                    itempropCount++;
+                }
 
-            if (itemhomeAddresspostalCode != null)
-            {
-                homeAddressObject["PostalCode"] = ExpressionConverter.ConvertO(itemhomeAddresspostalCode);
-                homeAddressObjectpropCount++;
-            }
+                if (__workflow_itemlastModifiedTime != null)
+                {
+                    item["DateTimeLastModified"] = ExpressionConverter.ConvertO(__workflow_itemlastModifiedTime);
+                    itempropCount++;
+                }
 
-            if (homeAddressObjectpropCount > 0)
-            {
-                item["HomeAddress"] = homeAddressObject;
-                itempropCount++;
-            }
+                if (itempropCount > 0)
+                {
+                    callPayload.Body = item;
+                }
 
-            var businessAddressObject = new JObject();
-            var businessAddressObjectpropCount = 0;
-            if (itemhomeAddressstreet != null)
-            {
-                businessAddressObject["Street"] = ExpressionConverter.ConvertO(itemhomeAddressstreet);
-                businessAddressObjectpropCount++;
-            }
-
-            if (itemhomeAddresscity != null)
-            {
-                businessAddressObject["City"] = ExpressionConverter.ConvertO(itemhomeAddresscity);
-                businessAddressObjectpropCount++;
-            }
-
-            if (itemhomeAddressstate != null)
-            {
-                businessAddressObject["State"] = ExpressionConverter.ConvertO(itemhomeAddressstate);
-                businessAddressObjectpropCount++;
-            }
-
-            if (itemhomeAddresscountryOrRegion != null)
-            {
-                businessAddressObject["CountryOrRegion"] = ExpressionConverter.ConvertO(itemhomeAddresscountryOrRegion);
-                businessAddressObjectpropCount++;
-            }
-
-            if (itemhomeAddresspostalCode != null)
-            {
-                businessAddressObject["PostalCode"] = ExpressionConverter.ConvertO(itemhomeAddresspostalCode);
-                businessAddressObjectpropCount++;
-            }
-
-            if (businessAddressObjectpropCount > 0)
-            {
-                item["BusinessAddress"] = businessAddressObject;
-                itempropCount++;
-            }
-
-            var otherAddressObject = new JObject();
-            var otherAddressObjectpropCount = 0;
-            if (itemhomeAddressstreet != null)
-            {
-                otherAddressObject["Street"] = ExpressionConverter.ConvertO(itemhomeAddressstreet);
-                otherAddressObjectpropCount++;
-            }
-
-            if (itemhomeAddresscity != null)
-            {
-                otherAddressObject["City"] = ExpressionConverter.ConvertO(itemhomeAddresscity);
-                otherAddressObjectpropCount++;
-            }
-
-            if (itemhomeAddressstate != null)
-            {
-                otherAddressObject["State"] = ExpressionConverter.ConvertO(itemhomeAddressstate);
-                otherAddressObjectpropCount++;
-            }
-
-            if (itemhomeAddresscountryOrRegion != null)
-            {
-                otherAddressObject["CountryOrRegion"] = ExpressionConverter.ConvertO(itemhomeAddresscountryOrRegion);
-                otherAddressObjectpropCount++;
-            }
-
-            if (itemhomeAddresspostalCode != null)
-            {
-                otherAddressObject["PostalCode"] = ExpressionConverter.ConvertO(itemhomeAddresspostalCode);
-                otherAddressObjectpropCount++;
-            }
-
-            if (otherAddressObjectpropCount > 0)
-            {
-                item["OtherAddress"] = otherAddressObject;
-                itempropCount++;
-            }
-
-            if (itemyomiCompanyName != null)
-            {
-                item["YomiCompanyName"] = ExpressionConverter.ConvertO(itemyomiCompanyName);
-                itempropCount++;
-            }
-
-            if (itemyomiGivenName != null)
-            {
-                item["YomiGivenName"] = ExpressionConverter.ConvertO(itemyomiGivenName);
-                itempropCount++;
-            }
-
-            if (itemyomiSurname != null)
-            {
-                item["YomiSurname"] = ExpressionConverter.ConvertO(itemyomiSurname);
-                itempropCount++;
-            }
-
-            if (itemcategories != null)
-            {
-                item["Categories"] = ExpressionConverter.ConvertO(itemcategories);
-                itempropCount++;
-            }
-
-            if (itemchangeKey != null)
-            {
-                item["ChangeKey"] = ExpressionConverter.ConvertO(itemchangeKey);
-                itempropCount++;
-            }
-
-            if (itemcreatedTime != null)
-            {
-                item["DateTimeCreated"] = ExpressionConverter.ConvertO(itemcreatedTime);
-                itempropCount++;
-            }
-
-            if (itemlastModifiedTime != null)
-            {
-                item["DateTimeLastModified"] = ExpressionConverter.ConvertO(itemlastModifiedTime);
-                itempropCount++;
-            }
-
-            if (itempropCount > 0)
-            {
-                callPayload.Body = item;
-            }
-
-            return new ApiConnectionAction<ContactResponse>(callPayload);
+                return new ApiConnectionAction<ContactResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<ContactResponse> ContactGetItem(Expression<Func<string>> table, Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/datasets/contacts/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ContactResponse>(callPayload);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<ContactResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/contacts/tables/{0}/items/{1}", __workflow_table.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ContactResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction ContactDeleteItem(Expression<Func<string>> table, Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/datasets/contacts/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/contacts/tables/{0}/items/{1}", __workflow_table.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<ContactResponse> ContactPatchItem(Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<string>> itemgivenName, Expression<Func<string[]>> itemhomePhones, Expression<Func<string>> itemid = null, Expression<Func<string>> itemparentFolderId = null, Expression<Func<string>> itembirthday = null, Expression<Func<string>> itemfileAs = null, Expression<Func<string>> itemdisplayName = null, Expression<Func<string>> iteminitials = null, Expression<Func<string>> itemmiddleName = null, Expression<Func<string>> itemnickname = null, Expression<Func<string>> itemsurname = null, Expression<Func<string>> itemtitle = null, Expression<Func<string>> itemgeneration = null, Expression<Func<EmailAddress[]>> itememailAddresses = null, Expression<Func<string[]>> itemiMAddresses = null, Expression<Func<string>> itemjobTitle = null, Expression<Func<string>> itemcompanyName = null, Expression<Func<string>> itemdepartment = null, Expression<Func<string>> itemofficeLocation = null, Expression<Func<string>> itemprofession = null, Expression<Func<string>> itembusinessHomePage = null, Expression<Func<string>> itemassistantName = null, Expression<Func<string>> itemmanager = null, Expression<Func<string[]>> itembusinessPhones = null, Expression<Func<string>> itemmobilePhone = null, Expression<Func<string>> itemhomeAddressstreet = null, Expression<Func<string>> itemhomeAddresscity = null, Expression<Func<string>> itemhomeAddressstate = null, Expression<Func<string>> itemhomeAddresscountryOrRegion = null, Expression<Func<string>> itemhomeAddresspostalCode = null, Expression<Func<string>> itembusinessAddressstreet = null, Expression<Func<string>> itembusinessAddresscity = null, Expression<Func<string>> itembusinessAddressstate = null, Expression<Func<string>> itembusinessAddresscountryOrRegion = null, Expression<Func<string>> itembusinessAddresspostalCode = null, Expression<Func<string>> itemotherAddressstreet = null, Expression<Func<string>> itemotherAddresscity = null, Expression<Func<string>> itemotherAddressstate = null, Expression<Func<string>> itemotherAddresscountryOrRegion = null, Expression<Func<string>> itemotherAddresspostalCode = null, Expression<Func<string>> itemyomiCompanyName = null, Expression<Func<string>> itemyomiGivenName = null, Expression<Func<string>> itemyomiSurname = null, Expression<Func<string[]>> itemcategories = null, Expression<Func<string>> itemchangeKey = null, Expression<Func<string>> itemcreatedTime = null, Expression<Func<string>> itemlastModifiedTime = null)
         {
-            var apiCallPath = String.Format("/datasets/contacts/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var item = new JObject();
-            var itempropCount = 0;
-            if (itemid != null)
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_itemgivenName = WorkflowExpression.Compile(itemgivenName, nameof(itemgivenName), required: true);
+            var __workflow_itemhomePhones = WorkflowExpression.Compile(itemhomePhones, nameof(itemhomePhones), required: true);
+            var __workflow_itemid = WorkflowExpression.Compile(itemid, nameof(itemid), required: false);
+            var __workflow_itemparentFolderId = WorkflowExpression.Compile(itemparentFolderId, nameof(itemparentFolderId), required: false);
+            var __workflow_itembirthday = WorkflowExpression.Compile(itembirthday, nameof(itembirthday), required: false);
+            var __workflow_itemfileAs = WorkflowExpression.Compile(itemfileAs, nameof(itemfileAs), required: false);
+            var __workflow_itemdisplayName = WorkflowExpression.Compile(itemdisplayName, nameof(itemdisplayName), required: false);
+            var __workflow_iteminitials = WorkflowExpression.Compile(iteminitials, nameof(iteminitials), required: false);
+            var __workflow_itemmiddleName = WorkflowExpression.Compile(itemmiddleName, nameof(itemmiddleName), required: false);
+            var __workflow_itemnickname = WorkflowExpression.Compile(itemnickname, nameof(itemnickname), required: false);
+            var __workflow_itemsurname = WorkflowExpression.Compile(itemsurname, nameof(itemsurname), required: false);
+            var __workflow_itemtitle = WorkflowExpression.Compile(itemtitle, nameof(itemtitle), required: false);
+            var __workflow_itemgeneration = WorkflowExpression.Compile(itemgeneration, nameof(itemgeneration), required: false);
+            var __workflow_itememailAddresses = WorkflowExpression.Compile(itememailAddresses, nameof(itememailAddresses), required: false);
+            var __workflow_itemiMAddresses = WorkflowExpression.Compile(itemiMAddresses, nameof(itemiMAddresses), required: false);
+            var __workflow_itemjobTitle = WorkflowExpression.Compile(itemjobTitle, nameof(itemjobTitle), required: false);
+            var __workflow_itemcompanyName = WorkflowExpression.Compile(itemcompanyName, nameof(itemcompanyName), required: false);
+            var __workflow_itemdepartment = WorkflowExpression.Compile(itemdepartment, nameof(itemdepartment), required: false);
+            var __workflow_itemofficeLocation = WorkflowExpression.Compile(itemofficeLocation, nameof(itemofficeLocation), required: false);
+            var __workflow_itemprofession = WorkflowExpression.Compile(itemprofession, nameof(itemprofession), required: false);
+            var __workflow_itembusinessHomePage = WorkflowExpression.Compile(itembusinessHomePage, nameof(itembusinessHomePage), required: false);
+            var __workflow_itemassistantName = WorkflowExpression.Compile(itemassistantName, nameof(itemassistantName), required: false);
+            var __workflow_itemmanager = WorkflowExpression.Compile(itemmanager, nameof(itemmanager), required: false);
+            var __workflow_itembusinessPhones = WorkflowExpression.Compile(itembusinessPhones, nameof(itembusinessPhones), required: false);
+            var __workflow_itemmobilePhone = WorkflowExpression.Compile(itemmobilePhone, nameof(itemmobilePhone), required: false);
+            var __workflow_itemhomeAddressstreet = WorkflowExpression.Compile(itemhomeAddressstreet, nameof(itemhomeAddressstreet), required: false);
+            var __workflow_itemhomeAddresscity = WorkflowExpression.Compile(itemhomeAddresscity, nameof(itemhomeAddresscity), required: false);
+            var __workflow_itemhomeAddressstate = WorkflowExpression.Compile(itemhomeAddressstate, nameof(itemhomeAddressstate), required: false);
+            var __workflow_itemhomeAddresscountryOrRegion = WorkflowExpression.Compile(itemhomeAddresscountryOrRegion, nameof(itemhomeAddresscountryOrRegion), required: false);
+            var __workflow_itemhomeAddresspostalCode = WorkflowExpression.Compile(itemhomeAddresspostalCode, nameof(itemhomeAddresspostalCode), required: false);
+            var __workflow_itembusinessAddressstreet = WorkflowExpression.Compile(itembusinessAddressstreet, nameof(itembusinessAddressstreet), required: false);
+            var __workflow_itembusinessAddresscity = WorkflowExpression.Compile(itembusinessAddresscity, nameof(itembusinessAddresscity), required: false);
+            var __workflow_itembusinessAddressstate = WorkflowExpression.Compile(itembusinessAddressstate, nameof(itembusinessAddressstate), required: false);
+            var __workflow_itembusinessAddresscountryOrRegion = WorkflowExpression.Compile(itembusinessAddresscountryOrRegion, nameof(itembusinessAddresscountryOrRegion), required: false);
+            var __workflow_itembusinessAddresspostalCode = WorkflowExpression.Compile(itembusinessAddresspostalCode, nameof(itembusinessAddresspostalCode), required: false);
+            var __workflow_itemotherAddressstreet = WorkflowExpression.Compile(itemotherAddressstreet, nameof(itemotherAddressstreet), required: false);
+            var __workflow_itemotherAddresscity = WorkflowExpression.Compile(itemotherAddresscity, nameof(itemotherAddresscity), required: false);
+            var __workflow_itemotherAddressstate = WorkflowExpression.Compile(itemotherAddressstate, nameof(itemotherAddressstate), required: false);
+            var __workflow_itemotherAddresscountryOrRegion = WorkflowExpression.Compile(itemotherAddresscountryOrRegion, nameof(itemotherAddresscountryOrRegion), required: false);
+            var __workflow_itemotherAddresspostalCode = WorkflowExpression.Compile(itemotherAddresspostalCode, nameof(itemotherAddresspostalCode), required: false);
+            var __workflow_itemyomiCompanyName = WorkflowExpression.Compile(itemyomiCompanyName, nameof(itemyomiCompanyName), required: false);
+            var __workflow_itemyomiGivenName = WorkflowExpression.Compile(itemyomiGivenName, nameof(itemyomiGivenName), required: false);
+            var __workflow_itemyomiSurname = WorkflowExpression.Compile(itemyomiSurname, nameof(itemyomiSurname), required: false);
+            var __workflow_itemcategories = WorkflowExpression.Compile(itemcategories, nameof(itemcategories), required: false);
+            var __workflow_itemchangeKey = WorkflowExpression.Compile(itemchangeKey, nameof(itemchangeKey), required: false);
+            var __workflow_itemcreatedTime = WorkflowExpression.Compile(itemcreatedTime, nameof(itemcreatedTime), required: false);
+            var __workflow_itemlastModifiedTime = WorkflowExpression.Compile(itemlastModifiedTime, nameof(itemlastModifiedTime), required: false);
+            return new DeferredBodyAction<ContactResponse>(() =>
             {
-                item["Id"] = ExpressionConverter.ConvertO(itemid);
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/contacts/tables/{0}/items/{1}", __workflow_table.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var item = new JObject();
+                var itempropCount = 0;
+                if (__workflow_itemid != null)
+                {
+                    item["Id"] = ExpressionConverter.ConvertO(__workflow_itemid);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemparentFolderId != null)
+                {
+                    item["ParentFolderId"] = ExpressionConverter.ConvertO(__workflow_itemparentFolderId);
+                    itempropCount++;
+                }
+
+                if (__workflow_itembirthday != null)
+                {
+                    item["Birthday"] = ExpressionConverter.ConvertO(__workflow_itembirthday);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemfileAs != null)
+                {
+                    item["FileAs"] = ExpressionConverter.ConvertO(__workflow_itemfileAs);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemdisplayName != null)
+                {
+                    item["DisplayName"] = ExpressionConverter.ConvertO(__workflow_itemdisplayName);
+                    itempropCount++;
+                }
+
                 itempropCount++;
-            }
+                item["GivenName"] = ExpressionConverter.ConvertO(__workflow_itemgivenName);
+                if (__workflow_iteminitials != null)
+                {
+                    item["Initials"] = ExpressionConverter.ConvertO(__workflow_iteminitials);
+                    itempropCount++;
+                }
 
-            if (itemparentFolderId != null)
-            {
-                item["ParentFolderId"] = ExpressionConverter.ConvertO(itemparentFolderId);
+                if (__workflow_itemmiddleName != null)
+                {
+                    item["MiddleName"] = ExpressionConverter.ConvertO(__workflow_itemmiddleName);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemnickname != null)
+                {
+                    item["NickName"] = ExpressionConverter.ConvertO(__workflow_itemnickname);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemsurname != null)
+                {
+                    item["Surname"] = ExpressionConverter.ConvertO(__workflow_itemsurname);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemtitle != null)
+                {
+                    item["Title"] = ExpressionConverter.ConvertO(__workflow_itemtitle);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemgeneration != null)
+                {
+                    item["Generation"] = ExpressionConverter.ConvertO(__workflow_itemgeneration);
+                    itempropCount++;
+                }
+
+                if (__workflow_itememailAddresses != null)
+                {
+                    item["EmailAddresses"] = ExpressionConverter.ConvertO(__workflow_itememailAddresses);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemiMAddresses != null)
+                {
+                    item["ImAddresses"] = ExpressionConverter.ConvertO(__workflow_itemiMAddresses);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemjobTitle != null)
+                {
+                    item["JobTitle"] = ExpressionConverter.ConvertO(__workflow_itemjobTitle);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemcompanyName != null)
+                {
+                    item["CompanyName"] = ExpressionConverter.ConvertO(__workflow_itemcompanyName);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemdepartment != null)
+                {
+                    item["Department"] = ExpressionConverter.ConvertO(__workflow_itemdepartment);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemofficeLocation != null)
+                {
+                    item["OfficeLocation"] = ExpressionConverter.ConvertO(__workflow_itemofficeLocation);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemprofession != null)
+                {
+                    item["Profession"] = ExpressionConverter.ConvertO(__workflow_itemprofession);
+                    itempropCount++;
+                }
+
+                if (__workflow_itembusinessHomePage != null)
+                {
+                    item["BusinessHomePage"] = ExpressionConverter.ConvertO(__workflow_itembusinessHomePage);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemassistantName != null)
+                {
+                    item["AssistantName"] = ExpressionConverter.ConvertO(__workflow_itemassistantName);
+                    itempropCount++;
+                }
+
+                if (__workflow_itemmanager != null)
+                {
+                    item["Manager"] = ExpressionConverter.ConvertO(__workflow_itemmanager);
+                    itempropCount++;
+                }
+
                 itempropCount++;
-            }
+                item["HomePhones"] = ExpressionConverter.ConvertO(__workflow_itemhomePhones);
+                if (__workflow_itembusinessPhones != null)
+                {
+                    item["BusinessPhones"] = ExpressionConverter.ConvertO(__workflow_itembusinessPhones);
+                    itempropCount++;
+                }
 
-            if (itembirthday != null)
-            {
-                item["Birthday"] = ExpressionConverter.ConvertO(itembirthday);
-                itempropCount++;
-            }
+                if (__workflow_itemmobilePhone != null)
+                {
+                    item["MobilePhone1"] = ExpressionConverter.ConvertO(__workflow_itemmobilePhone);
+                    itempropCount++;
+                }
 
-            if (itemfileAs != null)
-            {
-                item["FileAs"] = ExpressionConverter.ConvertO(itemfileAs);
-                itempropCount++;
-            }
+                var homeAddressObject = new JObject();
+                var homeAddressObjectpropCount = 0;
+                if (__workflow_itemhomeAddressstreet != null)
+                {
+                    homeAddressObject["Street"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddressstreet);
+                    homeAddressObjectpropCount++;
+                }
 
-            if (itemdisplayName != null)
-            {
-                item["DisplayName"] = ExpressionConverter.ConvertO(itemdisplayName);
-                itempropCount++;
-            }
+                if (__workflow_itemhomeAddresscity != null)
+                {
+                    homeAddressObject["City"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresscity);
+                    homeAddressObjectpropCount++;
+                }
 
-            itempropCount++;
-            item["GivenName"] = ExpressionConverter.ConvertO(itemgivenName);
-            if (iteminitials != null)
-            {
-                item["Initials"] = ExpressionConverter.ConvertO(iteminitials);
-                itempropCount++;
-            }
+                if (__workflow_itemhomeAddressstate != null)
+                {
+                    homeAddressObject["State"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddressstate);
+                    homeAddressObjectpropCount++;
+                }
 
-            if (itemmiddleName != null)
-            {
-                item["MiddleName"] = ExpressionConverter.ConvertO(itemmiddleName);
-                itempropCount++;
-            }
+                if (__workflow_itemhomeAddresscountryOrRegion != null)
+                {
+                    homeAddressObject["CountryOrRegion"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresscountryOrRegion);
+                    homeAddressObjectpropCount++;
+                }
 
-            if (itemnickname != null)
-            {
-                item["NickName"] = ExpressionConverter.ConvertO(itemnickname);
-                itempropCount++;
-            }
+                if (__workflow_itemhomeAddresspostalCode != null)
+                {
+                    homeAddressObject["PostalCode"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresspostalCode);
+                    homeAddressObjectpropCount++;
+                }
 
-            if (itemsurname != null)
-            {
-                item["Surname"] = ExpressionConverter.ConvertO(itemsurname);
-                itempropCount++;
-            }
+                if (homeAddressObjectpropCount > 0)
+                {
+                    item["HomeAddress"] = homeAddressObject;
+                    itempropCount++;
+                }
 
-            if (itemtitle != null)
-            {
-                item["Title"] = ExpressionConverter.ConvertO(itemtitle);
-                itempropCount++;
-            }
+                var businessAddressObject = new JObject();
+                var businessAddressObjectpropCount = 0;
+                if (__workflow_itemhomeAddressstreet != null)
+                {
+                    businessAddressObject["Street"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddressstreet);
+                    businessAddressObjectpropCount++;
+                }
 
-            if (itemgeneration != null)
-            {
-                item["Generation"] = ExpressionConverter.ConvertO(itemgeneration);
-                itempropCount++;
-            }
+                if (__workflow_itemhomeAddresscity != null)
+                {
+                    businessAddressObject["City"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresscity);
+                    businessAddressObjectpropCount++;
+                }
 
-            if (itememailAddresses != null)
-            {
-                item["EmailAddresses"] = ExpressionConverter.ConvertO(itememailAddresses);
-                itempropCount++;
-            }
+                if (__workflow_itemhomeAddressstate != null)
+                {
+                    businessAddressObject["State"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddressstate);
+                    businessAddressObjectpropCount++;
+                }
 
-            if (itemiMAddresses != null)
-            {
-                item["ImAddresses"] = ExpressionConverter.ConvertO(itemiMAddresses);
-                itempropCount++;
-            }
+                if (__workflow_itemhomeAddresscountryOrRegion != null)
+                {
+                    businessAddressObject["CountryOrRegion"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresscountryOrRegion);
+                    businessAddressObjectpropCount++;
+                }
 
-            if (itemjobTitle != null)
-            {
-                item["JobTitle"] = ExpressionConverter.ConvertO(itemjobTitle);
-                itempropCount++;
-            }
+                if (__workflow_itemhomeAddresspostalCode != null)
+                {
+                    businessAddressObject["PostalCode"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresspostalCode);
+                    businessAddressObjectpropCount++;
+                }
 
-            if (itemcompanyName != null)
-            {
-                item["CompanyName"] = ExpressionConverter.ConvertO(itemcompanyName);
-                itempropCount++;
-            }
+                if (businessAddressObjectpropCount > 0)
+                {
+                    item["BusinessAddress"] = businessAddressObject;
+                    itempropCount++;
+                }
 
-            if (itemdepartment != null)
-            {
-                item["Department"] = ExpressionConverter.ConvertO(itemdepartment);
-                itempropCount++;
-            }
+                var otherAddressObject = new JObject();
+                var otherAddressObjectpropCount = 0;
+                if (__workflow_itemhomeAddressstreet != null)
+                {
+                    otherAddressObject["Street"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddressstreet);
+                    otherAddressObjectpropCount++;
+                }
 
-            if (itemofficeLocation != null)
-            {
-                item["OfficeLocation"] = ExpressionConverter.ConvertO(itemofficeLocation);
-                itempropCount++;
-            }
+                if (__workflow_itemhomeAddresscity != null)
+                {
+                    otherAddressObject["City"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresscity);
+                    otherAddressObjectpropCount++;
+                }
 
-            if (itemprofession != null)
-            {
-                item["Profession"] = ExpressionConverter.ConvertO(itemprofession);
-                itempropCount++;
-            }
+                if (__workflow_itemhomeAddressstate != null)
+                {
+                    otherAddressObject["State"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddressstate);
+                    otherAddressObjectpropCount++;
+                }
 
-            if (itembusinessHomePage != null)
-            {
-                item["BusinessHomePage"] = ExpressionConverter.ConvertO(itembusinessHomePage);
-                itempropCount++;
-            }
+                if (__workflow_itemhomeAddresscountryOrRegion != null)
+                {
+                    otherAddressObject["CountryOrRegion"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresscountryOrRegion);
+                    otherAddressObjectpropCount++;
+                }
 
-            if (itemassistantName != null)
-            {
-                item["AssistantName"] = ExpressionConverter.ConvertO(itemassistantName);
-                itempropCount++;
-            }
+                if (__workflow_itemhomeAddresspostalCode != null)
+                {
+                    otherAddressObject["PostalCode"] = ExpressionConverter.ConvertO(__workflow_itemhomeAddresspostalCode);
+                    otherAddressObjectpropCount++;
+                }
 
-            if (itemmanager != null)
-            {
-                item["Manager"] = ExpressionConverter.ConvertO(itemmanager);
-                itempropCount++;
-            }
+                if (otherAddressObjectpropCount > 0)
+                {
+                    item["OtherAddress"] = otherAddressObject;
+                    itempropCount++;
+                }
 
-            itempropCount++;
-            item["HomePhones"] = ExpressionConverter.ConvertO(itemhomePhones);
-            if (itembusinessPhones != null)
-            {
-                item["BusinessPhones"] = ExpressionConverter.ConvertO(itembusinessPhones);
-                itempropCount++;
-            }
+                if (__workflow_itemyomiCompanyName != null)
+                {
+                    item["YomiCompanyName"] = ExpressionConverter.ConvertO(__workflow_itemyomiCompanyName);
+                    itempropCount++;
+                }
 
-            if (itemmobilePhone != null)
-            {
-                item["MobilePhone1"] = ExpressionConverter.ConvertO(itemmobilePhone);
-                itempropCount++;
-            }
+                if (__workflow_itemyomiGivenName != null)
+                {
+                    item["YomiGivenName"] = ExpressionConverter.ConvertO(__workflow_itemyomiGivenName);
+                    itempropCount++;
+                }
 
-            var homeAddressObject = new JObject();
-            var homeAddressObjectpropCount = 0;
-            if (itemhomeAddressstreet != null)
-            {
-                homeAddressObject["Street"] = ExpressionConverter.ConvertO(itemhomeAddressstreet);
-                homeAddressObjectpropCount++;
-            }
+                if (__workflow_itemyomiSurname != null)
+                {
+                    item["YomiSurname"] = ExpressionConverter.ConvertO(__workflow_itemyomiSurname);
+                    itempropCount++;
+                }
 
-            if (itemhomeAddresscity != null)
-            {
-                homeAddressObject["City"] = ExpressionConverter.ConvertO(itemhomeAddresscity);
-                homeAddressObjectpropCount++;
-            }
+                if (__workflow_itemcategories != null)
+                {
+                    item["Categories"] = ExpressionConverter.ConvertO(__workflow_itemcategories);
+                    itempropCount++;
+                }
 
-            if (itemhomeAddressstate != null)
-            {
-                homeAddressObject["State"] = ExpressionConverter.ConvertO(itemhomeAddressstate);
-                homeAddressObjectpropCount++;
-            }
+                if (__workflow_itemchangeKey != null)
+                {
+                    item["ChangeKey"] = ExpressionConverter.ConvertO(__workflow_itemchangeKey);
+                    itempropCount++;
+                }
 
-            if (itemhomeAddresscountryOrRegion != null)
-            {
-                homeAddressObject["CountryOrRegion"] = ExpressionConverter.ConvertO(itemhomeAddresscountryOrRegion);
-                homeAddressObjectpropCount++;
-            }
+                if (__workflow_itemcreatedTime != null)
+                {
+                    item["DateTimeCreated"] = ExpressionConverter.ConvertO(__workflow_itemcreatedTime);
+                    itempropCount++;
+                }
 
-            if (itemhomeAddresspostalCode != null)
-            {
-                homeAddressObject["PostalCode"] = ExpressionConverter.ConvertO(itemhomeAddresspostalCode);
-                homeAddressObjectpropCount++;
-            }
+                if (__workflow_itemlastModifiedTime != null)
+                {
+                    item["DateTimeLastModified"] = ExpressionConverter.ConvertO(__workflow_itemlastModifiedTime);
+                    itempropCount++;
+                }
 
-            if (homeAddressObjectpropCount > 0)
-            {
-                item["HomeAddress"] = homeAddressObject;
-                itempropCount++;
-            }
+                if (itempropCount > 0)
+                {
+                    callPayload.Body = item;
+                }
 
-            var businessAddressObject = new JObject();
-            var businessAddressObjectpropCount = 0;
-            if (itemhomeAddressstreet != null)
-            {
-                businessAddressObject["Street"] = ExpressionConverter.ConvertO(itemhomeAddressstreet);
-                businessAddressObjectpropCount++;
-            }
-
-            if (itemhomeAddresscity != null)
-            {
-                businessAddressObject["City"] = ExpressionConverter.ConvertO(itemhomeAddresscity);
-                businessAddressObjectpropCount++;
-            }
-
-            if (itemhomeAddressstate != null)
-            {
-                businessAddressObject["State"] = ExpressionConverter.ConvertO(itemhomeAddressstate);
-                businessAddressObjectpropCount++;
-            }
-
-            if (itemhomeAddresscountryOrRegion != null)
-            {
-                businessAddressObject["CountryOrRegion"] = ExpressionConverter.ConvertO(itemhomeAddresscountryOrRegion);
-                businessAddressObjectpropCount++;
-            }
-
-            if (itemhomeAddresspostalCode != null)
-            {
-                businessAddressObject["PostalCode"] = ExpressionConverter.ConvertO(itemhomeAddresspostalCode);
-                businessAddressObjectpropCount++;
-            }
-
-            if (businessAddressObjectpropCount > 0)
-            {
-                item["BusinessAddress"] = businessAddressObject;
-                itempropCount++;
-            }
-
-            var otherAddressObject = new JObject();
-            var otherAddressObjectpropCount = 0;
-            if (itemhomeAddressstreet != null)
-            {
-                otherAddressObject["Street"] = ExpressionConverter.ConvertO(itemhomeAddressstreet);
-                otherAddressObjectpropCount++;
-            }
-
-            if (itemhomeAddresscity != null)
-            {
-                otherAddressObject["City"] = ExpressionConverter.ConvertO(itemhomeAddresscity);
-                otherAddressObjectpropCount++;
-            }
-
-            if (itemhomeAddressstate != null)
-            {
-                otherAddressObject["State"] = ExpressionConverter.ConvertO(itemhomeAddressstate);
-                otherAddressObjectpropCount++;
-            }
-
-            if (itemhomeAddresscountryOrRegion != null)
-            {
-                otherAddressObject["CountryOrRegion"] = ExpressionConverter.ConvertO(itemhomeAddresscountryOrRegion);
-                otherAddressObjectpropCount++;
-            }
-
-            if (itemhomeAddresspostalCode != null)
-            {
-                otherAddressObject["PostalCode"] = ExpressionConverter.ConvertO(itemhomeAddresspostalCode);
-                otherAddressObjectpropCount++;
-            }
-
-            if (otherAddressObjectpropCount > 0)
-            {
-                item["OtherAddress"] = otherAddressObject;
-                itempropCount++;
-            }
-
-            if (itemyomiCompanyName != null)
-            {
-                item["YomiCompanyName"] = ExpressionConverter.ConvertO(itemyomiCompanyName);
-                itempropCount++;
-            }
-
-            if (itemyomiGivenName != null)
-            {
-                item["YomiGivenName"] = ExpressionConverter.ConvertO(itemyomiGivenName);
-                itempropCount++;
-            }
-
-            if (itemyomiSurname != null)
-            {
-                item["YomiSurname"] = ExpressionConverter.ConvertO(itemyomiSurname);
-                itempropCount++;
-            }
-
-            if (itemcategories != null)
-            {
-                item["Categories"] = ExpressionConverter.ConvertO(itemcategories);
-                itempropCount++;
-            }
-
-            if (itemchangeKey != null)
-            {
-                item["ChangeKey"] = ExpressionConverter.ConvertO(itemchangeKey);
-                itempropCount++;
-            }
-
-            if (itemcreatedTime != null)
-            {
-                item["DateTimeCreated"] = ExpressionConverter.ConvertO(itemcreatedTime);
-                itempropCount++;
-            }
-
-            if (itemlastModifiedTime != null)
-            {
-                item["DateTimeLastModified"] = ExpressionConverter.ConvertO(itemlastModifiedTime);
-                itempropCount++;
-            }
-
-            if (itempropCount > 0)
-            {
-                callPayload.Body = item;
-            }
-
-            return new ApiConnectionAction<ContactResponse>(callPayload);
+                return new ApiConnectionAction<ContactResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction RespondToEvent(Expression<Func<string>> eventId, Expression<Func<responseInput>> response, Expression<Func<string>> bodycomment = null, Expression<Func<bool>> bodysendResponse = null)
         {
-            var apiCallPath = String.Format("/codeless/api/v2.0/me/events/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(eventId, 1), ExpressionConverter.ConvertWithUrlEncoding(response, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycomment != null)
+            var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
+            var __workflow_response = WorkflowExpression.Compile(response, nameof(response), required: true);
+            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_bodysendResponse = WorkflowExpression.Compile(bodysendResponse, nameof(bodysendResponse), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["Comment"] = ExpressionConverter.ConvertO(bodycomment);
-                bodypropCount++;
-            }
-
-            if (bodysendResponse != null)
-            {
-                if (bodysendResponse != null)
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codeless/api/v2.0/me/events/{0}/{1}", __workflow_eventId.WithUrlEncoding(1), __workflow_response.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodycomment != null)
                 {
-                    body["SendResponse"] = ExpressionConverter.ConvertO(bodysendResponse);
+                    body["Comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["SendResponse"] = true;
-                bodypropCount++;
-            }
+                if (__workflow_bodysendResponse != null)
+                {
+                    if (__workflow_bodysendResponse != null)
+                    {
+                        body["SendResponse"] = ExpressionConverter.ConvertO(__workflow_bodysendResponse);
+                        bodypropCount++;
+                    }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["SendResponse"] = true;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction ForwardEmail(Expression<Func<string>> messageId, Expression<Func<string>> bodyto, Expression<Func<string>> bodycomment = null)
         {
-            var apiCallPath = String.Format("/codeless/api/v2.0/me/messages/{0}/forward", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycomment != null)
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
+            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["Comment"] = ExpressionConverter.ConvertO(bodycomment);
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/codeless/api/v2.0/me/messages/{0}/forward", __workflow_messageId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodycomment != null)
+                {
+                    body["Comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["ToRecipients"] = ExpressionConverter.ConvertO(__workflow_bodyto);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            bodypropCount++;
-            body["ToRecipients"] = ExpressionConverter.ConvertO(bodyto);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<CalendarEventClientReceiveStringEnums> CalendarGetItem(Expression<Func<string>> table, Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/datasets/calendars/v2/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CalendarEventClientReceiveStringEnums>(callPayload);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<CalendarEventClientReceiveStringEnums>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/calendars/v2/tables/{0}/items/{1}", __workflow_table.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CalendarEventClientReceiveStringEnums>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<CalendarEventListClientReceive> CalendarGetItems(Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
-            var apiCallPath = String.Format("/datasets/calendars/v3/tables/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionAction<CalendarEventListClientReceive>(callPayload);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            return new DeferredBodyAction<CalendarEventListClientReceive>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/calendars/v3/tables/{0}/items", __workflow_table.WithUrlEncoding(2)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(__workflow_orderby);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
+                return new ApiConnectionAction<CalendarEventListClientReceive>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<CalendarEventClientReceiveStringEnums> CalendarPatchItem(Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<string>> itemsubject, Expression<Func<string>> itemstartTime, Expression<Func<string>> itemendTime, Expression<Func<itemtimeZoneInput>> itemtimeZone = null, Expression<Func<string>> itemrequiredAttendees = null, Expression<Func<string>> itemoptionalAttendees = null, Expression<Func<string>> itemresourceAttendees = null, Expression<Func<string>> itembody = null, Expression<Func<string>> itemlocation = null, Expression<Func<itemimportanceInput>> itemimportance = null, Expression<Func<bool>> itemisAllDayEvent = null, Expression<Func<itemrecurrenceInput>> itemrecurrence = null, Expression<Func<string>> itemrecurrenceEndTime = null, Expression<Func<int>> itemnumberOfOccurrences = null, Expression<Func<int>> itemreminder = null, Expression<Func<itemshowAsInput>> itemshowAs = null, Expression<Func<bool>> itemresponseRequested = null)
         {
-            var apiCallPath = String.Format("/datasets/calendars/v3/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var item = new JObject();
-            var itempropCount = 0;
-            itempropCount++;
-            item["Subject"] = ExpressionConverter.ConvertO(itemsubject);
-            itempropCount++;
-            item["Start"] = ExpressionConverter.ConvertO(itemstartTime);
-            itempropCount++;
-            item["End"] = ExpressionConverter.ConvertO(itemendTime);
-            if (itemtimeZone != null)
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_itemsubject = WorkflowExpression.Compile(itemsubject, nameof(itemsubject), required: true);
+            var __workflow_itemstartTime = WorkflowExpression.Compile(itemstartTime, nameof(itemstartTime), required: true);
+            var __workflow_itemendTime = WorkflowExpression.Compile(itemendTime, nameof(itemendTime), required: true);
+            var __workflow_itemtimeZone = WorkflowExpression.Compile(itemtimeZone, nameof(itemtimeZone), required: false);
+            var __workflow_itemrequiredAttendees = WorkflowExpression.Compile(itemrequiredAttendees, nameof(itemrequiredAttendees), required: false);
+            var __workflow_itemoptionalAttendees = WorkflowExpression.Compile(itemoptionalAttendees, nameof(itemoptionalAttendees), required: false);
+            var __workflow_itemresourceAttendees = WorkflowExpression.Compile(itemresourceAttendees, nameof(itemresourceAttendees), required: false);
+            var __workflow_itembody = WorkflowExpression.Compile(itembody, nameof(itembody), required: false);
+            var __workflow_itemlocation = WorkflowExpression.Compile(itemlocation, nameof(itemlocation), required: false);
+            var __workflow_itemimportance = WorkflowExpression.Compile(itemimportance, nameof(itemimportance), required: false);
+            var __workflow_itemisAllDayEvent = WorkflowExpression.Compile(itemisAllDayEvent, nameof(itemisAllDayEvent), required: false);
+            var __workflow_itemrecurrence = WorkflowExpression.Compile(itemrecurrence, nameof(itemrecurrence), required: false);
+            var __workflow_itemrecurrenceEndTime = WorkflowExpression.Compile(itemrecurrenceEndTime, nameof(itemrecurrenceEndTime), required: false);
+            var __workflow_itemnumberOfOccurrences = WorkflowExpression.Compile(itemnumberOfOccurrences, nameof(itemnumberOfOccurrences), required: false);
+            var __workflow_itemreminder = WorkflowExpression.Compile(itemreminder, nameof(itemreminder), required: false);
+            var __workflow_itemshowAs = WorkflowExpression.Compile(itemshowAs, nameof(itemshowAs), required: false);
+            var __workflow_itemresponseRequested = WorkflowExpression.Compile(itemresponseRequested, nameof(itemresponseRequested), required: false);
+            return new DeferredBodyAction<CalendarEventClientReceiveStringEnums>(() =>
             {
-                item["TimeZone"] = ExpressionConverter.ConvertO(itemtimeZone);
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/calendars/v3/tables/{0}/items/{1}", __workflow_table.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var item = new JObject();
+                var itempropCount = 0;
                 itempropCount++;
-            }
-
-            if (itemrequiredAttendees != null)
-            {
-                item["RequiredAttendees"] = ExpressionConverter.ConvertO(itemrequiredAttendees);
+                item["Subject"] = ExpressionConverter.ConvertO(__workflow_itemsubject);
                 itempropCount++;
-            }
-
-            if (itemoptionalAttendees != null)
-            {
-                item["OptionalAttendees"] = ExpressionConverter.ConvertO(itemoptionalAttendees);
+                item["Start"] = ExpressionConverter.ConvertO(__workflow_itemstartTime);
                 itempropCount++;
-            }
+                item["End"] = ExpressionConverter.ConvertO(__workflow_itemendTime);
+                if (__workflow_itemtimeZone != null)
+                {
+                    item["TimeZone"] = ExpressionConverter.ConvertO(__workflow_itemtimeZone);
+                    itempropCount++;
+                }
 
-            if (itemresourceAttendees != null)
-            {
-                item["ResourceAttendees"] = ExpressionConverter.ConvertO(itemresourceAttendees);
-                itempropCount++;
-            }
+                if (__workflow_itemrequiredAttendees != null)
+                {
+                    item["RequiredAttendees"] = ExpressionConverter.ConvertO(__workflow_itemrequiredAttendees);
+                    itempropCount++;
+                }
 
-            if (itembody != null)
-            {
-                item["Body"] = ExpressionConverter.ConvertO(itembody);
-                itempropCount++;
-            }
+                if (__workflow_itemoptionalAttendees != null)
+                {
+                    item["OptionalAttendees"] = ExpressionConverter.ConvertO(__workflow_itemoptionalAttendees);
+                    itempropCount++;
+                }
 
-            if (itemlocation != null)
-            {
-                item["Location"] = ExpressionConverter.ConvertO(itemlocation);
-                itempropCount++;
-            }
+                if (__workflow_itemresourceAttendees != null)
+                {
+                    item["ResourceAttendees"] = ExpressionConverter.ConvertO(__workflow_itemresourceAttendees);
+                    itempropCount++;
+                }
 
-            if (itemimportance != null)
-            {
-                item["Importance"] = ExpressionConverter.ConvertO(itemimportance);
-                itempropCount++;
-            }
+                if (__workflow_itembody != null)
+                {
+                    item["Body"] = ExpressionConverter.ConvertO(__workflow_itembody);
+                    itempropCount++;
+                }
 
-            if (itemisAllDayEvent != null)
-            {
-                item["IsAllDay"] = ExpressionConverter.ConvertO(itemisAllDayEvent);
-                itempropCount++;
-            }
+                if (__workflow_itemlocation != null)
+                {
+                    item["Location"] = ExpressionConverter.ConvertO(__workflow_itemlocation);
+                    itempropCount++;
+                }
 
-            if (itemrecurrence != null)
-            {
-                item["Recurrence"] = ExpressionConverter.ConvertO(itemrecurrence);
-                itempropCount++;
-            }
+                if (__workflow_itemimportance != null)
+                {
+                    item["Importance"] = ExpressionConverter.ConvertO(__workflow_itemimportance);
+                    itempropCount++;
+                }
 
-            if (itemrecurrenceEndTime != null)
-            {
-                item["RecurrenceEnd"] = ExpressionConverter.ConvertO(itemrecurrenceEndTime);
-                itempropCount++;
-            }
+                if (__workflow_itemisAllDayEvent != null)
+                {
+                    item["IsAllDay"] = ExpressionConverter.ConvertO(__workflow_itemisAllDayEvent);
+                    itempropCount++;
+                }
 
-            if (itemnumberOfOccurrences != null)
-            {
-                item["NumberOfOccurrences"] = ExpressionConverter.ConvertO(itemnumberOfOccurrences);
-                itempropCount++;
-            }
+                if (__workflow_itemrecurrence != null)
+                {
+                    item["Recurrence"] = ExpressionConverter.ConvertO(__workflow_itemrecurrence);
+                    itempropCount++;
+                }
 
-            if (itemreminder != null)
-            {
-                item["Reminder"] = ExpressionConverter.ConvertO(itemreminder);
-                itempropCount++;
-            }
+                if (__workflow_itemrecurrenceEndTime != null)
+                {
+                    item["RecurrenceEnd"] = ExpressionConverter.ConvertO(__workflow_itemrecurrenceEndTime);
+                    itempropCount++;
+                }
 
-            if (itemshowAs != null)
-            {
-                item["ShowAs"] = ExpressionConverter.ConvertO(itemshowAs);
-                itempropCount++;
-            }
+                if (__workflow_itemnumberOfOccurrences != null)
+                {
+                    item["NumberOfOccurrences"] = ExpressionConverter.ConvertO(__workflow_itemnumberOfOccurrences);
+                    itempropCount++;
+                }
 
-            if (itemresponseRequested != null)
-            {
-                item["ResponseRequested"] = ExpressionConverter.ConvertO(itemresponseRequested);
-                itempropCount++;
-            }
+                if (__workflow_itemreminder != null)
+                {
+                    item["Reminder"] = ExpressionConverter.ConvertO(__workflow_itemreminder);
+                    itempropCount++;
+                }
 
-            if (itempropCount > 0)
-            {
-                callPayload.Body = item;
-            }
+                if (__workflow_itemshowAs != null)
+                {
+                    item["ShowAs"] = ExpressionConverter.ConvertO(__workflow_itemshowAs);
+                    itempropCount++;
+                }
 
-            return new ApiConnectionAction<CalendarEventClientReceiveStringEnums>(callPayload);
+                if (__workflow_itemresponseRequested != null)
+                {
+                    item["ResponseRequested"] = ExpressionConverter.ConvertO(__workflow_itemresponseRequested);
+                    itempropCount++;
+                }
+
+                if (itempropCount > 0)
+                {
+                    callPayload.Body = item;
+                }
+
+                return new ApiConnectionAction<CalendarEventClientReceiveStringEnums>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<CalendarEventClientReceiveStringEnums> CalendarPostItem(Expression<Func<string>> table, Expression<Func<string>> itemsubject, Expression<Func<string>> itemstartTime, Expression<Func<string>> itemendTime, Expression<Func<itemtimeZoneInput>> itemtimeZone = null, Expression<Func<string>> itemrequiredAttendees = null, Expression<Func<string>> itemoptionalAttendees = null, Expression<Func<string>> itemresourceAttendees = null, Expression<Func<string>> itembody = null, Expression<Func<string>> itemlocation = null, Expression<Func<itemimportanceInput>> itemimportance = null, Expression<Func<bool>> itemisAllDayEvent = null, Expression<Func<itemrecurrenceInput>> itemrecurrence = null, Expression<Func<string>> itemrecurrenceEndTime = null, Expression<Func<int>> itemnumberOfOccurrences = null, Expression<Func<int>> itemreminder = null, Expression<Func<itemshowAsInput>> itemshowAs = null, Expression<Func<bool>> itemresponseRequested = null)
         {
-            var apiCallPath = String.Format("/datasets/calendars/v3/tables/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var item = new JObject();
-            var itempropCount = 0;
-            itempropCount++;
-            item["Subject"] = ExpressionConverter.ConvertO(itemsubject);
-            itempropCount++;
-            item["Start"] = ExpressionConverter.ConvertO(itemstartTime);
-            itempropCount++;
-            item["End"] = ExpressionConverter.ConvertO(itemendTime);
-            if (itemtimeZone != null)
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_itemsubject = WorkflowExpression.Compile(itemsubject, nameof(itemsubject), required: true);
+            var __workflow_itemstartTime = WorkflowExpression.Compile(itemstartTime, nameof(itemstartTime), required: true);
+            var __workflow_itemendTime = WorkflowExpression.Compile(itemendTime, nameof(itemendTime), required: true);
+            var __workflow_itemtimeZone = WorkflowExpression.Compile(itemtimeZone, nameof(itemtimeZone), required: false);
+            var __workflow_itemrequiredAttendees = WorkflowExpression.Compile(itemrequiredAttendees, nameof(itemrequiredAttendees), required: false);
+            var __workflow_itemoptionalAttendees = WorkflowExpression.Compile(itemoptionalAttendees, nameof(itemoptionalAttendees), required: false);
+            var __workflow_itemresourceAttendees = WorkflowExpression.Compile(itemresourceAttendees, nameof(itemresourceAttendees), required: false);
+            var __workflow_itembody = WorkflowExpression.Compile(itembody, nameof(itembody), required: false);
+            var __workflow_itemlocation = WorkflowExpression.Compile(itemlocation, nameof(itemlocation), required: false);
+            var __workflow_itemimportance = WorkflowExpression.Compile(itemimportance, nameof(itemimportance), required: false);
+            var __workflow_itemisAllDayEvent = WorkflowExpression.Compile(itemisAllDayEvent, nameof(itemisAllDayEvent), required: false);
+            var __workflow_itemrecurrence = WorkflowExpression.Compile(itemrecurrence, nameof(itemrecurrence), required: false);
+            var __workflow_itemrecurrenceEndTime = WorkflowExpression.Compile(itemrecurrenceEndTime, nameof(itemrecurrenceEndTime), required: false);
+            var __workflow_itemnumberOfOccurrences = WorkflowExpression.Compile(itemnumberOfOccurrences, nameof(itemnumberOfOccurrences), required: false);
+            var __workflow_itemreminder = WorkflowExpression.Compile(itemreminder, nameof(itemreminder), required: false);
+            var __workflow_itemshowAs = WorkflowExpression.Compile(itemshowAs, nameof(itemshowAs), required: false);
+            var __workflow_itemresponseRequested = WorkflowExpression.Compile(itemresponseRequested, nameof(itemresponseRequested), required: false);
+            return new DeferredBodyAction<CalendarEventClientReceiveStringEnums>(() =>
             {
-                item["TimeZone"] = ExpressionConverter.ConvertO(itemtimeZone);
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/calendars/v3/tables/{0}/items", __workflow_table.WithUrlEncoding(2)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var item = new JObject();
+                var itempropCount = 0;
                 itempropCount++;
-            }
-
-            if (itemrequiredAttendees != null)
-            {
-                item["RequiredAttendees"] = ExpressionConverter.ConvertO(itemrequiredAttendees);
+                item["Subject"] = ExpressionConverter.ConvertO(__workflow_itemsubject);
                 itempropCount++;
-            }
-
-            if (itemoptionalAttendees != null)
-            {
-                item["OptionalAttendees"] = ExpressionConverter.ConvertO(itemoptionalAttendees);
+                item["Start"] = ExpressionConverter.ConvertO(__workflow_itemstartTime);
                 itempropCount++;
-            }
+                item["End"] = ExpressionConverter.ConvertO(__workflow_itemendTime);
+                if (__workflow_itemtimeZone != null)
+                {
+                    item["TimeZone"] = ExpressionConverter.ConvertO(__workflow_itemtimeZone);
+                    itempropCount++;
+                }
 
-            if (itemresourceAttendees != null)
-            {
-                item["ResourceAttendees"] = ExpressionConverter.ConvertO(itemresourceAttendees);
-                itempropCount++;
-            }
+                if (__workflow_itemrequiredAttendees != null)
+                {
+                    item["RequiredAttendees"] = ExpressionConverter.ConvertO(__workflow_itemrequiredAttendees);
+                    itempropCount++;
+                }
 
-            if (itembody != null)
-            {
-                item["Body"] = ExpressionConverter.ConvertO(itembody);
-                itempropCount++;
-            }
+                if (__workflow_itemoptionalAttendees != null)
+                {
+                    item["OptionalAttendees"] = ExpressionConverter.ConvertO(__workflow_itemoptionalAttendees);
+                    itempropCount++;
+                }
 
-            if (itemlocation != null)
-            {
-                item["Location"] = ExpressionConverter.ConvertO(itemlocation);
-                itempropCount++;
-            }
+                if (__workflow_itemresourceAttendees != null)
+                {
+                    item["ResourceAttendees"] = ExpressionConverter.ConvertO(__workflow_itemresourceAttendees);
+                    itempropCount++;
+                }
 
-            if (itemimportance != null)
-            {
-                item["Importance"] = ExpressionConverter.ConvertO(itemimportance);
-                itempropCount++;
-            }
+                if (__workflow_itembody != null)
+                {
+                    item["Body"] = ExpressionConverter.ConvertO(__workflow_itembody);
+                    itempropCount++;
+                }
 
-            if (itemisAllDayEvent != null)
-            {
-                item["IsAllDay"] = ExpressionConverter.ConvertO(itemisAllDayEvent);
-                itempropCount++;
-            }
+                if (__workflow_itemlocation != null)
+                {
+                    item["Location"] = ExpressionConverter.ConvertO(__workflow_itemlocation);
+                    itempropCount++;
+                }
 
-            if (itemrecurrence != null)
-            {
-                item["Recurrence"] = ExpressionConverter.ConvertO(itemrecurrence);
-                itempropCount++;
-            }
+                if (__workflow_itemimportance != null)
+                {
+                    item["Importance"] = ExpressionConverter.ConvertO(__workflow_itemimportance);
+                    itempropCount++;
+                }
 
-            if (itemrecurrenceEndTime != null)
-            {
-                item["RecurrenceEnd"] = ExpressionConverter.ConvertO(itemrecurrenceEndTime);
-                itempropCount++;
-            }
+                if (__workflow_itemisAllDayEvent != null)
+                {
+                    item["IsAllDay"] = ExpressionConverter.ConvertO(__workflow_itemisAllDayEvent);
+                    itempropCount++;
+                }
 
-            if (itemnumberOfOccurrences != null)
-            {
-                item["NumberOfOccurrences"] = ExpressionConverter.ConvertO(itemnumberOfOccurrences);
-                itempropCount++;
-            }
+                if (__workflow_itemrecurrence != null)
+                {
+                    item["Recurrence"] = ExpressionConverter.ConvertO(__workflow_itemrecurrence);
+                    itempropCount++;
+                }
 
-            if (itemreminder != null)
-            {
-                item["Reminder"] = ExpressionConverter.ConvertO(itemreminder);
-                itempropCount++;
-            }
+                if (__workflow_itemrecurrenceEndTime != null)
+                {
+                    item["RecurrenceEnd"] = ExpressionConverter.ConvertO(__workflow_itemrecurrenceEndTime);
+                    itempropCount++;
+                }
 
-            if (itemshowAs != null)
-            {
-                item["ShowAs"] = ExpressionConverter.ConvertO(itemshowAs);
-                itempropCount++;
-            }
+                if (__workflow_itemnumberOfOccurrences != null)
+                {
+                    item["NumberOfOccurrences"] = ExpressionConverter.ConvertO(__workflow_itemnumberOfOccurrences);
+                    itempropCount++;
+                }
 
-            if (itemresponseRequested != null)
-            {
-                item["ResponseRequested"] = ExpressionConverter.ConvertO(itemresponseRequested);
-                itempropCount++;
-            }
+                if (__workflow_itemreminder != null)
+                {
+                    item["Reminder"] = ExpressionConverter.ConvertO(__workflow_itemreminder);
+                    itempropCount++;
+                }
 
-            if (itempropCount > 0)
-            {
-                callPayload.Body = item;
-            }
+                if (__workflow_itemshowAs != null)
+                {
+                    item["ShowAs"] = ExpressionConverter.ConvertO(__workflow_itemshowAs);
+                    itempropCount++;
+                }
 
-            return new ApiConnectionAction<CalendarEventClientReceiveStringEnums>(callPayload);
+                if (__workflow_itemresponseRequested != null)
+                {
+                    item["ResponseRequested"] = ExpressionConverter.ConvertO(__workflow_itemresponseRequested);
+                    itempropCount++;
+                }
+
+                if (itempropCount > 0)
+                {
+                    callPayload.Body = item;
+                }
+
+                return new ApiConnectionAction<CalendarEventClientReceiveStringEnums>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<BatchResponseClientReceiveMessage> GetEmails(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<string>> subjectFilter = null, Expression<Func<bool>> fetchOnlyUnread = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> searchQuery = null, Expression<Func<int>> top = null)
         {
-            var apiCallPath = "/v2/Mail";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folderPath"] = Convert.ToString("Inbox");
-            if (folderPath != null)
-                callPayload.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
-            if (to != null)
-                callPayload.Queries["to"] = ExpressionConverter.Convert(to);
-            if (cc != null)
-                callPayload.Queries["cc"] = ExpressionConverter.Convert(cc);
-            if (toOrCc != null)
-                callPayload.Queries["toOrCc"] = ExpressionConverter.Convert(toOrCc);
-            if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-            callPayload.Queries["importance"] = Convert.ToString("Any");
-            if (importance != null)
-                callPayload.Queries["importance"] = ExpressionConverter.Convert(importance);
-            callPayload.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
-            if (fetchOnlyWithAttachment != null)
-                callPayload.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(fetchOnlyWithAttachment);
-            if (subjectFilter != null)
-                callPayload.Queries["subjectFilter"] = ExpressionConverter.Convert(subjectFilter);
-            callPayload.Queries["fetchOnlyUnread"] = Convert.ToString(true);
-            if (fetchOnlyUnread != null)
-                callPayload.Queries["fetchOnlyUnread"] = ExpressionConverter.Convert(fetchOnlyUnread);
-            callPayload.Queries["fetchOnlyFlagged"] = Convert.ToString(false);
-            callPayload.Queries["includeAttachments"] = Convert.ToString(false);
-            if (includeAttachments != null)
-                callPayload.Queries["includeAttachments"] = ExpressionConverter.Convert(includeAttachments);
-            if (searchQuery != null)
-                callPayload.Queries["searchQuery"] = ExpressionConverter.Convert(searchQuery);
-            callPayload.Queries["top"] = Convert.ToString(10);
-            if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-            return new ApiConnectionAction<BatchResponseClientReceiveMessage>(callPayload);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
+            var __workflow_cc = WorkflowExpression.Compile(cc, nameof(cc), required: false);
+            var __workflow_toOrCc = WorkflowExpression.Compile(toOrCc, nameof(toOrCc), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_importance = WorkflowExpression.Compile(importance, nameof(importance), required: false);
+            var __workflow_fetchOnlyWithAttachment = WorkflowExpression.Compile(fetchOnlyWithAttachment, nameof(fetchOnlyWithAttachment), required: false);
+            var __workflow_subjectFilter = WorkflowExpression.Compile(subjectFilter, nameof(subjectFilter), required: false);
+            var __workflow_fetchOnlyUnread = WorkflowExpression.Compile(fetchOnlyUnread, nameof(fetchOnlyUnread), required: false);
+            var __workflow_includeAttachments = WorkflowExpression.Compile(includeAttachments, nameof(includeAttachments), required: false);
+            var __workflow_searchQuery = WorkflowExpression.Compile(searchQuery, nameof(searchQuery), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            return new DeferredBodyAction<BatchResponseClientReceiveMessage>(() =>
+            {
+                var apiCallPath = "/v2/Mail";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["folderPath"] = Convert.ToString("Inbox");
+                if (__workflow_folderPath != null)
+                    callPayload.Queries["folderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
+                if (__workflow_to != null)
+                    callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
+                if (__workflow_cc != null)
+                    callPayload.Queries["cc"] = ExpressionConverter.Convert(__workflow_cc);
+                if (__workflow_toOrCc != null)
+                    callPayload.Queries["toOrCc"] = ExpressionConverter.Convert(__workflow_toOrCc);
+                if (__workflow_from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
+                callPayload.Queries["importance"] = Convert.ToString("Any");
+                if (__workflow_importance != null)
+                    callPayload.Queries["importance"] = ExpressionConverter.Convert(__workflow_importance);
+                callPayload.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
+                if (__workflow_fetchOnlyWithAttachment != null)
+                    callPayload.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(__workflow_fetchOnlyWithAttachment);
+                if (__workflow_subjectFilter != null)
+                    callPayload.Queries["subjectFilter"] = ExpressionConverter.Convert(__workflow_subjectFilter);
+                callPayload.Queries["fetchOnlyUnread"] = Convert.ToString(true);
+                if (__workflow_fetchOnlyUnread != null)
+                    callPayload.Queries["fetchOnlyUnread"] = ExpressionConverter.Convert(__workflow_fetchOnlyUnread);
+                callPayload.Queries["fetchOnlyFlagged"] = Convert.ToString(false);
+                callPayload.Queries["includeAttachments"] = Convert.ToString(false);
+                if (__workflow_includeAttachments != null)
+                    callPayload.Queries["includeAttachments"] = ExpressionConverter.Convert(__workflow_includeAttachments);
+                if (__workflow_searchQuery != null)
+                    callPayload.Queries["searchQuery"] = ExpressionConverter.Convert(__workflow_searchQuery);
+                callPayload.Queries["top"] = Convert.ToString(10);
+                if (__workflow_top != null)
+                    callPayload.Queries["top"] = ExpressionConverter.Convert(__workflow_top);
+                return new ApiConnectionAction<BatchResponseClientReceiveMessage>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<EntityListResponseCalendarEventClientReceiveStringEnums> GetEventsCalendarView(Expression<Func<string>> calendarId, Expression<Func<string>> startDateTimeOffset, Expression<Func<string>> endDateTimeOffset, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> search = null)
         {
-            var apiCallPath = "/datasets/calendars/v2/tables/items/calendarview";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["calendarId"] = ExpressionConverter.Convert(calendarId);
-            callPayload.Queries["startDateTimeOffset"] = ExpressionConverter.Convert(startDateTimeOffset);
-            callPayload.Queries["endDateTimeOffset"] = ExpressionConverter.Convert(endDateTimeOffset);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-            return new ApiConnectionAction<EntityListResponseCalendarEventClientReceiveStringEnums>(callPayload);
+            var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
+            var __workflow_startDateTimeOffset = WorkflowExpression.Compile(startDateTimeOffset, nameof(startDateTimeOffset), required: true);
+            var __workflow_endDateTimeOffset = WorkflowExpression.Compile(endDateTimeOffset, nameof(endDateTimeOffset), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            return new DeferredBodyAction<EntityListResponseCalendarEventClientReceiveStringEnums>(() =>
+            {
+                var apiCallPath = "/datasets/calendars/v2/tables/items/calendarview";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["calendarId"] = ExpressionConverter.Convert(__workflow_calendarId);
+                callPayload.Queries["startDateTimeOffset"] = ExpressionConverter.Convert(__workflow_startDateTimeOffset);
+                callPayload.Queries["endDateTimeOffset"] = ExpressionConverter.Convert(__workflow_endDateTimeOffset);
+                if (__workflow_filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(__workflow_orderby);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
+                if (__workflow_search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
+                return new ApiConnectionAction<EntityListResponseCalendarEventClientReceiveStringEnums>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction ReplyTo(Expression<Func<string>> messageId, Expression<Func<string>> replyParametersto = null, Expression<Func<string>> replyParameterscC = null, Expression<Func<string>> replyParametersbCC = null, Expression<Func<string>> replyParameterssubject = null, Expression<Func<string>> replyParametersbody = null, Expression<Func<bool>> replyParametersreplyAll = null, Expression<Func<replyParametersimportanceInput>> replyParametersimportance = null, Expression<Func<ClientSendAttachment[]>> replyParametersattachments = null)
         {
-            var apiCallPath = String.Format("/v3/Mail/ReplyTo/{0}", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var replyParameters = new JObject();
-            var replyParameterspropCount = 0;
-            if (replyParametersto != null)
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            var __workflow_replyParametersto = WorkflowExpression.Compile(replyParametersto, nameof(replyParametersto), required: false);
+            var __workflow_replyParameterscC = WorkflowExpression.Compile(replyParameterscC, nameof(replyParameterscC), required: false);
+            var __workflow_replyParametersbCC = WorkflowExpression.Compile(replyParametersbCC, nameof(replyParametersbCC), required: false);
+            var __workflow_replyParameterssubject = WorkflowExpression.Compile(replyParameterssubject, nameof(replyParameterssubject), required: false);
+            var __workflow_replyParametersbody = WorkflowExpression.Compile(replyParametersbody, nameof(replyParametersbody), required: false);
+            var __workflow_replyParametersreplyAll = WorkflowExpression.Compile(replyParametersreplyAll, nameof(replyParametersreplyAll), required: false);
+            var __workflow_replyParametersimportance = WorkflowExpression.Compile(replyParametersimportance, nameof(replyParametersimportance), required: false);
+            var __workflow_replyParametersattachments = WorkflowExpression.Compile(replyParametersattachments, nameof(replyParametersattachments), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                replyParameters["To"] = ExpressionConverter.ConvertO(replyParametersto);
-                replyParameterspropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/Mail/ReplyTo/{0}", __workflow_messageId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var replyParameters = new JObject();
+                var replyParameterspropCount = 0;
+                if (__workflow_replyParametersto != null)
+                {
+                    replyParameters["To"] = ExpressionConverter.ConvertO(__workflow_replyParametersto);
+                    replyParameterspropCount++;
+                }
 
-            if (replyParameterscC != null)
-            {
-                replyParameters["Cc"] = ExpressionConverter.ConvertO(replyParameterscC);
-                replyParameterspropCount++;
-            }
+                if (__workflow_replyParameterscC != null)
+                {
+                    replyParameters["Cc"] = ExpressionConverter.ConvertO(__workflow_replyParameterscC);
+                    replyParameterspropCount++;
+                }
 
-            if (replyParametersbCC != null)
-            {
-                replyParameters["Bcc"] = ExpressionConverter.ConvertO(replyParametersbCC);
-                replyParameterspropCount++;
-            }
+                if (__workflow_replyParametersbCC != null)
+                {
+                    replyParameters["Bcc"] = ExpressionConverter.ConvertO(__workflow_replyParametersbCC);
+                    replyParameterspropCount++;
+                }
 
-            if (replyParameterssubject != null)
-            {
-                replyParameters["Subject"] = ExpressionConverter.ConvertO(replyParameterssubject);
-                replyParameterspropCount++;
-            }
+                if (__workflow_replyParameterssubject != null)
+                {
+                    replyParameters["Subject"] = ExpressionConverter.ConvertO(__workflow_replyParameterssubject);
+                    replyParameterspropCount++;
+                }
 
-            if (replyParametersbody != null)
-            {
-                replyParameters["Body"] = ExpressionConverter.ConvertO(replyParametersbody);
-                replyParameterspropCount++;
-            }
+                if (__workflow_replyParametersbody != null)
+                {
+                    replyParameters["Body"] = ExpressionConverter.ConvertO(__workflow_replyParametersbody);
+                    replyParameterspropCount++;
+                }
 
-            if (replyParametersreplyAll != null)
-            {
-                replyParameters["ReplyAll"] = ExpressionConverter.ConvertO(replyParametersreplyAll);
-                replyParameterspropCount++;
-            }
+                if (__workflow_replyParametersreplyAll != null)
+                {
+                    replyParameters["ReplyAll"] = ExpressionConverter.ConvertO(__workflow_replyParametersreplyAll);
+                    replyParameterspropCount++;
+                }
 
-            if (replyParametersimportance != null)
-            {
-                replyParameters["Importance"] = ExpressionConverter.ConvertO(replyParametersimportance);
-                replyParameterspropCount++;
-            }
+                if (__workflow_replyParametersimportance != null)
+                {
+                    replyParameters["Importance"] = ExpressionConverter.ConvertO(__workflow_replyParametersimportance);
+                    replyParameterspropCount++;
+                }
 
-            if (replyParametersattachments != null)
-            {
-                replyParameters["Attachments"] = ExpressionConverter.ConvertO(replyParametersattachments);
-                replyParameterspropCount++;
-            }
+                if (__workflow_replyParametersattachments != null)
+                {
+                    replyParameters["Attachments"] = ExpressionConverter.ConvertO(__workflow_replyParametersattachments);
+                    replyParameterspropCount++;
+                }
 
-            if (replyParameterspropCount > 0)
-            {
-                callPayload.Body = replyParameters;
-            }
+                if (replyParameterspropCount > 0)
+                {
+                    callPayload.Body = replyParameters;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction SendEmail(Expression<Func<string>> emailMessageto, Expression<Func<string>> emailMessagesubject, Expression<Func<string>> emailMessagebody, Expression<Func<string>> emailMessagefromSendAs = null, Expression<Func<string>> emailMessagecC = null, Expression<Func<string>> emailMessagebCC = null, Expression<Func<ClientSendAttachment[]>> emailMessageattachments = null, Expression<Func<string>> emailMessagereplyTo = null, Expression<Func<emailMessageimportanceInput>> emailMessageimportance = null)
         {
-            var apiCallPath = "/v2/Mail";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var emailMessage = new JObject();
-            var emailMessagepropCount = 0;
-            emailMessagepropCount++;
-            emailMessage["To"] = ExpressionConverter.ConvertO(emailMessageto);
-            emailMessagepropCount++;
-            emailMessage["Subject"] = ExpressionConverter.ConvertO(emailMessagesubject);
-            emailMessagepropCount++;
-            emailMessage["Body"] = ExpressionConverter.ConvertO(emailMessagebody);
-            if (emailMessagefromSendAs != null)
+            var __workflow_emailMessageto = WorkflowExpression.Compile(emailMessageto, nameof(emailMessageto), required: true);
+            var __workflow_emailMessagesubject = WorkflowExpression.Compile(emailMessagesubject, nameof(emailMessagesubject), required: true);
+            var __workflow_emailMessagebody = WorkflowExpression.Compile(emailMessagebody, nameof(emailMessagebody), required: true);
+            var __workflow_emailMessagefromSendAs = WorkflowExpression.Compile(emailMessagefromSendAs, nameof(emailMessagefromSendAs), required: false);
+            var __workflow_emailMessagecC = WorkflowExpression.Compile(emailMessagecC, nameof(emailMessagecC), required: false);
+            var __workflow_emailMessagebCC = WorkflowExpression.Compile(emailMessagebCC, nameof(emailMessagebCC), required: false);
+            var __workflow_emailMessageattachments = WorkflowExpression.Compile(emailMessageattachments, nameof(emailMessageattachments), required: false);
+            var __workflow_emailMessagereplyTo = WorkflowExpression.Compile(emailMessagereplyTo, nameof(emailMessagereplyTo), required: false);
+            var __workflow_emailMessageimportance = WorkflowExpression.Compile(emailMessageimportance, nameof(emailMessageimportance), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                emailMessage["From"] = ExpressionConverter.ConvertO(emailMessagefromSendAs);
+                var apiCallPath = "/v2/Mail";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var emailMessage = new JObject();
+                var emailMessagepropCount = 0;
                 emailMessagepropCount++;
-            }
-
-            if (emailMessagecC != null)
-            {
-                emailMessage["Cc"] = ExpressionConverter.ConvertO(emailMessagecC);
+                emailMessage["To"] = ExpressionConverter.ConvertO(__workflow_emailMessageto);
                 emailMessagepropCount++;
-            }
-
-            if (emailMessagebCC != null)
-            {
-                emailMessage["Bcc"] = ExpressionConverter.ConvertO(emailMessagebCC);
+                emailMessage["Subject"] = ExpressionConverter.ConvertO(__workflow_emailMessagesubject);
                 emailMessagepropCount++;
-            }
-
-            if (emailMessageattachments != null)
-            {
-                emailMessage["Attachments"] = ExpressionConverter.ConvertO(emailMessageattachments);
-                emailMessagepropCount++;
-            }
-
-            if (emailMessagereplyTo != null)
-            {
-                emailMessage["ReplyTo"] = ExpressionConverter.ConvertO(emailMessagereplyTo);
-                emailMessagepropCount++;
-            }
-
-            if (emailMessageimportance != null)
-            {
-                if (emailMessageimportance != null)
+                emailMessage["Body"] = ExpressionConverter.ConvertO(__workflow_emailMessagebody);
+                if (__workflow_emailMessagefromSendAs != null)
                 {
-                    emailMessage["Importance"] = ExpressionConverter.ConvertO(emailMessageimportance);
+                    emailMessage["From"] = ExpressionConverter.ConvertO(__workflow_emailMessagefromSendAs);
                     emailMessagepropCount++;
                 }
 
-                emailMessagepropCount++;
-            }
-            else
-            {
-                emailMessage["Importance"] = "Normal";
-                emailMessagepropCount++;
-            }
+                if (__workflow_emailMessagecC != null)
+                {
+                    emailMessage["Cc"] = ExpressionConverter.ConvertO(__workflow_emailMessagecC);
+                    emailMessagepropCount++;
+                }
 
-            if (emailMessagepropCount > 0)
-            {
-                callPayload.Body = emailMessage;
-            }
+                if (__workflow_emailMessagebCC != null)
+                {
+                    emailMessage["Bcc"] = ExpressionConverter.ConvertO(__workflow_emailMessagebCC);
+                    emailMessagepropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (__workflow_emailMessageattachments != null)
+                {
+                    emailMessage["Attachments"] = ExpressionConverter.ConvertO(__workflow_emailMessageattachments);
+                    emailMessagepropCount++;
+                }
+
+                if (__workflow_emailMessagereplyTo != null)
+                {
+                    emailMessage["ReplyTo"] = ExpressionConverter.ConvertO(__workflow_emailMessagereplyTo);
+                    emailMessagepropCount++;
+                }
+
+                if (__workflow_emailMessageimportance != null)
+                {
+                    if (__workflow_emailMessageimportance != null)
+                    {
+                        emailMessage["Importance"] = ExpressionConverter.ConvertO(__workflow_emailMessageimportance);
+                        emailMessagepropCount++;
+                    }
+
+                    emailMessagepropCount++;
+                }
+                else
+                {
+                    emailMessage["Importance"] = "Normal";
+                    emailMessagepropCount++;
+                }
+
+                if (emailMessagepropCount > 0)
+                {
+                    callPayload.Body = emailMessage;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 
     public class OutlookTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CalendarEventListWithActionType> CalendarGetOnChangedItems(Expression<Func<string>> table, Expression<Func<int>> incomingDays = null, Expression<Func<int>> pastDays = null, string triggerName = null)
+        public IBodyWorkflowTrigger<CalendarEventListWithActionType> CalendarGetOnChangedItems(Expression<Func<string>> table, Expression<Func<int>> incomingDays = null, Expression<Func<int>> pastDays = null)
         {
-            var input = new ApiConnectionNotificationActionInput(connectionId);
-            input.Fetch = new ApiConnectionNotificationRecurrenceActionInput()
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_incomingDays = WorkflowExpression.Compile(incomingDays, nameof(incomingDays), required: false);
+            var __workflow_pastDays = WorkflowExpression.Compile(pastDays, nameof(pastDays), required: false);
+            return new DeferredBodyTrigger<CalendarEventListWithActionType>(() =>
             {
-                Queries = new Dictionary<string, string>(),
-                Headers = new Dictionary<string, string>(),
-                PathTemplate = new PathTemplate
+                var input = new ApiConnectionNotificationActionInput(connectionId);
+                input.Fetch = new ApiConnectionNotificationRecurrenceActionInput()
                 {
-                    Template = "/datasets/calendars/v2/tables/{0}/onchangeditems"
-                },
-                Method = "get",
-            };
-            input.Fetch.Queries["incomingDays"] = Convert.ToString(300);
-            if (incomingDays != null)
-                input.Fetch.Queries["incomingDays"] = ExpressionConverter.Convert(incomingDays);
-            input.Fetch.Queries["pastDays"] = Convert.ToString(50);
-            if (pastDays != null)
-                input.Fetch.Queries["pastDays"] = ExpressionConverter.Convert(pastDays);
-            input.Subscribe = new ApiConnectionNotificationWebhookActionInput()
-            {
-                Queries = new Dictionary<string, string>(),
-                Headers = new Dictionary<string, string>(),
-                PathTemplate = new PathTemplate
+                    Queries = new Dictionary<string, string>(),
+                    Headers = new Dictionary<string, string>(),
+                    PathTemplate = new PathTemplate
+                    {
+                        Template = "/datasets/calendars/v2/tables/{0}/onchangeditems"
+                    },
+                    Method = "get",
+                };
+                input.Fetch.Queries["incomingDays"] = Convert.ToString(300);
+                if (__workflow_incomingDays != null)
+                    input.Fetch.Queries["incomingDays"] = ExpressionConverter.Convert(__workflow_incomingDays);
+                input.Fetch.Queries["pastDays"] = Convert.ToString(50);
+                if (__workflow_pastDays != null)
+                    input.Fetch.Queries["pastDays"] = ExpressionConverter.Convert(__workflow_pastDays);
+                input.Subscribe = new ApiConnectionNotificationWebhookActionInput()
                 {
-                    Template = "/{0}/EventSubscriptionPoke/$subscriptions"
-                },
-                Method = "post",
-            };
-            input.Subscribe.Queries["incomingDays"] = Convert.ToString(300);
-            if (incomingDays != null)
-                input.Subscribe.Queries["incomingDays"] = ExpressionConverter.Convert(incomingDays);
-            input.Subscribe.Queries["pastDays"] = Convert.ToString(50);
-            if (pastDays != null)
-                input.Subscribe.Queries["pastDays"] = ExpressionConverter.Convert(pastDays);
-            var subscription = new JObject();
-            var subscriptionpropCount = 0;
-            subscription["NotificationUrl"] = "@listCallbackUrl()";
-            subscriptionpropCount++;
-            if (subscriptionpropCount > 0)
-            {
-                input.Subscribe.Body = subscription;
-            }
+                    Queries = new Dictionary<string, string>(),
+                    Headers = new Dictionary<string, string>(),
+                    PathTemplate = new PathTemplate
+                    {
+                        Template = "/{0}/EventSubscriptionPoke/$subscriptions"
+                    },
+                    Method = "post",
+                };
+                input.Subscribe.Queries["incomingDays"] = Convert.ToString(300);
+                if (__workflow_incomingDays != null)
+                    input.Subscribe.Queries["incomingDays"] = ExpressionConverter.Convert(__workflow_incomingDays);
+                input.Subscribe.Queries["pastDays"] = Convert.ToString(50);
+                if (__workflow_pastDays != null)
+                    input.Subscribe.Queries["pastDays"] = ExpressionConverter.Convert(__workflow_pastDays);
+                var subscription = new JObject();
+                var subscriptionpropCount = 0;
+                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
+                subscriptionpropCount++;
+                if (subscriptionpropCount > 0)
+                {
+                    input.Subscribe.Body = subscription;
+                }
 
-            return new ApiConnectionTrigger<CalendarEventListWithActionType>(input);
+                return new ApiConnectionTrigger<CalendarEventListWithActionType>(input);
+            });
         }
 
-        public IBodyWorkflowTrigger<CalendarEventListClientReceive> CalendarGetOnNewItems(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CalendarEventListClientReceive> CalendarGetOnNewItems(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/datasets/calendars/v2/tables/{0}/onnewitems", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionTrigger<CalendarEventListClientReceive>(callPayload, triggerName, recurrence);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            return new DeferredBodyTrigger<CalendarEventListClientReceive>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/calendars/v2/tables/{0}/onnewitems", __workflow_table.WithUrlEncoding(2)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(__workflow_orderby);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
+                return new ApiConnectionTrigger<CalendarEventListClientReceive>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<CalendarEventListClientReceive> CalendarGetOnUpdatedItems(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CalendarEventListClientReceive> CalendarGetOnUpdatedItems(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/datasets/calendars/v2/tables/{0}/onupdateditems", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionTrigger<CalendarEventListClientReceive>(callPayload, triggerName, recurrence);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            return new DeferredBodyTrigger<CalendarEventListClientReceive>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/calendars/v2/tables/{0}/onupdateditems", __workflow_table.WithUrlEncoding(2)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(__workflow_orderby);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
+                return new ApiConnectionTrigger<CalendarEventListClientReceive>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnFlaggedEmail(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null, string triggerName = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnFlaggedEmail(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
         {
-            var input = new ApiConnectionNotificationActionInput(connectionId);
-            input.Fetch = new ApiConnectionNotificationRecurrenceActionInput()
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
+            var __workflow_cc = WorkflowExpression.Compile(cc, nameof(cc), required: false);
+            var __workflow_toOrCc = WorkflowExpression.Compile(toOrCc, nameof(toOrCc), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_importance = WorkflowExpression.Compile(importance, nameof(importance), required: false);
+            var __workflow_fetchOnlyWithAttachment = WorkflowExpression.Compile(fetchOnlyWithAttachment, nameof(fetchOnlyWithAttachment), required: false);
+            var __workflow_includeAttachments = WorkflowExpression.Compile(includeAttachments, nameof(includeAttachments), required: false);
+            var __workflow_subjectFilter = WorkflowExpression.Compile(subjectFilter, nameof(subjectFilter), required: false);
+            return new DeferredBodyTrigger<TriggerBatchResponseClientReceiveMessage>(() =>
             {
-                Queries = new Dictionary<string, string>(),
-                Headers = new Dictionary<string, string>(),
-                PathTemplate = new PathTemplate
+                var input = new ApiConnectionNotificationActionInput(connectionId);
+                input.Fetch = new ApiConnectionNotificationRecurrenceActionInput()
                 {
-                    Template = "/v2/Mail/OnFlaggedEmail"
-                },
-                Method = "get",
-            };
-            input.Fetch.Queries["folderPath"] = Convert.ToString("Inbox");
-            if (folderPath != null)
-                input.Fetch.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
-            if (to != null)
-                input.Fetch.Queries["to"] = ExpressionConverter.Convert(to);
-            if (cc != null)
-                input.Fetch.Queries["cc"] = ExpressionConverter.Convert(cc);
-            if (toOrCc != null)
-                input.Fetch.Queries["toOrCc"] = ExpressionConverter.Convert(toOrCc);
-            if (from != null)
-                input.Fetch.Queries["from"] = ExpressionConverter.Convert(from);
-            input.Fetch.Queries["importance"] = Convert.ToString("Any");
-            if (importance != null)
-                input.Fetch.Queries["importance"] = ExpressionConverter.Convert(importance);
-            input.Fetch.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
-            if (fetchOnlyWithAttachment != null)
-                input.Fetch.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(fetchOnlyWithAttachment);
-            input.Fetch.Queries["includeAttachments"] = Convert.ToString(false);
-            if (includeAttachments != null)
-                input.Fetch.Queries["includeAttachments"] = ExpressionConverter.Convert(includeAttachments);
-            if (subjectFilter != null)
-                input.Fetch.Queries["subjectFilter"] = ExpressionConverter.Convert(subjectFilter);
-            input.Subscribe = new ApiConnectionNotificationWebhookActionInput()
-            {
-                Queries = new Dictionary<string, string>(),
-                Headers = new Dictionary<string, string>(),
-                PathTemplate = new PathTemplate
+                    Queries = new Dictionary<string, string>(),
+                    Headers = new Dictionary<string, string>(),
+                    PathTemplate = new PathTemplate
+                    {
+                        Template = "/v2/Mail/OnFlaggedEmail"
+                    },
+                    Method = "get",
+                };
+                input.Fetch.Queries["folderPath"] = Convert.ToString("Inbox");
+                if (__workflow_folderPath != null)
+                    input.Fetch.Queries["folderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
+                if (__workflow_to != null)
+                    input.Fetch.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
+                if (__workflow_cc != null)
+                    input.Fetch.Queries["cc"] = ExpressionConverter.Convert(__workflow_cc);
+                if (__workflow_toOrCc != null)
+                    input.Fetch.Queries["toOrCc"] = ExpressionConverter.Convert(__workflow_toOrCc);
+                if (__workflow_from != null)
+                    input.Fetch.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
+                input.Fetch.Queries["importance"] = Convert.ToString("Any");
+                if (__workflow_importance != null)
+                    input.Fetch.Queries["importance"] = ExpressionConverter.Convert(__workflow_importance);
+                input.Fetch.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
+                if (__workflow_fetchOnlyWithAttachment != null)
+                    input.Fetch.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(__workflow_fetchOnlyWithAttachment);
+                input.Fetch.Queries["includeAttachments"] = Convert.ToString(false);
+                if (__workflow_includeAttachments != null)
+                    input.Fetch.Queries["includeAttachments"] = ExpressionConverter.Convert(__workflow_includeAttachments);
+                if (__workflow_subjectFilter != null)
+                    input.Fetch.Queries["subjectFilter"] = ExpressionConverter.Convert(__workflow_subjectFilter);
+                input.Subscribe = new ApiConnectionNotificationWebhookActionInput()
                 {
-                    Template = "/FlaggedMailSubscriptionPoke/$subscriptions"
-                },
-                Method = "post",
-            };
-            input.Subscribe.Queries["folderPath"] = Convert.ToString("Inbox");
-            if (folderPath != null)
-                input.Subscribe.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
-            input.Subscribe.Queries["importance"] = Convert.ToString("Any");
-            if (importance != null)
-                input.Subscribe.Queries["importance"] = ExpressionConverter.Convert(importance);
-            input.Subscribe.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
-            if (fetchOnlyWithAttachment != null)
-                input.Subscribe.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(fetchOnlyWithAttachment);
-            var subscription = new JObject();
-            var subscriptionpropCount = 0;
-            subscription["NotificationUrl"] = "@listCallbackUrl()";
-            subscriptionpropCount++;
-            if (subscriptionpropCount > 0)
-            {
-                input.Subscribe.Body = subscription;
-            }
+                    Queries = new Dictionary<string, string>(),
+                    Headers = new Dictionary<string, string>(),
+                    PathTemplate = new PathTemplate
+                    {
+                        Template = "/FlaggedMailSubscriptionPoke/$subscriptions"
+                    },
+                    Method = "post",
+                };
+                input.Subscribe.Queries["folderPath"] = Convert.ToString("Inbox");
+                if (__workflow_folderPath != null)
+                    input.Subscribe.Queries["folderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
+                input.Subscribe.Queries["importance"] = Convert.ToString("Any");
+                if (__workflow_importance != null)
+                    input.Subscribe.Queries["importance"] = ExpressionConverter.Convert(__workflow_importance);
+                input.Subscribe.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
+                if (__workflow_fetchOnlyWithAttachment != null)
+                    input.Subscribe.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(__workflow_fetchOnlyWithAttachment);
+                var subscription = new JObject();
+                var subscriptionpropCount = 0;
+                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
+                subscriptionpropCount++;
+                if (subscriptionpropCount > 0)
+                {
+                    input.Subscribe.Body = subscription;
+                }
 
-            return new ApiConnectionTrigger<TriggerBatchResponseClientReceiveMessage>(input);
+                return new ApiConnectionTrigger<TriggerBatchResponseClientReceiveMessage>(input);
+            });
         }
 
-        public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnNewEmail(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null, string triggerName = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnNewEmail(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
         {
-            var input = new ApiConnectionNotificationActionInput(connectionId);
-            input.Fetch = new ApiConnectionNotificationRecurrenceActionInput()
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
+            var __workflow_cc = WorkflowExpression.Compile(cc, nameof(cc), required: false);
+            var __workflow_toOrCc = WorkflowExpression.Compile(toOrCc, nameof(toOrCc), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_importance = WorkflowExpression.Compile(importance, nameof(importance), required: false);
+            var __workflow_fetchOnlyWithAttachment = WorkflowExpression.Compile(fetchOnlyWithAttachment, nameof(fetchOnlyWithAttachment), required: false);
+            var __workflow_includeAttachments = WorkflowExpression.Compile(includeAttachments, nameof(includeAttachments), required: false);
+            var __workflow_subjectFilter = WorkflowExpression.Compile(subjectFilter, nameof(subjectFilter), required: false);
+            return new DeferredBodyTrigger<TriggerBatchResponseClientReceiveMessage>(() =>
             {
-                Queries = new Dictionary<string, string>(),
-                Headers = new Dictionary<string, string>(),
-                PathTemplate = new PathTemplate
+                var input = new ApiConnectionNotificationActionInput(connectionId);
+                input.Fetch = new ApiConnectionNotificationRecurrenceActionInput()
                 {
-                    Template = "/v2/Mail/OnNewEmail"
-                },
-                Method = "get",
-            };
-            input.Fetch.Queries["folderPath"] = Convert.ToString("Inbox");
-            if (folderPath != null)
-                input.Fetch.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
-            if (to != null)
-                input.Fetch.Queries["to"] = ExpressionConverter.Convert(to);
-            if (cc != null)
-                input.Fetch.Queries["cc"] = ExpressionConverter.Convert(cc);
-            if (toOrCc != null)
-                input.Fetch.Queries["toOrCc"] = ExpressionConverter.Convert(toOrCc);
-            if (from != null)
-                input.Fetch.Queries["from"] = ExpressionConverter.Convert(from);
-            input.Fetch.Queries["importance"] = Convert.ToString("Any");
-            if (importance != null)
-                input.Fetch.Queries["importance"] = ExpressionConverter.Convert(importance);
-            input.Fetch.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
-            if (fetchOnlyWithAttachment != null)
-                input.Fetch.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(fetchOnlyWithAttachment);
-            input.Fetch.Queries["includeAttachments"] = Convert.ToString(false);
-            if (includeAttachments != null)
-                input.Fetch.Queries["includeAttachments"] = ExpressionConverter.Convert(includeAttachments);
-            if (subjectFilter != null)
-                input.Fetch.Queries["subjectFilter"] = ExpressionConverter.Convert(subjectFilter);
-            input.Subscribe = new ApiConnectionNotificationWebhookActionInput()
-            {
-                Queries = new Dictionary<string, string>(),
-                Headers = new Dictionary<string, string>(),
-                PathTemplate = new PathTemplate
+                    Queries = new Dictionary<string, string>(),
+                    Headers = new Dictionary<string, string>(),
+                    PathTemplate = new PathTemplate
+                    {
+                        Template = "/v2/Mail/OnNewEmail"
+                    },
+                    Method = "get",
+                };
+                input.Fetch.Queries["folderPath"] = Convert.ToString("Inbox");
+                if (__workflow_folderPath != null)
+                    input.Fetch.Queries["folderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
+                if (__workflow_to != null)
+                    input.Fetch.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
+                if (__workflow_cc != null)
+                    input.Fetch.Queries["cc"] = ExpressionConverter.Convert(__workflow_cc);
+                if (__workflow_toOrCc != null)
+                    input.Fetch.Queries["toOrCc"] = ExpressionConverter.Convert(__workflow_toOrCc);
+                if (__workflow_from != null)
+                    input.Fetch.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
+                input.Fetch.Queries["importance"] = Convert.ToString("Any");
+                if (__workflow_importance != null)
+                    input.Fetch.Queries["importance"] = ExpressionConverter.Convert(__workflow_importance);
+                input.Fetch.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
+                if (__workflow_fetchOnlyWithAttachment != null)
+                    input.Fetch.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(__workflow_fetchOnlyWithAttachment);
+                input.Fetch.Queries["includeAttachments"] = Convert.ToString(false);
+                if (__workflow_includeAttachments != null)
+                    input.Fetch.Queries["includeAttachments"] = ExpressionConverter.Convert(__workflow_includeAttachments);
+                if (__workflow_subjectFilter != null)
+                    input.Fetch.Queries["subjectFilter"] = ExpressionConverter.Convert(__workflow_subjectFilter);
+                input.Subscribe = new ApiConnectionNotificationWebhookActionInput()
                 {
-                    Template = "/MailSubscriptionPoke/$subscriptions"
-                },
-                Method = "post",
-            };
-            input.Subscribe.Queries["folderPath"] = Convert.ToString("Inbox");
-            if (folderPath != null)
-                input.Subscribe.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
-            input.Subscribe.Queries["importance"] = Convert.ToString("Any");
-            if (importance != null)
-                input.Subscribe.Queries["importance"] = ExpressionConverter.Convert(importance);
-            input.Subscribe.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
-            if (fetchOnlyWithAttachment != null)
-                input.Subscribe.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(fetchOnlyWithAttachment);
-            var subscription = new JObject();
-            var subscriptionpropCount = 0;
-            subscription["NotificationUrl"] = "@listCallbackUrl()";
-            subscriptionpropCount++;
-            if (subscriptionpropCount > 0)
-            {
-                input.Subscribe.Body = subscription;
-            }
+                    Queries = new Dictionary<string, string>(),
+                    Headers = new Dictionary<string, string>(),
+                    PathTemplate = new PathTemplate
+                    {
+                        Template = "/MailSubscriptionPoke/$subscriptions"
+                    },
+                    Method = "post",
+                };
+                input.Subscribe.Queries["folderPath"] = Convert.ToString("Inbox");
+                if (__workflow_folderPath != null)
+                    input.Subscribe.Queries["folderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
+                input.Subscribe.Queries["importance"] = Convert.ToString("Any");
+                if (__workflow_importance != null)
+                    input.Subscribe.Queries["importance"] = ExpressionConverter.Convert(__workflow_importance);
+                input.Subscribe.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
+                if (__workflow_fetchOnlyWithAttachment != null)
+                    input.Subscribe.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(__workflow_fetchOnlyWithAttachment);
+                var subscription = new JObject();
+                var subscriptionpropCount = 0;
+                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
+                subscriptionpropCount++;
+                if (subscriptionpropCount > 0)
+                {
+                    input.Subscribe.Body = subscription;
+                }
 
-            return new ApiConnectionTrigger<TriggerBatchResponseClientReceiveMessage>(input);
+                return new ApiConnectionTrigger<TriggerBatchResponseClientReceiveMessage>(input);
+            });
         }
 
-        public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnNewMentionMeEmail(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null, string triggerName = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnNewMentionMeEmail(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
         {
-            var input = new ApiConnectionNotificationActionInput(connectionId);
-            input.Fetch = new ApiConnectionNotificationRecurrenceActionInput()
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
+            var __workflow_cc = WorkflowExpression.Compile(cc, nameof(cc), required: false);
+            var __workflow_toOrCc = WorkflowExpression.Compile(toOrCc, nameof(toOrCc), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_importance = WorkflowExpression.Compile(importance, nameof(importance), required: false);
+            var __workflow_fetchOnlyWithAttachment = WorkflowExpression.Compile(fetchOnlyWithAttachment, nameof(fetchOnlyWithAttachment), required: false);
+            var __workflow_includeAttachments = WorkflowExpression.Compile(includeAttachments, nameof(includeAttachments), required: false);
+            var __workflow_subjectFilter = WorkflowExpression.Compile(subjectFilter, nameof(subjectFilter), required: false);
+            return new DeferredBodyTrigger<TriggerBatchResponseClientReceiveMessage>(() =>
             {
-                Queries = new Dictionary<string, string>(),
-                Headers = new Dictionary<string, string>(),
-                PathTemplate = new PathTemplate
+                var input = new ApiConnectionNotificationActionInput(connectionId);
+                input.Fetch = new ApiConnectionNotificationRecurrenceActionInput()
                 {
-                    Template = "/v2/Mail/OnNewMentionMeEmail"
-                },
-                Method = "get",
-            };
-            if (folderPath != null)
-                input.Fetch.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
-            if (to != null)
-                input.Fetch.Queries["to"] = ExpressionConverter.Convert(to);
-            if (cc != null)
-                input.Fetch.Queries["cc"] = ExpressionConverter.Convert(cc);
-            if (toOrCc != null)
-                input.Fetch.Queries["toOrCc"] = ExpressionConverter.Convert(toOrCc);
-            if (from != null)
-                input.Fetch.Queries["from"] = ExpressionConverter.Convert(from);
-            input.Fetch.Queries["importance"] = Convert.ToString("Any");
-            if (importance != null)
-                input.Fetch.Queries["importance"] = ExpressionConverter.Convert(importance);
-            input.Fetch.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
-            if (fetchOnlyWithAttachment != null)
-                input.Fetch.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(fetchOnlyWithAttachment);
-            input.Fetch.Queries["includeAttachments"] = Convert.ToString(false);
-            if (includeAttachments != null)
-                input.Fetch.Queries["includeAttachments"] = ExpressionConverter.Convert(includeAttachments);
-            if (subjectFilter != null)
-                input.Fetch.Queries["subjectFilter"] = ExpressionConverter.Convert(subjectFilter);
-            input.Subscribe = new ApiConnectionNotificationWebhookActionInput()
-            {
-                Queries = new Dictionary<string, string>(),
-                Headers = new Dictionary<string, string>(),
-                PathTemplate = new PathTemplate
+                    Queries = new Dictionary<string, string>(),
+                    Headers = new Dictionary<string, string>(),
+                    PathTemplate = new PathTemplate
+                    {
+                        Template = "/v2/Mail/OnNewMentionMeEmail"
+                    },
+                    Method = "get",
+                };
+                if (__workflow_folderPath != null)
+                    input.Fetch.Queries["folderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
+                if (__workflow_to != null)
+                    input.Fetch.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
+                if (__workflow_cc != null)
+                    input.Fetch.Queries["cc"] = ExpressionConverter.Convert(__workflow_cc);
+                if (__workflow_toOrCc != null)
+                    input.Fetch.Queries["toOrCc"] = ExpressionConverter.Convert(__workflow_toOrCc);
+                if (__workflow_from != null)
+                    input.Fetch.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
+                input.Fetch.Queries["importance"] = Convert.ToString("Any");
+                if (__workflow_importance != null)
+                    input.Fetch.Queries["importance"] = ExpressionConverter.Convert(__workflow_importance);
+                input.Fetch.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
+                if (__workflow_fetchOnlyWithAttachment != null)
+                    input.Fetch.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(__workflow_fetchOnlyWithAttachment);
+                input.Fetch.Queries["includeAttachments"] = Convert.ToString(false);
+                if (__workflow_includeAttachments != null)
+                    input.Fetch.Queries["includeAttachments"] = ExpressionConverter.Convert(__workflow_includeAttachments);
+                if (__workflow_subjectFilter != null)
+                    input.Fetch.Queries["subjectFilter"] = ExpressionConverter.Convert(__workflow_subjectFilter);
+                input.Subscribe = new ApiConnectionNotificationWebhookActionInput()
                 {
-                    Template = "/MentionMeMailSubscriptionPoke/$subscriptions"
-                },
-                Method = "post",
-            };
-            if (folderPath != null)
-                input.Subscribe.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
-            input.Subscribe.Queries["importance"] = Convert.ToString("Any");
-            if (importance != null)
-                input.Subscribe.Queries["importance"] = ExpressionConverter.Convert(importance);
-            input.Subscribe.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
-            if (fetchOnlyWithAttachment != null)
-                input.Subscribe.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(fetchOnlyWithAttachment);
-            var subscription = new JObject();
-            var subscriptionpropCount = 0;
-            subscription["NotificationUrl"] = "@listCallbackUrl()";
-            subscriptionpropCount++;
-            if (subscriptionpropCount > 0)
-            {
-                input.Subscribe.Body = subscription;
-            }
+                    Queries = new Dictionary<string, string>(),
+                    Headers = new Dictionary<string, string>(),
+                    PathTemplate = new PathTemplate
+                    {
+                        Template = "/MentionMeMailSubscriptionPoke/$subscriptions"
+                    },
+                    Method = "post",
+                };
+                if (__workflow_folderPath != null)
+                    input.Subscribe.Queries["folderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
+                input.Subscribe.Queries["importance"] = Convert.ToString("Any");
+                if (__workflow_importance != null)
+                    input.Subscribe.Queries["importance"] = ExpressionConverter.Convert(__workflow_importance);
+                input.Subscribe.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
+                if (__workflow_fetchOnlyWithAttachment != null)
+                    input.Subscribe.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(__workflow_fetchOnlyWithAttachment);
+                var subscription = new JObject();
+                var subscriptionpropCount = 0;
+                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
+                subscriptionpropCount++;
+                if (subscriptionpropCount > 0)
+                {
+                    input.Subscribe.Body = subscription;
+                }
 
-            return new ApiConnectionTrigger<TriggerBatchResponseClientReceiveMessage>(input);
+                return new ApiConnectionTrigger<TriggerBatchResponseClientReceiveMessage>(input);
+            });
         }
 
-        public IBodyWorkflowTrigger<CalendarEventListClientReceive> OnUpcomingEvents(Expression<Func<string>> table, Expression<Func<int>> lookAheadTimeInMinutes = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CalendarEventListClientReceive> OnUpcomingEvents(Expression<Func<string>> table, Expression<Func<int>> lookAheadTimeInMinutes = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v2/Events/OnUpcomingEvents";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["table"] = ExpressionConverter.Convert(table);
-            callPayload.Queries["lookAheadTimeInMinutes"] = Convert.ToString(15);
-            if (lookAheadTimeInMinutes != null)
-                callPayload.Queries["lookAheadTimeInMinutes"] = ExpressionConverter.Convert(lookAheadTimeInMinutes);
-            return new ApiConnectionTrigger<CalendarEventListClientReceive>(callPayload, triggerName, recurrence);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_lookAheadTimeInMinutes = WorkflowExpression.Compile(lookAheadTimeInMinutes, nameof(lookAheadTimeInMinutes), required: false);
+            return new DeferredBodyTrigger<CalendarEventListClientReceive>(() =>
+            {
+                var apiCallPath = "/v2/Events/OnUpcomingEvents";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["table"] = ExpressionConverter.Convert(__workflow_table);
+                callPayload.Queries["lookAheadTimeInMinutes"] = Convert.ToString(15);
+                if (__workflow_lookAheadTimeInMinutes != null)
+                    callPayload.Queries["lookAheadTimeInMinutes"] = ExpressionConverter.Convert(__workflow_lookAheadTimeInMinutes);
+                return new ApiConnectionTrigger<CalendarEventListClientReceive>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -1895,6 +2257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public bool IsHTML { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ClientReceiveMessageStringEnumsImportanceType
     {
         Low,
@@ -1917,6 +2280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public string NotificationUrl { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum optionsEmailSubscriptionmessageimportanceInput
     {
         Low,
@@ -1932,6 +2296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum approvalEmailSubscriptionmessageimportanceInput
     {
         Low,
@@ -2022,6 +2387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public string PostalCode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum responseInput
     {
         Accept,
@@ -2078,6 +2444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public bool ResponseRequested { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CalendarEventClientReceiveStringEnumsImportanceType
     {
         Low,
@@ -2085,6 +2452,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CalendarEventClientReceiveStringEnumsResponseTypeType
     {
         None,
@@ -2095,6 +2463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         NotResponded
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CalendarEventClientReceiveStringEnumsRecurrenceType
     {
         None,
@@ -2104,6 +2473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         Yearly
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CalendarEventClientReceiveStringEnumsShowAsType
     {
         Free,
@@ -2168,6 +2538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public bool ResponseRequested { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum itemtimeZoneInput
     {
         [EnumMember(Value = "")]
@@ -2446,6 +2817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         UTC1400KiritimatiIsland
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum itemimportanceInput
     {
         Low,
@@ -2453,6 +2825,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum itemrecurrenceInput
     {
         None,
@@ -2462,6 +2835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         Yearly
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum itemshowAsInput
     {
         Free,
@@ -2478,6 +2852,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public ClientReceiveMessage[] Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum importanceInput
     {
         Any,
@@ -2492,6 +2867,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public CalendarEventClientReceiveStringEnums[] Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum replyParametersimportanceInput
     {
         Low,
@@ -2499,6 +2875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum emailMessageimportanceInput
     {
         Low,
@@ -2563,6 +2940,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public bool ResponseRequested { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CalendarEventClientWithActionTypeActionTypeType
     {
         [EnumMember(Value = "added")]

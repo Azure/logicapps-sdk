@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,147 +14,215 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         public IBodyWorkflowAction<RetrieveFlightUsingGETResponse> RetrieveFlightUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/flights/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["app_id"] = ExpressionConverter.Convert(appId);
-            callPayload.Headers["app_key"] = ExpressionConverter.Convert(appKey);
-            callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(resourceVersion);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<RetrieveFlightUsingGETResponse>(callPayload);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
+            var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
+            var __workflow_resourceVersion = WorkflowExpression.Compile(resourceVersion, nameof(resourceVersion), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<RetrieveFlightUsingGETResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/flights/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["app_id"] = ExpressionConverter.Convert(__workflow_appId);
+                callPayload.Headers["app_key"] = ExpressionConverter.Convert(__workflow_appKey);
+                callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(__workflow_resourceVersion);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<RetrieveFlightUsingGETResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         public IBodyWorkflowAction<RetrieveFlightsForDateOrPeriodUsingGETResponse> RetrieveFlightsForDateOrPeriodUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> scheduleDate = null, Expression<Func<string>> scheduleTime = null, Expression<Func<string>> flightName = null, Expression<Func<flightDirectionInput>> flightDirection = null, Expression<Func<string>> airline = null, Expression<Func<int>> airlineCode = null, Expression<Func<string>> route = null, Expression<Func<bool>> includedelays = null, Expression<Func<int>> page = null, Expression<Func<string>> sort = null, Expression<Func<string>> fromDateTime = null, Expression<Func<string>> toDateTime = null, Expression<Func<string>> searchDateTimeField = null, Expression<Func<string>> fromScheduleDate = null, Expression<Func<string>> toScheduleDate = null)
         {
-            var apiCallPath = "/flights";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (scheduleDate != null)
-                callPayload.Queries["scheduleDate"] = ExpressionConverter.Convert(scheduleDate);
-            if (scheduleTime != null)
-                callPayload.Queries["scheduleTime"] = ExpressionConverter.Convert(scheduleTime);
-            if (flightName != null)
-                callPayload.Queries["flightName"] = ExpressionConverter.Convert(flightName);
-            if (flightDirection != null)
-                callPayload.Queries["flightDirection"] = ExpressionConverter.Convert(flightDirection);
-            if (airline != null)
-                callPayload.Queries["airline"] = ExpressionConverter.Convert(airline);
-            if (airlineCode != null)
-                callPayload.Queries["airlineCode"] = ExpressionConverter.Convert(airlineCode);
-            if (route != null)
-                callPayload.Queries["route"] = ExpressionConverter.Convert(route);
-            callPayload.Queries["includedelays"] = Convert.ToString(false);
-            if (includedelays != null)
-                callPayload.Queries["includedelays"] = ExpressionConverter.Convert(includedelays);
-            callPayload.Queries["page"] = Convert.ToString(0);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            callPayload.Queries["sort"] = Convert.ToString("+scheduleTime");
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (fromDateTime != null)
-                callPayload.Queries["fromDateTime"] = ExpressionConverter.Convert(fromDateTime);
-            if (toDateTime != null)
-                callPayload.Queries["toDateTime"] = ExpressionConverter.Convert(toDateTime);
-            if (searchDateTimeField != null)
-                callPayload.Queries["searchDateTimeField"] = ExpressionConverter.Convert(searchDateTimeField);
-            if (fromScheduleDate != null)
-                callPayload.Queries["fromScheduleDate"] = ExpressionConverter.Convert(fromScheduleDate);
-            if (toScheduleDate != null)
-                callPayload.Queries["toScheduleDate"] = ExpressionConverter.Convert(toScheduleDate);
-            callPayload.Headers["app_id"] = ExpressionConverter.Convert(appId);
-            callPayload.Headers["app_key"] = ExpressionConverter.Convert(appKey);
-            callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(resourceVersion);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<RetrieveFlightsForDateOrPeriodUsingGETResponse>(callPayload);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
+            var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
+            var __workflow_resourceVersion = WorkflowExpression.Compile(resourceVersion, nameof(resourceVersion), required: true);
+            var __workflow_scheduleDate = WorkflowExpression.Compile(scheduleDate, nameof(scheduleDate), required: false);
+            var __workflow_scheduleTime = WorkflowExpression.Compile(scheduleTime, nameof(scheduleTime), required: false);
+            var __workflow_flightName = WorkflowExpression.Compile(flightName, nameof(flightName), required: false);
+            var __workflow_flightDirection = WorkflowExpression.Compile(flightDirection, nameof(flightDirection), required: false);
+            var __workflow_airline = WorkflowExpression.Compile(airline, nameof(airline), required: false);
+            var __workflow_airlineCode = WorkflowExpression.Compile(airlineCode, nameof(airlineCode), required: false);
+            var __workflow_route = WorkflowExpression.Compile(route, nameof(route), required: false);
+            var __workflow_includedelays = WorkflowExpression.Compile(includedelays, nameof(includedelays), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_fromDateTime = WorkflowExpression.Compile(fromDateTime, nameof(fromDateTime), required: false);
+            var __workflow_toDateTime = WorkflowExpression.Compile(toDateTime, nameof(toDateTime), required: false);
+            var __workflow_searchDateTimeField = WorkflowExpression.Compile(searchDateTimeField, nameof(searchDateTimeField), required: false);
+            var __workflow_fromScheduleDate = WorkflowExpression.Compile(fromScheduleDate, nameof(fromScheduleDate), required: false);
+            var __workflow_toScheduleDate = WorkflowExpression.Compile(toScheduleDate, nameof(toScheduleDate), required: false);
+            return new DeferredBodyAction<RetrieveFlightsForDateOrPeriodUsingGETResponse>(() =>
+            {
+                var apiCallPath = "/flights";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_scheduleDate != null)
+                    callPayload.Queries["scheduleDate"] = ExpressionConverter.Convert(__workflow_scheduleDate);
+                if (__workflow_scheduleTime != null)
+                    callPayload.Queries["scheduleTime"] = ExpressionConverter.Convert(__workflow_scheduleTime);
+                if (__workflow_flightName != null)
+                    callPayload.Queries["flightName"] = ExpressionConverter.Convert(__workflow_flightName);
+                if (__workflow_flightDirection != null)
+                    callPayload.Queries["flightDirection"] = ExpressionConverter.Convert(__workflow_flightDirection);
+                if (__workflow_airline != null)
+                    callPayload.Queries["airline"] = ExpressionConverter.Convert(__workflow_airline);
+                if (__workflow_airlineCode != null)
+                    callPayload.Queries["airlineCode"] = ExpressionConverter.Convert(__workflow_airlineCode);
+                if (__workflow_route != null)
+                    callPayload.Queries["route"] = ExpressionConverter.Convert(__workflow_route);
+                callPayload.Queries["includedelays"] = Convert.ToString(false);
+                if (__workflow_includedelays != null)
+                    callPayload.Queries["includedelays"] = ExpressionConverter.Convert(__workflow_includedelays);
+                callPayload.Queries["page"] = Convert.ToString(0);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                callPayload.Queries["sort"] = Convert.ToString("+scheduleTime");
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_fromDateTime != null)
+                    callPayload.Queries["fromDateTime"] = ExpressionConverter.Convert(__workflow_fromDateTime);
+                if (__workflow_toDateTime != null)
+                    callPayload.Queries["toDateTime"] = ExpressionConverter.Convert(__workflow_toDateTime);
+                if (__workflow_searchDateTimeField != null)
+                    callPayload.Queries["searchDateTimeField"] = ExpressionConverter.Convert(__workflow_searchDateTimeField);
+                if (__workflow_fromScheduleDate != null)
+                    callPayload.Queries["fromScheduleDate"] = ExpressionConverter.Convert(__workflow_fromScheduleDate);
+                if (__workflow_toScheduleDate != null)
+                    callPayload.Queries["toScheduleDate"] = ExpressionConverter.Convert(__workflow_toScheduleDate);
+                callPayload.Headers["app_id"] = ExpressionConverter.Convert(__workflow_appId);
+                callPayload.Headers["app_key"] = ExpressionConverter.Convert(__workflow_appKey);
+                callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(__workflow_resourceVersion);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<RetrieveFlightsForDateOrPeriodUsingGETResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         public IBodyWorkflowAction<RetrieveAllAirlinesUsingGETResponse> RetrieveAllAirlinesUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<int>> page = null, Expression<Func<string>> sort = null)
         {
-            var apiCallPath = "/airlines";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["page"] = Convert.ToString(0);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            callPayload.Queries["sort"] = Convert.ToString("+publicName");
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            callPayload.Headers["app_id"] = ExpressionConverter.Convert(appId);
-            callPayload.Headers["app_key"] = ExpressionConverter.Convert(appKey);
-            callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(resourceVersion);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<RetrieveAllAirlinesUsingGETResponse>(callPayload);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
+            var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
+            var __workflow_resourceVersion = WorkflowExpression.Compile(resourceVersion, nameof(resourceVersion), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<RetrieveAllAirlinesUsingGETResponse>(() =>
+            {
+                var apiCallPath = "/airlines";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["page"] = Convert.ToString(0);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                callPayload.Queries["sort"] = Convert.ToString("+publicName");
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                callPayload.Headers["app_id"] = ExpressionConverter.Convert(__workflow_appId);
+                callPayload.Headers["app_key"] = ExpressionConverter.Convert(__workflow_appKey);
+                callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(__workflow_resourceVersion);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<RetrieveAllAirlinesUsingGETResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         public IBodyWorkflowAction<RetrieveAirlineUsingGETResponse> RetrieveAirlineUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> airline)
         {
-            var apiCallPath = String.Format("/airlines/{0}", ExpressionConverter.ConvertWithUrlEncoding(airline, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["app_id"] = ExpressionConverter.Convert(appId);
-            callPayload.Headers["app_key"] = ExpressionConverter.Convert(appKey);
-            callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(resourceVersion);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<RetrieveAirlineUsingGETResponse>(callPayload);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
+            var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
+            var __workflow_resourceVersion = WorkflowExpression.Compile(resourceVersion, nameof(resourceVersion), required: true);
+            var __workflow_airline = WorkflowExpression.Compile(airline, nameof(airline), required: true);
+            return new DeferredBodyAction<RetrieveAirlineUsingGETResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/airlines/{0}", __workflow_airline.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["app_id"] = ExpressionConverter.Convert(__workflow_appId);
+                callPayload.Headers["app_key"] = ExpressionConverter.Convert(__workflow_appKey);
+                callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(__workflow_resourceVersion);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<RetrieveAirlineUsingGETResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         public IBodyWorkflowAction<RetrieveAllAircraftTypesUsingGETResponse> RetrieveAllAircraftTypesUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> iataMain = null, Expression<Func<string>> iataSub = null, Expression<Func<int>> page = null, Expression<Func<string>> sort = null)
         {
-            var apiCallPath = "/aircrafttypes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (iataMain != null)
-                callPayload.Queries["iataMain"] = ExpressionConverter.Convert(iataMain);
-            if (iataSub != null)
-                callPayload.Queries["iataSub"] = ExpressionConverter.Convert(iataSub);
-            callPayload.Queries["page"] = Convert.ToString(0);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            callPayload.Queries["sort"] = Convert.ToString("+iataMain");
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            callPayload.Headers["app_id"] = ExpressionConverter.Convert(appId);
-            callPayload.Headers["app_key"] = ExpressionConverter.Convert(appKey);
-            callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(resourceVersion);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<RetrieveAllAircraftTypesUsingGETResponse>(callPayload);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
+            var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
+            var __workflow_resourceVersion = WorkflowExpression.Compile(resourceVersion, nameof(resourceVersion), required: true);
+            var __workflow_iataMain = WorkflowExpression.Compile(iataMain, nameof(iataMain), required: false);
+            var __workflow_iataSub = WorkflowExpression.Compile(iataSub, nameof(iataSub), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<RetrieveAllAircraftTypesUsingGETResponse>(() =>
+            {
+                var apiCallPath = "/aircrafttypes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_iataMain != null)
+                    callPayload.Queries["iataMain"] = ExpressionConverter.Convert(__workflow_iataMain);
+                if (__workflow_iataSub != null)
+                    callPayload.Queries["iataSub"] = ExpressionConverter.Convert(__workflow_iataSub);
+                callPayload.Queries["page"] = Convert.ToString(0);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                callPayload.Queries["sort"] = Convert.ToString("+iataMain");
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                callPayload.Headers["app_id"] = ExpressionConverter.Convert(__workflow_appId);
+                callPayload.Headers["app_key"] = ExpressionConverter.Convert(__workflow_appKey);
+                callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(__workflow_resourceVersion);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<RetrieveAllAircraftTypesUsingGETResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         public IBodyWorkflowAction<RetrieveAllDestinationsUsingGETResponse> RetrieveAllDestinationsUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<int>> page = null, Expression<Func<string>> sort = null)
         {
-            var apiCallPath = "/destinations";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["page"] = Convert.ToString(0);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            callPayload.Queries["sort"] = Convert.ToString("+publicName.dutch");
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            callPayload.Headers["app_id"] = ExpressionConverter.Convert(appId);
-            callPayload.Headers["app_key"] = ExpressionConverter.Convert(appKey);
-            callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(resourceVersion);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<RetrieveAllDestinationsUsingGETResponse>(callPayload);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
+            var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
+            var __workflow_resourceVersion = WorkflowExpression.Compile(resourceVersion, nameof(resourceVersion), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<RetrieveAllDestinationsUsingGETResponse>(() =>
+            {
+                var apiCallPath = "/destinations";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["page"] = Convert.ToString(0);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                callPayload.Queries["sort"] = Convert.ToString("+publicName.dutch");
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                callPayload.Headers["app_id"] = ExpressionConverter.Convert(__workflow_appId);
+                callPayload.Headers["app_key"] = ExpressionConverter.Convert(__workflow_appKey);
+                callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(__workflow_resourceVersion);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<RetrieveAllDestinationsUsingGETResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         public IBodyWorkflowAction<RetrieveDestinationUsingGETResponse> RetrieveDestinationUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> iata)
         {
-            var apiCallPath = String.Format("/destinations/{0}", ExpressionConverter.ConvertWithUrlEncoding(iata, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["app_id"] = ExpressionConverter.Convert(appId);
-            callPayload.Headers["app_key"] = ExpressionConverter.Convert(appKey);
-            callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(resourceVersion);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<RetrieveDestinationUsingGETResponse>(callPayload);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
+            var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
+            var __workflow_resourceVersion = WorkflowExpression.Compile(resourceVersion, nameof(resourceVersion), required: true);
+            var __workflow_iata = WorkflowExpression.Compile(iata, nameof(iata), required: true);
+            return new DeferredBodyAction<RetrieveDestinationUsingGETResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/destinations/{0}", __workflow_iata.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["app_id"] = ExpressionConverter.Convert(__workflow_appId);
+                callPayload.Headers["app_key"] = ExpressionConverter.Convert(__workflow_appKey);
+                callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(__workflow_resourceVersion);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<RetrieveDestinationUsingGETResponse>(callPayload);
+            });
         }
     }
 
@@ -436,6 +504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         public bool Visa { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum flightDirectionInput
     {
         A,

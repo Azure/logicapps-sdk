@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -31,55 +31,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
         public IWorkflowAction GetInboundFlow(Expression<Func<string>> inboundFlowId, Expression<Func<string>> accessToken = null)
         {
-            var apiCallPath = String.Format("/beta/external/industryData/inboundFlows/{0}", ExpressionConverter.ConvertWithUrlEncoding(inboundFlowId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$expand"] = Convert.ToString("dataConnector");
-            if (accessToken != null)
-                callPayload.Headers["access-token"] = ExpressionConverter.Convert(accessToken);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_inboundFlowId = WorkflowExpression.Compile(inboundFlowId, nameof(inboundFlowId), required: true);
+            var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/external/industryData/inboundFlows/{0}", __workflow_inboundFlowId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$expand"] = Convert.ToString("dataConnector");
+                if (__workflow_accessToken != null)
+                    callPayload.Headers["access-token"] = ExpressionConverter.Convert(__workflow_accessToken);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
         public IWorkflowAction GetDataconnectorList(Expression<Func<string>> accessToken)
         {
-            var apiCallPath = "/beta/external/industryData/dataConnectors";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["access-token"] = ExpressionConverter.Convert(accessToken);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/beta/external/industryData/dataConnectors";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["access-token"] = ExpressionConverter.Convert(__workflow_accessToken);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
         public IWorkflowAction CallGetuploadsession(Expression<Func<string>> createdDataConnectorId, Expression<Func<string>> accessToken)
         {
-            var apiCallPath = String.Format("/beta/external/industryData/dataConnectors('{0}')/microsoft.graph.industryData.azureDataLakeConnector/microsoft.graph.industryData.getUploadSession()", ExpressionConverter.ConvertWithUrlEncoding(createdDataConnectorId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["access-token"] = ExpressionConverter.Convert(accessToken);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_createdDataConnectorId = WorkflowExpression.Compile(createdDataConnectorId, nameof(createdDataConnectorId), required: true);
+            var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/external/industryData/dataConnectors('{0}')/microsoft.graph.industryData.azureDataLakeConnector/microsoft.graph.industryData.getUploadSession()", __workflow_createdDataConnectorId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["access-token"] = ExpressionConverter.Convert(__workflow_accessToken);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
         public IWorkflowAction CallValidate(Expression<Func<string>> createdDataConnectorId, Expression<Func<string>> accessToken)
         {
-            var apiCallPath = String.Format("/beta/external/industryData/dataConnectors/{0}/validate()", ExpressionConverter.ConvertWithUrlEncoding(createdDataConnectorId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["access-token"] = ExpressionConverter.Convert(accessToken);
-            callPayload.Headers["Accept"] = Convert.ToString("*/*");
-            return new ApiConnectionAction(callPayload);
+            var __workflow_createdDataConnectorId = WorkflowExpression.Compile(createdDataConnectorId, nameof(createdDataConnectorId), required: true);
+            var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/external/industryData/dataConnectors/{0}/validate()", __workflow_createdDataConnectorId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["access-token"] = ExpressionConverter.Convert(__workflow_accessToken);
+                callPayload.Headers["Accept"] = Convert.ToString("*/*");
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
         public IWorkflowAction CheckValidationResult(Expression<Func<string>> validationOperationUri, Expression<Func<string>> accessToken)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ValidationOperationUri"] = ExpressionConverter.Convert(validationOperationUri);
-            callPayload.Headers["access-token"] = ExpressionConverter.Convert(accessToken);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_validationOperationUri = WorkflowExpression.Compile(validationOperationUri, nameof(validationOperationUri), required: true);
+            var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ValidationOperationUri"] = ExpressionConverter.Convert(__workflow_validationOperationUri);
+                callPayload.Headers["access-token"] = ExpressionConverter.Convert(__workflow_accessToken);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

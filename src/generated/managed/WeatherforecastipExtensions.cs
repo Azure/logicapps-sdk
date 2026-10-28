@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weatherforecastip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,14 +14,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weatherforecastip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weatherforecastip")]
         public IBodyWorkflowAction<CityResponse> City(Expression<Func<string>> q = null, Expression<Func<string>> appid = null)
         {
-            var apiCallPath = "/data/2.5/weather";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (appid != null)
-                callPayload.Queries["appid"] = ExpressionConverter.Convert(appid);
-            return new ApiConnectionAction<CityResponse>(callPayload);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
+            var __workflow_appid = WorkflowExpression.Compile(appid, nameof(appid), required: false);
+            return new DeferredBodyAction<CityResponse>(() =>
+            {
+                var apiCallPath = "/data/2.5/weather";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                if (__workflow_appid != null)
+                    callPayload.Queries["appid"] = ExpressionConverter.Convert(__workflow_appid);
+                return new ApiConnectionAction<CityResponse>(callPayload);
+            });
         }
     }
 

@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gravityformsbyreenhanced
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -15,23 +15,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gravityformsbyreenhanced
 
     public class GravityformsbyreenhancedTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateWebhook(Expression<Func<string>> webhookform, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateWebhook(Expression<Func<string>> webhookform, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var webhook = new JObject();
-            var webhookpropCount = 0;
-            webhook["callback_url"] = "@listCallbackUrl()";
-            webhookpropCount++;
-            webhookpropCount++;
-            webhook["form_id"] = ExpressionConverter.ConvertO(webhookform);
-            if (webhookpropCount > 0)
+            var __workflow_webhookform = WorkflowExpression.Compile(webhookform, nameof(webhookform), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = webhook;
-            }
+                var apiCallPath = "/webhooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var webhook = new JObject();
+                var webhookpropCount = 0;
+                webhook["callback_url"] = "#{listCallbackUrl()}";
+                webhookpropCount++;
+                webhookpropCount++;
+                webhook["form_id"] = ExpressionConverter.ConvertO(__workflow_webhookform);
+                if (webhookpropCount > 0)
+                {
+                    callPayload.Body = webhook;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

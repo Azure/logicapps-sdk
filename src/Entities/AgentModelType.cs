@@ -4,9 +4,13 @@
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
+
     /// <summary>
     /// The agent model type.
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum AgentModelType
     {
         /// <summary>

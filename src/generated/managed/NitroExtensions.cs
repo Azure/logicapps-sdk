@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nitro
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,24 +14,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nitro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nitro")]
         public IBodyWorkflowAction<Error> TemplateSignatureRequest(Expression<Func<string>> id, Expression<Func<object>> dynamicSchema = null)
         {
-            var apiCallPath = String.Format("/templates/{0}/signature-requests", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(dynamicSchema);
-            return new ApiConnectionAction<Error>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_dynamicSchema = WorkflowExpression.Compile(dynamicSchema, nameof(dynamicSchema), required: false);
+            return new DeferredBodyAction<Error>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/templates/{0}/signature-requests", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicSchema);
+                return new ApiConnectionAction<Error>(callPayload);
+            });
         }
     }
 
     public class NitroTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Error> WebhookDocumentSignedTrigger(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Error> WebhookDocumentSignedTrigger(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v2/webhooks";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["endpoint"] = "@listCallbackUrl()";
+            request["endpoint"] = "#{listCallbackUrl()}";
             requestpropCount++;
             request["event"] = "esign.request.completed";
             requestpropCount++;
@@ -40,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nitro
                 callPayload.Body = request;
             }
 
-            return new ApiConnectionTrigger<Error>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<Error>(callPayload, recurrence: recurrence);
         }
     }
 

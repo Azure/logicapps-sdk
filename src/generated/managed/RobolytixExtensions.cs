@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robolytix
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,30 +14,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robolytix
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robolytix")]
         public IBodyWorkflowAction<SonarResponse> Sonar(Expression<Func<string>> bodyname, Expression<Func<string>> bodyprocessid, Expression<Func<string>> bodytype, Expression<Func<string>> bodyrunid = null)
         {
-            var apiCallPath = "/messages";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["processid"] = ExpressionConverter.ConvertO(bodyprocessid);
-            if (bodyrunid != null)
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyprocessid = WorkflowExpression.Compile(bodyprocessid, nameof(bodyprocessid), required: true);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
+            var __workflow_bodyrunid = WorkflowExpression.Compile(bodyrunid, nameof(bodyrunid), required: false);
+            return new DeferredBodyAction<SonarResponse>(() =>
             {
-                body["runid"] = ExpressionConverter.ConvertO(bodyrunid);
+                var apiCallPath = "/messages";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                bodypropCount++;
+                body["processid"] = ExpressionConverter.ConvertO(__workflow_bodyprocessid);
+                if (__workflow_bodyrunid != null)
+                {
+                    body["runid"] = ExpressionConverter.ConvertO(__workflow_bodyrunid);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                bodypropCount++;
+                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SonarResponse>(callPayload);
+                return new ApiConnectionAction<SonarResponse>(callPayload);
+            });
         }
     }
 

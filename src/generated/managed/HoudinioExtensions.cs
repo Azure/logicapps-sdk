@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,35 +14,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "houdinio")]
         public IBodyWorkflowAction<ScanResponse> LaunchScan(Expression<Func<string>> bodyartifact, Expression<Func<string[]>> bodyscanOn = null)
         {
-            var apiCallPath = "/scan/launch";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["artifact"] = ExpressionConverter.ConvertO(bodyartifact);
-            if (bodyscanOn != null)
+            var __workflow_bodyartifact = WorkflowExpression.Compile(bodyartifact, nameof(bodyartifact), required: true);
+            var __workflow_bodyscanOn = WorkflowExpression.Compile(bodyscanOn, nameof(bodyscanOn), required: false);
+            return new DeferredBodyAction<ScanResponse>(() =>
             {
-                body["scanOn"] = ExpressionConverter.ConvertO(bodyscanOn);
+                var apiCallPath = "/scan/launch";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["artifact"] = ExpressionConverter.ConvertO(__workflow_bodyartifact);
+                if (__workflow_bodyscanOn != null)
+                {
+                    body["scanOn"] = ExpressionConverter.ConvertO(__workflow_bodyscanOn);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ScanResponse>(callPayload);
+                return new ApiConnectionAction<ScanResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "houdinio")]
         public IBodyWorkflowAction<ScanResult> RetrieveScan(Expression<Func<string>> scanID)
         {
-            var apiCallPath = "/scan/result";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["scanID"] = ExpressionConverter.Convert(scanID);
-            return new ApiConnectionAction<ScanResult>(callPayload);
+            var __workflow_scanID = WorkflowExpression.Compile(scanID, nameof(scanID), required: true);
+            return new DeferredBodyAction<ScanResult>(() =>
+            {
+                var apiCallPath = "/scan/result";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["scanID"] = ExpressionConverter.Convert(__workflow_scanID);
+                return new ApiConnectionAction<ScanResult>(callPayload);
+            });
         }
     }
 

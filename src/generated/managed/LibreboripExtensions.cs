@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libreborip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,15 +14,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libreborip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libreborip")]
         public IBodyWorkflowAction<LibrebormeSearchCompanyResponse> LibrebormeSearchCompany(Expression<Func<string>> query, Expression<Func<string>> page = null, Expression<Func<string>> province = null)
         {
-            var apiCallPath = "/company/search/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (province != null)
-                callPayload.Queries["province"] = ExpressionConverter.Convert(province);
-            return new ApiConnectionAction<LibrebormeSearchCompanyResponse>(callPayload);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_province = WorkflowExpression.Compile(province, nameof(province), required: false);
+            return new DeferredBodyAction<LibrebormeSearchCompanyResponse>(() =>
+            {
+                var apiCallPath = "/company/search/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_province != null)
+                    callPayload.Queries["province"] = ExpressionConverter.Convert(__workflow_province);
+                return new ApiConnectionAction<LibrebormeSearchCompanyResponse>(callPayload);
+            });
         }
     }
 
@@ -63,6 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libreborip
         public string LastUpdate { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CompanyStatus
     {
         [EnumMember(Value = "active")]

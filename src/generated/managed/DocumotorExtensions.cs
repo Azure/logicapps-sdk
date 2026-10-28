@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documotor
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,20 +14,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documotor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documotor")]
         public IBodyWorkflowAction<string> GenerateDoc(Expression<Func<string>> templateId, Expression<Func<acceptInput>> accept, Expression<Func<string>> stageId = null)
         {
-            var apiCallPath = String.Format("/template/{0}/generate", ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            if (stageId != null)
-                callPayload.Headers["stageId"] = ExpressionConverter.Convert(stageId);
-            var documentData = new JObject();
-            var documentDatapropCount = 0;
-            if (documentDatapropCount > 0)
+            var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
+            var __workflow_stageId = WorkflowExpression.Compile(stageId, nameof(stageId), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                callPayload.Body = documentData;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/template/{0}/generate", __workflow_templateId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
+                if (__workflow_stageId != null)
+                    callPayload.Headers["stageId"] = ExpressionConverter.Convert(__workflow_stageId);
+                var documentData = new JObject();
+                var documentDatapropCount = 0;
+                if (documentDatapropCount > 0)
+                {
+                    callPayload.Body = documentData;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 
@@ -35,6 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documotor
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum acceptInput
     {
         [EnumMember(Value = "*/*")]

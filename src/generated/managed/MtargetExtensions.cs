@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mtarget
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,20 +14,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mtarget
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mtarget")]
         public IBodyWorkflowAction<SendSmsResponse> SendSms(Expression<Func<string>> msisdn, Expression<Func<string>> msg, Expression<Func<string>> sender = null, Expression<Func<int>> serviceid = null, Expression<Func<string>> timetosend = null, Expression<Func<string>> remoteid = null)
         {
-            var apiCallPath = "/flow.php";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["msisdn"] = ExpressionConverter.Convert(msisdn);
-            callPayload.Queries["msg"] = ExpressionConverter.Convert(msg);
-            if (sender != null)
-                callPayload.Queries["sender"] = ExpressionConverter.Convert(sender);
-            if (serviceid != null)
-                callPayload.Queries["serviceid"] = ExpressionConverter.Convert(serviceid);
-            if (timetosend != null)
-                callPayload.Queries["timetosend"] = ExpressionConverter.Convert(timetosend);
-            if (remoteid != null)
-                callPayload.Queries["remoteid"] = ExpressionConverter.Convert(remoteid);
-            return new ApiConnectionAction<SendSmsResponse>(callPayload);
+            var __workflow_msisdn = WorkflowExpression.Compile(msisdn, nameof(msisdn), required: true);
+            var __workflow_msg = WorkflowExpression.Compile(msg, nameof(msg), required: true);
+            var __workflow_sender = WorkflowExpression.Compile(sender, nameof(sender), required: false);
+            var __workflow_serviceid = WorkflowExpression.Compile(serviceid, nameof(serviceid), required: false);
+            var __workflow_timetosend = WorkflowExpression.Compile(timetosend, nameof(timetosend), required: false);
+            var __workflow_remoteid = WorkflowExpression.Compile(remoteid, nameof(remoteid), required: false);
+            return new DeferredBodyAction<SendSmsResponse>(() =>
+            {
+                var apiCallPath = "/flow.php";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["msisdn"] = ExpressionConverter.Convert(__workflow_msisdn);
+                callPayload.Queries["msg"] = ExpressionConverter.Convert(__workflow_msg);
+                if (__workflow_sender != null)
+                    callPayload.Queries["sender"] = ExpressionConverter.Convert(__workflow_sender);
+                if (__workflow_serviceid != null)
+                    callPayload.Queries["serviceid"] = ExpressionConverter.Convert(__workflow_serviceid);
+                if (__workflow_timetosend != null)
+                    callPayload.Queries["timetosend"] = ExpressionConverter.Convert(__workflow_timetosend);
+                if (__workflow_remoteid != null)
+                    callPayload.Queries["remoteid"] = ExpressionConverter.Convert(__workflow_remoteid);
+                return new ApiConnectionAction<SendSmsResponse>(callPayload);
+            });
         }
     }
 

@@ -1,11 +1,11 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
 {
     using System;
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
@@ -16,171 +16,228 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<BrowseMessageOutput> BrowseMessage(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<BrowseMessageInputGetMessageOptionsType>> getMessageOptions = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
-            if (getMessageOptions != null)
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_includeInfo = WorkflowExpression.Compile(includeInfo, nameof(includeInfo), required: true);
+            var __workflow_getMessageOptions = WorkflowExpression.Compile(getMessageOptions, nameof(getMessageOptions), required: false);
+            return new DeferredBodyAction<BrowseMessageOutput>(() =>
             {
-                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(__workflow_includeInfo);
+                if (__workflow_getMessageOptions != null)
+                {
+                    serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(__workflow_getMessageOptions);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "browseMessage", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<BrowseMessageOutput>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "browseMessage", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<BrowseMessageOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<BrowseBatchOutput> BrowseBatch(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<BrowseBatchInputGetMessageOptionsType>> getMessageOptions = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
-            if (getMessageOptions != null)
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_includeInfo = WorkflowExpression.Compile(includeInfo, nameof(includeInfo), required: true);
+            var __workflow_getMessageOptions = WorkflowExpression.Compile(getMessageOptions, nameof(getMessageOptions), required: false);
+            return new DeferredBodyAction<BrowseBatchOutput>(() =>
             {
-                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(__workflow_includeInfo);
+                if (__workflow_getMessageOptions != null)
+                {
+                    serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(__workflow_getMessageOptions);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "browseBatch", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<BrowseBatchOutput>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "browseBatch", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<BrowseBatchOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<ReceiveMessageOutput> ReceiveMessage(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<ReceiveMessageInputGetMessageOptionsType>> getMessageOptions = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
-            if (getMessageOptions != null)
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_includeInfo = WorkflowExpression.Compile(includeInfo, nameof(includeInfo), required: true);
+            var __workflow_getMessageOptions = WorkflowExpression.Compile(getMessageOptions, nameof(getMessageOptions), required: false);
+            return new DeferredBodyAction<ReceiveMessageOutput>(() =>
             {
-                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(__workflow_includeInfo);
+                if (__workflow_getMessageOptions != null)
+                {
+                    serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(__workflow_getMessageOptions);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "receiveMessage", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<ReceiveMessageOutput>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "receiveMessage", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<ReceiveMessageOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<ReceiveBatchOutput> ReceiveBatch(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<ReceiveBatchInputGetMessageOptionsType>> getMessageOptions = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
-            if (getMessageOptions != null)
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_includeInfo = WorkflowExpression.Compile(includeInfo, nameof(includeInfo), required: true);
+            var __workflow_getMessageOptions = WorkflowExpression.Compile(getMessageOptions, nameof(getMessageOptions), required: false);
+            return new DeferredBodyAction<ReceiveBatchOutput>(() =>
             {
-                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(__workflow_includeInfo);
+                if (__workflow_getMessageOptions != null)
+                {
+                    serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(__workflow_getMessageOptions);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "receiveBatch", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<ReceiveBatchOutput>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "receiveBatch", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<ReceiveBatchOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<SendMessageOutput> SendMessage(Expression<Func<string>> queueName, Expression<Func<string>> message, Expression<Func<SendMessageInputSendMessageOptionsType>> sendMessageOptions = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["message"] = ExpressionConverter.ConvertO(message);
-            if (sendMessageOptions != null)
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
+            var __workflow_sendMessageOptions = WorkflowExpression.Compile(sendMessageOptions, nameof(sendMessageOptions), required: false);
+            return new DeferredBodyAction<SendMessageOutput>(() =>
             {
-                serviceProviderParameters["sendMessageOptions"] = ExpressionConverter.ConvertO(sendMessageOptions);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["message"] = ExpressionConverter.ConvertO(__workflow_message);
+                if (__workflow_sendMessageOptions != null)
+                {
+                    serviceProviderParameters["sendMessageOptions"] = ExpressionConverter.ConvertO(__workflow_sendMessageOptions);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "sendMessage", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<SendMessageOutput>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "sendMessage", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<SendMessageOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<SendBatchOutput> SendBatch(Expression<Func<string>> queueName, Expression<Func<SendBatchInputMessageListTypeItem[]>> messageList, Expression<Func<SendBatchInputSendMessageOptionsType>> sendMessageOptions = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["messageList"] = ExpressionConverter.ConvertO(messageList);
-            if (sendMessageOptions != null)
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_messageList = WorkflowExpression.Compile(messageList, nameof(messageList), required: true);
+            var __workflow_sendMessageOptions = WorkflowExpression.Compile(sendMessageOptions, nameof(sendMessageOptions), required: false);
+            return new DeferredBodyAction<SendBatchOutput>(() =>
             {
-                serviceProviderParameters["sendMessageOptions"] = ExpressionConverter.ConvertO(sendMessageOptions);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["messageList"] = ExpressionConverter.ConvertO(__workflow_messageList);
+                if (__workflow_sendMessageOptions != null)
+                {
+                    serviceProviderParameters["sendMessageOptions"] = ExpressionConverter.ConvertO(__workflow_sendMessageOptions);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "sendBatch", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<SendBatchOutput>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "sendBatch", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<SendBatchOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<CompleteMessageOutput> CompleteMessage(Expression<Func<string>> operationConnectionId, Expression<Func<string>> queueName, Expression<Func<string>> uniqueId, Expression<Func<string>> messageId, Expression<Func<CompleteMessageInputCompleteActionType>> completeAction)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["connectionId"] = ExpressionConverter.ConvertO(operationConnectionId);
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["uniqueId"] = ExpressionConverter.ConvertO(uniqueId);
-            serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
-            serviceProviderParameters["completeAction"] = ExpressionConverter.ConvertO(completeAction);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            var __workflow_operationConnectionId = WorkflowExpression.Compile(operationConnectionId, nameof(operationConnectionId), required: true);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_uniqueId = WorkflowExpression.Compile(uniqueId, nameof(uniqueId), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            var __workflow_completeAction = WorkflowExpression.Compile(completeAction, nameof(completeAction), required: true);
+            return new DeferredBodyAction<CompleteMessageOutput>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "completeMessage", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<CompleteMessageOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["connectionId"] = ExpressionConverter.ConvertO(__workflow_operationConnectionId);
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["uniqueId"] = ExpressionConverter.ConvertO(__workflow_uniqueId);
+                serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(__workflow_messageId);
+                serviceProviderParameters["completeAction"] = ExpressionConverter.ConvertO(__workflow_completeAction);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "completeMessage", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<CompleteMessageOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<CompleteBatchOutput> CompleteBatch(Expression<Func<string>> operationConnectionId, Expression<Func<string>> queueName, Expression<Func<CompleteBatchInputCompleteActionType>> completeAction)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["connectionId"] = ExpressionConverter.ConvertO(operationConnectionId);
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["completeAction"] = ExpressionConverter.ConvertO(completeAction);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            var __workflow_operationConnectionId = WorkflowExpression.Compile(operationConnectionId, nameof(operationConnectionId), required: true);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_completeAction = WorkflowExpression.Compile(completeAction, nameof(completeAction), required: true);
+            return new DeferredBodyAction<CompleteBatchOutput>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "completeBatch", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<CompleteBatchOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["connectionId"] = ExpressionConverter.ConvertO(__workflow_operationConnectionId);
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["completeAction"] = ExpressionConverter.ConvertO(__workflow_completeAction);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "completeBatch", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<CompleteBatchOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<MoveMessageToDeadLetterQueueOutput> MoveMessageToDeadLetterQueue(Expression<Func<object>> message, Expression<Func<int>> reasonCode, Expression<Func<string>> deadLetterQueueName = null, Expression<Func<MoveMessageToDeadLetterQueueInputSendMessageOptionsType>> sendMessageOptions = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["message"] = ExpressionConverter.ConvertO(message);
-            serviceProviderParameters["reasonCode"] = ExpressionConverter.ConvertO(reasonCode);
-            if (deadLetterQueueName != null)
+            var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
+            var __workflow_reasonCode = WorkflowExpression.Compile(reasonCode, nameof(reasonCode), required: true);
+            var __workflow_deadLetterQueueName = WorkflowExpression.Compile(deadLetterQueueName, nameof(deadLetterQueueName), required: false);
+            var __workflow_sendMessageOptions = WorkflowExpression.Compile(sendMessageOptions, nameof(sendMessageOptions), required: false);
+            return new DeferredBodyAction<MoveMessageToDeadLetterQueueOutput>(() =>
             {
-                serviceProviderParameters["deadLetterQueueName"] = ExpressionConverter.ConvertO(deadLetterQueueName);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["message"] = ExpressionConverter.ConvertO(__workflow_message);
+                serviceProviderParameters["reasonCode"] = ExpressionConverter.ConvertO(__workflow_reasonCode);
+                if (__workflow_deadLetterQueueName != null)
+                {
+                    serviceProviderParameters["deadLetterQueueName"] = ExpressionConverter.ConvertO(__workflow_deadLetterQueueName);
+                }
 
-            if (sendMessageOptions != null)
-            {
-                serviceProviderParameters["sendMessageOptions"] = ExpressionConverter.ConvertO(sendMessageOptions);
-            }
+                if (__workflow_sendMessageOptions != null)
+                {
+                    serviceProviderParameters["sendMessageOptions"] = ExpressionConverter.ConvertO(__workflow_sendMessageOptions);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "moveMessageToDeadLetterQueue", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<MoveMessageToDeadLetterQueueOutput>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "moveMessageToDeadLetterQueue", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<MoveMessageToDeadLetterQueueOutput>(serviceProviderInput);
+            });
         }
     }
 
@@ -188,55 +245,72 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
     {
         public IBodyWorkflowTrigger<PollAvailableOutput> PollAvailable(Expression<Func<string>> queueName, Expression<Func<int>> waitIntervalInSeconds = null, FlowRecurrence recurrence = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            if (waitIntervalInSeconds != null)
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_waitIntervalInSeconds = WorkflowExpression.Compile(waitIntervalInSeconds, nameof(waitIntervalInSeconds), required: false);
+            return new DeferredBodyTrigger<PollAvailableOutput>(() =>
             {
-                serviceProviderParameters["waitIntervalInSeconds"] = ExpressionConverter.ConvertO(waitIntervalInSeconds);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                if (__workflow_waitIntervalInSeconds != null)
+                {
+                    serviceProviderParameters["waitIntervalInSeconds"] = ExpressionConverter.ConvertO(__workflow_waitIntervalInSeconds);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollAvailable", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<PollAvailableOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollAvailable", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderTrigger<PollAvailableOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<PollBrowseMessagesOutput> PollBrowseMessages(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<PollBrowseMessagesInputGetMessageOptionsType>> getMessageOptions = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
-            if (getMessageOptions != null)
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_includeInfo = WorkflowExpression.Compile(includeInfo, nameof(includeInfo), required: true);
+            var __workflow_getMessageOptions = WorkflowExpression.Compile(getMessageOptions, nameof(getMessageOptions), required: false);
+            return new DeferredBodyTrigger<PollBrowseMessagesOutput>(() =>
             {
-                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(__workflow_includeInfo);
+                if (__workflow_getMessageOptions != null)
+                {
+                    serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(__workflow_getMessageOptions);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollBrowseMessages", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<PollBrowseMessagesOutput>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollBrowseMessages", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderTrigger<PollBrowseMessagesOutput>(serviceProviderInput);
+            });
         }
 
         public IBodyWorkflowTrigger<PollMessagesOutput> PollMessages(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<PollMessagesInputGetMessageOptionsType>> getMessageOptions = null, FlowRecurrence recurrence = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
-            if (getMessageOptions != null)
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_includeInfo = WorkflowExpression.Compile(includeInfo, nameof(includeInfo), required: true);
+            var __workflow_getMessageOptions = WorkflowExpression.Compile(getMessageOptions, nameof(getMessageOptions), required: false);
+            return new DeferredBodyTrigger<PollMessagesOutput>(() =>
             {
-                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(__workflow_includeInfo);
+                if (__workflow_getMessageOptions != null)
+                {
+                    serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(__workflow_getMessageOptions);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollMessages", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<PollMessagesOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollMessages", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderTrigger<PollMessagesOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+            });
         }
     }
 
@@ -382,7 +456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public JToken RuleAndFormattingVersion2Header { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PollBrowseMessagesOutputMessagesTypeItemReportType
     {
         None,
@@ -396,7 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         DiscardMessage
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PollBrowseMessagesOutputMessagesTypeItemMessageTypeType
     {
         Datagram,
@@ -404,7 +478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         Reply
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PollBrowseMessagesOutputMessagesTypeItemPriorityType
     {
         [EnumMember(Value = "As Published")]
@@ -415,7 +489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsParent
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PollBrowseMessagesOutputMessagesTypeItemPersistenceType
     {
         None,
@@ -424,7 +498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsQueueDefined
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PollBrowseMessagesOutputMessagesTypeItemFlagsType
     {
         None,
@@ -462,7 +536,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public int? PollingIntervalInSeconds { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PollBrowseMessagesInputGetMessageOptionsTypeFormatType
     {
         String,
@@ -593,7 +667,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public JToken RuleAndFormattingVersion2Header { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PollMessagesOutputMessagesTypeItemReportType
     {
         None,
@@ -607,7 +681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         DiscardMessage
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PollMessagesOutputMessagesTypeItemMessageTypeType
     {
         Datagram,
@@ -615,7 +689,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         Reply
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PollMessagesOutputMessagesTypeItemPriorityType
     {
         [EnumMember(Value = "As Published")]
@@ -626,7 +700,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsParent
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PollMessagesOutputMessagesTypeItemPersistenceType
     {
         None,
@@ -635,7 +709,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsQueueDefined
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PollMessagesOutputMessagesTypeItemFlagsType
     {
         None,
@@ -670,7 +744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public bool? MaximizeThroughput { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PollMessagesInputGetMessageOptionsTypeFormatType
     {
         String,
@@ -804,7 +878,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public JToken RuleAndFormattingVersion2Header { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrowseMessageOutputMessageTypeReportType
     {
         None,
@@ -818,7 +892,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         DiscardMessage
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrowseMessageOutputMessageTypeMessageTypeType
     {
         Datagram,
@@ -826,7 +900,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         Reply
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrowseMessageOutputMessageTypePriorityType
     {
         [EnumMember(Value = "As Published")]
@@ -837,7 +911,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsParent
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrowseMessageOutputMessageTypePersistenceType
     {
         None,
@@ -846,7 +920,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsQueueDefined
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrowseMessageOutputMessageTypeFlagsType
     {
         None,
@@ -881,7 +955,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public int? BrowseLockedTimeoutInSeconds { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrowseMessageInputGetMessageOptionsTypeFormatType
     {
         String,
@@ -1015,7 +1089,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public JToken RuleAndFormattingVersion2Header { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrowseBatchOutputMessagesTypeItemReportType
     {
         None,
@@ -1029,7 +1103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         DiscardMessage
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrowseBatchOutputMessagesTypeItemMessageTypeType
     {
         Datagram,
@@ -1037,7 +1111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         Reply
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrowseBatchOutputMessagesTypeItemPriorityType
     {
         [EnumMember(Value = "As Published")]
@@ -1048,7 +1122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsParent
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrowseBatchOutputMessagesTypeItemPersistenceType
     {
         None,
@@ -1057,7 +1131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsQueueDefined
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrowseBatchOutputMessagesTypeItemFlagsType
     {
         None,
@@ -1092,7 +1166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public int? BrowseLockedTimeoutInSeconds { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrowseBatchInputGetMessageOptionsTypeFormatType
     {
         String,
@@ -1223,7 +1297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public JToken RuleAndFormattingVersion2Header { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReceiveMessageOutputMessageTypeReportType
     {
         None,
@@ -1237,7 +1311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         DiscardMessage
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReceiveMessageOutputMessageTypeMessageTypeType
     {
         Datagram,
@@ -1245,7 +1319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         Reply
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReceiveMessageOutputMessageTypePriorityType
     {
         [EnumMember(Value = "As Published")]
@@ -1256,7 +1330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsParent
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReceiveMessageOutputMessageTypePersistenceType
     {
         None,
@@ -1265,7 +1339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsQueueDefined
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReceiveMessageOutputMessageTypeFlagsType
     {
         None,
@@ -1297,7 +1371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public int? WaitIntervalInSeconds { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReceiveMessageInputGetMessageOptionsTypeFormatType
     {
         String,
@@ -1428,7 +1502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public JToken RuleAndFormattingVersion2Header { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReceiveBatchOutputMessagesTypeItemReportType
     {
         None,
@@ -1442,7 +1516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         DiscardMessage
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReceiveBatchOutputMessagesTypeItemMessageTypeType
     {
         Datagram,
@@ -1450,7 +1524,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         Reply
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReceiveBatchOutputMessagesTypeItemPriorityType
     {
         [EnumMember(Value = "As Published")]
@@ -1461,7 +1535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsParent
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReceiveBatchOutputMessagesTypeItemPersistenceType
     {
         None,
@@ -1470,7 +1544,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsQueueDefined
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReceiveBatchOutputMessagesTypeItemFlagsType
     {
         None,
@@ -1502,7 +1576,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public int? WaitIntervalInSeconds { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReceiveBatchInputGetMessageOptionsTypeFormatType
     {
         String,
@@ -1596,7 +1670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public JToken RuleAndFormattingVersion2Header { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendMessageInputSendMessageOptionsTypeMessageTypeType
     {
         Request,
@@ -1604,14 +1678,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         Datagram
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendMessageInputSendMessageOptionsTypeFormatType
     {
         String,
         Binary
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendMessageInputSendMessageOptionsTypePriorityType
     {
         AsPublished,
@@ -1619,7 +1693,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsQueueDefined
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendMessageInputSendMessageOptionsTypePersistenceType
     {
         Persistent,
@@ -1627,7 +1701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsParent
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendMessageInputSendMessageOptionsTypeReportType
     {
         None,
@@ -1637,7 +1711,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         DiscardMessage
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendMessageInputSendMessageOptionsTypeFlagsType
     {
         None,
@@ -1648,7 +1722,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         LastMessageInAGroup
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendMessageInputSendMessageOptionsTypePutApplicationTypeType
     {
         Cics,
@@ -1731,7 +1805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public JToken RuleAndFormattingVersion2Header { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendBatchInputMessageListTypeItemFormatType
     {
         String,
@@ -1780,7 +1854,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public string PutDateTime { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendBatchInputSendMessageOptionsTypeMessageTypeType
     {
         Request,
@@ -1788,7 +1862,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         Datagram
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendBatchInputSendMessageOptionsTypePersistenceType
     {
         Persistent,
@@ -1796,7 +1870,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsParent
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendBatchInputSendMessageOptionsTypePriorityType
     {
         AsPublished,
@@ -1804,7 +1878,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsQueueDefined
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendBatchInputSendMessageOptionsTypeReportType
     {
         None,
@@ -1814,7 +1888,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         DiscardMessage
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendBatchInputSendMessageOptionsTypeFlagsType
     {
         None,
@@ -1825,7 +1899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         LastMessageInAGroup
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendBatchInputSendMessageOptionsTypePutApplicationTypeType
     {
         Cics,
@@ -1899,7 +1973,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public string Status { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CompleteMessageInputCompleteActionType
     {
         Commit,
@@ -1945,7 +2019,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public string Status { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CompleteBatchInputCompleteActionType
     {
         Commit,
@@ -1986,7 +2060,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public string PutDateTime { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MoveMessageToDeadLetterQueueInputSendMessageOptionsTypePutApplicationTypeType
     {
         Cics,

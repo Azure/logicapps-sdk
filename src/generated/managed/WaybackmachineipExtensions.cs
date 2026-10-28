@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waybackmachineip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,13 +14,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waybackmachineip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waybackmachineip")]
         public IBodyWorkflowAction<GetSnapshotResponse> GetSnapshot(Expression<Func<string>> url, Expression<Func<string>> timestamp = null)
         {
-            var apiCallPath = "/wayback/available";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
-            if (timestamp != null)
-                callPayload.Queries["timestamp"] = ExpressionConverter.Convert(timestamp);
-            return new ApiConnectionAction<GetSnapshotResponse>(callPayload);
+            var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
+            var __workflow_timestamp = WorkflowExpression.Compile(timestamp, nameof(timestamp), required: false);
+            return new DeferredBodyAction<GetSnapshotResponse>(() =>
+            {
+                var apiCallPath = "/wayback/available";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["url"] = ExpressionConverter.Convert(__workflow_url);
+                if (__workflow_timestamp != null)
+                    callPayload.Queries["timestamp"] = ExpressionConverter.Convert(__workflow_timestamp);
+                return new ApiConnectionAction<GetSnapshotResponse>(callPayload);
+            });
         }
     }
 

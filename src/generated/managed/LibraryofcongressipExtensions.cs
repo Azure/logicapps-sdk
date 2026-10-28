@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,70 +14,103 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
         public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
         {
-            var apiCallPath = "/search/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (fa != null)
-                callPayload.Queries["fa"] = ExpressionConverter.Convert(fa);
-            if (c != null)
-                callPayload.Queries["c"] = ExpressionConverter.Convert(c);
-            if (sp != null)
-                callPayload.Queries["sp"] = ExpressionConverter.Convert(sp);
-            if (at != null)
-                callPayload.Queries["at"] = ExpressionConverter.Convert(at);
-            if (sb != null)
-                callPayload.Queries["sb"] = ExpressionConverter.Convert(sb);
-            return new ApiConnectionAction<SearchResponse>(callPayload);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_fa = WorkflowExpression.Compile(fa, nameof(fa), required: false);
+            var __workflow_c = WorkflowExpression.Compile(c, nameof(c), required: false);
+            var __workflow_sp = WorkflowExpression.Compile(sp, nameof(sp), required: false);
+            var __workflow_at = WorkflowExpression.Compile(at, nameof(at), required: false);
+            var __workflow_sb = WorkflowExpression.Compile(sb, nameof(sb), required: false);
+            return new DeferredBodyAction<SearchResponse>(() =>
+            {
+                var apiCallPath = "/search/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                if (__workflow_fa != null)
+                    callPayload.Queries["fa"] = ExpressionConverter.Convert(__workflow_fa);
+                if (__workflow_c != null)
+                    callPayload.Queries["c"] = ExpressionConverter.Convert(__workflow_c);
+                if (__workflow_sp != null)
+                    callPayload.Queries["sp"] = ExpressionConverter.Convert(__workflow_sp);
+                if (__workflow_at != null)
+                    callPayload.Queries["at"] = ExpressionConverter.Convert(__workflow_at);
+                if (__workflow_sb != null)
+                    callPayload.Queries["sb"] = ExpressionConverter.Convert(__workflow_sb);
+                return new ApiConnectionAction<SearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
         public IBodyWorkflowAction<CollectionResponse> Collection(Expression<Func<string>> collection, Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
         {
-            var apiCallPath = String.Format("/collections/{0}", ExpressionConverter.ConvertWithUrlEncoding(collection, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (fa != null)
-                callPayload.Queries["fa"] = ExpressionConverter.Convert(fa);
-            if (c != null)
-                callPayload.Queries["c"] = ExpressionConverter.Convert(c);
-            if (sp != null)
-                callPayload.Queries["sp"] = ExpressionConverter.Convert(sp);
-            if (at != null)
-                callPayload.Queries["at"] = ExpressionConverter.Convert(at);
-            if (sb != null)
-                callPayload.Queries["sb"] = ExpressionConverter.Convert(sb);
-            return new ApiConnectionAction<CollectionResponse>(callPayload);
+            var __workflow_collection = WorkflowExpression.Compile(collection, nameof(collection), required: true);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_fa = WorkflowExpression.Compile(fa, nameof(fa), required: false);
+            var __workflow_c = WorkflowExpression.Compile(c, nameof(c), required: false);
+            var __workflow_sp = WorkflowExpression.Compile(sp, nameof(sp), required: false);
+            var __workflow_at = WorkflowExpression.Compile(at, nameof(at), required: false);
+            var __workflow_sb = WorkflowExpression.Compile(sb, nameof(sb), required: false);
+            return new DeferredBodyAction<CollectionResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/collections/{0}", __workflow_collection.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                if (__workflow_fa != null)
+                    callPayload.Queries["fa"] = ExpressionConverter.Convert(__workflow_fa);
+                if (__workflow_c != null)
+                    callPayload.Queries["c"] = ExpressionConverter.Convert(__workflow_c);
+                if (__workflow_sp != null)
+                    callPayload.Queries["sp"] = ExpressionConverter.Convert(__workflow_sp);
+                if (__workflow_at != null)
+                    callPayload.Queries["at"] = ExpressionConverter.Convert(__workflow_at);
+                if (__workflow_sb != null)
+                    callPayload.Queries["sb"] = ExpressionConverter.Convert(__workflow_sb);
+                return new ApiConnectionAction<CollectionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
         public IBodyWorkflowAction<FormatResponse> Format(Expression<Func<formatInput>> format, Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
         {
-            var apiCallPath = String.Format("/{0}/", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (fa != null)
-                callPayload.Queries["fa"] = ExpressionConverter.Convert(fa);
-            if (c != null)
-                callPayload.Queries["c"] = ExpressionConverter.Convert(c);
-            if (sp != null)
-                callPayload.Queries["sp"] = ExpressionConverter.Convert(sp);
-            if (at != null)
-                callPayload.Queries["at"] = ExpressionConverter.Convert(at);
-            if (sb != null)
-                callPayload.Queries["sb"] = ExpressionConverter.Convert(sb);
-            return new ApiConnectionAction<FormatResponse>(callPayload);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_fa = WorkflowExpression.Compile(fa, nameof(fa), required: false);
+            var __workflow_c = WorkflowExpression.Compile(c, nameof(c), required: false);
+            var __workflow_sp = WorkflowExpression.Compile(sp, nameof(sp), required: false);
+            var __workflow_at = WorkflowExpression.Compile(at, nameof(at), required: false);
+            var __workflow_sb = WorkflowExpression.Compile(sb, nameof(sb), required: false);
+            return new DeferredBodyAction<FormatResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/", __workflow_format.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                if (__workflow_fa != null)
+                    callPayload.Queries["fa"] = ExpressionConverter.Convert(__workflow_fa);
+                if (__workflow_c != null)
+                    callPayload.Queries["c"] = ExpressionConverter.Convert(__workflow_c);
+                if (__workflow_sp != null)
+                    callPayload.Queries["sp"] = ExpressionConverter.Convert(__workflow_sp);
+                if (__workflow_at != null)
+                    callPayload.Queries["at"] = ExpressionConverter.Convert(__workflow_at);
+                if (__workflow_sb != null)
+                    callPayload.Queries["sb"] = ExpressionConverter.Convert(__workflow_sb);
+                return new ApiConnectionAction<FormatResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
         public IBodyWorkflowAction<ItemResponse> Item(Expression<Func<string>> identifier)
         {
-            var apiCallPath = String.Format("/item/{0}/", ExpressionConverter.ConvertWithUrlEncoding(identifier, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ItemResponse>(callPayload);
+            var __workflow_identifier = WorkflowExpression.Compile(identifier, nameof(identifier), required: true);
+            return new DeferredBodyAction<ItemResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/item/{0}/", __workflow_identifier.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ItemResponse>(callPayload);
+            });
         }
     }
 
@@ -2657,6 +2690,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
         public string Slideshow { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatInput
     {
         [EnumMember(Value = "manuscripts")]

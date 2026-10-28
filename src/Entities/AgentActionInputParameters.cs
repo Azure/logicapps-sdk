@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets or sets the messages.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public AgentPromptMessage[] Messages { get; set; }
+        public object Messages { get; set; }
 
         /// <summary>
         /// Gets or sets the agent model settings.

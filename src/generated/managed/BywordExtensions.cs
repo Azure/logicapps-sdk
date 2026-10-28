@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,105 +14,123 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
         public IBodyWorkflowAction<ArticlePostResponse> Article(Expression<Func<bodymodeInput>> bodymode, Expression<Func<string>> bodyinput, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodysubheadings = null, Expression<Func<bool>> bodyundetectable = null, Expression<Func<string>> bodytone = null, Expression<Func<int>> bodylength = null)
         {
-            var apiCallPath = "/create_article";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["mode"] = ExpressionConverter.ConvertO(bodymode);
-            bodypropCount++;
-            body["input"] = ExpressionConverter.ConvertO(bodyinput);
-            if (bodylanguage != null)
+            var __workflow_bodymode = WorkflowExpression.Compile(bodymode, nameof(bodymode), required: true);
+            var __workflow_bodyinput = WorkflowExpression.Compile(bodyinput, nameof(bodyinput), required: true);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodysubheadings = WorkflowExpression.Compile(bodysubheadings, nameof(bodysubheadings), required: false);
+            var __workflow_bodyundetectable = WorkflowExpression.Compile(bodyundetectable, nameof(bodyundetectable), required: false);
+            var __workflow_bodytone = WorkflowExpression.Compile(bodytone, nameof(bodytone), required: false);
+            var __workflow_bodylength = WorkflowExpression.Compile(bodylength, nameof(bodylength), required: false);
+            return new DeferredBodyAction<ArticlePostResponse>(() =>
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                var apiCallPath = "/create_article";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodysubheadings != null)
-            {
-                body["subheadings"] = ExpressionConverter.ConvertO(bodysubheadings);
+                body["mode"] = ExpressionConverter.ConvertO(__workflow_bodymode);
                 bodypropCount++;
-            }
+                body["input"] = ExpressionConverter.ConvertO(__workflow_bodyinput);
+                if (__workflow_bodylanguage != null)
+                {
+                    body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
+                    bodypropCount++;
+                }
 
-            if (bodyundetectable != null)
-            {
-                body["undetectable"] = ExpressionConverter.ConvertO(bodyundetectable);
-                bodypropCount++;
-            }
+                if (__workflow_bodysubheadings != null)
+                {
+                    body["subheadings"] = ExpressionConverter.ConvertO(__workflow_bodysubheadings);
+                    bodypropCount++;
+                }
 
-            if (bodytone != null)
-            {
-                body["tone"] = ExpressionConverter.ConvertO(bodytone);
-                bodypropCount++;
-            }
+                if (__workflow_bodyundetectable != null)
+                {
+                    body["undetectable"] = ExpressionConverter.ConvertO(__workflow_bodyundetectable);
+                    bodypropCount++;
+                }
 
-            if (bodylength != null)
-            {
-                body["length"] = ExpressionConverter.ConvertO(bodylength);
-                bodypropCount++;
-            }
+                if (__workflow_bodytone != null)
+                {
+                    body["tone"] = ExpressionConverter.ConvertO(__workflow_bodytone);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodylength != null)
+                {
+                    body["length"] = ExpressionConverter.ConvertO(__workflow_bodylength);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ArticlePostResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ArticlePostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
         public IBodyWorkflowAction<ArticleGetPostResponse> ArticleGet(Expression<Func<string>> bodyarticleID = null)
         {
-            var apiCallPath = "/get_article";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyarticleID != null)
+            var __workflow_bodyarticleID = WorkflowExpression.Compile(bodyarticleID, nameof(bodyarticleID), required: false);
+            return new DeferredBodyAction<ArticleGetPostResponse>(() =>
             {
-                body["articleID"] = ExpressionConverter.ConvertO(bodyarticleID);
-                bodypropCount++;
-            }
+                var apiCallPath = "/get_article";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyarticleID != null)
+                {
+                    body["articleID"] = ExpressionConverter.ConvertO(__workflow_bodyarticleID);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ArticleGetPostResponse>(callPayload);
+                return new ApiConnectionAction<ArticleGetPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
         public IBodyWorkflowAction<ArticlesPostResponseItem[]> Articles(Expression<Func<int>> bodycursor = null)
         {
-            var apiCallPath = "/list_articles";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycursor != null)
+            var __workflow_bodycursor = WorkflowExpression.Compile(bodycursor, nameof(bodycursor), required: false);
+            return new DeferredBodyAction<ArticlesPostResponseItem[]>(() =>
             {
-                if (bodycursor != null)
+                var apiCallPath = "/list_articles";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodycursor != null)
                 {
-                    body["cursor"] = ExpressionConverter.ConvertO(bodycursor);
+                    if (__workflow_bodycursor != null)
+                    {
+                        body["cursor"] = ExpressionConverter.ConvertO(__workflow_bodycursor);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["cursor"] = 0;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["cursor"] = 0;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ArticlesPostResponseItem[]>(callPayload);
+                return new ApiConnectionAction<ArticlesPostResponseItem[]>(callPayload);
+            });
         }
     }
 
@@ -129,6 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
         public string ArticleID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymodeInput
     {
         [EnumMember(Value = "keyword")]

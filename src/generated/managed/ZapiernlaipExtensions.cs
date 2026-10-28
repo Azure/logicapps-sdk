@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zapiernlaip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,35 +23,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zapiernlaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zapiernlaip")]
         public IBodyWorkflowAction<ActionPostResponse> Action(Expression<Func<string>> actionId, Expression<Func<string>> bodyinstructions, Expression<Func<bool>> bodypreviewOnly = null)
         {
-            var apiCallPath = String.Format("/api/v1/dynamic/exposed/{0}/execute/", ExpressionConverter.ConvertWithUrlEncoding(actionId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["instructions"] = ExpressionConverter.ConvertO(bodyinstructions);
-            if (bodypreviewOnly != null)
+            var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
+            var __workflow_bodyinstructions = WorkflowExpression.Compile(bodyinstructions, nameof(bodyinstructions), required: true);
+            var __workflow_bodypreviewOnly = WorkflowExpression.Compile(bodypreviewOnly, nameof(bodypreviewOnly), required: false);
+            return new DeferredBodyAction<ActionPostResponse>(() =>
             {
-                if (bodypreviewOnly != null)
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/dynamic/exposed/{0}/execute/", __workflow_actionId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["instructions"] = ExpressionConverter.ConvertO(__workflow_bodyinstructions);
+                if (__workflow_bodypreviewOnly != null)
                 {
-                    body["preview_only"] = ExpressionConverter.ConvertO(bodypreviewOnly);
+                    if (__workflow_bodypreviewOnly != null)
+                    {
+                        body["preview_only"] = ExpressionConverter.ConvertO(__workflow_bodypreviewOnly);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["preview_only"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["preview_only"] = false;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ActionPostResponse>(callPayload);
+                return new ApiConnectionAction<ActionPostResponse>(callPayload);
+            });
         }
     }
 

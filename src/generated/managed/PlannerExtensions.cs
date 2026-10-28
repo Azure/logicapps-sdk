@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,318 +14,391 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IWorkflowAction DeleteTask(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/v1.0/planner/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/planner/tasks/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskResponseV2> UnassignUsers(Expression<Func<string>> id, Expression<Func<string>> bodyremoveAssignedUsers)
         {
-            var apiCallPath = String.Format("/v1.0/planner/tasks/{0}/unassignusers", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["prefer"] = Convert.ToString(" return=representation");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["assignments"] = ExpressionConverter.ConvertO(bodyremoveAssignedUsers);
-            if (bodypropCount > 0)
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyremoveAssignedUsers = WorkflowExpression.Compile(bodyremoveAssignedUsers, nameof(bodyremoveAssignedUsers), required: true);
+            return new DeferredBodyAction<GetTaskResponseV2>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/planner/tasks/{0}/unassignusers", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["prefer"] = Convert.ToString(" return=representation");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["assignments"] = ExpressionConverter.ConvertO(__workflow_bodyremoveAssignedUsers);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<GetTaskResponseV2>(callPayload);
+                return new ApiConnectionAction<GetTaskResponseV2>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskResponseV2> AssignUsers(Expression<Func<string>> id, Expression<Func<string>> bodyassignedUserIds)
         {
-            var apiCallPath = String.Format("/v1.0/planner/tasks/{0}/assignusers", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["prefer"] = Convert.ToString(" return=representation");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["assignments"] = ExpressionConverter.ConvertO(bodyassignedUserIds);
-            if (bodypropCount > 0)
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyassignedUserIds = WorkflowExpression.Compile(bodyassignedUserIds, nameof(bodyassignedUserIds), required: true);
+            return new DeferredBodyAction<GetTaskResponseV2>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/planner/tasks/{0}/assignusers", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["prefer"] = Convert.ToString(" return=representation");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["assignments"] = ExpressionConverter.ConvertO(__workflow_bodyassignedUserIds);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<GetTaskResponseV2>(callPayload);
+                return new ApiConnectionAction<GetTaskResponseV2>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<ListMyPlansResponse> ListGroupPlans(Expression<Func<string>> groupId)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/planner/plans", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListMyPlansResponse>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            return new DeferredBodyAction<ListMyPlansResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/groups/{0}/planner/plans", __workflow_groupId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListMyPlansResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<CreateBucketResponse> CreateBucket(Expression<Func<string>> bodyname, Expression<Func<string>> bodygroupId, Expression<Func<string>> bodyplanId)
         {
-            var apiCallPath = "/v2/v1.0/planner/buckets";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
-            bodypropCount++;
-            body["planId"] = ExpressionConverter.ConvertO(bodyplanId);
-            if (bodypropCount > 0)
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: true);
+            var __workflow_bodyplanId = WorkflowExpression.Compile(bodyplanId, nameof(bodyplanId), required: true);
+            return new DeferredBodyAction<CreateBucketResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/v2/v1.0/planner/buckets";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                bodypropCount++;
+                body["groupId"] = ExpressionConverter.ConvertO(__workflow_bodygroupId);
+                bodypropCount++;
+                body["planId"] = ExpressionConverter.ConvertO(__workflow_bodyplanId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CreateBucketResponse>(callPayload);
+                return new ApiConnectionAction<CreateBucketResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskResponseV3> CreateTask(Expression<Func<string>> bodygroupId, Expression<Func<string>> bodyplanId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodybucketId = null, Expression<Func<string>> bodystartDateTime = null, Expression<Func<string>> bodydueDateTime = null, Expression<Func<string>> bodyassignedUserIds = null, Expression<Func<bool>> bodyappliedCategoriespink = null, Expression<Func<bool>> bodyappliedCategoriesred = null, Expression<Func<bool>> bodyappliedCategoriesyellow = null, Expression<Func<bool>> bodyappliedCategoriesgreen = null, Expression<Func<bool>> bodyappliedCategoriesblue = null, Expression<Func<bool>> bodyappliedCategoriespurple = null, Expression<Func<bool>> bodyappliedCategoriesbronze = null, Expression<Func<bool>> bodyappliedCategorieslime = null, Expression<Func<bool>> bodyappliedCategoriesaqua = null, Expression<Func<bool>> bodyappliedCategoriesgray = null, Expression<Func<bool>> bodyappliedCategoriessilver = null, Expression<Func<bool>> bodyappliedCategoriesbrown = null, Expression<Func<bool>> bodyappliedCategoriescranberry = null, Expression<Func<bool>> bodyappliedCategoriesorange = null, Expression<Func<bool>> bodyappliedCategoriespeach = null, Expression<Func<bool>> bodyappliedCategoriesmarigold = null, Expression<Func<bool>> bodyappliedCategorieslightGreen = null, Expression<Func<bool>> bodyappliedCategoriesdarkGreen = null, Expression<Func<bool>> bodyappliedCategoriesteal = null, Expression<Func<bool>> bodyappliedCategorieslightBlue = null, Expression<Func<bool>> bodyappliedCategoriesdarkBlue = null, Expression<Func<bool>> bodyappliedCategorieslavender = null, Expression<Func<bool>> bodyappliedCategoriesplum = null, Expression<Func<bool>> bodyappliedCategorieslightGray = null, Expression<Func<bool>> bodyappliedCategoriesdarkGray = null, Expression<Func<int>> bodypriority = null)
         {
-            var apiCallPath = "/v2/beta/planner/tasks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["prefer"] = Convert.ToString(" return=representation");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
-            bodypropCount++;
-            body["planId"] = ExpressionConverter.ConvertO(bodyplanId);
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodybucketId != null)
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: true);
+            var __workflow_bodyplanId = WorkflowExpression.Compile(bodyplanId, nameof(bodyplanId), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodybucketId = WorkflowExpression.Compile(bodybucketId, nameof(bodybucketId), required: false);
+            var __workflow_bodystartDateTime = WorkflowExpression.Compile(bodystartDateTime, nameof(bodystartDateTime), required: false);
+            var __workflow_bodydueDateTime = WorkflowExpression.Compile(bodydueDateTime, nameof(bodydueDateTime), required: false);
+            var __workflow_bodyassignedUserIds = WorkflowExpression.Compile(bodyassignedUserIds, nameof(bodyassignedUserIds), required: false);
+            var __workflow_bodyappliedCategoriespink = WorkflowExpression.Compile(bodyappliedCategoriespink, nameof(bodyappliedCategoriespink), required: false);
+            var __workflow_bodyappliedCategoriesred = WorkflowExpression.Compile(bodyappliedCategoriesred, nameof(bodyappliedCategoriesred), required: false);
+            var __workflow_bodyappliedCategoriesyellow = WorkflowExpression.Compile(bodyappliedCategoriesyellow, nameof(bodyappliedCategoriesyellow), required: false);
+            var __workflow_bodyappliedCategoriesgreen = WorkflowExpression.Compile(bodyappliedCategoriesgreen, nameof(bodyappliedCategoriesgreen), required: false);
+            var __workflow_bodyappliedCategoriesblue = WorkflowExpression.Compile(bodyappliedCategoriesblue, nameof(bodyappliedCategoriesblue), required: false);
+            var __workflow_bodyappliedCategoriespurple = WorkflowExpression.Compile(bodyappliedCategoriespurple, nameof(bodyappliedCategoriespurple), required: false);
+            var __workflow_bodyappliedCategoriesbronze = WorkflowExpression.Compile(bodyappliedCategoriesbronze, nameof(bodyappliedCategoriesbronze), required: false);
+            var __workflow_bodyappliedCategorieslime = WorkflowExpression.Compile(bodyappliedCategorieslime, nameof(bodyappliedCategorieslime), required: false);
+            var __workflow_bodyappliedCategoriesaqua = WorkflowExpression.Compile(bodyappliedCategoriesaqua, nameof(bodyappliedCategoriesaqua), required: false);
+            var __workflow_bodyappliedCategoriesgray = WorkflowExpression.Compile(bodyappliedCategoriesgray, nameof(bodyappliedCategoriesgray), required: false);
+            var __workflow_bodyappliedCategoriessilver = WorkflowExpression.Compile(bodyappliedCategoriessilver, nameof(bodyappliedCategoriessilver), required: false);
+            var __workflow_bodyappliedCategoriesbrown = WorkflowExpression.Compile(bodyappliedCategoriesbrown, nameof(bodyappliedCategoriesbrown), required: false);
+            var __workflow_bodyappliedCategoriescranberry = WorkflowExpression.Compile(bodyappliedCategoriescranberry, nameof(bodyappliedCategoriescranberry), required: false);
+            var __workflow_bodyappliedCategoriesorange = WorkflowExpression.Compile(bodyappliedCategoriesorange, nameof(bodyappliedCategoriesorange), required: false);
+            var __workflow_bodyappliedCategoriespeach = WorkflowExpression.Compile(bodyappliedCategoriespeach, nameof(bodyappliedCategoriespeach), required: false);
+            var __workflow_bodyappliedCategoriesmarigold = WorkflowExpression.Compile(bodyappliedCategoriesmarigold, nameof(bodyappliedCategoriesmarigold), required: false);
+            var __workflow_bodyappliedCategorieslightGreen = WorkflowExpression.Compile(bodyappliedCategorieslightGreen, nameof(bodyappliedCategorieslightGreen), required: false);
+            var __workflow_bodyappliedCategoriesdarkGreen = WorkflowExpression.Compile(bodyappliedCategoriesdarkGreen, nameof(bodyappliedCategoriesdarkGreen), required: false);
+            var __workflow_bodyappliedCategoriesteal = WorkflowExpression.Compile(bodyappliedCategoriesteal, nameof(bodyappliedCategoriesteal), required: false);
+            var __workflow_bodyappliedCategorieslightBlue = WorkflowExpression.Compile(bodyappliedCategorieslightBlue, nameof(bodyappliedCategorieslightBlue), required: false);
+            var __workflow_bodyappliedCategoriesdarkBlue = WorkflowExpression.Compile(bodyappliedCategoriesdarkBlue, nameof(bodyappliedCategoriesdarkBlue), required: false);
+            var __workflow_bodyappliedCategorieslavender = WorkflowExpression.Compile(bodyappliedCategorieslavender, nameof(bodyappliedCategorieslavender), required: false);
+            var __workflow_bodyappliedCategoriesplum = WorkflowExpression.Compile(bodyappliedCategoriesplum, nameof(bodyappliedCategoriesplum), required: false);
+            var __workflow_bodyappliedCategorieslightGray = WorkflowExpression.Compile(bodyappliedCategorieslightGray, nameof(bodyappliedCategorieslightGray), required: false);
+            var __workflow_bodyappliedCategoriesdarkGray = WorkflowExpression.Compile(bodyappliedCategoriesdarkGray, nameof(bodyappliedCategoriesdarkGray), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            return new DeferredBodyAction<GetTaskResponseV3>(() =>
             {
-                body["bucketId"] = ExpressionConverter.ConvertO(bodybucketId);
+                var apiCallPath = "/v2/beta/planner/tasks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["prefer"] = Convert.ToString(" return=representation");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodystartDateTime != null)
-            {
-                body["startDateTime"] = ExpressionConverter.ConvertO(bodystartDateTime);
+                body["groupId"] = ExpressionConverter.ConvertO(__workflow_bodygroupId);
                 bodypropCount++;
-            }
-
-            if (bodydueDateTime != null)
-            {
-                body["dueDateTime"] = ExpressionConverter.ConvertO(bodydueDateTime);
+                body["planId"] = ExpressionConverter.ConvertO(__workflow_bodyplanId);
                 bodypropCount++;
-            }
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                if (__workflow_bodybucketId != null)
+                {
+                    body["bucketId"] = ExpressionConverter.ConvertO(__workflow_bodybucketId);
+                    bodypropCount++;
+                }
 
-            if (bodyassignedUserIds != null)
-            {
-                body["assignments"] = ExpressionConverter.ConvertO(bodyassignedUserIds);
-                bodypropCount++;
-            }
+                if (__workflow_bodystartDateTime != null)
+                {
+                    body["startDateTime"] = ExpressionConverter.ConvertO(__workflow_bodystartDateTime);
+                    bodypropCount++;
+                }
 
-            var appliedCategoriesObject = new JObject();
-            var appliedCategoriesObjectpropCount = 0;
-            if (bodyappliedCategoriespink != null)
-            {
-                appliedCategoriesObject["category1"] = ExpressionConverter.ConvertO(bodyappliedCategoriespink);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodydueDateTime != null)
+                {
+                    body["dueDateTime"] = ExpressionConverter.ConvertO(__workflow_bodydueDateTime);
+                    bodypropCount++;
+                }
 
-            if (bodyappliedCategoriesred != null)
-            {
-                appliedCategoriesObject["category2"] = ExpressionConverter.ConvertO(bodyappliedCategoriesred);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyassignedUserIds != null)
+                {
+                    body["assignments"] = ExpressionConverter.ConvertO(__workflow_bodyassignedUserIds);
+                    bodypropCount++;
+                }
 
-            if (bodyappliedCategoriesyellow != null)
-            {
-                appliedCategoriesObject["category3"] = ExpressionConverter.ConvertO(bodyappliedCategoriesyellow);
-                appliedCategoriesObjectpropCount++;
-            }
+                var appliedCategoriesObject = new JObject();
+                var appliedCategoriesObjectpropCount = 0;
+                if (__workflow_bodyappliedCategoriespink != null)
+                {
+                    appliedCategoriesObject["category1"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriespink);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesgreen != null)
-            {
-                appliedCategoriesObject["category4"] = ExpressionConverter.ConvertO(bodyappliedCategoriesgreen);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesred != null)
+                {
+                    appliedCategoriesObject["category2"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesred);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesblue != null)
-            {
-                appliedCategoriesObject["category5"] = ExpressionConverter.ConvertO(bodyappliedCategoriesblue);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesyellow != null)
+                {
+                    appliedCategoriesObject["category3"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesyellow);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriespurple != null)
-            {
-                appliedCategoriesObject["category6"] = ExpressionConverter.ConvertO(bodyappliedCategoriespurple);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesgreen != null)
+                {
+                    appliedCategoriesObject["category4"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesgreen);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesbronze != null)
-            {
-                appliedCategoriesObject["category7"] = ExpressionConverter.ConvertO(bodyappliedCategoriesbronze);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesblue != null)
+                {
+                    appliedCategoriesObject["category5"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesblue);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategorieslime != null)
-            {
-                appliedCategoriesObject["category8"] = ExpressionConverter.ConvertO(bodyappliedCategorieslime);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriespurple != null)
+                {
+                    appliedCategoriesObject["category6"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriespurple);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesaqua != null)
-            {
-                appliedCategoriesObject["category9"] = ExpressionConverter.ConvertO(bodyappliedCategoriesaqua);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesbronze != null)
+                {
+                    appliedCategoriesObject["category7"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesbronze);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesgray != null)
-            {
-                appliedCategoriesObject["category10"] = ExpressionConverter.ConvertO(bodyappliedCategoriesgray);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategorieslime != null)
+                {
+                    appliedCategoriesObject["category8"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategorieslime);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriessilver != null)
-            {
-                appliedCategoriesObject["category11"] = ExpressionConverter.ConvertO(bodyappliedCategoriessilver);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesaqua != null)
+                {
+                    appliedCategoriesObject["category9"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesaqua);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesbrown != null)
-            {
-                appliedCategoriesObject["category12"] = ExpressionConverter.ConvertO(bodyappliedCategoriesbrown);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesgray != null)
+                {
+                    appliedCategoriesObject["category10"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesgray);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriescranberry != null)
-            {
-                appliedCategoriesObject["category13"] = ExpressionConverter.ConvertO(bodyappliedCategoriescranberry);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriessilver != null)
+                {
+                    appliedCategoriesObject["category11"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriessilver);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesorange != null)
-            {
-                appliedCategoriesObject["category14"] = ExpressionConverter.ConvertO(bodyappliedCategoriesorange);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesbrown != null)
+                {
+                    appliedCategoriesObject["category12"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesbrown);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriespeach != null)
-            {
-                appliedCategoriesObject["category15"] = ExpressionConverter.ConvertO(bodyappliedCategoriespeach);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriescranberry != null)
+                {
+                    appliedCategoriesObject["category13"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriescranberry);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesmarigold != null)
-            {
-                appliedCategoriesObject["category16"] = ExpressionConverter.ConvertO(bodyappliedCategoriesmarigold);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesorange != null)
+                {
+                    appliedCategoriesObject["category14"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesorange);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategorieslightGreen != null)
-            {
-                appliedCategoriesObject["category17"] = ExpressionConverter.ConvertO(bodyappliedCategorieslightGreen);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriespeach != null)
+                {
+                    appliedCategoriesObject["category15"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriespeach);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesdarkGreen != null)
-            {
-                appliedCategoriesObject["category18"] = ExpressionConverter.ConvertO(bodyappliedCategoriesdarkGreen);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesmarigold != null)
+                {
+                    appliedCategoriesObject["category16"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesmarigold);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesteal != null)
-            {
-                appliedCategoriesObject["category19"] = ExpressionConverter.ConvertO(bodyappliedCategoriesteal);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategorieslightGreen != null)
+                {
+                    appliedCategoriesObject["category17"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategorieslightGreen);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategorieslightBlue != null)
-            {
-                appliedCategoriesObject["category20"] = ExpressionConverter.ConvertO(bodyappliedCategorieslightBlue);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesdarkGreen != null)
+                {
+                    appliedCategoriesObject["category18"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesdarkGreen);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesdarkBlue != null)
-            {
-                appliedCategoriesObject["category21"] = ExpressionConverter.ConvertO(bodyappliedCategoriesdarkBlue);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesteal != null)
+                {
+                    appliedCategoriesObject["category19"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesteal);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategorieslavender != null)
-            {
-                appliedCategoriesObject["category22"] = ExpressionConverter.ConvertO(bodyappliedCategorieslavender);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategorieslightBlue != null)
+                {
+                    appliedCategoriesObject["category20"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategorieslightBlue);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesplum != null)
-            {
-                appliedCategoriesObject["category23"] = ExpressionConverter.ConvertO(bodyappliedCategoriesplum);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesdarkBlue != null)
+                {
+                    appliedCategoriesObject["category21"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesdarkBlue);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategorieslightGray != null)
-            {
-                appliedCategoriesObject["category24"] = ExpressionConverter.ConvertO(bodyappliedCategorieslightGray);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategorieslavender != null)
+                {
+                    appliedCategoriesObject["category22"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategorieslavender);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesdarkGray != null)
-            {
-                appliedCategoriesObject["category25"] = ExpressionConverter.ConvertO(bodyappliedCategoriesdarkGray);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesplum != null)
+                {
+                    appliedCategoriesObject["category23"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesplum);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (appliedCategoriesObjectpropCount > 0)
-            {
-                body["appliedCategories"] = appliedCategoriesObject;
-                bodypropCount++;
-            }
+                if (__workflow_bodyappliedCategorieslightGray != null)
+                {
+                    appliedCategoriesObject["category24"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategorieslightGray);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodypriority != null)
-            {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesdarkGray != null)
+                {
+                    appliedCategoriesObject["category25"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesdarkGray);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (appliedCategoriesObjectpropCount > 0)
+                {
+                    body["appliedCategories"] = appliedCategoriesObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<GetTaskResponseV3>(callPayload);
+                if (__workflow_bodypriority != null)
+                {
+                    body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<GetTaskResponseV3>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskResponseV2> GetTask(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/v1.0/planner/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTaskResponseV2>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<GetTaskResponseV2>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/planner/tasks/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetTaskResponseV2>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskDetailsResponse> GetTaskDetails(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/v1.0/planner/tasks/{0}/details", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTaskDetailsResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<GetTaskDetailsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/planner/tasks/{0}/details", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetTaskDetailsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<ListBucketsResponse> ListBuckets(Expression<Func<string>> groupId, Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/v2/v1.0/planner/plans/{0}/buckets", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            return new ApiConnectionAction<ListBucketsResponse>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<ListBucketsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/v1.0/planner/plans/{0}/buckets", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
+                return new ApiConnectionAction<ListBucketsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
@@ -340,280 +413,336 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<ListTasksResponseV2> ListTasks(Expression<Func<string>> groupId, Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/v2/v1.0/planner/plans/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            return new ApiConnectionAction<ListTasksResponseV2>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<ListTasksResponseV2>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/v1.0/planner/plans/{0}/tasks", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
+                return new ApiConnectionAction<ListTasksResponseV2>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskResponseV2> UpdateTask(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydueDateTime = null, Expression<Func<string>> bodystartDateTime = null, Expression<Func<int>> bodypercentComplete = null, Expression<Func<string>> bodybucketId = null, Expression<Func<bool>> bodyappliedCategoriespink = null, Expression<Func<bool>> bodyappliedCategoriesred = null, Expression<Func<bool>> bodyappliedCategoriesyellow = null, Expression<Func<bool>> bodyappliedCategoriesgreen = null, Expression<Func<bool>> bodyappliedCategoriesblue = null, Expression<Func<bool>> bodyappliedCategoriespurple = null, Expression<Func<bool>> bodyappliedCategoriesbronze = null, Expression<Func<bool>> bodyappliedCategorieslime = null, Expression<Func<bool>> bodyappliedCategoriesaqua = null, Expression<Func<bool>> bodyappliedCategoriesgray = null, Expression<Func<bool>> bodyappliedCategoriessilver = null, Expression<Func<bool>> bodyappliedCategoriesbrown = null, Expression<Func<bool>> bodyappliedCategoriescranberry = null, Expression<Func<bool>> bodyappliedCategoriesorange = null, Expression<Func<bool>> bodyappliedCategoriespeach = null, Expression<Func<bool>> bodyappliedCategoriesmarigold = null, Expression<Func<bool>> bodyappliedCategorieslightGreen = null, Expression<Func<bool>> bodyappliedCategoriesdarkGreen = null, Expression<Func<bool>> bodyappliedCategoriesteal = null, Expression<Func<bool>> bodyappliedCategorieslightBlue = null, Expression<Func<bool>> bodyappliedCategoriesdarkBlue = null, Expression<Func<bool>> bodyappliedCategorieslavender = null, Expression<Func<bool>> bodyappliedCategoriesplum = null, Expression<Func<bool>> bodyappliedCategorieslightGray = null, Expression<Func<bool>> bodyappliedCategoriesdarkGray = null)
         {
-            var apiCallPath = String.Format("/v2/v1.0/planner/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["prefer"] = Convert.ToString(" return=representation");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydueDateTime = WorkflowExpression.Compile(bodydueDateTime, nameof(bodydueDateTime), required: false);
+            var __workflow_bodystartDateTime = WorkflowExpression.Compile(bodystartDateTime, nameof(bodystartDateTime), required: false);
+            var __workflow_bodypercentComplete = WorkflowExpression.Compile(bodypercentComplete, nameof(bodypercentComplete), required: false);
+            var __workflow_bodybucketId = WorkflowExpression.Compile(bodybucketId, nameof(bodybucketId), required: false);
+            var __workflow_bodyappliedCategoriespink = WorkflowExpression.Compile(bodyappliedCategoriespink, nameof(bodyappliedCategoriespink), required: false);
+            var __workflow_bodyappliedCategoriesred = WorkflowExpression.Compile(bodyappliedCategoriesred, nameof(bodyappliedCategoriesred), required: false);
+            var __workflow_bodyappliedCategoriesyellow = WorkflowExpression.Compile(bodyappliedCategoriesyellow, nameof(bodyappliedCategoriesyellow), required: false);
+            var __workflow_bodyappliedCategoriesgreen = WorkflowExpression.Compile(bodyappliedCategoriesgreen, nameof(bodyappliedCategoriesgreen), required: false);
+            var __workflow_bodyappliedCategoriesblue = WorkflowExpression.Compile(bodyappliedCategoriesblue, nameof(bodyappliedCategoriesblue), required: false);
+            var __workflow_bodyappliedCategoriespurple = WorkflowExpression.Compile(bodyappliedCategoriespurple, nameof(bodyappliedCategoriespurple), required: false);
+            var __workflow_bodyappliedCategoriesbronze = WorkflowExpression.Compile(bodyappliedCategoriesbronze, nameof(bodyappliedCategoriesbronze), required: false);
+            var __workflow_bodyappliedCategorieslime = WorkflowExpression.Compile(bodyappliedCategorieslime, nameof(bodyappliedCategorieslime), required: false);
+            var __workflow_bodyappliedCategoriesaqua = WorkflowExpression.Compile(bodyappliedCategoriesaqua, nameof(bodyappliedCategoriesaqua), required: false);
+            var __workflow_bodyappliedCategoriesgray = WorkflowExpression.Compile(bodyappliedCategoriesgray, nameof(bodyappliedCategoriesgray), required: false);
+            var __workflow_bodyappliedCategoriessilver = WorkflowExpression.Compile(bodyappliedCategoriessilver, nameof(bodyappliedCategoriessilver), required: false);
+            var __workflow_bodyappliedCategoriesbrown = WorkflowExpression.Compile(bodyappliedCategoriesbrown, nameof(bodyappliedCategoriesbrown), required: false);
+            var __workflow_bodyappliedCategoriescranberry = WorkflowExpression.Compile(bodyappliedCategoriescranberry, nameof(bodyappliedCategoriescranberry), required: false);
+            var __workflow_bodyappliedCategoriesorange = WorkflowExpression.Compile(bodyappliedCategoriesorange, nameof(bodyappliedCategoriesorange), required: false);
+            var __workflow_bodyappliedCategoriespeach = WorkflowExpression.Compile(bodyappliedCategoriespeach, nameof(bodyappliedCategoriespeach), required: false);
+            var __workflow_bodyappliedCategoriesmarigold = WorkflowExpression.Compile(bodyappliedCategoriesmarigold, nameof(bodyappliedCategoriesmarigold), required: false);
+            var __workflow_bodyappliedCategorieslightGreen = WorkflowExpression.Compile(bodyappliedCategorieslightGreen, nameof(bodyappliedCategorieslightGreen), required: false);
+            var __workflow_bodyappliedCategoriesdarkGreen = WorkflowExpression.Compile(bodyappliedCategoriesdarkGreen, nameof(bodyappliedCategoriesdarkGreen), required: false);
+            var __workflow_bodyappliedCategoriesteal = WorkflowExpression.Compile(bodyappliedCategoriesteal, nameof(bodyappliedCategoriesteal), required: false);
+            var __workflow_bodyappliedCategorieslightBlue = WorkflowExpression.Compile(bodyappliedCategorieslightBlue, nameof(bodyappliedCategorieslightBlue), required: false);
+            var __workflow_bodyappliedCategoriesdarkBlue = WorkflowExpression.Compile(bodyappliedCategoriesdarkBlue, nameof(bodyappliedCategoriesdarkBlue), required: false);
+            var __workflow_bodyappliedCategorieslavender = WorkflowExpression.Compile(bodyappliedCategorieslavender, nameof(bodyappliedCategorieslavender), required: false);
+            var __workflow_bodyappliedCategoriesplum = WorkflowExpression.Compile(bodyappliedCategoriesplum, nameof(bodyappliedCategoriesplum), required: false);
+            var __workflow_bodyappliedCategorieslightGray = WorkflowExpression.Compile(bodyappliedCategorieslightGray, nameof(bodyappliedCategorieslightGray), required: false);
+            var __workflow_bodyappliedCategoriesdarkGray = WorkflowExpression.Compile(bodyappliedCategoriesdarkGray, nameof(bodyappliedCategoriesdarkGray), required: false);
+            return new DeferredBodyAction<GetTaskResponseV2>(() =>
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/v1.0/planner/tasks/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["prefer"] = Convert.ToString(" return=representation");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodytitle != null)
+                {
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                    bodypropCount++;
+                }
 
-            if (bodydueDateTime != null)
-            {
-                body["dueDateTime"] = ExpressionConverter.ConvertO(bodydueDateTime);
-                bodypropCount++;
-            }
+                if (__workflow_bodydueDateTime != null)
+                {
+                    body["dueDateTime"] = ExpressionConverter.ConvertO(__workflow_bodydueDateTime);
+                    bodypropCount++;
+                }
 
-            if (bodystartDateTime != null)
-            {
-                body["startDateTime"] = ExpressionConverter.ConvertO(bodystartDateTime);
-                bodypropCount++;
-            }
+                if (__workflow_bodystartDateTime != null)
+                {
+                    body["startDateTime"] = ExpressionConverter.ConvertO(__workflow_bodystartDateTime);
+                    bodypropCount++;
+                }
 
-            if (bodypercentComplete != null)
-            {
-                body["percentComplete"] = ExpressionConverter.ConvertO(bodypercentComplete);
-                bodypropCount++;
-            }
+                if (__workflow_bodypercentComplete != null)
+                {
+                    body["percentComplete"] = ExpressionConverter.ConvertO(__workflow_bodypercentComplete);
+                    bodypropCount++;
+                }
 
-            if (bodybucketId != null)
-            {
-                body["bucketId"] = ExpressionConverter.ConvertO(bodybucketId);
-                bodypropCount++;
-            }
+                if (__workflow_bodybucketId != null)
+                {
+                    body["bucketId"] = ExpressionConverter.ConvertO(__workflow_bodybucketId);
+                    bodypropCount++;
+                }
 
-            var appliedCategoriesObject = new JObject();
-            var appliedCategoriesObjectpropCount = 0;
-            if (bodyappliedCategoriespink != null)
-            {
-                appliedCategoriesObject["category1"] = ExpressionConverter.ConvertO(bodyappliedCategoriespink);
-                appliedCategoriesObjectpropCount++;
-            }
+                var appliedCategoriesObject = new JObject();
+                var appliedCategoriesObjectpropCount = 0;
+                if (__workflow_bodyappliedCategoriespink != null)
+                {
+                    appliedCategoriesObject["category1"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriespink);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesred != null)
-            {
-                appliedCategoriesObject["category2"] = ExpressionConverter.ConvertO(bodyappliedCategoriesred);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesred != null)
+                {
+                    appliedCategoriesObject["category2"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesred);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesyellow != null)
-            {
-                appliedCategoriesObject["category3"] = ExpressionConverter.ConvertO(bodyappliedCategoriesyellow);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesyellow != null)
+                {
+                    appliedCategoriesObject["category3"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesyellow);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesgreen != null)
-            {
-                appliedCategoriesObject["category4"] = ExpressionConverter.ConvertO(bodyappliedCategoriesgreen);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesgreen != null)
+                {
+                    appliedCategoriesObject["category4"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesgreen);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesblue != null)
-            {
-                appliedCategoriesObject["category5"] = ExpressionConverter.ConvertO(bodyappliedCategoriesblue);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesblue != null)
+                {
+                    appliedCategoriesObject["category5"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesblue);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriespurple != null)
-            {
-                appliedCategoriesObject["category6"] = ExpressionConverter.ConvertO(bodyappliedCategoriespurple);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriespurple != null)
+                {
+                    appliedCategoriesObject["category6"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriespurple);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesbronze != null)
-            {
-                appliedCategoriesObject["category7"] = ExpressionConverter.ConvertO(bodyappliedCategoriesbronze);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesbronze != null)
+                {
+                    appliedCategoriesObject["category7"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesbronze);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategorieslime != null)
-            {
-                appliedCategoriesObject["category8"] = ExpressionConverter.ConvertO(bodyappliedCategorieslime);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategorieslime != null)
+                {
+                    appliedCategoriesObject["category8"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategorieslime);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesaqua != null)
-            {
-                appliedCategoriesObject["category9"] = ExpressionConverter.ConvertO(bodyappliedCategoriesaqua);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesaqua != null)
+                {
+                    appliedCategoriesObject["category9"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesaqua);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesgray != null)
-            {
-                appliedCategoriesObject["category10"] = ExpressionConverter.ConvertO(bodyappliedCategoriesgray);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesgray != null)
+                {
+                    appliedCategoriesObject["category10"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesgray);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriessilver != null)
-            {
-                appliedCategoriesObject["category11"] = ExpressionConverter.ConvertO(bodyappliedCategoriessilver);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriessilver != null)
+                {
+                    appliedCategoriesObject["category11"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriessilver);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesbrown != null)
-            {
-                appliedCategoriesObject["category12"] = ExpressionConverter.ConvertO(bodyappliedCategoriesbrown);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesbrown != null)
+                {
+                    appliedCategoriesObject["category12"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesbrown);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriescranberry != null)
-            {
-                appliedCategoriesObject["category13"] = ExpressionConverter.ConvertO(bodyappliedCategoriescranberry);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriescranberry != null)
+                {
+                    appliedCategoriesObject["category13"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriescranberry);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesorange != null)
-            {
-                appliedCategoriesObject["category14"] = ExpressionConverter.ConvertO(bodyappliedCategoriesorange);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesorange != null)
+                {
+                    appliedCategoriesObject["category14"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesorange);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriespeach != null)
-            {
-                appliedCategoriesObject["category15"] = ExpressionConverter.ConvertO(bodyappliedCategoriespeach);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriespeach != null)
+                {
+                    appliedCategoriesObject["category15"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriespeach);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesmarigold != null)
-            {
-                appliedCategoriesObject["category16"] = ExpressionConverter.ConvertO(bodyappliedCategoriesmarigold);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesmarigold != null)
+                {
+                    appliedCategoriesObject["category16"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesmarigold);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategorieslightGreen != null)
-            {
-                appliedCategoriesObject["category17"] = ExpressionConverter.ConvertO(bodyappliedCategorieslightGreen);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategorieslightGreen != null)
+                {
+                    appliedCategoriesObject["category17"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategorieslightGreen);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesdarkGreen != null)
-            {
-                appliedCategoriesObject["category18"] = ExpressionConverter.ConvertO(bodyappliedCategoriesdarkGreen);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesdarkGreen != null)
+                {
+                    appliedCategoriesObject["category18"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesdarkGreen);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesteal != null)
-            {
-                appliedCategoriesObject["category19"] = ExpressionConverter.ConvertO(bodyappliedCategoriesteal);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesteal != null)
+                {
+                    appliedCategoriesObject["category19"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesteal);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategorieslightBlue != null)
-            {
-                appliedCategoriesObject["category20"] = ExpressionConverter.ConvertO(bodyappliedCategorieslightBlue);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategorieslightBlue != null)
+                {
+                    appliedCategoriesObject["category20"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategorieslightBlue);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesdarkBlue != null)
-            {
-                appliedCategoriesObject["category21"] = ExpressionConverter.ConvertO(bodyappliedCategoriesdarkBlue);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesdarkBlue != null)
+                {
+                    appliedCategoriesObject["category21"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesdarkBlue);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategorieslavender != null)
-            {
-                appliedCategoriesObject["category22"] = ExpressionConverter.ConvertO(bodyappliedCategorieslavender);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategorieslavender != null)
+                {
+                    appliedCategoriesObject["category22"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategorieslavender);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesplum != null)
-            {
-                appliedCategoriesObject["category23"] = ExpressionConverter.ConvertO(bodyappliedCategoriesplum);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesplum != null)
+                {
+                    appliedCategoriesObject["category23"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesplum);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategorieslightGray != null)
-            {
-                appliedCategoriesObject["category24"] = ExpressionConverter.ConvertO(bodyappliedCategorieslightGray);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategorieslightGray != null)
+                {
+                    appliedCategoriesObject["category24"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategorieslightGray);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (bodyappliedCategoriesdarkGray != null)
-            {
-                appliedCategoriesObject["category25"] = ExpressionConverter.ConvertO(bodyappliedCategoriesdarkGray);
-                appliedCategoriesObjectpropCount++;
-            }
+                if (__workflow_bodyappliedCategoriesdarkGray != null)
+                {
+                    appliedCategoriesObject["category25"] = ExpressionConverter.ConvertO(__workflow_bodyappliedCategoriesdarkGray);
+                    appliedCategoriesObjectpropCount++;
+                }
 
-            if (appliedCategoriesObjectpropCount > 0)
-            {
-                body["appliedCategories"] = appliedCategoriesObject;
-                bodypropCount++;
-            }
+                if (appliedCategoriesObjectpropCount > 0)
+                {
+                    body["appliedCategories"] = appliedCategoriesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<GetTaskResponseV2>(callPayload);
+                return new ApiConnectionAction<GetTaskResponseV2>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskDetailsResponse> UpdateTaskDetails(Expression<Func<string>> id, Expression<Func<string>> bodydescription = null, Expression<Func<bodyreferencesInputItem[]>> bodyreferences = null, Expression<Func<bodychecklistInputItem[]>> bodychecklist = null)
         {
-            var apiCallPath = String.Format("/v1.0/planner/tasks/{0}/details", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["prefer"] = Convert.ToString(" return=representation");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydescription != null)
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyreferences = WorkflowExpression.Compile(bodyreferences, nameof(bodyreferences), required: false);
+            var __workflow_bodychecklist = WorkflowExpression.Compile(bodychecklist, nameof(bodychecklist), required: false);
+            return new DeferredBodyAction<GetTaskDetailsResponse>(() =>
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/planner/tasks/{0}/details", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["prefer"] = Convert.ToString(" return=representation");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                    bodypropCount++;
+                }
 
-            if (bodyreferences != null)
-            {
-                body["references"] = ExpressionConverter.ConvertO(bodyreferences);
-                bodypropCount++;
-            }
+                if (__workflow_bodyreferences != null)
+                {
+                    body["references"] = ExpressionConverter.ConvertO(__workflow_bodyreferences);
+                    bodypropCount++;
+                }
 
-            if (bodychecklist != null)
-            {
-                body["checklist"] = ExpressionConverter.ConvertO(bodychecklist);
-                bodypropCount++;
-            }
+                if (__workflow_bodychecklist != null)
+                {
+                    body["checklist"] = ExpressionConverter.ConvertO(__workflow_bodychecklist);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<GetTaskDetailsResponse>(callPayload);
+                return new ApiConnectionAction<GetTaskDetailsResponse>(callPayload);
+            });
         }
     }
 
     public class PlannerTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListTasksResponseV2> OnCompleteTask(Expression<Func<string>> groupId, Expression<Func<string>> id, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2> OnCompleteTask(Expression<Func<string>> groupId, Expression<Func<string>> id, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/v2/v1.0/planner/oncompletetask_trigger/plans/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, triggerName, recurrence);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyTrigger<ListTasksResponseV2>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/v1.0/planner/oncompletetask_trigger/plans/{0}/tasks", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
+                return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<ListTasksResponseV2> OnNewTask(Expression<Func<string>> groupId, Expression<Func<string>> id, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2> OnNewTask(Expression<Func<string>> groupId, Expression<Func<string>> id, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/v2/v1.0/planner/onnewtask_trigger/plans/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, triggerName, recurrence);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyTrigger<ListTasksResponseV2>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/v1.0/planner/onnewtask_trigger/plans/{0}/tasks", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
+                return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<ListTasksResponseV2> OnTaskAssignedToMe(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2> OnTaskAssignedToMe(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1.0/me/planner/ontaskassignedtome_trigger/tasks";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, recurrence: recurrence);
         }
     }
 

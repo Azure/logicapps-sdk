@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,91 +14,107 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
         public IBodyWorkflowAction<SentimentClassifierResponseItem[]> SentimentClassifier(Expression<Func<bodydataInputItem[]>> bodydata = null)
         {
-            var apiCallPath = "/text/SentimentClassifier";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydata != null)
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
+            return new DeferredBodyAction<SentimentClassifierResponseItem[]>(() =>
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
-                bodypropCount++;
-            }
+                var apiCallPath = "/text/SentimentClassifier";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodydata != null)
+                {
+                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SentimentClassifierResponseItem[]>(callPayload);
+                return new ApiConnectionAction<SentimentClassifierResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
         public IBodyWorkflowAction<PIIScrubberResponse> PIIScrubber(Expression<Func<string>> bodydata = null, Expression<Func<string>> bodyentityList = null)
         {
-            var apiCallPath = "/text/PIIScrubber";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydata != null)
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
+            var __workflow_bodyentityList = WorkflowExpression.Compile(bodyentityList, nameof(bodyentityList), required: false);
+            return new DeferredBodyAction<PIIScrubberResponse>(() =>
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
-                bodypropCount++;
-            }
+                var apiCallPath = "/text/PIIScrubber";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodydata != null)
+                {
+                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
+                    bodypropCount++;
+                }
 
-            if (bodyentityList != null)
-            {
-                body["entity_list"] = ExpressionConverter.ConvertO(bodyentityList);
-                bodypropCount++;
-            }
+                if (__workflow_bodyentityList != null)
+                {
+                    body["entity_list"] = ExpressionConverter.ConvertO(__workflow_bodyentityList);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PIIScrubberResponse>(callPayload);
+                return new ApiConnectionAction<PIIScrubberResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
         public IBodyWorkflowAction<KeyPhraseExtractorResponseItem[]> KeyPhraseExtractor(Expression<Func<string>> bodytext = null, Expression<Func<int>> bodykeyphrasesCount = null, Expression<Func<double>> bodydiversityThreshold = null, Expression<Func<double>> bodyaliasThreshold = null)
         {
-            var apiCallPath = "/text/KeyPhrase";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytext != null)
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_bodykeyphrasesCount = WorkflowExpression.Compile(bodykeyphrasesCount, nameof(bodykeyphrasesCount), required: false);
+            var __workflow_bodydiversityThreshold = WorkflowExpression.Compile(bodydiversityThreshold, nameof(bodydiversityThreshold), required: false);
+            var __workflow_bodyaliasThreshold = WorkflowExpression.Compile(bodyaliasThreshold, nameof(bodyaliasThreshold), required: false);
+            return new DeferredBodyAction<KeyPhraseExtractorResponseItem[]>(() =>
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                bodypropCount++;
-            }
+                var apiCallPath = "/text/KeyPhrase";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodytext != null)
+                {
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
+                    bodypropCount++;
+                }
 
-            if (bodykeyphrasesCount != null)
-            {
-                body["keyphrases_count"] = ExpressionConverter.ConvertO(bodykeyphrasesCount);
-                bodypropCount++;
-            }
+                if (__workflow_bodykeyphrasesCount != null)
+                {
+                    body["keyphrases_count"] = ExpressionConverter.ConvertO(__workflow_bodykeyphrasesCount);
+                    bodypropCount++;
+                }
 
-            if (bodydiversityThreshold != null)
-            {
-                body["diversity_threshold"] = ExpressionConverter.ConvertO(bodydiversityThreshold);
-                bodypropCount++;
-            }
+                if (__workflow_bodydiversityThreshold != null)
+                {
+                    body["diversity_threshold"] = ExpressionConverter.ConvertO(__workflow_bodydiversityThreshold);
+                    bodypropCount++;
+                }
 
-            if (bodyaliasThreshold != null)
-            {
-                body["alias_threshold"] = ExpressionConverter.ConvertO(bodyaliasThreshold);
-                bodypropCount++;
-            }
+                if (__workflow_bodyaliasThreshold != null)
+                {
+                    body["alias_threshold"] = ExpressionConverter.ConvertO(__workflow_bodyaliasThreshold);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<KeyPhraseExtractorResponseItem[]>(callPayload);
+                return new ApiConnectionAction<KeyPhraseExtractorResponseItem[]>(callPayload);
+            });
         }
     }
 

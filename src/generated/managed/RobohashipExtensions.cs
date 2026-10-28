@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robohaship
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,18 +14,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robohaship
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robohaship")]
         public IBodyWorkflowAction<ImageGetResponse> ImageGet(Expression<Func<string>> text, Expression<Func<setInput>> set, Expression<Func<string>> size = null, Expression<Func<string>> bgset = null, Expression<Func<gravatarInput>> gravatar = null)
         {
-            var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(text, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["set"] = ExpressionConverter.Convert(set);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (bgset != null)
-                callPayload.Queries["bgset"] = ExpressionConverter.Convert(bgset);
-            callPayload.Queries["gravatar"] = Convert.ToString("no");
-            if (gravatar != null)
-                callPayload.Queries["gravatar"] = ExpressionConverter.Convert(gravatar);
-            return new ApiConnectionAction<ImageGetResponse>(callPayload);
+            var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: true);
+            var __workflow_set = WorkflowExpression.Compile(set, nameof(set), required: true);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_bgset = WorkflowExpression.Compile(bgset, nameof(bgset), required: false);
+            var __workflow_gravatar = WorkflowExpression.Compile(gravatar, nameof(gravatar), required: false);
+            return new DeferredBodyAction<ImageGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_text.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["set"] = ExpressionConverter.Convert(__workflow_set);
+                if (__workflow_size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
+                if (__workflow_bgset != null)
+                    callPayload.Queries["bgset"] = ExpressionConverter.Convert(__workflow_bgset);
+                callPayload.Queries["gravatar"] = Convert.ToString("no");
+                if (__workflow_gravatar != null)
+                    callPayload.Queries["gravatar"] = ExpressionConverter.Convert(__workflow_gravatar);
+                return new ApiConnectionAction<ImageGetResponse>(callPayload);
+            });
         }
     }
 
@@ -42,6 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robohaship
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum setInput
     {
         [EnumMember(Value = "any")]
@@ -58,6 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robohaship
         Set5
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum gravatarInput
     {
         [EnumMember(Value = "no")]

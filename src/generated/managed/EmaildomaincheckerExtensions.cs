@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emaildomainchecker
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,13 +14,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emaildomainchecker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emaildomainchecker")]
         public IBodyWorkflowAction<CheckDomainResponse> CheckDomain(Expression<Func<string>> domain, Expression<Func<endpointInput>> endpoint)
         {
-            var apiCallPath = "/checkDomain/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
-            callPayload.Queries["endpoint"] = ExpressionConverter.Convert(endpoint);
-            callPayload.Headers["cf"] = Convert.ToString("sk");
-            return new ApiConnectionAction<CheckDomainResponse>(callPayload);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
+            var __workflow_endpoint = WorkflowExpression.Compile(endpoint, nameof(endpoint), required: true);
+            return new DeferredBodyAction<CheckDomainResponse>(() =>
+            {
+                var apiCallPath = "/checkDomain/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["domain"] = ExpressionConverter.Convert(__workflow_domain);
+                callPayload.Queries["endpoint"] = ExpressionConverter.Convert(__workflow_endpoint);
+                callPayload.Headers["cf"] = Convert.ToString("sk");
+                return new ApiConnectionAction<CheckDomainResponse>(callPayload);
+            });
         }
     }
 
@@ -49,6 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emaildomainchecker
         public string MessageFromDeveloper { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum endpointInput
     {
         RapidAPI,

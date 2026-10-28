@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,32 +23,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
 
     public class AppfiguresTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Event[]> OnNewEvent(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Event[]> OnNewEvent(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/event_trigger/events";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<Event[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<Event[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<ReviewInfo[]> OnNewReview(Expression<Func<string>> products = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ReviewInfo[]> OnNewReview(Expression<Func<string>> products = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/reviews_trigger/reviews";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (products != null)
-                callPayload.Queries["products"] = ExpressionConverter.Convert(products);
-            return new ApiConnectionTrigger<ReviewInfo[]>(callPayload, triggerName, recurrence);
+            var __workflow_products = WorkflowExpression.Compile(products, nameof(products), required: false);
+            return new DeferredBodyTrigger<ReviewInfo[]>(() =>
+            {
+                var apiCallPath = "/reviews_trigger/reviews";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_products != null)
+                    callPayload.Queries["products"] = ExpressionConverter.Convert(__workflow_products);
+                return new ApiConnectionTrigger<ReviewInfo[]>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<Rating[]> OnNewRating(Expression<Func<string>> products = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Rating[]> OnNewRating(Expression<Func<string>> products = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/ratings_trigger/ratings";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (products != null)
-                callPayload.Queries["products"] = ExpressionConverter.Convert(products);
-            return new ApiConnectionTrigger<Rating[]>(callPayload, triggerName, recurrence);
+            var __workflow_products = WorkflowExpression.Compile(products, nameof(products), required: false);
+            return new DeferredBodyTrigger<Rating[]>(() =>
+            {
+                var apiCallPath = "/ratings_trigger/ratings";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_products != null)
+                    callPayload.Queries["products"] = ExpressionConverter.Convert(__workflow_products);
+                return new ApiConnectionTrigger<Rating[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

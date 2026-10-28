@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clevertap
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,19 +14,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clevertap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clevertap")]
         public IWorkflowAction UploadProfiles(Expression<Func<bodydInputItem[]>> bodyd)
         {
-            var apiCallPath = "/1/upload";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["d"] = ExpressionConverter.ConvertO(bodyd);
-            if (bodypropCount > 0)
+            var __workflow_bodyd = WorkflowExpression.Compile(bodyd, nameof(bodyd), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/1/upload";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["d"] = ExpressionConverter.ConvertO(__workflow_bodyd);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

@@ -1,0 +1,160 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+namespace Microsoft.Azure.Workflows.Sdk.Tests
+{
+    using Microsoft.CodeAnalysis.CSharp.Syntax;
+    using Newtonsoft.Json.Linq;
+    using Xunit;
+    using static WorkflowExpressionTestSource;
+
+    public class WorkflowExpressionBindingTests
+    {
+        private sealed class ToolParameters
+        {
+            public string Name { get; set; }
+            public ToolDetails Details { get; set; }
+        }
+
+        private sealed class ToolDetails
+        {
+            public string Value { get; set; }
+        }
+
+        private IOutputWorkflowAction<string> instanceSource;
+
+        [Fact]
+        public void InstanceWorkflowHandleRemainsALateBoundOperationBinding()
+        {
+            this.instanceSource = WorkflowActions.BuiltIn.Compose<string>(() => "hello");
+            var action = WorkflowActions.BuiltIn.Compose(() => instanceSource.Output.ToUpperInvariant());
+            this.instanceSource.WithName("InstanceSource");
+
+            var source = Input(action);
+            AssertReturnExpression("""outputs("InstanceSource").ToObject<string>().ToUpperInvariant()""", source);
+        }
+
+        [Fact]
+        public void ManagedActionAndTriggerPropertiesUseTypedRoots()
+        {
+            var email = WorkflowActions.Managed.Office365("office").GetEmail(messageId: () => "id").WithName("Email");
+            var action = WorkflowActions.BuiltIn.Compose(() => email.Body.Subject.ToUpperInvariant());
+            var actionSource = Input(action);
+            var actionReturn = ReturnExpression(actionSource);
+            Assert.Equal("ToUpperInvariant", ((InvocationExpressionSyntax)actionReturn).Expression
+                .DescendantNodesAndSelf().OfType<SimpleNameSyntax>().Last().Identifier.ValueText);
+            Assert.Equal("""body("Email")""", actionReturn.DescendantNodesAndSelf().OfType<InvocationExpressionSyntax>()
+                .Single(invocation => invocation.Expression.ToString() == "body").ToString());
+            Assert.Single(actionReturn.DescendantNodesAndSelf().OfType<GenericNameSyntax>(),
+                name => name.Identifier.ValueText == "ToObject");
+
+            var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
+            var triggered = WorkflowActions.BuiltIn.Compose(() => trigger.TriggerOutput.Headers["X"]);
+            var triggerSource = Input(triggered);
+            var triggerReturn = ReturnExpression(triggerSource);
+            Assert.Equal("triggerOutputs()", triggerReturn.DescendantNodesAndSelf().OfType<InvocationExpressionSyntax>()
+                .Single(invocation => invocation.Expression.ToString() == "triggerOutputs").ToString());
+            Assert.Single(triggerReturn.DescendantNodesAndSelf().OfType<GenericNameSyntax>(),
+                name => name.Identifier.ValueText == "ToObject");
+            Assert.Equal("\"X\"", triggerReturn.DescendantNodesAndSelf().OfType<BracketedArgumentListSyntax>().Last()
+                .Arguments.Single().Expression.ToString());
+            Assert.Empty(triggerReturn.DescendantNodesAndSelf().OfType<ConditionalAccessExpressionSyntax>());
+        }
+
+        [Fact]
+        public void TriggerBodyUsesTheBodyBinding()
+        {
+            var trigger = WorkflowTriggers.ServiceProviders.ServiceBus("service")
+                .ReceiveQueueMessages(() => "queue");
+            var action = WorkflowActions.BuiltIn.Compose(() => trigger.TriggerBody[0].MessageId);
+
+            AssertReturnExpression(
+                """triggerBody().ToObject<global::Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus.ReceiveQueueMessagesOutputItem[]>()[0].MessageId""",
+                Input(action));
+        }
+
+        [Fact]
+        public void AgentToolParametersUseAgentParameterBindings()
+        {
+            var context = new AgentToolContext<ToolParameters>(new ToolParameters());
+            var action = WorkflowActions.BuiltIn.Compose(
+                () => context.Parameters.Name.ToUpperInvariant());
+
+            AssertReturnExpression(
+                """agentparameters("Name").ToObject<string>().ToUpperInvariant()""",
+                Input(action));
+
+            var nested = WorkflowActions.BuiltIn.Compose(
+                () => context.Parameters.Details.Value.ToUpperInvariant());
+            AssertReturnExpression(
+                """(agentparameters("Details")["Value"]?.ToObject<string>() ?? default(string)).ToUpperInvariant()""",
+                Input(nested));
+
+            Assert.Throws<NotSupportedException>(
+                () => WorkflowActions.BuiltIn.Compose(() => context.Parameters.ToString()));
+        }
+
+        [Fact]
+        public void RepeatedReferencesRetainWorkflowReadsAndSnapshotCaptures()
+        {
+            var suffix = "!";
+            var source = WorkflowActions.BuiltIn.Compose<string>(() => "value").WithName("Source");
+            var action = WorkflowActions.BuiltIn.Compose(
+                () => source.Output + source.Output + suffix + suffix);
+
+            var expression = Input(action);
+            Assert.Equal(2, expression.Split("""outputs("Source")""").Length - 1);
+            Assert.Equal(2, expression.Split("\"!\"").Length - 1);
+        }
+
+        [Fact]
+        public void BindingLikeLiteralTextCannotCollideWithBindings()
+        {
+            var source = WorkflowActions.BuiltIn.Compose<string>(() => "value").WithName("Source");
+            var action = WorkflowActions.BuiltIn.Compose(
+                () => "__binding0:" + source.Output + ":__binding1");
+
+            AssertReturnExpression(
+                "\"__binding0:\" + outputs(\"Source\").ToObject<string>() + \":__binding1\"",
+                Input(action));
+        }
+
+        [Fact]
+        public void ControlCallbacksRunOnceAndDefinitionsResolveNamesLate()
+        {
+            var count = 0;
+            var previous = WorkflowActions.BuiltIn.Compose<bool>(() => true);
+            var condition = WorkflowActions.BuiltIn.Control.Condition(
+                expression: () => previous.Output,
+                trueBranch: () => { count++; return WorkflowActions.BuiltIn.Compose(() => "yes"); },
+                falseBranch: () => null);
+            previous.WithName("Flag");
+            var source = condition.GetActionDefinition("flow").Expression.Value<string>();
+            AssertReturnExpression("""outputs("Flag").ToObject<bool>()""", source);
+            condition.GetActionDefinition("flow");
+            Assert.Equal(1, count);
+        }
+
+        [Fact]
+        public void VariablesAndWorkflowForeachItemsUseContextBindings()
+        {
+            var variable = WorkflowActions.BuiltIn.Variables.InitializeVariable(name: () => "counter", value: () => 1);
+            var read = WorkflowActions.BuiltIn.Compose(() => variable.Value.Value<int>() + 1);
+            var readSource = Input(read);
+            AssertReturnExpression(
+                """
+                global::Newtonsoft.Json.Linq.Extensions.Value<int>(
+                    (global::System.Collections.Generic.IEnumerable<global::Newtonsoft.Json.Linq.JToken>)variables("counter")) + 1
+                """,
+                readSource);
+            var loop = WorkflowActions.BuiltIn.Control.ForEach(
+                items: () => new[] { "hello" },
+                actions: item => WorkflowActions.BuiltIn.Compose(() => item.Value<string>().ToUpperInvariant()).WithName("Upper"));
+            var inner = loop.GetActionDefinition("flow").Actions["Upper"].Inputs as JToken;
+            AssertReturnExpression(
+                """
+                global::Newtonsoft.Json.Linq.Extensions.Value<string>(
+                    (global::System.Collections.Generic.IEnumerable<global::Newtonsoft.Json.Linq.JToken>)item()).ToUpperInvariant()
+                """,
+                inner.Value<string>());
+        }
+    }
+}

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easypostdocumentatio
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,31 +14,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easypostdocumentatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easypostdocumentatio")]
         public IBodyWorkflowAction<GetSessionIdResponse> GetSessionId(Expression<Func<string>> account)
         {
-            var apiCallPath = "/publicinterface/get_session_id.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            return new ApiConnectionAction<GetSessionIdResponse>(callPayload);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            return new DeferredBodyAction<GetSessionIdResponse>(() =>
+            {
+                var apiCallPath = "/publicinterface/get_session_id.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(__workflow_account);
+                return new ApiConnectionAction<GetSessionIdResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easypostdocumentatio")]
         public IWorkflowAction PutSessionUpload(Expression<Func<string>> sessionId, Expression<Func<string>> fileName, Expression<Func<string>> fileContent = null)
         {
-            var apiCallPath = String.Format("/direct_upload/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(sessionId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileName, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(fileContent);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
+            var __workflow_fileContent = WorkflowExpression.Compile(fileContent, nameof(fileContent), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/direct_upload/{0}/{1}", __workflow_sessionId.WithUrlEncoding(1), __workflow_fileName.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_fileContent);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easypostdocumentatio")]
         public IBodyWorkflowAction<EndSessionResponse> EndSession(Expression<Func<string>> sessionId)
         {
-            var apiCallPath = "/publicinterface/end_session.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["session_id"] = ExpressionConverter.Convert(sessionId);
-            return new ApiConnectionAction<EndSessionResponse>(callPayload);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
+            return new DeferredBodyAction<EndSessionResponse>(() =>
+            {
+                var apiCallPath = "/publicinterface/end_session.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["session_id"] = ExpressionConverter.Convert(__workflow_sessionId);
+                return new ApiConnectionAction<EndSessionResponse>(callPayload);
+            });
         }
     }
 

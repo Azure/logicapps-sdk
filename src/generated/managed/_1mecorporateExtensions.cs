@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,54 +23,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]
         public IBodyWorkflowAction<ApiResponse> SendInvitation(Expression<Func<string>> bodycardTemplateId, Expression<Func<string>> bodyjobtitle, Expression<Func<string>> bodyworkEmail, Expression<Func<string>> bodynameOnCard = null, Expression<Func<string>> bodyextension = null)
         {
-            var apiCallPath = "/api/Invitation/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["CardTemplateId"] = ExpressionConverter.ConvertO(bodycardTemplateId);
-            if (bodynameOnCard != null)
+            var __workflow_bodycardTemplateId = WorkflowExpression.Compile(bodycardTemplateId, nameof(bodycardTemplateId), required: true);
+            var __workflow_bodyjobtitle = WorkflowExpression.Compile(bodyjobtitle, nameof(bodyjobtitle), required: true);
+            var __workflow_bodyworkEmail = WorkflowExpression.Compile(bodyworkEmail, nameof(bodyworkEmail), required: true);
+            var __workflow_bodynameOnCard = WorkflowExpression.Compile(bodynameOnCard, nameof(bodynameOnCard), required: false);
+            var __workflow_bodyextension = WorkflowExpression.Compile(bodyextension, nameof(bodyextension), required: false);
+            return new DeferredBodyAction<ApiResponse>(() =>
             {
-                body["NameOnCard"] = ExpressionConverter.ConvertO(bodynameOnCard);
+                var apiCallPath = "/api/Invitation/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["CardTemplateId"] = ExpressionConverter.ConvertO(__workflow_bodycardTemplateId);
+                if (__workflow_bodynameOnCard != null)
+                {
+                    body["NameOnCard"] = ExpressionConverter.ConvertO(__workflow_bodynameOnCard);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["Jobtitle"] = ExpressionConverter.ConvertO(bodyjobtitle);
-            bodypropCount++;
-            body["WorkEmail"] = ExpressionConverter.ConvertO(bodyworkEmail);
-            if (bodyextension != null)
-            {
-                body["Extension"] = ExpressionConverter.ConvertO(bodyextension);
                 bodypropCount++;
-            }
+                body["Jobtitle"] = ExpressionConverter.ConvertO(__workflow_bodyjobtitle);
+                bodypropCount++;
+                body["WorkEmail"] = ExpressionConverter.ConvertO(__workflow_bodyworkEmail);
+                if (__workflow_bodyextension != null)
+                {
+                    body["Extension"] = ExpressionConverter.ConvertO(__workflow_bodyextension);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ApiResponse>(callPayload);
+                return new ApiConnectionAction<ApiResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]
         public IBodyWorkflowAction<ApiResponse> DisassociateMember(Expression<Func<string>> contentType, Expression<Func<string>> bodyemail)
         {
-            var apiCallPath = "/api/Invitation/Disassociate";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodypropCount > 0)
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            return new DeferredBodyAction<ApiResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/Invitation/Disassociate";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["Email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ApiResponse>(callPayload);
+                return new ApiConnectionAction<ApiResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]

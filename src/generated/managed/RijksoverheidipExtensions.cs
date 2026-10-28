@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksoverheidip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,28 +14,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksoverheidip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rijksoverheidip")]
         public IBodyWorkflowAction<SchoolHolidaysResponseItem[]> SchoolHolidays(Expression<Func<int>> rows = null, Expression<Func<string>> output = null)
         {
-            var apiCallPath = "/v1/sources/rijksoverheid/infotypes/schoolholidays/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["rows"] = Convert.ToString(200);
-            if (rows != null)
-                callPayload.Queries["rows"] = ExpressionConverter.Convert(rows);
-            callPayload.Queries["output"] = Convert.ToString("json");
-            if (output != null)
-                callPayload.Queries["output"] = ExpressionConverter.Convert(output);
-            return new ApiConnectionAction<SchoolHolidaysResponseItem[]>(callPayload);
+            var __workflow_rows = WorkflowExpression.Compile(rows, nameof(rows), required: false);
+            var __workflow_output = WorkflowExpression.Compile(output, nameof(output), required: false);
+            return new DeferredBodyAction<SchoolHolidaysResponseItem[]>(() =>
+            {
+                var apiCallPath = "/v1/sources/rijksoverheid/infotypes/schoolholidays/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["rows"] = Convert.ToString(200);
+                if (__workflow_rows != null)
+                    callPayload.Queries["rows"] = ExpressionConverter.Convert(__workflow_rows);
+                callPayload.Queries["output"] = Convert.ToString("json");
+                if (__workflow_output != null)
+                    callPayload.Queries["output"] = ExpressionConverter.Convert(__workflow_output);
+                return new ApiConnectionAction<SchoolHolidaysResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rijksoverheidip")]
         public IBodyWorkflowAction<SchoolHolidaysPerSchoolYearResponse> SchoolHolidaysPerSchoolYear(Expression<Func<string>> schoolyear, Expression<Func<string>> output = null)
         {
-            var apiCallPath = String.Format("/v1/sources/rijksoverheid/infotypes/schoolholidays/schoolyear/{0}", ExpressionConverter.ConvertWithUrlEncoding(schoolyear, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["output"] = Convert.ToString("json");
-            if (output != null)
-                callPayload.Queries["output"] = ExpressionConverter.Convert(output);
-            return new ApiConnectionAction<SchoolHolidaysPerSchoolYearResponse>(callPayload);
+            var __workflow_schoolyear = WorkflowExpression.Compile(schoolyear, nameof(schoolyear), required: true);
+            var __workflow_output = WorkflowExpression.Compile(output, nameof(output), required: false);
+            return new DeferredBodyAction<SchoolHolidaysPerSchoolYearResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/sources/rijksoverheid/infotypes/schoolholidays/schoolyear/{0}", __workflow_schoolyear.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["output"] = Convert.ToString("json");
+                if (__workflow_output != null)
+                    callPayload.Queries["output"] = ExpressionConverter.Convert(__workflow_output);
+                return new ApiConnectionAction<SchoolHolidaysPerSchoolYearResponse>(callPayload);
+            });
         }
     }
 

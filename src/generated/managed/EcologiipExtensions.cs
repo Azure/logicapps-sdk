@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,84 +14,108 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
         public IBodyWorkflowAction<PurchaseTreesResponse> PurchaseTrees(Expression<Func<int>> bodynumber, Expression<Func<string>> bodyname = null, Expression<Func<bool>> bodytest = null)
         {
-            var apiCallPath = "/impact/trees";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["number"] = ExpressionConverter.ConvertO(bodynumber);
-            if (bodyname != null)
+            var __workflow_bodynumber = WorkflowExpression.Compile(bodynumber, nameof(bodynumber), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodytest = WorkflowExpression.Compile(bodytest, nameof(bodytest), required: false);
+            return new DeferredBodyAction<PurchaseTreesResponse>(() =>
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = "/impact/trees";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["number"] = ExpressionConverter.ConvertO(__workflow_bodynumber);
+                if (__workflow_bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                    bodypropCount++;
+                }
 
-            if (bodytest != null)
-            {
-                body["test"] = ExpressionConverter.ConvertO(bodytest);
-                bodypropCount++;
-            }
+                if (__workflow_bodytest != null)
+                {
+                    body["test"] = ExpressionConverter.ConvertO(__workflow_bodytest);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PurchaseTreesResponse>(callPayload);
+                return new ApiConnectionAction<PurchaseTreesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
         public IBodyWorkflowAction<PurchaseOffsetsResponse> PurchaseOffsets(Expression<Func<int>> bodynumber, Expression<Func<string>> bodyunits, Expression<Func<bool>> bodytest = null)
         {
-            var apiCallPath = "/impact/carbon";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["number"] = ExpressionConverter.ConvertO(bodynumber);
-            bodypropCount++;
-            body["units"] = ExpressionConverter.ConvertO(bodyunits);
-            if (bodytest != null)
+            var __workflow_bodynumber = WorkflowExpression.Compile(bodynumber, nameof(bodynumber), required: true);
+            var __workflow_bodyunits = WorkflowExpression.Compile(bodyunits, nameof(bodyunits), required: true);
+            var __workflow_bodytest = WorkflowExpression.Compile(bodytest, nameof(bodytest), required: false);
+            return new DeferredBodyAction<PurchaseOffsetsResponse>(() =>
             {
-                body["test"] = ExpressionConverter.ConvertO(bodytest);
+                var apiCallPath = "/impact/carbon";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["number"] = ExpressionConverter.ConvertO(__workflow_bodynumber);
+                bodypropCount++;
+                body["units"] = ExpressionConverter.ConvertO(__workflow_bodyunits);
+                if (__workflow_bodytest != null)
+                {
+                    body["test"] = ExpressionConverter.ConvertO(__workflow_bodytest);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PurchaseOffsetsResponse>(callPayload);
+                return new ApiConnectionAction<PurchaseOffsetsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
         public IBodyWorkflowAction<GetImpactResponse> GetImpact(Expression<Func<string>> username)
         {
-            var apiCallPath = String.Format("/users/{0}/impact", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetImpactResponse>(callPayload);
+            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            return new DeferredBodyAction<GetImpactResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/impact", __workflow_username.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetImpactResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
         public IBodyWorkflowAction<GetTreesResponse> GetTrees(Expression<Func<string>> username)
         {
-            var apiCallPath = String.Format("/users/{0}/trees", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTreesResponse>(callPayload);
+            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            return new DeferredBodyAction<GetTreesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/trees", __workflow_username.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetTreesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
         public IBodyWorkflowAction<GetOffsetResponse> GetOffset(Expression<Func<string>> username)
         {
-            var apiCallPath = String.Format("/users/{0}/carbon-offset", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetOffsetResponse>(callPayload);
+            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            return new DeferredBodyAction<GetOffsetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/carbon-offset", __workflow_username.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetOffsetResponse>(callPayload);
+            });
         }
     }
 

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nederlandsespoorweip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,48 +14,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nederlandsespoorweip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nederlandsespoorweip")]
         public IBodyWorkflowAction<GetArrivalsResponse> GetArrivals(Expression<Func<string>> lang = null, Expression<Func<string>> station = null, Expression<Func<string>> uicCode = null, Expression<Func<string>> dateTime = null, Expression<Func<int>> maxJourneys = null)
         {
-            var apiCallPath = "/api/v2/arrivals";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lang != null)
-                callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
-            if (station != null)
-                callPayload.Queries["station"] = ExpressionConverter.Convert(station);
-            if (uicCode != null)
-                callPayload.Queries["uicCode"] = ExpressionConverter.Convert(uicCode);
-            if (dateTime != null)
-                callPayload.Queries["dateTime"] = ExpressionConverter.Convert(dateTime);
-            if (maxJourneys != null)
-                callPayload.Queries["maxJourneys"] = ExpressionConverter.Convert(maxJourneys);
-            return new ApiConnectionAction<GetArrivalsResponse>(callPayload);
+            var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: false);
+            var __workflow_station = WorkflowExpression.Compile(station, nameof(station), required: false);
+            var __workflow_uicCode = WorkflowExpression.Compile(uicCode, nameof(uicCode), required: false);
+            var __workflow_dateTime = WorkflowExpression.Compile(dateTime, nameof(dateTime), required: false);
+            var __workflow_maxJourneys = WorkflowExpression.Compile(maxJourneys, nameof(maxJourneys), required: false);
+            return new DeferredBodyAction<GetArrivalsResponse>(() =>
+            {
+                var apiCallPath = "/api/v2/arrivals";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_lang != null)
+                    callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
+                if (__workflow_station != null)
+                    callPayload.Queries["station"] = ExpressionConverter.Convert(__workflow_station);
+                if (__workflow_uicCode != null)
+                    callPayload.Queries["uicCode"] = ExpressionConverter.Convert(__workflow_uicCode);
+                if (__workflow_dateTime != null)
+                    callPayload.Queries["dateTime"] = ExpressionConverter.Convert(__workflow_dateTime);
+                if (__workflow_maxJourneys != null)
+                    callPayload.Queries["maxJourneys"] = ExpressionConverter.Convert(__workflow_maxJourneys);
+                return new ApiConnectionAction<GetArrivalsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nederlandsespoorweip")]
         public IBodyWorkflowAction<GetDeparturesResponse> GetDepartures(Expression<Func<string>> lang = null, Expression<Func<string>> station = null, Expression<Func<string>> uicCode = null, Expression<Func<string>> dateTime = null, Expression<Func<string>> maxJourneys = null)
         {
-            var apiCallPath = "/api/v2/departures";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lang != null)
-                callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
-            if (station != null)
-                callPayload.Queries["station"] = ExpressionConverter.Convert(station);
-            if (uicCode != null)
-                callPayload.Queries["uicCode"] = ExpressionConverter.Convert(uicCode);
-            if (dateTime != null)
-                callPayload.Queries["dateTime"] = ExpressionConverter.Convert(dateTime);
-            if (maxJourneys != null)
-                callPayload.Queries["maxJourneys"] = ExpressionConverter.Convert(maxJourneys);
-            return new ApiConnectionAction<GetDeparturesResponse>(callPayload);
+            var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: false);
+            var __workflow_station = WorkflowExpression.Compile(station, nameof(station), required: false);
+            var __workflow_uicCode = WorkflowExpression.Compile(uicCode, nameof(uicCode), required: false);
+            var __workflow_dateTime = WorkflowExpression.Compile(dateTime, nameof(dateTime), required: false);
+            var __workflow_maxJourneys = WorkflowExpression.Compile(maxJourneys, nameof(maxJourneys), required: false);
+            return new DeferredBodyAction<GetDeparturesResponse>(() =>
+            {
+                var apiCallPath = "/api/v2/departures";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_lang != null)
+                    callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
+                if (__workflow_station != null)
+                    callPayload.Queries["station"] = ExpressionConverter.Convert(__workflow_station);
+                if (__workflow_uicCode != null)
+                    callPayload.Queries["uicCode"] = ExpressionConverter.Convert(__workflow_uicCode);
+                if (__workflow_dateTime != null)
+                    callPayload.Queries["dateTime"] = ExpressionConverter.Convert(__workflow_dateTime);
+                if (__workflow_maxJourneys != null)
+                    callPayload.Queries["maxJourneys"] = ExpressionConverter.Convert(__workflow_maxJourneys);
+                return new ApiConnectionAction<GetDeparturesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nederlandsespoorweip")]
         public IBodyWorkflowAction<GetStationDisruptionsResponseItem[]> GetStationDisruptions(Expression<Func<string>> stationCode)
         {
-            var apiCallPath = String.Format("/api/v3/disruptions/station/{0}", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetStationDisruptionsResponseItem[]>(callPayload);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
+            return new DeferredBodyAction<GetStationDisruptionsResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v3/disruptions/station/{0}", __workflow_stationCode.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetStationDisruptionsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nederlandsespoorweip")]

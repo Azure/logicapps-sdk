@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,217 +14,279 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
         public IBodyWorkflowAction<ExternalRelatedRecordListResponseEnvelope> ScpGetRelatedRecords(Expression<Func<recordTypeInput>> recordType, Expression<Func<string>> recordId, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<crmTypeInput>> crmType = null, Expression<Func<string>> crmOrgUrl = null)
         {
-            var apiCallPath = "/connector/relatedRecords";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["recordType"] = ExpressionConverter.Convert(recordType);
-            callPayload.Queries["recordId"] = ExpressionConverter.Convert(recordId);
-            if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
-            callPayload.Queries["crmType"] = Convert.ToString("Salesforce");
-            if (crmType != null)
-                callPayload.Queries["crmType"] = ExpressionConverter.Convert(crmType);
-            if (crmOrgUrl != null)
-                callPayload.Queries["crmOrgUrl"] = ExpressionConverter.Convert(crmOrgUrl);
-            return new ApiConnectionAction<ExternalRelatedRecordListResponseEnvelope>(callPayload);
+            var __workflow_recordType = WorkflowExpression.Compile(recordType, nameof(recordType), required: true);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_crmType = WorkflowExpression.Compile(crmType, nameof(crmType), required: false);
+            var __workflow_crmOrgUrl = WorkflowExpression.Compile(crmOrgUrl, nameof(crmOrgUrl), required: false);
+            return new DeferredBodyAction<ExternalRelatedRecordListResponseEnvelope>(() =>
+            {
+                var apiCallPath = "/connector/relatedRecords";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["recordType"] = ExpressionConverter.Convert(__workflow_recordType);
+                callPayload.Queries["recordId"] = ExpressionConverter.Convert(__workflow_recordId);
+                if (__workflow_top != null)
+                    callPayload.Queries["top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["skip"] = ExpressionConverter.Convert(__workflow_skip);
+                callPayload.Queries["crmType"] = Convert.ToString("Salesforce");
+                if (__workflow_crmType != null)
+                    callPayload.Queries["crmType"] = ExpressionConverter.Convert(__workflow_crmType);
+                if (__workflow_crmOrgUrl != null)
+                    callPayload.Queries["crmOrgUrl"] = ExpressionConverter.Convert(__workflow_crmOrgUrl);
+                return new ApiConnectionAction<ExternalRelatedRecordListResponseEnvelope>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
         public IBodyWorkflowAction<ActivityListResponseEnvelope> ScpGetRelatedActivities(Expression<Func<recordTypeInput>> recordType, Expression<Func<string>> recordId, Expression<Func<string>> startDateTime = null, Expression<Func<string>> endDateTime = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<crmTypeInput>> crmType = null, Expression<Func<string>> crmOrgUrl = null)
         {
-            var apiCallPath = "/connector/relatedActivities";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["recordType"] = ExpressionConverter.Convert(recordType);
-            callPayload.Queries["recordId"] = ExpressionConverter.Convert(recordId);
-            if (startDateTime != null)
-                callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
-            if (endDateTime != null)
-                callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
-            if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
-            if (crmType != null)
-                callPayload.Queries["crmType"] = ExpressionConverter.Convert(crmType);
-            if (crmOrgUrl != null)
-                callPayload.Queries["crmOrgUrl"] = ExpressionConverter.Convert(crmOrgUrl);
-            return new ApiConnectionAction<ActivityListResponseEnvelope>(callPayload);
+            var __workflow_recordType = WorkflowExpression.Compile(recordType, nameof(recordType), required: true);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
+            var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: false);
+            var __workflow_endDateTime = WorkflowExpression.Compile(endDateTime, nameof(endDateTime), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_crmType = WorkflowExpression.Compile(crmType, nameof(crmType), required: false);
+            var __workflow_crmOrgUrl = WorkflowExpression.Compile(crmOrgUrl, nameof(crmOrgUrl), required: false);
+            return new DeferredBodyAction<ActivityListResponseEnvelope>(() =>
+            {
+                var apiCallPath = "/connector/relatedActivities";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["recordType"] = ExpressionConverter.Convert(__workflow_recordType);
+                callPayload.Queries["recordId"] = ExpressionConverter.Convert(__workflow_recordId);
+                if (__workflow_startDateTime != null)
+                    callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(__workflow_startDateTime);
+                if (__workflow_endDateTime != null)
+                    callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(__workflow_endDateTime);
+                if (__workflow_top != null)
+                    callPayload.Queries["top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["skip"] = ExpressionConverter.Convert(__workflow_skip);
+                if (__workflow_crmType != null)
+                    callPayload.Queries["crmType"] = ExpressionConverter.Convert(__workflow_crmType);
+                if (__workflow_crmOrgUrl != null)
+                    callPayload.Queries["crmOrgUrl"] = ExpressionConverter.Convert(__workflow_crmOrgUrl);
+                return new ApiConnectionAction<ActivityListResponseEnvelope>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
         public IBodyWorkflowAction<SalesHighlightListResponseEnvelope> ScpGetSalesHighlights(Expression<Func<recordTypeInput>> recordType, Expression<Func<string>> recordId, Expression<Func<string>> crmType = null, Expression<Func<string>> crmOrgUrl = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
-            var apiCallPath = "/connector/salesHighlights";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["recordType"] = ExpressionConverter.Convert(recordType);
-            callPayload.Queries["recordId"] = ExpressionConverter.Convert(recordId);
-            if (crmType != null)
-                callPayload.Queries["crmType"] = ExpressionConverter.Convert(crmType);
-            if (crmOrgUrl != null)
-                callPayload.Queries["crmOrgUrl"] = ExpressionConverter.Convert(crmOrgUrl);
-            if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionAction<SalesHighlightListResponseEnvelope>(callPayload);
+            var __workflow_recordType = WorkflowExpression.Compile(recordType, nameof(recordType), required: true);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
+            var __workflow_crmType = WorkflowExpression.Compile(crmType, nameof(crmType), required: false);
+            var __workflow_crmOrgUrl = WorkflowExpression.Compile(crmOrgUrl, nameof(crmOrgUrl), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            return new DeferredBodyAction<SalesHighlightListResponseEnvelope>(() =>
+            {
+                var apiCallPath = "/connector/salesHighlights";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["recordType"] = ExpressionConverter.Convert(__workflow_recordType);
+                callPayload.Queries["recordId"] = ExpressionConverter.Convert(__workflow_recordId);
+                if (__workflow_crmType != null)
+                    callPayload.Queries["crmType"] = ExpressionConverter.Convert(__workflow_crmType);
+                if (__workflow_crmOrgUrl != null)
+                    callPayload.Queries["crmOrgUrl"] = ExpressionConverter.Convert(__workflow_crmOrgUrl);
+                if (__workflow_top != null)
+                    callPayload.Queries["top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["skip"] = ExpressionConverter.Convert(__workflow_skip);
+                return new ApiConnectionAction<SalesHighlightListResponseEnvelope>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
         public IBodyWorkflowAction<EmailSummeryResponseEnvelope> ScpGetEmailInsights(Expression<Func<string>> emailContacts, Expression<Func<string>> recordType = null, Expression<Func<string>> recordId = null, Expression<Func<string>> crmType = null, Expression<Func<string>> crmOrgUrl = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
-            var apiCallPath = "/connector/emailInsights";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (recordType != null)
-                callPayload.Queries["recordType"] = ExpressionConverter.Convert(recordType);
-            if (recordId != null)
-                callPayload.Queries["recordId"] = ExpressionConverter.Convert(recordId);
-            if (crmType != null)
-                callPayload.Queries["crmType"] = ExpressionConverter.Convert(crmType);
-            if (crmOrgUrl != null)
-                callPayload.Queries["crmOrgUrl"] = ExpressionConverter.Convert(crmOrgUrl);
-            callPayload.Queries["emailContacts"] = ExpressionConverter.Convert(emailContacts);
-            if (top != null)
-                callPayload.Queries["Top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["Skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionAction<EmailSummeryResponseEnvelope>(callPayload);
+            var __workflow_emailContacts = WorkflowExpression.Compile(emailContacts, nameof(emailContacts), required: true);
+            var __workflow_recordType = WorkflowExpression.Compile(recordType, nameof(recordType), required: false);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: false);
+            var __workflow_crmType = WorkflowExpression.Compile(crmType, nameof(crmType), required: false);
+            var __workflow_crmOrgUrl = WorkflowExpression.Compile(crmOrgUrl, nameof(crmOrgUrl), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            return new DeferredBodyAction<EmailSummeryResponseEnvelope>(() =>
+            {
+                var apiCallPath = "/connector/emailInsights";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_recordType != null)
+                    callPayload.Queries["recordType"] = ExpressionConverter.Convert(__workflow_recordType);
+                if (__workflow_recordId != null)
+                    callPayload.Queries["recordId"] = ExpressionConverter.Convert(__workflow_recordId);
+                if (__workflow_crmType != null)
+                    callPayload.Queries["crmType"] = ExpressionConverter.Convert(__workflow_crmType);
+                if (__workflow_crmOrgUrl != null)
+                    callPayload.Queries["crmOrgUrl"] = ExpressionConverter.Convert(__workflow_crmOrgUrl);
+                callPayload.Queries["emailContacts"] = ExpressionConverter.Convert(__workflow_emailContacts);
+                if (__workflow_top != null)
+                    callPayload.Queries["Top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["Skip"] = ExpressionConverter.Convert(__workflow_skip);
+                return new ApiConnectionAction<EmailSummeryResponseEnvelope>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
         public IBodyWorkflowAction<EmailDraftResponseEnvelope> ScpGetContentSuggestions(Expression<Func<string>> requestBodyresourceType, Expression<Func<string>> xMsMessageId = null, Expression<Func<string>> xMsConversationId = null, Expression<Func<string>> requestBodyresourceDataplainTextBody = null, Expression<Func<string>> requestBodyresourceDatafullHTMLBody = null, Expression<Func<string>> requestBodyresourceDatasubject = null, Expression<Func<string>> requestBodyresourceDatafrom = null, Expression<Func<string[]>> requestBodyresourceDatato = null, Expression<Func<string[]>> requestBodyresourceDatacC = null, Expression<Func<string[]>> requestBodyresourceDatabCC = null, Expression<Func<string>> requestBodyresourceDatasentDateTime = null, Expression<Func<string>> requestBodyresourceDatatheGraphMessageId = null, Expression<Func<string>> requestBodyresourceDatatheGraphConversationID = null, Expression<Func<string>> requestBodyrecordType = null, Expression<Func<string>> requestBodyrecordID = null, Expression<Func<string>> requestBodycRMType = null, Expression<Func<string>> requestBodycRMOrgURL = null, Expression<Func<string>> requestBodyinputPrompt = null, Expression<Func<int>> requestBodytop = null, Expression<Func<int>> requestBodyskip = null)
         {
-            var apiCallPath = "/connector/contentSuggestions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xMsMessageId != null)
-                callPayload.Headers["x-ms-message-id"] = ExpressionConverter.Convert(xMsMessageId);
-            if (xMsConversationId != null)
-                callPayload.Headers["x-ms-conversation-id"] = ExpressionConverter.Convert(xMsConversationId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            var resourceDataObject = new JObject();
-            var resourceDataObjectpropCount = 0;
-            if (requestBodyresourceDataplainTextBody != null)
+            var __workflow_requestBodyresourceType = WorkflowExpression.Compile(requestBodyresourceType, nameof(requestBodyresourceType), required: true);
+            var __workflow_xMsMessageId = WorkflowExpression.Compile(xMsMessageId, nameof(xMsMessageId), required: false);
+            var __workflow_xMsConversationId = WorkflowExpression.Compile(xMsConversationId, nameof(xMsConversationId), required: false);
+            var __workflow_requestBodyresourceDataplainTextBody = WorkflowExpression.Compile(requestBodyresourceDataplainTextBody, nameof(requestBodyresourceDataplainTextBody), required: false);
+            var __workflow_requestBodyresourceDatafullHTMLBody = WorkflowExpression.Compile(requestBodyresourceDatafullHTMLBody, nameof(requestBodyresourceDatafullHTMLBody), required: false);
+            var __workflow_requestBodyresourceDatasubject = WorkflowExpression.Compile(requestBodyresourceDatasubject, nameof(requestBodyresourceDatasubject), required: false);
+            var __workflow_requestBodyresourceDatafrom = WorkflowExpression.Compile(requestBodyresourceDatafrom, nameof(requestBodyresourceDatafrom), required: false);
+            var __workflow_requestBodyresourceDatato = WorkflowExpression.Compile(requestBodyresourceDatato, nameof(requestBodyresourceDatato), required: false);
+            var __workflow_requestBodyresourceDatacC = WorkflowExpression.Compile(requestBodyresourceDatacC, nameof(requestBodyresourceDatacC), required: false);
+            var __workflow_requestBodyresourceDatabCC = WorkflowExpression.Compile(requestBodyresourceDatabCC, nameof(requestBodyresourceDatabCC), required: false);
+            var __workflow_requestBodyresourceDatasentDateTime = WorkflowExpression.Compile(requestBodyresourceDatasentDateTime, nameof(requestBodyresourceDatasentDateTime), required: false);
+            var __workflow_requestBodyresourceDatatheGraphMessageId = WorkflowExpression.Compile(requestBodyresourceDatatheGraphMessageId, nameof(requestBodyresourceDatatheGraphMessageId), required: false);
+            var __workflow_requestBodyresourceDatatheGraphConversationID = WorkflowExpression.Compile(requestBodyresourceDatatheGraphConversationID, nameof(requestBodyresourceDatatheGraphConversationID), required: false);
+            var __workflow_requestBodyrecordType = WorkflowExpression.Compile(requestBodyrecordType, nameof(requestBodyrecordType), required: false);
+            var __workflow_requestBodyrecordID = WorkflowExpression.Compile(requestBodyrecordID, nameof(requestBodyrecordID), required: false);
+            var __workflow_requestBodycRMType = WorkflowExpression.Compile(requestBodycRMType, nameof(requestBodycRMType), required: false);
+            var __workflow_requestBodycRMOrgURL = WorkflowExpression.Compile(requestBodycRMOrgURL, nameof(requestBodycRMOrgURL), required: false);
+            var __workflow_requestBodyinputPrompt = WorkflowExpression.Compile(requestBodyinputPrompt, nameof(requestBodyinputPrompt), required: false);
+            var __workflow_requestBodytop = WorkflowExpression.Compile(requestBodytop, nameof(requestBodytop), required: false);
+            var __workflow_requestBodyskip = WorkflowExpression.Compile(requestBodyskip, nameof(requestBodyskip), required: false);
+            return new DeferredBodyAction<EmailDraftResponseEnvelope>(() =>
             {
-                resourceDataObject["plaintextBody"] = ExpressionConverter.ConvertO(requestBodyresourceDataplainTextBody);
-                resourceDataObjectpropCount++;
-            }
+                var apiCallPath = "/connector/contentSuggestions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_xMsMessageId != null)
+                    callPayload.Headers["x-ms-message-id"] = ExpressionConverter.Convert(__workflow_xMsMessageId);
+                if (__workflow_xMsConversationId != null)
+                    callPayload.Headers["x-ms-conversation-id"] = ExpressionConverter.Convert(__workflow_xMsConversationId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                var resourceDataObject = new JObject();
+                var resourceDataObjectpropCount = 0;
+                if (__workflow_requestBodyresourceDataplainTextBody != null)
+                {
+                    resourceDataObject["plaintextBody"] = ExpressionConverter.ConvertO(__workflow_requestBodyresourceDataplainTextBody);
+                    resourceDataObjectpropCount++;
+                }
 
-            if (requestBodyresourceDatafullHTMLBody != null)
-            {
-                resourceDataObject["fullHtmlBody"] = ExpressionConverter.ConvertO(requestBodyresourceDatafullHTMLBody);
-                resourceDataObjectpropCount++;
-            }
+                if (__workflow_requestBodyresourceDatafullHTMLBody != null)
+                {
+                    resourceDataObject["fullHtmlBody"] = ExpressionConverter.ConvertO(__workflow_requestBodyresourceDatafullHTMLBody);
+                    resourceDataObjectpropCount++;
+                }
 
-            if (requestBodyresourceDatasubject != null)
-            {
-                resourceDataObject["subject"] = ExpressionConverter.ConvertO(requestBodyresourceDatasubject);
-                resourceDataObjectpropCount++;
-            }
+                if (__workflow_requestBodyresourceDatasubject != null)
+                {
+                    resourceDataObject["subject"] = ExpressionConverter.ConvertO(__workflow_requestBodyresourceDatasubject);
+                    resourceDataObjectpropCount++;
+                }
 
-            if (requestBodyresourceDatafrom != null)
-            {
-                resourceDataObject["from"] = ExpressionConverter.ConvertO(requestBodyresourceDatafrom);
-                resourceDataObjectpropCount++;
-            }
+                if (__workflow_requestBodyresourceDatafrom != null)
+                {
+                    resourceDataObject["from"] = ExpressionConverter.ConvertO(__workflow_requestBodyresourceDatafrom);
+                    resourceDataObjectpropCount++;
+                }
 
-            if (requestBodyresourceDatato != null)
-            {
-                resourceDataObject["to"] = ExpressionConverter.ConvertO(requestBodyresourceDatato);
-                resourceDataObjectpropCount++;
-            }
+                if (__workflow_requestBodyresourceDatato != null)
+                {
+                    resourceDataObject["to"] = ExpressionConverter.ConvertO(__workflow_requestBodyresourceDatato);
+                    resourceDataObjectpropCount++;
+                }
 
-            if (requestBodyresourceDatacC != null)
-            {
-                resourceDataObject["cc"] = ExpressionConverter.ConvertO(requestBodyresourceDatacC);
-                resourceDataObjectpropCount++;
-            }
+                if (__workflow_requestBodyresourceDatacC != null)
+                {
+                    resourceDataObject["cc"] = ExpressionConverter.ConvertO(__workflow_requestBodyresourceDatacC);
+                    resourceDataObjectpropCount++;
+                }
 
-            if (requestBodyresourceDatabCC != null)
-            {
-                resourceDataObject["bcc"] = ExpressionConverter.ConvertO(requestBodyresourceDatabCC);
-                resourceDataObjectpropCount++;
-            }
+                if (__workflow_requestBodyresourceDatabCC != null)
+                {
+                    resourceDataObject["bcc"] = ExpressionConverter.ConvertO(__workflow_requestBodyresourceDatabCC);
+                    resourceDataObjectpropCount++;
+                }
 
-            if (requestBodyresourceDatasentDateTime != null)
-            {
-                resourceDataObject["sentDateTime"] = ExpressionConverter.ConvertO(requestBodyresourceDatasentDateTime);
-                resourceDataObjectpropCount++;
-            }
+                if (__workflow_requestBodyresourceDatasentDateTime != null)
+                {
+                    resourceDataObject["sentDateTime"] = ExpressionConverter.ConvertO(__workflow_requestBodyresourceDatasentDateTime);
+                    resourceDataObjectpropCount++;
+                }
 
-            if (requestBodyresourceDatatheGraphMessageId != null)
-            {
-                resourceDataObject["messageId"] = ExpressionConverter.ConvertO(requestBodyresourceDatatheGraphMessageId);
-                resourceDataObjectpropCount++;
-            }
+                if (__workflow_requestBodyresourceDatatheGraphMessageId != null)
+                {
+                    resourceDataObject["messageId"] = ExpressionConverter.ConvertO(__workflow_requestBodyresourceDatatheGraphMessageId);
+                    resourceDataObjectpropCount++;
+                }
 
-            if (requestBodyresourceDatatheGraphConversationID != null)
-            {
-                resourceDataObject["conversationId"] = ExpressionConverter.ConvertO(requestBodyresourceDatatheGraphConversationID);
-                resourceDataObjectpropCount++;
-            }
+                if (__workflow_requestBodyresourceDatatheGraphConversationID != null)
+                {
+                    resourceDataObject["conversationId"] = ExpressionConverter.ConvertO(__workflow_requestBodyresourceDatatheGraphConversationID);
+                    resourceDataObjectpropCount++;
+                }
 
-            if (resourceDataObjectpropCount > 0)
-            {
-                requestBody["resourceData"] = resourceDataObject;
+                if (resourceDataObjectpropCount > 0)
+                {
+                    requestBody["resourceData"] = resourceDataObject;
+                    requestBodypropCount++;
+                }
+
                 requestBodypropCount++;
-            }
+                requestBody["resourceType"] = ExpressionConverter.ConvertO(__workflow_requestBodyresourceType);
+                if (__workflow_requestBodyrecordType != null)
+                {
+                    requestBody["recordType"] = ExpressionConverter.ConvertO(__workflow_requestBodyrecordType);
+                    requestBodypropCount++;
+                }
 
-            requestBodypropCount++;
-            requestBody["resourceType"] = ExpressionConverter.ConvertO(requestBodyresourceType);
-            if (requestBodyrecordType != null)
-            {
-                requestBody["recordType"] = ExpressionConverter.ConvertO(requestBodyrecordType);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodyrecordID != null)
+                {
+                    requestBody["recordId"] = ExpressionConverter.ConvertO(__workflow_requestBodyrecordID);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodyrecordID != null)
-            {
-                requestBody["recordId"] = ExpressionConverter.ConvertO(requestBodyrecordID);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodycRMType != null)
+                {
+                    requestBody["crmType"] = ExpressionConverter.ConvertO(__workflow_requestBodycRMType);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodycRMType != null)
-            {
-                requestBody["crmType"] = ExpressionConverter.ConvertO(requestBodycRMType);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodycRMOrgURL != null)
+                {
+                    requestBody["crmOrgUrl"] = ExpressionConverter.ConvertO(__workflow_requestBodycRMOrgURL);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodycRMOrgURL != null)
-            {
-                requestBody["crmOrgUrl"] = ExpressionConverter.ConvertO(requestBodycRMOrgURL);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodyinputPrompt != null)
+                {
+                    requestBody["inputPrompt"] = ExpressionConverter.ConvertO(__workflow_requestBodyinputPrompt);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodyinputPrompt != null)
-            {
-                requestBody["inputPrompt"] = ExpressionConverter.ConvertO(requestBodyinputPrompt);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodytop != null)
+                {
+                    requestBody["top"] = ExpressionConverter.ConvertO(__workflow_requestBodytop);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodytop != null)
-            {
-                requestBody["top"] = ExpressionConverter.ConvertO(requestBodytop);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodyskip != null)
+                {
+                    requestBody["skip"] = ExpressionConverter.ConvertO(__workflow_requestBodyskip);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodyskip != null)
-            {
-                requestBody["skip"] = ExpressionConverter.ConvertO(requestBodyskip);
-                requestBodypropCount++;
-            }
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            if (requestBodypropCount > 0)
-            {
-                callPayload.Body = requestBody;
-            }
-
-            return new ApiConnectionAction<EmailDraftResponseEnvelope>(callPayload);
+                return new ApiConnectionAction<EmailDraftResponseEnvelope>(callPayload);
+            });
         }
     }
 
@@ -265,6 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         public JToken AdditionalProperties { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum recordTypeInput
     {
         [EnumMember(Value = "account")]
@@ -273,6 +336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         Opportunity
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum crmTypeInput
     {
         Salesforce,

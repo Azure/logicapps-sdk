@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,21 +14,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
         public IBodyWorkflowAction<string> SOAPOperation(Expression<Func<serviceInput>> service, Expression<Func<string>> version, Expression<Func<string>> requestBody = null)
         {
-            var apiCallPath = String.Format("/SOAPOperation/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(service, 1), ExpressionConverter.ConvertWithUrlEncoding(version, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(requestBody);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_service = WorkflowExpression.Compile(service, nameof(service), required: true);
+            var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/SOAPOperation/{0}/{1}", __workflow_service.WithUrlEncoding(1), __workflow_version.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
         public IBodyWorkflowAction<string> RaaSOperation(Expression<Func<string>> accountName, Expression<Func<string>> reportName, Expression<Func<string>> reportInstanceName, Expression<Func<string>> requestBody = null)
         {
-            var apiCallPath = String.Format("/RaaSOperation/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(reportInstanceName, 1), ExpressionConverter.ConvertWithUrlEncoding(accountName, 1), ExpressionConverter.ConvertWithUrlEncoding(reportName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(requestBody);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_accountName = WorkflowExpression.Compile(accountName, nameof(accountName), required: true);
+            var __workflow_reportName = WorkflowExpression.Compile(reportName, nameof(reportName), required: true);
+            var __workflow_reportInstanceName = WorkflowExpression.Compile(reportInstanceName, nameof(reportInstanceName), required: true);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/RaaSOperation/{0}/{1}/{2}", __workflow_reportInstanceName.WithUrlEncoding(1), __workflow_accountName.WithUrlEncoding(1), __workflow_reportName.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 
@@ -36,6 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum serviceInput
     {
         [EnumMember(Value = "Human_Resources")]

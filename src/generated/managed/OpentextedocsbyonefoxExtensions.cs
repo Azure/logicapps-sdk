@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,878 +14,1083 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IBodyWorkflowAction<string> CreateDocument(Expression<Func<string>> configurationKey, Expression<Func<string>> bodymetadatadisplayName, Expression<Func<string>> bodyfilefileName, Expression<Func<string>> bodyfilefileContent, Expression<Func<string>> bodyparentID = null, Expression<Func<string>> bodymetadatadescription = null, Expression<Func<bodymetadatafieldsInputItem[]>> bodymetadatafields = null)
         {
-            var apiCallPath = String.Format("/api/document/create/{0}", ExpressionConverter.ConvertWithUrlEncoding(configurationKey, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyparentID != null)
+            var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
+            var __workflow_bodymetadatadisplayName = WorkflowExpression.Compile(bodymetadatadisplayName, nameof(bodymetadatadisplayName), required: true);
+            var __workflow_bodyfilefileName = WorkflowExpression.Compile(bodyfilefileName, nameof(bodyfilefileName), required: true);
+            var __workflow_bodyfilefileContent = WorkflowExpression.Compile(bodyfilefileContent, nameof(bodyfilefileContent), required: true);
+            var __workflow_bodyparentID = WorkflowExpression.Compile(bodyparentID, nameof(bodyparentID), required: false);
+            var __workflow_bodymetadatadescription = WorkflowExpression.Compile(bodymetadatadescription, nameof(bodymetadatadescription), required: false);
+            var __workflow_bodymetadatafields = WorkflowExpression.Compile(bodymetadatafields, nameof(bodymetadatafields), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["parentId"] = ExpressionConverter.ConvertO(bodyparentID);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/document/create/{0}", __workflow_configurationKey.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyparentID != null)
+                {
+                    body["parentId"] = ExpressionConverter.ConvertO(__workflow_bodyparentID);
+                    bodypropCount++;
+                }
 
-            var metadataObject = new JObject();
-            var metadataObjectpropCount = 0;
-            metadataObjectpropCount++;
-            metadataObject["displayName"] = ExpressionConverter.ConvertO(bodymetadatadisplayName);
-            if (bodymetadatadescription != null)
-            {
-                metadataObject["description"] = ExpressionConverter.ConvertO(bodymetadatadescription);
+                var metadataObject = new JObject();
+                var metadataObjectpropCount = 0;
                 metadataObjectpropCount++;
-            }
+                metadataObject["displayName"] = ExpressionConverter.ConvertO(__workflow_bodymetadatadisplayName);
+                if (__workflow_bodymetadatadescription != null)
+                {
+                    metadataObject["description"] = ExpressionConverter.ConvertO(__workflow_bodymetadatadescription);
+                    metadataObjectpropCount++;
+                }
 
-            if (bodymetadatafields != null)
-            {
-                metadataObject["fieldValues"] = ExpressionConverter.ConvertO(bodymetadatafields);
-                metadataObjectpropCount++;
-            }
+                if (__workflow_bodymetadatafields != null)
+                {
+                    metadataObject["fieldValues"] = ExpressionConverter.ConvertO(__workflow_bodymetadatafields);
+                    metadataObjectpropCount++;
+                }
 
-            if (metadataObjectpropCount > 0)
-            {
-                body["metadata"] = metadataObject;
-                bodypropCount++;
-            }
+                if (metadataObjectpropCount > 0)
+                {
+                    body["metadata"] = metadataObject;
+                    bodypropCount++;
+                }
 
-            var fileObject = new JObject();
-            var fileObjectpropCount = 0;
-            fileObjectpropCount++;
-            fileObject["name"] = ExpressionConverter.ConvertO(bodyfilefileName);
-            fileObjectpropCount++;
-            fileObject["content"] = ExpressionConverter.ConvertO(bodyfilefileContent);
-            if (fileObjectpropCount > 0)
-            {
-                body["file"] = fileObject;
-                bodypropCount++;
-            }
+                var fileObject = new JObject();
+                var fileObjectpropCount = 0;
+                fileObjectpropCount++;
+                fileObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyfilefileName);
+                fileObjectpropCount++;
+                fileObject["content"] = ExpressionConverter.ConvertO(__workflow_bodyfilefileContent);
+                if (fileObjectpropCount > 0)
+                {
+                    body["file"] = fileObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IWorkflowAction UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> configurationKey, Expression<Func<string>> bodymetadatadisplayName, Expression<Func<string>> bodyfilefileName, Expression<Func<string>> bodyfilefileContent, Expression<Func<string>> bodymetadatadescription = null, Expression<Func<bodymetadatafieldsInputItem[]>> bodymetadatafields = null)
         {
-            var apiCallPath = String.Format("/api/document/update/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(configurationKey, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var metadataObject = new JObject();
-            var metadataObjectpropCount = 0;
-            metadataObjectpropCount++;
-            metadataObject["displayName"] = ExpressionConverter.ConvertO(bodymetadatadisplayName);
-            if (bodymetadatadescription != null)
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
+            var __workflow_bodymetadatadisplayName = WorkflowExpression.Compile(bodymetadatadisplayName, nameof(bodymetadatadisplayName), required: true);
+            var __workflow_bodyfilefileName = WorkflowExpression.Compile(bodyfilefileName, nameof(bodyfilefileName), required: true);
+            var __workflow_bodyfilefileContent = WorkflowExpression.Compile(bodyfilefileContent, nameof(bodyfilefileContent), required: true);
+            var __workflow_bodymetadatadescription = WorkflowExpression.Compile(bodymetadatadescription, nameof(bodymetadatadescription), required: false);
+            var __workflow_bodymetadatafields = WorkflowExpression.Compile(bodymetadatafields, nameof(bodymetadatafields), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                metadataObject["description"] = ExpressionConverter.ConvertO(bodymetadatadescription);
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/document/update/{0}/{1}", __workflow_id.WithUrlEncoding(1), __workflow_configurationKey.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var metadataObject = new JObject();
+                var metadataObjectpropCount = 0;
                 metadataObjectpropCount++;
-            }
+                metadataObject["displayName"] = ExpressionConverter.ConvertO(__workflow_bodymetadatadisplayName);
+                if (__workflow_bodymetadatadescription != null)
+                {
+                    metadataObject["description"] = ExpressionConverter.ConvertO(__workflow_bodymetadatadescription);
+                    metadataObjectpropCount++;
+                }
 
-            if (bodymetadatafields != null)
-            {
-                metadataObject["fieldValues"] = ExpressionConverter.ConvertO(bodymetadatafields);
-                metadataObjectpropCount++;
-            }
+                if (__workflow_bodymetadatafields != null)
+                {
+                    metadataObject["fieldValues"] = ExpressionConverter.ConvertO(__workflow_bodymetadatafields);
+                    metadataObjectpropCount++;
+                }
 
-            if (metadataObjectpropCount > 0)
-            {
-                body["metadata"] = metadataObject;
-                bodypropCount++;
-            }
+                if (metadataObjectpropCount > 0)
+                {
+                    body["metadata"] = metadataObject;
+                    bodypropCount++;
+                }
 
-            var fileObject = new JObject();
-            var fileObjectpropCount = 0;
-            fileObjectpropCount++;
-            fileObject["name"] = ExpressionConverter.ConvertO(bodyfilefileName);
-            fileObjectpropCount++;
-            fileObject["content"] = ExpressionConverter.ConvertO(bodyfilefileContent);
-            if (fileObjectpropCount > 0)
-            {
-                body["file"] = fileObject;
-                bodypropCount++;
-            }
+                var fileObject = new JObject();
+                var fileObjectpropCount = 0;
+                fileObjectpropCount++;
+                fileObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyfilefileName);
+                fileObjectpropCount++;
+                fileObject["content"] = ExpressionConverter.ConvertO(__workflow_bodyfilefileContent);
+                if (fileObjectpropCount > 0)
+                {
+                    body["file"] = fileObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IWorkflowAction UpdateDocumentProperties(Expression<Func<string>> id, Expression<Func<string>> configurationKey, Expression<Func<string>> bodydisplayName, Expression<Func<string>> bodydescription = null, Expression<Func<bodyfieldsInputItem[]>> bodyfields = null)
         {
-            var apiCallPath = String.Format("/api/document/update-properties/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(configurationKey, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
-            if (bodydescription != null)
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
+            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyfields = WorkflowExpression.Compile(bodyfields, nameof(bodyfields), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/document/update-properties/{0}/{1}", __workflow_id.WithUrlEncoding(1), __workflow_configurationKey.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["displayName"] = ExpressionConverter.ConvertO(__workflow_bodydisplayName);
+                if (__workflow_bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                    bodypropCount++;
+                }
 
-            if (bodyfields != null)
-            {
-                body["fieldValues"] = ExpressionConverter.ConvertO(bodyfields);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfields != null)
+                {
+                    body["fieldValues"] = ExpressionConverter.ConvertO(__workflow_bodyfields);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IWorkflowAction UpdateDocumentContent(Expression<Func<string>> id, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent)
         {
-            var apiCallPath = String.Format("/api/document/update-content/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyfileName);
-            bodypropCount++;
-            body["content"] = ExpressionConverter.ConvertO(bodyfileContent);
-            if (bodypropCount > 0)
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/document/update-content/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                bodypropCount++;
+                body["content"] = ExpressionConverter.ConvertO(__workflow_bodyfileContent);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IWorkflowAction CheckInDocument(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/document/check-in/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/document/check-in/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IWorkflowAction CheckOutDocument(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/document/check-out/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/document/check-out/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IBodyWorkflowAction<GetDocumentResponse> GetDocument(Expression<Func<string>> id, Expression<Func<string>> configurationKey)
         {
-            var apiCallPath = String.Format("/api/document/get/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(configurationKey, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetDocumentResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
+            return new DeferredBodyAction<GetDocumentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/document/get/{0}/{1}", __workflow_id.WithUrlEncoding(1), __workflow_configurationKey.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetDocumentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IBodyWorkflowAction<GetDocumentPropertiesResponse> GetDocumentProperties(Expression<Func<string>> id, Expression<Func<string>> configurationKey)
         {
-            var apiCallPath = String.Format("/api/document/get-properties/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(configurationKey, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetDocumentPropertiesResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
+            return new DeferredBodyAction<GetDocumentPropertiesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/document/get-properties/{0}/{1}", __workflow_id.WithUrlEncoding(1), __workflow_configurationKey.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetDocumentPropertiesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IBodyWorkflowAction<GetDocumentContentResponse> GetDocumentContent(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/document/get-content/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetDocumentContentResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<GetDocumentContentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/document/get-content/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetDocumentContentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IBodyWorkflowAction<GetDocumentVersionContentResponse> GetDocumentVersionContent(Expression<Func<string>> id, Expression<Func<string>> versionId)
         {
-            var apiCallPath = String.Format("/api/document/get-content/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(versionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetDocumentVersionContentResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_versionId = WorkflowExpression.Compile(versionId, nameof(versionId), required: true);
+            return new DeferredBodyAction<GetDocumentVersionContentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/document/get-content/{0}/{1}", __workflow_id.WithUrlEncoding(1), __workflow_versionId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetDocumentVersionContentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IWorkflowAction DeleteDocument(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/document/delete/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/document/delete/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IWorkflowAction DeleteDocumentVersion(Expression<Func<string>> id, Expression<Func<string>> versionId)
         {
-            var apiCallPath = String.Format("/api/document/delete/{0}/version/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(versionId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_versionId = WorkflowExpression.Compile(versionId, nameof(versionId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/document/delete/{0}/version/{1}", __workflow_id.WithUrlEncoding(1), __workflow_versionId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IBodyWorkflowAction<Version[]> GetDocumentVersions(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/document/get-versions/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Version[]>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<Version[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/document/get-versions/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Version[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IBodyWorkflowAction<string> CreateFolder(Expression<Func<string>> configurationKey, Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyparentID = null, Expression<Func<bodyfieldsInputItem[]>> bodyfields = null)
         {
-            var apiCallPath = String.Format("/api/folder/create/{0}", ExpressionConverter.ConvertWithUrlEncoding(configurationKey, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodydescription != null)
+            var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyparentID = WorkflowExpression.Compile(bodyparentID, nameof(bodyparentID), required: false);
+            var __workflow_bodyfields = WorkflowExpression.Compile(bodyfields, nameof(bodyfields), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/folder/create/{0}", __workflow_configurationKey.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                if (__workflow_bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                    bodypropCount++;
+                }
 
-            if (bodyparentID != null)
-            {
-                body["parentId"] = ExpressionConverter.ConvertO(bodyparentID);
-                bodypropCount++;
-            }
+                if (__workflow_bodyparentID != null)
+                {
+                    body["parentId"] = ExpressionConverter.ConvertO(__workflow_bodyparentID);
+                    bodypropCount++;
+                }
 
-            if (bodyfields != null)
-            {
-                body["fieldValues"] = ExpressionConverter.ConvertO(bodyfields);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfields != null)
+                {
+                    body["fieldValues"] = ExpressionConverter.ConvertO(__workflow_bodyfields);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IWorkflowAction UpdateFolder(Expression<Func<string>> id, Expression<Func<string>> configurationKey, Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription = null, Expression<Func<bodyfieldsInputItem[]>> bodyfields = null)
         {
-            var apiCallPath = String.Format("/api/folder/update/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(configurationKey, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodydescription != null)
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyfields = WorkflowExpression.Compile(bodyfields, nameof(bodyfields), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/folder/update/{0}/{1}", __workflow_id.WithUrlEncoding(1), __workflow_configurationKey.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                if (__workflow_bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                    bodypropCount++;
+                }
 
-            if (bodyfields != null)
-            {
-                body["fieldValues"] = ExpressionConverter.ConvertO(bodyfields);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfields != null)
+                {
+                    body["fieldValues"] = ExpressionConverter.ConvertO(__workflow_bodyfields);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IBodyWorkflowAction<GetFolderResponse> GetFolder(Expression<Func<string>> id, Expression<Func<string>> configurationKey)
         {
-            var apiCallPath = String.Format("/api/folder/get/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(configurationKey, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetFolderResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
+            return new DeferredBodyAction<GetFolderResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/folder/get/{0}/{1}", __workflow_id.WithUrlEncoding(1), __workflow_configurationKey.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetFolderResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IWorkflowAction DeleteFolder(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/folder/delete/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/folder/delete/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IBodyWorkflowAction<ResultItem[]> GetFolderChildren(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/folder/get-children/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ResultItem[]>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResultItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/folder/get-children/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ResultItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IWorkflowAction AddReferenceToFolder(Expression<Func<string>> sourceId, Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/folder/add-reference/{0}/to/{1}", ExpressionConverter.ConvertWithUrlEncoding(sourceId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_sourceId = WorkflowExpression.Compile(sourceId, nameof(sourceId), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/folder/add-reference/{0}/to/{1}", __workflow_sourceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IWorkflowAction RemoveReferenceFromFolder(Expression<Func<string>> sourceId, Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/folder/remove-reference/{0}/from/{1}", ExpressionConverter.ConvertWithUrlEncoding(sourceId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_sourceId = WorkflowExpression.Compile(sourceId, nameof(sourceId), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/folder/remove-reference/{0}/from/{1}", __workflow_sourceId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IBodyWorkflowAction<ResultItem[]> SimpleSearch(Expression<Func<string>> bodysearchValue)
         {
-            var apiCallPath = "/api/search/simple";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodysearchValue);
-            if (bodypropCount > 0)
+            var __workflow_bodysearchValue = WorkflowExpression.Compile(bodysearchValue, nameof(bodysearchValue), required: true);
+            return new DeferredBodyAction<ResultItem[]>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/search/simple";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodysearchValue);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ResultItem[]>(callPayload);
+                return new ApiConnectionAction<ResultItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IBodyWorkflowAction<ResultItem[]> AdvancedSearch(Expression<Func<string>> bodyquery, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodylimit = null)
         {
-            var apiCallPath = "/api/search/advanced";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["query"] = ExpressionConverter.ConvertO(bodyquery);
-            if (bodystart != null)
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
+            var __workflow_bodystart = WorkflowExpression.Compile(bodystart, nameof(bodystart), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            return new DeferredBodyAction<ResultItem[]>(() =>
             {
-                body["start"] = ExpressionConverter.ConvertO(bodystart);
+                var apiCallPath = "/api/search/advanced";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
+                if (__workflow_bodystart != null)
+                {
+                    body["start"] = ExpressionConverter.ConvertO(__workflow_bodystart);
+                    bodypropCount++;
+                }
 
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+                if (__workflow_bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ResultItem[]>(callPayload);
+                return new ApiConnectionAction<ResultItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IBodyWorkflowAction<TrusteeRead[]> GetTrustees(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/security/get/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TrusteeRead[]>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<TrusteeRead[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/security/get/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TrusteeRead[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IWorkflowAction AddTrustees(Expression<Func<string>> id, Expression<Func<TrusteeWrite[]>> body = null)
         {
-            var apiCallPath = String.Format("/api/security/add/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/security/add/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IWorkflowAction UpdateTrustees(Expression<Func<string>> id, Expression<Func<TrusteeWrite[]>> body = null)
         {
-            var apiCallPath = String.Format("/api/security/update/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/security/update/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IWorkflowAction RemoveTrustees(Expression<Func<string>> id, Expression<Func<string[]>> body = null)
         {
-            var apiCallPath = String.Format("/api/security/remove/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/security/remove/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IWorkflowAction OverrideTrustees(Expression<Func<string>> id, Expression<Func<TrusteeWrite[]>> body = null)
         {
-            var apiCallPath = String.Format("/api/security/override/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/security/override/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IBodyWorkflowAction<string> CreateLookupEntry(Expression<Func<string>> configurationKey, Expression<Func<bodyfieldsInputItem[]>> bodyfields = null)
         {
-            var apiCallPath = String.Format("/api/lookup-entry/create/{0}", ExpressionConverter.ConvertWithUrlEncoding(configurationKey, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfields != null)
+            var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
+            var __workflow_bodyfields = WorkflowExpression.Compile(bodyfields, nameof(bodyfields), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["fieldValues"] = ExpressionConverter.ConvertO(bodyfields);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/lookup-entry/create/{0}", __workflow_configurationKey.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyfields != null)
+                {
+                    body["fieldValues"] = ExpressionConverter.ConvertO(__workflow_bodyfields);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IWorkflowAction UpdateLookupEntry(Expression<Func<string>> id, Expression<Func<string>> configurationKey, Expression<Func<bodyfieldsInputItem[]>> bodyfields = null)
         {
-            var apiCallPath = String.Format("/api/lookup-entry/update/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(configurationKey, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfields != null)
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
+            var __workflow_bodyfields = WorkflowExpression.Compile(bodyfields, nameof(bodyfields), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["fieldValues"] = ExpressionConverter.ConvertO(bodyfields);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/lookup-entry/update/{0}/{1}", __workflow_id.WithUrlEncoding(1), __workflow_configurationKey.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyfields != null)
+                {
+                    body["fieldValues"] = ExpressionConverter.ConvertO(__workflow_bodyfields);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IBodyWorkflowAction<GetLookupEntriesResponseItem[]> GetLookupEntries(Expression<Func<string>> configurationKey, Expression<Func<string>> filter = null)
         {
-            var apiCallPath = String.Format("/api/lookup-entry/get-all/{0}", ExpressionConverter.ConvertWithUrlEncoding(configurationKey, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            return new ApiConnectionAction<GetLookupEntriesResponseItem[]>(callPayload);
+            var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            return new DeferredBodyAction<GetLookupEntriesResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/lookup-entry/get-all/{0}", __workflow_configurationKey.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                return new ApiConnectionAction<GetLookupEntriesResponseItem[]>(callPayload);
+            });
         }
     }
 
     public class OpentextedocsbyonefoxTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger DocumentCreated(Expression<Func<int>> bodyfilterparentparentID = null, Expression<Func<int>> bodyfilterparentparentDepth = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DocumentCreated(Expression<Func<int>> bodyfilterparentparentID = null, Expression<Func<int>> bodyfilterparentparentDepth = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/web-hook/create/DocumentCreated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            var filterObject = new JObject();
-            var filterObjectpropCount = 0;
-            var parentObject = new JObject();
-            var parentObjectpropCount = 0;
-            if (bodyfilterparentparentID != null)
+            var __workflow_bodyfilterparentparentID = WorkflowExpression.Compile(bodyfilterparentparentID, nameof(bodyfilterparentparentID), required: false);
+            var __workflow_bodyfilterparentparentDepth = WorkflowExpression.Compile(bodyfilterparentparentDepth, nameof(bodyfilterparentparentDepth), required: false);
+            var __workflow_bodyfiltermetadata = WorkflowExpression.Compile(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                parentObject["id"] = ExpressionConverter.ConvertO(bodyfilterparentparentID);
-                parentObjectpropCount++;
-            }
-
-            if (bodyfilterparentparentDepth != null)
-            {
-                parentObject["depth"] = ExpressionConverter.ConvertO(bodyfilterparentparentDepth);
-                parentObjectpropCount++;
-            }
-
-            if (parentObjectpropCount > 0)
-            {
-                filterObject["parent"] = parentObject;
-                filterObjectpropCount++;
-            }
-
-            if (bodyfiltermetadata != null)
-            {
-                filterObject["metadata"] = ExpressionConverter.ConvertO(bodyfiltermetadata);
-                filterObjectpropCount++;
-            }
-
-            if (filterObjectpropCount > 0)
-            {
-                body["Filter"] = filterObject;
+                var apiCallPath = "/api/web-hook/create/DocumentCreated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                var filterObject = new JObject();
+                var filterObjectpropCount = 0;
+                var parentObject = new JObject();
+                var parentObjectpropCount = 0;
+                if (__workflow_bodyfilterparentparentID != null)
+                {
+                    parentObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyfilterparentparentID);
+                    parentObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodyfilterparentparentDepth != null)
+                {
+                    parentObject["depth"] = ExpressionConverter.ConvertO(__workflow_bodyfilterparentparentDepth);
+                    parentObjectpropCount++;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                if (parentObjectpropCount > 0)
+                {
+                    filterObject["parent"] = parentObject;
+                    filterObjectpropCount++;
+                }
+
+                if (__workflow_bodyfiltermetadata != null)
+                {
+                    filterObject["metadata"] = ExpressionConverter.ConvertO(__workflow_bodyfiltermetadata);
+                    filterObjectpropCount++;
+                }
+
+                if (filterObjectpropCount > 0)
+                {
+                    body["Filter"] = filterObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger DocumentContentUpdated(Expression<Func<int>> bodyfilterparentparentID = null, Expression<Func<int>> bodyfilterparentparentDepth = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DocumentContentUpdated(Expression<Func<int>> bodyfilterparentparentID = null, Expression<Func<int>> bodyfilterparentparentDepth = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/web-hook/create/DocumentContentUpdated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            var filterObject = new JObject();
-            var filterObjectpropCount = 0;
-            var parentObject = new JObject();
-            var parentObjectpropCount = 0;
-            if (bodyfilterparentparentID != null)
+            var __workflow_bodyfilterparentparentID = WorkflowExpression.Compile(bodyfilterparentparentID, nameof(bodyfilterparentparentID), required: false);
+            var __workflow_bodyfilterparentparentDepth = WorkflowExpression.Compile(bodyfilterparentparentDepth, nameof(bodyfilterparentparentDepth), required: false);
+            var __workflow_bodyfiltermetadata = WorkflowExpression.Compile(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                parentObject["id"] = ExpressionConverter.ConvertO(bodyfilterparentparentID);
-                parentObjectpropCount++;
-            }
-
-            if (bodyfilterparentparentDepth != null)
-            {
-                parentObject["depth"] = ExpressionConverter.ConvertO(bodyfilterparentparentDepth);
-                parentObjectpropCount++;
-            }
-
-            if (parentObjectpropCount > 0)
-            {
-                filterObject["parent"] = parentObject;
-                filterObjectpropCount++;
-            }
-
-            if (bodyfiltermetadata != null)
-            {
-                filterObject["metadata"] = ExpressionConverter.ConvertO(bodyfiltermetadata);
-                filterObjectpropCount++;
-            }
-
-            if (filterObjectpropCount > 0)
-            {
-                body["Filter"] = filterObject;
+                var apiCallPath = "/api/web-hook/create/DocumentContentUpdated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                var filterObject = new JObject();
+                var filterObjectpropCount = 0;
+                var parentObject = new JObject();
+                var parentObjectpropCount = 0;
+                if (__workflow_bodyfilterparentparentID != null)
+                {
+                    parentObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyfilterparentparentID);
+                    parentObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodyfilterparentparentDepth != null)
+                {
+                    parentObject["depth"] = ExpressionConverter.ConvertO(__workflow_bodyfilterparentparentDepth);
+                    parentObjectpropCount++;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                if (parentObjectpropCount > 0)
+                {
+                    filterObject["parent"] = parentObject;
+                    filterObjectpropCount++;
+                }
+
+                if (__workflow_bodyfiltermetadata != null)
+                {
+                    filterObject["metadata"] = ExpressionConverter.ConvertO(__workflow_bodyfiltermetadata);
+                    filterObjectpropCount++;
+                }
+
+                if (filterObjectpropCount > 0)
+                {
+                    body["Filter"] = filterObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger DocumentPropertiesUpdated(Expression<Func<int>> bodyfilterparentparentID = null, Expression<Func<int>> bodyfilterparentparentDepth = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DocumentPropertiesUpdated(Expression<Func<int>> bodyfilterparentparentID = null, Expression<Func<int>> bodyfilterparentparentDepth = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/web-hook/create/DocumentPropertiesUpdated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            var filterObject = new JObject();
-            var filterObjectpropCount = 0;
-            var parentObject = new JObject();
-            var parentObjectpropCount = 0;
-            if (bodyfilterparentparentID != null)
+            var __workflow_bodyfilterparentparentID = WorkflowExpression.Compile(bodyfilterparentparentID, nameof(bodyfilterparentparentID), required: false);
+            var __workflow_bodyfilterparentparentDepth = WorkflowExpression.Compile(bodyfilterparentparentDepth, nameof(bodyfilterparentparentDepth), required: false);
+            var __workflow_bodyfiltermetadata = WorkflowExpression.Compile(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                parentObject["id"] = ExpressionConverter.ConvertO(bodyfilterparentparentID);
-                parentObjectpropCount++;
-            }
-
-            if (bodyfilterparentparentDepth != null)
-            {
-                parentObject["depth"] = ExpressionConverter.ConvertO(bodyfilterparentparentDepth);
-                parentObjectpropCount++;
-            }
-
-            if (parentObjectpropCount > 0)
-            {
-                filterObject["parent"] = parentObject;
-                filterObjectpropCount++;
-            }
-
-            if (bodyfiltermetadata != null)
-            {
-                filterObject["metadata"] = ExpressionConverter.ConvertO(bodyfiltermetadata);
-                filterObjectpropCount++;
-            }
-
-            if (filterObjectpropCount > 0)
-            {
-                body["Filter"] = filterObject;
+                var apiCallPath = "/api/web-hook/create/DocumentPropertiesUpdated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                var filterObject = new JObject();
+                var filterObjectpropCount = 0;
+                var parentObject = new JObject();
+                var parentObjectpropCount = 0;
+                if (__workflow_bodyfilterparentparentID != null)
+                {
+                    parentObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyfilterparentparentID);
+                    parentObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodyfilterparentparentDepth != null)
+                {
+                    parentObject["depth"] = ExpressionConverter.ConvertO(__workflow_bodyfilterparentparentDepth);
+                    parentObjectpropCount++;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                if (parentObjectpropCount > 0)
+                {
+                    filterObject["parent"] = parentObject;
+                    filterObjectpropCount++;
+                }
+
+                if (__workflow_bodyfiltermetadata != null)
+                {
+                    filterObject["metadata"] = ExpressionConverter.ConvertO(__workflow_bodyfiltermetadata);
+                    filterObjectpropCount++;
+                }
+
+                if (filterObjectpropCount > 0)
+                {
+                    body["Filter"] = filterObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger DocumentDeleted(Expression<Func<int>> bodyfilterparentparentID = null, Expression<Func<int>> bodyfilterparentparentDepth = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DocumentDeleted(Expression<Func<int>> bodyfilterparentparentID = null, Expression<Func<int>> bodyfilterparentparentDepth = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/web-hook/create/DocumentDeleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            var filterObject = new JObject();
-            var filterObjectpropCount = 0;
-            var parentObject = new JObject();
-            var parentObjectpropCount = 0;
-            if (bodyfilterparentparentID != null)
+            var __workflow_bodyfilterparentparentID = WorkflowExpression.Compile(bodyfilterparentparentID, nameof(bodyfilterparentparentID), required: false);
+            var __workflow_bodyfilterparentparentDepth = WorkflowExpression.Compile(bodyfilterparentparentDepth, nameof(bodyfilterparentparentDepth), required: false);
+            var __workflow_bodyfiltermetadata = WorkflowExpression.Compile(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                parentObject["id"] = ExpressionConverter.ConvertO(bodyfilterparentparentID);
-                parentObjectpropCount++;
-            }
-
-            if (bodyfilterparentparentDepth != null)
-            {
-                parentObject["depth"] = ExpressionConverter.ConvertO(bodyfilterparentparentDepth);
-                parentObjectpropCount++;
-            }
-
-            if (parentObjectpropCount > 0)
-            {
-                filterObject["parent"] = parentObject;
-                filterObjectpropCount++;
-            }
-
-            if (bodyfiltermetadata != null)
-            {
-                filterObject["metadata"] = ExpressionConverter.ConvertO(bodyfiltermetadata);
-                filterObjectpropCount++;
-            }
-
-            if (filterObjectpropCount > 0)
-            {
-                body["Filter"] = filterObject;
+                var apiCallPath = "/api/web-hook/create/DocumentDeleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                var filterObject = new JObject();
+                var filterObjectpropCount = 0;
+                var parentObject = new JObject();
+                var parentObjectpropCount = 0;
+                if (__workflow_bodyfilterparentparentID != null)
+                {
+                    parentObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyfilterparentparentID);
+                    parentObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodyfilterparentparentDepth != null)
+                {
+                    parentObject["depth"] = ExpressionConverter.ConvertO(__workflow_bodyfilterparentparentDepth);
+                    parentObjectpropCount++;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                if (parentObjectpropCount > 0)
+                {
+                    filterObject["parent"] = parentObject;
+                    filterObjectpropCount++;
+                }
+
+                if (__workflow_bodyfiltermetadata != null)
+                {
+                    filterObject["metadata"] = ExpressionConverter.ConvertO(__workflow_bodyfiltermetadata);
+                    filterObjectpropCount++;
+                }
+
+                if (filterObjectpropCount > 0)
+                {
+                    body["Filter"] = filterObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger FolderCreated(Expression<Func<int>> bodyfilterparentparentID = null, Expression<Func<int>> bodyfilterparentparentDepth = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FolderCreated(Expression<Func<int>> bodyfilterparentparentID = null, Expression<Func<int>> bodyfilterparentparentDepth = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/web-hook/create/FolderCreated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            var filterObject = new JObject();
-            var filterObjectpropCount = 0;
-            var parentObject = new JObject();
-            var parentObjectpropCount = 0;
-            if (bodyfilterparentparentID != null)
+            var __workflow_bodyfilterparentparentID = WorkflowExpression.Compile(bodyfilterparentparentID, nameof(bodyfilterparentparentID), required: false);
+            var __workflow_bodyfilterparentparentDepth = WorkflowExpression.Compile(bodyfilterparentparentDepth, nameof(bodyfilterparentparentDepth), required: false);
+            var __workflow_bodyfiltermetadata = WorkflowExpression.Compile(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                parentObject["id"] = ExpressionConverter.ConvertO(bodyfilterparentparentID);
-                parentObjectpropCount++;
-            }
-
-            if (bodyfilterparentparentDepth != null)
-            {
-                parentObject["depth"] = ExpressionConverter.ConvertO(bodyfilterparentparentDepth);
-                parentObjectpropCount++;
-            }
-
-            if (parentObjectpropCount > 0)
-            {
-                filterObject["parent"] = parentObject;
-                filterObjectpropCount++;
-            }
-
-            if (bodyfiltermetadata != null)
-            {
-                filterObject["metadata"] = ExpressionConverter.ConvertO(bodyfiltermetadata);
-                filterObjectpropCount++;
-            }
-
-            if (filterObjectpropCount > 0)
-            {
-                body["Filter"] = filterObject;
+                var apiCallPath = "/api/web-hook/create/FolderCreated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                var filterObject = new JObject();
+                var filterObjectpropCount = 0;
+                var parentObject = new JObject();
+                var parentObjectpropCount = 0;
+                if (__workflow_bodyfilterparentparentID != null)
+                {
+                    parentObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyfilterparentparentID);
+                    parentObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodyfilterparentparentDepth != null)
+                {
+                    parentObject["depth"] = ExpressionConverter.ConvertO(__workflow_bodyfilterparentparentDepth);
+                    parentObjectpropCount++;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                if (parentObjectpropCount > 0)
+                {
+                    filterObject["parent"] = parentObject;
+                    filterObjectpropCount++;
+                }
+
+                if (__workflow_bodyfiltermetadata != null)
+                {
+                    filterObject["metadata"] = ExpressionConverter.ConvertO(__workflow_bodyfiltermetadata);
+                    filterObjectpropCount++;
+                }
+
+                if (filterObjectpropCount > 0)
+                {
+                    body["Filter"] = filterObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger FolderUpdated(Expression<Func<int>> bodyfilterparentparentID = null, Expression<Func<int>> bodyfilterparentparentDepth = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FolderUpdated(Expression<Func<int>> bodyfilterparentparentID = null, Expression<Func<int>> bodyfilterparentparentDepth = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/web-hook/create/FolderUpdated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            var filterObject = new JObject();
-            var filterObjectpropCount = 0;
-            var parentObject = new JObject();
-            var parentObjectpropCount = 0;
-            if (bodyfilterparentparentID != null)
+            var __workflow_bodyfilterparentparentID = WorkflowExpression.Compile(bodyfilterparentparentID, nameof(bodyfilterparentparentID), required: false);
+            var __workflow_bodyfilterparentparentDepth = WorkflowExpression.Compile(bodyfilterparentparentDepth, nameof(bodyfilterparentparentDepth), required: false);
+            var __workflow_bodyfiltermetadata = WorkflowExpression.Compile(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                parentObject["id"] = ExpressionConverter.ConvertO(bodyfilterparentparentID);
-                parentObjectpropCount++;
-            }
-
-            if (bodyfilterparentparentDepth != null)
-            {
-                parentObject["depth"] = ExpressionConverter.ConvertO(bodyfilterparentparentDepth);
-                parentObjectpropCount++;
-            }
-
-            if (parentObjectpropCount > 0)
-            {
-                filterObject["parent"] = parentObject;
-                filterObjectpropCount++;
-            }
-
-            if (bodyfiltermetadata != null)
-            {
-                filterObject["metadata"] = ExpressionConverter.ConvertO(bodyfiltermetadata);
-                filterObjectpropCount++;
-            }
-
-            if (filterObjectpropCount > 0)
-            {
-                body["Filter"] = filterObject;
+                var apiCallPath = "/api/web-hook/create/FolderUpdated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                var filterObject = new JObject();
+                var filterObjectpropCount = 0;
+                var parentObject = new JObject();
+                var parentObjectpropCount = 0;
+                if (__workflow_bodyfilterparentparentID != null)
+                {
+                    parentObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyfilterparentparentID);
+                    parentObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodyfilterparentparentDepth != null)
+                {
+                    parentObject["depth"] = ExpressionConverter.ConvertO(__workflow_bodyfilterparentparentDepth);
+                    parentObjectpropCount++;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                if (parentObjectpropCount > 0)
+                {
+                    filterObject["parent"] = parentObject;
+                    filterObjectpropCount++;
+                }
+
+                if (__workflow_bodyfiltermetadata != null)
+                {
+                    filterObject["metadata"] = ExpressionConverter.ConvertO(__workflow_bodyfiltermetadata);
+                    filterObjectpropCount++;
+                }
+
+                if (filterObjectpropCount > 0)
+                {
+                    body["Filter"] = filterObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger FolderDeleted(Expression<Func<int>> bodyfilterparentparentID = null, Expression<Func<int>> bodyfilterparentparentDepth = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FolderDeleted(Expression<Func<int>> bodyfilterparentparentID = null, Expression<Func<int>> bodyfilterparentparentDepth = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/web-hook/create/FolderDeleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            var filterObject = new JObject();
-            var filterObjectpropCount = 0;
-            var parentObject = new JObject();
-            var parentObjectpropCount = 0;
-            if (bodyfilterparentparentID != null)
+            var __workflow_bodyfilterparentparentID = WorkflowExpression.Compile(bodyfilterparentparentID, nameof(bodyfilterparentparentID), required: false);
+            var __workflow_bodyfilterparentparentDepth = WorkflowExpression.Compile(bodyfilterparentparentDepth, nameof(bodyfilterparentparentDepth), required: false);
+            var __workflow_bodyfiltermetadata = WorkflowExpression.Compile(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                parentObject["id"] = ExpressionConverter.ConvertO(bodyfilterparentparentID);
-                parentObjectpropCount++;
-            }
-
-            if (bodyfilterparentparentDepth != null)
-            {
-                parentObject["depth"] = ExpressionConverter.ConvertO(bodyfilterparentparentDepth);
-                parentObjectpropCount++;
-            }
-
-            if (parentObjectpropCount > 0)
-            {
-                filterObject["parent"] = parentObject;
-                filterObjectpropCount++;
-            }
-
-            if (bodyfiltermetadata != null)
-            {
-                filterObject["metadata"] = ExpressionConverter.ConvertO(bodyfiltermetadata);
-                filterObjectpropCount++;
-            }
-
-            if (filterObjectpropCount > 0)
-            {
-                body["Filter"] = filterObject;
+                var apiCallPath = "/api/web-hook/create/FolderDeleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                var filterObject = new JObject();
+                var filterObjectpropCount = 0;
+                var parentObject = new JObject();
+                var parentObjectpropCount = 0;
+                if (__workflow_bodyfilterparentparentID != null)
+                {
+                    parentObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyfilterparentparentID);
+                    parentObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodyfilterparentparentDepth != null)
+                {
+                    parentObject["depth"] = ExpressionConverter.ConvertO(__workflow_bodyfilterparentparentDepth);
+                    parentObjectpropCount++;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                if (parentObjectpropCount > 0)
+                {
+                    filterObject["parent"] = parentObject;
+                    filterObjectpropCount++;
+                }
+
+                if (__workflow_bodyfiltermetadata != null)
+                {
+                    filterObject["metadata"] = ExpressionConverter.ConvertO(__workflow_bodyfiltermetadata);
+                    filterObjectpropCount++;
+                }
+
+                if (filterObjectpropCount > 0)
+                {
+                    body["Filter"] = filterObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger ItemDeleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ItemDeleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/web-hook/create/ItemDeleted";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["WebHookUri"] = "@listCallbackUrl()";
+            body["WebHookUri"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
     }
 
@@ -1066,6 +1271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
         public string[] AccessRights { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TrusteeWriteTypeType
     {
         User,

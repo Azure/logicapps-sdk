@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,33 +14,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
         public IBodyWorkflowAction<ArticleSearchResponse> ArticleSearch(Expression<Func<string>> q, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null)
         {
-            var apiCallPath = "/search/v2/articlesearch.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (beginDate != null)
-                callPayload.Queries["begin_date"] = ExpressionConverter.Convert(beginDate);
-            if (endDate != null)
-                callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
-            return new ApiConnectionAction<ArticleSearchResponse>(callPayload);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_beginDate = WorkflowExpression.Compile(beginDate, nameof(beginDate), required: false);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
+            return new DeferredBodyAction<ArticleSearchResponse>(() =>
+            {
+                var apiCallPath = "/search/v2/articlesearch.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                if (__workflow_beginDate != null)
+                    callPayload.Queries["begin_date"] = ExpressionConverter.Convert(__workflow_beginDate);
+                if (__workflow_endDate != null)
+                    callPayload.Queries["end_date"] = ExpressionConverter.Convert(__workflow_endDate);
+                return new ApiConnectionAction<ArticleSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
         public IBodyWorkflowAction<TopStoriesResponse> TopStories(Expression<Func<sectionInput>> section)
         {
-            var apiCallPath = String.Format("/topstories/v2/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(section, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TopStoriesResponse>(callPayload);
+            var __workflow_section = WorkflowExpression.Compile(section, nameof(section), required: true);
+            return new DeferredBodyAction<TopStoriesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/topstories/v2/{0}.json", __workflow_section.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TopStoriesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
         public IBodyWorkflowAction<MostViewedResponse> MostViewed(Expression<Func<periodInput>> period)
         {
-            var apiCallPath = String.Format("/mostpopular/v2/viewed/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(period, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MostViewedResponse>(callPayload);
+            var __workflow_period = WorkflowExpression.Compile(period, nameof(period), required: true);
+            return new DeferredBodyAction<MostViewedResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/mostpopular/v2/viewed/{0}.json", __workflow_period.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<MostViewedResponse>(callPayload);
+            });
         }
     }
 
@@ -165,6 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
         public Article[] Results { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sectionInput
     {
         [EnumMember(Value = "arts")]
@@ -311,6 +326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
         public string Format { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum periodInput
     {
         [EnumMember(Value = "1")]

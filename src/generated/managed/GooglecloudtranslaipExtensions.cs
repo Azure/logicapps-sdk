@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecloudtranslaip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,44 +14,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecloudtranslaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecloudtranslaip")]
         public IBodyWorkflowAction<TextTranslateResponse> TextTranslate(Expression<Func<string>> q, Expression<Func<string>> target, Expression<Func<formatInput>> format = null, Expression<Func<string>> source = null, Expression<Func<string>> model = null)
         {
-            var apiCallPath = "/language/translate/v2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            callPayload.Queries["target"] = ExpressionConverter.Convert(target);
-            callPayload.Queries["format"] = Convert.ToString("text");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            callPayload.Queries["model"] = Convert.ToString("base");
-            if (model != null)
-                callPayload.Queries["model"] = ExpressionConverter.Convert(model);
-            return new ApiConnectionAction<TextTranslateResponse>(callPayload);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_target = WorkflowExpression.Compile(target, nameof(target), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: false);
+            return new DeferredBodyAction<TextTranslateResponse>(() =>
+            {
+                var apiCallPath = "/language/translate/v2";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                callPayload.Queries["target"] = ExpressionConverter.Convert(__workflow_target);
+                callPayload.Queries["format"] = Convert.ToString("text");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_source != null)
+                    callPayload.Queries["source"] = ExpressionConverter.Convert(__workflow_source);
+                callPayload.Queries["model"] = Convert.ToString("base");
+                if (__workflow_model != null)
+                    callPayload.Queries["model"] = ExpressionConverter.Convert(__workflow_model);
+                return new ApiConnectionAction<TextTranslateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecloudtranslaip")]
         public IBodyWorkflowAction<LanguageDetectResponse> LanguageDetect(Expression<Func<string>> q)
         {
-            var apiCallPath = "/language/translate/v2/detect";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            return new ApiConnectionAction<LanguageDetectResponse>(callPayload);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            return new DeferredBodyAction<LanguageDetectResponse>(() =>
+            {
+                var apiCallPath = "/language/translate/v2/detect";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                return new ApiConnectionAction<LanguageDetectResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecloudtranslaip")]
         public IBodyWorkflowAction<LanguageGetResponse> LanguageGet(Expression<Func<string>> target = null, Expression<Func<string>> model = null)
         {
-            var apiCallPath = "/language/translate/v2/languages";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (target != null)
-                callPayload.Queries["target"] = ExpressionConverter.Convert(target);
-            callPayload.Queries["model"] = Convert.ToString("nmt");
-            if (model != null)
-                callPayload.Queries["model"] = ExpressionConverter.Convert(model);
-            return new ApiConnectionAction<LanguageGetResponse>(callPayload);
+            var __workflow_target = WorkflowExpression.Compile(target, nameof(target), required: false);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: false);
+            return new DeferredBodyAction<LanguageGetResponse>(() =>
+            {
+                var apiCallPath = "/language/translate/v2/languages";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_target != null)
+                    callPayload.Queries["target"] = ExpressionConverter.Convert(__workflow_target);
+                callPayload.Queries["model"] = Convert.ToString("nmt");
+                if (__workflow_model != null)
+                    callPayload.Queries["model"] = ExpressionConverter.Convert(__workflow_model);
+                return new ApiConnectionAction<LanguageGetResponse>(callPayload);
+            });
         }
     }
 
@@ -83,6 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecloudtranslaip
         public string Model { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatInput
     {
         [EnumMember(Value = "html")]

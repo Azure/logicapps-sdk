@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,371 +14,442 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
         public IBodyWorkflowAction<GetAllTicketsResponse> GetAllTickets(Expression<Func<int>> offset = null, Expression<Func<orderByInput>> orderBy = null, Expression<Func<orderTypeInput>> orderType = null, Expression<Func<string>> updatedSince = null, Expression<Func<includeDescriptionInput>> includeDescription = null)
         {
-            var apiCallPath = "/power_automate/tickets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["offset"] = Convert.ToString(0);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            callPayload.Queries["order_by"] = Convert.ToString("created_time");
-            if (orderBy != null)
-                callPayload.Queries["order_by"] = ExpressionConverter.Convert(orderBy);
-            callPayload.Queries["order_type"] = Convert.ToString("desc");
-            if (orderType != null)
-                callPayload.Queries["order_type"] = ExpressionConverter.Convert(orderType);
-            callPayload.Queries["updated_since"] = Convert.ToString("");
-            if (updatedSince != null)
-                callPayload.Queries["updated_since"] = ExpressionConverter.Convert(updatedSince);
-            callPayload.Queries["include_description"] = Convert.ToString("No");
-            if (includeDescription != null)
-                callPayload.Queries["include_description"] = ExpressionConverter.Convert(includeDescription);
-            callPayload.Queries["src"] = Convert.ToString(2);
-            return new ApiConnectionAction<GetAllTicketsResponse>(callPayload);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_orderBy = WorkflowExpression.Compile(orderBy, nameof(orderBy), required: false);
+            var __workflow_orderType = WorkflowExpression.Compile(orderType, nameof(orderType), required: false);
+            var __workflow_updatedSince = WorkflowExpression.Compile(updatedSince, nameof(updatedSince), required: false);
+            var __workflow_includeDescription = WorkflowExpression.Compile(includeDescription, nameof(includeDescription), required: false);
+            return new DeferredBodyAction<GetAllTicketsResponse>(() =>
+            {
+                var apiCallPath = "/power_automate/tickets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["offset"] = Convert.ToString(0);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                callPayload.Queries["order_by"] = Convert.ToString("created_time");
+                if (__workflow_orderBy != null)
+                    callPayload.Queries["order_by"] = ExpressionConverter.Convert(__workflow_orderBy);
+                callPayload.Queries["order_type"] = Convert.ToString("desc");
+                if (__workflow_orderType != null)
+                    callPayload.Queries["order_type"] = ExpressionConverter.Convert(__workflow_orderType);
+                callPayload.Queries["updated_since"] = Convert.ToString("");
+                if (__workflow_updatedSince != null)
+                    callPayload.Queries["updated_since"] = ExpressionConverter.Convert(__workflow_updatedSince);
+                callPayload.Queries["include_description"] = Convert.ToString("No");
+                if (__workflow_includeDescription != null)
+                    callPayload.Queries["include_description"] = ExpressionConverter.Convert(__workflow_includeDescription);
+                callPayload.Queries["src"] = Convert.ToString(2);
+                return new ApiConnectionAction<GetAllTicketsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
         public IBodyWorkflowAction<GetTicketResponse> GetTicket(Expression<Func<int>> ticketNumber = null)
         {
-            var apiCallPath = "/power_automate/tickets/details";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (ticketNumber != null)
-                callPayload.Queries["ticket_number"] = ExpressionConverter.Convert(ticketNumber);
-            callPayload.Queries["src"] = Convert.ToString(2);
-            return new ApiConnectionAction<GetTicketResponse>(callPayload);
+            var __workflow_ticketNumber = WorkflowExpression.Compile(ticketNumber, nameof(ticketNumber), required: false);
+            return new DeferredBodyAction<GetTicketResponse>(() =>
+            {
+                var apiCallPath = "/power_automate/tickets/details";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_ticketNumber != null)
+                    callPayload.Queries["ticket_number"] = ExpressionConverter.Convert(__workflow_ticketNumber);
+                callPayload.Queries["src"] = Convert.ToString(2);
+                return new ApiConnectionAction<GetTicketResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
         public IBodyWorkflowAction<CreateTicketResponse> CreateTicket(Expression<Func<string>> bodyemail, Expression<Func<string>> bodydescription, Expression<Func<string>> bodysubject, Expression<Func<string>> bodyagent = null, Expression<Func<string>> bodycategory = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodytypeInput>> bodytype = null)
         {
-            var apiCallPath = "/power_automate/tickets/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["src"] = Convert.ToString(2);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyagent != null)
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: true);
+            var __workflow_bodyagent = WorkflowExpression.Compile(bodyagent, nameof(bodyagent), required: false);
+            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            return new DeferredBodyAction<CreateTicketResponse>(() =>
             {
-                body["Agent"] = ExpressionConverter.ConvertO(bodyagent);
+                var apiCallPath = "/power_automate/tickets/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["src"] = Convert.ToString(2);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyagent != null)
+                {
+                    body["Agent"] = ExpressionConverter.ConvertO(__workflow_bodyagent);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycategory != null)
+                {
+                    body["Category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodycategory != null)
-            {
-                body["Category"] = ExpressionConverter.ConvertO(bodycategory);
+                body["Email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
                 bodypropCount++;
-            }
+                body["Description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                if (__workflow_bodypriority != null)
+                {
+                    body["Priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["Email"] = ExpressionConverter.ConvertO(bodyemail);
-            bodypropCount++;
-            body["Description"] = ExpressionConverter.ConvertO(bodydescription);
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                if (__workflow_bodystatus != null)
+                {
+                    body["Status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["Subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
+                if (__workflow_bodytype != null)
+                {
+                    body["Type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
+                    bodypropCount++;
+                }
 
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            bodypropCount++;
-            body["Subject"] = ExpressionConverter.ConvertO(bodysubject);
-            if (bodytype != null)
-            {
-                body["Type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateTicketResponse>(callPayload);
+                return new ApiConnectionAction<CreateTicketResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
         public IBodyWorkflowAction<UpdateTicketResponse> UpdateTicket(Expression<Func<int>> ticketNumber, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<string>> bodyassignTo = null, Expression<Func<string>> bodycategory = null)
         {
-            var apiCallPath = "/power_automate/tickets/update";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ticket_number"] = ExpressionConverter.Convert(ticketNumber);
-            callPayload.Queries["src"] = Convert.ToString(2);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodysubject != null)
+            var __workflow_ticketNumber = WorkflowExpression.Compile(ticketNumber, nameof(ticketNumber), required: true);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_bodyassignTo = WorkflowExpression.Compile(bodyassignTo, nameof(bodyassignTo), required: false);
+            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
+            return new DeferredBodyAction<UpdateTicketResponse>(() =>
             {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
-                bodypropCount++;
-            }
+                var apiCallPath = "/power_automate/tickets/update";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ticket_number"] = ExpressionConverter.Convert(__workflow_ticketNumber);
+                callPayload.Queries["src"] = Convert.ToString(2);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodysubject != null)
+                {
+                    body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
+                    bodypropCount++;
+                }
 
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
+                if (__workflow_bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                    bodypropCount++;
+                }
 
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
+                if (__workflow_bodystatus != null)
+                {
+                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
+                    bodypropCount++;
+                }
 
-            if (bodypriority != null)
-            {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
+                if (__workflow_bodypriority != null)
+                {
+                    body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
+                    bodypropCount++;
+                }
 
-            if (bodytype != null)
-            {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
-            }
+                if (__workflow_bodytype != null)
+                {
+                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
+                    bodypropCount++;
+                }
 
-            if (bodyassignTo != null)
-            {
-                body["assign_to"] = ExpressionConverter.ConvertO(bodyassignTo);
-                bodypropCount++;
-            }
+                if (__workflow_bodyassignTo != null)
+                {
+                    body["assign_to"] = ExpressionConverter.ConvertO(__workflow_bodyassignTo);
+                    bodypropCount++;
+                }
 
-            if (bodycategory != null)
-            {
-                body["category"] = ExpressionConverter.ConvertO(bodycategory);
-                bodypropCount++;
-            }
+                if (__workflow_bodycategory != null)
+                {
+                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<UpdateTicketResponse>(callPayload);
+                return new ApiConnectionAction<UpdateTicketResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
         public IBodyWorkflowAction<AddNoteResponse> AddNote(Expression<Func<int>> ticketNumber, Expression<Func<string>> bodycontent, Expression<Func<string>> bodyagentEmail = null, Expression<Func<string>> bodynotifyAgent = null, Expression<Func<bodyprivateInput>> bodyprivate = null)
         {
-            var apiCallPath = "/power_automate/tickets/add_note";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ticket_number"] = ExpressionConverter.Convert(ticketNumber);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Content"] = ExpressionConverter.ConvertO(bodycontent);
-            if (bodyagentEmail != null)
+            var __workflow_ticketNumber = WorkflowExpression.Compile(ticketNumber, nameof(ticketNumber), required: true);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: true);
+            var __workflow_bodyagentEmail = WorkflowExpression.Compile(bodyagentEmail, nameof(bodyagentEmail), required: false);
+            var __workflow_bodynotifyAgent = WorkflowExpression.Compile(bodynotifyAgent, nameof(bodynotifyAgent), required: false);
+            var __workflow_bodyprivate = WorkflowExpression.Compile(bodyprivate, nameof(bodyprivate), required: false);
+            return new DeferredBodyAction<AddNoteResponse>(() =>
             {
-                body["AgentEmail"] = ExpressionConverter.ConvertO(bodyagentEmail);
+                var apiCallPath = "/power_automate/tickets/add_note";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ticket_number"] = ExpressionConverter.Convert(__workflow_ticketNumber);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodynotifyAgent != null)
-            {
-                body["NotifyAgent"] = ExpressionConverter.ConvertO(bodynotifyAgent);
-                bodypropCount++;
-            }
-
-            if (bodyprivate != null)
-            {
-                if (bodyprivate != null)
+                body["Content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
+                if (__workflow_bodyagentEmail != null)
                 {
-                    body["Private"] = ExpressionConverter.ConvertO(bodyprivate);
+                    body["AgentEmail"] = ExpressionConverter.ConvertO(__workflow_bodyagentEmail);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["Private"] = "Yes";
-                bodypropCount++;
-            }
+                if (__workflow_bodynotifyAgent != null)
+                {
+                    body["NotifyAgent"] = ExpressionConverter.ConvertO(__workflow_bodynotifyAgent);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodyprivate != null)
+                {
+                    if (__workflow_bodyprivate != null)
+                    {
+                        body["Private"] = ExpressionConverter.ConvertO(__workflow_bodyprivate);
+                        bodypropCount++;
+                    }
 
-            return new ApiConnectionAction<AddNoteResponse>(callPayload);
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["Private"] = "Yes";
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<AddNoteResponse>(callPayload);
+            });
         }
     }
 
     public class Desk365Triggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateTicketWebhook(Expression<Func<string>> bodycontactEmail = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyagent = null, Expression<Func<string>> bodygroup = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateTicketWebhook(Expression<Func<string>> bodycontactEmail = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyagent = null, Expression<Func<string>> bodygroup = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/power_automate/tickets/create_ticket_webhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontactEmail != null)
+            var __workflow_bodycontactEmail = WorkflowExpression.Compile(bodycontactEmail, nameof(bodycontactEmail), required: false);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodyagent = WorkflowExpression.Compile(bodyagent, nameof(bodyagent), required: false);
+            var __workflow_bodygroup = WorkflowExpression.Compile(bodygroup, nameof(bodygroup), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                body["ContactEmail"] = ExpressionConverter.ConvertO(bodycontactEmail);
+                var apiCallPath = "/power_automate/tickets/create_ticket_webhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodycontactEmail != null)
+                {
+                    body["ContactEmail"] = ExpressionConverter.ConvertO(__workflow_bodycontactEmail);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodysubject != null)
+                {
+                    body["Subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodystatus != null)
+                {
+                    body["Status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodypriority != null)
+                {
+                    body["Priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyagent != null)
+                {
+                    body["Agent"] = ExpressionConverter.ConvertO(__workflow_bodyagent);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodygroup != null)
+                {
+                    body["Group"] = ExpressionConverter.ConvertO(__workflow_bodygroup);
+                    bodypropCount++;
+                }
+
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodysubject != null)
-            {
-                body["Subject"] = ExpressionConverter.ConvertO(bodysubject);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodyagent != null)
-            {
-                body["Agent"] = ExpressionConverter.ConvertO(bodyagent);
-                bodypropCount++;
-            }
-
-            if (bodygroup != null)
-            {
-                body["Group"] = ExpressionConverter.ConvertO(bodygroup);
-                bodypropCount++;
-            }
-
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger UpdateTicketWebhook(Expression<Func<string>> bodycontactEmail = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyagent = null, Expression<Func<string>> bodygroup = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UpdateTicketWebhook(Expression<Func<string>> bodycontactEmail = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyagent = null, Expression<Func<string>> bodygroup = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/power_automate/tickets/update_ticket_webhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontactEmail != null)
+            var __workflow_bodycontactEmail = WorkflowExpression.Compile(bodycontactEmail, nameof(bodycontactEmail), required: false);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodyagent = WorkflowExpression.Compile(bodyagent, nameof(bodyagent), required: false);
+            var __workflow_bodygroup = WorkflowExpression.Compile(bodygroup, nameof(bodygroup), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                body["ContactEmail"] = ExpressionConverter.ConvertO(bodycontactEmail);
+                var apiCallPath = "/power_automate/tickets/update_ticket_webhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodycontactEmail != null)
+                {
+                    body["ContactEmail"] = ExpressionConverter.ConvertO(__workflow_bodycontactEmail);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodysubject != null)
+                {
+                    body["Subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodystatus != null)
+                {
+                    body["Status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodypriority != null)
+                {
+                    body["Priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyagent != null)
+                {
+                    body["Agent"] = ExpressionConverter.ConvertO(__workflow_bodyagent);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodygroup != null)
+                {
+                    body["Group"] = ExpressionConverter.ConvertO(__workflow_bodygroup);
+                    bodypropCount++;
+                }
+
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodysubject != null)
-            {
-                body["Subject"] = ExpressionConverter.ConvertO(bodysubject);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodyagent != null)
-            {
-                body["Agent"] = ExpressionConverter.ConvertO(bodyagent);
-                bodypropCount++;
-            }
-
-            if (bodygroup != null)
-            {
-                body["Group"] = ExpressionConverter.ConvertO(bodygroup);
-                bodypropCount++;
-            }
-
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger AddNoteWebhook(Expression<Func<string>> bodyagent = null, Expression<Func<string>> bodycontent = null, Expression<Func<bodyprivateInput>> bodyprivate = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AddNoteWebhook(Expression<Func<string>> bodyagent = null, Expression<Func<string>> bodycontent = null, Expression<Func<bodyprivateInput>> bodyprivate = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/power_automate/tickets/add_note_webhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyagent != null)
+            var __workflow_bodyagent = WorkflowExpression.Compile(bodyagent, nameof(bodyagent), required: false);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodyprivate = WorkflowExpression.Compile(bodyprivate, nameof(bodyprivate), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                body["Agent"] = ExpressionConverter.ConvertO(bodyagent);
+                var apiCallPath = "/power_automate/tickets/add_note_webhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyagent != null)
+                {
+                    body["Agent"] = ExpressionConverter.ConvertO(__workflow_bodyagent);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycontent != null)
+                {
+                    body["Content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyprivate != null)
+                {
+                    body["Private"] = ExpressionConverter.ConvertO(__workflow_bodyprivate);
+                    bodypropCount++;
+                }
+
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodycontent != null)
-            {
-                body["Content"] = ExpressionConverter.ConvertO(bodycontent);
-                bodypropCount++;
-            }
-
-            if (bodyprivate != null)
-            {
-                body["Private"] = ExpressionConverter.ConvertO(bodyprivate);
-                bodypropCount++;
-            }
-
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger AddReplyWebhook(Expression<Func<string>> bodycontent = null, Expression<Func<bodyresponseTypeInput>> bodyresponseType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AddReplyWebhook(Expression<Func<string>> bodycontent = null, Expression<Func<bodyresponseTypeInput>> bodyresponseType = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/power_automate/tickets/add_reply_webhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontent != null)
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodyresponseType = WorkflowExpression.Compile(bodyresponseType, nameof(bodyresponseType), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                body["Content"] = ExpressionConverter.ConvertO(bodycontent);
+                var apiCallPath = "/power_automate/tickets/add_reply_webhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodycontent != null)
+                {
+                    body["Content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyresponseType != null)
+                {
+                    body["ResponseType"] = ExpressionConverter.ConvertO(__workflow_bodyresponseType);
+                    bodypropCount++;
+                }
+
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyresponseType != null)
-            {
-                body["ResponseType"] = ExpressionConverter.ConvertO(bodyresponseType);
-                bodypropCount++;
-            }
-
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -412,6 +483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         public string ClosedOn { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum orderByInput
     {
         [EnumMember(Value = "created_time")]
@@ -420,6 +492,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         UpdatedTime
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum orderTypeInput
     {
         [EnumMember(Value = "asc")]
@@ -428,6 +501,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         Desc
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum includeDescriptionInput
     {
         Yes,
@@ -476,6 +550,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         public string ClosedOn { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypriorityInput
     {
         Low,
@@ -484,6 +559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         Urgent
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
         Question,
@@ -527,12 +603,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         public string Private { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyprivateInput
     {
         Yes,
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyresponseTypeInput
     {
         Agent,

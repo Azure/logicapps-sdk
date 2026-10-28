@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Htmltopdfconverter
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,42 +14,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Htmltopdfconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "htmltopdfconverter")]
         public IWorkflowAction ConvertHTMLToPDF(Expression<Func<string>> contentType = null, Expression<Func<string>> bodyhtmlBody = null, Expression<Func<string>> bodycipher = null)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyhtmlBody != null)
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_bodyhtmlBody = WorkflowExpression.Compile(bodyhtmlBody, nameof(bodyhtmlBody), required: false);
+            var __workflow_bodycipher = WorkflowExpression.Compile(bodycipher, nameof(bodycipher), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                if (bodyhtmlBody != null)
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyhtmlBody != null)
                 {
-                    body["HtmlBody"] = ExpressionConverter.ConvertO(bodyhtmlBody);
+                    if (__workflow_bodyhtmlBody != null)
+                    {
+                        body["HtmlBody"] = ExpressionConverter.ConvertO(__workflow_bodyhtmlBody);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["HtmlBody"] = "<html><body><h1>Hello, World!</h1></body></html>";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["HtmlBody"] = "<html><body><h1>Hello, World!</h1></body></html>";
-                bodypropCount++;
-            }
+                if (__workflow_bodycipher != null)
+                {
+                    body["Cipher"] = ExpressionConverter.ConvertO(__workflow_bodycipher);
+                    bodypropCount++;
+                }
 
-            if (bodycipher != null)
-            {
-                body["Cipher"] = ExpressionConverter.ConvertO(bodycipher);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

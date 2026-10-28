@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harnesspdfx
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,10 +14,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harnesspdfx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harnesspdfx")]
         public IBodyWorkflowAction<PostPdfResponse> PostPdf(Expression<Func<object>> fileToProcess = null)
         {
-            var apiCallPath = "/pdfs";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PostPdfResponse>(callPayload);
+            var __workflow_fileToProcess = WorkflowExpression.Compile(fileToProcess, nameof(fileToProcess), required: false);
+            return new DeferredBodyAction<PostPdfResponse>(() =>
+            {
+                var apiCallPath = "/pdfs";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PostPdfResponse>(callPayload);
+            });
         }
     }
 

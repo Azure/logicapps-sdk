@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,243 +23,308 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction Approve(Expression<Func<string>> approvalID)
         {
-            var apiCallPath = String.Format("/approvals/{0}/approve", ExpressionConverter.ConvertWithUrlEncoding(approvalID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_approvalID = WorkflowExpression.Compile(approvalID, nameof(approvalID), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/approvals/{0}/approve", __workflow_approvalID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction Reject(Expression<Func<string>> approvalID)
         {
-            var apiCallPath = String.Format("/approvals/{0}", ExpressionConverter.ConvertWithUrlEncoding(approvalID, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_approvalID = WorkflowExpression.Compile(approvalID, nameof(approvalID), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/approvals/{0}", __workflow_approvalID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction ArchiveTeam(Expression<Func<string>> groupID, Expression<Func<bool>> bodysharePointReadOnly)
         {
-            var apiCallPath = String.Format("/groups/{0}/archive", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["sharePointReadOnly"] = ExpressionConverter.ConvertO(bodysharePointReadOnly);
-            if (bodypropCount > 0)
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_bodysharePointReadOnly = WorkflowExpression.Compile(bodysharePointReadOnly, nameof(bodysharePointReadOnly), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/archive", __workflow_groupID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["sharePointReadOnly"] = ExpressionConverter.ConvertO(__workflow_bodysharePointReadOnly);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction DeleteTeam(Expression<Func<string>> groupID)
         {
-            var apiCallPath = String.Format("/groups/{0}", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}", __workflow_groupID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction ChangeTagValue(Expression<Func<string>> groupID, Expression<Func<string>> contentid = null, Expression<Func<string>> contentvalue = null)
         {
-            var apiCallPath = String.Format("/groups/{0}/change-tag-value", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var content = new JObject();
-            var contentpropCount = 0;
-            if (contentid != null)
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_contentid = WorkflowExpression.Compile(contentid, nameof(contentid), required: false);
+            var __workflow_contentvalue = WorkflowExpression.Compile(contentvalue, nameof(contentvalue), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                content["id"] = ExpressionConverter.ConvertO(contentid);
-                contentpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/change-tag-value", __workflow_groupID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var content = new JObject();
+                var contentpropCount = 0;
+                if (__workflow_contentid != null)
+                {
+                    content["id"] = ExpressionConverter.ConvertO(__workflow_contentid);
+                    contentpropCount++;
+                }
 
-            if (contentvalue != null)
-            {
-                content["value"] = ExpressionConverter.ConvertO(contentvalue);
-                contentpropCount++;
-            }
+                if (__workflow_contentvalue != null)
+                {
+                    content["value"] = ExpressionConverter.ConvertO(__workflow_contentvalue);
+                    contentpropCount++;
+                }
 
-            if (contentpropCount > 0)
-            {
-                callPayload.Body = content;
-            }
+                if (contentpropCount > 0)
+                {
+                    callPayload.Body = content;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction RemoveAllUsersExeptOwners(Expression<Func<string>> groupID)
         {
-            var apiCallPath = String.Format("/groups/{0}/remove-all-users-not-owner", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/remove-all-users-not-owner", __workflow_groupID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction RemoveAllUsersExceptOneOwner(Expression<Func<string>> groupID, Expression<Func<string>> bodyownerId = null)
         {
-            var apiCallPath = String.Format("/groups/{0}/remove-all-users-except-selected-owner", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyownerId != null)
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_bodyownerId = WorkflowExpression.Compile(bodyownerId, nameof(bodyownerId), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["ownerId"] = ExpressionConverter.ConvertO(bodyownerId);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/remove-all-users-except-selected-owner", __workflow_groupID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyownerId != null)
+                {
+                    body["ownerId"] = ExpressionConverter.ConvertO(__workflow_bodyownerId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction RemoveGuests(Expression<Func<string>> groupID)
         {
-            var apiCallPath = String.Format("/groups/{0}/remove-all-guests", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/remove-all-guests", __workflow_groupID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction RemoveUser(Expression<Func<string>> groupID, Expression<Func<string>> bodyuserId = null)
         {
-            var apiCallPath = String.Format("/groups/{0}/remove-user", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyuserId != null)
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/remove-user", __workflow_groupID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyuserId != null)
+                {
+                    body["userId"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction ChangeRoleToMember(Expression<Func<string>> groupID, Expression<Func<string>> bodyuserId = null)
         {
-            var apiCallPath = String.Format("/groups/{0}/change-role-to-member", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyuserId != null)
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/change-role-to-member", __workflow_groupID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyuserId != null)
+                {
+                    body["userId"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction ChangeRoleToOwner(Expression<Func<string>> groupID, Expression<Func<string>> bodyuserId = null)
         {
-            var apiCallPath = String.Format("/groups/{0}/change-role-to-owner", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyuserId != null)
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/change-role-to-owner", __workflow_groupID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyuserId != null)
+                {
+                    body["userId"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction ExtendExpirationDate(Expression<Func<string>> groupID, Expression<Func<string>> bodyweeks = null)
         {
-            var apiCallPath = String.Format("/groups/{0}/extend-expiration", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyweeks != null)
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_bodyweeks = WorkflowExpression.Compile(bodyweeks, nameof(bodyweeks), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                if (bodyweeks != null)
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/extend-expiration", __workflow_groupID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyweeks != null)
                 {
-                    body["weeks"] = ExpressionConverter.ConvertO(bodyweeks);
+                    if (__workflow_bodyweeks != null)
+                    {
+                        body["weeks"] = ExpressionConverter.ConvertO(__workflow_bodyweeks);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["weeks"] = "4'";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["weeks"] = "4'";
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IBodyWorkflowAction<string> GetTagValue(Expression<Func<string>> groupID, Expression<Func<string>> tagID)
         {
-            var apiCallPath = String.Format("/groups/{0}/attribute/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1), ExpressionConverter.ConvertWithUrlEncoding(tagID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_tagID = WorkflowExpression.Compile(tagID, nameof(tagID), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/attribute/{1}", __workflow_groupID.WithUrlEncoding(1), __workflow_tagID.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 
     public class TeamsspiritTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ActionTriggerResponse> ActionTrigger(Expression<Func<string>> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ActionTriggerResponse> ActionTrigger(Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodypropCount > 0)
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            return new DeferredBodyTrigger<ActionTriggerResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<ActionTriggerResponse>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<ActionTriggerResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

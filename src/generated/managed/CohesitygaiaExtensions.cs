@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohesitygaia
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -32,25 +32,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohesitygaia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohesitygaia")]
         public IBodyWorkflowAction<QueryResponse> SendQuery(Expression<Func<string>> bodyllmName, Expression<Func<string>> bodyllmId, Expression<Func<string[]>> bodydatasetNames, Expression<Func<string>> bodyqueryString)
         {
-            var apiCallPath = "/mcm/gaia/ask";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["llmName"] = ExpressionConverter.ConvertO(bodyllmName);
-            bodypropCount++;
-            body["llmId"] = ExpressionConverter.ConvertO(bodyllmId);
-            bodypropCount++;
-            body["datasetNames"] = ExpressionConverter.ConvertO(bodydatasetNames);
-            bodypropCount++;
-            body["queryString"] = ExpressionConverter.ConvertO(bodyqueryString);
-            if (bodypropCount > 0)
+            var __workflow_bodyllmName = WorkflowExpression.Compile(bodyllmName, nameof(bodyllmName), required: true);
+            var __workflow_bodyllmId = WorkflowExpression.Compile(bodyllmId, nameof(bodyllmId), required: true);
+            var __workflow_bodydatasetNames = WorkflowExpression.Compile(bodydatasetNames, nameof(bodydatasetNames), required: true);
+            var __workflow_bodyqueryString = WorkflowExpression.Compile(bodyqueryString, nameof(bodyqueryString), required: true);
+            return new DeferredBodyAction<QueryResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/mcm/gaia/ask";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["llmName"] = ExpressionConverter.ConvertO(__workflow_bodyllmName);
+                bodypropCount++;
+                body["llmId"] = ExpressionConverter.ConvertO(__workflow_bodyllmId);
+                bodypropCount++;
+                body["datasetNames"] = ExpressionConverter.ConvertO(__workflow_bodydatasetNames);
+                bodypropCount++;
+                body["queryString"] = ExpressionConverter.ConvertO(__workflow_bodyqueryString);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<QueryResponse>(callPayload);
+                return new ApiConnectionAction<QueryResponse>(callPayload);
+            });
         }
     }
 

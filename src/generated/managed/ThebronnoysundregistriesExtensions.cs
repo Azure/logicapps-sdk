@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,87 +14,122 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         public IBodyWorkflowAction<GetAllSearchResponse> GetAllSearch(Expression<Func<string>> navn = null, Expression<Func<string>> fraRegistreringsdatoEnhetsregisteret = null, Expression<Func<string>> tilRegistreringsdatoEnhetsregisteret = null, Expression<Func<bool>> konkurs = null, Expression<Func<string>> sort = null)
         {
-            var apiCallPath = "/enhetsregisteret/api/enheter";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (navn != null)
-                callPayload.Queries["navn"] = ExpressionConverter.Convert(navn);
-            if (fraRegistreringsdatoEnhetsregisteret != null)
-                callPayload.Queries["fraRegistreringsdatoEnhetsregisteret"] = ExpressionConverter.Convert(fraRegistreringsdatoEnhetsregisteret);
-            if (tilRegistreringsdatoEnhetsregisteret != null)
-                callPayload.Queries["tilRegistreringsdatoEnhetsregisteret"] = ExpressionConverter.Convert(tilRegistreringsdatoEnhetsregisteret);
-            if (konkurs != null)
-                callPayload.Queries["konkurs"] = ExpressionConverter.Convert(konkurs);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<GetAllSearchResponse>(callPayload);
+            var __workflow_navn = WorkflowExpression.Compile(navn, nameof(navn), required: false);
+            var __workflow_fraRegistreringsdatoEnhetsregisteret = WorkflowExpression.Compile(fraRegistreringsdatoEnhetsregisteret, nameof(fraRegistreringsdatoEnhetsregisteret), required: false);
+            var __workflow_tilRegistreringsdatoEnhetsregisteret = WorkflowExpression.Compile(tilRegistreringsdatoEnhetsregisteret, nameof(tilRegistreringsdatoEnhetsregisteret), required: false);
+            var __workflow_konkurs = WorkflowExpression.Compile(konkurs, nameof(konkurs), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<GetAllSearchResponse>(() =>
+            {
+                var apiCallPath = "/enhetsregisteret/api/enheter";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_navn != null)
+                    callPayload.Queries["navn"] = ExpressionConverter.Convert(__workflow_navn);
+                if (__workflow_fraRegistreringsdatoEnhetsregisteret != null)
+                    callPayload.Queries["fraRegistreringsdatoEnhetsregisteret"] = ExpressionConverter.Convert(__workflow_fraRegistreringsdatoEnhetsregisteret);
+                if (__workflow_tilRegistreringsdatoEnhetsregisteret != null)
+                    callPayload.Queries["tilRegistreringsdatoEnhetsregisteret"] = ExpressionConverter.Convert(__workflow_tilRegistreringsdatoEnhetsregisteret);
+                if (__workflow_konkurs != null)
+                    callPayload.Queries["konkurs"] = ExpressionConverter.Convert(__workflow_konkurs);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                return new ApiConnectionAction<GetAllSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         public IBodyWorkflowAction<GetByOrganizationNumberResponse> GetByOrganizationNumber(Expression<Func<string>> orgnr)
         {
-            var apiCallPath = String.Format("/enhetsregisteret/api/enheter/{0}", ExpressionConverter.ConvertWithUrlEncoding(orgnr, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetByOrganizationNumberResponse>(callPayload);
+            var __workflow_orgnr = WorkflowExpression.Compile(orgnr, nameof(orgnr), required: true);
+            return new DeferredBodyAction<GetByOrganizationNumberResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/enhetsregisteret/api/enheter/{0}", __workflow_orgnr.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetByOrganizationNumberResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         public IBodyWorkflowAction<GetEntityRolesResponse> GetEntityRoles(Expression<Func<string>> orgnr)
         {
-            var apiCallPath = String.Format("/enhetsregisteret/api/enheter/{0}/roller", ExpressionConverter.ConvertWithUrlEncoding(orgnr, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<GetEntityRolesResponse>(callPayload);
+            var __workflow_orgnr = WorkflowExpression.Compile(orgnr, nameof(orgnr), required: true);
+            return new DeferredBodyAction<GetEntityRolesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/enhetsregisteret/api/enheter/{0}/roller", __workflow_orgnr.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<GetEntityRolesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         public IBodyWorkflowAction<GetAllSearchSubResponse> GetAllSearchSub(Expression<Func<string>> navn = null, Expression<Func<string>> sort = null)
         {
-            var apiCallPath = "/enhetsregisteret/api/underenheter";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (navn != null)
-                callPayload.Queries["navn"] = ExpressionConverter.Convert(navn);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<GetAllSearchSubResponse>(callPayload);
+            var __workflow_navn = WorkflowExpression.Compile(navn, nameof(navn), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<GetAllSearchSubResponse>(() =>
+            {
+                var apiCallPath = "/enhetsregisteret/api/underenheter";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_navn != null)
+                    callPayload.Queries["navn"] = ExpressionConverter.Convert(__workflow_navn);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                return new ApiConnectionAction<GetAllSearchSubResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         public IBodyWorkflowAction<GetSubByOrganizationNumberResponse> GetSubByOrganizationNumber(Expression<Func<string>> orgnr)
         {
-            var apiCallPath = String.Format("/enhetsregisteret/api/underenheter/{0}", ExpressionConverter.ConvertWithUrlEncoding(orgnr, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSubByOrganizationNumberResponse>(callPayload);
+            var __workflow_orgnr = WorkflowExpression.Compile(orgnr, nameof(orgnr), required: true);
+            return new DeferredBodyAction<GetSubByOrganizationNumberResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/enhetsregisteret/api/underenheter/{0}", __workflow_orgnr.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetSubByOrganizationNumberResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         public IBodyWorkflowAction<GetEntitiesUpdatesResponse> GetEntitiesUpdates(Expression<Func<string>> dato = null, Expression<Func<int>> oppdateringsid = null)
         {
-            var apiCallPath = "/enhetsregisteret/api/oppdateringer/enheter";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (dato != null)
-                callPayload.Queries["dato"] = ExpressionConverter.Convert(dato);
-            if (oppdateringsid != null)
-                callPayload.Queries["oppdateringsid"] = ExpressionConverter.Convert(oppdateringsid);
-            return new ApiConnectionAction<GetEntitiesUpdatesResponse>(callPayload);
+            var __workflow_dato = WorkflowExpression.Compile(dato, nameof(dato), required: false);
+            var __workflow_oppdateringsid = WorkflowExpression.Compile(oppdateringsid, nameof(oppdateringsid), required: false);
+            return new DeferredBodyAction<GetEntitiesUpdatesResponse>(() =>
+            {
+                var apiCallPath = "/enhetsregisteret/api/oppdateringer/enheter";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_dato != null)
+                    callPayload.Queries["dato"] = ExpressionConverter.Convert(__workflow_dato);
+                if (__workflow_oppdateringsid != null)
+                    callPayload.Queries["oppdateringsid"] = ExpressionConverter.Convert(__workflow_oppdateringsid);
+                return new ApiConnectionAction<GetEntitiesUpdatesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         public IBodyWorkflowAction<GetSubEntitiesUpdatesResponse> GetSubEntitiesUpdates(Expression<Func<string>> dato = null, Expression<Func<int>> oppdateringsid = null)
         {
-            var apiCallPath = "/enhetsregisteret/api/oppdateringer/underenheter";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (dato != null)
-                callPayload.Queries["dato"] = ExpressionConverter.Convert(dato);
-            if (oppdateringsid != null)
-                callPayload.Queries["oppdateringsid"] = ExpressionConverter.Convert(oppdateringsid);
-            return new ApiConnectionAction<GetSubEntitiesUpdatesResponse>(callPayload);
+            var __workflow_dato = WorkflowExpression.Compile(dato, nameof(dato), required: false);
+            var __workflow_oppdateringsid = WorkflowExpression.Compile(oppdateringsid, nameof(oppdateringsid), required: false);
+            return new DeferredBodyAction<GetSubEntitiesUpdatesResponse>(() =>
+            {
+                var apiCallPath = "/enhetsregisteret/api/oppdateringer/underenheter";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_dato != null)
+                    callPayload.Queries["dato"] = ExpressionConverter.Convert(__workflow_dato);
+                if (__workflow_oppdateringsid != null)
+                    callPayload.Queries["oppdateringsid"] = ExpressionConverter.Convert(__workflow_oppdateringsid);
+                return new ApiConnectionAction<GetSubEntitiesUpdatesResponse>(callPayload);
+            });
         }
     }
 

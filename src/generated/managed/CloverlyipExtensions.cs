@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,741 +14,846 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<DirectCarbonResponse> DirectCarbon(Expression<Func<transactionInput>> transaction, Expression<Func<double>> bodyweightvalue = null, Expression<Func<bodyweightunitsInput>> bodyweightunits = null, Expression<Func<string[]>> bodyprojectMatchlocationlatlng = null, Expression<Func<string>> bodynote = null)
         {
-            var apiCallPath = String.Format("/{0}/carbon", ExpressionConverter.ConvertWithUrlEncoding(transaction, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var weightObject = new JObject();
-            var weightObjectpropCount = 0;
-            if (bodyweightvalue != null)
+            var __workflow_transaction = WorkflowExpression.Compile(transaction, nameof(transaction), required: true);
+            var __workflow_bodyweightvalue = WorkflowExpression.Compile(bodyweightvalue, nameof(bodyweightvalue), required: false);
+            var __workflow_bodyweightunits = WorkflowExpression.Compile(bodyweightunits, nameof(bodyweightunits), required: false);
+            var __workflow_bodyprojectMatchlocationlatlng = WorkflowExpression.Compile(bodyprojectMatchlocationlatlng, nameof(bodyprojectMatchlocationlatlng), required: false);
+            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
+            return new DeferredBodyAction<DirectCarbonResponse>(() =>
             {
-                weightObject["value"] = ExpressionConverter.ConvertO(bodyweightvalue);
-                weightObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/carbon", __workflow_transaction.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var weightObject = new JObject();
+                var weightObjectpropCount = 0;
+                if (__workflow_bodyweightvalue != null)
+                {
+                    weightObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyweightvalue);
+                    weightObjectpropCount++;
+                }
 
-            if (bodyweightunits != null)
-            {
-                weightObject["units"] = ExpressionConverter.ConvertO(bodyweightunits);
-                weightObjectpropCount++;
-            }
+                if (__workflow_bodyweightunits != null)
+                {
+                    weightObject["units"] = ExpressionConverter.ConvertO(__workflow_bodyweightunits);
+                    weightObjectpropCount++;
+                }
 
-            if (weightObjectpropCount > 0)
-            {
-                body["weight"] = weightObject;
-                bodypropCount++;
-            }
+                if (weightObjectpropCount > 0)
+                {
+                    body["weight"] = weightObject;
+                    bodypropCount++;
+                }
 
-            var projectMatchObject = new JObject();
-            var projectMatchObjectpropCount = 0;
-            var locationObject = new JObject();
-            var locationObjectpropCount = 0;
-            if (bodyprojectMatchlocationlatlng != null)
-            {
-                locationObject["latlng"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationlatlng);
-                locationObjectpropCount++;
-            }
+                var projectMatchObject = new JObject();
+                var projectMatchObjectpropCount = 0;
+                var locationObject = new JObject();
+                var locationObjectpropCount = 0;
+                if (__workflow_bodyprojectMatchlocationlatlng != null)
+                {
+                    locationObject["latlng"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchlocationlatlng);
+                    locationObjectpropCount++;
+                }
 
-            if (locationObjectpropCount > 0)
-            {
-                projectMatchObject["location"] = locationObject;
-                projectMatchObjectpropCount++;
-            }
+                if (locationObjectpropCount > 0)
+                {
+                    projectMatchObject["location"] = locationObject;
+                    projectMatchObjectpropCount++;
+                }
 
-            if (projectMatchObjectpropCount > 0)
-            {
-                body["project_match"] = projectMatchObject;
-                bodypropCount++;
-            }
+                if (projectMatchObjectpropCount > 0)
+                {
+                    body["project_match"] = projectMatchObject;
+                    bodypropCount++;
+                }
 
-            if (bodynote != null)
-            {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
-                bodypropCount++;
-            }
+                if (__workflow_bodynote != null)
+                {
+                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<DirectCarbonResponse>(callPayload);
+                return new ApiConnectionAction<DirectCarbonResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<DirectTransactionResponse> DirectTransaction(Expression<Func<transactionInput>> transaction, Expression<Func<double>> bodycurrencyvalue = null, Expression<Func<string>> bodycurrencyunits = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodynote = null, Expression<Func<int>> bodyunitCostUsdCents = null)
         {
-            var apiCallPath = String.Format("/{0}/currency", ExpressionConverter.ConvertWithUrlEncoding(transaction, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var currencyObject = new JObject();
-            var currencyObjectpropCount = 0;
-            if (bodycurrencyvalue != null)
+            var __workflow_transaction = WorkflowExpression.Compile(transaction, nameof(transaction), required: true);
+            var __workflow_bodycurrencyvalue = WorkflowExpression.Compile(bodycurrencyvalue, nameof(bodycurrencyvalue), required: false);
+            var __workflow_bodycurrencyunits = WorkflowExpression.Compile(bodycurrencyunits, nameof(bodycurrencyunits), required: false);
+            var __workflow_bodyprojectMatchtype = WorkflowExpression.Compile(bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
+            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
+            var __workflow_bodyunitCostUsdCents = WorkflowExpression.Compile(bodyunitCostUsdCents, nameof(bodyunitCostUsdCents), required: false);
+            return new DeferredBodyAction<DirectTransactionResponse>(() =>
             {
-                currencyObject["value"] = ExpressionConverter.ConvertO(bodycurrencyvalue);
-                currencyObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/currency", __workflow_transaction.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var currencyObject = new JObject();
+                var currencyObjectpropCount = 0;
+                if (__workflow_bodycurrencyvalue != null)
+                {
+                    currencyObject["value"] = ExpressionConverter.ConvertO(__workflow_bodycurrencyvalue);
+                    currencyObjectpropCount++;
+                }
 
-            if (bodycurrencyunits != null)
-            {
-                currencyObject["units"] = ExpressionConverter.ConvertO(bodycurrencyunits);
-                currencyObjectpropCount++;
-            }
+                if (__workflow_bodycurrencyunits != null)
+                {
+                    currencyObject["units"] = ExpressionConverter.ConvertO(__workflow_bodycurrencyunits);
+                    currencyObjectpropCount++;
+                }
 
-            if (currencyObjectpropCount > 0)
-            {
-                body["currency"] = currencyObject;
-                bodypropCount++;
-            }
+                if (currencyObjectpropCount > 0)
+                {
+                    body["currency"] = currencyObject;
+                    bodypropCount++;
+                }
 
-            var projectMatchObject = new JObject();
-            var projectMatchObjectpropCount = 0;
-            if (bodyprojectMatchtype != null)
-            {
-                projectMatchObject["type"] = ExpressionConverter.ConvertO(bodyprojectMatchtype);
-                projectMatchObjectpropCount++;
-            }
+                var projectMatchObject = new JObject();
+                var projectMatchObjectpropCount = 0;
+                if (__workflow_bodyprojectMatchtype != null)
+                {
+                    projectMatchObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchtype);
+                    projectMatchObjectpropCount++;
+                }
 
-            if (projectMatchObjectpropCount > 0)
-            {
-                body["project_match"] = projectMatchObject;
-                bodypropCount++;
-            }
+                if (projectMatchObjectpropCount > 0)
+                {
+                    body["project_match"] = projectMatchObject;
+                    bodypropCount++;
+                }
 
-            if (bodynote != null)
-            {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
-                bodypropCount++;
-            }
+                if (__workflow_bodynote != null)
+                {
+                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
+                    bodypropCount++;
+                }
 
-            if (bodyunitCostUsdCents != null)
-            {
-                body["unit_cost_usd_cents"] = ExpressionConverter.ConvertO(bodyunitCostUsdCents);
-                bodypropCount++;
-            }
+                if (__workflow_bodyunitCostUsdCents != null)
+                {
+                    body["unit_cost_usd_cents"] = ExpressionConverter.ConvertO(__workflow_bodyunitCostUsdCents);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<DirectTransactionResponse>(callPayload);
+                return new ApiConnectionAction<DirectTransactionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<CalculatePackageResponse> CalculatePackage(Expression<Func<string>> transaction, Expression<Func<double>> bodyweightvalue = null, Expression<Func<string>> bodyweightunits = null, Expression<Func<string>> bodymode = null, Expression<Func<double>> bodydistancevalue = null, Expression<Func<string>> bodydistanceunits = null, Expression<Func<string>> bodyfrompostalCode = null, Expression<Func<string>> bodyfromcountry = null, Expression<Func<string>> bodytopostalCode = null, Expression<Func<string>> bodytocountry = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
         {
-            var apiCallPath = String.Format("/{0}/shipping", ExpressionConverter.ConvertWithUrlEncoding(transaction, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var weightObject = new JObject();
-            var weightObjectpropCount = 0;
-            if (bodyweightvalue != null)
+            var __workflow_transaction = WorkflowExpression.Compile(transaction, nameof(transaction), required: true);
+            var __workflow_bodyweightvalue = WorkflowExpression.Compile(bodyweightvalue, nameof(bodyweightvalue), required: false);
+            var __workflow_bodyweightunits = WorkflowExpression.Compile(bodyweightunits, nameof(bodyweightunits), required: false);
+            var __workflow_bodymode = WorkflowExpression.Compile(bodymode, nameof(bodymode), required: false);
+            var __workflow_bodydistancevalue = WorkflowExpression.Compile(bodydistancevalue, nameof(bodydistancevalue), required: false);
+            var __workflow_bodydistanceunits = WorkflowExpression.Compile(bodydistanceunits, nameof(bodydistanceunits), required: false);
+            var __workflow_bodyfrompostalCode = WorkflowExpression.Compile(bodyfrompostalCode, nameof(bodyfrompostalCode), required: false);
+            var __workflow_bodyfromcountry = WorkflowExpression.Compile(bodyfromcountry, nameof(bodyfromcountry), required: false);
+            var __workflow_bodytopostalCode = WorkflowExpression.Compile(bodytopostalCode, nameof(bodytopostalCode), required: false);
+            var __workflow_bodytocountry = WorkflowExpression.Compile(bodytocountry, nameof(bodytocountry), required: false);
+            var __workflow_bodyprojectMatchtype = WorkflowExpression.Compile(bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
+            var __workflow_bodyprojectMatchlocationpostalCode = WorkflowExpression.Compile(bodyprojectMatchlocationpostalCode, nameof(bodyprojectMatchlocationpostalCode), required: false);
+            var __workflow_bodyprojectMatchlocationcountry = WorkflowExpression.Compile(bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
+            var __workflow_bodyprojectMatchnote = WorkflowExpression.Compile(bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
+            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
+            return new DeferredBodyAction<CalculatePackageResponse>(() =>
             {
-                weightObject["value"] = ExpressionConverter.ConvertO(bodyweightvalue);
-                weightObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/shipping", __workflow_transaction.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var weightObject = new JObject();
+                var weightObjectpropCount = 0;
+                if (__workflow_bodyweightvalue != null)
+                {
+                    weightObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyweightvalue);
+                    weightObjectpropCount++;
+                }
 
-            if (bodyweightunits != null)
-            {
-                weightObject["units"] = ExpressionConverter.ConvertO(bodyweightunits);
-                weightObjectpropCount++;
-            }
+                if (__workflow_bodyweightunits != null)
+                {
+                    weightObject["units"] = ExpressionConverter.ConvertO(__workflow_bodyweightunits);
+                    weightObjectpropCount++;
+                }
 
-            if (weightObjectpropCount > 0)
-            {
-                body["weight"] = weightObject;
-                bodypropCount++;
-            }
+                if (weightObjectpropCount > 0)
+                {
+                    body["weight"] = weightObject;
+                    bodypropCount++;
+                }
 
-            if (bodymode != null)
-            {
-                body["mode"] = ExpressionConverter.ConvertO(bodymode);
-                bodypropCount++;
-            }
+                if (__workflow_bodymode != null)
+                {
+                    body["mode"] = ExpressionConverter.ConvertO(__workflow_bodymode);
+                    bodypropCount++;
+                }
 
-            var distanceObject = new JObject();
-            var distanceObjectpropCount = 0;
-            if (bodydistancevalue != null)
-            {
-                distanceObject["value"] = ExpressionConverter.ConvertO(bodydistancevalue);
-                distanceObjectpropCount++;
-            }
+                var distanceObject = new JObject();
+                var distanceObjectpropCount = 0;
+                if (__workflow_bodydistancevalue != null)
+                {
+                    distanceObject["value"] = ExpressionConverter.ConvertO(__workflow_bodydistancevalue);
+                    distanceObjectpropCount++;
+                }
 
-            if (bodydistanceunits != null)
-            {
-                distanceObject["units"] = ExpressionConverter.ConvertO(bodydistanceunits);
-                distanceObjectpropCount++;
-            }
+                if (__workflow_bodydistanceunits != null)
+                {
+                    distanceObject["units"] = ExpressionConverter.ConvertO(__workflow_bodydistanceunits);
+                    distanceObjectpropCount++;
+                }
 
-            if (distanceObjectpropCount > 0)
-            {
-                body["distance"] = distanceObject;
-                bodypropCount++;
-            }
+                if (distanceObjectpropCount > 0)
+                {
+                    body["distance"] = distanceObject;
+                    bodypropCount++;
+                }
 
-            var fromObject = new JObject();
-            var fromObjectpropCount = 0;
-            if (bodyfrompostalCode != null)
-            {
-                fromObject["postal_code"] = ExpressionConverter.ConvertO(bodyfrompostalCode);
-                fromObjectpropCount++;
-            }
+                var fromObject = new JObject();
+                var fromObjectpropCount = 0;
+                if (__workflow_bodyfrompostalCode != null)
+                {
+                    fromObject["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodyfrompostalCode);
+                    fromObjectpropCount++;
+                }
 
-            if (bodyfromcountry != null)
-            {
-                fromObject["country"] = ExpressionConverter.ConvertO(bodyfromcountry);
-                fromObjectpropCount++;
-            }
+                if (__workflow_bodyfromcountry != null)
+                {
+                    fromObject["country"] = ExpressionConverter.ConvertO(__workflow_bodyfromcountry);
+                    fromObjectpropCount++;
+                }
 
-            if (fromObjectpropCount > 0)
-            {
-                body["from"] = fromObject;
-                bodypropCount++;
-            }
+                if (fromObjectpropCount > 0)
+                {
+                    body["from"] = fromObject;
+                    bodypropCount++;
+                }
 
-            var toObject = new JObject();
-            var toObjectpropCount = 0;
-            if (bodytopostalCode != null)
-            {
-                toObject["postal_code"] = ExpressionConverter.ConvertO(bodytopostalCode);
-                toObjectpropCount++;
-            }
+                var toObject = new JObject();
+                var toObjectpropCount = 0;
+                if (__workflow_bodytopostalCode != null)
+                {
+                    toObject["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodytopostalCode);
+                    toObjectpropCount++;
+                }
 
-            if (bodytocountry != null)
-            {
-                toObject["country"] = ExpressionConverter.ConvertO(bodytocountry);
-                toObjectpropCount++;
-            }
+                if (__workflow_bodytocountry != null)
+                {
+                    toObject["country"] = ExpressionConverter.ConvertO(__workflow_bodytocountry);
+                    toObjectpropCount++;
+                }
 
-            if (toObjectpropCount > 0)
-            {
-                body["to"] = toObject;
-                bodypropCount++;
-            }
+                if (toObjectpropCount > 0)
+                {
+                    body["to"] = toObject;
+                    bodypropCount++;
+                }
 
-            var projectMatchObject = new JObject();
-            var projectMatchObjectpropCount = 0;
-            if (bodyprojectMatchtype != null)
-            {
-                projectMatchObject["type"] = ExpressionConverter.ConvertO(bodyprojectMatchtype);
-                projectMatchObjectpropCount++;
-            }
+                var projectMatchObject = new JObject();
+                var projectMatchObjectpropCount = 0;
+                if (__workflow_bodyprojectMatchtype != null)
+                {
+                    projectMatchObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchtype);
+                    projectMatchObjectpropCount++;
+                }
 
-            var locationObject = new JObject();
-            var locationObjectpropCount = 0;
-            if (bodyprojectMatchlocationpostalCode != null)
-            {
-                locationObject["postal_code"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationpostalCode);
-                locationObjectpropCount++;
-            }
+                var locationObject = new JObject();
+                var locationObjectpropCount = 0;
+                if (__workflow_bodyprojectMatchlocationpostalCode != null)
+                {
+                    locationObject["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchlocationpostalCode);
+                    locationObjectpropCount++;
+                }
 
-            if (bodyprojectMatchlocationcountry != null)
-            {
-                locationObject["country"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationcountry);
-                locationObjectpropCount++;
-            }
+                if (__workflow_bodyprojectMatchlocationcountry != null)
+                {
+                    locationObject["country"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchlocationcountry);
+                    locationObjectpropCount++;
+                }
 
-            if (locationObjectpropCount > 0)
-            {
-                projectMatchObject["location"] = locationObject;
-                projectMatchObjectpropCount++;
-            }
+                if (locationObjectpropCount > 0)
+                {
+                    projectMatchObject["location"] = locationObject;
+                    projectMatchObjectpropCount++;
+                }
 
-            if (bodyprojectMatchnote != null)
-            {
-                projectMatchObject["note"] = ExpressionConverter.ConvertO(bodyprojectMatchnote);
-                projectMatchObjectpropCount++;
-            }
+                if (__workflow_bodyprojectMatchnote != null)
+                {
+                    projectMatchObject["note"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchnote);
+                    projectMatchObjectpropCount++;
+                }
 
-            if (projectMatchObjectpropCount > 0)
-            {
-                body["project_match"] = projectMatchObject;
-                bodypropCount++;
-            }
+                if (projectMatchObjectpropCount > 0)
+                {
+                    body["project_match"] = projectMatchObject;
+                    bodypropCount++;
+                }
 
-            if (bodynote != null)
-            {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
-                bodypropCount++;
-            }
+                if (__workflow_bodynote != null)
+                {
+                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CalculatePackageResponse>(callPayload);
+                return new ApiConnectionAction<CalculatePackageResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<CalculateMCCResponse> CalculateMCC(Expression<Func<string>> transaction, Expression<Func<int>> bodymccCode = null, Expression<Func<double>> bodycurrencyvalue = null, Expression<Func<string>> bodycurrencyunits = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
         {
-            var apiCallPath = String.Format("/{0}/mcc", ExpressionConverter.ConvertWithUrlEncoding(transaction, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodymccCode != null)
+            var __workflow_transaction = WorkflowExpression.Compile(transaction, nameof(transaction), required: true);
+            var __workflow_bodymccCode = WorkflowExpression.Compile(bodymccCode, nameof(bodymccCode), required: false);
+            var __workflow_bodycurrencyvalue = WorkflowExpression.Compile(bodycurrencyvalue, nameof(bodycurrencyvalue), required: false);
+            var __workflow_bodycurrencyunits = WorkflowExpression.Compile(bodycurrencyunits, nameof(bodycurrencyunits), required: false);
+            var __workflow_bodyprojectMatchtype = WorkflowExpression.Compile(bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
+            var __workflow_bodyprojectMatchlocationpostalCode = WorkflowExpression.Compile(bodyprojectMatchlocationpostalCode, nameof(bodyprojectMatchlocationpostalCode), required: false);
+            var __workflow_bodyprojectMatchlocationcountry = WorkflowExpression.Compile(bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
+            var __workflow_bodyprojectMatchnote = WorkflowExpression.Compile(bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
+            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
+            return new DeferredBodyAction<CalculateMCCResponse>(() =>
             {
-                body["mcc_code"] = ExpressionConverter.ConvertO(bodymccCode);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/mcc", __workflow_transaction.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodymccCode != null)
+                {
+                    body["mcc_code"] = ExpressionConverter.ConvertO(__workflow_bodymccCode);
+                    bodypropCount++;
+                }
 
-            var currencyObject = new JObject();
-            var currencyObjectpropCount = 0;
-            if (bodycurrencyvalue != null)
-            {
-                currencyObject["value"] = ExpressionConverter.ConvertO(bodycurrencyvalue);
-                currencyObjectpropCount++;
-            }
+                var currencyObject = new JObject();
+                var currencyObjectpropCount = 0;
+                if (__workflow_bodycurrencyvalue != null)
+                {
+                    currencyObject["value"] = ExpressionConverter.ConvertO(__workflow_bodycurrencyvalue);
+                    currencyObjectpropCount++;
+                }
 
-            if (bodycurrencyunits != null)
-            {
-                currencyObject["units"] = ExpressionConverter.ConvertO(bodycurrencyunits);
-                currencyObjectpropCount++;
-            }
+                if (__workflow_bodycurrencyunits != null)
+                {
+                    currencyObject["units"] = ExpressionConverter.ConvertO(__workflow_bodycurrencyunits);
+                    currencyObjectpropCount++;
+                }
 
-            if (currencyObjectpropCount > 0)
-            {
-                body["currency"] = currencyObject;
-                bodypropCount++;
-            }
+                if (currencyObjectpropCount > 0)
+                {
+                    body["currency"] = currencyObject;
+                    bodypropCount++;
+                }
 
-            var projectMatchObject = new JObject();
-            var projectMatchObjectpropCount = 0;
-            if (bodyprojectMatchtype != null)
-            {
-                projectMatchObject["type"] = ExpressionConverter.ConvertO(bodyprojectMatchtype);
-                projectMatchObjectpropCount++;
-            }
+                var projectMatchObject = new JObject();
+                var projectMatchObjectpropCount = 0;
+                if (__workflow_bodyprojectMatchtype != null)
+                {
+                    projectMatchObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchtype);
+                    projectMatchObjectpropCount++;
+                }
 
-            var locationObject = new JObject();
-            var locationObjectpropCount = 0;
-            if (bodyprojectMatchlocationpostalCode != null)
-            {
-                locationObject["postal_code"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationpostalCode);
-                locationObjectpropCount++;
-            }
+                var locationObject = new JObject();
+                var locationObjectpropCount = 0;
+                if (__workflow_bodyprojectMatchlocationpostalCode != null)
+                {
+                    locationObject["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchlocationpostalCode);
+                    locationObjectpropCount++;
+                }
 
-            if (bodyprojectMatchlocationcountry != null)
-            {
-                locationObject["country"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationcountry);
-                locationObjectpropCount++;
-            }
+                if (__workflow_bodyprojectMatchlocationcountry != null)
+                {
+                    locationObject["country"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchlocationcountry);
+                    locationObjectpropCount++;
+                }
 
-            if (locationObjectpropCount > 0)
-            {
-                projectMatchObject["location"] = locationObject;
-                projectMatchObjectpropCount++;
-            }
+                if (locationObjectpropCount > 0)
+                {
+                    projectMatchObject["location"] = locationObject;
+                    projectMatchObjectpropCount++;
+                }
 
-            if (bodyprojectMatchnote != null)
-            {
-                projectMatchObject["note"] = ExpressionConverter.ConvertO(bodyprojectMatchnote);
-                projectMatchObjectpropCount++;
-            }
+                if (__workflow_bodyprojectMatchnote != null)
+                {
+                    projectMatchObject["note"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchnote);
+                    projectMatchObjectpropCount++;
+                }
 
-            if (projectMatchObjectpropCount > 0)
-            {
-                body["project_match"] = projectMatchObject;
-                bodypropCount++;
-            }
+                if (projectMatchObjectpropCount > 0)
+                {
+                    body["project_match"] = projectMatchObject;
+                    bodypropCount++;
+                }
 
-            if (bodynote != null)
-            {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
-                bodypropCount++;
-            }
+                if (__workflow_bodynote != null)
+                {
+                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CalculateMCCResponse>(callPayload);
+                return new ApiConnectionAction<CalculateMCCResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<CalculateFreightResponse> CalculateFreight(Expression<Func<string>> transaction, Expression<Func<double>> bodyweightvalue, Expression<Func<string>> bodyweightunits, Expression<Func<string>> bodymode = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodydistancevalue = null, Expression<Func<string>> bodydistanceunits = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
         {
-            var apiCallPath = String.Format("/{0}/freight", ExpressionConverter.ConvertWithUrlEncoding(transaction, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var weightObject = new JObject();
-            var weightObjectpropCount = 0;
-            weightObjectpropCount++;
-            weightObject["value"] = ExpressionConverter.ConvertO(bodyweightvalue);
-            weightObjectpropCount++;
-            weightObject["units"] = ExpressionConverter.ConvertO(bodyweightunits);
-            if (weightObjectpropCount > 0)
+            var __workflow_transaction = WorkflowExpression.Compile(transaction, nameof(transaction), required: true);
+            var __workflow_bodyweightvalue = WorkflowExpression.Compile(bodyweightvalue, nameof(bodyweightvalue), required: true);
+            var __workflow_bodyweightunits = WorkflowExpression.Compile(bodyweightunits, nameof(bodyweightunits), required: true);
+            var __workflow_bodymode = WorkflowExpression.Compile(bodymode, nameof(bodymode), required: false);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_bodydistancevalue = WorkflowExpression.Compile(bodydistancevalue, nameof(bodydistancevalue), required: false);
+            var __workflow_bodydistanceunits = WorkflowExpression.Compile(bodydistanceunits, nameof(bodydistanceunits), required: false);
+            var __workflow_bodyprojectMatchtype = WorkflowExpression.Compile(bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
+            var __workflow_bodyprojectMatchlocationpostalCode = WorkflowExpression.Compile(bodyprojectMatchlocationpostalCode, nameof(bodyprojectMatchlocationpostalCode), required: false);
+            var __workflow_bodyprojectMatchlocationcountry = WorkflowExpression.Compile(bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
+            var __workflow_bodyprojectMatchnote = WorkflowExpression.Compile(bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
+            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
+            return new DeferredBodyAction<CalculateFreightResponse>(() =>
             {
-                body["weight"] = weightObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/freight", __workflow_transaction.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var weightObject = new JObject();
+                var weightObjectpropCount = 0;
+                weightObjectpropCount++;
+                weightObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyweightvalue);
+                weightObjectpropCount++;
+                weightObject["units"] = ExpressionConverter.ConvertO(__workflow_bodyweightunits);
+                if (weightObjectpropCount > 0)
+                {
+                    body["weight"] = weightObject;
+                    bodypropCount++;
+                }
 
-            if (bodymode != null)
-            {
-                body["mode"] = ExpressionConverter.ConvertO(bodymode);
-                bodypropCount++;
-            }
+                if (__workflow_bodymode != null)
+                {
+                    body["mode"] = ExpressionConverter.ConvertO(__workflow_bodymode);
+                    bodypropCount++;
+                }
 
-            if (bodytype != null)
-            {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
-            }
+                if (__workflow_bodytype != null)
+                {
+                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
+                    bodypropCount++;
+                }
 
-            var distanceObject = new JObject();
-            var distanceObjectpropCount = 0;
-            if (bodydistancevalue != null)
-            {
-                distanceObject["value"] = ExpressionConverter.ConvertO(bodydistancevalue);
-                distanceObjectpropCount++;
-            }
+                var distanceObject = new JObject();
+                var distanceObjectpropCount = 0;
+                if (__workflow_bodydistancevalue != null)
+                {
+                    distanceObject["value"] = ExpressionConverter.ConvertO(__workflow_bodydistancevalue);
+                    distanceObjectpropCount++;
+                }
 
-            if (bodydistanceunits != null)
-            {
-                distanceObject["units"] = ExpressionConverter.ConvertO(bodydistanceunits);
-                distanceObjectpropCount++;
-            }
+                if (__workflow_bodydistanceunits != null)
+                {
+                    distanceObject["units"] = ExpressionConverter.ConvertO(__workflow_bodydistanceunits);
+                    distanceObjectpropCount++;
+                }
 
-            if (distanceObjectpropCount > 0)
-            {
-                body["distance"] = distanceObject;
-                bodypropCount++;
-            }
+                if (distanceObjectpropCount > 0)
+                {
+                    body["distance"] = distanceObject;
+                    bodypropCount++;
+                }
 
-            var projectMatchObject = new JObject();
-            var projectMatchObjectpropCount = 0;
-            if (bodyprojectMatchtype != null)
-            {
-                projectMatchObject["type"] = ExpressionConverter.ConvertO(bodyprojectMatchtype);
-                projectMatchObjectpropCount++;
-            }
+                var projectMatchObject = new JObject();
+                var projectMatchObjectpropCount = 0;
+                if (__workflow_bodyprojectMatchtype != null)
+                {
+                    projectMatchObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchtype);
+                    projectMatchObjectpropCount++;
+                }
 
-            var locationObject = new JObject();
-            var locationObjectpropCount = 0;
-            if (bodyprojectMatchlocationpostalCode != null)
-            {
-                locationObject["postal_code"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationpostalCode);
-                locationObjectpropCount++;
-            }
+                var locationObject = new JObject();
+                var locationObjectpropCount = 0;
+                if (__workflow_bodyprojectMatchlocationpostalCode != null)
+                {
+                    locationObject["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchlocationpostalCode);
+                    locationObjectpropCount++;
+                }
 
-            if (bodyprojectMatchlocationcountry != null)
-            {
-                locationObject["country"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationcountry);
-                locationObjectpropCount++;
-            }
+                if (__workflow_bodyprojectMatchlocationcountry != null)
+                {
+                    locationObject["country"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchlocationcountry);
+                    locationObjectpropCount++;
+                }
 
-            if (locationObjectpropCount > 0)
-            {
-                projectMatchObject["location"] = locationObject;
-                projectMatchObjectpropCount++;
-            }
+                if (locationObjectpropCount > 0)
+                {
+                    projectMatchObject["location"] = locationObject;
+                    projectMatchObjectpropCount++;
+                }
 
-            if (bodyprojectMatchnote != null)
-            {
-                projectMatchObject["note"] = ExpressionConverter.ConvertO(bodyprojectMatchnote);
-                projectMatchObjectpropCount++;
-            }
+                if (__workflow_bodyprojectMatchnote != null)
+                {
+                    projectMatchObject["note"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchnote);
+                    projectMatchObjectpropCount++;
+                }
 
-            if (projectMatchObjectpropCount > 0)
-            {
-                body["project_match"] = projectMatchObject;
-                bodypropCount++;
-            }
+                if (projectMatchObjectpropCount > 0)
+                {
+                    body["project_match"] = projectMatchObject;
+                    bodypropCount++;
+                }
 
-            if (bodynote != null)
-            {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
-                bodypropCount++;
-            }
+                if (__workflow_bodynote != null)
+                {
+                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CalculateFreightResponse>(callPayload);
+                return new ApiConnectionAction<CalculateFreightResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<CalculateFlightResponse> CalculateFlight(Expression<Func<transactionInput>> transaction, Expression<Func<string[]>> bodyairports, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
         {
-            var apiCallPath = String.Format("/{0}/flight", ExpressionConverter.ConvertWithUrlEncoding(transaction, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["airports"] = ExpressionConverter.ConvertO(bodyairports);
-            var projectMatchObject = new JObject();
-            var projectMatchObjectpropCount = 0;
-            if (bodyprojectMatchtype != null)
+            var __workflow_transaction = WorkflowExpression.Compile(transaction, nameof(transaction), required: true);
+            var __workflow_bodyairports = WorkflowExpression.Compile(bodyairports, nameof(bodyairports), required: true);
+            var __workflow_bodyprojectMatchtype = WorkflowExpression.Compile(bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
+            var __workflow_bodyprojectMatchlocationpostalCode = WorkflowExpression.Compile(bodyprojectMatchlocationpostalCode, nameof(bodyprojectMatchlocationpostalCode), required: false);
+            var __workflow_bodyprojectMatchlocationcountry = WorkflowExpression.Compile(bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
+            var __workflow_bodyprojectMatchnote = WorkflowExpression.Compile(bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
+            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
+            return new DeferredBodyAction<CalculateFlightResponse>(() =>
             {
-                projectMatchObject["type"] = ExpressionConverter.ConvertO(bodyprojectMatchtype);
-                projectMatchObjectpropCount++;
-            }
-
-            var locationObject = new JObject();
-            var locationObjectpropCount = 0;
-            if (bodyprojectMatchlocationpostalCode != null)
-            {
-                locationObject["postal_code"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationpostalCode);
-                locationObjectpropCount++;
-            }
-
-            if (bodyprojectMatchlocationcountry != null)
-            {
-                locationObject["country"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationcountry);
-                locationObjectpropCount++;
-            }
-
-            if (locationObjectpropCount > 0)
-            {
-                projectMatchObject["location"] = locationObject;
-                projectMatchObjectpropCount++;
-            }
-
-            if (bodyprojectMatchnote != null)
-            {
-                projectMatchObject["note"] = ExpressionConverter.ConvertO(bodyprojectMatchnote);
-                projectMatchObjectpropCount++;
-            }
-
-            if (projectMatchObjectpropCount > 0)
-            {
-                body["project_match"] = projectMatchObject;
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/flight", __workflow_transaction.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["airports"] = ExpressionConverter.ConvertO(__workflow_bodyairports);
+                var projectMatchObject = new JObject();
+                var projectMatchObjectpropCount = 0;
+                if (__workflow_bodyprojectMatchtype != null)
+                {
+                    projectMatchObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchtype);
+                    projectMatchObjectpropCount++;
+                }
 
-            if (bodynote != null)
-            {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
-                bodypropCount++;
-            }
+                var locationObject = new JObject();
+                var locationObjectpropCount = 0;
+                if (__workflow_bodyprojectMatchlocationpostalCode != null)
+                {
+                    locationObject["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchlocationpostalCode);
+                    locationObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodyprojectMatchlocationcountry != null)
+                {
+                    locationObject["country"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchlocationcountry);
+                    locationObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<CalculateFlightResponse>(callPayload);
+                if (locationObjectpropCount > 0)
+                {
+                    projectMatchObject["location"] = locationObject;
+                    projectMatchObjectpropCount++;
+                }
+
+                if (__workflow_bodyprojectMatchnote != null)
+                {
+                    projectMatchObject["note"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchnote);
+                    projectMatchObjectpropCount++;
+                }
+
+                if (projectMatchObjectpropCount > 0)
+                {
+                    body["project_match"] = projectMatchObject;
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodynote != null)
+                {
+                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CalculateFlightResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<CalculateVehicleResponse> CalculateVehicle(Expression<Func<transactionInput>> transaction, Expression<Func<double>> bodydistancevalue = null, Expression<Func<string>> bodydistanceunits = null, Expression<Func<double>> bodyfuelEfficiencyvalue = null, Expression<Func<string>> bodyfuelEfficiencyunits = null, Expression<Func<string>> bodyfuelEfficiencyof = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
         {
-            var apiCallPath = String.Format("/{0}/vehicle", ExpressionConverter.ConvertWithUrlEncoding(transaction, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var distanceObject = new JObject();
-            var distanceObjectpropCount = 0;
-            if (bodydistancevalue != null)
+            var __workflow_transaction = WorkflowExpression.Compile(transaction, nameof(transaction), required: true);
+            var __workflow_bodydistancevalue = WorkflowExpression.Compile(bodydistancevalue, nameof(bodydistancevalue), required: false);
+            var __workflow_bodydistanceunits = WorkflowExpression.Compile(bodydistanceunits, nameof(bodydistanceunits), required: false);
+            var __workflow_bodyfuelEfficiencyvalue = WorkflowExpression.Compile(bodyfuelEfficiencyvalue, nameof(bodyfuelEfficiencyvalue), required: false);
+            var __workflow_bodyfuelEfficiencyunits = WorkflowExpression.Compile(bodyfuelEfficiencyunits, nameof(bodyfuelEfficiencyunits), required: false);
+            var __workflow_bodyfuelEfficiencyof = WorkflowExpression.Compile(bodyfuelEfficiencyof, nameof(bodyfuelEfficiencyof), required: false);
+            var __workflow_bodyprojectMatchtype = WorkflowExpression.Compile(bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
+            var __workflow_bodyprojectMatchlocationpostalCode = WorkflowExpression.Compile(bodyprojectMatchlocationpostalCode, nameof(bodyprojectMatchlocationpostalCode), required: false);
+            var __workflow_bodyprojectMatchlocationcountry = WorkflowExpression.Compile(bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
+            var __workflow_bodyprojectMatchnote = WorkflowExpression.Compile(bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
+            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
+            return new DeferredBodyAction<CalculateVehicleResponse>(() =>
             {
-                distanceObject["value"] = ExpressionConverter.ConvertO(bodydistancevalue);
-                distanceObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/vehicle", __workflow_transaction.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var distanceObject = new JObject();
+                var distanceObjectpropCount = 0;
+                if (__workflow_bodydistancevalue != null)
+                {
+                    distanceObject["value"] = ExpressionConverter.ConvertO(__workflow_bodydistancevalue);
+                    distanceObjectpropCount++;
+                }
 
-            if (bodydistanceunits != null)
-            {
-                distanceObject["units"] = ExpressionConverter.ConvertO(bodydistanceunits);
-                distanceObjectpropCount++;
-            }
+                if (__workflow_bodydistanceunits != null)
+                {
+                    distanceObject["units"] = ExpressionConverter.ConvertO(__workflow_bodydistanceunits);
+                    distanceObjectpropCount++;
+                }
 
-            if (distanceObjectpropCount > 0)
-            {
-                body["distance"] = distanceObject;
-                bodypropCount++;
-            }
+                if (distanceObjectpropCount > 0)
+                {
+                    body["distance"] = distanceObject;
+                    bodypropCount++;
+                }
 
-            var fuelEfficiencyObject = new JObject();
-            var fuelEfficiencyObjectpropCount = 0;
-            if (bodyfuelEfficiencyvalue != null)
-            {
-                fuelEfficiencyObject["value"] = ExpressionConverter.ConvertO(bodyfuelEfficiencyvalue);
-                fuelEfficiencyObjectpropCount++;
-            }
+                var fuelEfficiencyObject = new JObject();
+                var fuelEfficiencyObjectpropCount = 0;
+                if (__workflow_bodyfuelEfficiencyvalue != null)
+                {
+                    fuelEfficiencyObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyfuelEfficiencyvalue);
+                    fuelEfficiencyObjectpropCount++;
+                }
 
-            if (bodyfuelEfficiencyunits != null)
-            {
-                fuelEfficiencyObject["units"] = ExpressionConverter.ConvertO(bodyfuelEfficiencyunits);
-                fuelEfficiencyObjectpropCount++;
-            }
+                if (__workflow_bodyfuelEfficiencyunits != null)
+                {
+                    fuelEfficiencyObject["units"] = ExpressionConverter.ConvertO(__workflow_bodyfuelEfficiencyunits);
+                    fuelEfficiencyObjectpropCount++;
+                }
 
-            if (bodyfuelEfficiencyof != null)
-            {
-                fuelEfficiencyObject["of"] = ExpressionConverter.ConvertO(bodyfuelEfficiencyof);
-                fuelEfficiencyObjectpropCount++;
-            }
+                if (__workflow_bodyfuelEfficiencyof != null)
+                {
+                    fuelEfficiencyObject["of"] = ExpressionConverter.ConvertO(__workflow_bodyfuelEfficiencyof);
+                    fuelEfficiencyObjectpropCount++;
+                }
 
-            if (fuelEfficiencyObjectpropCount > 0)
-            {
-                body["fuel_efficiency"] = fuelEfficiencyObject;
-                bodypropCount++;
-            }
+                if (fuelEfficiencyObjectpropCount > 0)
+                {
+                    body["fuel_efficiency"] = fuelEfficiencyObject;
+                    bodypropCount++;
+                }
 
-            var projectMatchObject = new JObject();
-            var projectMatchObjectpropCount = 0;
-            if (bodyprojectMatchtype != null)
-            {
-                projectMatchObject["type"] = ExpressionConverter.ConvertO(bodyprojectMatchtype);
-                projectMatchObjectpropCount++;
-            }
+                var projectMatchObject = new JObject();
+                var projectMatchObjectpropCount = 0;
+                if (__workflow_bodyprojectMatchtype != null)
+                {
+                    projectMatchObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchtype);
+                    projectMatchObjectpropCount++;
+                }
 
-            var locationObject = new JObject();
-            var locationObjectpropCount = 0;
-            if (bodyprojectMatchlocationpostalCode != null)
-            {
-                locationObject["postal_code"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationpostalCode);
-                locationObjectpropCount++;
-            }
+                var locationObject = new JObject();
+                var locationObjectpropCount = 0;
+                if (__workflow_bodyprojectMatchlocationpostalCode != null)
+                {
+                    locationObject["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchlocationpostalCode);
+                    locationObjectpropCount++;
+                }
 
-            if (bodyprojectMatchlocationcountry != null)
-            {
-                locationObject["country"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationcountry);
-                locationObjectpropCount++;
-            }
+                if (__workflow_bodyprojectMatchlocationcountry != null)
+                {
+                    locationObject["country"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchlocationcountry);
+                    locationObjectpropCount++;
+                }
 
-            if (locationObjectpropCount > 0)
-            {
-                projectMatchObject["location"] = locationObject;
-                projectMatchObjectpropCount++;
-            }
+                if (locationObjectpropCount > 0)
+                {
+                    projectMatchObject["location"] = locationObject;
+                    projectMatchObjectpropCount++;
+                }
 
-            if (bodyprojectMatchnote != null)
-            {
-                projectMatchObject["note"] = ExpressionConverter.ConvertO(bodyprojectMatchnote);
-                projectMatchObjectpropCount++;
-            }
+                if (__workflow_bodyprojectMatchnote != null)
+                {
+                    projectMatchObject["note"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchnote);
+                    projectMatchObjectpropCount++;
+                }
 
-            if (projectMatchObjectpropCount > 0)
-            {
-                body["project_match"] = projectMatchObject;
-                bodypropCount++;
-            }
+                if (projectMatchObjectpropCount > 0)
+                {
+                    body["project_match"] = projectMatchObject;
+                    bodypropCount++;
+                }
 
-            if (bodynote != null)
-            {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
-                bodypropCount++;
-            }
+                if (__workflow_bodynote != null)
+                {
+                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CalculateVehicleResponse>(callPayload);
+                return new ApiConnectionAction<CalculateVehicleResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<CalculateElectricityResponse> CalculateElectricity(Expression<Func<transactionInput>> transaction, Expression<Func<double>> bodyenergyvalue = null, Expression<Func<bodyenergyunitsInput>> bodyenergyunits = null, Expression<Func<string>> bodyprojectMatchtype = null, Expression<Func<string>> bodyprojectMatchlocationpostalCode = null, Expression<Func<string>> bodyprojectMatchlocationcountry = null, Expression<Func<string>> bodyprojectMatchnote = null, Expression<Func<string>> bodynote = null)
         {
-            var apiCallPath = String.Format("/{0}/electricity", ExpressionConverter.ConvertWithUrlEncoding(transaction, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var energyObject = new JObject();
-            var energyObjectpropCount = 0;
-            if (bodyenergyvalue != null)
+            var __workflow_transaction = WorkflowExpression.Compile(transaction, nameof(transaction), required: true);
+            var __workflow_bodyenergyvalue = WorkflowExpression.Compile(bodyenergyvalue, nameof(bodyenergyvalue), required: false);
+            var __workflow_bodyenergyunits = WorkflowExpression.Compile(bodyenergyunits, nameof(bodyenergyunits), required: false);
+            var __workflow_bodyprojectMatchtype = WorkflowExpression.Compile(bodyprojectMatchtype, nameof(bodyprojectMatchtype), required: false);
+            var __workflow_bodyprojectMatchlocationpostalCode = WorkflowExpression.Compile(bodyprojectMatchlocationpostalCode, nameof(bodyprojectMatchlocationpostalCode), required: false);
+            var __workflow_bodyprojectMatchlocationcountry = WorkflowExpression.Compile(bodyprojectMatchlocationcountry, nameof(bodyprojectMatchlocationcountry), required: false);
+            var __workflow_bodyprojectMatchnote = WorkflowExpression.Compile(bodyprojectMatchnote, nameof(bodyprojectMatchnote), required: false);
+            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
+            return new DeferredBodyAction<CalculateElectricityResponse>(() =>
             {
-                energyObject["value"] = ExpressionConverter.ConvertO(bodyenergyvalue);
-                energyObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/electricity", __workflow_transaction.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var energyObject = new JObject();
+                var energyObjectpropCount = 0;
+                if (__workflow_bodyenergyvalue != null)
+                {
+                    energyObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyenergyvalue);
+                    energyObjectpropCount++;
+                }
 
-            if (bodyenergyunits != null)
-            {
-                energyObject["units"] = ExpressionConverter.ConvertO(bodyenergyunits);
-                energyObjectpropCount++;
-            }
+                if (__workflow_bodyenergyunits != null)
+                {
+                    energyObject["units"] = ExpressionConverter.ConvertO(__workflow_bodyenergyunits);
+                    energyObjectpropCount++;
+                }
 
-            if (energyObjectpropCount > 0)
-            {
-                body["energy"] = energyObject;
-                bodypropCount++;
-            }
+                if (energyObjectpropCount > 0)
+                {
+                    body["energy"] = energyObject;
+                    bodypropCount++;
+                }
 
-            var projectMatchObject = new JObject();
-            var projectMatchObjectpropCount = 0;
-            if (bodyprojectMatchtype != null)
-            {
-                projectMatchObject["type"] = ExpressionConverter.ConvertO(bodyprojectMatchtype);
-                projectMatchObjectpropCount++;
-            }
+                var projectMatchObject = new JObject();
+                var projectMatchObjectpropCount = 0;
+                if (__workflow_bodyprojectMatchtype != null)
+                {
+                    projectMatchObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchtype);
+                    projectMatchObjectpropCount++;
+                }
 
-            var locationObject = new JObject();
-            var locationObjectpropCount = 0;
-            if (bodyprojectMatchlocationpostalCode != null)
-            {
-                locationObject["postal_code"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationpostalCode);
-                locationObjectpropCount++;
-            }
+                var locationObject = new JObject();
+                var locationObjectpropCount = 0;
+                if (__workflow_bodyprojectMatchlocationpostalCode != null)
+                {
+                    locationObject["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchlocationpostalCode);
+                    locationObjectpropCount++;
+                }
 
-            if (bodyprojectMatchlocationcountry != null)
-            {
-                locationObject["country"] = ExpressionConverter.ConvertO(bodyprojectMatchlocationcountry);
-                locationObjectpropCount++;
-            }
+                if (__workflow_bodyprojectMatchlocationcountry != null)
+                {
+                    locationObject["country"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchlocationcountry);
+                    locationObjectpropCount++;
+                }
 
-            if (locationObjectpropCount > 0)
-            {
-                projectMatchObject["location"] = locationObject;
-                projectMatchObjectpropCount++;
-            }
+                if (locationObjectpropCount > 0)
+                {
+                    projectMatchObject["location"] = locationObject;
+                    projectMatchObjectpropCount++;
+                }
 
-            if (bodyprojectMatchnote != null)
-            {
-                projectMatchObject["note"] = ExpressionConverter.ConvertO(bodyprojectMatchnote);
-                projectMatchObjectpropCount++;
-            }
+                if (__workflow_bodyprojectMatchnote != null)
+                {
+                    projectMatchObject["note"] = ExpressionConverter.ConvertO(__workflow_bodyprojectMatchnote);
+                    projectMatchObjectpropCount++;
+                }
 
-            if (projectMatchObjectpropCount > 0)
-            {
-                body["project_match"] = projectMatchObject;
-                bodypropCount++;
-            }
+                if (projectMatchObjectpropCount > 0)
+                {
+                    body["project_match"] = projectMatchObject;
+                    bodypropCount++;
+                }
 
-            if (bodynote != null)
-            {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
-                bodypropCount++;
-            }
+                if (__workflow_bodynote != null)
+                {
+                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CalculateElectricityResponse>(callPayload);
+                return new ApiConnectionAction<CalculateElectricityResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<ProjectDetailsResponse> ProjectDetails(Expression<Func<string>> projectId)
         {
-            var apiCallPath = String.Format("/project/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProjectDetailsResponse>(callPayload);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            return new DeferredBodyAction<ProjectDetailsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/project/{0}", __workflow_projectId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ProjectDetailsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<PortfolioDetailsResponse> PortfolioDetails(Expression<Func<string>> portfolioId)
         {
-            var apiCallPath = String.Format("/portfolio/{0}", ExpressionConverter.ConvertWithUrlEncoding(portfolioId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PortfolioDetailsResponse>(callPayload);
+            var __workflow_portfolioId = WorkflowExpression.Compile(portfolioId, nameof(portfolioId), required: true);
+            return new DeferredBodyAction<PortfolioDetailsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/portfolio/{0}", __workflow_portfolioId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PortfolioDetailsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
@@ -772,19 +877,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
         public IBodyWorkflowAction<ConvertEstimateResponse> ConvertEstimate(Expression<Func<string>> bodytransactionID)
         {
-            var apiCallPath = "/purchases";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["transaction_ID"] = ExpressionConverter.ConvertO(bodytransactionID);
-            if (bodypropCount > 0)
+            var __workflow_bodytransactionID = WorkflowExpression.Compile(bodytransactionID, nameof(bodytransactionID), required: true);
+            return new DeferredBodyAction<ConvertEstimateResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/purchases";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["transaction_ID"] = ExpressionConverter.ConvertO(__workflow_bodytransactionID);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ConvertEstimateResponse>(callPayload);
+                return new ApiConnectionAction<ConvertEstimateResponse>(callPayload);
+            });
         }
     }
 
@@ -885,6 +994,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public string ProjectUrl { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum transactionInput
     {
         [EnumMember(Value = "estimates")]
@@ -893,6 +1003,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         Purchases
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyweightunitsInput
     {
         [EnumMember(Value = "kg")]
@@ -1558,6 +1669,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public string ProjectUrl { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyenergyunitsInput
     {
         Wh,

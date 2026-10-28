@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,56 +14,70 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<ListWorkspacesResponse> ListWorkspaces(Expression<Func<typeInput>> type = null)
         {
-            var apiCallPath = "/workspaces";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            return new ApiConnectionAction<ListWorkspacesResponse>(callPayload);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            return new DeferredBodyAction<ListWorkspacesResponse>(() =>
+            {
+                var apiCallPath = "/workspaces";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
+                return new ApiConnectionAction<ListWorkspacesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<CreateAWorkspaceResponse> CreateAWorkspace(Expression<Func<string>> bodyworkspacename, Expression<Func<bodyworkspacetypeInput>> bodyworkspacetype, Expression<Func<string>> bodyworkspacedescription = null)
         {
-            var apiCallPath = "/workspaces";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var workspaceObject = new JObject();
-            var workspaceObjectpropCount = 0;
-            workspaceObjectpropCount++;
-            workspaceObject["name"] = ExpressionConverter.ConvertO(bodyworkspacename);
-            if (bodyworkspacedescription != null)
+            var __workflow_bodyworkspacename = WorkflowExpression.Compile(bodyworkspacename, nameof(bodyworkspacename), required: true);
+            var __workflow_bodyworkspacetype = WorkflowExpression.Compile(bodyworkspacetype, nameof(bodyworkspacetype), required: true);
+            var __workflow_bodyworkspacedescription = WorkflowExpression.Compile(bodyworkspacedescription, nameof(bodyworkspacedescription), required: false);
+            return new DeferredBodyAction<CreateAWorkspaceResponse>(() =>
             {
-                workspaceObject["description"] = ExpressionConverter.ConvertO(bodyworkspacedescription);
+                var apiCallPath = "/workspaces";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var workspaceObject = new JObject();
+                var workspaceObjectpropCount = 0;
                 workspaceObjectpropCount++;
-            }
+                workspaceObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyworkspacename);
+                if (__workflow_bodyworkspacedescription != null)
+                {
+                    workspaceObject["description"] = ExpressionConverter.ConvertO(__workflow_bodyworkspacedescription);
+                    workspaceObjectpropCount++;
+                }
 
-            workspaceObjectpropCount++;
-            workspaceObject["type"] = ExpressionConverter.ConvertO(bodyworkspacetype);
-            if (workspaceObjectpropCount > 0)
-            {
-                body["workspace"] = workspaceObject;
-                bodypropCount++;
-            }
+                workspaceObjectpropCount++;
+                workspaceObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyworkspacetype);
+                if (workspaceObjectpropCount > 0)
+                {
+                    body["workspace"] = workspaceObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CreateAWorkspaceResponse>(callPayload);
+                return new ApiConnectionAction<CreateAWorkspaceResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<GetWorkspaceResponse> GetWorkspace(Expression<Func<string>> workspaceId)
         {
-            var apiCallPath = String.Format("/workspaces/{0}", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetWorkspaceResponse>(callPayload);
+            var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
+            return new DeferredBodyAction<GetWorkspaceResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/workspaces/{0}", __workflow_workspaceId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetWorkspaceResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
@@ -78,72 +92,93 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<ListEnvironmentsResponse> ListEnvironments(Expression<Func<string>> workspace = null)
         {
-            var apiCallPath = "/environments";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (workspace != null)
-                callPayload.Queries["workspace"] = ExpressionConverter.Convert(workspace);
-            return new ApiConnectionAction<ListEnvironmentsResponse>(callPayload);
+            var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: false);
+            return new DeferredBodyAction<ListEnvironmentsResponse>(() =>
+            {
+                var apiCallPath = "/environments";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_workspace != null)
+                    callPayload.Queries["workspace"] = ExpressionConverter.Convert(__workflow_workspace);
+                return new ApiConnectionAction<ListEnvironmentsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<GetEnvironmentResponse> GetEnvironment(Expression<Func<string>> environmentId)
         {
-            var apiCallPath = String.Format("/environments/{0}", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetEnvironmentResponse>(callPayload);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            return new DeferredBodyAction<GetEnvironmentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/environments/{0}", __workflow_environmentId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetEnvironmentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<ListCollectionsResponse> ListCollections(Expression<Func<string>> workspace = null)
         {
-            var apiCallPath = "/collections";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (workspace != null)
-                callPayload.Queries["workspace"] = ExpressionConverter.Convert(workspace);
-            return new ApiConnectionAction<ListCollectionsResponse>(callPayload);
+            var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: false);
+            return new DeferredBodyAction<ListCollectionsResponse>(() =>
+            {
+                var apiCallPath = "/collections";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_workspace != null)
+                    callPayload.Queries["workspace"] = ExpressionConverter.Convert(__workflow_workspace);
+                return new ApiConnectionAction<ListCollectionsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<GetCollectionResponse> GetCollection(Expression<Func<string>> collectionId, Expression<Func<string>> accessKey = null)
         {
-            var apiCallPath = String.Format("/collections/{0}", ExpressionConverter.ConvertWithUrlEncoding(collectionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (accessKey != null)
-                callPayload.Queries["access_key"] = ExpressionConverter.Convert(accessKey);
-            return new ApiConnectionAction<GetCollectionResponse>(callPayload);
+            var __workflow_collectionId = WorkflowExpression.Compile(collectionId, nameof(collectionId), required: true);
+            var __workflow_accessKey = WorkflowExpression.Compile(accessKey, nameof(accessKey), required: false);
+            return new DeferredBodyAction<GetCollectionResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/collections/{0}", __workflow_collectionId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_accessKey != null)
+                    callPayload.Queries["access_key"] = ExpressionConverter.Convert(__workflow_accessKey);
+                return new ApiConnectionAction<GetCollectionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<ImportOpenApiResponse> ImportOpenApi(Expression<Func<string>> workspace = null)
         {
-            var apiCallPath = "/import/openapi";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (workspace != null)
-                callPayload.Queries["workspace"] = ExpressionConverter.Convert(workspace);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["type"] = "json";
-            bodypropCount++;
-            var inputObject = new JObject();
-            var inputObjectpropCount = 0;
-            if (inputObjectpropCount > 0)
+            var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: false);
+            return new DeferredBodyAction<ImportOpenApiResponse>(() =>
             {
-                body["input"] = inputObject;
+                var apiCallPath = "/import/openapi";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_workspace != null)
+                    callPayload.Queries["workspace"] = ExpressionConverter.Convert(__workflow_workspace);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["type"] = "json";
                 bodypropCount++;
-            }
+                var inputObject = new JObject();
+                var inputObjectpropCount = 0;
+                if (inputObjectpropCount > 0)
+                {
+                    body["input"] = inputObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ImportOpenApiResponse>(callPayload);
+                return new ApiConnectionAction<ImportOpenApiResponse>(callPayload);
+            });
         }
     }
 
@@ -172,6 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         public string Visibility { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         [EnumMember(Value = "personal")]
@@ -201,6 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         public string Name { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyworkspacetypeInput
     {
         [EnumMember(Value = "personal")]

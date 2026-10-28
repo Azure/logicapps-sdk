@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,153 +14,182 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serwersms")]
         public IBodyWorkflowAction<AddBlacklistResponse> AddBlacklist(Expression<Func<string>> bodyphone)
         {
-            var apiCallPath = "/action/add_blacklist";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["phone"] = ExpressionConverter.ConvertO(bodyphone);
-            if (bodypropCount > 0)
+            var __workflow_bodyphone = WorkflowExpression.Compile(bodyphone, nameof(bodyphone), required: true);
+            return new DeferredBodyAction<AddBlacklistResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/action/add_blacklist";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["phone"] = ExpressionConverter.ConvertO(__workflow_bodyphone);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<AddBlacklistResponse>(callPayload);
+                return new ApiConnectionAction<AddBlacklistResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serwersms")]
         public IBodyWorkflowAction<AddContactResponse> AddContact(Expression<Func<string>> bodyphone, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodytaxId = null)
         {
-            var apiCallPath = "/action/add_contact";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaddress != null)
+            var __workflow_bodyphone = WorkflowExpression.Compile(bodyphone, nameof(bodyphone), required: true);
+            var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: false);
+            var __workflow_bodycity = WorkflowExpression.Compile(bodycity, nameof(bodycity), required: false);
+            var __workflow_bodycompany = WorkflowExpression.Compile(bodycompany, nameof(bodycompany), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: false);
+            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
+            var __workflow_bodytaxId = WorkflowExpression.Compile(bodytaxId, nameof(bodytaxId), required: false);
+            return new DeferredBodyAction<AddContactResponse>(() =>
             {
-                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
+                var apiCallPath = "/action/add_contact";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyaddress != null)
+                {
+                    body["address"] = ExpressionConverter.ConvertO(__workflow_bodyaddress);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycity != null)
+                {
+                    body["city"] = ExpressionConverter.ConvertO(__workflow_bodycity);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycompany != null)
+                {
+                    body["company"] = ExpressionConverter.ConvertO(__workflow_bodycompany);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyemail != null)
+                {
+                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyfirstName != null)
+                {
+                    body["first_name"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodygroupId != null)
+                {
+                    body["group_id"] = ExpressionConverter.ConvertO(__workflow_bodygroupId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodylastName != null)
+                {
+                    body["last_name"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["phone"] = ExpressionConverter.ConvertO(__workflow_bodyphone);
+                if (__workflow_bodytaxId != null)
+                {
+                    body["tax_id"] = ExpressionConverter.ConvertO(__workflow_bodytaxId);
+                    bodypropCount++;
+                }
 
-            if (bodycity != null)
-            {
-                body["city"] = ExpressionConverter.ConvertO(bodycity);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodycompany != null)
-            {
-                body["company"] = ExpressionConverter.ConvertO(bodycompany);
-                bodypropCount++;
-            }
-
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodyemail != null)
-            {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
-                bodypropCount++;
-            }
-
-            if (bodyfirstName != null)
-            {
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
-                bodypropCount++;
-            }
-
-            if (bodygroupId != null)
-            {
-                body["group_id"] = ExpressionConverter.ConvertO(bodygroupId);
-                bodypropCount++;
-            }
-
-            if (bodylastName != null)
-            {
-                body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["phone"] = ExpressionConverter.ConvertO(bodyphone);
-            if (bodytaxId != null)
-            {
-                body["tax_id"] = ExpressionConverter.ConvertO(bodytaxId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AddContactResponse>(callPayload);
+                return new ApiConnectionAction<AddContactResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serwersms")]
         public IBodyWorkflowAction<SendSmsResponse> SendSms(Expression<Func<string>> bodymessage, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodysender = null, Expression<Func<bool>> bodyutf = null)
         {
-            var apiCallPath = "/action/send_sms";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodygroupId != null)
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: false);
+            var __workflow_bodyphone = WorkflowExpression.Compile(bodyphone, nameof(bodyphone), required: false);
+            var __workflow_bodysender = WorkflowExpression.Compile(bodysender, nameof(bodysender), required: false);
+            var __workflow_bodyutf = WorkflowExpression.Compile(bodyutf, nameof(bodyutf), required: false);
+            return new DeferredBodyAction<SendSmsResponse>(() =>
             {
-                body["group_id"] = ExpressionConverter.ConvertO(bodygroupId);
+                var apiCallPath = "/action/send_sms";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodygroupId != null)
+                {
+                    body["group_id"] = ExpressionConverter.ConvertO(__workflow_bodygroupId);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
+                if (__workflow_bodyphone != null)
+                {
+                    body["phone"] = ExpressionConverter.ConvertO(__workflow_bodyphone);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["message"] = ExpressionConverter.ConvertO(bodymessage);
-            if (bodyphone != null)
-            {
-                body["phone"] = ExpressionConverter.ConvertO(bodyphone);
-                bodypropCount++;
-            }
+                if (__workflow_bodysender != null)
+                {
+                    body["sender"] = ExpressionConverter.ConvertO(__workflow_bodysender);
+                    bodypropCount++;
+                }
 
-            if (bodysender != null)
-            {
-                body["sender"] = ExpressionConverter.ConvertO(bodysender);
-                bodypropCount++;
-            }
+                if (__workflow_bodyutf != null)
+                {
+                    body["utf"] = ExpressionConverter.ConvertO(__workflow_bodyutf);
+                    bodypropCount++;
+                }
 
-            if (bodyutf != null)
-            {
-                body["utf"] = ExpressionConverter.ConvertO(bodyutf);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendSmsResponse>(callPayload);
+                return new ApiConnectionAction<SendSmsResponse>(callPayload);
+            });
         }
     }
 
     public class SerwersmsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NewAnswerResponse> NewAnswer(Expression<Func<bodytypeInput>> bodytype, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewAnswerResponse> NewAnswer(Expression<Func<bodytypeInput>> bodytype, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/get_answer";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
-            if (bodypropCount > 0)
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
+            return new DeferredBodyTrigger<NewAnswerResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/trigger/get_answer";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<NewAnswerResponse>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<NewAnswerResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -224,6 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
         public string Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
         ECO,

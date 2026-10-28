@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,71 +14,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "skribblesign")]
         public IBodyWorkflowAction<ErrorResponse> CreateSeal(Expression<Func<string>> requestcontent, Expression<Func<string>> requesttitle = null, Expression<Func<string>> requestsealForSealing = null, Expression<Func<string>> requestvisualSignatureformField = null, Expression<Func<string>> requestvisualSignatureimagecontent = null, Expression<Func<string>> requestvisualSignatureimagecontentType = null, Expression<Func<Position[]>> requestvisualSignaturepositions = null)
         {
-            var apiCallPath = "/seal";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requesttitle != null)
+            var __workflow_requestcontent = WorkflowExpression.Compile(requestcontent, nameof(requestcontent), required: true);
+            var __workflow_requesttitle = WorkflowExpression.Compile(requesttitle, nameof(requesttitle), required: false);
+            var __workflow_requestsealForSealing = WorkflowExpression.Compile(requestsealForSealing, nameof(requestsealForSealing), required: false);
+            var __workflow_requestvisualSignatureformField = WorkflowExpression.Compile(requestvisualSignatureformField, nameof(requestvisualSignatureformField), required: false);
+            var __workflow_requestvisualSignatureimagecontent = WorkflowExpression.Compile(requestvisualSignatureimagecontent, nameof(requestvisualSignatureimagecontent), required: false);
+            var __workflow_requestvisualSignatureimagecontentType = WorkflowExpression.Compile(requestvisualSignatureimagecontentType, nameof(requestvisualSignatureimagecontentType), required: false);
+            var __workflow_requestvisualSignaturepositions = WorkflowExpression.Compile(requestvisualSignaturepositions, nameof(requestvisualSignaturepositions), required: false);
+            return new DeferredBodyAction<ErrorResponse>(() =>
             {
-                request["title"] = ExpressionConverter.ConvertO(requesttitle);
+                var apiCallPath = "/seal";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (__workflow_requesttitle != null)
+                {
+                    request["title"] = ExpressionConverter.ConvertO(__workflow_requesttitle);
+                    requestpropCount++;
+                }
+
                 requestpropCount++;
-            }
+                request["content"] = ExpressionConverter.ConvertO(__workflow_requestcontent);
+                if (__workflow_requestsealForSealing != null)
+                {
+                    request["account_name"] = ExpressionConverter.ConvertO(__workflow_requestsealForSealing);
+                    requestpropCount++;
+                }
 
-            requestpropCount++;
-            request["content"] = ExpressionConverter.ConvertO(requestcontent);
-            if (requestsealForSealing != null)
-            {
-                request["account_name"] = ExpressionConverter.ConvertO(requestsealForSealing);
-                requestpropCount++;
-            }
+                var visualSignatureObject = new JObject();
+                var visualSignatureObjectpropCount = 0;
+                if (__workflow_requestvisualSignatureformField != null)
+                {
+                    visualSignatureObject["form_field"] = ExpressionConverter.ConvertO(__workflow_requestvisualSignatureformField);
+                    visualSignatureObjectpropCount++;
+                }
 
-            var visualSignatureObject = new JObject();
-            var visualSignatureObjectpropCount = 0;
-            if (requestvisualSignatureformField != null)
-            {
-                visualSignatureObject["form_field"] = ExpressionConverter.ConvertO(requestvisualSignatureformField);
-                visualSignatureObjectpropCount++;
-            }
+                var imageObject = new JObject();
+                var imageObjectpropCount = 0;
+                if (__workflow_requestvisualSignatureimagecontent != null)
+                {
+                    imageObject["content"] = ExpressionConverter.ConvertO(__workflow_requestvisualSignatureimagecontent);
+                    imageObjectpropCount++;
+                }
 
-            var imageObject = new JObject();
-            var imageObjectpropCount = 0;
-            if (requestvisualSignatureimagecontent != null)
-            {
-                imageObject["content"] = ExpressionConverter.ConvertO(requestvisualSignatureimagecontent);
-                imageObjectpropCount++;
-            }
+                if (__workflow_requestvisualSignatureimagecontentType != null)
+                {
+                    imageObject["content_type"] = ExpressionConverter.ConvertO(__workflow_requestvisualSignatureimagecontentType);
+                    imageObjectpropCount++;
+                }
 
-            if (requestvisualSignatureimagecontentType != null)
-            {
-                imageObject["content_type"] = ExpressionConverter.ConvertO(requestvisualSignatureimagecontentType);
-                imageObjectpropCount++;
-            }
+                if (imageObjectpropCount > 0)
+                {
+                    visualSignatureObject["image"] = imageObject;
+                    visualSignatureObjectpropCount++;
+                }
 
-            if (imageObjectpropCount > 0)
-            {
-                visualSignatureObject["image"] = imageObject;
-                visualSignatureObjectpropCount++;
-            }
+                if (__workflow_requestvisualSignaturepositions != null)
+                {
+                    visualSignatureObject["positions"] = ExpressionConverter.ConvertO(__workflow_requestvisualSignaturepositions);
+                    visualSignatureObjectpropCount++;
+                }
 
-            if (requestvisualSignaturepositions != null)
-            {
-                visualSignatureObject["positions"] = ExpressionConverter.ConvertO(requestvisualSignaturepositions);
-                visualSignatureObjectpropCount++;
-            }
+                if (visualSignatureObjectpropCount > 0)
+                {
+                    request["visual_signature"] = visualSignatureObject;
+                    requestpropCount++;
+                }
 
-            if (visualSignatureObjectpropCount > 0)
-            {
-                request["visual_signature"] = visualSignatureObject;
-                requestpropCount++;
-            }
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
 
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<ErrorResponse>(callPayload);
+                return new ApiConnectionAction<ErrorResponse>(callPayload);
+            });
         }
     }
 
@@ -104,6 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
         public string Path { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ErrorResponseMethodType
     {
         GET,

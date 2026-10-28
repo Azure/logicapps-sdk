@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cioplenu
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,23 +14,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cioplenu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cioplenu")]
         public IBodyWorkflowAction<CreateTaskResponse> CreateTask(Expression<Func<string>> taskDatatitle, Expression<Func<string>> taskDatadescription, Expression<Func<int>> taskDatapriority)
         {
-            var apiCallPath = "/task";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var taskData = new JObject();
-            var taskDatapropCount = 0;
-            taskDatapropCount++;
-            taskData["title"] = ExpressionConverter.ConvertO(taskDatatitle);
-            taskDatapropCount++;
-            taskData["description"] = ExpressionConverter.ConvertO(taskDatadescription);
-            taskDatapropCount++;
-            taskData["priority"] = ExpressionConverter.ConvertO(taskDatapriority);
-            if (taskDatapropCount > 0)
+            var __workflow_taskDatatitle = WorkflowExpression.Compile(taskDatatitle, nameof(taskDatatitle), required: true);
+            var __workflow_taskDatadescription = WorkflowExpression.Compile(taskDatadescription, nameof(taskDatadescription), required: true);
+            var __workflow_taskDatapriority = WorkflowExpression.Compile(taskDatapriority, nameof(taskDatapriority), required: true);
+            return new DeferredBodyAction<CreateTaskResponse>(() =>
             {
-                callPayload.Body = taskData;
-            }
+                var apiCallPath = "/task";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var taskData = new JObject();
+                var taskDatapropCount = 0;
+                taskDatapropCount++;
+                taskData["title"] = ExpressionConverter.ConvertO(__workflow_taskDatatitle);
+                taskDatapropCount++;
+                taskData["description"] = ExpressionConverter.ConvertO(__workflow_taskDatadescription);
+                taskDatapropCount++;
+                taskData["priority"] = ExpressionConverter.ConvertO(__workflow_taskDatapriority);
+                if (taskDatapropCount > 0)
+                {
+                    callPayload.Body = taskData;
+                }
 
-            return new ApiConnectionAction<CreateTaskResponse>(callPayload);
+                return new ApiConnectionAction<CreateTaskResponse>(callPayload);
+            });
         }
     }
 

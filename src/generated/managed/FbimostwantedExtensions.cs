@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,71 +14,102 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
         public IBodyWorkflowAction<ListWantedResponse> ListWanted(Expression<Func<posterClassificationInput>> posterClassification = null, Expression<Func<string>> title = null, Expression<Func<fieldOfficesInput>> fieldOffices = null, Expression<Func<personClassificationInput>> personClassification = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> page = null, Expression<Func<sortOnInput>> sortOn = null, Expression<Func<sortOrderInput>> sortOrder = null)
         {
-            var apiCallPath = "/@wanted";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (posterClassification != null)
-                callPayload.Queries["poster_classification"] = ExpressionConverter.Convert(posterClassification);
-            if (title != null)
-                callPayload.Queries["title"] = ExpressionConverter.Convert(title);
-            if (fieldOffices != null)
-                callPayload.Queries["field_offices"] = ExpressionConverter.Convert(fieldOffices);
-            if (personClassification != null)
-                callPayload.Queries["person_classification"] = ExpressionConverter.Convert(personClassification);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (sortOn != null)
-                callPayload.Queries["sort_on"] = ExpressionConverter.Convert(sortOn);
-            if (sortOrder != null)
-                callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
-            return new ApiConnectionAction<ListWantedResponse>(callPayload);
+            var __workflow_posterClassification = WorkflowExpression.Compile(posterClassification, nameof(posterClassification), required: false);
+            var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
+            var __workflow_fieldOffices = WorkflowExpression.Compile(fieldOffices, nameof(fieldOffices), required: false);
+            var __workflow_personClassification = WorkflowExpression.Compile(personClassification, nameof(personClassification), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_sortOn = WorkflowExpression.Compile(sortOn, nameof(sortOn), required: false);
+            var __workflow_sortOrder = WorkflowExpression.Compile(sortOrder, nameof(sortOrder), required: false);
+            return new DeferredBodyAction<ListWantedResponse>(() =>
+            {
+                var apiCallPath = "/@wanted";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_posterClassification != null)
+                    callPayload.Queries["poster_classification"] = ExpressionConverter.Convert(__workflow_posterClassification);
+                if (__workflow_title != null)
+                    callPayload.Queries["title"] = ExpressionConverter.Convert(__workflow_title);
+                if (__workflow_fieldOffices != null)
+                    callPayload.Queries["field_offices"] = ExpressionConverter.Convert(__workflow_fieldOffices);
+                if (__workflow_personClassification != null)
+                    callPayload.Queries["person_classification"] = ExpressionConverter.Convert(__workflow_personClassification);
+                if (__workflow_status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_sortOn != null)
+                    callPayload.Queries["sort_on"] = ExpressionConverter.Convert(__workflow_sortOn);
+                if (__workflow_sortOrder != null)
+                    callPayload.Queries["sort_order"] = ExpressionConverter.Convert(__workflow_sortOrder);
+                return new ApiConnectionAction<ListWantedResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
         public IBodyWorkflowAction<WantedPerson> GetWantedPerson(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/@wanted-person/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<WantedPerson>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<WantedPerson>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/@wanted-person/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<WantedPerson>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
         public IBodyWorkflowAction<ListArtCrimesResponse> ListArtCrimes(Expression<Func<string>> title = null, Expression<Func<string>> crimeCategory = null, Expression<Func<string>> maker = null, Expression<Func<string>> referenceNumber = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> page = null, Expression<Func<sortOnInput>> sortOn = null, Expression<Func<sortOrderInput>> sortOrder = null)
         {
-            var apiCallPath = "/@artcrimes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (title != null)
-                callPayload.Queries["title"] = ExpressionConverter.Convert(title);
-            if (crimeCategory != null)
-                callPayload.Queries["crimeCategory"] = ExpressionConverter.Convert(crimeCategory);
-            if (maker != null)
-                callPayload.Queries["maker"] = ExpressionConverter.Convert(maker);
-            if (referenceNumber != null)
-                callPayload.Queries["referenceNumber"] = ExpressionConverter.Convert(referenceNumber);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (sortOn != null)
-                callPayload.Queries["sort_on"] = ExpressionConverter.Convert(sortOn);
-            if (sortOrder != null)
-                callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
-            return new ApiConnectionAction<ListArtCrimesResponse>(callPayload);
+            var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
+            var __workflow_crimeCategory = WorkflowExpression.Compile(crimeCategory, nameof(crimeCategory), required: false);
+            var __workflow_maker = WorkflowExpression.Compile(maker, nameof(maker), required: false);
+            var __workflow_referenceNumber = WorkflowExpression.Compile(referenceNumber, nameof(referenceNumber), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_sortOn = WorkflowExpression.Compile(sortOn, nameof(sortOn), required: false);
+            var __workflow_sortOrder = WorkflowExpression.Compile(sortOrder, nameof(sortOrder), required: false);
+            return new DeferredBodyAction<ListArtCrimesResponse>(() =>
+            {
+                var apiCallPath = "/@artcrimes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_title != null)
+                    callPayload.Queries["title"] = ExpressionConverter.Convert(__workflow_title);
+                if (__workflow_crimeCategory != null)
+                    callPayload.Queries["crimeCategory"] = ExpressionConverter.Convert(__workflow_crimeCategory);
+                if (__workflow_maker != null)
+                    callPayload.Queries["maker"] = ExpressionConverter.Convert(__workflow_maker);
+                if (__workflow_referenceNumber != null)
+                    callPayload.Queries["referenceNumber"] = ExpressionConverter.Convert(__workflow_referenceNumber);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_sortOn != null)
+                    callPayload.Queries["sort_on"] = ExpressionConverter.Convert(__workflow_sortOn);
+                if (__workflow_sortOrder != null)
+                    callPayload.Queries["sort_order"] = ExpressionConverter.Convert(__workflow_sortOrder);
+                return new ApiConnectionAction<ListArtCrimesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
         public IBodyWorkflowAction<ArtCrime> GetArtCrime(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/@artcrimes/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ArtCrime>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<ArtCrime>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/@artcrimes/{0}", __workflow_id.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ArtCrime>(callPayload);
+            });
         }
     }
 
@@ -254,6 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         public string FileName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum posterClassificationInput
     {
         [EnumMember(Value = "default")]
@@ -278,6 +310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         LawEnforcementAssistance
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum fieldOfficesInput
     {
         [EnumMember(Value = "albany")]
@@ -394,6 +427,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         Washingtondc
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum personClassificationInput
     {
         Main,
@@ -401,6 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         Accomplice
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
         [EnumMember(Value = "na")]
@@ -417,6 +452,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         Deceased
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortOnInput
     {
         [EnumMember(Value = "publication")]
@@ -425,6 +461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         Modified
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortOrderInput
     {
         [EnumMember(Value = "desc")]

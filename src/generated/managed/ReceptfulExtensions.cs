@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Receptful
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -15,49 +15,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Receptful
 
     public class ReceptfulTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<VisitEventsResponse> VisitEvents(Expression<Func<bodyEventInput>> bodyEvent, Expression<Func<string>> bodyregionId = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodybuttonId = null, Expression<Func<string>> bodyconfigId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VisitEventsResponse> VisitEvents(Expression<Func<bodyEventInput>> bodyEvent, Expression<Func<string>> bodyregionId = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodybuttonId = null, Expression<Func<string>> bodyconfigId = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/hooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["event"] = ExpressionConverter.ConvertO(bodyEvent);
-            body["source"] = "microsoft";
-            bodypropCount++;
-            if (bodyregionId != null)
+            var __workflow_bodyEvent = WorkflowExpression.Compile(bodyEvent, nameof(bodyEvent), required: true);
+            var __workflow_bodyregionId = WorkflowExpression.Compile(bodyregionId, nameof(bodyregionId), required: false);
+            var __workflow_bodylocationId = WorkflowExpression.Compile(bodylocationId, nameof(bodylocationId), required: false);
+            var __workflow_bodybuttonId = WorkflowExpression.Compile(bodybuttonId, nameof(bodybuttonId), required: false);
+            var __workflow_bodyconfigId = WorkflowExpression.Compile(bodyconfigId, nameof(bodyconfigId), required: false);
+            return new DeferredBodyTrigger<VisitEventsResponse>(() =>
             {
-                body["region_id"] = ExpressionConverter.ConvertO(bodyregionId);
+                var apiCallPath = "/hooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
-
-            if (bodylocationId != null)
-            {
-                body["location_id"] = ExpressionConverter.ConvertO(bodylocationId);
                 bodypropCount++;
-            }
-
-            if (bodybuttonId != null)
-            {
-                body["button_id"] = ExpressionConverter.ConvertO(bodybuttonId);
+                body["event"] = ExpressionConverter.ConvertO(__workflow_bodyEvent);
+                body["source"] = "microsoft";
                 bodypropCount++;
-            }
+                if (__workflow_bodyregionId != null)
+                {
+                    body["region_id"] = ExpressionConverter.ConvertO(__workflow_bodyregionId);
+                    bodypropCount++;
+                }
 
-            if (bodyconfigId != null)
-            {
-                body["config_id"] = ExpressionConverter.ConvertO(bodyconfigId);
-                bodypropCount++;
-            }
+                if (__workflow_bodylocationId != null)
+                {
+                    body["location_id"] = ExpressionConverter.ConvertO(__workflow_bodylocationId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodybuttonId != null)
+                {
+                    body["button_id"] = ExpressionConverter.ConvertO(__workflow_bodybuttonId);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionTrigger<VisitEventsResponse>(callPayload, triggerName, recurrence);
+                if (__workflow_bodyconfigId != null)
+                {
+                    body["config_id"] = ExpressionConverter.ConvertO(__workflow_bodyconfigId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<VisitEventsResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -67,6 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Receptful
         public string Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyEventInput
     {
         [EnumMember(Value = "checked_in")]

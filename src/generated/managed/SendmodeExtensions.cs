@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,162 +14,197 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
         public IBodyWorkflowAction<SendSMSResponse> SendSMS(Expression<Func<string>> messagemessagetext, Expression<Func<string[]>> messagerecipients, Expression<Func<string>> contentType = null, Expression<Func<string>> messagesenderid = null, Expression<Func<string>> messagecustomerid = null)
         {
-            var apiCallPath = "/v2/send";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            var message = new JObject();
-            var messagepropCount = 0;
-            if (messagesenderid != null)
+            var __workflow_messagemessagetext = WorkflowExpression.Compile(messagemessagetext, nameof(messagemessagetext), required: true);
+            var __workflow_messagerecipients = WorkflowExpression.Compile(messagerecipients, nameof(messagerecipients), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_messagesenderid = WorkflowExpression.Compile(messagesenderid, nameof(messagesenderid), required: false);
+            var __workflow_messagecustomerid = WorkflowExpression.Compile(messagecustomerid, nameof(messagecustomerid), required: false);
+            return new DeferredBodyAction<SendSMSResponse>(() =>
             {
-                message["senderid"] = ExpressionConverter.ConvertO(messagesenderid);
+                var apiCallPath = "/v2/send";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                var message = new JObject();
+                var messagepropCount = 0;
+                if (__workflow_messagesenderid != null)
+                {
+                    message["senderid"] = ExpressionConverter.ConvertO(__workflow_messagesenderid);
+                    messagepropCount++;
+                }
+
                 messagepropCount++;
-            }
+                message["messagetext"] = ExpressionConverter.ConvertO(__workflow_messagemessagetext);
+                if (__workflow_messagecustomerid != null)
+                {
+                    message["customerid"] = ExpressionConverter.ConvertO(__workflow_messagecustomerid);
+                    messagepropCount++;
+                }
 
-            messagepropCount++;
-            message["messagetext"] = ExpressionConverter.ConvertO(messagemessagetext);
-            if (messagecustomerid != null)
-            {
-                message["customerid"] = ExpressionConverter.ConvertO(messagecustomerid);
                 messagepropCount++;
-            }
+                message["recipients"] = ExpressionConverter.ConvertO(__workflow_messagerecipients);
+                if (messagepropCount > 0)
+                {
+                    callPayload.Body = message;
+                }
 
-            messagepropCount++;
-            message["recipients"] = ExpressionConverter.ConvertO(messagerecipients);
-            if (messagepropCount > 0)
-            {
-                callPayload.Body = message;
-            }
-
-            return new ApiConnectionAction<SendSMSResponse>(callPayload);
+                return new ApiConnectionAction<SendSMSResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
         public IBodyWorkflowAction<OptoutCustomerResponse> OptoutCustomer(Expression<Func<string>> contentType, Expression<Func<string>> messagemobilenumber, Expression<Func<string>> messageoptoutresponse = null, Expression<Func<string>> messagereturnedresponse = null)
         {
-            var apiCallPath = "/v2/optout";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            var message = new JObject();
-            var messagepropCount = 0;
-            messagepropCount++;
-            message["mobilenumber"] = ExpressionConverter.ConvertO(messagemobilenumber);
-            if (messageoptoutresponse != null)
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_messagemobilenumber = WorkflowExpression.Compile(messagemobilenumber, nameof(messagemobilenumber), required: true);
+            var __workflow_messageoptoutresponse = WorkflowExpression.Compile(messageoptoutresponse, nameof(messageoptoutresponse), required: false);
+            var __workflow_messagereturnedresponse = WorkflowExpression.Compile(messagereturnedresponse, nameof(messagereturnedresponse), required: false);
+            return new DeferredBodyAction<OptoutCustomerResponse>(() =>
             {
-                message["optoutresponse"] = ExpressionConverter.ConvertO(messageoptoutresponse);
+                var apiCallPath = "/v2/optout";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                var message = new JObject();
+                var messagepropCount = 0;
                 messagepropCount++;
-            }
+                message["mobilenumber"] = ExpressionConverter.ConvertO(__workflow_messagemobilenumber);
+                if (__workflow_messageoptoutresponse != null)
+                {
+                    message["optoutresponse"] = ExpressionConverter.ConvertO(__workflow_messageoptoutresponse);
+                    messagepropCount++;
+                }
 
-            if (messagereturnedresponse != null)
-            {
-                message["returnedresponse"] = ExpressionConverter.ConvertO(messagereturnedresponse);
-                messagepropCount++;
-            }
+                if (__workflow_messagereturnedresponse != null)
+                {
+                    message["returnedresponse"] = ExpressionConverter.ConvertO(__workflow_messagereturnedresponse);
+                    messagepropCount++;
+                }
 
-            if (messagepropCount > 0)
-            {
-                callPayload.Body = message;
-            }
+                if (messagepropCount > 0)
+                {
+                    callPayload.Body = message;
+                }
 
-            return new ApiConnectionAction<OptoutCustomerResponse>(callPayload);
+                return new ApiConnectionAction<OptoutCustomerResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
         public IBodyWorkflowAction<ImportCustomerResponse> ImportCustomer(Expression<Func<string>> importdatagroup, Expression<Func<string>> importdatamobilenumber, Expression<Func<string>> contentType = null, Expression<Func<string>> importdatafirstname = null, Expression<Func<string>> importdatasurname = null, Expression<Func<string>> importdataaddress = null, Expression<Func<string>> importdatatown = null, Expression<Func<string>> importdatacounty = null, Expression<Func<string>> importdataemail = null, Expression<Func<string>> importdatacustom1 = null, Expression<Func<string>> importdatacustom2 = null, Expression<Func<string>> importdatabusinessname = null, Expression<Func<string>> importdatadateofbirth = null)
         {
-            var apiCallPath = "/v2/import";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            var importdata = new JObject();
-            var importdatapropCount = 0;
-            importdatapropCount++;
-            importdata["group"] = ExpressionConverter.ConvertO(importdatagroup);
-            importdatapropCount++;
-            importdata["mobilenumber"] = ExpressionConverter.ConvertO(importdatamobilenumber);
-            if (importdatafirstname != null)
+            var __workflow_importdatagroup = WorkflowExpression.Compile(importdatagroup, nameof(importdatagroup), required: true);
+            var __workflow_importdatamobilenumber = WorkflowExpression.Compile(importdatamobilenumber, nameof(importdatamobilenumber), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_importdatafirstname = WorkflowExpression.Compile(importdatafirstname, nameof(importdatafirstname), required: false);
+            var __workflow_importdatasurname = WorkflowExpression.Compile(importdatasurname, nameof(importdatasurname), required: false);
+            var __workflow_importdataaddress = WorkflowExpression.Compile(importdataaddress, nameof(importdataaddress), required: false);
+            var __workflow_importdatatown = WorkflowExpression.Compile(importdatatown, nameof(importdatatown), required: false);
+            var __workflow_importdatacounty = WorkflowExpression.Compile(importdatacounty, nameof(importdatacounty), required: false);
+            var __workflow_importdataemail = WorkflowExpression.Compile(importdataemail, nameof(importdataemail), required: false);
+            var __workflow_importdatacustom1 = WorkflowExpression.Compile(importdatacustom1, nameof(importdatacustom1), required: false);
+            var __workflow_importdatacustom2 = WorkflowExpression.Compile(importdatacustom2, nameof(importdatacustom2), required: false);
+            var __workflow_importdatabusinessname = WorkflowExpression.Compile(importdatabusinessname, nameof(importdatabusinessname), required: false);
+            var __workflow_importdatadateofbirth = WorkflowExpression.Compile(importdatadateofbirth, nameof(importdatadateofbirth), required: false);
+            return new DeferredBodyAction<ImportCustomerResponse>(() =>
             {
-                importdata["firstname"] = ExpressionConverter.ConvertO(importdatafirstname);
+                var apiCallPath = "/v2/import";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                var importdata = new JObject();
+                var importdatapropCount = 0;
                 importdatapropCount++;
-            }
-
-            if (importdatasurname != null)
-            {
-                importdata["surname"] = ExpressionConverter.ConvertO(importdatasurname);
+                importdata["group"] = ExpressionConverter.ConvertO(__workflow_importdatagroup);
                 importdatapropCount++;
-            }
+                importdata["mobilenumber"] = ExpressionConverter.ConvertO(__workflow_importdatamobilenumber);
+                if (__workflow_importdatafirstname != null)
+                {
+                    importdata["firstname"] = ExpressionConverter.ConvertO(__workflow_importdatafirstname);
+                    importdatapropCount++;
+                }
 
-            if (importdataaddress != null)
-            {
-                importdata["address"] = ExpressionConverter.ConvertO(importdataaddress);
-                importdatapropCount++;
-            }
+                if (__workflow_importdatasurname != null)
+                {
+                    importdata["surname"] = ExpressionConverter.ConvertO(__workflow_importdatasurname);
+                    importdatapropCount++;
+                }
 
-            if (importdatatown != null)
-            {
-                importdata["town"] = ExpressionConverter.ConvertO(importdatatown);
-                importdatapropCount++;
-            }
+                if (__workflow_importdataaddress != null)
+                {
+                    importdata["address"] = ExpressionConverter.ConvertO(__workflow_importdataaddress);
+                    importdatapropCount++;
+                }
 
-            if (importdatacounty != null)
-            {
-                importdata["county"] = ExpressionConverter.ConvertO(importdatacounty);
-                importdatapropCount++;
-            }
+                if (__workflow_importdatatown != null)
+                {
+                    importdata["town"] = ExpressionConverter.ConvertO(__workflow_importdatatown);
+                    importdatapropCount++;
+                }
 
-            if (importdataemail != null)
-            {
-                importdata["email"] = ExpressionConverter.ConvertO(importdataemail);
-                importdatapropCount++;
-            }
+                if (__workflow_importdatacounty != null)
+                {
+                    importdata["county"] = ExpressionConverter.ConvertO(__workflow_importdatacounty);
+                    importdatapropCount++;
+                }
 
-            if (importdatacustom1 != null)
-            {
-                importdata["custom1"] = ExpressionConverter.ConvertO(importdatacustom1);
-                importdatapropCount++;
-            }
+                if (__workflow_importdataemail != null)
+                {
+                    importdata["email"] = ExpressionConverter.ConvertO(__workflow_importdataemail);
+                    importdatapropCount++;
+                }
 
-            if (importdatacustom2 != null)
-            {
-                importdata["custom2"] = ExpressionConverter.ConvertO(importdatacustom2);
-                importdatapropCount++;
-            }
+                if (__workflow_importdatacustom1 != null)
+                {
+                    importdata["custom1"] = ExpressionConverter.ConvertO(__workflow_importdatacustom1);
+                    importdatapropCount++;
+                }
 
-            if (importdatabusinessname != null)
-            {
-                importdata["businessname"] = ExpressionConverter.ConvertO(importdatabusinessname);
-                importdatapropCount++;
-            }
+                if (__workflow_importdatacustom2 != null)
+                {
+                    importdata["custom2"] = ExpressionConverter.ConvertO(__workflow_importdatacustom2);
+                    importdatapropCount++;
+                }
 
-            if (importdatadateofbirth != null)
-            {
-                importdata["dateofbirth"] = ExpressionConverter.ConvertO(importdatadateofbirth);
-                importdatapropCount++;
-            }
+                if (__workflow_importdatabusinessname != null)
+                {
+                    importdata["businessname"] = ExpressionConverter.ConvertO(__workflow_importdatabusinessname);
+                    importdatapropCount++;
+                }
 
-            if (importdatapropCount > 0)
-            {
-                callPayload.Body = importdata;
-            }
+                if (__workflow_importdatadateofbirth != null)
+                {
+                    importdata["dateofbirth"] = ExpressionConverter.ConvertO(__workflow_importdatadateofbirth);
+                    importdatapropCount++;
+                }
 
-            return new ApiConnectionAction<ImportCustomerResponse>(callPayload);
+                if (importdatapropCount > 0)
+                {
+                    callPayload.Body = importdata;
+                }
+
+                return new ApiConnectionAction<ImportCustomerResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
         public IBodyWorkflowAction<CheckCreditsResponse> CheckCredits(Expression<Func<string>> contentType = null)
         {
-            var apiCallPath = "/v2/credits";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            return new ApiConnectionAction<CheckCreditsResponse>(callPayload);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            return new DeferredBodyAction<CheckCreditsResponse>(() =>
+            {
+                var apiCallPath = "/v2/credits";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                return new ApiConnectionAction<CheckCreditsResponse>(callPayload);
+            });
         }
     }
 

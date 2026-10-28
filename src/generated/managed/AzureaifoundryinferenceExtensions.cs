@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaifoundryinference
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,49 +14,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaifoundryinference
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaifoundryinference")]
         public IBodyWorkflowAction<ChatCompletionResponse> ChatCompletion(Expression<Func<string>> apiVersion = null, Expression<Func<bodymessagesInputItem[]>> bodymessages = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodytopP = null, Expression<Func<int>> bodymaxTokens = null, Expression<Func<string>> bodymodel = null)
         {
-            var apiCallPath = "/chat/completions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (apiVersion != null)
-                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodymessages != null)
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: false);
+            var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: false);
+            var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
+            var __workflow_bodytopP = WorkflowExpression.Compile(bodytopP, nameof(bodytopP), required: false);
+            var __workflow_bodymaxTokens = WorkflowExpression.Compile(bodymaxTokens, nameof(bodymaxTokens), required: false);
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: false);
+            return new DeferredBodyAction<ChatCompletionResponse>(() =>
             {
-                body["messages"] = ExpressionConverter.ConvertO(bodymessages);
-                bodypropCount++;
-            }
+                var apiCallPath = "/chat/completions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_apiVersion != null)
+                    callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodymessages != null)
+                {
+                    body["messages"] = ExpressionConverter.ConvertO(__workflow_bodymessages);
+                    bodypropCount++;
+                }
 
-            if (bodytemperature != null)
-            {
-                body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
-                bodypropCount++;
-            }
+                if (__workflow_bodytemperature != null)
+                {
+                    body["temperature"] = ExpressionConverter.ConvertO(__workflow_bodytemperature);
+                    bodypropCount++;
+                }
 
-            if (bodytopP != null)
-            {
-                body["top_p"] = ExpressionConverter.ConvertO(bodytopP);
-                bodypropCount++;
-            }
+                if (__workflow_bodytopP != null)
+                {
+                    body["top_p"] = ExpressionConverter.ConvertO(__workflow_bodytopP);
+                    bodypropCount++;
+                }
 
-            if (bodymaxTokens != null)
-            {
-                body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
-                bodypropCount++;
-            }
+                if (__workflow_bodymaxTokens != null)
+                {
+                    body["max_tokens"] = ExpressionConverter.ConvertO(__workflow_bodymaxTokens);
+                    bodypropCount++;
+                }
 
-            if (bodymodel != null)
-            {
-                body["model"] = ExpressionConverter.ConvertO(bodymodel);
-                bodypropCount++;
-            }
+                if (__workflow_bodymodel != null)
+                {
+                    body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ChatCompletionResponse>(callPayload);
+                return new ApiConnectionAction<ChatCompletionResponse>(callPayload);
+            });
         }
     }
 

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,88 +14,102 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "anthropicip")]
         public IBodyWorkflowAction<MessagePostResponse> Message(Expression<Func<bodymodelInput>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages, Expression<Func<int>> bodymaxTokens, Expression<Func<bool>> bodythinkingtype = null, Expression<Func<int>> bodythinkingbudgetTokens = null, Expression<Func<string[]>> bodystopSequences = null, Expression<Func<string>> bodysystem = null, Expression<Func<double>> bodytemperature = null, Expression<Func<bodytoolsInputItem[]>> bodytools = null, Expression<Func<int>> bodytopK = null, Expression<Func<double>> bodytopP = null)
         {
-            var apiCallPath = "/v1/messages";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["anthropic-version"] = Convert.ToString("2023-06-01");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["model"] = ExpressionConverter.ConvertO(bodymodel);
-            bodypropCount++;
-            body["messages"] = ExpressionConverter.ConvertO(bodymessages);
-            bodypropCount++;
-            body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
-            var thinkingObject = new JObject();
-            var thinkingObjectpropCount = 0;
-            if (bodythinkingtype != null)
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
+            var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: true);
+            var __workflow_bodymaxTokens = WorkflowExpression.Compile(bodymaxTokens, nameof(bodymaxTokens), required: true);
+            var __workflow_bodythinkingtype = WorkflowExpression.Compile(bodythinkingtype, nameof(bodythinkingtype), required: false);
+            var __workflow_bodythinkingbudgetTokens = WorkflowExpression.Compile(bodythinkingbudgetTokens, nameof(bodythinkingbudgetTokens), required: false);
+            var __workflow_bodystopSequences = WorkflowExpression.Compile(bodystopSequences, nameof(bodystopSequences), required: false);
+            var __workflow_bodysystem = WorkflowExpression.Compile(bodysystem, nameof(bodysystem), required: false);
+            var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
+            var __workflow_bodytools = WorkflowExpression.Compile(bodytools, nameof(bodytools), required: false);
+            var __workflow_bodytopK = WorkflowExpression.Compile(bodytopK, nameof(bodytopK), required: false);
+            var __workflow_bodytopP = WorkflowExpression.Compile(bodytopP, nameof(bodytopP), required: false);
+            return new DeferredBodyAction<MessagePostResponse>(() =>
             {
-                thinkingObject["type"] = ExpressionConverter.ConvertO(bodythinkingtype);
-                thinkingObjectpropCount++;
-            }
-
-            if (bodythinkingbudgetTokens != null)
-            {
-                thinkingObject["budget_tokens"] = ExpressionConverter.ConvertO(bodythinkingbudgetTokens);
-                thinkingObjectpropCount++;
-            }
-
-            if (thinkingObjectpropCount > 0)
-            {
-                body["thinking"] = thinkingObject;
+                var apiCallPath = "/v1/messages";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["anthropic-version"] = Convert.ToString("2023-06-01");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            var metadataObject = new JObject();
-            var metadataObjectpropCount = 0;
-            if (metadataObjectpropCount > 0)
-            {
-                body["metadata"] = metadataObject;
+                body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
                 bodypropCount++;
-            }
-
-            if (bodystopSequences != null)
-            {
-                body["stop_sequences"] = ExpressionConverter.ConvertO(bodystopSequences);
+                body["messages"] = ExpressionConverter.ConvertO(__workflow_bodymessages);
                 bodypropCount++;
-            }
+                body["max_tokens"] = ExpressionConverter.ConvertO(__workflow_bodymaxTokens);
+                var thinkingObject = new JObject();
+                var thinkingObjectpropCount = 0;
+                if (__workflow_bodythinkingtype != null)
+                {
+                    thinkingObject["type"] = ExpressionConverter.ConvertO(__workflow_bodythinkingtype);
+                    thinkingObjectpropCount++;
+                }
 
-            if (bodysystem != null)
-            {
-                body["system"] = ExpressionConverter.ConvertO(bodysystem);
-                bodypropCount++;
-            }
+                if (__workflow_bodythinkingbudgetTokens != null)
+                {
+                    thinkingObject["budget_tokens"] = ExpressionConverter.ConvertO(__workflow_bodythinkingbudgetTokens);
+                    thinkingObjectpropCount++;
+                }
 
-            if (bodytemperature != null)
-            {
-                body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
-                bodypropCount++;
-            }
+                if (thinkingObjectpropCount > 0)
+                {
+                    body["thinking"] = thinkingObject;
+                    bodypropCount++;
+                }
 
-            if (bodytools != null)
-            {
-                body["tools"] = ExpressionConverter.ConvertO(bodytools);
-                bodypropCount++;
-            }
+                var metadataObject = new JObject();
+                var metadataObjectpropCount = 0;
+                if (metadataObjectpropCount > 0)
+                {
+                    body["metadata"] = metadataObject;
+                    bodypropCount++;
+                }
 
-            if (bodytopK != null)
-            {
-                body["top_k"] = ExpressionConverter.ConvertO(bodytopK);
-                bodypropCount++;
-            }
+                if (__workflow_bodystopSequences != null)
+                {
+                    body["stop_sequences"] = ExpressionConverter.ConvertO(__workflow_bodystopSequences);
+                    bodypropCount++;
+                }
 
-            if (bodytopP != null)
-            {
-                body["top_p"] = ExpressionConverter.ConvertO(bodytopP);
-                bodypropCount++;
-            }
+                if (__workflow_bodysystem != null)
+                {
+                    body["system"] = ExpressionConverter.ConvertO(__workflow_bodysystem);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodytemperature != null)
+                {
+                    body["temperature"] = ExpressionConverter.ConvertO(__workflow_bodytemperature);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<MessagePostResponse>(callPayload);
+                if (__workflow_bodytools != null)
+                {
+                    body["tools"] = ExpressionConverter.ConvertO(__workflow_bodytools);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodytopK != null)
+                {
+                    body["top_k"] = ExpressionConverter.ConvertO(__workflow_bodytopK);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodytopP != null)
+                {
+                    body["top_p"] = ExpressionConverter.ConvertO(__workflow_bodytopP);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<MessagePostResponse>(callPayload);
+            });
         }
     }
 
@@ -163,6 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
         public int OutputTokens { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymodelInput
     {
         [EnumMember(Value = "claude-opus-4-0")]
@@ -188,6 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymessagesInputItemRoleType
     {
         [EnumMember(Value = "user")]

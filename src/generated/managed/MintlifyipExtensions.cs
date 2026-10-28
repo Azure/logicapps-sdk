@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,49 +14,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mintlifyip")]
         public IBodyWorkflowAction<DocGenResponse> DocGen(Expression<Func<bodylanguageInput>> bodylanguage, Expression<Func<string>> bodycode, Expression<Func<bool>> bodycommented = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<string>> bodycontext = null)
         {
-            var apiCallPath = "/v1/document";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycommented != null)
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
+            var __workflow_bodycode = WorkflowExpression.Compile(bodycode, nameof(bodycode), required: true);
+            var __workflow_bodycommented = WorkflowExpression.Compile(bodycommented, nameof(bodycommented), required: false);
+            var __workflow_bodyformat = WorkflowExpression.Compile(bodyformat, nameof(bodyformat), required: false);
+            var __workflow_bodycontext = WorkflowExpression.Compile(bodycontext, nameof(bodycontext), required: false);
+            return new DeferredBodyAction<DocGenResponse>(() =>
             {
-                if (bodycommented != null)
+                var apiCallPath = "/v1/document";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodycommented != null)
                 {
-                    body["commented"] = ExpressionConverter.ConvertO(bodycommented);
+                    if (__workflow_bodycommented != null)
+                    {
+                        body["commented"] = ExpressionConverter.ConvertO(__workflow_bodycommented);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["commented"] = true;
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["commented"] = true;
+                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
                 bodypropCount++;
-            }
+                body["code"] = ExpressionConverter.ConvertO(__workflow_bodycode);
+                if (__workflow_bodyformat != null)
+                {
+                    body["format"] = ExpressionConverter.ConvertO(__workflow_bodyformat);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["language"] = ExpressionConverter.ConvertO(bodylanguage);
-            bodypropCount++;
-            body["code"] = ExpressionConverter.ConvertO(bodycode);
-            if (bodyformat != null)
-            {
-                body["format"] = ExpressionConverter.ConvertO(bodyformat);
-                bodypropCount++;
-            }
+                if (__workflow_bodycontext != null)
+                {
+                    body["context"] = ExpressionConverter.ConvertO(__workflow_bodycontext);
+                    bodypropCount++;
+                }
 
-            if (bodycontext != null)
-            {
-                body["context"] = ExpressionConverter.ConvertO(bodycontext);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DocGenResponse>(callPayload);
+                return new ApiConnectionAction<DocGenResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mintlifyip")]
@@ -88,6 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
         public string Documentation { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylanguageInput
     {
         [EnumMember(Value = "javascript")]
@@ -104,6 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
         Php
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyformatInput
     {
         [EnumMember(Value = "")]

@@ -1,11 +1,11 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
 {
     using System;
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
@@ -16,137 +16,177 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
         public IBodyWorkflowAction<JToken> GetFtpFileContent(Expression<Func<string>> filePath)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: true);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "getFtpFileContent", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<JToken>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "getFtpFileContent", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<JToken>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
         public IBodyWorkflowAction<JToken> GetFtpFileContentV2(Expression<Func<string>> filePath)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: true);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "getFtpFileContentV2", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<JToken>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "getFtpFileContentV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<JToken>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
         public IBodyWorkflowAction<GetFileMetadataOutput> GetFileMetadata(Expression<Func<string>> filePath)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: true);
+            return new DeferredBodyAction<GetFileMetadataOutput>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "getFileMetadata", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetFileMetadataOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "getFileMetadata", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<GetFileMetadataOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
         public IBodyWorkflowAction<CreateFileOutput> CreateFile(Expression<Func<string>> filePath, Expression<Func<object>> fileContent, Expression<Func<bool>> getAllFileMetadata = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-            serviceProviderParameters["fileContent"] = ExpressionConverter.ConvertO(fileContent);
-            if (getAllFileMetadata != null)
+            var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: true);
+            var __workflow_fileContent = WorkflowExpression.Compile(fileContent, nameof(fileContent), required: true);
+            var __workflow_getAllFileMetadata = WorkflowExpression.Compile(getAllFileMetadata, nameof(getAllFileMetadata), required: false);
+            return new DeferredBodyAction<CreateFileOutput>(() =>
             {
-                serviceProviderParameters["getAllFileMetadata"] = ExpressionConverter.ConvertO(getAllFileMetadata);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
+                serviceProviderParameters["fileContent"] = ExpressionConverter.ConvertO(__workflow_fileContent);
+                if (__workflow_getAllFileMetadata != null)
+                {
+                    serviceProviderParameters["getAllFileMetadata"] = ExpressionConverter.ConvertO(__workflow_getAllFileMetadata);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "createFile", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<CreateFileOutput>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "createFile", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<CreateFileOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
         public IBodyWorkflowAction<UpdateFileOutput> UpdateFile(Expression<Func<string>> filePath, Expression<Func<object>> fileContent, Expression<Func<bool>> getAllFileMetadata = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-            serviceProviderParameters["fileContent"] = ExpressionConverter.ConvertO(fileContent);
-            if (getAllFileMetadata != null)
+            var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: true);
+            var __workflow_fileContent = WorkflowExpression.Compile(fileContent, nameof(fileContent), required: true);
+            var __workflow_getAllFileMetadata = WorkflowExpression.Compile(getAllFileMetadata, nameof(getAllFileMetadata), required: false);
+            return new DeferredBodyAction<UpdateFileOutput>(() =>
             {
-                serviceProviderParameters["getAllFileMetadata"] = ExpressionConverter.ConvertO(getAllFileMetadata);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
+                serviceProviderParameters["fileContent"] = ExpressionConverter.ConvertO(__workflow_fileContent);
+                if (__workflow_getAllFileMetadata != null)
+                {
+                    serviceProviderParameters["getAllFileMetadata"] = ExpressionConverter.ConvertO(__workflow_getAllFileMetadata);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "updateFile", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<UpdateFileOutput>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "updateFile", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<UpdateFileOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
         public IOutputWorkflowAction<JToken> DeleteFtpFile(Expression<Func<string>> filePath, Expression<Func<bool>> skipIfFileNotPresent = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-            if (skipIfFileNotPresent != null)
+            var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: true);
+            var __workflow_skipIfFileNotPresent = WorkflowExpression.Compile(skipIfFileNotPresent, nameof(skipIfFileNotPresent), required: false);
+            return new DeferredOutputAction<JToken>(() =>
             {
-                serviceProviderParameters["skipIfFileNotPresent"] = ExpressionConverter.ConvertO(skipIfFileNotPresent);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
+                if (__workflow_skipIfFileNotPresent != null)
+                {
+                    serviceProviderParameters["skipIfFileNotPresent"] = ExpressionConverter.ConvertO(__workflow_skipIfFileNotPresent);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "deleteFtpFile", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "deleteFtpFile", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
         public IBodyWorkflowAction<ListFilesInFolderOutputItem[]> ListFilesInFolder(Expression<Func<string>> folderPath)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
+            return new DeferredBodyAction<ListFilesInFolderOutputItem[]>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "listFilesInFolder", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<ListFilesInFolderOutputItem[]>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(__workflow_folderPath);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "listFilesInFolder", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<ListFilesInFolderOutputItem[]>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
         public IBodyWorkflowAction<ExtractArchiveOutputItem[]> ExtractArchive(Expression<Func<string>> folderPath, Expression<Func<string>> filePath = null, Expression<Func<ExtractArchiveInputOverwriteExistingFilesBehaviourType>> overwriteExistingFilesBehaviour = null, Expression<Func<object>> fileContent = null)
         {
-            var serviceProviderParameters = new JObject();
-            if (filePath != null)
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
+            var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: false);
+            var __workflow_overwriteExistingFilesBehaviour = WorkflowExpression.Compile(overwriteExistingFilesBehaviour, nameof(overwriteExistingFilesBehaviour), required: false);
+            var __workflow_fileContent = WorkflowExpression.Compile(fileContent, nameof(fileContent), required: false);
+            return new DeferredBodyAction<ExtractArchiveOutputItem[]>(() =>
             {
-                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-            }
+                var serviceProviderParameters = new JObject();
+                if (__workflow_filePath != null)
+                {
+                    serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
+                }
 
-            serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
-            if (overwriteExistingFilesBehaviour != null)
-            {
-                serviceProviderParameters["overwriteExistingFilesBehaviour"] = ExpressionConverter.ConvertO(overwriteExistingFilesBehaviour);
-            }
+                serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(__workflow_folderPath);
+                if (__workflow_overwriteExistingFilesBehaviour != null)
+                {
+                    serviceProviderParameters["overwriteExistingFilesBehaviour"] = ExpressionConverter.ConvertO(__workflow_overwriteExistingFilesBehaviour);
+                }
 
-            if (fileContent != null)
-            {
-                serviceProviderParameters["fileContent"] = ExpressionConverter.ConvertO(fileContent);
-            }
+                if (__workflow_fileContent != null)
+                {
+                    serviceProviderParameters["fileContent"] = ExpressionConverter.ConvertO(__workflow_fileContent);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "extractArchive", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<ExtractArchiveOutputItem[]>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "extractArchive", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<ExtractArchiveOutputItem[]>(serviceProviderInput);
+            });
         }
     }
 
@@ -154,29 +194,36 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
     {
         public IBodyWorkflowTrigger<WhenFtpFilesAreAddedOrModifiedOutputItem[]> WhenFtpFilesAreAddedOrModified(Expression<Func<string>> folderPath, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFileCutOffTimestamp = null, Expression<Func<bool>> ignoreSubFolders = null, FlowRecurrence recurrence = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
-            if (maxFileCount != null)
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
+            var __workflow_maxFileCount = WorkflowExpression.Compile(maxFileCount, nameof(maxFileCount), required: false);
+            var __workflow_oldFileCutOffTimestamp = WorkflowExpression.Compile(oldFileCutOffTimestamp, nameof(oldFileCutOffTimestamp), required: false);
+            var __workflow_ignoreSubFolders = WorkflowExpression.Compile(ignoreSubFolders, nameof(ignoreSubFolders), required: false);
+            return new DeferredBodyTrigger<WhenFtpFilesAreAddedOrModifiedOutputItem[]>(() =>
             {
-                serviceProviderParameters["maxFileCount"] = ExpressionConverter.ConvertO(maxFileCount);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(__workflow_folderPath);
+                if (__workflow_maxFileCount != null)
+                {
+                    serviceProviderParameters["maxFileCount"] = ExpressionConverter.ConvertO(__workflow_maxFileCount);
+                }
 
-            if (oldFileCutOffTimestamp != null)
-            {
-                serviceProviderParameters["oldFileCutOffTimestamp"] = ExpressionConverter.ConvertO(oldFileCutOffTimestamp);
-            }
+                if (__workflow_oldFileCutOffTimestamp != null)
+                {
+                    serviceProviderParameters["oldFileCutOffTimestamp"] = ExpressionConverter.ConvertO(__workflow_oldFileCutOffTimestamp);
+                }
 
-            if (ignoreSubFolders != null)
-            {
-                serviceProviderParameters["ignoreSubFolders"] = ExpressionConverter.ConvertO(ignoreSubFolders);
-            }
+                if (__workflow_ignoreSubFolders != null)
+                {
+                    serviceProviderParameters["ignoreSubFolders"] = ExpressionConverter.ConvertO(__workflow_ignoreSubFolders);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "whenFtpFilesAreAddedOrModified", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<WhenFtpFilesAreAddedOrModifiedOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "whenFtpFilesAreAddedOrModified", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderTrigger<WhenFtpFilesAreAddedOrModifiedOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+            });
         }
     }
 
@@ -306,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
         public bool IsFolder { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ExtractArchiveInputOverwriteExistingFilesBehaviourType
     {
         Fail,

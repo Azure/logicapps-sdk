@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatismybrowserip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,23 +14,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatismybrowserip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whatismybrowserip")]
         public IBodyWorkflowAction<DetectPostResponse> Detect(Expression<Func<bodyheadersInputItem[]>> bodyheaders = null)
         {
-            var apiCallPath = "/detect";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyheaders != null)
+            var __workflow_bodyheaders = WorkflowExpression.Compile(bodyheaders, nameof(bodyheaders), required: false);
+            return new DeferredBodyAction<DetectPostResponse>(() =>
             {
-                body["headers"] = ExpressionConverter.ConvertO(bodyheaders);
-                bodypropCount++;
-            }
+                var apiCallPath = "/detect";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyheaders != null)
+                {
+                    body["headers"] = ExpressionConverter.ConvertO(__workflow_bodyheaders);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<DetectPostResponse>(callPayload);
+                return new ApiConnectionAction<DetectPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whatismybrowserip")]

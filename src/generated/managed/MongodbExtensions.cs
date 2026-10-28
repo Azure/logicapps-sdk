@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,344 +14,404 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         public IBodyWorkflowAction<InsertDocumentResponse> InsertDocument(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection)
         {
-            var apiCallPath = "/action/insertOne";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
-            bodypropCount++;
-            body["database"] = ExpressionConverter.ConvertO(bodydatabase);
-            bodypropCount++;
-            body["collection"] = ExpressionConverter.ConvertO(bodycollection);
-            var documentObject = new JObject();
-            var documentObjectpropCount = 0;
-            if (documentObjectpropCount > 0)
+            var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
+            var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
+            var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
+            return new DeferredBodyAction<InsertDocumentResponse>(() =>
             {
-                body["document"] = documentObject;
+                var apiCallPath = "/action/insertOne";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
+                bodypropCount++;
+                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
+                bodypropCount++;
+                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
+                var documentObject = new JObject();
+                var documentObjectpropCount = 0;
+                if (documentObjectpropCount > 0)
+                {
+                    body["document"] = documentObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<InsertDocumentResponse>(callPayload);
+                return new ApiConnectionAction<InsertDocumentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         public IBodyWorkflowAction<FindDocumentResponse> FindDocument(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection)
         {
-            var apiCallPath = "/action/findOne";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
-            bodypropCount++;
-            body["database"] = ExpressionConverter.ConvertO(bodydatabase);
-            bodypropCount++;
-            body["collection"] = ExpressionConverter.ConvertO(bodycollection);
-            var filterObject = new JObject();
-            var filterObjectpropCount = 0;
-            if (filterObjectpropCount > 0)
+            var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
+            var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
+            var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
+            return new DeferredBodyAction<FindDocumentResponse>(() =>
             {
-                body["filter"] = filterObject;
+                var apiCallPath = "/action/findOne";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            var projectionObject = new JObject();
-            var projectionObjectpropCount = 0;
-            if (projectionObjectpropCount > 0)
-            {
-                body["projection"] = projectionObject;
+                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
                 bodypropCount++;
-            }
+                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
+                bodypropCount++;
+                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
+                var filterObject = new JObject();
+                var filterObjectpropCount = 0;
+                if (filterObjectpropCount > 0)
+                {
+                    body["filter"] = filterObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                var projectionObject = new JObject();
+                var projectionObjectpropCount = 0;
+                if (projectionObjectpropCount > 0)
+                {
+                    body["projection"] = projectionObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<FindDocumentResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<FindDocumentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         public IBodyWorkflowAction<UpdateDocumentResponse> UpdateDocument(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<bool>> bodyupsert = null)
         {
-            var apiCallPath = "/action/updateOne";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
-            bodypropCount++;
-            body["database"] = ExpressionConverter.ConvertO(bodydatabase);
-            bodypropCount++;
-            body["collection"] = ExpressionConverter.ConvertO(bodycollection);
-            var filterObject = new JObject();
-            var filterObjectpropCount = 0;
-            if (filterObjectpropCount > 0)
+            var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
+            var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
+            var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
+            var __workflow_bodyupsert = WorkflowExpression.Compile(bodyupsert, nameof(bodyupsert), required: false);
+            return new DeferredBodyAction<UpdateDocumentResponse>(() =>
             {
-                body["filter"] = filterObject;
+                var apiCallPath = "/action/updateOne";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            var updateObject = new JObject();
-            var updateObjectpropCount = 0;
-            if (updateObjectpropCount > 0)
-            {
-                body["update"] = updateObject;
+                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
                 bodypropCount++;
-            }
-
-            if (bodyupsert != null)
-            {
-                body["upsert"] = ExpressionConverter.ConvertO(bodyupsert);
+                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
                 bodypropCount++;
-            }
+                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
+                var filterObject = new JObject();
+                var filterObjectpropCount = 0;
+                if (filterObjectpropCount > 0)
+                {
+                    body["filter"] = filterObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                var updateObject = new JObject();
+                var updateObjectpropCount = 0;
+                if (updateObjectpropCount > 0)
+                {
+                    body["update"] = updateObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<UpdateDocumentResponse>(callPayload);
+                if (__workflow_bodyupsert != null)
+                {
+                    body["upsert"] = ExpressionConverter.ConvertO(__workflow_bodyupsert);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UpdateDocumentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         public IBodyWorkflowAction<DeleteDocumentResponse> DeleteDocument(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection)
         {
-            var apiCallPath = "/action/deleteOne";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
-            bodypropCount++;
-            body["database"] = ExpressionConverter.ConvertO(bodydatabase);
-            bodypropCount++;
-            body["collection"] = ExpressionConverter.ConvertO(bodycollection);
-            var filterObject = new JObject();
-            var filterObjectpropCount = 0;
-            if (filterObjectpropCount > 0)
+            var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
+            var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
+            var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
+            return new DeferredBodyAction<DeleteDocumentResponse>(() =>
             {
-                body["filter"] = filterObject;
+                var apiCallPath = "/action/deleteOne";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
+                bodypropCount++;
+                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
+                bodypropCount++;
+                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
+                var filterObject = new JObject();
+                var filterObjectpropCount = 0;
+                if (filterObjectpropCount > 0)
+                {
+                    body["filter"] = filterObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<DeleteDocumentResponse>(callPayload);
+                return new ApiConnectionAction<DeleteDocumentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         public IBodyWorkflowAction<InsertMultipleDocumentsResponse> InsertMultipleDocuments(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<JToken[]>> bodydocuments)
         {
-            var apiCallPath = "/action/insertMany";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
-            bodypropCount++;
-            body["database"] = ExpressionConverter.ConvertO(bodydatabase);
-            bodypropCount++;
-            body["collection"] = ExpressionConverter.ConvertO(bodycollection);
-            bodypropCount++;
-            body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
-            if (bodypropCount > 0)
+            var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
+            var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
+            var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
+            var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: true);
+            return new DeferredBodyAction<InsertMultipleDocumentsResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/action/insertMany";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
+                bodypropCount++;
+                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
+                bodypropCount++;
+                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
+                bodypropCount++;
+                body["documents"] = ExpressionConverter.ConvertO(__workflow_bodydocuments);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<InsertMultipleDocumentsResponse>(callPayload);
+                return new ApiConnectionAction<InsertMultipleDocumentsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         public IBodyWorkflowAction<FindMultipleDocumentsResponse> FindMultipleDocuments(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<int>> bodylimit = null, Expression<Func<int>> bodyskip = null)
         {
-            var apiCallPath = "/action/find";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
-            bodypropCount++;
-            body["database"] = ExpressionConverter.ConvertO(bodydatabase);
-            bodypropCount++;
-            body["collection"] = ExpressionConverter.ConvertO(bodycollection);
-            var filterObject = new JObject();
-            var filterObjectpropCount = 0;
-            if (filterObjectpropCount > 0)
+            var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
+            var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
+            var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyskip = WorkflowExpression.Compile(bodyskip, nameof(bodyskip), required: false);
+            return new DeferredBodyAction<FindMultipleDocumentsResponse>(() =>
             {
-                body["filter"] = filterObject;
+                var apiCallPath = "/action/find";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            var projectionObject = new JObject();
-            var projectionObjectpropCount = 0;
-            if (projectionObjectpropCount > 0)
-            {
-                body["projection"] = projectionObject;
+                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
                 bodypropCount++;
-            }
-
-            var sortObject = new JObject();
-            var sortObjectpropCount = 0;
-            if (sortObjectpropCount > 0)
-            {
-                body["sort"] = sortObject;
+                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
                 bodypropCount++;
-            }
+                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
+                var filterObject = new JObject();
+                var filterObjectpropCount = 0;
+                if (filterObjectpropCount > 0)
+                {
+                    body["filter"] = filterObject;
+                    bodypropCount++;
+                }
 
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+                var projectionObject = new JObject();
+                var projectionObjectpropCount = 0;
+                if (projectionObjectpropCount > 0)
+                {
+                    body["projection"] = projectionObject;
+                    bodypropCount++;
+                }
 
-            if (bodyskip != null)
-            {
-                body["skip"] = ExpressionConverter.ConvertO(bodyskip);
-                bodypropCount++;
-            }
+                var sortObject = new JObject();
+                var sortObjectpropCount = 0;
+                if (sortObjectpropCount > 0)
+                {
+                    body["sort"] = sortObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<FindMultipleDocumentsResponse>(callPayload);
+                if (__workflow_bodyskip != null)
+                {
+                    body["skip"] = ExpressionConverter.ConvertO(__workflow_bodyskip);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<FindMultipleDocumentsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         public IBodyWorkflowAction<UpdateMultipleDocumentsResponse> UpdateMultipleDocuments(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<bool>> bodyupsert = null)
         {
-            var apiCallPath = "/action/updateMany";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
-            bodypropCount++;
-            body["database"] = ExpressionConverter.ConvertO(bodydatabase);
-            bodypropCount++;
-            body["collection"] = ExpressionConverter.ConvertO(bodycollection);
-            var filterObject = new JObject();
-            var filterObjectpropCount = 0;
-            if (filterObjectpropCount > 0)
+            var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
+            var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
+            var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
+            var __workflow_bodyupsert = WorkflowExpression.Compile(bodyupsert, nameof(bodyupsert), required: false);
+            return new DeferredBodyAction<UpdateMultipleDocumentsResponse>(() =>
             {
-                body["filter"] = filterObject;
+                var apiCallPath = "/action/updateMany";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            var updateObject = new JObject();
-            var updateObjectpropCount = 0;
-            if (updateObjectpropCount > 0)
-            {
-                body["update"] = updateObject;
+                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
                 bodypropCount++;
-            }
-
-            if (bodyupsert != null)
-            {
-                body["upsert"] = ExpressionConverter.ConvertO(bodyupsert);
+                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
                 bodypropCount++;
-            }
+                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
+                var filterObject = new JObject();
+                var filterObjectpropCount = 0;
+                if (filterObjectpropCount > 0)
+                {
+                    body["filter"] = filterObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                var updateObject = new JObject();
+                var updateObjectpropCount = 0;
+                if (updateObjectpropCount > 0)
+                {
+                    body["update"] = updateObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<UpdateMultipleDocumentsResponse>(callPayload);
+                if (__workflow_bodyupsert != null)
+                {
+                    body["upsert"] = ExpressionConverter.ConvertO(__workflow_bodyupsert);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UpdateMultipleDocumentsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         public IBodyWorkflowAction<DeleteManyDocumentsResponse> DeleteManyDocuments(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection)
         {
-            var apiCallPath = "/action/deleteMany";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
-            bodypropCount++;
-            body["database"] = ExpressionConverter.ConvertO(bodydatabase);
-            bodypropCount++;
-            body["collection"] = ExpressionConverter.ConvertO(bodycollection);
-            var filterObject = new JObject();
-            var filterObjectpropCount = 0;
-            if (filterObjectpropCount > 0)
+            var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
+            var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
+            var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
+            return new DeferredBodyAction<DeleteManyDocumentsResponse>(() =>
             {
-                body["filter"] = filterObject;
+                var apiCallPath = "/action/deleteMany";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
+                bodypropCount++;
+                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
+                bodypropCount++;
+                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
+                var filterObject = new JObject();
+                var filterObjectpropCount = 0;
+                if (filterObjectpropCount > 0)
+                {
+                    body["filter"] = filterObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<DeleteManyDocumentsResponse>(callPayload);
+                return new ApiConnectionAction<DeleteManyDocumentsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
         public IBodyWorkflowAction<RunAggregationPipelineResponse> RunAggregationPipeline(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<JToken[]>> bodypipeline)
         {
-            var apiCallPath = "/action/aggregate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
-            bodypropCount++;
-            body["database"] = ExpressionConverter.ConvertO(bodydatabase);
-            bodypropCount++;
-            body["collection"] = ExpressionConverter.ConvertO(bodycollection);
-            bodypropCount++;
-            body["pipeline"] = ExpressionConverter.ConvertO(bodypipeline);
-            if (bodypropCount > 0)
+            var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
+            var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
+            var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
+            var __workflow_bodypipeline = WorkflowExpression.Compile(bodypipeline, nameof(bodypipeline), required: true);
+            return new DeferredBodyAction<RunAggregationPipelineResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/action/aggregate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Access-Control-Request-Headers"] = Convert.ToString("*");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["dataSource"] = ExpressionConverter.ConvertO(__workflow_bodydataSource);
+                bodypropCount++;
+                body["database"] = ExpressionConverter.ConvertO(__workflow_bodydatabase);
+                bodypropCount++;
+                body["collection"] = ExpressionConverter.ConvertO(__workflow_bodycollection);
+                bodypropCount++;
+                body["pipeline"] = ExpressionConverter.ConvertO(__workflow_bodypipeline);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<RunAggregationPipelineResponse>(callPayload);
+                return new ApiConnectionAction<RunAggregationPipelineResponse>(callPayload);
+            });
         }
     }
 

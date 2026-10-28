@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,214 +14,304 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetConversationsInboxesResponse> GetConversationsInboxes(Expression<Func<string>> after = null, Expression<Func<string>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> defaultPageLength = null)
         {
-            var apiCallPath = "/conversations/v3/conversations/inboxes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (defaultPageLength != null)
-                callPayload.Queries["defaultPageLength"] = ExpressionConverter.Convert(defaultPageLength);
-            return new ApiConnectionAction<GetConversationsInboxesResponse>(callPayload);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_defaultPageLength = WorkflowExpression.Compile(defaultPageLength, nameof(defaultPageLength), required: false);
+            return new DeferredBodyAction<GetConversationsInboxesResponse>(() =>
+            {
+                var apiCallPath = "/conversations/v3/conversations/inboxes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_defaultPageLength != null)
+                    callPayload.Queries["defaultPageLength"] = ExpressionConverter.Convert(__workflow_defaultPageLength);
+                return new ApiConnectionAction<GetConversationsInboxesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetASingleThreadResponse> GetASingleThread(Expression<Func<string>> threadId, Expression<Func<bool>> archived = null, Expression<Func<string>> property = null)
         {
-            var apiCallPath = String.Format("/conversations/v3/conversations/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (property != null)
-                callPayload.Queries["property"] = ExpressionConverter.Convert(property);
-            return new ApiConnectionAction<GetASingleThreadResponse>(callPayload);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_property = WorkflowExpression.Compile(property, nameof(property), required: false);
+            return new DeferredBodyAction<GetASingleThreadResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/conversations/threads/{0}", __workflow_threadId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                if (__workflow_property != null)
+                    callPayload.Queries["property"] = ExpressionConverter.Convert(__workflow_property);
+                return new ApiConnectionAction<GetASingleThreadResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<string> ArchivesAThread(Expression<Func<string>> threadId)
         {
-            var apiCallPath = String.Format("/conversations/v3/conversations/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/conversations/threads/{0}", __workflow_threadId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<UpdateAThreadResponse> UpdateAThread(Expression<Func<string>> threadId, Expression<Func<bool>> archived = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodyarchived = null)
         {
-            var apiCallPath = String.Format("/conversations/v3/conversations/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodystatus != null)
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodyarchived = WorkflowExpression.Compile(bodyarchived, nameof(bodyarchived), required: false);
+            return new DeferredBodyAction<UpdateAThreadResponse>(() =>
             {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/conversations/threads/{0}", __workflow_threadId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodystatus != null)
+                {
+                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
+                    bodypropCount++;
+                }
 
-            if (bodyarchived != null)
-            {
-                body["archived"] = ExpressionConverter.ConvertO(bodyarchived);
-                bodypropCount++;
-            }
+                if (__workflow_bodyarchived != null)
+                {
+                    body["archived"] = ExpressionConverter.ConvertO(__workflow_bodyarchived);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<UpdateAThreadResponse>(callPayload);
+                return new ApiConnectionAction<UpdateAThreadResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetTheOriginalContentOfASingleMessageResponse> GetTheOriginalContentOfASingleMessage(Expression<Func<string>> threadId, Expression<Func<string>> messageId, Expression<Func<string>> property = null)
         {
-            var apiCallPath = String.Format("/conversations/v3/conversations/threads/{0}/messages/{1}/original-content", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (property != null)
-                callPayload.Queries["property"] = ExpressionConverter.Convert(property);
-            return new ApiConnectionAction<GetTheOriginalContentOfASingleMessageResponse>(callPayload);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            var __workflow_property = WorkflowExpression.Compile(property, nameof(property), required: false);
+            return new DeferredBodyAction<GetTheOriginalContentOfASingleMessageResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/conversations/threads/{0}/messages/{1}/original-content", __workflow_threadId.WithUrlEncoding(1), __workflow_messageId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_property != null)
+                    callPayload.Queries["property"] = ExpressionConverter.Convert(__workflow_property);
+                return new ApiConnectionAction<GetTheOriginalContentOfASingleMessageResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetMessageHistoryForAThreadResponse> GetMessageHistoryForAThread(Expression<Func<string>> threadId, Expression<Func<string>> after = null, Expression<Func<string>> limit = null, Expression<Func<string>> sort = null, Expression<Func<bool>> archived = null, Expression<Func<string>> property = null)
         {
-            var apiCallPath = String.Format("/conversations/v3/conversations/threads/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (property != null)
-                callPayload.Queries["property"] = ExpressionConverter.Convert(property);
-            return new ApiConnectionAction<GetMessageHistoryForAThreadResponse>(callPayload);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_property = WorkflowExpression.Compile(property, nameof(property), required: false);
+            return new DeferredBodyAction<GetMessageHistoryForAThreadResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/conversations/threads/{0}/messages", __workflow_threadId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                if (__workflow_property != null)
+                    callPayload.Queries["property"] = ExpressionConverter.Convert(__workflow_property);
+                return new ApiConnectionAction<GetMessageHistoryForAThreadResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetChannelAccountsResponse> GetChannelAccounts(Expression<Func<string>> channelId = null, Expression<Func<string>> inboxId = null, Expression<Func<string>> after = null, Expression<Func<string>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> defaultPageLength = null)
         {
-            var apiCallPath = "/conversations/v3/conversations/channel-accounts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (channelId != null)
-                callPayload.Queries["channelId"] = ExpressionConverter.Convert(channelId);
-            if (inboxId != null)
-                callPayload.Queries["inboxId"] = ExpressionConverter.Convert(inboxId);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (defaultPageLength != null)
-                callPayload.Queries["defaultPageLength"] = ExpressionConverter.Convert(defaultPageLength);
-            return new ApiConnectionAction<GetChannelAccountsResponse>(callPayload);
+            var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: false);
+            var __workflow_inboxId = WorkflowExpression.Compile(inboxId, nameof(inboxId), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_defaultPageLength = WorkflowExpression.Compile(defaultPageLength, nameof(defaultPageLength), required: false);
+            return new DeferredBodyAction<GetChannelAccountsResponse>(() =>
+            {
+                var apiCallPath = "/conversations/v3/conversations/channel-accounts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_channelId != null)
+                    callPayload.Queries["channelId"] = ExpressionConverter.Convert(__workflow_channelId);
+                if (__workflow_inboxId != null)
+                    callPayload.Queries["inboxId"] = ExpressionConverter.Convert(__workflow_inboxId);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_defaultPageLength != null)
+                    callPayload.Queries["defaultPageLength"] = ExpressionConverter.Convert(__workflow_defaultPageLength);
+                return new ApiConnectionAction<GetChannelAccountsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetASingleChannelResponse> GetASingleChannel(Expression<Func<string>> channelId)
         {
-            var apiCallPath = String.Format("/conversations/v3/conversations/channels/{0}", ExpressionConverter.ConvertWithUrlEncoding(channelId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetASingleChannelResponse>(callPayload);
+            var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: true);
+            return new DeferredBodyAction<GetASingleChannelResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/conversations/channels/{0}", __workflow_channelId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetASingleChannelResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetASingleMessageResponse> GetASingleMessage(Expression<Func<string>> threadId, Expression<Func<string>> messageId, Expression<Func<string>> property = null)
         {
-            var apiCallPath = String.Format("/conversations/v3/conversations/threads/{0}/messages/{1}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (property != null)
-                callPayload.Queries["property"] = ExpressionConverter.Convert(property);
-            return new ApiConnectionAction<GetASingleMessageResponse>(callPayload);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            var __workflow_property = WorkflowExpression.Compile(property, nameof(property), required: false);
+            return new DeferredBodyAction<GetASingleMessageResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/conversations/threads/{0}/messages/{1}", __workflow_threadId.WithUrlEncoding(1), __workflow_messageId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_property != null)
+                    callPayload.Queries["property"] = ExpressionConverter.Convert(__workflow_property);
+                return new ApiConnectionAction<GetASingleMessageResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetChannelsResponse> GetChannels(Expression<Func<string>> after = null, Expression<Func<string>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> defaultPageLength = null)
         {
-            var apiCallPath = "/conversations/v3/conversations/channels";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (defaultPageLength != null)
-                callPayload.Queries["defaultPageLength"] = ExpressionConverter.Convert(defaultPageLength);
-            return new ApiConnectionAction<GetChannelsResponse>(callPayload);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_defaultPageLength = WorkflowExpression.Compile(defaultPageLength, nameof(defaultPageLength), required: false);
+            return new DeferredBodyAction<GetChannelsResponse>(() =>
+            {
+                var apiCallPath = "/conversations/v3/conversations/channels";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_defaultPageLength != null)
+                    callPayload.Queries["defaultPageLength"] = ExpressionConverter.Convert(__workflow_defaultPageLength);
+                return new ApiConnectionAction<GetChannelsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetASingleActorResponse> GetASingleActor(Expression<Func<string>> actorId, Expression<Func<string>> property = null)
         {
-            var apiCallPath = String.Format("/conversations/v3/conversations/actors/{0}", ExpressionConverter.ConvertWithUrlEncoding(actorId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (property != null)
-                callPayload.Queries["property"] = ExpressionConverter.Convert(property);
-            return new ApiConnectionAction<GetASingleActorResponse>(callPayload);
+            var __workflow_actorId = WorkflowExpression.Compile(actorId, nameof(actorId), required: true);
+            var __workflow_property = WorkflowExpression.Compile(property, nameof(property), required: false);
+            return new DeferredBodyAction<GetASingleActorResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/conversations/actors/{0}", __workflow_actorId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_property != null)
+                    callPayload.Queries["property"] = ExpressionConverter.Convert(__workflow_property);
+                return new ApiConnectionAction<GetASingleActorResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetThreadsResponse> GetThreads(Expression<Func<string>> after = null, Expression<Func<string>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> inboxId = null, Expression<Func<string>> associatedContactId = null, Expression<Func<string>> threadStatus = null, Expression<Func<string>> latestMessageTimestampAfter = null, Expression<Func<bool>> archived = null, Expression<Func<string>> property = null)
         {
-            var apiCallPath = "/conversations/v3/conversations/threads";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (inboxId != null)
-                callPayload.Queries["inboxId"] = ExpressionConverter.Convert(inboxId);
-            if (associatedContactId != null)
-                callPayload.Queries["associatedContactId"] = ExpressionConverter.Convert(associatedContactId);
-            if (threadStatus != null)
-                callPayload.Queries["threadStatus"] = ExpressionConverter.Convert(threadStatus);
-            if (latestMessageTimestampAfter != null)
-                callPayload.Queries["latestMessageTimestampAfter"] = ExpressionConverter.Convert(latestMessageTimestampAfter);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (property != null)
-                callPayload.Queries["property"] = ExpressionConverter.Convert(property);
-            return new ApiConnectionAction<GetThreadsResponse>(callPayload);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_inboxId = WorkflowExpression.Compile(inboxId, nameof(inboxId), required: false);
+            var __workflow_associatedContactId = WorkflowExpression.Compile(associatedContactId, nameof(associatedContactId), required: false);
+            var __workflow_threadStatus = WorkflowExpression.Compile(threadStatus, nameof(threadStatus), required: false);
+            var __workflow_latestMessageTimestampAfter = WorkflowExpression.Compile(latestMessageTimestampAfter, nameof(latestMessageTimestampAfter), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_property = WorkflowExpression.Compile(property, nameof(property), required: false);
+            return new DeferredBodyAction<GetThreadsResponse>(() =>
+            {
+                var apiCallPath = "/conversations/v3/conversations/threads";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_inboxId != null)
+                    callPayload.Queries["inboxId"] = ExpressionConverter.Convert(__workflow_inboxId);
+                if (__workflow_associatedContactId != null)
+                    callPayload.Queries["associatedContactId"] = ExpressionConverter.Convert(__workflow_associatedContactId);
+                if (__workflow_threadStatus != null)
+                    callPayload.Queries["threadStatus"] = ExpressionConverter.Convert(__workflow_threadStatus);
+                if (__workflow_latestMessageTimestampAfter != null)
+                    callPayload.Queries["latestMessageTimestampAfter"] = ExpressionConverter.Convert(__workflow_latestMessageTimestampAfter);
+                if (__workflow_archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
+                if (__workflow_property != null)
+                    callPayload.Queries["property"] = ExpressionConverter.Convert(__workflow_property);
+                return new ApiConnectionAction<GetThreadsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetASingleChannelAccountResponse> GetASingleChannelAccount(Expression<Func<string>> channelAccountId)
         {
-            var apiCallPath = String.Format("/conversations/v3/conversations/channel-accounts/{0}", ExpressionConverter.ConvertWithUrlEncoding(channelAccountId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetASingleChannelAccountResponse>(callPayload);
+            var __workflow_channelAccountId = WorkflowExpression.Compile(channelAccountId, nameof(channelAccountId), required: true);
+            return new DeferredBodyAction<GetASingleChannelAccountResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/conversations/channel-accounts/{0}", __workflow_channelAccountId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetASingleChannelAccountResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetASingleConversationsInboxResponse> GetASingleConversationsInbox(Expression<Func<string>> inboxId)
         {
-            var apiCallPath = String.Format("/conversations/v3/conversations/inboxes/{0}", ExpressionConverter.ConvertWithUrlEncoding(inboxId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetASingleConversationsInboxResponse>(callPayload);
+            var __workflow_inboxId = WorkflowExpression.Compile(inboxId, nameof(inboxId), required: true);
+            return new DeferredBodyAction<GetASingleConversationsInboxResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/conversations/inboxes/{0}", __workflow_inboxId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetASingleConversationsInboxResponse>(callPayload);
+            });
         }
     }
 

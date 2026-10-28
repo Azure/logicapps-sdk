@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Covid19jhucsseip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -77,19 +77,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Covid19jhucsseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "covid19jhucsseip")]
         public IBodyWorkflowAction<GetCountryV2CountryCountryNameGetResponse> GetCountryV2CountryCountryNameGet(Expression<Func<string>> countryName)
         {
-            var apiCallPath = String.Format("/v2/country/{0}", ExpressionConverter.ConvertWithUrlEncoding(countryName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetCountryV2CountryCountryNameGetResponse>(callPayload);
+            var __workflow_countryName = WorkflowExpression.Compile(countryName, nameof(countryName), required: true);
+            return new DeferredBodyAction<GetCountryV2CountryCountryNameGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/country/{0}", __workflow_countryName.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetCountryV2CountryCountryNameGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "covid19jhucsseip")]
         public IBodyWorkflowAction<GetTimeSeriesV2TimeseriesCaseGetResponse> GetTimeSeriesV2TimeseriesCaseGet(Expression<Func<string>> @case)
         {
-            var apiCallPath = String.Format("/v2/timeseries/{0}", ExpressionConverter.ConvertWithUrlEncoding(@case, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTimeSeriesV2TimeseriesCaseGetResponse>(callPayload);
+            var __workflow_case = WorkflowExpression.Compile(@case, nameof(@case), required: true);
+            return new DeferredBodyAction<GetTimeSeriesV2TimeseriesCaseGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/timeseries/{0}", __workflow_case.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetTimeSeriesV2TimeseriesCaseGetResponse>(callPayload);
+            });
         }
     }
 

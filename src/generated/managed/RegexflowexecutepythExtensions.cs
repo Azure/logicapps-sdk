@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Regexflowexecutepyth
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,11 +14,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Regexflowexecutepyth
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "regexflowexecutepyth")]
         public IBodyWorkflowAction<ExecutePythonResponse> ExecutePython(Expression<Func<string>> pythonCode = null)
         {
-            var apiCallPath = "/ExecutePython";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(pythonCode);
-            return new ApiConnectionAction<ExecutePythonResponse>(callPayload);
+            var __workflow_pythonCode = WorkflowExpression.Compile(pythonCode, nameof(pythonCode), required: false);
+            return new DeferredBodyAction<ExecutePythonResponse>(() =>
+            {
+                var apiCallPath = "/ExecutePython";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_pythonCode);
+                return new ApiConnectionAction<ExecutePythonResponse>(callPayload);
+            });
         }
     }
 

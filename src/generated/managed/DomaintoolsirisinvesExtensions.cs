@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,241 +14,346 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> ReverseIP(Expression<Func<string>> ip, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/reverse-ip/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ip"] = ExpressionConverter.Convert(ip);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            var __workflow_ip = WorkflowExpression.Compile(ip, nameof(ip), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/reverse-ip/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ip"] = ExpressionConverter.Convert(__workflow_ip);
+                if (__workflow_active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(__workflow_active);
+                if (__workflow_createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(__workflow_createDate);
+                if (__workflow_expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> PivotNameserverIP(Expression<Func<string>> nameserverIp, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/nameserver-ip";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["nameserver_ip"] = ExpressionConverter.Convert(nameserverIp);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            var __workflow_nameserverIp = WorkflowExpression.Compile(nameserverIp, nameof(nameserverIp), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/nameserver-ip";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["nameserver_ip"] = ExpressionConverter.Convert(__workflow_nameserverIp);
+                if (__workflow_active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(__workflow_active);
+                if (__workflow_createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(__workflow_createDate);
+                if (__workflow_expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> InvestigateDomain(Expression<Func<string>> domain, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/investigate_domain";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/investigate_domain";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["domain"] = ExpressionConverter.Convert(__workflow_domain);
+                if (__workflow_active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(__workflow_active);
+                if (__workflow_createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(__workflow_createDate);
+                if (__workflow_expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> PivotMXIP(Expression<Func<string>> mailserverIp, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/mx-ip";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["mailserver_ip"] = ExpressionConverter.Convert(mailserverIp);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            var __workflow_mailserverIp = WorkflowExpression.Compile(mailserverIp, nameof(mailserverIp), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/mx-ip";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["mailserver_ip"] = ExpressionConverter.Convert(__workflow_mailserverIp);
+                if (__workflow_active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(__workflow_active);
+                if (__workflow_createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(__workflow_createDate);
+                if (__workflow_expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> ReverseEmail(Expression<Func<string>> email, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/reverse-email";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email"] = ExpressionConverter.Convert(email);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/reverse-email";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["email"] = ExpressionConverter.Convert(__workflow_email);
+                if (__workflow_active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(__workflow_active);
+                if (__workflow_createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(__workflow_createDate);
+                if (__workflow_expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> LoadSearchHash(Expression<Func<string>> searchHash, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/search-hash";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["search_hash"] = ExpressionConverter.Convert(searchHash);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            var __workflow_searchHash = WorkflowExpression.Compile(searchHash, nameof(searchHash), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/search-hash";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["search_hash"] = ExpressionConverter.Convert(__workflow_searchHash);
+                if (__workflow_active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(__workflow_active);
+                if (__workflow_createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(__workflow_createDate);
+                if (__workflow_expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> PivotSSLHash(Expression<Func<string>> sslHash, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/ssl-hash";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ssl_hash"] = ExpressionConverter.Convert(sslHash);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            var __workflow_sslHash = WorkflowExpression.Compile(sslHash, nameof(sslHash), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/ssl-hash";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ssl_hash"] = ExpressionConverter.Convert(__workflow_sslHash);
+                if (__workflow_active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(__workflow_active);
+                if (__workflow_createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(__workflow_createDate);
+                if (__workflow_expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> PivotRegistrantOrg(Expression<Func<string>> registrantOrg, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/registrant-org";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["registrant_org"] = ExpressionConverter.Convert(registrantOrg);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            var __workflow_registrantOrg = WorkflowExpression.Compile(registrantOrg, nameof(registrantOrg), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/registrant-org";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["registrant_org"] = ExpressionConverter.Convert(__workflow_registrantOrg);
+                if (__workflow_active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(__workflow_active);
+                if (__workflow_createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(__workflow_createDate);
+                if (__workflow_expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> PivotRegistrantName(Expression<Func<string>> registrant, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/registrant";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["registrant"] = ExpressionConverter.Convert(registrant);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            var __workflow_registrant = WorkflowExpression.Compile(registrant, nameof(registrant), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/registrant";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["registrant"] = ExpressionConverter.Convert(__workflow_registrant);
+                if (__workflow_active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(__workflow_active);
+                if (__workflow_createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(__workflow_createDate);
+                if (__workflow_expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> ReverseEmailDomain(Expression<Func<string>> emailDomain, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/email-domain";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email_domain"] = ExpressionConverter.Convert(emailDomain);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            var __workflow_emailDomain = WorkflowExpression.Compile(emailDomain, nameof(emailDomain), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/email-domain";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["email_domain"] = ExpressionConverter.Convert(__workflow_emailDomain);
+                if (__workflow_active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(__workflow_active);
+                if (__workflow_createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(__workflow_createDate);
+                if (__workflow_expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> PivotSSLEmail(Expression<Func<string>> sslEmail, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/ssl-email/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ssl_email"] = ExpressionConverter.Convert(sslEmail);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            var __workflow_sslEmail = WorkflowExpression.Compile(sslEmail, nameof(sslEmail), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/ssl-email/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ssl_email"] = ExpressionConverter.Convert(__workflow_sslEmail);
+                if (__workflow_active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(__workflow_active);
+                if (__workflow_createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(__workflow_createDate);
+                if (__workflow_expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> PivotNameserverHost(Expression<Func<string>> nameserverHost, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/nameserver-host/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["nameserver_host"] = ExpressionConverter.Convert(nameserverHost);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            var __workflow_nameserverHost = WorkflowExpression.Compile(nameserverHost, nameof(nameserverHost), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/nameserver-host/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["nameserver_host"] = ExpressionConverter.Convert(__workflow_nameserverHost);
+                if (__workflow_active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(__workflow_active);
+                if (__workflow_createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(__workflow_createDate);
+                if (__workflow_expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> PivotMXHost(Expression<Func<string>> mailserverHost, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/mailserver-host/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["mailserver_host"] = ExpressionConverter.Convert(mailserverHost);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            var __workflow_mailserverHost = WorkflowExpression.Compile(mailserverHost, nameof(mailserverHost), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/mailserver-host/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["mailserver_host"] = ExpressionConverter.Convert(__workflow_mailserverHost);
+                if (__workflow_active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(__workflow_active);
+                if (__workflow_createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(__workflow_createDate);
+                if (__workflow_expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> ReturnTaggedAny(Expression<Func<string>> taggedWithAny, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/tagged-any/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["tagged_with_any"] = ExpressionConverter.Convert(taggedWithAny);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            var __workflow_taggedWithAny = WorkflowExpression.Compile(taggedWithAny, nameof(taggedWithAny), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/tagged-any/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["tagged_with_any"] = ExpressionConverter.Convert(__workflow_taggedWithAny);
+                if (__workflow_active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(__workflow_active);
+                if (__workflow_createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(__workflow_createDate);
+                if (__workflow_expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> ReturnTaggedAll(Expression<Func<string>> taggedWithAll, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/tagged-all/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["tagged_with_all"] = ExpressionConverter.Convert(taggedWithAll);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            var __workflow_taggedWithAll = WorkflowExpression.Compile(taggedWithAll, nameof(taggedWithAll), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/tagged-all/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["tagged_with_all"] = ExpressionConverter.Convert(__workflow_taggedWithAll);
+                if (__workflow_active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(__workflow_active);
+                if (__workflow_createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(__workflow_createDate);
+                if (__workflow_expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(__workflow_expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]

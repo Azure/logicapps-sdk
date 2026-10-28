@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lassox
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,23 +14,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lassox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lassox")]
         public IWorkflowAction ActivateUser(Expression<Func<productInput>> product, Expression<Func<string>> productUserId)
         {
-            var apiCallPath = "/users/activatefromproduct";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Product"] = ExpressionConverter.Convert(product);
-            callPayload.Queries["ProductUserId"] = ExpressionConverter.Convert(productUserId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_product = WorkflowExpression.Compile(product, nameof(product), required: true);
+            var __workflow_productUserId = WorkflowExpression.Compile(productUserId, nameof(productUserId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/users/activatefromproduct";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Product"] = ExpressionConverter.Convert(__workflow_product);
+                callPayload.Queries["ProductUserId"] = ExpressionConverter.Convert(__workflow_productUserId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lassox")]
         public IWorkflowAction DeactivateUser(Expression<Func<productInput>> product, Expression<Func<string>> productUserId)
         {
-            var apiCallPath = "/users/deactivatefromproduct";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Product"] = ExpressionConverter.Convert(product);
-            callPayload.Queries["ProductUserId"] = ExpressionConverter.Convert(productUserId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_product = WorkflowExpression.Compile(product, nameof(product), required: true);
+            var __workflow_productUserId = WorkflowExpression.Compile(productUserId, nameof(productUserId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/users/deactivatefromproduct";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Product"] = ExpressionConverter.Convert(__workflow_product);
+                callPayload.Queries["ProductUserId"] = ExpressionConverter.Convert(__workflow_productUserId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 
@@ -38,6 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lassox
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum productInput
     {
         [EnumMember(Value = "dynamicscrm")]

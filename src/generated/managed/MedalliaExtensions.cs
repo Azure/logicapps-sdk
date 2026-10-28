@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Medallia
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,39 +14,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Medallia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "medallia")]
         public IWorkflowAction TriggerInvitation(Expression<Func<string>> service, Expression<Func<string>> instanceURL)
         {
-            var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(service, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Instance-URL"] = ExpressionConverter.Convert(instanceURL);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            var __workflow_service = WorkflowExpression.Compile(service, nameof(service), required: true);
+            var __workflow_instanceURL = WorkflowExpression.Compile(instanceURL, nameof(instanceURL), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_service.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Instance-URL"] = ExpressionConverter.Convert(__workflow_instanceURL);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "medallia")]
         public IWorkflowAction SendExperienceSignals(Expression<Func<string>> service, Expression<Func<string>> instanceURL)
         {
-            var apiCallPath = String.Format("/inbound/v1/{0}", ExpressionConverter.ConvertWithUrlEncoding(service, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Instance-URL"] = ExpressionConverter.Convert(instanceURL);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            var __workflow_service = WorkflowExpression.Compile(service, nameof(service), required: true);
+            var __workflow_instanceURL = WorkflowExpression.Compile(instanceURL, nameof(instanceURL), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/inbound/v1/{0}", __workflow_service.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Instance-URL"] = ExpressionConverter.Convert(__workflow_instanceURL);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

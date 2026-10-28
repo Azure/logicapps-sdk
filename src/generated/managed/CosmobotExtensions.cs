@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,519 +23,629 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<AskQuestionResponse> AskQuestion(Expression<Func<string>> requestBodyquestion, Expression<Func<int>> requestBodyscoreThreshold = null, Expression<Func<string>> requestBodyuserEmail = null)
         {
-            var apiCallPath = "/ask";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBodypropCount++;
-            requestBody["question"] = ExpressionConverter.ConvertO(requestBodyquestion);
-            if (requestBodyscoreThreshold != null)
+            var __workflow_requestBodyquestion = WorkflowExpression.Compile(requestBodyquestion, nameof(requestBodyquestion), required: true);
+            var __workflow_requestBodyscoreThreshold = WorkflowExpression.Compile(requestBodyscoreThreshold, nameof(requestBodyscoreThreshold), required: false);
+            var __workflow_requestBodyuserEmail = WorkflowExpression.Compile(requestBodyuserEmail, nameof(requestBodyuserEmail), required: false);
+            return new DeferredBodyAction<AskQuestionResponse>(() =>
             {
-                requestBody["scoreThreshold"] = ExpressionConverter.ConvertO(requestBodyscoreThreshold);
+                var apiCallPath = "/ask";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
                 requestBodypropCount++;
-            }
+                requestBody["question"] = ExpressionConverter.ConvertO(__workflow_requestBodyquestion);
+                if (__workflow_requestBodyscoreThreshold != null)
+                {
+                    requestBody["scoreThreshold"] = ExpressionConverter.ConvertO(__workflow_requestBodyscoreThreshold);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodyuserEmail != null)
-            {
-                requestBody["userEmail"] = ExpressionConverter.ConvertO(requestBodyuserEmail);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodyuserEmail != null)
+                {
+                    requestBody["userEmail"] = ExpressionConverter.ConvertO(__workflow_requestBodyuserEmail);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodypropCount > 0)
-            {
-                callPayload.Body = requestBody;
-            }
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            return new ApiConnectionAction<AskQuestionResponse>(callPayload);
+                return new ApiConnectionAction<AskQuestionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<ParseTextResponse> ParseText(Expression<Func<string>> requestBodyinputText, Expression<Func<requestBodyoutputFormatInput>> requestBodyoutputFormat)
         {
-            var apiCallPath = "/parse";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBodypropCount++;
-            requestBody["inputText"] = ExpressionConverter.ConvertO(requestBodyinputText);
-            requestBodypropCount++;
-            requestBody["outputFormat"] = ExpressionConverter.ConvertO(requestBodyoutputFormat);
-            if (requestBodypropCount > 0)
+            var __workflow_requestBodyinputText = WorkflowExpression.Compile(requestBodyinputText, nameof(requestBodyinputText), required: true);
+            var __workflow_requestBodyoutputFormat = WorkflowExpression.Compile(requestBodyoutputFormat, nameof(requestBodyoutputFormat), required: true);
+            return new DeferredBodyAction<ParseTextResponse>(() =>
             {
-                callPayload.Body = requestBody;
-            }
+                var apiCallPath = "/parse";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                requestBodypropCount++;
+                requestBody["inputText"] = ExpressionConverter.ConvertO(__workflow_requestBodyinputText);
+                requestBodypropCount++;
+                requestBody["outputFormat"] = ExpressionConverter.ConvertO(__workflow_requestBodyoutputFormat);
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            return new ApiConnectionAction<ParseTextResponse>(callPayload);
+                return new ApiConnectionAction<ParseTextResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<TranslateResponse> Translate(Expression<Func<string>> requestBodytargetLanguageCode, Expression<Func<string>> requestBodyinputText)
         {
-            var apiCallPath = "/translate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBodypropCount++;
-            requestBody["targetLanguageCode"] = ExpressionConverter.ConvertO(requestBodytargetLanguageCode);
-            requestBodypropCount++;
-            requestBody["inputText"] = ExpressionConverter.ConvertO(requestBodyinputText);
-            if (requestBodypropCount > 0)
+            var __workflow_requestBodytargetLanguageCode = WorkflowExpression.Compile(requestBodytargetLanguageCode, nameof(requestBodytargetLanguageCode), required: true);
+            var __workflow_requestBodyinputText = WorkflowExpression.Compile(requestBodyinputText, nameof(requestBodyinputText), required: true);
+            return new DeferredBodyAction<TranslateResponse>(() =>
             {
-                callPayload.Body = requestBody;
-            }
+                var apiCallPath = "/translate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                requestBodypropCount++;
+                requestBody["targetLanguageCode"] = ExpressionConverter.ConvertO(__workflow_requestBodytargetLanguageCode);
+                requestBodypropCount++;
+                requestBody["inputText"] = ExpressionConverter.ConvertO(__workflow_requestBodyinputText);
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            return new ApiConnectionAction<TranslateResponse>(callPayload);
+                return new ApiConnectionAction<TranslateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<GetAllTopicsResponse> GetAllTopics(Expression<Func<string>> filterByExpert = null)
         {
-            var apiCallPath = "/get-all-topics";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filterByExpert != null)
-                callPayload.Queries["filterByExpert"] = ExpressionConverter.Convert(filterByExpert);
-            return new ApiConnectionAction<GetAllTopicsResponse>(callPayload);
+            var __workflow_filterByExpert = WorkflowExpression.Compile(filterByExpert, nameof(filterByExpert), required: false);
+            return new DeferredBodyAction<GetAllTopicsResponse>(() =>
+            {
+                var apiCallPath = "/get-all-topics";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_filterByExpert != null)
+                    callPayload.Queries["filterByExpert"] = ExpressionConverter.Convert(__workflow_filterByExpert);
+                return new ApiConnectionAction<GetAllTopicsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<GetTopicResponse> GetTopic(Expression<Func<string>> topicName)
         {
-            var apiCallPath = "/get-topic";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["topicName"] = ExpressionConverter.Convert(topicName);
-            return new ApiConnectionAction<GetTopicResponse>(callPayload);
+            var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
+            return new DeferredBodyAction<GetTopicResponse>(() =>
+            {
+                var apiCallPath = "/get-topic";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["topicName"] = ExpressionConverter.Convert(__workflow_topicName);
+                return new ApiConnectionAction<GetTopicResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<GetAllAnswersResponse> GetAllAnswers(Expression<Func<string>> filterByTopic = null, Expression<Func<string>> filterByShortDescription = null, Expression<Func<string>> filterByQuestionText = null, Expression<Func<string>> filterByAnswerText = null)
         {
-            var apiCallPath = "/get-all-answers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filterByTopic != null)
-                callPayload.Queries["filterByTopic"] = ExpressionConverter.Convert(filterByTopic);
-            if (filterByShortDescription != null)
-                callPayload.Queries["filterByShortDescription"] = ExpressionConverter.Convert(filterByShortDescription);
-            if (filterByQuestionText != null)
-                callPayload.Queries["filterByQuestionText"] = ExpressionConverter.Convert(filterByQuestionText);
-            if (filterByAnswerText != null)
-                callPayload.Queries["filterByAnswerText"] = ExpressionConverter.Convert(filterByAnswerText);
-            return new ApiConnectionAction<GetAllAnswersResponse>(callPayload);
+            var __workflow_filterByTopic = WorkflowExpression.Compile(filterByTopic, nameof(filterByTopic), required: false);
+            var __workflow_filterByShortDescription = WorkflowExpression.Compile(filterByShortDescription, nameof(filterByShortDescription), required: false);
+            var __workflow_filterByQuestionText = WorkflowExpression.Compile(filterByQuestionText, nameof(filterByQuestionText), required: false);
+            var __workflow_filterByAnswerText = WorkflowExpression.Compile(filterByAnswerText, nameof(filterByAnswerText), required: false);
+            return new DeferredBodyAction<GetAllAnswersResponse>(() =>
+            {
+                var apiCallPath = "/get-all-answers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_filterByTopic != null)
+                    callPayload.Queries["filterByTopic"] = ExpressionConverter.Convert(__workflow_filterByTopic);
+                if (__workflow_filterByShortDescription != null)
+                    callPayload.Queries["filterByShortDescription"] = ExpressionConverter.Convert(__workflow_filterByShortDescription);
+                if (__workflow_filterByQuestionText != null)
+                    callPayload.Queries["filterByQuestionText"] = ExpressionConverter.Convert(__workflow_filterByQuestionText);
+                if (__workflow_filterByAnswerText != null)
+                    callPayload.Queries["filterByAnswerText"] = ExpressionConverter.Convert(__workflow_filterByAnswerText);
+                return new ApiConnectionAction<GetAllAnswersResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<GetExpertsResponse> GetExperts(Expression<Func<string>> topic)
         {
-            var apiCallPath = "/get-experts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["topic"] = ExpressionConverter.Convert(topic);
-            return new ApiConnectionAction<GetExpertsResponse>(callPayload);
+            var __workflow_topic = WorkflowExpression.Compile(topic, nameof(topic), required: true);
+            return new DeferredBodyAction<GetExpertsResponse>(() =>
+            {
+                var apiCallPath = "/get-experts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["topic"] = ExpressionConverter.Convert(__workflow_topic);
+                return new ApiConnectionAction<GetExpertsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction AddExpert(Expression<Func<string>> requestBodytopic, Expression<Func<string>> requestBodyexpertEmail)
         {
-            var apiCallPath = "/add-expert";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBodypropCount++;
-            requestBody["topic"] = ExpressionConverter.ConvertO(requestBodytopic);
-            requestBodypropCount++;
-            requestBody["expertEmail"] = ExpressionConverter.ConvertO(requestBodyexpertEmail);
-            if (requestBodypropCount > 0)
+            var __workflow_requestBodytopic = WorkflowExpression.Compile(requestBodytopic, nameof(requestBodytopic), required: true);
+            var __workflow_requestBodyexpertEmail = WorkflowExpression.Compile(requestBodyexpertEmail, nameof(requestBodyexpertEmail), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = requestBody;
-            }
+                var apiCallPath = "/add-expert";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                requestBodypropCount++;
+                requestBody["topic"] = ExpressionConverter.ConvertO(__workflow_requestBodytopic);
+                requestBodypropCount++;
+                requestBody["expertEmail"] = ExpressionConverter.ConvertO(__workflow_requestBodyexpertEmail);
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction RemoveExpert(Expression<Func<string>> requestBodyexpertEmail, Expression<Func<string>> requestBodytopic = null)
         {
-            var apiCallPath = "/remove-expert";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBodypropCount++;
-            requestBody["expertEmail"] = ExpressionConverter.ConvertO(requestBodyexpertEmail);
-            if (requestBodytopic != null)
+            var __workflow_requestBodyexpertEmail = WorkflowExpression.Compile(requestBodyexpertEmail, nameof(requestBodyexpertEmail), required: true);
+            var __workflow_requestBodytopic = WorkflowExpression.Compile(requestBodytopic, nameof(requestBodytopic), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                requestBody["topic"] = ExpressionConverter.ConvertO(requestBodytopic);
+                var apiCallPath = "/remove-expert";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
                 requestBodypropCount++;
-            }
+                requestBody["expertEmail"] = ExpressionConverter.ConvertO(__workflow_requestBodyexpertEmail);
+                if (__workflow_requestBodytopic != null)
+                {
+                    requestBody["topic"] = ExpressionConverter.ConvertO(__workflow_requestBodytopic);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodypropCount > 0)
-            {
-                callPayload.Body = requestBody;
-            }
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction AddTopic(Expression<Func<string>> requestBodyname, Expression<Func<string>> requestBodydescription, Expression<Func<string[]>> requestBodyexpertEmails)
         {
-            var apiCallPath = "/add-topic";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBodypropCount++;
-            requestBody["name"] = ExpressionConverter.ConvertO(requestBodyname);
-            requestBodypropCount++;
-            requestBody["description"] = ExpressionConverter.ConvertO(requestBodydescription);
-            requestBodypropCount++;
-            requestBody["expertEmails"] = ExpressionConverter.ConvertO(requestBodyexpertEmails);
-            if (requestBodypropCount > 0)
+            var __workflow_requestBodyname = WorkflowExpression.Compile(requestBodyname, nameof(requestBodyname), required: true);
+            var __workflow_requestBodydescription = WorkflowExpression.Compile(requestBodydescription, nameof(requestBodydescription), required: true);
+            var __workflow_requestBodyexpertEmails = WorkflowExpression.Compile(requestBodyexpertEmails, nameof(requestBodyexpertEmails), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = requestBody;
-            }
+                var apiCallPath = "/add-topic";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                requestBodypropCount++;
+                requestBody["name"] = ExpressionConverter.ConvertO(__workflow_requestBodyname);
+                requestBodypropCount++;
+                requestBody["description"] = ExpressionConverter.ConvertO(__workflow_requestBodydescription);
+                requestBodypropCount++;
+                requestBody["expertEmails"] = ExpressionConverter.ConvertO(__workflow_requestBodyexpertEmails);
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction RenameTopic(Expression<Func<string>> requestBodyname, Expression<Func<string>> requestBodynewName)
         {
-            var apiCallPath = "/rename-topic";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBodypropCount++;
-            requestBody["name"] = ExpressionConverter.ConvertO(requestBodyname);
-            requestBodypropCount++;
-            requestBody["newName"] = ExpressionConverter.ConvertO(requestBodynewName);
-            if (requestBodypropCount > 0)
+            var __workflow_requestBodyname = WorkflowExpression.Compile(requestBodyname, nameof(requestBodyname), required: true);
+            var __workflow_requestBodynewName = WorkflowExpression.Compile(requestBodynewName, nameof(requestBodynewName), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = requestBody;
-            }
+                var apiCallPath = "/rename-topic";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                requestBodypropCount++;
+                requestBody["name"] = ExpressionConverter.ConvertO(__workflow_requestBodyname);
+                requestBodypropCount++;
+                requestBody["newName"] = ExpressionConverter.ConvertO(__workflow_requestBodynewName);
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction AddAnswer(Expression<Func<string>> requestBodytopic, Expression<Func<string>> requestBodyshortDescription, Expression<Func<string[]>> requestBodyquestions, Expression<Func<string>> requestBodyanswerText, Expression<Func<string>> requestBodyuserEmail = null)
         {
-            var apiCallPath = "/add-answer";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBodypropCount++;
-            requestBody["topic"] = ExpressionConverter.ConvertO(requestBodytopic);
-            requestBodypropCount++;
-            requestBody["shortDescription"] = ExpressionConverter.ConvertO(requestBodyshortDescription);
-            requestBodypropCount++;
-            requestBody["questions"] = ExpressionConverter.ConvertO(requestBodyquestions);
-            requestBodypropCount++;
-            requestBody["answerText"] = ExpressionConverter.ConvertO(requestBodyanswerText);
-            if (requestBodyuserEmail != null)
+            var __workflow_requestBodytopic = WorkflowExpression.Compile(requestBodytopic, nameof(requestBodytopic), required: true);
+            var __workflow_requestBodyshortDescription = WorkflowExpression.Compile(requestBodyshortDescription, nameof(requestBodyshortDescription), required: true);
+            var __workflow_requestBodyquestions = WorkflowExpression.Compile(requestBodyquestions, nameof(requestBodyquestions), required: true);
+            var __workflow_requestBodyanswerText = WorkflowExpression.Compile(requestBodyanswerText, nameof(requestBodyanswerText), required: true);
+            var __workflow_requestBodyuserEmail = WorkflowExpression.Compile(requestBodyuserEmail, nameof(requestBodyuserEmail), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                requestBody["userEmail"] = ExpressionConverter.ConvertO(requestBodyuserEmail);
+                var apiCallPath = "/add-answer";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
                 requestBodypropCount++;
-            }
+                requestBody["topic"] = ExpressionConverter.ConvertO(__workflow_requestBodytopic);
+                requestBodypropCount++;
+                requestBody["shortDescription"] = ExpressionConverter.ConvertO(__workflow_requestBodyshortDescription);
+                requestBodypropCount++;
+                requestBody["questions"] = ExpressionConverter.ConvertO(__workflow_requestBodyquestions);
+                requestBodypropCount++;
+                requestBody["answerText"] = ExpressionConverter.ConvertO(__workflow_requestBodyanswerText);
+                if (__workflow_requestBodyuserEmail != null)
+                {
+                    requestBody["userEmail"] = ExpressionConverter.ConvertO(__workflow_requestBodyuserEmail);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodypropCount > 0)
-            {
-                callPayload.Body = requestBody;
-            }
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction EditAnswer(Expression<Func<string>> requestBodyshortDescription, Expression<Func<string>> requestBodynewTopic = null, Expression<Func<string>> requestBodynewShortDescription = null, Expression<Func<string[]>> requestBodynewQuestions = null, Expression<Func<string>> requestBodynewAnswerText = null, Expression<Func<string>> requestBodyuserEmail = null)
         {
-            var apiCallPath = "/edit-answer";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBodypropCount++;
-            requestBody["shortDescription"] = ExpressionConverter.ConvertO(requestBodyshortDescription);
-            if (requestBodynewTopic != null)
+            var __workflow_requestBodyshortDescription = WorkflowExpression.Compile(requestBodyshortDescription, nameof(requestBodyshortDescription), required: true);
+            var __workflow_requestBodynewTopic = WorkflowExpression.Compile(requestBodynewTopic, nameof(requestBodynewTopic), required: false);
+            var __workflow_requestBodynewShortDescription = WorkflowExpression.Compile(requestBodynewShortDescription, nameof(requestBodynewShortDescription), required: false);
+            var __workflow_requestBodynewQuestions = WorkflowExpression.Compile(requestBodynewQuestions, nameof(requestBodynewQuestions), required: false);
+            var __workflow_requestBodynewAnswerText = WorkflowExpression.Compile(requestBodynewAnswerText, nameof(requestBodynewAnswerText), required: false);
+            var __workflow_requestBodyuserEmail = WorkflowExpression.Compile(requestBodyuserEmail, nameof(requestBodyuserEmail), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                requestBody["newTopic"] = ExpressionConverter.ConvertO(requestBodynewTopic);
+                var apiCallPath = "/edit-answer";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
                 requestBodypropCount++;
-            }
+                requestBody["shortDescription"] = ExpressionConverter.ConvertO(__workflow_requestBodyshortDescription);
+                if (__workflow_requestBodynewTopic != null)
+                {
+                    requestBody["newTopic"] = ExpressionConverter.ConvertO(__workflow_requestBodynewTopic);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodynewShortDescription != null)
-            {
-                requestBody["newShortDescription"] = ExpressionConverter.ConvertO(requestBodynewShortDescription);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodynewShortDescription != null)
+                {
+                    requestBody["newShortDescription"] = ExpressionConverter.ConvertO(__workflow_requestBodynewShortDescription);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodynewQuestions != null)
-            {
-                requestBody["newQuestions"] = ExpressionConverter.ConvertO(requestBodynewQuestions);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodynewQuestions != null)
+                {
+                    requestBody["newQuestions"] = ExpressionConverter.ConvertO(__workflow_requestBodynewQuestions);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodynewAnswerText != null)
-            {
-                requestBody["newAnswerText"] = ExpressionConverter.ConvertO(requestBodynewAnswerText);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodynewAnswerText != null)
+                {
+                    requestBody["newAnswerText"] = ExpressionConverter.ConvertO(__workflow_requestBodynewAnswerText);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodyuserEmail != null)
-            {
-                requestBody["userEmail"] = ExpressionConverter.ConvertO(requestBodyuserEmail);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodyuserEmail != null)
+                {
+                    requestBody["userEmail"] = ExpressionConverter.ConvertO(__workflow_requestBodyuserEmail);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodypropCount > 0)
-            {
-                callPayload.Body = requestBody;
-            }
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction DeleteAnswer(Expression<Func<string>> requestBodyshortDescription)
         {
-            var apiCallPath = "/delete-answer";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBodypropCount++;
-            requestBody["shortDescription"] = ExpressionConverter.ConvertO(requestBodyshortDescription);
-            if (requestBodypropCount > 0)
+            var __workflow_requestBodyshortDescription = WorkflowExpression.Compile(requestBodyshortDescription, nameof(requestBodyshortDescription), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = requestBody;
-            }
+                var apiCallPath = "/delete-answer";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                requestBodypropCount++;
+                requestBody["shortDescription"] = ExpressionConverter.ConvertO(__workflow_requestBodyshortDescription);
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction AddSubAnswer(Expression<Func<string>> requestBodyshortDescription, Expression<Func<string>> requestBodysubShortDescription, Expression<Func<string[]>> requestBodysubQuestions, Expression<Func<string>> requestBodysubAnswerText)
         {
-            var apiCallPath = "/add-subanswer";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBodypropCount++;
-            requestBody["shortDescription"] = ExpressionConverter.ConvertO(requestBodyshortDescription);
-            requestBodypropCount++;
-            requestBody["subShortDescription"] = ExpressionConverter.ConvertO(requestBodysubShortDescription);
-            requestBodypropCount++;
-            requestBody["subQuestions"] = ExpressionConverter.ConvertO(requestBodysubQuestions);
-            requestBodypropCount++;
-            requestBody["subAnswerText"] = ExpressionConverter.ConvertO(requestBodysubAnswerText);
-            if (requestBodypropCount > 0)
+            var __workflow_requestBodyshortDescription = WorkflowExpression.Compile(requestBodyshortDescription, nameof(requestBodyshortDescription), required: true);
+            var __workflow_requestBodysubShortDescription = WorkflowExpression.Compile(requestBodysubShortDescription, nameof(requestBodysubShortDescription), required: true);
+            var __workflow_requestBodysubQuestions = WorkflowExpression.Compile(requestBodysubQuestions, nameof(requestBodysubQuestions), required: true);
+            var __workflow_requestBodysubAnswerText = WorkflowExpression.Compile(requestBodysubAnswerText, nameof(requestBodysubAnswerText), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = requestBody;
-            }
+                var apiCallPath = "/add-subanswer";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                requestBodypropCount++;
+                requestBody["shortDescription"] = ExpressionConverter.ConvertO(__workflow_requestBodyshortDescription);
+                requestBodypropCount++;
+                requestBody["subShortDescription"] = ExpressionConverter.ConvertO(__workflow_requestBodysubShortDescription);
+                requestBodypropCount++;
+                requestBody["subQuestions"] = ExpressionConverter.ConvertO(__workflow_requestBodysubQuestions);
+                requestBodypropCount++;
+                requestBody["subAnswerText"] = ExpressionConverter.ConvertO(__workflow_requestBodysubAnswerText);
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<GetOpenTicketsResponse> GetOpenTickets(Expression<Func<int>> filterByHoursSinceOpened = null, Expression<Func<int>> filterByHoursSinceOpenedMax = null, Expression<Func<string>> filterByTopic = null, Expression<Func<string>> filterByExpertEmail = null)
         {
-            var apiCallPath = "/get-tickets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filterByHoursSinceOpened != null)
-                callPayload.Queries["filterByHoursSinceOpened"] = ExpressionConverter.Convert(filterByHoursSinceOpened);
-            if (filterByHoursSinceOpenedMax != null)
-                callPayload.Queries["filterByHoursSinceOpenedMax"] = ExpressionConverter.Convert(filterByHoursSinceOpenedMax);
-            if (filterByTopic != null)
-                callPayload.Queries["filterByTopic"] = ExpressionConverter.Convert(filterByTopic);
-            if (filterByExpertEmail != null)
-                callPayload.Queries["filterByExpertEmail"] = ExpressionConverter.Convert(filterByExpertEmail);
-            return new ApiConnectionAction<GetOpenTicketsResponse>(callPayload);
+            var __workflow_filterByHoursSinceOpened = WorkflowExpression.Compile(filterByHoursSinceOpened, nameof(filterByHoursSinceOpened), required: false);
+            var __workflow_filterByHoursSinceOpenedMax = WorkflowExpression.Compile(filterByHoursSinceOpenedMax, nameof(filterByHoursSinceOpenedMax), required: false);
+            var __workflow_filterByTopic = WorkflowExpression.Compile(filterByTopic, nameof(filterByTopic), required: false);
+            var __workflow_filterByExpertEmail = WorkflowExpression.Compile(filterByExpertEmail, nameof(filterByExpertEmail), required: false);
+            return new DeferredBodyAction<GetOpenTicketsResponse>(() =>
+            {
+                var apiCallPath = "/get-tickets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_filterByHoursSinceOpened != null)
+                    callPayload.Queries["filterByHoursSinceOpened"] = ExpressionConverter.Convert(__workflow_filterByHoursSinceOpened);
+                if (__workflow_filterByHoursSinceOpenedMax != null)
+                    callPayload.Queries["filterByHoursSinceOpenedMax"] = ExpressionConverter.Convert(__workflow_filterByHoursSinceOpenedMax);
+                if (__workflow_filterByTopic != null)
+                    callPayload.Queries["filterByTopic"] = ExpressionConverter.Convert(__workflow_filterByTopic);
+                if (__workflow_filterByExpertEmail != null)
+                    callPayload.Queries["filterByExpertEmail"] = ExpressionConverter.Convert(__workflow_filterByExpertEmail);
+                return new ApiConnectionAction<GetOpenTicketsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<OpenTicketQuestionResponse> OpenTicketQuestion(Expression<Func<string>> requestBodyuserEmail, Expression<Func<string>> requestBodyqueryText, Expression<Func<string>> requestBodytopic = null)
         {
-            var apiCallPath = "/open-ticket-question";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBodypropCount++;
-            requestBody["userEmail"] = ExpressionConverter.ConvertO(requestBodyuserEmail);
-            requestBodypropCount++;
-            requestBody["queryText"] = ExpressionConverter.ConvertO(requestBodyqueryText);
-            if (requestBodytopic != null)
+            var __workflow_requestBodyuserEmail = WorkflowExpression.Compile(requestBodyuserEmail, nameof(requestBodyuserEmail), required: true);
+            var __workflow_requestBodyqueryText = WorkflowExpression.Compile(requestBodyqueryText, nameof(requestBodyqueryText), required: true);
+            var __workflow_requestBodytopic = WorkflowExpression.Compile(requestBodytopic, nameof(requestBodytopic), required: false);
+            return new DeferredBodyAction<OpenTicketQuestionResponse>(() =>
             {
-                requestBody["topic"] = ExpressionConverter.ConvertO(requestBodytopic);
+                var apiCallPath = "/open-ticket-question";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
                 requestBodypropCount++;
-            }
+                requestBody["userEmail"] = ExpressionConverter.ConvertO(__workflow_requestBodyuserEmail);
+                requestBodypropCount++;
+                requestBody["queryText"] = ExpressionConverter.ConvertO(__workflow_requestBodyqueryText);
+                if (__workflow_requestBodytopic != null)
+                {
+                    requestBody["topic"] = ExpressionConverter.ConvertO(__workflow_requestBodytopic);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodypropCount > 0)
-            {
-                callPayload.Body = requestBody;
-            }
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            return new ApiConnectionAction<OpenTicketQuestionResponse>(callPayload);
+                return new ApiConnectionAction<OpenTicketQuestionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<OpenTicketFeedbackResponse> OpenTicketFeedback(Expression<Func<string>> requestBodyuserEmail, Expression<Func<string>> requestBodyqueryText, Expression<Func<string>> requestBodyanswerShortDescription, Expression<Func<string>> requestBodyfeedbackText)
         {
-            var apiCallPath = "/open-ticket-feedback";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBodypropCount++;
-            requestBody["userEmail"] = ExpressionConverter.ConvertO(requestBodyuserEmail);
-            requestBodypropCount++;
-            requestBody["queryText"] = ExpressionConverter.ConvertO(requestBodyqueryText);
-            requestBodypropCount++;
-            requestBody["answerShortDescription"] = ExpressionConverter.ConvertO(requestBodyanswerShortDescription);
-            requestBodypropCount++;
-            requestBody["feedbackText"] = ExpressionConverter.ConvertO(requestBodyfeedbackText);
-            if (requestBodypropCount > 0)
+            var __workflow_requestBodyuserEmail = WorkflowExpression.Compile(requestBodyuserEmail, nameof(requestBodyuserEmail), required: true);
+            var __workflow_requestBodyqueryText = WorkflowExpression.Compile(requestBodyqueryText, nameof(requestBodyqueryText), required: true);
+            var __workflow_requestBodyanswerShortDescription = WorkflowExpression.Compile(requestBodyanswerShortDescription, nameof(requestBodyanswerShortDescription), required: true);
+            var __workflow_requestBodyfeedbackText = WorkflowExpression.Compile(requestBodyfeedbackText, nameof(requestBodyfeedbackText), required: true);
+            return new DeferredBodyAction<OpenTicketFeedbackResponse>(() =>
             {
-                callPayload.Body = requestBody;
-            }
+                var apiCallPath = "/open-ticket-feedback";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                requestBodypropCount++;
+                requestBody["userEmail"] = ExpressionConverter.ConvertO(__workflow_requestBodyuserEmail);
+                requestBodypropCount++;
+                requestBody["queryText"] = ExpressionConverter.ConvertO(__workflow_requestBodyqueryText);
+                requestBodypropCount++;
+                requestBody["answerShortDescription"] = ExpressionConverter.ConvertO(__workflow_requestBodyanswerShortDescription);
+                requestBodypropCount++;
+                requestBody["feedbackText"] = ExpressionConverter.ConvertO(__workflow_requestBodyfeedbackText);
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            return new ApiConnectionAction<OpenTicketFeedbackResponse>(callPayload);
+                return new ApiConnectionAction<OpenTicketFeedbackResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction CloseTicket(Expression<Func<string>> requestBodyticketId, Expression<Func<string>> requestBodyeditorEmail, Expression<Func<string>> requestBodyeditorComment)
         {
-            var apiCallPath = "/close-ticket";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBodypropCount++;
-            requestBody["ticketId"] = ExpressionConverter.ConvertO(requestBodyticketId);
-            requestBodypropCount++;
-            requestBody["editorEmail"] = ExpressionConverter.ConvertO(requestBodyeditorEmail);
-            requestBodypropCount++;
-            requestBody["editorComment"] = ExpressionConverter.ConvertO(requestBodyeditorComment);
-            if (requestBodypropCount > 0)
+            var __workflow_requestBodyticketId = WorkflowExpression.Compile(requestBodyticketId, nameof(requestBodyticketId), required: true);
+            var __workflow_requestBodyeditorEmail = WorkflowExpression.Compile(requestBodyeditorEmail, nameof(requestBodyeditorEmail), required: true);
+            var __workflow_requestBodyeditorComment = WorkflowExpression.Compile(requestBodyeditorComment, nameof(requestBodyeditorComment), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = requestBody;
-            }
+                var apiCallPath = "/close-ticket";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                requestBodypropCount++;
+                requestBody["ticketId"] = ExpressionConverter.ConvertO(__workflow_requestBodyticketId);
+                requestBodypropCount++;
+                requestBody["editorEmail"] = ExpressionConverter.ConvertO(__workflow_requestBodyeditorEmail);
+                requestBodypropCount++;
+                requestBody["editorComment"] = ExpressionConverter.ConvertO(__workflow_requestBodyeditorComment);
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 
     public class CosmobotTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger OnNewTicket(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OnNewTicket(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/new-ticket";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var requestBody = new JObject();
             var requestBodypropCount = 0;
-            requestBody["url"] = "@listCallbackUrl()";
+            requestBody["url"] = "#{listCallbackUrl()}";
             requestBodypropCount++;
             if (requestBodypropCount > 0)
             {
                 callPayload.Body = requestBody;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger OnResolvedTicket(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OnResolvedTicket(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/resolved-ticket";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var requestBody = new JObject();
             var requestBodypropCount = 0;
-            requestBody["url"] = "@listCallbackUrl()";
+            requestBody["url"] = "#{listCallbackUrl()}";
             requestBodypropCount++;
             if (requestBodypropCount > 0)
             {
                 callPayload.Body = requestBody;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger OnUpdatedTicketTopic(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OnUpdatedTicketTopic(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/updated-ticket-topic";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var requestBody = new JObject();
             var requestBodypropCount = 0;
-            requestBody["url"] = "@listCallbackUrl()";
+            requestBody["url"] = "#{listCallbackUrl()}";
             requestBodypropCount++;
             if (requestBodypropCount > 0)
             {
                 callPayload.Body = requestBody;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger OnNewAnswer(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OnNewAnswer(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/new-answer";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var requestBody = new JObject();
             var requestBodypropCount = 0;
-            requestBody["url"] = "@listCallbackUrl()";
+            requestBody["url"] = "#{listCallbackUrl()}";
             requestBodypropCount++;
             if (requestBodypropCount > 0)
             {
                 callPayload.Body = requestBody;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger OnUpdateAnswer(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OnUpdateAnswer(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/update-answer";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var requestBody = new JObject();
             var requestBodypropCount = 0;
-            requestBody["url"] = "@listCallbackUrl()";
+            requestBody["url"] = "#{listCallbackUrl()}";
             requestBodypropCount++;
             if (requestBodypropCount > 0)
             {
                 callPayload.Body = requestBody;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger OnAskedQuestion(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OnAskedQuestion(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/asked-question";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var requestBody = new JObject();
             var requestBodypropCount = 0;
-            requestBody["url"] = "@listCallbackUrl()";
+            requestBody["url"] = "#{listCallbackUrl()}";
             requestBodypropCount++;
             if (requestBodypropCount > 0)
             {
                 callPayload.Body = requestBody;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
     }
 
@@ -584,6 +694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         public string OutputText { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestBodyoutputFormatInput
     {
         [EnumMember(Value = "markdown")]

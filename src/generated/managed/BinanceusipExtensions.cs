@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Binanceusip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,35 +14,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Binanceusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "binanceusip")]
         public IBodyWorkflowAction<GetLiveTickerPriceResponse> GetLiveTickerPrice(Expression<Func<string>> symbol = null)
         {
-            var apiCallPath = "/ticker/price";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (symbol != null)
-                callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
-            return new ApiConnectionAction<GetLiveTickerPriceResponse>(callPayload);
+            var __workflow_symbol = WorkflowExpression.Compile(symbol, nameof(symbol), required: false);
+            return new DeferredBodyAction<GetLiveTickerPriceResponse>(() =>
+            {
+                var apiCallPath = "/ticker/price";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_symbol != null)
+                    callPayload.Queries["symbol"] = ExpressionConverter.Convert(__workflow_symbol);
+                return new ApiConnectionAction<GetLiveTickerPriceResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "binanceusip")]
         public IBodyWorkflowAction<GetExchangeInfoResponse> GetExchangeInformation(Expression<Func<string>> symbol = null)
         {
-            var apiCallPath = "/exchangeInfo";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (symbol != null)
-                callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
-            return new ApiConnectionAction<GetExchangeInfoResponse>(callPayload);
+            var __workflow_symbol = WorkflowExpression.Compile(symbol, nameof(symbol), required: false);
+            return new DeferredBodyAction<GetExchangeInfoResponse>(() =>
+            {
+                var apiCallPath = "/exchangeInfo";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_symbol != null)
+                    callPayload.Queries["symbol"] = ExpressionConverter.Convert(__workflow_symbol);
+                return new ApiConnectionAction<GetExchangeInfoResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "binanceusip")]
         public IBodyWorkflowAction<GetRecentTradesResponse> GetRecentTrades(Expression<Func<string>> symbol, Expression<Func<int>> limit = null)
         {
-            var apiCallPath = "/trades";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<GetRecentTradesResponse>(callPayload);
+            var __workflow_symbol = WorkflowExpression.Compile(symbol, nameof(symbol), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<GetRecentTradesResponse>(() =>
+            {
+                var apiCallPath = "/trades";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["symbol"] = ExpressionConverter.Convert(__workflow_symbol);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                return new ApiConnectionAction<GetRecentTradesResponse>(callPayload);
+            });
         }
     }
 

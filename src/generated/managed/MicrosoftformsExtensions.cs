@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,45 +14,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftforms")]
         public IBodyWorkflowAction<JToken> GetFormResponseById(Expression<Func<string>> formId, Expression<Func<int>> responseId)
         {
-            var apiCallPath = String.Format("/formapi/api/forms('{0}')/responses", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["response_id"] = ExpressionConverter.Convert(responseId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
+            var __workflow_responseId = WorkflowExpression.Compile(responseId, nameof(responseId), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/formapi/api/forms('{0}')/responses", __workflow_formId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["response_id"] = ExpressionConverter.Convert(__workflow_responseId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftforms")]
         public IBodyWorkflowAction<GetFormDetailsByIdResult> GetFormDetailsById(Expression<Func<string>> formId)
         {
-            var apiCallPath = String.Format("/formapi/api/forms('{0}')", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$select"] = Convert.ToString("title,modifiedDate,createdDate,status,createdBy");
-            return new ApiConnectionAction<GetFormDetailsByIdResult>(callPayload);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
+            return new DeferredBodyAction<GetFormDetailsByIdResult>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/formapi/api/forms('{0}')", __workflow_formId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$select"] = Convert.ToString("title,modifiedDate,createdDate,status,createdBy");
+                return new ApiConnectionAction<GetFormDetailsByIdResult>(callPayload);
+            });
         }
     }
 
     public class MicrosoftformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateFormWebhook(Expression<Func<string>> formId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateFormWebhook(Expression<Func<string>> formId, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/formapi/api/forms/{0}/webhooks", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBodyOfWebhook = new JObject();
-            var requestBodyOfWebhookpropCount = 0;
-            requestBodyOfWebhook["eventType"] = "responseAdded";
-            requestBodyOfWebhookpropCount++;
-            requestBodyOfWebhook["notificationUrl"] = "@listCallbackUrl()";
-            requestBodyOfWebhookpropCount++;
-            requestBodyOfWebhook["source"] = "ms-connector";
-            requestBodyOfWebhookpropCount++;
-            if (requestBodyOfWebhookpropCount > 0)
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = requestBodyOfWebhook;
-            }
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/formapi/api/forms/{0}/webhooks", __workflow_formId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBodyOfWebhook = new JObject();
+                var requestBodyOfWebhookpropCount = 0;
+                requestBodyOfWebhook["eventType"] = "responseAdded";
+                requestBodyOfWebhookpropCount++;
+                requestBodyOfWebhook["notificationUrl"] = "#{listCallbackUrl()}";
+                requestBodyOfWebhookpropCount++;
+                requestBodyOfWebhook["source"] = "ms-connector";
+                requestBodyOfWebhookpropCount++;
+                if (requestBodyOfWebhookpropCount > 0)
+                {
+                    callPayload.Body = requestBodyOfWebhook;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 
