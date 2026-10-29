@@ -39,11 +39,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
-        public IWorkflowAction<InsertRowActionConfiguration> InsertRow(Expression<Func<string>> tableName, Expression<Func<object>> setColumns = null)
+        public IBodyWorkflowAction<JToken, InsertRowActionConfiguration> InsertRow(Expression<Func<string>> tableName, Expression<Func<object>> setColumns = null)
         {
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
             var __workflow_setColumns = WorkflowExpression.Compile(setColumns, nameof(setColumns), required: false);
-            return new DeferredWorkflowAction<InsertRowActionConfiguration>(() =>
+            return new DeferredBodyAction<JToken, InsertRowActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "insertRow", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<InsertRowActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, InsertRowActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -229,48 +229,56 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
     public sealed class ExecuteQueryActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
     }
 
     public sealed class InsertRowActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
     }
 
     public sealed class DeleteRowsActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
     }
 
     public sealed class GetRowsActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
     }
 
     public sealed class GetRowsV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
     }
 
     public sealed class UpdateRowsActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
     }
 
     public sealed class GetTablesActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
     }
 
     public sealed class ExecuteStoredProcedureActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
     }
 
@@ -344,24 +352,28 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
     public sealed class WhenARowIsUpdatedTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class WhenARowIsDeletedTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class WhenARowIsInsertedTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class WhenARowIsModifiedTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 

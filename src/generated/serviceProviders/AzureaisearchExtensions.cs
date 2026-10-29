@@ -16,11 +16,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
     public class AzureaisearchActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
-        public IWorkflowAction<IndexDocumentsActionConfiguration> IndexDocuments(Expression<Func<string>> indexName, Expression<Func<JToken[]>> documents)
+        public IOutputWorkflowAction<JToken, IndexDocumentsActionConfiguration> IndexDocuments(Expression<Func<string>> indexName, Expression<Func<JToken[]>> documents)
         {
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
             var __workflow_documents = WorkflowExpression.Compile(documents, nameof(documents), required: true);
-            return new DeferredWorkflowAction<IndexDocumentsActionConfiguration>(() =>
+            return new DeferredOutputAction<JToken, IndexDocumentsActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(__workflow_indexName);
@@ -30,16 +30,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "indexDocuments", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<IndexDocumentsActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderOutputAction<JToken, IndexDocumentsActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
-        public IWorkflowAction<IndexDocumentActionConfiguration> IndexDocument(Expression<Func<string>> indexName, Expression<Func<object>> document)
+        public IOutputWorkflowAction<JToken, IndexDocumentActionConfiguration> IndexDocument(Expression<Func<string>> indexName, Expression<Func<object>> document)
         {
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
             var __workflow_document = WorkflowExpression.Compile(document, nameof(document), required: true);
-            return new DeferredWorkflowAction<IndexDocumentActionConfiguration>(() =>
+            return new DeferredOutputAction<JToken, IndexDocumentActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(__workflow_indexName);
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "indexDocument", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<IndexDocumentActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderOutputAction<JToken, IndexDocumentActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -138,11 +138,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
-        public IWorkflowAction<DeleteDocumentActionConfiguration> DeleteDocument(Expression<Func<string>> indexName, Expression<Func<object>> document)
+        public IOutputWorkflowAction<JToken, DeleteDocumentActionConfiguration> DeleteDocument(Expression<Func<string>> indexName, Expression<Func<object>> document)
         {
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
             var __workflow_document = WorkflowExpression.Compile(document, nameof(document), required: true);
-            return new DeferredWorkflowAction<DeleteDocumentActionConfiguration>(() =>
+            return new DeferredOutputAction<JToken, DeleteDocumentActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(__workflow_indexName);
@@ -152,16 +152,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "deleteDocument", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<DeleteDocumentActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderOutputAction<JToken, DeleteDocumentActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
-        public IWorkflowAction<DeleteDocumentsActionConfiguration> DeleteDocuments(Expression<Func<string>> indexName, Expression<Func<JToken[]>> documents)
+        public IOutputWorkflowAction<JToken, DeleteDocumentsActionConfiguration> DeleteDocuments(Expression<Func<string>> indexName, Expression<Func<JToken[]>> documents)
         {
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
             var __workflow_documents = WorkflowExpression.Compile(documents, nameof(documents), required: true);
-            return new DeferredWorkflowAction<DeleteDocumentsActionConfiguration>(() =>
+            return new DeferredOutputAction<JToken, DeleteDocumentsActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(__workflow_indexName);
@@ -171,16 +171,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "deleteDocuments", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<DeleteDocumentsActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderOutputAction<JToken, DeleteDocumentsActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
-        public IWorkflowAction<MergeDocumentActionConfiguration> MergeDocument(Expression<Func<string>> indexName, Expression<Func<object>> document)
+        public IOutputWorkflowAction<JToken, MergeDocumentActionConfiguration> MergeDocument(Expression<Func<string>> indexName, Expression<Func<object>> document)
         {
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
             var __workflow_document = WorkflowExpression.Compile(document, nameof(document), required: true);
-            return new DeferredWorkflowAction<MergeDocumentActionConfiguration>(() =>
+            return new DeferredOutputAction<JToken, MergeDocumentActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["indexName"] = ExpressionConverter.ConvertO(__workflow_indexName);
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "mergeDocument", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<MergeDocumentActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderOutputAction<JToken, MergeDocumentActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -219,64 +219,88 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
     public sealed class IndexDocumentsActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class IndexDocumentActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class VectorSearchActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class IntegratedVectorSearchActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class DeleteDocumentActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class DeleteDocumentsActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class MergeDocumentActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class KnowledgeAgentRetrievalActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 

@@ -16,10 +16,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventGridPublisher
     public class EventGridPublisherActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventGridPublisher")]
-        public IWorkflowAction<PublishEventsActionConfiguration> PublishEvents(Expression<Func<PublishEventsInputEventsTypeItem[]>> events)
+        public IOutputWorkflowAction<JToken, PublishEventsActionConfiguration> PublishEvents(Expression<Func<PublishEventsInputEventsTypeItem[]>> events)
         {
             var __workflow_events = WorkflowExpression.Compile(events, nameof(events), required: true);
-            return new DeferredWorkflowAction<PublishEventsActionConfiguration>(() =>
+            return new DeferredOutputAction<JToken, PublishEventsActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["events"] = ExpressionConverter.ConvertO(__workflow_events);
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventGridPublisher
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventGridPublisher", operationId: "publishEvents", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<PublishEventsActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderOutputAction<JToken, PublishEventsActionConfiguration>(serviceProviderInput);
             });
         }
     }
@@ -36,7 +36,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventGridPublisher
     public sealed class PublishEventsActionConfiguration : ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 

@@ -72,13 +72,13 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "rabbitmq")]
-        public IWorkflowAction<CompleteMessageActionConfiguration> CompleteMessage(Expression<Func<int>> deliveryTag, Expression<Func<string>> consumerTag, Expression<Func<CompleteMessageInputAcknowledgementType>> acknowledgement, Expression<Func<bool>> requeueOnReject = null)
+        public IOutputWorkflowAction<JToken, CompleteMessageActionConfiguration> CompleteMessage(Expression<Func<int>> deliveryTag, Expression<Func<string>> consumerTag, Expression<Func<CompleteMessageInputAcknowledgementType>> acknowledgement, Expression<Func<bool>> requeueOnReject = null)
         {
             var __workflow_deliveryTag = WorkflowExpression.Compile(deliveryTag, nameof(deliveryTag), required: true);
             var __workflow_consumerTag = WorkflowExpression.Compile(consumerTag, nameof(consumerTag), required: true);
             var __workflow_acknowledgement = WorkflowExpression.Compile(acknowledgement, nameof(acknowledgement), required: true);
             var __workflow_requeueOnReject = WorkflowExpression.Compile(requeueOnReject, nameof(requeueOnReject), required: false);
-            return new DeferredWorkflowAction<CompleteMessageActionConfiguration>(() =>
+            return new DeferredOutputAction<JToken, CompleteMessageActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["deliveryTag"] = ExpressionConverter.ConvertO(__workflow_deliveryTag);
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/rabbitmq", operationId: "completeMessage", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<CompleteMessageActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderOutputAction<JToken, CompleteMessageActionConfiguration>(serviceProviderInput);
             });
         }
     }
@@ -106,24 +106,33 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
     public sealed class SendRabbitMQMessageActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class CreateQueueActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class CompleteMessageActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
@@ -165,12 +174,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
     public sealed class ReceiveRabbitMQMessagesTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class PeeklockRabbitMQMessagesTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
