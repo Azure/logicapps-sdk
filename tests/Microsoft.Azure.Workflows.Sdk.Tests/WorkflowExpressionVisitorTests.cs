@@ -321,12 +321,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             public string City { get; set; }
         }
 
-        private sealed class TestOutputAction<T> : WorkflowActionBase, IOutputWorkflowAction<T>
+        private sealed class TestOutputAction<T> : IOutputWorkflowAction<T>
         {
+            public string Name { get; set; }
+
+            public List<IWorkflowAction> Children { get; } = new();
+
+            public Dictionary<string, FlowStatus[]> RunAfterConfig { get; } = new();
+
             public T Output => default;
 
-            public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null) =>
+            public FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null) =>
                 throw new NotSupportedException();
+
+            public OperationChain Then(IWorkflowAction action) => throw new NotSupportedException();
+
+            public OperationChain Then(IWorkflowAction action, FlowStatus[] runAfter) => throw new NotSupportedException();
+
+            public OperationChain Then(IWorkflowAction action, RunAfter[] runAfter) => throw new NotSupportedException();
+
+            public OperationChain Then(Func<IChainableNode, OperationChain[]> branches) => throw new NotSupportedException();
+
+            public IWorkflowOperation GetRootOperation() => this;
         }
+
     }
 }

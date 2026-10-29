@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ascregulatorycomplianceassess
 
     public class AscregulatorycomplianceassessmentTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<string> ASCRegulatoryComplianceAssessmentTriggerSubscribe(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> ASCRegulatoryComplianceAssessmentTriggerSubscribe(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/Microsoft.Security/RegulatoryComplianceAssessment/subscribe";
             var apiCallHttpMethod = "post";

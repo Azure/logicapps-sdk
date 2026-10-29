@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
     public class LibraryofcongressipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
-        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
+        public IBodyWorkflowAction<SearchResponse, ApiConnectionActionConfiguration> Search(Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_fa = WorkflowExpression.Compile(fa, nameof(fa), required: false);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
             var __workflow_sp = WorkflowExpression.Compile(sp, nameof(sp), required: false);
             var __workflow_at = WorkflowExpression.Compile(at, nameof(at), required: false);
             var __workflow_sb = WorkflowExpression.Compile(sb, nameof(sb), required: false);
-            return new DeferredBodyAction<SearchResponse>(() =>
+            return new DeferredBodyAction<SearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/search/";
                 var apiCallHttpMethod = "get";
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
-        public IBodyWorkflowAction<CollectionResponse> Collection(Expression<Func<string>> collection, Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
+        public IBodyWorkflowAction<CollectionResponse, ApiConnectionActionConfiguration> Collection(Expression<Func<string>> collection, Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
         {
             var __workflow_collection = WorkflowExpression.Compile(collection, nameof(collection), required: true);
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
             var __workflow_sp = WorkflowExpression.Compile(sp, nameof(sp), required: false);
             var __workflow_at = WorkflowExpression.Compile(at, nameof(at), required: false);
             var __workflow_sb = WorkflowExpression.Compile(sb, nameof(sb), required: false);
-            return new DeferredBodyAction<CollectionResponse>(() =>
+            return new DeferredBodyAction<CollectionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/collections/{0}", __workflow_collection.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
-        public IBodyWorkflowAction<FormatResponse> Format(Expression<Func<formatInput>> format, Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
+        public IBodyWorkflowAction<FormatResponse, ApiConnectionActionConfiguration> Format(Expression<Func<formatInput>> format, Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
             var __workflow_sp = WorkflowExpression.Compile(sp, nameof(sp), required: false);
             var __workflow_at = WorkflowExpression.Compile(at, nameof(at), required: false);
             var __workflow_sb = WorkflowExpression.Compile(sb, nameof(sb), required: false);
-            return new DeferredBodyAction<FormatResponse>(() =>
+            return new DeferredBodyAction<FormatResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -101,10 +101,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
-        public IBodyWorkflowAction<ItemResponse> Item(Expression<Func<string>> identifier)
+        public IBodyWorkflowAction<ItemResponse, ApiConnectionActionConfiguration> Item(Expression<Func<string>> identifier)
         {
             var __workflow_identifier = WorkflowExpression.Compile(identifier, nameof(identifier), required: true);
-            return new DeferredBodyAction<ItemResponse>(() =>
+            return new DeferredBodyAction<ItemResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/item/{0}/", __workflow_identifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

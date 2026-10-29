@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
     public class OnetimesecretipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
-        public IBodyWorkflowAction<GenerateSecretResponse> GenerateSecret(Expression<Func<string>> passphrase = null, Expression<Func<int>> ttl = null, Expression<Func<string>> recipient = null)
+        public IBodyWorkflowAction<GenerateSecretResponse, ApiConnectionActionConfiguration> GenerateSecret(Expression<Func<string>> passphrase = null, Expression<Func<int>> ttl = null, Expression<Func<string>> recipient = null)
         {
             var __workflow_passphrase = WorkflowExpression.Compile(passphrase, nameof(passphrase), required: false);
             var __workflow_ttl = WorkflowExpression.Compile(ttl, nameof(ttl), required: false);
             var __workflow_recipient = WorkflowExpression.Compile(recipient, nameof(recipient), required: false);
-            return new DeferredBodyAction<GenerateSecretResponse>(() =>
+            return new DeferredBodyAction<GenerateSecretResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/generate";
                 var apiCallHttpMethod = "post";
@@ -33,13 +33,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
-        public IBodyWorkflowAction<CreateSecretResponse> CreateSecret(Expression<Func<string>> secret, Expression<Func<string>> ttl = null, Expression<Func<string>> passphrase = null, Expression<Func<string>> recipient = null)
+        public IBodyWorkflowAction<CreateSecretResponse, ApiConnectionActionConfiguration> CreateSecret(Expression<Func<string>> secret, Expression<Func<string>> ttl = null, Expression<Func<string>> passphrase = null, Expression<Func<string>> recipient = null)
         {
             var __workflow_secret = WorkflowExpression.Compile(secret, nameof(secret), required: true);
             var __workflow_ttl = WorkflowExpression.Compile(ttl, nameof(ttl), required: false);
             var __workflow_passphrase = WorkflowExpression.Compile(passphrase, nameof(passphrase), required: false);
             var __workflow_recipient = WorkflowExpression.Compile(recipient, nameof(recipient), required: false);
-            return new DeferredBodyAction<CreateSecretResponse>(() =>
+            return new DeferredBodyAction<CreateSecretResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/share";
                 var apiCallHttpMethod = "post";
@@ -56,11 +56,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
-        public IBodyWorkflowAction<RetrieveSecretResponse> RetrieveSecret(Expression<Func<string>> sECRETKEY, Expression<Func<string>> passphrase = null)
+        public IBodyWorkflowAction<RetrieveSecretResponse, ApiConnectionActionConfiguration> RetrieveSecret(Expression<Func<string>> sECRETKEY, Expression<Func<string>> passphrase = null)
         {
             var __workflow_sECRETKEY = WorkflowExpression.Compile(sECRETKEY, nameof(sECRETKEY), required: true);
             var __workflow_passphrase = WorkflowExpression.Compile(passphrase, nameof(passphrase), required: false);
-            return new DeferredBodyAction<RetrieveSecretResponse>(() =>
+            return new DeferredBodyAction<RetrieveSecretResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/secret/{0}", __workflow_sECRETKEY.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -72,10 +72,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
-        public IBodyWorkflowAction<RetrieveMetadataResponse> RetrieveMetadata(Expression<Func<string>> mETADATAKEY)
+        public IBodyWorkflowAction<RetrieveMetadataResponse, ApiConnectionActionConfiguration> RetrieveMetadata(Expression<Func<string>> mETADATAKEY)
         {
             var __workflow_mETADATAKEY = WorkflowExpression.Compile(mETADATAKEY, nameof(mETADATAKEY), required: true);
-            return new DeferredBodyAction<RetrieveMetadataResponse>(() =>
+            return new DeferredBodyAction<RetrieveMetadataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/private/{0}", __workflow_mETADATAKEY.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -85,10 +85,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
-        public IBodyWorkflowAction<BurnASecretResponse> BurnASecret(Expression<Func<string>> mETADATAKEY)
+        public IBodyWorkflowAction<BurnASecretResponse, ApiConnectionActionConfiguration> BurnASecret(Expression<Func<string>> mETADATAKEY)
         {
             var __workflow_mETADATAKEY = WorkflowExpression.Compile(mETADATAKEY, nameof(mETADATAKEY), required: true);
-            return new DeferredBodyAction<BurnASecretResponse>(() =>
+            return new DeferredBodyAction<BurnASecretResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/private/{0}/burn", __workflow_mETADATAKEY.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
-        public IBodyWorkflowAction<RetrieveRecentMetadataResponseItem[]> RetrieveRecentMetadata()
+        public IBodyWorkflowAction<RetrieveRecentMetadataResponseItem[], ApiConnectionActionConfiguration> RetrieveRecentMetadata()
         {
             var apiCallPath = "/private/recent";
             var apiCallHttpMethod = "get";

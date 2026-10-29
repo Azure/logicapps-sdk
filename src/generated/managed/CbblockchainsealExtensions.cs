@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
     public class CbblockchainsealActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cbblockchainseal")]
-        public IBodyWorkflowAction<CreateSealResponse> CreateSeal(Expression<Func<string>> bodyfile)
+        public IBodyWorkflowAction<CreateSealResponse, ApiConnectionActionConfiguration> CreateSeal(Expression<Func<string>> bodyfile)
         {
             var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: true);
-            return new DeferredBodyAction<CreateSealResponse>(() =>
+            return new DeferredBodyAction<CreateSealResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/CreateSeal";
                 var apiCallHttpMethod = "post";
@@ -34,10 +34,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cbblockchainseal")]
-        public IBodyWorkflowAction<ListSealsResponse> ListSeals(Expression<Func<string>> bodyfile = null)
+        public IBodyWorkflowAction<ListSealsResponse, ApiConnectionActionConfiguration> ListSeals(Expression<Func<string>> bodyfile = null)
         {
             var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: false);
-            return new DeferredBodyAction<ListSealsResponse>(() =>
+            return new DeferredBodyAction<ListSealsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/ListSeals";
                 var apiCallHttpMethod = "post";
@@ -60,11 +60,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cbblockchainseal")]
-        public IWorkflowAction VerifySeal(Expression<Func<string>> bodyfile, Expression<Func<string>> bodysealId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> VerifySeal(Expression<Func<string>> bodyfile, Expression<Func<string>> bodysealId)
         {
             var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: true);
             var __workflow_bodysealId = WorkflowExpression.Compile(bodysealId, nameof(bodysealId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/VerfiySeal";
                 var apiCallHttpMethod = "post";

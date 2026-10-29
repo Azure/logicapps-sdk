@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
     public class NutrientpdfocrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientpdfocr")]
-        public IBodyWorkflowAction<OperationResponse> OcrPdf(Expression<Func<string>> inputDatasourceFileName, Expression<Func<string>> inputDatasourceFileContent, Expression<Func<inputDatalanguageInput>> inputDatalanguage = null, Expression<Func<inputDataperformanceInput>> inputDataperformance = null, Expression<Func<inputDatablacklistWhitelistInput>> inputDatablacklistWhitelist = null, Expression<Func<string>> inputDatacharacters = null, Expression<Func<bool>> inputDatausePagination = null, Expression<Func<string>> inputDataregions = null, Expression<Func<bool>> inputDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> OcrPdf(Expression<Func<string>> inputDatasourceFileName, Expression<Func<string>> inputDatasourceFileContent, Expression<Func<inputDatalanguageInput>> inputDatalanguage = null, Expression<Func<inputDataperformanceInput>> inputDataperformance = null, Expression<Func<inputDatablacklistWhitelistInput>> inputDatablacklistWhitelist = null, Expression<Func<string>> inputDatacharacters = null, Expression<Func<bool>> inputDatausePagination = null, Expression<Func<string>> inputDataregions = null, Expression<Func<bool>> inputDatafailOnError = null)
         {
             var __workflow_inputDatasourceFileName = WorkflowExpression.Compile(inputDatasourceFileName, nameof(inputDatasourceFileName), required: true);
             var __workflow_inputDatasourceFileContent = WorkflowExpression.Compile(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
             var __workflow_inputDatausePagination = WorkflowExpression.Compile(inputDatausePagination, nameof(inputDatausePagination), required: false);
             var __workflow_inputDataregions = WorkflowExpression.Compile(inputDataregions, nameof(inputDataregions), required: false);
             var __workflow_inputDatafailOnError = WorkflowExpression.Compile(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
-            return new DeferredBodyAction<OperationResponse>(() =>
+            return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/operations/ocr_pdf";
                 var apiCallHttpMethod = "post";
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientpdfocr")]
-        public IBodyWorkflowAction<OcrOperationResponse> OcrText(Expression<Func<string>> inputDatasourceFileName, Expression<Func<string>> inputDatasourceFileContent, Expression<Func<inputDatalanguageInput>> inputDatalanguage = null, Expression<Func<string>> inputDataxCoordinate = null, Expression<Func<string>> inputDatayCoordinate = null, Expression<Func<string>> inputDatawidth = null, Expression<Func<string>> inputDataheight = null, Expression<Func<string>> inputDatapageNumber = null, Expression<Func<inputDataperformanceInput>> inputDataperformance = null, Expression<Func<inputDatablacklistWhitelistInput>> inputDatablacklistWhitelist = null, Expression<Func<string>> inputDatacharacters = null, Expression<Func<bool>> inputDatausePagination = null, Expression<Func<bool>> inputDatafailOnError = null)
+        public IBodyWorkflowAction<OcrOperationResponse, ApiConnectionActionConfiguration> OcrText(Expression<Func<string>> inputDatasourceFileName, Expression<Func<string>> inputDatasourceFileContent, Expression<Func<inputDatalanguageInput>> inputDatalanguage = null, Expression<Func<string>> inputDataxCoordinate = null, Expression<Func<string>> inputDatayCoordinate = null, Expression<Func<string>> inputDatawidth = null, Expression<Func<string>> inputDataheight = null, Expression<Func<string>> inputDatapageNumber = null, Expression<Func<inputDataperformanceInput>> inputDataperformance = null, Expression<Func<inputDatablacklistWhitelistInput>> inputDatablacklistWhitelist = null, Expression<Func<string>> inputDatacharacters = null, Expression<Func<bool>> inputDatausePagination = null, Expression<Func<bool>> inputDatafailOnError = null)
         {
             var __workflow_inputDatasourceFileName = WorkflowExpression.Compile(inputDatasourceFileName, nameof(inputDatasourceFileName), required: true);
             var __workflow_inputDatasourceFileContent = WorkflowExpression.Compile(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
             var __workflow_inputDatacharacters = WorkflowExpression.Compile(inputDatacharacters, nameof(inputDatacharacters), required: false);
             var __workflow_inputDatausePagination = WorkflowExpression.Compile(inputDatausePagination, nameof(inputDatausePagination), required: false);
             var __workflow_inputDatafailOnError = WorkflowExpression.Compile(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
-            return new DeferredBodyAction<OcrOperationResponse>(() =>
+            return new DeferredBodyAction<OcrOperationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/operations/ocr_text";
                 var apiCallHttpMethod = "post";

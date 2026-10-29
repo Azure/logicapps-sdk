@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
     public class ExperlogixsmartflowsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IWorkflowAction InvokeMCP(Expression<Func<string>> mcpSessionId = null, Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> InvokeMCP(Expression<Func<string>> mcpSessionId = null, Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null)
         {
             var __workflow_mcpSessionId = WorkflowExpression.Compile(mcpSessionId, nameof(mcpSessionId), required: false);
             var __workflow_queryRequestjsonrpc = WorkflowExpression.Compile(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
             var __workflow_queryRequestid = WorkflowExpression.Compile(queryRequestid, nameof(queryRequestid), required: false);
             var __workflow_queryRequestmethod = WorkflowExpression.Compile(queryRequestmethod, nameof(queryRequestmethod), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/runtime/webhooks/mcp";
                 var apiCallHttpMethod = "post";
@@ -79,10 +79,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IBodyWorkflowAction<GetDocumentsResponse[]> GetDocuments(Expression<Func<string>> reqexecutionId)
+        public IBodyWorkflowAction<GetDocumentsResponse[], ApiConnectionActionConfiguration> GetDocuments(Expression<Func<string>> reqexecutionId)
         {
             var __workflow_reqexecutionId = WorkflowExpression.Compile(reqexecutionId, nameof(reqexecutionId), required: true);
-            return new DeferredBodyAction<GetDocumentsResponse[]>(() =>
+            return new DeferredBodyAction<GetDocumentsResponse[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Documents";
                 var apiCallHttpMethod = "post";
@@ -101,10 +101,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IBodyWorkflowAction<FlowExecutionResponse> GetExecutionStatus(Expression<Func<string>> reqexecutionId)
+        public IBodyWorkflowAction<FlowExecutionResponse, ApiConnectionActionConfiguration> GetExecutionStatus(Expression<Func<string>> reqexecutionId)
         {
             var __workflow_reqexecutionId = WorkflowExpression.Compile(reqexecutionId, nameof(reqexecutionId), required: true);
-            return new DeferredBodyAction<FlowExecutionResponse>(() =>
+            return new DeferredBodyAction<FlowExecutionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ExecutionStatus";
                 var apiCallHttpMethod = "post";
@@ -123,10 +123,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IBodyWorkflowAction<string> DownloadDocument(Expression<Func<string>> reqdocumentId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DownloadDocument(Expression<Func<string>> reqdocumentId)
         {
             var __workflow_reqdocumentId = WorkflowExpression.Compile(reqdocumentId, nameof(reqdocumentId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/DownloadDocument";
                 var apiCallHttpMethod = "post";
@@ -145,13 +145,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IBodyWorkflowAction<FlowExecutionResponse> ExecuteFlow(Expression<Func<string>> reqflowId, Expression<Func<object>> reqexecutionData, Expression<Func<int>> reqpriority = null, Expression<Func<bool>> reqenableAsynchronousRequestReplyPattern = null)
+        public IBodyWorkflowAction<FlowExecutionResponse, ApiConnectionActionConfiguration> ExecuteFlow(Expression<Func<string>> reqflowId, Expression<Func<object>> reqexecutionData, Expression<Func<int>> reqpriority = null, Expression<Func<bool>> reqenableAsynchronousRequestReplyPattern = null)
         {
             var __workflow_reqflowId = WorkflowExpression.Compile(reqflowId, nameof(reqflowId), required: true);
             var __workflow_reqexecutionData = WorkflowExpression.Compile(reqexecutionData, nameof(reqexecutionData), required: true);
             var __workflow_reqpriority = WorkflowExpression.Compile(reqpriority, nameof(reqpriority), required: false);
             var __workflow_reqenableAsynchronousRequestReplyPattern = WorkflowExpression.Compile(reqenableAsynchronousRequestReplyPattern, nameof(reqenableAsynchronousRequestReplyPattern), required: false);
-            return new DeferredBodyAction<FlowExecutionResponse>(() =>
+            return new DeferredBodyAction<FlowExecutionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ExecuteFlow";
                 var apiCallHttpMethod = "post";
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IBodyWorkflowAction<string> ExportPackage(Expression<Func<reqrecordTypeInput>> reqrecordType, Expression<Func<reqexportModeInput>> reqexportMode, Expression<Func<bool>> reqincludeAllDependencies, Expression<Func<object>> reqrecords = null, Expression<Func<bool>> reqincludeTemplateHistory = null, Expression<Func<bool>> reqincludeSamples = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportPackage(Expression<Func<reqrecordTypeInput>> reqrecordType, Expression<Func<reqexportModeInput>> reqexportMode, Expression<Func<bool>> reqincludeAllDependencies, Expression<Func<object>> reqrecords = null, Expression<Func<bool>> reqincludeTemplateHistory = null, Expression<Func<bool>> reqincludeSamples = null)
         {
             var __workflow_reqrecordType = WorkflowExpression.Compile(reqrecordType, nameof(reqrecordType), required: true);
             var __workflow_reqexportMode = WorkflowExpression.Compile(reqexportMode, nameof(reqexportMode), required: true);
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
             var __workflow_reqrecords = WorkflowExpression.Compile(reqrecords, nameof(reqrecords), required: false);
             var __workflow_reqincludeTemplateHistory = WorkflowExpression.Compile(reqincludeTemplateHistory, nameof(reqincludeTemplateHistory), required: false);
             var __workflow_reqincludeSamples = WorkflowExpression.Compile(reqincludeSamples, nameof(reqincludeSamples), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Export";
                 var apiCallHttpMethod = "post";
@@ -263,11 +263,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IWorkflowAction ImportPackage(Expression<Func<object>> package, Expression<Func<bool>> overwriteExisting)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ImportPackage(Expression<Func<object>> package, Expression<Func<bool>> overwriteExisting)
         {
             var __workflow_package = WorkflowExpression.Compile(package, nameof(package), required: true);
             var __workflow_overwriteExisting = WorkflowExpression.Compile(overwriteExisting, nameof(overwriteExisting), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Import";
                 var apiCallHttpMethod = "post";
@@ -278,11 +278,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IBodyWorkflowAction<string> BackupPackage(Expression<Func<bool>> reqincludeHistory, Expression<Func<bool>> req00000000000000000000000000000000 = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> BackupPackage(Expression<Func<bool>> reqincludeHistory, Expression<Func<bool>> req00000000000000000000000000000000 = null)
         {
             var __workflow_reqincludeHistory = WorkflowExpression.Compile(reqincludeHistory, nameof(reqincludeHistory), required: true);
             var __workflow_req00000000000000000000000000000000 = WorkflowExpression.Compile(req00000000000000000000000000000000, nameof(req00000000000000000000000000000000), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Backup";
                 var apiCallHttpMethod = "post";
@@ -317,10 +317,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IWorkflowAction RestorePackage(Expression<Func<object>> package)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RestorePackage(Expression<Func<object>> package)
         {
             var __workflow_package = WorkflowExpression.Compile(package, nameof(package), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Restore";
                 var apiCallHttpMethod = "post";

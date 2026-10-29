@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
     public class EbayipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetDefaultCategoryTreeIdResponse> GetDefaultCategoryTreeId(Expression<Func<string>> marketplaceId, Expression<Func<string>> acceptLanguage)
+        public IBodyWorkflowAction<GetDefaultCategoryTreeIdResponse, ApiConnectionActionConfiguration> GetDefaultCategoryTreeId(Expression<Func<string>> marketplaceId, Expression<Func<string>> acceptLanguage)
         {
             var __workflow_marketplaceId = WorkflowExpression.Compile(marketplaceId, nameof(marketplaceId), required: true);
             var __workflow_acceptLanguage = WorkflowExpression.Compile(acceptLanguage, nameof(acceptLanguage), required: true);
-            return new DeferredBodyAction<GetDefaultCategoryTreeIdResponse>(() =>
+            return new DeferredBodyAction<GetDefaultCategoryTreeIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/commerce/taxonomy/v1/get_default_category_tree_id";
                 var apiCallHttpMethod = "get";
@@ -28,11 +28,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetCategorySuggestionsResponse> GetCategorySuggestions(Expression<Func<string>> categoryTreeId, Expression<Func<string>> q)
+        public IBodyWorkflowAction<GetCategorySuggestionsResponse, ApiConnectionActionConfiguration> GetCategorySuggestions(Expression<Func<string>> categoryTreeId, Expression<Func<string>> q)
         {
             var __workflow_categoryTreeId = WorkflowExpression.Compile(categoryTreeId, nameof(categoryTreeId), required: true);
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
-            return new DeferredBodyAction<GetCategorySuggestionsResponse>(() =>
+            return new DeferredBodyAction<GetCategorySuggestionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/commerce/taxonomy/v1/category_tree/{0}/get_category_suggestions", __workflow_categoryTreeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -45,11 +45,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetItemAspectsResponse> GetItemAspects(Expression<Func<string>> categoryTreeId, Expression<Func<string>> categoryId)
+        public IBodyWorkflowAction<GetItemAspectsResponse, ApiConnectionActionConfiguration> GetItemAspects(Expression<Func<string>> categoryTreeId, Expression<Func<string>> categoryId)
         {
             var __workflow_categoryTreeId = WorkflowExpression.Compile(categoryTreeId, nameof(categoryTreeId), required: true);
             var __workflow_categoryId = WorkflowExpression.Compile(categoryId, nameof(categoryId), required: true);
-            return new DeferredBodyAction<GetItemAspectsResponse>(() =>
+            return new DeferredBodyAction<GetItemAspectsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/commerce/taxonomy/v1/category_tree/{0}/get_item_aspects_for_category", __workflow_categoryTreeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -60,10 +60,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetFulfillmentPoliciesResponse> GetFulfillmentPolicies(Expression<Func<string>> marketplaceId)
+        public IBodyWorkflowAction<GetFulfillmentPoliciesResponse, ApiConnectionActionConfiguration> GetFulfillmentPolicies(Expression<Func<string>> marketplaceId)
         {
             var __workflow_marketplaceId = WorkflowExpression.Compile(marketplaceId, nameof(marketplaceId), required: true);
-            return new DeferredBodyAction<GetFulfillmentPoliciesResponse>(() =>
+            return new DeferredBodyAction<GetFulfillmentPoliciesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sell/account/v1/fulfillment_policy";
                 var apiCallHttpMethod = "get";
@@ -74,10 +74,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetFulfillmentPolicyResponse> GetFulfillmentPolicy(Expression<Func<string>> fulfillmentPolicyId)
+        public IBodyWorkflowAction<GetFulfillmentPolicyResponse, ApiConnectionActionConfiguration> GetFulfillmentPolicy(Expression<Func<string>> fulfillmentPolicyId)
         {
             var __workflow_fulfillmentPolicyId = WorkflowExpression.Compile(fulfillmentPolicyId, nameof(fulfillmentPolicyId), required: true);
-            return new DeferredBodyAction<GetFulfillmentPolicyResponse>(() =>
+            return new DeferredBodyAction<GetFulfillmentPolicyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/account/v1/fulfillment_policy/{0}", __workflow_fulfillmentPolicyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -87,10 +87,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetPaymentPolicyResponse> GetPaymentPolicy(Expression<Func<string>> paymentPolicyId)
+        public IBodyWorkflowAction<GetPaymentPolicyResponse, ApiConnectionActionConfiguration> GetPaymentPolicy(Expression<Func<string>> paymentPolicyId)
         {
             var __workflow_paymentPolicyId = WorkflowExpression.Compile(paymentPolicyId, nameof(paymentPolicyId), required: true);
-            return new DeferredBodyAction<GetPaymentPolicyResponse>(() =>
+            return new DeferredBodyAction<GetPaymentPolicyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/account/v1/payment_policy/{0}", __workflow_paymentPolicyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -100,10 +100,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetReturnPoliciesResponse> GetReturnPolicies(Expression<Func<string>> marketplaceId)
+        public IBodyWorkflowAction<GetReturnPoliciesResponse, ApiConnectionActionConfiguration> GetReturnPolicies(Expression<Func<string>> marketplaceId)
         {
             var __workflow_marketplaceId = WorkflowExpression.Compile(marketplaceId, nameof(marketplaceId), required: true);
-            return new DeferredBodyAction<GetReturnPoliciesResponse>(() =>
+            return new DeferredBodyAction<GetReturnPoliciesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sell/account/v1/return_policy";
                 var apiCallHttpMethod = "get";
@@ -114,10 +114,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetReturnPolicyResponse> GetReturnPolicy(Expression<Func<string>> returnPolicyId)
+        public IBodyWorkflowAction<GetReturnPolicyResponse, ApiConnectionActionConfiguration> GetReturnPolicy(Expression<Func<string>> returnPolicyId)
         {
             var __workflow_returnPolicyId = WorkflowExpression.Compile(returnPolicyId, nameof(returnPolicyId), required: true);
-            return new DeferredBodyAction<GetReturnPolicyResponse>(() =>
+            return new DeferredBodyAction<GetReturnPolicyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/account/v1/return_policy/{0}", __workflow_returnPolicyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -127,10 +127,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetInventoryItemResponse> GetInventoryItem(Expression<Func<string>> sku)
+        public IBodyWorkflowAction<GetInventoryItemResponse, ApiConnectionActionConfiguration> GetInventoryItem(Expression<Func<string>> sku)
         {
             var __workflow_sku = WorkflowExpression.Compile(sku, nameof(sku), required: true);
-            return new DeferredBodyAction<GetInventoryItemResponse>(() =>
+            return new DeferredBodyAction<GetInventoryItemResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/inventory/v1/inventory_item/{0}", __workflow_sku.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<CreateOrReplaceInventoryItemResponse> CreateOrReplaceInventoryItem(Expression<Func<string>> sku, Expression<Func<string>> contentLanguage, Expression<Func<bodyavailabilitypickupAtLocationAvailabilityInputItem[]>> bodyavailabilitypickupAtLocationAvailability = null, Expression<Func<bodyavailabilityshipToLocationAvailabilityavailabilityDistributionsInputItem[]>> bodyavailabilityshipToLocationAvailabilityavailabilityDistributions = null, Expression<Func<int>> bodyavailabilityshipToLocationAvailabilityquantity = null, Expression<Func<bodyconditionInput>> bodycondition = null, Expression<Func<string>> bodyconditionDescription = null, Expression<Func<double>> bodypackageWeightAndSizedimensionsheight = null, Expression<Func<double>> bodypackageWeightAndSizedimensionslength = null, Expression<Func<bodypackageWeightAndSizedimensionsunitInput>> bodypackageWeightAndSizedimensionsunit = null, Expression<Func<double>> bodypackageWeightAndSizedimensionswidth = null, Expression<Func<bodypackageWeightAndSizepackageTypeInput>> bodypackageWeightAndSizepackageType = null, Expression<Func<bodypackageWeightAndSizeweightunitInput>> bodypackageWeightAndSizeweightunit = null, Expression<Func<double>> bodypackageWeightAndSizeweightvalue = null, Expression<Func<string>> bodyproductbrand = null, Expression<Func<string>> bodyproductdescription = null, Expression<Func<string[]>> bodyproductean = null, Expression<Func<string>> bodyproductepid = null, Expression<Func<string[]>> bodyproductimageUrls = null, Expression<Func<string[]>> bodyproductisbn = null, Expression<Func<string>> bodyproductmpn = null, Expression<Func<string>> bodyproductsubtitle = null, Expression<Func<string>> bodyproducttitle = null, Expression<Func<string[]>> bodyproductupc = null, Expression<Func<string[]>> bodyproductvideoIds = null)
+        public IBodyWorkflowAction<CreateOrReplaceInventoryItemResponse, ApiConnectionActionConfiguration> CreateOrReplaceInventoryItem(Expression<Func<string>> sku, Expression<Func<string>> contentLanguage, Expression<Func<bodyavailabilitypickupAtLocationAvailabilityInputItem[]>> bodyavailabilitypickupAtLocationAvailability = null, Expression<Func<bodyavailabilityshipToLocationAvailabilityavailabilityDistributionsInputItem[]>> bodyavailabilityshipToLocationAvailabilityavailabilityDistributions = null, Expression<Func<int>> bodyavailabilityshipToLocationAvailabilityquantity = null, Expression<Func<bodyconditionInput>> bodycondition = null, Expression<Func<string>> bodyconditionDescription = null, Expression<Func<double>> bodypackageWeightAndSizedimensionsheight = null, Expression<Func<double>> bodypackageWeightAndSizedimensionslength = null, Expression<Func<bodypackageWeightAndSizedimensionsunitInput>> bodypackageWeightAndSizedimensionsunit = null, Expression<Func<double>> bodypackageWeightAndSizedimensionswidth = null, Expression<Func<bodypackageWeightAndSizepackageTypeInput>> bodypackageWeightAndSizepackageType = null, Expression<Func<bodypackageWeightAndSizeweightunitInput>> bodypackageWeightAndSizeweightunit = null, Expression<Func<double>> bodypackageWeightAndSizeweightvalue = null, Expression<Func<string>> bodyproductbrand = null, Expression<Func<string>> bodyproductdescription = null, Expression<Func<string[]>> bodyproductean = null, Expression<Func<string>> bodyproductepid = null, Expression<Func<string[]>> bodyproductimageUrls = null, Expression<Func<string[]>> bodyproductisbn = null, Expression<Func<string>> bodyproductmpn = null, Expression<Func<string>> bodyproductsubtitle = null, Expression<Func<string>> bodyproducttitle = null, Expression<Func<string[]>> bodyproductupc = null, Expression<Func<string[]>> bodyproductvideoIds = null)
         {
             var __workflow_sku = WorkflowExpression.Compile(sku, nameof(sku), required: true);
             var __workflow_contentLanguage = WorkflowExpression.Compile(contentLanguage, nameof(contentLanguage), required: true);
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var __workflow_bodyproducttitle = WorkflowExpression.Compile(bodyproducttitle, nameof(bodyproducttitle), required: false);
             var __workflow_bodyproductupc = WorkflowExpression.Compile(bodyproductupc, nameof(bodyproductupc), required: false);
             var __workflow_bodyproductvideoIds = WorkflowExpression.Compile(bodyproductvideoIds, nameof(bodyproductvideoIds), required: false);
-            return new DeferredBodyAction<CreateOrReplaceInventoryItemResponse>(() =>
+            return new DeferredBodyAction<CreateOrReplaceInventoryItemResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/inventory/v1/inventory_item/{0}", __workflow_sku.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -382,11 +382,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetInventoryItemsResponse> GetInventoryItems(Expression<Func<string>> Limit = null, Expression<Func<string>> Offset = null)
+        public IBodyWorkflowAction<GetInventoryItemsResponse, ApiConnectionActionConfiguration> GetInventoryItems(Expression<Func<string>> Limit = null, Expression<Func<string>> Offset = null)
         {
             var __workflow_Limit = WorkflowExpression.Compile(Limit, nameof(Limit), required: false);
             var __workflow_Offset = WorkflowExpression.Compile(Offset, nameof(Offset), required: false);
-            return new DeferredBodyAction<GetInventoryItemsResponse>(() =>
+            return new DeferredBodyAction<GetInventoryItemsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sell/inventory/v1/inventory_item";
                 var apiCallHttpMethod = "get";
@@ -401,10 +401,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetInventoryLocationResponse> GetInventoryLocation(Expression<Func<string>> merchantLocationKey)
+        public IBodyWorkflowAction<GetInventoryLocationResponse, ApiConnectionActionConfiguration> GetInventoryLocation(Expression<Func<string>> merchantLocationKey)
         {
             var __workflow_merchantLocationKey = WorkflowExpression.Compile(merchantLocationKey, nameof(merchantLocationKey), required: true);
-            return new DeferredBodyAction<GetInventoryLocationResponse>(() =>
+            return new DeferredBodyAction<GetInventoryLocationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/inventory/v1/location/{0}", __workflow_merchantLocationKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<string> CreateInventoryLocation(Expression<Func<string>> merchantLocationKey, Expression<Func<string>> bodylocationaddressaddressLine1 = null, Expression<Func<string>> bodylocationaddressaddressLine2 = null, Expression<Func<string>> bodylocationaddresscity = null, Expression<Func<string>> bodylocationaddresscountry = null, Expression<Func<string>> bodylocationaddresscounty = null, Expression<Func<string>> bodylocationaddresspostalCode = null, Expression<Func<string>> bodylocationaddressstateOrProvince = null, Expression<Func<string>> bodylocationgeoCoordinateslatitude = null, Expression<Func<string>> bodylocationgeoCoordinateslongitude = null, Expression<Func<string>> bodylocationAdditionalInformation = null, Expression<Func<string>> bodylocationInstructions = null, Expression<Func<bodylocationTypesInputItem[]>> bodylocationTypes = null, Expression<Func<string>> bodylocationWebUrl = null, Expression<Func<string>> bodymerchantLocationStatus = null, Expression<Func<string>> bodyname = null, Expression<Func<bodyoperatingHoursInputItem[]>> bodyoperatingHours = null, Expression<Func<string>> bodyphone = null, Expression<Func<bodyspecialHoursInputItem[]>> bodyspecialHours = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateInventoryLocation(Expression<Func<string>> merchantLocationKey, Expression<Func<string>> bodylocationaddressaddressLine1 = null, Expression<Func<string>> bodylocationaddressaddressLine2 = null, Expression<Func<string>> bodylocationaddresscity = null, Expression<Func<string>> bodylocationaddresscountry = null, Expression<Func<string>> bodylocationaddresscounty = null, Expression<Func<string>> bodylocationaddresspostalCode = null, Expression<Func<string>> bodylocationaddressstateOrProvince = null, Expression<Func<string>> bodylocationgeoCoordinateslatitude = null, Expression<Func<string>> bodylocationgeoCoordinateslongitude = null, Expression<Func<string>> bodylocationAdditionalInformation = null, Expression<Func<string>> bodylocationInstructions = null, Expression<Func<bodylocationTypesInputItem[]>> bodylocationTypes = null, Expression<Func<string>> bodylocationWebUrl = null, Expression<Func<string>> bodymerchantLocationStatus = null, Expression<Func<string>> bodyname = null, Expression<Func<bodyoperatingHoursInputItem[]>> bodyoperatingHours = null, Expression<Func<string>> bodyphone = null, Expression<Func<bodyspecialHoursInputItem[]>> bodyspecialHours = null)
         {
             var __workflow_merchantLocationKey = WorkflowExpression.Compile(merchantLocationKey, nameof(merchantLocationKey), required: true);
             var __workflow_bodylocationaddressaddressLine1 = WorkflowExpression.Compile(bodylocationaddressaddressLine1, nameof(bodylocationaddressaddressLine1), required: false);
@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var __workflow_bodyoperatingHours = WorkflowExpression.Compile(bodyoperatingHours, nameof(bodyoperatingHours), required: false);
             var __workflow_bodyphone = WorkflowExpression.Compile(bodyphone, nameof(bodyphone), required: false);
             var __workflow_bodyspecialHours = WorkflowExpression.Compile(bodyspecialHours, nameof(bodyspecialHours), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/inventory/v1/location/{0}", __workflow_merchantLocationKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -585,11 +585,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetInventoryLocationsResponse> GetInventoryLocations(Expression<Func<string>> Offset = null, Expression<Func<string>> Limit = null)
+        public IBodyWorkflowAction<GetInventoryLocationsResponse, ApiConnectionActionConfiguration> GetInventoryLocations(Expression<Func<string>> Offset = null, Expression<Func<string>> Limit = null)
         {
             var __workflow_Offset = WorkflowExpression.Compile(Offset, nameof(Offset), required: false);
             var __workflow_Limit = WorkflowExpression.Compile(Limit, nameof(Limit), required: false);
-            return new DeferredBodyAction<GetInventoryLocationsResponse>(() =>
+            return new DeferredBodyAction<GetInventoryLocationsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sell/inventory/v1/location";
                 var apiCallHttpMethod = "get";
@@ -603,11 +603,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetItemConditionPoliciesResponse> GetItemConditionPolicies(Expression<Func<string>> marketplaceId, Expression<Func<string>> Filter = null)
+        public IBodyWorkflowAction<GetItemConditionPoliciesResponse, ApiConnectionActionConfiguration> GetItemConditionPolicies(Expression<Func<string>> marketplaceId, Expression<Func<string>> Filter = null)
         {
             var __workflow_marketplaceId = WorkflowExpression.Compile(marketplaceId, nameof(marketplaceId), required: true);
             var __workflow_Filter = WorkflowExpression.Compile(Filter, nameof(Filter), required: false);
-            return new DeferredBodyAction<GetItemConditionPoliciesResponse>(() =>
+            return new DeferredBodyAction<GetItemConditionPoliciesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/metadata/v1/marketplace/{0}/get_item_condition_policies", __workflow_marketplaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -619,14 +619,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetOffersResponse> GetOffers(Expression<Func<string>> sku, Expression<Func<string>> MarketplaceId = null, Expression<Func<string>> Format = null, Expression<Func<string>> Limit = null, Expression<Func<string>> Offset = null)
+        public IBodyWorkflowAction<GetOffersResponse, ApiConnectionActionConfiguration> GetOffers(Expression<Func<string>> sku, Expression<Func<string>> MarketplaceId = null, Expression<Func<string>> Format = null, Expression<Func<string>> Limit = null, Expression<Func<string>> Offset = null)
         {
             var __workflow_sku = WorkflowExpression.Compile(sku, nameof(sku), required: true);
             var __workflow_MarketplaceId = WorkflowExpression.Compile(MarketplaceId, nameof(MarketplaceId), required: false);
             var __workflow_Format = WorkflowExpression.Compile(Format, nameof(Format), required: false);
             var __workflow_Limit = WorkflowExpression.Compile(Limit, nameof(Limit), required: false);
             var __workflow_Offset = WorkflowExpression.Compile(Offset, nameof(Offset), required: false);
-            return new DeferredBodyAction<GetOffersResponse>(() =>
+            return new DeferredBodyAction<GetOffersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sell/inventory/v1/offer";
                 var apiCallHttpMethod = "get";
@@ -646,7 +646,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<CreateOfferResponse> CreateOffer(Expression<Func<int>> bodyavailableQuantity = null, Expression<Func<string>> bodycategoryId = null, Expression<Func<string>> bodycharitycharityId = null, Expression<Func<string>> bodycharitydonationPercentage = null, Expression<Func<string>> bodyextendedProducerResponsibilityproducerProductId = null, Expression<Func<string>> bodyextendedProducerResponsibilityproductPackageId = null, Expression<Func<string>> bodyextendedProducerResponsibilityshipmentPackageId = null, Expression<Func<string>> bodyextendedProducerResponsibilityproductDocumentationId = null, Expression<Func<string>> bodyextendedProducerResponsibilityecoParticipationFeecurrency = null, Expression<Func<string>> bodyextendedProducerResponsibilityecoParticipationFeevalue = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<bool>> bodyhideBuyerDetails = null, Expression<Func<bool>> bodyincludeCatalogProductDetails = null, Expression<Func<string>> bodylistingDescription = null, Expression<Func<bodylistingDurationInput>> bodylistingDuration = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoAcceptPricevalue = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoDeclinePricevalue = null, Expression<Func<bool>> bodylistingPoliciesbestOfferTermsbestOfferEnabled = null, Expression<Func<bool>> bodylistingPolicieseBayPlusIfEligible = null, Expression<Func<string>> bodylistingPoliciesfulfillmentPolicyId = null, Expression<Func<string>> bodylistingPoliciespaymentPolicyId = null, Expression<Func<string[]>> bodylistingPoliciesproductCompliancePolicyIds = null, Expression<Func<string>> bodylistingPoliciesreturnPolicyId = null, Expression<Func<bodylistingPoliciesshippingCostOverridesInputItem[]>> bodylistingPoliciesshippingCostOverrides = null, Expression<Func<string>> bodylistingPoliciestakeBackPolicyId = null, Expression<Func<string>> bodylistingStartDate = null, Expression<Func<int>> bodylotSize = null, Expression<Func<string>> bodymarketplaceId = null, Expression<Func<string>> bodymerchantLocationKey = null, Expression<Func<string>> bodypricingSummaryauctionReservePricecurrency = null, Expression<Func<string>> bodypricingSummaryauctionReservePricevalue = null, Expression<Func<string>> bodypricingSummaryauctionStartPricecurrency = null, Expression<Func<string>> bodypricingSummaryauctionStartPricevalue = null, Expression<Func<string>> bodypricingSummaryminimumAdvertisedPricecurrency = null, Expression<Func<string>> bodypricingSummaryminimumAdvertisedPricevalue = null, Expression<Func<bodypricingSummaryoriginallySoldForRetailPriceOnInput>> bodypricingSummaryoriginallySoldForRetailPriceOn = null, Expression<Func<string>> bodypricingSummaryoriginalRetailPricecurrency = null, Expression<Func<string>> bodypricingSummaryoriginalRetailPricevalue = null, Expression<Func<string>> bodypricingSummarypricecurrency = null, Expression<Func<string>> bodypricingSummarypricevalue = null, Expression<Func<bodypricingSummarypricingVisibilityInput>> bodypricingSummarypricingVisibility = null, Expression<Func<int>> bodyquantityLimitPerBuyer = null, Expression<Func<string>> bodysecondaryCategoryId = null, Expression<Func<string>> bodysku = null, Expression<Func<string[]>> bodystoreCategoryNames = null, Expression<Func<bool>> bodytaxapplyTax = null, Expression<Func<string>> bodytaxthirdPartyTaxCategory = null, Expression<Func<double>> bodytaxvatPercentage = null)
+        public IBodyWorkflowAction<CreateOfferResponse, ApiConnectionActionConfiguration> CreateOffer(Expression<Func<int>> bodyavailableQuantity = null, Expression<Func<string>> bodycategoryId = null, Expression<Func<string>> bodycharitycharityId = null, Expression<Func<string>> bodycharitydonationPercentage = null, Expression<Func<string>> bodyextendedProducerResponsibilityproducerProductId = null, Expression<Func<string>> bodyextendedProducerResponsibilityproductPackageId = null, Expression<Func<string>> bodyextendedProducerResponsibilityshipmentPackageId = null, Expression<Func<string>> bodyextendedProducerResponsibilityproductDocumentationId = null, Expression<Func<string>> bodyextendedProducerResponsibilityecoParticipationFeecurrency = null, Expression<Func<string>> bodyextendedProducerResponsibilityecoParticipationFeevalue = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<bool>> bodyhideBuyerDetails = null, Expression<Func<bool>> bodyincludeCatalogProductDetails = null, Expression<Func<string>> bodylistingDescription = null, Expression<Func<bodylistingDurationInput>> bodylistingDuration = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoAcceptPricevalue = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoDeclinePricevalue = null, Expression<Func<bool>> bodylistingPoliciesbestOfferTermsbestOfferEnabled = null, Expression<Func<bool>> bodylistingPolicieseBayPlusIfEligible = null, Expression<Func<string>> bodylistingPoliciesfulfillmentPolicyId = null, Expression<Func<string>> bodylistingPoliciespaymentPolicyId = null, Expression<Func<string[]>> bodylistingPoliciesproductCompliancePolicyIds = null, Expression<Func<string>> bodylistingPoliciesreturnPolicyId = null, Expression<Func<bodylistingPoliciesshippingCostOverridesInputItem[]>> bodylistingPoliciesshippingCostOverrides = null, Expression<Func<string>> bodylistingPoliciestakeBackPolicyId = null, Expression<Func<string>> bodylistingStartDate = null, Expression<Func<int>> bodylotSize = null, Expression<Func<string>> bodymarketplaceId = null, Expression<Func<string>> bodymerchantLocationKey = null, Expression<Func<string>> bodypricingSummaryauctionReservePricecurrency = null, Expression<Func<string>> bodypricingSummaryauctionReservePricevalue = null, Expression<Func<string>> bodypricingSummaryauctionStartPricecurrency = null, Expression<Func<string>> bodypricingSummaryauctionStartPricevalue = null, Expression<Func<string>> bodypricingSummaryminimumAdvertisedPricecurrency = null, Expression<Func<string>> bodypricingSummaryminimumAdvertisedPricevalue = null, Expression<Func<bodypricingSummaryoriginallySoldForRetailPriceOnInput>> bodypricingSummaryoriginallySoldForRetailPriceOn = null, Expression<Func<string>> bodypricingSummaryoriginalRetailPricecurrency = null, Expression<Func<string>> bodypricingSummaryoriginalRetailPricevalue = null, Expression<Func<string>> bodypricingSummarypricecurrency = null, Expression<Func<string>> bodypricingSummarypricevalue = null, Expression<Func<bodypricingSummarypricingVisibilityInput>> bodypricingSummarypricingVisibility = null, Expression<Func<int>> bodyquantityLimitPerBuyer = null, Expression<Func<string>> bodysecondaryCategoryId = null, Expression<Func<string>> bodysku = null, Expression<Func<string[]>> bodystoreCategoryNames = null, Expression<Func<bool>> bodytaxapplyTax = null, Expression<Func<string>> bodytaxthirdPartyTaxCategory = null, Expression<Func<double>> bodytaxvatPercentage = null)
         {
             var __workflow_bodyavailableQuantity = WorkflowExpression.Compile(bodyavailableQuantity, nameof(bodyavailableQuantity), required: false);
             var __workflow_bodycategoryId = WorkflowExpression.Compile(bodycategoryId, nameof(bodycategoryId), required: false);
@@ -698,7 +698,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var __workflow_bodytaxapplyTax = WorkflowExpression.Compile(bodytaxapplyTax, nameof(bodytaxapplyTax), required: false);
             var __workflow_bodytaxthirdPartyTaxCategory = WorkflowExpression.Compile(bodytaxthirdPartyTaxCategory, nameof(bodytaxthirdPartyTaxCategory), required: false);
             var __workflow_bodytaxvatPercentage = WorkflowExpression.Compile(bodytaxvatPercentage, nameof(bodytaxvatPercentage), required: false);
-            return new DeferredBodyAction<CreateOfferResponse>(() =>
+            return new DeferredBodyAction<CreateOfferResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sell/inventory/v1/offer";
                 var apiCallHttpMethod = "post";
@@ -1129,10 +1129,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetOfferResponse> GetOffer(Expression<Func<string>> offerId)
+        public IBodyWorkflowAction<GetOfferResponse, ApiConnectionActionConfiguration> GetOffer(Expression<Func<string>> offerId)
         {
             var __workflow_offerId = WorkflowExpression.Compile(offerId, nameof(offerId), required: true);
-            return new DeferredBodyAction<GetOfferResponse>(() =>
+            return new DeferredBodyAction<GetOfferResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/inventory/v1/offer/{0}", __workflow_offerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1143,10 +1143,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<string> DeleteOffer(Expression<Func<string>> offerId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DeleteOffer(Expression<Func<string>> offerId)
         {
             var __workflow_offerId = WorkflowExpression.Compile(offerId, nameof(offerId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/inventory/v1/offer/{0}", __workflow_offerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -1158,7 +1158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<UpdateOfferResponse> UpdateOffer(Expression<Func<string>> offerId, Expression<Func<int>> bodyavailableQuantity = null, Expression<Func<string>> bodycategoryId = null, Expression<Func<string>> bodycharitycharityId = null, Expression<Func<string>> bodycharitydonationPercentage = null, Expression<Func<string>> bodyextendedProducerResponsibilityproducerProductId = null, Expression<Func<string>> bodyextendedProducerResponsibilityproductPackageId = null, Expression<Func<string>> bodyextendedProducerResponsibilityshipmentPackageId = null, Expression<Func<string>> bodyextendedProducerResponsibilityproductDocumentationId = null, Expression<Func<string>> bodyextendedProducerResponsibilityecoParticipationFeecurrency = null, Expression<Func<string>> bodyextendedProducerResponsibilityecoParticipationFeevalue = null, Expression<Func<bool>> bodyhideBuyerDetails = null, Expression<Func<bool>> bodyincludeCatalogProductDetails = null, Expression<Func<string>> bodylistingDescription = null, Expression<Func<bodylistingDurationInput>> bodylistingDuration = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoAcceptPricevalue = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoDeclinePricevalue = null, Expression<Func<bool>> bodylistingPoliciesbestOfferTermsbestOfferEnabled = null, Expression<Func<bool>> bodylistingPolicieseBayPlusIfEligible = null, Expression<Func<string>> bodylistingPoliciesfulfillmentPolicyId = null, Expression<Func<string>> bodylistingPoliciespaymentPolicyId = null, Expression<Func<string[]>> bodylistingPoliciesproductCompliancePolicyIds = null, Expression<Func<string>> bodylistingPoliciesreturnPolicyId = null, Expression<Func<bodylistingPoliciesshippingCostOverridesInputItem2[]>> bodylistingPoliciesshippingCostOverrides = null, Expression<Func<string>> bodylistingPoliciestakeBackPolicyId = null, Expression<Func<string>> bodylistingStartDate = null, Expression<Func<int>> bodylotSize = null, Expression<Func<string>> bodymerchantLocationKey = null, Expression<Func<string>> bodypricingSummaryauctionReservePricecurrency = null, Expression<Func<string>> bodypricingSummaryauctionReservePricevalue = null, Expression<Func<string>> bodypricingSummaryauctionStartPricecurrency = null, Expression<Func<string>> bodypricingSummaryauctionStartPricevalue = null, Expression<Func<string>> bodypricingSummaryminimumAdvertisedPricecurrency = null, Expression<Func<string>> bodypricingSummaryminimumAdvertisedPricevalue = null, Expression<Func<bodypricingSummaryoriginallySoldForRetailPriceOnInput>> bodypricingSummaryoriginallySoldForRetailPriceOn = null, Expression<Func<string>> bodypricingSummaryoriginalRetailPricecurrency = null, Expression<Func<string>> bodypricingSummaryoriginalRetailPricevalue = null, Expression<Func<string>> bodypricingSummarypricecurrency = null, Expression<Func<string>> bodypricingSummarypricevalue = null, Expression<Func<bodypricingSummarypricingVisibilityInput>> bodypricingSummarypricingVisibility = null, Expression<Func<int>> bodyquantityLimitPerBuyer = null, Expression<Func<string>> bodysecondaryCategoryId = null, Expression<Func<string[]>> bodystoreCategoryNames = null, Expression<Func<bool>> bodytaxapplyTax = null, Expression<Func<string>> bodytaxthirdPartyTaxCategory = null, Expression<Func<double>> bodytaxvatPercentage = null)
+        public IBodyWorkflowAction<UpdateOfferResponse, ApiConnectionActionConfiguration> UpdateOffer(Expression<Func<string>> offerId, Expression<Func<int>> bodyavailableQuantity = null, Expression<Func<string>> bodycategoryId = null, Expression<Func<string>> bodycharitycharityId = null, Expression<Func<string>> bodycharitydonationPercentage = null, Expression<Func<string>> bodyextendedProducerResponsibilityproducerProductId = null, Expression<Func<string>> bodyextendedProducerResponsibilityproductPackageId = null, Expression<Func<string>> bodyextendedProducerResponsibilityshipmentPackageId = null, Expression<Func<string>> bodyextendedProducerResponsibilityproductDocumentationId = null, Expression<Func<string>> bodyextendedProducerResponsibilityecoParticipationFeecurrency = null, Expression<Func<string>> bodyextendedProducerResponsibilityecoParticipationFeevalue = null, Expression<Func<bool>> bodyhideBuyerDetails = null, Expression<Func<bool>> bodyincludeCatalogProductDetails = null, Expression<Func<string>> bodylistingDescription = null, Expression<Func<bodylistingDurationInput>> bodylistingDuration = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoAcceptPricevalue = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoDeclinePricevalue = null, Expression<Func<bool>> bodylistingPoliciesbestOfferTermsbestOfferEnabled = null, Expression<Func<bool>> bodylistingPolicieseBayPlusIfEligible = null, Expression<Func<string>> bodylistingPoliciesfulfillmentPolicyId = null, Expression<Func<string>> bodylistingPoliciespaymentPolicyId = null, Expression<Func<string[]>> bodylistingPoliciesproductCompliancePolicyIds = null, Expression<Func<string>> bodylistingPoliciesreturnPolicyId = null, Expression<Func<bodylistingPoliciesshippingCostOverridesInputItem2[]>> bodylistingPoliciesshippingCostOverrides = null, Expression<Func<string>> bodylistingPoliciestakeBackPolicyId = null, Expression<Func<string>> bodylistingStartDate = null, Expression<Func<int>> bodylotSize = null, Expression<Func<string>> bodymerchantLocationKey = null, Expression<Func<string>> bodypricingSummaryauctionReservePricecurrency = null, Expression<Func<string>> bodypricingSummaryauctionReservePricevalue = null, Expression<Func<string>> bodypricingSummaryauctionStartPricecurrency = null, Expression<Func<string>> bodypricingSummaryauctionStartPricevalue = null, Expression<Func<string>> bodypricingSummaryminimumAdvertisedPricecurrency = null, Expression<Func<string>> bodypricingSummaryminimumAdvertisedPricevalue = null, Expression<Func<bodypricingSummaryoriginallySoldForRetailPriceOnInput>> bodypricingSummaryoriginallySoldForRetailPriceOn = null, Expression<Func<string>> bodypricingSummaryoriginalRetailPricecurrency = null, Expression<Func<string>> bodypricingSummaryoriginalRetailPricevalue = null, Expression<Func<string>> bodypricingSummarypricecurrency = null, Expression<Func<string>> bodypricingSummarypricevalue = null, Expression<Func<bodypricingSummarypricingVisibilityInput>> bodypricingSummarypricingVisibility = null, Expression<Func<int>> bodyquantityLimitPerBuyer = null, Expression<Func<string>> bodysecondaryCategoryId = null, Expression<Func<string[]>> bodystoreCategoryNames = null, Expression<Func<bool>> bodytaxapplyTax = null, Expression<Func<string>> bodytaxthirdPartyTaxCategory = null, Expression<Func<double>> bodytaxvatPercentage = null)
         {
             var __workflow_offerId = WorkflowExpression.Compile(offerId, nameof(offerId), required: true);
             var __workflow_bodyavailableQuantity = WorkflowExpression.Compile(bodyavailableQuantity, nameof(bodyavailableQuantity), required: false);
@@ -1208,7 +1208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
             var __workflow_bodytaxapplyTax = WorkflowExpression.Compile(bodytaxapplyTax, nameof(bodytaxapplyTax), required: false);
             var __workflow_bodytaxthirdPartyTaxCategory = WorkflowExpression.Compile(bodytaxthirdPartyTaxCategory, nameof(bodytaxthirdPartyTaxCategory), required: false);
             var __workflow_bodytaxvatPercentage = WorkflowExpression.Compile(bodytaxvatPercentage, nameof(bodytaxvatPercentage), required: false);
-            return new DeferredBodyAction<UpdateOfferResponse>(() =>
+            return new DeferredBodyAction<UpdateOfferResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/inventory/v1/offer/{0}", __workflow_offerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -1620,10 +1620,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<WithdrawOfferResponse> WithdrawOffer(Expression<Func<string>> offerId)
+        public IBodyWorkflowAction<WithdrawOfferResponse, ApiConnectionActionConfiguration> WithdrawOffer(Expression<Func<string>> offerId)
         {
             var __workflow_offerId = WorkflowExpression.Compile(offerId, nameof(offerId), required: true);
-            return new DeferredBodyAction<WithdrawOfferResponse>(() =>
+            return new DeferredBodyAction<WithdrawOfferResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/inventory/v1/offer/{0}/withdraw", __workflow_offerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1634,10 +1634,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<PublishOfferResponse> PublishOffer(Expression<Func<string>> offerId)
+        public IBodyWorkflowAction<PublishOfferResponse, ApiConnectionActionConfiguration> PublishOffer(Expression<Func<string>> offerId)
         {
             var __workflow_offerId = WorkflowExpression.Compile(offerId, nameof(offerId), required: true);
-            return new DeferredBodyAction<PublishOfferResponse>(() =>
+            return new DeferredBodyAction<PublishOfferResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sell/inventory/v1/offer/{0}/publish/", __workflow_offerId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";

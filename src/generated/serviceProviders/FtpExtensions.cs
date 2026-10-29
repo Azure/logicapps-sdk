@@ -1,9 +1,11 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq.Expressions;
     using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
@@ -14,10 +16,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
     public class FtpActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
-        public IBodyWorkflowAction<JToken> GetFtpFileContent(Expression<Func<string>> filePath)
+        public IBodyWorkflowAction<JToken, GetFtpFileContentActionConfiguration> GetFtpFileContent(Expression<Func<string>> filePath)
         {
             var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, GetFtpFileContentActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
@@ -26,15 +28,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "getFtpFileContent", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<JToken>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, GetFtpFileContentActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
-        public IBodyWorkflowAction<JToken> GetFtpFileContentV2(Expression<Func<string>> filePath)
+        public IBodyWorkflowAction<JToken, GetFtpFileContentV2ActionConfiguration> GetFtpFileContentV2(Expression<Func<string>> filePath)
         {
             var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, GetFtpFileContentV2ActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
@@ -43,15 +45,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "getFtpFileContentV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<JToken>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, GetFtpFileContentV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
-        public IBodyWorkflowAction<GetFileMetadataOutput> GetFileMetadata(Expression<Func<string>> filePath)
+        public IBodyWorkflowAction<GetFileMetadataOutput, GetFileMetadataActionConfiguration> GetFileMetadata(Expression<Func<string>> filePath)
         {
             var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: true);
-            return new DeferredBodyAction<GetFileMetadataOutput>(() =>
+            return new DeferredBodyAction<GetFileMetadataOutput, GetFileMetadataActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
@@ -60,17 +62,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "getFileMetadata", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetFileMetadataOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetFileMetadataOutput, GetFileMetadataActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
-        public IBodyWorkflowAction<CreateFileOutput> CreateFile(Expression<Func<string>> filePath, Expression<Func<object>> fileContent, Expression<Func<bool>> getAllFileMetadata = null)
+        public IBodyWorkflowAction<CreateFileOutput, CreateFileActionConfiguration> CreateFile(Expression<Func<string>> filePath, Expression<Func<object>> fileContent, Expression<Func<bool>> getAllFileMetadata = null)
         {
             var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: true);
             var __workflow_fileContent = WorkflowExpression.Compile(fileContent, nameof(fileContent), required: true);
             var __workflow_getAllFileMetadata = WorkflowExpression.Compile(getAllFileMetadata, nameof(getAllFileMetadata), required: false);
-            return new DeferredBodyAction<CreateFileOutput>(() =>
+            return new DeferredBodyAction<CreateFileOutput, CreateFileActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
@@ -85,17 +87,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "createFile", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<CreateFileOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<CreateFileOutput, CreateFileActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
-        public IBodyWorkflowAction<UpdateFileOutput> UpdateFile(Expression<Func<string>> filePath, Expression<Func<object>> fileContent, Expression<Func<bool>> getAllFileMetadata = null)
+        public IBodyWorkflowAction<UpdateFileOutput, UpdateFileActionConfiguration> UpdateFile(Expression<Func<string>> filePath, Expression<Func<object>> fileContent, Expression<Func<bool>> getAllFileMetadata = null)
         {
             var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: true);
             var __workflow_fileContent = WorkflowExpression.Compile(fileContent, nameof(fileContent), required: true);
             var __workflow_getAllFileMetadata = WorkflowExpression.Compile(getAllFileMetadata, nameof(getAllFileMetadata), required: false);
-            return new DeferredBodyAction<UpdateFileOutput>(() =>
+            return new DeferredBodyAction<UpdateFileOutput, UpdateFileActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
@@ -110,16 +112,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "updateFile", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<UpdateFileOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<UpdateFileOutput, UpdateFileActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
-        public IOutputWorkflowAction<JToken> DeleteFtpFile(Expression<Func<string>> filePath, Expression<Func<bool>> skipIfFileNotPresent = null)
+        public IWorkflowAction<DeleteFtpFileActionConfiguration> DeleteFtpFile(Expression<Func<string>> filePath, Expression<Func<bool>> skipIfFileNotPresent = null)
         {
             var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: true);
             var __workflow_skipIfFileNotPresent = WorkflowExpression.Compile(skipIfFileNotPresent, nameof(skipIfFileNotPresent), required: false);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<DeleteFtpFileActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
@@ -133,15 +135,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "deleteFtpFile", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                return new ServiceProviderAction<DeleteFtpFileActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
-        public IBodyWorkflowAction<ListFilesInFolderOutputItem[]> ListFilesInFolder(Expression<Func<string>> folderPath)
+        public IBodyWorkflowAction<ListFilesInFolderOutputItem[], ListFilesInFolderActionConfiguration> ListFilesInFolder(Expression<Func<string>> folderPath)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
-            return new DeferredBodyAction<ListFilesInFolderOutputItem[]>(() =>
+            return new DeferredBodyAction<ListFilesInFolderOutputItem[], ListFilesInFolderActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(__workflow_folderPath);
@@ -150,18 +152,18 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "listFilesInFolder", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ListFilesInFolderOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ListFilesInFolderOutputItem[], ListFilesInFolderActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
-        public IBodyWorkflowAction<ExtractArchiveOutputItem[]> ExtractArchive(Expression<Func<string>> folderPath, Expression<Func<string>> filePath = null, Expression<Func<ExtractArchiveInputOverwriteExistingFilesBehaviourType>> overwriteExistingFilesBehaviour = null, Expression<Func<object>> fileContent = null)
+        public IBodyWorkflowAction<ExtractArchiveOutputItem[], ExtractArchiveActionConfiguration> ExtractArchive(Expression<Func<string>> folderPath, Expression<Func<string>> filePath = null, Expression<Func<ExtractArchiveInputOverwriteExistingFilesBehaviourType>> overwriteExistingFilesBehaviour = null, Expression<Func<object>> fileContent = null)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: false);
             var __workflow_overwriteExistingFilesBehaviour = WorkflowExpression.Compile(overwriteExistingFilesBehaviour, nameof(overwriteExistingFilesBehaviour), required: false);
             var __workflow_fileContent = WorkflowExpression.Compile(fileContent, nameof(fileContent), required: false);
-            return new DeferredBodyAction<ExtractArchiveOutputItem[]>(() =>
+            return new DeferredBodyAction<ExtractArchiveOutputItem[], ExtractArchiveActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 if (__workflow_filePath != null)
@@ -185,20 +187,84 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "extractArchive", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ExtractArchiveOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ExtractArchiveOutputItem[], ExtractArchiveActionConfiguration>(serviceProviderInput);
             });
         }
     }
 
+    public sealed class GetFtpFileContentActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class GetFtpFileContentV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class GetFileMetadataActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class CreateFileActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class UpdateFileActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class DeleteFtpFileActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class ListFilesInFolderActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class ExtractArchiveActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
     public class FtpTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WhenFtpFilesAreAddedOrModifiedOutputItem[]> WhenFtpFilesAreAddedOrModified(Expression<Func<string>> folderPath, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFileCutOffTimestamp = null, Expression<Func<bool>> ignoreSubFolders = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WhenFtpFilesAreAddedOrModifiedOutputItem[], WhenFtpFilesAreAddedOrModifiedTriggerConfiguration> WhenFtpFilesAreAddedOrModified(Expression<Func<string>> folderPath, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFileCutOffTimestamp = null, Expression<Func<bool>> ignoreSubFolders = null, FlowRecurrence recurrence = null)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             var __workflow_maxFileCount = WorkflowExpression.Compile(maxFileCount, nameof(maxFileCount), required: false);
             var __workflow_oldFileCutOffTimestamp = WorkflowExpression.Compile(oldFileCutOffTimestamp, nameof(oldFileCutOffTimestamp), required: false);
             var __workflow_ignoreSubFolders = WorkflowExpression.Compile(ignoreSubFolders, nameof(ignoreSubFolders), required: false);
-            return new DeferredBodyTrigger<WhenFtpFilesAreAddedOrModifiedOutputItem[]>(() =>
+            return new DeferredBodyTrigger<WhenFtpFilesAreAddedOrModifiedOutputItem[], WhenFtpFilesAreAddedOrModifiedTriggerConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(__workflow_folderPath);
@@ -222,9 +288,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "whenFtpFilesAreAddedOrModified", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<WhenFtpFilesAreAddedOrModifiedOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<WhenFtpFilesAreAddedOrModifiedOutputItem[], WhenFtpFilesAreAddedOrModifiedTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
             });
         }
+    }
+
+    public sealed class WhenFtpFilesAreAddedOrModifiedTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration
+    {
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+        int? ITriggerConcurrencyConfiguration.ConcurrentRuns { get; set; }
+        int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
     }
 
     public class WhenFtpFilesAreAddedOrModifiedOutputItem
@@ -353,7 +427,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
         public bool IsFolder { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum ExtractArchiveInputOverwriteExistingFilesBehaviourType
     {
         Fail,

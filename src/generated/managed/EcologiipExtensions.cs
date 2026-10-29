@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
     public class EcologiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
-        public IBodyWorkflowAction<PurchaseTreesResponse> PurchaseTrees(Expression<Func<int>> bodynumber, Expression<Func<string>> bodyname = null, Expression<Func<bool>> bodytest = null)
+        public IBodyWorkflowAction<PurchaseTreesResponse, ApiConnectionActionConfiguration> PurchaseTrees(Expression<Func<int>> bodynumber, Expression<Func<string>> bodyname = null, Expression<Func<bool>> bodytest = null)
         {
             var __workflow_bodynumber = WorkflowExpression.Compile(bodynumber, nameof(bodynumber), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             var __workflow_bodytest = WorkflowExpression.Compile(bodytest, nameof(bodytest), required: false);
-            return new DeferredBodyAction<PurchaseTreesResponse>(() =>
+            return new DeferredBodyAction<PurchaseTreesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/impact/trees";
                 var apiCallHttpMethod = "post";
@@ -48,12 +48,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
-        public IBodyWorkflowAction<PurchaseOffsetsResponse> PurchaseOffsets(Expression<Func<int>> bodynumber, Expression<Func<string>> bodyunits, Expression<Func<bool>> bodytest = null)
+        public IBodyWorkflowAction<PurchaseOffsetsResponse, ApiConnectionActionConfiguration> PurchaseOffsets(Expression<Func<int>> bodynumber, Expression<Func<string>> bodyunits, Expression<Func<bool>> bodytest = null)
         {
             var __workflow_bodynumber = WorkflowExpression.Compile(bodynumber, nameof(bodynumber), required: true);
             var __workflow_bodyunits = WorkflowExpression.Compile(bodyunits, nameof(bodyunits), required: true);
             var __workflow_bodytest = WorkflowExpression.Compile(bodytest, nameof(bodytest), required: false);
-            return new DeferredBodyAction<PurchaseOffsetsResponse>(() =>
+            return new DeferredBodyAction<PurchaseOffsetsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/impact/carbon";
                 var apiCallHttpMethod = "post";
@@ -80,10 +80,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
-        public IBodyWorkflowAction<GetImpactResponse> GetImpact(Expression<Func<string>> username)
+        public IBodyWorkflowAction<GetImpactResponse, ApiConnectionActionConfiguration> GetImpact(Expression<Func<string>> username)
         {
             var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
-            return new DeferredBodyAction<GetImpactResponse>(() =>
+            return new DeferredBodyAction<GetImpactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/impact", __workflow_username.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -93,10 +93,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
-        public IBodyWorkflowAction<GetTreesResponse> GetTrees(Expression<Func<string>> username)
+        public IBodyWorkflowAction<GetTreesResponse, ApiConnectionActionConfiguration> GetTrees(Expression<Func<string>> username)
         {
             var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
-            return new DeferredBodyAction<GetTreesResponse>(() =>
+            return new DeferredBodyAction<GetTreesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/trees", __workflow_username.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -106,10 +106,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
-        public IBodyWorkflowAction<GetOffsetResponse> GetOffset(Expression<Func<string>> username)
+        public IBodyWorkflowAction<GetOffsetResponse, ApiConnectionActionConfiguration> GetOffset(Expression<Func<string>> username)
         {
             var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
-            return new DeferredBodyAction<GetOffsetResponse>(() =>
+            return new DeferredBodyAction<GetOffsetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/carbon-offset", __workflow_username.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

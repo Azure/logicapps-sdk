@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarificip
     public class CalendarificipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendarificip")]
-        public IBodyWorkflowAction<ListHolidaysResponse> ListHolidays(Expression<Func<string>> country, Expression<Func<string>> year, Expression<Func<string>> day = null, Expression<Func<string>> month = null, Expression<Func<string>> location = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> language = null)
+        public IBodyWorkflowAction<ListHolidaysResponse, ApiConnectionActionConfiguration> ListHolidays(Expression<Func<string>> country, Expression<Func<string>> year, Expression<Func<string>> day = null, Expression<Func<string>> month = null, Expression<Func<string>> location = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> language = null)
         {
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
             var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarificip
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: false);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
-            return new DeferredBodyAction<ListHolidaysResponse>(() =>
+            return new DeferredBodyAction<ListHolidaysResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/holidays";
                 var apiCallHttpMethod = "get";
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarificip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendarificip")]
-        public IBodyWorkflowAction<ListLanguagesResponse> ListLanguages()
+        public IBodyWorkflowAction<ListLanguagesResponse, ApiConnectionActionConfiguration> ListLanguages()
         {
             var apiCallPath = "/api/v2/languages";
             var apiCallHttpMethod = "get";
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarificip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendarificip")]
-        public IBodyWorkflowAction<ListCountriesResponse> ListCountries()
+        public IBodyWorkflowAction<ListCountriesResponse, ApiConnectionActionConfiguration> ListCountries()
         {
             var apiCallPath = "/api/v2/countries";
             var apiCallHttpMethod = "get";

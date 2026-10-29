@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
     public class NpstodayActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "npstoday")]
-        public IWorkflowAction SendSurvey(Expression<Func<string>> campaign, Expression<Func<string>> bodyrespondentemailAddress = null, Expression<Func<string>> bodyrespondentfirstName = null, Expression<Func<string>> bodyrespondentlastName = null, Expression<Func<string>> bodyrespondentphoneNumber = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendSurvey(Expression<Func<string>> campaign, Expression<Func<string>> bodyrespondentemailAddress = null, Expression<Func<string>> bodyrespondentfirstName = null, Expression<Func<string>> bodyrespondentlastName = null, Expression<Func<string>> bodyrespondentphoneNumber = null)
         {
             var __workflow_campaign = WorkflowExpression.Compile(campaign, nameof(campaign), required: true);
             var __workflow_bodyrespondentemailAddress = WorkflowExpression.Compile(bodyrespondentemailAddress, nameof(bodyrespondentemailAddress), required: false);
             var __workflow_bodyrespondentfirstName = WorkflowExpression.Compile(bodyrespondentfirstName, nameof(bodyrespondentfirstName), required: false);
             var __workflow_bodyrespondentlastName = WorkflowExpression.Compile(bodyrespondentlastName, nameof(bodyrespondentlastName), required: false);
             var __workflow_bodyrespondentphoneNumber = WorkflowExpression.Compile(bodyrespondentphoneNumber, nameof(bodyrespondentphoneNumber), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/campaigns/{0}/respondent", __workflow_campaign.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "npstoday")]
-        public IWorkflowAction AddEmployee(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodyteam = null, Expression<Func<string>> bodydivision = null, Expression<Func<string>> bodyphoneNumber = null, Expression<Func<bool>> bodyactive = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddEmployee(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodyteam = null, Expression<Func<string>> bodydivision = null, Expression<Func<string>> bodyphoneNumber = null, Expression<Func<bool>> bodyactive = null)
         {
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
             var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
             var __workflow_bodydivision = WorkflowExpression.Compile(bodydivision, nameof(bodydivision), required: false);
             var __workflow_bodyphoneNumber = WorkflowExpression.Compile(bodyphoneNumber, nameof(bodyphoneNumber), required: false);
             var __workflow_bodyactive = WorkflowExpression.Compile(bodyactive, nameof(bodyactive), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/profile/employees";
                 var apiCallHttpMethod = "post";
@@ -154,10 +154,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
 
     public class NpstodayTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken> NewResponse(Expression<Func<int>> bodycampaignId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> NewResponse(Expression<Func<int>> bodycampaignId = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodycampaignId = WorkflowExpression.Compile(bodycampaignId, nameof(bodycampaignId), required: false);
-            return new DeferredBodyTrigger<JToken>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/subscriptions/responses";
                 var apiCallHttpMethod = "post";
@@ -184,10 +184,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
             });
         }
 
-        public IBodyWorkflowTrigger<JToken> NewCampaignMember(Expression<Func<int>> bodycampaignId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> NewCampaignMember(Expression<Func<int>> bodycampaignId = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodycampaignId = WorkflowExpression.Compile(bodycampaignId, nameof(bodycampaignId), required: false);
-            return new DeferredBodyTrigger<JToken>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/subscriptions/campaignmembers";
                 var apiCallHttpMethod = "post";

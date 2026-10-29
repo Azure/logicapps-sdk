@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Websitecarbon
     public class WebsitecarbonActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "websitecarbon")]
-        public IBodyWorkflowAction<SiteAnalysisResponse> SiteAnalysis(Expression<Func<string>> url)
+        public IBodyWorkflowAction<SiteAnalysisResponse, ApiConnectionActionConfiguration> SiteAnalysis(Expression<Func<string>> url)
         {
             var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
-            return new DeferredBodyAction<SiteAnalysisResponse>(() =>
+            return new DeferredBodyAction<SiteAnalysisResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/site";
                 var apiCallHttpMethod = "get";
@@ -26,11 +26,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Websitecarbon
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "websitecarbon")]
-        public IBodyWorkflowAction<DataAnalysisResponse> DataAnalysis(Expression<Func<int>> bytes, Expression<Func<greenInput>> green)
+        public IBodyWorkflowAction<DataAnalysisResponse, ApiConnectionActionConfiguration> DataAnalysis(Expression<Func<int>> bytes, Expression<Func<greenInput>> green)
         {
             var __workflow_bytes = WorkflowExpression.Compile(bytes, nameof(bytes), required: true);
             var __workflow_green = WorkflowExpression.Compile(green, nameof(green), required: true);
-            return new DeferredBodyAction<DataAnalysisResponse>(() =>
+            return new DeferredBodyAction<DataAnalysisResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/data";
                 var apiCallHttpMethod = "get";

@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chucknorrisioip
     public class ChucknorrisioipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chucknorrisioip")]
-        public IBodyWorkflowAction<GetRandomChuckNorrisFactResponse> GetRandomChuckNorrisFact(Expression<Func<string>> category = null)
+        public IBodyWorkflowAction<GetRandomChuckNorrisFactResponse, ApiConnectionActionConfiguration> GetRandomChuckNorrisFact(Expression<Func<string>> category = null)
         {
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
-            return new DeferredBodyAction<GetRandomChuckNorrisFactResponse>(() =>
+            return new DeferredBodyAction<GetRandomChuckNorrisFactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/random";
                 var apiCallHttpMethod = "get";
@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chucknorrisioip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chucknorrisioip")]
-        public IBodyWorkflowAction<SearchChuckNorrisFactsResponse> SearchChuckNorrisFacts(Expression<Func<string>> query)
+        public IBodyWorkflowAction<SearchChuckNorrisFactsResponse, ApiConnectionActionConfiguration> SearchChuckNorrisFacts(Expression<Func<string>> query)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
-            return new DeferredBodyAction<SearchChuckNorrisFactsResponse>(() =>
+            return new DeferredBodyAction<SearchChuckNorrisFactsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/search";
                 var apiCallHttpMethod = "get";

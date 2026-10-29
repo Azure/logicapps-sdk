@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twilio
     public class TwilioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twilio")]
-        public IBodyWorkflowAction<Message> SendMessage(Expression<Func<string>> sendMessageRequestfrom, Expression<Func<string>> sendMessageRequestto, Expression<Func<string>> sendMessageRequestbody, Expression<Func<string[]>> sendMessageRequestmediaUrl = null, Expression<Func<string>> sendMessageRequeststatusCallback = null, Expression<Func<string>> sendMessageRequestmessagingServiceSid = null, Expression<Func<string>> sendMessageRequestapplicationSid = null, Expression<Func<string>> sendMessageRequestmaxPrice = null, Expression<Func<string>> sendMessageRequestvalidityPeriod = null)
+        public IBodyWorkflowAction<Message, ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> sendMessageRequestfrom, Expression<Func<string>> sendMessageRequestto, Expression<Func<string>> sendMessageRequestbody, Expression<Func<string[]>> sendMessageRequestmediaUrl = null, Expression<Func<string>> sendMessageRequeststatusCallback = null, Expression<Func<string>> sendMessageRequestmessagingServiceSid = null, Expression<Func<string>> sendMessageRequestapplicationSid = null, Expression<Func<string>> sendMessageRequestmaxPrice = null, Expression<Func<string>> sendMessageRequestvalidityPeriod = null)
         {
             var __workflow_sendMessageRequestfrom = WorkflowExpression.Compile(sendMessageRequestfrom, nameof(sendMessageRequestfrom), required: true);
             var __workflow_sendMessageRequestto = WorkflowExpression.Compile(sendMessageRequestto, nameof(sendMessageRequestto), required: true);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twilio
             var __workflow_sendMessageRequestapplicationSid = WorkflowExpression.Compile(sendMessageRequestapplicationSid, nameof(sendMessageRequestapplicationSid), required: false);
             var __workflow_sendMessageRequestmaxPrice = WorkflowExpression.Compile(sendMessageRequestmaxPrice, nameof(sendMessageRequestmaxPrice), required: false);
             var __workflow_sendMessageRequestvalidityPeriod = WorkflowExpression.Compile(sendMessageRequestvalidityPeriod, nameof(sendMessageRequestvalidityPeriod), required: false);
-            return new DeferredBodyAction<Message>(() =>
+            return new DeferredBodyAction<Message, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Messages.json";
                 var apiCallHttpMethod = "post";
@@ -82,10 +82,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twilio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twilio")]
-        public IBodyWorkflowAction<Message> GetMessage(Expression<Func<string>> messageId)
+        public IBodyWorkflowAction<Message, ApiConnectionActionConfiguration> GetMessage(Expression<Func<string>> messageId)
         {
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
-            return new DeferredBodyAction<Message>(() =>
+            return new DeferredBodyAction<Message, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Messages/{0}.json", __workflow_messageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -95,13 +95,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twilio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twilio")]
-        public IBodyWorkflowAction<MessageListV2> ListMessages(Expression<Func<string>> to = null, Expression<Func<string>> from = null, Expression<Func<string>> dateSent = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<MessageListV2, ApiConnectionActionConfiguration> ListMessages(Expression<Func<string>> to = null, Expression<Func<string>> from = null, Expression<Func<string>> dateSent = null, Expression<Func<int>> pageSize = null)
         {
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
             var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
             var __workflow_dateSent = WorkflowExpression.Compile(dateSent, nameof(dateSent), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
-            return new DeferredBodyAction<MessageListV2>(() =>
+            return new DeferredBodyAction<MessageListV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/Messages.json";
                 var apiCallHttpMethod = "get";

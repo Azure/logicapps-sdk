@@ -1,9 +1,11 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq.Expressions;
     using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
@@ -14,21 +16,24 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
     public class JdbcActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Jdbc")]
-        public IBodyWorkflowAction<string[]> GetTables()
+        public IBodyWorkflowAction<string[], GetTablesActionConfiguration> GetTables()
         {
-            var serviceProviderInput = new ServiceProviderOperationInput
+            return new DeferredBodyAction<string[], GetTablesActionConfiguration>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Jdbc", operationId: "getTables", connectionName: connectionId)
-            };
-            return new ServiceProviderAction<string[]>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Jdbc", operationId: "getTables", connectionName: connectionId)
+                };
+                return new ServiceProviderBodyAction<string[], GetTablesActionConfiguration>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Jdbc")]
-        public IBodyWorkflowAction<JToken[]> RawQuery(Expression<Func<string>> query, Expression<Func<object>> queryParameters = null)
+        public IBodyWorkflowAction<JToken[], RawQueryActionConfiguration> RawQuery(Expression<Func<string>> query, Expression<Func<object>> queryParameters = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_queryParameters = WorkflowExpression.Compile(queryParameters, nameof(queryParameters), required: false);
-            return new DeferredBodyAction<JToken[]>(() =>
+            return new DeferredBodyAction<JToken[], RawQueryActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["query"] = ExpressionConverter.ConvertO(__workflow_query);
@@ -42,15 +47,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Jdbc", operationId: "rawQuery", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<JToken[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken[], RawQueryActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Jdbc")]
-        public IBodyWorkflowAction<GetSchemaOutputItem[]> GetSchema(Expression<Func<string>> tableName)
+        public IBodyWorkflowAction<GetSchemaOutputItem[], GetSchemaActionConfiguration> GetSchema(Expression<Func<string>> tableName)
         {
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
-            return new DeferredBodyAction<GetSchemaOutputItem[]>(() =>
+            return new DeferredBodyAction<GetSchemaOutputItem[], GetSchemaActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
@@ -59,9 +64,33 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Jdbc", operationId: "getSchema", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetSchemaOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetSchemaOutputItem[], GetSchemaActionConfiguration>(serviceProviderInput);
             });
         }
+    }
+
+    public sealed class GetTablesActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class RawQueryActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class GetSchemaActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public class GetSchemaOutputItem

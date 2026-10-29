@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abbreviationsip
     public class AbbreviationsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abbreviationsip")]
-        public IBodyWorkflowAction<AbbrGetResponse> AbbrGet(Expression<Func<string>> term, Expression<Func<string>> categoryid = null, Expression<Func<sortbyInput>> sortby = null, Expression<Func<searchtypeInput>> searchtype = null)
+        public IBodyWorkflowAction<AbbrGetResponse, ApiConnectionActionConfiguration> AbbrGet(Expression<Func<string>> term, Expression<Func<string>> categoryid = null, Expression<Func<sortbyInput>> sortby = null, Expression<Func<searchtypeInput>> searchtype = null)
         {
             var __workflow_term = WorkflowExpression.Compile(term, nameof(term), required: true);
             var __workflow_categoryid = WorkflowExpression.Compile(categoryid, nameof(categoryid), required: false);
             var __workflow_sortby = WorkflowExpression.Compile(sortby, nameof(sortby), required: false);
             var __workflow_searchtype = WorkflowExpression.Compile(searchtype, nameof(searchtype), required: false);
-            return new DeferredBodyAction<AbbrGetResponse>(() =>
+            return new DeferredBodyAction<AbbrGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/abbr.php";
                 var apiCallHttpMethod = "get";

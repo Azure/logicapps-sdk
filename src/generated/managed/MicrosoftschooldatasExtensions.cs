@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
     public class MicrosoftschooldatasActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
-        public IBodyWorkflowAction<GetDelegatedTokenResponse> GetDelegatedToken()
+        public IBodyWorkflowAction<GetDelegatedTokenResponse, ApiConnectionActionConfiguration> GetDelegatedToken()
         {
             var apiCallPath = "/common/oauth2/token";
             var apiCallHttpMethod = "post";
@@ -29,11 +29,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
-        public IWorkflowAction GetInboundFlow(Expression<Func<string>> inboundFlowId, Expression<Func<string>> accessToken = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetInboundFlow(Expression<Func<string>> inboundFlowId, Expression<Func<string>> accessToken = null)
         {
             var __workflow_inboundFlowId = WorkflowExpression.Compile(inboundFlowId, nameof(inboundFlowId), required: true);
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/external/industryData/inboundFlows/{0}", __workflow_inboundFlowId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -46,10 +46,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
-        public IWorkflowAction GetDataconnectorList(Expression<Func<string>> accessToken)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDataconnectorList(Expression<Func<string>> accessToken)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/beta/external/industryData/dataConnectors";
                 var apiCallHttpMethod = "get";
@@ -60,11 +60,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
-        public IWorkflowAction CallGetuploadsession(Expression<Func<string>> createdDataConnectorId, Expression<Func<string>> accessToken)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CallGetuploadsession(Expression<Func<string>> createdDataConnectorId, Expression<Func<string>> accessToken)
         {
             var __workflow_createdDataConnectorId = WorkflowExpression.Compile(createdDataConnectorId, nameof(createdDataConnectorId), required: true);
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/external/industryData/dataConnectors('{0}')/microsoft.graph.industryData.azureDataLakeConnector/microsoft.graph.industryData.getUploadSession()", __workflow_createdDataConnectorId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -75,11 +75,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
-        public IWorkflowAction CallValidate(Expression<Func<string>> createdDataConnectorId, Expression<Func<string>> accessToken)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CallValidate(Expression<Func<string>> createdDataConnectorId, Expression<Func<string>> accessToken)
         {
             var __workflow_createdDataConnectorId = WorkflowExpression.Compile(createdDataConnectorId, nameof(createdDataConnectorId), required: true);
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/external/industryData/dataConnectors/{0}/validate()", __workflow_createdDataConnectorId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -91,11 +91,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
-        public IWorkflowAction CheckValidationResult(Expression<Func<string>> validationOperationUri, Expression<Func<string>> accessToken)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CheckValidationResult(Expression<Func<string>> validationOperationUri, Expression<Func<string>> accessToken)
         {
             var __workflow_validationOperationUri = WorkflowExpression.Compile(validationOperationUri, nameof(validationOperationUri), required: true);
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/";
                 var apiCallHttpMethod = "get";

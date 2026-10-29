@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
     public class EdgilityActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edgility")]
-        public IBodyWorkflowAction<GetAccountResponse> GetAccount()
+        public IBodyWorkflowAction<GetAccountResponse, ApiConnectionActionConfiguration> GetAccount()
         {
             var apiCallPath = "/v2/account";
             var apiCallHttpMethod = "get";
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edgility")]
-        public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> messageto = null, Expression<Func<string>> messagefrom = null, Expression<Func<string>> messagebody = null, Expression<Func<string>> messagecampaign = null, Expression<Func<string>> messagereference = null, Expression<Func<string>> messagedate = null)
+        public IBodyWorkflowAction<SendMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> messageto = null, Expression<Func<string>> messagefrom = null, Expression<Func<string>> messagebody = null, Expression<Func<string>> messagecampaign = null, Expression<Func<string>> messagereference = null, Expression<Func<string>> messagedate = null)
         {
             var __workflow_messageto = WorkflowExpression.Compile(messageto, nameof(messageto), required: false);
             var __workflow_messagefrom = WorkflowExpression.Compile(messagefrom, nameof(messagefrom), required: false);
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
             var __workflow_messagecampaign = WorkflowExpression.Compile(messagecampaign, nameof(messagecampaign), required: false);
             var __workflow_messagereference = WorkflowExpression.Compile(messagereference, nameof(messagereference), required: false);
             var __workflow_messagedate = WorkflowExpression.Compile(messagedate, nameof(messagedate), required: false);
-            return new DeferredBodyAction<SendMessageResponse>(() =>
+            return new DeferredBodyAction<SendMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/integrations/power-automate/send";
                 var apiCallHttpMethod = "post";
@@ -84,10 +84,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
 
     public class EdgilityTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger InboundMessage(Expression<Func<string>> configdedicatedNumber = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InboundMessage(Expression<Func<string>> configdedicatedNumber = null, FlowRecurrence recurrence = null)
         {
             var __workflow_configdedicatedNumber = WorkflowExpression.Compile(configdedicatedNumber, nameof(configdedicatedNumber), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/integrations/power-automate/subscribe";
                 var apiCallHttpMethod = "post";

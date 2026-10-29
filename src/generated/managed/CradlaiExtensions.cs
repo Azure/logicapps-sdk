@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
     public class CradlaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IBodyWorkflowAction<CreateDocumentDeprecatedResponse> CreateDocumentDeprecated(Expression<Func<string>> name, Expression<Func<string>> fileContent = null)
+        public IBodyWorkflowAction<CreateDocumentDeprecatedResponse, ApiConnectionActionConfiguration> CreateDocumentDeprecated(Expression<Func<string>> name, Expression<Func<string>> fileContent = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             var __workflow_fileContent = WorkflowExpression.Compile(fileContent, nameof(fileContent), required: false);
-            return new DeferredBodyAction<CreateDocumentDeprecatedResponse>(() =>
+            return new DeferredBodyAction<CreateDocumentDeprecatedResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/documents";
                 var apiCallHttpMethod = "post";
@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IBodyWorkflowAction<GetDocumentMetadataResponse> GetDocumentMetadata(Expression<Func<string>> documentId)
+        public IBodyWorkflowAction<GetDocumentMetadataResponse, ApiConnectionActionConfiguration> GetDocumentMetadata(Expression<Func<string>> documentId)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
-            return new DeferredBodyAction<GetDocumentMetadataResponse>(() =>
+            return new DeferredBodyAction<GetDocumentMetadataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/metadata/{0}", __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -41,10 +41,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IBodyWorkflowAction<string> GetDocument(Expression<Func<string>> documentId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetDocument(Expression<Func<string>> documentId)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documents/{0}", __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IBodyWorkflowAction<ParseDocumentDeprecatedResponse> ParseDocumentDeprecated(Expression<Func<string>> requestmodel, Expression<Func<string>> requestdocumentID, Expression<Func<requestpostprocessingtheOutputFormatInput>> requestpostprocessingtheOutputFormat = null, Expression<Func<requestpostprocessingtheStrategyUsedForAggregatingPredictionsInput>> requestpostprocessingtheStrategyUsedForAggregatingPredictions = null, Expression<Func<bool>> requestpreprocessingautoRotate = null, Expression<Func<int>> requestpreprocessingmaxPages = null, Expression<Func<string>> requestpreprocessingimageQuality = null)
+        public IBodyWorkflowAction<ParseDocumentDeprecatedResponse, ApiConnectionActionConfiguration> ParseDocumentDeprecated(Expression<Func<string>> requestmodel, Expression<Func<string>> requestdocumentID, Expression<Func<requestpostprocessingtheOutputFormatInput>> requestpostprocessingtheOutputFormat = null, Expression<Func<requestpostprocessingtheStrategyUsedForAggregatingPredictionsInput>> requestpostprocessingtheStrategyUsedForAggregatingPredictions = null, Expression<Func<bool>> requestpreprocessingautoRotate = null, Expression<Func<int>> requestpreprocessingmaxPages = null, Expression<Func<string>> requestpreprocessingimageQuality = null)
         {
             var __workflow_requestmodel = WorkflowExpression.Compile(requestmodel, nameof(requestmodel), required: true);
             var __workflow_requestdocumentID = WorkflowExpression.Compile(requestdocumentID, nameof(requestdocumentID), required: true);
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
             var __workflow_requestpreprocessingautoRotate = WorkflowExpression.Compile(requestpreprocessingautoRotate, nameof(requestpreprocessingautoRotate), required: false);
             var __workflow_requestpreprocessingmaxPages = WorkflowExpression.Compile(requestpreprocessingmaxPages, nameof(requestpreprocessingmaxPages), required: false);
             var __workflow_requestpreprocessingimageQuality = WorkflowExpression.Compile(requestpreprocessingimageQuality, nameof(requestpreprocessingimageQuality), required: false);
-            return new DeferredBodyAction<ParseDocumentDeprecatedResponse>(() =>
+            return new DeferredBodyAction<ParseDocumentDeprecatedResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/predictions";
                 var apiCallHttpMethod = "post";
@@ -150,13 +150,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IBodyWorkflowAction<CreateRunResponse> CreateRun(Expression<Func<string>> agentId, Expression<Func<string>> variables = null, Expression<Func<string>> title = null, Expression<Func<string>> document = null)
+        public IBodyWorkflowAction<CreateRunResponse, ApiConnectionActionConfiguration> CreateRun(Expression<Func<string>> agentId, Expression<Func<string>> variables = null, Expression<Func<string>> title = null, Expression<Func<string>> document = null)
         {
             var __workflow_agentId = WorkflowExpression.Compile(agentId, nameof(agentId), required: true);
             var __workflow_variables = WorkflowExpression.Compile(variables, nameof(variables), required: false);
             var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
             var __workflow_document = WorkflowExpression.Compile(document, nameof(document), required: false);
-            return new DeferredBodyAction<CreateRunResponse>(() =>
+            return new DeferredBodyAction<CreateRunResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/agents";
                 var apiCallHttpMethod = "post";
@@ -172,11 +172,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IWorkflowAction Validate(Expression<Func<string>> actionId, Expression<Func<string>> xCradlSharedSecret)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Validate(Expression<Func<string>> actionId, Expression<Func<string>> xCradlSharedSecret)
         {
             var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
             var __workflow_xCradlSharedSecret = WorkflowExpression.Compile(xCradlSharedSecret, nameof(xCradlSharedSecret), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/validate";
                 var apiCallHttpMethod = "post";
@@ -188,12 +188,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IBodyWorkflowAction<CreateExecutionDeprecatedResponse> CreateExecutionDeprecated(Expression<Func<string>> workflowId, Expression<Func<string>> requestinputdocumentID, Expression<Func<string>> requestinputtitle = null)
+        public IBodyWorkflowAction<CreateExecutionDeprecatedResponse, ApiConnectionActionConfiguration> CreateExecutionDeprecated(Expression<Func<string>> workflowId, Expression<Func<string>> requestinputdocumentID, Expression<Func<string>> requestinputtitle = null)
         {
             var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
             var __workflow_requestinputdocumentID = WorkflowExpression.Compile(requestinputdocumentID, nameof(requestinputdocumentID), required: true);
             var __workflow_requestinputtitle = WorkflowExpression.Compile(requestinputtitle, nameof(requestinputtitle), required: false);
-            return new DeferredBodyAction<CreateExecutionDeprecatedResponse>(() =>
+            return new DeferredBodyAction<CreateExecutionDeprecatedResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/workflows";
                 var apiCallHttpMethod = "post";
@@ -237,10 +237,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
 
     public class CradlaiTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<RunCompletedResponse> RunCompleted(Expression<Func<string>> actionId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RunCompletedResponse, ApiConnectionTriggerConfiguration> RunCompleted(Expression<Func<string>> actionId, FlowRecurrence recurrence = null)
         {
             var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
-            return new DeferredBodyTrigger<RunCompletedResponse>(() =>
+            return new DeferredBodyTrigger<RunCompletedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/actions";
                 var apiCallHttpMethod = "post";

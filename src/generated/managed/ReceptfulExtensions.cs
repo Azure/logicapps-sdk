@@ -15,14 +15,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Receptful
 
     public class ReceptfulTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<VisitEventsResponse> VisitEvents(Expression<Func<bodyEventInput>> bodyEvent, Expression<Func<string>> bodyregionId = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodybuttonId = null, Expression<Func<string>> bodyconfigId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VisitEventsResponse, ApiConnectionTriggerConfiguration> VisitEvents(Expression<Func<bodyEventInput>> bodyEvent, Expression<Func<string>> bodyregionId = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodybuttonId = null, Expression<Func<string>> bodyconfigId = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyEvent = WorkflowExpression.Compile(bodyEvent, nameof(bodyEvent), required: true);
             var __workflow_bodyregionId = WorkflowExpression.Compile(bodyregionId, nameof(bodyregionId), required: false);
             var __workflow_bodylocationId = WorkflowExpression.Compile(bodylocationId, nameof(bodylocationId), required: false);
             var __workflow_bodybuttonId = WorkflowExpression.Compile(bodybuttonId, nameof(bodybuttonId), required: false);
             var __workflow_bodyconfigId = WorkflowExpression.Compile(bodyconfigId, nameof(bodyconfigId), required: false);
-            return new DeferredBodyTrigger<VisitEventsResponse>(() =>
+            return new DeferredBodyTrigger<VisitEventsResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hooks";
                 var apiCallHttpMethod = "post";

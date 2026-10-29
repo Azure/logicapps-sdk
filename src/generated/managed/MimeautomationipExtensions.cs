@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mimeautomationip
     public class MimeautomationipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mimeautomationip")]
-        public IBodyWorkflowAction<Attachment[]> ExtractFiles(Expression<Func<string>> bodycontent)
+        public IBodyWorkflowAction<Attachment[], ApiConnectionActionConfiguration> ExtractFiles(Expression<Func<string>> bodycontent)
         {
             var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: true);
-            return new DeferredBodyAction<Attachment[]>(() =>
+            return new DeferredBodyAction<Attachment[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/MimeAutomation/ExtractFiles";
                 var apiCallHttpMethod = "post";
@@ -34,10 +34,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mimeautomationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mimeautomationip")]
-        public IBodyWorkflowAction<MimeAttachment[]> ExtractFilesFromEml(Expression<Func<string>> bodycontent)
+        public IBodyWorkflowAction<MimeAttachment[], ApiConnectionActionConfiguration> ExtractFilesFromEml(Expression<Func<string>> bodycontent)
         {
             var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: true);
-            return new DeferredBodyAction<MimeAttachment[]>(() =>
+            return new DeferredBodyAction<MimeAttachment[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/MimeAutomation/ExtractFilesFromEml";
                 var apiCallHttpMethod = "post";

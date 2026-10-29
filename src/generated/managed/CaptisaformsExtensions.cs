@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
     public class CaptisaformsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "captisaforms")]
-        public IBodyWorkflowAction<FormFieldResponse> CreateEntry(Expression<Func<string>> formID, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<FormFieldResponse, ApiConnectionActionConfiguration> CreateEntry(Expression<Func<string>> formID, Expression<Func<object>> body = null)
         {
             var __workflow_formID = WorkflowExpression.Compile(formID, nameof(formID), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<FormFieldResponse>(() =>
+            return new DeferredBodyAction<FormFieldResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/data/{0}", __workflow_formID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -27,12 +27,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "captisaforms")]
-        public IBodyWorkflowAction<FormFieldResponse> UpdateEntry(Expression<Func<string>> formID, Expression<Func<string>> id, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<FormFieldResponse, ApiConnectionActionConfiguration> UpdateEntry(Expression<Func<string>> formID, Expression<Func<string>> id, Expression<Func<object>> body = null)
         {
             var __workflow_formID = WorkflowExpression.Compile(formID, nameof(formID), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<FormFieldResponse>(() =>
+            return new DeferredBodyAction<FormFieldResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/data/{0}/{1}", __workflow_formID.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -45,10 +45,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
 
     public class CaptisaformsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookResponse> WebhookCreateTrigger(Expression<Func<string>> formID, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse, ApiConnectionTriggerConfiguration> WebhookCreateTrigger(Expression<Func<string>> formID, FlowRecurrence recurrence = null)
         {
             var __workflow_formID = WorkflowExpression.Compile(formID, nameof(formID), required: true);
-            return new DeferredBodyTrigger<WebhookResponse>(() =>
+            return new DeferredBodyTrigger<WebhookResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/msflow/forms/{0}/c/subscribe", __workflow_formID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -66,10 +66,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookResponse> WebhookUpdateTrigger(Expression<Func<string>> formID, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse, ApiConnectionTriggerConfiguration> WebhookUpdateTrigger(Expression<Func<string>> formID, FlowRecurrence recurrence = null)
         {
             var __workflow_formID = WorkflowExpression.Compile(formID, nameof(formID), required: true);
-            return new DeferredBodyTrigger<WebhookResponse>(() =>
+            return new DeferredBodyTrigger<WebhookResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/msflow/forms/{0}/u/subscribe", __workflow_formID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";

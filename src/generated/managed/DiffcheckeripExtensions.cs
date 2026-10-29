@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
     public class DiffcheckeripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "diffcheckerip")]
-        public IBodyWorkflowAction<CheckTextResponse> CheckText(Expression<Func<string>> bodyleft, Expression<Func<string>> bodyright, Expression<Func<diffLevelInput>> diffLevel = null)
+        public IBodyWorkflowAction<CheckTextResponse, ApiConnectionActionConfiguration> CheckText(Expression<Func<string>> bodyleft, Expression<Func<string>> bodyright, Expression<Func<diffLevelInput>> diffLevel = null)
         {
             var __workflow_bodyleft = WorkflowExpression.Compile(bodyleft, nameof(bodyleft), required: true);
             var __workflow_bodyright = WorkflowExpression.Compile(bodyright, nameof(bodyright), required: true);
             var __workflow_diffLevel = WorkflowExpression.Compile(diffLevel, nameof(diffLevel), required: false);
-            return new DeferredBodyAction<CheckTextResponse>(() =>
+            return new DeferredBodyAction<CheckTextResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/public/text";
                 var apiCallHttpMethod = "post";
@@ -43,11 +43,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "diffcheckerip")]
-        public IBodyWorkflowAction<CheckImageResponse> CheckImage(Expression<Func<string>> bodyleftImage, Expression<Func<string>> bodyrightImage)
+        public IBodyWorkflowAction<CheckImageResponse, ApiConnectionActionConfiguration> CheckImage(Expression<Func<string>> bodyleftImage, Expression<Func<string>> bodyrightImage)
         {
             var __workflow_bodyleftImage = WorkflowExpression.Compile(bodyleftImage, nameof(bodyleftImage), required: true);
             var __workflow_bodyrightImage = WorkflowExpression.Compile(bodyrightImage, nameof(bodyrightImage), required: true);
-            return new DeferredBodyAction<CheckImageResponse>(() =>
+            return new DeferredBodyAction<CheckImageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/public/image";
                 var apiCallHttpMethod = "post";

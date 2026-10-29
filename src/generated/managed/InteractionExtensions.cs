@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
     public class InteractionActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<ReadListByIdResponse> ReadListById(Expression<Func<string>> bodyvariablesid = null, Expression<Func<int>> bodyvariablesskip = null, Expression<Func<int>> bodyvariableslimit = null, Expression<Func<string>> bodyvariablesprimarySponsorName = null)
+        public IBodyWorkflowAction<ReadListByIdResponse, ApiConnectionActionConfiguration> ReadListById(Expression<Func<string>> bodyvariablesid = null, Expression<Func<int>> bodyvariablesskip = null, Expression<Func<int>> bodyvariableslimit = null, Expression<Func<string>> bodyvariablesprimarySponsorName = null)
         {
             var __workflow_bodyvariablesid = WorkflowExpression.Compile(bodyvariablesid, nameof(bodyvariablesid), required: false);
             var __workflow_bodyvariablesskip = WorkflowExpression.Compile(bodyvariablesskip, nameof(bodyvariablesskip), required: false);
             var __workflow_bodyvariableslimit = WorkflowExpression.Compile(bodyvariableslimit, nameof(bodyvariableslimit), required: false);
             var __workflow_bodyvariablesprimarySponsorName = WorkflowExpression.Compile(bodyvariablesprimarySponsorName, nameof(bodyvariablesprimarySponsorName), required: false);
-            return new DeferredBodyAction<ReadListByIdResponse>(() =>
+            return new DeferredBodyAction<ReadListByIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphql/ReadListByID";
                 var apiCallHttpMethod = "post";
@@ -89,12 +89,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<ReadListByNameResponse> ReadListByName(Expression<Func<string>> bodyvariablesfilterByName = null, Expression<Func<int>> bodyvariablesskip = null, Expression<Func<int>> bodyvariableslimit = null)
+        public IBodyWorkflowAction<ReadListByNameResponse, ApiConnectionActionConfiguration> ReadListByName(Expression<Func<string>> bodyvariablesfilterByName = null, Expression<Func<int>> bodyvariablesskip = null, Expression<Func<int>> bodyvariableslimit = null)
         {
             var __workflow_bodyvariablesfilterByName = WorkflowExpression.Compile(bodyvariablesfilterByName, nameof(bodyvariablesfilterByName), required: false);
             var __workflow_bodyvariablesskip = WorkflowExpression.Compile(bodyvariablesskip, nameof(bodyvariablesskip), required: false);
             var __workflow_bodyvariableslimit = WorkflowExpression.Compile(bodyvariableslimit, nameof(bodyvariableslimit), required: false);
-            return new DeferredBodyAction<ReadListByNameResponse>(() =>
+            return new DeferredBodyAction<ReadListByNameResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphql/ReadListByName";
                 var apiCallHttpMethod = "post";
@@ -159,12 +159,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<ReadAdditionalFieldDefinitionsAndValuesResponse> ReadAdditionalFieldDefinitionsAndValues(Expression<Func<string>> bodyvariablesid = null, Expression<Func<int>> bodyvariablesskip = null, Expression<Func<int>> bodyvariableslimit = null)
+        public IBodyWorkflowAction<ReadAdditionalFieldDefinitionsAndValuesResponse, ApiConnectionActionConfiguration> ReadAdditionalFieldDefinitionsAndValues(Expression<Func<string>> bodyvariablesid = null, Expression<Func<int>> bodyvariablesskip = null, Expression<Func<int>> bodyvariableslimit = null)
         {
             var __workflow_bodyvariablesid = WorkflowExpression.Compile(bodyvariablesid, nameof(bodyvariablesid), required: false);
             var __workflow_bodyvariablesskip = WorkflowExpression.Compile(bodyvariablesskip, nameof(bodyvariablesskip), required: false);
             var __workflow_bodyvariableslimit = WorkflowExpression.Compile(bodyvariableslimit, nameof(bodyvariableslimit), required: false);
-            return new DeferredBodyAction<ReadAdditionalFieldDefinitionsAndValuesResponse>(() =>
+            return new DeferredBodyAction<ReadAdditionalFieldDefinitionsAndValuesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphql/ReadAdditionalFieldDefinitionsAndValues";
                 var apiCallHttpMethod = "post";
@@ -229,11 +229,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<AddOrUpdateAdditionalFieldValuesResponse> AddOrUpdateAdditionalFieldValues(Expression<Func<string>> bodyvariablesinputcontactId, Expression<Func<bodyvariablesinputadditionalFieldsInputItem[]>> bodyvariablesinputadditionalFields)
+        public IBodyWorkflowAction<AddOrUpdateAdditionalFieldValuesResponse, ApiConnectionActionConfiguration> AddOrUpdateAdditionalFieldValues(Expression<Func<string>> bodyvariablesinputcontactId, Expression<Func<bodyvariablesinputadditionalFieldsInputItem[]>> bodyvariablesinputadditionalFields)
         {
             var __workflow_bodyvariablesinputcontactId = WorkflowExpression.Compile(bodyvariablesinputcontactId, nameof(bodyvariablesinputcontactId), required: true);
             var __workflow_bodyvariablesinputadditionalFields = WorkflowExpression.Compile(bodyvariablesinputadditionalFields, nameof(bodyvariablesinputadditionalFields), required: true);
-            return new DeferredBodyAction<AddOrUpdateAdditionalFieldValuesResponse>(() =>
+            return new DeferredBodyAction<AddOrUpdateAdditionalFieldValuesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphql/UpdateAdditionalFieldValues";
                 var apiCallHttpMethod = "post";
@@ -272,11 +272,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<ReadContactByIdResponse> ReadContactById(Expression<Func<string>> bodyvariablescontactid = null, Expression<Func<string>> bodyvariableslistid = null)
+        public IBodyWorkflowAction<ReadContactByIdResponse, ApiConnectionActionConfiguration> ReadContactById(Expression<Func<string>> bodyvariablescontactid = null, Expression<Func<string>> bodyvariableslistid = null)
         {
             var __workflow_bodyvariablescontactid = WorkflowExpression.Compile(bodyvariablescontactid, nameof(bodyvariablescontactid), required: false);
             var __workflow_bodyvariableslistid = WorkflowExpression.Compile(bodyvariableslistid, nameof(bodyvariableslistid), required: false);
-            return new DeferredBodyAction<ReadContactByIdResponse>(() =>
+            return new DeferredBodyAction<ReadContactByIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphql/ReadContactByID";
                 var apiCallHttpMethod = "post";
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<CreateContactResponse> CreateContact(Expression<Func<string>> bodyvariablesinputlastName, Expression<Func<string>> bodyvariablesinputfirstName = null, Expression<Func<string>> bodyvariablesinputmiddleName = null, Expression<Func<string>> bodyvariablesinputgoesBy = null, Expression<Func<string>> bodyvariablesinputtitle = null, Expression<Func<string>> bodyvariablesinputemailAddress = null, Expression<Func<string>> bodyvariablesinputcompanyName = null, Expression<Func<string>> bodyvariablesinputjobTitle = null, Expression<Func<string>> bodyvariablesinputprimaryPhone = null, Expression<Func<bodyvariablesinputbusinessAddresscountryInput>> bodyvariablesinputbusinessAddresscountry = null, Expression<Func<string>> bodyvariablesinputbusinessAddressstreet = null, Expression<Func<string>> bodyvariablesinputbusinessAddresscity = null, Expression<Func<string>> bodyvariablesinputbusinessAddressadministrativeDivision = null, Expression<Func<string>> bodyvariablesinputbusinessAddresspostalCode = null)
+        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<string>> bodyvariablesinputlastName, Expression<Func<string>> bodyvariablesinputfirstName = null, Expression<Func<string>> bodyvariablesinputmiddleName = null, Expression<Func<string>> bodyvariablesinputgoesBy = null, Expression<Func<string>> bodyvariablesinputtitle = null, Expression<Func<string>> bodyvariablesinputemailAddress = null, Expression<Func<string>> bodyvariablesinputcompanyName = null, Expression<Func<string>> bodyvariablesinputjobTitle = null, Expression<Func<string>> bodyvariablesinputprimaryPhone = null, Expression<Func<bodyvariablesinputbusinessAddresscountryInput>> bodyvariablesinputbusinessAddresscountry = null, Expression<Func<string>> bodyvariablesinputbusinessAddressstreet = null, Expression<Func<string>> bodyvariablesinputbusinessAddresscity = null, Expression<Func<string>> bodyvariablesinputbusinessAddressadministrativeDivision = null, Expression<Func<string>> bodyvariablesinputbusinessAddresspostalCode = null)
         {
             var __workflow_bodyvariablesinputlastName = WorkflowExpression.Compile(bodyvariablesinputlastName, nameof(bodyvariablesinputlastName), required: true);
             var __workflow_bodyvariablesinputfirstName = WorkflowExpression.Compile(bodyvariablesinputfirstName, nameof(bodyvariablesinputfirstName), required: false);
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             var __workflow_bodyvariablesinputbusinessAddresscity = WorkflowExpression.Compile(bodyvariablesinputbusinessAddresscity, nameof(bodyvariablesinputbusinessAddresscity), required: false);
             var __workflow_bodyvariablesinputbusinessAddressadministrativeDivision = WorkflowExpression.Compile(bodyvariablesinputbusinessAddressadministrativeDivision, nameof(bodyvariablesinputbusinessAddressadministrativeDivision), required: false);
             var __workflow_bodyvariablesinputbusinessAddresspostalCode = WorkflowExpression.Compile(bodyvariablesinputbusinessAddresspostalCode, nameof(bodyvariablesinputbusinessAddresspostalCode), required: false);
-            return new DeferredBodyAction<CreateContactResponse>(() =>
+            return new DeferredBodyAction<CreateContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphql/CreateContact";
                 var apiCallHttpMethod = "post";
@@ -464,13 +464,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<ListResponse> ReadLists(Expression<Func<bodyvariableslistClassInput>> bodyvariableslistClass = null, Expression<Func<int>> bodyvariablesskip = null, Expression<Func<int>> bodyvariableslimit = null, Expression<Func<string>> bodyvariablesfilterByName = null)
+        public IBodyWorkflowAction<ListResponse, ApiConnectionActionConfiguration> ReadLists(Expression<Func<bodyvariableslistClassInput>> bodyvariableslistClass = null, Expression<Func<int>> bodyvariablesskip = null, Expression<Func<int>> bodyvariableslimit = null, Expression<Func<string>> bodyvariablesfilterByName = null)
         {
             var __workflow_bodyvariableslistClass = WorkflowExpression.Compile(bodyvariableslistClass, nameof(bodyvariableslistClass), required: false);
             var __workflow_bodyvariablesskip = WorkflowExpression.Compile(bodyvariablesskip, nameof(bodyvariablesskip), required: false);
             var __workflow_bodyvariableslimit = WorkflowExpression.Compile(bodyvariableslimit, nameof(bodyvariableslimit), required: false);
             var __workflow_bodyvariablesfilterByName = WorkflowExpression.Compile(bodyvariablesfilterByName, nameof(bodyvariablesfilterByName), required: false);
-            return new DeferredBodyAction<ListResponse>(() =>
+            return new DeferredBodyAction<ListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphql/ReadLists";
                 var apiCallHttpMethod = "post";
@@ -541,11 +541,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<AddContactsToListsResponse> AddContactsToLists(Expression<Func<string[]>> bodyvariableslistIds = null, Expression<Func<string[]>> bodyvariablescontactIds = null)
+        public IBodyWorkflowAction<AddContactsToListsResponse, ApiConnectionActionConfiguration> AddContactsToLists(Expression<Func<string[]>> bodyvariableslistIds = null, Expression<Func<string[]>> bodyvariablescontactIds = null)
         {
             var __workflow_bodyvariableslistIds = WorkflowExpression.Compile(bodyvariableslistIds, nameof(bodyvariableslistIds), required: false);
             var __workflow_bodyvariablescontactIds = WorkflowExpression.Compile(bodyvariablescontactIds, nameof(bodyvariablescontactIds), required: false);
-            return new DeferredBodyAction<AddContactsToListsResponse>(() =>
+            return new DeferredBodyAction<AddContactsToListsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphql/AddContactsToLists";
                 var apiCallHttpMethod = "post";
@@ -584,11 +584,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<RemoveContactsfromListResponse> RemoveContactsfromList(Expression<Func<string[]>> bodyvariablescontactIds = null, Expression<Func<string>> bodyvariableslistId = null)
+        public IBodyWorkflowAction<RemoveContactsfromListResponse, ApiConnectionActionConfiguration> RemoveContactsfromList(Expression<Func<string[]>> bodyvariablescontactIds = null, Expression<Func<string>> bodyvariableslistId = null)
         {
             var __workflow_bodyvariablescontactIds = WorkflowExpression.Compile(bodyvariablescontactIds, nameof(bodyvariablescontactIds), required: false);
             var __workflow_bodyvariableslistId = WorkflowExpression.Compile(bodyvariableslistId, nameof(bodyvariableslistId), required: false);
-            return new DeferredBodyAction<RemoveContactsfromListResponse>(() =>
+            return new DeferredBodyAction<RemoveContactsfromListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphql/RemoveContactsFromList";
                 var apiCallHttpMethod = "post";
@@ -627,7 +627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<UpdatePersonContactResponse> UpdatePersonContact(Expression<Func<string>> bodyvariablesinputid, Expression<Func<string>> bodyvariablesinputlastName, Expression<Func<string>> bodyvariablesinputtitle = null, Expression<Func<string>> bodyvariablesinputfirstName = null, Expression<Func<string>> bodyvariablesinputmiddleName = null, Expression<Func<string>> bodyvariablesinputgoesBy = null, Expression<Func<string>> bodyvariablesinputjobTitle = null, Expression<Func<string>> bodyvariablesinputaddressstreet = null, Expression<Func<string>> bodyvariablesinputaddresscity = null, Expression<Func<string>> bodyvariablesinputaddressadministrativeDivision = null, Expression<Func<bodyvariablesinputaddresscountryInput>> bodyvariablesinputaddresscountry = null, Expression<Func<string>> bodyvariablesinputaddresspostalCode = null, Expression<Func<string>> bodyvariablesinputemailelectronicAddress = null, Expression<Func<string>> bodyvariablesinputprimaryPhonenumber = null, Expression<Func<string>> bodyvariablesinputcompanyName = null)
+        public IBodyWorkflowAction<UpdatePersonContactResponse, ApiConnectionActionConfiguration> UpdatePersonContact(Expression<Func<string>> bodyvariablesinputid, Expression<Func<string>> bodyvariablesinputlastName, Expression<Func<string>> bodyvariablesinputtitle = null, Expression<Func<string>> bodyvariablesinputfirstName = null, Expression<Func<string>> bodyvariablesinputmiddleName = null, Expression<Func<string>> bodyvariablesinputgoesBy = null, Expression<Func<string>> bodyvariablesinputjobTitle = null, Expression<Func<string>> bodyvariablesinputaddressstreet = null, Expression<Func<string>> bodyvariablesinputaddresscity = null, Expression<Func<string>> bodyvariablesinputaddressadministrativeDivision = null, Expression<Func<bodyvariablesinputaddresscountryInput>> bodyvariablesinputaddresscountry = null, Expression<Func<string>> bodyvariablesinputaddresspostalCode = null, Expression<Func<string>> bodyvariablesinputemailelectronicAddress = null, Expression<Func<string>> bodyvariablesinputprimaryPhonenumber = null, Expression<Func<string>> bodyvariablesinputcompanyName = null)
         {
             var __workflow_bodyvariablesinputid = WorkflowExpression.Compile(bodyvariablesinputid, nameof(bodyvariablesinputid), required: true);
             var __workflow_bodyvariablesinputlastName = WorkflowExpression.Compile(bodyvariablesinputlastName, nameof(bodyvariablesinputlastName), required: true);
@@ -644,7 +644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             var __workflow_bodyvariablesinputemailelectronicAddress = WorkflowExpression.Compile(bodyvariablesinputemailelectronicAddress, nameof(bodyvariablesinputemailelectronicAddress), required: false);
             var __workflow_bodyvariablesinputprimaryPhonenumber = WorkflowExpression.Compile(bodyvariablesinputprimaryPhonenumber, nameof(bodyvariablesinputprimaryPhonenumber), required: false);
             var __workflow_bodyvariablesinputcompanyName = WorkflowExpression.Compile(bodyvariablesinputcompanyName, nameof(bodyvariablesinputcompanyName), required: false);
-            return new DeferredBodyAction<UpdatePersonContactResponse>(() =>
+            return new DeferredBodyAction<UpdatePersonContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphql/UpdatePersonContact";
                 var apiCallHttpMethod = "post";
@@ -785,14 +785,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<CreateActivityResponse> CreateActivity(Expression<Func<string>> bodyvariablesinputtypeId, Expression<Func<string>> bodyvariablesinputactivityDate, Expression<Func<string>> bodyvariablesinputsubject, Expression<Func<string[]>> bodyvariablesinputlinkedEntityIds, Expression<Func<string>> bodyvariablesinputsummary = null)
+        public IBodyWorkflowAction<CreateActivityResponse, ApiConnectionActionConfiguration> CreateActivity(Expression<Func<string>> bodyvariablesinputtypeId, Expression<Func<string>> bodyvariablesinputactivityDate, Expression<Func<string>> bodyvariablesinputsubject, Expression<Func<string[]>> bodyvariablesinputlinkedEntityIds, Expression<Func<string>> bodyvariablesinputsummary = null)
         {
             var __workflow_bodyvariablesinputtypeId = WorkflowExpression.Compile(bodyvariablesinputtypeId, nameof(bodyvariablesinputtypeId), required: true);
             var __workflow_bodyvariablesinputactivityDate = WorkflowExpression.Compile(bodyvariablesinputactivityDate, nameof(bodyvariablesinputactivityDate), required: true);
             var __workflow_bodyvariablesinputsubject = WorkflowExpression.Compile(bodyvariablesinputsubject, nameof(bodyvariablesinputsubject), required: true);
             var __workflow_bodyvariablesinputlinkedEntityIds = WorkflowExpression.Compile(bodyvariablesinputlinkedEntityIds, nameof(bodyvariablesinputlinkedEntityIds), required: true);
             var __workflow_bodyvariablesinputsummary = WorkflowExpression.Compile(bodyvariablesinputsummary, nameof(bodyvariablesinputsummary), required: false);
-            return new DeferredBodyAction<CreateActivityResponse>(() =>
+            return new DeferredBodyAction<CreateActivityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphql/CreateActivity";
                 var apiCallHttpMethod = "post";
@@ -841,12 +841,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<SearchContactsResponse> SearchContacts(Expression<Func<string>> bodyvariablesemailAddress = null, Expression<Func<string>> bodyvariablesfirstName = null, Expression<Func<string>> bodyvariableslastName = null)
+        public IBodyWorkflowAction<SearchContactsResponse, ApiConnectionActionConfiguration> SearchContacts(Expression<Func<string>> bodyvariablesemailAddress = null, Expression<Func<string>> bodyvariablesfirstName = null, Expression<Func<string>> bodyvariableslastName = null)
         {
             var __workflow_bodyvariablesemailAddress = WorkflowExpression.Compile(bodyvariablesemailAddress, nameof(bodyvariablesemailAddress), required: false);
             var __workflow_bodyvariablesfirstName = WorkflowExpression.Compile(bodyvariablesfirstName, nameof(bodyvariablesfirstName), required: false);
             var __workflow_bodyvariableslastName = WorkflowExpression.Compile(bodyvariableslastName, nameof(bodyvariableslastName), required: false);
-            return new DeferredBodyAction<SearchContactsResponse>(() =>
+            return new DeferredBodyAction<SearchContactsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphql/SearchContacts";
                 var apiCallHttpMethod = "post";
@@ -891,7 +891,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<UpdateActivityResponse> UpdateActivity(Expression<Func<string>> bodyvariablesinputactivityId, Expression<Func<string>> bodyvariablesinputtypeId, Expression<Func<string[]>> bodyvariablesinputlinkedEntityIds, Expression<Func<string>> bodyvariablesinputactivityDate = null, Expression<Func<string>> bodyvariablesinputsubject = null, Expression<Func<string>> bodyvariablesinputsummary = null)
+        public IBodyWorkflowAction<UpdateActivityResponse, ApiConnectionActionConfiguration> UpdateActivity(Expression<Func<string>> bodyvariablesinputactivityId, Expression<Func<string>> bodyvariablesinputtypeId, Expression<Func<string[]>> bodyvariablesinputlinkedEntityIds, Expression<Func<string>> bodyvariablesinputactivityDate = null, Expression<Func<string>> bodyvariablesinputsubject = null, Expression<Func<string>> bodyvariablesinputsummary = null)
         {
             var __workflow_bodyvariablesinputactivityId = WorkflowExpression.Compile(bodyvariablesinputactivityId, nameof(bodyvariablesinputactivityId), required: true);
             var __workflow_bodyvariablesinputtypeId = WorkflowExpression.Compile(bodyvariablesinputtypeId, nameof(bodyvariablesinputtypeId), required: true);
@@ -899,7 +899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
             var __workflow_bodyvariablesinputactivityDate = WorkflowExpression.Compile(bodyvariablesinputactivityDate, nameof(bodyvariablesinputactivityDate), required: false);
             var __workflow_bodyvariablesinputsubject = WorkflowExpression.Compile(bodyvariablesinputsubject, nameof(bodyvariablesinputsubject), required: false);
             var __workflow_bodyvariablesinputsummary = WorkflowExpression.Compile(bodyvariablesinputsummary, nameof(bodyvariablesinputsummary), required: false);
-            return new DeferredBodyAction<UpdateActivityResponse>(() =>
+            return new DeferredBodyAction<UpdateActivityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/graphql/UpdateActivity";
                 var apiCallHttpMethod = "post";

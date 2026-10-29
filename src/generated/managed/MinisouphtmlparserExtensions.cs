@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
     public class MinisouphtmlparserActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        public IBodyWorkflowAction<FetchHTMLResponse> FetchHTML(Expression<Func<string>> bodyurl)
+        public IBodyWorkflowAction<FetchHTMLResponse, ApiConnectionActionConfiguration> FetchHTML(Expression<Func<string>> bodyurl)
         {
             var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
-            return new DeferredBodyAction<FetchHTMLResponse>(() =>
+            return new DeferredBodyAction<FetchHTMLResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/fetch-html";
                 var apiCallHttpMethod = "post";
@@ -36,12 +36,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        public IBodyWorkflowAction<SelectElementsResponse> SelectElements(Expression<Func<string>> bodyhtml, Expression<Func<string>> bodyselector, Expression<Func<bodyselectorTypeInput>> bodyselectorType = null)
+        public IBodyWorkflowAction<SelectElementsResponse, ApiConnectionActionConfiguration> SelectElements(Expression<Func<string>> bodyhtml, Expression<Func<string>> bodyselector, Expression<Func<bodyselectorTypeInput>> bodyselectorType = null)
         {
             var __workflow_bodyhtml = WorkflowExpression.Compile(bodyhtml, nameof(bodyhtml), required: true);
             var __workflow_bodyselector = WorkflowExpression.Compile(bodyselector, nameof(bodyselector), required: true);
             var __workflow_bodyselectorType = WorkflowExpression.Compile(bodyselectorType, nameof(bodyselectorType), required: false);
-            return new DeferredBodyAction<SelectElementsResponse>(() =>
+            return new DeferredBodyAction<SelectElementsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/select";
                 var apiCallHttpMethod = "post";
@@ -80,13 +80,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        public IBodyWorkflowAction<ExtractValuesResponse> ExtractValues(Expression<Func<string>> bodyhtml, Expression<Func<string>> bodyselector, Expression<Func<string>> bodyattribute, Expression<Func<bodyselectorTypeInput>> bodyselectorType = null)
+        public IBodyWorkflowAction<ExtractValuesResponse, ApiConnectionActionConfiguration> ExtractValues(Expression<Func<string>> bodyhtml, Expression<Func<string>> bodyselector, Expression<Func<string>> bodyattribute, Expression<Func<bodyselectorTypeInput>> bodyselectorType = null)
         {
             var __workflow_bodyhtml = WorkflowExpression.Compile(bodyhtml, nameof(bodyhtml), required: true);
             var __workflow_bodyselector = WorkflowExpression.Compile(bodyselector, nameof(bodyselector), required: true);
             var __workflow_bodyattribute = WorkflowExpression.Compile(bodyattribute, nameof(bodyattribute), required: true);
             var __workflow_bodyselectorType = WorkflowExpression.Compile(bodyselectorType, nameof(bodyselectorType), required: false);
-            return new DeferredBodyAction<ExtractValuesResponse>(() =>
+            return new DeferredBodyAction<ExtractValuesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/extract";
                 var apiCallHttpMethod = "post";
@@ -127,13 +127,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        public IBodyWorkflowAction<FindAllElementsResponse> FindAllElements(Expression<Func<string>> bodyhtml, Expression<Func<string>> bodytagName, Expression<Func<string>> bodyattributesid = null, Expression<Func<string>> bodyattributesClass = null)
+        public IBodyWorkflowAction<FindAllElementsResponse, ApiConnectionActionConfiguration> FindAllElements(Expression<Func<string>> bodyhtml, Expression<Func<string>> bodytagName, Expression<Func<string>> bodyattributesid = null, Expression<Func<string>> bodyattributesClass = null)
         {
             var __workflow_bodyhtml = WorkflowExpression.Compile(bodyhtml, nameof(bodyhtml), required: true);
             var __workflow_bodytagName = WorkflowExpression.Compile(bodytagName, nameof(bodytagName), required: true);
             var __workflow_bodyattributesid = WorkflowExpression.Compile(bodyattributesid, nameof(bodyattributesid), required: false);
             var __workflow_bodyattributesClass = WorkflowExpression.Compile(bodyattributesClass, nameof(bodyattributesClass), required: false);
-            return new DeferredBodyAction<FindAllElementsResponse>(() =>
+            return new DeferredBodyAction<FindAllElementsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/find-all";
                 var apiCallHttpMethod = "post";
@@ -176,12 +176,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        public IBodyWorkflowAction<ParseTableResponse> ParseTable(Expression<Func<string>> bodyhtml, Expression<Func<string>> bodytableSelector = null, Expression<Func<bool>> bodyheaderRowsExist = null)
+        public IBodyWorkflowAction<ParseTableResponse, ApiConnectionActionConfiguration> ParseTable(Expression<Func<string>> bodyhtml, Expression<Func<string>> bodytableSelector = null, Expression<Func<bool>> bodyheaderRowsExist = null)
         {
             var __workflow_bodyhtml = WorkflowExpression.Compile(bodyhtml, nameof(bodyhtml), required: true);
             var __workflow_bodytableSelector = WorkflowExpression.Compile(bodytableSelector, nameof(bodytableSelector), required: false);
             var __workflow_bodyheaderRowsExist = WorkflowExpression.Compile(bodyheaderRowsExist, nameof(bodyheaderRowsExist), required: false);
-            return new DeferredBodyAction<ParseTableResponse>(() =>
+            return new DeferredBodyAction<ParseTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/parse-table";
                 var apiCallHttpMethod = "post";

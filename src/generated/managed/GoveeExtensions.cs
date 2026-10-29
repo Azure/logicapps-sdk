@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
     public class GoveeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "govee")]
-        public IBodyWorkflowAction<RunCommandOnDeviceResponse> RunCommandOnDevice(Expression<Func<string>> bodydeviceMACAddress, Expression<Func<string>> bodydeviceModel, Expression<Func<bodycmdcommandNameInput>> bodycmdcommandName = null, Expression<Func<bodyturnInput>> bodyturn = null, Expression<Func<int>> bodybrightness = null, Expression<Func<int>> bodycolorcolorRed = null, Expression<Func<int>> bodycolorcolorGreen = null, Expression<Func<int>> bodycolorcolorBlue = null, Expression<Func<int>> bodycolorTemperature = null)
+        public IBodyWorkflowAction<RunCommandOnDeviceResponse, ApiConnectionActionConfiguration> RunCommandOnDevice(Expression<Func<string>> bodydeviceMACAddress, Expression<Func<string>> bodydeviceModel, Expression<Func<bodycmdcommandNameInput>> bodycmdcommandName = null, Expression<Func<bodyturnInput>> bodyturn = null, Expression<Func<int>> bodybrightness = null, Expression<Func<int>> bodycolorcolorRed = null, Expression<Func<int>> bodycolorcolorGreen = null, Expression<Func<int>> bodycolorcolorBlue = null, Expression<Func<int>> bodycolorTemperature = null)
         {
             var __workflow_bodydeviceMACAddress = WorkflowExpression.Compile(bodydeviceMACAddress, nameof(bodydeviceMACAddress), required: true);
             var __workflow_bodydeviceModel = WorkflowExpression.Compile(bodydeviceModel, nameof(bodydeviceModel), required: true);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
             var __workflow_bodycolorcolorGreen = WorkflowExpression.Compile(bodycolorcolorGreen, nameof(bodycolorcolorGreen), required: false);
             var __workflow_bodycolorcolorBlue = WorkflowExpression.Compile(bodycolorcolorBlue, nameof(bodycolorcolorBlue), required: false);
             var __workflow_bodycolorTemperature = WorkflowExpression.Compile(bodycolorTemperature, nameof(bodycolorTemperature), required: false);
-            return new DeferredBodyAction<RunCommandOnDeviceResponse>(() =>
+            return new DeferredBodyAction<RunCommandOnDeviceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/devices/control";
                 var apiCallHttpMethod = "put";
@@ -102,11 +102,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "govee")]
-        public IBodyWorkflowAction<GetDeviceInformationResponse> GetDeviceInformation(Expression<Func<string>> device = null, Expression<Func<string>> model = null)
+        public IBodyWorkflowAction<GetDeviceInformationResponse, ApiConnectionActionConfiguration> GetDeviceInformation(Expression<Func<string>> device = null, Expression<Func<string>> model = null)
         {
             var __workflow_device = WorkflowExpression.Compile(device, nameof(device), required: false);
             var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: false);
-            return new DeferredBodyAction<GetDeviceInformationResponse>(() =>
+            return new DeferredBodyAction<GetDeviceInformationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/devices";
                 var apiCallHttpMethod = "get";

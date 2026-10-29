@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai
     public class PerplexityaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "perplexityai")]
-        public IBodyWorkflowAction<CompletionPostResponse> Completion(Expression<Func<bodymodelInput>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages, Expression<Func<int>> bodymaxTokens = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodytopP = null, Expression<Func<double>> bodytopK = null, Expression<Func<double>> bodypresencePenalty = null, Expression<Func<double>> bodyfrequencyPenalty = null)
+        public IBodyWorkflowAction<CompletionPostResponse, ApiConnectionActionConfiguration> Completion(Expression<Func<bodymodelInput>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages, Expression<Func<int>> bodymaxTokens = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodytopP = null, Expression<Func<double>> bodytopK = null, Expression<Func<double>> bodypresencePenalty = null, Expression<Func<double>> bodyfrequencyPenalty = null)
         {
             var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
             var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: true);
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai
             var __workflow_bodytopK = WorkflowExpression.Compile(bodytopK, nameof(bodytopK), required: false);
             var __workflow_bodypresencePenalty = WorkflowExpression.Compile(bodypresencePenalty, nameof(bodypresencePenalty), required: false);
             var __workflow_bodyfrequencyPenalty = WorkflowExpression.Compile(bodyfrequencyPenalty, nameof(bodyfrequencyPenalty), required: false);
-            return new DeferredBodyAction<CompletionPostResponse>(() =>
+            return new DeferredBodyAction<CompletionPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/chat/completions";
                 var apiCallHttpMethod = "post";

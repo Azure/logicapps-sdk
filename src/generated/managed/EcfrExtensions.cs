@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecfr
     public class EcfrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecfr")]
-        public IBodyWorkflowAction<SearchResultsResponse> SearchCfrResults(Expression<Func<string>> query, Expression<Func<string>> lastModifiedOnOrAfter = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null, Expression<Func<orderInput>> order = null, Expression<Func<paginateByInput>> paginateBy = null)
+        public IBodyWorkflowAction<SearchResultsResponse, ApiConnectionActionConfiguration> SearchCfrResults(Expression<Func<string>> query, Expression<Func<string>> lastModifiedOnOrAfter = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null, Expression<Func<orderInput>> order = null, Expression<Func<paginateByInput>> paginateBy = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_lastModifiedOnOrAfter = WorkflowExpression.Compile(lastModifiedOnOrAfter, nameof(lastModifiedOnOrAfter), required: false);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecfr
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_order = WorkflowExpression.Compile(order, nameof(order), required: false);
             var __workflow_paginateBy = WorkflowExpression.Compile(paginateBy, nameof(paginateBy), required: false);
-            return new DeferredBodyAction<SearchResultsResponse>(() =>
+            return new DeferredBodyAction<SearchResultsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/search/v1/results";
                 var apiCallHttpMethod = "get";
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecfr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecfr")]
-        public IBodyWorkflowAction<HierarchyCountResponse> GetHierarchyCounts(Expression<Func<string>> query, Expression<Func<string>> agencySlugs = null, Expression<Func<string>> date = null, Expression<Func<string>> lastModifiedAfter = null, Expression<Func<string>> lastModifiedOnOrAfter = null, Expression<Func<string>> lastModifiedBefore = null, Expression<Func<string>> lastModifiedOnOrBefore = null)
+        public IBodyWorkflowAction<HierarchyCountResponse, ApiConnectionActionConfiguration> GetHierarchyCounts(Expression<Func<string>> query, Expression<Func<string>> agencySlugs = null, Expression<Func<string>> date = null, Expression<Func<string>> lastModifiedAfter = null, Expression<Func<string>> lastModifiedOnOrAfter = null, Expression<Func<string>> lastModifiedBefore = null, Expression<Func<string>> lastModifiedOnOrBefore = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_agencySlugs = WorkflowExpression.Compile(agencySlugs, nameof(agencySlugs), required: false);
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecfr
             var __workflow_lastModifiedOnOrAfter = WorkflowExpression.Compile(lastModifiedOnOrAfter, nameof(lastModifiedOnOrAfter), required: false);
             var __workflow_lastModifiedBefore = WorkflowExpression.Compile(lastModifiedBefore, nameof(lastModifiedBefore), required: false);
             var __workflow_lastModifiedOnOrBefore = WorkflowExpression.Compile(lastModifiedOnOrBefore, nameof(lastModifiedOnOrBefore), required: false);
-            return new DeferredBodyAction<HierarchyCountResponse>(() =>
+            return new DeferredBodyAction<HierarchyCountResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/search/v1/counts/hierarchy";
                 var apiCallHttpMethod = "get";
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecfr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecfr")]
-        public IBodyWorkflowAction<object> GetFullRegulationXML(Expression<Func<string>> date, Expression<Func<string>> title, Expression<Func<string>> subtitle = null, Expression<Func<string>> chapter = null, Expression<Func<string>> subchapter = null, Expression<Func<string>> part = null, Expression<Func<string>> subpart = null, Expression<Func<string>> section = null, Expression<Func<string>> appendix = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> GetFullRegulationXML(Expression<Func<string>> date, Expression<Func<string>> title, Expression<Func<string>> subtitle = null, Expression<Func<string>> chapter = null, Expression<Func<string>> subchapter = null, Expression<Func<string>> part = null, Expression<Func<string>> subpart = null, Expression<Func<string>> section = null, Expression<Func<string>> appendix = null)
         {
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
             var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: true);
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecfr
             var __workflow_subpart = WorkflowExpression.Compile(subpart, nameof(subpart), required: false);
             var __workflow_section = WorkflowExpression.Compile(section, nameof(section), required: false);
             var __workflow_appendix = WorkflowExpression.Compile(appendix, nameof(appendix), required: false);
-            return new DeferredBodyAction<object>(() =>
+            return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/versioner/v1/full/{0}/title-{1}.xml", __workflow_date.WithUrlEncoding(1), __workflow_title.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

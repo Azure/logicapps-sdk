@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
     public class TesseroninvoiceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
-        public IBodyWorkflowAction<GetServiceAssignmentsDispatcherResponse> GetServiceAssignmentsDispatcher(Expression<Func<int>> bodyskip, Expression<Func<string>> bodysearch = null, Expression<Func<int>> bodyorderColumns = null, Expression<Func<bool>> bodyorderByAsc = null, Expression<Func<bool>> bodytakeAll = null, Expression<Func<string>> bodyadditionalSearchDatadateTimeFrom = null, Expression<Func<string>> bodyadditionalSearchDatadateTimeTo = null, Expression<Func<double>> bodyadditionalSearchDataquantityFrom = null, Expression<Func<double>> bodyadditionalSearchDataquantityTo = null, Expression<Func<int[]>> bodyadditionalSearchDatauserIds = null, Expression<Func<string[]>> bodyadditionalSearchDataserviceArticles = null, Expression<Func<int>> bodyadditionalSearchDataassignmentStatusId = null, Expression<Func<bool>> bodyadditionalSearchDataisInvoice = null)
+        public IBodyWorkflowAction<GetServiceAssignmentsDispatcherResponse, ApiConnectionActionConfiguration> GetServiceAssignmentsDispatcher(Expression<Func<int>> bodyskip, Expression<Func<string>> bodysearch = null, Expression<Func<int>> bodyorderColumns = null, Expression<Func<bool>> bodyorderByAsc = null, Expression<Func<bool>> bodytakeAll = null, Expression<Func<string>> bodyadditionalSearchDatadateTimeFrom = null, Expression<Func<string>> bodyadditionalSearchDatadateTimeTo = null, Expression<Func<double>> bodyadditionalSearchDataquantityFrom = null, Expression<Func<double>> bodyadditionalSearchDataquantityTo = null, Expression<Func<int[]>> bodyadditionalSearchDatauserIds = null, Expression<Func<string[]>> bodyadditionalSearchDataserviceArticles = null, Expression<Func<int>> bodyadditionalSearchDataassignmentStatusId = null, Expression<Func<bool>> bodyadditionalSearchDataisInvoice = null)
         {
             var __workflow_bodyskip = WorkflowExpression.Compile(bodyskip, nameof(bodyskip), required: true);
             var __workflow_bodysearch = WorkflowExpression.Compile(bodysearch, nameof(bodysearch), required: false);
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
             var __workflow_bodyadditionalSearchDataserviceArticles = WorkflowExpression.Compile(bodyadditionalSearchDataserviceArticles, nameof(bodyadditionalSearchDataserviceArticles), required: false);
             var __workflow_bodyadditionalSearchDataassignmentStatusId = WorkflowExpression.Compile(bodyadditionalSearchDataassignmentStatusId, nameof(bodyadditionalSearchDataassignmentStatusId), required: false);
             var __workflow_bodyadditionalSearchDataisInvoice = WorkflowExpression.Compile(bodyadditionalSearchDataisInvoice, nameof(bodyadditionalSearchDataisInvoice), required: false);
-            return new DeferredBodyAction<GetServiceAssignmentsDispatcherResponse>(() =>
+            return new DeferredBodyAction<GetServiceAssignmentsDispatcherResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetServiceAssignmentsDispatcher";
                 var apiCallHttpMethod = "post";
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
-        public IBodyWorkflowAction<CreateActivityRecordingResponse> CreateActivityRecording(Expression<Func<string>> bodydateFrom, Expression<Func<string>> bodyquantity = null, Expression<Func<string>> bodydateTo = null, Expression<Func<string>> bodybookText = null, Expression<Func<string>> bodynoteText = null, Expression<Func<int>> bodyprojectId = null, Expression<Func<int>> bodyprojectPhaseId = null, Expression<Func<int>> bodyticketid = null)
+        public IBodyWorkflowAction<CreateActivityRecordingResponse, ApiConnectionActionConfiguration> CreateActivityRecording(Expression<Func<string>> bodydateFrom, Expression<Func<string>> bodyquantity = null, Expression<Func<string>> bodydateTo = null, Expression<Func<string>> bodybookText = null, Expression<Func<string>> bodynoteText = null, Expression<Func<int>> bodyprojectId = null, Expression<Func<int>> bodyprojectPhaseId = null, Expression<Func<int>> bodyticketid = null)
         {
             var __workflow_bodydateFrom = WorkflowExpression.Compile(bodydateFrom, nameof(bodydateFrom), required: true);
             var __workflow_bodyquantity = WorkflowExpression.Compile(bodyquantity, nameof(bodyquantity), required: false);
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
             var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: false);
             var __workflow_bodyprojectPhaseId = WorkflowExpression.Compile(bodyprojectPhaseId, nameof(bodyprojectPhaseId), required: false);
             var __workflow_bodyticketid = WorkflowExpression.Compile(bodyticketid, nameof(bodyticketid), required: false);
-            return new DeferredBodyAction<CreateActivityRecordingResponse>(() =>
+            return new DeferredBodyAction<CreateActivityRecordingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CreateActivityRecording";
                 var apiCallHttpMethod = "post";
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
-        public IBodyWorkflowAction<CreateInvoicePositionNoteResponse> CreateInvoicePositionNote(Expression<Func<string>> bodydateFrom, Expression<Func<string>> bodydateTo, Expression<Func<int>> bodypause = null, Expression<Func<bool>> bodynoInvoice = null, Expression<Func<bool>> bodyextraCharge = null, Expression<Func<string>> bodyhint = null, Expression<Func<string>> bodyserviceContractId = null, Expression<Func<string>> bodyuserName = null)
+        public IBodyWorkflowAction<CreateInvoicePositionNoteResponse, ApiConnectionActionConfiguration> CreateInvoicePositionNote(Expression<Func<string>> bodydateFrom, Expression<Func<string>> bodydateTo, Expression<Func<int>> bodypause = null, Expression<Func<bool>> bodynoInvoice = null, Expression<Func<bool>> bodyextraCharge = null, Expression<Func<string>> bodyhint = null, Expression<Func<string>> bodyserviceContractId = null, Expression<Func<string>> bodyuserName = null)
         {
             var __workflow_bodydateFrom = WorkflowExpression.Compile(bodydateFrom, nameof(bodydateFrom), required: true);
             var __workflow_bodydateTo = WorkflowExpression.Compile(bodydateTo, nameof(bodydateTo), required: true);
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
             var __workflow_bodyhint = WorkflowExpression.Compile(bodyhint, nameof(bodyhint), required: false);
             var __workflow_bodyserviceContractId = WorkflowExpression.Compile(bodyserviceContractId, nameof(bodyserviceContractId), required: false);
             var __workflow_bodyuserName = WorkflowExpression.Compile(bodyuserName, nameof(bodyuserName), required: false);
-            return new DeferredBodyAction<CreateInvoicePositionNoteResponse>(() =>
+            return new DeferredBodyAction<CreateInvoicePositionNoteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CreateInvoicePositionNote";
                 var apiCallHttpMethod = "post";

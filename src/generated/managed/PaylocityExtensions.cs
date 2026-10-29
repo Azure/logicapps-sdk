@@ -15,10 +15,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Paylocity
 
     public class PaylocityTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WebhookTrigger(Expression<Func<string>> requestBodyOfWebhookCompanyId = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookTrigger(Expression<Func<string>> requestBodyOfWebhookCompanyId = null, FlowRecurrence recurrence = null)
         {
             var __workflow_requestBodyOfWebhookCompanyId = WorkflowExpression.Compile(requestBodyOfWebhookCompanyId, nameof(requestBodyOfWebhookCompanyId), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/webhooks/TimeOffRequestApprovalNotification";
                 var apiCallHttpMethod = "post";

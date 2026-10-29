@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huedatagate
     public class HuedatagateActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huedatagate")]
-        public IWorkflowAction Odata(Expression<Func<string>> query, Expression<Func<string>> hostUrl, Expression<Func<string>> roleId, Expression<Func<string>> roleSecret)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Odata(Expression<Func<string>> query, Expression<Func<string>> hostUrl, Expression<Func<string>> roleId, Expression<Func<string>> roleSecret)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: true);
             var __workflow_roleId = WorkflowExpression.Compile(roleId, nameof(roleId), required: true);
             var __workflow_roleSecret = WorkflowExpression.Compile(roleSecret, nameof(roleSecret), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/odata";
                 var apiCallHttpMethod = "get";

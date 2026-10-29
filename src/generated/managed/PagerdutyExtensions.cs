@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
     public class PagerdutyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<Incident> GetIncidentByKey(Expression<Func<string>> incidentKey)
+        public IBodyWorkflowAction<Incident, ApiConnectionActionConfiguration> GetIncidentByKey(Expression<Func<string>> incidentKey)
         {
             var __workflow_incidentKey = WorkflowExpression.Compile(incidentKey, nameof(incidentKey), required: true);
-            return new DeferredBodyAction<Incident>(() =>
+            return new DeferredBodyAction<Incident, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/action8/incidents";
                 var apiCallHttpMethod = "get";
@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<User> GetUser(Expression<Func<string>> userId)
+        public IBodyWorkflowAction<User, ApiConnectionActionConfiguration> GetUser(Expression<Func<string>> userId)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
-            return new DeferredBodyAction<User>(() =>
+            return new DeferredBodyAction<User, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -39,12 +39,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<AddNoteResponse> AddNoteToIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestaddedBy, Expression<Func<string>> requestnote)
+        public IBodyWorkflowAction<AddNoteResponse, ApiConnectionActionConfiguration> AddNoteToIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestaddedBy, Expression<Func<string>> requestnote)
         {
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
             var __workflow_requestaddedBy = WorkflowExpression.Compile(requestaddedBy, nameof(requestaddedBy), required: true);
             var __workflow_requestnote = WorkflowExpression.Compile(requestnote, nameof(requestnote), required: true);
-            return new DeferredBodyAction<AddNoteResponse>(() =>
+            return new DeferredBodyAction<AddNoteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/incidents/{0}/notes", __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -65,11 +65,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<SingleIncident> AcknowledgeIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestacknowledgedBy)
+        public IBodyWorkflowAction<SingleIncident, ApiConnectionActionConfiguration> AcknowledgeIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestacknowledgedBy)
         {
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
             var __workflow_requestacknowledgedBy = WorkflowExpression.Compile(requestacknowledgedBy, nameof(requestacknowledgedBy), required: true);
-            return new DeferredBodyAction<SingleIncident>(() =>
+            return new DeferredBodyAction<SingleIncident, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/action1/incidents/{0}", __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -88,11 +88,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<SingleIncident> ResolveIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestresolvedBy)
+        public IBodyWorkflowAction<SingleIncident, ApiConnectionActionConfiguration> ResolveIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestresolvedBy)
         {
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
             var __workflow_requestresolvedBy = WorkflowExpression.Compile(requestresolvedBy, nameof(requestresolvedBy), required: true);
-            return new DeferredBodyAction<SingleIncident>(() =>
+            return new DeferredBodyAction<SingleIncident, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/action2/incidents/{0}", __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -111,12 +111,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<SingleIncident> ReassignIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestfromUser, Expression<Func<string>> requesttoUser)
+        public IBodyWorkflowAction<SingleIncident, ApiConnectionActionConfiguration> ReassignIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestfromUser, Expression<Func<string>> requesttoUser)
         {
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
             var __workflow_requestfromUser = WorkflowExpression.Compile(requestfromUser, nameof(requestfromUser), required: true);
             var __workflow_requesttoUser = WorkflowExpression.Compile(requesttoUser, nameof(requesttoUser), required: true);
-            return new DeferredBodyAction<SingleIncident>(() =>
+            return new DeferredBodyAction<SingleIncident, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/action3/incidents/{0}", __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -137,12 +137,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<SingleIncident> SnoozeIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestsnoozedBy, Expression<Func<int>> requestsnooze)
+        public IBodyWorkflowAction<SingleIncident, ApiConnectionActionConfiguration> SnoozeIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestsnoozedBy, Expression<Func<int>> requestsnooze)
         {
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
             var __workflow_requestsnoozedBy = WorkflowExpression.Compile(requestsnoozedBy, nameof(requestsnoozedBy), required: true);
             var __workflow_requestsnooze = WorkflowExpression.Compile(requestsnooze, nameof(requestsnooze), required: true);
-            return new DeferredBodyAction<SingleIncident>(() =>
+            return new DeferredBodyAction<SingleIncident, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/action4/incidents/{0}/snooze", __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -163,12 +163,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<SingleIncident> EscalateIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestescalatedBy, Expression<Func<string>> requestescalationPolicy)
+        public IBodyWorkflowAction<SingleIncident, ApiConnectionActionConfiguration> EscalateIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestescalatedBy, Expression<Func<string>> requestescalationPolicy)
         {
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
             var __workflow_requestescalatedBy = WorkflowExpression.Compile(requestescalatedBy, nameof(requestescalatedBy), required: true);
             var __workflow_requestescalationPolicy = WorkflowExpression.Compile(requestescalationPolicy, nameof(requestescalationPolicy), required: true);
-            return new DeferredBodyAction<SingleIncident>(() =>
+            return new DeferredBodyAction<SingleIncident, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/action5/incidents/{0}", __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -189,11 +189,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<NewIncident> CreateIncident(Expression<Func<string>> requestserviceKey, Expression<Func<string>> requestdescription)
+        public IBodyWorkflowAction<NewIncident, ApiConnectionActionConfiguration> CreateIncident(Expression<Func<string>> requestserviceKey, Expression<Func<string>> requestdescription)
         {
             var __workflow_requestserviceKey = WorkflowExpression.Compile(requestserviceKey, nameof(requestserviceKey), required: true);
             var __workflow_requestdescription = WorkflowExpression.Compile(requestdescription, nameof(requestdescription), required: true);
-            return new DeferredBodyAction<NewIncident>(() =>
+            return new DeferredBodyAction<NewIncident, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/incidents/create";
                 var apiCallHttpMethod = "post";
@@ -216,10 +216,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
 
     public class PagerdutyTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NotesResponse> OnNewIncidentNote(Expression<Func<string>> incidentId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NotesResponse, ApiConnectionTriggerConfiguration> OnNewIncidentNote(Expression<Func<string>> incidentId, FlowRecurrence recurrence = null)
         {
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
-            return new DeferredBodyTrigger<NotesResponse>(() =>
+            return new DeferredBodyTrigger<NotesResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger1/incidents/{0}/notes", __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             });
         }
 
-        public IBodyWorkflowTrigger<IncidentsResponse> OnNewIncidentCreated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration> OnNewIncidentCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger2/incidents";
             var apiCallHttpMethod = "get";
@@ -236,10 +236,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             return new ApiConnectionTrigger<IncidentsResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<IncidentsResponse> OnIncidentAssigned(Expression<Func<string>> userId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration> OnIncidentAssigned(Expression<Func<string>> userId, FlowRecurrence recurrence = null)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
-            return new DeferredBodyTrigger<IncidentsResponse>(() =>
+            return new DeferredBodyTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger3/incidents/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             });
         }
 
-        public IBodyWorkflowTrigger<IncidentsResponse> OnIncidentAcknowledged(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration> OnIncidentAcknowledged(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger4/incidents";
             var apiCallHttpMethod = "get";
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             return new ApiConnectionTrigger<IncidentsResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<IncidentsResponse> OnIncidentResolved(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IncidentsResponse, ApiConnectionTriggerConfiguration> OnIncidentResolved(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger5/incidents";
             var apiCallHttpMethod = "get";

@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
     public class AcsidentityActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
-        public IBodyWorkflowAction<CreateCommunicationIdentityResponse> CreateCommunicationIdentity(Expression<Func<TokenScopes[]>> bodytokenScopes = null)
+        public IBodyWorkflowAction<CreateCommunicationIdentityResponse, ApiConnectionActionConfiguration> CreateCommunicationIdentity(Expression<Func<TokenScopes[]>> bodytokenScopes = null)
         {
             var __workflow_bodytokenScopes = WorkflowExpression.Compile(bodytokenScopes, nameof(bodytokenScopes), required: false);
-            return new DeferredBodyAction<CreateCommunicationIdentityResponse>(() =>
+            return new DeferredBodyAction<CreateCommunicationIdentityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/identities";
                 var apiCallHttpMethod = "post";
@@ -39,10 +39,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
-        public IWorkflowAction DeleteCommunicationIdentity(Expression<Func<string>> identityId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteCommunicationIdentity(Expression<Func<string>> identityId)
         {
             var __workflow_identityId = WorkflowExpression.Compile(identityId, nameof(identityId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/identities/{0}", __workflow_identityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -53,11 +53,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
-        public IBodyWorkflowAction<AccessTokenInfo> IssueIdentityAccessToken(Expression<Func<string>> identityId, Expression<Func<TokenScopes[]>> bodytokenScopes)
+        public IBodyWorkflowAction<AccessTokenInfo, ApiConnectionActionConfiguration> IssueIdentityAccessToken(Expression<Func<string>> identityId, Expression<Func<TokenScopes[]>> bodytokenScopes)
         {
             var __workflow_identityId = WorkflowExpression.Compile(identityId, nameof(identityId), required: true);
             var __workflow_bodytokenScopes = WorkflowExpression.Compile(bodytokenScopes, nameof(bodytokenScopes), required: true);
-            return new DeferredBodyAction<AccessTokenInfo>(() =>
+            return new DeferredBodyAction<AccessTokenInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/identities/{0}/:issueAccessToken", __workflow_identityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -77,10 +77,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
-        public IWorkflowAction RevokeIdentityAccessTokens(Expression<Func<string>> identityId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RevokeIdentityAccessTokens(Expression<Func<string>> identityId)
         {
             var __workflow_identityId = WorkflowExpression.Compile(identityId, nameof(identityId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/identities/{0}/:revokeAccessTokens", __workflow_identityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";

@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
     public class AlvaoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alvao")]
-        public IBodyWorkflowAction<AMObjectsExpandedApiResponse> GetObjects(Expression<Func<int>> top = null, Expression<Func<string>> search = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderBy = null)
+        public IBodyWorkflowAction<AMObjectsExpandedApiResponse, ApiConnectionActionConfiguration> GetObjects(Expression<Func<int>> top = null, Expression<Func<string>> search = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderBy = null)
         {
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderBy = WorkflowExpression.Compile(orderBy, nameof(orderBy), required: false);
-            return new DeferredBodyAction<AMObjectsExpandedApiResponse>(() =>
+            return new DeferredBodyAction<AMObjectsExpandedApiResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/objects";
                 var apiCallHttpMethod = "get";
@@ -37,13 +37,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alvao")]
-        public IBodyWorkflowAction<CommonUsersApiResponse> GetUsers(Expression<Func<int>> top = null, Expression<Func<string>> search = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderBy = null)
+        public IBodyWorkflowAction<CommonUsersApiResponse, ApiConnectionActionConfiguration> GetUsers(Expression<Func<int>> top = null, Expression<Func<string>> search = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderBy = null)
         {
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_orderBy = WorkflowExpression.Compile(orderBy, nameof(orderBy), required: false);
-            return new DeferredBodyAction<CommonUsersApiResponse>(() =>
+            return new DeferredBodyAction<CommonUsersApiResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users";
                 var apiCallHttpMethod = "get";
@@ -63,12 +63,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
 
     public class AlvaoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreatedResponse> TicketTransitionsToStatus(Expression<Func<string>> bodyprocessName, Expression<Func<string>> bodyticketStatusName, Expression<Func<string>> bodyserviceName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreatedResponse, ApiConnectionTriggerConfiguration> TicketTransitionsToStatus(Expression<Func<string>> bodyprocessName, Expression<Func<string>> bodyticketStatusName, Expression<Func<string>> bodyserviceName = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyprocessName = WorkflowExpression.Compile(bodyprocessName, nameof(bodyprocessName), required: true);
             var __workflow_bodyticketStatusName = WorkflowExpression.Compile(bodyticketStatusName, nameof(bodyticketStatusName), required: true);
             var __workflow_bodyserviceName = WorkflowExpression.Compile(bodyserviceName, nameof(bodyserviceName), required: false);
-            return new DeferredBodyTrigger<WebhookCreatedResponse>(() =>
+            return new DeferredBodyTrigger<WebhookCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/tickettransitionstostatus";
                 var apiCallHttpMethod = "post";

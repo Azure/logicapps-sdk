@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciscowebexmeetings
     public class CiscowebexmeetingsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciscowebexmeetings")]
-        public IBodyWorkflowAction<NewMeetingResponse> NewMeeting(Expression<Func<string>> bodytopic, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<string>> bodyattendees = null, Expression<Func<string>> bodyagenda = null)
+        public IBodyWorkflowAction<NewMeetingResponse, ApiConnectionActionConfiguration> NewMeeting(Expression<Func<string>> bodytopic, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<string>> bodyattendees = null, Expression<Func<string>> bodyagenda = null)
         {
             var __workflow_bodytopic = WorkflowExpression.Compile(bodytopic, nameof(bodytopic), required: true);
             var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: true);
             var __workflow_bodyendTime = WorkflowExpression.Compile(bodyendTime, nameof(bodyendTime), required: true);
             var __workflow_bodyattendees = WorkflowExpression.Compile(bodyattendees, nameof(bodyattendees), required: false);
             var __workflow_bodyagenda = WorkflowExpression.Compile(bodyagenda, nameof(bodyagenda), required: false);
-            return new DeferredBodyAction<NewMeetingResponse>(() =>
+            return new DeferredBodyAction<NewMeetingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/workflow/meetings/create";
                 var apiCallHttpMethod = "post";

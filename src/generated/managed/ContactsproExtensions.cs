@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
     public class ContactsproActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
-        public IBodyWorkflowAction<Contact> GetContact(Expression<Func<string>> contactListId, Expression<Func<string>> contactId)
+        public IBodyWorkflowAction<Contact, ApiConnectionActionConfiguration> GetContact(Expression<Func<string>> contactListId, Expression<Func<string>> contactId)
         {
             var __workflow_contactListId = WorkflowExpression.Compile(contactListId, nameof(contactListId), required: true);
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
-            return new DeferredBodyAction<Contact>(() =>
+            return new DeferredBodyAction<Contact, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/contacts/{1}", __workflow_contactListId.WithUrlEncoding(1), __workflow_contactId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -26,11 +26,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
-        public IWorkflowAction DeleteContact(Expression<Func<string>> contactListId, Expression<Func<string>> contactId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteContact(Expression<Func<string>> contactListId, Expression<Func<string>> contactId)
         {
             var __workflow_contactListId = WorkflowExpression.Compile(contactListId, nameof(contactListId), required: true);
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/contacts/{1}", __workflow_contactListId.WithUrlEncoding(1), __workflow_contactId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
-        public IBodyWorkflowAction<Contact> UpdateContact(Expression<Func<string>> contactListId, Expression<Func<string>> contactId, Expression<Func<string>> bodyname, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodyinternetemail = null, Expression<Func<string>> bodyinternetwebsite = null, Expression<Func<string>> bodyinternetlinkedin = null, Expression<Func<string>> bodyinternetfacebook = null, Expression<Func<string>> bodyinternettwitter = null, Expression<Func<string>> bodyphonesbusinessPhone = null, Expression<Func<string>> bodyphonesmobile = null, Expression<Func<string>> bodyphoneshome = null, Expression<Func<string>> bodyphonesbusinessFax = null, Expression<Func<Address[]>> bodyaddresses = null, Expression<Func<string>> bodynotes = null)
+        public IBodyWorkflowAction<Contact, ApiConnectionActionConfiguration> UpdateContact(Expression<Func<string>> contactListId, Expression<Func<string>> contactId, Expression<Func<string>> bodyname, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodyinternetemail = null, Expression<Func<string>> bodyinternetwebsite = null, Expression<Func<string>> bodyinternetlinkedin = null, Expression<Func<string>> bodyinternetfacebook = null, Expression<Func<string>> bodyinternettwitter = null, Expression<Func<string>> bodyphonesbusinessPhone = null, Expression<Func<string>> bodyphonesmobile = null, Expression<Func<string>> bodyphoneshome = null, Expression<Func<string>> bodyphonesbusinessFax = null, Expression<Func<Address[]>> bodyaddresses = null, Expression<Func<string>> bodynotes = null)
         {
             var __workflow_contactListId = WorkflowExpression.Compile(contactListId, nameof(contactListId), required: true);
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
             var __workflow_bodyphonesbusinessFax = WorkflowExpression.Compile(bodyphonesbusinessFax, nameof(bodyphonesbusinessFax), required: false);
             var __workflow_bodyaddresses = WorkflowExpression.Compile(bodyaddresses, nameof(bodyaddresses), required: false);
             var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
-            return new DeferredBodyAction<Contact>(() =>
+            return new DeferredBodyAction<Contact, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/contacts/{1}", __workflow_contactListId.WithUrlEncoding(1), __workflow_contactId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -185,10 +185,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
-        public IBodyWorkflowAction<Contact[]> GetAllContacts(Expression<Func<string>> contactListId)
+        public IBodyWorkflowAction<Contact[], ApiConnectionActionConfiguration> GetAllContacts(Expression<Func<string>> contactListId)
         {
             var __workflow_contactListId = WorkflowExpression.Compile(contactListId, nameof(contactListId), required: true);
-            return new DeferredBodyAction<Contact[]>(() =>
+            return new DeferredBodyAction<Contact[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/contacts", __workflow_contactListId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
-        public IBodyWorkflowAction<Contact> CreateContact(Expression<Func<string>> contactListId, Expression<Func<string>> bodyname, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodyinternetemail = null, Expression<Func<string>> bodyinternetwebsite = null, Expression<Func<string>> bodyinternetlinkedin = null, Expression<Func<string>> bodyinternetfacebook = null, Expression<Func<string>> bodyinternettwitter = null, Expression<Func<string>> bodyphonesbusinessPhone = null, Expression<Func<string>> bodyphonesmobile = null, Expression<Func<string>> bodyphoneshome = null, Expression<Func<string>> bodyphonesbusinessFax = null, Expression<Func<Address[]>> bodyaddresses = null, Expression<Func<string>> bodynotes = null)
+        public IBodyWorkflowAction<Contact, ApiConnectionActionConfiguration> CreateContact(Expression<Func<string>> contactListId, Expression<Func<string>> bodyname, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodyinternetemail = null, Expression<Func<string>> bodyinternetwebsite = null, Expression<Func<string>> bodyinternetlinkedin = null, Expression<Func<string>> bodyinternetfacebook = null, Expression<Func<string>> bodyinternettwitter = null, Expression<Func<string>> bodyphonesbusinessPhone = null, Expression<Func<string>> bodyphonesmobile = null, Expression<Func<string>> bodyphoneshome = null, Expression<Func<string>> bodyphonesbusinessFax = null, Expression<Func<Address[]>> bodyaddresses = null, Expression<Func<string>> bodynotes = null)
         {
             var __workflow_contactListId = WorkflowExpression.Compile(contactListId, nameof(contactListId), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
             var __workflow_bodyphonesbusinessFax = WorkflowExpression.Compile(bodyphonesbusinessFax, nameof(bodyphonesbusinessFax), required: false);
             var __workflow_bodyaddresses = WorkflowExpression.Compile(bodyaddresses, nameof(bodyaddresses), required: false);
             var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
-            return new DeferredBodyAction<Contact>(() =>
+            return new DeferredBodyAction<Contact, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/contacts", __workflow_contactListId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";

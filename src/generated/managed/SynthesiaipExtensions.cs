@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
     public class SynthesiaipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
-        public IBodyWorkflowAction<VideoListResponse> VideoList(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<VideoListResponse, ApiConnectionActionConfiguration> VideoList(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<VideoListResponse>(() =>
+            return new DeferredBodyAction<VideoListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/videos";
                 var apiCallHttpMethod = "get";
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
-        public IBodyWorkflowAction<VideoCreateResponse> VideoCreate(Expression<Func<bodyinputInputItem[]>> bodyinput, Expression<Func<bool>> bodytest = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyvisibility = null, Expression<Func<string>> bodyctaSettingslabel = null, Expression<Func<string>> bodyctaSettingsurl = null, Expression<Func<string>> bodycallbackId = null, Expression<Func<string>> bodysoundtrack = null)
+        public IBodyWorkflowAction<VideoCreateResponse, ApiConnectionActionConfiguration> VideoCreate(Expression<Func<bodyinputInputItem[]>> bodyinput, Expression<Func<bool>> bodytest = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyvisibility = null, Expression<Func<string>> bodyctaSettingslabel = null, Expression<Func<string>> bodyctaSettingsurl = null, Expression<Func<string>> bodycallbackId = null, Expression<Func<string>> bodysoundtrack = null)
         {
             var __workflow_bodyinput = WorkflowExpression.Compile(bodyinput, nameof(bodyinput), required: true);
             var __workflow_bodytest = WorkflowExpression.Compile(bodytest, nameof(bodytest), required: false);
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
             var __workflow_bodyctaSettingsurl = WorkflowExpression.Compile(bodyctaSettingsurl, nameof(bodyctaSettingsurl), required: false);
             var __workflow_bodycallbackId = WorkflowExpression.Compile(bodycallbackId, nameof(bodycallbackId), required: false);
             var __workflow_bodysoundtrack = WorkflowExpression.Compile(bodysoundtrack, nameof(bodysoundtrack), required: false);
-            return new DeferredBodyAction<VideoCreateResponse>(() =>
+            return new DeferredBodyAction<VideoCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/videos";
                 var apiCallHttpMethod = "post";
@@ -116,10 +116,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
-        public IBodyWorkflowAction<VideoStatusResponse> VideoStatus(Expression<Func<string>> videoId)
+        public IBodyWorkflowAction<VideoStatusResponse, ApiConnectionActionConfiguration> VideoStatus(Expression<Func<string>> videoId)
         {
             var __workflow_videoId = WorkflowExpression.Compile(videoId, nameof(videoId), required: true);
-            return new DeferredBodyAction<VideoStatusResponse>(() =>
+            return new DeferredBodyAction<VideoStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/videos/{0}", __workflow_videoId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -129,10 +129,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
-        public IBodyWorkflowAction<string> VideoDelete(Expression<Func<string>> videoId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> VideoDelete(Expression<Func<string>> videoId)
         {
             var __workflow_videoId = WorkflowExpression.Compile(videoId, nameof(videoId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/videos/{0}", __workflow_videoId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
-        public IBodyWorkflowAction<VideoPatchResponse> VideoPatch(Expression<Func<string>> videoId, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyctaSettingslabel = null, Expression<Func<string>> bodyctaSettingsurl = null, Expression<Func<string>> bodyvisibility = null)
+        public IBodyWorkflowAction<VideoPatchResponse, ApiConnectionActionConfiguration> VideoPatch(Expression<Func<string>> videoId, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyctaSettingslabel = null, Expression<Func<string>> bodyctaSettingsurl = null, Expression<Func<string>> bodyvisibility = null)
         {
             var __workflow_videoId = WorkflowExpression.Compile(videoId, nameof(videoId), required: true);
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
             var __workflow_bodyctaSettingslabel = WorkflowExpression.Compile(bodyctaSettingslabel, nameof(bodyctaSettingslabel), required: false);
             var __workflow_bodyctaSettingsurl = WorkflowExpression.Compile(bodyctaSettingsurl, nameof(bodyctaSettingsurl), required: false);
             var __workflow_bodyvisibility = WorkflowExpression.Compile(bodyvisibility, nameof(bodyvisibility), required: false);
-            return new DeferredBodyAction<VideoPatchResponse>(() =>
+            return new DeferredBodyAction<VideoPatchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/videos/{0}", __workflow_videoId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -205,11 +205,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
-        public IBodyWorkflowAction<TemplateListResponse> TemplateList(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<TemplateListResponse, ApiConnectionActionConfiguration> TemplateList(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<TemplateListResponse>(() =>
+            return new DeferredBodyAction<TemplateListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/templates";
                 var apiCallHttpMethod = "get";
@@ -223,10 +223,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
-        public IBodyWorkflowAction<TemplateGetResponse> TemplateGet(Expression<Func<string>> templateId)
+        public IBodyWorkflowAction<TemplateGetResponse, ApiConnectionActionConfiguration> TemplateGet(Expression<Func<string>> templateId)
         {
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
-            return new DeferredBodyAction<TemplateGetResponse>(() =>
+            return new DeferredBodyAction<TemplateGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/templates/{0}", __workflow_templateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
-        public IBodyWorkflowAction<VideoCreateTemplateResponse> VideoCreateTemplate(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyvisibility = null, Expression<Func<string>> bodytemplateDataname = null, Expression<Func<bool>> bodytest = null, Expression<Func<string>> bodycallbackId = null)
+        public IBodyWorkflowAction<VideoCreateTemplateResponse, ApiConnectionActionConfiguration> VideoCreateTemplate(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyvisibility = null, Expression<Func<string>> bodytemplateDataname = null, Expression<Func<bool>> bodytest = null, Expression<Func<string>> bodycallbackId = null)
         {
             var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: true);
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
             var __workflow_bodytemplateDataname = WorkflowExpression.Compile(bodytemplateDataname, nameof(bodytemplateDataname), required: false);
             var __workflow_bodytest = WorkflowExpression.Compile(bodytest, nameof(bodytest), required: false);
             var __workflow_bodycallbackId = WorkflowExpression.Compile(bodycallbackId, nameof(bodycallbackId), required: false);
-            return new DeferredBodyAction<VideoCreateTemplateResponse>(() =>
+            return new DeferredBodyAction<VideoCreateTemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/videos/fromTemplate";
                 var apiCallHttpMethod = "post";

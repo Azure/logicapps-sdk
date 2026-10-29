@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Testconnector
     public class TestconnectorActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "testconnector")]
-        public IBodyWorkflowAction<HealthResponse> Health()
+        public IBodyWorkflowAction<HealthResponse, ApiConnectionActionConfiguration> Health()
         {
             var apiCallPath = "/health";
             var apiCallHttpMethod = "get";
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Testconnector
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "testconnector")]
-        public IBodyWorkflowAction<ClientErrorResponse> ClientError()
+        public IBodyWorkflowAction<ClientErrorResponse, ApiConnectionActionConfiguration> ClientError()
         {
             var apiCallPath = "/clientError/basic";
             var apiCallHttpMethod = "get";
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Testconnector
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "testconnector")]
-        public IBodyWorkflowAction<ServerErrorResponse> ServerError()
+        public IBodyWorkflowAction<ServerErrorResponse, ApiConnectionActionConfiguration> ServerError()
         {
             var apiCallPath = "/serverError/basic";
             var apiCallHttpMethod = "get";

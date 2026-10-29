@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mondaycomip
     public class MondaycomipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mondaycomip")]
-        public IBodyWorkflowAction<JToken> CallGraphQL(Expression<Func<string>> bodyquery = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CallGraphQL(Expression<Func<string>> bodyquery = null)
         {
             var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/";
                 var apiCallHttpMethod = "post";

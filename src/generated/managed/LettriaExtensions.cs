@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
     public class LettriaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lettria")]
-        public IBodyWorkflowAction<ComprehendPostResponseItem[]> Comprehend(Expression<Func<string[]>> bodydocuments = null)
+        public IBodyWorkflowAction<ComprehendPostResponseItem[], ApiConnectionActionConfiguration> Comprehend(Expression<Func<string[]>> bodydocuments = null)
         {
             var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: false);
-            return new DeferredBodyAction<ComprehendPostResponseItem[]>(() =>
+            return new DeferredBodyAction<ComprehendPostResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/";
                 var apiCallHttpMethod = "post";
@@ -38,10 +38,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lettria")]
-        public IBodyWorkflowAction<ClassifyPostResponseItem[]> Classify(Expression<Func<string[]>> bodydocuments = null)
+        public IBodyWorkflowAction<ClassifyPostResponseItem[], ApiConnectionActionConfiguration> Classify(Expression<Func<string[]>> bodydocuments = null)
         {
             var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: false);
-            return new DeferredBodyAction<ClassifyPostResponseItem[]>(() =>
+            return new DeferredBodyAction<ClassifyPostResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/nls/classification";
                 var apiCallHttpMethod = "post";

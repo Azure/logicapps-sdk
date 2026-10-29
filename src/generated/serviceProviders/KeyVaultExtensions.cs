@@ -1,9 +1,11 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq.Expressions;
     using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
@@ -14,10 +16,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
     public class KeyVaultActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
-        public IBodyWorkflowAction<GetSecretOutput> GetSecret(Expression<Func<string>> secretName)
+        public IBodyWorkflowAction<GetSecretOutput, GetSecretActionConfiguration> GetSecret(Expression<Func<string>> secretName)
         {
             var __workflow_secretName = WorkflowExpression.Compile(secretName, nameof(secretName), required: true);
-            return new DeferredBodyAction<GetSecretOutput>(() =>
+            return new DeferredBodyAction<GetSecretOutput, GetSecretActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["secretName"] = ExpressionConverter.ConvertO(__workflow_secretName);
@@ -26,16 +28,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getSecret", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetSecretOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetSecretOutput, GetSecretActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
-        public IBodyWorkflowAction<GetSecretVersionOutput> GetSecretVersion(Expression<Func<string>> secretName, Expression<Func<string>> version)
+        public IBodyWorkflowAction<GetSecretVersionOutput, GetSecretVersionActionConfiguration> GetSecretVersion(Expression<Func<string>> secretName, Expression<Func<string>> version)
         {
             var __workflow_secretName = WorkflowExpression.Compile(secretName, nameof(secretName), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
-            return new DeferredBodyAction<GetSecretVersionOutput>(() =>
+            return new DeferredBodyAction<GetSecretVersionOutput, GetSecretVersionActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["secretName"] = ExpressionConverter.ConvertO(__workflow_secretName);
@@ -45,25 +47,28 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getSecretVersion", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetSecretVersionOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetSecretVersionOutput, GetSecretVersionActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
-        public IBodyWorkflowAction<ListSecretMetadataOutputItem[]> ListSecretMetadata()
+        public IBodyWorkflowAction<ListSecretMetadataOutputItem[], ListSecretMetadataActionConfiguration> ListSecretMetadata()
         {
-            var serviceProviderInput = new ServiceProviderOperationInput
+            return new DeferredBodyAction<ListSecretMetadataOutputItem[], ListSecretMetadataActionConfiguration>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "listSecretMetadata", connectionName: connectionId)
-            };
-            return new ServiceProviderAction<ListSecretMetadataOutputItem[]>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "listSecretMetadata", connectionName: connectionId)
+                };
+                return new ServiceProviderBodyAction<ListSecretMetadataOutputItem[], ListSecretMetadataActionConfiguration>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
-        public IBodyWorkflowAction<GetSecretMetadataOutput> GetSecretMetadata(Expression<Func<string>> secretName)
+        public IBodyWorkflowAction<GetSecretMetadataOutput, GetSecretMetadataActionConfiguration> GetSecretMetadata(Expression<Func<string>> secretName)
         {
             var __workflow_secretName = WorkflowExpression.Compile(secretName, nameof(secretName), required: true);
-            return new DeferredBodyAction<GetSecretMetadataOutput>(() =>
+            return new DeferredBodyAction<GetSecretMetadataOutput, GetSecretMetadataActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["secretName"] = ExpressionConverter.ConvertO(__workflow_secretName);
@@ -72,16 +77,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getSecretMetadata", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetSecretMetadataOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetSecretMetadataOutput, GetSecretMetadataActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
-        public IBodyWorkflowAction<GetSecretVersionMetadataOutput> GetSecretVersionMetadata(Expression<Func<string>> secretName, Expression<Func<string>> version)
+        public IBodyWorkflowAction<GetSecretVersionMetadataOutput, GetSecretVersionMetadataActionConfiguration> GetSecretVersionMetadata(Expression<Func<string>> secretName, Expression<Func<string>> version)
         {
             var __workflow_secretName = WorkflowExpression.Compile(secretName, nameof(secretName), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
-            return new DeferredBodyAction<GetSecretVersionMetadataOutput>(() =>
+            return new DeferredBodyAction<GetSecretVersionMetadataOutput, GetSecretVersionMetadataActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["secretName"] = ExpressionConverter.ConvertO(__workflow_secretName);
@@ -91,15 +96,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getSecretVersionMetadata", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetSecretVersionMetadataOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetSecretVersionMetadataOutput, GetSecretVersionMetadataActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
-        public IBodyWorkflowAction<ListSecretVersionMetadataOutputItem[]> ListSecretVersionMetadata(Expression<Func<string>> secretName)
+        public IBodyWorkflowAction<ListSecretVersionMetadataOutputItem[], ListSecretVersionMetadataActionConfiguration> ListSecretVersionMetadata(Expression<Func<string>> secretName)
         {
             var __workflow_secretName = WorkflowExpression.Compile(secretName, nameof(secretName), required: true);
-            return new DeferredBodyAction<ListSecretVersionMetadataOutputItem[]>(() =>
+            return new DeferredBodyAction<ListSecretVersionMetadataOutputItem[], ListSecretVersionMetadataActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["secretName"] = ExpressionConverter.ConvertO(__workflow_secretName);
@@ -108,15 +113,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "listSecretVersionMetadata", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ListSecretVersionMetadataOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ListSecretVersionMetadataOutputItem[], ListSecretVersionMetadataActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
-        public IBodyWorkflowAction<GetKeyMetadataOutput> GetKeyMetadata(Expression<Func<string>> keyName)
+        public IBodyWorkflowAction<GetKeyMetadataOutput, GetKeyMetadataActionConfiguration> GetKeyMetadata(Expression<Func<string>> keyName)
         {
             var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
-            return new DeferredBodyAction<GetKeyMetadataOutput>(() =>
+            return new DeferredBodyAction<GetKeyMetadataOutput, GetKeyMetadataActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["keyName"] = ExpressionConverter.ConvertO(__workflow_keyName);
@@ -125,26 +130,29 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getKeyMetadata", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetKeyMetadataOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetKeyMetadataOutput, GetKeyMetadataActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
-        public IBodyWorkflowAction<ListKeyMetadataOutputItem[]> ListKeyMetadata()
+        public IBodyWorkflowAction<ListKeyMetadataOutputItem[], ListKeyMetadataActionConfiguration> ListKeyMetadata()
         {
-            var serviceProviderInput = new ServiceProviderOperationInput
+            return new DeferredBodyAction<ListKeyMetadataOutputItem[], ListKeyMetadataActionConfiguration>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "listKeyMetadata", connectionName: connectionId)
-            };
-            return new ServiceProviderAction<ListKeyMetadataOutputItem[]>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "listKeyMetadata", connectionName: connectionId)
+                };
+                return new ServiceProviderBodyAction<ListKeyMetadataOutputItem[], ListKeyMetadataActionConfiguration>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
-        public IBodyWorkflowAction<GetKeyVersionMetadataOutput> GetKeyVersionMetadata(Expression<Func<string>> keyName, Expression<Func<string>> version)
+        public IBodyWorkflowAction<GetKeyVersionMetadataOutput, GetKeyVersionMetadataActionConfiguration> GetKeyVersionMetadata(Expression<Func<string>> keyName, Expression<Func<string>> version)
         {
             var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
-            return new DeferredBodyAction<GetKeyVersionMetadataOutput>(() =>
+            return new DeferredBodyAction<GetKeyVersionMetadataOutput, GetKeyVersionMetadataActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["keyName"] = ExpressionConverter.ConvertO(__workflow_keyName);
@@ -154,15 +162,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getKeyVersionMetadata", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetKeyVersionMetadataOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetKeyVersionMetadataOutput, GetKeyVersionMetadataActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
-        public IBodyWorkflowAction<ListKeyVersionMetadataOutputItem[]> ListKeyVersionMetadata(Expression<Func<string>> keyName)
+        public IBodyWorkflowAction<ListKeyVersionMetadataOutputItem[], ListKeyVersionMetadataActionConfiguration> ListKeyVersionMetadata(Expression<Func<string>> keyName)
         {
             var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
-            return new DeferredBodyAction<ListKeyVersionMetadataOutputItem[]>(() =>
+            return new DeferredBodyAction<ListKeyVersionMetadataOutputItem[], ListKeyVersionMetadataActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["keyName"] = ExpressionConverter.ConvertO(__workflow_keyName);
@@ -171,17 +179,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "listKeyVersionMetadata", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ListKeyVersionMetadataOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ListKeyVersionMetadataOutputItem[], ListKeyVersionMetadataActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
-        public IBodyWorkflowAction<DecryptDataWithKeyOutput> DecryptDataWithKey(Expression<Func<string>> keyName, Expression<Func<DecryptDataWithKeyInputAlgorithmType>> algorithm, Expression<Func<string>> encryptedData)
+        public IBodyWorkflowAction<DecryptDataWithKeyOutput, DecryptDataWithKeyActionConfiguration> DecryptDataWithKey(Expression<Func<string>> keyName, Expression<Func<DecryptDataWithKeyInputAlgorithmType>> algorithm, Expression<Func<string>> encryptedData)
         {
             var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
             var __workflow_algorithm = WorkflowExpression.Compile(algorithm, nameof(algorithm), required: true);
             var __workflow_encryptedData = WorkflowExpression.Compile(encryptedData, nameof(encryptedData), required: true);
-            return new DeferredBodyAction<DecryptDataWithKeyOutput>(() =>
+            return new DeferredBodyAction<DecryptDataWithKeyOutput, DecryptDataWithKeyActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["keyName"] = ExpressionConverter.ConvertO(__workflow_keyName);
@@ -192,18 +200,18 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "decryptDataWithKey", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<DecryptDataWithKeyOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<DecryptDataWithKeyOutput, DecryptDataWithKeyActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
-        public IBodyWorkflowAction<DecryptDataWithKeyVersionOutput> DecryptDataWithKeyVersion(Expression<Func<string>> keyName, Expression<Func<string>> version, Expression<Func<DecryptDataWithKeyVersionInputAlgorithmType>> algorithm, Expression<Func<string>> encryptedData)
+        public IBodyWorkflowAction<DecryptDataWithKeyVersionOutput, DecryptDataWithKeyVersionActionConfiguration> DecryptDataWithKeyVersion(Expression<Func<string>> keyName, Expression<Func<string>> version, Expression<Func<DecryptDataWithKeyVersionInputAlgorithmType>> algorithm, Expression<Func<string>> encryptedData)
         {
             var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
             var __workflow_algorithm = WorkflowExpression.Compile(algorithm, nameof(algorithm), required: true);
             var __workflow_encryptedData = WorkflowExpression.Compile(encryptedData, nameof(encryptedData), required: true);
-            return new DeferredBodyAction<DecryptDataWithKeyVersionOutput>(() =>
+            return new DeferredBodyAction<DecryptDataWithKeyVersionOutput, DecryptDataWithKeyVersionActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["keyName"] = ExpressionConverter.ConvertO(__workflow_keyName);
@@ -215,17 +223,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "decryptDataWithKeyVersion", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<DecryptDataWithKeyVersionOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<DecryptDataWithKeyVersionOutput, DecryptDataWithKeyVersionActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
-        public IBodyWorkflowAction<EncryptDataWithKeyOutput> EncryptDataWithKey(Expression<Func<string>> keyName, Expression<Func<EncryptDataWithKeyInputAlgorithmType>> algorithm, Expression<Func<string>> rawData)
+        public IBodyWorkflowAction<EncryptDataWithKeyOutput, EncryptDataWithKeyActionConfiguration> EncryptDataWithKey(Expression<Func<string>> keyName, Expression<Func<EncryptDataWithKeyInputAlgorithmType>> algorithm, Expression<Func<string>> rawData)
         {
             var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
             var __workflow_algorithm = WorkflowExpression.Compile(algorithm, nameof(algorithm), required: true);
             var __workflow_rawData = WorkflowExpression.Compile(rawData, nameof(rawData), required: true);
-            return new DeferredBodyAction<EncryptDataWithKeyOutput>(() =>
+            return new DeferredBodyAction<EncryptDataWithKeyOutput, EncryptDataWithKeyActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["keyName"] = ExpressionConverter.ConvertO(__workflow_keyName);
@@ -236,18 +244,18 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "encryptDataWithKey", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<EncryptDataWithKeyOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<EncryptDataWithKeyOutput, EncryptDataWithKeyActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
-        public IBodyWorkflowAction<EncryptDataWithKeyVersionOutput> EncryptDataWithKeyVersion(Expression<Func<string>> keyName, Expression<Func<string>> version, Expression<Func<EncryptDataWithKeyVersionInputAlgorithmType>> algorithm, Expression<Func<string>> rawData)
+        public IBodyWorkflowAction<EncryptDataWithKeyVersionOutput, EncryptDataWithKeyVersionActionConfiguration> EncryptDataWithKeyVersion(Expression<Func<string>> keyName, Expression<Func<string>> version, Expression<Func<EncryptDataWithKeyVersionInputAlgorithmType>> algorithm, Expression<Func<string>> rawData)
         {
             var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
             var __workflow_algorithm = WorkflowExpression.Compile(algorithm, nameof(algorithm), required: true);
             var __workflow_rawData = WorkflowExpression.Compile(rawData, nameof(rawData), required: true);
-            return new DeferredBodyAction<EncryptDataWithKeyVersionOutput>(() =>
+            return new DeferredBodyAction<EncryptDataWithKeyVersionOutput, EncryptDataWithKeyVersionActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["keyName"] = ExpressionConverter.ConvertO(__workflow_keyName);
@@ -259,9 +267,121 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "encryptDataWithKeyVersion", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<EncryptDataWithKeyVersionOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<EncryptDataWithKeyVersionOutput, EncryptDataWithKeyVersionActionConfiguration>(serviceProviderInput);
             });
         }
+    }
+
+    public sealed class GetSecretActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class GetSecretVersionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class ListSecretMetadataActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class GetSecretMetadataActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class GetSecretVersionMetadataActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class ListSecretVersionMetadataActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class GetKeyMetadataActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class ListKeyMetadataActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class GetKeyVersionMetadataActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class ListKeyVersionMetadataActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class DecryptDataWithKeyActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class DecryptDataWithKeyVersionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class EncryptDataWithKeyActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class EncryptDataWithKeyVersionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public class GetSecretOutput
@@ -546,7 +666,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         public string RawData { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum DecryptDataWithKeyInputAlgorithmType
     {
         [EnumMember(Value = "RSA-OAEP")]
@@ -563,7 +683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         public string RawData { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum DecryptDataWithKeyVersionInputAlgorithmType
     {
         [EnumMember(Value = "RSA-OAEP")]
@@ -580,7 +700,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         public string EncryptedData { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum EncryptDataWithKeyInputAlgorithmType
     {
         [EnumMember(Value = "RSA-OAEP")]
@@ -597,7 +717,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         public string EncryptedData { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum EncryptDataWithKeyVersionInputAlgorithmType
     {
         [EnumMember(Value = "RSA-OAEP")]

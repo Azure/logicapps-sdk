@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intellihr
     public class IntellihrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intellihr")]
-        public IBodyWorkflowAction<SingleJob> EndJob(Expression<Func<string>> id, Expression<Func<string>> bodyendDate, Expression<Func<string>> bodyturnoverType, Expression<Func<string>> bodyturnoverReason = null)
+        public IBodyWorkflowAction<SingleJob, ApiConnectionActionConfiguration> EndJob(Expression<Func<string>> id, Expression<Func<string>> bodyendDate, Expression<Func<string>> bodyturnoverType, Expression<Func<string>> bodyturnoverReason = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: true);
             var __workflow_bodyturnoverType = WorkflowExpression.Compile(bodyturnoverType, nameof(bodyturnoverType), required: true);
             var __workflow_bodyturnoverReason = WorkflowExpression.Compile(bodyturnoverReason, nameof(bodyturnoverReason), required: false);
-            return new DeferredBodyAction<SingleJob>(() =>
+            return new DeferredBodyAction<SingleJob, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/job-end/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";

@@ -4,12 +4,27 @@
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
+    using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    public sealed class NestedWorkflowActionConfiguration :
+        IRetryPolicyConfiguration,
+        ITrackedPropertiesConfiguration,
+        ISecureInputsConfiguration,
+        ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
 
     /// <summary>
     /// The nested flow action allows calling a workflow within another workflow.
     /// </summary>
-    public class NestedWorkflowAction : WorkflowActionBase
+    public class NestedWorkflowAction : WorkflowActionBase<NestedWorkflowActionConfiguration>
     {
         /// <summary>
         /// Gets the reference name of the workflow to be invoked.
@@ -50,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <returns>A <see cref="FlowTemplateAction"/> representing the nested workflow call.</returns>
         /// <param name="flowName">The flow name.</param>
         /// <param name="flowKind">The flow kind.</param>
-        public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
+        internal override FlowTemplateAction BuildActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             return new FlowTemplateAction
             {

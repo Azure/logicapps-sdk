@@ -15,10 +15,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lawlift
 
     public class LawliftTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<LawliftExportTriggerResponse> LawliftExportTrigger(Expression<Func<string>> bodyflowName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LawliftExportTriggerResponse, ApiConnectionTriggerConfiguration> LawliftExportTrigger(Expression<Func<string>> bodyflowName = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyflowName = WorkflowExpression.Compile(bodyflowName, nameof(bodyflowName), required: false);
-            return new DeferredBodyTrigger<LawliftExportTriggerResponse>(() =>
+            return new DeferredBodyTrigger<LawliftExportTriggerResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/export";
                 var apiCallHttpMethod = "post";
@@ -42,10 +42,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lawlift
             });
         }
 
-        public IBodyWorkflowTrigger<LawliftNotificationTriggerResponse> LawliftNotificationTrigger(Expression<Func<string>> bodyflowName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LawliftNotificationTriggerResponse, ApiConnectionTriggerConfiguration> LawliftNotificationTrigger(Expression<Func<string>> bodyflowName = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyflowName = WorkflowExpression.Compile(bodyflowName, nameof(bodyflowName), required: false);
-            return new DeferredBodyTrigger<LawliftNotificationTriggerResponse>(() =>
+            return new DeferredBodyTrigger<LawliftNotificationTriggerResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/notifications";
                 var apiCallHttpMethod = "post";

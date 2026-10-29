@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
     public class PersonrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
-        public IBodyWorkflowAction<ApiApplicantCreateResponse> ApiApplicantCreate(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodynameFirst = null, Expression<Func<string>> bodynameLast = null, Expression<Func<string>> bodyflowName = null)
+        public IBodyWorkflowAction<ApiApplicantCreateResponse, ApiConnectionActionConfiguration> ApiApplicantCreate(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodynameFirst = null, Expression<Func<string>> bodynameLast = null, Expression<Func<string>> bodyflowName = null)
         {
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
             var __workflow_bodyphone = WorkflowExpression.Compile(bodyphone, nameof(bodyphone), required: false);
             var __workflow_bodynameFirst = WorkflowExpression.Compile(bodynameFirst, nameof(bodynameFirst), required: false);
             var __workflow_bodynameLast = WorkflowExpression.Compile(bodynameLast, nameof(bodynameLast), required: false);
             var __workflow_bodyflowName = WorkflowExpression.Compile(bodyflowName, nameof(bodyflowName), required: false);
-            return new DeferredBodyAction<ApiApplicantCreateResponse>(() =>
+            return new DeferredBodyAction<ApiApplicantCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api-applicant-create";
                 var apiCallHttpMethod = "post";
@@ -66,10 +66,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
-        public IBodyWorkflowAction<ApiVerificationlinkCreateResponse> ApiVerificationlinkCreate(Expression<Func<string>> bodyapplicant = null)
+        public IBodyWorkflowAction<ApiVerificationlinkCreateResponse, ApiConnectionActionConfiguration> ApiVerificationlinkCreate(Expression<Func<string>> bodyapplicant = null)
         {
             var __workflow_bodyapplicant = WorkflowExpression.Compile(bodyapplicant, nameof(bodyapplicant), required: false);
-            return new DeferredBodyAction<ApiVerificationlinkCreateResponse>(() =>
+            return new DeferredBodyAction<ApiVerificationlinkCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api-verificationlink-create";
                 var apiCallHttpMethod = "post";
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
-        public IWorkflowAction ApiDocumentUpload(Expression<Func<string>> bodyapplicantId = null, Expression<Func<string>> bodydocType = null, Expression<Func<string>> bodydocSubType = null, Expression<Func<string>> bodydocCountryISO = null, Expression<Func<string>> bodydocFilefilename = null, Expression<Func<string>> bodydocFilecontents = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ApiDocumentUpload(Expression<Func<string>> bodyapplicantId = null, Expression<Func<string>> bodydocType = null, Expression<Func<string>> bodydocSubType = null, Expression<Func<string>> bodydocCountryISO = null, Expression<Func<string>> bodydocFilefilename = null, Expression<Func<string>> bodydocFilecontents = null)
         {
             var __workflow_bodyapplicantId = WorkflowExpression.Compile(bodyapplicantId, nameof(bodyapplicantId), required: false);
             var __workflow_bodydocType = WorkflowExpression.Compile(bodydocType, nameof(bodydocType), required: false);
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
             var __workflow_bodydocCountryISO = WorkflowExpression.Compile(bodydocCountryISO, nameof(bodydocCountryISO), required: false);
             var __workflow_bodydocFilefilename = WorkflowExpression.Compile(bodydocFilefilename, nameof(bodydocFilefilename), required: false);
             var __workflow_bodydocFilecontents = WorkflowExpression.Compile(bodydocFilecontents, nameof(bodydocFilecontents), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api-document-upload";
                 var apiCallHttpMethod = "post";
@@ -161,10 +161,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
-        public IBodyWorkflowAction<ApiApplicantStatusResponse> ApiApplicantStatus(Expression<Func<string>> bodyapplicantId = null)
+        public IBodyWorkflowAction<ApiApplicantStatusResponse, ApiConnectionActionConfiguration> ApiApplicantStatus(Expression<Func<string>> bodyapplicantId = null)
         {
             var __workflow_bodyapplicantId = WorkflowExpression.Compile(bodyapplicantId, nameof(bodyapplicantId), required: false);
-            return new DeferredBodyAction<ApiApplicantStatusResponse>(() =>
+            return new DeferredBodyAction<ApiApplicantStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api-applicant-status";
                 var apiCallHttpMethod = "post";
@@ -187,10 +187,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
-        public IBodyWorkflowAction<ApiApplicantDetailsResponse> ApiApplicantDetails(Expression<Func<string>> bodyapplicantId = null)
+        public IBodyWorkflowAction<ApiApplicantDetailsResponse, ApiConnectionActionConfiguration> ApiApplicantDetails(Expression<Func<string>> bodyapplicantId = null)
         {
             var __workflow_bodyapplicantId = WorkflowExpression.Compile(bodyapplicantId, nameof(bodyapplicantId), required: false);
-            return new DeferredBodyAction<ApiApplicantDetailsResponse>(() =>
+            return new DeferredBodyAction<ApiApplicantDetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api-applicant-details";
                 var apiCallHttpMethod = "post";
@@ -213,10 +213,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
-        public IWorkflowAction ApiRequestApplicantCheck(Expression<Func<string>> bodyapplicantId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ApiRequestApplicantCheck(Expression<Func<string>> bodyapplicantId = null)
         {
             var __workflow_bodyapplicantId = WorkflowExpression.Compile(bodyapplicantId, nameof(bodyapplicantId), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api-request-applicant-check";
                 var apiCallHttpMethod = "post";

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
     public class PixelaipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<UserDeleteResponse> UserDelete()
+        public IBodyWorkflowAction<UserDeleteResponse, ApiConnectionActionConfiguration> UserDelete()
         {
             var apiCallPath = "/v1/users/";
             var apiCallHttpMethod = "delete";
@@ -21,14 +21,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<UserPostResponse> User(Expression<Func<string>> bodytoken = null, Expression<Func<string>> bodyusername = null, Expression<Func<bodyagreeTermsOfServiceInput>> bodyagreeTermsOfService = null, Expression<Func<bodynotMinorInput>> bodynotMinor = null, Expression<Func<string>> bodythanksCode = null)
+        public IBodyWorkflowAction<UserPostResponse, ApiConnectionActionConfiguration> User(Expression<Func<string>> bodytoken = null, Expression<Func<string>> bodyusername = null, Expression<Func<bodyagreeTermsOfServiceInput>> bodyagreeTermsOfService = null, Expression<Func<bodynotMinorInput>> bodynotMinor = null, Expression<Func<string>> bodythanksCode = null)
         {
             var __workflow_bodytoken = WorkflowExpression.Compile(bodytoken, nameof(bodytoken), required: false);
             var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: false);
             var __workflow_bodyagreeTermsOfService = WorkflowExpression.Compile(bodyagreeTermsOfService, nameof(bodyagreeTermsOfService), required: false);
             var __workflow_bodynotMinor = WorkflowExpression.Compile(bodynotMinor, nameof(bodynotMinor), required: false);
             var __workflow_bodythanksCode = WorkflowExpression.Compile(bodythanksCode, nameof(bodythanksCode), required: false);
-            return new DeferredBodyAction<UserPostResponse>(() =>
+            return new DeferredBodyAction<UserPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/";
                 var apiCallHttpMethod = "post";
@@ -95,11 +95,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<TokenPutResponse> TokenPut(Expression<Func<string>> bodynewToken, Expression<Func<string>> bodythanksCode = null)
+        public IBodyWorkflowAction<TokenPutResponse, ApiConnectionActionConfiguration> TokenPut(Expression<Func<string>> bodynewToken, Expression<Func<string>> bodythanksCode = null)
         {
             var __workflow_bodynewToken = WorkflowExpression.Compile(bodynewToken, nameof(bodynewToken), required: true);
             var __workflow_bodythanksCode = WorkflowExpression.Compile(bodythanksCode, nameof(bodythanksCode), required: false);
-            return new DeferredBodyAction<TokenPutResponse>(() =>
+            return new DeferredBodyAction<TokenPutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/";
                 var apiCallHttpMethod = "put";
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<ProfilePutResponse> ProfilePut(Expression<Func<string>> bodydisplayName = null, Expression<Func<string>> bodygravatarIconEmail = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodyaboutURL = null, Expression<Func<string[]>> bodycontributeURLs = null, Expression<Func<string>> bodypinnedGraphID = null)
+        public IBodyWorkflowAction<ProfilePutResponse, ApiConnectionActionConfiguration> ProfilePut(Expression<Func<string>> bodydisplayName = null, Expression<Func<string>> bodygravatarIconEmail = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodyaboutURL = null, Expression<Func<string[]>> bodycontributeURLs = null, Expression<Func<string>> bodypinnedGraphID = null)
         {
             var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
             var __workflow_bodygravatarIconEmail = WorkflowExpression.Compile(bodygravatarIconEmail, nameof(bodygravatarIconEmail), required: false);
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             var __workflow_bodyaboutURL = WorkflowExpression.Compile(bodyaboutURL, nameof(bodyaboutURL), required: false);
             var __workflow_bodycontributeURLs = WorkflowExpression.Compile(bodycontributeURLs, nameof(bodycontributeURLs), required: false);
             var __workflow_bodypinnedGraphID = WorkflowExpression.Compile(bodypinnedGraphID, nameof(bodypinnedGraphID), required: false);
-            return new DeferredBodyAction<ProfilePutResponse>(() =>
+            return new DeferredBodyAction<ProfilePutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/@";
                 var apiCallHttpMethod = "put";
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<GraphsGetResponse> GraphsGet()
+        public IBodyWorkflowAction<GraphsGetResponse, ApiConnectionActionConfiguration> GraphsGet()
         {
             var apiCallPath = "/v1/users/graphs";
             var apiCallHttpMethod = "get";
@@ -201,10 +201,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<GraphDeleteResponse> GraphDelete(Expression<Func<string>> graphID)
+        public IBodyWorkflowAction<GraphDeleteResponse, ApiConnectionActionConfiguration> GraphDelete(Expression<Func<string>> graphID)
         {
             var __workflow_graphID = WorkflowExpression.Compile(graphID, nameof(graphID), required: true);
-            return new DeferredBodyAction<GraphDeleteResponse>(() =>
+            return new DeferredBodyAction<GraphDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/graphs";
                 var apiCallHttpMethod = "delete";
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<GraphPostResponse> Graph(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname, Expression<Func<string>> bodyunit, Expression<Func<bodytypeInput>> bodytype, Expression<Func<bodycolorInput>> bodycolor, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodyselfSufficient = null, Expression<Func<bool>> bodyisSecret = null, Expression<Func<bool>> bodypublishOptionalData = null)
+        public IBodyWorkflowAction<GraphPostResponse, ApiConnectionActionConfiguration> Graph(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname, Expression<Func<string>> bodyunit, Expression<Func<bodytypeInput>> bodytype, Expression<Func<bodycolorInput>> bodycolor, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodyselfSufficient = null, Expression<Func<bool>> bodyisSecret = null, Expression<Func<bool>> bodypublishOptionalData = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             var __workflow_bodyselfSufficient = WorkflowExpression.Compile(bodyselfSufficient, nameof(bodyselfSufficient), required: false);
             var __workflow_bodyisSecret = WorkflowExpression.Compile(bodyisSecret, nameof(bodyisSecret), required: false);
             var __workflow_bodypublishOptionalData = WorkflowExpression.Compile(bodypublishOptionalData, nameof(bodypublishOptionalData), required: false);
-            return new DeferredBodyAction<GraphPostResponse>(() =>
+            return new DeferredBodyAction<GraphPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/graphs";
                 var apiCallHttpMethod = "post";
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<GraphPutResponse> GraphPut(Expression<Func<string>> graphID, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyunit = null, Expression<Func<bodycolorInput>> bodycolor = null, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodyselfSufficient = null, Expression<Func<bool>> bodyisSecret = null, Expression<Func<bool>> bodypublishOptionalData = null)
+        public IBodyWorkflowAction<GraphPutResponse, ApiConnectionActionConfiguration> GraphPut(Expression<Func<string>> graphID, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyunit = null, Expression<Func<bodycolorInput>> bodycolor = null, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodyselfSufficient = null, Expression<Func<bool>> bodyisSecret = null, Expression<Func<bool>> bodypublishOptionalData = null)
         {
             var __workflow_graphID = WorkflowExpression.Compile(graphID, nameof(graphID), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
             var __workflow_bodyselfSufficient = WorkflowExpression.Compile(bodyselfSufficient, nameof(bodyselfSufficient), required: false);
             var __workflow_bodyisSecret = WorkflowExpression.Compile(bodyisSecret, nameof(bodyisSecret), required: false);
             var __workflow_bodypublishOptionalData = WorkflowExpression.Compile(bodypublishOptionalData, nameof(bodypublishOptionalData), required: false);
-            return new DeferredBodyAction<GraphPutResponse>(() =>
+            return new DeferredBodyAction<GraphPutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/graphs";
                 var apiCallHttpMethod = "put";
@@ -367,10 +367,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<GraphGetResponse> GraphGet(Expression<Func<string>> graphID)
+        public IBodyWorkflowAction<GraphGetResponse, ApiConnectionActionConfiguration> GraphGet(Expression<Func<string>> graphID)
         {
             var __workflow_graphID = WorkflowExpression.Compile(graphID, nameof(graphID), required: true);
-            return new DeferredBodyAction<GraphGetResponse>(() =>
+            return new DeferredBodyAction<GraphGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/graphs/graph-def";
                 var apiCallHttpMethod = "get";
@@ -381,13 +381,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<GraphSVGGetResponse> GraphSVGGet(Expression<Func<string>> graphID, Expression<Func<string>> date = null, Expression<Func<modeInput>> mode = null, Expression<Func<appearanceInput>> appearance = null)
+        public IBodyWorkflowAction<GraphSVGGetResponse, ApiConnectionActionConfiguration> GraphSVGGet(Expression<Func<string>> graphID, Expression<Func<string>> date = null, Expression<Func<modeInput>> mode = null, Expression<Func<appearanceInput>> appearance = null)
         {
             var __workflow_graphID = WorkflowExpression.Compile(graphID, nameof(graphID), required: true);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
             var __workflow_mode = WorkflowExpression.Compile(mode, nameof(mode), required: false);
             var __workflow_appearance = WorkflowExpression.Compile(appearance, nameof(appearance), required: false);
-            return new DeferredBodyAction<GraphSVGGetResponse>(() =>
+            return new DeferredBodyAction<GraphSVGGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/graphs/graphSVG";
                 var apiCallHttpMethod = "get";
@@ -404,13 +404,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelsGetResponse> PixelsGet(Expression<Func<string>> graphID, Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<bool>> withBody = null)
+        public IBodyWorkflowAction<PixelsGetResponse, ApiConnectionActionConfiguration> PixelsGet(Expression<Func<string>> graphID, Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<bool>> withBody = null)
         {
             var __workflow_graphID = WorkflowExpression.Compile(graphID, nameof(graphID), required: true);
             var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
             var __workflow_withBody = WorkflowExpression.Compile(withBody, nameof(withBody), required: false);
-            return new DeferredBodyAction<PixelsGetResponse>(() =>
+            return new DeferredBodyAction<PixelsGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/graphs/pixels";
                 var apiCallHttpMethod = "get";
@@ -427,10 +427,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<StatsGetResponse> StatsGet(Expression<Func<string>> graphID)
+        public IBodyWorkflowAction<StatsGetResponse, ApiConnectionActionConfiguration> StatsGet(Expression<Func<string>> graphID)
         {
             var __workflow_graphID = WorkflowExpression.Compile(graphID, nameof(graphID), required: true);
-            return new DeferredBodyAction<StatsGetResponse>(() =>
+            return new DeferredBodyAction<StatsGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/graphs/stats";
                 var apiCallHttpMethod = "get";
@@ -441,12 +441,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelPostResponse> Pixel(Expression<Func<string>> graphID, Expression<Func<string>> bodydate, Expression<Func<string>> bodyquantity)
+        public IBodyWorkflowAction<PixelPostResponse, ApiConnectionActionConfiguration> Pixel(Expression<Func<string>> graphID, Expression<Func<string>> bodydate, Expression<Func<string>> bodyquantity)
         {
             var __workflow_graphID = WorkflowExpression.Compile(graphID, nameof(graphID), required: true);
             var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: true);
             var __workflow_bodyquantity = WorkflowExpression.Compile(bodyquantity, nameof(bodyquantity), required: true);
-            return new DeferredBodyAction<PixelPostResponse>(() =>
+            return new DeferredBodyAction<PixelPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/graphs/";
                 var apiCallHttpMethod = "post";
@@ -476,11 +476,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelGetResponse> PixelGet(Expression<Func<string>> graphID, Expression<Func<string>> yyyyMMdd)
+        public IBodyWorkflowAction<PixelGetResponse, ApiConnectionActionConfiguration> PixelGet(Expression<Func<string>> graphID, Expression<Func<string>> yyyyMMdd)
         {
             var __workflow_graphID = WorkflowExpression.Compile(graphID, nameof(graphID), required: true);
             var __workflow_yyyyMMdd = WorkflowExpression.Compile(yyyyMMdd, nameof(yyyyMMdd), required: true);
-            return new DeferredBodyAction<PixelGetResponse>(() =>
+            return new DeferredBodyAction<PixelGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/graphs/pixel";
                 var apiCallHttpMethod = "get";
@@ -492,11 +492,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelDeleteResponse> PixelDelete(Expression<Func<string>> graphID, Expression<Func<string>> yyyyMMdd)
+        public IBodyWorkflowAction<PixelDeleteResponse, ApiConnectionActionConfiguration> PixelDelete(Expression<Func<string>> graphID, Expression<Func<string>> yyyyMMdd)
         {
             var __workflow_graphID = WorkflowExpression.Compile(graphID, nameof(graphID), required: true);
             var __workflow_yyyyMMdd = WorkflowExpression.Compile(yyyyMMdd, nameof(yyyyMMdd), required: true);
-            return new DeferredBodyAction<PixelDeleteResponse>(() =>
+            return new DeferredBodyAction<PixelDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/graphs/pixel";
                 var apiCallHttpMethod = "delete";
@@ -508,11 +508,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelPutResponse> PixelPut(Expression<Func<string>> graphID, Expression<Func<string>> yyyyMMdd)
+        public IBodyWorkflowAction<PixelPutResponse, ApiConnectionActionConfiguration> PixelPut(Expression<Func<string>> graphID, Expression<Func<string>> yyyyMMdd)
         {
             var __workflow_graphID = WorkflowExpression.Compile(graphID, nameof(graphID), required: true);
             var __workflow_yyyyMMdd = WorkflowExpression.Compile(yyyyMMdd, nameof(yyyyMMdd), required: true);
-            return new DeferredBodyAction<PixelPutResponse>(() =>
+            return new DeferredBodyAction<PixelPutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/graphs/pixel";
                 var apiCallHttpMethod = "put";
@@ -524,11 +524,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelRetinaGetResponse> PixelRetinaGet(Expression<Func<string>> graphID, Expression<Func<string>> yyyyMMdd)
+        public IBodyWorkflowAction<PixelRetinaGetResponse, ApiConnectionActionConfiguration> PixelRetinaGet(Expression<Func<string>> graphID, Expression<Func<string>> yyyyMMdd)
         {
             var __workflow_graphID = WorkflowExpression.Compile(graphID, nameof(graphID), required: true);
             var __workflow_yyyyMMdd = WorkflowExpression.Compile(yyyyMMdd, nameof(yyyyMMdd), required: true);
-            return new DeferredBodyAction<PixelRetinaGetResponse>(() =>
+            return new DeferredBodyAction<PixelRetinaGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/graphs/pixel/retina";
                 var apiCallHttpMethod = "get";
@@ -540,10 +540,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelIncrementPutResponse> PixelIncrementPut(Expression<Func<string>> graphID = null)
+        public IBodyWorkflowAction<PixelIncrementPutResponse, ApiConnectionActionConfiguration> PixelIncrementPut(Expression<Func<string>> graphID = null)
         {
             var __workflow_graphID = WorkflowExpression.Compile(graphID, nameof(graphID), required: false);
-            return new DeferredBodyAction<PixelIncrementPutResponse>(() =>
+            return new DeferredBodyAction<PixelIncrementPutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/graphs/increment";
                 var apiCallHttpMethod = "put";
@@ -556,10 +556,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelDecrementPutResponse> PixelDecrementPut(Expression<Func<string>> graphID = null)
+        public IBodyWorkflowAction<PixelDecrementPutResponse, ApiConnectionActionConfiguration> PixelDecrementPut(Expression<Func<string>> graphID = null)
         {
             var __workflow_graphID = WorkflowExpression.Compile(graphID, nameof(graphID), required: false);
-            return new DeferredBodyAction<PixelDecrementPutResponse>(() =>
+            return new DeferredBodyAction<PixelDecrementPutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/graphs/decrement";
                 var apiCallHttpMethod = "put";
@@ -572,11 +572,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelAddPutResponse> PixelAddPut(Expression<Func<string>> graphID, Expression<Func<int>> bodyquantity = null)
+        public IBodyWorkflowAction<PixelAddPutResponse, ApiConnectionActionConfiguration> PixelAddPut(Expression<Func<string>> graphID, Expression<Func<int>> bodyquantity = null)
         {
             var __workflow_graphID = WorkflowExpression.Compile(graphID, nameof(graphID), required: true);
             var __workflow_bodyquantity = WorkflowExpression.Compile(bodyquantity, nameof(bodyquantity), required: false);
-            return new DeferredBodyAction<PixelAddPutResponse>(() =>
+            return new DeferredBodyAction<PixelAddPutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/graphs/add";
                 var apiCallHttpMethod = "put";
@@ -600,11 +600,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelSubtractPutResponse> PixelSubtractPut(Expression<Func<string>> graphID, Expression<Func<int>> bodyquantity = null)
+        public IBodyWorkflowAction<PixelSubtractPutResponse, ApiConnectionActionConfiguration> PixelSubtractPut(Expression<Func<string>> graphID, Expression<Func<int>> bodyquantity = null)
         {
             var __workflow_graphID = WorkflowExpression.Compile(graphID, nameof(graphID), required: true);
             var __workflow_bodyquantity = WorkflowExpression.Compile(bodyquantity, nameof(bodyquantity), required: false);
-            return new DeferredBodyAction<PixelSubtractPutResponse>(() =>
+            return new DeferredBodyAction<PixelSubtractPutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/graphs/subtract";
                 var apiCallHttpMethod = "put";

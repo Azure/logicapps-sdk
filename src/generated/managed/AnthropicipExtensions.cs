@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
     public class AnthropicipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "anthropicip")]
-        public IBodyWorkflowAction<MessagePostResponse> Message(Expression<Func<bodymodelInput>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages, Expression<Func<int>> bodymaxTokens, Expression<Func<bool>> bodythinkingtype = null, Expression<Func<int>> bodythinkingbudgetTokens = null, Expression<Func<string[]>> bodystopSequences = null, Expression<Func<string>> bodysystem = null, Expression<Func<double>> bodytemperature = null, Expression<Func<bodytoolsInputItem[]>> bodytools = null, Expression<Func<int>> bodytopK = null, Expression<Func<double>> bodytopP = null)
+        public IBodyWorkflowAction<MessagePostResponse, ApiConnectionActionConfiguration> Message(Expression<Func<bodymodelInput>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages, Expression<Func<int>> bodymaxTokens, Expression<Func<bool>> bodythinkingtype = null, Expression<Func<int>> bodythinkingbudgetTokens = null, Expression<Func<string[]>> bodystopSequences = null, Expression<Func<string>> bodysystem = null, Expression<Func<double>> bodytemperature = null, Expression<Func<bodytoolsInputItem[]>> bodytools = null, Expression<Func<int>> bodytopK = null, Expression<Func<double>> bodytopP = null)
         {
             var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
             var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: true);
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
             var __workflow_bodytools = WorkflowExpression.Compile(bodytools, nameof(bodytools), required: false);
             var __workflow_bodytopK = WorkflowExpression.Compile(bodytopK, nameof(bodytopK), required: false);
             var __workflow_bodytopP = WorkflowExpression.Compile(bodytopP, nameof(bodytopP), required: false);
-            return new DeferredBodyAction<MessagePostResponse>(() =>
+            return new DeferredBodyAction<MessagePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/messages";
                 var apiCallHttpMethod = "post";

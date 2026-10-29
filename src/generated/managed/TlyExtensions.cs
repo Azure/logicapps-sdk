@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
     public class TlyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<PixelsGetResponseItem[]> PixelsGet()
+        public IBodyWorkflowAction<PixelsGetResponseItem[], ApiConnectionActionConfiguration> PixelsGet()
         {
             var apiCallPath = "/api/v1/link/pixel";
             var apiCallHttpMethod = "get";
@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<PixelPostResponse> Pixel(Expression<Func<string>> bodyname, Expression<Func<string>> bodypixelId, Expression<Func<string>> bodypixelType)
+        public IBodyWorkflowAction<PixelPostResponse, ApiConnectionActionConfiguration> Pixel(Expression<Func<string>> bodyname, Expression<Func<string>> bodypixelId, Expression<Func<string>> bodypixelType)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodypixelId = WorkflowExpression.Compile(bodypixelId, nameof(bodypixelId), required: true);
             var __workflow_bodypixelType = WorkflowExpression.Compile(bodypixelType, nameof(bodypixelType), required: true);
-            return new DeferredBodyAction<PixelPostResponse>(() =>
+            return new DeferredBodyAction<PixelPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/link/pixel";
                 var apiCallHttpMethod = "post";
@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<PixelGetResponse> PixelGet(Expression<Func<string>> pixelId)
+        public IBodyWorkflowAction<PixelGetResponse, ApiConnectionActionConfiguration> PixelGet(Expression<Func<string>> pixelId)
         {
             var __workflow_pixelId = WorkflowExpression.Compile(pixelId, nameof(pixelId), required: true);
-            return new DeferredBodyAction<PixelGetResponse>(() =>
+            return new DeferredBodyAction<PixelGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/link/pixel/{0}", __workflow_pixelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -62,10 +62,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<string> PixelDelete(Expression<Func<string>> pixelId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PixelDelete(Expression<Func<string>> pixelId)
         {
             var __workflow_pixelId = WorkflowExpression.Compile(pixelId, nameof(pixelId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/link/pixel/{0}", __workflow_pixelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -75,14 +75,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<PixelPutResponse> PixelPut(Expression<Func<string>> pixelId, Expression<Func<int>> bodyid = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodypixelId = null, Expression<Func<string>> bodypixelType = null)
+        public IBodyWorkflowAction<PixelPutResponse, ApiConnectionActionConfiguration> PixelPut(Expression<Func<string>> pixelId, Expression<Func<int>> bodyid = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodypixelId = null, Expression<Func<string>> bodypixelType = null)
         {
             var __workflow_pixelId = WorkflowExpression.Compile(pixelId, nameof(pixelId), required: true);
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             var __workflow_bodypixelId = WorkflowExpression.Compile(bodypixelId, nameof(bodypixelId), required: false);
             var __workflow_bodypixelType = WorkflowExpression.Compile(bodypixelType, nameof(bodypixelType), required: false);
-            return new DeferredBodyAction<PixelPutResponse>(() =>
+            return new DeferredBodyAction<PixelPutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/link/pixel/{0}", __workflow_pixelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<LinkPostResponse> Link(Expression<Func<string>> bodylongUrl, Expression<Func<string>> bodydomain = null, Expression<Func<string>> bodyexpireAtDatetime = null, Expression<Func<string>> bodydescription = null, Expression<Func<bool>> bodypublicStats = null, Expression<Func<bodymetasmartUrlsInputItem[]>> bodymetasmartUrls = null)
+        public IBodyWorkflowAction<LinkPostResponse, ApiConnectionActionConfiguration> Link(Expression<Func<string>> bodylongUrl, Expression<Func<string>> bodydomain = null, Expression<Func<string>> bodyexpireAtDatetime = null, Expression<Func<string>> bodydescription = null, Expression<Func<bool>> bodypublicStats = null, Expression<Func<bodymetasmartUrlsInputItem[]>> bodymetasmartUrls = null)
         {
             var __workflow_bodylongUrl = WorkflowExpression.Compile(bodylongUrl, nameof(bodylongUrl), required: true);
             var __workflow_bodydomain = WorkflowExpression.Compile(bodydomain, nameof(bodydomain), required: false);
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
             var __workflow_bodypublicStats = WorkflowExpression.Compile(bodypublicStats, nameof(bodypublicStats), required: false);
             var __workflow_bodymetasmartUrls = WorkflowExpression.Compile(bodymetasmartUrls, nameof(bodymetasmartUrls), required: false);
-            return new DeferredBodyAction<LinkPostResponse>(() =>
+            return new DeferredBodyAction<LinkPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/link/shorten";
                 var apiCallHttpMethod = "post";
@@ -188,10 +188,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<LinkGetResponse> LinkGet(Expression<Func<string>> shortUrl = null)
+        public IBodyWorkflowAction<LinkGetResponse, ApiConnectionActionConfiguration> LinkGet(Expression<Func<string>> shortUrl = null)
         {
             var __workflow_shortUrl = WorkflowExpression.Compile(shortUrl, nameof(shortUrl), required: false);
-            return new DeferredBodyAction<LinkGetResponse>(() =>
+            return new DeferredBodyAction<LinkGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/link";
                 var apiCallHttpMethod = "get";
@@ -203,10 +203,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<string> LinkDelete(Expression<Func<string>> bodyshortUrl = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> LinkDelete(Expression<Func<string>> bodyshortUrl = null)
         {
             var __workflow_bodyshortUrl = WorkflowExpression.Compile(bodyshortUrl, nameof(bodyshortUrl), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/link";
                 var apiCallHttpMethod = "delete";
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<LinkPutResponse> LinkPut(Expression<Func<string>> bodyshortUrl = null, Expression<Func<string>> bodylongUrl = null, Expression<Func<string>> bodydomain = null, Expression<Func<string>> bodyshortId = null, Expression<Func<string>> bodyexpireAtViews = null, Expression<Func<string>> bodyexpireAtDatetime = null, Expression<Func<bool>> bodypublicStats = null, Expression<Func<string>> bodyqrCodeUrl = null, Expression<Func<string>> bodyqrCodeBase64 = null, Expression<Func<int[]>> bodytags = null, Expression<Func<int[]>> bodypixels = null)
+        public IBodyWorkflowAction<LinkPutResponse, ApiConnectionActionConfiguration> LinkPut(Expression<Func<string>> bodyshortUrl = null, Expression<Func<string>> bodylongUrl = null, Expression<Func<string>> bodydomain = null, Expression<Func<string>> bodyshortId = null, Expression<Func<string>> bodyexpireAtViews = null, Expression<Func<string>> bodyexpireAtDatetime = null, Expression<Func<bool>> bodypublicStats = null, Expression<Func<string>> bodyqrCodeUrl = null, Expression<Func<string>> bodyqrCodeBase64 = null, Expression<Func<int[]>> bodytags = null, Expression<Func<int[]>> bodypixels = null)
         {
             var __workflow_bodyshortUrl = WorkflowExpression.Compile(bodyshortUrl, nameof(bodyshortUrl), required: false);
             var __workflow_bodylongUrl = WorkflowExpression.Compile(bodylongUrl, nameof(bodylongUrl), required: false);
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             var __workflow_bodyqrCodeBase64 = WorkflowExpression.Compile(bodyqrCodeBase64, nameof(bodyqrCodeBase64), required: false);
             var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
             var __workflow_bodypixels = WorkflowExpression.Compile(bodypixels, nameof(bodypixels), required: false);
-            return new DeferredBodyAction<LinkPutResponse>(() =>
+            return new DeferredBodyAction<LinkPutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/link";
                 var apiCallHttpMethod = "put";
@@ -325,11 +325,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<LinkExpandPostResponse> LinkExpand(Expression<Func<string>> bodyshortUrl = null, Expression<Func<string>> bodypassword = null)
+        public IBodyWorkflowAction<LinkExpandPostResponse, ApiConnectionActionConfiguration> LinkExpand(Expression<Func<string>> bodyshortUrl = null, Expression<Func<string>> bodypassword = null)
         {
             var __workflow_bodyshortUrl = WorkflowExpression.Compile(bodyshortUrl, nameof(bodyshortUrl), required: false);
             var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
-            return new DeferredBodyAction<LinkExpandPostResponse>(() =>
+            return new DeferredBodyAction<LinkExpandPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/link/expand";
                 var apiCallHttpMethod = "post";
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<LinksGetResponse> LinksGet(Expression<Func<string>> search = null, Expression<Func<string>> tagIds = null, Expression<Func<string>> pixelIds = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> domains = null)
+        public IBodyWorkflowAction<LinksGetResponse, ApiConnectionActionConfiguration> LinksGet(Expression<Func<string>> search = null, Expression<Func<string>> tagIds = null, Expression<Func<string>> pixelIds = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> domains = null)
         {
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
             var __workflow_tagIds = WorkflowExpression.Compile(tagIds, nameof(tagIds), required: false);
@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
             var __workflow_domains = WorkflowExpression.Compile(domains, nameof(domains), required: false);
-            return new DeferredBodyAction<LinksGetResponse>(() =>
+            return new DeferredBodyAction<LinksGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/link/list";
                 var apiCallHttpMethod = "get";
@@ -388,13 +388,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<string> LinkBulk(Expression<Func<string>> bodydomain = null, Expression<Func<bodylinksInputItem[]>> bodylinks = null, Expression<Func<int[]>> bodytags = null, Expression<Func<int[]>> bodypixels = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> LinkBulk(Expression<Func<string>> bodydomain = null, Expression<Func<bodylinksInputItem[]>> bodylinks = null, Expression<Func<int[]>> bodytags = null, Expression<Func<int[]>> bodypixels = null)
         {
             var __workflow_bodydomain = WorkflowExpression.Compile(bodydomain, nameof(bodydomain), required: false);
             var __workflow_bodylinks = WorkflowExpression.Compile(bodylinks, nameof(bodylinks), required: false);
             var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
             var __workflow_bodypixels = WorkflowExpression.Compile(bodypixels, nameof(bodypixels), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/link/bulk";
                 var apiCallHttpMethod = "post";
@@ -435,10 +435,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<StatGetResponse> StatGet(Expression<Func<string>> shortLink)
+        public IBodyWorkflowAction<StatGetResponse, ApiConnectionActionConfiguration> StatGet(Expression<Func<string>> shortLink)
         {
             var __workflow_shortLink = WorkflowExpression.Compile(shortLink, nameof(shortLink), required: true);
-            return new DeferredBodyAction<StatGetResponse>(() =>
+            return new DeferredBodyAction<StatGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/link/stats";
                 var apiCallHttpMethod = "get";
@@ -449,7 +449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<TagsGetResponseItem[]> TagsGet()
+        public IBodyWorkflowAction<TagsGetResponseItem[], ApiConnectionActionConfiguration> TagsGet()
         {
             var apiCallPath = "/api/v1/link/tag";
             var apiCallHttpMethod = "get";
@@ -458,10 +458,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<TagPostResponse> Tag(Expression<Func<string>> bodytag)
+        public IBodyWorkflowAction<TagPostResponse, ApiConnectionActionConfiguration> Tag(Expression<Func<string>> bodytag)
         {
             var __workflow_bodytag = WorkflowExpression.Compile(bodytag, nameof(bodytag), required: true);
-            return new DeferredBodyAction<TagPostResponse>(() =>
+            return new DeferredBodyAction<TagPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/link/tag";
                 var apiCallHttpMethod = "post";
@@ -480,10 +480,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<TagGetResponse> TagGet(Expression<Func<string>> tagId)
+        public IBodyWorkflowAction<TagGetResponse, ApiConnectionActionConfiguration> TagGet(Expression<Func<string>> tagId)
         {
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
-            return new DeferredBodyAction<TagGetResponse>(() =>
+            return new DeferredBodyAction<TagGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/link/tag/{0}", __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -493,10 +493,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<string> TagDelete(Expression<Func<string>> tagId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> TagDelete(Expression<Func<string>> tagId)
         {
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/link/tag/{0}", __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -506,11 +506,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<TagPutResponse> TagPut(Expression<Func<string>> tagId, Expression<Func<string>> bodytag)
+        public IBodyWorkflowAction<TagPutResponse, ApiConnectionActionConfiguration> TagPut(Expression<Func<string>> tagId, Expression<Func<string>> bodytag)
         {
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             var __workflow_bodytag = WorkflowExpression.Compile(bodytag, nameof(bodytag), required: true);
-            return new DeferredBodyAction<TagPutResponse>(() =>
+            return new DeferredBodyAction<TagPutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/link/tag/{0}", __workflow_tagId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";

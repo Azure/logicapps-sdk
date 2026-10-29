@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms
     public class MicrosoftformsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftforms")]
-        public IBodyWorkflowAction<JToken> GetFormResponseById(Expression<Func<string>> formId, Expression<Func<int>> responseId)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetFormResponseById(Expression<Func<string>> formId, Expression<Func<int>> responseId)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
             var __workflow_responseId = WorkflowExpression.Compile(responseId, nameof(responseId), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/formapi/api/forms('{0}')/responses", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftforms")]
-        public IBodyWorkflowAction<GetFormDetailsByIdResult> GetFormDetailsById(Expression<Func<string>> formId)
+        public IBodyWorkflowAction<GetFormDetailsByIdResult, ApiConnectionActionConfiguration> GetFormDetailsById(Expression<Func<string>> formId)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
-            return new DeferredBodyAction<GetFormDetailsByIdResult>(() =>
+            return new DeferredBodyAction<GetFormDetailsByIdResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/formapi/api/forms('{0}')", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -43,10 +43,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms
 
     public class MicrosoftformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateFormWebhook(Expression<Func<string>> formId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateFormWebhook(Expression<Func<string>> formId, FlowRecurrence recurrence = null)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/formapi/api/forms/{0}/webhooks", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";

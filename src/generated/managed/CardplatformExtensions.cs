@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardplatform
     public class CardplatformActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardplatform")]
-        public IBodyWorkflowAction<string> SendMessage(Expression<Func<string[]>> cardbodyrecipients, Expression<Func<string>> cardbodyheading, Expression<Func<string>> cardbodyadaptiveCard)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SendMessage(Expression<Func<string[]>> cardbodyrecipients, Expression<Func<string>> cardbodyheading, Expression<Func<string>> cardbodyadaptiveCard)
         {
             var __workflow_cardbodyrecipients = WorkflowExpression.Compile(cardbodyrecipients, nameof(cardbodyrecipients), required: true);
             var __workflow_cardbodyheading = WorkflowExpression.Compile(cardbodyheading, nameof(cardbodyheading), required: true);
             var __workflow_cardbodyadaptiveCard = WorkflowExpression.Compile(cardbodyadaptiveCard, nameof(cardbodyadaptiveCard), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sendmessage";
                 var apiCallHttpMethod = "post";
@@ -40,10 +40,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardplatform
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardplatform")]
-        public IWorkflowAction PrivateTemplatesDelete(Expression<Func<string>> name)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PrivateTemplatesDelete(Expression<Func<string>> name)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PrivateTemplates";
                 var apiCallHttpMethod = "delete";
@@ -54,10 +54,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardplatform
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardplatform")]
-        public IWorkflowAction PrivateTemplatesUpdate(Expression<Func<string>> name)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PrivateTemplatesUpdate(Expression<Func<string>> name)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PrivateTemplates";
                 var apiCallHttpMethod = "put";

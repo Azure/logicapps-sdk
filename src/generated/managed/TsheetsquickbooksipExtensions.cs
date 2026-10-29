@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
     public class TsheetsquickbooksipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
-        public IBodyWorkflowAction<GetJobcodesResponse> GetJobcodes(Expression<Func<string>> ids = null, Expression<Func<string>> parentIds = null, Expression<Func<string>> name = null, Expression<Func<typeInput>> type = null, Expression<Func<bool>> customfields = null, Expression<Func<string>> modifiedBefore = null, Expression<Func<string>> modifiedSince = null, Expression<Func<supplementalDataInput>> supplementalData = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null, Expression<Func<activeInput>> active = null)
+        public IBodyWorkflowAction<GetJobcodesResponse, ApiConnectionActionConfiguration> GetJobcodes(Expression<Func<string>> ids = null, Expression<Func<string>> parentIds = null, Expression<Func<string>> name = null, Expression<Func<typeInput>> type = null, Expression<Func<bool>> customfields = null, Expression<Func<string>> modifiedBefore = null, Expression<Func<string>> modifiedSince = null, Expression<Func<supplementalDataInput>> supplementalData = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null, Expression<Func<activeInput>> active = null)
         {
             var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: false);
             var __workflow_parentIds = WorkflowExpression.Compile(parentIds, nameof(parentIds), required: false);
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
-            return new DeferredBodyAction<GetJobcodesResponse>(() =>
+            return new DeferredBodyAction<GetJobcodesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/jobcodes";
                 var apiCallHttpMethod = "get";
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
-        public IBodyWorkflowAction<GetProjectsResponse> GetProjects(Expression<Func<string>> ids = null, Expression<Func<string>> jobcodeIds = null, Expression<Func<int>> parentJobcodeId = null, Expression<Func<string>> name = null, Expression<Func<activeInput>> active = null, Expression<Func<bool>> byJobcodeAssignment = null)
+        public IBodyWorkflowAction<GetProjectsResponse, ApiConnectionActionConfiguration> GetProjects(Expression<Func<string>> ids = null, Expression<Func<string>> jobcodeIds = null, Expression<Func<int>> parentJobcodeId = null, Expression<Func<string>> name = null, Expression<Func<activeInput>> active = null, Expression<Func<bool>> byJobcodeAssignment = null)
         {
             var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: false);
             var __workflow_jobcodeIds = WorkflowExpression.Compile(jobcodeIds, nameof(jobcodeIds), required: false);
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
             var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
             var __workflow_byJobcodeAssignment = WorkflowExpression.Compile(byJobcodeAssignment, nameof(byJobcodeAssignment), required: false);
-            return new DeferredBodyAction<GetProjectsResponse>(() =>
+            return new DeferredBodyAction<GetProjectsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/projects";
                 var apiCallHttpMethod = "get";
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
-        public IBodyWorkflowAction<GetUsersResponse> GetUsers(Expression<Func<string>> ids = null, Expression<Func<string>> notIds = null, Expression<Func<string>> employeeNumbers = null, Expression<Func<string>> usernames = null, Expression<Func<string>> groupIds = null, Expression<Func<string>> notGroupIds = null, Expression<Func<string>> payrollIds = null, Expression<Func<activeInput>> active = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> modifiedBefore = null, Expression<Func<string>> modifiedSince = null, Expression<Func<supplementalDataInput>> supplementalData = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<GetUsersResponse, ApiConnectionActionConfiguration> GetUsers(Expression<Func<string>> ids = null, Expression<Func<string>> notIds = null, Expression<Func<string>> employeeNumbers = null, Expression<Func<string>> usernames = null, Expression<Func<string>> groupIds = null, Expression<Func<string>> notGroupIds = null, Expression<Func<string>> payrollIds = null, Expression<Func<activeInput>> active = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> modifiedBefore = null, Expression<Func<string>> modifiedSince = null, Expression<Func<supplementalDataInput>> supplementalData = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null)
         {
             var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: false);
             var __workflow_notIds = WorkflowExpression.Compile(notIds, nameof(notIds), required: false);
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
             var __workflow_supplementalData = WorkflowExpression.Compile(supplementalData, nameof(supplementalData), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
-            return new DeferredBodyAction<GetUsersResponse>(() =>
+            return new DeferredBodyAction<GetUsersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/users";
                 var apiCallHttpMethod = "get";
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
-        public IBodyWorkflowAction<GetTimesheetsResponse> GetTimesheets(Expression<Func<string>> ids = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> jobcodeIds = null, Expression<Func<string>> payrollIds = null, Expression<Func<string>> userIds = null, Expression<Func<string>> groupIds = null, Expression<Func<onTheClockInput>> onTheClock = null, Expression<Func<jobcodeTypeInput>> jobcodeType = null, Expression<Func<string>> modifiedBefore = null, Expression<Func<string>> modifiedSince = null, Expression<Func<supplementalDataInput>> supplementalData = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<GetTimesheetsResponse, ApiConnectionActionConfiguration> GetTimesheets(Expression<Func<string>> ids = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> jobcodeIds = null, Expression<Func<string>> payrollIds = null, Expression<Func<string>> userIds = null, Expression<Func<string>> groupIds = null, Expression<Func<onTheClockInput>> onTheClock = null, Expression<Func<jobcodeTypeInput>> jobcodeType = null, Expression<Func<string>> modifiedBefore = null, Expression<Func<string>> modifiedSince = null, Expression<Func<supplementalDataInput>> supplementalData = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null)
         {
             var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: false);
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
             var __workflow_supplementalData = WorkflowExpression.Compile(supplementalData, nameof(supplementalData), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
-            return new DeferredBodyAction<GetTimesheetsResponse>(() =>
+            return new DeferredBodyAction<GetTimesheetsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/timesheets";
                 var apiCallHttpMethod = "get";
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
-        public IBodyWorkflowAction<GetNotificationsResponse> GetNotifications(Expression<Func<string>> ids = null, Expression<Func<string>> deliveryBefore = null, Expression<Func<string>> deliveryAfter = null, Expression<Func<int>> userId = null, Expression<Func<string>> msgTrackingId = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<GetNotificationsResponse, ApiConnectionActionConfiguration> GetNotifications(Expression<Func<string>> ids = null, Expression<Func<string>> deliveryBefore = null, Expression<Func<string>> deliveryAfter = null, Expression<Func<int>> userId = null, Expression<Func<string>> msgTrackingId = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null)
         {
             var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: false);
             var __workflow_deliveryBefore = WorkflowExpression.Compile(deliveryBefore, nameof(deliveryBefore), required: false);
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
             var __workflow_msgTrackingId = WorkflowExpression.Compile(msgTrackingId, nameof(msgTrackingId), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
-            return new DeferredBodyAction<GetNotificationsResponse>(() =>
+            return new DeferredBodyAction<GetNotificationsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/notifications";
                 var apiCallHttpMethod = "get";

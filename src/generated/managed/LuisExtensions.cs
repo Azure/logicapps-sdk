@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Luis
     public class LuisActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "luis")]
-        public IBodyWorkflowAction<PredictResponse> GetPredictions(Expression<Func<string>> appId, Expression<Func<string>> q, Expression<Func<string>> desiredIntent = null, Expression<Func<string>> versionId = null)
+        public IBodyWorkflowAction<PredictResponse, ApiConnectionActionConfiguration> GetPredictions(Expression<Func<string>> appId, Expression<Func<string>> q, Expression<Func<string>> desiredIntent = null, Expression<Func<string>> versionId = null)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_desiredIntent = WorkflowExpression.Compile(desiredIntent, nameof(desiredIntent), required: false);
             var __workflow_versionId = WorkflowExpression.Compile(versionId, nameof(versionId), required: false);
-            return new DeferredBodyAction<PredictResponse>(() =>
+            return new DeferredBodyAction<PredictResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/luis/v2.0/apps/{0}/", __workflow_appId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -35,13 +35,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Luis
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "luis")]
-        public IBodyWorkflowAction<GetTopScoringMatchingEntityResponse> GetTopScoringMatchingEntity(Expression<Func<string>> appId, Expression<Func<string>> desiredEntity, Expression<Func<string>> versionId = null, Expression<Func<string>> luisPredictionObject = null)
+        public IBodyWorkflowAction<GetTopScoringMatchingEntityResponse, ApiConnectionActionConfiguration> GetTopScoringMatchingEntity(Expression<Func<string>> appId, Expression<Func<string>> desiredEntity, Expression<Func<string>> versionId = null, Expression<Func<string>> luisPredictionObject = null)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             var __workflow_desiredEntity = WorkflowExpression.Compile(desiredEntity, nameof(desiredEntity), required: true);
             var __workflow_versionId = WorkflowExpression.Compile(versionId, nameof(versionId), required: false);
             var __workflow_luisPredictionObject = WorkflowExpression.Compile(luisPredictionObject, nameof(luisPredictionObject), required: false);
-            return new DeferredBodyAction<GetTopScoringMatchingEntityResponse>(() =>
+            return new DeferredBodyAction<GetTopScoringMatchingEntityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/noApiCall/GetTopScoringMatchingEntity";
                 var apiCallHttpMethod = "post";

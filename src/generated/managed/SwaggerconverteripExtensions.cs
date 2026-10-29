@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Swaggerconverterip
     public class SwaggerconverteripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "swaggerconverterip")]
-        public IBodyWorkflowAction<JToken> ConvertByUrl(Expression<Func<string>> url)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ConvertByUrl(Expression<Func<string>> url)
         {
             var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert";
                 var apiCallHttpMethod = "get";
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Swaggerconverterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "swaggerconverterip")]
-        public IBodyWorkflowAction<JToken> ConvertByInput()
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ConvertByInput()
         {
             var apiCallPath = "/convert";
             var apiCallHttpMethod = "post";

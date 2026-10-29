@@ -5,12 +5,21 @@
 namespace Microsoft.Azure.Workflows.Sdk
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json.Linq;
+
+    public sealed class ForEachActionConfiguration :
+        ITrackedPropertiesConfiguration,
+        IIterationConcurrencyConfiguration
+    {
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        int? IIterationConcurrencyConfiguration.MaximumParallelIterations { get; set; }
+    }
 
     /// <summary>
     /// The ForEach action iterates over a collection and executes actions for each item.
     /// </summary>
-    public class ForEachAction : WorkflowActionBase
+    public class ForEachAction : WorkflowActionBase<ForEachActionConfiguration>
     {
         private readonly JToken items;
         private readonly IWorkflowAction actionsRoot;
@@ -33,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="flowName">The flow name.</param>
         /// <param name="flowKind">The flow kind.</param>
-        public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
+        internal override FlowTemplateAction BuildActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             var nestedActions = ControlActionHelper.CollectActions(this.actionsRoot, flowName, flowKind);
 

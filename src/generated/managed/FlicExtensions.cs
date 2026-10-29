@@ -15,11 +15,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flic
 
     public class FlicTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger FlicButtonTrigger(Expression<Func<string>> buttonUuid, Expression<Func<requestBodyOfWebhookeventsInput>> requestBodyOfWebhookevents = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FlicButtonTrigger(Expression<Func<string>> buttonUuid, Expression<Func<requestBodyOfWebhookeventsInput>> requestBodyOfWebhookevents = null, FlowRecurrence recurrence = null)
         {
             var __workflow_buttonUuid = WorkflowExpression.Compile(buttonUuid, nameof(buttonUuid), required: true);
             var __workflow_requestBodyOfWebhookevents = WorkflowExpression.Compile(requestBodyOfWebhookevents, nameof(requestBodyOfWebhookevents), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/msflow/subscribe/{0}", __workflow_buttonUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -53,10 +53,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flic
             });
         }
 
-        public IWorkflowTrigger FlicTaskTrigger(Expression<Func<string>> taskUuid, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FlicTaskTrigger(Expression<Func<string>> taskUuid, FlowRecurrence recurrence = null)
         {
             var __workflow_taskUuid = WorkflowExpression.Compile(taskUuid, nameof(taskUuid), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/msflow/subscribe/{0}", __workflow_taskUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";

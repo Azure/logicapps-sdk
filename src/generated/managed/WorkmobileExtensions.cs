@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workmobile
     public class WorkmobileActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workmobile")]
-        public IBodyWorkflowAction<UsergroupsResponseItem[]> Usergroups()
+        public IBodyWorkflowAction<UsergroupsResponseItem[], ApiConnectionActionConfiguration> Usergroups()
         {
             var apiCallPath = "/api/usergroups";
             var apiCallHttpMethod = "get";
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workmobile
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workmobile")]
-        public IBodyWorkflowAction<RetrieveMobileUsersResponseItem[]> RetrieveMobileUsers()
+        public IBodyWorkflowAction<RetrieveMobileUsersResponseItem[], ApiConnectionActionConfiguration> RetrieveMobileUsers()
         {
             var apiCallPath = "/api/mobileusers";
             var apiCallHttpMethod = "get";
@@ -32,11 +32,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workmobile
 
     public class WorkmobileTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger FormDataHook(Expression<Func<int>> bodyuserFormId, Expression<Func<bool>> bodyincludeSubFormData, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FormDataHook(Expression<Func<int>> bodyuserFormId, Expression<Func<bool>> bodyincludeSubFormData, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyuserFormId = WorkflowExpression.Compile(bodyuserFormId, nameof(bodyuserFormId), required: true);
             var __workflow_bodyincludeSubFormData = WorkflowExpression.Compile(bodyincludeSubFormData, nameof(bodyincludeSubFormData), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/notifications/external";
                 var apiCallHttpMethod = "post";

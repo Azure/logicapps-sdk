@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The Switch action evaluates an expression and routes to one of several cases.
     /// </summary>
-    public class SwitchAction : WorkflowActionBase
+    public class SwitchAction : WorkflowActionBase<ControlActionConfiguration>
     {
         private readonly JToken onExpression;
         private readonly Dictionary<string, SwitchCase> cases;
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="flowName">The flow name.</param>
         /// <param name="flowKind">The flow kind.</param>
-        public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
+        internal override FlowTemplateAction BuildActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             var templateCases = new Dictionary<string, FlowTemplateActionCaseBranch>();
 

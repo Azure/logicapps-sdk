@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
     public class GooglegeminiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
-        public IBodyWorkflowAction<GenerateTextContentResponse> GenerateTextContent(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodycontentsInputItem[]>> bodycontents = null, Expression<Func<bodysafetySettingsInputItem[]>> bodysafetySettings = null, Expression<Func<int>> bodygenerationConfigmaxOutputTokens = null, Expression<Func<double>> bodygenerationConfigtemperature = null, Expression<Func<double>> bodygenerationConfigtopP = null, Expression<Func<int>> bodygenerationConfigtopK = null, Expression<Func<int>> bodygenerationConfigcandidateCount = null, Expression<Func<string[]>> bodygenerationConfigstopSequences = null)
+        public IBodyWorkflowAction<GenerateTextContentResponse, ApiConnectionActionConfiguration> GenerateTextContent(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodycontentsInputItem[]>> bodycontents = null, Expression<Func<bodysafetySettingsInputItem[]>> bodysafetySettings = null, Expression<Func<int>> bodygenerationConfigmaxOutputTokens = null, Expression<Func<double>> bodygenerationConfigtemperature = null, Expression<Func<double>> bodygenerationConfigtopP = null, Expression<Func<int>> bodygenerationConfigtopK = null, Expression<Func<int>> bodygenerationConfigcandidateCount = null, Expression<Func<string[]>> bodygenerationConfigstopSequences = null)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
             var __workflow_bodygenerationConfigtopK = WorkflowExpression.Compile(bodygenerationConfigtopK, nameof(bodygenerationConfigtopK), required: false);
             var __workflow_bodygenerationConfigcandidateCount = WorkflowExpression.Compile(bodygenerationConfigcandidateCount, nameof(bodygenerationConfigcandidateCount), required: false);
             var __workflow_bodygenerationConfigstopSequences = WorkflowExpression.Compile(bodygenerationConfigstopSequences, nameof(bodygenerationConfigstopSequences), required: false);
-            return new DeferredBodyAction<GenerateTextContentResponse>(() =>
+            return new DeferredBodyAction<GenerateTextContentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/models/{1}:generateContent", __workflow_apiVersion.WithUrlEncoding(1), __workflow_modelName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
-        public IBodyWorkflowAction<GenerateStreamContentResponseItem[]> GenerateStreamContent(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodycontentsInputItem[]>> bodycontents = null, Expression<Func<bodysafetySettingsInputItem[]>> bodysafetySettings = null, Expression<Func<double>> bodygenerationConfigtemperature = null, Expression<Func<int>> bodygenerationConfigmaxOutputTokens = null, Expression<Func<double>> bodygenerationConfigtopP = null, Expression<Func<int>> bodygenerationConfigtopK = null, Expression<Func<int>> bodygenerationConfigcandidateCount = null, Expression<Func<string[]>> bodygenerationConfigstopSequences = null)
+        public IBodyWorkflowAction<GenerateStreamContentResponseItem[], ApiConnectionActionConfiguration> GenerateStreamContent(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodycontentsInputItem[]>> bodycontents = null, Expression<Func<bodysafetySettingsInputItem[]>> bodysafetySettings = null, Expression<Func<double>> bodygenerationConfigtemperature = null, Expression<Func<int>> bodygenerationConfigmaxOutputTokens = null, Expression<Func<double>> bodygenerationConfigtopP = null, Expression<Func<int>> bodygenerationConfigtopK = null, Expression<Func<int>> bodygenerationConfigcandidateCount = null, Expression<Func<string[]>> bodygenerationConfigstopSequences = null)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
             var __workflow_bodygenerationConfigtopK = WorkflowExpression.Compile(bodygenerationConfigtopK, nameof(bodygenerationConfigtopK), required: false);
             var __workflow_bodygenerationConfigcandidateCount = WorkflowExpression.Compile(bodygenerationConfigcandidateCount, nameof(bodygenerationConfigcandidateCount), required: false);
             var __workflow_bodygenerationConfigstopSequences = WorkflowExpression.Compile(bodygenerationConfigstopSequences, nameof(bodygenerationConfigstopSequences), required: false);
-            return new DeferredBodyAction<GenerateStreamContentResponseItem[]>(() =>
+            return new DeferredBodyAction<GenerateStreamContentResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/models/{1}:streamGenerateContent", __workflow_apiVersion.WithUrlEncoding(1), __workflow_modelName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
-        public IBodyWorkflowAction<GenerateMultiModalContentResponse> GenerateMultiModalContent(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodycontentsInputItem2[]>> bodycontents = null, Expression<Func<bodysafetySettingsInputItem[]>> bodysafetySettings = null, Expression<Func<int>> bodygenerationConfigmaxOutputTokens = null, Expression<Func<double>> bodygenerationConfigtemperature = null, Expression<Func<double>> bodygenerationConfigtopP = null, Expression<Func<int>> bodygenerationConfigtopK = null, Expression<Func<string[]>> bodygenerationConfigstopSequences = null)
+        public IBodyWorkflowAction<GenerateMultiModalContentResponse, ApiConnectionActionConfiguration> GenerateMultiModalContent(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodycontentsInputItem2[]>> bodycontents = null, Expression<Func<bodysafetySettingsInputItem[]>> bodysafetySettings = null, Expression<Func<int>> bodygenerationConfigmaxOutputTokens = null, Expression<Func<double>> bodygenerationConfigtemperature = null, Expression<Func<double>> bodygenerationConfigtopP = null, Expression<Func<int>> bodygenerationConfigtopK = null, Expression<Func<string[]>> bodygenerationConfigstopSequences = null)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
             var __workflow_bodygenerationConfigtopP = WorkflowExpression.Compile(bodygenerationConfigtopP, nameof(bodygenerationConfigtopP), required: false);
             var __workflow_bodygenerationConfigtopK = WorkflowExpression.Compile(bodygenerationConfigtopK, nameof(bodygenerationConfigtopK), required: false);
             var __workflow_bodygenerationConfigstopSequences = WorkflowExpression.Compile(bodygenerationConfigstopSequences, nameof(bodygenerationConfigstopSequences), required: false);
-            return new DeferredBodyAction<GenerateMultiModalContentResponse>(() =>
+            return new DeferredBodyAction<GenerateMultiModalContentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/models/{1}-vision:generateContent", __workflow_apiVersion.WithUrlEncoding(1), __workflow_modelName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -260,12 +260,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
-        public IBodyWorkflowAction<CountTokensResponse> CountTokens(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodycontentsInputItem22[]>> bodycontents = null)
+        public IBodyWorkflowAction<CountTokensResponse, ApiConnectionActionConfiguration> CountTokens(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodycontentsInputItem22[]>> bodycontents = null)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
             var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: false);
-            return new DeferredBodyAction<CountTokensResponse>(() =>
+            return new DeferredBodyAction<CountTokensResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/models/{1}:countTokens", __workflow_apiVersion.WithUrlEncoding(1), __workflow_modelName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -288,10 +288,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
-        public IBodyWorkflowAction<GetAllModelsResponse> GetAllModels(Expression<Func<string>> apiVersion)
+        public IBodyWorkflowAction<GetAllModelsResponse, ApiConnectionActionConfiguration> GetAllModels(Expression<Func<string>> apiVersion)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
-            return new DeferredBodyAction<GetAllModelsResponse>(() =>
+            return new DeferredBodyAction<GetAllModelsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/models", __workflow_apiVersion.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -301,11 +301,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
-        public IBodyWorkflowAction<GetModelDetailsResponse> GetModelDetails(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName)
+        public IBodyWorkflowAction<GetModelDetailsResponse, ApiConnectionActionConfiguration> GetModelDetails(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
-            return new DeferredBodyAction<GetModelDetailsResponse>(() =>
+            return new DeferredBodyAction<GetModelDetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/models/{1}", __workflow_apiVersion.WithUrlEncoding(1), __workflow_modelName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
-        public IBodyWorkflowAction<GenerateEmbeddingResponse> GenerateEmbedding(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<string>> bodymodelResourceName, Expression<Func<bodycontentpartsInputItem[]>> bodycontentparts = null, Expression<Func<bodytaskTypeInput>> bodytaskType = null, Expression<Func<string>> bodytitle = null)
+        public IBodyWorkflowAction<GenerateEmbeddingResponse, ApiConnectionActionConfiguration> GenerateEmbedding(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<string>> bodymodelResourceName, Expression<Func<bodycontentpartsInputItem[]>> bodycontentparts = null, Expression<Func<bodytaskTypeInput>> bodytaskType = null, Expression<Func<string>> bodytitle = null)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
             var __workflow_bodycontentparts = WorkflowExpression.Compile(bodycontentparts, nameof(bodycontentparts), required: false);
             var __workflow_bodytaskType = WorkflowExpression.Compile(bodytaskType, nameof(bodytaskType), required: false);
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            return new DeferredBodyAction<GenerateEmbeddingResponse>(() =>
+            return new DeferredBodyAction<GenerateEmbeddingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/models/{1}:embedContent", __workflow_apiVersion.WithUrlEncoding(1), __workflow_modelName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -368,12 +368,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
-        public IBodyWorkflowAction<BatchEmbedContentsResponse> BatchEmbedContents(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodyrequestsInputItem[]>> bodyrequests)
+        public IBodyWorkflowAction<BatchEmbedContentsResponse, ApiConnectionActionConfiguration> BatchEmbedContents(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodyrequestsInputItem[]>> bodyrequests)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
             var __workflow_bodyrequests = WorkflowExpression.Compile(bodyrequests, nameof(bodyrequests), required: true);
-            return new DeferredBodyAction<BatchEmbedContentsResponse>(() =>
+            return new DeferredBodyAction<BatchEmbedContentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/models/{1}:batchEmbedContents", __workflow_apiVersion.WithUrlEncoding(1), __workflow_modelName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";

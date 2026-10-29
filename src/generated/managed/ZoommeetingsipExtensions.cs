@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zoommeetingsip
     public class ZoommeetingsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zoommeetingsip")]
-        public IBodyWorkflowAction<GetMeetingsResponse> GetMeetings()
+        public IBodyWorkflowAction<GetMeetingsResponse, ApiConnectionActionConfiguration> GetMeetings()
         {
             var apiCallPath = "/v2/users/me/meetings";
             var apiCallHttpMethod = "get";
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zoommeetingsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zoommeetingsip")]
-        public IBodyWorkflowAction<CreateMeetingResponse> CreateMeeting(Expression<Func<string>> bodytopic = null, Expression<Func<int>> bodytype = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyduration = null, Expression<Func<bool>> bodysettingshostVideo = null, Expression<Func<bool>> bodysettingsparticipantVideo = null, Expression<Func<bool>> bodysettingsjoinBeforeHost = null, Expression<Func<string>> bodysettingsmuteUponEntry = null, Expression<Func<string>> bodysettingswatermark = null, Expression<Func<string>> bodysettingsaudio = null, Expression<Func<string>> bodysettingsautoRecording = null)
+        public IBodyWorkflowAction<CreateMeetingResponse, ApiConnectionActionConfiguration> CreateMeeting(Expression<Func<string>> bodytopic = null, Expression<Func<int>> bodytype = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyduration = null, Expression<Func<bool>> bodysettingshostVideo = null, Expression<Func<bool>> bodysettingsparticipantVideo = null, Expression<Func<bool>> bodysettingsjoinBeforeHost = null, Expression<Func<string>> bodysettingsmuteUponEntry = null, Expression<Func<string>> bodysettingswatermark = null, Expression<Func<string>> bodysettingsaudio = null, Expression<Func<string>> bodysettingsautoRecording = null)
         {
             var __workflow_bodytopic = WorkflowExpression.Compile(bodytopic, nameof(bodytopic), required: false);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zoommeetingsip
             var __workflow_bodysettingswatermark = WorkflowExpression.Compile(bodysettingswatermark, nameof(bodysettingswatermark), required: false);
             var __workflow_bodysettingsaudio = WorkflowExpression.Compile(bodysettingsaudio, nameof(bodysettingsaudio), required: false);
             var __workflow_bodysettingsautoRecording = WorkflowExpression.Compile(bodysettingsautoRecording, nameof(bodysettingsautoRecording), required: false);
-            return new DeferredBodyAction<CreateMeetingResponse>(() =>
+            return new DeferredBodyAction<CreateMeetingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/users/me/meetings";
                 var apiCallHttpMethod = "post";
@@ -125,10 +125,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zoommeetingsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zoommeetingsip")]
-        public IBodyWorkflowAction<MeetingDetailsResponse> MeetingDetails(Expression<Func<string>> meetingid)
+        public IBodyWorkflowAction<MeetingDetailsResponse, ApiConnectionActionConfiguration> MeetingDetails(Expression<Func<string>> meetingid)
         {
             var __workflow_meetingid = WorkflowExpression.Compile(meetingid, nameof(meetingid), required: true);
-            return new DeferredBodyAction<MeetingDetailsResponse>(() =>
+            return new DeferredBodyAction<MeetingDetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/meetings/{0}", __workflow_meetingid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

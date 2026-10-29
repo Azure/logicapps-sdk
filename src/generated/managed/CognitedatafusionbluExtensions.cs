@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
     public class CognitedatafusionbluActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitedatafusionblu")]
-        public IBodyWorkflowAction<ListTimeSeriesResponse> ListTimeSeries(Expression<Func<string>> project, Expression<Func<int>> limit = null, Expression<Func<bool>> includeMetadata = null, Expression<Func<string>> cursor = null, Expression<Func<string>> partition = null, Expression<Func<string>> assetIds = null, Expression<Func<string>> rootAssetIds = null, Expression<Func<string>> externalIdPrefix = null, Expression<Func<string>> accept = null)
+        public IBodyWorkflowAction<ListTimeSeriesResponse, ApiConnectionActionConfiguration> ListTimeSeries(Expression<Func<string>> project, Expression<Func<int>> limit = null, Expression<Func<bool>> includeMetadata = null, Expression<Func<string>> cursor = null, Expression<Func<string>> partition = null, Expression<Func<string>> assetIds = null, Expression<Func<string>> rootAssetIds = null, Expression<Func<string>> externalIdPrefix = null, Expression<Func<string>> accept = null)
         {
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
             var __workflow_rootAssetIds = WorkflowExpression.Compile(rootAssetIds, nameof(rootAssetIds), required: false);
             var __workflow_externalIdPrefix = WorkflowExpression.Compile(externalIdPrefix, nameof(externalIdPrefix), required: false);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: false);
-            return new DeferredBodyAction<ListTimeSeriesResponse>(() =>
+            return new DeferredBodyAction<ListTimeSeriesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/projects/{0}/timeseries", __workflow_project.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitedatafusionblu")]
-        public IBodyWorkflowAction<FilterTimeSeriesResponse> FilterTimeSeries(Expression<Func<string>> project, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyfiltername = null, Expression<Func<string>> bodyfilterunit = null, Expression<Func<bool>> bodyfilterisString = null, Expression<Func<bool>> bodyfilterisStep = null, Expression<Func<int[]>> bodyfilterassetIds = null, Expression<Func<string[]>> bodyfilterassetExternalIds = null, Expression<Func<int[]>> bodyfilterrootAssetIds = null, Expression<Func<bodyfilterassetSubtreeIdsInputItem[]>> bodyfilterassetSubtreeIds = null, Expression<Func<bodyfilterdataSetIdsInputItem[]>> bodyfilterdataSetIds = null, Expression<Func<string>> bodyfilterexternalIdPrefix = null, Expression<Func<int>> bodyfiltercreatedTimemax = null, Expression<Func<int>> bodyfiltercreatedTimemin = null, Expression<Func<int>> bodyfilterlastUpdatedTimemax = null, Expression<Func<int>> bodyfilterlastUpdatedTimemin = null, Expression<Func<int>> bodylimit = null, Expression<Func<string>> bodycursor = null, Expression<Func<string>> bodypartition = null, Expression<Func<bodysortInputItem[]>> bodysort = null)
+        public IBodyWorkflowAction<FilterTimeSeriesResponse, ApiConnectionActionConfiguration> FilterTimeSeries(Expression<Func<string>> project, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyfiltername = null, Expression<Func<string>> bodyfilterunit = null, Expression<Func<bool>> bodyfilterisString = null, Expression<Func<bool>> bodyfilterisStep = null, Expression<Func<int[]>> bodyfilterassetIds = null, Expression<Func<string[]>> bodyfilterassetExternalIds = null, Expression<Func<int[]>> bodyfilterrootAssetIds = null, Expression<Func<bodyfilterassetSubtreeIdsInputItem[]>> bodyfilterassetSubtreeIds = null, Expression<Func<bodyfilterdataSetIdsInputItem[]>> bodyfilterdataSetIds = null, Expression<Func<string>> bodyfilterexternalIdPrefix = null, Expression<Func<int>> bodyfiltercreatedTimemax = null, Expression<Func<int>> bodyfiltercreatedTimemin = null, Expression<Func<int>> bodyfilterlastUpdatedTimemax = null, Expression<Func<int>> bodyfilterlastUpdatedTimemin = null, Expression<Func<int>> bodylimit = null, Expression<Func<string>> bodycursor = null, Expression<Func<string>> bodypartition = null, Expression<Func<bodysortInputItem[]>> bodysort = null)
         {
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
             var __workflow_bodycursor = WorkflowExpression.Compile(bodycursor, nameof(bodycursor), required: false);
             var __workflow_bodypartition = WorkflowExpression.Compile(bodypartition, nameof(bodypartition), required: false);
             var __workflow_bodysort = WorkflowExpression.Compile(bodysort, nameof(bodysort), required: false);
-            return new DeferredBodyAction<FilterTimeSeriesResponse>(() =>
+            return new DeferredBodyAction<FilterTimeSeriesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/projects/{0}/timeseries/list", __workflow_project.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitedatafusionblu")]
-        public IBodyWorkflowAction<SearchTimeSeriesResponse> SearchTimeSeries(Expression<Func<string>> project, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyfiltername = null, Expression<Func<string>> bodyfilterunit = null, Expression<Func<bool>> bodyfilterisString = null, Expression<Func<bool>> bodyfilterisStep = null, Expression<Func<int[]>> bodyfilterassetIds = null, Expression<Func<string[]>> bodyfilterassetExternalIds = null, Expression<Func<int[]>> bodyfilterrootAssetIds = null, Expression<Func<bodyfilterassetSubtreeIdsInputItem[]>> bodyfilterassetSubtreeIds = null, Expression<Func<bodyfilterdataSetIdsInputItem[]>> bodyfilterdataSetIds = null, Expression<Func<string>> bodyfilterexternalIdPrefix = null, Expression<Func<int>> bodyfiltercreatedTimemax = null, Expression<Func<int>> bodyfiltercreatedTimemin = null, Expression<Func<int>> bodyfilterlastUpdatedTimemax = null, Expression<Func<int>> bodyfilterlastUpdatedTimemin = null, Expression<Func<string>> bodysearchname = null, Expression<Func<string>> bodysearchdescription = null, Expression<Func<string>> bodysearchquery = null, Expression<Func<int>> bodylimit = null)
+        public IBodyWorkflowAction<SearchTimeSeriesResponse, ApiConnectionActionConfiguration> SearchTimeSeries(Expression<Func<string>> project, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyfiltername = null, Expression<Func<string>> bodyfilterunit = null, Expression<Func<bool>> bodyfilterisString = null, Expression<Func<bool>> bodyfilterisStep = null, Expression<Func<int[]>> bodyfilterassetIds = null, Expression<Func<string[]>> bodyfilterassetExternalIds = null, Expression<Func<int[]>> bodyfilterrootAssetIds = null, Expression<Func<bodyfilterassetSubtreeIdsInputItem[]>> bodyfilterassetSubtreeIds = null, Expression<Func<bodyfilterdataSetIdsInputItem[]>> bodyfilterdataSetIds = null, Expression<Func<string>> bodyfilterexternalIdPrefix = null, Expression<Func<int>> bodyfiltercreatedTimemax = null, Expression<Func<int>> bodyfiltercreatedTimemin = null, Expression<Func<int>> bodyfilterlastUpdatedTimemax = null, Expression<Func<int>> bodyfilterlastUpdatedTimemin = null, Expression<Func<string>> bodysearchname = null, Expression<Func<string>> bodysearchdescription = null, Expression<Func<string>> bodysearchquery = null, Expression<Func<int>> bodylimit = null)
         {
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
             var __workflow_bodysearchdescription = WorkflowExpression.Compile(bodysearchdescription, nameof(bodysearchdescription), required: false);
             var __workflow_bodysearchquery = WorkflowExpression.Compile(bodysearchquery, nameof(bodysearchquery), required: false);
             var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
-            return new DeferredBodyAction<SearchTimeSeriesResponse>(() =>
+            return new DeferredBodyAction<SearchTimeSeriesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/projects/{0}/timeseries/search", __workflow_project.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -460,7 +460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitedatafusionblu")]
-        public IWorkflowAction QueryGraphQL(Expression<Func<string>> project, Expression<Func<string>> space, Expression<Func<string>> datamodel, Expression<Func<string>> version, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyquery = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> QueryGraphQL(Expression<Func<string>> project, Expression<Func<string>> space, Expression<Func<string>> datamodel, Expression<Func<string>> version, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyquery = null)
         {
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             var __workflow_space = WorkflowExpression.Compile(space, nameof(space), required: true);
@@ -469,7 +469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: false);
             var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/projects/{0}/userapis/spaces/{1}/datamodels/{2}/versions/{3}/graphql", __workflow_project.WithUrlEncoding(1), __workflow_space.WithUrlEncoding(1), __workflow_datamodel.WithUrlEncoding(1), __workflow_version.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";

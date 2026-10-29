@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
     public class DynamicstranslationsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicstranslations")]
-        public IBodyWorkflowAction<AlignResponse> Align(Expression<Func<string>> productType, Expression<Func<string>> productVersion, Expression<Func<string>> sourceLanguage, Expression<Func<string>> targetLanguage, Expression<Func<object>> sourceFile, Expression<Func<object>> targetFile)
+        public IBodyWorkflowAction<AlignResponse, ApiConnectionActionConfiguration> Align(Expression<Func<string>> productType, Expression<Func<string>> productVersion, Expression<Func<string>> sourceLanguage, Expression<Func<string>> targetLanguage, Expression<Func<object>> sourceFile, Expression<Func<object>> targetFile)
         {
             var __workflow_productType = WorkflowExpression.Compile(productType, nameof(productType), required: true);
             var __workflow_productVersion = WorkflowExpression.Compile(productVersion, nameof(productVersion), required: true);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
             var __workflow_targetLanguage = WorkflowExpression.Compile(targetLanguage, nameof(targetLanguage), required: true);
             var __workflow_sourceFile = WorkflowExpression.Compile(sourceFile, nameof(sourceFile), required: true);
             var __workflow_targetFile = WorkflowExpression.Compile(targetFile, nameof(targetFile), required: true);
-            return new DeferredBodyAction<AlignResponse>(() =>
+            return new DeferredBodyAction<AlignResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/dts/align/submit";
                 var apiCallHttpMethod = "post";
@@ -30,11 +30,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicstranslations")]
-        public IBodyWorkflowAction<object> Download(Expression<Func<downloadTypeInput>> downloadType, Expression<Func<int>> translationId)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Download(Expression<Func<downloadTypeInput>> downloadType, Expression<Func<int>> translationId)
         {
             var __workflow_downloadType = WorkflowExpression.Compile(downloadType, nameof(downloadType), required: true);
             var __workflow_translationId = WorkflowExpression.Compile(translationId, nameof(translationId), required: true);
-            return new DeferredBodyAction<object>(() =>
+            return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/dts/translate/download";
                 var apiCallHttpMethod = "get";
@@ -46,11 +46,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicstranslations")]
-        public IBodyWorkflowAction<RegenerateResponse> Regenerate(Expression<Func<int>> translationId, Expression<Func<object>> regenerateFile)
+        public IBodyWorkflowAction<RegenerateResponse, ApiConnectionActionConfiguration> Regenerate(Expression<Func<int>> translationId, Expression<Func<object>> regenerateFile)
         {
             var __workflow_translationId = WorkflowExpression.Compile(translationId, nameof(translationId), required: true);
             var __workflow_regenerateFile = WorkflowExpression.Compile(regenerateFile, nameof(regenerateFile), required: true);
-            return new DeferredBodyAction<RegenerateResponse>(() =>
+            return new DeferredBodyAction<RegenerateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/dts/translate/regenerate";
                 var apiCallHttpMethod = "post";
@@ -61,10 +61,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicstranslations")]
-        public IBodyWorkflowAction<RetrieveResponse> Retrieve(Expression<Func<int>> translationId)
+        public IBodyWorkflowAction<RetrieveResponse, ApiConnectionActionConfiguration> Retrieve(Expression<Func<int>> translationId)
         {
             var __workflow_translationId = WorkflowExpression.Compile(translationId, nameof(translationId), required: true);
-            return new DeferredBodyAction<RetrieveResponse>(() =>
+            return new DeferredBodyAction<RetrieveResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/dts/translate/retrieve";
                 var apiCallHttpMethod = "get";
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicstranslations")]
-        public IBodyWorkflowAction<TranslateResponse> Translate(Expression<Func<string>> productType, Expression<Func<string>> productVersion, Expression<Func<string>> sourceLanguage, Expression<Func<string>> targetLanguage, Expression<Func<string>> requestName, Expression<Func<translationTypeInput>> translationType, Expression<Func<object>> sourceFile, Expression<Func<bool>> trainMTWithTM = null, Expression<Func<object>> tmFile = null)
+        public IBodyWorkflowAction<TranslateResponse, ApiConnectionActionConfiguration> Translate(Expression<Func<string>> productType, Expression<Func<string>> productVersion, Expression<Func<string>> sourceLanguage, Expression<Func<string>> targetLanguage, Expression<Func<string>> requestName, Expression<Func<translationTypeInput>> translationType, Expression<Func<object>> sourceFile, Expression<Func<bool>> trainMTWithTM = null, Expression<Func<object>> tmFile = null)
         {
             var __workflow_productType = WorkflowExpression.Compile(productType, nameof(productType), required: true);
             var __workflow_productVersion = WorkflowExpression.Compile(productVersion, nameof(productVersion), required: true);
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
             var __workflow_sourceFile = WorkflowExpression.Compile(sourceFile, nameof(sourceFile), required: true);
             var __workflow_trainMTWithTM = WorkflowExpression.Compile(trainMTWithTM, nameof(trainMTWithTM), required: false);
             var __workflow_tmFile = WorkflowExpression.Compile(tmFile, nameof(tmFile), required: false);
-            return new DeferredBodyAction<TranslateResponse>(() =>
+            return new DeferredBodyAction<TranslateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/dts/translate/submit";
                 var apiCallHttpMethod = "post";
@@ -96,10 +96,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicstranslations")]
-        public IBodyWorkflowAction<object> AlignDownload(Expression<Func<string>> filename)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> AlignDownload(Expression<Func<string>> filename)
         {
             var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: true);
-            return new DeferredBodyAction<object>(() =>
+            return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/dts/align/download";
                 var apiCallHttpMethod = "get";

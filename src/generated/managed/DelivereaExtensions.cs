@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
     public class DelivereaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
-        public IWorkflowAction Shipments(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodyfromname = null, Expression<Func<string>> bodyfromaddress = null, Expression<Func<string>> bodyfromcity = null, Expression<Func<string>> bodyfromzipCode = null, Expression<Func<string>> bodyfromcountryCode = null, Expression<Func<string>> bodyfromidNumber = null, Expression<Func<string>> bodyfromstateCode = null, Expression<Func<string>> bodyfromphone = null, Expression<Func<string>> bodyfromemail = null, Expression<Func<string>> bodyfromdistributionCenterId = null, Expression<Func<string>> bodytoname = null, Expression<Func<string>> bodytoaddress = null, Expression<Func<string>> bodytocity = null, Expression<Func<string>> bodytozipCode = null, Expression<Func<string>> bodytocountryCode = null, Expression<Func<string>> bodytoidNumber = null, Expression<Func<string>> bodytostateCode = null, Expression<Func<string>> bodytoobservations = null, Expression<Func<string>> bodytophone = null, Expression<Func<string>> bodytoemail = null, Expression<Func<string>> bodytodistributionCenterId = null, Expression<Func<string>> bodycostCenterCode = null, Expression<Func<string>> bodyclientAdditionalInfocategory = null, Expression<Func<string>> bodyserviceAttributescashOnDelivery = null, Expression<Func<string>> bodyserviceCode = null, Expression<Func<string>> bodydistributionCenterId = null, Expression<Func<string>> bodycarrierCode = null, Expression<Func<string>> bodyclientReference = null, Expression<Func<string>> bodyshippingDate = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodytotalAmount = null, Expression<Func<string>> bodycustomsinvoiceId = null, Expression<Func<string>> bodybatchreference = null, Expression<Func<string>> bodyestimatedDate = null, Expression<Func<bodyparcelsInputItem[]>> bodyparcels = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Shipments(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodyfromname = null, Expression<Func<string>> bodyfromaddress = null, Expression<Func<string>> bodyfromcity = null, Expression<Func<string>> bodyfromzipCode = null, Expression<Func<string>> bodyfromcountryCode = null, Expression<Func<string>> bodyfromidNumber = null, Expression<Func<string>> bodyfromstateCode = null, Expression<Func<string>> bodyfromphone = null, Expression<Func<string>> bodyfromemail = null, Expression<Func<string>> bodyfromdistributionCenterId = null, Expression<Func<string>> bodytoname = null, Expression<Func<string>> bodytoaddress = null, Expression<Func<string>> bodytocity = null, Expression<Func<string>> bodytozipCode = null, Expression<Func<string>> bodytocountryCode = null, Expression<Func<string>> bodytoidNumber = null, Expression<Func<string>> bodytostateCode = null, Expression<Func<string>> bodytoobservations = null, Expression<Func<string>> bodytophone = null, Expression<Func<string>> bodytoemail = null, Expression<Func<string>> bodytodistributionCenterId = null, Expression<Func<string>> bodycostCenterCode = null, Expression<Func<string>> bodyclientAdditionalInfocategory = null, Expression<Func<string>> bodyserviceAttributescashOnDelivery = null, Expression<Func<string>> bodyserviceCode = null, Expression<Func<string>> bodydistributionCenterId = null, Expression<Func<string>> bodycarrierCode = null, Expression<Func<string>> bodyclientReference = null, Expression<Func<string>> bodyshippingDate = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodytotalAmount = null, Expression<Func<string>> bodycustomsinvoiceId = null, Expression<Func<string>> bodybatchreference = null, Expression<Func<string>> bodyestimatedDate = null, Expression<Func<bodyparcelsInputItem[]>> bodyparcels = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
             var __workflow_bodybatchreference = WorkflowExpression.Compile(bodybatchreference, nameof(bodybatchreference), required: false);
             var __workflow_bodyestimatedDate = WorkflowExpression.Compile(bodyestimatedDate, nameof(bodyestimatedDate), required: false);
             var __workflow_bodyparcels = WorkflowExpression.Compile(bodyparcels, nameof(bodyparcels), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/shipments";
                 var apiCallHttpMethod = "post";
@@ -328,12 +328,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
-        public IWorkflowAction Label(Expression<Func<string>> delivereaReference, Expression<Func<string>> contentType, Expression<Func<string>> accept)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Label(Expression<Func<string>> delivereaReference, Expression<Func<string>> contentType, Expression<Func<string>> accept)
         {
             var __workflow_delivereaReference = WorkflowExpression.Compile(delivereaReference, nameof(delivereaReference), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/shipments/{0}/label", __workflow_delivereaReference.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -345,11 +345,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
-        public IBodyWorkflowAction<DistributionCentersResponse> DistributionCenters(Expression<Func<string>> contentType, Expression<Func<string>> accept)
+        public IBodyWorkflowAction<DistributionCentersResponse, ApiConnectionActionConfiguration> DistributionCenters(Expression<Func<string>> contentType, Expression<Func<string>> accept)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
-            return new DeferredBodyAction<DistributionCentersResponse>(() =>
+            return new DeferredBodyAction<DistributionCentersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/distribution-centers";
                 var apiCallHttpMethod = "get";
@@ -361,12 +361,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
-        public IBodyWorkflowAction<CarriersInDistributionCenterResponse> CarriersInDistributionCenter(Expression<Func<string>> distributionCenter, Expression<Func<string>> contentType, Expression<Func<string>> accept)
+        public IBodyWorkflowAction<CarriersInDistributionCenterResponse, ApiConnectionActionConfiguration> CarriersInDistributionCenter(Expression<Func<string>> distributionCenter, Expression<Func<string>> contentType, Expression<Func<string>> accept)
         {
             var __workflow_distributionCenter = WorkflowExpression.Compile(distributionCenter, nameof(distributionCenter), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
-            return new DeferredBodyAction<CarriersInDistributionCenterResponse>(() =>
+            return new DeferredBodyAction<CarriersInDistributionCenterResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/distribution-centers/{0}/carriers", __workflow_distributionCenter.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -378,12 +378,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
-        public IWorkflowAction CancelShipment(Expression<Func<string>> delivereaReference, Expression<Func<string>> contentType, Expression<Func<string>> accept)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CancelShipment(Expression<Func<string>> delivereaReference, Expression<Func<string>> contentType, Expression<Func<string>> accept)
         {
             var __workflow_delivereaReference = WorkflowExpression.Compile(delivereaReference, nameof(delivereaReference), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/shipments/{0}", __workflow_delivereaReference.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";

@@ -1,9 +1,11 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq.Expressions;
     using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
@@ -14,11 +16,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
     public class AzureTablesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
-        public IBodyWorkflowAction<CreateTableOutput> CreateTable(Expression<Func<string>> tableName, Expression<Func<bool>> failIfTableExists = null)
+        public IBodyWorkflowAction<CreateTableOutput, CreateTableActionConfiguration> CreateTable(Expression<Func<string>> tableName, Expression<Func<bool>> failIfTableExists = null)
         {
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
             var __workflow_failIfTableExists = WorkflowExpression.Compile(failIfTableExists, nameof(failIfTableExists), required: false);
-            return new DeferredBodyAction<CreateTableOutput>(() =>
+            return new DeferredBodyAction<CreateTableOutput, CreateTableActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
@@ -32,17 +34,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureTables", operationId: "createTable", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<CreateTableOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<CreateTableOutput, CreateTableActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
-        public IBodyWorkflowAction<ListTablesOutput> ListTables(Expression<Func<string>> continuationToken = null, Expression<Func<string>> filter = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<ListTablesOutput, ListTablesActionConfiguration> ListTables(Expression<Func<string>> continuationToken = null, Expression<Func<string>> filter = null, Expression<Func<int>> top = null)
         {
             var __workflow_continuationToken = WorkflowExpression.Compile(continuationToken, nameof(continuationToken), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
-            return new DeferredBodyAction<ListTablesOutput>(() =>
+            return new DeferredBodyAction<ListTablesOutput, ListTablesActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 if (__workflow_continuationToken != null)
@@ -65,15 +67,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureTables", operationId: "listTables", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ListTablesOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ListTablesOutput, ListTablesActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
-        public IWorkflowAction DeleteTable(Expression<Func<string>> tableName)
+        public IWorkflowAction<DeleteTableActionConfiguration> DeleteTable(Expression<Func<string>> tableName)
         {
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<DeleteTableActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
@@ -82,18 +84,18 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureTables", operationId: "deleteTable", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<DeleteTableActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
-        public IWorkflowAction UpsertEntity(Expression<Func<string>> tableName, Expression<Func<object>> entity, Expression<Func<bool>> failIfEntityExists = null, Expression<Func<UpsertEntityInputUpdateModeType>> updateMode = null)
+        public IWorkflowAction<UpsertEntityActionConfiguration> UpsertEntity(Expression<Func<string>> tableName, Expression<Func<object>> entity, Expression<Func<bool>> failIfEntityExists = null, Expression<Func<UpsertEntityInputUpdateModeType>> updateMode = null)
         {
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_failIfEntityExists = WorkflowExpression.Compile(failIfEntityExists, nameof(failIfEntityExists), required: false);
             var __workflow_updateMode = WorkflowExpression.Compile(updateMode, nameof(updateMode), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<UpsertEntityActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
@@ -113,18 +115,18 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureTables", operationId: "upsertEntity", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<UpsertEntityActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
-        public IWorkflowAction UpdateEntity(Expression<Func<string>> tableName, Expression<Func<object>> entity, Expression<Func<UpdateEntityInputUpdateModeType>> updateMode = null, Expression<Func<string>> ifMatch = null)
+        public IWorkflowAction<UpdateEntityActionConfiguration> UpdateEntity(Expression<Func<string>> tableName, Expression<Func<object>> entity, Expression<Func<UpdateEntityInputUpdateModeType>> updateMode = null, Expression<Func<string>> ifMatch = null)
         {
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_updateMode = WorkflowExpression.Compile(updateMode, nameof(updateMode), required: false);
             var __workflow_ifMatch = WorkflowExpression.Compile(ifMatch, nameof(ifMatch), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<UpdateEntityActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
@@ -144,18 +146,18 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureTables", operationId: "updateEntity", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<UpdateEntityActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
-        public IWorkflowAction DeleteEntity(Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> ifMatch = null)
+        public IWorkflowAction<DeleteEntityActionConfiguration> DeleteEntity(Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> ifMatch = null)
         {
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
             var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: true);
             var __workflow_rowKey = WorkflowExpression.Compile(rowKey, nameof(rowKey), required: true);
             var __workflow_ifMatch = WorkflowExpression.Compile(ifMatch, nameof(ifMatch), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<DeleteEntityActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
@@ -171,18 +173,18 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureTables", operationId: "deleteEntity", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction(serviceProviderInput);
+                return new ServiceProviderAction<DeleteEntityActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
-        public IBodyWorkflowAction<GetEntityOutput> GetEntity(Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string[]>> select = null)
+        public IBodyWorkflowAction<GetEntityOutput, GetEntityActionConfiguration> GetEntity(Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string[]>> select = null)
         {
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
             var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: true);
             var __workflow_rowKey = WorkflowExpression.Compile(rowKey, nameof(rowKey), required: true);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<GetEntityOutput>(() =>
+            return new DeferredBodyAction<GetEntityOutput, GetEntityActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
@@ -198,19 +200,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureTables", operationId: "getEntity", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetEntityOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetEntityOutput, GetEntityActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
-        public IBodyWorkflowAction<QueryEntitiesOutput> QueryEntities(Expression<Func<string>> tableName, Expression<Func<string>> continuationToken = null, Expression<Func<string>> filter = null, Expression<Func<string[]>> select = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<QueryEntitiesOutput, QueryEntitiesActionConfiguration> QueryEntities(Expression<Func<string>> tableName, Expression<Func<string>> continuationToken = null, Expression<Func<string>> filter = null, Expression<Func<string[]>> select = null, Expression<Func<int>> top = null)
         {
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
             var __workflow_continuationToken = WorkflowExpression.Compile(continuationToken, nameof(continuationToken), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
-            return new DeferredBodyAction<QueryEntitiesOutput>(() =>
+            return new DeferredBodyAction<QueryEntitiesOutput, QueryEntitiesActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
@@ -239,9 +241,73 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureTables", operationId: "queryEntities", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<QueryEntitiesOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<QueryEntitiesOutput, QueryEntitiesActionConfiguration>(serviceProviderInput);
             });
         }
+    }
+
+    public sealed class CreateTableActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class ListTablesActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class DeleteTableActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class UpsertEntityActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class UpdateEntityActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class DeleteEntityActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class GetEntityActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class QueryEntitiesActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public class CreateTableOutput
@@ -265,14 +331,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         public string TableName { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum UpsertEntityInputUpdateModeType
     {
         Merge,
         Replace
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum UpdateEntityInputUpdateModeType
     {
         Merge,

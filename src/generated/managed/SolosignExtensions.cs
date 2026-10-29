@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solosign
     public class SolosignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "solosign")]
-        public IWorkflowAction CreateHMAC(Expression<Func<string>> bodyrequestString, Expression<Func<string>> bodysecretKey, Expression<Func<bodyoutputFormatInput>> bodyoutputFormat = null, Expression<Func<bodyencodeTypeInput>> bodyencodeType = null, Expression<Func<bodyhashAlgorithmInput>> bodyhashAlgorithm = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateHMAC(Expression<Func<string>> bodyrequestString, Expression<Func<string>> bodysecretKey, Expression<Func<bodyoutputFormatInput>> bodyoutputFormat = null, Expression<Func<bodyencodeTypeInput>> bodyencodeType = null, Expression<Func<bodyhashAlgorithmInput>> bodyhashAlgorithm = null)
         {
             var __workflow_bodyrequestString = WorkflowExpression.Compile(bodyrequestString, nameof(bodyrequestString), required: true);
             var __workflow_bodysecretKey = WorkflowExpression.Compile(bodysecretKey, nameof(bodysecretKey), required: true);
             var __workflow_bodyoutputFormat = WorkflowExpression.Compile(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
             var __workflow_bodyencodeType = WorkflowExpression.Compile(bodyencodeType, nameof(bodyencodeType), required: false);
             var __workflow_bodyhashAlgorithm = WorkflowExpression.Compile(bodyhashAlgorithm, nameof(bodyhashAlgorithm), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/generate-hmac";
                 var apiCallHttpMethod = "post";

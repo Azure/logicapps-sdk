@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
     public class LeavedatesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<GetAllCompaniesAuthenticatedUserResponseItem[]> GetAllCompaniesAuthenticatedUser()
+        public IBodyWorkflowAction<GetAllCompaniesAuthenticatedUserResponseItem[], ApiConnectionActionConfiguration> GetAllCompaniesAuthenticatedUser()
         {
             var apiCallPath = "/companies";
             var apiCallHttpMethod = "get";
@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<GetDepartmentsResponseItem[]> GetDepartments(Expression<Func<string>> company)
+        public IBodyWorkflowAction<GetDepartmentsResponseItem[], ApiConnectionActionConfiguration> GetDepartments(Expression<Func<string>> company)
         {
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
-            return new DeferredBodyAction<GetDepartmentsResponseItem[]>(() =>
+            return new DeferredBodyAction<GetDepartmentsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/departments";
                 var apiCallHttpMethod = "get";
@@ -35,10 +35,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<GetLeaveTypesResponseItem[]> GetLeaveTypes(Expression<Func<string>> company)
+        public IBodyWorkflowAction<GetLeaveTypesResponseItem[], ApiConnectionActionConfiguration> GetLeaveTypes(Expression<Func<string>> company)
         {
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
-            return new DeferredBodyAction<GetLeaveTypesResponseItem[]>(() =>
+            return new DeferredBodyAction<GetLeaveTypesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/leave-types";
                 var apiCallHttpMethod = "get";
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<GetAllowanceSummaryResponse> GetAllowanceSummary(Expression<Func<string>> company, Expression<Func<string>> date, Expression<Func<int>> page, Expression<Func<string>> employee = null, Expression<Func<string>> department = null, Expression<Func<string>> allowanceType = null)
+        public IBodyWorkflowAction<GetAllowanceSummaryResponse, ApiConnectionActionConfiguration> GetAllowanceSummary(Expression<Func<string>> company, Expression<Func<string>> date, Expression<Func<int>> page, Expression<Func<string>> employee = null, Expression<Func<string>> department = null, Expression<Func<string>> allowanceType = null)
         {
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             var __workflow_employee = WorkflowExpression.Compile(employee, nameof(employee), required: false);
             var __workflow_department = WorkflowExpression.Compile(department, nameof(department), required: false);
             var __workflow_allowanceType = WorkflowExpression.Compile(allowanceType, nameof(allowanceType), required: false);
-            return new DeferredBodyAction<GetAllowanceSummaryResponse>(() =>
+            return new DeferredBodyAction<GetAllowanceSummaryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/reports/summary-allowances";
                 var apiCallHttpMethod = "get";
@@ -76,11 +76,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<GetEmployeesResponseItem[]> GetEmployees(Expression<Func<string>> company, Expression<Func<string>> departmentId = null)
+        public IBodyWorkflowAction<GetEmployeesResponseItem[], ApiConnectionActionConfiguration> GetEmployees(Expression<Func<string>> company, Expression<Func<string>> departmentId = null)
         {
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             var __workflow_departmentId = WorkflowExpression.Compile(departmentId, nameof(departmentId), required: false);
-            return new DeferredBodyAction<GetEmployeesResponseItem[]>(() =>
+            return new DeferredBodyAction<GetEmployeesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/employments";
                 var apiCallHttpMethod = "get";
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<AddEmploymentResponse> AddEmployment(Expression<Func<string>> bodyfullName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodycompanyId, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodyapproverId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodyemployeeCode = null, Expression<Func<bool>> bodyisAdmin = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyholidayLocation = null, Expression<Func<string>> bodyallowanceUnitIsDays = null, Expression<Func<string>> bodyminutesPerWorkingDay = null)
+        public IBodyWorkflowAction<AddEmploymentResponse, ApiConnectionActionConfiguration> AddEmployment(Expression<Func<string>> bodyfullName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodycompanyId, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodyapproverId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodyemployeeCode = null, Expression<Func<bool>> bodyisAdmin = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyholidayLocation = null, Expression<Func<string>> bodyallowanceUnitIsDays = null, Expression<Func<string>> bodyminutesPerWorkingDay = null)
         {
             var __workflow_bodyfullName = WorkflowExpression.Compile(bodyfullName, nameof(bodyfullName), required: true);
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             var __workflow_bodyholidayLocation = WorkflowExpression.Compile(bodyholidayLocation, nameof(bodyholidayLocation), required: false);
             var __workflow_bodyallowanceUnitIsDays = WorkflowExpression.Compile(bodyallowanceUnitIsDays, nameof(bodyallowanceUnitIsDays), required: false);
             var __workflow_bodyminutesPerWorkingDay = WorkflowExpression.Compile(bodyminutesPerWorkingDay, nameof(bodyminutesPerWorkingDay), required: false);
-            return new DeferredBodyAction<AddEmploymentResponse>(() =>
+            return new DeferredBodyAction<AddEmploymentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/employments";
                 var apiCallHttpMethod = "post";
@@ -209,11 +209,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<GetDetailsEmployeeResponse> GetDetailsEmployee(Expression<Func<string>> id, Expression<Func<string>> company)
+        public IBodyWorkflowAction<GetDetailsEmployeeResponse, ApiConnectionActionConfiguration> GetDetailsEmployee(Expression<Func<string>> id, Expression<Func<string>> company)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
-            return new DeferredBodyAction<GetDetailsEmployeeResponse>(() =>
+            return new DeferredBodyAction<GetDetailsEmployeeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/employments/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -224,11 +224,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<JToken> DeleteEmployment(Expression<Func<string>> id, Expression<Func<string>> bodycompanyId)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DeleteEmployment(Expression<Func<string>> id, Expression<Func<string>> bodycompanyId)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/employments/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<UpdateEmploymentResponse> UpdateEmployment(Expression<Func<string>> id, Expression<Func<string>> bodyfullName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodycompanyId, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodyapproverId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodyemployeeCode = null, Expression<Func<bool>> bodyisAdmin = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyholidayLocation = null, Expression<Func<string>> bodyallowanceUnitIsDays = null, Expression<Func<string>> bodyminutesPerWorkingDay = null)
+        public IBodyWorkflowAction<UpdateEmploymentResponse, ApiConnectionActionConfiguration> UpdateEmployment(Expression<Func<string>> id, Expression<Func<string>> bodyfullName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodycompanyId, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodyapproverId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodyemployeeCode = null, Expression<Func<bool>> bodyisAdmin = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyholidayLocation = null, Expression<Func<string>> bodyallowanceUnitIsDays = null, Expression<Func<string>> bodyminutesPerWorkingDay = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyfullName = WorkflowExpression.Compile(bodyfullName, nameof(bodyfullName), required: true);
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             var __workflow_bodyholidayLocation = WorkflowExpression.Compile(bodyholidayLocation, nameof(bodyholidayLocation), required: false);
             var __workflow_bodyallowanceUnitIsDays = WorkflowExpression.Compile(bodyallowanceUnitIsDays, nameof(bodyallowanceUnitIsDays), required: false);
             var __workflow_bodyminutesPerWorkingDay = WorkflowExpression.Compile(bodyminutesPerWorkingDay, nameof(bodyminutesPerWorkingDay), required: false);
-            return new DeferredBodyAction<UpdateEmploymentResponse>(() =>
+            return new DeferredBodyAction<UpdateEmploymentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/employments/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -365,11 +365,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<GetLeaveDetailsResponse> GetLeaveDetails(Expression<Func<string>> id, Expression<Func<string>> company)
+        public IBodyWorkflowAction<GetLeaveDetailsResponse, ApiConnectionActionConfiguration> GetLeaveDetails(Expression<Func<string>> id, Expression<Func<string>> company)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
-            return new DeferredBodyAction<GetLeaveDetailsResponse>(() =>
+            return new DeferredBodyAction<GetLeaveDetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/leaves/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -380,7 +380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<string[]> UpdateLeave(Expression<Func<string>> id, Expression<Func<string>> bodycompanyId, Expression<Func<string>> bodytypeId, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodyreason = null, Expression<Func<bodyleaveBreakdownsInputItem[]>> bodyleaveBreakdowns = null)
+        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> UpdateLeave(Expression<Func<string>> id, Expression<Func<string>> bodycompanyId, Expression<Func<string>> bodytypeId, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodyreason = null, Expression<Func<bodyleaveBreakdownsInputItem[]>> bodyleaveBreakdowns = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: true);
@@ -389,7 +389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: false);
             var __workflow_bodyreason = WorkflowExpression.Compile(bodyreason, nameof(bodyreason), required: false);
             var __workflow_bodyleaveBreakdowns = WorkflowExpression.Compile(bodyleaveBreakdowns, nameof(bodyleaveBreakdowns), required: false);
-            return new DeferredBodyAction<string[]>(() =>
+            return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/leaves/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<string[]> RequestLeave(Expression<Func<string>> bodycompanyId, Expression<Func<string>> bodyfrom, Expression<Func<string>> bodyto, Expression<Func<string>> bodytypeId, Expression<Func<string>> bodyreason = null, Expression<Func<bool>> bodyisPrivate = null, Expression<Func<bodyleaveBreakdownsInputItem2[]>> bodyleaveBreakdowns = null)
+        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> RequestLeave(Expression<Func<string>> bodycompanyId, Expression<Func<string>> bodyfrom, Expression<Func<string>> bodyto, Expression<Func<string>> bodytypeId, Expression<Func<string>> bodyreason = null, Expression<Func<bool>> bodyisPrivate = null, Expression<Func<bodyleaveBreakdownsInputItem2[]>> bodyleaveBreakdowns = null)
         {
             var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: true);
             var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: true);
@@ -444,7 +444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
             var __workflow_bodyreason = WorkflowExpression.Compile(bodyreason, nameof(bodyreason), required: false);
             var __workflow_bodyisPrivate = WorkflowExpression.Compile(bodyisPrivate, nameof(bodyisPrivate), required: false);
             var __workflow_bodyleaveBreakdowns = WorkflowExpression.Compile(bodyleaveBreakdowns, nameof(bodyleaveBreakdowns), required: false);
-            return new DeferredBodyAction<string[]>(() =>
+            return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/leaves";
                 var apiCallHttpMethod = "post";
@@ -498,11 +498,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IWorkflowAction ApproveLeave(Expression<Func<string>> id, Expression<Func<string>> company)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ApproveLeave(Expression<Func<string>> id, Expression<Func<string>> company)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/leaves/{0}/approve", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -513,11 +513,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IWorkflowAction CancelLeave(Expression<Func<string>> id, Expression<Func<string>> company)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CancelLeave(Expression<Func<string>> id, Expression<Func<string>> company)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/leaves/{0}/cancel", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";

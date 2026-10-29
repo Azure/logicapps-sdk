@@ -1,9 +1,11 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq.Expressions;
     using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
@@ -14,11 +16,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
     public class ServiceBusActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> SendMessage(Expression<Func<string>> entityName, Expression<Func<SendMessageInputMessageType>> message)
+        public IWorkflowAction<SendMessageActionConfiguration> SendMessage(Expression<Func<string>> entityName, Expression<Func<SendMessageInputMessageType>> message)
         {
             var __workflow_entityName = WorkflowExpression.Compile(entityName, nameof(entityName), required: true);
             var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<SendMessageActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["entityName"] = ExpressionConverter.ConvertO(__workflow_entityName);
@@ -28,16 +30,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "sendMessage", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                return new ServiceProviderAction<SendMessageActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> SendMessages(Expression<Func<string>> entityName, Expression<Func<SendMessagesInputMessagesTypeItem[]>> messages)
+        public IWorkflowAction<SendMessagesActionConfiguration> SendMessages(Expression<Func<string>> entityName, Expression<Func<SendMessagesInputMessagesTypeItem[]>> messages)
         {
             var __workflow_entityName = WorkflowExpression.Compile(entityName, nameof(entityName), required: true);
             var __workflow_messages = WorkflowExpression.Compile(messages, nameof(messages), required: true);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<SendMessagesActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["entityName"] = ExpressionConverter.ConvertO(__workflow_entityName);
@@ -47,16 +49,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "sendMessages", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                return new ServiceProviderAction<SendMessagesActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> ReplicateMessages(Expression<Func<string>> entityName, Expression<Func<bool>> skipAlreadyReplicated)
+        public IWorkflowAction<ReplicateMessagesActionConfiguration> ReplicateMessages(Expression<Func<string>> entityName, Expression<Func<bool>> skipAlreadyReplicated)
         {
             var __workflow_entityName = WorkflowExpression.Compile(entityName, nameof(entityName), required: true);
             var __workflow_skipAlreadyReplicated = WorkflowExpression.Compile(skipAlreadyReplicated, nameof(skipAlreadyReplicated), required: true);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<ReplicateMessagesActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["entityName"] = ExpressionConverter.ConvertO(__workflow_entityName);
@@ -66,16 +68,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "replicateMessages", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                return new ServiceProviderAction<ReplicateMessagesActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> CompleteQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken)
+        public IWorkflowAction<CompleteQueueMessageV2ActionConfiguration> CompleteQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_lockToken = WorkflowExpression.Compile(lockToken, nameof(lockToken), required: true);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<CompleteQueueMessageV2ActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -85,16 +87,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "completeQueueMessageV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                return new ServiceProviderAction<CompleteQueueMessageV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> AbandonQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken)
+        public IWorkflowAction<AbandonQueueMessageV2ActionConfiguration> AbandonQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_lockToken = WorkflowExpression.Compile(lockToken, nameof(lockToken), required: true);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<AbandonQueueMessageV2ActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -104,18 +106,18 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "abandonQueueMessageV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                return new ServiceProviderAction<AbandonQueueMessageV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> DeadLetterQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken, Expression<Func<string>> deadLetterReason = null, Expression<Func<string>> deadLetterErrorDescription = null)
+        public IWorkflowAction<DeadLetterQueueMessageV2ActionConfiguration> DeadLetterQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken, Expression<Func<string>> deadLetterReason = null, Expression<Func<string>> deadLetterErrorDescription = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_lockToken = WorkflowExpression.Compile(lockToken, nameof(lockToken), required: true);
             var __workflow_deadLetterReason = WorkflowExpression.Compile(deadLetterReason, nameof(deadLetterReason), required: false);
             var __workflow_deadLetterErrorDescription = WorkflowExpression.Compile(deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<DeadLetterQueueMessageV2ActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -135,16 +137,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deadLetterQueueMessageV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                return new ServiceProviderAction<DeadLetterQueueMessageV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> RenewLockQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken)
+        public IWorkflowAction<RenewLockQueueMessageV2ActionConfiguration> RenewLockQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_lockToken = WorkflowExpression.Compile(lockToken, nameof(lockToken), required: true);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<RenewLockQueueMessageV2ActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -154,16 +156,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewLockQueueMessageV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                return new ServiceProviderAction<RenewLockQueueMessageV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> DeferQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken)
+        public IWorkflowAction<DeferQueueMessageV2ActionConfiguration> DeferQueueMessageV2(Expression<Func<string>> queueName, Expression<Func<string>> lockToken)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_lockToken = WorkflowExpression.Compile(lockToken, nameof(lockToken), required: true);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<DeferQueueMessageV2ActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -173,16 +175,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deferQueueMessageV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                return new ServiceProviderAction<DeferQueueMessageV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IBodyWorkflowAction<GetDeferredMessageFromQueueV2Output> GetDeferredMessageFromQueueV2(Expression<Func<string>> queueName, Expression<Func<string>> sequenceNumber)
+        public IBodyWorkflowAction<GetDeferredMessageFromQueueV2Output, GetDeferredMessageFromQueueV2ActionConfiguration> GetDeferredMessageFromQueueV2(Expression<Func<string>> queueName, Expression<Func<string>> sequenceNumber)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_sequenceNumber = WorkflowExpression.Compile(sequenceNumber, nameof(sequenceNumber), required: true);
-            return new DeferredBodyAction<GetDeferredMessageFromQueueV2Output>(() =>
+            return new DeferredBodyAction<GetDeferredMessageFromQueueV2Output, GetDeferredMessageFromQueueV2ActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -192,16 +194,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromQueueV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetDeferredMessageFromQueueV2Output>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetDeferredMessageFromQueueV2Output, GetDeferredMessageFromQueueV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IBodyWorkflowAction<GetMessagesFromQueueV2OutputItem[]> GetMessagesFromQueueV2(Expression<Func<string>> queueName, Expression<Func<int>> maxMessages = null)
+        public IBodyWorkflowAction<GetMessagesFromQueueV2OutputItem[], GetMessagesFromQueueV2ActionConfiguration> GetMessagesFromQueueV2(Expression<Func<string>> queueName, Expression<Func<int>> maxMessages = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_maxMessages = WorkflowExpression.Compile(maxMessages, nameof(maxMessages), required: false);
-            return new DeferredBodyAction<GetMessagesFromQueueV2OutputItem[]>(() =>
+            return new DeferredBodyAction<GetMessagesFromQueueV2OutputItem[], GetMessagesFromQueueV2ActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -215,17 +217,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getMessagesFromQueueV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetMessagesFromQueueV2OutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetMessagesFromQueueV2OutputItem[], GetMessagesFromQueueV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> CompleteTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken)
+        public IWorkflowAction<CompleteTopicMessageV2ActionConfiguration> CompleteTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_subscriptionName = WorkflowExpression.Compile(subscriptionName, nameof(subscriptionName), required: true);
             var __workflow_lockToken = WorkflowExpression.Compile(lockToken, nameof(lockToken), required: true);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<CompleteTopicMessageV2ActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
@@ -236,17 +238,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "completeTopicMessageV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                return new ServiceProviderAction<CompleteTopicMessageV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> AbandonTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken)
+        public IWorkflowAction<AbandonTopicMessageV2ActionConfiguration> AbandonTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_subscriptionName = WorkflowExpression.Compile(subscriptionName, nameof(subscriptionName), required: true);
             var __workflow_lockToken = WorkflowExpression.Compile(lockToken, nameof(lockToken), required: true);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<AbandonTopicMessageV2ActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
@@ -257,19 +259,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "abandonTopicMessageV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                return new ServiceProviderAction<AbandonTopicMessageV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> DeadLetterTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken, Expression<Func<string>> deadLetterReason = null, Expression<Func<string>> deadLetterErrorDescription = null)
+        public IWorkflowAction<DeadLetterTopicMessageV2ActionConfiguration> DeadLetterTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken, Expression<Func<string>> deadLetterReason = null, Expression<Func<string>> deadLetterErrorDescription = null)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_subscriptionName = WorkflowExpression.Compile(subscriptionName, nameof(subscriptionName), required: true);
             var __workflow_lockToken = WorkflowExpression.Compile(lockToken, nameof(lockToken), required: true);
             var __workflow_deadLetterReason = WorkflowExpression.Compile(deadLetterReason, nameof(deadLetterReason), required: false);
             var __workflow_deadLetterErrorDescription = WorkflowExpression.Compile(deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<DeadLetterTopicMessageV2ActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
@@ -290,17 +292,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deadLetterTopicMessageV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                return new ServiceProviderAction<DeadLetterTopicMessageV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> RenewLockTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken)
+        public IWorkflowAction<RenewLockTopicMessageV2ActionConfiguration> RenewLockTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_subscriptionName = WorkflowExpression.Compile(subscriptionName, nameof(subscriptionName), required: true);
             var __workflow_lockToken = WorkflowExpression.Compile(lockToken, nameof(lockToken), required: true);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<RenewLockTopicMessageV2ActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
@@ -311,17 +313,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewLockTopicMessageV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                return new ServiceProviderAction<RenewLockTopicMessageV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> DeferTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken)
+        public IWorkflowAction<DeferTopicMessageV2ActionConfiguration> DeferTopicMessageV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_subscriptionName = WorkflowExpression.Compile(subscriptionName, nameof(subscriptionName), required: true);
             var __workflow_lockToken = WorkflowExpression.Compile(lockToken, nameof(lockToken), required: true);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<DeferTopicMessageV2ActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
@@ -332,17 +334,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deferTopicMessageV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                return new ServiceProviderAction<DeferTopicMessageV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IBodyWorkflowAction<GetDeferredMessageFromTopicV2Output> GetDeferredMessageFromTopicV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sequenceNumber)
+        public IBodyWorkflowAction<GetDeferredMessageFromTopicV2Output, GetDeferredMessageFromTopicV2ActionConfiguration> GetDeferredMessageFromTopicV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sequenceNumber)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_subscriptionName = WorkflowExpression.Compile(subscriptionName, nameof(subscriptionName), required: true);
             var __workflow_sequenceNumber = WorkflowExpression.Compile(sequenceNumber, nameof(sequenceNumber), required: true);
-            return new DeferredBodyAction<GetDeferredMessageFromTopicV2Output>(() =>
+            return new DeferredBodyAction<GetDeferredMessageFromTopicV2Output, GetDeferredMessageFromTopicV2ActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
@@ -353,17 +355,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromTopicV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetDeferredMessageFromTopicV2Output>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetDeferredMessageFromTopicV2Output, GetDeferredMessageFromTopicV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IBodyWorkflowAction<GetMessagesFromTopicV2OutputItem[]> GetMessagesFromTopicV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<int>> maxMessages = null)
+        public IBodyWorkflowAction<GetMessagesFromTopicV2OutputItem[], GetMessagesFromTopicV2ActionConfiguration> GetMessagesFromTopicV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<int>> maxMessages = null)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_subscriptionName = WorkflowExpression.Compile(subscriptionName, nameof(subscriptionName), required: true);
             var __workflow_maxMessages = WorkflowExpression.Compile(maxMessages, nameof(maxMessages), required: false);
-            return new DeferredBodyAction<GetMessagesFromTopicV2OutputItem[]>(() =>
+            return new DeferredBodyAction<GetMessagesFromTopicV2OutputItem[], GetMessagesFromTopicV2ActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
@@ -378,18 +380,18 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getMessagesFromTopicV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetMessagesFromTopicV2OutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetMessagesFromTopicV2OutputItem[], GetMessagesFromTopicV2ActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> CreateTopicSubscription(Expression<Func<string>> topicName, Expression<Func<string>> topicSubscriptionName, Expression<Func<CreateTopicSubscriptionInputTopicSubscriptionFilterTypeType>> topicSubscriptionFilterType, Expression<Func<object>> topicSubscriptionCorrelationFilter = null)
+        public IWorkflowAction<CreateTopicSubscriptionActionConfiguration> CreateTopicSubscription(Expression<Func<string>> topicName, Expression<Func<string>> topicSubscriptionName, Expression<Func<CreateTopicSubscriptionInputTopicSubscriptionFilterTypeType>> topicSubscriptionFilterType, Expression<Func<object>> topicSubscriptionCorrelationFilter = null)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_topicSubscriptionName = WorkflowExpression.Compile(topicSubscriptionName, nameof(topicSubscriptionName), required: true);
             var __workflow_topicSubscriptionFilterType = WorkflowExpression.Compile(topicSubscriptionFilterType, nameof(topicSubscriptionFilterType), required: true);
             var __workflow_topicSubscriptionCorrelationFilter = WorkflowExpression.Compile(topicSubscriptionCorrelationFilter, nameof(topicSubscriptionCorrelationFilter), required: false);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<CreateTopicSubscriptionActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
@@ -405,16 +407,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "createTopicSubscription", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                return new ServiceProviderAction<CreateTopicSubscriptionActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> DeleteTopicSubscription(Expression<Func<string>> topicName, Expression<Func<string>> topicSubscriptionName)
+        public IWorkflowAction<DeleteTopicSubscriptionActionConfiguration> DeleteTopicSubscription(Expression<Func<string>> topicName, Expression<Func<string>> topicSubscriptionName)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_topicSubscriptionName = WorkflowExpression.Compile(topicSubscriptionName, nameof(topicSubscriptionName), required: true);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<DeleteTopicSubscriptionActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
@@ -424,16 +426,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deleteTopicSubscription", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                return new ServiceProviderAction<DeleteTopicSubscriptionActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> CompleteMessageInSession(Expression<Func<string>> messageId, Expression<Func<string>> lockToken = null)
+        public IWorkflowAction<CompleteMessageInSessionActionConfiguration> CompleteMessageInSession(Expression<Func<string>> messageId, Expression<Func<string>> lockToken = null)
         {
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             var __workflow_lockToken = WorkflowExpression.Compile(lockToken, nameof(lockToken), required: false);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<CompleteMessageInSessionActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(__workflow_messageId);
@@ -447,16 +449,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "completeMessageInSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                return new ServiceProviderAction<CompleteMessageInSessionActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> AbandonMessageInSession(Expression<Func<string>> messageId, Expression<Func<string>> lockToken = null)
+        public IWorkflowAction<AbandonMessageInSessionActionConfiguration> AbandonMessageInSession(Expression<Func<string>> messageId, Expression<Func<string>> lockToken = null)
         {
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             var __workflow_lockToken = WorkflowExpression.Compile(lockToken, nameof(lockToken), required: false);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<AbandonMessageInSessionActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(__workflow_messageId);
@@ -470,18 +472,18 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "abandonMessageInSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                return new ServiceProviderAction<AbandonMessageInSessionActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> DeadLetterMessageInSession(Expression<Func<string>> messageId, Expression<Func<string>> lockToken = null, Expression<Func<string>> deadLetterReason = null, Expression<Func<string>> deadLetterErrorDescription = null)
+        public IWorkflowAction<DeadLetterMessageInSessionActionConfiguration> DeadLetterMessageInSession(Expression<Func<string>> messageId, Expression<Func<string>> lockToken = null, Expression<Func<string>> deadLetterReason = null, Expression<Func<string>> deadLetterErrorDescription = null)
         {
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             var __workflow_lockToken = WorkflowExpression.Compile(lockToken, nameof(lockToken), required: false);
             var __workflow_deadLetterReason = WorkflowExpression.Compile(deadLetterReason, nameof(deadLetterReason), required: false);
             var __workflow_deadLetterErrorDescription = WorkflowExpression.Compile(deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<DeadLetterMessageInSessionActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(__workflow_messageId);
@@ -505,16 +507,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deadLetterMessageInSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                return new ServiceProviderAction<DeadLetterMessageInSessionActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> DeferMessageInSession(Expression<Func<string>> messageId, Expression<Func<string>> lockToken = null)
+        public IWorkflowAction<DeferMessageInSessionActionConfiguration> DeferMessageInSession(Expression<Func<string>> messageId, Expression<Func<string>> lockToken = null)
         {
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             var __workflow_lockToken = WorkflowExpression.Compile(lockToken, nameof(lockToken), required: false);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<DeferMessageInSessionActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(__workflow_messageId);
@@ -528,18 +530,18 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deferMessageInSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                return new ServiceProviderAction<DeferMessageInSessionActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IBodyWorkflowAction<GetDeferredMessageFromQueueSessionOutput> GetDeferredMessageFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sequenceNumber, Expression<Func<string>> sessionId = null, Expression<Func<bool>> acquireNewSession = null)
+        public IBodyWorkflowAction<GetDeferredMessageFromQueueSessionOutput, GetDeferredMessageFromQueueSessionActionConfiguration> GetDeferredMessageFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sequenceNumber, Expression<Func<string>> sessionId = null, Expression<Func<bool>> acquireNewSession = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_sequenceNumber = WorkflowExpression.Compile(sequenceNumber, nameof(sequenceNumber), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             var __workflow_acquireNewSession = WorkflowExpression.Compile(acquireNewSession, nameof(acquireNewSession), required: false);
-            return new DeferredBodyAction<GetDeferredMessageFromQueueSessionOutput>(() =>
+            return new DeferredBodyAction<GetDeferredMessageFromQueueSessionOutput, GetDeferredMessageFromQueueSessionActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -559,19 +561,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromQueueSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetDeferredMessageFromQueueSessionOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetDeferredMessageFromQueueSessionOutput, GetDeferredMessageFromQueueSessionActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IBodyWorkflowAction<GetDeferredMessageFromTopicSessionOutput> GetDeferredMessageFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sequenceNumber, Expression<Func<string>> sessionId = null, Expression<Func<bool>> acquireNewSession = null)
+        public IBodyWorkflowAction<GetDeferredMessageFromTopicSessionOutput, GetDeferredMessageFromTopicSessionActionConfiguration> GetDeferredMessageFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sequenceNumber, Expression<Func<string>> sessionId = null, Expression<Func<bool>> acquireNewSession = null)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_subscriptionName = WorkflowExpression.Compile(subscriptionName, nameof(subscriptionName), required: true);
             var __workflow_sequenceNumber = WorkflowExpression.Compile(sequenceNumber, nameof(sequenceNumber), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             var __workflow_acquireNewSession = WorkflowExpression.Compile(acquireNewSession, nameof(acquireNewSession), required: false);
-            return new DeferredBodyAction<GetDeferredMessageFromTopicSessionOutput>(() =>
+            return new DeferredBodyAction<GetDeferredMessageFromTopicSessionOutput, GetDeferredMessageFromTopicSessionActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
@@ -592,18 +594,18 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromTopicSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetDeferredMessageFromTopicSessionOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetDeferredMessageFromTopicSessionOutput, GetDeferredMessageFromTopicSessionActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IBodyWorkflowAction<GetMessagesFromQueueSessionOutputItem[]> GetMessagesFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId, Expression<Func<int>> maxMessages = null, Expression<Func<bool>> acquireNewSession = null)
+        public IBodyWorkflowAction<GetMessagesFromQueueSessionOutputItem[], GetMessagesFromQueueSessionActionConfiguration> GetMessagesFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId, Expression<Func<int>> maxMessages = null, Expression<Func<bool>> acquireNewSession = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
             var __workflow_maxMessages = WorkflowExpression.Compile(maxMessages, nameof(maxMessages), required: false);
             var __workflow_acquireNewSession = WorkflowExpression.Compile(acquireNewSession, nameof(acquireNewSession), required: false);
-            return new DeferredBodyAction<GetMessagesFromQueueSessionOutputItem[]>(() =>
+            return new DeferredBodyAction<GetMessagesFromQueueSessionOutputItem[], GetMessagesFromQueueSessionActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -623,19 +625,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getMessagesFromQueueSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetMessagesFromQueueSessionOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetMessagesFromQueueSessionOutputItem[], GetMessagesFromQueueSessionActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IBodyWorkflowAction<GetMessagesFromTopicSessionOutputItem[]> GetMessagesFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId, Expression<Func<int>> maxMessages = null, Expression<Func<bool>> acquireNewSession = null)
+        public IBodyWorkflowAction<GetMessagesFromTopicSessionOutputItem[], GetMessagesFromTopicSessionActionConfiguration> GetMessagesFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId, Expression<Func<int>> maxMessages = null, Expression<Func<bool>> acquireNewSession = null)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_subscriptionName = WorkflowExpression.Compile(subscriptionName, nameof(subscriptionName), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
             var __workflow_maxMessages = WorkflowExpression.Compile(maxMessages, nameof(maxMessages), required: false);
             var __workflow_acquireNewSession = WorkflowExpression.Compile(acquireNewSession, nameof(acquireNewSession), required: false);
-            return new DeferredBodyAction<GetMessagesFromTopicSessionOutputItem[]>(() =>
+            return new DeferredBodyAction<GetMessagesFromTopicSessionOutputItem[], GetMessagesFromTopicSessionActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
@@ -656,16 +658,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getMessagesFromTopicSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetMessagesFromTopicSessionOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetMessagesFromTopicSessionOutputItem[], GetMessagesFromTopicSessionActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> RenewQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId)
+        public IWorkflowAction<RenewQueueSessionActionConfiguration> RenewQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<RenewQueueSessionActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -675,17 +677,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewQueueSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                return new ServiceProviderAction<RenewQueueSessionActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> RenewTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId)
+        public IWorkflowAction<RenewTopicSessionActionConfiguration> RenewTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_subscriptionName = WorkflowExpression.Compile(subscriptionName, nameof(subscriptionName), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<RenewTopicSessionActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
@@ -696,16 +698,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewTopicSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                return new ServiceProviderAction<RenewTopicSessionActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> CloseQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId)
+        public IWorkflowAction<CloseQueueSessionActionConfiguration> CloseQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<CloseQueueSessionActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -715,17 +717,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "closeQueueSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                return new ServiceProviderAction<CloseQueueSessionActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> CloseTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId)
+        public IWorkflowAction<CloseTopicSessionActionConfiguration> CloseTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_subscriptionName = WorkflowExpression.Compile(subscriptionName, nameof(subscriptionName), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
-            return new DeferredOutputAction<JToken>(() =>
+            return new DeferredWorkflowAction<CloseTopicSessionActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
@@ -736,19 +738,267 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "closeTopicSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                return new ServiceProviderAction<CloseTopicSessionActionConfiguration>(serviceProviderInput);
             });
         }
     }
 
+    public sealed class SendMessageActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class SendMessagesActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class ReplicateMessagesActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class CompleteQueueMessageV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class AbandonQueueMessageV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class DeadLetterQueueMessageV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class RenewLockQueueMessageV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class DeferQueueMessageV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class GetDeferredMessageFromQueueV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class GetMessagesFromQueueV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class CompleteTopicMessageV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class AbandonTopicMessageV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class DeadLetterTopicMessageV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class RenewLockTopicMessageV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class DeferTopicMessageV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class GetDeferredMessageFromTopicV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class GetMessagesFromTopicV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class CreateTopicSubscriptionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class DeleteTopicSubscriptionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class CompleteMessageInSessionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class AbandonMessageInSessionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class DeadLetterMessageInSessionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class DeferMessageInSessionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class GetDeferredMessageFromQueueSessionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class GetDeferredMessageFromTopicSessionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class GetMessagesFromQueueSessionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class GetMessagesFromTopicSessionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class RenewQueueSessionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class RenewTopicSessionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class CloseQueueSessionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class CloseTopicSessionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
     public class ServiceBusTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ReceiveQueueMessagesOutputItem[]> ReceiveQueueMessages(Expression<Func<string>> queueName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null)
+        public IBodyWorkflowTrigger<ReceiveQueueMessagesOutputItem[], ReceiveQueueMessagesTriggerConfiguration> ReceiveQueueMessages(Expression<Func<string>> queueName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_isSessionsEnabled = WorkflowExpression.Compile(isSessionsEnabled, nameof(isSessionsEnabled), required: false);
             var __workflow_maxMessageBatchSize = WorkflowExpression.Compile(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
-            return new DeferredBodyTrigger<ReceiveQueueMessagesOutputItem[]>(() =>
+            return new DeferredBodyTrigger<ReceiveQueueMessagesOutputItem[], ReceiveQueueMessagesTriggerConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -771,17 +1021,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "receiveQueueMessages", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<ReceiveQueueMessagesOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyTrigger<ReceiveQueueMessagesOutputItem[], ReceiveQueueMessagesTriggerConfiguration>(serviceProviderInput);
             });
         }
 
-        public IBodyWorkflowTrigger<ReceiveTopicMessagesOutputItem[]> ReceiveTopicMessages(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null)
+        public IBodyWorkflowTrigger<ReceiveTopicMessagesOutputItem[], ReceiveTopicMessagesTriggerConfiguration> ReceiveTopicMessages(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_subscriptionName = WorkflowExpression.Compile(subscriptionName, nameof(subscriptionName), required: true);
             var __workflow_isSessionsEnabled = WorkflowExpression.Compile(isSessionsEnabled, nameof(isSessionsEnabled), required: false);
             var __workflow_maxMessageBatchSize = WorkflowExpression.Compile(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
-            return new DeferredBodyTrigger<ReceiveTopicMessagesOutputItem[]>(() =>
+            return new DeferredBodyTrigger<ReceiveTopicMessagesOutputItem[], ReceiveTopicMessagesTriggerConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
@@ -805,16 +1055,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "receiveTopicMessages", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<ReceiveTopicMessagesOutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyTrigger<ReceiveTopicMessagesOutputItem[], ReceiveTopicMessagesTriggerConfiguration>(serviceProviderInput);
             });
         }
 
-        public IOutputWorkflowTrigger<JToken> ReceiveQueueMessagesForReplication(Expression<Func<string>> queueName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null)
+        public IWorkflowTrigger<ReceiveQueueMessagesForReplicationTriggerConfiguration> ReceiveQueueMessagesForReplication(Expression<Func<string>> queueName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_isSessionsEnabled = WorkflowExpression.Compile(isSessionsEnabled, nameof(isSessionsEnabled), required: false);
             var __workflow_maxMessageBatchSize = WorkflowExpression.Compile(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
-            return new DeferredOutputTrigger<JToken>(() =>
+            return new DeferredWorkflowTrigger<ReceiveQueueMessagesForReplicationTriggerConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -837,17 +1087,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "receiveQueueMessagesForReplication", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputTrigger<JToken>(serviceProviderInput);
+                return new ServiceProviderTrigger<ReceiveQueueMessagesForReplicationTriggerConfiguration>(serviceProviderInput);
             });
         }
 
-        public IOutputWorkflowTrigger<JToken> ReceiveTopicMessagesForReplication(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null)
+        public IWorkflowTrigger<ReceiveTopicMessagesForReplicationTriggerConfiguration> ReceiveTopicMessagesForReplication(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_subscriptionName = WorkflowExpression.Compile(subscriptionName, nameof(subscriptionName), required: true);
             var __workflow_isSessionsEnabled = WorkflowExpression.Compile(isSessionsEnabled, nameof(isSessionsEnabled), required: false);
             var __workflow_maxMessageBatchSize = WorkflowExpression.Compile(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
-            return new DeferredOutputTrigger<JToken>(() =>
+            return new DeferredWorkflowTrigger<ReceiveTopicMessagesForReplicationTriggerConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
@@ -871,15 +1121,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "receiveTopicMessagesForReplication", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputTrigger<JToken>(serviceProviderInput);
+                return new ServiceProviderTrigger<ReceiveTopicMessagesForReplicationTriggerConfiguration>(serviceProviderInput);
             });
         }
 
-        public IBodyWorkflowTrigger<PeekLockQueueMessagesV2OutputItem[]> PeekLockQueueMessagesV2(Expression<Func<string>> queueName, Expression<Func<double>> maxMessageBatchSize = null)
+        public IBodyWorkflowTrigger<PeekLockQueueMessagesV2OutputItem[], PeekLockQueueMessagesV2TriggerConfiguration> PeekLockQueueMessagesV2(Expression<Func<string>> queueName, Expression<Func<double>> maxMessageBatchSize = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_maxMessageBatchSize = WorkflowExpression.Compile(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
-            return new DeferredBodyTrigger<PeekLockQueueMessagesV2OutputItem[]>(() =>
+            return new DeferredBodyTrigger<PeekLockQueueMessagesV2OutputItem[], PeekLockQueueMessagesV2TriggerConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -893,16 +1143,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "peekLockQueueMessagesV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<PeekLockQueueMessagesV2OutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyTrigger<PeekLockQueueMessagesV2OutputItem[], PeekLockQueueMessagesV2TriggerConfiguration>(serviceProviderInput);
             });
         }
 
-        public IBodyWorkflowTrigger<PeekLockTopicMessagesV2OutputItem[]> PeekLockTopicMessagesV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<double>> maxMessageBatchSize = null)
+        public IBodyWorkflowTrigger<PeekLockTopicMessagesV2OutputItem[], PeekLockTopicMessagesV2TriggerConfiguration> PeekLockTopicMessagesV2(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<double>> maxMessageBatchSize = null)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_subscriptionName = WorkflowExpression.Compile(subscriptionName, nameof(subscriptionName), required: true);
             var __workflow_maxMessageBatchSize = WorkflowExpression.Compile(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
-            return new DeferredBodyTrigger<PeekLockTopicMessagesV2OutputItem[]>(() =>
+            return new DeferredBodyTrigger<PeekLockTopicMessagesV2OutputItem[], PeekLockTopicMessagesV2TriggerConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
@@ -917,16 +1167,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "peekLockTopicMessagesV2", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<PeekLockTopicMessagesV2OutputItem[]>(serviceProviderInput);
+                return new ServiceProviderBodyTrigger<PeekLockTopicMessagesV2OutputItem[], PeekLockTopicMessagesV2TriggerConfiguration>(serviceProviderInput);
             });
         }
 
-        public IBodyWorkflowTrigger<OnNewMessagesFromQueueSessionOutputItem[]> OnNewMessagesFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId = null, Expression<Func<int>> maxMessages = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewMessagesFromQueueSessionOutputItem[], OnNewMessagesFromQueueSessionTriggerConfiguration> OnNewMessagesFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId = null, Expression<Func<int>> maxMessages = null, FlowRecurrence recurrence = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             var __workflow_maxMessages = WorkflowExpression.Compile(maxMessages, nameof(maxMessages), required: false);
-            return new DeferredBodyTrigger<OnNewMessagesFromQueueSessionOutputItem[]>(() =>
+            return new DeferredBodyTrigger<OnNewMessagesFromQueueSessionOutputItem[], OnNewMessagesFromQueueSessionTriggerConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -945,17 +1195,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "onNewMessagesFromQueueSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<OnNewMessagesFromQueueSessionOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<OnNewMessagesFromQueueSessionOutputItem[], OnNewMessagesFromQueueSessionTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<OnNewMessagesFromTopicSessionOutputItem[]> OnNewMessagesFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId = null, Expression<Func<int>> maxMessages = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewMessagesFromTopicSessionOutputItem[], OnNewMessagesFromTopicSessionTriggerConfiguration> OnNewMessagesFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId = null, Expression<Func<int>> maxMessages = null, FlowRecurrence recurrence = null)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_subscriptionName = WorkflowExpression.Compile(subscriptionName, nameof(subscriptionName), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             var __workflow_maxMessages = WorkflowExpression.Compile(maxMessages, nameof(maxMessages), required: false);
-            return new DeferredBodyTrigger<OnNewMessagesFromTopicSessionOutputItem[]>(() =>
+            return new DeferredBodyTrigger<OnNewMessagesFromTopicSessionOutputItem[], OnNewMessagesFromTopicSessionTriggerConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
@@ -975,15 +1225,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "onNewMessagesFromTopicSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<OnNewMessagesFromTopicSessionOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<OnNewMessagesFromTopicSessionOutputItem[], OnNewMessagesFromTopicSessionTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<OnSingleNewMessageFromQueueSessionOutput> OnSingleNewMessageFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnSingleNewMessageFromQueueSessionOutput, OnSingleNewMessageFromQueueSessionTriggerConfiguration> OnSingleNewMessageFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId = null, FlowRecurrence recurrence = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
-            return new DeferredBodyTrigger<OnSingleNewMessageFromQueueSessionOutput>(() =>
+            return new DeferredBodyTrigger<OnSingleNewMessageFromQueueSessionOutput, OnSingleNewMessageFromQueueSessionTriggerConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -997,16 +1247,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "onSingleNewMessageFromQueueSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<OnSingleNewMessageFromQueueSessionOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<OnSingleNewMessageFromQueueSessionOutput, OnSingleNewMessageFromQueueSessionTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<OnSingleNewMessageFromTopicSessionOutput> OnSingleNewMessageFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnSingleNewMessageFromTopicSessionOutput, OnSingleNewMessageFromTopicSessionTriggerConfiguration> OnSingleNewMessageFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId = null, FlowRecurrence recurrence = null)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_subscriptionName = WorkflowExpression.Compile(subscriptionName, nameof(subscriptionName), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
-            return new DeferredBodyTrigger<OnSingleNewMessageFromTopicSessionOutput>(() =>
+            return new DeferredBodyTrigger<OnSingleNewMessageFromTopicSessionOutput, OnSingleNewMessageFromTopicSessionTriggerConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
@@ -1021,9 +1271,103 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "onSingleNewMessageFromTopicSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderTrigger<OnSingleNewMessageFromTopicSessionOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<OnSingleNewMessageFromTopicSessionOutput, OnSingleNewMessageFromTopicSessionTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
             });
         }
+    }
+
+    public sealed class ReceiveQueueMessagesTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
+    {
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+        int? ITriggerConcurrencyConfiguration.ConcurrentRuns { get; set; }
+        int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
+        Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
+    }
+
+    public sealed class ReceiveTopicMessagesTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
+    {
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+        int? ITriggerConcurrencyConfiguration.ConcurrentRuns { get; set; }
+        int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
+        Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
+    }
+
+    public sealed class ReceiveQueueMessagesForReplicationTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
+    {
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+        int? ITriggerConcurrencyConfiguration.ConcurrentRuns { get; set; }
+        int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
+        Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
+    }
+
+    public sealed class ReceiveTopicMessagesForReplicationTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
+    {
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+        int? ITriggerConcurrencyConfiguration.ConcurrentRuns { get; set; }
+        int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
+        Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
+    }
+
+    public sealed class PeekLockQueueMessagesV2TriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
+    {
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+        int? ITriggerConcurrencyConfiguration.ConcurrentRuns { get; set; }
+        int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
+        Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
+    }
+
+    public sealed class PeekLockTopicMessagesV2TriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
+    {
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+        int? ITriggerConcurrencyConfiguration.ConcurrentRuns { get; set; }
+        int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
+        Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
+    }
+
+    public sealed class OnNewMessagesFromQueueSessionTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+        int? ITriggerConcurrencyConfiguration.ConcurrentRuns { get; set; }
+        int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
+        Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
+    }
+
+    public sealed class OnNewMessagesFromTopicSessionTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+        int? ITriggerConcurrencyConfiguration.ConcurrentRuns { get; set; }
+        int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
+        Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
+    }
+
+    public sealed class OnSingleNewMessageFromQueueSessionTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+        int? ITriggerConcurrencyConfiguration.ConcurrentRuns { get; set; }
+        int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
+        Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
+    }
+
+    public sealed class OnSingleNewMessageFromTopicSessionTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+        int? ITriggerConcurrencyConfiguration.ConcurrentRuns { get; set; }
+        int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
+        Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
     }
 
     public class ReceiveQueueMessagesOutputItem
@@ -1824,7 +2168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public string SequenceNumber { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum CreateTopicSubscriptionInputTopicSubscriptionFilterTypeType
     {
         None,

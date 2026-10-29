@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3bucket
     public class Amazons3bucketActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3bucket")]
-        public IBodyWorkflowAction<ListObjectsS3Response> ListObjectsS3(Expression<Func<string>> region, Expression<Func<string>> bucket, Expression<Func<string>> bucketlistType = null, Expression<Func<string>> continuationToken = null, Expression<Func<string>> delimiter = null, Expression<Func<string>> prefix = null, Expression<Func<string>> encodingType = null, Expression<Func<string>> fetchOwner = null, Expression<Func<double>> maxKeys = null, Expression<Func<string>> startAfter = null)
+        public IBodyWorkflowAction<ListObjectsS3Response, ApiConnectionActionConfiguration> ListObjectsS3(Expression<Func<string>> region, Expression<Func<string>> bucket, Expression<Func<string>> bucketlistType = null, Expression<Func<string>> continuationToken = null, Expression<Func<string>> delimiter = null, Expression<Func<string>> prefix = null, Expression<Func<string>> encodingType = null, Expression<Func<string>> fetchOwner = null, Expression<Func<double>> maxKeys = null, Expression<Func<string>> startAfter = null)
         {
             var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
             var __workflow_bucket = WorkflowExpression.Compile(bucket, nameof(bucket), required: true);
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3bucket
             var __workflow_fetchOwner = WorkflowExpression.Compile(fetchOwner, nameof(fetchOwner), required: false);
             var __workflow_maxKeys = WorkflowExpression.Compile(maxKeys, nameof(maxKeys), required: false);
             var __workflow_startAfter = WorkflowExpression.Compile(startAfter, nameof(startAfter), required: false);
-            return new DeferredBodyAction<ListObjectsS3Response>(() =>
+            return new DeferredBodyAction<ListObjectsS3Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/aws/s3/{0}/{1}", __workflow_region.WithUrlEncoding(1), __workflow_bucket.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -51,12 +51,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3bucket
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3bucket")]
-        public IWorkflowAction DeleteObjectS3(Expression<Func<string>> region, Expression<Func<string>> bucket, Expression<Func<string>> key)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteObjectS3(Expression<Func<string>> region, Expression<Func<string>> bucket, Expression<Func<string>> key)
         {
             var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
             var __workflow_bucket = WorkflowExpression.Compile(bucket, nameof(bucket), required: true);
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/aws/s3/{0}/{1}/{2}", __workflow_region.WithUrlEncoding(1), __workflow_bucket.WithUrlEncoding(1), __workflow_key.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -66,12 +66,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3bucket
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3bucket")]
-        public IWorkflowAction GetObjectS3(Expression<Func<string>> region, Expression<Func<string>> bucket, Expression<Func<string>> key)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetObjectS3(Expression<Func<string>> region, Expression<Func<string>> bucket, Expression<Func<string>> key)
         {
             var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
             var __workflow_bucket = WorkflowExpression.Compile(bucket, nameof(bucket), required: true);
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/aws/s3/{0}/{1}/{2}", __workflow_region.WithUrlEncoding(1), __workflow_bucket.WithUrlEncoding(1), __workflow_key.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -81,13 +81,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3bucket
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3bucket")]
-        public IWorkflowAction PutObjectS3(Expression<Func<string>> region, Expression<Func<string>> bucket, Expression<Func<string>> key, Expression<Func<string>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PutObjectS3(Expression<Func<string>> region, Expression<Func<string>> bucket, Expression<Func<string>> key, Expression<Func<string>> body = null)
         {
             var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
             var __workflow_bucket = WorkflowExpression.Compile(bucket, nameof(bucket), required: true);
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/aws/s3/{0}/{1}/{2}", __workflow_region.WithUrlEncoding(1), __workflow_bucket.WithUrlEncoding(1), __workflow_key.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";

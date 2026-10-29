@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
     public class FeatheryipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
-        public IBodyWorkflowAction<AccountGetResponse> AccountGet()
+        public IBodyWorkflowAction<AccountGetResponse, ApiConnectionActionConfiguration> AccountGet()
         {
             var apiCallPath = "/account/";
             var apiCallHttpMethod = "get";
@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
-        public IBodyWorkflowAction<FormGetResponse> FormGet(Expression<Func<string>> formId)
+        public IBodyWorkflowAction<FormGetResponse, ApiConnectionActionConfiguration> FormGet(Expression<Func<string>> formId)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
-            return new DeferredBodyAction<FormGetResponse>(() =>
+            return new DeferredBodyAction<FormGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/form/{0}/", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -34,13 +34,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
-        public IWorkflowAction Form(Expression<Func<string>> bodyformId = null, Expression<Func<string>> bodytemplateFormId = null, Expression<Func<bodystepsInputItem[]>> bodysteps = null, Expression<Func<bodynavigationRulesInputItem[]>> bodynavigationRules = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Form(Expression<Func<string>> bodyformId = null, Expression<Func<string>> bodytemplateFormId = null, Expression<Func<bodystepsInputItem[]>> bodysteps = null, Expression<Func<bodynavigationRulesInputItem[]>> bodynavigationRules = null)
         {
             var __workflow_bodyformId = WorkflowExpression.Compile(bodyformId, nameof(bodyformId), required: false);
             var __workflow_bodytemplateFormId = WorkflowExpression.Compile(bodytemplateFormId, nameof(bodytemplateFormId), required: false);
             var __workflow_bodysteps = WorkflowExpression.Compile(bodysteps, nameof(bodysteps), required: false);
             var __workflow_bodynavigationRules = WorkflowExpression.Compile(bodynavigationRules, nameof(bodynavigationRules), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/form/";
                 var apiCallHttpMethod = "post";
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
-        public IBodyWorkflowAction<UsersGetResponseItem[]> UsersGet()
+        public IBodyWorkflowAction<UsersGetResponseItem[], ApiConnectionActionConfiguration> UsersGet()
         {
             var apiCallPath = "/user";
             var apiCallHttpMethod = "get";
@@ -90,11 +90,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
-        public IBodyWorkflowAction<UserSessionGetResponse> UserSessionGet(Expression<Func<string>> userId, Expression<Func<string>> formKey)
+        public IBodyWorkflowAction<UserSessionGetResponse, ApiConnectionActionConfiguration> UserSessionGet(Expression<Func<string>> userId, Expression<Func<string>> formKey)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_formKey = WorkflowExpression.Compile(formKey, nameof(formKey), required: true);
-            return new DeferredBodyAction<UserSessionGetResponse>(() =>
+            return new DeferredBodyAction<UserSessionGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/user/{0}/session/{1}/", __workflow_userId.WithUrlEncoding(1), __workflow_formKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -104,11 +104,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
-        public IBodyWorkflowAction<UserPostResponse> User(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null)
+        public IBodyWorkflowAction<UserPostResponse, ApiConnectionActionConfiguration> User(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            return new DeferredBodyAction<UserPostResponse>(() =>
+            return new DeferredBodyAction<UserPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/user/";
                 var apiCallHttpMethod = "post";
@@ -133,10 +133,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
-        public IBodyWorkflowAction<string> UserDelete(Expression<Func<string>> id)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UserDelete(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/user/{0}/", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -146,10 +146,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
-        public IBodyWorkflowAction<UserFieldsGetResponseItem[]> UserFieldsGet(Expression<Func<string>> id = null)
+        public IBodyWorkflowAction<UserFieldsGetResponseItem[], ApiConnectionActionConfiguration> UserFieldsGet(Expression<Func<string>> id = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
-            return new DeferredBodyAction<UserFieldsGetResponseItem[]>(() =>
+            return new DeferredBodyAction<UserFieldsGetResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/field/";
                 var apiCallHttpMethod = "get";
@@ -161,12 +161,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
-        public IBodyWorkflowAction<UserFieldPostResponse> UserField(Expression<Func<string>> id, Expression<Func<string>> bodyfieldId = null, Expression<Func<string>> bodyvalue = null)
+        public IBodyWorkflowAction<UserFieldPostResponse, ApiConnectionActionConfiguration> UserField(Expression<Func<string>> id, Expression<Func<string>> bodyfieldId = null, Expression<Func<string>> bodyvalue = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyfieldId = WorkflowExpression.Compile(bodyfieldId, nameof(bodyfieldId), required: false);
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            return new DeferredBodyAction<UserFieldPostResponse>(() =>
+            return new DeferredBodyAction<UserFieldPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/field/{0}/", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";

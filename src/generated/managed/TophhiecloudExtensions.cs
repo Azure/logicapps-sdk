@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tophhiecloud
     public class TophhiecloudActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tophhiecloud")]
-        public IBodyWorkflowAction<TophhieCloudTenantInfoResponse> TophhieCloudTenantInfo(Expression<Func<string>> tenantID = null, Expression<Func<string>> domainName = null)
+        public IBodyWorkflowAction<TophhieCloudTenantInfoResponse, ApiConnectionActionConfiguration> TophhieCloudTenantInfo(Expression<Func<string>> tenantID = null, Expression<Func<string>> domainName = null)
         {
             var __workflow_tenantID = WorkflowExpression.Compile(tenantID, nameof(tenantID), required: false);
             var __workflow_domainName = WorkflowExpression.Compile(domainName, nameof(domainName), required: false);
-            return new DeferredBodyAction<TophhieCloudTenantInfoResponse>(() =>
+            return new DeferredBodyAction<TophhieCloudTenantInfoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tenantinfo";
                 var apiCallHttpMethod = "get";
@@ -30,10 +30,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tophhiecloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tophhiecloud")]
-        public IBodyWorkflowAction<TophhieCloudEntraIDIDConverterResponse> TophhieCloudEntraIDIDConverter(Expression<Func<string>> identifier)
+        public IBodyWorkflowAction<TophhieCloudEntraIDIDConverterResponse, ApiConnectionActionConfiguration> TophhieCloudEntraIDIDConverter(Expression<Func<string>> identifier)
         {
             var __workflow_identifier = WorkflowExpression.Compile(identifier, nameof(identifier), required: true);
-            return new DeferredBodyAction<TophhieCloudEntraIDIDConverterResponse>(() =>
+            return new DeferredBodyAction<TophhieCloudEntraIDIDConverterResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/entra/convertid/{0}", __workflow_identifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

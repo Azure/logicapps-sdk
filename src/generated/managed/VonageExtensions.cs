@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
     public class VonageActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
-        public IBodyWorkflowAction<VerifyRequestResponse> VerifyRequest(Expression<Func<formatInput>> format, Expression<Func<string>> apiKey, Expression<Func<string>> apiSecret, Expression<Func<string>> number, Expression<Func<string>> brand, Expression<Func<string>> country = null, Expression<Func<string>> senderId = null, Expression<Func<codeLengthInput>> codeLength = null, Expression<Func<lgInput>> lg = null, Expression<Func<int>> pinExpiry = null, Expression<Func<int>> nextEventWait = null, Expression<Func<workflowIdInput>> workflowId = null)
+        public IBodyWorkflowAction<VerifyRequestResponse, ApiConnectionActionConfiguration> VerifyRequest(Expression<Func<formatInput>> format, Expression<Func<string>> apiKey, Expression<Func<string>> apiSecret, Expression<Func<string>> number, Expression<Func<string>> brand, Expression<Func<string>> country = null, Expression<Func<string>> senderId = null, Expression<Func<codeLengthInput>> codeLength = null, Expression<Func<lgInput>> lg = null, Expression<Func<int>> pinExpiry = null, Expression<Func<int>> nextEventWait = null, Expression<Func<workflowIdInput>> workflowId = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
             var __workflow_pinExpiry = WorkflowExpression.Compile(pinExpiry, nameof(pinExpiry), required: false);
             var __workflow_nextEventWait = WorkflowExpression.Compile(nextEventWait, nameof(nextEventWait), required: false);
             var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: false);
-            return new DeferredBodyAction<VerifyRequestResponse>(() =>
+            return new DeferredBodyAction<VerifyRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/verify/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -36,14 +36,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
-        public IBodyWorkflowAction<VerifyCheckResponse> VerifyCheck(Expression<Func<formatInput>> format, Expression<Func<string>> apiKey, Expression<Func<string>> apiSecret, Expression<Func<string>> requestId, Expression<Func<string>> code)
+        public IBodyWorkflowAction<VerifyCheckResponse, ApiConnectionActionConfiguration> VerifyCheck(Expression<Func<formatInput>> format, Expression<Func<string>> apiKey, Expression<Func<string>> apiSecret, Expression<Func<string>> requestId, Expression<Func<string>> code)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
             var __workflow_apiSecret = WorkflowExpression.Compile(apiSecret, nameof(apiSecret), required: true);
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             var __workflow_code = WorkflowExpression.Compile(code, nameof(code), required: true);
-            return new DeferredBodyAction<VerifyCheckResponse>(() =>
+            return new DeferredBodyAction<VerifyCheckResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/verify/check/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -53,14 +53,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
-        public IBodyWorkflowAction<BasicNumberInsightResponse> BasicNumberInsight(Expression<Func<formatInput>> format, Expression<Func<string>> apiKey, Expression<Func<string>> apiSecret, Expression<Func<string>> number, Expression<Func<string>> country)
+        public IBodyWorkflowAction<BasicNumberInsightResponse, ApiConnectionActionConfiguration> BasicNumberInsight(Expression<Func<formatInput>> format, Expression<Func<string>> apiKey, Expression<Func<string>> apiSecret, Expression<Func<string>> number, Expression<Func<string>> country)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
             var __workflow_apiSecret = WorkflowExpression.Compile(apiSecret, nameof(apiSecret), required: true);
             var __workflow_number = WorkflowExpression.Compile(number, nameof(number), required: true);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
-            return new DeferredBodyAction<BasicNumberInsightResponse>(() =>
+            return new DeferredBodyAction<BasicNumberInsightResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ni/basic/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
-        public IBodyWorkflowAction<StandardNumberInsightResponse> StandardNumberInsight(Expression<Func<formatInput>> format, Expression<Func<string>> apiKey, Expression<Func<string>> apiSecret, Expression<Func<string>> number, Expression<Func<string>> country, Expression<Func<string>> cnam = null)
+        public IBodyWorkflowAction<StandardNumberInsightResponse, ApiConnectionActionConfiguration> StandardNumberInsight(Expression<Func<formatInput>> format, Expression<Func<string>> apiKey, Expression<Func<string>> apiSecret, Expression<Func<string>> number, Expression<Func<string>> country, Expression<Func<string>> cnam = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
             var __workflow_number = WorkflowExpression.Compile(number, nameof(number), required: true);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
             var __workflow_cnam = WorkflowExpression.Compile(cnam, nameof(cnam), required: false);
-            return new DeferredBodyAction<StandardNumberInsightResponse>(() =>
+            return new DeferredBodyAction<StandardNumberInsightResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ni/standard/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
     public class WithoutwireinventoryActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<GetWorkOrdersResponseItem[]> GetWorkOrders(Expression<Func<string>> orderNumber = null, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<orderStatusCodeInput>> orderStatusCode = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> parentOrderNumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<GetWorkOrdersResponseItem[], ApiConnectionActionConfiguration> GetWorkOrders(Expression<Func<string>> orderNumber = null, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<orderStatusCodeInput>> orderStatusCode = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> parentOrderNumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_orderNumber = WorkflowExpression.Compile(orderNumber, nameof(orderNumber), required: false);
             var __workflow_beginDate = WorkflowExpression.Compile(beginDate, nameof(beginDate), required: false);
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var __workflow_parentOrderNumber = WorkflowExpression.Compile(parentOrderNumber, nameof(parentOrderNumber), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: false);
-            return new DeferredBodyAction<GetWorkOrdersResponseItem[]>(() =>
+            return new DeferredBodyAction<GetWorkOrdersResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/workorder";
                 var apiCallHttpMethod = "get";
@@ -48,12 +48,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<CreateUpdateWorkOrderResponse> CreateUpdateWorkOrder(Expression<Func<bodyInputItem[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<CreateUpdateWorkOrderResponse, ApiConnectionActionConfiguration> CreateUpdateWorkOrder(Expression<Func<bodyInputItem[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: false);
-            return new DeferredBodyAction<CreateUpdateWorkOrderResponse>(() =>
+            return new DeferredBodyAction<CreateUpdateWorkOrderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/workorder";
                 var apiCallHttpMethod = "put";
@@ -68,12 +68,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<DeleteOrderResponse> DeleteOrder(Expression<Func<bodyInputItem2[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<DeleteOrderResponse, ApiConnectionActionConfiguration> DeleteOrder(Expression<Func<bodyInputItem2[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: false);
-            return new DeferredBodyAction<DeleteOrderResponse>(() =>
+            return new DeferredBodyAction<DeleteOrderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/order";
                 var apiCallHttpMethod = "delete";
@@ -90,12 +90,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<SetOrderCompleteResponse> SetOrderComplete(Expression<Func<bodyInputItem22[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<SetOrderCompleteResponse, ApiConnectionActionConfiguration> SetOrderComplete(Expression<Func<bodyInputItem22[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: false);
-            return new DeferredBodyAction<SetOrderCompleteResponse>(() =>
+            return new DeferredBodyAction<SetOrderCompleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/order/complete";
                 var apiCallHttpMethod = "put";
@@ -110,12 +110,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<SetOrderStatusResponse> SetOrderStatus(Expression<Func<bodyInputItem222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<SetOrderStatusResponse, ApiConnectionActionConfiguration> SetOrderStatus(Expression<Func<bodyInputItem222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: false);
-            return new DeferredBodyAction<SetOrderStatusResponse>(() =>
+            return new DeferredBodyAction<SetOrderStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/order/status";
                 var apiCallHttpMethod = "put";
@@ -130,12 +130,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<string> AssignOrder(Expression<Func<bodyInputItem2222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AssignOrder(Expression<Func<bodyInputItem2222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/order/assignment";
                 var apiCallHttpMethod = "put";
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<GetInventoryResponseItem[]> GetInventory(Expression<Func<string>> itemNumber = null, Expression<Func<string>> binNumber = null, Expression<Func<string>> allocationSetName = null, Expression<Func<string>> warehouseName = null, Expression<Func<string>> coreValue = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<GetInventoryResponseItem[], ApiConnectionActionConfiguration> GetInventory(Expression<Func<string>> itemNumber = null, Expression<Func<string>> binNumber = null, Expression<Func<string>> allocationSetName = null, Expression<Func<string>> warehouseName = null, Expression<Func<string>> coreValue = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_itemNumber = WorkflowExpression.Compile(itemNumber, nameof(itemNumber), required: false);
             var __workflow_binNumber = WorkflowExpression.Compile(binNumber, nameof(binNumber), required: false);
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var __workflow_coreValue = WorkflowExpression.Compile(coreValue, nameof(coreValue), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: false);
-            return new DeferredBodyAction<GetInventoryResponseItem[]>(() =>
+            return new DeferredBodyAction<GetInventoryResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/inventory";
                 var apiCallHttpMethod = "get";
@@ -183,12 +183,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<CreateInventoryRequestResponse> CreateInventoryRequest(Expression<Func<bodyInputItem22222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<CreateInventoryRequestResponse, ApiConnectionActionConfiguration> CreateInventoryRequest(Expression<Func<bodyInputItem22222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: false);
-            return new DeferredBodyAction<CreateInventoryRequestResponse>(() =>
+            return new DeferredBodyAction<CreateInventoryRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/inventory/request";
                 var apiCallHttpMethod = "post";
@@ -203,12 +203,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<CreateInventoryAdjustmentResponse> CreateInventoryAdjustment(Expression<Func<bodyInputItem222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<CreateInventoryAdjustmentResponse, ApiConnectionActionConfiguration> CreateInventoryAdjustment(Expression<Func<bodyInputItem222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: false);
-            return new DeferredBodyAction<CreateInventoryAdjustmentResponse>(() =>
+            return new DeferredBodyAction<CreateInventoryAdjustmentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/inventory/adjustment";
                 var apiCallHttpMethod = "put";
@@ -223,12 +223,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<DeleteInboundRequestResponse> DeleteInboundRequest(Expression<Func<bodyInputItem2222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<DeleteInboundRequestResponse, ApiConnectionActionConfiguration> DeleteInboundRequest(Expression<Func<bodyInputItem2222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: false);
-            return new DeferredBodyAction<DeleteInboundRequestResponse>(() =>
+            return new DeferredBodyAction<DeleteInboundRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/purchaseorder";
                 var apiCallHttpMethod = "delete";
@@ -245,12 +245,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<CreateInboundRequestResponse> CreateInboundRequest(Expression<Func<bodyInputItem22222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<CreateInboundRequestResponse, ApiConnectionActionConfiguration> CreateInboundRequest(Expression<Func<bodyInputItem22222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: false);
-            return new DeferredBodyAction<CreateInboundRequestResponse>(() =>
+            return new DeferredBodyAction<CreateInboundRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/purchaseorder";
                 var apiCallHttpMethod = "put";
@@ -265,12 +265,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<string> CreateSite(Expression<Func<string>> userName, Expression<Func<string>> warehouse, Expression<Func<bodyInputItem222222222[]>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateSite(Expression<Func<string>> userName, Expression<Func<string>> warehouse, Expression<Func<bodyInputItem222222222[]>> body = null)
         {
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/warehouse";
                 var apiCallHttpMethod = "put";
@@ -283,12 +283,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<CreateItemResponse> CreateItem(Expression<Func<bodyInputItem2222222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<CreateItemResponse, ApiConnectionActionConfiguration> CreateItem(Expression<Func<bodyInputItem2222222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: false);
-            return new DeferredBodyAction<CreateItemResponse>(() =>
+            return new DeferredBodyAction<CreateItemResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/item";
                 var apiCallHttpMethod = "put";
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<GetInboundRequestResponseItem[]> GetInboundRequest(Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<pOStatusInput>> pOStatus = null, Expression<Func<lineReceiptStatusInput>> lineReceiptStatus = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> pONumber = null, Expression<Func<string>> pOType = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<GetInboundRequestResponseItem[], ApiConnectionActionConfiguration> GetInboundRequest(Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<pOStatusInput>> pOStatus = null, Expression<Func<lineReceiptStatusInput>> lineReceiptStatus = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> pONumber = null, Expression<Func<string>> pOType = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_beginDate = WorkflowExpression.Compile(beginDate, nameof(beginDate), required: false);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var __workflow_pOType = WorkflowExpression.Compile(pOType, nameof(pOType), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: false);
-            return new DeferredBodyAction<GetInboundRequestResponseItem[]>(() =>
+            return new DeferredBodyAction<GetInboundRequestResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/purchaseorder/filter";
                 var apiCallHttpMethod = "get";
@@ -342,12 +342,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<InboundCompleteResponse> InboundComplete(Expression<Func<bodyInputItem22[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<InboundCompleteResponse, ApiConnectionActionConfiguration> InboundComplete(Expression<Func<bodyInputItem22[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: false);
-            return new DeferredBodyAction<InboundCompleteResponse>(() =>
+            return new DeferredBodyAction<InboundCompleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/purchaseorder/complete";
                 var apiCallHttpMethod = "put";
@@ -362,12 +362,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<CreateLocationResponse> CreateLocation(Expression<Func<bodyInputItem22222222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<CreateLocationResponse, ApiConnectionActionConfiguration> CreateLocation(Expression<Func<bodyInputItem22222222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: false);
-            return new DeferredBodyAction<CreateLocationResponse>(() =>
+            return new DeferredBodyAction<CreateLocationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/bins";
                 var apiCallHttpMethod = "put";
@@ -382,12 +382,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<ReceiptCompleteResponse> ReceiptComplete(Expression<Func<bodyInputItem222222222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<ReceiptCompleteResponse, ApiConnectionActionConfiguration> ReceiptComplete(Expression<Func<bodyInputItem222222222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: false);
-            return new DeferredBodyAction<ReceiptCompleteResponse>(() =>
+            return new DeferredBodyAction<ReceiptCompleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/purchaseorder/receipt/complete";
                 var apiCallHttpMethod = "put";
@@ -402,7 +402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<GetSalesOrdersResponseItem[]> GetSalesOrders(Expression<Func<string>> orderNumber = null, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<orderStatusCodeInput>> orderStatusCode = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> parentOrderNumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<GetSalesOrdersResponseItem[], ApiConnectionActionConfiguration> GetSalesOrders(Expression<Func<string>> orderNumber = null, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<orderStatusCodeInput>> orderStatusCode = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> parentOrderNumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_orderNumber = WorkflowExpression.Compile(orderNumber, nameof(orderNumber), required: false);
             var __workflow_beginDate = WorkflowExpression.Compile(beginDate, nameof(beginDate), required: false);
@@ -412,7 +412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var __workflow_parentOrderNumber = WorkflowExpression.Compile(parentOrderNumber, nameof(parentOrderNumber), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: false);
-            return new DeferredBodyAction<GetSalesOrdersResponseItem[]>(() =>
+            return new DeferredBodyAction<GetSalesOrdersResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/salesorder";
                 var apiCallHttpMethod = "get";
@@ -438,12 +438,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<CreateUpdateSalesOrderResponse> CreateUpdateSalesOrder(Expression<Func<bodyInputItem2222222222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<CreateUpdateSalesOrderResponse, ApiConnectionActionConfiguration> CreateUpdateSalesOrder(Expression<Func<bodyInputItem2222222222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: false);
-            return new DeferredBodyAction<CreateUpdateSalesOrderResponse>(() =>
+            return new DeferredBodyAction<CreateUpdateSalesOrderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/salesorder";
                 var apiCallHttpMethod = "put";
@@ -458,12 +458,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<string> ConsumeInventory(Expression<Func<string>> userName, Expression<Func<string>> warehouse, Expression<Func<bodyInputItem22222222222222[]>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConsumeInventory(Expression<Func<string>> userName, Expression<Func<string>> warehouse, Expression<Func<bodyInputItem22222222222222[]>> body = null)
         {
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/workorder/consumption";
                 var apiCallHttpMethod = "post";
@@ -476,12 +476,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<GetBarcodeInfoResponse> GetBarcodeInfo(Expression<Func<string>> barcode, Expression<Func<string>> userName, Expression<Func<string>> warehouse)
+        public IBodyWorkflowAction<GetBarcodeInfoResponse, ApiConnectionActionConfiguration> GetBarcodeInfo(Expression<Func<string>> barcode, Expression<Func<string>> userName, Expression<Func<string>> warehouse)
         {
             var __workflow_barcode = WorkflowExpression.Compile(barcode, nameof(barcode), required: true);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: true);
-            return new DeferredBodyAction<GetBarcodeInfoResponse>(() =>
+            return new DeferredBodyAction<GetBarcodeInfoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/barcode";
                 var apiCallHttpMethod = "get";
@@ -494,12 +494,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<SingleScanInventoryLookupResponseItem[]> SingleScanInventoryLookup(Expression<Func<string>> barcode, Expression<Func<string>> userName, Expression<Func<string>> warehouse)
+        public IBodyWorkflowAction<SingleScanInventoryLookupResponseItem[], ApiConnectionActionConfiguration> SingleScanInventoryLookup(Expression<Func<string>> barcode, Expression<Func<string>> userName, Expression<Func<string>> warehouse)
         {
             var __workflow_barcode = WorkflowExpression.Compile(barcode, nameof(barcode), required: true);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: true);
-            return new DeferredBodyAction<SingleScanInventoryLookupResponseItem[]>(() =>
+            return new DeferredBodyAction<SingleScanInventoryLookupResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/po/container";
                 var apiCallHttpMethod = "get";
@@ -512,7 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<GetTransferOrdersResponseItem[]> GetTransferOrders(Expression<Func<string>> orderNumber = null, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<orderStatusCodeInput>> orderStatusCode = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> parentOrderNumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<GetTransferOrdersResponseItem[], ApiConnectionActionConfiguration> GetTransferOrders(Expression<Func<string>> orderNumber = null, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<orderStatusCodeInput>> orderStatusCode = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> parentOrderNumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_orderNumber = WorkflowExpression.Compile(orderNumber, nameof(orderNumber), required: false);
             var __workflow_beginDate = WorkflowExpression.Compile(beginDate, nameof(beginDate), required: false);
@@ -522,7 +522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var __workflow_parentOrderNumber = WorkflowExpression.Compile(parentOrderNumber, nameof(parentOrderNumber), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: false);
-            return new DeferredBodyAction<GetTransferOrdersResponseItem[]>(() =>
+            return new DeferredBodyAction<GetTransferOrdersResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/transferorder";
                 var apiCallHttpMethod = "get";
@@ -548,12 +548,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<CreateUpdateTransferOrderResponse> CreateUpdateTransferOrder(Expression<Func<string>> userName, Expression<Func<string>> warehouse, Expression<Func<bodyInputItem222222222222222[]>> body = null)
+        public IBodyWorkflowAction<CreateUpdateTransferOrderResponse, ApiConnectionActionConfiguration> CreateUpdateTransferOrder(Expression<Func<string>> userName, Expression<Func<string>> warehouse, Expression<Func<bodyInputItem222222222222222[]>> body = null)
         {
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<CreateUpdateTransferOrderResponse>(() =>
+            return new DeferredBodyAction<CreateUpdateTransferOrderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/transferorder";
                 var apiCallHttpMethod = "put";
@@ -566,7 +566,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<GetPurchaseOrderResponseItem[]> GetPurchaseOrder(Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<pOStatusInput>> pOStatus = null, Expression<Func<lineReceiptStatusInput>> lineReceiptStatus = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> pONumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<GetPurchaseOrderResponseItem[], ApiConnectionActionConfiguration> GetPurchaseOrder(Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<pOStatusInput>> pOStatus = null, Expression<Func<lineReceiptStatusInput>> lineReceiptStatus = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> pONumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_beginDate = WorkflowExpression.Compile(beginDate, nameof(beginDate), required: false);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
@@ -576,7 +576,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var __workflow_pONumber = WorkflowExpression.Compile(pONumber, nameof(pONumber), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: false);
-            return new DeferredBodyAction<GetPurchaseOrderResponseItem[]>(() =>
+            return new DeferredBodyAction<GetPurchaseOrderResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/purchaseorder/po";
                 var apiCallHttpMethod = "get";
@@ -602,12 +602,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<CreatePurchaseOrderResponse> CreatePurchaseOrder(Expression<Func<string>> userName, Expression<Func<string>> warehouse, Expression<Func<bodyInputItem2222222222222222[]>> body = null)
+        public IBodyWorkflowAction<CreatePurchaseOrderResponse, ApiConnectionActionConfiguration> CreatePurchaseOrder(Expression<Func<string>> userName, Expression<Func<string>> warehouse, Expression<Func<bodyInputItem2222222222222222[]>> body = null)
         {
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<CreatePurchaseOrderResponse>(() =>
+            return new DeferredBodyAction<CreatePurchaseOrderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/purchaseorder/po";
                 var apiCallHttpMethod = "put";
@@ -620,7 +620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<GetManufacturingOrderResponseItem[]> GetManufacturingOrder(Expression<Func<string>> orderNumber = null, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<orderStatusCodeInput>> orderStatusCode = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> parentOrderNumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<GetManufacturingOrderResponseItem[], ApiConnectionActionConfiguration> GetManufacturingOrder(Expression<Func<string>> orderNumber = null, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<orderStatusCodeInput>> orderStatusCode = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> parentOrderNumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_orderNumber = WorkflowExpression.Compile(orderNumber, nameof(orderNumber), required: false);
             var __workflow_beginDate = WorkflowExpression.Compile(beginDate, nameof(beginDate), required: false);
@@ -630,7 +630,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
             var __workflow_parentOrderNumber = WorkflowExpression.Compile(parentOrderNumber, nameof(parentOrderNumber), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: false);
-            return new DeferredBodyAction<GetManufacturingOrderResponseItem[]>(() =>
+            return new DeferredBodyAction<GetManufacturingOrderResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/manufacturingorder";
                 var apiCallHttpMethod = "get";
@@ -656,12 +656,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<CreateUpdateManufacturingOrderResponse> CreateUpdateManufacturingOrder(Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null, Expression<Func<bodyInputItem22222222222222222[]>> body = null)
+        public IBodyWorkflowAction<CreateUpdateManufacturingOrderResponse, ApiConnectionActionConfiguration> CreateUpdateManufacturingOrder(Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null, Expression<Func<bodyInputItem22222222222222222[]>> body = null)
         {
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<CreateUpdateManufacturingOrderResponse>(() =>
+            return new DeferredBodyAction<CreateUpdateManufacturingOrderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/manufacturingorder";
                 var apiCallHttpMethod = "put";
@@ -676,14 +676,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<GetInventoryAggregateResponseItem[]> GetInventoryAggregate(Expression<Func<string>> itemNumber = null, Expression<Func<string>> warehouseName = null, Expression<Func<string>> allocationSetName = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<GetInventoryAggregateResponseItem[], ApiConnectionActionConfiguration> GetInventoryAggregate(Expression<Func<string>> itemNumber = null, Expression<Func<string>> warehouseName = null, Expression<Func<string>> allocationSetName = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_itemNumber = WorkflowExpression.Compile(itemNumber, nameof(itemNumber), required: false);
             var __workflow_warehouseName = WorkflowExpression.Compile(warehouseName, nameof(warehouseName), required: false);
             var __workflow_allocationSetName = WorkflowExpression.Compile(allocationSetName, nameof(allocationSetName), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: false);
-            return new DeferredBodyAction<GetInventoryAggregateResponseItem[]>(() =>
+            return new DeferredBodyAction<GetInventoryAggregateResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/inventory/quantity";
                 var apiCallHttpMethod = "get";

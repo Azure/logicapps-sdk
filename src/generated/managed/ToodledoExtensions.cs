@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
     public class ToodledoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]
-        public IBodyWorkflowAction<TaskObject[]> ListTasks(Expression<Func<int>> comp = null)
+        public IBodyWorkflowAction<TaskObject[], ApiConnectionActionConfiguration> ListTasks(Expression<Func<int>> comp = null)
         {
             var __workflow_comp = WorkflowExpression.Compile(comp, nameof(comp), required: false);
-            return new DeferredBodyAction<TaskObject[]>(() =>
+            return new DeferredBodyAction<TaskObject[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tasks/get.php";
                 var apiCallHttpMethod = "get";
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]
-        public IBodyWorkflowAction<TaskObject> CreateTask(Expression<Func<string>> tasktitle = null, Expression<Func<int>> taskfolderId = null, Expression<Func<int>> taskpriority = null, Expression<Func<string>> tasknote = null, Expression<Func<string>> taskdueDate = null, Expression<Func<string>> taskdueTime = null)
+        public IBodyWorkflowAction<TaskObject, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> tasktitle = null, Expression<Func<int>> taskfolderId = null, Expression<Func<int>> taskpriority = null, Expression<Func<string>> tasknote = null, Expression<Func<string>> taskdueDate = null, Expression<Func<string>> taskdueTime = null)
         {
             var __workflow_tasktitle = WorkflowExpression.Compile(tasktitle, nameof(tasktitle), required: false);
             var __workflow_taskfolderId = WorkflowExpression.Compile(taskfolderId, nameof(taskfolderId), required: false);
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
             var __workflow_tasknote = WorkflowExpression.Compile(tasknote, nameof(tasknote), required: false);
             var __workflow_taskdueDate = WorkflowExpression.Compile(taskdueDate, nameof(taskdueDate), required: false);
             var __workflow_taskdueTime = WorkflowExpression.Compile(taskdueTime, nameof(taskdueTime), required: false);
-            return new DeferredBodyAction<TaskObject>(() =>
+            return new DeferredBodyAction<TaskObject, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tasks/add.php";
                 var apiCallHttpMethod = "post";
@@ -89,10 +89,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]
-        public IBodyWorkflowAction<TaskObject> GetTaskById(Expression<Func<int>> id)
+        public IBodyWorkflowAction<TaskObject, ApiConnectionActionConfiguration> GetTaskById(Expression<Func<int>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<TaskObject>(() =>
+            return new DeferredBodyAction<TaskObject, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tasks/getById.php";
                 var apiCallHttpMethod = "get";
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]
-        public IBodyWorkflowAction<TaskObject> UpdateTask(Expression<Func<int>> taskid = null, Expression<Func<string>> tasktitle = null, Expression<Func<string>> taskcompleted = null, Expression<Func<string>> taskdueDate = null, Expression<Func<string>> taskdueTime = null, Expression<Func<string>> tasknote = null, Expression<Func<int>> taskpriority = null, Expression<Func<int>> taskfolder = null, Expression<Func<string>> taskmodified = null)
+        public IBodyWorkflowAction<TaskObject, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<int>> taskid = null, Expression<Func<string>> tasktitle = null, Expression<Func<string>> taskcompleted = null, Expression<Func<string>> taskdueDate = null, Expression<Func<string>> taskdueTime = null, Expression<Func<string>> tasknote = null, Expression<Func<int>> taskpriority = null, Expression<Func<int>> taskfolder = null, Expression<Func<string>> taskmodified = null)
         {
             var __workflow_taskid = WorkflowExpression.Compile(taskid, nameof(taskid), required: false);
             var __workflow_tasktitle = WorkflowExpression.Compile(tasktitle, nameof(tasktitle), required: false);
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
             var __workflow_taskpriority = WorkflowExpression.Compile(taskpriority, nameof(taskpriority), required: false);
             var __workflow_taskfolder = WorkflowExpression.Compile(taskfolder, nameof(taskfolder), required: false);
             var __workflow_taskmodified = WorkflowExpression.Compile(taskmodified, nameof(taskmodified), required: false);
-            return new DeferredBodyAction<TaskObject>(() =>
+            return new DeferredBodyAction<TaskObject, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tasks/edit.php";
                 var apiCallHttpMethod = "post";
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]
-        public IBodyWorkflowAction<Folder[]> GetFolders()
+        public IBodyWorkflowAction<Folder[], ApiConnectionActionConfiguration> GetFolders()
         {
             var apiCallPath = "/folders/get.php";
             var apiCallHttpMethod = "get";
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
 
     public class ToodledoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TaskObject[]> TrigOnNewTask(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TaskObject[], ApiConnectionTriggerConfiguration> TrigOnNewTask(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/tasks/get.php";
             var apiCallHttpMethod = "get";

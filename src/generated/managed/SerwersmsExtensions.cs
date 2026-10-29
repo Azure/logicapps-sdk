@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
     public class SerwersmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serwersms")]
-        public IBodyWorkflowAction<AddBlacklistResponse> AddBlacklist(Expression<Func<string>> bodyphone)
+        public IBodyWorkflowAction<AddBlacklistResponse, ApiConnectionActionConfiguration> AddBlacklist(Expression<Func<string>> bodyphone)
         {
             var __workflow_bodyphone = WorkflowExpression.Compile(bodyphone, nameof(bodyphone), required: true);
-            return new DeferredBodyAction<AddBlacklistResponse>(() =>
+            return new DeferredBodyAction<AddBlacklistResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/action/add_blacklist";
                 var apiCallHttpMethod = "post";
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serwersms")]
-        public IBodyWorkflowAction<AddContactResponse> AddContact(Expression<Func<string>> bodyphone, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodytaxId = null)
+        public IBodyWorkflowAction<AddContactResponse, ApiConnectionActionConfiguration> AddContact(Expression<Func<string>> bodyphone, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodytaxId = null)
         {
             var __workflow_bodyphone = WorkflowExpression.Compile(bodyphone, nameof(bodyphone), required: true);
             var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: false);
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
             var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: false);
             var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
             var __workflow_bodytaxId = WorkflowExpression.Compile(bodytaxId, nameof(bodytaxId), required: false);
-            return new DeferredBodyAction<AddContactResponse>(() =>
+            return new DeferredBodyAction<AddContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/action/add_contact";
                 var apiCallHttpMethod = "post";
@@ -119,14 +119,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serwersms")]
-        public IBodyWorkflowAction<SendSmsResponse> SendSms(Expression<Func<string>> bodymessage, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodysender = null, Expression<Func<bool>> bodyutf = null)
+        public IBodyWorkflowAction<SendSmsResponse, ApiConnectionActionConfiguration> SendSms(Expression<Func<string>> bodymessage, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodysender = null, Expression<Func<bool>> bodyutf = null)
         {
             var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
             var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: false);
             var __workflow_bodyphone = WorkflowExpression.Compile(bodyphone, nameof(bodyphone), required: false);
             var __workflow_bodysender = WorkflowExpression.Compile(bodysender, nameof(bodysender), required: false);
             var __workflow_bodyutf = WorkflowExpression.Compile(bodyutf, nameof(bodyutf), required: false);
-            return new DeferredBodyAction<SendSmsResponse>(() =>
+            return new DeferredBodyAction<SendSmsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/action/send_sms";
                 var apiCallHttpMethod = "post";
@@ -171,10 +171,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
 
     public class SerwersmsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NewAnswerResponse> NewAnswer(Expression<Func<bodytypeInput>> bodytype, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewAnswerResponse, ApiConnectionTriggerConfiguration> NewAnswer(Expression<Func<bodytypeInput>> bodytype, FlowRecurrence recurrence = null)
         {
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            return new DeferredBodyTrigger<NewAnswerResponse>(() =>
+            return new DeferredBodyTrigger<NewAnswerResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/get_answer";
                 var apiCallHttpMethod = "post";

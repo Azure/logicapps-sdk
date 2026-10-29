@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Affirmationsip
     public class AffirmationsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "affirmationsip")]
-        public IBodyWorkflowAction<AffirmationResponse> Affirmation()
+        public IBodyWorkflowAction<AffirmationResponse, ApiConnectionActionConfiguration> Affirmation()
         {
             var apiCallPath = "/";
             var apiCallHttpMethod = "get";

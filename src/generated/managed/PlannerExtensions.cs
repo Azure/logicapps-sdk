@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
     public class PlannerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        public IWorkflowAction DeleteTask(Expression<Func<string>> id)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteTask(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/planner/tasks/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -25,11 +25,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        public IBodyWorkflowAction<GetTaskResponseV2> UnassignUsers(Expression<Func<string>> id, Expression<Func<string>> bodyremoveAssignedUsers)
+        public IBodyWorkflowAction<GetTaskResponseV2, ApiConnectionActionConfiguration> UnassignUsers(Expression<Func<string>> id, Expression<Func<string>> bodyremoveAssignedUsers)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyremoveAssignedUsers = WorkflowExpression.Compile(bodyremoveAssignedUsers, nameof(bodyremoveAssignedUsers), required: true);
-            return new DeferredBodyAction<GetTaskResponseV2>(() =>
+            return new DeferredBodyAction<GetTaskResponseV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/planner/tasks/{0}/unassignusers", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -49,11 +49,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        public IBodyWorkflowAction<GetTaskResponseV2> AssignUsers(Expression<Func<string>> id, Expression<Func<string>> bodyassignedUserIds)
+        public IBodyWorkflowAction<GetTaskResponseV2, ApiConnectionActionConfiguration> AssignUsers(Expression<Func<string>> id, Expression<Func<string>> bodyassignedUserIds)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyassignedUserIds = WorkflowExpression.Compile(bodyassignedUserIds, nameof(bodyassignedUserIds), required: true);
-            return new DeferredBodyAction<GetTaskResponseV2>(() =>
+            return new DeferredBodyAction<GetTaskResponseV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/planner/tasks/{0}/assignusers", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -73,10 +73,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        public IBodyWorkflowAction<ListMyPlansResponse> ListGroupPlans(Expression<Func<string>> groupId)
+        public IBodyWorkflowAction<ListMyPlansResponse, ApiConnectionActionConfiguration> ListGroupPlans(Expression<Func<string>> groupId)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
-            return new DeferredBodyAction<ListMyPlansResponse>(() =>
+            return new DeferredBodyAction<ListMyPlansResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/groups/{0}/planner/plans", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -86,12 +86,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        public IBodyWorkflowAction<CreateBucketResponse> CreateBucket(Expression<Func<string>> bodyname, Expression<Func<string>> bodygroupId, Expression<Func<string>> bodyplanId)
+        public IBodyWorkflowAction<CreateBucketResponse, ApiConnectionActionConfiguration> CreateBucket(Expression<Func<string>> bodyname, Expression<Func<string>> bodygroupId, Expression<Func<string>> bodyplanId)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: true);
             var __workflow_bodyplanId = WorkflowExpression.Compile(bodyplanId, nameof(bodyplanId), required: true);
-            return new DeferredBodyAction<CreateBucketResponse>(() =>
+            return new DeferredBodyAction<CreateBucketResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/v1.0/planner/buckets";
                 var apiCallHttpMethod = "post";
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        public IBodyWorkflowAction<GetTaskResponseV3> CreateTask(Expression<Func<string>> bodygroupId, Expression<Func<string>> bodyplanId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodybucketId = null, Expression<Func<string>> bodystartDateTime = null, Expression<Func<string>> bodydueDateTime = null, Expression<Func<string>> bodyassignedUserIds = null, Expression<Func<bool>> bodyappliedCategoriespink = null, Expression<Func<bool>> bodyappliedCategoriesred = null, Expression<Func<bool>> bodyappliedCategoriesyellow = null, Expression<Func<bool>> bodyappliedCategoriesgreen = null, Expression<Func<bool>> bodyappliedCategoriesblue = null, Expression<Func<bool>> bodyappliedCategoriespurple = null, Expression<Func<bool>> bodyappliedCategoriesbronze = null, Expression<Func<bool>> bodyappliedCategorieslime = null, Expression<Func<bool>> bodyappliedCategoriesaqua = null, Expression<Func<bool>> bodyappliedCategoriesgray = null, Expression<Func<bool>> bodyappliedCategoriessilver = null, Expression<Func<bool>> bodyappliedCategoriesbrown = null, Expression<Func<bool>> bodyappliedCategoriescranberry = null, Expression<Func<bool>> bodyappliedCategoriesorange = null, Expression<Func<bool>> bodyappliedCategoriespeach = null, Expression<Func<bool>> bodyappliedCategoriesmarigold = null, Expression<Func<bool>> bodyappliedCategorieslightGreen = null, Expression<Func<bool>> bodyappliedCategoriesdarkGreen = null, Expression<Func<bool>> bodyappliedCategoriesteal = null, Expression<Func<bool>> bodyappliedCategorieslightBlue = null, Expression<Func<bool>> bodyappliedCategoriesdarkBlue = null, Expression<Func<bool>> bodyappliedCategorieslavender = null, Expression<Func<bool>> bodyappliedCategoriesplum = null, Expression<Func<bool>> bodyappliedCategorieslightGray = null, Expression<Func<bool>> bodyappliedCategoriesdarkGray = null, Expression<Func<int>> bodypriority = null)
+        public IBodyWorkflowAction<GetTaskResponseV3, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> bodygroupId, Expression<Func<string>> bodyplanId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodybucketId = null, Expression<Func<string>> bodystartDateTime = null, Expression<Func<string>> bodydueDateTime = null, Expression<Func<string>> bodyassignedUserIds = null, Expression<Func<bool>> bodyappliedCategoriespink = null, Expression<Func<bool>> bodyappliedCategoriesred = null, Expression<Func<bool>> bodyappliedCategoriesyellow = null, Expression<Func<bool>> bodyappliedCategoriesgreen = null, Expression<Func<bool>> bodyappliedCategoriesblue = null, Expression<Func<bool>> bodyappliedCategoriespurple = null, Expression<Func<bool>> bodyappliedCategoriesbronze = null, Expression<Func<bool>> bodyappliedCategorieslime = null, Expression<Func<bool>> bodyappliedCategoriesaqua = null, Expression<Func<bool>> bodyappliedCategoriesgray = null, Expression<Func<bool>> bodyappliedCategoriessilver = null, Expression<Func<bool>> bodyappliedCategoriesbrown = null, Expression<Func<bool>> bodyappliedCategoriescranberry = null, Expression<Func<bool>> bodyappliedCategoriesorange = null, Expression<Func<bool>> bodyappliedCategoriespeach = null, Expression<Func<bool>> bodyappliedCategoriesmarigold = null, Expression<Func<bool>> bodyappliedCategorieslightGreen = null, Expression<Func<bool>> bodyappliedCategoriesdarkGreen = null, Expression<Func<bool>> bodyappliedCategoriesteal = null, Expression<Func<bool>> bodyappliedCategorieslightBlue = null, Expression<Func<bool>> bodyappliedCategoriesdarkBlue = null, Expression<Func<bool>> bodyappliedCategorieslavender = null, Expression<Func<bool>> bodyappliedCategoriesplum = null, Expression<Func<bool>> bodyappliedCategorieslightGray = null, Expression<Func<bool>> bodyappliedCategoriesdarkGray = null, Expression<Func<int>> bodypriority = null)
         {
             var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: true);
             var __workflow_bodyplanId = WorkflowExpression.Compile(bodyplanId, nameof(bodyplanId), required: true);
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
             var __workflow_bodyappliedCategorieslightGray = WorkflowExpression.Compile(bodyappliedCategorieslightGray, nameof(bodyappliedCategorieslightGray), required: false);
             var __workflow_bodyappliedCategoriesdarkGray = WorkflowExpression.Compile(bodyappliedCategoriesdarkGray, nameof(bodyappliedCategoriesdarkGray), required: false);
             var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
-            return new DeferredBodyAction<GetTaskResponseV3>(() =>
+            return new DeferredBodyAction<GetTaskResponseV3, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/beta/planner/tasks";
                 var apiCallHttpMethod = "post";
@@ -361,10 +361,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        public IBodyWorkflowAction<GetTaskResponseV2> GetTask(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetTaskResponseV2, ApiConnectionActionConfiguration> GetTask(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GetTaskResponseV2>(() =>
+            return new DeferredBodyAction<GetTaskResponseV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/planner/tasks/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -374,10 +374,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        public IBodyWorkflowAction<GetTaskDetailsResponse> GetTaskDetails(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetTaskDetailsResponse, ApiConnectionActionConfiguration> GetTaskDetails(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GetTaskDetailsResponse>(() =>
+            return new DeferredBodyAction<GetTaskDetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/planner/tasks/{0}/details", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -387,11 +387,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        public IBodyWorkflowAction<ListBucketsResponse> ListBuckets(Expression<Func<string>> groupId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<ListBucketsResponse, ApiConnectionActionConfiguration> ListBuckets(Expression<Func<string>> groupId, Expression<Func<string>> id)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ListBucketsResponse>(() =>
+            return new DeferredBodyAction<ListBucketsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/v1.0/planner/plans/{0}/buckets", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -402,7 +402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        public IBodyWorkflowAction<ListTasksResponseV2> ListMyTasks()
+        public IBodyWorkflowAction<ListTasksResponseV2, ApiConnectionActionConfiguration> ListMyTasks()
         {
             var apiCallPath = "/v1.0/me/planner/tasks";
             var apiCallHttpMethod = "get";
@@ -411,11 +411,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        public IBodyWorkflowAction<ListTasksResponseV2> ListTasks(Expression<Func<string>> groupId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<ListTasksResponseV2, ApiConnectionActionConfiguration> ListTasks(Expression<Func<string>> groupId, Expression<Func<string>> id)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ListTasksResponseV2>(() =>
+            return new DeferredBodyAction<ListTasksResponseV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/v1.0/planner/plans/{0}/tasks", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -426,7 +426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        public IBodyWorkflowAction<GetTaskResponseV2> UpdateTask(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydueDateTime = null, Expression<Func<string>> bodystartDateTime = null, Expression<Func<int>> bodypercentComplete = null, Expression<Func<string>> bodybucketId = null, Expression<Func<bool>> bodyappliedCategoriespink = null, Expression<Func<bool>> bodyappliedCategoriesred = null, Expression<Func<bool>> bodyappliedCategoriesyellow = null, Expression<Func<bool>> bodyappliedCategoriesgreen = null, Expression<Func<bool>> bodyappliedCategoriesblue = null, Expression<Func<bool>> bodyappliedCategoriespurple = null, Expression<Func<bool>> bodyappliedCategoriesbronze = null, Expression<Func<bool>> bodyappliedCategorieslime = null, Expression<Func<bool>> bodyappliedCategoriesaqua = null, Expression<Func<bool>> bodyappliedCategoriesgray = null, Expression<Func<bool>> bodyappliedCategoriessilver = null, Expression<Func<bool>> bodyappliedCategoriesbrown = null, Expression<Func<bool>> bodyappliedCategoriescranberry = null, Expression<Func<bool>> bodyappliedCategoriesorange = null, Expression<Func<bool>> bodyappliedCategoriespeach = null, Expression<Func<bool>> bodyappliedCategoriesmarigold = null, Expression<Func<bool>> bodyappliedCategorieslightGreen = null, Expression<Func<bool>> bodyappliedCategoriesdarkGreen = null, Expression<Func<bool>> bodyappliedCategoriesteal = null, Expression<Func<bool>> bodyappliedCategorieslightBlue = null, Expression<Func<bool>> bodyappliedCategoriesdarkBlue = null, Expression<Func<bool>> bodyappliedCategorieslavender = null, Expression<Func<bool>> bodyappliedCategoriesplum = null, Expression<Func<bool>> bodyappliedCategorieslightGray = null, Expression<Func<bool>> bodyappliedCategoriesdarkGray = null)
+        public IBodyWorkflowAction<GetTaskResponseV2, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydueDateTime = null, Expression<Func<string>> bodystartDateTime = null, Expression<Func<int>> bodypercentComplete = null, Expression<Func<string>> bodybucketId = null, Expression<Func<bool>> bodyappliedCategoriespink = null, Expression<Func<bool>> bodyappliedCategoriesred = null, Expression<Func<bool>> bodyappliedCategoriesyellow = null, Expression<Func<bool>> bodyappliedCategoriesgreen = null, Expression<Func<bool>> bodyappliedCategoriesblue = null, Expression<Func<bool>> bodyappliedCategoriespurple = null, Expression<Func<bool>> bodyappliedCategoriesbronze = null, Expression<Func<bool>> bodyappliedCategorieslime = null, Expression<Func<bool>> bodyappliedCategoriesaqua = null, Expression<Func<bool>> bodyappliedCategoriesgray = null, Expression<Func<bool>> bodyappliedCategoriessilver = null, Expression<Func<bool>> bodyappliedCategoriesbrown = null, Expression<Func<bool>> bodyappliedCategoriescranberry = null, Expression<Func<bool>> bodyappliedCategoriesorange = null, Expression<Func<bool>> bodyappliedCategoriespeach = null, Expression<Func<bool>> bodyappliedCategoriesmarigold = null, Expression<Func<bool>> bodyappliedCategorieslightGreen = null, Expression<Func<bool>> bodyappliedCategoriesdarkGreen = null, Expression<Func<bool>> bodyappliedCategoriesteal = null, Expression<Func<bool>> bodyappliedCategorieslightBlue = null, Expression<Func<bool>> bodyappliedCategoriesdarkBlue = null, Expression<Func<bool>> bodyappliedCategorieslavender = null, Expression<Func<bool>> bodyappliedCategoriesplum = null, Expression<Func<bool>> bodyappliedCategorieslightGray = null, Expression<Func<bool>> bodyappliedCategoriesdarkGray = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
@@ -459,7 +459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
             var __workflow_bodyappliedCategoriesplum = WorkflowExpression.Compile(bodyappliedCategoriesplum, nameof(bodyappliedCategoriesplum), required: false);
             var __workflow_bodyappliedCategorieslightGray = WorkflowExpression.Compile(bodyappliedCategorieslightGray, nameof(bodyappliedCategorieslightGray), required: false);
             var __workflow_bodyappliedCategoriesdarkGray = WorkflowExpression.Compile(bodyappliedCategoriesdarkGray, nameof(bodyappliedCategoriesdarkGray), required: false);
-            return new DeferredBodyAction<GetTaskResponseV2>(() =>
+            return new DeferredBodyAction<GetTaskResponseV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/v1.0/planner/tasks/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -665,13 +665,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        public IBodyWorkflowAction<GetTaskDetailsResponse> UpdateTaskDetails(Expression<Func<string>> id, Expression<Func<string>> bodydescription = null, Expression<Func<bodyreferencesInputItem[]>> bodyreferences = null, Expression<Func<bodychecklistInputItem[]>> bodychecklist = null)
+        public IBodyWorkflowAction<GetTaskDetailsResponse, ApiConnectionActionConfiguration> UpdateTaskDetails(Expression<Func<string>> id, Expression<Func<string>> bodydescription = null, Expression<Func<bodyreferencesInputItem[]>> bodyreferences = null, Expression<Func<bodychecklistInputItem[]>> bodychecklist = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
             var __workflow_bodyreferences = WorkflowExpression.Compile(bodyreferences, nameof(bodyreferences), required: false);
             var __workflow_bodychecklist = WorkflowExpression.Compile(bodychecklist, nameof(bodychecklist), required: false);
-            return new DeferredBodyAction<GetTaskDetailsResponse>(() =>
+            return new DeferredBodyAction<GetTaskDetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/planner/tasks/{0}/details", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -709,11 +709,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
 
     public class PlannerTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListTasksResponseV2> OnCompleteTask(Expression<Func<string>> groupId, Expression<Func<string>> id, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2, ApiConnectionTriggerConfiguration> OnCompleteTask(Expression<Func<string>> groupId, Expression<Func<string>> id, FlowRecurrence recurrence = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyTrigger<ListTasksResponseV2>(() =>
+            return new DeferredBodyTrigger<ListTasksResponseV2, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/v1.0/planner/oncompletetask_trigger/plans/{0}/tasks", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -723,11 +723,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
             });
         }
 
-        public IBodyWorkflowTrigger<ListTasksResponseV2> OnNewTask(Expression<Func<string>> groupId, Expression<Func<string>> id, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2, ApiConnectionTriggerConfiguration> OnNewTask(Expression<Func<string>> groupId, Expression<Func<string>> id, FlowRecurrence recurrence = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyTrigger<ListTasksResponseV2>(() =>
+            return new DeferredBodyTrigger<ListTasksResponseV2, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/v1.0/planner/onnewtask_trigger/plans/{0}/tasks", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -737,7 +737,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
             });
         }
 
-        public IBodyWorkflowTrigger<ListTasksResponseV2> OnTaskAssignedToMe(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2, ApiConnectionTriggerConfiguration> OnTaskAssignedToMe(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1.0/me/planner/ontaskassignedtome_trigger/tasks";
             var apiCallHttpMethod = "get";

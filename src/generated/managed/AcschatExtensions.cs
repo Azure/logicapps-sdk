@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
     public class AcschatActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
-        public IBodyWorkflowAction<ListMessagesResponse> ListMessages(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<string>> startTime = null, Expression<Func<string>> maxPageSize = null)
+        public IBodyWorkflowAction<ListMessagesResponse, ApiConnectionActionConfiguration> ListMessages(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<string>> startTime = null, Expression<Func<string>> maxPageSize = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
             var __workflow_chatThreadId = WorkflowExpression.Compile(chatThreadId, nameof(chatThreadId), required: true);
             var __workflow_startTime = WorkflowExpression.Compile(startTime, nameof(startTime), required: false);
             var __workflow_maxPageSize = WorkflowExpression.Compile(maxPageSize, nameof(maxPageSize), required: false);
-            return new DeferredBodyAction<ListMessagesResponse>(() =>
+            return new DeferredBodyAction<ListMessagesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}/messages", __workflow_chatThreadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -34,13 +34,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
-        public IBodyWorkflowAction<SendChatResponse> SendChat(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<string>> bodycontent, Expression<Func<string>> bodysenderDisplayName)
+        public IBodyWorkflowAction<SendChatResponse, ApiConnectionActionConfiguration> SendChat(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<string>> bodycontent, Expression<Func<string>> bodysenderDisplayName)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
             var __workflow_chatThreadId = WorkflowExpression.Compile(chatThreadId, nameof(chatThreadId), required: true);
             var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: true);
             var __workflow_bodysenderDisplayName = WorkflowExpression.Compile(bodysenderDisplayName, nameof(bodysenderDisplayName), required: true);
-            return new DeferredBodyAction<SendChatResponse>(() =>
+            return new DeferredBodyAction<SendChatResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}/messages", __workflow_chatThreadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -63,12 +63,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
-        public IBodyWorkflowAction<AddParticipantsResponse> AddParticipants(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<bodyparticipantsInputItem[]>> bodyparticipants = null)
+        public IBodyWorkflowAction<AddParticipantsResponse, ApiConnectionActionConfiguration> AddParticipants(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<bodyparticipantsInputItem[]>> bodyparticipants = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
             var __workflow_chatThreadId = WorkflowExpression.Compile(chatThreadId, nameof(chatThreadId), required: true);
             var __workflow_bodyparticipants = WorkflowExpression.Compile(bodyparticipants, nameof(bodyparticipants), required: false);
-            return new DeferredBodyAction<AddParticipantsResponse>(() =>
+            return new DeferredBodyAction<AddParticipantsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}/participants/:add", __workflow_chatThreadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -93,12 +93,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
-        public IWorkflowAction RemoveParticipant(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<string>> bodycommunicationUseruserID = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RemoveParticipant(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<string>> bodycommunicationUseruserID = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
             var __workflow_chatThreadId = WorkflowExpression.Compile(chatThreadId, nameof(chatThreadId), required: true);
             var __workflow_bodycommunicationUseruserID = WorkflowExpression.Compile(bodycommunicationUseruserID, nameof(bodycommunicationUseruserID), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}/participants/:remove", __workflow_chatThreadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -131,12 +131,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
-        public IBodyWorkflowAction<ListChatThreadsResponse> ListChatThreads(Expression<Func<string>> accessToken, Expression<Func<string>> startTime = null, Expression<Func<int>> maxPageSize = null)
+        public IBodyWorkflowAction<ListChatThreadsResponse, ApiConnectionActionConfiguration> ListChatThreads(Expression<Func<string>> accessToken, Expression<Func<string>> startTime = null, Expression<Func<int>> maxPageSize = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
             var __workflow_startTime = WorkflowExpression.Compile(startTime, nameof(startTime), required: false);
             var __workflow_maxPageSize = WorkflowExpression.Compile(maxPageSize, nameof(maxPageSize), required: false);
-            return new DeferredBodyAction<ListChatThreadsResponse>(() =>
+            return new DeferredBodyAction<ListChatThreadsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/chat/threads";
                 var apiCallHttpMethod = "get";
@@ -152,12 +152,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
-        public IBodyWorkflowAction<CreateChatResponse> CreateChat(Expression<Func<string>> accessToken, Expression<Func<string>> bodytopic, Expression<Func<bodyparticipantsInputItem2[]>> bodyparticipants = null)
+        public IBodyWorkflowAction<CreateChatResponse, ApiConnectionActionConfiguration> CreateChat(Expression<Func<string>> accessToken, Expression<Func<string>> bodytopic, Expression<Func<bodyparticipantsInputItem2[]>> bodyparticipants = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
             var __workflow_bodytopic = WorkflowExpression.Compile(bodytopic, nameof(bodytopic), required: true);
             var __workflow_bodyparticipants = WorkflowExpression.Compile(bodyparticipants, nameof(bodyparticipants), required: false);
-            return new DeferredBodyAction<CreateChatResponse>(() =>
+            return new DeferredBodyAction<CreateChatResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/chat/threads";
                 var apiCallHttpMethod = "post";
@@ -184,13 +184,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
-        public IBodyWorkflowAction<ListParticipantsResponse> ListParticipants(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<string>> skip = null, Expression<Func<string>> maxPageSize = null)
+        public IBodyWorkflowAction<ListParticipantsResponse, ApiConnectionActionConfiguration> ListParticipants(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<string>> skip = null, Expression<Func<string>> maxPageSize = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
             var __workflow_chatThreadId = WorkflowExpression.Compile(chatThreadId, nameof(chatThreadId), required: true);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_maxPageSize = WorkflowExpression.Compile(maxPageSize, nameof(maxPageSize), required: false);
-            return new DeferredBodyAction<ListParticipantsResponse>(() =>
+            return new DeferredBodyAction<ListParticipantsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}/participants", __workflow_chatThreadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -206,11 +206,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
-        public IBodyWorkflowAction<GetThreadPropertiesResponse> GetThreadProperties(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId)
+        public IBodyWorkflowAction<GetThreadPropertiesResponse, ApiConnectionActionConfiguration> GetThreadProperties(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
             var __workflow_chatThreadId = WorkflowExpression.Compile(chatThreadId, nameof(chatThreadId), required: true);
-            return new DeferredBodyAction<GetThreadPropertiesResponse>(() =>
+            return new DeferredBodyAction<GetThreadPropertiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}", __workflow_chatThreadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -222,12 +222,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
-        public IWorkflowAction UpdateChatThreadProperties(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<string>> bodytopic = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateChatThreadProperties(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<string>> bodytopic = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
             var __workflow_chatThreadId = WorkflowExpression.Compile(chatThreadId, nameof(chatThreadId), required: true);
             var __workflow_bodytopic = WorkflowExpression.Compile(bodytopic, nameof(bodytopic), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}", __workflow_chatThreadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -253,11 +253,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
-        public IWorkflowAction DeleteChatThread(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteChatThread(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
             var __workflow_chatThreadId = WorkflowExpression.Compile(chatThreadId, nameof(chatThreadId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}", __workflow_chatThreadId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";

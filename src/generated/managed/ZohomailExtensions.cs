@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
     public class ZohomailActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
-        public IBodyWorkflowAction<GetMailAccountResponse> GetMailAccount()
+        public IBodyWorkflowAction<GetMailAccountResponse, ApiConnectionActionConfiguration> GetMailAccount()
         {
             var apiCallPath = "/api/accounts";
             var apiCallHttpMethod = "get";
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
-        public IBodyWorkflowAction<SendMailResponse> SendMail(Expression<Func<string>> accountId, Expression<Func<string>> bodyfromAddress, Expression<Func<string>> bodytoAddress, Expression<Func<string>> bodyccAddress = null, Expression<Func<string>> bodybccAddress = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodycontent = null, Expression<Func<bodyaskReceiptInput>> bodyaskReceipt = null, Expression<Func<bodymailFormatInput>> bodymailFormat = null, Expression<Func<bodyattachmentInputItem[]>> bodyattachment = null)
+        public IBodyWorkflowAction<SendMailResponse, ApiConnectionActionConfiguration> SendMail(Expression<Func<string>> accountId, Expression<Func<string>> bodyfromAddress, Expression<Func<string>> bodytoAddress, Expression<Func<string>> bodyccAddress = null, Expression<Func<string>> bodybccAddress = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodycontent = null, Expression<Func<bodyaskReceiptInput>> bodyaskReceipt = null, Expression<Func<bodymailFormatInput>> bodymailFormat = null, Expression<Func<bodyattachmentInputItem[]>> bodyattachment = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_bodyfromAddress = WorkflowExpression.Compile(bodyfromAddress, nameof(bodyfromAddress), required: true);
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             var __workflow_bodyaskReceipt = WorkflowExpression.Compile(bodyaskReceipt, nameof(bodyaskReceipt), required: false);
             var __workflow_bodymailFormat = WorkflowExpression.Compile(bodymailFormat, nameof(bodymailFormat), required: false);
             var __workflow_bodyattachment = WorkflowExpression.Compile(bodyattachment, nameof(bodyattachment), required: false);
-            return new DeferredBodyAction<SendMailResponse>(() =>
+            return new DeferredBodyAction<SendMailResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/accounts/{0}/messages", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
-        public IBodyWorkflowAction<SaveDraftResponse> SaveDraft(Expression<Func<string>> accountId, Expression<Func<bodymodeInput>> bodymode, Expression<Func<string>> bodyfromAddress, Expression<Func<string>> bodytoAddress, Expression<Func<string>> bodyccAddress = null, Expression<Func<string>> bodybccAddress = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodycontent = null, Expression<Func<bodyaskReceiptInput>> bodyaskReceipt = null, Expression<Func<bodymailFormatInput>> bodymailFormat = null, Expression<Func<bodyattachmentInputItem[]>> bodyattachment = null)
+        public IBodyWorkflowAction<SaveDraftResponse, ApiConnectionActionConfiguration> SaveDraft(Expression<Func<string>> accountId, Expression<Func<bodymodeInput>> bodymode, Expression<Func<string>> bodyfromAddress, Expression<Func<string>> bodytoAddress, Expression<Func<string>> bodyccAddress = null, Expression<Func<string>> bodybccAddress = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodycontent = null, Expression<Func<bodyaskReceiptInput>> bodyaskReceipt = null, Expression<Func<bodymailFormatInput>> bodymailFormat = null, Expression<Func<bodyattachmentInputItem[]>> bodyattachment = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_bodymode = WorkflowExpression.Compile(bodymode, nameof(bodymode), required: true);
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             var __workflow_bodyaskReceipt = WorkflowExpression.Compile(bodyaskReceipt, nameof(bodyaskReceipt), required: false);
             var __workflow_bodymailFormat = WorkflowExpression.Compile(bodymailFormat, nameof(bodymailFormat), required: false);
             var __workflow_bodyattachment = WorkflowExpression.Compile(bodyattachment, nameof(bodyattachment), required: false);
-            return new DeferredBodyAction<SaveDraftResponse>(() =>
+            return new DeferredBodyAction<SaveDraftResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/accounts/{0}/messages/draft", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -174,10 +174,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
-        public IBodyWorkflowAction<GetSenderDetailsResponse> GetSenderDetails(Expression<Func<string>> accountId)
+        public IBodyWorkflowAction<GetSenderDetailsResponse, ApiConnectionActionConfiguration> GetSenderDetails(Expression<Func<string>> accountId)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
-            return new DeferredBodyAction<GetSenderDetailsResponse>(() =>
+            return new DeferredBodyAction<GetSenderDetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/accounts/{0}", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
-        public IBodyWorkflowAction<SearchMailResponse> SearchMail(Expression<Func<string>> accountId, Expression<Func<int>> start, Expression<Func<int>> limit, Expression<Func<string>> bodyentire = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodysender = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycc = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<string>> bodyfromDate = null, Expression<Func<string>> bodytoDate = null, Expression<Func<bool>> bodygroupResult = null, Expression<Func<string>> bodyin = null, Expression<Func<string>> bodylabel = null)
+        public IBodyWorkflowAction<SearchMailResponse, ApiConnectionActionConfiguration> SearchMail(Expression<Func<string>> accountId, Expression<Func<int>> start, Expression<Func<int>> limit, Expression<Func<string>> bodyentire = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodysender = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycc = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<string>> bodyfromDate = null, Expression<Func<string>> bodytoDate = null, Expression<Func<bool>> bodygroupResult = null, Expression<Func<string>> bodyin = null, Expression<Func<string>> bodylabel = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: true);
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             var __workflow_bodygroupResult = WorkflowExpression.Compile(bodygroupResult, nameof(bodygroupResult), required: false);
             var __workflow_bodyin = WorkflowExpression.Compile(bodyin, nameof(bodyin), required: false);
             var __workflow_bodylabel = WorkflowExpression.Compile(bodylabel, nameof(bodylabel), required: false);
-            return new DeferredBodyAction<SearchMailResponse>(() =>
+            return new DeferredBodyAction<SearchMailResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/accounts/{0}/messages/search", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -302,10 +302,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
-        public IBodyWorkflowAction<GetAllFolderResponse> GetAllFolder(Expression<Func<string>> accountId)
+        public IBodyWorkflowAction<GetAllFolderResponse, ApiConnectionActionConfiguration> GetAllFolder(Expression<Func<string>> accountId)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
-            return new DeferredBodyAction<GetAllFolderResponse>(() =>
+            return new DeferredBodyAction<GetAllFolderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/accounts/{0}/folders", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -315,10 +315,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
-        public IBodyWorkflowAction<GetAllLabelResponse> GetAllLabel(Expression<Func<string>> accountId)
+        public IBodyWorkflowAction<GetAllLabelResponse, ApiConnectionActionConfiguration> GetAllLabel(Expression<Func<string>> accountId)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
-            return new DeferredBodyAction<GetAllLabelResponse>(() =>
+            return new DeferredBodyAction<GetAllLabelResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/accounts/{0}/labels", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -328,11 +328,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
-        public IBodyWorkflowAction<GetEmailContentResponse> GetEmailContent(Expression<Func<string>> accountId, Expression<Func<string>> messageId)
+        public IBodyWorkflowAction<GetEmailContentResponse, ApiConnectionActionConfiguration> GetEmailContent(Expression<Func<string>> accountId, Expression<Func<string>> messageId)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
-            return new DeferredBodyAction<GetEmailContentResponse>(() =>
+            return new DeferredBodyAction<GetEmailContentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/accounts/{0}/folders/1/messages/{1}/content", __workflow_accountId.WithUrlEncoding(1), __workflow_messageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -343,11 +343,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
-        public IBodyWorkflowAction<GetEmailAttachmentInfoResponse> GetEmailAttachmentInfo(Expression<Func<string>> accountId, Expression<Func<string>> messageId)
+        public IBodyWorkflowAction<GetEmailAttachmentInfoResponse, ApiConnectionActionConfiguration> GetEmailAttachmentInfo(Expression<Func<string>> accountId, Expression<Func<string>> messageId)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
-            return new DeferredBodyAction<GetEmailAttachmentInfoResponse>(() =>
+            return new DeferredBodyAction<GetEmailAttachmentInfoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/accounts/{0}/folders/1/messages/{1}/attachmentinfo", __workflow_accountId.WithUrlEncoding(1), __workflow_messageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -357,12 +357,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
-        public IBodyWorkflowAction<string> GetEmailAttachmentContent(Expression<Func<string>> accountId, Expression<Func<string>> messageId, Expression<Func<string>> attachmentId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetEmailAttachmentContent(Expression<Func<string>> accountId, Expression<Func<string>> messageId, Expression<Func<string>> attachmentId)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/accounts/{0}/folders/1/messages/{1}/attachments/{2}", __workflow_accountId.WithUrlEncoding(1), __workflow_messageId.WithUrlEncoding(1), __workflow_attachmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -374,11 +374,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
 
     public class ZohomailTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NewMailTriggerResponse> NewMailTrigger(Expression<Func<string>> accId, Expression<Func<string>> criterias, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewMailTriggerResponse, ApiConnectionTriggerConfiguration> NewMailTrigger(Expression<Func<string>> accId, Expression<Func<string>> criterias, FlowRecurrence recurrence = null)
         {
             var __workflow_accId = WorkflowExpression.Compile(accId, nameof(accId), required: true);
             var __workflow_criterias = WorkflowExpression.Compile(criterias, nameof(criterias), required: true);
-            return new DeferredBodyTrigger<NewMailTriggerResponse>(() =>
+            return new DeferredBodyTrigger<NewMailTriggerResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integPlatform/api/outgoingWebhooks/newcriteriamail";
                 var apiCallHttpMethod = "post";
@@ -402,11 +402,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             });
         }
 
-        public IBodyWorkflowTrigger<NEWCONDITIONALMAILResponse> NEWCONDITIONALMAIL(Expression<Func<string>> accId, Expression<Func<bodycriteriasInputItem[]>> bodycriterias, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NEWCONDITIONALMAILResponse, ApiConnectionTriggerConfiguration> NEWCONDITIONALMAIL(Expression<Func<string>> accId, Expression<Func<bodycriteriasInputItem[]>> bodycriterias, FlowRecurrence recurrence = null)
         {
             var __workflow_accId = WorkflowExpression.Compile(accId, nameof(accId), required: true);
             var __workflow_bodycriterias = WorkflowExpression.Compile(bodycriterias, nameof(bodycriterias), required: true);
-            return new DeferredBodyTrigger<NEWCONDITIONALMAILResponse>(() =>
+            return new DeferredBodyTrigger<NEWCONDITIONALMAILResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integPlatform/api/outgoingconditionWebhooks";
                 var apiCallHttpMethod = "post";

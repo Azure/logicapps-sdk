@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
     public class NotionipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        public IBodyWorkflowAction<RetrieveuserResponse> Retrieveuser(Expression<Func<string>> userId)
+        public IBodyWorkflowAction<RetrieveuserResponse, ApiConnectionActionConfiguration> Retrieveuser(Expression<Func<string>> userId)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
-            return new DeferredBodyAction<RetrieveuserResponse>(() =>
+            return new DeferredBodyAction<RetrieveuserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        public IBodyWorkflowAction<ListOfAllUsersResponse> ListOfAllUsers(Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<ListOfAllUsersResponse, ApiConnectionActionConfiguration> ListOfAllUsers(Expression<Func<int>> pageSize = null)
         {
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
-            return new DeferredBodyAction<ListOfAllUsersResponse>(() =>
+            return new DeferredBodyAction<ListOfAllUsersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/users";
                 var apiCallHttpMethod = "get";
@@ -43,10 +43,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        public IBodyWorkflowAction<RetrieveablockResponse> Retrieveablock(Expression<Func<string>> blockId)
+        public IBodyWorkflowAction<RetrieveablockResponse, ApiConnectionActionConfiguration> Retrieveablock(Expression<Func<string>> blockId)
         {
             var __workflow_blockId = WorkflowExpression.Compile(blockId, nameof(blockId), required: true);
-            return new DeferredBodyAction<RetrieveablockResponse>(() =>
+            return new DeferredBodyAction<RetrieveablockResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/blocks/{0}", __workflow_blockId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -57,10 +57,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        public IBodyWorkflowAction<DeleteablockResponse> Deleteablock(Expression<Func<string>> blockId)
+        public IBodyWorkflowAction<DeleteablockResponse, ApiConnectionActionConfiguration> Deleteablock(Expression<Func<string>> blockId)
         {
             var __workflow_blockId = WorkflowExpression.Compile(blockId, nameof(blockId), required: true);
-            return new DeferredBodyAction<DeleteablockResponse>(() =>
+            return new DeferredBodyAction<DeleteablockResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/blocks/{0}", __workflow_blockId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        public IWorkflowAction Updateablock(Expression<Func<string>> blockId, Expression<Func<bodyparagraphrichTextInputItem[]>> bodyparagraphrichText = null, Expression<Func<string>> bodyparagraphcolor = null, Expression<Func<bodyheading1richTextInputItem[]>> bodyheading1richText = null, Expression<Func<string>> bodyheading1color = null, Expression<Func<bodyheading2richTextInputItem[]>> bodyheading2richText = null, Expression<Func<string>> bodyheading2color = null, Expression<Func<bodyheading3richTextInputItem[]>> bodyheading3richText = null, Expression<Func<string>> bodyheading3color = null, Expression<Func<bodybulletedListItemrichTextInputItem[]>> bodybulletedListItemrichText = null, Expression<Func<string>> bodybulletedListItemcolor = null, Expression<Func<bodynumberedListItemrichTextInputItem[]>> bodynumberedListItemrichText = null, Expression<Func<string>> bodynumberedListItemcolor = null, Expression<Func<bodytoDorichTextInputItem[]>> bodytoDorichText = null, Expression<Func<bool>> bodytoDochecked = null, Expression<Func<string>> bodytoDocolor = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Updateablock(Expression<Func<string>> blockId, Expression<Func<bodyparagraphrichTextInputItem[]>> bodyparagraphrichText = null, Expression<Func<string>> bodyparagraphcolor = null, Expression<Func<bodyheading1richTextInputItem[]>> bodyheading1richText = null, Expression<Func<string>> bodyheading1color = null, Expression<Func<bodyheading2richTextInputItem[]>> bodyheading2richText = null, Expression<Func<string>> bodyheading2color = null, Expression<Func<bodyheading3richTextInputItem[]>> bodyheading3richText = null, Expression<Func<string>> bodyheading3color = null, Expression<Func<bodybulletedListItemrichTextInputItem[]>> bodybulletedListItemrichText = null, Expression<Func<string>> bodybulletedListItemcolor = null, Expression<Func<bodynumberedListItemrichTextInputItem[]>> bodynumberedListItemrichText = null, Expression<Func<string>> bodynumberedListItemcolor = null, Expression<Func<bodytoDorichTextInputItem[]>> bodytoDorichText = null, Expression<Func<bool>> bodytoDochecked = null, Expression<Func<string>> bodytoDocolor = null)
         {
             var __workflow_blockId = WorkflowExpression.Compile(blockId, nameof(blockId), required: true);
             var __workflow_bodyparagraphrichText = WorkflowExpression.Compile(bodyparagraphrichText, nameof(bodyparagraphrichText), required: false);
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var __workflow_bodytoDorichText = WorkflowExpression.Compile(bodytoDorichText, nameof(bodytoDorichText), required: false);
             var __workflow_bodytoDochecked = WorkflowExpression.Compile(bodytoDochecked, nameof(bodytoDochecked), required: false);
             var __workflow_bodytoDocolor = WorkflowExpression.Compile(bodytoDocolor, nameof(bodytoDocolor), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/blocks/{0}", __workflow_blockId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -254,11 +254,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        public IBodyWorkflowAction<RetrieveBlockChildrenResponse> RetrieveBlockChildren(Expression<Func<string>> blockId, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<RetrieveBlockChildrenResponse, ApiConnectionActionConfiguration> RetrieveBlockChildren(Expression<Func<string>> blockId, Expression<Func<int>> pageSize = null)
         {
             var __workflow_blockId = WorkflowExpression.Compile(blockId, nameof(blockId), required: true);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
-            return new DeferredBodyAction<RetrieveBlockChildrenResponse>(() =>
+            return new DeferredBodyAction<RetrieveBlockChildrenResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/blocks/{0}/children", __workflow_blockId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -272,11 +272,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        public IWorkflowAction Appendblockchildren(Expression<Func<string>> blockId, Expression<Func<bodychildrenInputItem[]>> bodychildren = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Appendblockchildren(Expression<Func<string>> blockId, Expression<Func<bodychildrenInputItem[]>> bodychildren = null)
         {
             var __workflow_blockId = WorkflowExpression.Compile(blockId, nameof(blockId), required: true);
             var __workflow_bodychildren = WorkflowExpression.Compile(bodychildren, nameof(bodychildren), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/blocks/{0}/children", __workflow_blockId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -301,10 +301,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        public IBodyWorkflowAction<DatabaseResponse> RetrieveADatabase(Expression<Func<string>> databaseId)
+        public IBodyWorkflowAction<DatabaseResponse, ApiConnectionActionConfiguration> RetrieveADatabase(Expression<Func<string>> databaseId)
         {
             var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
-            return new DeferredBodyAction<DatabaseResponse>(() =>
+            return new DeferredBodyAction<DatabaseResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/databases/{0}", __workflow_databaseId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -315,12 +315,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> bodyquery, Expression<Func<string>> bodysortdirection = null, Expression<Func<string>> bodysorttimestamp = null)
+        public IBodyWorkflowAction<SearchResponse, ApiConnectionActionConfiguration> Search(Expression<Func<string>> bodyquery, Expression<Func<string>> bodysortdirection = null, Expression<Func<string>> bodysorttimestamp = null)
         {
             var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
             var __workflow_bodysortdirection = WorkflowExpression.Compile(bodysortdirection, nameof(bodysortdirection), required: false);
             var __workflow_bodysorttimestamp = WorkflowExpression.Compile(bodysorttimestamp, nameof(bodysorttimestamp), required: false);
-            return new DeferredBodyAction<SearchResponse>(() =>
+            return new DeferredBodyAction<SearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/search";
                 var apiCallHttpMethod = "post";
@@ -361,10 +361,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        public IBodyWorkflowAction<DatabaseResponse> QueryADatabase(Expression<Func<string>> databaseId)
+        public IBodyWorkflowAction<DatabaseResponse, ApiConnectionActionConfiguration> QueryADatabase(Expression<Func<string>> databaseId)
         {
             var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
-            return new DeferredBodyAction<DatabaseResponse>(() =>
+            return new DeferredBodyAction<DatabaseResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/databases/{0}/query", __workflow_databaseId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        public IBodyWorkflowAction<RetrieveYourTokensBotUserResponse> RetrieveYourTokensBotUser()
+        public IBodyWorkflowAction<RetrieveYourTokensBotUserResponse, ApiConnectionActionConfiguration> RetrieveYourTokensBotUser()
         {
             var apiCallPath = "/v1/users/me";
             var apiCallHttpMethod = "get";
@@ -386,11 +386,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        public IBodyWorkflowAction<RetrieveapagepropertyitemResponse> Retrieveapagepropertyitem(Expression<Func<string>> pageId, Expression<Func<string>> propertyId)
+        public IBodyWorkflowAction<RetrieveapagepropertyitemResponse, ApiConnectionActionConfiguration> Retrieveapagepropertyitem(Expression<Func<string>> pageId, Expression<Func<string>> propertyId)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_propertyId = WorkflowExpression.Compile(propertyId, nameof(propertyId), required: true);
-            return new DeferredBodyAction<RetrieveapagepropertyitemResponse>(() =>
+            return new DeferredBodyAction<RetrieveapagepropertyitemResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pages/{0}/properties/{1}", __workflow_pageId.WithUrlEncoding(1), __workflow_propertyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -401,10 +401,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        public IBodyWorkflowAction<RetrieveapageResponse> Retrieveapage(Expression<Func<string>> pageId)
+        public IBodyWorkflowAction<RetrieveapageResponse, ApiConnectionActionConfiguration> Retrieveapage(Expression<Func<string>> pageId)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
-            return new DeferredBodyAction<RetrieveapageResponse>(() =>
+            return new DeferredBodyAction<RetrieveapageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pages/{0}", __workflow_pageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -415,12 +415,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        public IBodyWorkflowAction<CreateaPageResponse> CreateaPage(Expression<Func<string>> bodyparentdatabaseId = null, Expression<Func<string>> bodyiconemoji = null, Expression<Func<string>> bodycoverexternalurl = null)
+        public IBodyWorkflowAction<CreateaPageResponse, ApiConnectionActionConfiguration> CreateaPage(Expression<Func<string>> bodyparentdatabaseId = null, Expression<Func<string>> bodyiconemoji = null, Expression<Func<string>> bodycoverexternalurl = null)
         {
             var __workflow_bodyparentdatabaseId = WorkflowExpression.Compile(bodyparentdatabaseId, nameof(bodyparentdatabaseId), required: false);
             var __workflow_bodyiconemoji = WorkflowExpression.Compile(bodyiconemoji, nameof(bodyiconemoji), required: false);
             var __workflow_bodycoverexternalurl = WorkflowExpression.Compile(bodycoverexternalurl, nameof(bodycoverexternalurl), required: false);
-            return new DeferredBodyAction<CreateaPageResponse>(() =>
+            return new DeferredBodyAction<CreateaPageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages";
                 var apiCallHttpMethod = "post";
@@ -497,10 +497,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        public IBodyWorkflowAction<CommentResponse> Retrievecomments(Expression<Func<string>> blockId)
+        public IBodyWorkflowAction<CommentResponse, ApiConnectionActionConfiguration> Retrievecomments(Expression<Func<string>> blockId)
         {
             var __workflow_blockId = WorkflowExpression.Compile(blockId, nameof(blockId), required: true);
-            return new DeferredBodyAction<CommentResponse>(() =>
+            return new DeferredBodyAction<CommentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/comments";
                 var apiCallHttpMethod = "get";
@@ -512,12 +512,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        public IBodyWorkflowAction<CommentResponse> Createcomment(Expression<Func<string>> bodyparentpageId = null, Expression<Func<string>> bodydiscussionId = null, Expression<Func<bodyrichTextInputItem[]>> bodyrichText = null)
+        public IBodyWorkflowAction<CommentResponse, ApiConnectionActionConfiguration> Createcomment(Expression<Func<string>> bodyparentpageId = null, Expression<Func<string>> bodydiscussionId = null, Expression<Func<bodyrichTextInputItem[]>> bodyrichText = null)
         {
             var __workflow_bodyparentpageId = WorkflowExpression.Compile(bodyparentpageId, nameof(bodyparentpageId), required: false);
             var __workflow_bodydiscussionId = WorkflowExpression.Compile(bodydiscussionId, nameof(bodydiscussionId), required: false);
             var __workflow_bodyrichText = WorkflowExpression.Compile(bodyrichText, nameof(bodyrichText), required: false);
-            return new DeferredBodyAction<CommentResponse>(() =>
+            return new DeferredBodyAction<CommentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/comments";
                 var apiCallHttpMethod = "post";

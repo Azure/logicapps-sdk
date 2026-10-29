@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
     public class AzureblobActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<BlobMetadata> CopyFile(Expression<Func<string>> dataset, Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
+        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> CopyFile(Expression<Func<string>> dataset, Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
             var __workflow_destination = WorkflowExpression.Compile(destination, nameof(destination), required: true);
             var __workflow_overwrite = WorkflowExpression.Compile(overwrite, nameof(overwrite), required: false);
-            return new DeferredBodyAction<BlobMetadata>(() =>
+            return new DeferredBodyAction<BlobMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/datasets/{0}/copyFile", __workflow_dataset.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
@@ -35,14 +35,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IWorkflowAction CreateBlockBlob(Expression<Func<string>> storageAccountName, Expression<Func<string>> folderPath, Expression<Func<string>> name, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateBlockBlob(Expression<Func<string>> storageAccountName, Expression<Func<string>> folderPath, Expression<Func<string>> name, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
         {
             var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/codeless/datasets/{0}/CreateBlockBlob", __workflow_storageAccountName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -57,14 +57,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<BlobMetadata> CreateFile(Expression<Func<string>> dataset, Expression<Func<string>> folderPath, Expression<Func<string>> name, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> CreateFile(Expression<Func<string>> dataset, Expression<Func<string>> folderPath, Expression<Func<string>> name, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            return new DeferredBodyAction<BlobMetadata>(() =>
+            return new DeferredBodyAction<BlobMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/datasets/{0}/files", __workflow_dataset.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<SharedAccessSignature> CreateShareLinkByPath(Expression<Func<string>> storageAccountName, Expression<Func<string>> path, Expression<Func<string>> policygroupPolicyIdentifier = null, Expression<Func<policypermissionsInput>> policypermissions = null, Expression<Func<string>> policystartTime = null, Expression<Func<string>> policyexpiryTime = null, Expression<Func<policysharedAccessProtocolInput>> policysharedAccessProtocol = null, Expression<Func<string>> policyiPAddressOrIPAddressRange = null)
+        public IBodyWorkflowAction<SharedAccessSignature, ApiConnectionActionConfiguration> CreateShareLinkByPath(Expression<Func<string>> storageAccountName, Expression<Func<string>> path, Expression<Func<string>> policygroupPolicyIdentifier = null, Expression<Func<policypermissionsInput>> policypermissions = null, Expression<Func<string>> policystartTime = null, Expression<Func<string>> policyexpiryTime = null, Expression<Func<policysharedAccessProtocolInput>> policysharedAccessProtocol = null, Expression<Func<string>> policyiPAddressOrIPAddressRange = null)
         {
             var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
             var __workflow_policyexpiryTime = WorkflowExpression.Compile(policyexpiryTime, nameof(policyexpiryTime), required: false);
             var __workflow_policysharedAccessProtocol = WorkflowExpression.Compile(policysharedAccessProtocol, nameof(policysharedAccessProtocol), required: false);
             var __workflow_policyiPAddressOrIPAddressRange = WorkflowExpression.Compile(policyiPAddressOrIPAddressRange, nameof(policyiPAddressOrIPAddressRange), required: false);
-            return new DeferredBodyAction<SharedAccessSignature>(() =>
+            return new DeferredBodyAction<SharedAccessSignature, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/datasets/{0}/CreateSharedLinkByPath", __workflow_storageAccountName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -155,11 +155,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IWorkflowAction DeleteFile(Expression<Func<string>> dataset, Expression<Func<string>> id)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteFile(Expression<Func<string>> dataset, Expression<Func<string>> id)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/datasets/{0}/files/{1}", __workflow_dataset.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "delete";
@@ -170,13 +170,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<BlobMetadata[]> ExtractFolder(Expression<Func<string>> dataset, Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
+        public IBodyWorkflowAction<BlobMetadata[], ApiConnectionActionConfiguration> ExtractFolder(Expression<Func<string>> dataset, Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
             var __workflow_destination = WorkflowExpression.Compile(destination, nameof(destination), required: true);
             var __workflow_overwrite = WorkflowExpression.Compile(overwrite, nameof(overwrite), required: false);
-            return new DeferredBodyAction<BlobMetadata[]>(() =>
+            return new DeferredBodyAction<BlobMetadata[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/datasets/{0}/extractFolderV2", __workflow_dataset.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
@@ -192,11 +192,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<SharedAccessSignatureBlobPolicy[]> GetAccessPolicies(Expression<Func<string>> storageAccountName, Expression<Func<string>> path)
+        public IBodyWorkflowAction<SharedAccessSignatureBlobPolicy[], ApiConnectionActionConfiguration> GetAccessPolicies(Expression<Func<string>> storageAccountName, Expression<Func<string>> path)
         {
             var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
-            return new DeferredBodyAction<SharedAccessSignatureBlobPolicy[]>(() =>
+            return new DeferredBodyAction<SharedAccessSignatureBlobPolicy[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/datasets/{0}/policies", __workflow_storageAccountName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -207,14 +207,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<string> GetFileContent(Expression<Func<string>> dataset, Expression<Func<string>> id, Expression<Func<bool>> inferContentType = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetFileContent(Expression<Func<string>> dataset, Expression<Func<string>> id, Expression<Func<bool>> inferContentType = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
             var __workflow_extractSensitivityLabel = WorkflowExpression.Compile(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
             var __workflow_purviewAccountName = WorkflowExpression.Compile(purviewAccountName, nameof(purviewAccountName), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/datasets/{0}/files/{1}/content", __workflow_dataset.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -231,14 +231,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<string> GetFileContentByPath(Expression<Func<string>> dataset, Expression<Func<string>> path, Expression<Func<bool>> inferContentType = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetFileContentByPath(Expression<Func<string>> dataset, Expression<Func<string>> path, Expression<Func<bool>> inferContentType = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
             var __workflow_extractSensitivityLabel = WorkflowExpression.Compile(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
             var __workflow_purviewAccountName = WorkflowExpression.Compile(purviewAccountName, nameof(purviewAccountName), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/datasets/{0}/GetFileContentByPath", __workflow_dataset.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -257,13 +257,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<DataWithSensitivityLabelInfo> GetFileMetadata(Expression<Func<string>> dataset, Expression<Func<string>> id, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
+        public IBodyWorkflowAction<DataWithSensitivityLabelInfo, ApiConnectionActionConfiguration> GetFileMetadata(Expression<Func<string>> dataset, Expression<Func<string>> id, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_extractSensitivityLabel = WorkflowExpression.Compile(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
             var __workflow_purviewAccountName = WorkflowExpression.Compile(purviewAccountName, nameof(purviewAccountName), required: false);
-            return new DeferredBodyAction<DataWithSensitivityLabelInfo>(() =>
+            return new DeferredBodyAction<DataWithSensitivityLabelInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/datasets/{0}/files/{1}", __workflow_dataset.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -277,13 +277,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<DataWithSensitivityLabelInfo> GetFileMetadataByPath(Expression<Func<string>> dataset, Expression<Func<string>> path, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
+        public IBodyWorkflowAction<DataWithSensitivityLabelInfo, ApiConnectionActionConfiguration> GetFileMetadataByPath(Expression<Func<string>> dataset, Expression<Func<string>> path, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             var __workflow_extractSensitivityLabel = WorkflowExpression.Compile(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
             var __workflow_purviewAccountName = WorkflowExpression.Compile(purviewAccountName, nameof(purviewAccountName), required: false);
-            return new DeferredBodyAction<DataWithSensitivityLabelInfo>(() =>
+            return new DeferredBodyAction<DataWithSensitivityLabelInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/datasets/{0}/GetFileByPath", __workflow_dataset.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<ListOfBlobsWithSensitivityLabels> ListFolder(Expression<Func<string>> dataset, Expression<Func<string>> id, Expression<Func<string>> nextPageMarker = null, Expression<Func<bool>> useFlatListing = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
+        public IBodyWorkflowAction<ListOfBlobsWithSensitivityLabels, ApiConnectionActionConfiguration> ListFolder(Expression<Func<string>> dataset, Expression<Func<string>> id, Expression<Func<string>> nextPageMarker = null, Expression<Func<bool>> useFlatListing = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
             var __workflow_useFlatListing = WorkflowExpression.Compile(useFlatListing, nameof(useFlatListing), required: false);
             var __workflow_extractSensitivityLabel = WorkflowExpression.Compile(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
             var __workflow_purviewAccountName = WorkflowExpression.Compile(purviewAccountName, nameof(purviewAccountName), required: false);
-            return new DeferredBodyAction<ListOfBlobsWithSensitivityLabels>(() =>
+            return new DeferredBodyAction<ListOfBlobsWithSensitivityLabels, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/datasets/{0}/foldersV2/{1}", __workflow_dataset.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -327,11 +327,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<BlobMetadataPage> ListRootFolder(Expression<Func<string>> dataset, Expression<Func<string>> nextPageMarker = null)
+        public IBodyWorkflowAction<BlobMetadataPage, ApiConnectionActionConfiguration> ListRootFolder(Expression<Func<string>> dataset, Expression<Func<string>> nextPageMarker = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_nextPageMarker = WorkflowExpression.Compile(nextPageMarker, nameof(nextPageMarker), required: false);
-            return new DeferredBodyAction<BlobMetadataPage>(() =>
+            return new DeferredBodyAction<BlobMetadataPage, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/datasets/{0}/foldersV2", __workflow_dataset.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -345,12 +345,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IWorkflowAction SetBlobTierByPath(Expression<Func<string>> storageAccountName, Expression<Func<string>> path, Expression<Func<newTierInput>> newTier)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetBlobTierByPath(Expression<Func<string>> storageAccountName, Expression<Func<string>> path, Expression<Func<newTierInput>> newTier)
         {
             var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             var __workflow_newTier = WorkflowExpression.Compile(newTier, nameof(newTier), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/datasets/{0}/SetBlobTierByPath", __workflow_storageAccountName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -362,13 +362,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<BlobMetadata> UpdateFile(Expression<Func<string>> dataset, Expression<Func<string>> id, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> UpdateFile(Expression<Func<string>> dataset, Expression<Func<string>> id, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            return new DeferredBodyAction<BlobMetadata>(() =>
+            return new DeferredBodyAction<BlobMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/datasets/{0}/files/{1}", __workflow_dataset.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "put";
@@ -384,12 +384,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
 
     public class AzureblobTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<BlobMetadata[]> OnUpdatedFiles(Expression<Func<string>> dataset, Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BlobMetadata[], ApiConnectionTriggerConfiguration> OnUpdatedFiles(Expression<Func<string>> dataset, Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null, FlowRecurrence recurrence = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_maxFileCount = WorkflowExpression.Compile(maxFileCount, nameof(maxFileCount), required: false);
-            return new DeferredBodyTrigger<BlobMetadata[]>(() =>
+            return new DeferredBodyTrigger<BlobMetadata[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/datasets/{0}/triggers/batch/onupdatedfile", __workflow_dataset.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";

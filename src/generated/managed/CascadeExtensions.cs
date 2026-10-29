@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
     public class CascadeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<GetAllGoalsResponse> GetAllGoals(Expression<Func<string>> instance)
+        public IBodyWorkflowAction<GetAllGoalsResponse, ApiConnectionActionConfiguration> GetAllGoals(Expression<Func<string>> instance)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            return new DeferredBodyAction<GetAllGoalsResponse>(() =>
+            return new DeferredBodyAction<GetAllGoalsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/goals";
                 var apiCallHttpMethod = "get";
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<CreateGoalResponse> CreateGoal(Expression<Func<string>> instance, Expression<Func<int>> bodygoalroleId = null, Expression<Func<int>> bodygoalcreatorId = null, Expression<Func<bodygoalstatusInput>> bodygoalstatus = null, Expression<Func<bodygoalcompletionCriteriaInput>> bodygoalcompletionCriteria = null, Expression<Func<bodygoaltargetFlowInput>> bodygoaltargetFlow = null, Expression<Func<string>> bodygoalaction = null, Expression<Func<string>> bodygoaldetails = null, Expression<Func<double>> bodygoalinitial = null, Expression<Func<double>> bodygoalprogress = null, Expression<Func<double>> bodygoaltarget = null, Expression<Func<string>> bodygoalstartTime = null, Expression<Func<string>> bodygoalendTime = null, Expression<Func<bodygoalweightIdInput>> bodygoalweightId = null, Expression<Func<bodygoalisPrivateInput>> bodygoalisPrivate = null, Expression<Func<bodygoaltrackingTypeInput>> bodygoaltrackingType = null, Expression<Func<int>> bodygoalentityTemplateId = null, Expression<Func<int[]>> bodygoaldirectFocusAreaIds = null, Expression<Func<int[]>> bodygoalalignedFromIds = null, Expression<Func<int[]>> bodygoalalignedToIds = null)
+        public IBodyWorkflowAction<CreateGoalResponse, ApiConnectionActionConfiguration> CreateGoal(Expression<Func<string>> instance, Expression<Func<int>> bodygoalroleId = null, Expression<Func<int>> bodygoalcreatorId = null, Expression<Func<bodygoalstatusInput>> bodygoalstatus = null, Expression<Func<bodygoalcompletionCriteriaInput>> bodygoalcompletionCriteria = null, Expression<Func<bodygoaltargetFlowInput>> bodygoaltargetFlow = null, Expression<Func<string>> bodygoalaction = null, Expression<Func<string>> bodygoaldetails = null, Expression<Func<double>> bodygoalinitial = null, Expression<Func<double>> bodygoalprogress = null, Expression<Func<double>> bodygoaltarget = null, Expression<Func<string>> bodygoalstartTime = null, Expression<Func<string>> bodygoalendTime = null, Expression<Func<bodygoalweightIdInput>> bodygoalweightId = null, Expression<Func<bodygoalisPrivateInput>> bodygoalisPrivate = null, Expression<Func<bodygoaltrackingTypeInput>> bodygoaltrackingType = null, Expression<Func<int>> bodygoalentityTemplateId = null, Expression<Func<int[]>> bodygoaldirectFocusAreaIds = null, Expression<Func<int[]>> bodygoalalignedFromIds = null, Expression<Func<int[]>> bodygoalalignedToIds = null)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             var __workflow_bodygoalroleId = WorkflowExpression.Compile(bodygoalroleId, nameof(bodygoalroleId), required: false);
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             var __workflow_bodygoaldirectFocusAreaIds = WorkflowExpression.Compile(bodygoaldirectFocusAreaIds, nameof(bodygoaldirectFocusAreaIds), required: false);
             var __workflow_bodygoalalignedFromIds = WorkflowExpression.Compile(bodygoalalignedFromIds, nameof(bodygoalalignedFromIds), required: false);
             var __workflow_bodygoalalignedToIds = WorkflowExpression.Compile(bodygoalalignedToIds, nameof(bodygoalalignedToIds), required: false);
-            return new DeferredBodyAction<CreateGoalResponse>(() =>
+            return new DeferredBodyAction<CreateGoalResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/goals";
                 var apiCallHttpMethod = "post";
@@ -189,11 +189,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<GetSingleGoalResponse> GetSingleGoal(Expression<Func<string>> id, Expression<Func<string>> instance)
+        public IBodyWorkflowAction<GetSingleGoalResponse, ApiConnectionActionConfiguration> GetSingleGoal(Expression<Func<string>> id, Expression<Func<string>> instance)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            return new DeferredBodyAction<GetSingleGoalResponse>(() =>
+            return new DeferredBodyAction<GetSingleGoalResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/goals/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -204,11 +204,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<DeleteGoalResponse> DeleteGoal(Expression<Func<string>> id, Expression<Func<string>> instance)
+        public IBodyWorkflowAction<DeleteGoalResponse, ApiConnectionActionConfiguration> DeleteGoal(Expression<Func<string>> id, Expression<Func<string>> instance)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            return new DeferredBodyAction<DeleteGoalResponse>(() =>
+            return new DeferredBodyAction<DeleteGoalResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/goals/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<UpdateGoalResponse> UpdateGoal(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<int>> bodygoalroleId = null, Expression<Func<int>> bodygoalcreatorId = null, Expression<Func<bodygoalstatusInput>> bodygoalstatus = null, Expression<Func<bodygoalcompletionCriteriaInput>> bodygoalcompletionCriteria = null, Expression<Func<bodygoaltargetFlowInput>> bodygoaltargetFlow = null, Expression<Func<string>> bodygoalaction = null, Expression<Func<string>> bodygoaldetails = null, Expression<Func<double>> bodygoalinitial = null, Expression<Func<double>> bodygoalprogress = null, Expression<Func<double>> bodygoaltarget = null, Expression<Func<string>> bodygoalstartTime = null, Expression<Func<string>> bodygoalendTime = null, Expression<Func<bodygoalweightIdInput>> bodygoalweightId = null, Expression<Func<int>> bodygoalisPrivate = null, Expression<Func<bodygoaltrackingTypeInput>> bodygoaltrackingType = null, Expression<Func<int>> bodygoalentityTemplateId = null, Expression<Func<int[]>> bodygoaldirectFocusAreaIds = null, Expression<Func<int[]>> bodygoalinheritedFocusAreaIds = null, Expression<Func<int[]>> bodygoalalignedFromIds = null, Expression<Func<int[]>> bodygoalalignedToIds = null)
+        public IBodyWorkflowAction<UpdateGoalResponse, ApiConnectionActionConfiguration> UpdateGoal(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<int>> bodygoalroleId = null, Expression<Func<int>> bodygoalcreatorId = null, Expression<Func<bodygoalstatusInput>> bodygoalstatus = null, Expression<Func<bodygoalcompletionCriteriaInput>> bodygoalcompletionCriteria = null, Expression<Func<bodygoaltargetFlowInput>> bodygoaltargetFlow = null, Expression<Func<string>> bodygoalaction = null, Expression<Func<string>> bodygoaldetails = null, Expression<Func<double>> bodygoalinitial = null, Expression<Func<double>> bodygoalprogress = null, Expression<Func<double>> bodygoaltarget = null, Expression<Func<string>> bodygoalstartTime = null, Expression<Func<string>> bodygoalendTime = null, Expression<Func<bodygoalweightIdInput>> bodygoalweightId = null, Expression<Func<int>> bodygoalisPrivate = null, Expression<Func<bodygoaltrackingTypeInput>> bodygoaltrackingType = null, Expression<Func<int>> bodygoalentityTemplateId = null, Expression<Func<int[]>> bodygoaldirectFocusAreaIds = null, Expression<Func<int[]>> bodygoalinheritedFocusAreaIds = null, Expression<Func<int[]>> bodygoalalignedFromIds = null, Expression<Func<int[]>> bodygoalalignedToIds = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             var __workflow_bodygoalinheritedFocusAreaIds = WorkflowExpression.Compile(bodygoalinheritedFocusAreaIds, nameof(bodygoalinheritedFocusAreaIds), required: false);
             var __workflow_bodygoalalignedFromIds = WorkflowExpression.Compile(bodygoalalignedFromIds, nameof(bodygoalalignedFromIds), required: false);
             var __workflow_bodygoalalignedToIds = WorkflowExpression.Compile(bodygoalalignedToIds, nameof(bodygoalalignedToIds), required: false);
-            return new DeferredBodyAction<UpdateGoalResponse>(() =>
+            return new DeferredBodyAction<UpdateGoalResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/goals/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -390,10 +390,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<GetAllRisksResponse> GetAllRisks(Expression<Func<string>> instance)
+        public IBodyWorkflowAction<GetAllRisksResponse, ApiConnectionActionConfiguration> GetAllRisks(Expression<Func<string>> instance)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            return new DeferredBodyAction<GetAllRisksResponse>(() =>
+            return new DeferredBodyAction<GetAllRisksResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/issues";
                 var apiCallHttpMethod = "get";
@@ -404,7 +404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<CreateRiskResponse> CreateRisk(Expression<Func<string>> instance, Expression<Func<string>> bodyissueissue = null, Expression<Func<bodyissueisCriticalInput>> bodyissueisCritical = null, Expression<Func<bodyissueisResolvedInput>> bodyissueisResolved = null, Expression<Func<int>> bodyissueroleId = null, Expression<Func<int>> bodyissuegoalId = null, Expression<Func<string>> bodyissuedueDate = null, Expression<Func<int>> bodyissueentityTemplateId = null, Expression<Func<int>> bodyissuecustomAttributescA1573011281053 = null, Expression<Func<int>> bodyissuecustomAttributescA1573011296755 = null)
+        public IBodyWorkflowAction<CreateRiskResponse, ApiConnectionActionConfiguration> CreateRisk(Expression<Func<string>> instance, Expression<Func<string>> bodyissueissue = null, Expression<Func<bodyissueisCriticalInput>> bodyissueisCritical = null, Expression<Func<bodyissueisResolvedInput>> bodyissueisResolved = null, Expression<Func<int>> bodyissueroleId = null, Expression<Func<int>> bodyissuegoalId = null, Expression<Func<string>> bodyissuedueDate = null, Expression<Func<int>> bodyissueentityTemplateId = null, Expression<Func<int>> bodyissuecustomAttributescA1573011281053 = null, Expression<Func<int>> bodyissuecustomAttributescA1573011296755 = null)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             var __workflow_bodyissueissue = WorkflowExpression.Compile(bodyissueissue, nameof(bodyissueissue), required: false);
@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             var __workflow_bodyissueentityTemplateId = WorkflowExpression.Compile(bodyissueentityTemplateId, nameof(bodyissueentityTemplateId), required: false);
             var __workflow_bodyissuecustomAttributescA1573011281053 = WorkflowExpression.Compile(bodyissuecustomAttributescA1573011281053, nameof(bodyissuecustomAttributescA1573011281053), required: false);
             var __workflow_bodyissuecustomAttributescA1573011296755 = WorkflowExpression.Compile(bodyissuecustomAttributescA1573011296755, nameof(bodyissuecustomAttributescA1573011296755), required: false);
-            return new DeferredBodyAction<CreateRiskResponse>(() =>
+            return new DeferredBodyAction<CreateRiskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/issues";
                 var apiCallHttpMethod = "post";
@@ -505,11 +505,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<GetSingleRiskResponse> GetSingleRisk(Expression<Func<string>> id, Expression<Func<string>> instance)
+        public IBodyWorkflowAction<GetSingleRiskResponse, ApiConnectionActionConfiguration> GetSingleRisk(Expression<Func<string>> id, Expression<Func<string>> instance)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            return new DeferredBodyAction<GetSingleRiskResponse>(() =>
+            return new DeferredBodyAction<GetSingleRiskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/issues/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -520,11 +520,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<DeleteRiskResponse> DeleteRisk(Expression<Func<string>> id, Expression<Func<string>> instance)
+        public IBodyWorkflowAction<DeleteRiskResponse, ApiConnectionActionConfiguration> DeleteRisk(Expression<Func<string>> id, Expression<Func<string>> instance)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            return new DeferredBodyAction<DeleteRiskResponse>(() =>
+            return new DeferredBodyAction<DeleteRiskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/issues/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -535,7 +535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<UpdateRiskResponse> UpdateRisk(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<string>> bodyissueissue = null, Expression<Func<bodyissueisCriticalInput>> bodyissueisCritical = null, Expression<Func<bodyissueisResolvedInput>> bodyissueisResolved = null, Expression<Func<int>> bodyissueroleId = null, Expression<Func<string>> bodyissuedueDate = null, Expression<Func<int>> bodyissueentityTemplateId = null, Expression<Func<int>> bodyissuecustomAttributescA1573011281053 = null, Expression<Func<int>> bodyissuecustomAttributescA1573011296755 = null)
+        public IBodyWorkflowAction<UpdateRiskResponse, ApiConnectionActionConfiguration> UpdateRisk(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<string>> bodyissueissue = null, Expression<Func<bodyissueisCriticalInput>> bodyissueisCritical = null, Expression<Func<bodyissueisResolvedInput>> bodyissueisResolved = null, Expression<Func<int>> bodyissueroleId = null, Expression<Func<string>> bodyissuedueDate = null, Expression<Func<int>> bodyissueentityTemplateId = null, Expression<Func<int>> bodyissuecustomAttributescA1573011281053 = null, Expression<Func<int>> bodyissuecustomAttributescA1573011296755 = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
@@ -547,7 +547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             var __workflow_bodyissueentityTemplateId = WorkflowExpression.Compile(bodyissueentityTemplateId, nameof(bodyissueentityTemplateId), required: false);
             var __workflow_bodyissuecustomAttributescA1573011281053 = WorkflowExpression.Compile(bodyissuecustomAttributescA1573011281053, nameof(bodyissuecustomAttributescA1573011281053), required: false);
             var __workflow_bodyissuecustomAttributescA1573011296755 = WorkflowExpression.Compile(bodyissuecustomAttributescA1573011296755, nameof(bodyissuecustomAttributescA1573011296755), required: false);
-            return new DeferredBodyAction<UpdateRiskResponse>(() =>
+            return new DeferredBodyAction<UpdateRiskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/issues/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -630,10 +630,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<GetAllTasksResponse> GetAllTasks(Expression<Func<string>> instance)
+        public IBodyWorkflowAction<GetAllTasksResponse, ApiConnectionActionConfiguration> GetAllTasks(Expression<Func<string>> instance)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            return new DeferredBodyAction<GetAllTasksResponse>(() =>
+            return new DeferredBodyAction<GetAllTasksResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tasks";
                 var apiCallHttpMethod = "get";
@@ -644,7 +644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<CreateTaskResponse> CreateTask(Expression<Func<string>> instance, Expression<Func<string>> bodytasktask = null, Expression<Func<string>> bodytaskcomment = null, Expression<Func<bodytaskisCompleteInput>> bodytaskisComplete = null, Expression<Func<int>> bodytaskroleId = null, Expression<Func<int>> bodytaskgoalId = null, Expression<Func<string>> bodytaskstartDate = null, Expression<Func<string>> bodytaskdueDate = null, Expression<Func<bodytaskweightIdInput>> bodytaskweightId = null, Expression<Func<int>> bodytaskentityTemplateId = null)
+        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> instance, Expression<Func<string>> bodytasktask = null, Expression<Func<string>> bodytaskcomment = null, Expression<Func<bodytaskisCompleteInput>> bodytaskisComplete = null, Expression<Func<int>> bodytaskroleId = null, Expression<Func<int>> bodytaskgoalId = null, Expression<Func<string>> bodytaskstartDate = null, Expression<Func<string>> bodytaskdueDate = null, Expression<Func<bodytaskweightIdInput>> bodytaskweightId = null, Expression<Func<int>> bodytaskentityTemplateId = null)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             var __workflow_bodytasktask = WorkflowExpression.Compile(bodytasktask, nameof(bodytasktask), required: false);
@@ -656,7 +656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             var __workflow_bodytaskdueDate = WorkflowExpression.Compile(bodytaskdueDate, nameof(bodytaskdueDate), required: false);
             var __workflow_bodytaskweightId = WorkflowExpression.Compile(bodytaskweightId, nameof(bodytaskweightId), required: false);
             var __workflow_bodytaskentityTemplateId = WorkflowExpression.Compile(bodytaskentityTemplateId, nameof(bodytaskentityTemplateId), required: false);
-            return new DeferredBodyAction<CreateTaskResponse>(() =>
+            return new DeferredBodyAction<CreateTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tasks";
                 var apiCallHttpMethod = "post";
@@ -737,11 +737,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<GetSingleTaskResponse> GetSingleTask(Expression<Func<string>> id, Expression<Func<string>> instance)
+        public IBodyWorkflowAction<GetSingleTaskResponse, ApiConnectionActionConfiguration> GetSingleTask(Expression<Func<string>> id, Expression<Func<string>> instance)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            return new DeferredBodyAction<GetSingleTaskResponse>(() =>
+            return new DeferredBodyAction<GetSingleTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tasks/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -752,11 +752,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<DeleteTaskResponse> DeleteTask(Expression<Func<string>> id, Expression<Func<string>> instance)
+        public IBodyWorkflowAction<DeleteTaskResponse, ApiConnectionActionConfiguration> DeleteTask(Expression<Func<string>> id, Expression<Func<string>> instance)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            return new DeferredBodyAction<DeleteTaskResponse>(() =>
+            return new DeferredBodyAction<DeleteTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tasks/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -767,7 +767,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<UpdateTaskResponse> UpdateTask(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<string>> bodytasktask = null, Expression<Func<string>> bodytaskcomment = null, Expression<Func<bodytaskisCompleteInput>> bodytaskisComplete = null, Expression<Func<int>> bodytaskroleId = null, Expression<Func<int>> bodytaskgoalId = null, Expression<Func<string>> bodytaskstartDate = null, Expression<Func<string>> bodytaskdueDate = null, Expression<Func<bodytaskweightIdInput>> bodytaskweightId = null, Expression<Func<int>> bodytaskentityTemplateId = null)
+        public IBodyWorkflowAction<UpdateTaskResponse, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<string>> bodytasktask = null, Expression<Func<string>> bodytaskcomment = null, Expression<Func<bodytaskisCompleteInput>> bodytaskisComplete = null, Expression<Func<int>> bodytaskroleId = null, Expression<Func<int>> bodytaskgoalId = null, Expression<Func<string>> bodytaskstartDate = null, Expression<Func<string>> bodytaskdueDate = null, Expression<Func<bodytaskweightIdInput>> bodytaskweightId = null, Expression<Func<int>> bodytaskentityTemplateId = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
@@ -780,7 +780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             var __workflow_bodytaskdueDate = WorkflowExpression.Compile(bodytaskdueDate, nameof(bodytaskdueDate), required: false);
             var __workflow_bodytaskweightId = WorkflowExpression.Compile(bodytaskweightId, nameof(bodytaskweightId), required: false);
             var __workflow_bodytaskentityTemplateId = WorkflowExpression.Compile(bodytaskentityTemplateId, nameof(bodytaskentityTemplateId), required: false);
-            return new DeferredBodyAction<UpdateTaskResponse>(() =>
+            return new DeferredBodyAction<UpdateTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tasks/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -861,10 +861,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<GetAllUpdatesResponse> GetAllUpdates(Expression<Func<string>> instance)
+        public IBodyWorkflowAction<GetAllUpdatesResponse, ApiConnectionActionConfiguration> GetAllUpdates(Expression<Func<string>> instance)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            return new DeferredBodyAction<GetAllUpdatesResponse>(() =>
+            return new DeferredBodyAction<GetAllUpdatesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/updates";
                 var apiCallHttpMethod = "get";
@@ -875,13 +875,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<CreateUpdateResponse> CreateUpdate(Expression<Func<string>> instance, Expression<Func<string>> bodyupdatecomment = null, Expression<Func<int>> bodyupdategoalId = null, Expression<Func<int>> bodyupdateentityTemplateId = null)
+        public IBodyWorkflowAction<CreateUpdateResponse, ApiConnectionActionConfiguration> CreateUpdate(Expression<Func<string>> instance, Expression<Func<string>> bodyupdatecomment = null, Expression<Func<int>> bodyupdategoalId = null, Expression<Func<int>> bodyupdateentityTemplateId = null)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             var __workflow_bodyupdatecomment = WorkflowExpression.Compile(bodyupdatecomment, nameof(bodyupdatecomment), required: false);
             var __workflow_bodyupdategoalId = WorkflowExpression.Compile(bodyupdategoalId, nameof(bodyupdategoalId), required: false);
             var __workflow_bodyupdateentityTemplateId = WorkflowExpression.Compile(bodyupdateentityTemplateId, nameof(bodyupdateentityTemplateId), required: false);
-            return new DeferredBodyAction<CreateUpdateResponse>(() =>
+            return new DeferredBodyAction<CreateUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/updates";
                 var apiCallHttpMethod = "post";
@@ -926,11 +926,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<GetSingleUpdateResponse> GetSingleUpdate(Expression<Func<string>> id, Expression<Func<string>> instance)
+        public IBodyWorkflowAction<GetSingleUpdateResponse, ApiConnectionActionConfiguration> GetSingleUpdate(Expression<Func<string>> id, Expression<Func<string>> instance)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            return new DeferredBodyAction<GetSingleUpdateResponse>(() =>
+            return new DeferredBodyAction<GetSingleUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/updates/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -941,11 +941,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<DeleteUpdateResponse> DeleteUpdate(Expression<Func<string>> id, Expression<Func<string>> instance)
+        public IBodyWorkflowAction<DeleteUpdateResponse, ApiConnectionActionConfiguration> DeleteUpdate(Expression<Func<string>> id, Expression<Func<string>> instance)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
-            return new DeferredBodyAction<DeleteUpdateResponse>(() =>
+            return new DeferredBodyAction<DeleteUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/updates/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -956,7 +956,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<UpdateUpdateResponse> UpdateUpdate(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<string>> bodyupdatecomment = null, Expression<Func<string>> bodyupdatecreatedAt = null, Expression<Func<string>> bodyupdateupdatedAt = null, Expression<Func<int>> bodyupdategoalId = null, Expression<Func<int>> bodyupdatedeleted = null, Expression<Func<int>> bodyupdateentityTemplateId = null)
+        public IBodyWorkflowAction<UpdateUpdateResponse, ApiConnectionActionConfiguration> UpdateUpdate(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<string>> bodyupdatecomment = null, Expression<Func<string>> bodyupdatecreatedAt = null, Expression<Func<string>> bodyupdateupdatedAt = null, Expression<Func<int>> bodyupdategoalId = null, Expression<Func<int>> bodyupdatedeleted = null, Expression<Func<int>> bodyupdateentityTemplateId = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
@@ -966,7 +966,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
             var __workflow_bodyupdategoalId = WorkflowExpression.Compile(bodyupdategoalId, nameof(bodyupdategoalId), required: false);
             var __workflow_bodyupdatedeleted = WorkflowExpression.Compile(bodyupdatedeleted, nameof(bodyupdatedeleted), required: false);
             var __workflow_bodyupdateentityTemplateId = WorkflowExpression.Compile(bodyupdateentityTemplateId, nameof(bodyupdateentityTemplateId), required: false);
-            return new DeferredBodyAction<UpdateUpdateResponse>(() =>
+            return new DeferredBodyAction<UpdateUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/updates/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";

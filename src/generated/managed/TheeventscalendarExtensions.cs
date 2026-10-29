@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theeventscalendar
     public class TheeventscalendarActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theeventscalendar")]
-        public IBodyWorkflowAction<CreateEventsResponse> CreateEvents(Expression<Func<int>> bodyauthor = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodyexcerpt = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodytimezone = null, Expression<Func<bool>> bodyallDay = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyimage = null, Expression<Func<string>> bodycost = null, Expression<Func<string>> bodywebsite = null, Expression<Func<bool>> bodyshowMap = null, Expression<Func<bool>> bodyshowMapLink = null, Expression<Func<bool>> bodyhideFromListings = null, Expression<Func<bool>> bodysticky = null, Expression<Func<bool>> bodyfeatured = null, Expression<Func<string>> bodycategories = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodyvenue = null, Expression<Func<string>> bodyorganizer = null)
+        public IBodyWorkflowAction<CreateEventsResponse, ApiConnectionActionConfiguration> CreateEvents(Expression<Func<int>> bodyauthor = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodyexcerpt = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodytimezone = null, Expression<Func<bool>> bodyallDay = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyimage = null, Expression<Func<string>> bodycost = null, Expression<Func<string>> bodywebsite = null, Expression<Func<bool>> bodyshowMap = null, Expression<Func<bool>> bodyshowMapLink = null, Expression<Func<bool>> bodyhideFromListings = null, Expression<Func<bool>> bodysticky = null, Expression<Func<bool>> bodyfeatured = null, Expression<Func<string>> bodycategories = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodyvenue = null, Expression<Func<string>> bodyorganizer = null)
         {
             var __workflow_bodyauthor = WorkflowExpression.Compile(bodyauthor, nameof(bodyauthor), required: false);
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theeventscalendar
             var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
             var __workflow_bodyvenue = WorkflowExpression.Compile(bodyvenue, nameof(bodyvenue), required: false);
             var __workflow_bodyorganizer = WorkflowExpression.Compile(bodyorganizer, nameof(bodyorganizer), required: false);
-            return new DeferredBodyAction<CreateEventsResponse>(() =>
+            return new DeferredBodyAction<CreateEventsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/wp-json/tribe/power-automate/v1/create-events/";
                 var apiCallHttpMethod = "post";
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theeventscalendar
 
     public class TheeventscalendarTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NewEventTriggerResponse> NewEventTrigger(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewEventTriggerResponse, ApiConnectionTriggerConfiguration> NewEventTrigger(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/new-events/";
             var apiCallHttpMethod = "get";
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theeventscalendar
             return new ApiConnectionTrigger<NewEventTriggerResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<UpdatedEventTriggerResponse> UpdatedEventTrigger(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UpdatedEventTriggerResponse, ApiConnectionTriggerConfiguration> UpdatedEventTrigger(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/updated-events/";
             var apiCallHttpMethod = "get";
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theeventscalendar
             return new ApiConnectionTrigger<UpdatedEventTriggerResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<CanceledEventTriggerResponse> CanceledEventTrigger(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CanceledEventTriggerResponse, ApiConnectionTriggerConfiguration> CanceledEventTrigger(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/canceled-events/";
             var apiCallHttpMethod = "get";

@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
     public class SpringglobalActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "springglobal")]
-        public IBodyWorkflowAction<JToken> GetExecutionById(Expression<Func<string>> executionId, Expression<Func<string>> surveyId, Expression<Func<string>> publicationId, Expression<Func<bool>> advancedInfo = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetExecutionById(Expression<Func<string>> executionId, Expression<Func<string>> surveyId, Expression<Func<string>> publicationId, Expression<Func<bool>> advancedInfo = null)
         {
             var __workflow_executionId = WorkflowExpression.Compile(executionId, nameof(executionId), required: true);
             var __workflow_surveyId = WorkflowExpression.Compile(surveyId, nameof(surveyId), required: true);
             var __workflow_publicationId = WorkflowExpression.Compile(publicationId, nameof(publicationId), required: true);
             var __workflow_advancedInfo = WorkflowExpression.Compile(advancedInfo, nameof(advancedInfo), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/survey-service/execution/{0}", __workflow_executionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -33,10 +33,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "springglobal")]
-        public IBodyWorkflowAction<GetUserByIdResponse> GetUserById(Expression<Func<string>> userId)
+        public IBodyWorkflowAction<GetUserByIdResponse, ApiConnectionActionConfiguration> GetUserById(Expression<Func<string>> userId)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
-            return new DeferredBodyAction<GetUserByIdResponse>(() =>
+            return new DeferredBodyAction<GetUserByIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/identity-service/user/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -48,11 +48,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
 
     public class SpringglobalTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger OnSurveyExecution(Expression<Func<string>> bodyparameterssurveyId = null, Expression<Func<string>> bodyparameterspublicationId = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnSurveyExecution(Expression<Func<string>> bodyparameterssurveyId = null, Expression<Func<string>> bodyparameterspublicationId = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyparameterssurveyId = WorkflowExpression.Compile(bodyparameterssurveyId, nameof(bodyparameterssurveyId), required: false);
             var __workflow_bodyparameterspublicationId = WorkflowExpression.Compile(bodyparameterspublicationId, nameof(bodyparameterspublicationId), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook-service/subscribe/surveyexecution";
                 var apiCallHttpMethod = "post";

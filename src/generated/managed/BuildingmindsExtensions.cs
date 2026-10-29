@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
     public class BuildingmindsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<PortfolioTypeWithPagination> GetPortfolios(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
+        public IBodyWorkflowAction<PortfolioTypeWithPagination, ApiConnectionActionConfiguration> GetPortfolios(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
         {
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
-            return new DeferredBodyAction<PortfolioTypeWithPagination>(() =>
+            return new DeferredBodyAction<PortfolioTypeWithPagination, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/premises/portfolios";
                 var apiCallHttpMethod = "get";
@@ -30,11 +30,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<SiteTypeWithPagination> GetSites(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
+        public IBodyWorkflowAction<SiteTypeWithPagination, ApiConnectionActionConfiguration> GetSites(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
         {
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
-            return new DeferredBodyAction<SiteTypeWithPagination>(() =>
+            return new DeferredBodyAction<SiteTypeWithPagination, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/premises/sites";
                 var apiCallHttpMethod = "get";
@@ -48,11 +48,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<BuildingTypeWithPagination> GetBuildings(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
+        public IBodyWorkflowAction<BuildingTypeWithPagination, ApiConnectionActionConfiguration> GetBuildings(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
         {
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
-            return new DeferredBodyAction<BuildingTypeWithPagination>(() =>
+            return new DeferredBodyAction<BuildingTypeWithPagination, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/premises/buildings";
                 var apiCallHttpMethod = "get";
@@ -66,11 +66,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<FloorTypeWithPagination> GetFloors(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
+        public IBodyWorkflowAction<FloorTypeWithPagination, ApiConnectionActionConfiguration> GetFloors(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
         {
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
-            return new DeferredBodyAction<FloorTypeWithPagination>(() =>
+            return new DeferredBodyAction<FloorTypeWithPagination, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/premises/floors";
                 var apiCallHttpMethod = "get";
@@ -84,11 +84,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<RoofsTypeWithPagination> GetRoofs(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
+        public IBodyWorkflowAction<RoofsTypeWithPagination, ApiConnectionActionConfiguration> GetRoofs(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
         {
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
-            return new DeferredBodyAction<RoofsTypeWithPagination>(() =>
+            return new DeferredBodyAction<RoofsTypeWithPagination, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/premises/roofs";
                 var apiCallHttpMethod = "get";
@@ -102,11 +102,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<FacadesTypeWithPagination> GetFacades(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
+        public IBodyWorkflowAction<FacadesTypeWithPagination, ApiConnectionActionConfiguration> GetFacades(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
         {
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
-            return new DeferredBodyAction<FacadesTypeWithPagination>(() =>
+            return new DeferredBodyAction<FacadesTypeWithPagination, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/premises/facades";
                 var apiCallHttpMethod = "get";
@@ -120,11 +120,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<OutsideareasTypeWithPagination> GetOutsideareas(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
+        public IBodyWorkflowAction<OutsideareasTypeWithPagination, ApiConnectionActionConfiguration> GetOutsideareas(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
         {
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
-            return new DeferredBodyAction<OutsideareasTypeWithPagination>(() =>
+            return new DeferredBodyAction<OutsideareasTypeWithPagination, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/premises/outsideareas";
                 var apiCallHttpMethod = "get";
@@ -138,11 +138,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<SubareasTypeWithPagination> GetSubareas(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
+        public IBodyWorkflowAction<SubareasTypeWithPagination, ApiConnectionActionConfiguration> GetSubareas(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
         {
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
-            return new DeferredBodyAction<SubareasTypeWithPagination>(() =>
+            return new DeferredBodyAction<SubareasTypeWithPagination, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/premises/subareas";
                 var apiCallHttpMethod = "get";
@@ -156,11 +156,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<LandsTypeWithPagination> GetLands(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
+        public IBodyWorkflowAction<LandsTypeWithPagination, ApiConnectionActionConfiguration> GetLands(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
         {
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
-            return new DeferredBodyAction<LandsTypeWithPagination>(() =>
+            return new DeferredBodyAction<LandsTypeWithPagination, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/premises/lands";
                 var apiCallHttpMethod = "get";
@@ -174,11 +174,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<SpacesTypeWithPagination> GetSpaces(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
+        public IBodyWorkflowAction<SpacesTypeWithPagination, ApiConnectionActionConfiguration> GetSpaces(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
         {
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
-            return new DeferredBodyAction<SpacesTypeWithPagination>(() =>
+            return new DeferredBodyAction<SpacesTypeWithPagination, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/premises/spaces";
                 var apiCallHttpMethod = "get";
@@ -192,10 +192,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<Portfolio> GetPortfolioById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Portfolio, ApiConnectionActionConfiguration> GetPortfolioById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<Portfolio>(() =>
+            return new DeferredBodyAction<Portfolio, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/portfolios/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -205,10 +205,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<Site> GetSiteById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Site, ApiConnectionActionConfiguration> GetSiteById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<Site>(() =>
+            return new DeferredBodyAction<Site, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/sites/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -218,10 +218,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<Building> GetBuildingById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Building, ApiConnectionActionConfiguration> GetBuildingById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<Building>(() =>
+            return new DeferredBodyAction<Building, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/buildings/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -231,10 +231,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<Floor> GetFloorById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Floor, ApiConnectionActionConfiguration> GetFloorById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<Floor>(() =>
+            return new DeferredBodyAction<Floor, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/floors/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -244,10 +244,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<Roof> GetRoofById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Roof, ApiConnectionActionConfiguration> GetRoofById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<Roof>(() =>
+            return new DeferredBodyAction<Roof, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/roofs/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -257,10 +257,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<Facade> GetFacadeById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Facade, ApiConnectionActionConfiguration> GetFacadeById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<Facade>(() =>
+            return new DeferredBodyAction<Facade, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/facades/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -270,10 +270,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<Outsidearea> GetOutsideareaById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Outsidearea, ApiConnectionActionConfiguration> GetOutsideareaById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<Outsidearea>(() =>
+            return new DeferredBodyAction<Outsidearea, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/outsideareas/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -283,10 +283,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<Subarea> GetSubareaById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Subarea, ApiConnectionActionConfiguration> GetSubareaById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<Subarea>(() =>
+            return new DeferredBodyAction<Subarea, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/subareas/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -296,10 +296,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<Land> GetLandById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Land, ApiConnectionActionConfiguration> GetLandById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<Land>(() =>
+            return new DeferredBodyAction<Land, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/lands/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -309,10 +309,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<Space> GetSpaceById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Space, ApiConnectionActionConfiguration> GetSpaceById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<Space>(() =>
+            return new DeferredBodyAction<Space, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/spaces/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -322,10 +322,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnPortfolio(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ChildrenCheckType, ApiConnectionActionConfiguration> CheckForChildrenOnPortfolio(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            return new DeferredBodyAction<ChildrenCheckType, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/portfolios/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -335,10 +335,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnSite(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ChildrenCheckType, ApiConnectionActionConfiguration> CheckForChildrenOnSite(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            return new DeferredBodyAction<ChildrenCheckType, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/sites/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -348,10 +348,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnBuilding(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ChildrenCheckType, ApiConnectionActionConfiguration> CheckForChildrenOnBuilding(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            return new DeferredBodyAction<ChildrenCheckType, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/buildings/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -361,10 +361,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnFloor(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ChildrenCheckType, ApiConnectionActionConfiguration> CheckForChildrenOnFloor(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            return new DeferredBodyAction<ChildrenCheckType, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/floors/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -374,10 +374,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnRoof(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ChildrenCheckType, ApiConnectionActionConfiguration> CheckForChildrenOnRoof(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            return new DeferredBodyAction<ChildrenCheckType, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/roofs/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -387,10 +387,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnFacade(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ChildrenCheckType, ApiConnectionActionConfiguration> CheckForChildrenOnFacade(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            return new DeferredBodyAction<ChildrenCheckType, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/facades/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -400,10 +400,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnOutsidearea(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ChildrenCheckType, ApiConnectionActionConfiguration> CheckForChildrenOnOutsidearea(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            return new DeferredBodyAction<ChildrenCheckType, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/outsideareas/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -413,10 +413,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnSubarea(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ChildrenCheckType, ApiConnectionActionConfiguration> CheckForChildrenOnSubarea(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            return new DeferredBodyAction<ChildrenCheckType, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/subareas/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -426,10 +426,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnLand(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ChildrenCheckType, ApiConnectionActionConfiguration> CheckForChildrenOnLand(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            return new DeferredBodyAction<ChildrenCheckType, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/lands/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -439,10 +439,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnSpace(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ChildrenCheckType, ApiConnectionActionConfiguration> CheckForChildrenOnSpace(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            return new DeferredBodyAction<ChildrenCheckType, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/spaces/{0}/children/exist", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -452,14 +452,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<AssociatedSpacesTypeWithPagination> GetAssociatedSpacesForSpace(Expression<Func<spaceTypeInput>> spaceType, Expression<Func<string>> id, Expression<Func<associatedTypeInput>> associatedType, Expression<Func<string>> skip = null, Expression<Func<string>> top = null)
+        public IBodyWorkflowAction<AssociatedSpacesTypeWithPagination, ApiConnectionActionConfiguration> GetAssociatedSpacesForSpace(Expression<Func<spaceTypeInput>> spaceType, Expression<Func<string>> id, Expression<Func<associatedTypeInput>> associatedType, Expression<Func<string>> skip = null, Expression<Func<string>> top = null)
         {
             var __workflow_spaceType = WorkflowExpression.Compile(spaceType, nameof(spaceType), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_associatedType = WorkflowExpression.Compile(associatedType, nameof(associatedType), required: true);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
-            return new DeferredBodyAction<AssociatedSpacesTypeWithPagination>(() =>
+            return new DeferredBodyAction<AssociatedSpacesTypeWithPagination, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/{0}/{1}/associated/{2}", __workflow_spaceType.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1), __workflow_associatedType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -473,12 +473,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IWorkflowAction GetUnassociatedSpaces(Expression<Func<spaceTypeInput>> spaceType, Expression<Func<associatedTypeInput>> associatedType, Expression<Func<string>> spaceid = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetUnassociatedSpaces(Expression<Func<spaceTypeInput>> spaceType, Expression<Func<associatedTypeInput>> associatedType, Expression<Func<string>> spaceid = null)
         {
             var __workflow_spaceType = WorkflowExpression.Compile(spaceType, nameof(spaceType), required: true);
             var __workflow_associatedType = WorkflowExpression.Compile(associatedType, nameof(associatedType), required: true);
             var __workflow_spaceid = WorkflowExpression.Compile(spaceid, nameof(spaceid), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/premises/{0}/notassociated/{1}", __workflow_spaceType.WithUrlEncoding(1), __workflow_associatedType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
     public class SeismiccontentdiscovActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiccontentdiscov")]
-        public IBodyWorkflowAction<SeismicPredictiveContentPredictiveContentResponse[]> GetPredictiveContentResultSet(Expression<Func<string>> predictiveContentId, Expression<Func<string>> contextId)
+        public IBodyWorkflowAction<SeismicPredictiveContentPredictiveContentResponse[], ApiConnectionActionConfiguration> GetPredictiveContentResultSet(Expression<Func<string>> predictiveContentId, Expression<Func<string>> contextId)
         {
             var __workflow_predictiveContentId = WorkflowExpression.Compile(predictiveContentId, nameof(predictiveContentId), required: true);
             var __workflow_contextId = WorkflowExpression.Compile(contextId, nameof(contextId), required: true);
-            return new DeferredBodyAction<SeismicPredictiveContentPredictiveContentResponse[]>(() =>
+            return new DeferredBodyAction<SeismicPredictiveContentPredictiveContentResponse[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/integration/v2/predictiveContent/{0}/{1}", __workflow_predictiveContentId.WithUrlEncoding(1), __workflow_contextId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -26,11 +26,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiccontentdiscov")]
-        public IBodyWorkflowAction<SeismicPredictiveContentEmbeddedAppTab[]> GetPredictiveSettings(Expression<Func<string>> systemType = null, Expression<Func<string>> contextType = null)
+        public IBodyWorkflowAction<SeismicPredictiveContentEmbeddedAppTab[], ApiConnectionActionConfiguration> GetPredictiveSettings(Expression<Func<string>> systemType = null, Expression<Func<string>> contextType = null)
         {
             var __workflow_systemType = WorkflowExpression.Compile(systemType, nameof(systemType), required: false);
             var __workflow_contextType = WorkflowExpression.Compile(contextType, nameof(contextType), required: false);
-            return new DeferredBodyAction<SeismicPredictiveContentEmbeddedAppTab[]>(() =>
+            return new DeferredBodyAction<SeismicPredictiveContentEmbeddedAppTab[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/v2/predictiveContent";
                 var apiCallHttpMethod = "get";
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiccontentdiscov")]
-        public IBodyWorkflowAction<SeismicDocCenterContentItem[]> GetUserFavorites()
+        public IBodyWorkflowAction<SeismicDocCenterContentItem[], ApiConnectionActionConfiguration> GetUserFavorites()
         {
             var apiCallPath = "/integration/v2/users/favorites";
             var apiCallHttpMethod = "get";
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiccontentdiscov")]
-        public IBodyWorkflowAction<SeismicDocCenterContentItem[]> GetUserRecentContents()
+        public IBodyWorkflowAction<SeismicDocCenterContentItem[], ApiConnectionActionConfiguration> GetUserRecentContents()
         {
             var apiCallPath = "/integration/v2/users/recents";
             var apiCallHttpMethod = "get";
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiccontentdiscov")]
-        public IBodyWorkflowAction<SeismicSearchSearchResponse> QueryContent(Expression<Func<string>> continuationToken = null, Expression<Func<string>> searchRequestBodyterm = null, Expression<Func<int>> searchRequestBodyoptionspageSize = null, Expression<Func<searchRequestBodyoptionssearchFieldsInputItem[]>> searchRequestBodyoptionssearchFields = null, Expression<Func<searchRequestBodyoptionsreturnFieldsInputItem[]>> searchRequestBodyoptionsreturnFields = null, Expression<Func<SeismicSearchSortConstraint[]>> searchRequestBodysort = null, Expression<Func<SeismicSearchConditionExpressionInfo[]>> searchRequestBodyfiltercondition = null, Expression<Func<SeismicSearchFilterExpressionInfo[]>> searchRequestBodyfilterfilter = null, Expression<Func<string>> searchRequestBodyfilterOperator = null)
+        public IBodyWorkflowAction<SeismicSearchSearchResponse, ApiConnectionActionConfiguration> QueryContent(Expression<Func<string>> continuationToken = null, Expression<Func<string>> searchRequestBodyterm = null, Expression<Func<int>> searchRequestBodyoptionspageSize = null, Expression<Func<searchRequestBodyoptionssearchFieldsInputItem[]>> searchRequestBodyoptionssearchFields = null, Expression<Func<searchRequestBodyoptionsreturnFieldsInputItem[]>> searchRequestBodyoptionsreturnFields = null, Expression<Func<SeismicSearchSortConstraint[]>> searchRequestBodysort = null, Expression<Func<SeismicSearchConditionExpressionInfo[]>> searchRequestBodyfiltercondition = null, Expression<Func<SeismicSearchFilterExpressionInfo[]>> searchRequestBodyfilterfilter = null, Expression<Func<string>> searchRequestBodyfilterOperator = null)
         {
             var __workflow_continuationToken = WorkflowExpression.Compile(continuationToken, nameof(continuationToken), required: false);
             var __workflow_searchRequestBodyterm = WorkflowExpression.Compile(searchRequestBodyterm, nameof(searchRequestBodyterm), required: false);
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
             var __workflow_searchRequestBodyfiltercondition = WorkflowExpression.Compile(searchRequestBodyfiltercondition, nameof(searchRequestBodyfiltercondition), required: false);
             var __workflow_searchRequestBodyfilterfilter = WorkflowExpression.Compile(searchRequestBodyfilterfilter, nameof(searchRequestBodyfilterfilter), required: false);
             var __workflow_searchRequestBodyfilterOperator = WorkflowExpression.Compile(searchRequestBodyfilterOperator, nameof(searchRequestBodyfilterOperator), required: false);
-            return new DeferredBodyAction<SeismicSearchSearchResponse>(() =>
+            return new DeferredBodyAction<SeismicSearchSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/search/v1/content/query";
                 var apiCallHttpMethod = "post";

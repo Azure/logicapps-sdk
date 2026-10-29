@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Secplugscan
     public class SecplugscanActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "secplugscan")]
-        public IBodyWorkflowAction<FilescanResponse> Filescan(Expression<Func<string>> bodyfilename, Expression<Func<string>> bodydata, Expression<Func<string>> xApiKey = null, Expression<Func<string>> xClientId = null)
+        public IBodyWorkflowAction<FilescanResponse, ApiConnectionActionConfiguration> Filescan(Expression<Func<string>> bodyfilename, Expression<Func<string>> bodydata, Expression<Func<string>> xApiKey = null, Expression<Func<string>> xClientId = null)
         {
             var __workflow_bodyfilename = WorkflowExpression.Compile(bodyfilename, nameof(bodyfilename), required: true);
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
             var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: false);
             var __workflow_xClientId = WorkflowExpression.Compile(xClientId, nameof(xClientId), required: false);
-            return new DeferredBodyAction<FilescanResponse>(() =>
+            return new DeferredBodyAction<FilescanResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/file/jsonupload";
                 var apiCallHttpMethod = "post";
@@ -49,13 +49,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Secplugscan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "secplugscan")]
-        public IBodyWorkflowAction<EmailScanResponse> EmailScan(Expression<Func<string>> bodyfilename, Expression<Func<string>> bodydata, Expression<Func<string>> xApiKey = null, Expression<Func<string>> xClientId = null)
+        public IBodyWorkflowAction<EmailScanResponse, ApiConnectionActionConfiguration> EmailScan(Expression<Func<string>> bodyfilename, Expression<Func<string>> bodydata, Expression<Func<string>> xApiKey = null, Expression<Func<string>> xClientId = null)
         {
             var __workflow_bodyfilename = WorkflowExpression.Compile(bodyfilename, nameof(bodyfilename), required: true);
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
             var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: false);
             var __workflow_xClientId = WorkflowExpression.Compile(xClientId, nameof(xClientId), required: false);
-            return new DeferredBodyAction<EmailScanResponse>(() =>
+            return new DeferredBodyAction<EmailScanResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/email/jsonupload";
                 var apiCallHttpMethod = "post";

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loginllamaip
     public class LoginllamaipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "loginllamaip")]
-        public IBodyWorkflowAction<LoginPostResponse> Login(Expression<Func<string>> bodyipAddress, Expression<Func<string>> bodyuserAgent, Expression<Func<string>> bodyidentityKey, Expression<Func<string>> bodygeoCountry = null, Expression<Func<string>> bodygeoCity = null, Expression<Func<string>> bodyuserTimeOfDay = null)
+        public IBodyWorkflowAction<LoginPostResponse, ApiConnectionActionConfiguration> Login(Expression<Func<string>> bodyipAddress, Expression<Func<string>> bodyuserAgent, Expression<Func<string>> bodyidentityKey, Expression<Func<string>> bodygeoCountry = null, Expression<Func<string>> bodygeoCity = null, Expression<Func<string>> bodyuserTimeOfDay = null)
         {
             var __workflow_bodyipAddress = WorkflowExpression.Compile(bodyipAddress, nameof(bodyipAddress), required: true);
             var __workflow_bodyuserAgent = WorkflowExpression.Compile(bodyuserAgent, nameof(bodyuserAgent), required: true);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loginllamaip
             var __workflow_bodygeoCountry = WorkflowExpression.Compile(bodygeoCountry, nameof(bodygeoCountry), required: false);
             var __workflow_bodygeoCity = WorkflowExpression.Compile(bodygeoCity, nameof(bodygeoCity), required: false);
             var __workflow_bodyuserTimeOfDay = WorkflowExpression.Compile(bodyuserTimeOfDay, nameof(bodyuserTimeOfDay), required: false);
-            return new DeferredBodyAction<LoginPostResponse>(() =>
+            return new DeferredBodyAction<LoginPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/login/check";
                 var apiCallHttpMethod = "post";

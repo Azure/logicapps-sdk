@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
     public class OpentextcoreshareActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
-        public IBodyWorkflowAction<string> CreateDocument(Expression<Func<string>> bodyparentID, Expression<Func<string>> bodyfilefileName, Expression<Func<string>> bodyfilefileContent)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<string>> bodyparentID, Expression<Func<string>> bodyfilefileName, Expression<Func<string>> bodyfilefileContent)
         {
             var __workflow_bodyparentID = WorkflowExpression.Compile(bodyparentID, nameof(bodyparentID), required: true);
             var __workflow_bodyfilefileName = WorkflowExpression.Compile(bodyfilefileName, nameof(bodyfilefileName), required: true);
             var __workflow_bodyfilefileContent = WorkflowExpression.Compile(bodyfilefileContent, nameof(bodyfilefileContent), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/document/create";
                 var apiCallHttpMethod = "post";
@@ -48,12 +48,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
-        public IWorkflowAction UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> bodyfilefileName, Expression<Func<string>> bodyfilefileContent)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> bodyfilefileName, Expression<Func<string>> bodyfilefileContent)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyfilefileName = WorkflowExpression.Compile(bodyfilefileName, nameof(bodyfilefileName), required: true);
             var __workflow_bodyfilefileContent = WorkflowExpression.Compile(bodyfilefileContent, nameof(bodyfilefileContent), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/document/update/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -82,10 +82,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
-        public IWorkflowAction UnlockDocument(Expression<Func<string>> id)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UnlockDocument(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/document/check-in/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -95,10 +95,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
-        public IWorkflowAction LockDocument(Expression<Func<string>> id)
+        public IWorkflowAction<ApiConnectionActionConfiguration> LockDocument(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/document/check-out/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -108,10 +108,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
-        public IBodyWorkflowAction<GetDocumentResponse> GetDocument(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetDocumentResponse, ApiConnectionActionConfiguration> GetDocument(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GetDocumentResponse>(() =>
+            return new DeferredBodyAction<GetDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/document/get/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -121,11 +121,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
-        public IBodyWorkflowAction<GetDocumentVersionContentResponse> GetDocumentVersionContent(Expression<Func<string>> id, Expression<Func<string>> versionId)
+        public IBodyWorkflowAction<GetDocumentVersionContentResponse, ApiConnectionActionConfiguration> GetDocumentVersionContent(Expression<Func<string>> id, Expression<Func<string>> versionId)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_versionId = WorkflowExpression.Compile(versionId, nameof(versionId), required: true);
-            return new DeferredBodyAction<GetDocumentVersionContentResponse>(() =>
+            return new DeferredBodyAction<GetDocumentVersionContentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/document/get-content/{0}/{1}", __workflow_id.WithUrlEncoding(1), __workflow_versionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -135,10 +135,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
-        public IWorkflowAction DeleteDocument(Expression<Func<string>> id)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteDocument(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/document/delete/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -148,10 +148,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
-        public IBodyWorkflowAction<Version[]> GetDocumentVersions(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Version[], ApiConnectionActionConfiguration> GetDocumentVersions(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<Version[]>(() =>
+            return new DeferredBodyAction<Version[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/document/get-versions/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -161,11 +161,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
-        public IWorkflowAction MoveDocument(Expression<Func<string>> id, Expression<Func<string>> parentId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MoveDocument(Expression<Func<string>> id, Expression<Func<string>> parentId)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_parentId = WorkflowExpression.Compile(parentId, nameof(parentId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/document/move/{0}/to/{1}", __workflow_id.WithUrlEncoding(1), __workflow_parentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -175,11 +175,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
-        public IBodyWorkflowAction<string> CopyDocument(Expression<Func<string>> id, Expression<Func<string>> parentId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CopyDocument(Expression<Func<string>> id, Expression<Func<string>> parentId)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_parentId = WorkflowExpression.Compile(parentId, nameof(parentId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/document/copy/{0}/to/{1}", __workflow_id.WithUrlEncoding(1), __workflow_parentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -189,11 +189,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
-        public IBodyWorkflowAction<string> CreateFolder(Expression<Func<string>> bodyname, Expression<Func<string>> bodyparentID)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateFolder(Expression<Func<string>> bodyname, Expression<Func<string>> bodyparentID)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodyparentID = WorkflowExpression.Compile(bodyparentID, nameof(bodyparentID), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/folder/create";
                 var apiCallHttpMethod = "post";
@@ -214,11 +214,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
-        public IWorkflowAction UpdateFolder(Expression<Func<string>> id, Expression<Func<string>> bodyname)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateFolder(Expression<Func<string>> id, Expression<Func<string>> bodyname)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/folder/update/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -237,10 +237,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
-        public IBodyWorkflowAction<GetFolderResponse> GetFolder(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetFolderResponse, ApiConnectionActionConfiguration> GetFolder(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GetFolderResponse>(() =>
+            return new DeferredBodyAction<GetFolderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/folder/get/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -250,10 +250,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
-        public IWorkflowAction DeleteFolder(Expression<Func<string>> id)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteFolder(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/folder/delete/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -263,10 +263,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
-        public IBodyWorkflowAction<ResultItem[]> GetFolderChildren(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultItem[], ApiConnectionActionConfiguration> GetFolderChildren(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ResultItem[]>(() =>
+            return new DeferredBodyAction<ResultItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/folder/get-children/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -276,10 +276,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
-        public IBodyWorkflowAction<ResultItem[]> SimpleSearch(Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<ResultItem[], ApiConnectionActionConfiguration> SimpleSearch(Expression<Func<string>> bodyname)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            return new DeferredBodyAction<ResultItem[]>(() =>
+            return new DeferredBodyAction<ResultItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/search/simple";
                 var apiCallHttpMethod = "post";
@@ -298,12 +298,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
-        public IBodyWorkflowAction<ResultItem[]> AdvancedSearch(Expression<Func<string>> bodyquery, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodylimit = null)
+        public IBodyWorkflowAction<ResultItem[], ApiConnectionActionConfiguration> AdvancedSearch(Expression<Func<string>> bodyquery, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodylimit = null)
         {
             var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
             var __workflow_bodystart = WorkflowExpression.Compile(bodystart, nameof(bodystart), required: false);
             var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
-            return new DeferredBodyAction<ResultItem[]>(() =>
+            return new DeferredBodyAction<ResultItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/search/advanced";
                 var apiCallHttpMethod = "post";

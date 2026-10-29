@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Benchmarkemail
     public class BenchmarkemailActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "benchmarkemail")]
-        public IBodyWorkflowAction<string> CreateContactList(Expression<Func<string>> listName)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateContactList(Expression<Func<string>> listName)
         {
             var __workflow_listName = WorkflowExpression.Compile(listName, nameof(listName), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/listCreate/";
                 var apiCallHttpMethod = "post";
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Benchmarkemail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "benchmarkemail")]
-        public IBodyWorkflowAction<int> CreateContact(Expression<Func<string>> listID, Expression<Func<string>> email, Expression<Func<string>> firstName = null, Expression<Func<string>> middleName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> jobTitle = null, Expression<Func<string>> phone = null, Expression<Func<string>> notes = null)
+        public IBodyWorkflowAction<int, ApiConnectionActionConfiguration> CreateContact(Expression<Func<string>> listID, Expression<Func<string>> email, Expression<Func<string>> firstName = null, Expression<Func<string>> middleName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> jobTitle = null, Expression<Func<string>> phone = null, Expression<Func<string>> notes = null)
         {
             var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
             var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Benchmarkemail
             var __workflow_jobTitle = WorkflowExpression.Compile(jobTitle, nameof(jobTitle), required: false);
             var __workflow_phone = WorkflowExpression.Compile(phone, nameof(phone), required: false);
             var __workflow_notes = WorkflowExpression.Compile(notes, nameof(notes), required: false);
-            return new DeferredBodyAction<int>(() =>
+            return new DeferredBodyAction<int, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/listAddContacts/";
                 var apiCallHttpMethod = "post";

@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
     public class AletheiaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<EntityFilingsResponseItem[]> EntityFilings(Expression<Func<string>> id, Expression<Func<string>> filing = null, Expression<Func<int>> before = null)
+        public IBodyWorkflowAction<EntityFilingsResponseItem[], ApiConnectionActionConfiguration> EntityFilings(Expression<Func<string>> id, Expression<Func<string>> filing = null, Expression<Func<int>> before = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_filing = WorkflowExpression.Compile(filing, nameof(filing), required: false);
             var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
-            return new DeferredBodyAction<EntityFilingsResponseItem[]>(() =>
+            return new DeferredBodyAction<EntityFilingsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/EntityFilings";
                 var apiCallHttpMethod = "get";
@@ -32,10 +32,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<OpenForm4Response> OpenForm4(Expression<Func<string>> filingurl)
+        public IBodyWorkflowAction<OpenForm4Response, ApiConnectionActionConfiguration> OpenForm4(Expression<Func<string>> filingurl)
         {
             var __workflow_filingurl = WorkflowExpression.Compile(filingurl, nameof(filingurl), required: true);
-            return new DeferredBodyAction<OpenForm4Response>(() =>
+            return new DeferredBodyAction<OpenForm4Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/OpenForm4";
                 var apiCallHttpMethod = "get";
@@ -46,10 +46,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<OpenCommonFinancialsResponse> OpenCommonFinancials(Expression<Func<string>> filingurl)
+        public IBodyWorkflowAction<OpenCommonFinancialsResponse, ApiConnectionActionConfiguration> OpenCommonFinancials(Expression<Func<string>> filingurl)
         {
             var __workflow_filingurl = WorkflowExpression.Compile(filingurl, nameof(filingurl), required: true);
-            return new DeferredBodyAction<OpenCommonFinancialsResponse>(() =>
+            return new DeferredBodyAction<OpenCommonFinancialsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/OpenCommonFinancials";
                 var apiCallHttpMethod = "get";
@@ -60,11 +60,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<SearchEntitiesResponseItem[]> SearchEntities(Expression<Func<string>> term, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<SearchEntitiesResponseItem[], ApiConnectionActionConfiguration> SearchEntities(Expression<Func<string>> term, Expression<Func<int>> top = null)
         {
             var __workflow_term = WorkflowExpression.Compile(term, nameof(term), required: true);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
-            return new DeferredBodyAction<SearchEntitiesResponseItem[]>(() =>
+            return new DeferredBodyAction<SearchEntitiesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SearchEntities";
                 var apiCallHttpMethod = "get";
@@ -78,10 +78,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<GetEntityResponse> GetEntity(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetEntityResponse, ApiConnectionActionConfiguration> GetEntity(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GetEntityResponse>(() =>
+            return new DeferredBodyAction<GetEntityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetEntity";
                 var apiCallHttpMethod = "get";
@@ -92,11 +92,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<GetFilingResponse> GetFiling(Expression<Func<string>> id = null, Expression<Func<string>> url = null)
+        public IBodyWorkflowAction<GetFilingResponse, ApiConnectionActionConfiguration> GetFiling(Expression<Func<string>> id = null, Expression<Func<string>> url = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: false);
-            return new DeferredBodyAction<GetFilingResponse>(() =>
+            return new DeferredBodyAction<GetFilingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GetFiling";
                 var apiCallHttpMethod = "get";
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<LatestTransactionsResponseItem[]> LatestTransactions(Expression<Func<string>> issuer = null, Expression<Func<int>> owner = null, Expression<Func<int>> top = null, Expression<Func<string>> before = null, Expression<Func<int>> securitytype = null, Expression<Func<int>> transactiontype = null, Expression<Func<bool>> cascade = null)
+        public IBodyWorkflowAction<LatestTransactionsResponseItem[], ApiConnectionActionConfiguration> LatestTransactions(Expression<Func<string>> issuer = null, Expression<Func<int>> owner = null, Expression<Func<int>> top = null, Expression<Func<string>> before = null, Expression<Func<int>> securitytype = null, Expression<Func<int>> transactiontype = null, Expression<Func<bool>> cascade = null)
         {
             var __workflow_issuer = WorkflowExpression.Compile(issuer, nameof(issuer), required: false);
             var __workflow_owner = WorkflowExpression.Compile(owner, nameof(owner), required: false);
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             var __workflow_securitytype = WorkflowExpression.Compile(securitytype, nameof(securitytype), required: false);
             var __workflow_transactiontype = WorkflowExpression.Compile(transactiontype, nameof(transactiontype), required: false);
             var __workflow_cascade = WorkflowExpression.Compile(cascade, nameof(cascade), required: false);
-            return new DeferredBodyAction<LatestTransactionsResponseItem[]>(() =>
+            return new DeferredBodyAction<LatestTransactionsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/LatestTransactions";
                 var apiCallHttpMethod = "get";
@@ -144,10 +144,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<AffiliatedOwnersResponseItem[]> AffiliatedOwners(Expression<Func<string>> id)
+        public IBodyWorkflowAction<AffiliatedOwnersResponseItem[], ApiConnectionActionConfiguration> AffiliatedOwners(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<AffiliatedOwnersResponseItem[]>(() =>
+            return new DeferredBodyAction<AffiliatedOwnersResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AffiliatedOwners";
                 var apiCallHttpMethod = "get";
@@ -158,12 +158,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<GetCommonFinancialsResponse> GetCommonFinancials(Expression<Func<string>> id, Expression<Func<periodInput>> period = null, Expression<Func<string>> before = null)
+        public IBodyWorkflowAction<GetCommonFinancialsResponse, ApiConnectionActionConfiguration> GetCommonFinancials(Expression<Func<string>> id, Expression<Func<periodInput>> period = null, Expression<Func<string>> before = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_period = WorkflowExpression.Compile(period, nameof(period), required: false);
             var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
-            return new DeferredBodyAction<GetCommonFinancialsResponse>(() =>
+            return new DeferredBodyAction<GetCommonFinancialsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CommonFinancials";
                 var apiCallHttpMethod = "get";
@@ -178,14 +178,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<FinancialFactTrendResponseItem[]> FinancialFactTrend(Expression<Func<string>> id, Expression<Func<int>> label, Expression<Func<int>> period = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
+        public IBodyWorkflowAction<FinancialFactTrendResponseItem[], ApiConnectionActionConfiguration> FinancialFactTrend(Expression<Func<string>> id, Expression<Func<int>> label, Expression<Func<int>> period = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_label = WorkflowExpression.Compile(label, nameof(label), required: true);
             var __workflow_period = WorkflowExpression.Compile(period, nameof(period), required: false);
             var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
             var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
-            return new DeferredBodyAction<FinancialFactTrendResponseItem[]>(() =>
+            return new DeferredBodyAction<FinancialFactTrendResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/FinancialFactTrend";
                 var apiCallHttpMethod = "get";
@@ -203,13 +203,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<SearchEarningsCallsResponseItem[]> SearchEarningsCalls(Expression<Func<string>> company = null, Expression<Func<int>> year = null, Expression<Func<string>> quarter = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<SearchEarningsCallsResponseItem[], ApiConnectionActionConfiguration> SearchEarningsCalls(Expression<Func<string>> company = null, Expression<Func<int>> year = null, Expression<Func<string>> quarter = null, Expression<Func<int>> top = null)
         {
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: false);
             var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: false);
             var __workflow_quarter = WorkflowExpression.Compile(quarter, nameof(quarter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
-            return new DeferredBodyAction<SearchEarningsCallsResponseItem[]>(() =>
+            return new DeferredBodyAction<SearchEarningsCallsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SearchEarningsCalls";
                 var apiCallHttpMethod = "get";
@@ -227,14 +227,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<EarningsCallResponse> EarningsCall(Expression<Func<string>> company, Expression<Func<int>> year = null, Expression<Func<string>> quarter = null, Expression<Func<int>> begin = null, Expression<Func<int>> end = null)
+        public IBodyWorkflowAction<EarningsCallResponse, ApiConnectionActionConfiguration> EarningsCall(Expression<Func<string>> company, Expression<Func<int>> year = null, Expression<Func<string>> quarter = null, Expression<Func<int>> begin = null, Expression<Func<int>> end = null)
         {
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: false);
             var __workflow_quarter = WorkflowExpression.Compile(quarter, nameof(quarter), required: false);
             var __workflow_begin = WorkflowExpression.Compile(begin, nameof(begin), required: false);
             var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
-            return new DeferredBodyAction<EarningsCallResponse>(() =>
+            return new DeferredBodyAction<EarningsCallResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/EarningsCall";
                 var apiCallHttpMethod = "get";
@@ -253,14 +253,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<EarningsCallHighlightsResponseItem[]> EarningsCallHighlights(Expression<Func<string>> company, Expression<Func<int>> year, Expression<Func<string>> quarter, Expression<Func<int>> category = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<EarningsCallHighlightsResponseItem[], ApiConnectionActionConfiguration> EarningsCallHighlights(Expression<Func<string>> company, Expression<Func<int>> year, Expression<Func<string>> quarter, Expression<Func<int>> category = null, Expression<Func<int>> top = null)
         {
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
             var __workflow_quarter = WorkflowExpression.Compile(quarter, nameof(quarter), required: true);
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
-            return new DeferredBodyAction<EarningsCallHighlightsResponseItem[]>(() =>
+            return new DeferredBodyAction<EarningsCallHighlightsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/EarningsCallHighlights";
                 var apiCallHttpMethod = "get";
@@ -277,10 +277,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<CryptoQuoteResponse> CryptoQuote(Expression<Func<string>> symbol)
+        public IBodyWorkflowAction<CryptoQuoteResponse, ApiConnectionActionConfiguration> CryptoQuote(Expression<Func<string>> symbol)
         {
             var __workflow_symbol = WorkflowExpression.Compile(symbol, nameof(symbol), required: true);
-            return new DeferredBodyAction<CryptoQuoteResponse>(() =>
+            return new DeferredBodyAction<CryptoQuoteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Crypto";
                 var apiCallHttpMethod = "get";
@@ -291,11 +291,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<StockDataV2Response> StockData(Expression<Func<string>> symbol, Expression<Func<string>> fields = null)
+        public IBodyWorkflowAction<StockDataV2Response, ApiConnectionActionConfiguration> StockData(Expression<Func<string>> symbol, Expression<Func<string>> fields = null)
         {
             var __workflow_symbol = WorkflowExpression.Compile(symbol, nameof(symbol), required: true);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
-            return new DeferredBodyAction<StockDataV2Response>(() =>
+            return new DeferredBodyAction<StockDataV2Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/StockData";
                 var apiCallHttpMethod = "get";
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
 
     public class AletheiaTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger NewFilings(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewFilings(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/SubscribeToNewFilingsWebhook";
             var apiCallHttpMethod = "post";
@@ -328,13 +328,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger InsiderTrading(Expression<Func<string>> bodyissuer = null, Expression<Func<int>> bodyowner = null, Expression<Func<bodytransactionTypeInput>> bodytransactionType = null, Expression<Func<bodysecurityTypeInput>> bodysecurityType = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InsiderTrading(Expression<Func<string>> bodyissuer = null, Expression<Func<int>> bodyowner = null, Expression<Func<bodytransactionTypeInput>> bodytransactionType = null, Expression<Func<bodysecurityTypeInput>> bodysecurityType = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyissuer = WorkflowExpression.Compile(bodyissuer, nameof(bodyissuer), required: false);
             var __workflow_bodyowner = WorkflowExpression.Compile(bodyowner, nameof(bodyowner), required: false);
             var __workflow_bodytransactionType = WorkflowExpression.Compile(bodytransactionType, nameof(bodytransactionType), required: false);
             var __workflow_bodysecurityType = WorkflowExpression.Compile(bodysecurityType, nameof(bodysecurityType), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/SubscribeToInsiderTradingWebhook";
                 var apiCallHttpMethod = "post";

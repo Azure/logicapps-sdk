@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
     public class FactsetActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
-        public IBodyWorkflowAction<GetHeadlinesResponse> GetHeadlines(Expression<Func<string>> createdGt = null, Expression<Func<string>> createdLt = null, Expression<Func<string>> signalIds = null, Expression<Func<string>> ids = null, Expression<Func<double>> userRelevanceScoreGt = null, Expression<Func<double>> userRelevanceScoreLt = null, Expression<Func<string>> sort = null, Expression<Func<double>> userRelevanceScoreGte = null, Expression<Func<double>> userRelevanceScoreLte = null, Expression<Func<string>> updatedGt = null, Expression<Func<string>> updatedLt = null, Expression<Func<string>> createdGte = null, Expression<Func<string>> updatedGte = null, Expression<Func<string>> createdLte = null, Expression<Func<string>> updatedLte = null, Expression<Func<string>> portfolios = null, Expression<Func<string>> themes = null, Expression<Func<string>> categories = null)
+        public IBodyWorkflowAction<GetHeadlinesResponse, ApiConnectionActionConfiguration> GetHeadlines(Expression<Func<string>> createdGt = null, Expression<Func<string>> createdLt = null, Expression<Func<string>> signalIds = null, Expression<Func<string>> ids = null, Expression<Func<double>> userRelevanceScoreGt = null, Expression<Func<double>> userRelevanceScoreLt = null, Expression<Func<string>> sort = null, Expression<Func<double>> userRelevanceScoreGte = null, Expression<Func<double>> userRelevanceScoreLte = null, Expression<Func<string>> updatedGt = null, Expression<Func<string>> updatedLt = null, Expression<Func<string>> createdGte = null, Expression<Func<string>> updatedGte = null, Expression<Func<string>> createdLte = null, Expression<Func<string>> updatedLte = null, Expression<Func<string>> portfolios = null, Expression<Func<string>> themes = null, Expression<Func<string>> categories = null)
         {
             var __workflow_createdGt = WorkflowExpression.Compile(createdGt, nameof(createdGt), required: false);
             var __workflow_createdLt = WorkflowExpression.Compile(createdLt, nameof(createdLt), required: false);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
             var __workflow_portfolios = WorkflowExpression.Compile(portfolios, nameof(portfolios), required: false);
             var __workflow_themes = WorkflowExpression.Compile(themes, nameof(themes), required: false);
             var __workflow_categories = WorkflowExpression.Compile(categories, nameof(categories), required: false);
-            return new DeferredBodyAction<GetHeadlinesResponse>(() =>
+            return new DeferredBodyAction<GetHeadlinesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/signals/v2/events/headlines";
                 var apiCallHttpMethod = "get";
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
-        public IBodyWorkflowAction<GetDetailsResponse> GetDetails(Expression<Func<string>> signalIds = null, Expression<Func<string>> ids = null, Expression<Func<double>> userRelevanceScoreGt = null, Expression<Func<string>> sort = null, Expression<Func<double>> userRelevanceScoreLt = null, Expression<Func<double>> userRelevanceScoreLte = null, Expression<Func<double>> userRelevanceScoreGte = null, Expression<Func<string>> updatedGt = null, Expression<Func<string>> updatedLt = null, Expression<Func<string>> createdGte = null, Expression<Func<string>> updatedGte = null, Expression<Func<string>> createdLte = null, Expression<Func<string>> updatedLte = null, Expression<Func<string>> portfolios = null, Expression<Func<string>> themes = null, Expression<Func<string>> categories = null)
+        public IBodyWorkflowAction<GetDetailsResponse, ApiConnectionActionConfiguration> GetDetails(Expression<Func<string>> signalIds = null, Expression<Func<string>> ids = null, Expression<Func<double>> userRelevanceScoreGt = null, Expression<Func<string>> sort = null, Expression<Func<double>> userRelevanceScoreLt = null, Expression<Func<double>> userRelevanceScoreLte = null, Expression<Func<double>> userRelevanceScoreGte = null, Expression<Func<string>> updatedGt = null, Expression<Func<string>> updatedLt = null, Expression<Func<string>> createdGte = null, Expression<Func<string>> updatedGte = null, Expression<Func<string>> createdLte = null, Expression<Func<string>> updatedLte = null, Expression<Func<string>> portfolios = null, Expression<Func<string>> themes = null, Expression<Func<string>> categories = null)
         {
             var __workflow_signalIds = WorkflowExpression.Compile(signalIds, nameof(signalIds), required: false);
             var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: false);
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
             var __workflow_portfolios = WorkflowExpression.Compile(portfolios, nameof(portfolios), required: false);
             var __workflow_themes = WorkflowExpression.Compile(themes, nameof(themes), required: false);
             var __workflow_categories = WorkflowExpression.Compile(categories, nameof(categories), required: false);
-            return new DeferredBodyAction<GetDetailsResponse>(() =>
+            return new DeferredBodyAction<GetDetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/signals/v2/events/details";
                 var apiCallHttpMethod = "get";
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
-        public IBodyWorkflowAction<GetAdaptiveCardResponse> GetAdaptiveCard(Expression<Func<string>> signalIds = null, Expression<Func<string>> ids = null, Expression<Func<double>> userRelevanceScoreGt = null, Expression<Func<string>> sort = null, Expression<Func<double>> userRelevanceScoreLt = null, Expression<Func<double>> userRelevanceScoreLte = null, Expression<Func<double>> userRelevanceScoreGte = null, Expression<Func<string>> updatedGt = null, Expression<Func<string>> updatedLt = null, Expression<Func<string>> createdGte = null, Expression<Func<string>> updatedGte = null, Expression<Func<string>> createdLte = null, Expression<Func<string>> updatedLte = null, Expression<Func<string>> portfolios = null, Expression<Func<string>> themes = null, Expression<Func<string>> categories = null)
+        public IBodyWorkflowAction<GetAdaptiveCardResponse, ApiConnectionActionConfiguration> GetAdaptiveCard(Expression<Func<string>> signalIds = null, Expression<Func<string>> ids = null, Expression<Func<double>> userRelevanceScoreGt = null, Expression<Func<string>> sort = null, Expression<Func<double>> userRelevanceScoreLt = null, Expression<Func<double>> userRelevanceScoreLte = null, Expression<Func<double>> userRelevanceScoreGte = null, Expression<Func<string>> updatedGt = null, Expression<Func<string>> updatedLt = null, Expression<Func<string>> createdGte = null, Expression<Func<string>> updatedGte = null, Expression<Func<string>> createdLte = null, Expression<Func<string>> updatedLte = null, Expression<Func<string>> portfolios = null, Expression<Func<string>> themes = null, Expression<Func<string>> categories = null)
         {
             var __workflow_signalIds = WorkflowExpression.Compile(signalIds, nameof(signalIds), required: false);
             var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: false);
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
             var __workflow_portfolios = WorkflowExpression.Compile(portfolios, nameof(portfolios), required: false);
             var __workflow_themes = WorkflowExpression.Compile(themes, nameof(themes), required: false);
             var __workflow_categories = WorkflowExpression.Compile(categories, nameof(categories), required: false);
-            return new DeferredBodyAction<GetAdaptiveCardResponse>(() =>
+            return new DeferredBodyAction<GetAdaptiveCardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/signals/v2/events/adaptive-cards";
                 var apiCallHttpMethod = "get";
@@ -201,12 +201,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
-        public IBodyWorkflowAction<NEREntitiesResponse> NEREntities(Expression<Func<string>> bodytext, Expression<Func<bool>> bodyfilterEntities = null, Expression<Func<bool>> bodyenableIdLookup = null)
+        public IBodyWorkflowAction<NEREntitiesResponse, ApiConnectionActionConfiguration> NEREntities(Expression<Func<string>> bodytext, Expression<Func<bool>> bodyfilterEntities = null, Expression<Func<bool>> bodyenableIdLookup = null)
         {
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
             var __workflow_bodyfilterEntities = WorkflowExpression.Compile(bodyfilterEntities, nameof(bodyfilterEntities), required: false);
             var __workflow_bodyenableIdLookup = WorkflowExpression.Compile(bodyenableIdLookup, nameof(bodyenableIdLookup), required: false);
-            return new DeferredBodyAction<NEREntitiesResponse>(() =>
+            return new DeferredBodyAction<NEREntitiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/cognitive/ner/v2/entities";
                 var apiCallHttpMethod = "post";
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
-        public IBodyWorkflowAction<GetBookListResponseItem[]> GetBookList()
+        public IBodyWorkflowAction<GetBookListResponseItem[], ApiConnectionActionConfiguration> GetBookList()
         {
             var apiCallPath = "/book-builder-api/v1/book-list";
             var apiCallHttpMethod = "get";
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
-        public IBodyWorkflowAction<GetTemplateListResponseItem[]> GetTemplateList()
+        public IBodyWorkflowAction<GetTemplateListResponseItem[], ApiConnectionActionConfiguration> GetTemplateList()
         {
             var apiCallPath = "/book-builder-api/v1/template-list";
             var apiCallHttpMethod = "get";
@@ -275,11 +275,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
-        public IBodyWorkflowAction<CreateBookFromTemplateResponse> CreateBookFromTemplate(Expression<Func<string>> bodyticker = null, Expression<Func<string>> bodytemplateId = null)
+        public IBodyWorkflowAction<CreateBookFromTemplateResponse, ApiConnectionActionConfiguration> CreateBookFromTemplate(Expression<Func<string>> bodyticker = null, Expression<Func<string>> bodytemplateId = null)
         {
             var __workflow_bodyticker = WorkflowExpression.Compile(bodyticker, nameof(bodyticker), required: false);
             var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: false);
-            return new DeferredBodyAction<CreateBookFromTemplateResponse>(() =>
+            return new DeferredBodyAction<CreateBookFromTemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/book-builder-api/v1/create-book-from-template";
                 var apiCallHttpMethod = "post";
@@ -308,10 +308,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
-        public IBodyWorkflowAction<JToken> GetPDF(Expression<Func<string>> bookId)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetPDF(Expression<Func<string>> bookId)
         {
             var __workflow_bookId = WorkflowExpression.Compile(bookId, nameof(bookId), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/book-builder-api/v1/download-api-book/{0}", __workflow_bookId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
     public class SftpwithsshActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
-        public IBodyWorkflowAction<BlobMetadata> GetFileMetadata(Expression<Func<string>> id)
+        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> GetFileMetadata(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<BlobMetadata>(() =>
+            return new DeferredBodyAction<BlobMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/files/{0}", __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -25,12 +25,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
-        public IBodyWorkflowAction<BlobMetadata> UpdateFile(Expression<Func<string>> id, Expression<Func<string>> body = null, Expression<Func<bool>> readFileMetadataFromServer = null)
+        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> UpdateFile(Expression<Func<string>> id, Expression<Func<string>> body = null, Expression<Func<bool>> readFileMetadataFromServer = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_readFileMetadataFromServer = WorkflowExpression.Compile(readFileMetadataFromServer, nameof(readFileMetadataFromServer), required: false);
-            return new DeferredBodyAction<BlobMetadata>(() =>
+            return new DeferredBodyAction<BlobMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/files/{0}", __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "put";
@@ -44,11 +44,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
-        public IWorkflowAction DeleteFile(Expression<Func<string>> id, Expression<Func<bool>> skipDeleteIfFileNotFoundOnServer = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteFile(Expression<Func<string>> id, Expression<Func<bool>> skipDeleteIfFileNotFoundOnServer = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_skipDeleteIfFileNotFoundOnServer = WorkflowExpression.Compile(skipDeleteIfFileNotFoundOnServer, nameof(skipDeleteIfFileNotFoundOnServer), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/files/{0}", __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "delete";
@@ -61,10 +61,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
-        public IBodyWorkflowAction<BlobMetadata> GetFileMetadataByPath(Expression<Func<string>> path)
+        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> GetFileMetadataByPath(Expression<Func<string>> path)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
-            return new DeferredBodyAction<BlobMetadata>(() =>
+            return new DeferredBodyAction<BlobMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/GetFileByPath";
                 var apiCallHttpMethod = "get";
@@ -76,11 +76,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
-        public IBodyWorkflowAction<string> GetFileContentByPath(Expression<Func<string>> path, Expression<Func<bool>> inferContentType = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetFileContentByPath(Expression<Func<string>> path, Expression<Func<bool>> inferContentType = null)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/GetFileContentByPath";
                 var apiCallHttpMethod = "get";
@@ -95,11 +95,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
-        public IBodyWorkflowAction<string> GetFileContent(Expression<Func<string>> id, Expression<Func<bool>> inferContentType = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetFileContent(Expression<Func<string>> id, Expression<Func<bool>> inferContentType = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/files/{0}/content", __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -112,13 +112,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
-        public IBodyWorkflowAction<BlobMetadata> CreateFile(Expression<Func<string>> folderPath, Expression<Func<string>> name, Expression<Func<string>> body = null, Expression<Func<bool>> readFileMetadataFromServer = null)
+        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> CreateFile(Expression<Func<string>> folderPath, Expression<Func<string>> name, Expression<Func<string>> body = null, Expression<Func<bool>> readFileMetadataFromServer = null)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_readFileMetadataFromServer = WorkflowExpression.Compile(readFileMetadataFromServer, nameof(readFileMetadataFromServer), required: false);
-            return new DeferredBodyAction<BlobMetadata>(() =>
+            return new DeferredBodyAction<BlobMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/files";
                 var apiCallHttpMethod = "post";
@@ -135,12 +135,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
-        public IBodyWorkflowAction<BlobMetadataResponse> RenameFile(Expression<Func<string>> id, Expression<Func<string>> newName, Expression<Func<bool>> readFileMetadataFromServer = null)
+        public IBodyWorkflowAction<BlobMetadataResponse, ApiConnectionActionConfiguration> RenameFile(Expression<Func<string>> id, Expression<Func<string>> newName, Expression<Func<bool>> readFileMetadataFromServer = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_newName = WorkflowExpression.Compile(newName, nameof(newName), required: true);
             var __workflow_readFileMetadataFromServer = WorkflowExpression.Compile(readFileMetadataFromServer, nameof(readFileMetadataFromServer), required: false);
-            return new DeferredBodyAction<BlobMetadataResponse>(() =>
+            return new DeferredBodyAction<BlobMetadataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/files/{0}/rename", __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
@@ -154,13 +154,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
-        public IBodyWorkflowAction<BlobMetadata> CopyFile(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null, Expression<Func<bool>> readFileMetadataFromServer = null)
+        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> CopyFile(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null, Expression<Func<bool>> readFileMetadataFromServer = null)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
             var __workflow_destination = WorkflowExpression.Compile(destination, nameof(destination), required: true);
             var __workflow_overwrite = WorkflowExpression.Compile(overwrite, nameof(overwrite), required: false);
             var __workflow_readFileMetadataFromServer = WorkflowExpression.Compile(readFileMetadataFromServer, nameof(readFileMetadataFromServer), required: false);
-            return new DeferredBodyAction<BlobMetadata>(() =>
+            return new DeferredBodyAction<BlobMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/copyFile";
                 var apiCallHttpMethod = "post";
@@ -179,10 +179,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
-        public IBodyWorkflowAction<BlobMetadata[]> ListFolder(Expression<Func<string>> id)
+        public IBodyWorkflowAction<BlobMetadata[], ApiConnectionActionConfiguration> ListFolder(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<BlobMetadata[]>(() =>
+            return new DeferredBodyAction<BlobMetadata[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/folders/{0}", __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
-        public IBodyWorkflowAction<BlobMetadata[]> ListRootFolder()
+        public IBodyWorkflowAction<BlobMetadata[], ApiConnectionActionConfiguration> ListRootFolder()
         {
             var apiCallPath = "/datasets/default/folders";
             var apiCallHttpMethod = "get";
@@ -201,11 +201,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
-        public IBodyWorkflowAction<BlobMetadata> CreateFolder(Expression<Func<string>> folderPath, Expression<Func<string>> name)
+        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> CreateFolder(Expression<Func<string>> folderPath, Expression<Func<string>> name)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
-            return new DeferredBodyAction<BlobMetadata>(() =>
+            return new DeferredBodyAction<BlobMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/folders";
                 var apiCallHttpMethod = "post";
@@ -217,12 +217,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sftpwithssh")]
-        public IBodyWorkflowAction<BlobMetadata[]> ExtractFolder(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
+        public IBodyWorkflowAction<BlobMetadata[], ApiConnectionActionConfiguration> ExtractFolder(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
             var __workflow_destination = WorkflowExpression.Compile(destination, nameof(destination), required: true);
             var __workflow_overwrite = WorkflowExpression.Compile(overwrite, nameof(overwrite), required: false);
-            return new DeferredBodyAction<BlobMetadata[]>(() =>
+            return new DeferredBodyAction<BlobMetadata[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/extractFolderV2";
                 var apiCallHttpMethod = "post";
@@ -240,12 +240,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
 
     public class SftpwithsshTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<string> OnUpdatedFile(Expression<Func<string>> folderId, Expression<Func<bool>> includeFileContent = null, Expression<Func<bool>> inferContentType = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> OnUpdatedFile(Expression<Func<string>> folderId, Expression<Func<bool>> includeFileContent = null, Expression<Func<bool>> inferContentType = null, FlowRecurrence recurrence = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_includeFileContent = WorkflowExpression.Compile(includeFileContent, nameof(includeFileContent), required: false);
             var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
-            return new DeferredBodyTrigger<string>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/triggers/onupdatedfile";
                 var apiCallHttpMethod = "get";
@@ -262,11 +262,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sftpwithssh
             });
         }
 
-        public IBodyWorkflowTrigger<BlobMetadata[]> OnUpdatedFiles(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BlobMetadata[], ApiConnectionTriggerConfiguration> OnUpdatedFiles(Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null, FlowRecurrence recurrence = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_maxFileCount = WorkflowExpression.Compile(maxFileCount, nameof(maxFileCount), required: false);
-            return new DeferredBodyTrigger<BlobMetadata[]>(() =>
+            return new DeferredBodyTrigger<BlobMetadata[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/datasets/default/triggers/batch/onupdatedfile";
                 var apiCallHttpMethod = "get";

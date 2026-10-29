@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flotiqheadlesscms
     public class FlotiqheadlesscmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "flotiqheadlesscms")]
-        public IWorkflowAction CreateContentObject(Expression<Func<string>> contentTypeId, Expression<Func<object>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateContentObject(Expression<Func<string>> contentTypeId, Expression<Func<object>> body = null)
         {
             var __workflow_contentTypeId = WorkflowExpression.Compile(contentTypeId, nameof(contentTypeId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/content/{0}", __workflow_contentTypeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";

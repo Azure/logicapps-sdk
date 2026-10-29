@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureloganalyticsdatacollecto
     public class AzureloganalyticsdatacollectorActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureloganalyticsdatacollector")]
-        public IWorkflowAction SendData(Expression<Func<string>> logType, Expression<Func<string>> body = null, Expression<Func<string>> timeGeneratedField = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendData(Expression<Func<string>> logType, Expression<Func<string>> body = null, Expression<Func<string>> timeGeneratedField = null)
         {
             var __workflow_logType = WorkflowExpression.Compile(logType, nameof(logType), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_timeGeneratedField = WorkflowExpression.Compile(timeGeneratedField, nameof(timeGeneratedField), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/logs";
                 var apiCallHttpMethod = "post";

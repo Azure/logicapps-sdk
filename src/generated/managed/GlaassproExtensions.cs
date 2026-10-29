@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
     public class GlaassproActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        public IBodyWorkflowAction<AccountResponse> AccountGet()
+        public IBodyWorkflowAction<AccountResponse, ApiConnectionActionConfiguration> AccountGet()
         {
             var apiCallPath = "/api/me";
             var apiCallHttpMethod = "get";
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        public IBodyWorkflowAction<TemplateResponse[]> CaseTypeGetList()
+        public IBodyWorkflowAction<TemplateResponse[], ApiConnectionActionConfiguration> CaseTypeGetList()
         {
             var apiCallPath = "/api/s";
             var apiCallHttpMethod = "get";
@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        public IBodyWorkflowAction<SearchResponse[]> SearchGet(Expression<Func<string>> query, Expression<Func<filterInput>> filter = null, Expression<Func<int>> take = null)
+        public IBodyWorkflowAction<SearchResponse[], ApiConnectionActionConfiguration> SearchGet(Expression<Func<string>> query, Expression<Func<filterInput>> filter = null, Expression<Func<int>> take = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_take = WorkflowExpression.Compile(take, nameof(take), required: false);
-            return new DeferredBodyAction<SearchResponse[]>(() =>
+            return new DeferredBodyAction<SearchResponse[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/q";
                 var apiCallHttpMethod = "get";
@@ -50,10 +50,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        public IBodyWorkflowAction<CaseResponse> CaseGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<CaseResponse, ApiConnectionActionConfiguration> CaseGet(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<CaseResponse>(() =>
+            return new DeferredBodyAction<CaseResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/c/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -63,10 +63,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        public IBodyWorkflowAction<CaseFieldsResponse> CaseFieldGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<CaseFieldsResponse, ApiConnectionActionConfiguration> CaseFieldGet(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<CaseFieldsResponse>(() =>
+            return new DeferredBodyAction<CaseFieldsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/c/{0}/fields", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -76,14 +76,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        public IBodyWorkflowAction<object> CasePrint(Expression<Func<string>> id, Expression<Func<bool>> bodyasynchronous = null, Expression<Func<bool>> bodyuseCustom = null, Expression<Func<bodydisplayGalleryInput>> bodydisplayGallery = null, Expression<Func<bodydisplayTextInput>> bodydisplayText = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> CasePrint(Expression<Func<string>> id, Expression<Func<bool>> bodyasynchronous = null, Expression<Func<bool>> bodyuseCustom = null, Expression<Func<bodydisplayGalleryInput>> bodydisplayGallery = null, Expression<Func<bodydisplayTextInput>> bodydisplayText = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyasynchronous = WorkflowExpression.Compile(bodyasynchronous, nameof(bodyasynchronous), required: false);
             var __workflow_bodyuseCustom = WorkflowExpression.Compile(bodyuseCustom, nameof(bodyuseCustom), required: false);
             var __workflow_bodydisplayGallery = WorkflowExpression.Compile(bodydisplayGallery, nameof(bodydisplayGallery), required: false);
             var __workflow_bodydisplayText = WorkflowExpression.Compile(bodydisplayText, nameof(bodydisplayText), required: false);
-            return new DeferredBodyAction<object>(() =>
+            return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/c/{0}/print", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -124,11 +124,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        public IBodyWorkflowAction<object> CasePrintGet(Expression<Func<string>> id, Expression<Func<string>> requestId)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> CasePrintGet(Expression<Func<string>> id, Expression<Func<string>> requestId)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
-            return new DeferredBodyAction<object>(() =>
+            return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/c/{0}/print/{1}", __workflow_id.WithUrlEncoding(1), __workflow_requestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -138,10 +138,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        public IBodyWorkflowAction<CaseReplyResponse> CaseReplyGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<CaseReplyResponse, ApiConnectionActionConfiguration> CaseReplyGet(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<CaseReplyResponse>(() =>
+            return new DeferredBodyAction<CaseReplyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/c/{0}/reply", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -151,12 +151,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        public IBodyWorkflowAction<CaseReplyResponse> CaseReply(Expression<Func<string>> id, Expression<Func<bool>> bodywithoutNotification, Expression<Func<string>> bodymessage = null)
+        public IBodyWorkflowAction<CaseReplyResponse, ApiConnectionActionConfiguration> CaseReply(Expression<Func<string>> id, Expression<Func<bool>> bodywithoutNotification, Expression<Func<string>> bodymessage = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodywithoutNotification = WorkflowExpression.Compile(bodywithoutNotification, nameof(bodywithoutNotification), required: true);
             var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
-            return new DeferredBodyAction<CaseReplyResponse>(() =>
+            return new DeferredBodyAction<CaseReplyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/c/{0}/reply", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -183,11 +183,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
 
     public class GlaassproTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CaseCreatedTrigger(Expression<Func<string>> bodytemplateId = null, Expression<Func<bodyscopeInput>> bodyscope = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CaseCreatedTrigger(Expression<Func<string>> bodytemplateId = null, Expression<Func<bodyscopeInput>> bodyscope = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: false);
             var __workflow_bodyscope = WorkflowExpression.Compile(bodyscope, nameof(bodyscope), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/t/casecreated";
                 var apiCallHttpMethod = "post";
@@ -217,11 +217,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
             });
         }
 
-        public IWorkflowTrigger CaseUpdatedTrigger(Expression<Func<string>> bodytemplateId = null, Expression<Func<bodyscopeInput>> bodyscope = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CaseUpdatedTrigger(Expression<Func<string>> bodytemplateId = null, Expression<Func<bodyscopeInput>> bodyscope = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: false);
             var __workflow_bodyscope = WorkflowExpression.Compile(bodyscope, nameof(bodyscope), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/t/caseupdated";
                 var apiCallHttpMethod = "post";
@@ -251,11 +251,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
             });
         }
 
-        public IWorkflowTrigger CaseClosedTrigger(Expression<Func<string>> bodytemplateId = null, Expression<Func<bodyscopeInput>> bodyscope = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CaseClosedTrigger(Expression<Func<string>> bodytemplateId = null, Expression<Func<bodyscopeInput>> bodyscope = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: false);
             var __workflow_bodyscope = WorkflowExpression.Compile(bodyscope, nameof(bodyscope), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/t/caseclosed";
                 var apiCallHttpMethod = "post";

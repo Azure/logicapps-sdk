@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
     public class SmilebackActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smileback")]
-        public IWorkflowAction DeletePower(Expression<Func<string>> id)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeletePower(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v3/power/{0}/", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smileback")]
-        public IBodyWorkflowAction<CSATCompaniesResponseItem[]> CSATCompanies()
+        public IBodyWorkflowAction<CSATCompaniesResponseItem[], ApiConnectionActionConfiguration> CSATCompanies()
         {
             var apiCallPath = "/api/v3/csat-companies/";
             var apiCallHttpMethod = "get";
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smileback")]
-        public IBodyWorkflowAction<CSATContactsResponseItem[]> CSATContacts()
+        public IBodyWorkflowAction<CSATContactsResponseItem[], ApiConnectionActionConfiguration> CSATContacts()
         {
             var apiCallPath = "/api/v3/csat-contacts/";
             var apiCallHttpMethod = "get";
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smileback")]
-        public IBodyWorkflowAction<NPSCampaignsResponseItem[]> NPSCampaigns()
+        public IBodyWorkflowAction<NPSCampaignsResponseItem[], ApiConnectionActionConfiguration> NPSCampaigns()
         {
             var apiCallPath = "/api/v3/nps-campaigns/";
             var apiCallHttpMethod = "get";
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smileback")]
-        public IBodyWorkflowAction<PRJSurveysResponseItem[]> PRJSurveys()
+        public IBodyWorkflowAction<PRJSurveysResponseItem[], ApiConnectionActionConfiguration> PRJSurveys()
         {
             var apiCallPath = "/api/v3/prj-surveys/";
             var apiCallHttpMethod = "get";
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
 
     public class SmilebackTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CSATReceived(Expression<Func<fieldcsatFilterRaitingInputItem[]>> fieldcsatFilterRaiting = null, Expression<Func<string[]>> fieldcsatFilterAgents = null, Expression<Func<string[]>> fieldcsatFilterSegments = null, Expression<Func<string[]>> fieldcsatFilterCompanies = null, Expression<Func<string[]>> fieldcsatFilterContacts = null, Expression<Func<fieldcsatFilterCommentsInput>> fieldcsatFilterComments = null, Expression<Func<fieldcsatFilterMpInput>> fieldcsatFilterMp = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CSATReceived(Expression<Func<fieldcsatFilterRaitingInputItem[]>> fieldcsatFilterRaiting = null, Expression<Func<string[]>> fieldcsatFilterAgents = null, Expression<Func<string[]>> fieldcsatFilterSegments = null, Expression<Func<string[]>> fieldcsatFilterCompanies = null, Expression<Func<string[]>> fieldcsatFilterContacts = null, Expression<Func<fieldcsatFilterCommentsInput>> fieldcsatFilterComments = null, Expression<Func<fieldcsatFilterMpInput>> fieldcsatFilterMp = null, FlowRecurrence recurrence = null)
         {
             var __workflow_fieldcsatFilterRaiting = WorkflowExpression.Compile(fieldcsatFilterRaiting, nameof(fieldcsatFilterRaiting), required: false);
             var __workflow_fieldcsatFilterAgents = WorkflowExpression.Compile(fieldcsatFilterAgents, nameof(fieldcsatFilterAgents), required: false);
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
             var __workflow_fieldcsatFilterContacts = WorkflowExpression.Compile(fieldcsatFilterContacts, nameof(fieldcsatFilterContacts), required: false);
             var __workflow_fieldcsatFilterComments = WorkflowExpression.Compile(fieldcsatFilterComments, nameof(fieldcsatFilterComments), required: false);
             var __workflow_fieldcsatFilterMp = WorkflowExpression.Compile(fieldcsatFilterMp, nameof(fieldcsatFilterMp), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/v3/power/CSAT/";
                 var apiCallHttpMethod = "post";
@@ -131,13 +131,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
             });
         }
 
-        public IWorkflowTrigger NPSReceived(Expression<Func<fieldnpsFilterScoreInputItem[]>> fieldnpsFilterScore = null, Expression<Func<string[]>> fieldnpsFilterCampaigns = null, Expression<Func<fieldnpsFilterCommentsInput>> fieldnpsFilterComments = null, Expression<Func<fieldnpsFilterMpInput>> fieldnpsFilterMp = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NPSReceived(Expression<Func<fieldnpsFilterScoreInputItem[]>> fieldnpsFilterScore = null, Expression<Func<string[]>> fieldnpsFilterCampaigns = null, Expression<Func<fieldnpsFilterCommentsInput>> fieldnpsFilterComments = null, Expression<Func<fieldnpsFilterMpInput>> fieldnpsFilterMp = null, FlowRecurrence recurrence = null)
         {
             var __workflow_fieldnpsFilterScore = WorkflowExpression.Compile(fieldnpsFilterScore, nameof(fieldnpsFilterScore), required: false);
             var __workflow_fieldnpsFilterCampaigns = WorkflowExpression.Compile(fieldnpsFilterCampaigns, nameof(fieldnpsFilterCampaigns), required: false);
             var __workflow_fieldnpsFilterComments = WorkflowExpression.Compile(fieldnpsFilterComments, nameof(fieldnpsFilterComments), required: false);
             var __workflow_fieldnpsFilterMp = WorkflowExpression.Compile(fieldnpsFilterMp, nameof(fieldnpsFilterMp), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/v3/power/NPS/";
                 var apiCallHttpMethod = "post";
@@ -178,13 +178,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
             });
         }
 
-        public IWorkflowTrigger PRJReceived(Expression<Func<fieldprojectsFilterScoreInputItem[]>> fieldprojectsFilterScore = null, Expression<Func<string[]>> fieldprojectsFilterSurveys = null, Expression<Func<fieldprojectsFilterCommentsInput>> fieldprojectsFilterComments = null, Expression<Func<fieldprojectsFilterMpInput>> fieldprojectsFilterMp = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> PRJReceived(Expression<Func<fieldprojectsFilterScoreInputItem[]>> fieldprojectsFilterScore = null, Expression<Func<string[]>> fieldprojectsFilterSurveys = null, Expression<Func<fieldprojectsFilterCommentsInput>> fieldprojectsFilterComments = null, Expression<Func<fieldprojectsFilterMpInput>> fieldprojectsFilterMp = null, FlowRecurrence recurrence = null)
         {
             var __workflow_fieldprojectsFilterScore = WorkflowExpression.Compile(fieldprojectsFilterScore, nameof(fieldprojectsFilterScore), required: false);
             var __workflow_fieldprojectsFilterSurveys = WorkflowExpression.Compile(fieldprojectsFilterSurveys, nameof(fieldprojectsFilterSurveys), required: false);
             var __workflow_fieldprojectsFilterComments = WorkflowExpression.Compile(fieldprojectsFilterComments, nameof(fieldprojectsFilterComments), required: false);
             var __workflow_fieldprojectsFilterMp = WorkflowExpression.Compile(fieldprojectsFilterMp, nameof(fieldprojectsFilterMp), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/v3/power/PRJ/";
                 var apiCallHttpMethod = "post";

@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
     public class SignnoweuActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IWorkflowAction DeleteDocGroupEmbeddedInvites(Expression<Func<string>> id)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteDocGroupEmbeddedInvites(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroup/{0}/embedded-invites", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -25,13 +25,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<CreateDocGroupEmbeddedInvitesResponse> CreateDocGroupEmbeddedInvites(Expression<Func<string>> id, Expression<Func<inviteinvitesInputItem[]>> inviteinvites = null, Expression<Func<inviteadvancedInputItem[]>> inviteadvanced = null, Expression<Func<inviteqESSignatureInput>> inviteqESSignature = null)
+        public IBodyWorkflowAction<CreateDocGroupEmbeddedInvitesResponse, ApiConnectionActionConfiguration> CreateDocGroupEmbeddedInvites(Expression<Func<string>> id, Expression<Func<inviteinvitesInputItem[]>> inviteinvites = null, Expression<Func<inviteadvancedInputItem[]>> inviteadvanced = null, Expression<Func<inviteqESSignatureInput>> inviteqESSignature = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_inviteinvites = WorkflowExpression.Compile(inviteinvites, nameof(inviteinvites), required: false);
             var __workflow_inviteadvanced = WorkflowExpression.Compile(inviteadvanced, nameof(inviteadvanced), required: false);
             var __workflow_inviteqESSignature = WorkflowExpression.Compile(inviteqESSignature, nameof(inviteqESSignature), required: false);
-            return new DeferredBodyAction<CreateDocGroupEmbeddedInvitesResponse>(() =>
+            return new DeferredBodyAction<CreateDocGroupEmbeddedInvitesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroup/{0}/embedded-invites", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -66,14 +66,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<GenerateDocGroupEmbeddedInviteLinkResponse> GenerateDocGroupEmbeddedInviteLink(Expression<Func<string>> id, Expression<Func<string>> inviteId, Expression<Func<string>> inviteemail, Expression<Func<int>> invitelinkExpiration = null, Expression<Func<int>> invitesessionExpiration = null)
+        public IBodyWorkflowAction<GenerateDocGroupEmbeddedInviteLinkResponse, ApiConnectionActionConfiguration> GenerateDocGroupEmbeddedInviteLink(Expression<Func<string>> id, Expression<Func<string>> inviteId, Expression<Func<string>> inviteemail, Expression<Func<int>> invitelinkExpiration = null, Expression<Func<int>> invitesessionExpiration = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_inviteId = WorkflowExpression.Compile(inviteId, nameof(inviteId), required: true);
             var __workflow_inviteemail = WorkflowExpression.Compile(inviteemail, nameof(inviteemail), required: true);
             var __workflow_invitelinkExpiration = WorkflowExpression.Compile(invitelinkExpiration, nameof(invitelinkExpiration), required: false);
             var __workflow_invitesessionExpiration = WorkflowExpression.Compile(invitesessionExpiration, nameof(invitesessionExpiration), required: false);
-            return new DeferredBodyAction<GenerateDocGroupEmbeddedInviteLinkResponse>(() =>
+            return new DeferredBodyAction<GenerateDocGroupEmbeddedInviteLinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroup/{0}/embedded-invites/{1}/link", __workflow_id.WithUrlEncoding(1), __workflow_inviteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -104,10 +104,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IWorkflowAction DeleteEmbeddedInvites(Expression<Func<string>> id)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteEmbeddedInvites(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/documents/{0}/embedded-invites", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -117,14 +117,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<CreateEmbeddedInvitesResponse> CreateEmbeddedInvites(Expression<Func<string>> id, Expression<Func<inviteinvitesInputItem2[]>> inviteinvites = null, Expression<Func<string>> invitenameFormula = null, Expression<Func<inviteinviteAdvancedParametersInputItem[]>> inviteinviteAdvancedParameters = null, Expression<Func<inviteqESSignatureInput>> inviteqESSignature = null)
+        public IBodyWorkflowAction<CreateEmbeddedInvitesResponse, ApiConnectionActionConfiguration> CreateEmbeddedInvites(Expression<Func<string>> id, Expression<Func<inviteinvitesInputItem2[]>> inviteinvites = null, Expression<Func<string>> invitenameFormula = null, Expression<Func<inviteinviteAdvancedParametersInputItem[]>> inviteinviteAdvancedParameters = null, Expression<Func<inviteqESSignatureInput>> inviteqESSignature = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_inviteinvites = WorkflowExpression.Compile(inviteinvites, nameof(inviteinvites), required: false);
             var __workflow_invitenameFormula = WorkflowExpression.Compile(invitenameFormula, nameof(invitenameFormula), required: false);
             var __workflow_inviteinviteAdvancedParameters = WorkflowExpression.Compile(inviteinviteAdvancedParameters, nameof(inviteinviteAdvancedParameters), required: false);
             var __workflow_inviteqESSignature = WorkflowExpression.Compile(inviteqESSignature, nameof(inviteqESSignature), required: false);
-            return new DeferredBodyAction<CreateEmbeddedInvitesResponse>(() =>
+            return new DeferredBodyAction<CreateEmbeddedInvitesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/documents/{0}/embedded-invites", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -165,13 +165,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<GenerateEmbeddedInviteLinkResponse> GenerateEmbeddedInviteLink(Expression<Func<string>> id, Expression<Func<string>> fieldInviteId, Expression<Func<int>> invitelinkExpiration = null, Expression<Func<int>> invitesessionExpiration = null)
+        public IBodyWorkflowAction<GenerateEmbeddedInviteLinkResponse, ApiConnectionActionConfiguration> GenerateEmbeddedInviteLink(Expression<Func<string>> id, Expression<Func<string>> fieldInviteId, Expression<Func<int>> invitelinkExpiration = null, Expression<Func<int>> invitesessionExpiration = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_fieldInviteId = WorkflowExpression.Compile(fieldInviteId, nameof(fieldInviteId), required: true);
             var __workflow_invitelinkExpiration = WorkflowExpression.Compile(invitelinkExpiration, nameof(invitelinkExpiration), required: false);
             var __workflow_invitesessionExpiration = WorkflowExpression.Compile(invitesessionExpiration, nameof(invitesessionExpiration), required: false);
-            return new DeferredBodyAction<GenerateEmbeddedInviteLinkResponse>(() =>
+            return new DeferredBodyAction<GenerateEmbeddedInviteLinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/documents/{0}/embedded-invites/{1}/link", __workflow_id.WithUrlEncoding(1), __workflow_fieldInviteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -200,12 +200,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<DocumentGroupsResponse> GetListDocGroups(Expression<Func<bool>> template, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<DocumentGroupsResponse, ApiConnectionActionConfiguration> GetListDocGroups(Expression<Func<bool>> template, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<DocumentGroupsResponse>(() =>
+            return new DeferredBodyAction<DocumentGroupsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/documentgroups";
                 var apiCallHttpMethod = "get";
@@ -220,11 +220,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<CreateDocumentGroupFromFilesResponse> CreateDocGroupFromFiles(Expression<Func<string>> bodydocumentGroupName, Expression<Func<bodydocumentsInputItem[]>> bodydocuments = null)
+        public IBodyWorkflowAction<CreateDocumentGroupFromFilesResponse, ApiConnectionActionConfiguration> CreateDocGroupFromFiles(Expression<Func<string>> bodydocumentGroupName, Expression<Func<bodydocumentsInputItem[]>> bodydocuments = null)
         {
             var __workflow_bodydocumentGroupName = WorkflowExpression.Compile(bodydocumentGroupName, nameof(bodydocumentGroupName), required: true);
             var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: false);
-            return new DeferredBodyAction<CreateDocumentGroupFromFilesResponse>(() =>
+            return new DeferredBodyAction<CreateDocumentGroupFromFilesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/documentgroups";
                 var apiCallHttpMethod = "post";
@@ -249,11 +249,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<DocumentGroupProperties> GetDocumentGroup(Expression<Func<string>> docGroupId, Expression<Func<bool>> template)
+        public IBodyWorkflowAction<DocumentGroupProperties, ApiConnectionActionConfiguration> GetDocumentGroup(Expression<Func<string>> docGroupId, Expression<Func<bool>> template)
         {
             var __workflow_docGroupId = WorkflowExpression.Compile(docGroupId, nameof(docGroupId), required: true);
             var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: true);
-            return new DeferredBodyAction<DocumentGroupProperties>(() =>
+            return new DeferredBodyAction<DocumentGroupProperties, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroups/{0}", __workflow_docGroupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -264,11 +264,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<CreateFromTemplateGroupResponse> CreateFromTemplateGroup(Expression<Func<string>> docGroupId, Expression<Func<string>> bodydocumentGroupName = null)
+        public IBodyWorkflowAction<CreateFromTemplateGroupResponse, ApiConnectionActionConfiguration> CreateFromTemplateGroup(Expression<Func<string>> docGroupId, Expression<Func<string>> bodydocumentGroupName = null)
         {
             var __workflow_docGroupId = WorkflowExpression.Compile(docGroupId, nameof(docGroupId), required: true);
             var __workflow_bodydocumentGroupName = WorkflowExpression.Compile(bodydocumentGroupName, nameof(bodydocumentGroupName), required: false);
-            return new DeferredBodyAction<CreateFromTemplateGroupResponse>(() =>
+            return new DeferredBodyAction<CreateFromTemplateGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroups/{0}", __workflow_docGroupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -291,12 +291,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<UpdateGroupFieldValuesResponse> UpdateGroupFieldValues(Expression<Func<string>> templateGroupId, Expression<Func<string>> docGroupId, Expression<Func<object>> fields = null)
+        public IBodyWorkflowAction<UpdateGroupFieldValuesResponse, ApiConnectionActionConfiguration> UpdateGroupFieldValues(Expression<Func<string>> templateGroupId, Expression<Func<string>> docGroupId, Expression<Func<object>> fields = null)
         {
             var __workflow_templateGroupId = WorkflowExpression.Compile(templateGroupId, nameof(templateGroupId), required: true);
             var __workflow_docGroupId = WorkflowExpression.Compile(docGroupId, nameof(docGroupId), required: true);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
-            return new DeferredBodyAction<UpdateGroupFieldValuesResponse>(() =>
+            return new DeferredBodyAction<UpdateGroupFieldValuesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroup/{0}/fields", __workflow_docGroupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -308,12 +308,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<UpdateGroupSmartFieldValuesResponse> UpdateGroupSmartFieldValues(Expression<Func<string>> templateGroupId, Expression<Func<string>> docGroupId, Expression<Func<object>> fields = null)
+        public IBodyWorkflowAction<UpdateGroupSmartFieldValuesResponse, ApiConnectionActionConfiguration> UpdateGroupSmartFieldValues(Expression<Func<string>> templateGroupId, Expression<Func<string>> docGroupId, Expression<Func<object>> fields = null)
         {
             var __workflow_templateGroupId = WorkflowExpression.Compile(templateGroupId, nameof(templateGroupId), required: true);
             var __workflow_docGroupId = WorkflowExpression.Compile(docGroupId, nameof(docGroupId), required: true);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
-            return new DeferredBodyAction<UpdateGroupSmartFieldValuesResponse>(() =>
+            return new DeferredBodyAction<UpdateGroupSmartFieldValuesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroup/{0}/smartfields", __workflow_docGroupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -325,11 +325,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<DocumentProperties[]> GetListDoc(Expression<Func<bool>> template = null, Expression<Func<bool>> includeDefaultTemplate = null)
+        public IBodyWorkflowAction<DocumentProperties[], ApiConnectionActionConfiguration> GetListDoc(Expression<Func<bool>> template = null, Expression<Func<bool>> includeDefaultTemplate = null)
         {
             var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: false);
             var __workflow_includeDefaultTemplate = WorkflowExpression.Compile(includeDefaultTemplate, nameof(includeDefaultTemplate), required: false);
-            return new DeferredBodyAction<DocumentProperties[]>(() =>
+            return new DeferredBodyAction<DocumentProperties[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/document";
                 var apiCallHttpMethod = "get";
@@ -344,10 +344,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<UploadDocumentResponse> UploadDocument(Expression<Func<object>> file)
+        public IBodyWorkflowAction<UploadDocumentResponse, ApiConnectionActionConfiguration> UploadDocument(Expression<Func<object>> file)
         {
             var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            return new DeferredBodyAction<UploadDocumentResponse>(() =>
+            return new DeferredBodyAction<UploadDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/document";
                 var apiCallHttpMethod = "post";
@@ -357,11 +357,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<DocumentProperties> GetDoc(Expression<Func<bool>> template, Expression<Func<string>> docId)
+        public IBodyWorkflowAction<DocumentProperties, ApiConnectionActionConfiguration> GetDoc(Expression<Func<bool>> template, Expression<Func<string>> docId)
         {
             var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: true);
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
-            return new DeferredBodyAction<DocumentProperties>(() =>
+            return new DeferredBodyAction<DocumentProperties, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -372,10 +372,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<DeleteDocResponse> DeleteDoc(Expression<Func<string>> docId)
+        public IBodyWorkflowAction<DeleteDocResponse, ApiConnectionActionConfiguration> DeleteDoc(Expression<Func<string>> docId)
         {
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
-            return new DeferredBodyAction<DeleteDocResponse>(() =>
+            return new DeferredBodyAction<DeleteDocResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -385,11 +385,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<CreateFromTemplateResponse> CreateFromTemplate(Expression<Func<string>> docId, Expression<Func<string>> bodydocumentName = null)
+        public IBodyWorkflowAction<CreateFromTemplateResponse, ApiConnectionActionConfiguration> CreateFromTemplate(Expression<Func<string>> docId, Expression<Func<string>> bodydocumentName = null)
         {
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
             var __workflow_bodydocumentName = WorkflowExpression.Compile(bodydocumentName, nameof(bodydocumentName), required: false);
-            return new DeferredBodyAction<CreateFromTemplateResponse>(() =>
+            return new DeferredBodyAction<CreateFromTemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -412,11 +412,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<CreateSigningLinkResponse> CreateSigningLink(Expression<Func<string>> docId, Expression<Func<object>> fields = null)
+        public IBodyWorkflowAction<CreateSigningLinkResponse, ApiConnectionActionConfiguration> CreateSigningLink(Expression<Func<string>> docId, Expression<Func<object>> fields = null)
         {
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
-            return new DeferredBodyAction<CreateSigningLinkResponse>(() =>
+            return new DeferredBodyAction<CreateSigningLinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/link", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -427,12 +427,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<JToken> SendInvite(Expression<Func<bool>> template, Expression<Func<string>> templateId, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendInvite(Expression<Func<bool>> template, Expression<Func<string>> templateId, Expression<Func<object>> body = null)
         {
             var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: true);
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/invite", __workflow_templateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -444,12 +444,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<JToken> SendGroupInvite(Expression<Func<bool>> template, Expression<Func<string>> templateGroupId, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendGroupInvite(Expression<Func<bool>> template, Expression<Func<string>> templateGroupId, Expression<Func<object>> body = null)
         {
             var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: true);
             var __workflow_templateGroupId = WorkflowExpression.Compile(templateGroupId, nameof(templateGroupId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroup/{0}/invite", __workflow_templateGroupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<JToken> SendUserDefinedInvite(Expression<Func<string>> docId, Expression<Func<bodyroleInputItem[]>> bodyrole = null, Expression<Func<string>> bodycC = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodyemailAllPartiesOnCompletion = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendUserDefinedInvite(Expression<Func<string>> docId, Expression<Func<bodyroleInputItem[]>> bodyrole = null, Expression<Func<string>> bodycC = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodyemailAllPartiesOnCompletion = null)
         {
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
             var __workflow_bodyrole = WorkflowExpression.Compile(bodyrole, nameof(bodyrole), required: false);
@@ -469,7 +469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
             var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
             var __workflow_bodyemailAllPartiesOnCompletion = WorkflowExpression.Compile(bodyemailAllPartiesOnCompletion, nameof(bodyemailAllPartiesOnCompletion), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/invite-user-defined-schema", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -516,10 +516,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<JToken> CancelInvite(Expression<Func<string>> docId)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CancelInvite(Expression<Func<string>> docId)
         {
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/invite-cancel", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -529,11 +529,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<string> DownloadDocument(Expression<Func<string>> docId, Expression<Func<string>> mode = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DownloadDocument(Expression<Func<string>> docId, Expression<Func<string>> mode = null)
         {
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
             var __workflow_mode = WorkflowExpression.Compile(mode, nameof(mode), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/download", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -546,12 +546,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IWorkflowAction PrefillSmartFields(Expression<Func<string>> templateId, Expression<Func<string>> docId, Expression<Func<object>> fields = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PrefillSmartFields(Expression<Func<string>> templateId, Expression<Func<string>> docId, Expression<Func<object>> fields = null)
         {
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/smartfields", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -563,10 +563,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<GetInviteStatusResponse> GetInviteStatus(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetInviteStatusResponse, ApiConnectionActionConfiguration> GetInviteStatus(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GetInviteStatusResponse>(() =>
+            return new DeferredBodyAction<GetInviteStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/invite-status", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -576,10 +576,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<GetDocumentGroupInviteStatusResponse> GetDocumentGroupInviteStatus(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetDocumentGroupInviteStatusResponse, ApiConnectionActionConfiguration> GetDocumentGroupInviteStatus(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GetDocumentGroupInviteStatusResponse>(() =>
+            return new DeferredBodyAction<GetDocumentGroupInviteStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroups/{0}/invite-status", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -589,12 +589,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<ReplaceRecipientsInDocumentInviteResponse> ReplaceRecipientsInDocumentInvite(Expression<Func<string>> id, Expression<Func<replaceToreplaceToInputItem[]>> replaceToreplaceTo = null, Expression<Func<replaceToadvancedParametersInputItem[]>> replaceToadvancedParameters = null)
+        public IBodyWorkflowAction<ReplaceRecipientsInDocumentInviteResponse, ApiConnectionActionConfiguration> ReplaceRecipientsInDocumentInvite(Expression<Func<string>> id, Expression<Func<replaceToreplaceToInputItem[]>> replaceToreplaceTo = null, Expression<Func<replaceToadvancedParametersInputItem[]>> replaceToadvancedParameters = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_replaceToreplaceTo = WorkflowExpression.Compile(replaceToreplaceTo, nameof(replaceToreplaceTo), required: false);
             var __workflow_replaceToadvancedParameters = WorkflowExpression.Compile(replaceToadvancedParameters, nameof(replaceToadvancedParameters), required: false);
-            return new DeferredBodyAction<ReplaceRecipientsInDocumentInviteResponse>(() =>
+            return new DeferredBodyAction<ReplaceRecipientsInDocumentInviteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/replace-recipients", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -623,7 +623,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<ReplaceRecipientsInDocumentGroupInviteResponse> ReplaceRecipientsInDocumentGroupInvite(Expression<Func<string>> id, Expression<Func<string>> inviteId, Expression<Func<string>> replaceTostepID = null, Expression<Func<string>> replaceTorecipientToReplace = null, Expression<Func<string>> replaceTonewRecipient = null, Expression<Func<int>> replaceToexpirationDays = null, Expression<Func<int>> replaceToreminder = null, Expression<Func<replaceToinviteActionAttributesInputItem[]>> replaceToinviteActionAttributes = null)
+        public IBodyWorkflowAction<ReplaceRecipientsInDocumentGroupInviteResponse, ApiConnectionActionConfiguration> ReplaceRecipientsInDocumentGroupInvite(Expression<Func<string>> id, Expression<Func<string>> inviteId, Expression<Func<string>> replaceTostepID = null, Expression<Func<string>> replaceTorecipientToReplace = null, Expression<Func<string>> replaceTonewRecipient = null, Expression<Func<int>> replaceToexpirationDays = null, Expression<Func<int>> replaceToreminder = null, Expression<Func<replaceToinviteActionAttributesInputItem[]>> replaceToinviteActionAttributes = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_inviteId = WorkflowExpression.Compile(inviteId, nameof(inviteId), required: true);
@@ -633,7 +633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             var __workflow_replaceToexpirationDays = WorkflowExpression.Compile(replaceToexpirationDays, nameof(replaceToexpirationDays), required: false);
             var __workflow_replaceToreminder = WorkflowExpression.Compile(replaceToreminder, nameof(replaceToreminder), required: false);
             var __workflow_replaceToinviteActionAttributes = WorkflowExpression.Compile(replaceToinviteActionAttributes, nameof(replaceToinviteActionAttributes), required: false);
-            return new DeferredBodyAction<ReplaceRecipientsInDocumentGroupInviteResponse>(() =>
+            return new DeferredBodyAction<ReplaceRecipientsInDocumentGroupInviteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroup/{0}/invite/{1}/replace-recipients", __workflow_id.WithUrlEncoding(1), __workflow_inviteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -696,14 +696,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<CreateEmbeddedInviteSettingsLinkResponse> CreateEmbeddedInviteSettingsLink(Expression<Func<string>> id, Expression<Func<inviteSettingstypeInput>> inviteSettingstype = null, Expression<Func<string>> inviteSettingsredirectUri = null, Expression<Func<int>> inviteSettingslinkExpiration = null, Expression<Func<inviteSettingsredirectTargetInput>> inviteSettingsredirectTarget = null)
+        public IBodyWorkflowAction<CreateEmbeddedInviteSettingsLinkResponse, ApiConnectionActionConfiguration> CreateEmbeddedInviteSettingsLink(Expression<Func<string>> id, Expression<Func<inviteSettingstypeInput>> inviteSettingstype = null, Expression<Func<string>> inviteSettingsredirectUri = null, Expression<Func<int>> inviteSettingslinkExpiration = null, Expression<Func<inviteSettingsredirectTargetInput>> inviteSettingsredirectTarget = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_inviteSettingstype = WorkflowExpression.Compile(inviteSettingstype, nameof(inviteSettingstype), required: false);
             var __workflow_inviteSettingsredirectUri = WorkflowExpression.Compile(inviteSettingsredirectUri, nameof(inviteSettingsredirectUri), required: false);
             var __workflow_inviteSettingslinkExpiration = WorkflowExpression.Compile(inviteSettingslinkExpiration, nameof(inviteSettingslinkExpiration), required: false);
             var __workflow_inviteSettingsredirectTarget = WorkflowExpression.Compile(inviteSettingsredirectTarget, nameof(inviteSettingsredirectTarget), required: false);
-            return new DeferredBodyAction<CreateEmbeddedInviteSettingsLinkResponse>(() =>
+            return new DeferredBodyAction<CreateEmbeddedInviteSettingsLinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/documents/{0}/embedded-sending", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -754,14 +754,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<CreateDocGroupEmbeddedInviteSettingsLinkResponse> CreateDocGroupEmbeddedInviteSettingsLink(Expression<Func<string>> id, Expression<Func<inviteSettingstypeInput>> inviteSettingstype = null, Expression<Func<string>> inviteSettingsredirectUri = null, Expression<Func<int>> inviteSettingslinkExpiration = null, Expression<Func<inviteSettingsredirectTargetInput>> inviteSettingsredirectTarget = null)
+        public IBodyWorkflowAction<CreateDocGroupEmbeddedInviteSettingsLinkResponse, ApiConnectionActionConfiguration> CreateDocGroupEmbeddedInviteSettingsLink(Expression<Func<string>> id, Expression<Func<inviteSettingstypeInput>> inviteSettingstype = null, Expression<Func<string>> inviteSettingsredirectUri = null, Expression<Func<int>> inviteSettingslinkExpiration = null, Expression<Func<inviteSettingsredirectTargetInput>> inviteSettingsredirectTarget = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_inviteSettingstype = WorkflowExpression.Compile(inviteSettingstype, nameof(inviteSettingstype), required: false);
             var __workflow_inviteSettingsredirectUri = WorkflowExpression.Compile(inviteSettingsredirectUri, nameof(inviteSettingsredirectUri), required: false);
             var __workflow_inviteSettingslinkExpiration = WorkflowExpression.Compile(inviteSettingslinkExpiration, nameof(inviteSettingslinkExpiration), required: false);
             var __workflow_inviteSettingsredirectTarget = WorkflowExpression.Compile(inviteSettingsredirectTarget, nameof(inviteSettingsredirectTarget), required: false);
-            return new DeferredBodyAction<CreateDocGroupEmbeddedInviteSettingsLinkResponse>(() =>
+            return new DeferredBodyAction<CreateDocGroupEmbeddedInviteSettingsLinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroup/{0}/embedded-sending", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -822,7 +822,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<InviteToSignAllOptionsResponse> InviteToSignAllOptions(Expression<Func<string>> id, Expression<Func<invitesignersInputItem[]>> invitesigners = null, Expression<Func<invitesignerAdvancedPropertiesInputItem[]>> invitesignerAdvancedProperties = null, Expression<Func<inviteviewersInputItem[]>> inviteviewers = null, Expression<Func<inviteviewerAdvancedPropertiesInputItem[]>> inviteviewerAdvancedProperties = null, Expression<Func<inviteapproversInputItem[]>> inviteapprovers = null, Expression<Func<inviteapproverAdvancedPropertiesInputItem[]>> inviteapproverAdvancedProperties = null, Expression<Func<string>> invitefrom = null, Expression<Func<inviteemailGroupsInputItem[]>> inviteemailGroups = null, Expression<Func<invitecCInputItem[]>> invitecC = null, Expression<Func<invitecCStepsInputItem[]>> invitecCSteps = null, Expression<Func<string>> invitesubject = null, Expression<Func<string>> invitemessage = null, Expression<Func<string>> invitecCSubject = null, Expression<Func<string>> invitecCMessage = null, Expression<Func<inviteqESSignatureInput>> inviteqESSignature = null)
+        public IBodyWorkflowAction<InviteToSignAllOptionsResponse, ApiConnectionActionConfiguration> InviteToSignAllOptions(Expression<Func<string>> id, Expression<Func<invitesignersInputItem[]>> invitesigners = null, Expression<Func<invitesignerAdvancedPropertiesInputItem[]>> invitesignerAdvancedProperties = null, Expression<Func<inviteviewersInputItem[]>> inviteviewers = null, Expression<Func<inviteviewerAdvancedPropertiesInputItem[]>> inviteviewerAdvancedProperties = null, Expression<Func<inviteapproversInputItem[]>> inviteapprovers = null, Expression<Func<inviteapproverAdvancedPropertiesInputItem[]>> inviteapproverAdvancedProperties = null, Expression<Func<string>> invitefrom = null, Expression<Func<inviteemailGroupsInputItem[]>> inviteemailGroups = null, Expression<Func<invitecCInputItem[]>> invitecC = null, Expression<Func<invitecCStepsInputItem[]>> invitecCSteps = null, Expression<Func<string>> invitesubject = null, Expression<Func<string>> invitemessage = null, Expression<Func<string>> invitecCSubject = null, Expression<Func<string>> invitecCMessage = null, Expression<Func<inviteqESSignatureInput>> inviteqESSignature = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_invitesigners = WorkflowExpression.Compile(invitesigners, nameof(invitesigners), required: false);
@@ -840,7 +840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             var __workflow_invitecCSubject = WorkflowExpression.Compile(invitecCSubject, nameof(invitecCSubject), required: false);
             var __workflow_invitecCMessage = WorkflowExpression.Compile(invitecCMessage, nameof(invitecCMessage), required: false);
             var __workflow_inviteqESSignature = WorkflowExpression.Compile(inviteqESSignature, nameof(inviteqESSignature), required: false);
-            return new DeferredBodyAction<InviteToSignAllOptionsResponse>(() =>
+            return new DeferredBodyAction<InviteToSignAllOptionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}/invite-all-options", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -947,7 +947,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<InviteToSignDocGroupAllOptionsResponse> InviteToSignDocGroupAllOptions(Expression<Func<string>> id, Expression<Func<inviteinviteStepsInputItem[]>> inviteinviteSteps = null, Expression<Func<inviteinviteEmailsInputItem[]>> inviteinviteEmails = null, Expression<Func<inviteemailGroupsInputItem2[]>> inviteemailGroups = null, Expression<Func<invitecompletionEmailsInputItem[]>> invitecompletionEmails = null, Expression<Func<bool>> invitesignAsMerged = null, Expression<Func<int>> inviteclientTimestamp = null, Expression<Func<invitecCInputItem[]>> invitecC = null, Expression<Func<inviteqESSignatureInput>> inviteqESSignature = null)
+        public IBodyWorkflowAction<InviteToSignDocGroupAllOptionsResponse, ApiConnectionActionConfiguration> InviteToSignDocGroupAllOptions(Expression<Func<string>> id, Expression<Func<inviteinviteStepsInputItem[]>> inviteinviteSteps = null, Expression<Func<inviteinviteEmailsInputItem[]>> inviteinviteEmails = null, Expression<Func<inviteemailGroupsInputItem2[]>> inviteemailGroups = null, Expression<Func<invitecompletionEmailsInputItem[]>> invitecompletionEmails = null, Expression<Func<bool>> invitesignAsMerged = null, Expression<Func<int>> inviteclientTimestamp = null, Expression<Func<invitecCInputItem[]>> invitecC = null, Expression<Func<inviteqESSignatureInput>> inviteqESSignature = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_inviteinviteSteps = WorkflowExpression.Compile(inviteinviteSteps, nameof(inviteinviteSteps), required: false);
@@ -958,7 +958,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             var __workflow_inviteclientTimestamp = WorkflowExpression.Compile(inviteclientTimestamp, nameof(inviteclientTimestamp), required: false);
             var __workflow_invitecC = WorkflowExpression.Compile(invitecC, nameof(invitecC), required: false);
             var __workflow_inviteqESSignature = WorkflowExpression.Compile(inviteqESSignature, nameof(inviteqESSignature), required: false);
-            return new DeferredBodyAction<InviteToSignDocGroupAllOptionsResponse>(() =>
+            return new DeferredBodyAction<InviteToSignDocGroupAllOptionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentgroup/{0}/invite-all-options", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1023,11 +1023,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<JToken> GetDocFields(Expression<Func<string>> templateId, Expression<Func<string>> docId)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetDocFields(Expression<Func<string>> templateId, Expression<Func<string>> docId)
         {
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/document/{0}/fields", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1038,12 +1038,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<UpdateFieldValuesV2Response> UpdateFieldValues(Expression<Func<string>> templateId, Expression<Func<string>> docId, Expression<Func<object>> fields = null)
+        public IBodyWorkflowAction<UpdateFieldValuesV2Response, ApiConnectionActionConfiguration> UpdateFieldValues(Expression<Func<string>> templateId, Expression<Func<string>> docId, Expression<Func<object>> fields = null)
         {
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
-            return new DeferredBodyAction<UpdateFieldValuesV2Response>(() =>
+            return new DeferredBodyAction<UpdateFieldValuesV2Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/document/{0}/fields", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -1057,10 +1057,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
 
     public class SignnoweuTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggersV2Response> Triggers(Expression<Func<string>> bodyevent, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggersV2Response, ApiConnectionTriggerConfiguration> Triggers(Expression<Func<string>> bodyevent, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyevent = WorkflowExpression.Compile(bodyevent, nameof(bodyevent), required: true);
-            return new DeferredBodyTrigger<TriggersV2Response>(() =>
+            return new DeferredBodyTrigger<TriggersV2Response, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/multievent";
                 var apiCallHttpMethod = "post";

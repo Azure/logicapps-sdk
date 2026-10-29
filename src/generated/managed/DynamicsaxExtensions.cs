@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax
     public class DynamicsaxActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsax")]
-        public IBodyWorkflowAction<AxOnlineProcedureResult> ExecuteProcedure(Expression<Func<string>> dataset, Expression<Func<string>> procedure, Expression<Func<object>> parameters = null)
+        public IBodyWorkflowAction<AxOnlineProcedureResult, ApiConnectionActionConfiguration> ExecuteProcedure(Expression<Func<string>> dataset, Expression<Func<string>> procedure, Expression<Func<object>> parameters = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_procedure = WorkflowExpression.Compile(procedure, nameof(procedure), required: true);
             var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: false);
-            return new DeferredBodyAction<AxOnlineProcedureResult>(() =>
+            return new DeferredBodyAction<AxOnlineProcedureResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/procedures/{1}", __workflow_dataset.WithUrlEncoding(2), __workflow_procedure.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsax")]
-        public IBodyWorkflowAction<ItemsList> GetItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> apply = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> select = null, Expression<Func<bool>> crossCompany = null)
+        public IBodyWorkflowAction<ItemsList, ApiConnectionActionConfiguration> GetItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> apply = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> select = null, Expression<Func<bool>> crossCompany = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             var __workflow_crossCompany = WorkflowExpression.Compile(crossCompany, nameof(crossCompany), required: false);
-            return new DeferredBodyAction<ItemsList>(() =>
+            return new DeferredBodyAction<ItemsList, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/items", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -63,12 +63,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsax")]
-        public IBodyWorkflowAction<JToken> PostItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<object>> item = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PostItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<object>> item = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/items", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";
@@ -79,12 +79,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsax")]
-        public IBodyWorkflowAction<JToken> GetItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> id)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> id)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/items/{2}", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -94,12 +94,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsax")]
-        public IWorkflowAction DeleteItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> id)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> id)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/items/{2}", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "delete";
@@ -109,13 +109,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsax")]
-        public IBodyWorkflowAction<JToken> PatchItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<object>> item = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PatchItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<object>> item = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/items/{2}", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "patch";
@@ -126,10 +126,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsax")]
-        public IBodyWorkflowAction<TablesList> GetTables(Expression<Func<string>> dataset)
+        public IBodyWorkflowAction<TablesList, ApiConnectionActionConfiguration> GetTables(Expression<Func<string>> dataset)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
-            return new DeferredBodyAction<TablesList>(() =>
+            return new DeferredBodyAction<TablesList, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables", __workflow_dataset.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -141,13 +141,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax
 
     public class DynamicsaxTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<BusinessEventSubscriptionResponse> SubscribeOnABusinessEvent(Expression<Func<string>> dataset, Expression<Func<string>> businesseventcategory, Expression<Func<string>> businessevent, Expression<Func<string>> legalEntity = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BusinessEventSubscriptionResponse, ApiConnectionTriggerConfiguration> SubscribeOnABusinessEvent(Expression<Func<string>> dataset, Expression<Func<string>> businesseventcategory, Expression<Func<string>> businessevent, Expression<Func<string>> legalEntity = null, FlowRecurrence recurrence = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_businesseventcategory = WorkflowExpression.Compile(businesseventcategory, nameof(businesseventcategory), required: true);
             var __workflow_businessevent = WorkflowExpression.Compile(businessevent, nameof(businessevent), required: true);
             var __workflow_legalEntity = WorkflowExpression.Compile(legalEntity, nameof(legalEntity), required: false);
-            return new DeferredBodyTrigger<BusinessEventSubscriptionResponse>(() =>
+            return new DeferredBodyTrigger<BusinessEventSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/subscribebusinessevent/{1}", __workflow_dataset.WithUrlEncoding(2), __workflow_businessevent.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "post";

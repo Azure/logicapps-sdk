@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
     public class YeelightActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        public IBodyWorkflowAction<DiscoverResponseItem[]> Discover()
+        public IBodyWorkflowAction<DiscoverResponseItem[], ApiConnectionActionConfiguration> Discover()
         {
             var apiCallPath = "/api/ms-flow/discover";
             var apiCallHttpMethod = "post";
@@ -21,13 +21,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        public IBodyWorkflowAction<SwitchResponseItem[]> Switch(Expression<Func<string>> bodydid = null, Expression<Func<bool>> bodyon = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
+        public IBodyWorkflowAction<SwitchResponseItem[], ApiConnectionActionConfiguration> Switch(Expression<Func<string>> bodydid = null, Expression<Func<bool>> bodyon = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
         {
             var __workflow_bodydid = WorkflowExpression.Compile(bodydid, nameof(bodydid), required: false);
             var __workflow_bodyon = WorkflowExpression.Compile(bodyon, nameof(bodyon), required: false);
             var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: false);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            return new DeferredBodyAction<SwitchResponseItem[]>(() =>
+            return new DeferredBodyAction<SwitchResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ms-flow/switch";
                 var apiCallHttpMethod = "post";
@@ -68,13 +68,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        public IBodyWorkflowAction<ColorResponseItem[]> Color(Expression<Func<string>> bodydid = null, Expression<Func<int>> bodyspectrumRGB = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
+        public IBodyWorkflowAction<ColorResponseItem[], ApiConnectionActionConfiguration> Color(Expression<Func<string>> bodydid = null, Expression<Func<int>> bodyspectrumRGB = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
         {
             var __workflow_bodydid = WorkflowExpression.Compile(bodydid, nameof(bodydid), required: false);
             var __workflow_bodyspectrumRGB = WorkflowExpression.Compile(bodyspectrumRGB, nameof(bodyspectrumRGB), required: false);
             var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: false);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            return new DeferredBodyAction<ColorResponseItem[]>(() =>
+            return new DeferredBodyAction<ColorResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ms-flow/color";
                 var apiCallHttpMethod = "post";
@@ -115,13 +115,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        public IBodyWorkflowAction<BrightnessResponseItem[]> Brightness(Expression<Func<string>> bodydid = null, Expression<Func<int>> bodybrightness = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
+        public IBodyWorkflowAction<BrightnessResponseItem[], ApiConnectionActionConfiguration> Brightness(Expression<Func<string>> bodydid = null, Expression<Func<int>> bodybrightness = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
         {
             var __workflow_bodydid = WorkflowExpression.Compile(bodydid, nameof(bodydid), required: false);
             var __workflow_bodybrightness = WorkflowExpression.Compile(bodybrightness, nameof(bodybrightness), required: false);
             var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: false);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            return new DeferredBodyAction<BrightnessResponseItem[]>(() =>
+            return new DeferredBodyAction<BrightnessResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ms-flow/brightness";
                 var apiCallHttpMethod = "post";
@@ -162,13 +162,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        public IBodyWorkflowAction<TemperatureResponseItem[]> Temperature(Expression<Func<string>> bodydid = null, Expression<Func<int>> bodytemperature = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
+        public IBodyWorkflowAction<TemperatureResponseItem[], ApiConnectionActionConfiguration> Temperature(Expression<Func<string>> bodydid = null, Expression<Func<int>> bodytemperature = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
         {
             var __workflow_bodydid = WorkflowExpression.Compile(bodydid, nameof(bodydid), required: false);
             var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
             var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: false);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            return new DeferredBodyAction<TemperatureResponseItem[]>(() =>
+            return new DeferredBodyAction<TemperatureResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ms-flow/temperature";
                 var apiCallHttpMethod = "post";
@@ -209,12 +209,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        public IBodyWorkflowAction<QueryResponse> Query(Expression<Func<string>> bodydid = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
+        public IBodyWorkflowAction<QueryResponse, ApiConnectionActionConfiguration> Query(Expression<Func<string>> bodydid = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
         {
             var __workflow_bodydid = WorkflowExpression.Compile(bodydid, nameof(bodydid), required: false);
             var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: false);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            return new DeferredBodyAction<QueryResponse>(() =>
+            return new DeferredBodyAction<QueryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ms-flow/query";
                 var apiCallHttpMethod = "post";

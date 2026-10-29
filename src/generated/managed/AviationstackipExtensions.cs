@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
     public class AviationstackipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
-        public IBodyWorkflowAction<FlightGetResponse> FlightGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<flightStatusInput>> flightStatus = null, Expression<Func<string>> flightDate = null, Expression<Func<string>> depIata = null, Expression<Func<string>> arrIata = null, Expression<Func<string>> depIcao = null, Expression<Func<string>> arrIcao = null, Expression<Func<string>> airlineName = null, Expression<Func<string>> airlineIata = null, Expression<Func<string>> airlineIcao = null, Expression<Func<int>> flightNumber = null, Expression<Func<string>> flightIata = null, Expression<Func<string>> flightIcao = null, Expression<Func<int>> minDelayDep = null, Expression<Func<int>> minDelayArr = null, Expression<Func<int>> maxDelayDep = null, Expression<Func<int>> maxDelayArr = null, Expression<Func<string>> arrScheduledTimeArr = null, Expression<Func<string>> arrScheduledTimeDep = null)
+        public IBodyWorkflowAction<FlightGetResponse, ApiConnectionActionConfiguration> FlightGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<flightStatusInput>> flightStatus = null, Expression<Func<string>> flightDate = null, Expression<Func<string>> depIata = null, Expression<Func<string>> arrIata = null, Expression<Func<string>> depIcao = null, Expression<Func<string>> arrIcao = null, Expression<Func<string>> airlineName = null, Expression<Func<string>> airlineIata = null, Expression<Func<string>> airlineIcao = null, Expression<Func<int>> flightNumber = null, Expression<Func<string>> flightIata = null, Expression<Func<string>> flightIcao = null, Expression<Func<int>> minDelayDep = null, Expression<Func<int>> minDelayArr = null, Expression<Func<int>> maxDelayDep = null, Expression<Func<int>> maxDelayArr = null, Expression<Func<string>> arrScheduledTimeArr = null, Expression<Func<string>> arrScheduledTimeDep = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
             var __workflow_maxDelayArr = WorkflowExpression.Compile(maxDelayArr, nameof(maxDelayArr), required: false);
             var __workflow_arrScheduledTimeArr = WorkflowExpression.Compile(arrScheduledTimeArr, nameof(arrScheduledTimeArr), required: false);
             var __workflow_arrScheduledTimeDep = WorkflowExpression.Compile(arrScheduledTimeDep, nameof(arrScheduledTimeDep), required: false);
-            return new DeferredBodyAction<FlightGetResponse>(() =>
+            return new DeferredBodyAction<FlightGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/flights";
                 var apiCallHttpMethod = "get";
@@ -84,11 +84,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
-        public IBodyWorkflowAction<AirportGetResponse> AirportGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<AirportGetResponse, ApiConnectionActionConfiguration> AirportGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<AirportGetResponse>(() =>
+            return new DeferredBodyAction<AirportGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/airports";
                 var apiCallHttpMethod = "get";
@@ -102,11 +102,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
-        public IBodyWorkflowAction<AirlineGetResponse> AirlineGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<AirlineGetResponse, ApiConnectionActionConfiguration> AirlineGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<AirlineGetResponse>(() =>
+            return new DeferredBodyAction<AirlineGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/airlines";
                 var apiCallHttpMethod = "get";
@@ -120,11 +120,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
-        public IBodyWorkflowAction<AirplaneGetResponse> AirplaneGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<AirplaneGetResponse, ApiConnectionActionConfiguration> AirplaneGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<AirplaneGetResponse>(() =>
+            return new DeferredBodyAction<AirplaneGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/airplanes";
                 var apiCallHttpMethod = "get";
@@ -138,11 +138,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
-        public IBodyWorkflowAction<AircraftGetResponse> AircraftGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<AircraftGetResponse, ApiConnectionActionConfiguration> AircraftGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<AircraftGetResponse>(() =>
+            return new DeferredBodyAction<AircraftGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/aircraft_types";
                 var apiCallHttpMethod = "get";
@@ -156,11 +156,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
-        public IBodyWorkflowAction<TaxesGetResponse> TaxesGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<TaxesGetResponse, ApiConnectionActionConfiguration> TaxesGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<TaxesGetResponse>(() =>
+            return new DeferredBodyAction<TaxesGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/taxes";
                 var apiCallHttpMethod = "get";
@@ -174,11 +174,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
-        public IBodyWorkflowAction<CityGetResponse> CityGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<CityGetResponse, ApiConnectionActionConfiguration> CityGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<CityGetResponse>(() =>
+            return new DeferredBodyAction<CityGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/cities";
                 var apiCallHttpMethod = "get";
@@ -192,11 +192,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
-        public IBodyWorkflowAction<CountryGetResponse> CountryGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<CountryGetResponse, ApiConnectionActionConfiguration> CountryGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<CountryGetResponse>(() =>
+            return new DeferredBodyAction<CountryGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/countries";
                 var apiCallHttpMethod = "get";

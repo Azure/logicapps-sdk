@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mtarget
     public class MtargetActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mtarget")]
-        public IBodyWorkflowAction<SendSmsResponse> SendSms(Expression<Func<string>> msisdn, Expression<Func<string>> msg, Expression<Func<string>> sender = null, Expression<Func<int>> serviceid = null, Expression<Func<string>> timetosend = null, Expression<Func<string>> remoteid = null)
+        public IBodyWorkflowAction<SendSmsResponse, ApiConnectionActionConfiguration> SendSms(Expression<Func<string>> msisdn, Expression<Func<string>> msg, Expression<Func<string>> sender = null, Expression<Func<int>> serviceid = null, Expression<Func<string>> timetosend = null, Expression<Func<string>> remoteid = null)
         {
             var __workflow_msisdn = WorkflowExpression.Compile(msisdn, nameof(msisdn), required: true);
             var __workflow_msg = WorkflowExpression.Compile(msg, nameof(msg), required: true);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mtarget
             var __workflow_serviceid = WorkflowExpression.Compile(serviceid, nameof(serviceid), required: false);
             var __workflow_timetosend = WorkflowExpression.Compile(timetosend, nameof(timetosend), required: false);
             var __workflow_remoteid = WorkflowExpression.Compile(remoteid, nameof(remoteid), required: false);
-            return new DeferredBodyAction<SendSmsResponse>(() =>
+            return new DeferredBodyAction<SendSmsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/flow.php";
                 var apiCallHttpMethod = "post";

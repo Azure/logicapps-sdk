@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical
     public class ApyhubgenerateicalActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubgenerateical")]
-        public IBodyWorkflowAction<string> File(Expression<Func<string>> output = null, Expression<Func<string>> bodysummary = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyorganizerEmail = null, Expression<Func<string[]>> bodyattendeesEmails = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodytimeZone = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<string>> bodymeetingDate = null, Expression<Func<bool>> bodyrecurring = null, Expression<Func<bodyrecurrencefrequencyInput>> bodyrecurrencefrequency = null, Expression<Func<int>> bodyrecurrencecount = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> File(Expression<Func<string>> output = null, Expression<Func<string>> bodysummary = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyorganizerEmail = null, Expression<Func<string[]>> bodyattendeesEmails = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodytimeZone = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<string>> bodymeetingDate = null, Expression<Func<bool>> bodyrecurring = null, Expression<Func<bodyrecurrencefrequencyInput>> bodyrecurrencefrequency = null, Expression<Func<int>> bodyrecurrencecount = null)
         {
             var __workflow_output = WorkflowExpression.Compile(output, nameof(output), required: false);
             var __workflow_bodysummary = WorkflowExpression.Compile(bodysummary, nameof(bodysummary), required: false);
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical
             var __workflow_bodyrecurring = WorkflowExpression.Compile(bodyrecurring, nameof(bodyrecurring), required: false);
             var __workflow_bodyrecurrencefrequency = WorkflowExpression.Compile(bodyrecurrencefrequency, nameof(bodyrecurrencefrequency), required: false);
             var __workflow_bodyrecurrencecount = WorkflowExpression.Compile(bodyrecurrencecount, nameof(bodyrecurrencecount), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/file";
                 var apiCallHttpMethod = "post";
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubgenerateical")]
-        public IBodyWorkflowAction<URLPostResponse> URL(Expression<Func<string>> output = null, Expression<Func<string>> bodysummary = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyorganizerEmail = null, Expression<Func<string[]>> bodyattendeesEmails = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodytimeZone = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<string>> bodymeetingDate = null, Expression<Func<bool>> bodyrecurring = null, Expression<Func<bodyrecurrencefrequencyInput>> bodyrecurrencefrequency = null, Expression<Func<int>> bodyrecurrencecount = null)
+        public IBodyWorkflowAction<URLPostResponse, ApiConnectionActionConfiguration> URL(Expression<Func<string>> output = null, Expression<Func<string>> bodysummary = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyorganizerEmail = null, Expression<Func<string[]>> bodyattendeesEmails = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodytimeZone = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<string>> bodymeetingDate = null, Expression<Func<bool>> bodyrecurring = null, Expression<Func<bodyrecurrencefrequencyInput>> bodyrecurrencefrequency = null, Expression<Func<int>> bodyrecurrencecount = null)
         {
             var __workflow_output = WorkflowExpression.Compile(output, nameof(output), required: false);
             var __workflow_bodysummary = WorkflowExpression.Compile(bodysummary, nameof(bodysummary), required: false);
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical
             var __workflow_bodyrecurring = WorkflowExpression.Compile(bodyrecurring, nameof(bodyrecurring), required: false);
             var __workflow_bodyrecurrencefrequency = WorkflowExpression.Compile(bodyrecurrencefrequency, nameof(bodyrecurrencefrequency), required: false);
             var __workflow_bodyrecurrencecount = WorkflowExpression.Compile(bodyrecurrencecount, nameof(bodyrecurrencecount), required: false);
-            return new DeferredBodyAction<URLPostResponse>(() =>
+            return new DeferredBodyAction<URLPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/url";
                 var apiCallHttpMethod = "post";

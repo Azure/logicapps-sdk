@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
     public class WebexintegrationipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
-        public IBodyWorkflowAction<ReadMeetingResponse> ReadMeetings(Expression<Func<string>> contentType = null, Expression<Func<string>> password = null, Expression<Func<string>> timezone = null)
+        public IBodyWorkflowAction<ReadMeetingResponse, ApiConnectionActionConfiguration> ReadMeetings(Expression<Func<string>> contentType = null, Expression<Func<string>> password = null, Expression<Func<string>> timezone = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             var __workflow_password = WorkflowExpression.Compile(password, nameof(password), required: false);
             var __workflow_timezone = WorkflowExpression.Compile(timezone, nameof(timezone), required: false);
-            return new DeferredBodyAction<ReadMeetingResponse>(() =>
+            return new DeferredBodyAction<ReadMeetingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/meetings";
                 var apiCallHttpMethod = "get";
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
-        public IBodyWorkflowAction<CreateAMeetingResponse> CreateAMeeting(Expression<Func<string>> contentType, Expression<Func<string>> bodytitle, Expression<Func<string>> bodystart, Expression<Func<string>> bodyend, Expression<Func<string>> bodyagenda = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodytimezone = null, Expression<Func<bool>> bodyenabledAutoRecordMeeting = null, Expression<Func<bool>> bodyallowAnyUserToBeCoHost = null)
+        public IBodyWorkflowAction<CreateAMeetingResponse, ApiConnectionActionConfiguration> CreateAMeeting(Expression<Func<string>> contentType, Expression<Func<string>> bodytitle, Expression<Func<string>> bodystart, Expression<Func<string>> bodyend, Expression<Func<string>> bodyagenda = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodytimezone = null, Expression<Func<bool>> bodyenabledAutoRecordMeeting = null, Expression<Func<bool>> bodyallowAnyUserToBeCoHost = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
             var __workflow_bodytimezone = WorkflowExpression.Compile(bodytimezone, nameof(bodytimezone), required: false);
             var __workflow_bodyenabledAutoRecordMeeting = WorkflowExpression.Compile(bodyenabledAutoRecordMeeting, nameof(bodyenabledAutoRecordMeeting), required: false);
             var __workflow_bodyallowAnyUserToBeCoHost = WorkflowExpression.Compile(bodyallowAnyUserToBeCoHost, nameof(bodyallowAnyUserToBeCoHost), required: false);
-            return new DeferredBodyAction<CreateAMeetingResponse>(() =>
+            return new DeferredBodyAction<CreateAMeetingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/meetings";
                 var apiCallHttpMethod = "post";
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
-        public IWorkflowAction CreateAInvitee(Expression<Func<string>> bodymeetingId, Expression<Func<string>> bodyemail, Expression<Func<string>> contentType = null, Expression<Func<string>> bodydisplayName = null, Expression<Func<string>> bodycoHost = null, Expression<Func<string>> bodyhostEmail = null, Expression<Func<string>> bodysendEmail = null, Expression<Func<string>> bodypanelist = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateAInvitee(Expression<Func<string>> bodymeetingId, Expression<Func<string>> bodyemail, Expression<Func<string>> contentType = null, Expression<Func<string>> bodydisplayName = null, Expression<Func<string>> bodycoHost = null, Expression<Func<string>> bodyhostEmail = null, Expression<Func<string>> bodysendEmail = null, Expression<Func<string>> bodypanelist = null)
         {
             var __workflow_bodymeetingId = WorkflowExpression.Compile(bodymeetingId, nameof(bodymeetingId), required: true);
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
             var __workflow_bodyhostEmail = WorkflowExpression.Compile(bodyhostEmail, nameof(bodyhostEmail), required: false);
             var __workflow_bodysendEmail = WorkflowExpression.Compile(bodysendEmail, nameof(bodysendEmail), required: false);
             var __workflow_bodypanelist = WorkflowExpression.Compile(bodypanelist, nameof(bodypanelist), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/meetingInvitees";
                 var apiCallHttpMethod = "post";
@@ -193,10 +193,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
-        public IWorkflowAction DeleteAMeeting(Expression<Func<string>> meetingId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteAMeeting(Expression<Func<string>> meetingId)
         {
             var __workflow_meetingId = WorkflowExpression.Compile(meetingId, nameof(meetingId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/meetings/{0}", __workflow_meetingId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
-        public IWorkflowAction UpdateAMeeting(Expression<Func<string>> meetingId, Expression<Func<string>> contentType = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyagenda = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodyend = null, Expression<Func<bool>> bodyenabledAutoRecordMeeting = null, Expression<Func<bool>> bodyallowAnyUserToBeCoHost = null, Expression<Func<bool>> bodyenabledJoinBeforeHost = null, Expression<Func<bool>> bodyenableConnectAudioBeforeHost = null, Expression<Func<int>> bodyjoinBeforeHostMinutes = null, Expression<Func<bool>> bodyexcludePassword = null, Expression<Func<bool>> bodypublicMeeting = null, Expression<Func<int>> bodyreminderTime = null, Expression<Func<string>> bodyunlockedMeetingJoinSecurity = null, Expression<Func<bool>> bodyenableAutomaticLock = null, Expression<Func<int>> bodyautomaticLockMinutes = null, Expression<Func<bool>> bodyallowFirstUserToBeCoHost = null, Expression<Func<bool>> bodyallowAuthenticatedDevices = null, Expression<Func<bool>> bodysendEmail = null, Expression<Func<string>> bodyhostEmail = null, Expression<Func<string>> bodysiteUrl = null, Expression<Func<bool>> bodymeetingOptionsenabledChat = null, Expression<Func<bool>> bodymeetingOptionsenabledVideo = null, Expression<Func<bool>> bodymeetingOptionsenabledPolling = null, Expression<Func<bool>> bodymeetingOptionsenabledNote = null, Expression<Func<string>> bodymeetingOptionsnoteType = null, Expression<Func<bool>> bodymeetingOptionsenabledClosedCaptions = null, Expression<Func<bool>> bodymeetingOptionsenabledFileTransfer = null, Expression<Func<bool>> bodymeetingOptionsenabledUCFRichMedia = null, Expression<Func<bool>> bodyattendeePrivilegesenabledShareContent = null, Expression<Func<bool>> bodyattendeePrivilegesenabledSaveDocument = null, Expression<Func<bool>> bodyattendeePrivilegesenabledPrintDocument = null, Expression<Func<bool>> bodyattendeePrivilegesenabledAnnotate = null, Expression<Func<bool>> bodyattendeePrivilegesenabledViewParticipantList = null, Expression<Func<bool>> bodyattendeePrivilegesenabledViewThumbnails = null, Expression<Func<bool>> bodyattendeePrivilegesenabledRemoteControl = null, Expression<Func<bool>> bodyattendeePrivilegesenabledViewAnyDocument = null, Expression<Func<bool>> bodyattendeePrivilegesenabledViewAnyPage = null, Expression<Func<bool>> bodyattendeePrivilegesenabledContactOperatorPrivately = null, Expression<Func<bool>> bodyattendeePrivilegesenabledChatHost = null, Expression<Func<bool>> bodyattendeePrivilegesenabledChatPresenter = null, Expression<Func<bool>> bodyattendeePrivilegesenabledChatOtherParticipants = null, Expression<Func<string[]>> bodyintegrationTags = null, Expression<Func<bool>> bodyenabledBreakoutSessions = null, Expression<Func<bodytrackingCodesInputItem[]>> bodytrackingCodes = null, Expression<Func<string>> bodyaudioConnectionOptionsaudioConnectionType = null, Expression<Func<bool>> bodyaudioConnectionOptionsenabledTollFreeCallIn = null, Expression<Func<bool>> bodyaudioConnectionOptionsenabledGlobalCallIn = null, Expression<Func<bool>> bodyaudioConnectionOptionsenabledAudienceCallBack = null, Expression<Func<string>> bodyaudioConnectionOptionsentryAndExitTone = null, Expression<Func<bool>> bodyaudioConnectionOptionsallowHostToUnmuteParticipants = null, Expression<Func<bool>> bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf = null, Expression<Func<bool>> bodyaudioConnectionOptionsmuteAttendeeUponEntry = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateAMeeting(Expression<Func<string>> meetingId, Expression<Func<string>> contentType = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyagenda = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodyend = null, Expression<Func<bool>> bodyenabledAutoRecordMeeting = null, Expression<Func<bool>> bodyallowAnyUserToBeCoHost = null, Expression<Func<bool>> bodyenabledJoinBeforeHost = null, Expression<Func<bool>> bodyenableConnectAudioBeforeHost = null, Expression<Func<int>> bodyjoinBeforeHostMinutes = null, Expression<Func<bool>> bodyexcludePassword = null, Expression<Func<bool>> bodypublicMeeting = null, Expression<Func<int>> bodyreminderTime = null, Expression<Func<string>> bodyunlockedMeetingJoinSecurity = null, Expression<Func<bool>> bodyenableAutomaticLock = null, Expression<Func<int>> bodyautomaticLockMinutes = null, Expression<Func<bool>> bodyallowFirstUserToBeCoHost = null, Expression<Func<bool>> bodyallowAuthenticatedDevices = null, Expression<Func<bool>> bodysendEmail = null, Expression<Func<string>> bodyhostEmail = null, Expression<Func<string>> bodysiteUrl = null, Expression<Func<bool>> bodymeetingOptionsenabledChat = null, Expression<Func<bool>> bodymeetingOptionsenabledVideo = null, Expression<Func<bool>> bodymeetingOptionsenabledPolling = null, Expression<Func<bool>> bodymeetingOptionsenabledNote = null, Expression<Func<string>> bodymeetingOptionsnoteType = null, Expression<Func<bool>> bodymeetingOptionsenabledClosedCaptions = null, Expression<Func<bool>> bodymeetingOptionsenabledFileTransfer = null, Expression<Func<bool>> bodymeetingOptionsenabledUCFRichMedia = null, Expression<Func<bool>> bodyattendeePrivilegesenabledShareContent = null, Expression<Func<bool>> bodyattendeePrivilegesenabledSaveDocument = null, Expression<Func<bool>> bodyattendeePrivilegesenabledPrintDocument = null, Expression<Func<bool>> bodyattendeePrivilegesenabledAnnotate = null, Expression<Func<bool>> bodyattendeePrivilegesenabledViewParticipantList = null, Expression<Func<bool>> bodyattendeePrivilegesenabledViewThumbnails = null, Expression<Func<bool>> bodyattendeePrivilegesenabledRemoteControl = null, Expression<Func<bool>> bodyattendeePrivilegesenabledViewAnyDocument = null, Expression<Func<bool>> bodyattendeePrivilegesenabledViewAnyPage = null, Expression<Func<bool>> bodyattendeePrivilegesenabledContactOperatorPrivately = null, Expression<Func<bool>> bodyattendeePrivilegesenabledChatHost = null, Expression<Func<bool>> bodyattendeePrivilegesenabledChatPresenter = null, Expression<Func<bool>> bodyattendeePrivilegesenabledChatOtherParticipants = null, Expression<Func<string[]>> bodyintegrationTags = null, Expression<Func<bool>> bodyenabledBreakoutSessions = null, Expression<Func<bodytrackingCodesInputItem[]>> bodytrackingCodes = null, Expression<Func<string>> bodyaudioConnectionOptionsaudioConnectionType = null, Expression<Func<bool>> bodyaudioConnectionOptionsenabledTollFreeCallIn = null, Expression<Func<bool>> bodyaudioConnectionOptionsenabledGlobalCallIn = null, Expression<Func<bool>> bodyaudioConnectionOptionsenabledAudienceCallBack = null, Expression<Func<string>> bodyaudioConnectionOptionsentryAndExitTone = null, Expression<Func<bool>> bodyaudioConnectionOptionsallowHostToUnmuteParticipants = null, Expression<Func<bool>> bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf = null, Expression<Func<bool>> bodyaudioConnectionOptionsmuteAttendeeUponEntry = null)
         {
             var __workflow_meetingId = WorkflowExpression.Compile(meetingId, nameof(meetingId), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
             var __workflow_bodyaudioConnectionOptionsallowHostToUnmuteParticipants = WorkflowExpression.Compile(bodyaudioConnectionOptionsallowHostToUnmuteParticipants, nameof(bodyaudioConnectionOptionsallowHostToUnmuteParticipants), required: false);
             var __workflow_bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf = WorkflowExpression.Compile(bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf, nameof(bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf), required: false);
             var __workflow_bodyaudioConnectionOptionsmuteAttendeeUponEntry = WorkflowExpression.Compile(bodyaudioConnectionOptionsmuteAttendeeUponEntry, nameof(bodyaudioConnectionOptionsmuteAttendeeUponEntry), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/meetings/{0}", __workflow_meetingId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";

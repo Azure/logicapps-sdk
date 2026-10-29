@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
     public class LivechatActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
-        public IBodyWorkflowAction<ListAgentsResponseItem[]> ListAgents()
+        public IBodyWorkflowAction<ListAgentsResponseItem[], ApiConnectionActionConfiguration> ListAgents()
         {
             var apiCallPath = "/agents";
             var apiCallHttpMethod = "get";
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
-        public IBodyWorkflowAction<CreateAgentResponse> CreateAgent(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname, Expression<Func<bodyloginStatusInput>> bodyloginStatus = null, Expression<Func<string>> bodytitle = null, Expression<Func<bodypermissionInput>> bodypermission = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodymaxChatCounts = null)
+        public IBodyWorkflowAction<CreateAgentResponse, ApiConnectionActionConfiguration> CreateAgent(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname, Expression<Func<bodyloginStatusInput>> bodyloginStatus = null, Expression<Func<string>> bodytitle = null, Expression<Func<bodypermissionInput>> bodypermission = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodymaxChatCounts = null)
         {
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
             var __workflow_bodypermission = WorkflowExpression.Compile(bodypermission, nameof(bodypermission), required: false);
             var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
             var __workflow_bodymaxChatCounts = WorkflowExpression.Compile(bodymaxChatCounts, nameof(bodymaxChatCounts), required: false);
-            return new DeferredBodyAction<CreateAgentResponse>(() =>
+            return new DeferredBodyAction<CreateAgentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/agents";
                 var apiCallHttpMethod = "post";
@@ -81,10 +81,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
-        public IBodyWorkflowAction<DeleteAgentResponse> DeleteAgent(Expression<Func<string>> login)
+        public IBodyWorkflowAction<DeleteAgentResponse, ApiConnectionActionConfiguration> DeleteAgent(Expression<Func<string>> login)
         {
             var __workflow_login = WorkflowExpression.Compile(login, nameof(login), required: true);
-            return new DeferredBodyAction<DeleteAgentResponse>(() =>
+            return new DeferredBodyAction<DeleteAgentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}", __workflow_login.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
-        public IBodyWorkflowAction<ListTicketsResponseItem[]> ListTickets()
+        public IBodyWorkflowAction<ListTicketsResponseItem[], ApiConnectionActionConfiguration> ListTickets()
         {
             var apiCallPath = "/tickets";
             var apiCallHttpMethod = "get";
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
-        public IBodyWorkflowAction<TicketResponse> CreateTicket(Expression<Func<string>> bodymessage, Expression<Func<string>> bodyrequesterrequesterSEmail = null, Expression<Func<string>> bodyrequesterrequesterSName = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyassigneeassigneeId = null, Expression<Func<bodysourcesourceTypeInput>> bodysourcesourceType = null, Expression<Func<string>> bodysourcesourceURL = null)
+        public IBodyWorkflowAction<TicketResponse, ApiConnectionActionConfiguration> CreateTicket(Expression<Func<string>> bodymessage, Expression<Func<string>> bodyrequesterrequesterSEmail = null, Expression<Func<string>> bodyrequesterrequesterSName = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyassigneeassigneeId = null, Expression<Func<bodysourcesourceTypeInput>> bodysourcesourceType = null, Expression<Func<string>> bodysourcesourceURL = null)
         {
             var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
             var __workflow_bodyrequesterrequesterSEmail = WorkflowExpression.Compile(bodyrequesterrequesterSEmail, nameof(bodyrequesterrequesterSEmail), required: false);
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
             var __workflow_bodyassigneeassigneeId = WorkflowExpression.Compile(bodyassigneeassigneeId, nameof(bodyassigneeassigneeId), required: false);
             var __workflow_bodysourcesourceType = WorkflowExpression.Compile(bodysourcesourceType, nameof(bodysourcesourceType), required: false);
             var __workflow_bodysourcesourceURL = WorkflowExpression.Compile(bodysourcesourceURL, nameof(bodysourcesourceURL), required: false);
-            return new DeferredBodyAction<TicketResponse>(() =>
+            return new DeferredBodyAction<TicketResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tickets";
                 var apiCallHttpMethod = "post";
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
-        public IBodyWorkflowAction<TicketResponse> UpdateTicket(Expression<Func<string>> ticketId, Expression<Func<string>> bodyrequesterrequesterSEmail, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodyrequesterrequesterSName = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyassigneeassigneeId = null, Expression<Func<bodysourcesourceTypeInput>> bodysourcesourceType = null, Expression<Func<string>> bodysourcesourceURL = null)
+        public IBodyWorkflowAction<TicketResponse, ApiConnectionActionConfiguration> UpdateTicket(Expression<Func<string>> ticketId, Expression<Func<string>> bodyrequesterrequesterSEmail, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodyrequesterrequesterSName = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyassigneeassigneeId = null, Expression<Func<bodysourcesourceTypeInput>> bodysourcesourceType = null, Expression<Func<string>> bodysourcesourceURL = null)
         {
             var __workflow_ticketId = WorkflowExpression.Compile(ticketId, nameof(ticketId), required: true);
             var __workflow_bodyrequesterrequesterSEmail = WorkflowExpression.Compile(bodyrequesterrequesterSEmail, nameof(bodyrequesterrequesterSEmail), required: true);
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
             var __workflow_bodyassigneeassigneeId = WorkflowExpression.Compile(bodyassigneeassigneeId, nameof(bodyassigneeassigneeId), required: false);
             var __workflow_bodysourcesourceType = WorkflowExpression.Compile(bodysourcesourceType, nameof(bodysourcesourceType), required: false);
             var __workflow_bodysourcesourceURL = WorkflowExpression.Compile(bodysourcesourceURL, nameof(bodysourcesourceURL), required: false);
-            return new DeferredBodyAction<TicketResponse>(() =>
+            return new DeferredBodyAction<TicketResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tickets/{0}/tags", __workflow_ticketId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -280,10 +280,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
-        public IBodyWorkflowAction<TicketResponse> GetTicket(Expression<Func<string>> ticketId)
+        public IBodyWorkflowAction<TicketResponse, ApiConnectionActionConfiguration> GetTicket(Expression<Func<string>> ticketId)
         {
             var __workflow_ticketId = WorkflowExpression.Compile(ticketId, nameof(ticketId), required: true);
-            return new DeferredBodyAction<TicketResponse>(() =>
+            return new DeferredBodyAction<TicketResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/tickets/{0}", __workflow_ticketId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
 
     public class LivechatTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WebhookTicketCreated(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookTicketCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/ticket_created_webhook/webhooks";
             var apiCallHttpMethod = "post";
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger WebhookChatStarted(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookChatStarted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/chat_starts_webhook/webhooks";
             var apiCallHttpMethod = "post";
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger WebhookChatEnded(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookChatEnded(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/chat_ends_webhook/webhooks";
             var apiCallHttpMethod = "post";

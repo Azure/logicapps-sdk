@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myacclaro
     public class MyacclaroActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myacclaro")]
-        public IBodyWorkflowAction<GetAllSupportedOrderTypesResponse> GetAllSupportedOrderTypes()
+        public IBodyWorkflowAction<GetAllSupportedOrderTypesResponse, ApiConnectionActionConfiguration> GetAllSupportedOrderTypes()
         {
             var apiCallPath = "/info/order-types";
             var apiCallHttpMethod = "get";
@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myacclaro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myacclaro")]
-        public IBodyWorkflowAction<string> DeleteAnOrder(Expression<Func<string>> orderid)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DeleteAnOrder(Expression<Func<string>> orderid)
         {
             var __workflow_orderid = WorkflowExpression.Compile(orderid, nameof(orderid), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/orders/{0}", __workflow_orderid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";

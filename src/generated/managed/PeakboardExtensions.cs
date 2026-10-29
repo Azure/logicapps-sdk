@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Peakboard
 
     public class PeakboardTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WhenAlertIsSent(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenAlertIsSent(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/PowerAutomate/Subscribe";
             var apiCallHttpMethod = "post";

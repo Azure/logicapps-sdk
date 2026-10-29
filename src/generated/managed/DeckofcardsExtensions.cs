@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deckofcards
     public class DeckofcardsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
-        public IBodyWorkflowAction<CardGetResponse> CardGet(Expression<Func<string>> deckId, Expression<Func<string>> cards, Expression<Func<int>> count = null)
+        public IBodyWorkflowAction<CardGetResponse, ApiConnectionActionConfiguration> CardGet(Expression<Func<string>> deckId, Expression<Func<string>> cards, Expression<Func<int>> count = null)
         {
             var __workflow_deckId = WorkflowExpression.Compile(deckId, nameof(deckId), required: true);
             var __workflow_cards = WorkflowExpression.Compile(cards, nameof(cards), required: true);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            return new DeferredBodyAction<CardGetResponse>(() =>
+            return new DeferredBodyAction<CardGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/deck/{0}/draw/", __workflow_deckId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -30,11 +30,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deckofcards
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
-        public IBodyWorkflowAction<ShuffleGetResponse> ShuffleGet(Expression<Func<int>> deckCount = null, Expression<Func<string>> cards = null)
+        public IBodyWorkflowAction<ShuffleGetResponse, ApiConnectionActionConfiguration> ShuffleGet(Expression<Func<int>> deckCount = null, Expression<Func<string>> cards = null)
         {
             var __workflow_deckCount = WorkflowExpression.Compile(deckCount, nameof(deckCount), required: false);
             var __workflow_cards = WorkflowExpression.Compile(cards, nameof(cards), required: false);
-            return new DeferredBodyAction<ShuffleGetResponse>(() =>
+            return new DeferredBodyAction<ShuffleGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/deck/new/shuffle/";
                 var apiCallHttpMethod = "get";
@@ -48,11 +48,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deckofcards
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
-        public IBodyWorkflowAction<ReshuffleGetResponse> ReshuffleGet(Expression<Func<string>> deckId, Expression<Func<bool>> remaining = null)
+        public IBodyWorkflowAction<ReshuffleGetResponse, ApiConnectionActionConfiguration> ReshuffleGet(Expression<Func<string>> deckId, Expression<Func<bool>> remaining = null)
         {
             var __workflow_deckId = WorkflowExpression.Compile(deckId, nameof(deckId), required: true);
             var __workflow_remaining = WorkflowExpression.Compile(remaining, nameof(remaining), required: false);
-            return new DeferredBodyAction<ReshuffleGetResponse>(() =>
+            return new DeferredBodyAction<ReshuffleGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/deck/{0}/shuffle/", __workflow_deckId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -64,12 +64,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deckofcards
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
-        public IBodyWorkflowAction<PileGetResponse> PileGet(Expression<Func<string>> deckId, Expression<Func<string>> pileName, Expression<Func<string>> cards)
+        public IBodyWorkflowAction<PileGetResponse, ApiConnectionActionConfiguration> PileGet(Expression<Func<string>> deckId, Expression<Func<string>> pileName, Expression<Func<string>> cards)
         {
             var __workflow_deckId = WorkflowExpression.Compile(deckId, nameof(deckId), required: true);
             var __workflow_pileName = WorkflowExpression.Compile(pileName, nameof(pileName), required: true);
             var __workflow_cards = WorkflowExpression.Compile(cards, nameof(cards), required: true);
-            return new DeferredBodyAction<PileGetResponse>(() =>
+            return new DeferredBodyAction<PileGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/deck/{0}/pile/{1}/add/", __workflow_deckId.WithUrlEncoding(1), __workflow_pileName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -80,11 +80,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deckofcards
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
-        public IBodyWorkflowAction<ShufflePileGetResponse> ShufflePileGet(Expression<Func<string>> deckId, Expression<Func<string>> pileName)
+        public IBodyWorkflowAction<ShufflePileGetResponse, ApiConnectionActionConfiguration> ShufflePileGet(Expression<Func<string>> deckId, Expression<Func<string>> pileName)
         {
             var __workflow_deckId = WorkflowExpression.Compile(deckId, nameof(deckId), required: true);
             var __workflow_pileName = WorkflowExpression.Compile(pileName, nameof(pileName), required: true);
-            return new DeferredBodyAction<ShufflePileGetResponse>(() =>
+            return new DeferredBodyAction<ShufflePileGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/deck/{0}/pile/{1}/shuffle/", __workflow_deckId.WithUrlEncoding(1), __workflow_pileName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -94,12 +94,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deckofcards
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
-        public IBodyWorkflowAction<DrawPileGetResponse> DrawPileGet(Expression<Func<string>> deckId, Expression<Func<string>> pileName, Expression<Func<int>> count = null)
+        public IBodyWorkflowAction<DrawPileGetResponse, ApiConnectionActionConfiguration> DrawPileGet(Expression<Func<string>> deckId, Expression<Func<string>> pileName, Expression<Func<int>> count = null)
         {
             var __workflow_deckId = WorkflowExpression.Compile(deckId, nameof(deckId), required: true);
             var __workflow_pileName = WorkflowExpression.Compile(pileName, nameof(pileName), required: true);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
-            return new DeferredBodyAction<DrawPileGetResponse>(() =>
+            return new DeferredBodyAction<DrawPileGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/deck/{0}/pile/{1}/draw/", __workflow_deckId.WithUrlEncoding(1), __workflow_pileName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -111,11 +111,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deckofcards
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
-        public IBodyWorkflowAction<ReturnGetResponse> ReturnGet(Expression<Func<string>> deckId, Expression<Func<string>> cards)
+        public IBodyWorkflowAction<ReturnGetResponse, ApiConnectionActionConfiguration> ReturnGet(Expression<Func<string>> deckId, Expression<Func<string>> cards)
         {
             var __workflow_deckId = WorkflowExpression.Compile(deckId, nameof(deckId), required: true);
             var __workflow_cards = WorkflowExpression.Compile(cards, nameof(cards), required: true);
-            return new DeferredBodyAction<ReturnGetResponse>(() =>
+            return new DeferredBodyAction<ReturnGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/deck/{0}/return/", __workflow_deckId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

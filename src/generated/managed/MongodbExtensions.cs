@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
     public class MongodbActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<InsertDocumentResponse> InsertDocument(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection)
+        public IBodyWorkflowAction<InsertDocumentResponse, ApiConnectionActionConfiguration> InsertDocument(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection)
         {
             var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
             var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
             var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
-            return new DeferredBodyAction<InsertDocumentResponse>(() =>
+            return new DeferredBodyAction<InsertDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/action/insertOne";
                 var apiCallHttpMethod = "post";
@@ -50,12 +50,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<FindDocumentResponse> FindDocument(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection)
+        public IBodyWorkflowAction<FindDocumentResponse, ApiConnectionActionConfiguration> FindDocument(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection)
         {
             var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
             var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
             var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
-            return new DeferredBodyAction<FindDocumentResponse>(() =>
+            return new DeferredBodyAction<FindDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/action/findOne";
                 var apiCallHttpMethod = "post";
@@ -97,13 +97,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<UpdateDocumentResponse> UpdateDocument(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<bool>> bodyupsert = null)
+        public IBodyWorkflowAction<UpdateDocumentResponse, ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<bool>> bodyupsert = null)
         {
             var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
             var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
             var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
             var __workflow_bodyupsert = WorkflowExpression.Compile(bodyupsert, nameof(bodyupsert), required: false);
-            return new DeferredBodyAction<UpdateDocumentResponse>(() =>
+            return new DeferredBodyAction<UpdateDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/action/updateOne";
                 var apiCallHttpMethod = "post";
@@ -150,12 +150,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<DeleteDocumentResponse> DeleteDocument(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection)
+        public IBodyWorkflowAction<DeleteDocumentResponse, ApiConnectionActionConfiguration> DeleteDocument(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection)
         {
             var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
             var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
             var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
-            return new DeferredBodyAction<DeleteDocumentResponse>(() =>
+            return new DeferredBodyAction<DeleteDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/action/deleteOne";
                 var apiCallHttpMethod = "post";
@@ -188,13 +188,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<InsertMultipleDocumentsResponse> InsertMultipleDocuments(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<JToken[]>> bodydocuments)
+        public IBodyWorkflowAction<InsertMultipleDocumentsResponse, ApiConnectionActionConfiguration> InsertMultipleDocuments(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<JToken[]>> bodydocuments)
         {
             var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
             var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
             var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
             var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: true);
-            return new DeferredBodyAction<InsertMultipleDocumentsResponse>(() =>
+            return new DeferredBodyAction<InsertMultipleDocumentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/action/insertMany";
                 var apiCallHttpMethod = "post";
@@ -221,14 +221,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<FindMultipleDocumentsResponse> FindMultipleDocuments(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<int>> bodylimit = null, Expression<Func<int>> bodyskip = null)
+        public IBodyWorkflowAction<FindMultipleDocumentsResponse, ApiConnectionActionConfiguration> FindMultipleDocuments(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<int>> bodylimit = null, Expression<Func<int>> bodyskip = null)
         {
             var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
             var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
             var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
             var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
             var __workflow_bodyskip = WorkflowExpression.Compile(bodyskip, nameof(bodyskip), required: false);
-            return new DeferredBodyAction<FindMultipleDocumentsResponse>(() =>
+            return new DeferredBodyAction<FindMultipleDocumentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/action/find";
                 var apiCallHttpMethod = "post";
@@ -290,13 +290,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<UpdateMultipleDocumentsResponse> UpdateMultipleDocuments(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<bool>> bodyupsert = null)
+        public IBodyWorkflowAction<UpdateMultipleDocumentsResponse, ApiConnectionActionConfiguration> UpdateMultipleDocuments(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<bool>> bodyupsert = null)
         {
             var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
             var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
             var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
             var __workflow_bodyupsert = WorkflowExpression.Compile(bodyupsert, nameof(bodyupsert), required: false);
-            return new DeferredBodyAction<UpdateMultipleDocumentsResponse>(() =>
+            return new DeferredBodyAction<UpdateMultipleDocumentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/action/updateMany";
                 var apiCallHttpMethod = "post";
@@ -343,12 +343,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<DeleteManyDocumentsResponse> DeleteManyDocuments(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection)
+        public IBodyWorkflowAction<DeleteManyDocumentsResponse, ApiConnectionActionConfiguration> DeleteManyDocuments(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection)
         {
             var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
             var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
             var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
-            return new DeferredBodyAction<DeleteManyDocumentsResponse>(() =>
+            return new DeferredBodyAction<DeleteManyDocumentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/action/deleteMany";
                 var apiCallHttpMethod = "post";
@@ -381,13 +381,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<RunAggregationPipelineResponse> RunAggregationPipeline(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<JToken[]>> bodypipeline)
+        public IBodyWorkflowAction<RunAggregationPipelineResponse, ApiConnectionActionConfiguration> RunAggregationPipeline(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<JToken[]>> bodypipeline)
         {
             var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
             var __workflow_bodydatabase = WorkflowExpression.Compile(bodydatabase, nameof(bodydatabase), required: true);
             var __workflow_bodycollection = WorkflowExpression.Compile(bodycollection, nameof(bodycollection), required: true);
             var __workflow_bodypipeline = WorkflowExpression.Compile(bodypipeline, nameof(bodypipeline), required: true);
-            return new DeferredBodyAction<RunAggregationPipelineResponse>(() =>
+            return new DeferredBodyAction<RunAggregationPipelineResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/action/aggregate";
                 var apiCallHttpMethod = "post";

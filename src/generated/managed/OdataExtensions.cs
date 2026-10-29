@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
     public class OdataActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        public IBodyWorkflowAction<JToken[]> GetEntityData(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<double>> top = null, Expression<Func<double>> skip = null, Expression<Func<string>> select = null, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> GetEntityData(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<double>> top = null, Expression<Func<double>> skip = null, Expression<Func<string>> select = null, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null)
         {
             var __workflow_odataUri = WorkflowExpression.Compile(odataUri, nameof(odataUri), required: true);
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
-            return new DeferredBodyAction<JToken[]>(() =>
+            return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getentitydata";
                 var apiCallHttpMethod = "post";
@@ -43,11 +43,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        public IBodyWorkflowAction<JToken> GetSchema(Expression<Func<string>> odataUri, Expression<Func<string>> entity)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetSchema(Expression<Func<string>> odataUri, Expression<Func<string>> entity)
         {
             var __workflow_odataUri = WorkflowExpression.Compile(odataUri, nameof(odataUri), required: true);
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getschema";
                 var apiCallHttpMethod = "get";
@@ -59,12 +59,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        public IBodyWorkflowAction<JToken> GetSingleSchema(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<int>> option = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetSingleSchema(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<int>> option = null)
         {
             var __workflow_odataUri = WorkflowExpression.Compile(odataUri, nameof(odataUri), required: true);
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_option = WorkflowExpression.Compile(option, nameof(option), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getsingleschema";
                 var apiCallHttpMethod = "get";
@@ -78,12 +78,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        public IBodyWorkflowAction<JToken> GetEntry(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<object>> entryInput = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetEntry(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<object>> entryInput = null)
         {
             var __workflow_odataUri = WorkflowExpression.Compile(odataUri, nameof(odataUri), required: true);
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_entryInput = WorkflowExpression.Compile(entryInput, nameof(entryInput), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getentry";
                 var apiCallHttpMethod = "post";
@@ -96,12 +96,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        public IBodyWorkflowAction<JToken> CreateEntry(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<object>> entryInput = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateEntry(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<object>> entryInput = null)
         {
             var __workflow_odataUri = WorkflowExpression.Compile(odataUri, nameof(odataUri), required: true);
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_entryInput = WorkflowExpression.Compile(entryInput, nameof(entryInput), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/createentry";
                 var apiCallHttpMethod = "post";
@@ -114,12 +114,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        public IBodyWorkflowAction<JToken> UpdateEntry(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<object>> entryInput = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateEntry(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<object>> entryInput = null)
         {
             var __workflow_odataUri = WorkflowExpression.Compile(odataUri, nameof(odataUri), required: true);
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_entryInput = WorkflowExpression.Compile(entryInput, nameof(entryInput), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/updateentry";
                 var apiCallHttpMethod = "post";
@@ -132,12 +132,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        public IBodyWorkflowAction<JToken> DeleteEntry(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<object>> entryInput = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DeleteEntry(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<object>> entryInput = null)
         {
             var __workflow_odataUri = WorkflowExpression.Compile(odataUri, nameof(odataUri), required: true);
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_entryInput = WorkflowExpression.Compile(entryInput, nameof(entryInput), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/deleteentry";
                 var apiCallHttpMethod = "post";

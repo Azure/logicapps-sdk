@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Delijnip
     public class DelijnipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "delijnip")]
-        public IBodyWorkflowAction<HaltesHits> SearchStops(Expression<Func<string>> searchTerm, Expression<Func<string>> huidigePositie = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> maxAantalHits = null)
+        public IBodyWorkflowAction<HaltesHits, ApiConnectionActionConfiguration> SearchStops(Expression<Func<string>> searchTerm, Expression<Func<string>> huidigePositie = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> maxAantalHits = null)
         {
             var __workflow_searchTerm = WorkflowExpression.Compile(searchTerm, nameof(searchTerm), required: true);
             var __workflow_huidigePositie = WorkflowExpression.Compile(huidigePositie, nameof(huidigePositie), required: false);
             var __workflow_startIndex = WorkflowExpression.Compile(startIndex, nameof(startIndex), required: false);
             var __workflow_maxAantalHits = WorkflowExpression.Compile(maxAantalHits, nameof(maxAantalHits), required: false);
-            return new DeferredBodyAction<HaltesHits>(() =>
+            return new DeferredBodyAction<HaltesHits, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/zoek/haltes/{0}", __workflow_searchTerm.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -36,13 +36,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Delijnip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "delijnip")]
-        public IBodyWorkflowAction<LijnRichtingHits> SearchLines(Expression<Func<string>> searchTerm, Expression<Func<string>> huidigePositie = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> maxAantalHits = null)
+        public IBodyWorkflowAction<LijnRichtingHits, ApiConnectionActionConfiguration> SearchLines(Expression<Func<string>> searchTerm, Expression<Func<string>> huidigePositie = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> maxAantalHits = null)
         {
             var __workflow_searchTerm = WorkflowExpression.Compile(searchTerm, nameof(searchTerm), required: true);
             var __workflow_huidigePositie = WorkflowExpression.Compile(huidigePositie, nameof(huidigePositie), required: false);
             var __workflow_startIndex = WorkflowExpression.Compile(startIndex, nameof(startIndex), required: false);
             var __workflow_maxAantalHits = WorkflowExpression.Compile(maxAantalHits, nameof(maxAantalHits), required: false);
-            return new DeferredBodyAction<LijnRichtingHits>(() =>
+            return new DeferredBodyAction<LijnRichtingHits, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/zoek/lijnrichtingen/{0}", __workflow_searchTerm.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -60,13 +60,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Delijnip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "delijnip")]
-        public IBodyWorkflowAction<LocatiesHits> SearchLocations(Expression<Func<string>> searchTerm, Expression<Func<string>> huidigePositie = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> maxAantalHits = null)
+        public IBodyWorkflowAction<LocatiesHits, ApiConnectionActionConfiguration> SearchLocations(Expression<Func<string>> searchTerm, Expression<Func<string>> huidigePositie = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> maxAantalHits = null)
         {
             var __workflow_searchTerm = WorkflowExpression.Compile(searchTerm, nameof(searchTerm), required: true);
             var __workflow_huidigePositie = WorkflowExpression.Compile(huidigePositie, nameof(huidigePositie), required: false);
             var __workflow_startIndex = WorkflowExpression.Compile(startIndex, nameof(startIndex), required: false);
             var __workflow_maxAantalHits = WorkflowExpression.Compile(maxAantalHits, nameof(maxAantalHits), required: false);
-            return new DeferredBodyAction<LocatiesHits>(() =>
+            return new DeferredBodyAction<LocatiesHits, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/zoek/locaties/{0}", __workflow_searchTerm.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

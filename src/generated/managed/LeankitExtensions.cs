@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
     public class LeankitActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
-        public IBodyWorkflowAction<CreateBoardResponse> CreateBoard(Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<CreateBoardResponse, ApiConnectionActionConfiguration> CreateBoard(Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription = null)
         {
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            return new DeferredBodyAction<CreateBoardResponse>(() =>
+            return new DeferredBodyAction<CreateBoardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/io/board";
                 var apiCallHttpMethod = "post";
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
-        public IBodyWorkflowAction<CreateCardResponse> CreateCard(Expression<Func<string>> bodyboardId, Expression<Func<string>> bodytype, Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodylaneId = null, Expression<Func<string>> bodypriority = null, Expression<Func<int>> bodysize = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodyplannedStartDate = null, Expression<Func<string>> bodyplannedFinishDate = null, Expression<Func<string>> bodycardId = null, Expression<Func<bool>> bodyisBlocked = null, Expression<Func<string>> bodyblockReason = null, Expression<Func<string>> bodyexternalLinkexternalLinkLabel = null, Expression<Func<string>> bodyexternalLinkexternalLinkURL = null, Expression<Func<string[]>> bodyassignees = null)
+        public IBodyWorkflowAction<CreateCardResponse, ApiConnectionActionConfiguration> CreateCard(Expression<Func<string>> bodyboardId, Expression<Func<string>> bodytype, Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodylaneId = null, Expression<Func<string>> bodypriority = null, Expression<Func<int>> bodysize = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodyplannedStartDate = null, Expression<Func<string>> bodyplannedFinishDate = null, Expression<Func<string>> bodycardId = null, Expression<Func<bool>> bodyisBlocked = null, Expression<Func<string>> bodyblockReason = null, Expression<Func<string>> bodyexternalLinkexternalLinkLabel = null, Expression<Func<string>> bodyexternalLinkexternalLinkURL = null, Expression<Func<string[]>> bodyassignees = null)
         {
             var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
             var __workflow_bodyexternalLinkexternalLinkLabel = WorkflowExpression.Compile(bodyexternalLinkexternalLinkLabel, nameof(bodyexternalLinkexternalLinkLabel), required: false);
             var __workflow_bodyexternalLinkexternalLinkURL = WorkflowExpression.Compile(bodyexternalLinkexternalLinkURL, nameof(bodyexternalLinkexternalLinkURL), required: false);
             var __workflow_bodyassignees = WorkflowExpression.Compile(bodyassignees, nameof(bodyassignees), required: false);
-            return new DeferredBodyAction<CreateCardResponse>(() =>
+            return new DeferredBodyAction<CreateCardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/io/card";
                 var apiCallHttpMethod = "post";
@@ -168,10 +168,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
-        public IBodyWorkflowAction<CardResponse> GetCard(Expression<Func<string>> cardId)
+        public IBodyWorkflowAction<CardResponse, ApiConnectionActionConfiguration> GetCard(Expression<Func<string>> cardId)
         {
             var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
-            return new DeferredBodyAction<CardResponse>(() =>
+            return new DeferredBodyAction<CardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/io/card/{0}", __workflow_cardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
-        public IBodyWorkflowAction<CardResponse> UpdateCard(Expression<Func<string>> cardId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodylaneId = null, Expression<Func<string>> bodypriority = null, Expression<Func<int>> bodysize = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodyplannedStartDateTime = null, Expression<Func<string>> bodyplannedFinishDateTime = null, Expression<Func<string>> bodycardId = null, Expression<Func<bool>> bodyisBlocked = null, Expression<Func<string>> bodyblockReason = null, Expression<Func<string>> bodyexternalLinkexternalLinkLabel = null, Expression<Func<string>> bodyexternalLinkexternalLinkURL = null, Expression<Func<string[]>> bodyassignees = null)
+        public IBodyWorkflowAction<CardResponse, ApiConnectionActionConfiguration> UpdateCard(Expression<Func<string>> cardId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodylaneId = null, Expression<Func<string>> bodypriority = null, Expression<Func<int>> bodysize = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodyplannedStartDateTime = null, Expression<Func<string>> bodyplannedFinishDateTime = null, Expression<Func<string>> bodycardId = null, Expression<Func<bool>> bodyisBlocked = null, Expression<Func<string>> bodyblockReason = null, Expression<Func<string>> bodyexternalLinkexternalLinkLabel = null, Expression<Func<string>> bodyexternalLinkexternalLinkURL = null, Expression<Func<string[]>> bodyassignees = null)
         {
             var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
             var __workflow_bodyexternalLinkexternalLinkLabel = WorkflowExpression.Compile(bodyexternalLinkexternalLinkLabel, nameof(bodyexternalLinkexternalLinkLabel), required: false);
             var __workflow_bodyexternalLinkexternalLinkURL = WorkflowExpression.Compile(bodyexternalLinkexternalLinkURL, nameof(bodyexternalLinkexternalLinkURL), required: false);
             var __workflow_bodyassignees = WorkflowExpression.Compile(bodyassignees, nameof(bodyassignees), required: false);
-            return new DeferredBodyAction<CardResponse>(() =>
+            return new DeferredBodyAction<CardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/io/card/{0}", __workflow_cardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -314,10 +314,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
-        public IBodyWorkflowAction<CardResponse> DeleteCard(Expression<Func<string>> cardId)
+        public IBodyWorkflowAction<CardResponse, ApiConnectionActionConfiguration> DeleteCard(Expression<Func<string>> cardId)
         {
             var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
-            return new DeferredBodyAction<CardResponse>(() =>
+            return new DeferredBodyAction<CardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/io/card/{0}", __workflow_cardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -327,11 +327,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
-        public IBodyWorkflowAction<AddCommentResponse> AddComment(Expression<Func<string>> cardId, Expression<Func<string>> bodycomment)
+        public IBodyWorkflowAction<AddCommentResponse, ApiConnectionActionConfiguration> AddComment(Expression<Func<string>> cardId, Expression<Func<string>> bodycomment)
         {
             var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
             var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: true);
-            return new DeferredBodyAction<AddCommentResponse>(() =>
+            return new DeferredBodyAction<AddCommentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/io/card/{0}/comment", __workflow_cardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -352,11 +352,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
 
     public class LeankitTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CardResponse[]> TrigNewCard(Expression<Func<string>> board, Expression<Func<string>> lane, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CardResponse[], ApiConnectionTriggerConfiguration> TrigNewCard(Expression<Func<string>> board, Expression<Func<string>> lane, FlowRecurrence recurrence = null)
         {
             var __workflow_board = WorkflowExpression.Compile(board, nameof(board), required: true);
             var __workflow_lane = WorkflowExpression.Compile(lane, nameof(lane), required: true);
-            return new DeferredBodyTrigger<CardResponse[]>(() =>
+            return new DeferredBodyTrigger<CardResponse[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/add_card_trigger/io/card";
                 var apiCallHttpMethod = "get";
@@ -367,11 +367,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
             });
         }
 
-        public IBodyWorkflowTrigger<CardResponse[]> TrigUpdateCard(Expression<Func<string>> board, Expression<Func<string>> lane, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CardResponse[], ApiConnectionTriggerConfiguration> TrigUpdateCard(Expression<Func<string>> board, Expression<Func<string>> lane, FlowRecurrence recurrence = null)
         {
             var __workflow_board = WorkflowExpression.Compile(board, nameof(board), required: true);
             var __workflow_lane = WorkflowExpression.Compile(lane, nameof(lane), required: true);
-            return new DeferredBodyTrigger<CardResponse[]>(() =>
+            return new DeferredBodyTrigger<CardResponse[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/update_card_trigger/io/card";
                 var apiCallHttpMethod = "get";

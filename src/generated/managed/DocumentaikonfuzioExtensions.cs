@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
     public class DocumentaikonfuzioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
-        public IBodyWorkflowAction<V2DocsCreateResponse> DocsCreate(Expression<Func<object>> dataFile, Expression<Func<int>> project, Expression<Func<bool>> sync = null)
+        public IBodyWorkflowAction<V2DocsCreateResponse, ApiConnectionActionConfiguration> DocsCreate(Expression<Func<object>> dataFile, Expression<Func<int>> project, Expression<Func<bool>> sync = null)
         {
             var __workflow_dataFile = WorkflowExpression.Compile(dataFile, nameof(dataFile), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             var __workflow_sync = WorkflowExpression.Compile(sync, nameof(sync), required: false);
-            return new DeferredBodyAction<V2DocsCreateResponse>(() =>
+            return new DeferredBodyAction<V2DocsCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/docs/";
                 var apiCallHttpMethod = "post";
@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
-        public IWorkflowAction DocsDelete(Expression<Func<string>> doc)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DocsDelete(Expression<Func<string>> doc)
         {
             var __workflow_doc = WorkflowExpression.Compile(doc, nameof(doc), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/docs/{0}/", __workflow_doc.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -40,10 +40,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
-        public IWorkflowAction DocsPartialUpdate(Expression<Func<string>> doc)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DocsPartialUpdate(Expression<Func<string>> doc)
         {
             var __workflow_doc = WorkflowExpression.Compile(doc, nameof(doc), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/docs/{0}/", __workflow_doc.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -53,10 +53,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
-        public IWorkflowAction DocsRead(Expression<Func<string>> doc)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DocsRead(Expression<Func<string>> doc)
         {
             var __workflow_doc = WorkflowExpression.Compile(doc, nameof(doc), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/docs/{0}/", __workflow_doc.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

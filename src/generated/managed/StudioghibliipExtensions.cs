@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
     public class StudioghibliipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
-        public IBodyWorkflowAction<Films[]> GetFilms(Expression<Func<string>> fields = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<Films[], ApiConnectionActionConfiguration> GetFilms(Expression<Func<string>> fields = null, Expression<Func<int>> limit = null)
         {
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredBodyAction<Films[]>(() =>
+            return new DeferredBodyAction<Films[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/films";
                 var apiCallHttpMethod = "get";
@@ -30,11 +30,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
-        public IBodyWorkflowAction<Films[]> GetFilm(Expression<Func<string>> id, Expression<Func<string>> fields = null)
+        public IBodyWorkflowAction<Films[], ApiConnectionActionConfiguration> GetFilm(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
-            return new DeferredBodyAction<Films[]>(() =>
+            return new DeferredBodyAction<Films[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/films/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -46,11 +46,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
-        public IBodyWorkflowAction<People[]> GetPeople(Expression<Func<string>> fields = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<People[], ApiConnectionActionConfiguration> GetPeople(Expression<Func<string>> fields = null, Expression<Func<int>> limit = null)
         {
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredBodyAction<People[]>(() =>
+            return new DeferredBodyAction<People[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/people";
                 var apiCallHttpMethod = "get";
@@ -64,11 +64,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
-        public IBodyWorkflowAction<People[]> GetPerson(Expression<Func<string>> id, Expression<Func<string>> fields = null)
+        public IBodyWorkflowAction<People[], ApiConnectionActionConfiguration> GetPerson(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
-            return new DeferredBodyAction<People[]>(() =>
+            return new DeferredBodyAction<People[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/people/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -80,11 +80,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
-        public IBodyWorkflowAction<Locations[]> GetLocations(Expression<Func<string>> fields = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<Locations[], ApiConnectionActionConfiguration> GetLocations(Expression<Func<string>> fields = null, Expression<Func<int>> limit = null)
         {
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredBodyAction<Locations[]>(() =>
+            return new DeferredBodyAction<Locations[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/locations";
                 var apiCallHttpMethod = "get";
@@ -98,11 +98,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
-        public IBodyWorkflowAction<Locations[]> GetLocation(Expression<Func<string>> id, Expression<Func<string>> fields = null)
+        public IBodyWorkflowAction<Locations[], ApiConnectionActionConfiguration> GetLocation(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
-            return new DeferredBodyAction<Locations[]>(() =>
+            return new DeferredBodyAction<Locations[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/locations/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -114,11 +114,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
-        public IBodyWorkflowAction<Species[]> GetSpecies(Expression<Func<string>> fields = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<Species[], ApiConnectionActionConfiguration> GetSpecies(Expression<Func<string>> fields = null, Expression<Func<int>> limit = null)
         {
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredBodyAction<Species[]>(() =>
+            return new DeferredBodyAction<Species[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/species";
                 var apiCallHttpMethod = "get";
@@ -132,11 +132,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
-        public IBodyWorkflowAction<Species[]> GetASpecies(Expression<Func<string>> id, Expression<Func<string>> fields = null)
+        public IBodyWorkflowAction<Species[], ApiConnectionActionConfiguration> GetASpecies(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
-            return new DeferredBodyAction<Species[]>(() =>
+            return new DeferredBodyAction<Species[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/species/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -148,11 +148,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
-        public IBodyWorkflowAction<Vehicles[]> GetVehicles(Expression<Func<string>> fields = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<Vehicles[], ApiConnectionActionConfiguration> GetVehicles(Expression<Func<string>> fields = null, Expression<Func<int>> limit = null)
         {
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredBodyAction<Vehicles[]>(() =>
+            return new DeferredBodyAction<Vehicles[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/vehicles";
                 var apiCallHttpMethod = "get";
@@ -166,11 +166,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
-        public IBodyWorkflowAction<Vehicles[]> GetVehicle(Expression<Func<string>> id, Expression<Func<string>> fields = null)
+        public IBodyWorkflowAction<Vehicles[], ApiConnectionActionConfiguration> GetVehicle(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
-            return new DeferredBodyAction<Vehicles[]>(() =>
+            return new DeferredBodyAction<Vehicles[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/vehicles/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

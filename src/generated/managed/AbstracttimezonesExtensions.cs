@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstracttimezones
     public class AbstracttimezonesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstracttimezones")]
-        public IBodyWorkflowAction<GetCurrentTimeResponse> GetCurrentTime(Expression<Func<string>> location)
+        public IBodyWorkflowAction<GetCurrentTimeResponse, ApiConnectionActionConfiguration> GetCurrentTime(Expression<Func<string>> location)
         {
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
-            return new DeferredBodyAction<GetCurrentTimeResponse>(() =>
+            return new DeferredBodyAction<GetCurrentTimeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/current_time";
                 var apiCallHttpMethod = "get";
@@ -26,12 +26,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstracttimezones
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstracttimezones")]
-        public IBodyWorkflowAction<ConvertTimeResponse> ConvertTime(Expression<Func<string>> baseLocation, Expression<Func<string>> targetLocation, Expression<Func<string>> baseDatetime = null)
+        public IBodyWorkflowAction<ConvertTimeResponse, ApiConnectionActionConfiguration> ConvertTime(Expression<Func<string>> baseLocation, Expression<Func<string>> targetLocation, Expression<Func<string>> baseDatetime = null)
         {
             var __workflow_baseLocation = WorkflowExpression.Compile(baseLocation, nameof(baseLocation), required: true);
             var __workflow_targetLocation = WorkflowExpression.Compile(targetLocation, nameof(targetLocation), required: true);
             var __workflow_baseDatetime = WorkflowExpression.Compile(baseDatetime, nameof(baseDatetime), required: false);
-            return new DeferredBodyAction<ConvertTimeResponse>(() =>
+            return new DeferredBodyAction<ConvertTimeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/convert_time";
                 var apiCallHttpMethod = "get";

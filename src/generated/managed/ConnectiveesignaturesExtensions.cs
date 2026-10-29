@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
     public class ConnectiveesignaturesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<CreateInstantPackageResponse> CreateInstantPackage(Expression<Func<string>> bodydocument = null, Expression<Func<bodydocumentLanguageInput>> bodydocumentLanguage = null, Expression<Func<string>> bodydocumentName = null, Expression<Func<string>> bodyexternalPackageData = null, Expression<Func<string>> bodyinitiator = null, Expression<Func<Stakeholder[]>> bodystakeholders = null, Expression<Func<string>> bodycallBackUrl = null, Expression<Func<string>> bodycorrelationId = null, Expression<Func<string>> bodydocumentGroupCode = null, Expression<Func<string>> bodythemeCode = null, Expression<Func<bool>> bodydownloadUnsignedFiles = null, Expression<Func<bool>> bodyreassignEnabled = null, Expression<Func<int>> bodyactionUrlExpirationPeriodInDays = null, Expression<Func<string>> bodyexpiryTimestamp = null, Expression<Func<string>> bodyexternalDocumentReference = null, Expression<Func<string>> bodyexternalPackageReference = null, Expression<Func<string>> bodyf2FRedirectUrl = null, Expression<Func<string>> bodynotificationCallBackUrl = null, Expression<Func<string>> bodypdfErrorHandling = null, Expression<Func<string>> bodyrepresentation = null, Expression<Func<string>> bodyrepresentationType = null, Expression<Func<string>> bodysigningTemplateCode = null, Expression<Func<string>> bodytargetType = null)
+        public IBodyWorkflowAction<CreateInstantPackageResponse, ApiConnectionActionConfiguration> CreateInstantPackage(Expression<Func<string>> bodydocument = null, Expression<Func<bodydocumentLanguageInput>> bodydocumentLanguage = null, Expression<Func<string>> bodydocumentName = null, Expression<Func<string>> bodyexternalPackageData = null, Expression<Func<string>> bodyinitiator = null, Expression<Func<Stakeholder[]>> bodystakeholders = null, Expression<Func<string>> bodycallBackUrl = null, Expression<Func<string>> bodycorrelationId = null, Expression<Func<string>> bodydocumentGroupCode = null, Expression<Func<string>> bodythemeCode = null, Expression<Func<bool>> bodydownloadUnsignedFiles = null, Expression<Func<bool>> bodyreassignEnabled = null, Expression<Func<int>> bodyactionUrlExpirationPeriodInDays = null, Expression<Func<string>> bodyexpiryTimestamp = null, Expression<Func<string>> bodyexternalDocumentReference = null, Expression<Func<string>> bodyexternalPackageReference = null, Expression<Func<string>> bodyf2FRedirectUrl = null, Expression<Func<string>> bodynotificationCallBackUrl = null, Expression<Func<string>> bodypdfErrorHandling = null, Expression<Func<string>> bodyrepresentation = null, Expression<Func<string>> bodyrepresentationType = null, Expression<Func<string>> bodysigningTemplateCode = null, Expression<Func<string>> bodytargetType = null)
         {
             var __workflow_bodydocument = WorkflowExpression.Compile(bodydocument, nameof(bodydocument), required: false);
             var __workflow_bodydocumentLanguage = WorkflowExpression.Compile(bodydocumentLanguage, nameof(bodydocumentLanguage), required: false);
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             var __workflow_bodyrepresentationType = WorkflowExpression.Compile(bodyrepresentationType, nameof(bodyrepresentationType), required: false);
             var __workflow_bodysigningTemplateCode = WorkflowExpression.Compile(bodysigningTemplateCode, nameof(bodysigningTemplateCode), required: false);
             var __workflow_bodytargetType = WorkflowExpression.Compile(bodytargetType, nameof(bodytargetType), required: false);
-            return new DeferredBodyAction<CreateInstantPackageResponse>(() =>
+            return new DeferredBodyAction<CreateInstantPackageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/packages/instant";
                 var apiCallHttpMethod = "post";
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<PackageListResponse> PackageList(Expression<Func<string>> continuationToken = null, Expression<Func<int>> maxQuantity = null, Expression<Func<string>> sortField = null, Expression<Func<string>> sortOrder = null, Expression<Func<string>> createdBeforeDate = null, Expression<Func<string>> status = null, Expression<Func<string>> createdAfterDate = null)
+        public IBodyWorkflowAction<PackageListResponse, ApiConnectionActionConfiguration> PackageList(Expression<Func<string>> continuationToken = null, Expression<Func<int>> maxQuantity = null, Expression<Func<string>> sortField = null, Expression<Func<string>> sortOrder = null, Expression<Func<string>> createdBeforeDate = null, Expression<Func<string>> status = null, Expression<Func<string>> createdAfterDate = null)
         {
             var __workflow_continuationToken = WorkflowExpression.Compile(continuationToken, nameof(continuationToken), required: false);
             var __workflow_maxQuantity = WorkflowExpression.Compile(maxQuantity, nameof(maxQuantity), required: false);
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             var __workflow_createdBeforeDate = WorkflowExpression.Compile(createdBeforeDate, nameof(createdBeforeDate), required: false);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             var __workflow_createdAfterDate = WorkflowExpression.Compile(createdAfterDate, nameof(createdAfterDate), required: false);
-            return new DeferredBodyAction<PackageListResponse>(() =>
+            return new DeferredBodyAction<PackageListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/packages";
                 var apiCallHttpMethod = "get";
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<CreatePackageResponse> CreatePackage(Expression<Func<string>> contentType, Expression<Func<string>> bodyinitiator = null, Expression<Func<string>> bodypackageName = null, Expression<Func<string>> bodycallBackUrl = null, Expression<Func<string>> bodycorrelationId = null, Expression<Func<string>> bodydocumentGroupCode = null, Expression<Func<string>> bodythemeCode = null, Expression<Func<bool>> bodydownloadUnsignedFiles = null, Expression<Func<bool>> bodyreassignEnabled = null, Expression<Func<int>> bodyactionUrlExpirationPeriodInDays = null, Expression<Func<string>> bodyexpiryTimestamp = null, Expression<Func<string>> bodyexternalPackageReference = null, Expression<Func<string>> bodyexternalPackageData = null, Expression<Func<string>> bodyf2FRedirectUrl = null, Expression<Func<string>> bodynotificationCallBackUrl = null)
+        public IBodyWorkflowAction<CreatePackageResponse, ApiConnectionActionConfiguration> CreatePackage(Expression<Func<string>> contentType, Expression<Func<string>> bodyinitiator = null, Expression<Func<string>> bodypackageName = null, Expression<Func<string>> bodycallBackUrl = null, Expression<Func<string>> bodycorrelationId = null, Expression<Func<string>> bodydocumentGroupCode = null, Expression<Func<string>> bodythemeCode = null, Expression<Func<bool>> bodydownloadUnsignedFiles = null, Expression<Func<bool>> bodyreassignEnabled = null, Expression<Func<int>> bodyactionUrlExpirationPeriodInDays = null, Expression<Func<string>> bodyexpiryTimestamp = null, Expression<Func<string>> bodyexternalPackageReference = null, Expression<Func<string>> bodyexternalPackageData = null, Expression<Func<string>> bodyf2FRedirectUrl = null, Expression<Func<string>> bodynotificationCallBackUrl = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_bodyinitiator = WorkflowExpression.Compile(bodyinitiator, nameof(bodyinitiator), required: false);
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             var __workflow_bodyexternalPackageData = WorkflowExpression.Compile(bodyexternalPackageData, nameof(bodyexternalPackageData), required: false);
             var __workflow_bodyf2FRedirectUrl = WorkflowExpression.Compile(bodyf2FRedirectUrl, nameof(bodyf2FRedirectUrl), required: false);
             var __workflow_bodynotificationCallBackUrl = WorkflowExpression.Compile(bodynotificationCallBackUrl, nameof(bodynotificationCallBackUrl), required: false);
-            return new DeferredBodyAction<CreatePackageResponse>(() =>
+            return new DeferredBodyAction<CreatePackageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/packages";
                 var apiCallHttpMethod = "post";
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<AddDocumentToPackageResponse> AddDocumentToPackage(Expression<Func<string>> packageId, Expression<Func<string>> bodydocument = null, Expression<Func<string>> bodydocumentLanguage = null, Expression<Func<string>> bodydocumentName = null, Expression<Func<SigningField[]>> bodysigningFields = null, Expression<Func<string>> bodycorrelationId = null, Expression<Func<string>> bodydocumentType = null, Expression<Func<string>> bodyexternalDocumentReference = null, Expression<Func<ErrorHandlingResponse[]>> bodypdfErrorHandling = null, Expression<Func<string>> bodyrepresentation = null, Expression<Func<string>> bodyrepresentationType = null, Expression<Func<string>> bodytargetType = null)
+        public IBodyWorkflowAction<AddDocumentToPackageResponse, ApiConnectionActionConfiguration> AddDocumentToPackage(Expression<Func<string>> packageId, Expression<Func<string>> bodydocument = null, Expression<Func<string>> bodydocumentLanguage = null, Expression<Func<string>> bodydocumentName = null, Expression<Func<SigningField[]>> bodysigningFields = null, Expression<Func<string>> bodycorrelationId = null, Expression<Func<string>> bodydocumentType = null, Expression<Func<string>> bodyexternalDocumentReference = null, Expression<Func<ErrorHandlingResponse[]>> bodypdfErrorHandling = null, Expression<Func<string>> bodyrepresentation = null, Expression<Func<string>> bodyrepresentationType = null, Expression<Func<string>> bodytargetType = null)
         {
             var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
             var __workflow_bodydocument = WorkflowExpression.Compile(bodydocument, nameof(bodydocument), required: false);
@@ -381,7 +381,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             var __workflow_bodyrepresentation = WorkflowExpression.Compile(bodyrepresentation, nameof(bodyrepresentation), required: false);
             var __workflow_bodyrepresentationType = WorkflowExpression.Compile(bodyrepresentationType, nameof(bodyrepresentationType), required: false);
             var __workflow_bodytargetType = WorkflowExpression.Compile(bodytargetType, nameof(bodytargetType), required: false);
-            return new DeferredBodyAction<AddDocumentToPackageResponse>(() =>
+            return new DeferredBodyAction<AddDocumentToPackageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/documents", __workflow_packageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -464,10 +464,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<GetSigningLocationsResponse> GetSigningLocations(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetSigningLocationsResponse, ApiConnectionActionConfiguration> GetSigningLocations(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GetSigningLocationsResponse>(() =>
+            return new DeferredBodyAction<GetSigningLocationsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/locations", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -477,10 +477,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<PackageStatusInfo> GetPackageStatus(Expression<Func<string>> id)
+        public IBodyWorkflowAction<PackageStatusInfo, ApiConnectionActionConfiguration> GetPackageStatus(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<PackageStatusInfo>(() =>
+            return new DeferredBodyAction<PackageStatusInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/status", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -490,11 +490,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<PackageStatusInfo> SetPackageStatus(Expression<Func<string>> id, Expression<Func<string>> bodystatus = null)
+        public IBodyWorkflowAction<PackageStatusInfo, ApiConnectionActionConfiguration> SetPackageStatus(Expression<Func<string>> id, Expression<Func<string>> bodystatus = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            return new DeferredBodyAction<PackageStatusInfo>(() =>
+            return new DeferredBodyAction<PackageStatusInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/status", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -517,10 +517,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IWorkflowAction SkipSigners(Expression<Func<string>> packageId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SkipSigners(Expression<Func<string>> packageId)
         {
             var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/skipsigners", __workflow_packageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -530,10 +530,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<string> DownloadPackage(Expression<Func<string>> id)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DownloadPackage(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/download", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -543,11 +543,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<string> DownloadDocumentFromPackage(Expression<Func<string>> id, Expression<Func<string>> documentId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DownloadDocumentFromPackage(Expression<Func<string>> id, Expression<Func<string>> documentId)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/download/{1}", __workflow_id.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -557,11 +557,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IWorkflowAction ExpiryTimeStamp(Expression<Func<string>> id, Expression<Func<string>> bodyexpiryTimestamp = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ExpiryTimeStamp(Expression<Func<string>> id, Expression<Func<string>> bodyexpiryTimestamp = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyexpiryTimestamp = WorkflowExpression.Compile(bodyexpiryTimestamp, nameof(bodyexpiryTimestamp), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/expirytimestamp", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -584,10 +584,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IWorkflowAction SendPackageReminders(Expression<Func<string>> packageId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendPackageReminders(Expression<Func<string>> packageId)
         {
             var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/reminders", __workflow_packageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -597,10 +597,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IWorkflowAction DeletePackage(Expression<Func<string>> id)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeletePackage(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -610,11 +610,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IWorkflowAction SetProcessInformation(Expression<Func<string>> id, Expression<Func<bodystakeholdersInputItem[]>> bodystakeholders = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetProcessInformation(Expression<Func<string>> id, Expression<Func<bodystakeholdersInputItem[]>> bodystakeholders = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodystakeholders = WorkflowExpression.Compile(bodystakeholders, nameof(bodystakeholders), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/process", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -637,10 +637,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<Content> PackageAuditProof(Expression<Func<string>> packageId)
+        public IBodyWorkflowAction<Content, ApiConnectionActionConfiguration> PackageAuditProof(Expression<Func<string>> packageId)
         {
             var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
-            return new DeferredBodyAction<Content>(() =>
+            return new DeferredBodyAction<Content, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/auditproof/download", __workflow_packageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -650,11 +650,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<Content> PackageAuditProofDoc(Expression<Func<string>> packageId, Expression<Func<string>> documentId)
+        public IBodyWorkflowAction<Content, ApiConnectionActionConfiguration> PackageAuditProofDoc(Expression<Func<string>> packageId, Expression<Func<string>> documentId)
         {
             var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
-            return new DeferredBodyAction<Content>(() =>
+            return new DeferredBodyAction<Content, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/auditproof/download/{1}", __workflow_packageId.WithUrlEncoding(1), __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -664,10 +664,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<Content> PackageCorrelationAuditProof(Expression<Func<string>> correlationId)
+        public IBodyWorkflowAction<Content, ApiConnectionActionConfiguration> PackageCorrelationAuditProof(Expression<Func<string>> correlationId)
         {
             var __workflow_correlationId = WorkflowExpression.Compile(correlationId, nameof(correlationId), required: true);
-            return new DeferredBodyAction<Content>(() =>
+            return new DeferredBodyAction<Content, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packagecorrelations/{0}/auditproof/download", __workflow_correlationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -677,10 +677,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<Content> DocumentCorrelationAuditProof(Expression<Func<string>> correlationId)
+        public IBodyWorkflowAction<Content, ApiConnectionActionConfiguration> DocumentCorrelationAuditProof(Expression<Func<string>> correlationId)
         {
             var __workflow_correlationId = WorkflowExpression.Compile(correlationId, nameof(correlationId), required: true);
-            return new DeferredBodyAction<Content>(() =>
+            return new DeferredBodyAction<Content, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/documentcorrelations/{0}/auditproof/download", __workflow_correlationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -690,7 +690,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IWorkflowAction ProofExternalSource(Expression<Func<string>> packageId, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyipAddress = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ProofExternalSource(Expression<Func<string>> packageId, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyipAddress = null)
         {
             var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
             var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
@@ -699,7 +699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
             var __workflow_bodyipAddress = WorkflowExpression.Compile(bodyipAddress, nameof(bodyipAddress), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}/auditproof/proofs", __workflow_packageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";

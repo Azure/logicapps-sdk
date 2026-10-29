@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
     public class SupportivekoalaipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
-        public IBodyWorkflowAction<ImagesPostResponse> Images(Expression<Func<string>> bodytemplate, Expression<Func<bodyformatInput>> bodyformat = null)
+        public IBodyWorkflowAction<ImagesPostResponse, ApiConnectionActionConfiguration> Images(Expression<Func<string>> bodytemplate, Expression<Func<bodyformatInput>> bodyformat = null)
         {
             var __workflow_bodytemplate = WorkflowExpression.Compile(bodytemplate, nameof(bodytemplate), required: true);
             var __workflow_bodyformat = WorkflowExpression.Compile(bodyformat, nameof(bodyformat), required: false);
-            return new DeferredBodyAction<ImagesPostResponse>(() =>
+            return new DeferredBodyAction<ImagesPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/images/";
                 var apiCallHttpMethod = "post";
@@ -59,10 +59,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
-        public IBodyWorkflowAction<ImageGetResponse> ImageGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ImageGetResponse, ApiConnectionActionConfiguration> ImageGet(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ImageGetResponse>(() =>
+            return new DeferredBodyAction<ImageGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/images/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
-        public IBodyWorkflowAction<ImagesGetResponseItem[]> ImagesGet()
+        public IBodyWorkflowAction<ImagesGetResponseItem[], ApiConnectionActionConfiguration> ImagesGet()
         {
             var apiCallPath = "/images";
             var apiCallHttpMethod = "get";
@@ -81,13 +81,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
-        public IBodyWorkflowAction<TemplatePostResponse> Template(Expression<Func<string>> bodyname, Expression<Func<string>> bodyParams = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null)
+        public IBodyWorkflowAction<TemplatePostResponse, ApiConnectionActionConfiguration> Template(Expression<Func<string>> bodyname, Expression<Func<string>> bodyParams = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodyParams = WorkflowExpression.Compile(bodyParams, nameof(bodyParams), required: false);
             var __workflow_bodywidth = WorkflowExpression.Compile(bodywidth, nameof(bodywidth), required: false);
             var __workflow_bodyheight = WorkflowExpression.Compile(bodyheight, nameof(bodyheight), required: false);
-            return new DeferredBodyAction<TemplatePostResponse>(() =>
+            return new DeferredBodyAction<TemplatePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/templates/";
                 var apiCallHttpMethod = "post";
@@ -124,10 +124,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
-        public IBodyWorkflowAction<TemplateGetResponse> TemplateGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<TemplateGetResponse, ApiConnectionActionConfiguration> TemplateGet(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<TemplateGetResponse>(() =>
+            return new DeferredBodyAction<TemplateGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/templates/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
-        public IBodyWorkflowAction<TemplatesGetResponseItem[]> TemplatesGet()
+        public IBodyWorkflowAction<TemplatesGetResponseItem[], ApiConnectionActionConfiguration> TemplatesGet()
         {
             var apiCallPath = "/templates";
             var apiCallHttpMethod = "get";

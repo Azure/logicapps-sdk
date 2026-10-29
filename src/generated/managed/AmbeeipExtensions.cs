@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
     public class AmbeeipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<AirQualityGeoResponse> AirQualityGeo(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
+        public IBodyWorkflowAction<AirQualityGeoResponse, ApiConnectionActionConfiguration> AirQualityGeo(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
             var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: false);
-            return new DeferredBodyAction<AirQualityGeoResponse>(() =>
+            return new DeferredBodyAction<AirQualityGeoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/latest/by-lat-lng";
                 var apiCallHttpMethod = "get";
@@ -30,11 +30,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<AirQualityPostalResponse> AirQualityPostal(Expression<Func<int>> postalCode = null, Expression<Func<string>> countryCode = null)
+        public IBodyWorkflowAction<AirQualityPostalResponse, ApiConnectionActionConfiguration> AirQualityPostal(Expression<Func<int>> postalCode = null, Expression<Func<string>> countryCode = null)
         {
             var __workflow_postalCode = WorkflowExpression.Compile(postalCode, nameof(postalCode), required: false);
             var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: false);
-            return new DeferredBodyAction<AirQualityPostalResponse>(() =>
+            return new DeferredBodyAction<AirQualityPostalResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/latest/by-postal-code";
                 var apiCallHttpMethod = "get";
@@ -48,10 +48,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<AirQualityCityResponse> AirQualityCity(Expression<Func<string>> city = null)
+        public IBodyWorkflowAction<AirQualityCityResponse, ApiConnectionActionConfiguration> AirQualityCity(Expression<Func<string>> city = null)
         {
             var __workflow_city = WorkflowExpression.Compile(city, nameof(city), required: false);
-            return new DeferredBodyAction<AirQualityCityResponse>(() =>
+            return new DeferredBodyAction<AirQualityCityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/latest/by-city";
                 var apiCallHttpMethod = "get";
@@ -63,10 +63,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<AirQualityCountryResponse> AirQualityCountry(Expression<Func<string>> countryCode = null)
+        public IBodyWorkflowAction<AirQualityCountryResponse, ApiConnectionActionConfiguration> AirQualityCountry(Expression<Func<string>> countryCode = null)
         {
             var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: false);
-            return new DeferredBodyAction<AirQualityCountryResponse>(() =>
+            return new DeferredBodyAction<AirQualityCountryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/latest/by-country-code";
                 var apiCallHttpMethod = "get";
@@ -78,13 +78,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<AirQualityGeoHistoryResponse> AirQualityGeoHistory(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IBodyWorkflowAction<AirQualityGeoHistoryResponse, ApiConnectionActionConfiguration> AirQualityGeoHistory(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
             var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: false);
             var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
-            return new DeferredBodyAction<AirQualityGeoHistoryResponse>(() =>
+            return new DeferredBodyAction<AirQualityGeoHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/history/by-lat-lng";
                 var apiCallHttpMethod = "get";
@@ -102,13 +102,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<AirQualityPostalHistoryResponse> AirQualityPostalHistory(Expression<Func<int>> postalCode = null, Expression<Func<string>> countryCode = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IBodyWorkflowAction<AirQualityPostalHistoryResponse, ApiConnectionActionConfiguration> AirQualityPostalHistory(Expression<Func<int>> postalCode = null, Expression<Func<string>> countryCode = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
             var __workflow_postalCode = WorkflowExpression.Compile(postalCode, nameof(postalCode), required: false);
             var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: false);
             var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
-            return new DeferredBodyAction<AirQualityPostalHistoryResponse>(() =>
+            return new DeferredBodyAction<AirQualityPostalHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/history/by-postal-code";
                 var apiCallHttpMethod = "get";
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<AirQualityMostPollutedResponse> AirQualityMostPolluted()
+        public IBodyWorkflowAction<AirQualityMostPollutedResponse, ApiConnectionActionConfiguration> AirQualityMostPolluted()
         {
             var apiCallPath = "/latest/by-order/worst";
             var apiCallHttpMethod = "get";
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<AirQualityLeastPollutedResponse> AirQualityLeastPolluted()
+        public IBodyWorkflowAction<AirQualityLeastPollutedResponse, ApiConnectionActionConfiguration> AirQualityLeastPolluted()
         {
             var apiCallPath = "/latest/by-order/best";
             var apiCallHttpMethod = "get";
@@ -144,11 +144,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<WeatherCurrentResponse> WeatherCurrent(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
+        public IBodyWorkflowAction<WeatherCurrentResponse, ApiConnectionActionConfiguration> WeatherCurrent(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
             var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: false);
-            return new DeferredBodyAction<WeatherCurrentResponse>(() =>
+            return new DeferredBodyAction<WeatherCurrentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/weather/latest/by-lat-lng";
                 var apiCallHttpMethod = "get";
@@ -162,13 +162,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<WeatherHistoryResponse> WeatherHistory(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IBodyWorkflowAction<WeatherHistoryResponse, ApiConnectionActionConfiguration> WeatherHistory(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
             var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: false);
             var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
-            return new DeferredBodyAction<WeatherHistoryResponse>(() =>
+            return new DeferredBodyAction<WeatherHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/weather/history/by-lat-lng";
                 var apiCallHttpMethod = "get";
@@ -186,12 +186,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<WeatherForecastResponse> WeatherForecast(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<WeatherForecastResponse, ApiConnectionActionConfiguration> WeatherForecast(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> filter = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
             var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
-            return new DeferredBodyAction<WeatherForecastResponse>(() =>
+            return new DeferredBodyAction<WeatherForecastResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/weather/forecast/by-lat-lng";
                 var apiCallHttpMethod = "get";
@@ -207,11 +207,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<PollenLatestGeoResponse> PollenLatestGeo(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
+        public IBodyWorkflowAction<PollenLatestGeoResponse, ApiConnectionActionConfiguration> PollenLatestGeo(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
             var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: false);
-            return new DeferredBodyAction<PollenLatestGeoResponse>(() =>
+            return new DeferredBodyAction<PollenLatestGeoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/latest/pollen/by-lat-lng";
                 var apiCallHttpMethod = "get";
@@ -225,10 +225,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<PollenLatestPlaceResponse> PollenLatestPlace(Expression<Func<string>> place = null)
+        public IBodyWorkflowAction<PollenLatestPlaceResponse, ApiConnectionActionConfiguration> PollenLatestPlace(Expression<Func<string>> place = null)
         {
             var __workflow_place = WorkflowExpression.Compile(place, nameof(place), required: false);
-            return new DeferredBodyAction<PollenLatestPlaceResponse>(() =>
+            return new DeferredBodyAction<PollenLatestPlaceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/latest/pollen/by-place";
                 var apiCallHttpMethod = "get";
@@ -240,13 +240,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<PollenHistoryGeoResponse> PollenHistoryGeo(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IBodyWorkflowAction<PollenHistoryGeoResponse, ApiConnectionActionConfiguration> PollenHistoryGeo(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
             var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: false);
             var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
-            return new DeferredBodyAction<PollenHistoryGeoResponse>(() =>
+            return new DeferredBodyAction<PollenHistoryGeoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/history/pollen/by-lat-lng";
                 var apiCallHttpMethod = "get";
@@ -264,12 +264,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<PollenHistoryPlaceResponse> PollenHistoryPlace(Expression<Func<string>> place = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IBodyWorkflowAction<PollenHistoryPlaceResponse, ApiConnectionActionConfiguration> PollenHistoryPlace(Expression<Func<string>> place = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
             var __workflow_place = WorkflowExpression.Compile(place, nameof(place), required: false);
             var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
-            return new DeferredBodyAction<PollenHistoryPlaceResponse>(() =>
+            return new DeferredBodyAction<PollenHistoryPlaceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/history/pollen/by-place";
                 var apiCallHttpMethod = "get";
@@ -285,11 +285,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<PollForecastGeoResponse> PollForecastGeo(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
+        public IBodyWorkflowAction<PollForecastGeoResponse, ApiConnectionActionConfiguration> PollForecastGeo(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
             var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: false);
-            return new DeferredBodyAction<PollForecastGeoResponse>(() =>
+            return new DeferredBodyAction<PollForecastGeoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/forecast/pollen/by-lat-lng";
                 var apiCallHttpMethod = "get";
@@ -303,11 +303,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<FireCurrentResponse> FireCurrent(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
+        public IBodyWorkflowAction<FireCurrentResponse, ApiConnectionActionConfiguration> FireCurrent(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
             var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: false);
-            return new DeferredBodyAction<FireCurrentResponse>(() =>
+            return new DeferredBodyAction<FireCurrentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/latest/fire";
                 var apiCallHttpMethod = "get";
@@ -321,11 +321,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<SoilCurrentResponse> SoilCurrent(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
+        public IBodyWorkflowAction<SoilCurrentResponse, ApiConnectionActionConfiguration> SoilCurrent(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
             var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: false);
-            return new DeferredBodyAction<SoilCurrentResponse>(() =>
+            return new DeferredBodyAction<SoilCurrentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/soil/latest/by-lat-lng";
                 var apiCallHttpMethod = "get";
@@ -339,13 +339,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<SoilHistoryResponse> SoilHistory(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IBodyWorkflowAction<SoilHistoryResponse, ApiConnectionActionConfiguration> SoilHistory(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
             var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: false);
             var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
-            return new DeferredBodyAction<SoilHistoryResponse>(() =>
+            return new DeferredBodyAction<SoilHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/soil/history/by-lat-lng";
                 var apiCallHttpMethod = "get";
@@ -363,11 +363,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<WaterVaporCurrentResponse> WaterVaporCurrent(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
+        public IBodyWorkflowAction<WaterVaporCurrentResponse, ApiConnectionActionConfiguration> WaterVaporCurrent(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
             var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: false);
-            return new DeferredBodyAction<WaterVaporCurrentResponse>(() =>
+            return new DeferredBodyAction<WaterVaporCurrentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/waterVapor/latest/by-lat-lng";
                 var apiCallHttpMethod = "get";
@@ -381,13 +381,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<WaterVaporGeoResponse> WaterVaporGeo(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IBodyWorkflowAction<WaterVaporGeoResponse, ApiConnectionActionConfiguration> WaterVaporGeo(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
             var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: false);
             var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
-            return new DeferredBodyAction<WaterVaporGeoResponse>(() =>
+            return new DeferredBodyAction<WaterVaporGeoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/waterVapor/history/by-lat-lng";
                 var apiCallHttpMethod = "get";

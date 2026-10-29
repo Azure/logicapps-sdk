@@ -15,10 +15,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gravityformsbyreenhanced
 
     public class GravityformsbyreenhancedTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateWebhook(Expression<Func<string>> webhookform, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateWebhook(Expression<Func<string>> webhookform, FlowRecurrence recurrence = null)
         {
             var __workflow_webhookform = WorkflowExpression.Compile(webhookform, nameof(webhookform), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks";
                 var apiCallHttpMethod = "post";

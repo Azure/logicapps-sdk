@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clearbitip
     public class ClearbitipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clearbitip")]
-        public IBodyWorkflowAction<JToken> LogoGet(Expression<Func<string>> domain, Expression<Func<int>> size = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> greyscale = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> LogoGet(Expression<Func<string>> domain, Expression<Func<int>> size = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> greyscale = null)
         {
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_greyscale = WorkflowExpression.Compile(greyscale, nameof(greyscale), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_domain.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

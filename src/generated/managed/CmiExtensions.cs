@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cmi
     public class CmiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cmi")]
-        public IWorkflowAction HttpRequest(Expression<Func<string>> xCMITENANTNAME, Expression<Func<parametersmethodInput>> parametersmethod, Expression<Func<string>> parameterspath, Expression<Func<string>> parametersbody = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> HttpRequest(Expression<Func<string>> xCMITENANTNAME, Expression<Func<parametersmethodInput>> parametersmethod, Expression<Func<string>> parameterspath, Expression<Func<string>> parametersbody = null)
         {
             var __workflow_xCMITENANTNAME = WorkflowExpression.Compile(xCMITENANTNAME, nameof(xCMITENANTNAME), required: true);
             var __workflow_parametersmethod = WorkflowExpression.Compile(parametersmethod, nameof(parametersmethod), required: true);
             var __workflow_parameterspath = WorkflowExpression.Compile(parameterspath, nameof(parameterspath), required: true);
             var __workflow_parametersbody = WorkflowExpression.Compile(parametersbody, nameof(parametersbody), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/virtual/httprequest";
                 var apiCallHttpMethod = "post";

@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Niftygatewayip
     public class NiftygatewayipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "niftygatewayip")]
-        public IBodyWorkflowAction<NiftiesforUserResponse> NiftiesforUser(Expression<Func<string>> username, Expression<Func<string>> contractAddress = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<NiftiesforUserResponse, ApiConnectionActionConfiguration> NiftiesforUser(Expression<Func<string>> username, Expression<Func<string>> contractAddress = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
             var __workflow_contractAddress = WorkflowExpression.Compile(contractAddress, nameof(contractAddress), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<NiftiesforUserResponse>(() =>
+            return new DeferredBodyAction<NiftiesforUserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/nifties/", __workflow_username.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -34,12 +34,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Niftygatewayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "niftygatewayip")]
-        public IBodyWorkflowAction<NiftiesforCreatorResponse> NiftiesforCreator(Expression<Func<string>> creatorProfileName, Expression<Func<int>> limit, Expression<Func<int>> offset)
+        public IBodyWorkflowAction<NiftiesforCreatorResponse, ApiConnectionActionConfiguration> NiftiesforCreator(Expression<Func<string>> creatorProfileName, Expression<Func<int>> limit, Expression<Func<int>> offset)
         {
             var __workflow_creatorProfileName = WorkflowExpression.Compile(creatorProfileName, nameof(creatorProfileName), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: true);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: true);
-            return new DeferredBodyAction<NiftiesforCreatorResponse>(() =>
+            return new DeferredBodyAction<NiftiesforCreatorResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/creators/{0}/collectors/", __workflow_creatorProfileName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

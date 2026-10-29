@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aadinvitationmanager
     public class AadinvitationmanagerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aadinvitationmanager")]
-        public IBodyWorkflowAction<CreateInvitationResponse> CreateInvitation(Expression<Func<string>> bodyinvitedUserDisplayName = null, Expression<Func<string>> bodyinvitedUserEmailAddress = null, Expression<Func<bodyinvitedUserMessageInfoccRecipientsInputItem[]>> bodyinvitedUserMessageInfoccRecipients = null, Expression<Func<string>> bodyinvitedUserMessageInfocustomizedMessageBody = null, Expression<Func<string>> bodyinvitedUserMessageInfomessageLanguage = null, Expression<Func<string>> bodyinvitedUserType = null, Expression<Func<string>> bodyinviteRedirectUrl = null, Expression<Func<bool>> bodyresetRedemption = null, Expression<Func<bool>> bodysendInvitationMessage = null)
+        public IBodyWorkflowAction<CreateInvitationResponse, ApiConnectionActionConfiguration> CreateInvitation(Expression<Func<string>> bodyinvitedUserDisplayName = null, Expression<Func<string>> bodyinvitedUserEmailAddress = null, Expression<Func<bodyinvitedUserMessageInfoccRecipientsInputItem[]>> bodyinvitedUserMessageInfoccRecipients = null, Expression<Func<string>> bodyinvitedUserMessageInfocustomizedMessageBody = null, Expression<Func<string>> bodyinvitedUserMessageInfomessageLanguage = null, Expression<Func<string>> bodyinvitedUserType = null, Expression<Func<string>> bodyinviteRedirectUrl = null, Expression<Func<bool>> bodyresetRedemption = null, Expression<Func<bool>> bodysendInvitationMessage = null)
         {
             var __workflow_bodyinvitedUserDisplayName = WorkflowExpression.Compile(bodyinvitedUserDisplayName, nameof(bodyinvitedUserDisplayName), required: false);
             var __workflow_bodyinvitedUserEmailAddress = WorkflowExpression.Compile(bodyinvitedUserEmailAddress, nameof(bodyinvitedUserEmailAddress), required: false);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aadinvitationmanager
             var __workflow_bodyinviteRedirectUrl = WorkflowExpression.Compile(bodyinviteRedirectUrl, nameof(bodyinviteRedirectUrl), required: false);
             var __workflow_bodyresetRedemption = WorkflowExpression.Compile(bodyresetRedemption, nameof(bodyresetRedemption), required: false);
             var __workflow_bodysendInvitationMessage = WorkflowExpression.Compile(bodysendInvitationMessage, nameof(bodysendInvitationMessage), required: false);
-            return new DeferredBodyAction<CreateInvitationResponse>(() =>
+            return new DeferredBodyAction<CreateInvitationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1.0/invitations";
                 var apiCallHttpMethod = "post";

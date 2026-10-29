@@ -15,10 +15,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datascopeforms
 
     public class DatascopeformsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken> FormAnswer(Expression<Func<string>> formId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> FormAnswer(Expression<Func<string>> formId, FlowRecurrence recurrence = null)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
-            return new DeferredBodyTrigger<JToken>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/hooks_flow/{0}", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";

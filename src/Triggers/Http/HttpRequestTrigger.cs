@@ -6,10 +6,25 @@ namespace Microsoft.Azure.Workflows.Sdk
 {
     using Newtonsoft.Json.Linq;
 
+    public sealed class HttpRequestTriggerConfiguration :
+        ISecureInputsConfiguration,
+        ISecureOutputsConfiguration,
+        ITriggerConcurrencyConfiguration,
+        IClientTrackingIdConfiguration,
+        IRequestSchemaValidationConfiguration
+    {
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+        int? ITriggerConcurrencyConfiguration.ConcurrentRuns { get; set; }
+        int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
+        Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
+        bool IRequestSchemaValidationConfiguration.SchemaValidationEnabled { get; set; }
+    }
+
     /// <summary>
     /// Represents a workflow trigger for HTTP requests, providing a strongly-typed output.
     /// </summary>
-    public class HttpRequestTrigger : WorkflowTriggerBase, IOutputWorkflowTrigger<HttpRequestTriggerOutput>
+    public class HttpRequestTrigger : WorkflowTriggerBase<HttpRequestTriggerConfiguration>, IOutputWorkflowTrigger<HttpRequestTriggerOutput>
     {
         /// <summary>
         /// The request input parameters.
@@ -47,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <returns>
         /// A <see cref="FlowTemplateTrigger"/> configured for HTTP request operations.
         /// </returns>
-        public override FlowTemplateTrigger GetTriggerDefinition()
+        internal override FlowTemplateTrigger BuildTriggerDefinition(FlowKind? flowKind = null)
         {
             // Implementation for getting the trigger definition
             return new FlowTemplateTrigger

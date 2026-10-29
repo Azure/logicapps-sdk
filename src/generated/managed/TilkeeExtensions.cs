@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
     public class TilkeeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        public IBodyWorkflowAction<ProjectCreateResponse> ProjectCreate(Expression<Func<string>> bodyprojectid = null, Expression<Func<string>> bodyprojectname = null, Expression<Func<bool>> bodyprojectcanBeDownloaded = null, Expression<Func<bool>> bodyprojectconsultable = null, Expression<Func<string>> bodyprojectconsultableUntil = null, Expression<Func<string[]>> bodyprojecttags = null, Expression<Func<JToken[]>> bodyprojectcollaborators = null, Expression<Func<bool>> bodyprojectisTemplate = null, Expression<Func<string>> bodyprojectexternalId = null, Expression<Func<int>> bodyprojectthemeid = null, Expression<Func<bodydocumentsInputItem[]>> bodydocuments = null, Expression<Func<bodypersonInputItem[]>> bodyperson = null)
+        public IBodyWorkflowAction<ProjectCreateResponse, ApiConnectionActionConfiguration> ProjectCreate(Expression<Func<string>> bodyprojectid = null, Expression<Func<string>> bodyprojectname = null, Expression<Func<bool>> bodyprojectcanBeDownloaded = null, Expression<Func<bool>> bodyprojectconsultable = null, Expression<Func<string>> bodyprojectconsultableUntil = null, Expression<Func<string[]>> bodyprojecttags = null, Expression<Func<JToken[]>> bodyprojectcollaborators = null, Expression<Func<bool>> bodyprojectisTemplate = null, Expression<Func<string>> bodyprojectexternalId = null, Expression<Func<int>> bodyprojectthemeid = null, Expression<Func<bodydocumentsInputItem[]>> bodydocuments = null, Expression<Func<bodypersonInputItem[]>> bodyperson = null)
         {
             var __workflow_bodyprojectid = WorkflowExpression.Compile(bodyprojectid, nameof(bodyprojectid), required: false);
             var __workflow_bodyprojectname = WorkflowExpression.Compile(bodyprojectname, nameof(bodyprojectname), required: false);
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             var __workflow_bodyprojectthemeid = WorkflowExpression.Compile(bodyprojectthemeid, nameof(bodyprojectthemeid), required: false);
             var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: false);
             var __workflow_bodyperson = WorkflowExpression.Compile(bodyperson, nameof(bodyperson), required: false);
-            return new DeferredBodyAction<ProjectCreateResponse>(() =>
+            return new DeferredBodyAction<ProjectCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/wrapper/token_from_files";
                 var apiCallHttpMethod = "post";
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        public IBodyWorkflowAction<ProjectListResponse> ProjectList(Expression<Func<int>> limit, Expression<Func<int>> offset, Expression<Func<string>> order, Expression<Func<bool>> isTemplate, Expression<Func<bool>> isOwner, Expression<Func<string>> tags = null, Expression<Func<string>> tagOperator = null, Expression<Func<string>> search = null)
+        public IBodyWorkflowAction<ProjectListResponse, ApiConnectionActionConfiguration> ProjectList(Expression<Func<int>> limit, Expression<Func<int>> offset, Expression<Func<string>> order, Expression<Func<bool>> isTemplate, Expression<Func<bool>> isOwner, Expression<Func<string>> tags = null, Expression<Func<string>> tagOperator = null, Expression<Func<string>> search = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: true);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: true);
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             var __workflow_tags = WorkflowExpression.Compile(tags, nameof(tags), required: false);
             var __workflow_tagOperator = WorkflowExpression.Compile(tagOperator, nameof(tagOperator), required: false);
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
-            return new DeferredBodyAction<ProjectListResponse>(() =>
+            return new DeferredBodyAction<ProjectListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/projects";
                 var apiCallHttpMethod = "get";
@@ -188,10 +188,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        public IBodyWorkflowAction<ProjectGetResponse> ProjectGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ProjectGetResponse, ApiConnectionActionConfiguration> ProjectGet(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ProjectGetResponse>(() =>
+            return new DeferredBodyAction<ProjectGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        public IBodyWorkflowAction<ProjectUpdateResponse> ProjectUpdate(Expression<Func<string>> id, Expression<Func<string>> bodyname = null, Expression<Func<bool>> bodycanBeDownloaded = null, Expression<Func<bool>> bodyconsultable = null, Expression<Func<string>> bodyconsultableUntil = null, Expression<Func<string>> bodyduration = null, Expression<Func<string>> bodyexternalId = null, Expression<Func<bool>> bodystarred = null, Expression<Func<string[]>> bodytags = null, Expression<Func<bodyverdictInput>> bodyverdict = null, Expression<Func<JToken[]>> bodycollaborators = null, Expression<Func<bool>> bodyisTemplate = null, Expression<Func<int>> bodyvcardId = null, Expression<Func<bool>> bodyalertOn = null, Expression<Func<string[]>> bodyemailCible = null, Expression<Func<int>> bodythemeid = null)
+        public IBodyWorkflowAction<ProjectUpdateResponse, ApiConnectionActionConfiguration> ProjectUpdate(Expression<Func<string>> id, Expression<Func<string>> bodyname = null, Expression<Func<bool>> bodycanBeDownloaded = null, Expression<Func<bool>> bodyconsultable = null, Expression<Func<string>> bodyconsultableUntil = null, Expression<Func<string>> bodyduration = null, Expression<Func<string>> bodyexternalId = null, Expression<Func<bool>> bodystarred = null, Expression<Func<string[]>> bodytags = null, Expression<Func<bodyverdictInput>> bodyverdict = null, Expression<Func<JToken[]>> bodycollaborators = null, Expression<Func<bool>> bodyisTemplate = null, Expression<Func<int>> bodyvcardId = null, Expression<Func<bool>> bodyalertOn = null, Expression<Func<string[]>> bodyemailCible = null, Expression<Func<int>> bodythemeid = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             var __workflow_bodyalertOn = WorkflowExpression.Compile(bodyalertOn, nameof(bodyalertOn), required: false);
             var __workflow_bodyemailCible = WorkflowExpression.Compile(bodyemailCible, nameof(bodyemailCible), required: false);
             var __workflow_bodythemeid = WorkflowExpression.Compile(bodythemeid, nameof(bodythemeid), required: false);
-            return new DeferredBodyAction<ProjectUpdateResponse>(() =>
+            return new DeferredBodyAction<ProjectUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -341,11 +341,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        public IBodyWorkflowAction<AccessLinkCreateResponse> AccessLinkCreate(Expression<Func<string>> projectId, Expression<Func<bodyaccessLinkInputItem[]>> bodyaccessLink = null)
+        public IBodyWorkflowAction<AccessLinkCreateResponse, ApiConnectionActionConfiguration> AccessLinkCreate(Expression<Func<string>> projectId, Expression<Func<bodyaccessLinkInputItem[]>> bodyaccessLink = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_bodyaccessLink = WorkflowExpression.Compile(bodyaccessLink, nameof(bodyaccessLink), required: false);
-            return new DeferredBodyAction<AccessLinkCreateResponse>(() =>
+            return new DeferredBodyAction<AccessLinkCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}/tokens", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -371,11 +371,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        public IBodyWorkflowAction<AddItemToProjectResponseItem[]> AddItemToProject(Expression<Func<string>> projectId, Expression<Func<bodyitemsInputItem[]>> bodyitems = null)
+        public IBodyWorkflowAction<AddItemToProjectResponseItem[], ApiConnectionActionConfiguration> AddItemToProject(Expression<Func<string>> projectId, Expression<Func<bodyitemsInputItem[]>> bodyitems = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_bodyitems = WorkflowExpression.Compile(bodyitems, nameof(bodyitems), required: false);
-            return new DeferredBodyAction<AddItemToProjectResponseItem[]>(() =>
+            return new DeferredBodyAction<AddItemToProjectResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}/add_items", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -403,14 +403,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        public IBodyWorkflowAction<ItemListResponse> ItemList(Expression<Func<int>> limit, Expression<Func<int>> offset, Expression<Func<string>> tags = null, Expression<Func<string>> tagOperator = null, Expression<Func<string>> search = null)
+        public IBodyWorkflowAction<ItemListResponse, ApiConnectionActionConfiguration> ItemList(Expression<Func<int>> limit, Expression<Func<int>> offset, Expression<Func<string>> tags = null, Expression<Func<string>> tagOperator = null, Expression<Func<string>> search = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: true);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: true);
             var __workflow_tags = WorkflowExpression.Compile(tags, nameof(tags), required: false);
             var __workflow_tagOperator = WorkflowExpression.Compile(tagOperator, nameof(tagOperator), required: false);
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
-            return new DeferredBodyAction<ItemListResponse>(() =>
+            return new DeferredBodyAction<ItemListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/items";
                 var apiCallHttpMethod = "get";
@@ -431,10 +431,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        public IBodyWorkflowAction<ItemCreateResponseItem[]> ItemCreate(Expression<Func<bodyInputItem[]>> body = null)
+        public IBodyWorkflowAction<ItemCreateResponseItem[], ApiConnectionActionConfiguration> ItemCreate(Expression<Func<bodyInputItem[]>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ItemCreateResponseItem[]>(() =>
+            return new DeferredBodyAction<ItemCreateResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/items";
                 var apiCallHttpMethod = "post";
@@ -448,12 +448,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        public IBodyWorkflowAction<DirectUploadInformationResponse> DirectUploadInformation(Expression<Func<string>> filename, Expression<Func<string>> originalFilename, Expression<Func<bool>> checkExisting = null)
+        public IBodyWorkflowAction<DirectUploadInformationResponse, ApiConnectionActionConfiguration> DirectUploadInformation(Expression<Func<string>> filename, Expression<Func<string>> originalFilename, Expression<Func<bool>> checkExisting = null)
         {
             var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: true);
             var __workflow_originalFilename = WorkflowExpression.Compile(originalFilename, nameof(originalFilename), required: true);
             var __workflow_checkExisting = WorkflowExpression.Compile(checkExisting, nameof(checkExisting), required: false);
-            return new DeferredBodyAction<DirectUploadInformationResponse>(() =>
+            return new DeferredBodyAction<DirectUploadInformationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/direct_upload_data";
                 var apiCallHttpMethod = "get";
@@ -472,12 +472,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
 
     public class TilkeeTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken> OnTilkeeEvent(Expression<Func<bodyruleInput>> bodyrule, Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodyprojectId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnTilkeeEvent(Expression<Func<bodyruleInput>> bodyrule, Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodyprojectId = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyrule = WorkflowExpression.Compile(bodyrule, nameof(bodyrule), required: true);
             var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
             var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: false);
-            return new DeferredBodyTrigger<JToken>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/notifications";
                 var apiCallHttpMethod = "post";
@@ -514,11 +514,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             });
         }
 
-        public IBodyWorkflowTrigger<JToken> OnTilkeeEventEnded(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodyprojectId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnTilkeeEventEnded(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodyprojectId = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
             var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: false);
-            return new DeferredBodyTrigger<JToken>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/notifications/connexion_ended";
                 var apiCallHttpMethod = "post";
@@ -555,11 +555,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             });
         }
 
-        public IBodyWorkflowTrigger<JToken> OnTilkeeEventSigned(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodyprojectId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnTilkeeEventSigned(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodyprojectId = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
             var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: false);
-            return new DeferredBodyTrigger<JToken>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/notifications/token_signed";
                 var apiCallHttpMethod = "post";

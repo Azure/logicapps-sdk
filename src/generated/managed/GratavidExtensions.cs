@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
     public class GratavidActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gratavid")]
-        public IBodyWorkflowAction<CreateTaskResponse> CreateTask(Expression<Func<string>> bodyemail, Expression<Func<string>> bodycomments, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodycustomUserId = null, Expression<Func<string>> bodycustomAccountId = null, Expression<Func<string>> bodytextOptIn = null, Expression<Func<string>> bodycellNumber = null, Expression<Func<string>> bodyassignedTo = null)
+        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> bodyemail, Expression<Func<string>> bodycomments, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodycustomUserId = null, Expression<Func<string>> bodycustomAccountId = null, Expression<Func<string>> bodytextOptIn = null, Expression<Func<string>> bodycellNumber = null, Expression<Func<string>> bodyassignedTo = null)
         {
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
             var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: true);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
             var __workflow_bodytextOptIn = WorkflowExpression.Compile(bodytextOptIn, nameof(bodytextOptIn), required: false);
             var __workflow_bodycellNumber = WorkflowExpression.Compile(bodycellNumber, nameof(bodycellNumber), required: false);
             var __workflow_bodyassignedTo = WorkflowExpression.Compile(bodyassignedTo, nameof(bodyassignedTo), required: false);
-            return new DeferredBodyAction<CreateTaskResponse>(() =>
+            return new DeferredBodyAction<CreateTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/integrationsEndpoint";
                 var apiCallHttpMethod = "post";
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gratavid")]
-        public IBodyWorkflowAction<SendNoteResponse> SendNote(Expression<Func<string>> bodynoteId, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodycustomUserId = null, Expression<Func<string>> bodycustomAccountId = null, Expression<Func<string>> bodytextOptIn = null, Expression<Func<string>> bodycellNumber = null)
+        public IBodyWorkflowAction<SendNoteResponse, ApiConnectionActionConfiguration> SendNote(Expression<Func<string>> bodynoteId, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodycustomUserId = null, Expression<Func<string>> bodycustomAccountId = null, Expression<Func<string>> bodytextOptIn = null, Expression<Func<string>> bodycellNumber = null)
         {
             var __workflow_bodynoteId = WorkflowExpression.Compile(bodynoteId, nameof(bodynoteId), required: true);
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
             var __workflow_bodycustomAccountId = WorkflowExpression.Compile(bodycustomAccountId, nameof(bodycustomAccountId), required: false);
             var __workflow_bodytextOptIn = WorkflowExpression.Compile(bodytextOptIn, nameof(bodytextOptIn), required: false);
             var __workflow_bodycellNumber = WorkflowExpression.Compile(bodycellNumber, nameof(bodycellNumber), required: false);
-            return new DeferredBodyAction<SendNoteResponse>(() =>
+            return new DeferredBodyAction<SendNoteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/integrationsEndpoint";
                 var apiCallHttpMethod = "put";
@@ -159,10 +159,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
 
     public class GratavidTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger NewEvent(Expression<Func<webookHookEventInput>> webookHookEvent, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewEvent(Expression<Func<webookHookEventInput>> webookHookEvent, FlowRecurrence recurrence = null)
         {
             var __workflow_webookHookEvent = WorkflowExpression.Compile(webookHookEvent, nameof(webookHookEvent), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/manageIntegrations";
                 var apiCallHttpMethod = "post";

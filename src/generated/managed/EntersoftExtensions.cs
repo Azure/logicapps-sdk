@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     public class EntersoftActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo> ES00DocumentsInfo(Expression<Func<string>> routeid)
+        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo, ApiConnectionActionConfiguration> ES00DocumentsInfo(Expression<Func<string>> routeid)
         {
             var __workflow_routeid = WorkflowExpression.Compile(routeid, nameof(routeid), required: true);
-            return new DeferredBodyAction<EntersoftWebApiModelsES00DocumentInfo>(() =>
+            return new DeferredBodyAction<EntersoftWebApiModelsES00DocumentInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ES00Documents/Info/{0}", __workflow_routeid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo[]> ES00DocumentsInfoByEntityGid(Expression<Func<string>> routeid)
+        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo[], ApiConnectionActionConfiguration> ES00DocumentsInfoByEntityGid(Expression<Func<string>> routeid)
         {
             var __workflow_routeid = WorkflowExpression.Compile(routeid, nameof(routeid), required: true);
-            return new DeferredBodyAction<EntersoftWebApiModelsES00DocumentInfo[]>(() =>
+            return new DeferredBodyAction<EntersoftWebApiModelsES00DocumentInfo[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ES00Documents/InfoByEntityGid/{0}", __workflow_routeid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -38,11 +38,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ES00DocumentsBlobDataByGid(Expression<Func<string>> routeid, Expression<Func<string>> webapitoken = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ES00DocumentsBlobDataByGid(Expression<Func<string>> routeid, Expression<Func<string>> webapitoken = null)
         {
             var __workflow_routeid = WorkflowExpression.Compile(routeid, nameof(routeid), required: true);
             var __workflow_webapitoken = WorkflowExpression.Compile(webapitoken, nameof(webapitoken), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ES00Documents/BlobDataByGid/{0}", __workflow_routeid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -54,12 +54,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ES00DocumentsDownloadBlobDataByGID(Expression<Func<string>> routeid, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ES00DocumentsDownloadBlobDataByGID(Expression<Func<string>> routeid, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
         {
             var __workflow_routeid = WorkflowExpression.Compile(routeid, nameof(routeid), required: true);
             var __workflow_webapitoken = WorkflowExpression.Compile(webapitoken, nameof(webapitoken), required: false);
             var __workflow_partialMode = WorkflowExpression.Compile(partialMode, nameof(partialMode), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ES00Documents/DownloadBlobDataByGID/{0}", __workflow_routeid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -73,13 +73,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ES00DocumentsGetES00Blob(Expression<Func<string>> routeid, Expression<Func<string>> extType = null, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ES00DocumentsGetES00Blob(Expression<Func<string>> routeid, Expression<Func<string>> extType = null, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
         {
             var __workflow_routeid = WorkflowExpression.Compile(routeid, nameof(routeid), required: true);
             var __workflow_extType = WorkflowExpression.Compile(extType, nameof(extType), required: false);
             var __workflow_webapitoken = WorkflowExpression.Compile(webapitoken, nameof(webapitoken), required: false);
             var __workflow_partialMode = WorkflowExpression.Compile(partialMode, nameof(partialMode), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ES00Documents/GetES00Blob/{0}", __workflow_routeid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ES00DocumentsGetES00BlobFromObject(Expression<Func<string>> routeid, Expression<Func<string>> keyid, Expression<Func<int>> typeid, Expression<Func<string>> extType = null, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ES00DocumentsGetES00BlobFromObject(Expression<Func<string>> routeid, Expression<Func<string>> keyid, Expression<Func<int>> typeid, Expression<Func<string>> extType = null, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
         {
             var __workflow_routeid = WorkflowExpression.Compile(routeid, nameof(routeid), required: true);
             var __workflow_keyid = WorkflowExpression.Compile(keyid, nameof(keyid), required: true);
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             var __workflow_extType = WorkflowExpression.Compile(extType, nameof(extType), required: false);
             var __workflow_webapitoken = WorkflowExpression.Compile(webapitoken, nameof(webapitoken), required: false);
             var __workflow_partialMode = WorkflowExpression.Compile(partialMode, nameof(partialMode), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ES00Documents/GetES00BlobFromObject/{0}", __workflow_routeid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<string> ES00DocumentsPostBodyToES00Blob(Expression<Func<string>> blobInfogID = null, Expression<Func<string>> blobInfoobjectID = null, Expression<Func<string>> blobInfokeyID = null, Expression<Func<int>> blobInfotypeID = null, Expression<Func<string>> blobInfoext = null, Expression<Func<string>> blobInfotextBody = null, Expression<Func<bool>> blobInfoisNew = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ES00DocumentsPostBodyToES00Blob(Expression<Func<string>> blobInfogID = null, Expression<Func<string>> blobInfoobjectID = null, Expression<Func<string>> blobInfokeyID = null, Expression<Func<int>> blobInfotypeID = null, Expression<Func<string>> blobInfoext = null, Expression<Func<string>> blobInfotextBody = null, Expression<Func<bool>> blobInfoisNew = null)
         {
             var __workflow_blobInfogID = WorkflowExpression.Compile(blobInfogID, nameof(blobInfogID), required: false);
             var __workflow_blobInfoobjectID = WorkflowExpression.Compile(blobInfoobjectID, nameof(blobInfoobjectID), required: false);
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             var __workflow_blobInfoext = WorkflowExpression.Compile(blobInfoext, nameof(blobInfoext), required: false);
             var __workflow_blobInfotextBody = WorkflowExpression.Compile(blobInfotextBody, nameof(blobInfotextBody), required: false);
             var __workflow_blobInfoisNew = WorkflowExpression.Compile(blobInfoisNew, nameof(blobInfoisNew), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ES00Documents/PostBodyToES00Blob/";
                 var apiCallHttpMethod = "post";
@@ -189,12 +189,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsES00BlobInfo> ES00DocumentsGetBodyFromES00Blob(Expression<Func<string>> routeid, Expression<Func<string>> keyid = null, Expression<Func<int>> typeid = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsES00BlobInfo, ApiConnectionActionConfiguration> ES00DocumentsGetBodyFromES00Blob(Expression<Func<string>> routeid, Expression<Func<string>> keyid = null, Expression<Func<int>> typeid = null)
         {
             var __workflow_routeid = WorkflowExpression.Compile(routeid, nameof(routeid), required: true);
             var __workflow_keyid = WorkflowExpression.Compile(keyid, nameof(keyid), required: false);
             var __workflow_typeid = WorkflowExpression.Compile(typeid, nameof(typeid), required: false);
-            return new DeferredBodyAction<EntersoftWebApiModelsES00BlobInfo>(() =>
+            return new DeferredBodyAction<EntersoftWebApiModelsES00BlobInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ES00Documents/GetBodyFromES00Blob/{0}", __workflow_routeid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ES00DocumentsDeleteES00Document(Expression<Func<string>> paramsgID = null, Expression<Func<string>> paramscode = null, Expression<Func<string>> paramstitle = null, Expression<Func<string>> paramsdescription = null, Expression<Func<string>> paramscaption = null, Expression<Func<string>> paramseDate = null, Expression<Func<string>> paramsfType = null, Expression<Func<string>> paramstableID = null, Expression<Func<string>> paramstableName = null, Expression<Func<string>> paramsfGID = null, Expression<Func<string>> paramsfDetailLineGID = null, Expression<Func<string>> paramsuNCPath = null, Expression<Func<string>> paramsoriginalPath = null, Expression<Func<string>> paramsoriginalFN = null, Expression<Func<string>> paramsfDocCategoryCode = null, Expression<Func<string>> paramsfDocGroupCode = null, Expression<Func<string>> paramsfCompanyCode = null, Expression<Func<string>> paramsfDocumentCategoryCode = null, Expression<Func<string>> paramsfDocumentLocationCode = null, Expression<Func<string>> paramseSDModified = null, Expression<Func<string>> paramseSUModified = null, Expression<Func<string>> paramseSDCreated = null, Expression<Func<string>> paramseSUCreated = null, Expression<Func<bool>> paramsisBLOB = null, Expression<Func<bool>> paramsingoing = null, Expression<Func<string>> paramsfRLSNodeGID = null, Expression<Func<int>> paramsbLOBDATALength = null, Expression<Func<string>> paramsbLOBDATA = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ES00DocumentsDeleteES00Document(Expression<Func<string>> paramsgID = null, Expression<Func<string>> paramscode = null, Expression<Func<string>> paramstitle = null, Expression<Func<string>> paramsdescription = null, Expression<Func<string>> paramscaption = null, Expression<Func<string>> paramseDate = null, Expression<Func<string>> paramsfType = null, Expression<Func<string>> paramstableID = null, Expression<Func<string>> paramstableName = null, Expression<Func<string>> paramsfGID = null, Expression<Func<string>> paramsfDetailLineGID = null, Expression<Func<string>> paramsuNCPath = null, Expression<Func<string>> paramsoriginalPath = null, Expression<Func<string>> paramsoriginalFN = null, Expression<Func<string>> paramsfDocCategoryCode = null, Expression<Func<string>> paramsfDocGroupCode = null, Expression<Func<string>> paramsfCompanyCode = null, Expression<Func<string>> paramsfDocumentCategoryCode = null, Expression<Func<string>> paramsfDocumentLocationCode = null, Expression<Func<string>> paramseSDModified = null, Expression<Func<string>> paramseSUModified = null, Expression<Func<string>> paramseSDCreated = null, Expression<Func<string>> paramseSUCreated = null, Expression<Func<bool>> paramsisBLOB = null, Expression<Func<bool>> paramsingoing = null, Expression<Func<string>> paramsfRLSNodeGID = null, Expression<Func<int>> paramsbLOBDATALength = null, Expression<Func<string>> paramsbLOBDATA = null)
         {
             var __workflow_paramsgID = WorkflowExpression.Compile(paramsgID, nameof(paramsgID), required: false);
             var __workflow_paramscode = WorkflowExpression.Compile(paramscode, nameof(paramscode), required: false);
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             var __workflow_paramsfRLSNodeGID = WorkflowExpression.Compile(paramsfRLSNodeGID, nameof(paramsfRLSNodeGID), required: false);
             var __workflow_paramsbLOBDATALength = WorkflowExpression.Compile(paramsbLOBDATALength, nameof(paramsbLOBDATALength), required: false);
             var __workflow_paramsbLOBDATA = WorkflowExpression.Compile(paramsbLOBDATA, nameof(paramsbLOBDATA), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ES00Documents/DeleteES00Document/";
                 var apiCallHttpMethod = "post";
@@ -423,7 +423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo> ES00DocumentsAddOrUpdateAttachedDocument(Expression<Func<string>> inDocgID = null, Expression<Func<string>> inDoccode = null, Expression<Func<string>> inDoctitle = null, Expression<Func<string>> inDocdescription = null, Expression<Func<string>> inDoccaption = null, Expression<Func<string>> inDoceDate = null, Expression<Func<string>> inDocfType = null, Expression<Func<string>> inDoctableID = null, Expression<Func<string>> inDoctableName = null, Expression<Func<string>> inDocfGID = null, Expression<Func<string>> inDocfDetailLineGID = null, Expression<Func<string>> inDocuNCPath = null, Expression<Func<string>> inDocoriginalPath = null, Expression<Func<string>> inDocoriginalFN = null, Expression<Func<string>> inDocfDocCategoryCode = null, Expression<Func<string>> inDocfDocGroupCode = null, Expression<Func<string>> inDocfCompanyCode = null, Expression<Func<string>> inDocfDocumentCategoryCode = null, Expression<Func<string>> inDocfDocumentLocationCode = null, Expression<Func<string>> inDoceSDModified = null, Expression<Func<string>> inDoceSUModified = null, Expression<Func<string>> inDoceSDCreated = null, Expression<Func<string>> inDoceSUCreated = null, Expression<Func<bool>> inDocisBLOB = null, Expression<Func<bool>> inDocingoing = null, Expression<Func<string>> inDocfRLSNodeGID = null, Expression<Func<int>> inDocbLOBDATALength = null, Expression<Func<string>> inDocbLOBDATA = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo, ApiConnectionActionConfiguration> ES00DocumentsAddOrUpdateAttachedDocument(Expression<Func<string>> inDocgID = null, Expression<Func<string>> inDoccode = null, Expression<Func<string>> inDoctitle = null, Expression<Func<string>> inDocdescription = null, Expression<Func<string>> inDoccaption = null, Expression<Func<string>> inDoceDate = null, Expression<Func<string>> inDocfType = null, Expression<Func<string>> inDoctableID = null, Expression<Func<string>> inDoctableName = null, Expression<Func<string>> inDocfGID = null, Expression<Func<string>> inDocfDetailLineGID = null, Expression<Func<string>> inDocuNCPath = null, Expression<Func<string>> inDocoriginalPath = null, Expression<Func<string>> inDocoriginalFN = null, Expression<Func<string>> inDocfDocCategoryCode = null, Expression<Func<string>> inDocfDocGroupCode = null, Expression<Func<string>> inDocfCompanyCode = null, Expression<Func<string>> inDocfDocumentCategoryCode = null, Expression<Func<string>> inDocfDocumentLocationCode = null, Expression<Func<string>> inDoceSDModified = null, Expression<Func<string>> inDoceSUModified = null, Expression<Func<string>> inDoceSDCreated = null, Expression<Func<string>> inDoceSUCreated = null, Expression<Func<bool>> inDocisBLOB = null, Expression<Func<bool>> inDocingoing = null, Expression<Func<string>> inDocfRLSNodeGID = null, Expression<Func<int>> inDocbLOBDATALength = null, Expression<Func<string>> inDocbLOBDATA = null)
         {
             var __workflow_inDocgID = WorkflowExpression.Compile(inDocgID, nameof(inDocgID), required: false);
             var __workflow_inDoccode = WorkflowExpression.Compile(inDoccode, nameof(inDoccode), required: false);
@@ -453,7 +453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             var __workflow_inDocfRLSNodeGID = WorkflowExpression.Compile(inDocfRLSNodeGID, nameof(inDocfRLSNodeGID), required: false);
             var __workflow_inDocbLOBDATALength = WorkflowExpression.Compile(inDocbLOBDATALength, nameof(inDocbLOBDATALength), required: false);
             var __workflow_inDocbLOBDATA = WorkflowExpression.Compile(inDocbLOBDATA, nameof(inDocbLOBDATA), required: false);
-            return new DeferredBodyAction<EntersoftWebApiModelsES00DocumentInfo>(() =>
+            return new DeferredBodyAction<EntersoftWebApiModelsES00DocumentInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ES00Documents/AddOrUpdateAttachedDocument/";
                 var apiCallHttpMethod = "post";
@@ -638,13 +638,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ESAsset2FetchWebAsset(Expression<Func<string>> routeId, Expression<Func<bool>> base64 = null, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ESAsset2FetchWebAsset(Expression<Func<string>> routeId, Expression<Func<bool>> base64 = null, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
         {
             var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: true);
             var __workflow_base64 = WorkflowExpression.Compile(base64, nameof(base64), required: false);
             var __workflow_webapitoken = WorkflowExpression.Compile(webapitoken, nameof(webapitoken), required: false);
             var __workflow_partialMode = WorkflowExpression.Compile(partialMode, nameof(partialMode), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/asset2/fetchWebAsset/{0}", __workflow_routeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -660,12 +660,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ESAsset2DownloadAsset(Expression<Func<string>> routeId, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ESAsset2DownloadAsset(Expression<Func<string>> routeId, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
         {
             var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: true);
             var __workflow_webapitoken = WorkflowExpression.Compile(webapitoken, nameof(webapitoken), required: false);
             var __workflow_partialMode = WorkflowExpression.Compile(partialMode, nameof(partialMode), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/asset2/downloadAsset/{0}", __workflow_routeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -679,10 +679,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBGBudgetSheetObj> ESBudgetESBGBudgetSheet(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBGBudgetSheetObj, ApiConnectionActionConfiguration> ESBudgetESBGBudgetSheet(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESBGBudgetSheetObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESBGBudgetSheetObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESBudget/ESBGBudgetSheet/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -692,11 +692,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ESCollaborationBroadcastMessage(Expression<Func<string[]>> msgrecipients = null, Expression<Func<string>> msgmessage = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ESCollaborationBroadcastMessage(Expression<Func<string[]>> msgrecipients = null, Expression<Func<string>> msgmessage = null)
         {
             var __workflow_msgrecipients = WorkflowExpression.Compile(msgrecipients, nameof(msgrecipients), required: false);
             var __workflow_msgmessage = WorkflowExpression.Compile(msgmessage, nameof(msgmessage), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/collaboration/BroadcastMessage/";
                 var apiCallHttpMethod = "post";
@@ -725,13 +725,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IWorkflowAction ESCollaborationSendEmail(Expression<Func<string>> msgfromEmailAddr = null, Expression<Func<string>> msgtoEmailAddr = null, Expression<Func<string>> msgsubject = null, Expression<Func<string>> msgbody = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ESCollaborationSendEmail(Expression<Func<string>> msgfromEmailAddr = null, Expression<Func<string>> msgtoEmailAddr = null, Expression<Func<string>> msgsubject = null, Expression<Func<string>> msgbody = null)
         {
             var __workflow_msgfromEmailAddr = WorkflowExpression.Compile(msgfromEmailAddr, nameof(msgfromEmailAddr), required: false);
             var __workflow_msgtoEmailAddr = WorkflowExpression.Compile(msgtoEmailAddr, nameof(msgtoEmailAddr), required: false);
             var __workflow_msgsubject = WorkflowExpression.Compile(msgsubject, nameof(msgsubject), required: false);
             var __workflow_msgbody = WorkflowExpression.Compile(msgbody, nameof(msgbody), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/collaboration/SendEmail/";
                 var apiCallHttpMethod = "post";
@@ -772,12 +772,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<string[]> ESCollaborationSendSMS(Expression<Func<string>> msgbody = null, Expression<Func<string[]>> msgrecipients = null, Expression<Func<string[]>> msgusers = null)
+        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> ESCollaborationSendSMS(Expression<Func<string>> msgbody = null, Expression<Func<string[]>> msgrecipients = null, Expression<Func<string[]>> msgusers = null)
         {
             var __workflow_msgbody = WorkflowExpression.Compile(msgbody, nameof(msgbody), required: false);
             var __workflow_msgrecipients = WorkflowExpression.Compile(msgrecipients, nameof(msgrecipients), required: false);
             var __workflow_msgusers = WorkflowExpression.Compile(msgusers, nameof(msgusers), required: false);
-            return new DeferredBodyAction<string[]>(() =>
+            return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/collaboration/SendSMS/";
                 var apiCallHttpMethod = "post";
@@ -812,7 +812,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiControllersESViberResponse> ESCollaborationSendViberMessage(Expression<Func<string[]>> msgrecipients = null, Expression<Func<string>> msgdateToSend = null, Expression<Func<int>> msgexpiresInSecs = null, Expression<Func<string>> msgexpiryText = null, Expression<Func<string>> msgfReferenceID = null, Expression<Func<bool>> msgcallback = null, Expression<Func<string>> msgbody = null, Expression<Func<string>> msgimage = null, Expression<Func<string>> msgbuttonAction = null, Expression<Func<string>> msgbuttonCaption = null, Expression<Func<string>> msgsMSFallbacksMSText = null)
+        public IBodyWorkflowAction<EntersoftWebApiControllersESViberResponse, ApiConnectionActionConfiguration> ESCollaborationSendViberMessage(Expression<Func<string[]>> msgrecipients = null, Expression<Func<string>> msgdateToSend = null, Expression<Func<int>> msgexpiresInSecs = null, Expression<Func<string>> msgexpiryText = null, Expression<Func<string>> msgfReferenceID = null, Expression<Func<bool>> msgcallback = null, Expression<Func<string>> msgbody = null, Expression<Func<string>> msgimage = null, Expression<Func<string>> msgbuttonAction = null, Expression<Func<string>> msgbuttonCaption = null, Expression<Func<string>> msgsMSFallbacksMSText = null)
         {
             var __workflow_msgrecipients = WorkflowExpression.Compile(msgrecipients, nameof(msgrecipients), required: false);
             var __workflow_msgdateToSend = WorkflowExpression.Compile(msgdateToSend, nameof(msgdateToSend), required: false);
@@ -825,7 +825,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             var __workflow_msgbuttonAction = WorkflowExpression.Compile(msgbuttonAction, nameof(msgbuttonAction), required: false);
             var __workflow_msgbuttonCaption = WorkflowExpression.Compile(msgbuttonCaption, nameof(msgbuttonCaption), required: false);
             var __workflow_msgsMSFallbacksMSText = WorkflowExpression.Compile(msgsMSFallbacksMSText, nameof(msgsMSFallbacksMSText), required: false);
-            return new DeferredBodyAction<EntersoftWebApiControllersESViberResponse>(() =>
+            return new DeferredBodyAction<EntersoftWebApiControllersESViberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/collaboration/SendViberMessage/";
                 var apiCallHttpMethod = "post";
@@ -924,7 +924,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IWorkflowAction ESCollaborationCreateRFARequest(Expression<Func<string>> rFARequestid, Expression<Func<string>> rFARequestcode, Expression<Func<string>> rFARequestrequestedBy, Expression<Func<bool>> rFARequestisExternal, Expression<Func<rFARequestpriorityInput>> rFARequestpriority = null, Expression<Func<string>> rFARequestrequestClass = null, Expression<Func<string>> rFARequestrequestCategory = null, Expression<Func<double>> rFARequestnumericValue = null, Expression<Func<string>> rFARequesttitle = null, Expression<Func<string[]>> rFARequestrecipientUsers = null, Expression<Func<string[]>> rFARequestrecipientGroups = null, Expression<Func<string>> rFARequestrecipienteMail = null, Expression<Func<string>> rFARequestrecipientPhone = null, Expression<Func<string>> rFARequestrequestedOnUTC = null, Expression<Func<string>> rFARequestexpiresOnUTC = null, Expression<Func<string>> rFARequesttriggeredOn = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ESCollaborationCreateRFARequest(Expression<Func<string>> rFARequestid, Expression<Func<string>> rFARequestcode, Expression<Func<string>> rFARequestrequestedBy, Expression<Func<bool>> rFARequestisExternal, Expression<Func<rFARequestpriorityInput>> rFARequestpriority = null, Expression<Func<string>> rFARequestrequestClass = null, Expression<Func<string>> rFARequestrequestCategory = null, Expression<Func<double>> rFARequestnumericValue = null, Expression<Func<string>> rFARequesttitle = null, Expression<Func<string[]>> rFARequestrecipientUsers = null, Expression<Func<string[]>> rFARequestrecipientGroups = null, Expression<Func<string>> rFARequestrecipienteMail = null, Expression<Func<string>> rFARequestrecipientPhone = null, Expression<Func<string>> rFARequestrequestedOnUTC = null, Expression<Func<string>> rFARequestexpiresOnUTC = null, Expression<Func<string>> rFARequesttriggeredOn = null)
         {
             var __workflow_rFARequestid = WorkflowExpression.Compile(rFARequestid, nameof(rFARequestid), required: true);
             var __workflow_rFARequestcode = WorkflowExpression.Compile(rFARequestcode, nameof(rFARequestcode), required: true);
@@ -942,7 +942,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             var __workflow_rFARequestrequestedOnUTC = WorkflowExpression.Compile(rFARequestrequestedOnUTC, nameof(rFARequestrequestedOnUTC), required: false);
             var __workflow_rFARequestexpiresOnUTC = WorkflowExpression.Compile(rFARequestexpiresOnUTC, nameof(rFARequestexpiresOnUTC), required: false);
             var __workflow_rFARequesttriggeredOn = WorkflowExpression.Compile(rFARequesttriggeredOn, nameof(rFARequesttriggeredOn), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/collaboration/CreateRFARequest/";
                 var apiCallHttpMethod = "post";
@@ -1059,7 +1059,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IWorkflowAction ESCollaborationRespondToRFARequest(Expression<Func<string>> rFAResponseid, Expression<Func<string>> rFAResponsecode, Expression<Func<string>> rFAResponseresponseBy, Expression<Func<string>> rFAResponseresponseOrigin, Expression<Func<string>> rFAResponseresponseOnUTC, Expression<Func<string>> rFAResponseresponseComments = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ESCollaborationRespondToRFARequest(Expression<Func<string>> rFAResponseid, Expression<Func<string>> rFAResponsecode, Expression<Func<string>> rFAResponseresponseBy, Expression<Func<string>> rFAResponseresponseOrigin, Expression<Func<string>> rFAResponseresponseOnUTC, Expression<Func<string>> rFAResponseresponseComments = null)
         {
             var __workflow_rFAResponseid = WorkflowExpression.Compile(rFAResponseid, nameof(rFAResponseid), required: true);
             var __workflow_rFAResponsecode = WorkflowExpression.Compile(rFAResponsecode, nameof(rFAResponsecode), required: true);
@@ -1067,7 +1067,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             var __workflow_rFAResponseresponseOrigin = WorkflowExpression.Compile(rFAResponseresponseOrigin, nameof(rFAResponseresponseOrigin), required: true);
             var __workflow_rFAResponseresponseOnUTC = WorkflowExpression.Compile(rFAResponseresponseOnUTC, nameof(rFAResponseresponseOnUTC), required: true);
             var __workflow_rFAResponseresponseComments = WorkflowExpression.Compile(rFAResponseresponseComments, nameof(rFAResponseresponseComments), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/collaboration/RespondToRFARequest/";
                 var apiCallHttpMethod = "post";
@@ -1100,10 +1100,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESRFARequest> ESCollaborationFetchRequest(Expression<Func<string>> requestID)
+        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESRFARequest, ApiConnectionActionConfiguration> ESCollaborationFetchRequest(Expression<Func<string>> requestID)
         {
             var __workflow_requestID = WorkflowExpression.Compile(requestID, nameof(requestID), required: true);
-            return new DeferredBodyAction<EntersoftWebApiInfrastructureESRFARequest>(() =>
+            return new DeferredBodyAction<EntersoftWebApiInfrastructureESRFARequest, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/collaboration/FetchRequest/";
                 var apiCallHttpMethod = "get";
@@ -1114,10 +1114,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<string> ESRPCPingServer(Expression<Func<string>> routeid)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ESRPCPingServer(Expression<Func<string>> routeid)
         {
             var __workflow_routeid = WorkflowExpression.Compile(routeid, nameof(routeid), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rpc/PingServer/{0}", __workflow_routeid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1127,10 +1127,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ESTestEBSConnectionTest(Expression<Func<string>> routeid)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ESTestEBSConnectionTest(Expression<Func<string>> routeid)
         {
             var __workflow_routeid = WorkflowExpression.Compile(routeid, nameof(routeid), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/esapi/estest/EBSConnectionTest/{0}", __workflow_routeid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1140,11 +1140,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IWorkflowAction ESEntityDeleteEntityByID(Expression<Func<string>> entityID, Expression<Func<string>> pK)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ESEntityDeleteEntityByID(Expression<Func<string>> entityID, Expression<Func<string>> pK)
         {
             var __workflow_entityID = WorkflowExpression.Compile(entityID, nameof(entityID), required: true);
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/esentity/DeleteEntityByID/";
                 var apiCallHttpMethod = "delete";
@@ -1156,11 +1156,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IWorkflowAction ESEntityDeleteEntityByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<string>> pK)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ESEntityDeleteEntityByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<string>> pK)
         {
             var __workflow_entityType = WorkflowExpression.Compile(entityType, nameof(entityType), required: true);
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/esentity/DeleteEntityByType/";
                 var apiCallHttpMethod = "delete";
@@ -1172,11 +1172,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IWorkflowAction ESEntityUpdateEntityByID(Expression<Func<string>> entityID, Expression<Func<string>> pK)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ESEntityUpdateEntityByID(Expression<Func<string>> entityID, Expression<Func<string>> pK)
         {
             var __workflow_entityID = WorkflowExpression.Compile(entityID, nameof(entityID), required: true);
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/esentity/UpdateEntityByID/";
                 var apiCallHttpMethod = "put";
@@ -1195,11 +1195,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IWorkflowAction ESEntityUpdateEntityByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<string>> pK)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ESEntityUpdateEntityByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<string>> pK)
         {
             var __workflow_entityType = WorkflowExpression.Compile(entityType, nameof(entityType), required: true);
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/esentity/UpdateEntityByType/";
                 var apiCallHttpMethod = "put";
@@ -1218,10 +1218,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiApiControllersESCreatedEntityInfo> ESEntityCreateEntityByID(Expression<Func<string>> entityID)
+        public IBodyWorkflowAction<EntersoftWebApiApiControllersESCreatedEntityInfo, ApiConnectionActionConfiguration> ESEntityCreateEntityByID(Expression<Func<string>> entityID)
         {
             var __workflow_entityID = WorkflowExpression.Compile(entityID, nameof(entityID), required: true);
-            return new DeferredBodyAction<EntersoftWebApiApiControllersESCreatedEntityInfo>(() =>
+            return new DeferredBodyAction<EntersoftWebApiApiControllersESCreatedEntityInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/esentity/CreateEntityByID/";
                 var apiCallHttpMethod = "post";
@@ -1239,10 +1239,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiApiControllersESCreatedEntityInfo> ESEntityCreateEntityByType(Expression<Func<entityTypeInput>> entityType)
+        public IBodyWorkflowAction<EntersoftWebApiApiControllersESCreatedEntityInfo, ApiConnectionActionConfiguration> ESEntityCreateEntityByType(Expression<Func<entityTypeInput>> entityType)
         {
             var __workflow_entityType = WorkflowExpression.Compile(entityType, nameof(entityType), required: true);
-            return new DeferredBodyAction<EntersoftWebApiApiControllersESCreatedEntityInfo>(() =>
+            return new DeferredBodyAction<EntersoftWebApiApiControllersESCreatedEntityInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/esentity/CreateEntityByType/";
                 var apiCallHttpMethod = "post";
@@ -1260,11 +1260,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBaseEntity> ESEntityEntityByID(Expression<Func<string>> entityID, Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBaseEntity, ApiConnectionActionConfiguration> ESEntityEntityByID(Expression<Func<string>> entityID, Expression<Func<string>> pK)
         {
             var __workflow_entityID = WorkflowExpression.Compile(entityID, nameof(entityID), required: true);
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESBaseEntity>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESBaseEntity, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/esentity/EntityByID/";
                 var apiCallHttpMethod = "get";
@@ -1276,11 +1276,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBaseEntity> ESEntityEntityByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBaseEntity, ApiConnectionActionConfiguration> ESEntityEntityByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<string>> pK)
         {
             var __workflow_entityType = WorkflowExpression.Compile(entityType, nameof(entityType), required: true);
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESBaseEntity>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESBaseEntity, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/esentity/EntityByType/";
                 var apiCallHttpMethod = "get";
@@ -1292,14 +1292,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESEntityEntitiesByID(Expression<Func<string>> entityID, Expression<Func<string[]>> fetchOptionsselectFields = null, Expression<Func<string[]>> fetchOptionsorderByFields = null, Expression<Func<int>> fetchOptionspage = null, Expression<Func<int>> fetchOptionspageSize = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult, ApiConnectionActionConfiguration> ESEntityEntitiesByID(Expression<Func<string>> entityID, Expression<Func<string[]>> fetchOptionsselectFields = null, Expression<Func<string[]>> fetchOptionsorderByFields = null, Expression<Func<int>> fetchOptionspage = null, Expression<Func<int>> fetchOptionspageSize = null)
         {
             var __workflow_entityID = WorkflowExpression.Compile(entityID, nameof(entityID), required: true);
             var __workflow_fetchOptionsselectFields = WorkflowExpression.Compile(fetchOptionsselectFields, nameof(fetchOptionsselectFields), required: false);
             var __workflow_fetchOptionsorderByFields = WorkflowExpression.Compile(fetchOptionsorderByFields, nameof(fetchOptionsorderByFields), required: false);
             var __workflow_fetchOptionspage = WorkflowExpression.Compile(fetchOptionspage, nameof(fetchOptionspage), required: false);
             var __workflow_fetchOptionspageSize = WorkflowExpression.Compile(fetchOptionspageSize, nameof(fetchOptionspageSize), required: false);
-            return new DeferredBodyAction<EntersoftWebApiModelsESPQResult>(() =>
+            return new DeferredBodyAction<EntersoftWebApiModelsESPQResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/esentity/EntitiesByID/";
                 var apiCallHttpMethod = "post";
@@ -1369,14 +1369,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESEntityEntitiesByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<string[]>> fetchOptionsselectFields = null, Expression<Func<string[]>> fetchOptionsorderByFields = null, Expression<Func<int>> fetchOptionspage = null, Expression<Func<int>> fetchOptionspageSize = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult, ApiConnectionActionConfiguration> ESEntityEntitiesByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<string[]>> fetchOptionsselectFields = null, Expression<Func<string[]>> fetchOptionsorderByFields = null, Expression<Func<int>> fetchOptionspage = null, Expression<Func<int>> fetchOptionspageSize = null)
         {
             var __workflow_entityType = WorkflowExpression.Compile(entityType, nameof(entityType), required: true);
             var __workflow_fetchOptionsselectFields = WorkflowExpression.Compile(fetchOptionsselectFields, nameof(fetchOptionsselectFields), required: false);
             var __workflow_fetchOptionsorderByFields = WorkflowExpression.Compile(fetchOptionsorderByFields, nameof(fetchOptionsorderByFields), required: false);
             var __workflow_fetchOptionspage = WorkflowExpression.Compile(fetchOptionspage, nameof(fetchOptionspage), required: false);
             var __workflow_fetchOptionspageSize = WorkflowExpression.Compile(fetchOptionspageSize, nameof(fetchOptionspageSize), required: false);
-            return new DeferredBodyAction<EntersoftWebApiModelsESPQResult>(() =>
+            return new DeferredBodyAction<EntersoftWebApiModelsESPQResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/esentity/EntitiesByType/";
                 var apiCallHttpMethod = "post";
@@ -1446,11 +1446,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ESEntityEntityAutomationNew(Expression<Func<string>> entity, Expression<Func<string>> operation)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ESEntityEntityAutomationNew(Expression<Func<string>> entity, Expression<Func<string>> operation)
         {
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_operation = WorkflowExpression.Compile(operation, nameof(operation), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/esentity/EntityAutomationNew/";
                 var apiCallHttpMethod = "post";
@@ -1469,13 +1469,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ESEntityEntityAutomationUpdate(Expression<Func<string>> entity, Expression<Func<string>> field, Expression<Func<string>> id, Expression<Func<string>> operation)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ESEntityEntityAutomationUpdate(Expression<Func<string>> entity, Expression<Func<string>> field, Expression<Func<string>> id, Expression<Func<string>> operation)
         {
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_field = WorkflowExpression.Compile(field, nameof(field), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_operation = WorkflowExpression.Compile(operation, nameof(operation), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/esentity/EntityAutomationUpdate/";
                 var apiCallHttpMethod = "post";
@@ -1496,12 +1496,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ESEntityEntityAutomationUpdateByCode(Expression<Func<string>> entity, Expression<Func<string>> id, Expression<Func<string>> operation)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ESEntityEntityAutomationUpdateByCode(Expression<Func<string>> entity, Expression<Func<string>> id, Expression<Func<string>> operation)
         {
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_operation = WorkflowExpression.Compile(operation, nameof(operation), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/esentity/EntityAutomationUpdateByCode/";
                 var apiCallHttpMethod = "post";
@@ -1521,10 +1521,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentTradeObj> ESFinancialsESFIDocumentTrade(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentTradeObj, ApiConnectionActionConfiguration> ESFinancialsESFIDocumentTrade(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIDocumentTradeObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIDocumentTradeObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFIDocumentTrade/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1534,10 +1534,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemExpensesObj> ESFinancialsESFIItemExpenses(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemExpensesObj, ApiConnectionActionConfiguration> ESFinancialsESFIItemExpenses(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIItemExpensesObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIItemExpensesObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFIItemExpenses/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1547,10 +1547,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICreditorObj> ESFinancialsESFICreditor(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICreditorObj, ApiConnectionActionConfiguration> ESFinancialsESFICreditor(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFICreditorObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFICreditorObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFICreditor/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1560,10 +1560,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentCashObj> ESFinancialsESFIDocumentCash(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentCashObj, ApiConnectionActionConfiguration> ESFinancialsESFIDocumentCash(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIDocumentCashObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIDocumentCashObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFIDocumentCash/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1573,10 +1573,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStockOrderPlanObj> ESFinancialsESMMStockOrderPlan(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStockOrderPlanObj, ApiConnectionActionConfiguration> ESFinancialsESMMStockOrderPlan(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMStockOrderPlanObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMStockOrderPlanObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESMMStockOrderPlan/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1586,10 +1586,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISupplierObj> ESFinancialsESFISupplier(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISupplierObj, ApiConnectionActionConfiguration> ESFinancialsESFISupplier(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFISupplierObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFISupplierObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFISupplier/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1599,10 +1599,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemExpenseObj> ESFinancialsESFIItemExpense(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemExpenseObj, ApiConnectionActionConfiguration> ESFinancialsESFIItemExpense(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIItemExpenseObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIItemExpenseObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFIItemExpense/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1612,10 +1612,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISalesPersonObj> ESFinancialsESFISalesPerson(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISalesPersonObj, ApiConnectionActionConfiguration> ESFinancialsESFISalesPerson(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFISalesPersonObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFISalesPersonObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFISalesPerson/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1625,10 +1625,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIPaymentMethodObj> ESFinancialsESFIPaymentMethod(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIPaymentMethodObj, ApiConnectionActionConfiguration> ESFinancialsESFIPaymentMethod(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIPaymentMethodObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIPaymentMethodObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFIPaymentMethod/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1638,10 +1638,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemObj> ESFinancialsESFIItem(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemObj, ApiConnectionActionConfiguration> ESFinancialsESFIItem(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIItemObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIItemObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFIItem/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1651,10 +1651,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISpecialAccountObj> ESFinancialsESFISpecialAccount(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISpecialAccountObj, ApiConnectionActionConfiguration> ESFinancialsESFISpecialAccount(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFISpecialAccountObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFISpecialAccountObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFISpecialAccount/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1664,10 +1664,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentStockObj> ESFinancialsESFIDocumentStock(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentStockObj, ApiConnectionActionConfiguration> ESFinancialsESFIDocumentStock(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIDocumentStockObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIDocumentStockObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFIDocumentStock/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1677,10 +1677,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFINoteObj> ESFinancialsESFINote(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFINoteObj, ApiConnectionActionConfiguration> ESFinancialsESFINote(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFINoteObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFINoteObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFINote/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1690,10 +1690,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFITradeAccountContractObj> ESFinancialsESFITradeAccountContract(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFITradeAccountContractObj, ApiConnectionActionConfiguration> ESFinancialsESFITradeAccountContract(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFITradeAccountContractObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFITradeAccountContractObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFITradeAccountContract/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1703,10 +1703,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIVoucherObj> ESFinancialsESFIVoucher(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIVoucherObj, ApiConnectionActionConfiguration> ESFinancialsESFIVoucher(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIVoucherObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIVoucherObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFIVoucher/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1716,10 +1716,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICustomerObj> ESFinancialsESFICustomer(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICustomerObj, ApiConnectionActionConfiguration> ESFinancialsESFICustomer(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFICustomerObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFICustomerObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFICustomer/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1729,10 +1729,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDebtorObj> ESFinancialsESFIDebtor(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDebtorObj, ApiConnectionActionConfiguration> ESFinancialsESFIDebtor(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIDebtorObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIDebtorObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFIDebtor/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1742,10 +1742,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIPricelistObj> ESFinancialsESFIPricelist(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIPricelistObj, ApiConnectionActionConfiguration> ESFinancialsESFIPricelist(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIPricelistObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIPricelistObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFIPricelist/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1755,10 +1755,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemServiceObj> ESFinancialsESFIItemService(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemServiceObj, ApiConnectionActionConfiguration> ESFinancialsESFIItemService(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIItemServiceObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIItemServiceObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFIItemService/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1768,10 +1768,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICashAccountObj> ESFinancialsESFICashAccount(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICashAccountObj, ApiConnectionActionConfiguration> ESFinancialsESFICashAccount(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFICashAccountObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFICashAccountObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFICashAccount/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1781,10 +1781,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObj> ESFinancialsESFIDocumentAdjustment(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObj, ApiConnectionActionConfiguration> ESFinancialsESFIDocumentAdjustment(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFIDocumentAdjustment/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1794,10 +1794,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFITradeAccountObj> ESFinancialsESFITradeAccount(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFITradeAccountObj, ApiConnectionActionConfiguration> ESFinancialsESFITradeAccount(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFITradeAccountObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFITradeAccountObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFinancials/ESFITradeAccount/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1807,10 +1807,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFAFixedAssetObj> ESFixedAssetESFAFixedAsset(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFAFixedAssetObj, ApiConnectionActionConfiguration> ESFixedAssetESFAFixedAsset(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFAFixedAssetObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESFAFixedAssetObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESFixedAsset/ESFAFixedAsset/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1820,10 +1820,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOPersonObj> ESGlobalObjectsESGOPerson(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOPersonObj, ApiConnectionActionConfiguration> ESGlobalObjectsESGOPerson(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESGOPersonObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESGOPersonObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESGlobalObjects/ESGOPerson/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1833,10 +1833,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsES00DeviceObj> ESGlobalObjectsES00Device(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsES00DeviceObj, ApiConnectionActionConfiguration> ESGlobalObjectsES00Device(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsES00DeviceObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsES00DeviceObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESGlobalObjects/ES00Device/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1846,10 +1846,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOWebUserObj> ESGlobalObjectsESGOWebUser(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOWebUserObj, ApiConnectionActionConfiguration> ESGlobalObjectsESGOWebUser(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESGOWebUserObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESGOWebUserObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESGlobalObjects/ESGOWebUser/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1859,10 +1859,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOUserObj> ESGlobalObjectsESGOUser(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOUserObj, ApiConnectionActionConfiguration> ESGlobalObjectsESGOUser(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESGOUserObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESGOUserObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESGlobalObjects/ESGOUser/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1872,10 +1872,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse> ESBusinessHookGet(Expression<Func<string>> hookID)
+        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse, ApiConnectionActionConfiguration> ESBusinessHookGet(Expression<Func<string>> hookID)
         {
             var __workflow_hookID = WorkflowExpression.Compile(hookID, nameof(hookID), required: true);
-            return new DeferredBodyAction<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse>(() =>
+            return new DeferredBodyAction<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/businesshook/{0}", __workflow_hookID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1885,10 +1885,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> ESPodHookGet(Expression<Func<string>> hookID)
+        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESPodHookRegistrationResponse, ApiConnectionActionConfiguration> ESPodHookGet(Expression<Func<string>> hookID)
         {
             var __workflow_hookID = WorkflowExpression.Compile(hookID, nameof(hookID), required: true);
-            return new DeferredBodyAction<EntersoftWebApiInfrastructureESPodHookRegistrationResponse>(() =>
+            return new DeferredBodyAction<EntersoftWebApiInfrastructureESPodHookRegistrationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/podhook/{0}", __workflow_hookID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1898,10 +1898,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> ESRFAHookGet(Expression<Func<string>> hookID)
+        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse, ApiConnectionActionConfiguration> ESRFAHookGet(Expression<Func<string>> hookID)
         {
             var __workflow_hookID = WorkflowExpression.Compile(hookID, nameof(hookID), required: true);
-            return new DeferredBodyAction<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse>(() =>
+            return new DeferredBodyAction<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rfahook/{0}", __workflow_hookID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1911,10 +1911,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> ESHookGet(Expression<Func<string>> hookID)
+        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse, ApiConnectionActionConfiguration> ESHookGet(Expression<Func<string>> hookID)
         {
             var __workflow_hookID = WorkflowExpression.Compile(hookID, nameof(hookID), required: true);
-            return new DeferredBodyAction<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse>(() =>
+            return new DeferredBodyAction<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/hook/{0}", __workflow_hookID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1924,10 +1924,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> ESSystemHookGet(Expression<Func<string>> hookID)
+        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse, ApiConnectionActionConfiguration> ESSystemHookGet(Expression<Func<string>> hookID)
         {
             var __workflow_hookID = WorkflowExpression.Compile(hookID, nameof(hookID), required: true);
-            return new DeferredBodyAction<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse>(() =>
+            return new DeferredBodyAction<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/systemhook/{0}", __workflow_hookID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1937,10 +1937,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMLModelObj> ESMachineLearningESMLModel(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMLModelObj, ApiConnectionActionConfiguration> ESMachineLearningESMLModel(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMLModelObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMLModelObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESMachineLearning/ESMLModel/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1950,10 +1950,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMSerialNumberObj> ESMaterialManagementESMMSerialNumber(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMSerialNumberObj, ApiConnectionActionConfiguration> ESMaterialManagementESMMSerialNumber(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMSerialNumberObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMSerialNumberObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESMaterialManagement/ESMMSerialNumber/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1963,10 +1963,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMCatalogueItemObj> ESMaterialManagementESMMCatalogueItem(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMCatalogueItemObj, ApiConnectionActionConfiguration> ESMaterialManagementESMMCatalogueItem(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMCatalogueItemObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMCatalogueItemObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESMaterialManagement/ESMMCatalogueItem/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1976,10 +1976,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStorageLocationObj> ESMaterialManagementESMMStorageLocation(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStorageLocationObj, ApiConnectionActionConfiguration> ESMaterialManagementESMMStorageLocation(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMStorageLocationObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMStorageLocationObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESMaterialManagement/ESMMStorageLocation/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1989,10 +1989,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStockItemObj> ESMaterialManagementESMMStockItem(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStockItemObj, ApiConnectionActionConfiguration> ESMaterialManagementESMMStockItem(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMStockItemObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMStockItemObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESMaterialManagement/ESMMStockItem/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2002,10 +2002,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMCommercialProfileObj> ESMaterialManagementESMMCommercialProfile(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMCommercialProfileObj, ApiConnectionActionConfiguration> ESMaterialManagementESMMCommercialProfile(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMCommercialProfileObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMCommercialProfileObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESMaterialManagement/ESMMCommercialProfile/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2015,10 +2015,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMSortimentObj> ESMaterialManagementESMMSortiment(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMSortimentObj, ApiConnectionActionConfiguration> ESMaterialManagementESMMSortiment(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMSortimentObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMSortimentObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESMaterialManagement/ESMMSortiment/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2028,10 +2028,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMLotObj> ESMaterialManagementESMMLot(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMLotObj, ApiConnectionActionConfiguration> ESMaterialManagementESMMLot(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMLotObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMLotObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESMaterialManagement/ESMMLot/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2041,10 +2041,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMProductionPlanObj> ESMaterialManagementESMMProductionPlan(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMProductionPlanObj, ApiConnectionActionConfiguration> ESMaterialManagementESMMProductionPlan(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMProductionPlanObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESMMProductionPlanObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESMaterialManagement/ESMMProductionPlan/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2054,10 +2054,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ESDeviceFetchDeviceInfo(Expression<Func<string>> deviceCode)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ESDeviceFetchDeviceInfo(Expression<Func<string>> deviceCode)
         {
             var __workflow_deviceCode = WorkflowExpression.Compile(deviceCode, nameof(deviceCode), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/device/fetchDeviceInfo/{0}", __workflow_deviceCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2067,10 +2067,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPropertySet> ESRPCFetchPropertySet(Expression<Func<string>> routeId)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESPropertySet, ApiConnectionActionConfiguration> ESRPCFetchPropertySet(Expression<Func<string>> routeId)
         {
             var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: true);
-            return new DeferredBodyAction<EntersoftWebApiModelsESPropertySet>(() =>
+            return new DeferredBodyAction<EntersoftWebApiModelsESPropertySet, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rpc/fetchPropertySet/{0}", __workflow_routeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2080,10 +2080,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESScale> ESRPCFetchESScale(Expression<Func<string>> routeId)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESScale, ApiConnectionActionConfiguration> ESRPCFetchESScale(Expression<Func<string>> routeId)
         {
             var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: true);
-            return new DeferredBodyAction<EntersoftWebApiModelsESScale>(() =>
+            return new DeferredBodyAction<EntersoftWebApiModelsESScale, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rpc/fetchESScale/{0}", __workflow_routeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2093,10 +2093,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPQLayout> ESRPCPublicQueryLayout(Expression<Func<string>> routeId)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESPQLayout, ApiConnectionActionConfiguration> ESRPCPublicQueryLayout(Expression<Func<string>> routeId)
         {
             var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: true);
-            return new DeferredBodyAction<EntersoftWebApiModelsESPQLayout>(() =>
+            return new DeferredBodyAction<EntersoftWebApiModelsESPQLayout, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rpc/PublicQueryLayout/{0}", __workflow_routeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2106,13 +2106,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESRPCGetPQData(Expression<Func<string>> routeId, Expression<Func<int>> pqOptionsPage = null, Expression<Func<int>> pqOptionsPageSize = null, Expression<Func<bool>> pqOptionsWithCount = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult, ApiConnectionActionConfiguration> ESRPCGetPQData(Expression<Func<string>> routeId, Expression<Func<int>> pqOptionsPage = null, Expression<Func<int>> pqOptionsPageSize = null, Expression<Func<bool>> pqOptionsWithCount = null)
         {
             var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: true);
             var __workflow_pqOptionsPage = WorkflowExpression.Compile(pqOptionsPage, nameof(pqOptionsPage), required: false);
             var __workflow_pqOptionsPageSize = WorkflowExpression.Compile(pqOptionsPageSize, nameof(pqOptionsPageSize), required: false);
             var __workflow_pqOptionsWithCount = WorkflowExpression.Compile(pqOptionsWithCount, nameof(pqOptionsWithCount), required: false);
-            return new DeferredBodyAction<EntersoftWebApiModelsESPQResult>(() =>
+            return new DeferredBodyAction<EntersoftWebApiModelsESPQResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rpc/GetPQData/{0}", __workflow_routeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2128,10 +2128,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<string> ESRPCFIImportDocument(Expression<Func<string>> inputXMLAsString = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ESRPCFIImportDocument(Expression<Func<string>> inputXMLAsString = null)
         {
             var __workflow_inputXMLAsString = WorkflowExpression.Compile(inputXMLAsString, nameof(inputXMLAsString), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/rpc/FIImportDocument/";
                 var apiCallHttpMethod = "post";
@@ -2142,13 +2142,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESRPCGetPQData2(Expression<Func<string>> routeId, Expression<Func<int>> pqOptionsPage = null, Expression<Func<int>> pqOptionsPageSize = null, Expression<Func<bool>> pqOptionsWithCount = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult, ApiConnectionActionConfiguration> ESRPCGetPQData2(Expression<Func<string>> routeId, Expression<Func<int>> pqOptionsPage = null, Expression<Func<int>> pqOptionsPageSize = null, Expression<Func<bool>> pqOptionsWithCount = null)
         {
             var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: true);
             var __workflow_pqOptionsPage = WorkflowExpression.Compile(pqOptionsPage, nameof(pqOptionsPage), required: false);
             var __workflow_pqOptionsPageSize = WorkflowExpression.Compile(pqOptionsPageSize, nameof(pqOptionsPageSize), required: false);
             var __workflow_pqOptionsWithCount = WorkflowExpression.Compile(pqOptionsWithCount, nameof(pqOptionsWithCount), required: false);
-            return new DeferredBodyAction<EntersoftWebApiModelsESPQResult>(() =>
+            return new DeferredBodyAction<EntersoftWebApiModelsESPQResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rpc/GetPQData2/{0}", __workflow_routeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -2171,12 +2171,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<bool> ESRPCLog(Expression<Func<string>> iD, Expression<Func<string>> description = null, Expression<Func<severityInput>> severity = null)
+        public IBodyWorkflowAction<bool, ApiConnectionActionConfiguration> ESRPCLog(Expression<Func<string>> iD, Expression<Func<string>> description = null, Expression<Func<severityInput>> severity = null)
         {
             var __workflow_iD = WorkflowExpression.Compile(iD, nameof(iD), required: true);
             var __workflow_description = WorkflowExpression.Compile(description, nameof(description), required: false);
             var __workflow_severity = WorkflowExpression.Compile(severity, nameof(severity), required: false);
-            return new DeferredBodyAction<bool>(() =>
+            return new DeferredBodyAction<bool, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/rpc/Log/";
                 var apiCallHttpMethod = "post";
@@ -2191,10 +2191,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsCompanyParamEx> ESRPCFetchCompanyParam(Expression<Func<string>> routeId)
+        public IBodyWorkflowAction<EntersoftWebApiModelsCompanyParamEx, ApiConnectionActionConfiguration> ESRPCFetchCompanyParam(Expression<Func<string>> routeId)
         {
             var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: true);
-            return new DeferredBodyAction<EntersoftWebApiModelsCompanyParamEx>(() =>
+            return new DeferredBodyAction<EntersoftWebApiModelsCompanyParamEx, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rpc/FetchCompanyParam/{0}", __workflow_routeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2204,10 +2204,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ESRPCParameterValue(Expression<Func<string>> routeId)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ESRPCParameterValue(Expression<Func<string>> routeId)
         {
             var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rpc/ParameterValue/{0}", __workflow_routeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2217,10 +2217,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsCompanyParamEx[]> ESRPCFetchCompanyParams(Expression<Func<string>> routeId)
+        public IBodyWorkflowAction<EntersoftWebApiModelsCompanyParamEx[], ApiConnectionActionConfiguration> ESRPCFetchCompanyParams(Expression<Func<string>> routeId)
         {
             var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: true);
-            return new DeferredBodyAction<EntersoftWebApiModelsCompanyParamEx[]>(() =>
+            return new DeferredBodyAction<EntersoftWebApiModelsCompanyParamEx[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rpc/FetchCompanyParams/{0}", __workflow_routeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2230,7 +2230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut> ESRPCExecuteScrollerCommand(Expression<Func<string>> eSScrollerCommandscrollerID, Expression<Func<string>> eSScrollerCommandcommandID, Expression<Func<string>> eSScrollerCommandscrollerDatasetJson = null, Expression<Func<bool>> eSScrollerCommandrequiresTransaction = null, Expression<Func<bool>> eSScrollerCommandonlyPrepareTargetDatasets = null, Expression<Func<bool>> eSScrollerCommandreturnTargetDatasets = null, Expression<Func<bool>> eSScrollerCommandreturnScrollerDataset = null, Expression<Func<bool>> eSScrollerCommandreturnEntersoftDatasets = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut, ApiConnectionActionConfiguration> ESRPCExecuteScrollerCommand(Expression<Func<string>> eSScrollerCommandscrollerID, Expression<Func<string>> eSScrollerCommandcommandID, Expression<Func<string>> eSScrollerCommandscrollerDatasetJson = null, Expression<Func<bool>> eSScrollerCommandrequiresTransaction = null, Expression<Func<bool>> eSScrollerCommandonlyPrepareTargetDatasets = null, Expression<Func<bool>> eSScrollerCommandreturnTargetDatasets = null, Expression<Func<bool>> eSScrollerCommandreturnScrollerDataset = null, Expression<Func<bool>> eSScrollerCommandreturnEntersoftDatasets = null)
         {
             var __workflow_eSScrollerCommandscrollerID = WorkflowExpression.Compile(eSScrollerCommandscrollerID, nameof(eSScrollerCommandscrollerID), required: true);
             var __workflow_eSScrollerCommandcommandID = WorkflowExpression.Compile(eSScrollerCommandcommandID, nameof(eSScrollerCommandcommandID), required: true);
@@ -2240,7 +2240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             var __workflow_eSScrollerCommandreturnTargetDatasets = WorkflowExpression.Compile(eSScrollerCommandreturnTargetDatasets, nameof(eSScrollerCommandreturnTargetDatasets), required: false);
             var __workflow_eSScrollerCommandreturnScrollerDataset = WorkflowExpression.Compile(eSScrollerCommandreturnScrollerDataset, nameof(eSScrollerCommandreturnScrollerDataset), required: false);
             var __workflow_eSScrollerCommandreturnEntersoftDatasets = WorkflowExpression.Compile(eSScrollerCommandreturnEntersoftDatasets, nameof(eSScrollerCommandreturnEntersoftDatasets), required: false);
-            return new DeferredBodyAction<EntersoftWebApiModelsESScrollerCommandOut>(() =>
+            return new DeferredBodyAction<EntersoftWebApiModelsESScrollerCommandOut, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/rpc/ExecuteScrollerCommand/";
                 var apiCallHttpMethod = "post";
@@ -2329,11 +2329,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut> ESRPCExecuteCommand(Expression<Func<string>> eSCommandInscrollerID, Expression<Func<string>> eSCommandIncommandID)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut, ApiConnectionActionConfiguration> ESRPCExecuteCommand(Expression<Func<string>> eSCommandInscrollerID, Expression<Func<string>> eSCommandIncommandID)
         {
             var __workflow_eSCommandInscrollerID = WorkflowExpression.Compile(eSCommandInscrollerID, nameof(eSCommandInscrollerID), required: true);
             var __workflow_eSCommandIncommandID = WorkflowExpression.Compile(eSCommandIncommandID, nameof(eSCommandIncommandID), required: true);
-            return new DeferredBodyAction<EntersoftWebApiModelsESScrollerCommandOut>(() =>
+            return new DeferredBodyAction<EntersoftWebApiModelsESScrollerCommandOut, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/rpc/ExecuteCommand/";
                 var apiCallHttpMethod = "post";
@@ -2370,7 +2370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESFormCommandOut> ESRPCExecuteFormCommand(Expression<Func<string>> formCommandentityID = null, Expression<Func<string>> formCommandcommandID = null, Expression<Func<string>> formCommandentityDatasetJson = null, Expression<Func<string>> formCommandentityGID = null, Expression<Func<string[]>> formCommandentityGIDs = null, Expression<Func<string>> formCommandentityCode = null, Expression<Func<string[]>> formCommandentityCodes = null, Expression<Func<string>> formCommandentityScrollerID = null, Expression<Func<bool>> formCommandrequiresTransaction = null, Expression<Func<bool>> formCommandcreateNewEmptySourceEntity = null, Expression<Func<bool>> formCommandonlyPrepareTargetDatasets = null, Expression<Func<bool>> formCommandreturnSourceDatasets = null, Expression<Func<bool>> formCommandreturnTargetDatasets = null, Expression<Func<bool>> formCommandreturnMap = null, Expression<Func<bool>> formCommandreturnEntersoftDatasets = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESFormCommandOut, ApiConnectionActionConfiguration> ESRPCExecuteFormCommand(Expression<Func<string>> formCommandentityID = null, Expression<Func<string>> formCommandcommandID = null, Expression<Func<string>> formCommandentityDatasetJson = null, Expression<Func<string>> formCommandentityGID = null, Expression<Func<string[]>> formCommandentityGIDs = null, Expression<Func<string>> formCommandentityCode = null, Expression<Func<string[]>> formCommandentityCodes = null, Expression<Func<string>> formCommandentityScrollerID = null, Expression<Func<bool>> formCommandrequiresTransaction = null, Expression<Func<bool>> formCommandcreateNewEmptySourceEntity = null, Expression<Func<bool>> formCommandonlyPrepareTargetDatasets = null, Expression<Func<bool>> formCommandreturnSourceDatasets = null, Expression<Func<bool>> formCommandreturnTargetDatasets = null, Expression<Func<bool>> formCommandreturnMap = null, Expression<Func<bool>> formCommandreturnEntersoftDatasets = null)
         {
             var __workflow_formCommandentityID = WorkflowExpression.Compile(formCommandentityID, nameof(formCommandentityID), required: false);
             var __workflow_formCommandcommandID = WorkflowExpression.Compile(formCommandcommandID, nameof(formCommandcommandID), required: false);
@@ -2387,7 +2387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             var __workflow_formCommandreturnTargetDatasets = WorkflowExpression.Compile(formCommandreturnTargetDatasets, nameof(formCommandreturnTargetDatasets), required: false);
             var __workflow_formCommandreturnMap = WorkflowExpression.Compile(formCommandreturnMap, nameof(formCommandreturnMap), required: false);
             var __workflow_formCommandreturnEntersoftDatasets = WorkflowExpression.Compile(formCommandreturnEntersoftDatasets, nameof(formCommandreturnEntersoftDatasets), required: false);
-            return new DeferredBodyAction<EntersoftWebApiModelsESFormCommandOut>(() =>
+            return new DeferredBodyAction<EntersoftWebApiModelsESFormCommandOut, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/rpc/ExecuteFormCommand/";
                 var apiCallHttpMethod = "post";
@@ -2534,10 +2534,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> GETESRPCEbsService2(Expression<Func<string>> routeId)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GETESRPCEbsService2(Expression<Func<string>> routeId)
         {
             var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rpc/EbsService2/{0}", __workflow_routeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2547,10 +2547,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> POSTESRPCEbsService2(Expression<Func<string>> routeId)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> POSTESRPCEbsService2(Expression<Func<string>> routeId)
         {
             var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rpc/EbsService2/{0}", __workflow_routeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -2560,10 +2560,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMMobileTaskTypeObj> ESTaskManagementESTMMobileTaskType(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMMobileTaskTypeObj, ApiConnectionActionConfiguration> ESTaskManagementESTMMobileTaskType(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMMobileTaskTypeObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMMobileTaskTypeObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESTaskManagement/ESTMMobileTaskType/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2573,10 +2573,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMServiceRequestObj> ESTaskManagementESTMServiceRequest(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMServiceRequestObj, ApiConnectionActionConfiguration> ESTaskManagementESTMServiceRequest(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMServiceRequestObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMServiceRequestObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESTaskManagement/ESTMServiceRequest/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2586,10 +2586,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMRFMModelObj> ESTaskManagementESTMRFMModel(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMRFMModelObj, ApiConnectionActionConfiguration> ESTaskManagementESTMRFMModel(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMRFMModelObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMRFMModelObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESTaskManagement/ESTMRFMModel/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2599,10 +2599,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMNewsletterRecipientObj> ESTaskManagementESTMNewsletterRecipient(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMNewsletterRecipientObj, ApiConnectionActionConfiguration> ESTaskManagementESTMNewsletterRecipient(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMNewsletterRecipientObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMNewsletterRecipientObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESTaskManagement/ESTMNewsletterRecipient/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2612,10 +2612,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMInteractionObj> ESTaskManagementESTMInteraction(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMInteractionObj, ApiConnectionActionConfiguration> ESTaskManagementESTMInteraction(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMInteractionObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMInteractionObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESTaskManagement/ESTMInteraction/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2625,10 +2625,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMObjectRatingObj> ESTaskManagementESTMObjectRating(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMObjectRatingObj, ApiConnectionActionConfiguration> ESTaskManagementESTMObjectRating(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMObjectRatingObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMObjectRatingObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESTaskManagement/ESTMObjectRating/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2638,10 +2638,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMTaskObj> ESTaskManagementESTMTask(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMTaskObj, ApiConnectionActionConfiguration> ESTaskManagementESTMTask(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMTaskObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMTaskObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESTaskManagement/ESTMTask/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2651,10 +2651,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMResourceObj> ESTaskManagementESTMResource(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMResourceObj, ApiConnectionActionConfiguration> ESTaskManagementESTMResource(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMResourceObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMResourceObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESTaskManagement/ESTMResource/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2664,10 +2664,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMCampaignObj> ESTaskManagementESTMCampaign(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMCampaignObj, ApiConnectionActionConfiguration> ESTaskManagementESTMCampaign(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMCampaignObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMCampaignObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESTaskManagement/ESTMCampaign/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2677,10 +2677,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMSMActivityObj> ESTaskManagementESTMSMActivity(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMSMActivityObj, ApiConnectionActionConfiguration> ESTaskManagementESTMSMActivity(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMSMActivityObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMSMActivityObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESTaskManagement/ESTMSMActivity/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2690,10 +2690,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMOpportunityObj> ESTaskManagementESTMOpportunity(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMOpportunityObj, ApiConnectionActionConfiguration> ESTaskManagementESTMOpportunity(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMOpportunityObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESTMOpportunityObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESTaskManagement/ESTMOpportunity/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2703,10 +2703,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMTransportActionObj> ESWarehouseManagementESWMTransportAction(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMTransportActionObj, ApiConnectionActionConfiguration> ESWarehouseManagementESWMTransportAction(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWMTransportActionObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWMTransportActionObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESWarehouseManagement/ESWMTransportAction/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2716,10 +2716,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMActionObj> ESWarehouseManagementESWMAction(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMActionObj, ApiConnectionActionConfiguration> ESWarehouseManagementESWMAction(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWMActionObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWMActionObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESWarehouseManagement/ESWMAction/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2729,10 +2729,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMShipmentObj> ESWarehouseManagementESWMShipment(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMShipmentObj, ApiConnectionActionConfiguration> ESWarehouseManagementESWMShipment(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWMShipmentObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWMShipmentObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESWarehouseManagement/ESWMShipment/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2742,10 +2742,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMWorkPackageObj> ESWarehouseManagementESWMWorkPackage(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMWorkPackageObj, ApiConnectionActionConfiguration> ESWarehouseManagementESWMWorkPackage(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWMWorkPackageObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWMWorkPackageObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESWarehouseManagement/ESWMWorkPackage/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2755,10 +2755,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMRequestObj> ESWarehouseManagementESWMRequest(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMRequestObj, ApiConnectionActionConfiguration> ESWarehouseManagementESWMRequest(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWMRequestObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWMRequestObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESWarehouseManagement/ESWMRequest/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2768,10 +2768,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMContainerObj> ESWarehouseManagementESWMContainer(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMContainerObj, ApiConnectionActionConfiguration> ESWarehouseManagementESWMContainer(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWMContainerObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWMContainerObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESWarehouseManagement/ESWMContainer/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2781,10 +2781,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPTaskRequestObj> ESWorkInProgressESWPTaskRequest(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPTaskRequestObj, ApiConnectionActionConfiguration> ESWorkInProgressESWPTaskRequest(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWPTaskRequestObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWPTaskRequestObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESWorkInProgress/ESWPTaskRequest/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2794,10 +2794,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPWorkPackageObj> ESWorkInProgressESWPWorkPackage(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPWorkPackageObj, ApiConnectionActionConfiguration> ESWorkInProgressESWPWorkPackage(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWPWorkPackageObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWPWorkPackageObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESWorkInProgress/ESWPWorkPackage/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2807,10 +2807,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPActualTaskObj> ESWorkInProgressESWPActualTask(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPActualTaskObj, ApiConnectionActionConfiguration> ESWorkInProgressESWPActualTask(Expression<Func<string>> pK)
         {
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
-            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWPActualTaskObj>(() =>
+            return new DeferredBodyAction<EntersoftWebApi2ODSModelsESWPActualTaskObj, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/ESWorkInProgress/ESWPActualTask/{0}", __workflow_pK.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2822,7 +2822,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
     public class EntersoftTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse> ESBusinessHookPost(Expression<Func<registrationbusinessEventTypeInput>> registrationbusinessEventType, Expression<Func<string>> registrationcontext = null, Expression<Func<double>> registrationvalue = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESBusinessHookPost(Expression<Func<registrationbusinessEventTypeInput>> registrationbusinessEventType, Expression<Func<string>> registrationcontext = null, Expression<Func<double>> registrationvalue = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
         {
             var __workflow_registrationbusinessEventType = WorkflowExpression.Compile(registrationbusinessEventType, nameof(registrationbusinessEventType), required: true);
             var __workflow_registrationcontext = WorkflowExpression.Compile(registrationcontext, nameof(registrationcontext), required: false);
@@ -2830,7 +2830,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             var __workflow_registrationexternalID = WorkflowExpression.Compile(registrationexternalID, nameof(registrationexternalID), required: false);
             var __workflow_registrationdescription = WorkflowExpression.Compile(registrationdescription, nameof(registrationdescription), required: false);
             var __workflow_registrationisActive = WorkflowExpression.Compile(registrationisActive, nameof(registrationisActive), required: false);
-            return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse>(() =>
+            return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/businesshook";
                 var apiCallHttpMethod = "post";
@@ -2900,7 +2900,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             });
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> ESPodHookPost(Expression<Func<registrationstateInput>> registrationstate = null, Expression<Func<registrationpackageTypeInput>> registrationpackageType = null, Expression<Func<string>> registrationconveyanceLicencePlate = null, Expression<Func<string>> registrationbranchID = null, Expression<Func<string>> registrationtradeAccountName = null, Expression<Func<string>> registrationdriverCode = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESPodHookPost(Expression<Func<registrationstateInput>> registrationstate = null, Expression<Func<registrationpackageTypeInput>> registrationpackageType = null, Expression<Func<string>> registrationconveyanceLicencePlate = null, Expression<Func<string>> registrationbranchID = null, Expression<Func<string>> registrationtradeAccountName = null, Expression<Func<string>> registrationdriverCode = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
         {
             var __workflow_registrationstate = WorkflowExpression.Compile(registrationstate, nameof(registrationstate), required: false);
             var __workflow_registrationpackageType = WorkflowExpression.Compile(registrationpackageType, nameof(registrationpackageType), required: false);
@@ -2911,7 +2911,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             var __workflow_registrationexternalID = WorkflowExpression.Compile(registrationexternalID, nameof(registrationexternalID), required: false);
             var __workflow_registrationdescription = WorkflowExpression.Compile(registrationdescription, nameof(registrationdescription), required: false);
             var __workflow_registrationisActive = WorkflowExpression.Compile(registrationisActive, nameof(registrationisActive), required: false);
-            return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse>(() =>
+            return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/podhook";
                 var apiCallHttpMethod = "post";
@@ -3013,7 +3013,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             });
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> ESRFAHookPost(Expression<Func<string>> registrationrequestedBy = null, Expression<Func<registrationpriorityInput>> registrationpriority = null, Expression<Func<string>> registrationrequestClass = null, Expression<Func<string>> registrationrequestCategory = null, Expression<Func<double>> registrationnumericValue = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESRFAHookPost(Expression<Func<string>> registrationrequestedBy = null, Expression<Func<registrationpriorityInput>> registrationpriority = null, Expression<Func<string>> registrationrequestClass = null, Expression<Func<string>> registrationrequestCategory = null, Expression<Func<double>> registrationnumericValue = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
         {
             var __workflow_registrationrequestedBy = WorkflowExpression.Compile(registrationrequestedBy, nameof(registrationrequestedBy), required: false);
             var __workflow_registrationpriority = WorkflowExpression.Compile(registrationpriority, nameof(registrationpriority), required: false);
@@ -3023,7 +3023,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             var __workflow_registrationexternalID = WorkflowExpression.Compile(registrationexternalID, nameof(registrationexternalID), required: false);
             var __workflow_registrationdescription = WorkflowExpression.Compile(registrationdescription, nameof(registrationdescription), required: false);
             var __workflow_registrationisActive = WorkflowExpression.Compile(registrationisActive, nameof(registrationisActive), required: false);
-            return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse>(() =>
+            return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/rfahook";
                 var apiCallHttpMethod = "post";
@@ -3109,14 +3109,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             });
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> ESHookPost(Expression<Func<registrationentityTypeInput>> registrationentityType, Expression<Func<registrationeventTypeInput>> registrationeventType, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESHookPost(Expression<Func<registrationentityTypeInput>> registrationentityType, Expression<Func<registrationeventTypeInput>> registrationeventType, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
         {
             var __workflow_registrationentityType = WorkflowExpression.Compile(registrationentityType, nameof(registrationentityType), required: true);
             var __workflow_registrationeventType = WorkflowExpression.Compile(registrationeventType, nameof(registrationeventType), required: true);
             var __workflow_registrationexternalID = WorkflowExpression.Compile(registrationexternalID, nameof(registrationexternalID), required: false);
             var __workflow_registrationdescription = WorkflowExpression.Compile(registrationdescription, nameof(registrationdescription), required: false);
             var __workflow_registrationisActive = WorkflowExpression.Compile(registrationisActive, nameof(registrationisActive), required: false);
-            return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse>(() =>
+            return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/hook";
                 var apiCallHttpMethod = "post";
@@ -3166,14 +3166,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             });
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> ESSystemHookPost(Expression<Func<registrationsystemEventTypeInputItem[]>> registrationsystemEventType, Expression<Func<string>> registrationotherEvent = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESSystemHookPost(Expression<Func<registrationsystemEventTypeInputItem[]>> registrationsystemEventType, Expression<Func<string>> registrationotherEvent = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, FlowRecurrence recurrence = null)
         {
             var __workflow_registrationsystemEventType = WorkflowExpression.Compile(registrationsystemEventType, nameof(registrationsystemEventType), required: true);
             var __workflow_registrationotherEvent = WorkflowExpression.Compile(registrationotherEvent, nameof(registrationotherEvent), required: false);
             var __workflow_registrationexternalID = WorkflowExpression.Compile(registrationexternalID, nameof(registrationexternalID), required: false);
             var __workflow_registrationdescription = WorkflowExpression.Compile(registrationdescription, nameof(registrationdescription), required: false);
             var __workflow_registrationisActive = WorkflowExpression.Compile(registrationisActive, nameof(registrationisActive), required: false);
-            return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse>(() =>
+            return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/systemhook";
                 var apiCallHttpMethod = "post";

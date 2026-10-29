@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
     public class DisqusActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<CreatePostResponse> Create(Expression<Func<string>> thread, Expression<Func<string>> message)
+        public IBodyWorkflowAction<CreatePostResponse, ApiConnectionActionConfiguration> Create(Expression<Func<string>> thread, Expression<Func<string>> message)
         {
             var __workflow_thread = WorkflowExpression.Compile(thread, nameof(thread), required: true);
             var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
-            return new DeferredBodyAction<CreatePostResponse>(() =>
+            return new DeferredBodyAction<CreatePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/posts/create.json";
                 var apiCallHttpMethod = "post";
@@ -28,11 +28,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<CreatePostResponse> ReplyTo(Expression<Func<string>> parent, Expression<Func<string>> message)
+        public IBodyWorkflowAction<CreatePostResponse, ApiConnectionActionConfiguration> ReplyTo(Expression<Func<string>> parent, Expression<Func<string>> message)
         {
             var __workflow_parent = WorkflowExpression.Compile(parent, nameof(parent), required: true);
             var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
-            return new DeferredBodyAction<CreatePostResponse>(() =>
+            return new DeferredBodyAction<CreatePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/reply/posts/create.json";
                 var apiCallHttpMethod = "post";
@@ -44,10 +44,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<OperationResultResponse> Remove(Expression<Func<string>> post)
+        public IBodyWorkflowAction<OperationResultResponse, ApiConnectionActionConfiguration> Remove(Expression<Func<string>> post)
         {
             var __workflow_post = WorkflowExpression.Compile(post, nameof(post), required: true);
-            return new DeferredBodyAction<OperationResultResponse>(() =>
+            return new DeferredBodyAction<OperationResultResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/posts/remove.json";
                 var apiCallHttpMethod = "post";
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<Forum[]> GetFollowedForums()
+        public IBodyWorkflowAction<Forum[], ApiConnectionActionConfiguration> GetFollowedForums()
         {
             var apiCallPath = "/users/listFollowingForums.json";
             var apiCallHttpMethod = "get";
@@ -69,10 +69,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<EmptyResponse> SubscribeToThread(Expression<Func<string>> thread)
+        public IBodyWorkflowAction<EmptyResponse, ApiConnectionActionConfiguration> SubscribeToThread(Expression<Func<string>> thread)
         {
             var __workflow_thread = WorkflowExpression.Compile(thread, nameof(thread), required: true);
-            return new DeferredBodyAction<EmptyResponse>(() =>
+            return new DeferredBodyAction<EmptyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/threads/subscribe.json";
                 var apiCallHttpMethod = "post";
@@ -83,10 +83,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<OperationResultResponse> OpenThread(Expression<Func<string>> thread)
+        public IBodyWorkflowAction<OperationResultResponse, ApiConnectionActionConfiguration> OpenThread(Expression<Func<string>> thread)
         {
             var __workflow_thread = WorkflowExpression.Compile(thread, nameof(thread), required: true);
-            return new DeferredBodyAction<OperationResultResponse>(() =>
+            return new DeferredBodyAction<OperationResultResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/threads/open.json";
                 var apiCallHttpMethod = "post";
@@ -97,10 +97,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<OperationResultResponse> CloseThread(Expression<Func<string>> thread)
+        public IBodyWorkflowAction<OperationResultResponse, ApiConnectionActionConfiguration> CloseThread(Expression<Func<string>> thread)
         {
             var __workflow_thread = WorkflowExpression.Compile(thread, nameof(thread), required: true);
-            return new DeferredBodyAction<OperationResultResponse>(() =>
+            return new DeferredBodyAction<OperationResultResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/threads/close.json";
                 var apiCallHttpMethod = "post";
@@ -111,10 +111,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<RecommendThreadResponse> RecommendThread(Expression<Func<string>> thread)
+        public IBodyWorkflowAction<RecommendThreadResponse, ApiConnectionActionConfiguration> RecommendThread(Expression<Func<string>> thread)
         {
             var __workflow_thread = WorkflowExpression.Compile(thread, nameof(thread), required: true);
-            return new DeferredBodyAction<RecommendThreadResponse>(() =>
+            return new DeferredBodyAction<RecommendThreadResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/threads/vote.json";
                 var apiCallHttpMethod = "post";
@@ -126,10 +126,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<GetThreadResponse> GetThread(Expression<Func<string>> thread)
+        public IBodyWorkflowAction<GetThreadResponse, ApiConnectionActionConfiguration> GetThread(Expression<Func<string>> thread)
         {
             var __workflow_thread = WorkflowExpression.Compile(thread, nameof(thread), required: true);
-            return new DeferredBodyAction<GetThreadResponse>(() =>
+            return new DeferredBodyAction<GetThreadResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/threads/details.json";
                 var apiCallHttpMethod = "get";
@@ -140,10 +140,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<Thread[]> GetForumThreads(Expression<Func<string>> forum)
+        public IBodyWorkflowAction<Thread[], ApiConnectionActionConfiguration> GetForumThreads(Expression<Func<string>> forum)
         {
             var __workflow_forum = WorkflowExpression.Compile(forum, nameof(forum), required: true);
-            return new DeferredBodyAction<Thread[]>(() =>
+            return new DeferredBodyAction<Thread[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/forums/listThreads.json";
                 var apiCallHttpMethod = "get";
@@ -158,11 +158,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
 
     public class DisqusTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Post[]> OnPostCreated(Expression<Func<string>> forum, Expression<Func<string>> thread = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Post[], ApiConnectionTriggerConfiguration> OnPostCreated(Expression<Func<string>> forum, Expression<Func<string>> thread = null, FlowRecurrence recurrence = null)
         {
             var __workflow_forum = WorkflowExpression.Compile(forum, nameof(forum), required: true);
             var __workflow_thread = WorkflowExpression.Compile(thread, nameof(thread), required: false);
-            return new DeferredBodyTrigger<Post[]>(() =>
+            return new DeferredBodyTrigger<Post[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/posts/list.json";
                 var apiCallHttpMethod = "get";
@@ -176,10 +176,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
             });
         }
 
-        public IBodyWorkflowTrigger<Thread[]> OnThreadCreated(Expression<Func<string>> forum, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Thread[], ApiConnectionTriggerConfiguration> OnThreadCreated(Expression<Func<string>> forum, FlowRecurrence recurrence = null)
         {
             var __workflow_forum = WorkflowExpression.Compile(forum, nameof(forum), required: true);
-            return new DeferredBodyTrigger<Thread[]>(() =>
+            return new DeferredBodyTrigger<Thread[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/threads/list.json";
                 var apiCallHttpMethod = "get";

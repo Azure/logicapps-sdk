@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xsoarip
     public class XsoaripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xsoarip")]
-        public IWorkflowAction SendToXSOAR()
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendToXSOAR()
         {
             var apiCallPath = "/";
             var apiCallHttpMethod = "post";

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
     public class TagoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tago")]
-        public IBodyWorkflowAction<JToken> GetData(Expression<Func<string>> device, Expression<Func<string>> variable, Expression<Func<queryInput>> query = null, Expression<Func<int>> qty = null, Expression<Func<timezoneInput>> timezone = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> serie = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetData(Expression<Func<string>> device, Expression<Func<string>> variable, Expression<Func<queryInput>> query = null, Expression<Func<int>> qty = null, Expression<Func<timezoneInput>> timezone = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> serie = null)
         {
             var __workflow_device = WorkflowExpression.Compile(device, nameof(device), required: true);
             var __workflow_variable = WorkflowExpression.Compile(variable, nameof(variable), required: true);
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
             var __workflow_serie = WorkflowExpression.Compile(serie, nameof(serie), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/prod/data";
                 var apiCallHttpMethod = "get";
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tago")]
-        public IBodyWorkflowAction<PostDataResponse> PostData(Expression<Func<string>> bodydeviceId, Expression<Func<string>> bodyvariable, Expression<Func<string>> bodyvalue, Expression<Func<bodytimezoneInput>> bodytimezone = null, Expression<Func<string>> bodytimestamp = null, Expression<Func<string>> bodyserie = null, Expression<Func<string>> bodyunit = null)
+        public IBodyWorkflowAction<PostDataResponse, ApiConnectionActionConfiguration> PostData(Expression<Func<string>> bodydeviceId, Expression<Func<string>> bodyvariable, Expression<Func<string>> bodyvalue, Expression<Func<bodytimezoneInput>> bodytimezone = null, Expression<Func<string>> bodytimestamp = null, Expression<Func<string>> bodyserie = null, Expression<Func<string>> bodyunit = null)
         {
             var __workflow_bodydeviceId = WorkflowExpression.Compile(bodydeviceId, nameof(bodydeviceId), required: true);
             var __workflow_bodyvariable = WorkflowExpression.Compile(bodyvariable, nameof(bodyvariable), required: true);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
             var __workflow_bodytimestamp = WorkflowExpression.Compile(bodytimestamp, nameof(bodytimestamp), required: false);
             var __workflow_bodyserie = WorkflowExpression.Compile(bodyserie, nameof(bodyserie), required: false);
             var __workflow_bodyunit = WorkflowExpression.Compile(bodyunit, nameof(bodyunit), required: false);
-            return new DeferredBodyAction<PostDataResponse>(() =>
+            return new DeferredBodyAction<PostDataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/prod/data";
                 var apiCallHttpMethod = "post";
@@ -116,13 +116,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
 
     public class TagoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<PostDataResponse> DataTrigger(Expression<Func<string>> device, Expression<Func<string>> variable, Expression<Func<conditionInput>> condition, Expression<Func<string>> value = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PostDataResponse, ApiConnectionTriggerConfiguration> DataTrigger(Expression<Func<string>> device, Expression<Func<string>> variable, Expression<Func<conditionInput>> condition, Expression<Func<string>> value = null, FlowRecurrence recurrence = null)
         {
             var __workflow_device = WorkflowExpression.Compile(device, nameof(device), required: true);
             var __workflow_variable = WorkflowExpression.Compile(variable, nameof(variable), required: true);
             var __workflow_condition = WorkflowExpression.Compile(condition, nameof(condition), required: true);
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: false);
-            return new DeferredBodyTrigger<PostDataResponse>(() =>
+            return new DeferredBodyTrigger<PostDataResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/prod/flow";
                 var apiCallHttpMethod = "post";

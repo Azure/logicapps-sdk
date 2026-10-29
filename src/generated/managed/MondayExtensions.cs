@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
     public class MondayActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<CreateItemResponse> CreateItem(Expression<Func<string>> bodygroupId, Expression<Func<string>> bodyitemName, Expression<Func<string>> bodyworkspaceId = null, Expression<Func<string>> bodyboardId = null, Expression<Func<object>> bodycolumnValues = null)
+        public IBodyWorkflowAction<CreateItemResponse, ApiConnectionActionConfiguration> CreateItem(Expression<Func<string>> bodygroupId, Expression<Func<string>> bodyitemName, Expression<Func<string>> bodyworkspaceId = null, Expression<Func<string>> bodyboardId = null, Expression<Func<object>> bodycolumnValues = null)
         {
             var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: true);
             var __workflow_bodyitemName = WorkflowExpression.Compile(bodyitemName, nameof(bodyitemName), required: true);
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
             var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: false);
             var __workflow_bodycolumnValues = WorkflowExpression.Compile(bodycolumnValues, nameof(bodycolumnValues), required: false);
-            return new DeferredBodyAction<CreateItemResponse>(() =>
+            return new DeferredBodyAction<CreateItemResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateItem";
                 var apiCallHttpMethod = "post";
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<DuplicateBoardResponse> DuplicateBoard(Expression<Func<string>> bodysourceWorkspaceId, Expression<Func<string>> bodysourceBoardId, Expression<Func<bodyduplicationTypeInput>> bodyduplicationType, Expression<Func<bool>> bodykeepBoardSubscribers, Expression<Func<string>> bodyduplicatedBoardName = null, Expression<Func<string>> bodydestinationWorkspaceId = null, Expression<Func<string>> bodydestinationFolder = null)
+        public IBodyWorkflowAction<DuplicateBoardResponse, ApiConnectionActionConfiguration> DuplicateBoard(Expression<Func<string>> bodysourceWorkspaceId, Expression<Func<string>> bodysourceBoardId, Expression<Func<bodyduplicationTypeInput>> bodyduplicationType, Expression<Func<bool>> bodykeepBoardSubscribers, Expression<Func<string>> bodyduplicatedBoardName = null, Expression<Func<string>> bodydestinationWorkspaceId = null, Expression<Func<string>> bodydestinationFolder = null)
         {
             var __workflow_bodysourceWorkspaceId = WorkflowExpression.Compile(bodysourceWorkspaceId, nameof(bodysourceWorkspaceId), required: true);
             var __workflow_bodysourceBoardId = WorkflowExpression.Compile(bodysourceBoardId, nameof(bodysourceBoardId), required: true);
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             var __workflow_bodyduplicatedBoardName = WorkflowExpression.Compile(bodyduplicatedBoardName, nameof(bodyduplicatedBoardName), required: false);
             var __workflow_bodydestinationWorkspaceId = WorkflowExpression.Compile(bodydestinationWorkspaceId, nameof(bodydestinationWorkspaceId), required: false);
             var __workflow_bodydestinationFolder = WorkflowExpression.Compile(bodydestinationFolder, nameof(bodydestinationFolder), required: false);
-            return new DeferredBodyAction<DuplicateBoardResponse>(() =>
+            return new DeferredBodyAction<DuplicateBoardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/DuplicateBoard";
                 var apiCallHttpMethod = "post";
@@ -110,11 +110,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<CreateBoardResponse> CreateBoard(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardName)
+        public IBodyWorkflowAction<CreateBoardResponse, ApiConnectionActionConfiguration> CreateBoard(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardName)
         {
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             var __workflow_bodyboardName = WorkflowExpression.Compile(bodyboardName, nameof(bodyboardName), required: true);
-            return new DeferredBodyAction<CreateBoardResponse>(() =>
+            return new DeferredBodyAction<CreateBoardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateBoard";
                 var apiCallHttpMethod = "post";
@@ -135,14 +135,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<CreateColumnResponse> CreateColumn(Expression<Func<string>> bodytitle, Expression<Func<bodycolumnTypeInput>> bodycolumnType, Expression<Func<string>> bodyworkspaceId = null, Expression<Func<string>> bodyboardId = null, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<CreateColumnResponse, ApiConnectionActionConfiguration> CreateColumn(Expression<Func<string>> bodytitle, Expression<Func<bodycolumnTypeInput>> bodycolumnType, Expression<Func<string>> bodyworkspaceId = null, Expression<Func<string>> bodyboardId = null, Expression<Func<string>> bodydescription = null)
         {
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             var __workflow_bodycolumnType = WorkflowExpression.Compile(bodycolumnType, nameof(bodycolumnType), required: true);
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
             var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: false);
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            return new DeferredBodyAction<CreateColumnResponse>(() =>
+            return new DeferredBodyAction<CreateColumnResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateColumn";
                 var apiCallHttpMethod = "post";
@@ -181,12 +181,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<CreateGroupResponse> CreateGroup(Expression<Func<string>> bodygroupName, Expression<Func<string>> bodyworkspaceId = null, Expression<Func<string>> bodyboardId = null)
+        public IBodyWorkflowAction<CreateGroupResponse, ApiConnectionActionConfiguration> CreateGroup(Expression<Func<string>> bodygroupName, Expression<Func<string>> bodyworkspaceId = null, Expression<Func<string>> bodyboardId = null)
         {
             var __workflow_bodygroupName = WorkflowExpression.Compile(bodygroupName, nameof(bodygroupName), required: true);
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
             var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: false);
-            return new DeferredBodyAction<CreateGroupResponse>(() =>
+            return new DeferredBodyAction<CreateGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateGroup";
                 var apiCallHttpMethod = "post";
@@ -217,14 +217,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<UpdateItemColumnResponse> UpdateItemColumn(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, Expression<Func<string>> bodyitemId, Expression<Func<string>> bodycolumnId = null, Expression<Func<object>> bodycolumnValues = null)
+        public IBodyWorkflowAction<UpdateItemColumnResponse, ApiConnectionActionConfiguration> UpdateItemColumn(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, Expression<Func<string>> bodyitemId, Expression<Func<string>> bodycolumnId = null, Expression<Func<object>> bodycolumnValues = null)
         {
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
             var __workflow_bodyitemId = WorkflowExpression.Compile(bodyitemId, nameof(bodyitemId), required: true);
             var __workflow_bodycolumnId = WorkflowExpression.Compile(bodycolumnId, nameof(bodycolumnId), required: false);
             var __workflow_bodycolumnValues = WorkflowExpression.Compile(bodycolumnValues, nameof(bodycolumnValues), required: false);
-            return new DeferredBodyAction<UpdateItemColumnResponse>(() =>
+            return new DeferredBodyAction<UpdateItemColumnResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/UpdateItemColumn";
                 var apiCallHttpMethod = "post";
@@ -259,14 +259,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<UpdateMultipleItemColumnsResponse> UpdateMultipleItemColumns(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, Expression<Func<string>> bodyitemId, Expression<Func<string>> bodyitemName = null, Expression<Func<object>> bodycolumnValues = null)
+        public IBodyWorkflowAction<UpdateMultipleItemColumnsResponse, ApiConnectionActionConfiguration> UpdateMultipleItemColumns(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, Expression<Func<string>> bodyitemId, Expression<Func<string>> bodyitemName = null, Expression<Func<object>> bodycolumnValues = null)
         {
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
             var __workflow_bodyitemId = WorkflowExpression.Compile(bodyitemId, nameof(bodyitemId), required: true);
             var __workflow_bodyitemName = WorkflowExpression.Compile(bodyitemName, nameof(bodyitemName), required: false);
             var __workflow_bodycolumnValues = WorkflowExpression.Compile(bodycolumnValues, nameof(bodycolumnValues), required: false);
-            return new DeferredBodyAction<UpdateMultipleItemColumnsResponse>(() =>
+            return new DeferredBodyAction<UpdateMultipleItemColumnsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/UpdateMultipleItemColumns";
                 var apiCallHttpMethod = "post";
@@ -301,13 +301,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<MoveItemToGroupResponse> MoveItemToGroup(Expression<Func<string>> bodygroupId, Expression<Func<string>> bodyitemId, Expression<Func<string>> bodyworkspaceId = null, Expression<Func<string>> bodyboardId = null)
+        public IBodyWorkflowAction<MoveItemToGroupResponse, ApiConnectionActionConfiguration> MoveItemToGroup(Expression<Func<string>> bodygroupId, Expression<Func<string>> bodyitemId, Expression<Func<string>> bodyworkspaceId = null, Expression<Func<string>> bodyboardId = null)
         {
             var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: true);
             var __workflow_bodyitemId = WorkflowExpression.Compile(bodyitemId, nameof(bodyitemId), required: true);
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
             var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: false);
-            return new DeferredBodyAction<MoveItemToGroupResponse>(() =>
+            return new DeferredBodyAction<MoveItemToGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/MoveItemToGroup";
                 var apiCallHttpMethod = "post";
@@ -340,12 +340,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<CreateNotificationResponse> CreateNotification(Expression<Func<string>> bodyuserId, Expression<Func<string>> bodytargetId, Expression<Func<string>> bodytext)
+        public IBodyWorkflowAction<CreateNotificationResponse, ApiConnectionActionConfiguration> CreateNotification(Expression<Func<string>> bodyuserId, Expression<Func<string>> bodytargetId, Expression<Func<string>> bodytext)
         {
             var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: true);
             var __workflow_bodytargetId = WorkflowExpression.Compile(bodytargetId, nameof(bodytargetId), required: true);
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
-            return new DeferredBodyAction<CreateNotificationResponse>(() =>
+            return new DeferredBodyAction<CreateNotificationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateNotification";
                 var apiCallHttpMethod = "post";
@@ -368,14 +368,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<CreateSubitemResponse> CreateSubitem(Expression<Func<string>> bodyboardId, Expression<Func<string>> bodyparentItemId, Expression<Func<string>> bodyitemName, Expression<Func<string>> bodyworkspaceId = null, Expression<Func<object>> bodycolumnValues = null)
+        public IBodyWorkflowAction<CreateSubitemResponse, ApiConnectionActionConfiguration> CreateSubitem(Expression<Func<string>> bodyboardId, Expression<Func<string>> bodyparentItemId, Expression<Func<string>> bodyitemName, Expression<Func<string>> bodyworkspaceId = null, Expression<Func<object>> bodycolumnValues = null)
         {
             var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
             var __workflow_bodyparentItemId = WorkflowExpression.Compile(bodyparentItemId, nameof(bodyparentItemId), required: true);
             var __workflow_bodyitemName = WorkflowExpression.Compile(bodyitemName, nameof(bodyitemName), required: true);
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
             var __workflow_bodycolumnValues = WorkflowExpression.Compile(bodycolumnValues, nameof(bodycolumnValues), required: false);
-            return new DeferredBodyAction<CreateSubitemResponse>(() =>
+            return new DeferredBodyAction<CreateSubitemResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateSubitem";
                 var apiCallHttpMethod = "post";
@@ -410,12 +410,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<JToken> GetSubitems(Expression<Func<string>> workspaceId, Expression<Func<string>> boardId, Expression<Func<string>> itemId)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetSubitems(Expression<Func<string>> workspaceId, Expression<Func<string>> boardId, Expression<Func<string>> itemId)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             var __workflow_itemId = WorkflowExpression.Compile(itemId, nameof(itemId), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getData/getSubitems";
                 var apiCallHttpMethod = "get";
@@ -428,14 +428,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<CreateUpdateResponse> CreateUpdate(Expression<Func<string>> bodygroupId, Expression<Func<string>> bodyitemId, Expression<Func<string>> bodybody, Expression<Func<string>> bodyworkspaceId = null, Expression<Func<string>> bodyboardId = null)
+        public IBodyWorkflowAction<CreateUpdateResponse, ApiConnectionActionConfiguration> CreateUpdate(Expression<Func<string>> bodygroupId, Expression<Func<string>> bodyitemId, Expression<Func<string>> bodybody, Expression<Func<string>> bodyworkspaceId = null, Expression<Func<string>> bodyboardId = null)
         {
             var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: true);
             var __workflow_bodyitemId = WorkflowExpression.Compile(bodyitemId, nameof(bodyitemId), required: true);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
             var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: false);
-            return new DeferredBodyAction<CreateUpdateResponse>(() =>
+            return new DeferredBodyAction<CreateUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateUpdate";
                 var apiCallHttpMethod = "post";
@@ -470,12 +470,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<JToken> GetItemById(Expression<Func<string>> itemId, Expression<Func<string>> workspaceId, Expression<Func<string>> boardId)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetItemById(Expression<Func<string>> itemId, Expression<Func<string>> workspaceId, Expression<Func<string>> boardId)
         {
             var __workflow_itemId = WorkflowExpression.Compile(itemId, nameof(itemId), required: true);
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getData/getItemById";
                 var apiCallHttpMethod = "get";
@@ -488,11 +488,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<CreateWorkspaceV2Response> CreateWorkspace(Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<CreateWorkspaceV2Response, ApiConnectionActionConfiguration> CreateWorkspace(Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            return new DeferredBodyAction<CreateWorkspaceV2Response>(() =>
+            return new DeferredBodyAction<CreateWorkspaceV2Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateWorkspaceV2";
                 var apiCallHttpMethod = "post";
@@ -517,7 +517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<JToken> GetItems(Expression<Func<string>> workspaceId, Expression<Func<string>> boardId, Expression<Func<string>> groupId, Expression<Func<string>> filter1Column = null, Expression<Func<string>> filter1Operator = null, Expression<Func<string>> filter1Value = null, Expression<Func<string>> filter2Column = null, Expression<Func<string>> filter2Operator = null, Expression<Func<string>> filter2Value = null, Expression<Func<string>> filter3Column = null, Expression<Func<string>> filter3Operator = null, Expression<Func<string>> filter3Value = null, Expression<Func<string>> filter4Column = null, Expression<Func<string>> filter4Operator = null, Expression<Func<string>> filter4Value = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetItems(Expression<Func<string>> workspaceId, Expression<Func<string>> boardId, Expression<Func<string>> groupId, Expression<Func<string>> filter1Column = null, Expression<Func<string>> filter1Operator = null, Expression<Func<string>> filter1Value = null, Expression<Func<string>> filter2Column = null, Expression<Func<string>> filter2Operator = null, Expression<Func<string>> filter2Value = null, Expression<Func<string>> filter3Column = null, Expression<Func<string>> filter3Operator = null, Expression<Func<string>> filter3Value = null, Expression<Func<string>> filter4Column = null, Expression<Func<string>> filter4Operator = null, Expression<Func<string>> filter4Value = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
@@ -534,7 +534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             var __workflow_filter4Column = WorkflowExpression.Compile(filter4Column, nameof(filter4Column), required: false);
             var __workflow_filter4Operator = WorkflowExpression.Compile(filter4Operator, nameof(filter4Operator), required: false);
             var __workflow_filter4Value = WorkflowExpression.Compile(filter4Value, nameof(filter4Value), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getData/getItemsV2";
                 var apiCallHttpMethod = "get";
@@ -571,7 +571,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<GetTagsV2Response> GetTags()
+        public IBodyWorkflowAction<GetTagsV2Response, ApiConnectionActionConfiguration> GetTags()
         {
             var apiCallPath = "/getData/getTagsV2";
             var apiCallHttpMethod = "get";
@@ -580,7 +580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<GetUsersV2Response> GetUsers()
+        public IBodyWorkflowAction<GetUsersV2Response, ApiConnectionActionConfiguration> GetUsers()
         {
             var apiCallPath = "/getData/getUsersV2";
             var apiCallHttpMethod = "get";
@@ -591,11 +591,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
     public class MondayTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken> WebhookCreateItem(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookCreateItem(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
-            return new DeferredBodyTrigger<JToken>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/registerWebhook/CreateItem";
                 var apiCallHttpMethod = "post";
@@ -617,11 +617,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             });
         }
 
-        public IBodyWorkflowTrigger<JToken> WebhookCreateUpdate(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookCreateUpdate(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
-            return new DeferredBodyTrigger<JToken>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/registerWebhook/CreateUpdate";
                 var apiCallHttpMethod = "post";
@@ -643,11 +643,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             });
         }
 
-        public IBodyWorkflowTrigger<JToken> WebhookChangeName(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookChangeName(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
-            return new DeferredBodyTrigger<JToken>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/registerWebhook/ChangeName";
                 var apiCallHttpMethod = "post";
@@ -669,11 +669,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             });
         }
 
-        public IBodyWorkflowTrigger<JToken> WebhookChangeSubitemName(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookChangeSubitemName(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
-            return new DeferredBodyTrigger<JToken>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/registerWebhook/ChangeSubitemName";
                 var apiCallHttpMethod = "post";
@@ -695,11 +695,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             });
         }
 
-        public IBodyWorkflowTrigger<JToken> WebhookCreateSubitem(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookCreateSubitem(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
-            return new DeferredBodyTrigger<JToken>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/registerWebhook/CreateSubitem";
                 var apiCallHttpMethod = "post";
@@ -721,12 +721,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             });
         }
 
-        public IBodyWorkflowTrigger<JToken> WebhookColumnChanges(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, Expression<Func<string>> bodycolumnId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookColumnChanges(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, Expression<Func<string>> bodycolumnId, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
             var __workflow_bodycolumnId = WorkflowExpression.Compile(bodycolumnId, nameof(bodycolumnId), required: true);
-            return new DeferredBodyTrigger<JToken>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/registerWebhook/ColumnChanges";
                 var apiCallHttpMethod = "post";
@@ -750,11 +750,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             });
         }
 
-        public IBodyWorkflowTrigger<JToken> WebhookAnyColumnChanges(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookAnyColumnChanges(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
-            return new DeferredBodyTrigger<JToken>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/registerWebhook/AnyColumnChanges";
                 var apiCallHttpMethod = "post";
@@ -776,11 +776,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             });
         }
 
-        public IBodyWorkflowTrigger<JToken> WebhookSubitemColumnChanges(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookSubitemColumnChanges(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
-            return new DeferredBodyTrigger<JToken>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/registerWebhook/SubitemColumnChanges";
                 var apiCallHttpMethod = "post";

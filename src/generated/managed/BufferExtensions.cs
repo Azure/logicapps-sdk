@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
     public class BufferActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buffer")]
-        public IBodyWorkflowAction<CreateUpdateResponse> CreateUpdate(Expression<Func<string>> createUpdateProfileId, Expression<Func<string>> createUpdateText)
+        public IBodyWorkflowAction<CreateUpdateResponse, ApiConnectionActionConfiguration> CreateUpdate(Expression<Func<string>> createUpdateProfileId, Expression<Func<string>> createUpdateText)
         {
             var __workflow_createUpdateProfileId = WorkflowExpression.Compile(createUpdateProfileId, nameof(createUpdateProfileId), required: true);
             var __workflow_createUpdateText = WorkflowExpression.Compile(createUpdateText, nameof(createUpdateText), required: true);
-            return new DeferredBodyAction<CreateUpdateResponse>(() =>
+            return new DeferredBodyAction<CreateUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1/updates/create.json";
                 var apiCallHttpMethod = "post";
@@ -28,11 +28,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buffer")]
-        public IBodyWorkflowAction<ShareUpdateResponse> ShareUpdate(Expression<Func<string>> profileId, Expression<Func<string>> udpateId)
+        public IBodyWorkflowAction<ShareUpdateResponse, ApiConnectionActionConfiguration> ShareUpdate(Expression<Func<string>> profileId, Expression<Func<string>> udpateId)
         {
             var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: true);
             var __workflow_udpateId = WorkflowExpression.Compile(udpateId, nameof(udpateId), required: true);
-            return new DeferredBodyAction<ShareUpdateResponse>(() =>
+            return new DeferredBodyAction<ShareUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/1/updates/{0}/share.json", __workflow_udpateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -45,10 +45,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
 
     public class BufferTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListPendingUpdatesResponse> TrigPendingUpdates(Expression<Func<string>> profileId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListPendingUpdatesResponse, ApiConnectionTriggerConfiguration> TrigPendingUpdates(Expression<Func<string>> profileId, FlowRecurrence recurrence = null)
         {
             var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: true);
-            return new DeferredBodyTrigger<ListPendingUpdatesResponse>(() =>
+            return new DeferredBodyTrigger<ListPendingUpdatesResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/1/profiles/{0}/updates/pending.json", __workflow_profileId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -57,10 +57,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
             });
         }
 
-        public IBodyWorkflowTrigger<ListSentUpdatesResponse> TrigSentUpdates(Expression<Func<string>> profileId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListSentUpdatesResponse, ApiConnectionTriggerConfiguration> TrigSentUpdates(Expression<Func<string>> profileId, FlowRecurrence recurrence = null)
         {
             var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: true);
-            return new DeferredBodyTrigger<ListSentUpdatesResponse>(() =>
+            return new DeferredBodyTrigger<ListSentUpdatesResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/1/profiles/{0}/updates/sent.json", __workflow_profileId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

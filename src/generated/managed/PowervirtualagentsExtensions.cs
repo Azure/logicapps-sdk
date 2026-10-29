@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powervirtualagents
     public class PowervirtualagentsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powervirtualagents")]
-        public IWorkflowAction PowerVirtualAgents()
+        public IWorkflowAction<ApiConnectionActionConfiguration> PowerVirtualAgents()
         {
             var apiCallPath = "/hybridtriggers/powerVirtualAgents";
             var apiCallHttpMethod = "get";

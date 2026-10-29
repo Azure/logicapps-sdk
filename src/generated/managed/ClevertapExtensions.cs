@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clevertap
     public class ClevertapActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clevertap")]
-        public IWorkflowAction UploadProfiles(Expression<Func<bodydInputItem[]>> bodyd)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UploadProfiles(Expression<Func<bodydInputItem[]>> bodyd)
         {
             var __workflow_bodyd = WorkflowExpression.Compile(bodyd, nameof(bodyd), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1/upload";
                 var apiCallHttpMethod = "post";

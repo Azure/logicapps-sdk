@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asitehongkong
     public class AsitehongkongActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asitehongkong")]
-        public IBodyWorkflowAction<string> FILEDOWNLOADBYURL(Expression<Func<string>> downloadUrl)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FILEDOWNLOADBYURL(Expression<Func<string>> downloadUrl)
         {
             var __workflow_downloadUrl = WorkflowExpression.Compile(downloadUrl, nameof(downloadUrl), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/downloadFileByUrl";
                 var apiCallHttpMethod = "get";
@@ -26,12 +26,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asitehongkong
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asitehongkong")]
-        public IBodyWorkflowAction<string> SETFILEMETADATA(Expression<Func<string>> projectId, Expression<Func<string>> folderId, Expression<Func<object>> items = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SETFILEMETADATA(Expression<Func<string>> projectId, Expression<Func<string>> folderId, Expression<Func<object>> items = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_items = WorkflowExpression.Compile(items, nameof(items), required: false);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/saveMetadataForUpload";
                 var apiCallHttpMethod = "post";
@@ -44,14 +44,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asitehongkong
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asitehongkong")]
-        public IBodyWorkflowAction<JToken> UPLOADBINARYFILE(Expression<Func<string>> projectId, Expression<Func<string>> folderId, Expression<Func<string>> fileName, Expression<Func<string>> metadataId, Expression<Func<string>> fileBinary = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UPLOADBINARYFILE(Expression<Func<string>> projectId, Expression<Func<string>> folderId, Expression<Func<string>> fileName, Expression<Func<string>> metadataId, Expression<Func<string>> fileBinary = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
             var __workflow_metadataId = WorkflowExpression.Compile(metadataId, nameof(metadataId), required: true);
             var __workflow_fileBinary = WorkflowExpression.Compile(fileBinary, nameof(fileBinary), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/uploadFileFromExternalSystem";
                 var apiCallHttpMethod = "post";
@@ -68,11 +68,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asitehongkong
 
     public class AsitehongkongTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ASITETRIGGEREVENT(Expression<Func<string>> projectId, Expression<Func<string>> bodytriggerName, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ASITETRIGGEREVENT(Expression<Func<string>> projectId, Expression<Func<string>> bodytriggerName, FlowRecurrence recurrence = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_bodytriggerName = WorkflowExpression.Compile(bodytriggerName, nameof(bodytriggerName), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/asitePullDataWebhook";
                 var apiCallHttpMethod = "post";
@@ -96,11 +96,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asitehongkong
             });
         }
 
-        public IWorkflowTrigger ASITETRIGGEREVENTAPPFORM(Expression<Func<string>> projectId, Expression<Func<string>> bodytriggerName, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ASITETRIGGEREVENTAPPFORM(Expression<Func<string>> projectId, Expression<Func<string>> bodytriggerName, FlowRecurrence recurrence = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_bodytriggerName = WorkflowExpression.Compile(bodytriggerName, nameof(bodytriggerName), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/asitePullAppFormDataWebhook";
                 var apiCallHttpMethod = "post";

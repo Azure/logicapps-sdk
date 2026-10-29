@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertools
     public class PowertoolsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertools")]
-        public IBodyWorkflowAction<QueryResponse> InvokeMCP(Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null, Expression<Func<string>> sessionId = null)
+        public IBodyWorkflowAction<QueryResponse, ApiConnectionActionConfiguration> InvokeMCP(Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null, Expression<Func<string>> sessionId = null)
         {
             var __workflow_queryRequestjsonrpc = WorkflowExpression.Compile(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
             var __workflow_queryRequestid = WorkflowExpression.Compile(queryRequestid, nameof(queryRequestid), required: false);
             var __workflow_queryRequestmethod = WorkflowExpression.Compile(queryRequestmethod, nameof(queryRequestmethod), required: false);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
-            return new DeferredBodyAction<QueryResponse>(() =>
+            return new DeferredBodyAction<QueryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/mcp/";
                 var apiCallHttpMethod = "post";

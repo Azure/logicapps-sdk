@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prowfmauthentication
     public class ProwfmauthenticationActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prowfmauthentication")]
-        public IBodyWorkflowAction<GetAccessTokenResponse> GetAccessToken(Expression<Func<string>> bodyusername, Expression<Func<string>> bodypassword, Expression<Func<string>> bodyclientId, Expression<Func<string>> bodyclientSecret)
+        public IBodyWorkflowAction<GetAccessTokenResponse, ApiConnectionActionConfiguration> GetAccessToken(Expression<Func<string>> bodyusername, Expression<Func<string>> bodypassword, Expression<Func<string>> bodyclientId, Expression<Func<string>> bodyclientSecret)
         {
             var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: true);
             var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
             var __workflow_bodyclientId = WorkflowExpression.Compile(bodyclientId, nameof(bodyclientId), required: true);
             var __workflow_bodyclientSecret = WorkflowExpression.Compile(bodyclientSecret, nameof(bodyclientSecret), required: true);
-            return new DeferredBodyAction<GetAccessTokenResponse>(() =>
+            return new DeferredBodyAction<GetAccessTokenResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/authentication/access_token";
                 var apiCallHttpMethod = "post";

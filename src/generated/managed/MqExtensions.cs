@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
     public class MqActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
-        public IBodyWorkflowAction<Item> Read(Expression<Func<string>> optionsqueue = null, Expression<Func<string>> optionsmessageId = null, Expression<Func<string>> optionscorrelationId = null, Expression<Func<string>> optionsgroupId = null, Expression<Func<string>> optionsmessageToken = null, Expression<Func<double>> optionsoffset = null, Expression<Func<double>> optionslogicalSequenceNumber = null, Expression<Func<optionsincludeInfoInput>> optionsincludeInfo = null, Expression<Func<string>> optionstimeout = null)
+        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> Read(Expression<Func<string>> optionsqueue = null, Expression<Func<string>> optionsmessageId = null, Expression<Func<string>> optionscorrelationId = null, Expression<Func<string>> optionsgroupId = null, Expression<Func<string>> optionsmessageToken = null, Expression<Func<double>> optionsoffset = null, Expression<Func<double>> optionslogicalSequenceNumber = null, Expression<Func<optionsincludeInfoInput>> optionsincludeInfo = null, Expression<Func<string>> optionstimeout = null)
         {
             var __workflow_optionsqueue = WorkflowExpression.Compile(optionsqueue, nameof(optionsqueue), required: false);
             var __workflow_optionsmessageId = WorkflowExpression.Compile(optionsmessageId, nameof(optionsmessageId), required: false);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             var __workflow_optionslogicalSequenceNumber = WorkflowExpression.Compile(optionslogicalSequenceNumber, nameof(optionslogicalSequenceNumber), required: false);
             var __workflow_optionsincludeInfo = WorkflowExpression.Compile(optionsincludeInfo, nameof(optionsincludeInfo), required: false);
             var __workflow_optionstimeout = WorkflowExpression.Compile(optionstimeout, nameof(optionstimeout), required: false);
-            return new DeferredBodyAction<Item>(() =>
+            return new DeferredBodyAction<Item, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/read";
                 var apiCallHttpMethod = "post";
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
-        public IBodyWorkflowAction<ItemsList> ReadAll(Expression<Func<string>> optionsqueue = null, Expression<Func<string>> optionsmessageId = null, Expression<Func<string>> optionscorrelationId = null, Expression<Func<string>> optionsgroupId = null, Expression<Func<string>> optionsmessageToken = null, Expression<Func<double>> optionsoffset = null, Expression<Func<double>> optionslogicalSequenceNumber = null, Expression<Func<optionsincludeInfoInput>> optionsincludeInfo = null, Expression<Func<string>> optionstimeout = null, Expression<Func<double>> optionsbatchSize = null)
+        public IBodyWorkflowAction<ItemsList, ApiConnectionActionConfiguration> ReadAll(Expression<Func<string>> optionsqueue = null, Expression<Func<string>> optionsmessageId = null, Expression<Func<string>> optionscorrelationId = null, Expression<Func<string>> optionsgroupId = null, Expression<Func<string>> optionsmessageToken = null, Expression<Func<double>> optionsoffset = null, Expression<Func<double>> optionslogicalSequenceNumber = null, Expression<Func<optionsincludeInfoInput>> optionsincludeInfo = null, Expression<Func<string>> optionstimeout = null, Expression<Func<double>> optionsbatchSize = null)
         {
             var __workflow_optionsqueue = WorkflowExpression.Compile(optionsqueue, nameof(optionsqueue), required: false);
             var __workflow_optionsmessageId = WorkflowExpression.Compile(optionsmessageId, nameof(optionsmessageId), required: false);
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             var __workflow_optionsincludeInfo = WorkflowExpression.Compile(optionsincludeInfo, nameof(optionsincludeInfo), required: false);
             var __workflow_optionstimeout = WorkflowExpression.Compile(optionstimeout, nameof(optionstimeout), required: false);
             var __workflow_optionsbatchSize = WorkflowExpression.Compile(optionsbatchSize, nameof(optionsbatchSize), required: false);
-            return new DeferredBodyAction<ItemsList>(() =>
+            return new DeferredBodyAction<ItemsList, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/readall";
                 var apiCallHttpMethod = "post";
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
-        public IBodyWorkflowAction<Item> Receive(Expression<Func<string>> optionsqueue = null, Expression<Func<string>> optionsmessageId = null, Expression<Func<string>> optionscorrelationId = null, Expression<Func<string>> optionsgroupId = null, Expression<Func<string>> optionsmessageToken = null, Expression<Func<double>> optionsoffset = null, Expression<Func<double>> optionslogicalSequenceNumber = null, Expression<Func<optionsincludeInfoInput>> optionsincludeInfo = null, Expression<Func<string>> optionstimeout = null)
+        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> Receive(Expression<Func<string>> optionsqueue = null, Expression<Func<string>> optionsmessageId = null, Expression<Func<string>> optionscorrelationId = null, Expression<Func<string>> optionsgroupId = null, Expression<Func<string>> optionsmessageToken = null, Expression<Func<double>> optionsoffset = null, Expression<Func<double>> optionslogicalSequenceNumber = null, Expression<Func<optionsincludeInfoInput>> optionsincludeInfo = null, Expression<Func<string>> optionstimeout = null)
         {
             var __workflow_optionsqueue = WorkflowExpression.Compile(optionsqueue, nameof(optionsqueue), required: false);
             var __workflow_optionsmessageId = WorkflowExpression.Compile(optionsmessageId, nameof(optionsmessageId), required: false);
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             var __workflow_optionslogicalSequenceNumber = WorkflowExpression.Compile(optionslogicalSequenceNumber, nameof(optionslogicalSequenceNumber), required: false);
             var __workflow_optionsincludeInfo = WorkflowExpression.Compile(optionsincludeInfo, nameof(optionsincludeInfo), required: false);
             var __workflow_optionstimeout = WorkflowExpression.Compile(optionstimeout, nameof(optionstimeout), required: false);
-            return new DeferredBodyAction<Item>(() =>
+            return new DeferredBodyAction<Item, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/receive";
                 var apiCallHttpMethod = "post";
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
-        public IBodyWorkflowAction<ItemsList> ReceiveAll(Expression<Func<string>> optionsqueue = null, Expression<Func<string>> optionsmessageId = null, Expression<Func<string>> optionscorrelationId = null, Expression<Func<string>> optionsgroupId = null, Expression<Func<string>> optionsmessageToken = null, Expression<Func<double>> optionsoffset = null, Expression<Func<double>> optionslogicalSequenceNumber = null, Expression<Func<optionsincludeInfoInput>> optionsincludeInfo = null, Expression<Func<string>> optionstimeout = null, Expression<Func<double>> optionsbatchSize = null)
+        public IBodyWorkflowAction<ItemsList, ApiConnectionActionConfiguration> ReceiveAll(Expression<Func<string>> optionsqueue = null, Expression<Func<string>> optionsmessageId = null, Expression<Func<string>> optionscorrelationId = null, Expression<Func<string>> optionsgroupId = null, Expression<Func<string>> optionsmessageToken = null, Expression<Func<double>> optionsoffset = null, Expression<Func<double>> optionslogicalSequenceNumber = null, Expression<Func<optionsincludeInfoInput>> optionsincludeInfo = null, Expression<Func<string>> optionstimeout = null, Expression<Func<double>> optionsbatchSize = null)
         {
             var __workflow_optionsqueue = WorkflowExpression.Compile(optionsqueue, nameof(optionsqueue), required: false);
             var __workflow_optionsmessageId = WorkflowExpression.Compile(optionsmessageId, nameof(optionsmessageId), required: false);
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             var __workflow_optionsincludeInfo = WorkflowExpression.Compile(optionsincludeInfo, nameof(optionsincludeInfo), required: false);
             var __workflow_optionstimeout = WorkflowExpression.Compile(optionstimeout, nameof(optionstimeout), required: false);
             var __workflow_optionsbatchSize = WorkflowExpression.Compile(optionsbatchSize, nameof(optionsbatchSize), required: false);
-            return new DeferredBodyAction<ItemsList>(() =>
+            return new DeferredBodyAction<ItemsList, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/receiveall";
                 var apiCallHttpMethod = "post";
@@ -394,7 +394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
-        public IBodyWorkflowAction<Item> Delete(Expression<Func<string>> optionsqueue = null, Expression<Func<string>> optionsmessageId = null, Expression<Func<string>> optionscorrelationId = null, Expression<Func<string>> optionsgroupId = null, Expression<Func<string>> optionsmessageToken = null, Expression<Func<double>> optionsoffset = null, Expression<Func<double>> optionslogicalSequenceNumber = null, Expression<Func<optionsincludeInfoInput>> optionsincludeInfo = null, Expression<Func<string>> optionstimeout = null)
+        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> Delete(Expression<Func<string>> optionsqueue = null, Expression<Func<string>> optionsmessageId = null, Expression<Func<string>> optionscorrelationId = null, Expression<Func<string>> optionsgroupId = null, Expression<Func<string>> optionsmessageToken = null, Expression<Func<double>> optionsoffset = null, Expression<Func<double>> optionslogicalSequenceNumber = null, Expression<Func<optionsincludeInfoInput>> optionsincludeInfo = null, Expression<Func<string>> optionstimeout = null)
         {
             var __workflow_optionsqueue = WorkflowExpression.Compile(optionsqueue, nameof(optionsqueue), required: false);
             var __workflow_optionsmessageId = WorkflowExpression.Compile(optionsmessageId, nameof(optionsmessageId), required: false);
@@ -405,7 +405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             var __workflow_optionslogicalSequenceNumber = WorkflowExpression.Compile(optionslogicalSequenceNumber, nameof(optionslogicalSequenceNumber), required: false);
             var __workflow_optionsincludeInfo = WorkflowExpression.Compile(optionsincludeInfo, nameof(optionsincludeInfo), required: false);
             var __workflow_optionstimeout = WorkflowExpression.Compile(optionstimeout, nameof(optionstimeout), required: false);
-            return new DeferredBodyAction<Item>(() =>
+            return new DeferredBodyAction<Item, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/delete";
                 var apiCallHttpMethod = "post";
@@ -486,7 +486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
-        public IBodyWorkflowAction<ItemsList> DeleteAll(Expression<Func<string>> optionsqueue = null, Expression<Func<string>> optionsmessageId = null, Expression<Func<string>> optionscorrelationId = null, Expression<Func<string>> optionsgroupId = null, Expression<Func<string>> optionsmessageToken = null, Expression<Func<double>> optionsoffset = null, Expression<Func<double>> optionslogicalSequenceNumber = null, Expression<Func<optionsincludeInfoInput>> optionsincludeInfo = null, Expression<Func<string>> optionstimeout = null, Expression<Func<double>> optionsbatchSize = null)
+        public IBodyWorkflowAction<ItemsList, ApiConnectionActionConfiguration> DeleteAll(Expression<Func<string>> optionsqueue = null, Expression<Func<string>> optionsmessageId = null, Expression<Func<string>> optionscorrelationId = null, Expression<Func<string>> optionsgroupId = null, Expression<Func<string>> optionsmessageToken = null, Expression<Func<double>> optionsoffset = null, Expression<Func<double>> optionslogicalSequenceNumber = null, Expression<Func<optionsincludeInfoInput>> optionsincludeInfo = null, Expression<Func<string>> optionstimeout = null, Expression<Func<double>> optionsbatchSize = null)
         {
             var __workflow_optionsqueue = WorkflowExpression.Compile(optionsqueue, nameof(optionsqueue), required: false);
             var __workflow_optionsmessageId = WorkflowExpression.Compile(optionsmessageId, nameof(optionsmessageId), required: false);
@@ -498,7 +498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             var __workflow_optionsincludeInfo = WorkflowExpression.Compile(optionsincludeInfo, nameof(optionsincludeInfo), required: false);
             var __workflow_optionstimeout = WorkflowExpression.Compile(optionstimeout, nameof(optionstimeout), required: false);
             var __workflow_optionsbatchSize = WorkflowExpression.Compile(optionsbatchSize, nameof(optionsbatchSize), required: false);
-            return new DeferredBodyAction<ItemsList>(() =>
+            return new DeferredBodyAction<ItemsList, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/deleteall";
                 var apiCallHttpMethod = "post";
@@ -585,7 +585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
-        public IBodyWorkflowAction<SendResponse> Send(Expression<Func<string>> messagemessage, Expression<Func<string>> messagequeue = null, Expression<Func<messagemessageTypeInput>> messagemessageType = null, Expression<Func<string>> messagecorrelationId = null, Expression<Func<string>> messagemessageId = null, Expression<Func<string>> messagereplyToQueue = null, Expression<Func<string>> messagereplyToQueueManager = null, Expression<Func<double>> messagecodeCharSetId = null, Expression<Func<double>> messageoffset = null, Expression<Func<string>> messageformat = null)
+        public IBodyWorkflowAction<SendResponse, ApiConnectionActionConfiguration> Send(Expression<Func<string>> messagemessage, Expression<Func<string>> messagequeue = null, Expression<Func<messagemessageTypeInput>> messagemessageType = null, Expression<Func<string>> messagecorrelationId = null, Expression<Func<string>> messagemessageId = null, Expression<Func<string>> messagereplyToQueue = null, Expression<Func<string>> messagereplyToQueueManager = null, Expression<Func<double>> messagecodeCharSetId = null, Expression<Func<double>> messageoffset = null, Expression<Func<string>> messageformat = null)
         {
             var __workflow_messagemessage = WorkflowExpression.Compile(messagemessage, nameof(messagemessage), required: true);
             var __workflow_messagequeue = WorkflowExpression.Compile(messagequeue, nameof(messagequeue), required: false);
@@ -597,7 +597,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
             var __workflow_messagecodeCharSetId = WorkflowExpression.Compile(messagecodeCharSetId, nameof(messagecodeCharSetId), required: false);
             var __workflow_messageoffset = WorkflowExpression.Compile(messageoffset, nameof(messageoffset), required: false);
             var __workflow_messageformat = WorkflowExpression.Compile(messageformat, nameof(messageformat), required: false);
-            return new DeferredBodyAction<SendResponse>(() =>
+            return new DeferredBodyAction<SendResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/send";
                 var apiCallHttpMethod = "post";

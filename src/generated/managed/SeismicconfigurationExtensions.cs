@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
     public class SeismicconfigurationActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
-        public IBodyWorkflowAction<SeismicContentManagerDomainOfValues[]> GetContentPropertyValues(Expression<Func<string>> contentPropertyId)
+        public IBodyWorkflowAction<SeismicContentManagerDomainOfValues[], ApiConnectionActionConfiguration> GetContentPropertyValues(Expression<Func<string>> contentPropertyId)
         {
             var __workflow_contentPropertyId = WorkflowExpression.Compile(contentPropertyId, nameof(contentPropertyId), required: true);
-            return new DeferredBodyAction<SeismicContentManagerDomainOfValues[]>(() =>
+            return new DeferredBodyAction<SeismicContentManagerDomainOfValues[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/integration/v2/contentProperties/{0}/values", __workflow_contentPropertyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -25,11 +25,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
-        public IBodyWorkflowAction<SeismicContentManagerDomainOfValues[]> AddContentPropertyValues(Expression<Func<string>> contentPropertyId, Expression<Func<string[]>> body = null)
+        public IBodyWorkflowAction<SeismicContentManagerDomainOfValues[], ApiConnectionActionConfiguration> AddContentPropertyValues(Expression<Func<string>> contentPropertyId, Expression<Func<string[]>> body = null)
         {
             var __workflow_contentPropertyId = WorkflowExpression.Compile(contentPropertyId, nameof(contentPropertyId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<SeismicContentManagerDomainOfValues[]>(() =>
+            return new DeferredBodyAction<SeismicContentManagerDomainOfValues[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/integration/v2/contentProperties/{0}/values", __workflow_contentPropertyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -40,11 +40,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
-        public IBodyWorkflowAction<SeismicContentPropertiesContentProperty[]> GetContentProperties(Expression<Func<string>> teamsiteId = null, Expression<Func<bool>> includeValues = null)
+        public IBodyWorkflowAction<SeismicContentPropertiesContentProperty[], ApiConnectionActionConfiguration> GetContentProperties(Expression<Func<string>> teamsiteId = null, Expression<Func<bool>> includeValues = null)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: false);
             var __workflow_includeValues = WorkflowExpression.Compile(includeValues, nameof(includeValues), required: false);
-            return new DeferredBodyAction<SeismicContentPropertiesContentProperty[]>(() =>
+            return new DeferredBodyAction<SeismicContentPropertiesContentProperty[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/v2/contentProperties";
                 var apiCallHttpMethod = "get";
@@ -59,13 +59,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
-        public IBodyWorkflowAction<SeismicContentManagerAddContentPropertyResponse> AddContentProperty(Expression<Func<string>> bodyname, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string[]>> bodycontentPropertyValues, Expression<Func<SeismicContentManagerContentPropertyTeamSiteInfo[]>> bodyteamsiteIds)
+        public IBodyWorkflowAction<SeismicContentManagerAddContentPropertyResponse, ApiConnectionActionConfiguration> AddContentProperty(Expression<Func<string>> bodyname, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string[]>> bodycontentPropertyValues, Expression<Func<SeismicContentManagerContentPropertyTeamSiteInfo[]>> bodyteamsiteIds)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
             var __workflow_bodycontentPropertyValues = WorkflowExpression.Compile(bodycontentPropertyValues, nameof(bodycontentPropertyValues), required: true);
             var __workflow_bodyteamsiteIds = WorkflowExpression.Compile(bodyteamsiteIds, nameof(bodyteamsiteIds), required: true);
-            return new DeferredBodyAction<SeismicContentManagerAddContentPropertyResponse>(() =>
+            return new DeferredBodyAction<SeismicContentManagerAddContentPropertyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/v2/contentProperties";
                 var apiCallHttpMethod = "post";
@@ -90,11 +90,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
-        public IBodyWorkflowAction<SeismicPrivacyManagementGdprEmailSettingResponse> GetGdprEmails(Expression<Func<int>> offset = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<SeismicPrivacyManagementGdprEmailSettingResponse, ApiConnectionActionConfiguration> GetGdprEmails(Expression<Func<int>> offset = null, Expression<Func<int>> limit = null)
         {
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredBodyAction<SeismicPrivacyManagementGdprEmailSettingResponse>(() =>
+            return new DeferredBodyAction<SeismicPrivacyManagementGdprEmailSettingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/v2/system/optouts";
                 var apiCallHttpMethod = "get";
@@ -108,10 +108,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
-        public IWorkflowAction DeleteGdprEmail(Expression<Func<string>> email)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteGdprEmail(Expression<Func<string>> email)
         {
             var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/integration/v2/system/optouts/{0}", __workflow_email.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
-        public IBodyWorkflowAction<SeismicTeamsitesTeamsiteResponse[]> GetTeamsites()
+        public IBodyWorkflowAction<SeismicTeamsitesTeamsiteResponse[], ApiConnectionActionConfiguration> GetTeamsites()
         {
             var apiCallPath = "/integration/v2/teamsites";
             var apiCallHttpMethod = "get";
@@ -130,10 +130,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
-        public IBodyWorkflowAction<SeismicTeamsitesTeamsiteResponse> GetTeamsiteDetails(Expression<Func<string>> teamsiteId)
+        public IBodyWorkflowAction<SeismicTeamsitesTeamsiteResponse, ApiConnectionActionConfiguration> GetTeamsiteDetails(Expression<Func<string>> teamsiteId)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
-            return new DeferredBodyAction<SeismicTeamsitesTeamsiteResponse>(() =>
+            return new DeferredBodyAction<SeismicTeamsitesTeamsiteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/integration/v2/teamsites/{0}", __workflow_teamsiteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
-        public IBodyWorkflowAction<SeismicTeamsitesTeamsiteResponse[]> GetUserTeamsites()
+        public IBodyWorkflowAction<SeismicTeamsitesTeamsiteResponse[], ApiConnectionActionConfiguration> GetUserTeamsites()
         {
             var apiCallPath = "/integration/v2/users/teamsites";
             var apiCallHttpMethod = "get";
@@ -152,11 +152,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
-        public IBodyWorkflowAction<SeismicDocCenterContentProfileResponse[]> GetUserProfiles(Expression<Func<string>> application = null, Expression<Func<bool>> isPredictiveOnly = null)
+        public IBodyWorkflowAction<SeismicDocCenterContentProfileResponse[], ApiConnectionActionConfiguration> GetUserProfiles(Expression<Func<string>> application = null, Expression<Func<bool>> isPredictiveOnly = null)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: false);
             var __workflow_isPredictiveOnly = WorkflowExpression.Compile(isPredictiveOnly, nameof(isPredictiveOnly), required: false);
-            return new DeferredBodyAction<SeismicDocCenterContentProfileResponse[]>(() =>
+            return new DeferredBodyAction<SeismicDocCenterContentProfileResponse[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/integration/v2/users/profiles";
                 var apiCallHttpMethod = "get";

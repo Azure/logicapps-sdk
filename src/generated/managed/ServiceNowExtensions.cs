@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
     public class ServiceNowActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IWorkflowAction GetAttachmentMetdata(Expression<Func<string>> sysparmLimit = null, Expression<Func<string>> sysparmOffset = null, Expression<Func<string>> sysparmQuery = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetAttachmentMetdata(Expression<Func<string>> sysparmLimit = null, Expression<Func<string>> sysparmOffset = null, Expression<Func<string>> sysparmQuery = null)
         {
             var __workflow_sysparmLimit = WorkflowExpression.Compile(sysparmLimit, nameof(sysparmLimit), required: false);
             var __workflow_sysparmOffset = WorkflowExpression.Compile(sysparmOffset, nameof(sysparmOffset), required: false);
             var __workflow_sysparmQuery = WorkflowExpression.Compile(sysparmQuery, nameof(sysparmQuery), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/now/v1/attachment";
                 var apiCallHttpMethod = "get";
@@ -35,13 +35,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<UploadAttachmentResponse> UploadAttachmentFile(Expression<Func<string>> tableName, Expression<Func<string>> tableSysId, Expression<Func<string>> fileName, Expression<Func<string>> file = null)
+        public IBodyWorkflowAction<UploadAttachmentResponse, ApiConnectionActionConfiguration> UploadAttachmentFile(Expression<Func<string>> tableName, Expression<Func<string>> tableSysId, Expression<Func<string>> fileName, Expression<Func<string>> file = null)
         {
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
             var __workflow_tableSysId = WorkflowExpression.Compile(tableSysId, nameof(tableSysId), required: true);
             var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
             var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: false);
-            return new DeferredBodyAction<UploadAttachmentResponse>(() =>
+            return new DeferredBodyAction<UploadAttachmentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/now/v1/attachment/file";
                 var apiCallHttpMethod = "post";
@@ -55,12 +55,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<UploadAttachmentResponse> UploadAttachment(Expression<Func<object>> attachmentContent, Expression<Func<string>> tableName, Expression<Func<string>> tableSysId)
+        public IBodyWorkflowAction<UploadAttachmentResponse, ApiConnectionActionConfiguration> UploadAttachment(Expression<Func<object>> attachmentContent, Expression<Func<string>> tableName, Expression<Func<string>> tableSysId)
         {
             var __workflow_attachmentContent = WorkflowExpression.Compile(attachmentContent, nameof(attachmentContent), required: true);
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
             var __workflow_tableSysId = WorkflowExpression.Compile(tableSysId, nameof(tableSysId), required: true);
-            return new DeferredBodyAction<UploadAttachmentResponse>(() =>
+            return new DeferredBodyAction<UploadAttachmentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/now/v1/attachment/upload";
                 var apiCallHttpMethod = "post";
@@ -70,10 +70,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IWorkflowAction RetrieveAttachmentMetadata(Expression<Func<string>> sysId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveAttachmentMetadata(Expression<Func<string>> sysId)
         {
             var __workflow_sysId = WorkflowExpression.Compile(sysId, nameof(sysId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/now/v1/attachment/{0}", __workflow_sysId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -83,10 +83,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IWorkflowAction DeleteAttachment(Expression<Func<string>> sysId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteAttachment(Expression<Func<string>> sysId)
         {
             var __workflow_sysId = WorkflowExpression.Compile(sysId, nameof(sysId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/now/v1/attachment/{0}", __workflow_sysId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -96,10 +96,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IWorkflowAction RetrieveAttachmentContent(Expression<Func<string>> sysId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveAttachmentContent(Expression<Func<string>> sysId)
         {
             var __workflow_sysId = WorkflowExpression.Compile(sysId, nameof(sysId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/now/v1/attachment/{0}/file", __workflow_sysId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<GetRecordsResponse> GetRecords(Expression<Func<string>> tableType, Expression<Func<bool>> sysparmDisplayValue = null, Expression<Func<bool>> sysparmExcludeReferenceLink = null, Expression<Func<string>> sysparmQuery = null, Expression<Func<int>> sysparmLimit = null, Expression<Func<int>> sysparmOffset = null, Expression<Func<string>> sysparmFields = null)
+        public IBodyWorkflowAction<GetRecordsResponse, ApiConnectionActionConfiguration> GetRecords(Expression<Func<string>> tableType, Expression<Func<bool>> sysparmDisplayValue = null, Expression<Func<bool>> sysparmExcludeReferenceLink = null, Expression<Func<string>> sysparmQuery = null, Expression<Func<int>> sysparmLimit = null, Expression<Func<int>> sysparmOffset = null, Expression<Func<string>> sysparmFields = null)
         {
             var __workflow_tableType = WorkflowExpression.Compile(tableType, nameof(tableType), required: true);
             var __workflow_sysparmDisplayValue = WorkflowExpression.Compile(sysparmDisplayValue, nameof(sysparmDisplayValue), required: false);
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
             var __workflow_sysparmLimit = WorkflowExpression.Compile(sysparmLimit, nameof(sysparmLimit), required: false);
             var __workflow_sysparmOffset = WorkflowExpression.Compile(sysparmOffset, nameof(sysparmOffset), required: false);
             var __workflow_sysparmFields = WorkflowExpression.Compile(sysparmFields, nameof(sysparmFields), required: false);
-            return new DeferredBodyAction<GetRecordsResponse>(() =>
+            return new DeferredBodyAction<GetRecordsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/now/v2/table/{0}", __workflow_tableType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -142,14 +142,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<SingleRecordResponse> CreateRecord(Expression<Func<string>> tableType, Expression<Func<object>> body = null, Expression<Func<bool>> sysparmDisplayValue = null, Expression<Func<bool>> sysparmExcludeReferenceLink = null, Expression<Func<string>> sysparmFields = null)
+        public IBodyWorkflowAction<SingleRecordResponse, ApiConnectionActionConfiguration> CreateRecord(Expression<Func<string>> tableType, Expression<Func<object>> body = null, Expression<Func<bool>> sysparmDisplayValue = null, Expression<Func<bool>> sysparmExcludeReferenceLink = null, Expression<Func<string>> sysparmFields = null)
         {
             var __workflow_tableType = WorkflowExpression.Compile(tableType, nameof(tableType), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_sysparmDisplayValue = WorkflowExpression.Compile(sysparmDisplayValue, nameof(sysparmDisplayValue), required: false);
             var __workflow_sysparmExcludeReferenceLink = WorkflowExpression.Compile(sysparmExcludeReferenceLink, nameof(sysparmExcludeReferenceLink), required: false);
             var __workflow_sysparmFields = WorkflowExpression.Compile(sysparmFields, nameof(sysparmFields), required: false);
-            return new DeferredBodyAction<SingleRecordResponse>(() =>
+            return new DeferredBodyAction<SingleRecordResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/now/v2/table/{0}", __workflow_tableType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -168,14 +168,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<SingleRecordResponse> GetRecord(Expression<Func<string>> tableType, Expression<Func<string>> sysid, Expression<Func<bool>> sysparmDisplayValue = null, Expression<Func<bool>> sysparmExcludeReferenceLink = null, Expression<Func<string>> sysparmFields = null)
+        public IBodyWorkflowAction<SingleRecordResponse, ApiConnectionActionConfiguration> GetRecord(Expression<Func<string>> tableType, Expression<Func<string>> sysid, Expression<Func<bool>> sysparmDisplayValue = null, Expression<Func<bool>> sysparmExcludeReferenceLink = null, Expression<Func<string>> sysparmFields = null)
         {
             var __workflow_tableType = WorkflowExpression.Compile(tableType, nameof(tableType), required: true);
             var __workflow_sysid = WorkflowExpression.Compile(sysid, nameof(sysid), required: true);
             var __workflow_sysparmDisplayValue = WorkflowExpression.Compile(sysparmDisplayValue, nameof(sysparmDisplayValue), required: false);
             var __workflow_sysparmExcludeReferenceLink = WorkflowExpression.Compile(sysparmExcludeReferenceLink, nameof(sysparmExcludeReferenceLink), required: false);
             var __workflow_sysparmFields = WorkflowExpression.Compile(sysparmFields, nameof(sysparmFields), required: false);
-            return new DeferredBodyAction<SingleRecordResponse>(() =>
+            return new DeferredBodyAction<SingleRecordResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/now/v2/table/{0}/{1}", __workflow_tableType.WithUrlEncoding(1), __workflow_sysid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<SingleRecordResponse> UpdateRecord(Expression<Func<string>> tableType, Expression<Func<string>> sysid, Expression<Func<object>> body = null, Expression<Func<bool>> sysparmDisplayValue = null, Expression<Func<bool>> sysparmExcludeReferenceLink = null, Expression<Func<string>> sysparmFields = null)
+        public IBodyWorkflowAction<SingleRecordResponse, ApiConnectionActionConfiguration> UpdateRecord(Expression<Func<string>> tableType, Expression<Func<string>> sysid, Expression<Func<object>> body = null, Expression<Func<bool>> sysparmDisplayValue = null, Expression<Func<bool>> sysparmExcludeReferenceLink = null, Expression<Func<string>> sysparmFields = null)
         {
             var __workflow_tableType = WorkflowExpression.Compile(tableType, nameof(tableType), required: true);
             var __workflow_sysid = WorkflowExpression.Compile(sysid, nameof(sysid), required: true);
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
             var __workflow_sysparmDisplayValue = WorkflowExpression.Compile(sysparmDisplayValue, nameof(sysparmDisplayValue), required: false);
             var __workflow_sysparmExcludeReferenceLink = WorkflowExpression.Compile(sysparmExcludeReferenceLink, nameof(sysparmExcludeReferenceLink), required: false);
             var __workflow_sysparmFields = WorkflowExpression.Compile(sysparmFields, nameof(sysparmFields), required: false);
-            return new DeferredBodyAction<SingleRecordResponse>(() =>
+            return new DeferredBodyAction<SingleRecordResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/now/v2/table/{0}/{1}", __workflow_tableType.WithUrlEncoding(1), __workflow_sysid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -220,11 +220,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IWorkflowAction DeleteRecord(Expression<Func<string>> tableType, Expression<Func<string>> sysid)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteRecord(Expression<Func<string>> tableType, Expression<Func<string>> sysid)
         {
             var __workflow_tableType = WorkflowExpression.Compile(tableType, nameof(tableType), required: true);
             var __workflow_sysid = WorkflowExpression.Compile(sysid, nameof(sysid), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/now/v2/table/{0}/{1}", __workflow_tableType.WithUrlEncoding(1), __workflow_sysid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<GetTypesResponse> GetRecordTypes()
+        public IBodyWorkflowAction<GetTypesResponse, ApiConnectionActionConfiguration> GetRecordTypes()
         {
             var apiCallPath = "/api/now/doc/table/schema";
             var apiCallHttpMethod = "get";
@@ -243,11 +243,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<GetCatalogsResponse> GetCatalogs(Expression<Func<int>> sysparmLimit = null, Expression<Func<string>> sysparmText = null)
+        public IBodyWorkflowAction<GetCatalogsResponse, ApiConnectionActionConfiguration> GetCatalogs(Expression<Func<int>> sysparmLimit = null, Expression<Func<string>> sysparmText = null)
         {
             var __workflow_sysparmLimit = WorkflowExpression.Compile(sysparmLimit, nameof(sysparmLimit), required: false);
             var __workflow_sysparmText = WorkflowExpression.Compile(sysparmText, nameof(sysparmText), required: false);
-            return new DeferredBodyAction<GetCatalogsResponse>(() =>
+            return new DeferredBodyAction<GetCatalogsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/sn_sc/servicecatalog/catalogs";
                 var apiCallHttpMethod = "get";
@@ -261,12 +261,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<GetCatalogCategoriesResponse> GetCatalogCategories(Expression<Func<string>> catalogId, Expression<Func<int>> sysparmLimit = null, Expression<Func<int>> sysparmOffset = null)
+        public IBodyWorkflowAction<GetCatalogCategoriesResponse, ApiConnectionActionConfiguration> GetCatalogCategories(Expression<Func<string>> catalogId, Expression<Func<int>> sysparmLimit = null, Expression<Func<int>> sysparmOffset = null)
         {
             var __workflow_catalogId = WorkflowExpression.Compile(catalogId, nameof(catalogId), required: true);
             var __workflow_sysparmLimit = WorkflowExpression.Compile(sysparmLimit, nameof(sysparmLimit), required: false);
             var __workflow_sysparmOffset = WorkflowExpression.Compile(sysparmOffset, nameof(sysparmOffset), required: false);
-            return new DeferredBodyAction<GetCatalogCategoriesResponse>(() =>
+            return new DeferredBodyAction<GetCatalogCategoriesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/sn_sc/servicecatalog/catalogs/{0}/categories", __workflow_catalogId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -280,13 +280,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<GetCatalogItemsResponse> GetCatalogItems(Expression<Func<int>> sysparmLimit, Expression<Func<string>> sysparmCategory = null, Expression<Func<string>> sysparmText = null, Expression<Func<string>> sysparmCatalog = null)
+        public IBodyWorkflowAction<GetCatalogItemsResponse, ApiConnectionActionConfiguration> GetCatalogItems(Expression<Func<int>> sysparmLimit, Expression<Func<string>> sysparmCategory = null, Expression<Func<string>> sysparmText = null, Expression<Func<string>> sysparmCatalog = null)
         {
             var __workflow_sysparmLimit = WorkflowExpression.Compile(sysparmLimit, nameof(sysparmLimit), required: true);
             var __workflow_sysparmCategory = WorkflowExpression.Compile(sysparmCategory, nameof(sysparmCategory), required: false);
             var __workflow_sysparmText = WorkflowExpression.Compile(sysparmText, nameof(sysparmText), required: false);
             var __workflow_sysparmCatalog = WorkflowExpression.Compile(sysparmCatalog, nameof(sysparmCatalog), required: false);
-            return new DeferredBodyAction<GetCatalogItemsResponse>(() =>
+            return new DeferredBodyAction<GetCatalogItemsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/sn_sc/servicecatalog/items";
                 var apiCallHttpMethod = "get";
@@ -303,10 +303,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<GetCatalogItemResponse> GetCatalogItem(Expression<Func<string>> sysId)
+        public IBodyWorkflowAction<GetCatalogItemResponse, ApiConnectionActionConfiguration> GetCatalogItem(Expression<Func<string>> sysId)
         {
             var __workflow_sysId = WorkflowExpression.Compile(sysId, nameof(sysId), required: true);
-            return new DeferredBodyAction<GetCatalogItemResponse>(() =>
+            return new DeferredBodyAction<GetCatalogItemResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/sn_sc/servicecatalog/items/{0}", __workflow_sysId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -316,13 +316,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<OrderItemResponse> OrderItem(Expression<Func<string>> sysId, Expression<Func<int>> bodysysparmQuantity, Expression<Func<string>> bodysysparmRequestedFor = null, Expression<Func<object>> bodyvariables = null)
+        public IBodyWorkflowAction<OrderItemResponse, ApiConnectionActionConfiguration> OrderItem(Expression<Func<string>> sysId, Expression<Func<int>> bodysysparmQuantity, Expression<Func<string>> bodysysparmRequestedFor = null, Expression<Func<object>> bodyvariables = null)
         {
             var __workflow_sysId = WorkflowExpression.Compile(sysId, nameof(sysId), required: true);
             var __workflow_bodysysparmQuantity = WorkflowExpression.Compile(bodysysparmQuantity, nameof(bodysysparmQuantity), required: true);
             var __workflow_bodysysparmRequestedFor = WorkflowExpression.Compile(bodysysparmRequestedFor, nameof(bodysysparmRequestedFor), required: false);
             var __workflow_bodyvariables = WorkflowExpression.Compile(bodyvariables, nameof(bodyvariables), required: false);
-            return new DeferredBodyAction<OrderItemResponse>(() =>
+            return new DeferredBodyAction<OrderItemResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/sn_sc/servicecatalog/items/{0}/order_now", __workflow_sysId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -353,14 +353,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<GetArticlesResponse> GetKnowledgeArticles(Expression<Func<string>> query, Expression<Func<string>> fields = null, Expression<Func<int>> limit = null, Expression<Func<string>> filter = null, Expression<Func<string>> kb = null)
+        public IBodyWorkflowAction<GetArticlesResponse, ApiConnectionActionConfiguration> GetKnowledgeArticles(Expression<Func<string>> query, Expression<Func<string>> fields = null, Expression<Func<int>> limit = null, Expression<Func<string>> filter = null, Expression<Func<string>> kb = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_kb = WorkflowExpression.Compile(kb, nameof(kb), required: false);
-            return new DeferredBodyAction<GetArticlesResponse>(() =>
+            return new DeferredBodyAction<GetArticlesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/sn_km_api/knowledge/articles";
                 var apiCallHttpMethod = "get";

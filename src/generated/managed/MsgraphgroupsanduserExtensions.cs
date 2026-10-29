@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
     public class MsgraphgroupsanduserActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
-        public IBodyWorkflowAction<ListUsersResponse> ListUsers()
+        public IBodyWorkflowAction<ListUsersResponse, ApiConnectionActionConfiguration> ListUsers()
         {
             var apiCallPath = "/v1.0/users";
             var apiCallHttpMethod = "get";
@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
-        public IBodyWorkflowAction<ListGroupsByDisplayNameSearchResponse> ListGroupsByDisplayNameSearch(Expression<Func<string>> search = null)
+        public IBodyWorkflowAction<ListGroupsByDisplayNameSearchResponse, ApiConnectionActionConfiguration> ListGroupsByDisplayNameSearch(Expression<Func<string>> search = null)
         {
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
-            return new DeferredBodyAction<ListGroupsByDisplayNameSearchResponse>(() =>
+            return new DeferredBodyAction<ListGroupsByDisplayNameSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1.0/groups";
                 var apiCallHttpMethod = "get";
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
-        public IBodyWorkflowAction<ListSubscribedSkusResponse> ListSubscribedSkus()
+        public IBodyWorkflowAction<ListSubscribedSkusResponse, ApiConnectionActionConfiguration> ListSubscribedSkus()
         {
             var apiCallPath = "/v1.0/subscribedSkus";
             var apiCallHttpMethod = "get";
@@ -48,12 +48,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
-        public IBodyWorkflowAction<ListDirectGroupMembersResponse> ListDirectGroupMembers(Expression<Func<string>> groupId, Expression<Func<string>> filter = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<ListDirectGroupMembersResponse, ApiConnectionActionConfiguration> ListDirectGroupMembers(Expression<Func<string>> groupId, Expression<Func<string>> filter = null, Expression<Func<string>> select = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<ListDirectGroupMembersResponse>(() =>
+            return new DeferredBodyAction<ListDirectGroupMembersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/groups/{0}/members", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -71,11 +71,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
-        public IBodyWorkflowAction<GetMemberLicenseDetailsResponse> GetMemberLicenseDetails(Expression<Func<string>> id, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<GetMemberLicenseDetailsResponse, ApiConnectionActionConfiguration> GetMemberLicenseDetails(Expression<Func<string>> id, Expression<Func<string>> select = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<GetMemberLicenseDetailsResponse>(() =>
+            return new DeferredBodyAction<GetMemberLicenseDetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/users/{0}/licenseDetails", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -88,10 +88,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
-        public IBodyWorkflowAction<GetGroupPropertiesResponse> GetGroupProperties(Expression<Func<string>> groupId)
+        public IBodyWorkflowAction<GetGroupPropertiesResponse, ApiConnectionActionConfiguration> GetGroupProperties(Expression<Func<string>> groupId)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
-            return new DeferredBodyAction<GetGroupPropertiesResponse>(() =>
+            return new DeferredBodyAction<GetGroupPropertiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/groups/{0}", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -101,11 +101,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
-        public IBodyWorkflowAction<GetMemberGroupsResponse> GetMemberGroups(Expression<Func<string>> memberId, Expression<Func<bool>> bodysecurityEnabledOnly)
+        public IBodyWorkflowAction<GetMemberGroupsResponse, ApiConnectionActionConfiguration> GetMemberGroups(Expression<Func<string>> memberId, Expression<Func<bool>> bodysecurityEnabledOnly)
         {
             var __workflow_memberId = WorkflowExpression.Compile(memberId, nameof(memberId), required: true);
             var __workflow_bodysecurityEnabledOnly = WorkflowExpression.Compile(bodysecurityEnabledOnly, nameof(bodysecurityEnabledOnly), required: true);
-            return new DeferredBodyAction<GetMemberGroupsResponse>(() =>
+            return new DeferredBodyAction<GetMemberGroupsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/users/{0}/getMemberGroups", __workflow_memberId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";

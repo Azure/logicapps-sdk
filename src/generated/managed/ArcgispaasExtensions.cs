@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
     public class ArcgispaasActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        public IBodyWorkflowAction<ReverseGeocodeResponse> ReverseGeocode(Expression<Func<double>> x, Expression<Func<double>> y, Expression<Func<string>> srs = null, Expression<Func<locationTypeInput>> locationType = null)
+        public IBodyWorkflowAction<ReverseGeocodeResponse, ApiConnectionActionConfiguration> ReverseGeocode(Expression<Func<double>> x, Expression<Func<double>> y, Expression<Func<string>> srs = null, Expression<Func<locationTypeInput>> locationType = null)
         {
             var __workflow_x = WorkflowExpression.Compile(x, nameof(x), required: true);
             var __workflow_y = WorkflowExpression.Compile(y, nameof(y), required: true);
             var __workflow_srs = WorkflowExpression.Compile(srs, nameof(srs), required: false);
             var __workflow_locationType = WorkflowExpression.Compile(locationType, nameof(locationType), required: false);
-            return new DeferredBodyAction<ReverseGeocodeResponse>(() =>
+            return new DeferredBodyAction<ReverseGeocodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/geocode/reverseGeocode";
                 var apiCallHttpMethod = "get";
@@ -35,11 +35,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        public IBodyWorkflowAction<JToken> GeometryService(Expression<Func<string>> operation, Expression<Func<object>> data = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GeometryService(Expression<Func<string>> operation, Expression<Func<object>> data = null)
         {
             var __workflow_operation = WorkflowExpression.Compile(operation, nameof(operation), required: true);
             var __workflow_data = WorkflowExpression.Compile(data, nameof(data), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/geometry/process";
                 var apiCallHttpMethod = "post";
@@ -51,10 +51,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        public IBodyWorkflowAction<TimeConversionHelperResponse> TimeConversionHelper(Expression<Func<string>> datadateTime)
+        public IBodyWorkflowAction<TimeConversionHelperResponse, ApiConnectionActionConfiguration> TimeConversionHelper(Expression<Func<string>> datadateTime)
         {
             var __workflow_datadateTime = WorkflowExpression.Compile(datadateTime, nameof(datadateTime), required: true);
-            return new DeferredBodyAction<TimeConversionHelperResponse>(() =>
+            return new DeferredBodyAction<TimeConversionHelperResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/helper/convertTime";
                 var apiCallHttpMethod = "post";
@@ -73,12 +73,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        public IBodyWorkflowAction<CreatePointGeometryHelperResponse> CreatePointGeometryHelper(Expression<Func<double>> x, Expression<Func<double>> y, Expression<Func<string>> srs = null)
+        public IBodyWorkflowAction<CreatePointGeometryHelperResponse, ApiConnectionActionConfiguration> CreatePointGeometryHelper(Expression<Func<double>> x, Expression<Func<double>> y, Expression<Func<string>> srs = null)
         {
             var __workflow_x = WorkflowExpression.Compile(x, nameof(x), required: true);
             var __workflow_y = WorkflowExpression.Compile(y, nameof(y), required: true);
             var __workflow_srs = WorkflowExpression.Compile(srs, nameof(srs), required: false);
-            return new DeferredBodyAction<CreatePointGeometryHelperResponse>(() =>
+            return new DeferredBodyAction<CreatePointGeometryHelperResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/helper/createPointGeometry";
                 var apiCallHttpMethod = "get";
@@ -92,10 +92,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        public IBodyWorkflowAction<JToken> EXIF(Expression<Func<string>> data = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EXIF(Expression<Func<string>> data = null)
         {
             var __workflow_data = WorkflowExpression.Compile(data, nameof(data), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/helper/exif";
                 var apiCallHttpMethod = "post";
@@ -106,10 +106,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        public IBodyWorkflowAction<JToken> GeocodeAddresses(Expression<Func<string>> dataaddresses)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GeocodeAddresses(Expression<Func<string>> dataaddresses)
         {
             var __workflow_dataaddresses = WorkflowExpression.Compile(dataaddresses, nameof(dataaddresses), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/geocode/geocodeAddresses";
                 var apiCallHttpMethod = "post";
@@ -128,14 +128,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        public IBodyWorkflowAction<GeoenrichV2Response> Geoenrich(Expression<Func<string>> country, Expression<Func<string>> datacollection, Expression<Func<string>> parameter, Expression<Func<buffertypeInput>> buffertype, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<GeoenrichV2Response, ApiConnectionActionConfiguration> Geoenrich(Expression<Func<string>> country, Expression<Func<string>> datacollection, Expression<Func<string>> parameter, Expression<Func<buffertypeInput>> buffertype, Expression<Func<object>> body = null)
         {
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
             var __workflow_datacollection = WorkflowExpression.Compile(datacollection, nameof(datacollection), required: true);
             var __workflow_parameter = WorkflowExpression.Compile(parameter, nameof(parameter), required: true);
             var __workflow_buffertype = WorkflowExpression.Compile(buffertype, nameof(buffertype), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<GeoenrichV2Response>(() =>
+            return new DeferredBodyAction<GeoenrichV2Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/geoenrichment/enrich";
                 var apiCallHttpMethod = "post";
@@ -150,14 +150,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        public IBodyWorkflowAction<GetRouteV2Response> GetRoute(Expression<Func<string>> routingroutingStops, Expression<Func<string>> travelModeName = null, Expression<Func<bool>> findBestSequence = null, Expression<Func<bool>> preserveFirstStop = null, Expression<Func<bool>> returnDirections = null)
+        public IBodyWorkflowAction<GetRouteV2Response, ApiConnectionActionConfiguration> GetRoute(Expression<Func<string>> routingroutingStops, Expression<Func<string>> travelModeName = null, Expression<Func<bool>> findBestSequence = null, Expression<Func<bool>> preserveFirstStop = null, Expression<Func<bool>> returnDirections = null)
         {
             var __workflow_routingroutingStops = WorkflowExpression.Compile(routingroutingStops, nameof(routingroutingStops), required: true);
             var __workflow_travelModeName = WorkflowExpression.Compile(travelModeName, nameof(travelModeName), required: false);
             var __workflow_findBestSequence = WorkflowExpression.Compile(findBestSequence, nameof(findBestSequence), required: false);
             var __workflow_preserveFirstStop = WorkflowExpression.Compile(preserveFirstStop, nameof(preserveFirstStop), required: false);
             var __workflow_returnDirections = WorkflowExpression.Compile(returnDirections, nameof(returnDirections), required: false);
-            return new DeferredBodyAction<GetRouteV2Response>(() =>
+            return new DeferredBodyAction<GetRouteV2Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/routing";
                 var apiCallHttpMethod = "post";

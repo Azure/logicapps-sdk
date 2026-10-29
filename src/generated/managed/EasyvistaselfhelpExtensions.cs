@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
     public class EasyvistaselfhelpActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
-        public IWorkflowAction Execute(Expression<Func<string>> sessionId, Expression<Func<string>> scenarioId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Execute(Expression<Func<string>> sessionId, Expression<Func<string>> scenarioId)
         {
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
             var __workflow_scenarioId = WorkflowExpression.Compile(scenarioId, nameof(scenarioId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AtanorPortalAPI/atanor/execute/";
                 var apiCallHttpMethod = "get";
@@ -28,12 +28,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
-        public IWorkflowAction GetPausedProcedureList(Expression<Func<string>> sessionId, Expression<Func<string>> locale, Expression<Func<string>> versionId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetPausedProcedureList(Expression<Func<string>> sessionId, Expression<Func<string>> locale, Expression<Func<string>> versionId)
         {
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
             var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: true);
             var __workflow_versionId = WorkflowExpression.Compile(versionId, nameof(versionId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AtanorPortalAPI/atanor/paused/";
                 var apiCallHttpMethod = "get";
@@ -46,12 +46,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
-        public IBodyWorkflowAction<GetProcedureListResponse> GetProcedureList(Expression<Func<string>> sessionId, Expression<Func<string>> locale, Expression<Func<string>> versionId)
+        public IBodyWorkflowAction<GetProcedureListResponse, ApiConnectionActionConfiguration> GetProcedureList(Expression<Func<string>> sessionId, Expression<Func<string>> locale, Expression<Func<string>> versionId)
         {
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
             var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: true);
             var __workflow_versionId = WorkflowExpression.Compile(versionId, nameof(versionId), required: true);
-            return new DeferredBodyAction<GetProcedureListResponse>(() =>
+            return new DeferredBodyAction<GetProcedureListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AtanorPortalAPI/atanor/project/";
                 var apiCallHttpMethod = "get";
@@ -64,12 +64,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
-        public IBodyWorkflowAction<GetProjectListResponse> GetProjectList(Expression<Func<string>> sessionId, Expression<Func<string>> locale, Expression<Func<string>> mode = null)
+        public IBodyWorkflowAction<GetProjectListResponse, ApiConnectionActionConfiguration> GetProjectList(Expression<Func<string>> sessionId, Expression<Func<string>> locale, Expression<Func<string>> mode = null)
         {
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
             var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: true);
             var __workflow_mode = WorkflowExpression.Compile(mode, nameof(mode), required: false);
-            return new DeferredBodyAction<GetProjectListResponse>(() =>
+            return new DeferredBodyAction<GetProjectListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AtanorPortalAPI/atanor/projects/";
                 var apiCallHttpMethod = "get";
@@ -83,13 +83,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
-        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> sessionId, Expression<Func<string>> locale, Expression<Func<string>> pattern, Expression<Func<string>> versionId = null)
+        public IBodyWorkflowAction<SearchResponse, ApiConnectionActionConfiguration> Search(Expression<Func<string>> sessionId, Expression<Func<string>> locale, Expression<Func<string>> pattern, Expression<Func<string>> versionId = null)
         {
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
             var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: true);
             var __workflow_pattern = WorkflowExpression.Compile(pattern, nameof(pattern), required: true);
             var __workflow_versionId = WorkflowExpression.Compile(versionId, nameof(versionId), required: false);
-            return new DeferredBodyAction<SearchResponse>(() =>
+            return new DeferredBodyAction<SearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AtanorPortalAPI/atanor/search/";
                 var apiCallHttpMethod = "get";
@@ -104,10 +104,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
-        public IBodyWorkflowAction<GetUserResponse> GetUser(Expression<Func<string>> sessionId)
+        public IBodyWorkflowAction<GetUserResponse, ApiConnectionActionConfiguration> GetUser(Expression<Func<string>> sessionId)
         {
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
-            return new DeferredBodyAction<GetUserResponse>(() =>
+            return new DeferredBodyAction<GetUserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AtanorPortalAPI/atanor/user/";
                 var apiCallHttpMethod = "get";
@@ -118,12 +118,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
-        public IWorkflowAction Login(Expression<Func<string>> login, Expression<Func<string>> password, Expression<Func<string>> locale = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Login(Expression<Func<string>> login, Expression<Func<string>> password, Expression<Func<string>> locale = null)
         {
             var __workflow_login = WorkflowExpression.Compile(login, nameof(login), required: true);
             var __workflow_password = WorkflowExpression.Compile(password, nameof(password), required: true);
             var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/livedesk/CHECK";
                 var apiCallHttpMethod = "get";

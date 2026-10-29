@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
     public class ThebotplatformActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebotplatform")]
-        public IBodyWorkflowAction<SimpleTextMessageResponse> SimpleTextMessage(Expression<Func<bodydataattributesmessagesInputItem[]>> bodydataattributesmessages = null, Expression<Func<string>> bodydataattributesrecipient = null)
+        public IBodyWorkflowAction<SimpleTextMessageResponse, ApiConnectionActionConfiguration> SimpleTextMessage(Expression<Func<bodydataattributesmessagesInputItem[]>> bodydataattributesmessages = null, Expression<Func<string>> bodydataattributesrecipient = null)
         {
             var __workflow_bodydataattributesmessages = WorkflowExpression.Compile(bodydataattributesmessages, nameof(bodydataattributesmessages), required: false);
             var __workflow_bodydataattributesrecipient = WorkflowExpression.Compile(bodydataattributesrecipient, nameof(bodydataattributesrecipient), required: false);
-            return new DeferredBodyAction<SimpleTextMessageResponse>(() =>
+            return new DeferredBodyAction<SimpleTextMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1.0/activity/external";
                 var apiCallHttpMethod = "post";
@@ -63,11 +63,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebotplatform")]
-        public IBodyWorkflowAction<CreateUserAttributeResponse> CreateUserAttribute(Expression<Func<string>> bodydataattributesname = null, Expression<Func<bodydataattributesisPiiInput>> bodydataattributesisPii = null)
+        public IBodyWorkflowAction<CreateUserAttributeResponse, ApiConnectionActionConfiguration> CreateUserAttribute(Expression<Func<string>> bodydataattributesname = null, Expression<Func<bodydataattributesisPiiInput>> bodydataattributesisPii = null)
         {
             var __workflow_bodydataattributesname = WorkflowExpression.Compile(bodydataattributesname, nameof(bodydataattributesname), required: false);
             var __workflow_bodydataattributesisPii = WorkflowExpression.Compile(bodydataattributesisPii, nameof(bodydataattributesisPii), required: false);
-            return new DeferredBodyAction<CreateUserAttributeResponse>(() =>
+            return new DeferredBodyAction<CreateUserAttributeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1.0/userattributes";
                 var apiCallHttpMethod = "post";
@@ -114,11 +114,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebotplatform")]
-        public IWorkflowAction SetUserAttribute(Expression<Func<string>> emailaddress, Expression<Func<bodydataattributesstateInputItem[]>> bodydataattributesstate)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetUserAttribute(Expression<Func<string>> emailaddress, Expression<Func<bodydataattributesstateInputItem[]>> bodydataattributesstate)
         {
             var __workflow_emailaddress = WorkflowExpression.Compile(emailaddress, nameof(emailaddress), required: true);
             var __workflow_bodydataattributesstate = WorkflowExpression.Compile(bodydataattributesstate, nameof(bodydataattributesstate), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/users/{0}", __workflow_emailaddress.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";

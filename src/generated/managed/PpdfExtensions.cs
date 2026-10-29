@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ppdf
     public class PpdfActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ppdf")]
-        public IBodyWorkflowAction<DataSetsList> GetDataSets()
+        public IBodyWorkflowAction<DataSetsList, ApiConnectionActionConfiguration> GetDataSets()
         {
             var apiCallPath = "/datasets";
             var apiCallHttpMethod = "get";
@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ppdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ppdf")]
-        public IBodyWorkflowAction<TablesList> GetTables(Expression<Func<string>> dataset)
+        public IBodyWorkflowAction<TablesList, ApiConnectionActionConfiguration> GetTables(Expression<Func<string>> dataset)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
-            return new DeferredBodyAction<TablesList>(() =>
+            return new DeferredBodyAction<TablesList, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables", __workflow_dataset.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ppdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ppdf")]
-        public IBodyWorkflowAction<ItemsList> GetItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<ItemsList, ApiConnectionActionConfiguration> GetItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> select = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ppdf
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
-            return new DeferredBodyAction<ItemsList>(() =>
+            return new DeferredBodyAction<ItemsList, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/items", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";

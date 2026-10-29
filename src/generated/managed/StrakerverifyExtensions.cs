@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
     public class StrakerverifyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
-        public IBodyWorkflowAction<string> GetFile(Expression<Func<string>> fileId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetFile(Expression<Func<string>> fileId)
         {
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/file/{0}", __workflow_fileId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
-        public IBodyWorkflowAction<GetKeysResponse> GetKeys()
+        public IBodyWorkflowAction<GetKeysResponse, ApiConnectionActionConfiguration> GetKeys()
         {
             var apiCallPath = "/key";
             var apiCallHttpMethod = "get";
@@ -34,11 +34,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
-        public IBodyWorkflowAction<GetKeyResponse> CreateKey(Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<GetKeyResponse, ApiConnectionActionConfiguration> CreateKey(Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            return new DeferredBodyAction<GetKeyResponse>(() =>
+            return new DeferredBodyAction<GetKeyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/key";
                 var apiCallHttpMethod = "post";
@@ -73,10 +73,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
-        public IBodyWorkflowAction<GetKeyResponse> GetKey(Expression<Func<string>> keyId)
+        public IBodyWorkflowAction<GetKeyResponse, ApiConnectionActionConfiguration> GetKey(Expression<Func<string>> keyId)
         {
             var __workflow_keyId = WorkflowExpression.Compile(keyId, nameof(keyId), required: true);
-            return new DeferredBodyAction<GetKeyResponse>(() =>
+            return new DeferredBodyAction<GetKeyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/key/{0}", __workflow_keyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -86,14 +86,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
-        public IBodyWorkflowAction<CreateProjectResponse> CreateProject(Expression<Func<object>> files, Expression<Func<string[]>> languages, Expression<Func<string>> workflowId, Expression<Func<string>> title, Expression<Func<string>> callbackUri)
+        public IBodyWorkflowAction<CreateProjectResponse, ApiConnectionActionConfiguration> CreateProject(Expression<Func<object>> files, Expression<Func<string[]>> languages, Expression<Func<string>> workflowId, Expression<Func<string>> title, Expression<Func<string>> callbackUri)
         {
             var __workflow_files = WorkflowExpression.Compile(files, nameof(files), required: true);
             var __workflow_languages = WorkflowExpression.Compile(languages, nameof(languages), required: true);
             var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
             var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: true);
             var __workflow_callbackUri = WorkflowExpression.Compile(callbackUri, nameof(callbackUri), required: true);
-            return new DeferredBodyAction<CreateProjectResponse>(() =>
+            return new DeferredBodyAction<CreateProjectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/project";
                 var apiCallHttpMethod = "post";
@@ -104,10 +104,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
-        public IBodyWorkflowAction<GetProjectResponse> GetProject(Expression<Func<string>> projectId)
+        public IBodyWorkflowAction<GetProjectResponse, ApiConnectionActionConfiguration> GetProject(Expression<Func<string>> projectId)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            return new DeferredBodyAction<GetProjectResponse>(() =>
+            return new DeferredBodyAction<GetProjectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/project/{0}", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -117,14 +117,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
-        public IBodyWorkflowAction<GetSegmentResponse> GetSegments(Expression<Func<string>> projectId, Expression<Func<string>> fileId, Expression<Func<string>> languageId, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<GetSegmentResponse, ApiConnectionActionConfiguration> GetSegments(Expression<Func<string>> projectId, Expression<Func<string>> fileId, Expression<Func<string>> languageId, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             var __workflow_languageId = WorkflowExpression.Compile(languageId, nameof(languageId), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
-            return new DeferredBodyAction<GetSegmentResponse>(() =>
+            return new DeferredBodyAction<GetSegmentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/project/{0}/segments/{1}/{2}", __workflow_projectId.WithUrlEncoding(1), __workflow_fileId.WithUrlEncoding(1), __workflow_languageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -140,10 +140,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
-        public IWorkflowAction ConfirmProject(Expression<Func<string>> projectId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ConfirmProject(Expression<Func<string>> projectId)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/project/confirm";
                 var apiCallHttpMethod = "post";
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
-        public IBodyWorkflowAction<GetTokenBalanceResponse> GetTokenBalance()
+        public IBodyWorkflowAction<GetTokenBalanceResponse, ApiConnectionActionConfiguration> GetTokenBalance()
         {
             var apiCallPath = "/user/balance";
             var apiCallHttpMethod = "get";
@@ -162,10 +162,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
-        public IBodyWorkflowAction<GetWorkflowResponse> GetWorkflow(Expression<Func<string>> workflowId)
+        public IBodyWorkflowAction<GetWorkflowResponse, ApiConnectionActionConfiguration> GetWorkflow(Expression<Func<string>> workflowId)
         {
             var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
-            return new DeferredBodyAction<GetWorkflowResponse>(() =>
+            return new DeferredBodyAction<GetWorkflowResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/workflow/{0}", __workflow_workflowId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

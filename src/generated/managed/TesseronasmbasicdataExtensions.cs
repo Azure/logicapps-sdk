@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
     public class TesseronasmbasicdataActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmbasicdata")]
-        public IBodyWorkflowAction<ApiEnterpriseGetEnterprisesResponse> ApiEnterpriseGetEnterprises(Expression<Func<string>> searchParam, Expression<Func<int>> take, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<ApiEnterpriseGetEnterprisesResponse, ApiConnectionActionConfiguration> ApiEnterpriseGetEnterprises(Expression<Func<string>> searchParam, Expression<Func<int>> take, Expression<Func<int>> skip = null)
         {
             var __workflow_searchParam = WorkflowExpression.Compile(searchParam, nameof(searchParam), required: true);
             var __workflow_take = WorkflowExpression.Compile(take, nameof(take), required: true);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
-            return new DeferredBodyAction<ApiEnterpriseGetEnterprisesResponse>(() =>
+            return new DeferredBodyAction<ApiEnterpriseGetEnterprisesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ApiEnterprise/GetEnterprises";
                 var apiCallHttpMethod = "post";
@@ -32,11 +32,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmbasicdata")]
-        public IBodyWorkflowAction<SetEnterpriseStatusResponse> SetEnterpriseStatus(Expression<Func<int>> bodyenterpriseId, Expression<Func<int>> bodystatusId)
+        public IBodyWorkflowAction<SetEnterpriseStatusResponse, ApiConnectionActionConfiguration> SetEnterpriseStatus(Expression<Func<int>> bodyenterpriseId, Expression<Func<int>> bodystatusId)
         {
             var __workflow_bodyenterpriseId = WorkflowExpression.Compile(bodyenterpriseId, nameof(bodyenterpriseId), required: true);
             var __workflow_bodystatusId = WorkflowExpression.Compile(bodystatusId, nameof(bodystatusId), required: true);
-            return new DeferredBodyAction<SetEnterpriseStatusResponse>(() =>
+            return new DeferredBodyAction<SetEnterpriseStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ApiEnterprise/SetEnterpriseStatus";
                 var apiCallHttpMethod = "post";
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmbasicdata")]
-        public IBodyWorkflowAction<ApiContactCreateContactResponse> ApiContactCreateContact(Expression<Func<string>> bodyenterpriseReferenceNumber, Expression<Func<string>> bodyforeName, Expression<Func<string>> bodysurName, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyformOfAddress = null, Expression<Func<string>> bodyforeName2 = null, Expression<Func<string>> bodysearchname = null, Expression<Func<string>> bodyexternalNumber = null, Expression<Func<string>> bodyinitials = null, Expression<Func<string>> bodymemo = null, Expression<Func<string>> bodyinfoOnTicketView = null, Expression<Func<string>> bodyinfoOnServiceAssignment = null, Expression<Func<string>> bodyinfoOnTicketCreate = null, Expression<Func<string>> bodydepartmentName = null, Expression<Func<bool>> bodyisVip = null, Expression<Func<int>> bodyenterpriseContactType = null, Expression<Func<bool>> bodyisAddressFromMainEnterprise = null, Expression<Func<string>> bodyaddressstreet = null, Expression<Func<string>> bodyaddresscity = null, Expression<Func<string>> bodyaddresspostcode = null, Expression<Func<string>> bodyaddressaddress1 = null, Expression<Func<string>> bodyaddressaddress2 = null, Expression<Func<string>> bodyaddressaddress3 = null, Expression<Func<string>> bodyaddresspostbox = null, Expression<Func<string>> bodyaddresscounty = null, Expression<Func<string>> bodyaddresscountyShort = null, Expression<Func<string>> bodyaddresscountryCode = null, Expression<Func<string>> bodyaddresscountryName = null, Expression<Func<bodyphoneNumbersInputItem[]>> bodyphoneNumbers = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null)
+        public IBodyWorkflowAction<ApiContactCreateContactResponse, ApiConnectionActionConfiguration> ApiContactCreateContact(Expression<Func<string>> bodyenterpriseReferenceNumber, Expression<Func<string>> bodyforeName, Expression<Func<string>> bodysurName, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyformOfAddress = null, Expression<Func<string>> bodyforeName2 = null, Expression<Func<string>> bodysearchname = null, Expression<Func<string>> bodyexternalNumber = null, Expression<Func<string>> bodyinitials = null, Expression<Func<string>> bodymemo = null, Expression<Func<string>> bodyinfoOnTicketView = null, Expression<Func<string>> bodyinfoOnServiceAssignment = null, Expression<Func<string>> bodyinfoOnTicketCreate = null, Expression<Func<string>> bodydepartmentName = null, Expression<Func<bool>> bodyisVip = null, Expression<Func<int>> bodyenterpriseContactType = null, Expression<Func<bool>> bodyisAddressFromMainEnterprise = null, Expression<Func<string>> bodyaddressstreet = null, Expression<Func<string>> bodyaddresscity = null, Expression<Func<string>> bodyaddresspostcode = null, Expression<Func<string>> bodyaddressaddress1 = null, Expression<Func<string>> bodyaddressaddress2 = null, Expression<Func<string>> bodyaddressaddress3 = null, Expression<Func<string>> bodyaddresspostbox = null, Expression<Func<string>> bodyaddresscounty = null, Expression<Func<string>> bodyaddresscountyShort = null, Expression<Func<string>> bodyaddresscountryCode = null, Expression<Func<string>> bodyaddresscountryName = null, Expression<Func<bodyphoneNumbersInputItem[]>> bodyphoneNumbers = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null)
         {
             var __workflow_bodyenterpriseReferenceNumber = WorkflowExpression.Compile(bodyenterpriseReferenceNumber, nameof(bodyenterpriseReferenceNumber), required: true);
             var __workflow_bodyforeName = WorkflowExpression.Compile(bodyforeName, nameof(bodyforeName), required: true);
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
             var __workflow_bodyaddresscountryName = WorkflowExpression.Compile(bodyaddresscountryName, nameof(bodyaddresscountryName), required: false);
             var __workflow_bodyphoneNumbers = WorkflowExpression.Compile(bodyphoneNumbers, nameof(bodyphoneNumbers), required: false);
             var __workflow_bodyemails = WorkflowExpression.Compile(bodyemails, nameof(bodyemails), required: false);
-            return new DeferredBodyAction<ApiContactCreateContactResponse>(() =>
+            return new DeferredBodyAction<ApiContactCreateContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ApiContact/CreateContact";
                 var apiCallHttpMethod = "post";
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmbasicdata")]
-        public IBodyWorkflowAction<ApiContactUpdateContactResponse> ApiContactUpdateContact(Expression<Func<string>> bodyenterpriseReferenceNumber, Expression<Func<string>> bodyforeName, Expression<Func<string>> bodysurName, Expression<Func<string>> bodycontactId = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyformOfAddress = null, Expression<Func<string>> bodyforeName2 = null, Expression<Func<string>> bodysearchname = null, Expression<Func<string>> bodyexternalNumber = null, Expression<Func<string>> bodyinitials = null, Expression<Func<string>> bodymemo = null, Expression<Func<string>> bodyinfoOnTicketView = null, Expression<Func<string>> bodyinfoOnServiceAssignment = null, Expression<Func<string>> bodyinfoOnTicketCreate = null, Expression<Func<string>> bodydepartmentName = null, Expression<Func<bool>> bodyisVip = null, Expression<Func<bool>> bodyisAddressFromMainEnterprise = null, Expression<Func<string>> bodyaddressstreet = null, Expression<Func<string>> bodyaddresscity = null, Expression<Func<string>> bodyaddresspostcode = null, Expression<Func<string>> bodyaddressaddress1 = null, Expression<Func<string>> bodyaddressaddress2 = null, Expression<Func<string>> bodyaddressaddress3 = null, Expression<Func<string>> bodyaddresspostbox = null, Expression<Func<string>> bodyaddresscounty = null, Expression<Func<string>> bodyaddresscountyShort = null, Expression<Func<string>> bodyaddresscountryCode = null, Expression<Func<string>> bodyaddresscountryName = null, Expression<Func<bodyphoneNumbersInputItem[]>> bodyphoneNumbers = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null)
+        public IBodyWorkflowAction<ApiContactUpdateContactResponse, ApiConnectionActionConfiguration> ApiContactUpdateContact(Expression<Func<string>> bodyenterpriseReferenceNumber, Expression<Func<string>> bodyforeName, Expression<Func<string>> bodysurName, Expression<Func<string>> bodycontactId = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyformOfAddress = null, Expression<Func<string>> bodyforeName2 = null, Expression<Func<string>> bodysearchname = null, Expression<Func<string>> bodyexternalNumber = null, Expression<Func<string>> bodyinitials = null, Expression<Func<string>> bodymemo = null, Expression<Func<string>> bodyinfoOnTicketView = null, Expression<Func<string>> bodyinfoOnServiceAssignment = null, Expression<Func<string>> bodyinfoOnTicketCreate = null, Expression<Func<string>> bodydepartmentName = null, Expression<Func<bool>> bodyisVip = null, Expression<Func<bool>> bodyisAddressFromMainEnterprise = null, Expression<Func<string>> bodyaddressstreet = null, Expression<Func<string>> bodyaddresscity = null, Expression<Func<string>> bodyaddresspostcode = null, Expression<Func<string>> bodyaddressaddress1 = null, Expression<Func<string>> bodyaddressaddress2 = null, Expression<Func<string>> bodyaddressaddress3 = null, Expression<Func<string>> bodyaddresspostbox = null, Expression<Func<string>> bodyaddresscounty = null, Expression<Func<string>> bodyaddresscountyShort = null, Expression<Func<string>> bodyaddresscountryCode = null, Expression<Func<string>> bodyaddresscountryName = null, Expression<Func<bodyphoneNumbersInputItem[]>> bodyphoneNumbers = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null)
         {
             var __workflow_bodyenterpriseReferenceNumber = WorkflowExpression.Compile(bodyenterpriseReferenceNumber, nameof(bodyenterpriseReferenceNumber), required: true);
             var __workflow_bodyforeName = WorkflowExpression.Compile(bodyforeName, nameof(bodyforeName), required: true);
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
             var __workflow_bodyaddresscountryName = WorkflowExpression.Compile(bodyaddresscountryName, nameof(bodyaddresscountryName), required: false);
             var __workflow_bodyphoneNumbers = WorkflowExpression.Compile(bodyphoneNumbers, nameof(bodyphoneNumbers), required: false);
             var __workflow_bodyemails = WorkflowExpression.Compile(bodyemails, nameof(bodyemails), required: false);
-            return new DeferredBodyAction<ApiContactUpdateContactResponse>(() =>
+            return new DeferredBodyAction<ApiContactUpdateContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ApiContact/UpdateContact";
                 var apiCallHttpMethod = "post";
@@ -527,13 +527,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmbasicdata")]
-        public IBodyWorkflowAction<ApiContactGetContactsResponse> ApiContactGetContacts(Expression<Func<int>> take, Expression<Func<string>> searchParam, Expression<Func<string>> filter = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<ApiContactGetContactsResponse, ApiConnectionActionConfiguration> ApiContactGetContacts(Expression<Func<int>> take, Expression<Func<string>> searchParam, Expression<Func<string>> filter = null, Expression<Func<int>> skip = null)
         {
             var __workflow_take = WorkflowExpression.Compile(take, nameof(take), required: true);
             var __workflow_searchParam = WorkflowExpression.Compile(searchParam, nameof(searchParam), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
-            return new DeferredBodyAction<ApiContactGetContactsResponse>(() =>
+            return new DeferredBodyAction<ApiContactGetContactsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ApiContact/GetContacts";
                 var apiCallHttpMethod = "get";

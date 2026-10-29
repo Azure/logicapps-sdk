@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vimeo
 
     public class VimeoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Video[]> OnVideoUpload(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Video[], ApiConnectionTriggerConfiguration> OnVideoUpload(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/me/videos";
             var apiCallHttpMethod = "get";
@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vimeo
             return new ApiConnectionTrigger<Video[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<VideoWithChannelId[]> OnNewVideoInChannel(Expression<Func<string>> channelId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VideoWithChannelId[], ApiConnectionTriggerConfiguration> OnNewVideoInChannel(Expression<Func<string>> channelId, FlowRecurrence recurrence = null)
         {
             var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: true);
-            return new DeferredBodyTrigger<VideoWithChannelId[]>(() =>
+            return new DeferredBodyTrigger<VideoWithChannelId[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/channels/videos";
                 var apiCallHttpMethod = "get";

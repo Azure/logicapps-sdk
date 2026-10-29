@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Medium
 
     public class MediumTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Publications> TriggerPublicationAdded(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Publications, ApiConnectionTriggerConfiguration> TriggerPublicationAdded(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/publications";
             var apiCallHttpMethod = "get";

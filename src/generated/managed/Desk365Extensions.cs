@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
     public class Desk365Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
-        public IBodyWorkflowAction<GetAllTicketsResponse> GetAllTickets(Expression<Func<int>> offset = null, Expression<Func<orderByInput>> orderBy = null, Expression<Func<orderTypeInput>> orderType = null, Expression<Func<string>> updatedSince = null, Expression<Func<includeDescriptionInput>> includeDescription = null)
+        public IBodyWorkflowAction<GetAllTicketsResponse, ApiConnectionActionConfiguration> GetAllTickets(Expression<Func<int>> offset = null, Expression<Func<orderByInput>> orderBy = null, Expression<Func<orderTypeInput>> orderType = null, Expression<Func<string>> updatedSince = null, Expression<Func<includeDescriptionInput>> includeDescription = null)
         {
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_orderBy = WorkflowExpression.Compile(orderBy, nameof(orderBy), required: false);
             var __workflow_orderType = WorkflowExpression.Compile(orderType, nameof(orderType), required: false);
             var __workflow_updatedSince = WorkflowExpression.Compile(updatedSince, nameof(updatedSince), required: false);
             var __workflow_includeDescription = WorkflowExpression.Compile(includeDescription, nameof(includeDescription), required: false);
-            return new DeferredBodyAction<GetAllTicketsResponse>(() =>
+            return new DeferredBodyAction<GetAllTicketsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/power_automate/tickets";
                 var apiCallHttpMethod = "get";
@@ -45,10 +45,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
-        public IBodyWorkflowAction<GetTicketResponse> GetTicket(Expression<Func<int>> ticketNumber = null)
+        public IBodyWorkflowAction<GetTicketResponse, ApiConnectionActionConfiguration> GetTicket(Expression<Func<int>> ticketNumber = null)
         {
             var __workflow_ticketNumber = WorkflowExpression.Compile(ticketNumber, nameof(ticketNumber), required: false);
-            return new DeferredBodyAction<GetTicketResponse>(() =>
+            return new DeferredBodyAction<GetTicketResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/power_automate/tickets/details";
                 var apiCallHttpMethod = "get";
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
-        public IBodyWorkflowAction<CreateTicketResponse> CreateTicket(Expression<Func<string>> bodyemail, Expression<Func<string>> bodydescription, Expression<Func<string>> bodysubject, Expression<Func<string>> bodyagent = null, Expression<Func<string>> bodycategory = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodytypeInput>> bodytype = null)
+        public IBodyWorkflowAction<CreateTicketResponse, ApiConnectionActionConfiguration> CreateTicket(Expression<Func<string>> bodyemail, Expression<Func<string>> bodydescription, Expression<Func<string>> bodysubject, Expression<Func<string>> bodyagent = null, Expression<Func<string>> bodycategory = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodytypeInput>> bodytype = null)
         {
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            return new DeferredBodyAction<CreateTicketResponse>(() =>
+            return new DeferredBodyAction<CreateTicketResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/power_automate/tickets/create";
                 var apiCallHttpMethod = "post";
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
-        public IBodyWorkflowAction<UpdateTicketResponse> UpdateTicket(Expression<Func<int>> ticketNumber, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<string>> bodyassignTo = null, Expression<Func<string>> bodycategory = null)
+        public IBodyWorkflowAction<UpdateTicketResponse, ApiConnectionActionConfiguration> UpdateTicket(Expression<Func<int>> ticketNumber, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<string>> bodyassignTo = null, Expression<Func<string>> bodycategory = null)
         {
             var __workflow_ticketNumber = WorkflowExpression.Compile(ticketNumber, nameof(ticketNumber), required: true);
             var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
             var __workflow_bodyassignTo = WorkflowExpression.Compile(bodyassignTo, nameof(bodyassignTo), required: false);
             var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            return new DeferredBodyAction<UpdateTicketResponse>(() =>
+            return new DeferredBodyAction<UpdateTicketResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/power_automate/tickets/update";
                 var apiCallHttpMethod = "put";
@@ -196,14 +196,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
-        public IBodyWorkflowAction<AddNoteResponse> AddNote(Expression<Func<int>> ticketNumber, Expression<Func<string>> bodycontent, Expression<Func<string>> bodyagentEmail = null, Expression<Func<string>> bodynotifyAgent = null, Expression<Func<bodyprivateInput>> bodyprivate = null)
+        public IBodyWorkflowAction<AddNoteResponse, ApiConnectionActionConfiguration> AddNote(Expression<Func<int>> ticketNumber, Expression<Func<string>> bodycontent, Expression<Func<string>> bodyagentEmail = null, Expression<Func<string>> bodynotifyAgent = null, Expression<Func<bodyprivateInput>> bodyprivate = null)
         {
             var __workflow_ticketNumber = WorkflowExpression.Compile(ticketNumber, nameof(ticketNumber), required: true);
             var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: true);
             var __workflow_bodyagentEmail = WorkflowExpression.Compile(bodyagentEmail, nameof(bodyagentEmail), required: false);
             var __workflow_bodynotifyAgent = WorkflowExpression.Compile(bodynotifyAgent, nameof(bodynotifyAgent), required: false);
             var __workflow_bodyprivate = WorkflowExpression.Compile(bodyprivate, nameof(bodyprivate), required: false);
-            return new DeferredBodyAction<AddNoteResponse>(() =>
+            return new DeferredBodyAction<AddNoteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/power_automate/tickets/add_note";
                 var apiCallHttpMethod = "post";
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
 
     public class Desk365Triggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateTicketWebhook(Expression<Func<string>> bodycontactEmail = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyagent = null, Expression<Func<string>> bodygroup = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateTicketWebhook(Expression<Func<string>> bodycontactEmail = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyagent = null, Expression<Func<string>> bodygroup = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodycontactEmail = WorkflowExpression.Compile(bodycontactEmail, nameof(bodycontactEmail), required: false);
             var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
             var __workflow_bodyagent = WorkflowExpression.Compile(bodyagent, nameof(bodyagent), required: false);
             var __workflow_bodygroup = WorkflowExpression.Compile(bodygroup, nameof(bodygroup), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/power_automate/tickets/create_ticket_webhook";
                 var apiCallHttpMethod = "post";
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             });
         }
 
-        public IWorkflowTrigger UpdateTicketWebhook(Expression<Func<string>> bodycontactEmail = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyagent = null, Expression<Func<string>> bodygroup = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UpdateTicketWebhook(Expression<Func<string>> bodycontactEmail = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyagent = null, Expression<Func<string>> bodygroup = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodycontactEmail = WorkflowExpression.Compile(bodycontactEmail, nameof(bodycontactEmail), required: false);
             var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
             var __workflow_bodyagent = WorkflowExpression.Compile(bodyagent, nameof(bodyagent), required: false);
             var __workflow_bodygroup = WorkflowExpression.Compile(bodygroup, nameof(bodygroup), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/power_automate/tickets/update_ticket_webhook";
                 var apiCallHttpMethod = "post";
@@ -377,12 +377,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             });
         }
 
-        public IWorkflowTrigger AddNoteWebhook(Expression<Func<string>> bodyagent = null, Expression<Func<string>> bodycontent = null, Expression<Func<bodyprivateInput>> bodyprivate = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AddNoteWebhook(Expression<Func<string>> bodyagent = null, Expression<Func<string>> bodycontent = null, Expression<Func<bodyprivateInput>> bodyprivate = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyagent = WorkflowExpression.Compile(bodyagent, nameof(bodyagent), required: false);
             var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
             var __workflow_bodyprivate = WorkflowExpression.Compile(bodyprivate, nameof(bodyprivate), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/power_automate/tickets/add_note_webhook";
                 var apiCallHttpMethod = "post";
@@ -418,11 +418,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             });
         }
 
-        public IWorkflowTrigger AddReplyWebhook(Expression<Func<string>> bodycontent = null, Expression<Func<bodyresponseTypeInput>> bodyresponseType = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AddReplyWebhook(Expression<Func<string>> bodycontent = null, Expression<Func<bodyresponseTypeInput>> bodyresponseType = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
             var __workflow_bodyresponseType = WorkflowExpression.Compile(bodyresponseType, nameof(bodyresponseType), required: false);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/power_automate/tickets/add_reply_webhook";
                 var apiCallHttpMethod = "post";

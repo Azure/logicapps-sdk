@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reachabilityip
     public class ReachabilityipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reachabilityip")]
-        public IBodyWorkflowAction<ReachResponse> Reach(Expression<Func<string>> url, Expression<Func<string>> country = null)
+        public IBodyWorkflowAction<ReachResponse, ApiConnectionActionConfiguration> Reach(Expression<Func<string>> url, Expression<Func<string>> country = null)
         {
             var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
-            return new DeferredBodyAction<ReachResponse>(() =>
+            return new DeferredBodyAction<ReachResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/reachability";
                 var apiCallHttpMethod = "get";

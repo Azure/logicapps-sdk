@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
     public class AsanaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
-        public IBodyWorkflowAction<AddCommentResponseV2> AddComment(Expression<Func<string>> taskId, Expression<Func<string>> bodydatacomment = null)
+        public IBodyWorkflowAction<AddCommentResponseV2, ApiConnectionActionConfiguration> AddComment(Expression<Func<string>> taskId, Expression<Func<string>> bodydatacomment = null)
         {
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             var __workflow_bodydatacomment = WorkflowExpression.Compile(bodydatacomment, nameof(bodydatacomment), required: false);
-            return new DeferredBodyAction<AddCommentResponseV2>(() =>
+            return new DeferredBodyAction<AddCommentResponseV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/tasks/{0}/stories", __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -47,10 +47,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
-        public IBodyWorkflowAction<TaskResponseV2> CompleteTask(Expression<Func<string>> taskId)
+        public IBodyWorkflowAction<TaskResponseV2, ApiConnectionActionConfiguration> CompleteTask(Expression<Func<string>> taskId)
         {
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
-            return new DeferredBodyAction<TaskResponseV2>(() =>
+            return new DeferredBodyAction<TaskResponseV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/tasks/{0}", __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
-        public IBodyWorkflowAction<ProjectResponseV2> CreateProject(Expression<Func<string>> workspace, Expression<Func<string>> team = null, Expression<Func<string>> projectdataprojectName = null, Expression<Func<string>> projectdatadueDate = null, Expression<Func<bool>> projectdatapublic = null, Expression<Func<projectdataprojectColorInput>> projectdataprojectColor = null, Expression<Func<string>> projectdataprojectNotes = null, Expression<Func<string>> projectdataowner = null, Expression<Func<bool>> projectdataarchive = null)
+        public IBodyWorkflowAction<ProjectResponseV2, ApiConnectionActionConfiguration> CreateProject(Expression<Func<string>> workspace, Expression<Func<string>> team = null, Expression<Func<string>> projectdataprojectName = null, Expression<Func<string>> projectdatadueDate = null, Expression<Func<bool>> projectdatapublic = null, Expression<Func<projectdataprojectColorInput>> projectdataprojectColor = null, Expression<Func<string>> projectdataprojectNotes = null, Expression<Func<string>> projectdataowner = null, Expression<Func<bool>> projectdataarchive = null)
         {
             var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: true);
             var __workflow_team = WorkflowExpression.Compile(team, nameof(team), required: false);
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             var __workflow_projectdataprojectNotes = WorkflowExpression.Compile(projectdataprojectNotes, nameof(projectdataprojectNotes), required: false);
             var __workflow_projectdataowner = WorkflowExpression.Compile(projectdataowner, nameof(projectdataowner), required: false);
             var __workflow_projectdataarchive = WorkflowExpression.Compile(projectdataarchive, nameof(projectdataarchive), required: false);
-            return new DeferredBodyAction<ProjectResponseV2>(() =>
+            return new DeferredBodyAction<ProjectResponseV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/projects";
                 var apiCallHttpMethod = "post";
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
-        public IBodyWorkflowAction<TaskResponseV2> CreateTask(Expression<Func<string>> workspace, Expression<Func<string>> projects, Expression<Func<string>> taskdatataskName = null, Expression<Func<string>> taskdataassignee = null, Expression<Func<string>> taskdatadescription = null, Expression<Func<taskdataassigneeStatusInput>> taskdataassigneeStatus = null, Expression<Func<bool>> taskdatacompleted = null, Expression<Func<string>> taskdatadueDate = null)
+        public IBodyWorkflowAction<TaskResponseV2, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> workspace, Expression<Func<string>> projects, Expression<Func<string>> taskdatataskName = null, Expression<Func<string>> taskdataassignee = null, Expression<Func<string>> taskdatadescription = null, Expression<Func<taskdataassigneeStatusInput>> taskdataassigneeStatus = null, Expression<Func<bool>> taskdatacompleted = null, Expression<Func<string>> taskdatadueDate = null)
         {
             var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: true);
             var __workflow_projects = WorkflowExpression.Compile(projects, nameof(projects), required: true);
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             var __workflow_taskdataassigneeStatus = WorkflowExpression.Compile(taskdataassigneeStatus, nameof(taskdataassigneeStatus), required: false);
             var __workflow_taskdatacompleted = WorkflowExpression.Compile(taskdatacompleted, nameof(taskdatacompleted), required: false);
             var __workflow_taskdatadueDate = WorkflowExpression.Compile(taskdatadueDate, nameof(taskdatadueDate), required: false);
-            return new DeferredBodyAction<TaskResponseV2>(() =>
+            return new DeferredBodyAction<TaskResponseV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/tasks";
                 var apiCallHttpMethod = "post";
@@ -244,10 +244,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
-        public IBodyWorkflowAction<ProjectResponseV2> GetProject(Expression<Func<string>> projectId)
+        public IBodyWorkflowAction<ProjectResponseV2, ApiConnectionActionConfiguration> GetProject(Expression<Func<string>> projectId)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            return new DeferredBodyAction<ProjectResponseV2>(() =>
+            return new DeferredBodyAction<ProjectResponseV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/projects/{0}", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -257,10 +257,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
-        public IBodyWorkflowAction<TaskResponseV2> GetTask(Expression<Func<string>> taskId)
+        public IBodyWorkflowAction<TaskResponseV2, ApiConnectionActionConfiguration> GetTask(Expression<Func<string>> taskId)
         {
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
-            return new DeferredBodyAction<TaskResponseV2>(() =>
+            return new DeferredBodyAction<TaskResponseV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/tasks/{0}", __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -270,10 +270,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
-        public IBodyWorkflowAction<UserResponseV2> GetUser(Expression<Func<string>> userId)
+        public IBodyWorkflowAction<UserResponseV2, ApiConnectionActionConfiguration> GetUser(Expression<Func<string>> userId)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
-            return new DeferredBodyAction<UserResponseV2>(() =>
+            return new DeferredBodyAction<UserResponseV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/users/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -283,10 +283,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
-        public IBodyWorkflowAction<ListUsersResponseV2> ListUsers(Expression<Func<string>> workspaceId)
+        public IBodyWorkflowAction<ListUsersResponseV2, ApiConnectionActionConfiguration> ListUsers(Expression<Func<string>> workspaceId)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
-            return new DeferredBodyAction<ListUsersResponseV2>(() =>
+            return new DeferredBodyAction<ListUsersResponseV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/workspaces/{0}/users", __workflow_workspaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -296,10 +296,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
-        public IBodyWorkflowAction<ListTeamsResponseV2> ListWorkspaceTeams(Expression<Func<string>> workspace)
+        public IBodyWorkflowAction<ListTeamsResponseV2, ApiConnectionActionConfiguration> ListWorkspaceTeams(Expression<Func<string>> workspace)
         {
             var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: true);
-            return new DeferredBodyAction<ListTeamsResponseV2>(() =>
+            return new DeferredBodyAction<ListTeamsResponseV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/organizations/{0}/teams", __workflow_workspace.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -311,10 +311,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
 
     public class AsanaTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListProjectsResponseV2> OnProjectCreated(Expression<Func<string>> workspace, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListProjectsResponseV2, ApiConnectionTriggerConfiguration> OnProjectCreated(Expression<Func<string>> workspace, FlowRecurrence recurrence = null)
         {
             var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: true);
-            return new DeferredBodyTrigger<ListProjectsResponseV2>(() =>
+            return new DeferredBodyTrigger<ListProjectsResponseV2, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/new_project_trigger/projects";
                 var apiCallHttpMethod = "get";
@@ -324,11 +324,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             });
         }
 
-        public IBodyWorkflowTrigger<ListTasksResponseV2> OnTaskCompleted(Expression<Func<string>> workspace, Expression<Func<string>> project, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2, ApiConnectionTriggerConfiguration> OnTaskCompleted(Expression<Func<string>> workspace, Expression<Func<string>> project, FlowRecurrence recurrence = null)
         {
             var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
-            return new DeferredBodyTrigger<ListTasksResponseV2>(() =>
+            return new DeferredBodyTrigger<ListTasksResponseV2, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/complete_task_trigger/tasks";
                 var apiCallHttpMethod = "get";
@@ -339,11 +339,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
             });
         }
 
-        public IBodyWorkflowTrigger<ListTasksResponseV2> OnTaskCreated(Expression<Func<string>> workspace, Expression<Func<string>> project, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2, ApiConnectionTriggerConfiguration> OnTaskCreated(Expression<Func<string>> workspace, Expression<Func<string>> project, FlowRecurrence recurrence = null)
         {
             var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
-            return new DeferredBodyTrigger<ListTasksResponseV2>(() =>
+            return new DeferredBodyTrigger<ListTasksResponseV2, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/new_task_trigger/tasks";
                 var apiCallHttpMethod = "get";

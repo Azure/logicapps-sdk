@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic
     public class PdftoolsbytachytelicActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdftoolsbytachytelic")]
-        public IBodyWorkflowAction<OptimizePdfResponse> OptimizePdf(Expression<Func<string>> bodypDFFileContent, Expression<Func<bodymodeInput>> bodymode = null, Expression<Func<int>> bodygarbageLevel = null, Expression<Func<bool>> bodydeflate = null, Expression<Func<bool>> bodyclean = null)
+        public IBodyWorkflowAction<OptimizePdfResponse, ApiConnectionActionConfiguration> OptimizePdf(Expression<Func<string>> bodypDFFileContent, Expression<Func<bodymodeInput>> bodymode = null, Expression<Func<int>> bodygarbageLevel = null, Expression<Func<bool>> bodydeflate = null, Expression<Func<bool>> bodyclean = null)
         {
             var __workflow_bodypDFFileContent = WorkflowExpression.Compile(bodypDFFileContent, nameof(bodypDFFileContent), required: true);
             var __workflow_bodymode = WorkflowExpression.Compile(bodymode, nameof(bodymode), required: false);
             var __workflow_bodygarbageLevel = WorkflowExpression.Compile(bodygarbageLevel, nameof(bodygarbageLevel), required: false);
             var __workflow_bodydeflate = WorkflowExpression.Compile(bodydeflate, nameof(bodydeflate), required: false);
             var __workflow_bodyclean = WorkflowExpression.Compile(bodyclean, nameof(bodyclean), required: false);
-            return new DeferredBodyAction<OptimizePdfResponse>(() =>
+            return new DeferredBodyAction<OptimizePdfResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/optimize";
                 var apiCallHttpMethod = "post";

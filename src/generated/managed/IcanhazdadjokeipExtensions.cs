@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icanhazdadjokeip
     public class IcanhazdadjokeipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icanhazdadjokeip")]
-        public IBodyWorkflowAction<FetchRandomJokeResponse> FetchRandomJoke()
+        public IBodyWorkflowAction<FetchRandomJokeResponse, ApiConnectionActionConfiguration> FetchRandomJoke()
         {
             var apiCallPath = "/";
             var apiCallHttpMethod = "get";
@@ -22,12 +22,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icanhazdadjokeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icanhazdadjokeip")]
-        public IBodyWorkflowAction<SearchForDadJokesResponse> SearchForDadJokes(Expression<Func<int>> page = null, Expression<Func<int>> limit = null, Expression<Func<string>> term = null)
+        public IBodyWorkflowAction<SearchForDadJokesResponse, ApiConnectionActionConfiguration> SearchForDadJokes(Expression<Func<int>> page = null, Expression<Func<int>> limit = null, Expression<Func<string>> term = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_term = WorkflowExpression.Compile(term, nameof(term), required: false);
-            return new DeferredBodyAction<SearchForDadJokesResponse>(() =>
+            return new DeferredBodyAction<SearchForDadJokesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/search";
                 var apiCallHttpMethod = "get";
@@ -44,10 +44,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icanhazdadjokeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icanhazdadjokeip")]
-        public IBodyWorkflowAction<FetchaDadJokeResponse> FetchaDadJoke(Expression<Func<string>> jokeid)
+        public IBodyWorkflowAction<FetchaDadJokeResponse, ApiConnectionActionConfiguration> FetchaDadJoke(Expression<Func<string>> jokeid)
         {
             var __workflow_jokeid = WorkflowExpression.Compile(jokeid, nameof(jokeid), required: true);
-            return new DeferredBodyAction<FetchaDadJokeResponse>(() =>
+            return new DeferredBodyAction<FetchaDadJokeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/j/{0}", __workflow_jokeid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

@@ -1,4 +1,4 @@
-﻿// -----------------------------------------------------------
+// -----------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 
@@ -17,4 +17,5 @@ namespace Microsoft.Azure.Workflows.Sdk
     public partial class WorkflowManagedTriggers
     {
     }
+
 }

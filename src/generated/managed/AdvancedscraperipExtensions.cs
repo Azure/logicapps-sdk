@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advancedscraperip
     public class AdvancedscraperipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advancedscraperip")]
-        public IBodyWorkflowAction<ScrapeResponse> Scrape(Expression<Func<string>> url, Expression<Func<string>> country = null, Expression<Func<bool>> render = null, Expression<Func<string>> selector = null, Expression<Func<int>> timeout = null)
+        public IBodyWorkflowAction<ScrapeResponse, ApiConnectionActionConfiguration> Scrape(Expression<Func<string>> url, Expression<Func<string>> country = null, Expression<Func<bool>> render = null, Expression<Func<string>> selector = null, Expression<Func<int>> timeout = null)
         {
             var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
             var __workflow_render = WorkflowExpression.Compile(render, nameof(render), required: false);
             var __workflow_selector = WorkflowExpression.Compile(selector, nameof(selector), required: false);
             var __workflow_timeout = WorkflowExpression.Compile(timeout, nameof(timeout), required: false);
-            return new DeferredBodyAction<ScrapeResponse>(() =>
+            return new DeferredBodyAction<ScrapeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/scraper";
                 var apiCallHttpMethod = "get";
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advancedscraperip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advancedscraperip")]
-        public IBodyWorkflowAction<ScrapeFormResponse> ScrapeForm(Expression<Func<string>> url, Expression<Func<string>> country = null, Expression<Func<bool>> render = null, Expression<Func<string>> selector = null, Expression<Func<int>> timeout = null, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<ScrapeFormResponse, ApiConnectionActionConfiguration> ScrapeForm(Expression<Func<string>> url, Expression<Func<string>> country = null, Expression<Func<bool>> render = null, Expression<Func<string>> selector = null, Expression<Func<int>> timeout = null, Expression<Func<string>> body = null)
         {
             var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advancedscraperip
             var __workflow_selector = WorkflowExpression.Compile(selector, nameof(selector), required: false);
             var __workflow_timeout = WorkflowExpression.Compile(timeout, nameof(timeout), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ScrapeFormResponse>(() =>
+            return new DeferredBodyAction<ScrapeFormResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/scraper";
                 var apiCallHttpMethod = "post";

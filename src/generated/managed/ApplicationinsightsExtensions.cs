@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Applicationinsights
     public class ApplicationinsightsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "applicationinsights")]
-        public IBodyWorkflowAction<Table> RunQuery(Expression<Func<string>> query = null, Expression<Func<timerangeInput>> timerange = null)
+        public IBodyWorkflowAction<Table, ApiConnectionActionConfiguration> RunQuery(Expression<Func<string>> query = null, Expression<Func<timerangeInput>> timerange = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
             var __workflow_timerange = WorkflowExpression.Compile(timerange, nameof(timerange), required: false);
-            return new DeferredBodyAction<Table>(() =>
+            return new DeferredBodyAction<Table, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/QueryDraft";
                 var apiCallHttpMethod = "post";
@@ -31,12 +31,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Applicationinsights
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "applicationinsights")]
-        public IBodyWorkflowAction<VisualizeResults> VisualizeQuery(Expression<Func<chartTypeInput>> chartType, Expression<Func<string>> query = null, Expression<Func<timerangeInput>> timerange = null)
+        public IBodyWorkflowAction<VisualizeResults, ApiConnectionActionConfiguration> VisualizeQuery(Expression<Func<chartTypeInput>> chartType, Expression<Func<string>> query = null, Expression<Func<timerangeInput>> timerange = null)
         {
             var __workflow_chartType = WorkflowExpression.Compile(chartType, nameof(chartType), required: true);
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
             var __workflow_timerange = WorkflowExpression.Compile(timerange, nameof(timerange), required: false);
-            return new DeferredBodyAction<VisualizeResults>(() =>
+            return new DeferredBodyAction<VisualizeResults, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/VisualizeQueryDraft";
                 var apiCallHttpMethod = "post";

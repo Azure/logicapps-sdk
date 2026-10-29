@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushcut
     public class PushcutActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushcut")]
-        public IWorkflowAction SendNotification(Expression<Func<string>> notificationName, Expression<Func<string>> bodydynamicText = null, Expression<Func<string>> bodydynamicTitle = null, Expression<Func<string>> bodyinputParameter = null, Expression<Func<string[]>> bodydevices = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendNotification(Expression<Func<string>> notificationName, Expression<Func<string>> bodydynamicText = null, Expression<Func<string>> bodydynamicTitle = null, Expression<Func<string>> bodyinputParameter = null, Expression<Func<string[]>> bodydevices = null)
         {
             var __workflow_notificationName = WorkflowExpression.Compile(notificationName, nameof(notificationName), required: true);
             var __workflow_bodydynamicText = WorkflowExpression.Compile(bodydynamicText, nameof(bodydynamicText), required: false);
             var __workflow_bodydynamicTitle = WorkflowExpression.Compile(bodydynamicTitle, nameof(bodydynamicTitle), required: false);
             var __workflow_bodyinputParameter = WorkflowExpression.Compile(bodyinputParameter, nameof(bodyinputParameter), required: false);
             var __workflow_bodydevices = WorkflowExpression.Compile(bodydevices, nameof(bodydevices), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/notifications/{0}", __workflow_notificationName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -62,10 +62,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushcut
 
     public class PushcutTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ActionExecuted(Expression<Func<string>> bodyactionName, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ActionExecuted(Expression<Func<string>> bodyactionName, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyactionName = WorkflowExpression.Compile(bodyactionName, nameof(bodyactionName), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/subscriptions";
                 var apiCallHttpMethod = "post";

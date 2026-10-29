@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
     public class PureleadsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pureleads")]
-        public IWorkflowAction NewLeadSubmission(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname, Expression<Func<string>> bodymobileNo = null, Expression<Func<string>> bodysecondaryEmail = null, Expression<Func<int>> bodylifecycleStageName = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> NewLeadSubmission(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname, Expression<Func<string>> bodymobileNo = null, Expression<Func<string>> bodysecondaryEmail = null, Expression<Func<int>> bodylifecycleStageName = null)
         {
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodymobileNo = WorkflowExpression.Compile(bodymobileNo, nameof(bodymobileNo), required: false);
             var __workflow_bodysecondaryEmail = WorkflowExpression.Compile(bodysecondaryEmail, nameof(bodysecondaryEmail), required: false);
             var __workflow_bodylifecycleStageName = WorkflowExpression.Compile(bodylifecycleStageName, nameof(bodylifecycleStageName), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/contacts";
                 var apiCallHttpMethod = "post";
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
 
     public class PureleadsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CreatedLeadSubmissionResponse> CreatedLeadSubmission(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreatedLeadSubmissionResponse, ApiConnectionTriggerConfiguration> CreatedLeadSubmission(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/contacts";
             var apiCallHttpMethod = "get";

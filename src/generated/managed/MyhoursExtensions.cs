@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
     public class MyhoursActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<Client> CreateClient(Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<Client, ApiConnectionActionConfiguration> CreateClient(Expression<Func<string>> bodyname)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            return new DeferredBodyAction<Client>(() =>
+            return new DeferredBodyAction<Client, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/clients/zapier";
                 var apiCallHttpMethod = "post";
@@ -34,10 +34,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<Client[]> FindClient(Expression<Func<string>> clientName)
+        public IBodyWorkflowAction<Client[], ApiConnectionActionConfiguration> FindClient(Expression<Func<string>> clientName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
-            return new DeferredBodyAction<Client[]>(() =>
+            return new DeferredBodyAction<Client[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/clients/getByName";
                 var apiCallHttpMethod = "get";
@@ -48,13 +48,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<Project> CreateProject(Expression<Func<string>> bodyname, Expression<Func<int>> bodyclientId = null, Expression<Func<string>> bodynotes = null, Expression<Func<int>> bodyautoAssignUserId = null)
+        public IBodyWorkflowAction<Project, ApiConnectionActionConfiguration> CreateProject(Expression<Func<string>> bodyname, Expression<Func<int>> bodyclientId = null, Expression<Func<string>> bodynotes = null, Expression<Func<int>> bodyautoAssignUserId = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodyclientId = WorkflowExpression.Compile(bodyclientId, nameof(bodyclientId), required: false);
             var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
             var __workflow_bodyautoAssignUserId = WorkflowExpression.Compile(bodyautoAssignUserId, nameof(bodyautoAssignUserId), required: false);
-            return new DeferredBodyAction<Project>(() =>
+            return new DeferredBodyAction<Project, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Projects";
                 var apiCallHttpMethod = "post";
@@ -93,10 +93,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<Project> FindProject(Expression<Func<string>> projectName)
+        public IBodyWorkflowAction<Project, ApiConnectionActionConfiguration> FindProject(Expression<Func<string>> projectName)
         {
             var __workflow_projectName = WorkflowExpression.Compile(projectName, nameof(projectName), required: true);
-            return new DeferredBodyAction<Project>(() =>
+            return new DeferredBodyAction<Project, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Projects/getByNameForPA";
                 var apiCallHttpMethod = "get";
@@ -107,13 +107,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<ProjectTask> CreateProjectTask(Expression<Func<int>> projectId, Expression<Func<string>> bodyname, Expression<Func<string>> bodylistName = null, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<ProjectTask, ApiConnectionActionConfiguration> CreateProjectTask(Expression<Func<int>> projectId, Expression<Func<string>> bodyname, Expression<Func<string>> bodylistName = null, Expression<Func<string>> bodydescription = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodylistName = WorkflowExpression.Compile(bodylistName, nameof(bodylistName), required: false);
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            return new DeferredBodyAction<ProjectTask>(() =>
+            return new DeferredBodyAction<ProjectTask, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Projects/taskForPA";
                 var apiCallHttpMethod = "post";
@@ -155,11 +155,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<ProjectTask> FindTask(Expression<Func<string>> projectTaskName, Expression<Func<int>> projectId)
+        public IBodyWorkflowAction<ProjectTask, ApiConnectionActionConfiguration> FindTask(Expression<Func<string>> projectTaskName, Expression<Func<int>> projectId)
         {
             var __workflow_projectTaskName = WorkflowExpression.Compile(projectTaskName, nameof(projectTaskName), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            return new DeferredBodyAction<ProjectTask>(() =>
+            return new DeferredBodyAction<ProjectTask, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Projects/getProjectTaskByNamePowerAutomate";
                 var apiCallHttpMethod = "get";
@@ -171,11 +171,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<Tag> CreateTag(Expression<Func<string>> bodyname, Expression<Func<string>> bodyhexColor)
+        public IBodyWorkflowAction<Tag, ApiConnectionActionConfiguration> CreateTag(Expression<Func<string>> bodyname, Expression<Func<string>> bodyhexColor)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodyhexColor = WorkflowExpression.Compile(bodyhexColor, nameof(bodyhexColor), required: true);
-            return new DeferredBodyAction<Tag>(() =>
+            return new DeferredBodyAction<Tag, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/tags";
                 var apiCallHttpMethod = "post";
@@ -196,10 +196,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<Tag> FindTag(Expression<Func<string>> tagName)
+        public IBodyWorkflowAction<Tag, ApiConnectionActionConfiguration> FindTag(Expression<Func<string>> tagName)
         {
             var __workflow_tagName = WorkflowExpression.Compile(tagName, nameof(tagName), required: true);
-            return new DeferredBodyAction<Tag>(() =>
+            return new DeferredBodyAction<Tag, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/tags/getByNamePowerAutomate";
                 var apiCallHttpMethod = "get";
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<TimeLog> CreateLog(Expression<Func<string>> bodydate, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<int>> bodyduration = null, Expression<Func<string>> bodynote = null, Expression<Func<int>> bodyprojectId = null, Expression<Func<int>> bodytaskId = null, Expression<Func<int>> bodytagId = null)
+        public IBodyWorkflowAction<TimeLog, ApiConnectionActionConfiguration> CreateLog(Expression<Func<string>> bodydate, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<int>> bodyduration = null, Expression<Func<string>> bodynote = null, Expression<Func<int>> bodyprojectId = null, Expression<Func<int>> bodytaskId = null, Expression<Func<int>> bodytagId = null)
         {
             var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: true);
             var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: false);
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: false);
             var __workflow_bodytaskId = WorkflowExpression.Compile(bodytaskId, nameof(bodytaskId), required: false);
             var __workflow_bodytagId = WorkflowExpression.Compile(bodytagId, nameof(bodytagId), required: false);
-            return new DeferredBodyAction<TimeLog>(() =>
+            return new DeferredBodyAction<TimeLog, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/logs/powerautomate";
                 var apiCallHttpMethod = "post";
@@ -281,11 +281,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<ActivityReportResponse> GetTimeLogs(Expression<Func<string>> dateFrom, Expression<Func<string>> dateTo)
+        public IBodyWorkflowAction<ActivityReportResponse, ApiConnectionActionConfiguration> GetTimeLogs(Expression<Func<string>> dateFrom, Expression<Func<string>> dateTo)
         {
             var __workflow_dateFrom = WorkflowExpression.Compile(dateFrom, nameof(dateFrom), required: true);
             var __workflow_dateTo = WorkflowExpression.Compile(dateTo, nameof(dateTo), required: true);
-            return new DeferredBodyAction<ActivityReportResponse>(() =>
+            return new DeferredBodyAction<ActivityReportResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/reports/activityPowerAutomate";
                 var apiCallHttpMethod = "get";
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
 
     public class MyhoursTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggerLogsEnvelope> NewTimeLog(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerLogsEnvelope, ApiConnectionTriggerConfiguration> NewTimeLog(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/logs/powerautomate";
             var apiCallHttpMethod = "get";
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             return new ApiConnectionTrigger<TriggerLogsEnvelope>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<TriggerProjectsEnvelope> NewProject(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerProjectsEnvelope, ApiConnectionTriggerConfiguration> NewProject(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/projects/powerautomate";
             var apiCallHttpMethod = "get";
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
             return new ApiConnectionTrigger<TriggerProjectsEnvelope>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<TriggerProjectTasksEnvelope> NewTask(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerProjectTasksEnvelope, ApiConnectionTriggerConfiguration> NewTask(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/projecttasks/powerautomate";
             var apiCallHttpMethod = "get";

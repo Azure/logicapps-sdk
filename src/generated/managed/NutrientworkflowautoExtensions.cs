@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientworkflowauto
     public class NutrientworkflowautoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientworkflowauto")]
-        public IBodyWorkflowAction<SubmitFormResponse> SubmitForm(Expression<Func<string>> processGuid, Expression<Func<string>> processTaskGuid, Expression<Func<object>> dynamicListSchema = null)
+        public IBodyWorkflowAction<SubmitFormResponse, ApiConnectionActionConfiguration> SubmitForm(Expression<Func<string>> processGuid, Expression<Func<string>> processTaskGuid, Expression<Func<object>> dynamicListSchema = null)
         {
             var __workflow_processGuid = WorkflowExpression.Compile(processGuid, nameof(processGuid), required: true);
             var __workflow_processTaskGuid = WorkflowExpression.Compile(processTaskGuid, nameof(processTaskGuid), required: true);
             var __workflow_dynamicListSchema = WorkflowExpression.Compile(dynamicListSchema, nameof(dynamicListSchema), required: false);
-            return new DeferredBodyAction<SubmitFormResponse>(() =>
+            return new DeferredBodyAction<SubmitFormResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/instance/start/{0}/{1}", __workflow_processGuid.WithUrlEncoding(1), __workflow_processTaskGuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";

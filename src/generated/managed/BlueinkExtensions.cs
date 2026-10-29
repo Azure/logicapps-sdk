@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
     public class BlueinkActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
-        public IBodyWorkflowAction<JToken[]> ListBundles(Expression<Func<string>> search = null, Expression<Func<statusInput>> status = null, Expression<Func<statusInInput>> statusIn = null, Expression<Func<string>> tag = null, Expression<Func<string>> tagIn = null, Expression<Func<orderingInput>> ordering = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> ListBundles(Expression<Func<string>> search = null, Expression<Func<statusInput>> status = null, Expression<Func<statusInInput>> statusIn = null, Expression<Func<string>> tag = null, Expression<Func<string>> tagIn = null, Expression<Func<orderingInput>> ordering = null)
         {
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
             var __workflow_tag = WorkflowExpression.Compile(tag, nameof(tag), required: false);
             var __workflow_tagIn = WorkflowExpression.Compile(tagIn, nameof(tagIn), required: false);
             var __workflow_ordering = WorkflowExpression.Compile(ordering, nameof(ordering), required: false);
-            return new DeferredBodyAction<JToken[]>(() =>
+            return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/bundles/";
                 var apiCallHttpMethod = "get";
@@ -42,10 +42,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
-        public IBodyWorkflowAction<ListPersonsResponseItem[]> ListPersons(Expression<Func<string>> search = null)
+        public IBodyWorkflowAction<ListPersonsResponseItem[], ApiConnectionActionConfiguration> ListPersons(Expression<Func<string>> search = null)
         {
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
-            return new DeferredBodyAction<ListPersonsResponseItem[]>(() =>
+            return new DeferredBodyAction<ListPersonsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/persons/";
                 var apiCallHttpMethod = "get";
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
-        public IBodyWorkflowAction<ListTemplatesResponse> ListTemplates()
+        public IBodyWorkflowAction<ListTemplatesResponse, ApiConnectionActionConfiguration> ListTemplates()
         {
             var apiCallPath = "/templates/";
             var apiCallHttpMethod = "get";
@@ -66,11 +66,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
-        public IBodyWorkflowAction<ListWebhooksResponseItem[]> ListWebhooks(Expression<Func<bool>> enabled = null, Expression<Func<eventTypeInput>> eventType = null)
+        public IBodyWorkflowAction<ListWebhooksResponseItem[], ApiConnectionActionConfiguration> ListWebhooks(Expression<Func<bool>> enabled = null, Expression<Func<eventTypeInput>> eventType = null)
         {
             var __workflow_enabled = WorkflowExpression.Compile(enabled, nameof(enabled), required: false);
             var __workflow_eventType = WorkflowExpression.Compile(eventType, nameof(eventType), required: false);
-            return new DeferredBodyAction<ListWebhooksResponseItem[]>(() =>
+            return new DeferredBodyAction<ListWebhooksResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/";
                 var apiCallHttpMethod = "get";
@@ -84,14 +84,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
-        public IBodyWorkflowAction<ListWebhookDeliveriesResponseItem[]> ListWebhookDeliveries(Expression<Func<string>> webhook = null, Expression<Func<string>> webhookEvent = null, Expression<Func<eventTypeInput>> eventType = null, Expression<Func<int>> status = null, Expression<Func<string>> date = null)
+        public IBodyWorkflowAction<ListWebhookDeliveriesResponseItem[], ApiConnectionActionConfiguration> ListWebhookDeliveries(Expression<Func<string>> webhook = null, Expression<Func<string>> webhookEvent = null, Expression<Func<eventTypeInput>> eventType = null, Expression<Func<int>> status = null, Expression<Func<string>> date = null)
         {
             var __workflow_webhook = WorkflowExpression.Compile(webhook, nameof(webhook), required: false);
             var __workflow_webhookEvent = WorkflowExpression.Compile(webhookEvent, nameof(webhookEvent), required: false);
             var __workflow_eventType = WorkflowExpression.Compile(eventType, nameof(eventType), required: false);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
-            return new DeferredBodyAction<ListWebhookDeliveriesResponseItem[]>(() =>
+            return new DeferredBodyAction<ListWebhookDeliveriesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/deliveries/";
                 var apiCallHttpMethod = "get";
@@ -111,14 +111,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
-        public IBodyWorkflowAction<ListWebhookEventsResponseItem[]> ListWebhookEvents(Expression<Func<string>> webhook = null, Expression<Func<eventTypeInput>> eventType = null, Expression<Func<int>> status = null, Expression<Func<bool>> success = null, Expression<Func<string>> date = null)
+        public IBodyWorkflowAction<ListWebhookEventsResponseItem[], ApiConnectionActionConfiguration> ListWebhookEvents(Expression<Func<string>> webhook = null, Expression<Func<eventTypeInput>> eventType = null, Expression<Func<int>> status = null, Expression<Func<bool>> success = null, Expression<Func<string>> date = null)
         {
             var __workflow_webhook = WorkflowExpression.Compile(webhook, nameof(webhook), required: false);
             var __workflow_eventType = WorkflowExpression.Compile(eventType, nameof(eventType), required: false);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             var __workflow_success = WorkflowExpression.Compile(success, nameof(success), required: false);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
-            return new DeferredBodyAction<ListWebhookEventsResponseItem[]>(() =>
+            return new DeferredBodyAction<ListWebhookEventsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/events/";
                 var apiCallHttpMethod = "get";
@@ -138,11 +138,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
-        public IBodyWorkflowAction<ListWebhookExtraHeadersResponseItem[]> ListWebhookExtraHeaders(Expression<Func<string>> webhook = null, Expression<Func<eventTypeInput>> eventType = null)
+        public IBodyWorkflowAction<ListWebhookExtraHeadersResponseItem[], ApiConnectionActionConfiguration> ListWebhookExtraHeaders(Expression<Func<string>> webhook = null, Expression<Func<eventTypeInput>> eventType = null)
         {
             var __workflow_webhook = WorkflowExpression.Compile(webhook, nameof(webhook), required: false);
             var __workflow_eventType = WorkflowExpression.Compile(eventType, nameof(eventType), required: false);
-            return new DeferredBodyAction<ListWebhookExtraHeadersResponseItem[]>(() =>
+            return new DeferredBodyAction<ListWebhookExtraHeadersResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/headers/";
                 var apiCallHttpMethod = "get";
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
-        public IBodyWorkflowAction<GetWebhookSecretResponse> GetWebhookSecret()
+        public IBodyWorkflowAction<GetWebhookSecretResponse, ApiConnectionActionConfiguration> GetWebhookSecret()
         {
             var apiCallPath = "/webhooks/secret/";
             var apiCallHttpMethod = "get";
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
-        public IBodyWorkflowAction<RegenerateWebhookSecretResponse> RegenerateWebhookSecret()
+        public IBodyWorkflowAction<RegenerateWebhookSecretResponse, ApiConnectionActionConfiguration> RegenerateWebhookSecret()
         {
             var apiCallPath = "/webhooks/secret/regenerate/";
             var apiCallHttpMethod = "get";

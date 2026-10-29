@@ -4,10 +4,15 @@
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
+    public sealed class ConversationalFlowTriggerConfiguration :
+        IWorkflowOperationConfiguration
+    {
+    }
+
     /// <summary>
     /// Represents a conversational flow trigger for agent-based workflows.
     /// </summary>
-    public class ConversationalFlowTrigger : WorkflowTriggerBase
+    public class ConversationalFlowTrigger : WorkflowTriggerBase<ConversationalFlowTriggerConfiguration>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ConversationalFlowTrigger"/> class.
@@ -21,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets the trigger definition for the conversational flow.
         /// </summary>
         /// <returns>A <see cref="FlowTemplateTrigger"/> configured as a request trigger for agent flows.</returns>
-        public override FlowTemplateTrigger GetTriggerDefinition()
+        internal override FlowTemplateTrigger BuildTriggerDefinition(FlowKind? flowKind = null)
         {
             return new FlowTemplateTrigger
             {

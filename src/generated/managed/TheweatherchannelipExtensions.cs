@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
     public class TheweatherchannelipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theweatherchannelip")]
-        public IBodyWorkflowAction<SuccessSchema> GetConditions(Expression<Func<string>> geocode, Expression<Func<unitsInput>> units, Expression<Func<string>> language, Expression<Func<formatInput>> format)
+        public IBodyWorkflowAction<SuccessSchema, ApiConnectionActionConfiguration> GetConditions(Expression<Func<string>> geocode, Expression<Func<unitsInput>> units, Expression<Func<string>> language, Expression<Func<formatInput>> format)
         {
             var __workflow_geocode = WorkflowExpression.Compile(geocode, nameof(geocode), required: true);
             var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
-            return new DeferredBodyAction<SuccessSchema>(() =>
+            return new DeferredBodyAction<SuccessSchema, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/wx/observations/current";
                 var apiCallHttpMethod = "get";
@@ -32,13 +32,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theweatherchannelip")]
-        public IBodyWorkflowAction<SuccessSchema> GetHeadlines(Expression<Func<string>> geocode, Expression<Func<string>> acceptHeader, Expression<Func<string>> language, Expression<Func<formatInput>> format)
+        public IBodyWorkflowAction<SuccessSchema, ApiConnectionActionConfiguration> GetHeadlines(Expression<Func<string>> geocode, Expression<Func<string>> acceptHeader, Expression<Func<string>> language, Expression<Func<formatInput>> format)
         {
             var __workflow_geocode = WorkflowExpression.Compile(geocode, nameof(geocode), required: true);
             var __workflow_acceptHeader = WorkflowExpression.Compile(acceptHeader, nameof(acceptHeader), required: true);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
-            return new DeferredBodyAction<SuccessSchema>(() =>
+            return new DeferredBodyAction<SuccessSchema, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/alerts/headlines";
                 var apiCallHttpMethod = "get";
@@ -52,13 +52,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theweatherchannelip")]
-        public IBodyWorkflowAction<SuccessSchema> GetHistory(Expression<Func<string>> geocode, Expression<Func<unitsInput>> units, Expression<Func<string>> language, Expression<Func<formatInput>> format)
+        public IBodyWorkflowAction<SuccessSchema, ApiConnectionActionConfiguration> GetHistory(Expression<Func<string>> geocode, Expression<Func<unitsInput>> units, Expression<Func<string>> language, Expression<Func<formatInput>> format)
         {
             var __workflow_geocode = WorkflowExpression.Compile(geocode, nameof(geocode), required: true);
             var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
-            return new DeferredBodyAction<SuccessSchema>(() =>
+            return new DeferredBodyAction<SuccessSchema, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/wx/conditions/historical/dailysummary/30day";
                 var apiCallHttpMethod = "get";

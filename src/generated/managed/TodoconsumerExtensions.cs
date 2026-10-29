@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
     public class TodoconsumerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
-        public IBodyWorkflowAction<TodoList[]> GetAllTodoLists()
+        public IBodyWorkflowAction<TodoList[], ApiConnectionActionConfiguration> GetAllTodoLists()
         {
             var apiCallPath = "/lists";
             var apiCallHttpMethod = "get";
@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
-        public IBodyWorkflowAction<TodoList> CreateToDoList(Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<TodoList, ApiConnectionActionConfiguration> CreateToDoList(Expression<Func<string>> bodyname)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            return new DeferredBodyAction<TodoList>(() =>
+            return new DeferredBodyAction<TodoList, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/lists";
                 var apiCallHttpMethod = "post";
@@ -43,10 +43,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
-        public IBodyWorkflowAction<TodoList> GetToDoList(Expression<Func<string>> folderId)
+        public IBodyWorkflowAction<TodoList, ApiConnectionActionConfiguration> GetToDoList(Expression<Func<string>> folderId)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
-            return new DeferredBodyAction<TodoList>(() =>
+            return new DeferredBodyAction<TodoList, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -56,11 +56,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
-        public IBodyWorkflowAction<TodoList> UpdateToDoList(Expression<Func<string>> folderId, Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<TodoList, ApiConnectionActionConfiguration> UpdateToDoList(Expression<Func<string>> folderId, Expression<Func<string>> bodyname)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            return new DeferredBodyAction<TodoList>(() =>
+            return new DeferredBodyAction<TodoList, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -79,10 +79,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
-        public IWorkflowAction DeleteToDoList(Expression<Func<string>> folderId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteToDoList(Expression<Func<string>> folderId)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -92,11 +92,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
-        public IBodyWorkflowAction<ToDo[]> ListToDosByFolder(Expression<Func<string>> folderId, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<ToDo[], ApiConnectionActionConfiguration> ListToDosByFolder(Expression<Func<string>> folderId, Expression<Func<int>> top = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
-            return new DeferredBodyAction<ToDo[]>(() =>
+            return new DeferredBodyAction<ToDo[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/tasks", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
-        public IBodyWorkflowAction<ToDo> CreateToDo(Expression<Func<string>> folderId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodydueDateTimedueDate = null, Expression<Func<string>> bodyreminderDateTimereminderDateTime = null, Expression<Func<bodyimportanceInput>> bodyimportance = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodybodycontent = null, Expression<Func<bool>> bodyisReminderOn = null)
+        public IBodyWorkflowAction<ToDo, ApiConnectionActionConfiguration> CreateToDo(Expression<Func<string>> folderId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodydueDateTimedueDate = null, Expression<Func<string>> bodyreminderDateTimereminderDateTime = null, Expression<Func<bodyimportanceInput>> bodyimportance = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodybodycontent = null, Expression<Func<bool>> bodyisReminderOn = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             var __workflow_bodybodycontent = WorkflowExpression.Compile(bodybodycontent, nameof(bodybodycontent), required: false);
             var __workflow_bodyisReminderOn = WorkflowExpression.Compile(bodyisReminderOn, nameof(bodyisReminderOn), required: false);
-            return new DeferredBodyAction<ToDo>(() =>
+            return new DeferredBodyAction<ToDo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/tasks", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -203,11 +203,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
-        public IBodyWorkflowAction<ToDo> GetToDo(Expression<Func<string>> folderId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<ToDo, ApiConnectionActionConfiguration> GetToDo(Expression<Func<string>> folderId, Expression<Func<string>> id)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<ToDo>(() =>
+            return new DeferredBodyAction<ToDo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/tasks/{1}", __workflow_folderId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
-        public IBodyWorkflowAction<ToDo> UpdateToDo(Expression<Func<string>> folderId, Expression<Func<string>> id, Expression<Func<string>> bodydueDateTimedueDate = null, Expression<Func<string>> bodyreminderDateTimereminderDateTime = null, Expression<Func<bodyimportanceInput>> bodyimportance = null, Expression<Func<string>> bodytitle = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodybodycontent = null, Expression<Func<bool>> bodyisReminderOn = null)
+        public IBodyWorkflowAction<ToDo, ApiConnectionActionConfiguration> UpdateToDo(Expression<Func<string>> folderId, Expression<Func<string>> id, Expression<Func<string>> bodydueDateTimedueDate = null, Expression<Func<string>> bodyreminderDateTimereminderDateTime = null, Expression<Func<bodyimportanceInput>> bodyimportance = null, Expression<Func<string>> bodytitle = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodybodycontent = null, Expression<Func<bool>> bodyisReminderOn = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             var __workflow_bodybodycontent = WorkflowExpression.Compile(bodybodycontent, nameof(bodybodycontent), required: false);
             var __workflow_bodyisReminderOn = WorkflowExpression.Compile(bodyisReminderOn, nameof(bodyisReminderOn), required: false);
-            return new DeferredBodyAction<ToDo>(() =>
+            return new DeferredBodyAction<ToDo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/tasks/{1}", __workflow_folderId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
@@ -317,11 +317,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
-        public IWorkflowAction DeleteToDo(Expression<Func<string>> folderId, Expression<Func<string>> id)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteToDo(Expression<Func<string>> folderId, Expression<Func<string>> id)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/tasks/{1}", __workflow_folderId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -333,10 +333,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
 
     public class TodoconsumerTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ToDo[]> OnNewToDoInFolder(Expression<Func<string>> folderId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ToDo[], ApiConnectionTriggerConfiguration> OnNewToDoInFolder(Expression<Func<string>> folderId, FlowRecurrence recurrence = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
-            return new DeferredBodyTrigger<ToDo[]>(() =>
+            return new DeferredBodyTrigger<ToDo[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/onNewToDoInFolder/{0}", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -345,10 +345,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
             });
         }
 
-        public IBodyWorkflowTrigger<ToDo[]> OnUpdateToDoInFolder(Expression<Func<string>> folderId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ToDo[], ApiConnectionTriggerConfiguration> OnUpdateToDoInFolder(Expression<Func<string>> folderId, FlowRecurrence recurrence = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
-            return new DeferredBodyTrigger<ToDo[]>(() =>
+            return new DeferredBodyTrigger<ToDo[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/onUpdateToDoInFolder/{0}", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

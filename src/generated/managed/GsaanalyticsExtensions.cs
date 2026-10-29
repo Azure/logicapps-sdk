@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
     public class GsaanalyticsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaanalytics")]
-        public IBodyWorkflowAction<Reports[]> GetReportData(Expression<Func<reportNameInput>> reportName, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
+        public IBodyWorkflowAction<Reports[], ApiConnectionActionConfiguration> GetReportData(Expression<Func<reportNameInput>> reportName, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
         {
             var __workflow_reportName = WorkflowExpression.Compile(reportName, nameof(reportName), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
             var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
-            return new DeferredBodyAction<Reports[]>(() =>
+            return new DeferredBodyAction<Reports[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/reports/{0}/data", __workflow_reportName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaanalytics")]
-        public IBodyWorkflowAction<Reports[]> GetAgencyReportData(Expression<Func<agencyNameInput>> agencyName, Expression<Func<reportNameInput>> reportName, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
+        public IBodyWorkflowAction<Reports[], ApiConnectionActionConfiguration> GetAgencyReportData(Expression<Func<agencyNameInput>> agencyName, Expression<Func<reportNameInput>> reportName, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
         {
             var __workflow_agencyName = WorkflowExpression.Compile(agencyName, nameof(agencyName), required: true);
             var __workflow_reportName = WorkflowExpression.Compile(reportName, nameof(reportName), required: true);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
             var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
-            return new DeferredBodyAction<Reports[]>(() =>
+            return new DeferredBodyAction<Reports[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agencies/{0}/reports/{1}/data", __workflow_agencyName.WithUrlEncoding(1), __workflow_reportName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaanalytics")]
-        public IBodyWorkflowAction<Reports[]> GetDomainReportData(Expression<Func<string>> domain, Expression<Func<reportNameInput>> reportName, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
+        public IBodyWorkflowAction<Reports[], ApiConnectionActionConfiguration> GetDomainReportData(Expression<Func<string>> domain, Expression<Func<reportNameInput>> reportName, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
         {
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
             var __workflow_reportName = WorkflowExpression.Compile(reportName, nameof(reportName), required: true);
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
             var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
-            return new DeferredBodyAction<Reports[]>(() =>
+            return new DeferredBodyAction<Reports[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/domain/{0}/reports/{1}/data", __workflow_domain.WithUrlEncoding(1), __workflow_reportName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

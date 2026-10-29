@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
     public class StaffcircleActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
-        public IBodyWorkflowAction<GetPersonResponse> GetPerson(Expression<Func<string>> searchEmail)
+        public IBodyWorkflowAction<GetPersonResponse, ApiConnectionActionConfiguration> GetPerson(Expression<Func<string>> searchEmail)
         {
             var __workflow_searchEmail = WorkflowExpression.Compile(searchEmail, nameof(searchEmail), required: true);
-            return new DeferredBodyAction<GetPersonResponse>(() =>
+            return new DeferredBodyAction<GetPersonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/public/directory/v1/persons";
                 var apiCallHttpMethod = "get";
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
-        public IBodyWorkflowAction<CreatePersonResponse> CreatePerson(Expression<Func<string>> bodyfirstName, Expression<Func<string>> bodysecondName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodymobile, Expression<Func<string>> bodydateOfBirth, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodyaddressLine1 = null, Expression<Func<string>> bodyaddressLine2 = null, Expression<Func<string>> bodytown = null, Expression<Func<string>> bodypostCode = null, Expression<Func<string>> bodycountyName = null, Expression<Func<string>> bodycountryName = null, Expression<Func<string>> bodytitleName = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodyhomeEmail = null, Expression<Func<string>> bodyhomeTelephone = null, Expression<Func<string>> bodytag = null, Expression<Func<string>> bodymanagerEmail = null, Expression<Func<string>> bodydepartmentName = null, Expression<Func<string>> bodyroleName = null, Expression<Func<string>> bodyknownAs = null, Expression<Func<string>> bodyavatarURL = null, Expression<Func<int>> bodytitleId = null, Expression<Func<int>> bodycountyId = null, Expression<Func<int>> bodycountryId = null, Expression<Func<int>> bodygenderId = null, Expression<Func<int>> bodynationalityId = null, Expression<Func<int>> bodyethnicityId = null, Expression<Func<int>> bodymaritalStatusId = null, Expression<Func<int>> bodymanagerId = null, Expression<Func<int>> bodydepartmentId = null, Expression<Func<int>> bodyroleId = null, Expression<Func<int>> bodymainSiteId = null, Expression<Func<bool>> bodyemergencyContactConsent = null, Expression<Func<string>> bodyemergencyContactName = null, Expression<Func<int>> bodyemergencyRelationshipId = null, Expression<Func<string>> bodyemergencyContactTelephone = null, Expression<Func<string>> bodyemergencyAddress = null, Expression<Func<string>> bodynextOfKinName = null, Expression<Func<int>> bodynextOfKinRelationshipId = null, Expression<Func<string>> bodynextOfKinTelephone = null, Expression<Func<string>> bodydialingCode = null, Expression<Func<string>> bodyworkExtension = null, Expression<Func<string>> bodytelephone = null, Expression<Func<string>> bodypersonalMobile = null, Expression<Func<int>> bodystatusId = null, Expression<Func<int>> bodyemploymentTypeId = null, Expression<Func<int>> bodycontractTypeId = null, Expression<Func<string>> bodycontractExpiry = null, Expression<Func<int>> bodyemploymentStatusId = null, Expression<Func<int>> bodysecondaryEmploymentStatusId = null, Expression<Func<string>> bodyemploymentNotes = null, Expression<Func<string>> bodymedicalNotes = null, Expression<Func<bool>> bodyisPersonalDataEnabled = null, Expression<Func<bool>> bodyisContactDataEnabled = null, Expression<Func<bodytimeZoneInput>> bodytimeZone = null)
+        public IBodyWorkflowAction<CreatePersonResponse, ApiConnectionActionConfiguration> CreatePerson(Expression<Func<string>> bodyfirstName, Expression<Func<string>> bodysecondName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodymobile, Expression<Func<string>> bodydateOfBirth, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodyaddressLine1 = null, Expression<Func<string>> bodyaddressLine2 = null, Expression<Func<string>> bodytown = null, Expression<Func<string>> bodypostCode = null, Expression<Func<string>> bodycountyName = null, Expression<Func<string>> bodycountryName = null, Expression<Func<string>> bodytitleName = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodyhomeEmail = null, Expression<Func<string>> bodyhomeTelephone = null, Expression<Func<string>> bodytag = null, Expression<Func<string>> bodymanagerEmail = null, Expression<Func<string>> bodydepartmentName = null, Expression<Func<string>> bodyroleName = null, Expression<Func<string>> bodyknownAs = null, Expression<Func<string>> bodyavatarURL = null, Expression<Func<int>> bodytitleId = null, Expression<Func<int>> bodycountyId = null, Expression<Func<int>> bodycountryId = null, Expression<Func<int>> bodygenderId = null, Expression<Func<int>> bodynationalityId = null, Expression<Func<int>> bodyethnicityId = null, Expression<Func<int>> bodymaritalStatusId = null, Expression<Func<int>> bodymanagerId = null, Expression<Func<int>> bodydepartmentId = null, Expression<Func<int>> bodyroleId = null, Expression<Func<int>> bodymainSiteId = null, Expression<Func<bool>> bodyemergencyContactConsent = null, Expression<Func<string>> bodyemergencyContactName = null, Expression<Func<int>> bodyemergencyRelationshipId = null, Expression<Func<string>> bodyemergencyContactTelephone = null, Expression<Func<string>> bodyemergencyAddress = null, Expression<Func<string>> bodynextOfKinName = null, Expression<Func<int>> bodynextOfKinRelationshipId = null, Expression<Func<string>> bodynextOfKinTelephone = null, Expression<Func<string>> bodydialingCode = null, Expression<Func<string>> bodyworkExtension = null, Expression<Func<string>> bodytelephone = null, Expression<Func<string>> bodypersonalMobile = null, Expression<Func<int>> bodystatusId = null, Expression<Func<int>> bodyemploymentTypeId = null, Expression<Func<int>> bodycontractTypeId = null, Expression<Func<string>> bodycontractExpiry = null, Expression<Func<int>> bodyemploymentStatusId = null, Expression<Func<int>> bodysecondaryEmploymentStatusId = null, Expression<Func<string>> bodyemploymentNotes = null, Expression<Func<string>> bodymedicalNotes = null, Expression<Func<bool>> bodyisPersonalDataEnabled = null, Expression<Func<bool>> bodyisContactDataEnabled = null, Expression<Func<bodytimeZoneInput>> bodytimeZone = null)
         {
             var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: true);
             var __workflow_bodysecondName = WorkflowExpression.Compile(bodysecondName, nameof(bodysecondName), required: true);
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             var __workflow_bodyisPersonalDataEnabled = WorkflowExpression.Compile(bodyisPersonalDataEnabled, nameof(bodyisPersonalDataEnabled), required: false);
             var __workflow_bodyisContactDataEnabled = WorkflowExpression.Compile(bodyisContactDataEnabled, nameof(bodyisContactDataEnabled), required: false);
             var __workflow_bodytimeZone = WorkflowExpression.Compile(bodytimeZone, nameof(bodytimeZone), required: false);
-            return new DeferredBodyAction<CreatePersonResponse>(() =>
+            return new DeferredBodyAction<CreatePersonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/public/directory/v1/persons";
                 var apiCallHttpMethod = "post";
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
-        public IBodyWorkflowAction<GetObjectivesResponse> GetObjectives(Expression<Func<string>> searchTitle = null, Expression<Func<string>> personEmail = null, Expression<Func<string>> tag = null, Expression<Func<string>> closed = null, Expression<Func<objectiveTypeInput>> objectiveType = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<string>> activeAt = null)
+        public IBodyWorkflowAction<GetObjectivesResponse, ApiConnectionActionConfiguration> GetObjectives(Expression<Func<string>> searchTitle = null, Expression<Func<string>> personEmail = null, Expression<Func<string>> tag = null, Expression<Func<string>> closed = null, Expression<Func<objectiveTypeInput>> objectiveType = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<string>> activeAt = null)
         {
             var __workflow_searchTitle = WorkflowExpression.Compile(searchTitle, nameof(searchTitle), required: false);
             var __workflow_personEmail = WorkflowExpression.Compile(personEmail, nameof(personEmail), required: false);
@@ -443,7 +443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
             var __workflow_activeAt = WorkflowExpression.Compile(activeAt, nameof(activeAt), required: false);
-            return new DeferredBodyAction<GetObjectivesResponse>(() =>
+            return new DeferredBodyAction<GetObjectivesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/public/Performance/v1/Objectives";
                 var apiCallHttpMethod = "get";
@@ -469,7 +469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
-        public IBodyWorkflowAction<CreateObjectiveByTemplateResponse> CreateObjectiveByTemplate(Expression<Func<int>> bodyobjectiveTemplateId, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodyendDate, Expression<Func<string>> bodypersonEmail = null, Expression<Func<int>> bodypersonId = null, Expression<Func<string>> bodydepartmentName = null, Expression<Func<int>> bodydepartmentId = null, Expression<Func<string>> bodymanagerEmail = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodymanagerId = null, Expression<Func<int>> bodycompanyObjectiveId = null, Expression<Func<int>> bodydepartmentObjectiveId = null)
+        public IBodyWorkflowAction<CreateObjectiveByTemplateResponse, ApiConnectionActionConfiguration> CreateObjectiveByTemplate(Expression<Func<int>> bodyobjectiveTemplateId, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodyendDate, Expression<Func<string>> bodypersonEmail = null, Expression<Func<int>> bodypersonId = null, Expression<Func<string>> bodydepartmentName = null, Expression<Func<int>> bodydepartmentId = null, Expression<Func<string>> bodymanagerEmail = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodymanagerId = null, Expression<Func<int>> bodycompanyObjectiveId = null, Expression<Func<int>> bodydepartmentObjectiveId = null)
         {
             var __workflow_bodyobjectiveTemplateId = WorkflowExpression.Compile(bodyobjectiveTemplateId, nameof(bodyobjectiveTemplateId), required: true);
             var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: true);
@@ -484,7 +484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             var __workflow_bodymanagerId = WorkflowExpression.Compile(bodymanagerId, nameof(bodymanagerId), required: false);
             var __workflow_bodycompanyObjectiveId = WorkflowExpression.Compile(bodycompanyObjectiveId, nameof(bodycompanyObjectiveId), required: false);
             var __workflow_bodydepartmentObjectiveId = WorkflowExpression.Compile(bodydepartmentObjectiveId, nameof(bodydepartmentObjectiveId), required: false);
-            return new DeferredBodyAction<CreateObjectiveByTemplateResponse>(() =>
+            return new DeferredBodyAction<CreateObjectiveByTemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/public/Performance/v1/Objectives";
                 var apiCallHttpMethod = "post";
@@ -567,7 +567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
-        public IBodyWorkflowAction<CreateObjectiveResponse> CreateObjective(Expression<Func<int>> bodycategoryId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodyendDate, Expression<Func<bodyvalueTypeInput>> bodyvalueType, Expression<Func<string>> bodytag = null, Expression<Func<string>> bodymanagerEmail = null, Expression<Func<int>> bodymanagerId = null, Expression<Func<string>> bodypersonEmail = null, Expression<Func<int>> bodypersonId = null, Expression<Func<string>> bodydepartmentName = null, Expression<Func<int>> bodydepartmentId = null, Expression<Func<int>> bodycompanyObjectiveId = null, Expression<Func<int>> bodydepartmentObjectiveId = null, Expression<Func<double>> bodystartValue = null, Expression<Func<double>> bodytarget = null, Expression<Func<bool>> bodyallowAddProgress = null, Expression<Func<bodyrecurTypeInput>> bodyrecurType = null, Expression<Func<int>> bodyrecurInterval = null, Expression<Func<bool>> bodycumulativeProgress = null, Expression<Func<bool>> bodycontentSettingspush = null, Expression<Func<bool>> bodycontentSettingssms = null, Expression<Func<bool>> bodycontentSettingsemail = null, Expression<Func<bool>> bodycontentSettingsteams = null, Expression<Func<bool>> bodycontentSettingsinApp = null, Expression<Func<bool>> bodycontentSettingsallowLikes = null, Expression<Func<bool>> bodycontentSettingsallowComments = null, Expression<Func<bool>> bodycontentSettingsallowImagesInComments = null, Expression<Func<bool>> bodycontentSettingsallowDocuments = null)
+        public IBodyWorkflowAction<CreateObjectiveResponse, ApiConnectionActionConfiguration> CreateObjective(Expression<Func<int>> bodycategoryId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodyendDate, Expression<Func<bodyvalueTypeInput>> bodyvalueType, Expression<Func<string>> bodytag = null, Expression<Func<string>> bodymanagerEmail = null, Expression<Func<int>> bodymanagerId = null, Expression<Func<string>> bodypersonEmail = null, Expression<Func<int>> bodypersonId = null, Expression<Func<string>> bodydepartmentName = null, Expression<Func<int>> bodydepartmentId = null, Expression<Func<int>> bodycompanyObjectiveId = null, Expression<Func<int>> bodydepartmentObjectiveId = null, Expression<Func<double>> bodystartValue = null, Expression<Func<double>> bodytarget = null, Expression<Func<bool>> bodyallowAddProgress = null, Expression<Func<bodyrecurTypeInput>> bodyrecurType = null, Expression<Func<int>> bodyrecurInterval = null, Expression<Func<bool>> bodycumulativeProgress = null, Expression<Func<bool>> bodycontentSettingspush = null, Expression<Func<bool>> bodycontentSettingssms = null, Expression<Func<bool>> bodycontentSettingsemail = null, Expression<Func<bool>> bodycontentSettingsteams = null, Expression<Func<bool>> bodycontentSettingsinApp = null, Expression<Func<bool>> bodycontentSettingsallowLikes = null, Expression<Func<bool>> bodycontentSettingsallowComments = null, Expression<Func<bool>> bodycontentSettingsallowImagesInComments = null, Expression<Func<bool>> bodycontentSettingsallowDocuments = null)
         {
             var __workflow_bodycategoryId = WorkflowExpression.Compile(bodycategoryId, nameof(bodycategoryId), required: true);
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
@@ -599,7 +599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             var __workflow_bodycontentSettingsallowComments = WorkflowExpression.Compile(bodycontentSettingsallowComments, nameof(bodycontentSettingsallowComments), required: false);
             var __workflow_bodycontentSettingsallowImagesInComments = WorkflowExpression.Compile(bodycontentSettingsallowImagesInComments, nameof(bodycontentSettingsallowImagesInComments), required: false);
             var __workflow_bodycontentSettingsallowDocuments = WorkflowExpression.Compile(bodycontentSettingsallowDocuments, nameof(bodycontentSettingsallowDocuments), required: false);
-            return new DeferredBodyAction<CreateObjectiveResponse>(() =>
+            return new DeferredBodyAction<CreateObjectiveResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/public/Performance/v1/Objectives/";
                 var apiCallHttpMethod = "post";
@@ -890,13 +890,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
-        public IBodyWorkflowAction<UpdateObjectiveScoreResponse> UpdateObjectiveScore(Expression<Func<string>> objectiveId, Expression<Func<double>> bodyvalue, Expression<Func<string>> bodydescription, Expression<Func<bool>> bodyisIncrement = null)
+        public IBodyWorkflowAction<UpdateObjectiveScoreResponse, ApiConnectionActionConfiguration> UpdateObjectiveScore(Expression<Func<string>> objectiveId, Expression<Func<double>> bodyvalue, Expression<Func<string>> bodydescription, Expression<Func<bool>> bodyisIncrement = null)
         {
             var __workflow_objectiveId = WorkflowExpression.Compile(objectiveId, nameof(objectiveId), required: true);
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
             var __workflow_bodyisIncrement = WorkflowExpression.Compile(bodyisIncrement, nameof(bodyisIncrement), required: false);
-            return new DeferredBodyAction<UpdateObjectiveScoreResponse>(() =>
+            return new DeferredBodyAction<UpdateObjectiveScoreResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/public/Performance/v1/Objectives/{0}/progress", __workflow_objectiveId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -933,7 +933,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
-        public IBodyWorkflowAction<CreateArticleResponse> CreateArticle(Expression<Func<string>> bodytitle, Expression<Func<bodypriorityInput>> bodypriority, Expression<Func<bodyarticleTypeInput>> bodyarticleType, Expression<Func<string>> bodyhtmlContent, Expression<Func<string>> bodytag, Expression<Func<string>> bodymainImageUrl = null, Expression<Func<string>> bodysummary = null, Expression<Func<int>> bodychannelId = null, Expression<Func<bool>> bodycontentSettingspush = null, Expression<Func<bool>> bodycontentSettingssms = null, Expression<Func<bool>> bodycontentSettingsemail = null, Expression<Func<bool>> bodycontentSettingsinApp = null, Expression<Func<bool>> bodycontentSettingsteams = null, Expression<Func<bool>> bodycontentSettingsallowLikes = null, Expression<Func<bool>> bodycontentSettingsallowComments = null, Expression<Func<bool>> bodycontentSettingsallowImagesInComments = null, Expression<Func<string>> bodypublicationDetailspinFromDate = null, Expression<Func<int>> bodypublicationDetailspinDurationHours = null, Expression<Func<string>> bodypublicationDetailsscheduledDateTime = null, Expression<Func<bool>> bodypublicationDetailspublishImmediately = null, Expression<Func<int>> bodypublicationDetailspublishAsUserId = null)
+        public IBodyWorkflowAction<CreateArticleResponse, ApiConnectionActionConfiguration> CreateArticle(Expression<Func<string>> bodytitle, Expression<Func<bodypriorityInput>> bodypriority, Expression<Func<bodyarticleTypeInput>> bodyarticleType, Expression<Func<string>> bodyhtmlContent, Expression<Func<string>> bodytag, Expression<Func<string>> bodymainImageUrl = null, Expression<Func<string>> bodysummary = null, Expression<Func<int>> bodychannelId = null, Expression<Func<bool>> bodycontentSettingspush = null, Expression<Func<bool>> bodycontentSettingssms = null, Expression<Func<bool>> bodycontentSettingsemail = null, Expression<Func<bool>> bodycontentSettingsinApp = null, Expression<Func<bool>> bodycontentSettingsteams = null, Expression<Func<bool>> bodycontentSettingsallowLikes = null, Expression<Func<bool>> bodycontentSettingsallowComments = null, Expression<Func<bool>> bodycontentSettingsallowImagesInComments = null, Expression<Func<string>> bodypublicationDetailspinFromDate = null, Expression<Func<int>> bodypublicationDetailspinDurationHours = null, Expression<Func<string>> bodypublicationDetailsscheduledDateTime = null, Expression<Func<bool>> bodypublicationDetailspublishImmediately = null, Expression<Func<int>> bodypublicationDetailspublishAsUserId = null)
         {
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: true);
@@ -956,7 +956,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             var __workflow_bodypublicationDetailsscheduledDateTime = WorkflowExpression.Compile(bodypublicationDetailsscheduledDateTime, nameof(bodypublicationDetailsscheduledDateTime), required: false);
             var __workflow_bodypublicationDetailspublishImmediately = WorkflowExpression.Compile(bodypublicationDetailspublishImmediately, nameof(bodypublicationDetailspublishImmediately), required: false);
             var __workflow_bodypublicationDetailspublishAsUserId = WorkflowExpression.Compile(bodypublicationDetailspublishAsUserId, nameof(bodypublicationDetailspublishAsUserId), required: false);
-            return new DeferredBodyAction<CreateArticleResponse>(() =>
+            return new DeferredBodyAction<CreateArticleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/public/comms/v1/Articles";
                 var apiCallHttpMethod = "post";
@@ -1185,7 +1185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
-        public IBodyWorkflowAction<CreateAlertResponse> CreateAlert(Expression<Func<string>> bodytitle, Expression<Func<bodypriorityInput>> bodypriority, Expression<Func<string>> bodysummary = null, Expression<Func<bool>> bodyeveryone = null, Expression<Func<string>> bodyaudiencedepartmentTags = null, Expression<Func<string>> bodyaudiencepeopleTags = null, Expression<Func<string>> bodyaudiencegroupTags = null, Expression<Func<string>> bodyaudiencesiteTags = null, Expression<Func<bool>> bodycommunicationMethodspush = null, Expression<Func<bool>> bodycommunicationMethodssms = null, Expression<Func<bool>> bodycommunicationMethodsemail = null, Expression<Func<bool>> bodycommunicationMethodsinApp = null, Expression<Func<bool>> bodycommunicationMethodsteams = null)
+        public IBodyWorkflowAction<CreateAlertResponse, ApiConnectionActionConfiguration> CreateAlert(Expression<Func<string>> bodytitle, Expression<Func<bodypriorityInput>> bodypriority, Expression<Func<string>> bodysummary = null, Expression<Func<bool>> bodyeveryone = null, Expression<Func<string>> bodyaudiencedepartmentTags = null, Expression<Func<string>> bodyaudiencepeopleTags = null, Expression<Func<string>> bodyaudiencegroupTags = null, Expression<Func<string>> bodyaudiencesiteTags = null, Expression<Func<bool>> bodycommunicationMethodspush = null, Expression<Func<bool>> bodycommunicationMethodssms = null, Expression<Func<bool>> bodycommunicationMethodsemail = null, Expression<Func<bool>> bodycommunicationMethodsinApp = null, Expression<Func<bool>> bodycommunicationMethodsteams = null)
         {
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: true);
@@ -1200,7 +1200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             var __workflow_bodycommunicationMethodsemail = WorkflowExpression.Compile(bodycommunicationMethodsemail, nameof(bodycommunicationMethodsemail), required: false);
             var __workflow_bodycommunicationMethodsinApp = WorkflowExpression.Compile(bodycommunicationMethodsinApp, nameof(bodycommunicationMethodsinApp), required: false);
             var __workflow_bodycommunicationMethodsteams = WorkflowExpression.Compile(bodycommunicationMethodsteams, nameof(bodycommunicationMethodsteams), required: false);
-            return new DeferredBodyAction<CreateAlertResponse>(() =>
+            return new DeferredBodyAction<CreateAlertResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/public/comms/v1/Alerts";
                 var apiCallHttpMethod = "post";
@@ -1363,7 +1363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
-        public IBodyWorkflowAction<CreateTaskResponse> CreateTask(Expression<Func<string>> bodytitle, Expression<Func<int>> bodyformId, Expression<Func<int>> bodytaskGroupId, Expression<Func<int>> bodypriorityId = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodydueDate = null, Expression<Func<int>> bodyassignedToId = null, Expression<Func<int>> bodymanagerId = null, Expression<Func<string>> bodyassignedToEmail = null, Expression<Func<string>> bodymanagerEmail = null, Expression<Func<int>> bodytaskIntervalId = null, Expression<Func<bool>> bodycontentSettingspush = null, Expression<Func<bool>> bodycontentSettingssms = null, Expression<Func<bool>> bodycontentSettingsemail = null, Expression<Func<bool>> bodycontentSettingsteams = null, Expression<Func<bool>> bodycontentSettingsinApp = null, Expression<Func<bool>> bodycontentSettingsallowLikes = null, Expression<Func<bool>> bodycontentSettingsallowComments = null, Expression<Func<bool>> bodycontentSettingsallowImagesInComments = null, Expression<Func<bool>> bodycontentSettingsallowDocuments = null)
+        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> bodytitle, Expression<Func<int>> bodyformId, Expression<Func<int>> bodytaskGroupId, Expression<Func<int>> bodypriorityId = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodydueDate = null, Expression<Func<int>> bodyassignedToId = null, Expression<Func<int>> bodymanagerId = null, Expression<Func<string>> bodyassignedToEmail = null, Expression<Func<string>> bodymanagerEmail = null, Expression<Func<int>> bodytaskIntervalId = null, Expression<Func<bool>> bodycontentSettingspush = null, Expression<Func<bool>> bodycontentSettingssms = null, Expression<Func<bool>> bodycontentSettingsemail = null, Expression<Func<bool>> bodycontentSettingsteams = null, Expression<Func<bool>> bodycontentSettingsinApp = null, Expression<Func<bool>> bodycontentSettingsallowLikes = null, Expression<Func<bool>> bodycontentSettingsallowComments = null, Expression<Func<bool>> bodycontentSettingsallowImagesInComments = null, Expression<Func<bool>> bodycontentSettingsallowDocuments = null)
         {
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             var __workflow_bodyformId = WorkflowExpression.Compile(bodyformId, nameof(bodyformId), required: true);
@@ -1385,7 +1385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             var __workflow_bodycontentSettingsallowComments = WorkflowExpression.Compile(bodycontentSettingsallowComments, nameof(bodycontentSettingsallowComments), required: false);
             var __workflow_bodycontentSettingsallowImagesInComments = WorkflowExpression.Compile(bodycontentSettingsallowImagesInComments, nameof(bodycontentSettingsallowImagesInComments), required: false);
             var __workflow_bodycontentSettingsallowDocuments = WorkflowExpression.Compile(bodycontentSettingsallowDocuments, nameof(bodycontentSettingsallowDocuments), required: false);
-            return new DeferredBodyAction<CreateTaskResponse>(() =>
+            return new DeferredBodyAction<CreateTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/public/tasks/v1/tasks";
                 var apiCallHttpMethod = "post";
@@ -1570,10 +1570,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
 
     public class StaffcircleTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken> NewPerson(Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> NewPerson(Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            return new DeferredBodyTrigger<JToken>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/public/security/v1/webhooks/NewPerson";
                 var apiCallHttpMethod = "post";
@@ -1607,10 +1607,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             });
         }
 
-        public IBodyWorkflowTrigger<JToken> NewObjective(Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> NewObjective(Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            return new DeferredBodyTrigger<JToken>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/public/security/v1/webhooks/NewObjective";
                 var apiCallHttpMethod = "post";
@@ -1644,10 +1644,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             });
         }
 
-        public IBodyWorkflowTrigger<JToken> UpdateObjective(Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> UpdateObjective(Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            return new DeferredBodyTrigger<JToken>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/public/security/v1/webhooks/UpdateObjective";
                 var apiCallHttpMethod = "post";
@@ -1681,10 +1681,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             });
         }
 
-        public IBodyWorkflowTrigger<JToken> PublishedArticle(Expression<Func<string>> bodyname = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> PublishedArticle(Expression<Func<string>> bodyname = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            return new DeferredBodyTrigger<JToken>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Public/Security/v1/Webhooks/NewArticle";
                 var apiCallHttpMethod = "post";
@@ -1724,10 +1724,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             });
         }
 
-        public IBodyWorkflowTrigger<JToken> NewTask(Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> NewTask(Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            return new DeferredBodyTrigger<JToken>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/public/security/v1/webhooks/NewTask";
                 var apiCallHttpMethod = "post";
@@ -1761,10 +1761,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             });
         }
 
-        public IBodyWorkflowTrigger<JToken> NewReview(Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> NewReview(Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            return new DeferredBodyTrigger<JToken>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/public/security/v1/webhooks/NewReview";
                 var apiCallHttpMethod = "post";
@@ -1798,10 +1798,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             });
         }
 
-        public IBodyWorkflowTrigger<JToken> NewAbsence(Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> NewAbsence(Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            return new DeferredBodyTrigger<JToken>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/public/security/v1/webhooks/newabsence";
                 var apiCallHttpMethod = "post";

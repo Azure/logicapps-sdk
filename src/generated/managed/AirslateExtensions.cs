@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
     public class AirslateActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airslate")]
-        public IBodyWorkflowAction<CreateSmartLinkResponse> CreateSmartLink(Expression<Func<string>> organizationDomain, Expression<Func<string>> slateId, Expression<Func<object>> fields = null)
+        public IBodyWorkflowAction<CreateSmartLinkResponse, ApiConnectionActionConfiguration> CreateSmartLink(Expression<Func<string>> organizationDomain, Expression<Func<string>> slateId, Expression<Func<object>> fields = null)
         {
             var __workflow_organizationDomain = WorkflowExpression.Compile(organizationDomain, nameof(organizationDomain), required: true);
             var __workflow_slateId = WorkflowExpression.Compile(slateId, nameof(slateId), required: true);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
-            return new DeferredBodyAction<CreateSmartLinkResponse>(() =>
+            return new DeferredBodyAction<CreateSmartLinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/flows/{0}/smartLink/create", __workflow_slateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airslate")]
-        public IBodyWorkflowAction<StartFlowResponse> StartFlow(Expression<Func<string>> organizationDomain, Expression<Func<string>> slateId, Expression<Func<object>> fields = null)
+        public IBodyWorkflowAction<StartFlowResponse, ApiConnectionActionConfiguration> StartFlow(Expression<Func<string>> organizationDomain, Expression<Func<string>> slateId, Expression<Func<object>> fields = null)
         {
             var __workflow_organizationDomain = WorkflowExpression.Compile(organizationDomain, nameof(organizationDomain), required: true);
             var __workflow_slateId = WorkflowExpression.Compile(slateId, nameof(slateId), required: true);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
-            return new DeferredBodyAction<StartFlowResponse>(() =>
+            return new DeferredBodyAction<StartFlowResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/addon-proxy/flow/v1/flows/{0}/packets/blank", __workflow_slateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -50,10 +50,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
 
     public class AirslateTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CreateSlateTriggerResponse> CreateSlateTrigger(Expression<Func<string>> bodybotAuthorizationToken, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateSlateTriggerResponse, ApiConnectionTriggerConfiguration> CreateSlateTrigger(Expression<Func<string>> bodybotAuthorizationToken, FlowRecurrence recurrence = null)
         {
             var __workflow_bodybotAuthorizationToken = WorkflowExpression.Compile(bodybotAuthorizationToken, nameof(bodybotAuthorizationToken), required: true);
-            return new DeferredBodyTrigger<CreateSlateTriggerResponse>(() =>
+            return new DeferredBodyTrigger<CreateSlateTriggerResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/event";
                 var apiCallHttpMethod = "post";

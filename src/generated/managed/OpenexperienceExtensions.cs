@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openexperience
     public class OpenexperienceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openexperience")]
-        public IBodyWorkflowAction<CreateNewProjectResponse> CreateNewProject(Expression<Func<string>> projectSettingscustomerId, Expression<Func<string>> projectSettingsid, Expression<Func<string>> projectSettingsname, Expression<Func<int>> projectSettingscontactPhone, Expression<Func<string>> projectSettingscontactEmail, Expression<Func<string>> projectSettingsresponsible, Expression<Func<string[]>> projectSettingsservices, Expression<Func<string>> projectSettingsaddress = null, Expression<Func<bool>> projectSettingssettingsprojectAdminMembersAccess = null)
+        public IBodyWorkflowAction<CreateNewProjectResponse, ApiConnectionActionConfiguration> CreateNewProject(Expression<Func<string>> projectSettingscustomerId, Expression<Func<string>> projectSettingsid, Expression<Func<string>> projectSettingsname, Expression<Func<int>> projectSettingscontactPhone, Expression<Func<string>> projectSettingscontactEmail, Expression<Func<string>> projectSettingsresponsible, Expression<Func<string[]>> projectSettingsservices, Expression<Func<string>> projectSettingsaddress = null, Expression<Func<bool>> projectSettingssettingsprojectAdminMembersAccess = null)
         {
             var __workflow_projectSettingscustomerId = WorkflowExpression.Compile(projectSettingscustomerId, nameof(projectSettingscustomerId), required: true);
             var __workflow_projectSettingsid = WorkflowExpression.Compile(projectSettingsid, nameof(projectSettingsid), required: true);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openexperience
             var __workflow_projectSettingsservices = WorkflowExpression.Compile(projectSettingsservices, nameof(projectSettingsservices), required: true);
             var __workflow_projectSettingsaddress = WorkflowExpression.Compile(projectSettingsaddress, nameof(projectSettingsaddress), required: false);
             var __workflow_projectSettingssettingsprojectAdminMembersAccess = WorkflowExpression.Compile(projectSettingssettingsprojectAdminMembersAccess, nameof(projectSettingssettingsprojectAdminMembersAccess), required: false);
-            return new DeferredBodyAction<CreateNewProjectResponse>(() =>
+            return new DeferredBodyAction<CreateNewProjectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/connector/createProject";
                 var apiCallHttpMethod = "post";

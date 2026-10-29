@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ifactoproofofdeliver
     public class IfactoproofofdeliverActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ifactoproofofdeliver")]
-        public IBodyWorkflowAction<ListEnvironmentResponse> ListEnvironment()
+        public IBodyWorkflowAction<ListEnvironmentResponse, ApiConnectionActionConfiguration> ListEnvironment()
         {
             var apiCallPath = "/environments/v1.0";
             var apiCallHttpMethod = "get";
@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ifactoproofofdeliver
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ifactoproofofdeliver")]
-        public IBodyWorkflowAction<ListCompanyResponse> ListCompany(Expression<Func<string>> bcenvironment)
+        public IBodyWorkflowAction<ListCompanyResponse, ApiConnectionActionConfiguration> ListCompany(Expression<Func<string>> bcenvironment)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
-            return new DeferredBodyAction<ListCompanyResponse>(() =>
+            return new DeferredBodyAction<ListCompanyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2.0/{0}/api/v2.0/companies", __workflow_bcenvironment.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -34,11 +34,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ifactoproofofdeliver
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ifactoproofofdeliver")]
-        public IBodyWorkflowAction<GetCompanyResponse> GetCompany(Expression<Func<string>> bcenvironment, Expression<Func<string>> company)
+        public IBodyWorkflowAction<GetCompanyResponse, ApiConnectionActionConfiguration> GetCompany(Expression<Func<string>> bcenvironment, Expression<Func<string>> company)
         {
             var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
-            return new DeferredBodyAction<GetCompanyResponse>(() =>
+            return new DeferredBodyAction<GetCompanyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2.0/{0}/api/v2.0/companies({1})", __workflow_bcenvironment.WithUrlEncoding(1), __workflow_company.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
     public class ApppowerformsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
-        public IBodyWorkflowAction<JToken> AddForm(Expression<Func<string>> bodyformName, Expression<Func<string>> bodyformDescription = null, Expression<Func<string>> bodythankYouText = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddForm(Expression<Func<string>> bodyformName, Expression<Func<string>> bodyformDescription = null, Expression<Func<string>> bodythankYouText = null)
         {
             var __workflow_bodyformName = WorkflowExpression.Compile(bodyformName, nameof(bodyformName), required: true);
             var __workflow_bodyformDescription = WorkflowExpression.Compile(bodyformDescription, nameof(bodyformDescription), required: false);
             var __workflow_bodythankYouText = WorkflowExpression.Compile(bodythankYouText, nameof(bodythankYouText), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AddNewForm";
                 var apiCallHttpMethod = "post";
@@ -48,14 +48,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
-        public IBodyWorkflowAction<JToken> AddFormField(Expression<Func<string>> bodyformID, Expression<Func<string>> bodyformName, Expression<Func<string>> bodyfieldName, Expression<Func<string>> bodyfieldType, Expression<Func<object>> bodyfieldConfiguration = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddFormField(Expression<Func<string>> bodyformID, Expression<Func<string>> bodyformName, Expression<Func<string>> bodyfieldName, Expression<Func<string>> bodyfieldType, Expression<Func<object>> bodyfieldConfiguration = null)
         {
             var __workflow_bodyformID = WorkflowExpression.Compile(bodyformID, nameof(bodyformID), required: true);
             var __workflow_bodyformName = WorkflowExpression.Compile(bodyformName, nameof(bodyformName), required: true);
             var __workflow_bodyfieldName = WorkflowExpression.Compile(bodyfieldName, nameof(bodyfieldName), required: true);
             var __workflow_bodyfieldType = WorkflowExpression.Compile(bodyfieldType, nameof(bodyfieldType), required: true);
             var __workflow_bodyfieldConfiguration = WorkflowExpression.Compile(bodyfieldConfiguration, nameof(bodyfieldConfiguration), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AddFormField";
                 var apiCallHttpMethod = "post";
@@ -86,12 +86,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
-        public IBodyWorkflowAction<JToken> AddAdaptiveCard(Expression<Func<string>> bodyname, Expression<Func<string>> bodycard, Expression<Func<string>> bodycardAfterSubmit = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddAdaptiveCard(Expression<Func<string>> bodyname, Expression<Func<string>> bodycard, Expression<Func<string>> bodycardAfterSubmit = null)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             var __workflow_bodycard = WorkflowExpression.Compile(bodycard, nameof(bodycard), required: true);
             var __workflow_bodycardAfterSubmit = WorkflowExpression.Compile(bodycardAfterSubmit, nameof(bodycardAfterSubmit), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AddAdaptiveCard";
                 var apiCallHttpMethod = "post";
@@ -118,11 +118,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
-        public IBodyWorkflowAction<JToken> GetCardResponse(Expression<Func<string>> instanceId, Expression<Func<string>> name)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetCardResponse(Expression<Func<string>> instanceId, Expression<Func<string>> name)
         {
             var __workflow_instanceId = WorkflowExpression.Compile(instanceId, nameof(instanceId), required: true);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/GetCardResponse/{0}/{1}", __workflow_instanceId.WithUrlEncoding(1), __workflow_name.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -132,10 +132,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
-        public IBodyWorkflowAction<string> GetFormAdaptiveCardJson(Expression<Func<string>> instanceId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetFormAdaptiveCardJson(Expression<Func<string>> instanceId)
         {
             var __workflow_instanceId = WorkflowExpression.Compile(instanceId, nameof(instanceId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/GetFormAdaptiveCardJson/{0}", __workflow_instanceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -147,10 +147,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
 
     public class ApppowerformsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggerGetCardResponseResponse> TriggerGetCardResponse(Expression<Func<string>> name, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerGetCardResponseResponse, ApiConnectionTriggerConfiguration> TriggerGetCardResponse(Expression<Func<string>> name, FlowRecurrence recurrence = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
-            return new DeferredBodyTrigger<TriggerGetCardResponseResponse>(() =>
+            return new DeferredBodyTrigger<TriggerGetCardResponseResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/TriggerGetCardResponse/{0}", __workflow_name.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

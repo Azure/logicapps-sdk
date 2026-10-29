@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corporatebuzzwordip
     public class CorporatebuzzwordipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corporatebuzzwordip")]
-        public IBodyWorkflowAction<PhraseResponse> Phrase()
+        public IBodyWorkflowAction<PhraseResponse, ApiConnectionActionConfiguration> Phrase()
         {
             var apiCallPath = "/";
             var apiCallHttpMethod = "get";

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
     public class IqairipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
-        public IBodyWorkflowAction<ListCountriesResponse> ListCountries()
+        public IBodyWorkflowAction<ListCountriesResponse, ApiConnectionActionConfiguration> ListCountries()
         {
             var apiCallPath = "/countries";
             var apiCallHttpMethod = "get";
@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
-        public IBodyWorkflowAction<ListStatesResponse> ListStates(Expression<Func<string>> country = null)
+        public IBodyWorkflowAction<ListStatesResponse, ApiConnectionActionConfiguration> ListStates(Expression<Func<string>> country = null)
         {
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
-            return new DeferredBodyAction<ListStatesResponse>(() =>
+            return new DeferredBodyAction<ListStatesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/states";
                 var apiCallHttpMethod = "get";
@@ -36,11 +36,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
-        public IBodyWorkflowAction<ListCitiesResponse> ListCities(Expression<Func<string>> state = null, Expression<Func<string>> country = null)
+        public IBodyWorkflowAction<ListCitiesResponse, ApiConnectionActionConfiguration> ListCities(Expression<Func<string>> state = null, Expression<Func<string>> country = null)
         {
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
-            return new DeferredBodyAction<ListCitiesResponse>(() =>
+            return new DeferredBodyAction<ListCitiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/cities";
                 var apiCallHttpMethod = "get";
@@ -54,11 +54,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
-        public IBodyWorkflowAction<CityResponse> GetDataByCoordinates(Expression<Func<string>> lat = null, Expression<Func<string>> lon = null)
+        public IBodyWorkflowAction<CityResponse, ApiConnectionActionConfiguration> GetDataByCoordinates(Expression<Func<string>> lat = null, Expression<Func<string>> lon = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
             var __workflow_lon = WorkflowExpression.Compile(lon, nameof(lon), required: false);
-            return new DeferredBodyAction<CityResponse>(() =>
+            return new DeferredBodyAction<CityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/nearest_city";
                 var apiCallHttpMethod = "get";
@@ -72,12 +72,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
-        public IBodyWorkflowAction<CityResponse> GetDataByCity(Expression<Func<string>> city = null, Expression<Func<string>> state = null, Expression<Func<string>> country = null)
+        public IBodyWorkflowAction<CityResponse, ApiConnectionActionConfiguration> GetDataByCity(Expression<Func<string>> city = null, Expression<Func<string>> state = null, Expression<Func<string>> country = null)
         {
             var __workflow_city = WorkflowExpression.Compile(city, nameof(city), required: false);
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
-            return new DeferredBodyAction<CityResponse>(() =>
+            return new DeferredBodyAction<CityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/city";
                 var apiCallHttpMethod = "get";

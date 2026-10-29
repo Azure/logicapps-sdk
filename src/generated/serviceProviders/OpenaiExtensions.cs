@@ -1,9 +1,11 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq.Expressions;
     using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
@@ -14,11 +16,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
     public class OpenaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
-        public IBodyWorkflowAction<GetArrayEmbeddingsOutput> GetArrayEmbeddings(Expression<Func<string>> deploymentId, Expression<Func<JToken[]>> input)
+        public IBodyWorkflowAction<GetArrayEmbeddingsOutput, GetArrayEmbeddingsActionConfiguration> GetArrayEmbeddings(Expression<Func<string>> deploymentId, Expression<Func<JToken[]>> input)
         {
             var __workflow_deploymentId = WorkflowExpression.Compile(deploymentId, nameof(deploymentId), required: true);
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<GetArrayEmbeddingsOutput>(() =>
+            return new DeferredBodyAction<GetArrayEmbeddingsOutput, GetArrayEmbeddingsActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["deploymentId"] = ExpressionConverter.ConvertO(__workflow_deploymentId);
@@ -28,16 +30,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getArrayEmbeddings", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetArrayEmbeddingsOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetArrayEmbeddingsOutput, GetArrayEmbeddingsActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
-        public IBodyWorkflowAction<GetSingleEmbeddingOutput> GetSingleEmbedding(Expression<Func<string>> deploymentId, Expression<Func<string>> input)
+        public IBodyWorkflowAction<GetSingleEmbeddingOutput, GetSingleEmbeddingActionConfiguration> GetSingleEmbedding(Expression<Func<string>> deploymentId, Expression<Func<string>> input)
         {
             var __workflow_deploymentId = WorkflowExpression.Compile(deploymentId, nameof(deploymentId), required: true);
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
-            return new DeferredBodyAction<GetSingleEmbeddingOutput>(() =>
+            return new DeferredBodyAction<GetSingleEmbeddingOutput, GetSingleEmbeddingActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["deploymentId"] = ExpressionConverter.ConvertO(__workflow_deploymentId);
@@ -47,12 +49,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getSingleEmbedding", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetSingleEmbeddingOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetSingleEmbeddingOutput, GetSingleEmbeddingActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
-        public IBodyWorkflowAction<GetChatCompletionsOutput> GetChatCompletions(Expression<Func<string>> deploymentId, Expression<Func<GetChatCompletionsInputMessagesTypeItem[]>> messages, Expression<Func<double>> temperature = null, Expression<Func<double>> topP = null, Expression<Func<int>> maxTokens = null, Expression<Func<double>> presencePenalty = null, Expression<Func<double>> frequencyPenalty = null)
+        public IBodyWorkflowAction<GetChatCompletionsOutput, GetChatCompletionsActionConfiguration> GetChatCompletions(Expression<Func<string>> deploymentId, Expression<Func<GetChatCompletionsInputMessagesTypeItem[]>> messages, Expression<Func<double>> temperature = null, Expression<Func<double>> topP = null, Expression<Func<int>> maxTokens = null, Expression<Func<double>> presencePenalty = null, Expression<Func<double>> frequencyPenalty = null)
         {
             var __workflow_deploymentId = WorkflowExpression.Compile(deploymentId, nameof(deploymentId), required: true);
             var __workflow_messages = WorkflowExpression.Compile(messages, nameof(messages), required: true);
@@ -61,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
             var __workflow_maxTokens = WorkflowExpression.Compile(maxTokens, nameof(maxTokens), required: false);
             var __workflow_presencePenalty = WorkflowExpression.Compile(presencePenalty, nameof(presencePenalty), required: false);
             var __workflow_frequencyPenalty = WorkflowExpression.Compile(frequencyPenalty, nameof(frequencyPenalty), required: false);
-            return new DeferredBodyAction<GetChatCompletionsOutput>(() =>
+            return new DeferredBodyAction<GetChatCompletionsOutput, GetChatCompletionsActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["deploymentId"] = ExpressionConverter.ConvertO(__workflow_deploymentId);
@@ -100,12 +102,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getChatCompletions", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetChatCompletionsOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetChatCompletionsOutput, GetChatCompletionsActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
-        public IBodyWorkflowAction<GetMultipleChatCompletionsOutput> GetMultipleChatCompletions(Expression<Func<string>> deploymentId, Expression<Func<GetMultipleChatCompletionsInputMessagesTypeItem[]>> messages, Expression<Func<double>> temperature = null, Expression<Func<double>> topP = null, Expression<Func<int>> maxTokens = null, Expression<Func<int>> n = null, Expression<Func<double>> presencePenalty = null, Expression<Func<double>> frequencyPenalty = null)
+        public IBodyWorkflowAction<GetMultipleChatCompletionsOutput, GetMultipleChatCompletionsActionConfiguration> GetMultipleChatCompletions(Expression<Func<string>> deploymentId, Expression<Func<GetMultipleChatCompletionsInputMessagesTypeItem[]>> messages, Expression<Func<double>> temperature = null, Expression<Func<double>> topP = null, Expression<Func<int>> maxTokens = null, Expression<Func<int>> n = null, Expression<Func<double>> presencePenalty = null, Expression<Func<double>> frequencyPenalty = null)
         {
             var __workflow_deploymentId = WorkflowExpression.Compile(deploymentId, nameof(deploymentId), required: true);
             var __workflow_messages = WorkflowExpression.Compile(messages, nameof(messages), required: true);
@@ -115,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
             var __workflow_n = WorkflowExpression.Compile(n, nameof(n), required: false);
             var __workflow_presencePenalty = WorkflowExpression.Compile(presencePenalty, nameof(presencePenalty), required: false);
             var __workflow_frequencyPenalty = WorkflowExpression.Compile(frequencyPenalty, nameof(frequencyPenalty), required: false);
-            return new DeferredBodyAction<GetMultipleChatCompletionsOutput>(() =>
+            return new DeferredBodyAction<GetMultipleChatCompletionsOutput, GetMultipleChatCompletionsActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["deploymentId"] = ExpressionConverter.ConvertO(__workflow_deploymentId);
@@ -163,12 +165,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getMultipleChatCompletions", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetMultipleChatCompletionsOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetMultipleChatCompletionsOutput, GetMultipleChatCompletionsActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
-        public IBodyWorkflowAction<GetCompletionOutput> GetCompletion(Expression<Func<string>> deploymentId, Expression<Func<string[]>> prompts, Expression<Func<double>> temperature = null, Expression<Func<string[]>> stopSequences = null, Expression<Func<int>> maxTokens = null, Expression<Func<double>> presencePenalty = null, Expression<Func<double>> frequencyPenalty = null)
+        public IBodyWorkflowAction<GetCompletionOutput, GetCompletionActionConfiguration> GetCompletion(Expression<Func<string>> deploymentId, Expression<Func<string[]>> prompts, Expression<Func<double>> temperature = null, Expression<Func<string[]>> stopSequences = null, Expression<Func<int>> maxTokens = null, Expression<Func<double>> presencePenalty = null, Expression<Func<double>> frequencyPenalty = null)
         {
             var __workflow_deploymentId = WorkflowExpression.Compile(deploymentId, nameof(deploymentId), required: true);
             var __workflow_prompts = WorkflowExpression.Compile(prompts, nameof(prompts), required: true);
@@ -177,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
             var __workflow_maxTokens = WorkflowExpression.Compile(maxTokens, nameof(maxTokens), required: false);
             var __workflow_presencePenalty = WorkflowExpression.Compile(presencePenalty, nameof(presencePenalty), required: false);
             var __workflow_frequencyPenalty = WorkflowExpression.Compile(frequencyPenalty, nameof(frequencyPenalty), required: false);
-            return new DeferredBodyAction<GetCompletionOutput>(() =>
+            return new DeferredBodyAction<GetCompletionOutput, GetCompletionActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["deploymentId"] = ExpressionConverter.ConvertO(__workflow_deploymentId);
@@ -216,12 +218,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getCompletion", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetCompletionOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetCompletionOutput, GetCompletionActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
-        public IBodyWorkflowAction<GetChatCompletionsUsingPromptTemplateOutput> GetChatCompletionsUsingPromptTemplate(Expression<Func<string>> deploymentId, Expression<Func<string>> promptTemplateInput, Expression<Func<double>> temperature = null, Expression<Func<object>> promptTemplateInputVariables = null, Expression<Func<double>> topP = null, Expression<Func<int>> maxTokens = null, Expression<Func<double>> presencePenalty = null, Expression<Func<double>> frequencyPenalty = null)
+        public IBodyWorkflowAction<GetChatCompletionsUsingPromptTemplateOutput, GetChatCompletionsUsingPromptTemplateActionConfiguration> GetChatCompletionsUsingPromptTemplate(Expression<Func<string>> deploymentId, Expression<Func<string>> promptTemplateInput, Expression<Func<double>> temperature = null, Expression<Func<object>> promptTemplateInputVariables = null, Expression<Func<double>> topP = null, Expression<Func<int>> maxTokens = null, Expression<Func<double>> presencePenalty = null, Expression<Func<double>> frequencyPenalty = null)
         {
             var __workflow_deploymentId = WorkflowExpression.Compile(deploymentId, nameof(deploymentId), required: true);
             var __workflow_promptTemplateInput = WorkflowExpression.Compile(promptTemplateInput, nameof(promptTemplateInput), required: true);
@@ -231,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
             var __workflow_maxTokens = WorkflowExpression.Compile(maxTokens, nameof(maxTokens), required: false);
             var __workflow_presencePenalty = WorkflowExpression.Compile(presencePenalty, nameof(presencePenalty), required: false);
             var __workflow_frequencyPenalty = WorkflowExpression.Compile(frequencyPenalty, nameof(frequencyPenalty), required: false);
-            return new DeferredBodyAction<GetChatCompletionsUsingPromptTemplateOutput>(() =>
+            return new DeferredBodyAction<GetChatCompletionsUsingPromptTemplateOutput, GetChatCompletionsUsingPromptTemplateActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["deploymentId"] = ExpressionConverter.ConvertO(__workflow_deploymentId);
@@ -275,9 +277,57 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getChatCompletionsUsingPromptTemplate", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetChatCompletionsUsingPromptTemplateOutput>(serviceProviderInput);
+                return new ServiceProviderBodyAction<GetChatCompletionsUsingPromptTemplateOutput, GetChatCompletionsUsingPromptTemplateActionConfiguration>(serviceProviderInput);
             });
         }
+    }
+
+    public sealed class GetArrayEmbeddingsActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class GetSingleEmbeddingActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class GetChatCompletionsActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class GetMultipleChatCompletionsActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class GetCompletionActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+    }
+
+    public sealed class GetChatCompletionsUsingPromptTemplateActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public class GetArrayEmbeddingsOutput
@@ -359,7 +409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
         public string User { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum GetChatCompletionsInputMessagesTypeItemRoleType
     {
         User,
@@ -413,7 +463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
         public string User { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum GetMultipleChatCompletionsInputMessagesTypeItemRoleType
     {
         User,

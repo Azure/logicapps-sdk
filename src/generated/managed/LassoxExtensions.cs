@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lassox
     public class LassoxActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lassox")]
-        public IWorkflowAction ActivateUser(Expression<Func<productInput>> product, Expression<Func<string>> productUserId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ActivateUser(Expression<Func<productInput>> product, Expression<Func<string>> productUserId)
         {
             var __workflow_product = WorkflowExpression.Compile(product, nameof(product), required: true);
             var __workflow_productUserId = WorkflowExpression.Compile(productUserId, nameof(productUserId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/users/activatefromproduct";
                 var apiCallHttpMethod = "put";
@@ -28,11 +28,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lassox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lassox")]
-        public IWorkflowAction DeactivateUser(Expression<Func<productInput>> product, Expression<Func<string>> productUserId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeactivateUser(Expression<Func<productInput>> product, Expression<Func<string>> productUserId)
         {
             var __workflow_product = WorkflowExpression.Compile(product, nameof(product), required: true);
             var __workflow_productUserId = WorkflowExpression.Compile(productUserId, nameof(productUserId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/users/deactivatefromproduct";
                 var apiCallHttpMethod = "put";

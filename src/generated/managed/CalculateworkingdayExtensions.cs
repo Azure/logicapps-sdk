@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
     public class CalculateworkingdayActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
-        public IBodyWorkflowAction<CombinedResponse> Combined(Expression<Func<string>> date, Expression<Func<string>> workingDays, Expression<Func<int>> xWorkingDays, Expression<Func<string>> nonWorkingDays = null, Expression<Func<string>> country = null)
+        public IBodyWorkflowAction<CombinedResponse, ApiConnectionActionConfiguration> Combined(Expression<Func<string>> date, Expression<Func<string>> workingDays, Expression<Func<int>> xWorkingDays, Expression<Func<string>> nonWorkingDays = null, Expression<Func<string>> country = null)
         {
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
             var __workflow_workingDays = WorkflowExpression.Compile(workingDays, nameof(workingDays), required: true);
             var __workflow_xWorkingDays = WorkflowExpression.Compile(xWorkingDays, nameof(xWorkingDays), required: true);
             var __workflow_nonWorkingDays = WorkflowExpression.Compile(nonWorkingDays, nameof(nonWorkingDays), required: false);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
-            return new DeferredBodyAction<CombinedResponse>(() =>
+            return new DeferredBodyAction<CombinedResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/combined/";
                 var apiCallHttpMethod = "get";
@@ -38,10 +38,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
-        public IBodyWorkflowAction<BasicNextWorkingDayResponse> BasicNextWorkingDay(Expression<Func<string>> date)
+        public IBodyWorkflowAction<BasicNextWorkingDayResponse, ApiConnectionActionConfiguration> BasicNextWorkingDay(Expression<Func<string>> date)
         {
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
-            return new DeferredBodyAction<BasicNextWorkingDayResponse>(() =>
+            return new DeferredBodyAction<BasicNextWorkingDayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/basicNextWorkingDay/";
                 var apiCallHttpMethod = "get";
@@ -53,13 +53,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
-        public IBodyWorkflowAction<NextWorkingDayResponse> NextWorkingDay(Expression<Func<string>> date, Expression<Func<string>> workingDays, Expression<Func<int>> xWorkingDays, Expression<Func<string>> nonWorkingDays = null)
+        public IBodyWorkflowAction<NextWorkingDayResponse, ApiConnectionActionConfiguration> NextWorkingDay(Expression<Func<string>> date, Expression<Func<string>> workingDays, Expression<Func<int>> xWorkingDays, Expression<Func<string>> nonWorkingDays = null)
         {
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
             var __workflow_workingDays = WorkflowExpression.Compile(workingDays, nameof(workingDays), required: true);
             var __workflow_xWorkingDays = WorkflowExpression.Compile(xWorkingDays, nameof(xWorkingDays), required: true);
             var __workflow_nonWorkingDays = WorkflowExpression.Compile(nonWorkingDays, nameof(nonWorkingDays), required: false);
-            return new DeferredBodyAction<NextWorkingDayResponse>(() =>
+            return new DeferredBodyAction<NextWorkingDayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/nextWorkingDay/";
                 var apiCallHttpMethod = "get";
@@ -75,13 +75,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
-        public IBodyWorkflowAction<DateDifferenceCalculatorResponse> DateDifferenceCalculator(Expression<Func<string>> workingDays, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> nonWorkingDays = null)
+        public IBodyWorkflowAction<DateDifferenceCalculatorResponse, ApiConnectionActionConfiguration> DateDifferenceCalculator(Expression<Func<string>> workingDays, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> nonWorkingDays = null)
         {
             var __workflow_workingDays = WorkflowExpression.Compile(workingDays, nameof(workingDays), required: true);
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
             var __workflow_nonWorkingDays = WorkflowExpression.Compile(nonWorkingDays, nameof(nonWorkingDays), required: false);
-            return new DeferredBodyAction<DateDifferenceCalculatorResponse>(() =>
+            return new DeferredBodyAction<DateDifferenceCalculatorResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/dateDifferenceCalculator/";
                 var apiCallHttpMethod = "get";
@@ -97,11 +97,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
-        public IBodyWorkflowAction<FirstAndLastWorkingDayOfMonthResponse> FirstAndLastWorkingDayOfMonth(Expression<Func<string>> date, Expression<Func<string>> workingDays)
+        public IBodyWorkflowAction<FirstAndLastWorkingDayOfMonthResponse, ApiConnectionActionConfiguration> FirstAndLastWorkingDayOfMonth(Expression<Func<string>> date, Expression<Func<string>> workingDays)
         {
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
             var __workflow_workingDays = WorkflowExpression.Compile(workingDays, nameof(workingDays), required: true);
-            return new DeferredBodyAction<FirstAndLastWorkingDayOfMonthResponse>(() =>
+            return new DeferredBodyAction<FirstAndLastWorkingDayOfMonthResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/firstAndLastWorkingDayOfMonth/";
                 var apiCallHttpMethod = "get";
@@ -114,11 +114,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
-        public IBodyWorkflowAction<IsTodayAWorkingDayResponse> IsTodayAWorkingDay(Expression<Func<string>> date, Expression<Func<string>> workingDays)
+        public IBodyWorkflowAction<IsTodayAWorkingDayResponse, ApiConnectionActionConfiguration> IsTodayAWorkingDay(Expression<Func<string>> date, Expression<Func<string>> workingDays)
         {
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
             var __workflow_workingDays = WorkflowExpression.Compile(workingDays, nameof(workingDays), required: true);
-            return new DeferredBodyAction<IsTodayAWorkingDayResponse>(() =>
+            return new DeferredBodyAction<IsTodayAWorkingDayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/isTodayAWorkingDay/";
                 var apiCallHttpMethod = "get";
@@ -131,12 +131,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
-        public IBodyWorkflowAction<DateInXWorkingDaysResponse> DateInXWorkingDays(Expression<Func<string>> date, Expression<Func<string>> workingDays, Expression<Func<int>> xWorkingDays)
+        public IBodyWorkflowAction<DateInXWorkingDaysResponse, ApiConnectionActionConfiguration> DateInXWorkingDays(Expression<Func<string>> date, Expression<Func<string>> workingDays, Expression<Func<int>> xWorkingDays)
         {
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
             var __workflow_workingDays = WorkflowExpression.Compile(workingDays, nameof(workingDays), required: true);
             var __workflow_xWorkingDays = WorkflowExpression.Compile(xWorkingDays, nameof(xWorkingDays), required: true);
-            return new DeferredBodyAction<DateInXWorkingDaysResponse>(() =>
+            return new DeferredBodyAction<DateInXWorkingDaysResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/dateInXWorkingDays/";
                 var apiCallHttpMethod = "get";
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
-        public IBodyWorkflowAction<CountryResponse> Country()
+        public IBodyWorkflowAction<CountryResponse, ApiConnectionActionConfiguration> Country()
         {
             var apiCallPath = "/bank-holidays.json";
             var apiCallHttpMethod = "get";

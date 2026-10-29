@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilitervisionagents
     public class TilitervisionagentsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilitervisionagents")]
-        public IBodyWorkflowAction<AgentResponse> RunVisionAgent(Expression<Func<agentNameInput>> agentName, Expression<Func<string>> payloadinputFileB64, Expression<Func<string>> payloadexpectedText = null, Expression<Func<string>> payloadobjectType = null, Expression<Func<string[]>> payloadexpectedObjects = null)
+        public IBodyWorkflowAction<AgentResponse, ApiConnectionActionConfiguration> RunVisionAgent(Expression<Func<agentNameInput>> agentName, Expression<Func<string>> payloadinputFileB64, Expression<Func<string>> payloadexpectedText = null, Expression<Func<string>> payloadobjectType = null, Expression<Func<string[]>> payloadexpectedObjects = null)
         {
             var __workflow_agentName = WorkflowExpression.Compile(agentName, nameof(agentName), required: true);
             var __workflow_payloadinputFileB64 = WorkflowExpression.Compile(payloadinputFileB64, nameof(payloadinputFileB64), required: true);
             var __workflow_payloadexpectedText = WorkflowExpression.Compile(payloadexpectedText, nameof(payloadexpectedText), required: false);
             var __workflow_payloadobjectType = WorkflowExpression.Compile(payloadobjectType, nameof(payloadobjectType), required: false);
             var __workflow_payloadexpectedObjects = WorkflowExpression.Compile(payloadexpectedObjects, nameof(payloadexpectedObjects), required: false);
-            return new DeferredBodyAction<AgentResponse>(() =>
+            return new DeferredBodyAction<AgentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/agents/{0}/v1/inference", __workflow_agentName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";

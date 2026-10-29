@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
     public class PartnercentereventsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterevents")]
-        public IBodyWorkflowAction<ViewRegistrationResponse> ViewRegistration()
+        public IBodyWorkflowAction<ViewRegistrationResponse, ApiConnectionActionConfiguration> ViewRegistration()
         {
             var apiCallPath = "/webhooks/v1/registration";
             var apiCallHttpMethod = "get";
@@ -22,12 +22,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterevents")]
-        public IWorkflowAction EventRegistration(Expression<Func<string>> bodysignatureTokenToMsSignatureHeader = null, Expression<Func<string[]>> bodywebhookEvents = null, Expression<Func<string>> bodywebhookUrl = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EventRegistration(Expression<Func<string>> bodysignatureTokenToMsSignatureHeader = null, Expression<Func<string[]>> bodywebhookEvents = null, Expression<Func<string>> bodywebhookUrl = null)
         {
             var __workflow_bodysignatureTokenToMsSignatureHeader = WorkflowExpression.Compile(bodysignatureTokenToMsSignatureHeader, nameof(bodysignatureTokenToMsSignatureHeader), required: false);
             var __workflow_bodywebhookEvents = WorkflowExpression.Compile(bodywebhookEvents, nameof(bodywebhookEvents), required: false);
             var __workflow_bodywebhookUrl = WorkflowExpression.Compile(bodywebhookUrl, nameof(bodywebhookUrl), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/v1/registration";
                 var apiCallHttpMethod = "post";
@@ -63,12 +63,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterevents")]
-        public IBodyWorkflowAction<UpdateRegistrationResponse> UpdateRegistration(Expression<Func<string>> bodysignatureTokenToMsSignatureHeader = null, Expression<Func<string[]>> bodywebhookEvents = null, Expression<Func<string>> bodywebhookUrl = null)
+        public IBodyWorkflowAction<UpdateRegistrationResponse, ApiConnectionActionConfiguration> UpdateRegistration(Expression<Func<string>> bodysignatureTokenToMsSignatureHeader = null, Expression<Func<string[]>> bodywebhookEvents = null, Expression<Func<string>> bodywebhookUrl = null)
         {
             var __workflow_bodysignatureTokenToMsSignatureHeader = WorkflowExpression.Compile(bodysignatureTokenToMsSignatureHeader, nameof(bodysignatureTokenToMsSignatureHeader), required: false);
             var __workflow_bodywebhookEvents = WorkflowExpression.Compile(bodywebhookEvents, nameof(bodywebhookEvents), required: false);
             var __workflow_bodywebhookUrl = WorkflowExpression.Compile(bodywebhookUrl, nameof(bodywebhookUrl), required: false);
-            return new DeferredBodyAction<UpdateRegistrationResponse>(() =>
+            return new DeferredBodyAction<UpdateRegistrationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/v1/registration";
                 var apiCallHttpMethod = "put";

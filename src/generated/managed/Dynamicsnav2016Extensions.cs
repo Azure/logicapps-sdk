@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsnav2016
     public class Dynamicsnav2016Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsnav2016")]
-        public IBodyWorkflowAction<ItemsList> GetAllSalesOrder(Expression<Func<string>> company, Expression<Func<string>> instancename, Expression<Func<string>> salesorderservice, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<ItemsList, ApiConnectionActionConfiguration> GetAllSalesOrder(Expression<Func<string>> company, Expression<Func<string>> instancename, Expression<Func<string>> salesorderservice, Expression<Func<string>> filter = null)
         {
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             var __workflow_instancename = WorkflowExpression.Compile(instancename, nameof(instancename), required: true);
             var __workflow_salesorderservice = WorkflowExpression.Compile(salesorderservice, nameof(salesorderservice), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
-            return new DeferredBodyAction<ItemsList>(() =>
+            return new DeferredBodyAction<ItemsList, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/OData/Company('{1}')/{2}", __workflow_instancename.WithUrlEncoding(1), __workflow_company.WithUrlEncoding(1), __workflow_salesorderservice.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -31,14 +31,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsnav2016
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsnav2016")]
-        public IBodyWorkflowAction<ItemsList> GetAllSalesLine(Expression<Func<string>> company, Expression<Func<string>> instancename, Expression<Func<string>> salesorderservice, Expression<Func<string>> ordernumber, Expression<Func<string>> saleslineservice)
+        public IBodyWorkflowAction<ItemsList, ApiConnectionActionConfiguration> GetAllSalesLine(Expression<Func<string>> company, Expression<Func<string>> instancename, Expression<Func<string>> salesorderservice, Expression<Func<string>> ordernumber, Expression<Func<string>> saleslineservice)
         {
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             var __workflow_instancename = WorkflowExpression.Compile(instancename, nameof(instancename), required: true);
             var __workflow_salesorderservice = WorkflowExpression.Compile(salesorderservice, nameof(salesorderservice), required: true);
             var __workflow_ordernumber = WorkflowExpression.Compile(ordernumber, nameof(ordernumber), required: true);
             var __workflow_saleslineservice = WorkflowExpression.Compile(saleslineservice, nameof(saleslineservice), required: true);
-            return new DeferredBodyAction<ItemsList>(() =>
+            return new DeferredBodyAction<ItemsList, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/OData/Company('{1}')/{2}(Document_Type='Order',No='{3}')/{4}", __workflow_instancename.WithUrlEncoding(1), __workflow_company.WithUrlEncoding(1), __workflow_salesorderservice.WithUrlEncoding(1), __workflow_ordernumber.WithUrlEncoding(1), __workflow_saleslineservice.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

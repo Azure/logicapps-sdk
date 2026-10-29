@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
     public class EsignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "esign")]
-        public IBodyWorkflowAction<UploadFileResponse> UploadFile(Expression<Func<string>> bodybase64, Expression<Func<string>> bodytitle)
+        public IBodyWorkflowAction<UploadFileResponse, ApiConnectionActionConfiguration> UploadFile(Expression<Func<string>> bodybase64, Expression<Func<string>> bodytitle)
         {
             var __workflow_bodybase64 = WorkflowExpression.Compile(bodybase64, nameof(bodybase64), required: true);
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            return new DeferredBodyAction<UploadFileResponse>(() =>
+            return new DeferredBodyAction<UploadFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/pa_uploads";
                 var apiCallHttpMethod = "post";
@@ -42,14 +42,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "esign")]
-        public IWorkflowAction CreateEnvelopeFromTemplate(Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytemplateTitle = null, Expression<Func<string>> bodyuploadFile = null, Expression<Func<string>> bodysubject = null, Expression<Func<bodysignersInputItem[]>> bodysigners = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateEnvelopeFromTemplate(Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytemplateTitle = null, Expression<Func<string>> bodyuploadFile = null, Expression<Func<string>> bodysubject = null, Expression<Func<bodysignersInputItem[]>> bodysigners = null)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
             var __workflow_bodytemplateTitle = WorkflowExpression.Compile(bodytemplateTitle, nameof(bodytemplateTitle), required: false);
             var __workflow_bodyuploadFile = WorkflowExpression.Compile(bodyuploadFile, nameof(bodyuploadFile), required: false);
             var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
             var __workflow_bodysigners = WorkflowExpression.Compile(bodysigners, nameof(bodysigners), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/pa_envelopes";
                 var apiCallHttpMethod = "post";
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "esign")]
-        public IBodyWorkflowAction<CreateEnvelopeResponse> CreateEnvelope(Expression<Func<string>> bodytitle, Expression<Func<bodydocumentsInputItem[]>> bodydocuments, Expression<Func<bodysignersInputItem[]>> bodysigners, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodydescription = null, Expression<Func<bool>> bodyenvelopeOptionssignInSequentialOrder = null, Expression<Func<bodycarbonCopiesInputItem[]>> bodycarbonCopies = null)
+        public IBodyWorkflowAction<CreateEnvelopeResponse, ApiConnectionActionConfiguration> CreateEnvelope(Expression<Func<string>> bodytitle, Expression<Func<bodydocumentsInputItem[]>> bodydocuments, Expression<Func<bodysignersInputItem[]>> bodysigners, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodydescription = null, Expression<Func<bool>> bodyenvelopeOptionssignInSequentialOrder = null, Expression<Func<bodycarbonCopiesInputItem[]>> bodycarbonCopies = null)
         {
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: true);
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
             var __workflow_bodyenvelopeOptionssignInSequentialOrder = WorkflowExpression.Compile(bodyenvelopeOptionssignInSequentialOrder, nameof(bodyenvelopeOptionssignInSequentialOrder), required: false);
             var __workflow_bodycarbonCopies = WorkflowExpression.Compile(bodycarbonCopies, nameof(bodycarbonCopies), required: false);
-            return new DeferredBodyAction<CreateEnvelopeResponse>(() =>
+            return new DeferredBodyAction<CreateEnvelopeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/pa_send_envelope";
                 var apiCallHttpMethod = "post";
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
 
     public class EsignTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger SignDocument(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SignDocument(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v3/pa_create_webhook";
             var apiCallHttpMethod = "post";
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger CreatedEnvelope(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreatedEnvelope(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v3/pa_create_webhook_two";
             var apiCallHttpMethod = "post";
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
             return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger CompletedEnvelope(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CompletedEnvelope(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v3/pa_create_webhook_three";
             var apiCallHttpMethod = "post";

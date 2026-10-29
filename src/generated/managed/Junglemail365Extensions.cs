@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
     public class Junglemail365Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
-        public IBodyWorkflowAction<JsEmailsResponse> EmailsGet(Expression<Func<string>> requestJobId, Expression<Func<requestEmailTypeInput>> requestEmailType)
+        public IBodyWorkflowAction<JsEmailsResponse, ApiConnectionActionConfiguration> EmailsGet(Expression<Func<string>> requestJobId, Expression<Func<requestEmailTypeInput>> requestEmailType)
         {
             var __workflow_requestJobId = WorkflowExpression.Compile(requestJobId, nameof(requestJobId), required: true);
             var __workflow_requestEmailType = WorkflowExpression.Compile(requestEmailType, nameof(requestEmailType), required: true);
-            return new DeferredBodyAction<JsEmailsResponse>(() =>
+            return new DeferredBodyAction<JsEmailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1.0/emails";
                 var apiCallHttpMethod = "get";
@@ -28,11 +28,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
-        public IBodyWorkflowAction<JToken> JobApprove(Expression<Func<string>> requestsecret, Expression<Func<string>> requestcomments = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> JobApprove(Expression<Func<string>> requestsecret, Expression<Func<string>> requestcomments = null)
         {
             var __workflow_requestsecret = WorkflowExpression.Compile(requestsecret, nameof(requestsecret), required: true);
             var __workflow_requestcomments = WorkflowExpression.Compile(requestcomments, nameof(requestcomments), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1.0/job/approve";
                 var apiCallHttpMethod = "post";
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
-        public IBodyWorkflowAction<JsCreateJobResponse> JobCreate(Expression<Func<requestrecipientSourceInput>> requestrecipientSource, Expression<Func<string>> requestsendingAccount, Expression<Func<string>> requestnewsletterTitle, Expression<Func<string>> requestoffice365Groups = null, Expression<Func<string>> requestattachmentContent = null, Expression<Func<string>> requestattachmentName = null, Expression<Func<string>> requestemailAddresses = null, Expression<Func<string>> requestemailContent = null, Expression<Func<requestemailContentTypeInput>> requestemailContentType = null, Expression<Func<string>> requestemailSubject = null, Expression<Func<string>> requestexchangeGroups = null, Expression<Func<requestwhenToSendTypeInput>> requestwhenToSendType = null, Expression<Func<string>> requestwhenToSend = null, Expression<Func<string>> requestrecipientEmailField = null, Expression<Func<string>> requestrecipientListURL = null, Expression<Func<string>> requestrecipientFilterView = null, Expression<Func<bool>> requestremoveDuplicates = null, Expression<Func<bool>> requestsendReport = null, Expression<Func<string>> requesttimeZone = null, Expression<Func<string>> requesttemplate = null, Expression<Func<bool>> requesttrackClicks = null, Expression<Func<bool>> requesttrackOpens = null)
+        public IBodyWorkflowAction<JsCreateJobResponse, ApiConnectionActionConfiguration> JobCreate(Expression<Func<requestrecipientSourceInput>> requestrecipientSource, Expression<Func<string>> requestsendingAccount, Expression<Func<string>> requestnewsletterTitle, Expression<Func<string>> requestoffice365Groups = null, Expression<Func<string>> requestattachmentContent = null, Expression<Func<string>> requestattachmentName = null, Expression<Func<string>> requestemailAddresses = null, Expression<Func<string>> requestemailContent = null, Expression<Func<requestemailContentTypeInput>> requestemailContentType = null, Expression<Func<string>> requestemailSubject = null, Expression<Func<string>> requestexchangeGroups = null, Expression<Func<requestwhenToSendTypeInput>> requestwhenToSendType = null, Expression<Func<string>> requestwhenToSend = null, Expression<Func<string>> requestrecipientEmailField = null, Expression<Func<string>> requestrecipientListURL = null, Expression<Func<string>> requestrecipientFilterView = null, Expression<Func<bool>> requestremoveDuplicates = null, Expression<Func<bool>> requestsendReport = null, Expression<Func<string>> requesttimeZone = null, Expression<Func<string>> requesttemplate = null, Expression<Func<bool>> requesttrackClicks = null, Expression<Func<bool>> requesttrackOpens = null)
         {
             var __workflow_requestrecipientSource = WorkflowExpression.Compile(requestrecipientSource, nameof(requestrecipientSource), required: true);
             var __workflow_requestsendingAccount = WorkflowExpression.Compile(requestsendingAccount, nameof(requestsendingAccount), required: true);
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             var __workflow_requesttemplate = WorkflowExpression.Compile(requesttemplate, nameof(requesttemplate), required: false);
             var __workflow_requesttrackClicks = WorkflowExpression.Compile(requesttrackClicks, nameof(requesttrackClicks), required: false);
             var __workflow_requesttrackOpens = WorkflowExpression.Compile(requesttrackOpens, nameof(requesttrackOpens), required: false);
-            return new DeferredBodyAction<JsCreateJobResponse>(() =>
+            return new DeferredBodyAction<JsCreateJobResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1.0/job/create";
                 var apiCallHttpMethod = "post";
@@ -278,10 +278,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
-        public IBodyWorkflowAction<JsJob> JobGet(Expression<Func<string>> requestJobId)
+        public IBodyWorkflowAction<JsJob, ApiConnectionActionConfiguration> JobGet(Expression<Func<string>> requestJobId)
         {
             var __workflow_requestJobId = WorkflowExpression.Compile(requestJobId, nameof(requestJobId), required: true);
-            return new DeferredBodyAction<JsJob>(() =>
+            return new DeferredBodyAction<JsJob, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1.0/job/get";
                 var apiCallHttpMethod = "get";
@@ -292,12 +292,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
-        public IBodyWorkflowAction<JsJobsResponse> JobGetAll(Expression<Func<string>> requestDateFrom = null, Expression<Func<string>> requestDateTo = null, Expression<Func<int>> requestLimit = null)
+        public IBodyWorkflowAction<JsJobsResponse, ApiConnectionActionConfiguration> JobGetAll(Expression<Func<string>> requestDateFrom = null, Expression<Func<string>> requestDateTo = null, Expression<Func<int>> requestLimit = null)
         {
             var __workflow_requestDateFrom = WorkflowExpression.Compile(requestDateFrom, nameof(requestDateFrom), required: false);
             var __workflow_requestDateTo = WorkflowExpression.Compile(requestDateTo, nameof(requestDateTo), required: false);
             var __workflow_requestLimit = WorkflowExpression.Compile(requestLimit, nameof(requestLimit), required: false);
-            return new DeferredBodyAction<JsJobsResponse>(() =>
+            return new DeferredBodyAction<JsJobsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1.0/job/getlist";
                 var apiCallHttpMethod = "get";
@@ -313,10 +313,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
-        public IBodyWorkflowAction<JsJobReport> JobGetReport(Expression<Func<string>> requestJobId)
+        public IBodyWorkflowAction<JsJobReport, ApiConnectionActionConfiguration> JobGetReport(Expression<Func<string>> requestJobId)
         {
             var __workflow_requestJobId = WorkflowExpression.Compile(requestJobId, nameof(requestJobId), required: true);
-            return new DeferredBodyAction<JsJobReport>(() =>
+            return new DeferredBodyAction<JsJobReport, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1.0/job/getreport";
                 var apiCallHttpMethod = "get";
@@ -327,11 +327,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
-        public IBodyWorkflowAction<JToken> JobReject(Expression<Func<string>> requestsecret, Expression<Func<string>> requestcomments = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> JobReject(Expression<Func<string>> requestsecret, Expression<Func<string>> requestcomments = null)
         {
             var __workflow_requestsecret = WorkflowExpression.Compile(requestsecret, nameof(requestsecret), required: true);
             var __workflow_requestcomments = WorkflowExpression.Compile(requestcomments, nameof(requestcomments), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1.0/job/reject";
                 var apiCallHttpMethod = "post";
@@ -356,11 +356,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
-        public IBodyWorkflowAction<JsTrackerLogResponse> TrackerLogGet(Expression<Func<string>> requestJobId, Expression<Func<requestDataTypeInput>> requestDataType)
+        public IBodyWorkflowAction<JsTrackerLogResponse, ApiConnectionActionConfiguration> TrackerLogGet(Expression<Func<string>> requestJobId, Expression<Func<requestDataTypeInput>> requestDataType)
         {
             var __workflow_requestJobId = WorkflowExpression.Compile(requestJobId, nameof(requestJobId), required: true);
             var __workflow_requestDataType = WorkflowExpression.Compile(requestDataType, nameof(requestDataType), required: true);
-            return new DeferredBodyAction<JsTrackerLogResponse>(() =>
+            return new DeferredBodyAction<JsTrackerLogResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1.0/trackerlog";
                 var apiCallHttpMethod = "get";
@@ -372,10 +372,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
-        public IBodyWorkflowAction<JsUnsubscribesResponse> UnsubscribesGet(Expression<Func<string>> requestJobId = null)
+        public IBodyWorkflowAction<JsUnsubscribesResponse, ApiConnectionActionConfiguration> UnsubscribesGet(Expression<Func<string>> requestJobId = null)
         {
             var __workflow_requestJobId = WorkflowExpression.Compile(requestJobId, nameof(requestJobId), required: false);
-            return new DeferredBodyAction<JsUnsubscribesResponse>(() =>
+            return new DeferredBodyAction<JsUnsubscribesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/1.0/unsubscribes";
                 var apiCallHttpMethod = "get";
@@ -389,10 +389,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
 
     public class Junglemail365Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobCompleted(Expression<Func<string>> requesttitle, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JsWebhookCreatedResponse, ApiConnectionTriggerConfiguration> WebhookJobCompleted(Expression<Func<string>> requesttitle, FlowRecurrence recurrence = null)
         {
             var __workflow_requesttitle = WorkflowExpression.Compile(requesttitle, nameof(requesttitle), required: true);
-            return new DeferredBodyTrigger<JsWebhookCreatedResponse>(() =>
+            return new DeferredBodyTrigger<JsWebhookCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/1.0/registerwebhookjobcompleted";
                 var apiCallHttpMethod = "post";
@@ -412,10 +412,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             });
         }
 
-        public IBodyWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobStarted(Expression<Func<string>> requesttitle, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JsWebhookCreatedResponse, ApiConnectionTriggerConfiguration> WebhookJobStarted(Expression<Func<string>> requesttitle, FlowRecurrence recurrence = null)
         {
             var __workflow_requesttitle = WorkflowExpression.Compile(requesttitle, nameof(requesttitle), required: true);
-            return new DeferredBodyTrigger<JsWebhookCreatedResponse>(() =>
+            return new DeferredBodyTrigger<JsWebhookCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/1.0/registerwebhookjobstarted";
                 var apiCallHttpMethod = "post";
@@ -435,10 +435,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             });
         }
 
-        public IBodyWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobSumitted(Expression<Func<string>> requesttitle, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JsWebhookCreatedResponse, ApiConnectionTriggerConfiguration> WebhookJobSumitted(Expression<Func<string>> requesttitle, FlowRecurrence recurrence = null)
         {
             var __workflow_requesttitle = WorkflowExpression.Compile(requesttitle, nameof(requesttitle), required: true);
-            return new DeferredBodyTrigger<JsWebhookCreatedResponse>(() =>
+            return new DeferredBodyTrigger<JsWebhookCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/1.0/registerwebhookjobsubmitted";
                 var apiCallHttpMethod = "post";

@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
     public class _1mecorporateActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]
-        public IBodyWorkflowAction<ReturnCardTempleteItem[]> RetrieveCardTemplates()
+        public IBodyWorkflowAction<ReturnCardTempleteItem[], ApiConnectionActionConfiguration> RetrieveCardTemplates()
         {
             var apiCallPath = "/api/CardTempletes/";
             var apiCallHttpMethod = "get";
@@ -21,14 +21,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]
-        public IBodyWorkflowAction<ApiResponse> SendInvitation(Expression<Func<string>> bodycardTemplateId, Expression<Func<string>> bodyjobtitle, Expression<Func<string>> bodyworkEmail, Expression<Func<string>> bodynameOnCard = null, Expression<Func<string>> bodyextension = null)
+        public IBodyWorkflowAction<ApiResponse, ApiConnectionActionConfiguration> SendInvitation(Expression<Func<string>> bodycardTemplateId, Expression<Func<string>> bodyjobtitle, Expression<Func<string>> bodyworkEmail, Expression<Func<string>> bodynameOnCard = null, Expression<Func<string>> bodyextension = null)
         {
             var __workflow_bodycardTemplateId = WorkflowExpression.Compile(bodycardTemplateId, nameof(bodycardTemplateId), required: true);
             var __workflow_bodyjobtitle = WorkflowExpression.Compile(bodyjobtitle, nameof(bodyjobtitle), required: true);
             var __workflow_bodyworkEmail = WorkflowExpression.Compile(bodyworkEmail, nameof(bodyworkEmail), required: true);
             var __workflow_bodynameOnCard = WorkflowExpression.Compile(bodynameOnCard, nameof(bodynameOnCard), required: false);
             var __workflow_bodyextension = WorkflowExpression.Compile(bodyextension, nameof(bodyextension), required: false);
-            return new DeferredBodyAction<ApiResponse>(() =>
+            return new DeferredBodyAction<ApiResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Invitation/";
                 var apiCallHttpMethod = "post";
@@ -63,11 +63,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]
-        public IBodyWorkflowAction<ApiResponse> DisassociateMember(Expression<Func<string>> contentType, Expression<Func<string>> bodyemail)
+        public IBodyWorkflowAction<ApiResponse, ApiConnectionActionConfiguration> DisassociateMember(Expression<Func<string>> contentType, Expression<Func<string>> bodyemail)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            return new DeferredBodyAction<ApiResponse>(() =>
+            return new DeferredBodyAction<ApiResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Invitation/Disassociate";
                 var apiCallHttpMethod = "delete";
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]
-        public IBodyWorkflowAction<AccountInvitationsItem[]> RetrieveAllInvitations()
+        public IBodyWorkflowAction<AccountInvitationsItem[], ApiConnectionActionConfiguration> RetrieveAllInvitations()
         {
             var apiCallPath = "/api/Invitation/GetAccountInvitations/";
             var apiCallHttpMethod = "get";

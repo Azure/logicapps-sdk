@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
     public class VarunaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "varuna")]
-        public IBodyWorkflowAction<JToken> GetADocument(Expression<Func<string>> documentType, Expression<Func<string>> documentId)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetADocument(Expression<Func<string>> documentType, Expression<Func<string>> documentId)
         {
             var __workflow_documentType = WorkflowExpression.Compile(documentType, nameof(documentType), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getdocument";
                 var apiCallHttpMethod = "get";
@@ -28,11 +28,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "varuna")]
-        public IBodyWorkflowAction<CreateADocumentResponse> CreateADocument(Expression<Func<string>> documentType, Expression<Func<object>> createSchema = null)
+        public IBodyWorkflowAction<CreateADocumentResponse, ApiConnectionActionConfiguration> CreateADocument(Expression<Func<string>> documentType, Expression<Func<object>> createSchema = null)
         {
             var __workflow_documentType = WorkflowExpression.Compile(documentType, nameof(documentType), required: true);
             var __workflow_createSchema = WorkflowExpression.Compile(createSchema, nameof(createSchema), required: false);
-            return new DeferredBodyAction<CreateADocumentResponse>(() =>
+            return new DeferredBodyAction<CreateADocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/createdocument";
                 var apiCallHttpMethod = "post";
@@ -44,11 +44,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "varuna")]
-        public IBodyWorkflowAction<DeleteADocumentResponse> DeleteADocument(Expression<Func<string>> documentType, Expression<Func<string>> documentId)
+        public IBodyWorkflowAction<DeleteADocumentResponse, ApiConnectionActionConfiguration> DeleteADocument(Expression<Func<string>> documentType, Expression<Func<string>> documentId)
         {
             var __workflow_documentType = WorkflowExpression.Compile(documentType, nameof(documentType), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
-            return new DeferredBodyAction<DeleteADocumentResponse>(() =>
+            return new DeferredBodyAction<DeleteADocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/deletedocument";
                 var apiCallHttpMethod = "delete";
@@ -60,12 +60,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "varuna")]
-        public IBodyWorkflowAction<UpdateADocumentResponse> UpdateADocument(Expression<Func<string>> documentType, Expression<Func<string>> documentId, Expression<Func<object>> updateSchema = null)
+        public IBodyWorkflowAction<UpdateADocumentResponse, ApiConnectionActionConfiguration> UpdateADocument(Expression<Func<string>> documentType, Expression<Func<string>> documentId, Expression<Func<object>> updateSchema = null)
         {
             var __workflow_documentType = WorkflowExpression.Compile(documentType, nameof(documentType), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_updateSchema = WorkflowExpression.Compile(updateSchema, nameof(updateSchema), required: false);
-            return new DeferredBodyAction<UpdateADocumentResponse>(() =>
+            return new DeferredBodyAction<UpdateADocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/updatedocument";
                 var apiCallHttpMethod = "patch";
@@ -78,10 +78,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "varuna")]
-        public IBodyWorkflowAction<JToken[]> GetAllDocumentsByType(Expression<Func<string>> documentType)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> GetAllDocumentsByType(Expression<Func<string>> documentType)
         {
             var __workflow_documentType = WorkflowExpression.Compile(documentType, nameof(documentType), required: true);
-            return new DeferredBodyAction<JToken[]>(() =>
+            return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getalldocumentsbytype";
                 var apiCallHttpMethod = "get";
@@ -94,11 +94,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
 
     public class VarunaTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken> SubscribeTrigger(Expression<Func<string>> bodytriggerName, Expression<Func<int>> bodywhen = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> SubscribeTrigger(Expression<Func<string>> bodytriggerName, Expression<Func<int>> bodywhen = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodytriggerName = WorkflowExpression.Compile(bodytriggerName, nameof(bodytriggerName), required: true);
             var __workflow_bodywhen = WorkflowExpression.Compile(bodywhen, nameof(bodywhen), required: false);
-            return new DeferredBodyTrigger<JToken>(() =>
+            return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/subscribewebhook";
                 var apiCallHttpMethod = "post";

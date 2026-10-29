@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
     public class WitivioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
-        public IWorkflowAction SendFeedback(Expression<Func<string>> botId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendFeedback(Expression<Func<string>> botId)
         {
             var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/botproxy/{0}/feedback", __workflow_botId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -48,11 +48,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
-        public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> botId, Expression<Func<string>> bodymessage)
+        public IBodyWorkflowAction<SendMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> botId, Expression<Func<string>> bodymessage)
         {
             var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
             var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
-            return new DeferredBodyAction<SendMessageResponse>(() =>
+            return new DeferredBodyAction<SendMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/botproxy/{0}/message", __workflow_botId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -79,11 +79,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
-        public IBodyWorkflowAction<JToken> StartEscalation(Expression<Func<string>> botId, Expression<Func<string>> bodyinitialQuestion)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> StartEscalation(Expression<Func<string>> botId, Expression<Func<string>> bodyinitialQuestion)
         {
             var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
             var __workflow_bodyinitialQuestion = WorkflowExpression.Compile(bodyinitialQuestion, nameof(bodyinitialQuestion), required: true);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/botproxy/{0}/startescalation", __workflow_botId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -126,11 +126,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
-        public IBodyWorkflowAction<SendAdaptiveResponse> SendAdaptive(Expression<Func<string>> botId, Expression<Func<string>> bodyadaptiveCardJson)
+        public IBodyWorkflowAction<SendAdaptiveResponse, ApiConnectionActionConfiguration> SendAdaptive(Expression<Func<string>> botId, Expression<Func<string>> bodyadaptiveCardJson)
         {
             var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
             var __workflow_bodyadaptiveCardJson = WorkflowExpression.Compile(bodyadaptiveCardJson, nameof(bodyadaptiveCardJson), required: true);
-            return new DeferredBodyAction<SendAdaptiveResponse>(() =>
+            return new DeferredBodyAction<SendAdaptiveResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/botproxy/{0}/adaptive", __workflow_botId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -157,12 +157,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
-        public IBodyWorkflowAction<SendMessageInputResponse> SendMessageInput(Expression<Func<string>> botId, Expression<Func<string>> bodyquestion, Expression<Func<bool>> bodyfileWaiting)
+        public IBodyWorkflowAction<SendMessageInputResponse, ApiConnectionActionConfiguration> SendMessageInput(Expression<Func<string>> botId, Expression<Func<string>> bodyquestion, Expression<Func<bool>> bodyfileWaiting)
         {
             var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
             var __workflow_bodyquestion = WorkflowExpression.Compile(bodyquestion, nameof(bodyquestion), required: true);
             var __workflow_bodyfileWaiting = WorkflowExpression.Compile(bodyfileWaiting, nameof(bodyfileWaiting), required: true);
-            return new DeferredBodyAction<SendMessageInputResponse>(() =>
+            return new DeferredBodyAction<SendMessageInputResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/botproxy/{0}/message/input", __workflow_botId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
-        public IBodyWorkflowAction<SendMessageInputListResponse> SendMessageInputList(Expression<Func<string>> botId, Expression<Func<string>> bodyquestion, Expression<Func<string>> bodyfirstChoice, Expression<Func<string>> bodysecondChoice, Expression<Func<string>> bodythirdChoice = null, Expression<Func<string>> bodyfourthChoice = null, Expression<Func<string>> bodyfifthChoice = null, Expression<Func<string>> bodysixthChoice = null, Expression<Func<string>> bodyseventhChoice = null, Expression<Func<string>> bodyeigthChoice = null, Expression<Func<string>> bodyninethChoice = null, Expression<Func<string>> bodytenthChoice = null)
+        public IBodyWorkflowAction<SendMessageInputListResponse, ApiConnectionActionConfiguration> SendMessageInputList(Expression<Func<string>> botId, Expression<Func<string>> bodyquestion, Expression<Func<string>> bodyfirstChoice, Expression<Func<string>> bodysecondChoice, Expression<Func<string>> bodythirdChoice = null, Expression<Func<string>> bodyfourthChoice = null, Expression<Func<string>> bodyfifthChoice = null, Expression<Func<string>> bodysixthChoice = null, Expression<Func<string>> bodyseventhChoice = null, Expression<Func<string>> bodyeigthChoice = null, Expression<Func<string>> bodyninethChoice = null, Expression<Func<string>> bodytenthChoice = null)
         {
             var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
             var __workflow_bodyquestion = WorkflowExpression.Compile(bodyquestion, nameof(bodyquestion), required: true);
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
             var __workflow_bodyeigthChoice = WorkflowExpression.Compile(bodyeigthChoice, nameof(bodyeigthChoice), required: false);
             var __workflow_bodyninethChoice = WorkflowExpression.Compile(bodyninethChoice, nameof(bodyninethChoice), required: false);
             var __workflow_bodytenthChoice = WorkflowExpression.Compile(bodytenthChoice, nameof(bodytenthChoice), required: false);
-            return new DeferredBodyAction<SendMessageInputListResponse>(() =>
+            return new DeferredBodyAction<SendMessageInputListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/botproxy/{0}/message/input/list", __workflow_botId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -284,13 +284,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
-        public IBodyWorkflowAction<SendMessageInputArrayResponse> SendMessageInputArray(Expression<Func<string>> botId, Expression<Func<string>> bodyquestion, Expression<Func<JToken[]>> bodylistOfChoices, Expression<Func<string>> bodyvalueToSelectInList)
+        public IBodyWorkflowAction<SendMessageInputArrayResponse, ApiConnectionActionConfiguration> SendMessageInputArray(Expression<Func<string>> botId, Expression<Func<string>> bodyquestion, Expression<Func<JToken[]>> bodylistOfChoices, Expression<Func<string>> bodyvalueToSelectInList)
         {
             var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
             var __workflow_bodyquestion = WorkflowExpression.Compile(bodyquestion, nameof(bodyquestion), required: true);
             var __workflow_bodylistOfChoices = WorkflowExpression.Compile(bodylistOfChoices, nameof(bodylistOfChoices), required: true);
             var __workflow_bodyvalueToSelectInList = WorkflowExpression.Compile(bodyvalueToSelectInList, nameof(bodyvalueToSelectInList), required: true);
-            return new DeferredBodyAction<SendMessageInputArrayResponse>(() =>
+            return new DeferredBodyAction<SendMessageInputArrayResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/botproxy/{0}/message/input/array", __workflow_botId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -323,14 +323,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
 
     public class WitivioTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WebhookTrigger(Expression<Func<string>> licenceId, Expression<Func<string>> botId, Expression<Func<string>> language, Expression<Func<string>> profileId, Expression<Func<string>> questionId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookTrigger(Expression<Func<string>> licenceId, Expression<Func<string>> botId, Expression<Func<string>> language, Expression<Func<string>> profileId, Expression<Func<string>> questionId, FlowRecurrence recurrence = null)
         {
             var __workflow_licenceId = WorkflowExpression.Compile(licenceId, nameof(licenceId), required: true);
             var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
             var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: true);
             var __workflow_questionId = WorkflowExpression.Compile(questionId, nameof(questionId), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/conversations/{0}/{1}/questions/{2}/triggers/register", __workflow_botId.WithUrlEncoding(1), __workflow_language.WithUrlEncoding(1), __workflow_questionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -350,14 +350,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
             });
         }
 
-        public IWorkflowTrigger WebhookEscalationTrigger(Expression<Func<string>> licenceId, Expression<Func<string>> botId, Expression<Func<string>> language, Expression<Func<string>> profileId, Expression<Func<string>> escalationId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookEscalationTrigger(Expression<Func<string>> licenceId, Expression<Func<string>> botId, Expression<Func<string>> language, Expression<Func<string>> profileId, Expression<Func<string>> escalationId, FlowRecurrence recurrence = null)
         {
             var __workflow_licenceId = WorkflowExpression.Compile(licenceId, nameof(licenceId), required: true);
             var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
             var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: true);
             var __workflow_escalationId = WorkflowExpression.Compile(escalationId, nameof(escalationId), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/escalation/{0}/{1}/triggers/{2}/register", __workflow_botId.WithUrlEncoding(1), __workflow_language.WithUrlEncoding(1), __workflow_escalationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";

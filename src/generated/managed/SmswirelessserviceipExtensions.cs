@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smswirelessserviceip
     public class SmswirelessserviceipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smswirelessserviceip")]
-        public IBodyWorkflowAction<SendSMSResponse> SendSMS(Expression<Func<string>> bodyusername, Expression<Func<string>> bodypassword, Expression<Func<string>> bodybody, Expression<Func<string>> bodyrecipients = null, Expression<Func<string>> bodyconcatenation = null, Expression<Func<string>> bodyoriginator = null, Expression<Func<string>> bodytest = null)
+        public IBodyWorkflowAction<SendSMSResponse, ApiConnectionActionConfiguration> SendSMS(Expression<Func<string>> bodyusername, Expression<Func<string>> bodypassword, Expression<Func<string>> bodybody, Expression<Func<string>> bodyrecipients = null, Expression<Func<string>> bodyconcatenation = null, Expression<Func<string>> bodyoriginator = null, Expression<Func<string>> bodytest = null)
         {
             var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: true);
             var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smswirelessserviceip
             var __workflow_bodyconcatenation = WorkflowExpression.Compile(bodyconcatenation, nameof(bodyconcatenation), required: false);
             var __workflow_bodyoriginator = WorkflowExpression.Compile(bodyoriginator, nameof(bodyoriginator), required: false);
             var __workflow_bodytest = WorkflowExpression.Compile(bodytest, nameof(bodytest), required: false);
-            return new DeferredBodyAction<SendSMSResponse>(() =>
+            return new DeferredBodyAction<SendSMSResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/message.php";
                 var apiCallHttpMethod = "post";

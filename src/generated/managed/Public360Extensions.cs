@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
     public class Public360Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "public360")]
-        public IBodyWorkflowAction<CreateFileResponse> CreateFile(Expression<Func<string>> hosturl, Expression<Func<string>> bodyparametertitle = null, Expression<Func<string>> bodyparameterdocumentNumber = null, Expression<Func<int>> bodyparameterdocumentRecno = null, Expression<Func<string>> bodyparameterformat = null, Expression<Func<string>> bodyparameterbase64Data = null, Expression<Func<bodyparameteradditionalFieldsInputItem[]>> bodyparameteradditionalFields = null)
+        public IBodyWorkflowAction<CreateFileResponse, ApiConnectionActionConfiguration> CreateFile(Expression<Func<string>> hosturl, Expression<Func<string>> bodyparametertitle = null, Expression<Func<string>> bodyparameterdocumentNumber = null, Expression<Func<int>> bodyparameterdocumentRecno = null, Expression<Func<string>> bodyparameterformat = null, Expression<Func<string>> bodyparameterbase64Data = null, Expression<Func<bodyparameteradditionalFieldsInputItem[]>> bodyparameteradditionalFields = null)
         {
             var __workflow_hosturl = WorkflowExpression.Compile(hosturl, nameof(hosturl), required: true);
             var __workflow_bodyparametertitle = WorkflowExpression.Compile(bodyparametertitle, nameof(bodyparametertitle), required: false);
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
             var __workflow_bodyparameterformat = WorkflowExpression.Compile(bodyparameterformat, nameof(bodyparameterformat), required: false);
             var __workflow_bodyparameterbase64Data = WorkflowExpression.Compile(bodyparameterbase64Data, nameof(bodyparameterbase64Data), required: false);
             var __workflow_bodyparameteradditionalFields = WorkflowExpression.Compile(bodyparameteradditionalFields, nameof(bodyparameteradditionalFields), required: false);
-            return new DeferredBodyAction<CreateFileResponse>(() =>
+            return new DeferredBodyAction<CreateFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Biz/v2/api/call/SI.Data.RPC/SI.Data.RPC/FileService/CreateFile";
                 var apiCallHttpMethod = "post";
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "public360")]
-        public IBodyWorkflowAction<CreateDocumentResponse> CreateDocument(Expression<Func<string>> hosturl, Expression<Func<string>> bodyparametertitle = null, Expression<Func<string>> bodyparametercaseNumber = null, Expression<Func<string>> bodyparameterdefaultValueSet = null, Expression<Func<string>> bodyparameterunofficialTitle = null, Expression<Func<string>> bodyparameterresponsiblePersonEmail = null, Expression<Func<string>> bodyparametercategory = null, Expression<Func<string>> bodyparameterstatus = null, Expression<Func<string>> bodyparameterarchive = null, Expression<Func<string>> bodyparameternotes = null, Expression<Func<bodyparametercontactsInputItem[]>> bodyparametercontacts = null, Expression<Func<bodyparameteradditionalFieldsInputItem[]>> bodyparameteradditionalFields = null)
+        public IBodyWorkflowAction<CreateDocumentResponse, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<string>> hosturl, Expression<Func<string>> bodyparametertitle = null, Expression<Func<string>> bodyparametercaseNumber = null, Expression<Func<string>> bodyparameterdefaultValueSet = null, Expression<Func<string>> bodyparameterunofficialTitle = null, Expression<Func<string>> bodyparameterresponsiblePersonEmail = null, Expression<Func<string>> bodyparametercategory = null, Expression<Func<string>> bodyparameterstatus = null, Expression<Func<string>> bodyparameterarchive = null, Expression<Func<string>> bodyparameternotes = null, Expression<Func<bodyparametercontactsInputItem[]>> bodyparametercontacts = null, Expression<Func<bodyparameteradditionalFieldsInputItem[]>> bodyparameteradditionalFields = null)
         {
             var __workflow_hosturl = WorkflowExpression.Compile(hosturl, nameof(hosturl), required: true);
             var __workflow_bodyparametertitle = WorkflowExpression.Compile(bodyparametertitle, nameof(bodyparametertitle), required: false);
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
             var __workflow_bodyparameternotes = WorkflowExpression.Compile(bodyparameternotes, nameof(bodyparameternotes), required: false);
             var __workflow_bodyparametercontacts = WorkflowExpression.Compile(bodyparametercontacts, nameof(bodyparametercontacts), required: false);
             var __workflow_bodyparameteradditionalFields = WorkflowExpression.Compile(bodyparameteradditionalFields, nameof(bodyparameteradditionalFields), required: false);
-            return new DeferredBodyAction<CreateDocumentResponse>(() =>
+            return new DeferredBodyAction<CreateDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Biz/v2/api/call/SI.Data.RPC/SI.Data.RPC/DocumentService/CreateDocument";
                 var apiCallHttpMethod = "post";
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "public360")]
-        public IBodyWorkflowAction<CreateCaseResponse> CreateCase(Expression<Func<string>> hosturl, Expression<Func<string>> bodyparametertitle = null, Expression<Func<string>> bodyparameterdefaultValueSet = null, Expression<Func<string>> bodyparameterunofficialTitle = null, Expression<Func<string>> bodyparametercaseType = null, Expression<Func<string>> bodyparameterresponsiblePersonEmail = null, Expression<Func<string>> bodyparameterresponsiblePersonIdNumber = null, Expression<Func<string>> bodyparameterresponsibleEnterpriseNumber = null, Expression<Func<int>> bodyparameterprogressPlanId = null, Expression<Func<bodyparameteradditionalFieldsInputItem[]>> bodyparameteradditionalFields = null)
+        public IBodyWorkflowAction<CreateCaseResponse, ApiConnectionActionConfiguration> CreateCase(Expression<Func<string>> hosturl, Expression<Func<string>> bodyparametertitle = null, Expression<Func<string>> bodyparameterdefaultValueSet = null, Expression<Func<string>> bodyparameterunofficialTitle = null, Expression<Func<string>> bodyparametercaseType = null, Expression<Func<string>> bodyparameterresponsiblePersonEmail = null, Expression<Func<string>> bodyparameterresponsiblePersonIdNumber = null, Expression<Func<string>> bodyparameterresponsibleEnterpriseNumber = null, Expression<Func<int>> bodyparameterprogressPlanId = null, Expression<Func<bodyparameteradditionalFieldsInputItem[]>> bodyparameteradditionalFields = null)
         {
             var __workflow_hosturl = WorkflowExpression.Compile(hosturl, nameof(hosturl), required: true);
             var __workflow_bodyparametertitle = WorkflowExpression.Compile(bodyparametertitle, nameof(bodyparametertitle), required: false);
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
             var __workflow_bodyparameterresponsibleEnterpriseNumber = WorkflowExpression.Compile(bodyparameterresponsibleEnterpriseNumber, nameof(bodyparameterresponsibleEnterpriseNumber), required: false);
             var __workflow_bodyparameterprogressPlanId = WorkflowExpression.Compile(bodyparameterprogressPlanId, nameof(bodyparameterprogressPlanId), required: false);
             var __workflow_bodyparameteradditionalFields = WorkflowExpression.Compile(bodyparameteradditionalFields, nameof(bodyparameteradditionalFields), required: false);
-            return new DeferredBodyAction<CreateCaseResponse>(() =>
+            return new DeferredBodyAction<CreateCaseResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Biz/v2/api/call/SI.Data.RPC/SI.Data.RPC/CaseService/CreateCase";
                 var apiCallHttpMethod = "post";

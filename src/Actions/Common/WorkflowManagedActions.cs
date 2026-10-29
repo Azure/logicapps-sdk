@@ -1,4 +1,4 @@
-﻿// -----------------------------------------------------------
+// -----------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 
@@ -15,4 +15,5 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// </remarks>
     /// <seealso cref="WorkflowActions"/>
     public partial class WorkflowManagedActions { }
+
 }

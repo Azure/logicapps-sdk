@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbauddocuments
     public class BlackbauddocumentsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbauddocuments")]
-        public IBodyWorkflowAction<ConstituentApiFileDefinition> CreateDocument(Expression<Func<string>> bodyfileName = null, Expression<Func<bool>> bodyincludeThumbnail = null)
+        public IBodyWorkflowAction<ConstituentApiFileDefinition, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<string>> bodyfileName = null, Expression<Func<bool>> bodyincludeThumbnail = null)
         {
             var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: false);
             var __workflow_bodyincludeThumbnail = WorkflowExpression.Compile(bodyincludeThumbnail, nameof(bodyincludeThumbnail), required: false);
-            return new DeferredBodyAction<ConstituentApiFileDefinition>(() =>
+            return new DeferredBodyAction<ConstituentApiFileDefinition, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/constituent/v1/documents";
                 var apiCallHttpMethod = "post";

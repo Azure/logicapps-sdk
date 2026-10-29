@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisenric
     public class DomaintoolsirisenricActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisenric")]
-        public IBodyWorkflowAction<EnrichResponse> EnrichDomain(Expression<Func<string>> domain)
+        public IBodyWorkflowAction<EnrichResponse, ApiConnectionActionConfiguration> EnrichDomain(Expression<Func<string>> domain)
         {
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
-            return new DeferredBodyAction<EnrichResponse>(() =>
+            return new DeferredBodyAction<EnrichResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/iris-enrich/";
                 var apiCallHttpMethod = "post";
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisenric
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisenric")]
-        public IBodyWorkflowAction<AccountResponse> AccountInformation()
+        public IBodyWorkflowAction<AccountResponse, ApiConnectionActionConfiguration> AccountInformation()
         {
             var apiCallPath = "/account/";
             var apiCallHttpMethod = "get";

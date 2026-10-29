@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odbc
     public class OdbcActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odbc")]
-        public IBodyWorkflowAction<TablesList> GetTables()
+        public IBodyWorkflowAction<TablesList, ApiConnectionActionConfiguration> GetTables()
         {
             var apiCallPath = "/datasets/default/tables";
             var apiCallHttpMethod = "get";

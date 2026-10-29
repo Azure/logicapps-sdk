@@ -8,7 +8,9 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// Represents a service provider trigger in a workflow. Service provider triggers fire based
     /// on events from built-in service providers (e.g., Service Bus message received, SQL row inserted).
     /// </summary>
-    public class ServiceProviderTrigger : WorkflowTriggerBase
+    public class ServiceProviderTrigger<TConfiguration> :
+        WorkflowTriggerBase<TConfiguration>
+        where TConfiguration : class, IWorkflowOperationConfiguration, new()
     {
         /// <summary>
         /// The service provider action input containing the trigger configuration.
@@ -51,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Gets the trigger definition as a flow template trigger.
         /// </summary>
-        public override FlowTemplateTrigger GetTriggerDefinition()
+        internal override FlowTemplateTrigger BuildTriggerDefinition(FlowKind? flowKind = null)
         {
             return new FlowTemplateTrigger
             {
@@ -70,7 +72,10 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// operation manifest declares outputs with a <c>body</c> property (i.e., <c>outputs.properties.body</c>).
     /// </summary>
     /// <typeparam name="T">The type of the body content produced by the trigger at runtime.</typeparam>
-    public class ServiceProviderTrigger<T> : ServiceProviderTrigger, IBodyWorkflowTrigger<T>
+    public class ServiceProviderBodyTrigger<T, TConfiguration> :
+        ServiceProviderTrigger<TConfiguration>,
+        IBodyWorkflowTrigger<T, TConfiguration>
+        where TConfiguration : class, IWorkflowOperationConfiguration, new()
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceProviderTrigger{T}"/> class.
@@ -78,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="serviceProviderTriggerInput">The service provider action input.</param>
         /// <param name="isPolling">Whether this trigger uses polling semantics.</param>
         /// <param name="recurrence">The recurrence configuration for a polling trigger.</param>
-        internal ServiceProviderTrigger(
+        internal ServiceProviderBodyTrigger(
             ServiceProviderOperationInput serviceProviderTriggerInput,
             bool isPolling = false,
             FlowRecurrence recurrence = null)
@@ -98,7 +103,10 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// properties directly (i.e., <c>outputs.properties</c> exists but has no <c>body</c> key).
     /// </summary>
     /// <typeparam name="T">The type of the output value produced by the trigger at runtime.</typeparam>
-    public class ServiceProviderOutputTrigger<T> : ServiceProviderTrigger, IOutputWorkflowTrigger<T>
+    public class ServiceProviderOutputTrigger<T, TConfiguration> :
+        ServiceProviderTrigger<TConfiguration>,
+        IOutputWorkflowTrigger<T, TConfiguration>
+        where TConfiguration : class, IWorkflowOperationConfiguration, new()
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceProviderOutputTrigger{T}"/> class.

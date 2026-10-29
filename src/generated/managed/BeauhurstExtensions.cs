@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
     public class BeauhurstActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "beauhurst")]
-        public IBodyWorkflowAction<GetCompanyFidResponse> GetCompanyFid(Expression<Func<string>> names)
+        public IBodyWorkflowAction<GetCompanyFidResponse, ApiConnectionActionConfiguration> GetCompanyFid(Expression<Func<string>> names)
         {
             var __workflow_names = WorkflowExpression.Compile(names, nameof(names), required: true);
-            return new DeferredBodyAction<GetCompanyFidResponse>(() =>
+            return new DeferredBodyAction<GetCompanyFidResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/_api/v1/companies/search";
                 var apiCallHttpMethod = "get";
@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "beauhurst")]
-        public IBodyWorkflowAction<CompanyInfoByFIDResponse> CompanyInfoByFID(Expression<Func<string>> fID)
+        public IBodyWorkflowAction<CompanyInfoByFIDResponse, ApiConnectionActionConfiguration> CompanyInfoByFID(Expression<Func<string>> fID)
         {
             var __workflow_fID = WorkflowExpression.Compile(fID, nameof(fID), required: true);
-            return new DeferredBodyAction<CompanyInfoByFIDResponse>(() =>
+            return new DeferredBodyAction<CompanyInfoByFIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_api/v1/companies/{0}", __workflow_fID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -40,11 +40,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "beauhurst")]
-        public IBodyWorkflowAction<FundsByFIDResponse> FundsByFID(Expression<Func<string>> companyIds, Expression<Func<includesInput>> includes)
+        public IBodyWorkflowAction<FundsByFIDResponse, ApiConnectionActionConfiguration> FundsByFID(Expression<Func<string>> companyIds, Expression<Func<includesInput>> includes)
         {
             var __workflow_companyIds = WorkflowExpression.Compile(companyIds, nameof(companyIds), required: true);
             var __workflow_includes = WorkflowExpression.Compile(includes, nameof(includes), required: true);
-            return new DeferredBodyAction<FundsByFIDResponse>(() =>
+            return new DeferredBodyAction<FundsByFIDResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/_api/v1/transactions/company";
                 var apiCallHttpMethod = "get";

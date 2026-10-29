@@ -15,10 +15,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiply
 
     public class UbiqodbyskiplyTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger DataIn(Expression<Func<int>> bodygroupId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> DataIn(Expression<Func<int>> bodygroupId, FlowRecurrence recurrence = null)
         {
             var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: true);
-            return new DeferredWorkflowTrigger(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/key/subscribe";
                 var apiCallHttpMethod = "post";

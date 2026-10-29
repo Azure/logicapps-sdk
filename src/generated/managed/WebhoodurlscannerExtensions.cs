@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
     public class WebhoodurlscannerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webhoodurlscanner")]
-        public IBodyWorkflowAction<Scan[]> GetScans(Expression<Func<statusInput>> status = null)
+        public IBodyWorkflowAction<Scan[], ApiConnectionActionConfiguration> GetScans(Expression<Func<statusInput>> status = null)
         {
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
-            return new DeferredBodyAction<Scan[]>(() =>
+            return new DeferredBodyAction<Scan[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/beta/scans";
                 var apiCallHttpMethod = "get";
@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webhoodurlscanner")]
-        public IBodyWorkflowAction<Scan> GetScanById(Expression<Func<string>> scanId)
+        public IBodyWorkflowAction<Scan, ApiConnectionActionConfiguration> GetScanById(Expression<Func<string>> scanId)
         {
             var __workflow_scanId = WorkflowExpression.Compile(scanId, nameof(scanId), required: true);
-            return new DeferredBodyAction<Scan>(() =>
+            return new DeferredBodyAction<Scan, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/scans/{0}", __workflow_scanId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -41,10 +41,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webhoodurlscanner")]
-        public IWorkflowAction GetScreenshotByScanId(Expression<Func<string>> scanId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetScreenshotByScanId(Expression<Func<string>> scanId)
         {
             var __workflow_scanId = WorkflowExpression.Compile(scanId, nameof(scanId), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/scans/{0}/screenshot", __workflow_scanId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

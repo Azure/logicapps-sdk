@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
     public class ZuvadocaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<SubmitFileResponse> SubmitFile(Expression<Func<string>> file = null)
+        public IBodyWorkflowAction<SubmitFileResponse, ApiConnectionActionConfiguration> SubmitFile(Expression<Func<string>> file = null)
         {
             var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: false);
-            return new DeferredBodyAction<SubmitFileResponse>(() =>
+            return new DeferredBodyAction<SubmitFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/files";
                 var apiCallHttpMethod = "post";
@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<string> DeleteFile(Expression<Func<string>> fileId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DeleteFile(Expression<Func<string>> fileId)
         {
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/files/{0}", __workflow_fileId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -39,10 +39,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<CreateOcrRequestResponse> CreateOcrRequest(Expression<Func<string>> fileIdBodyfileID = null)
+        public IBodyWorkflowAction<CreateOcrRequestResponse, ApiConnectionActionConfiguration> CreateOcrRequest(Expression<Func<string>> fileIdBodyfileID = null)
         {
             var __workflow_fileIdBodyfileID = WorkflowExpression.Compile(fileIdBodyfileID, nameof(fileIdBodyfileID), required: false);
-            return new DeferredBodyAction<CreateOcrRequestResponse>(() =>
+            return new DeferredBodyAction<CreateOcrRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ocr";
                 var apiCallHttpMethod = "post";
@@ -65,10 +65,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<GetOcrRequestStatusResponse> GetOcrRequestStatus(Expression<Func<string>> requestId)
+        public IBodyWorkflowAction<GetOcrRequestStatusResponse, ApiConnectionActionConfiguration> GetOcrRequestStatus(Expression<Func<string>> requestId)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
-            return new DeferredBodyAction<GetOcrRequestStatusResponse>(() =>
+            return new DeferredBodyAction<GetOcrRequestStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ocr/{0}", __workflow_requestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -78,10 +78,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<GetOcrRequestTextResponse> GetOcrRequestText(Expression<Func<string>> requestId)
+        public IBodyWorkflowAction<GetOcrRequestTextResponse, ApiConnectionActionConfiguration> GetOcrRequestText(Expression<Func<string>> requestId)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
-            return new DeferredBodyAction<GetOcrRequestTextResponse>(() =>
+            return new DeferredBodyAction<GetOcrRequestTextResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ocr/{0}/text", __workflow_requestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -91,10 +91,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<string> GetOcrRequestImages(Expression<Func<string>> requestId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetOcrRequestImages(Expression<Func<string>> requestId)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
-            return new DeferredBodyAction<string>(() =>
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/ocr/{0}/images", __workflow_requestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<GetFieldListResponseItem[]> GetFieldList()
+        public IBodyWorkflowAction<GetFieldListResponseItem[], ApiConnectionActionConfiguration> GetFieldList()
         {
             var apiCallPath = "/fields";
             var apiCallHttpMethod = "get";
@@ -113,11 +113,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<CreateFieldExtractionRequestResponse> CreateFieldExtractionRequest(Expression<Func<string>> bodyfileID = null, Expression<Func<string[]>> bodyfieldIDs = null)
+        public IBodyWorkflowAction<CreateFieldExtractionRequestResponse, ApiConnectionActionConfiguration> CreateFieldExtractionRequest(Expression<Func<string>> bodyfileID = null, Expression<Func<string[]>> bodyfieldIDs = null)
         {
             var __workflow_bodyfileID = WorkflowExpression.Compile(bodyfileID, nameof(bodyfileID), required: false);
             var __workflow_bodyfieldIDs = WorkflowExpression.Compile(bodyfieldIDs, nameof(bodyfieldIDs), required: false);
-            return new DeferredBodyAction<CreateFieldExtractionRequestResponse>(() =>
+            return new DeferredBodyAction<CreateFieldExtractionRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/extraction";
                 var apiCallHttpMethod = "post";
@@ -146,10 +146,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<GetFieldExtractionRequestStatusResponse> GetFieldExtractionRequestStatus(Expression<Func<string>> requestId)
+        public IBodyWorkflowAction<GetFieldExtractionRequestStatusResponse, ApiConnectionActionConfiguration> GetFieldExtractionRequestStatus(Expression<Func<string>> requestId)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
-            return new DeferredBodyAction<GetFieldExtractionRequestStatusResponse>(() =>
+            return new DeferredBodyAction<GetFieldExtractionRequestStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/extraction/{0}", __workflow_requestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -159,10 +159,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<GetFieldExtractionRequestResultsResponse> GetFieldExtractionRequestResults(Expression<Func<string>> requestId)
+        public IBodyWorkflowAction<GetFieldExtractionRequestResultsResponse, ApiConnectionActionConfiguration> GetFieldExtractionRequestResults(Expression<Func<string>> requestId)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
-            return new DeferredBodyAction<GetFieldExtractionRequestResultsResponse>(() =>
+            return new DeferredBodyAction<GetFieldExtractionRequestResultsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/extraction/{0}/results/text", __workflow_requestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -172,10 +172,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<CreateDocumentClassificationRequestResponse> CreateDocumentClassificationRequest(Expression<Func<string>> fileIdBodyfileID = null)
+        public IBodyWorkflowAction<CreateDocumentClassificationRequestResponse, ApiConnectionActionConfiguration> CreateDocumentClassificationRequest(Expression<Func<string>> fileIdBodyfileID = null)
         {
             var __workflow_fileIdBodyfileID = WorkflowExpression.Compile(fileIdBodyfileID, nameof(fileIdBodyfileID), required: false);
-            return new DeferredBodyAction<CreateDocumentClassificationRequestResponse>(() =>
+            return new DeferredBodyAction<CreateDocumentClassificationRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/classification";
                 var apiCallHttpMethod = "post";
@@ -198,10 +198,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<GetDocumentClassificationRequestStatusResponse> GetDocumentClassificationRequestStatus(Expression<Func<string>> requestId)
+        public IBodyWorkflowAction<GetDocumentClassificationRequestStatusResponse, ApiConnectionActionConfiguration> GetDocumentClassificationRequestStatus(Expression<Func<string>> requestId)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
-            return new DeferredBodyAction<GetDocumentClassificationRequestStatusResponse>(() =>
+            return new DeferredBodyAction<GetDocumentClassificationRequestStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/classification/{0}", __workflow_requestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -211,10 +211,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<CreateLanguageClassificationRequestResponse> CreateLanguageClassificationRequest(Expression<Func<string>> fileIdBodyfileID = null)
+        public IBodyWorkflowAction<CreateLanguageClassificationRequestResponse, ApiConnectionActionConfiguration> CreateLanguageClassificationRequest(Expression<Func<string>> fileIdBodyfileID = null)
         {
             var __workflow_fileIdBodyfileID = WorkflowExpression.Compile(fileIdBodyfileID, nameof(fileIdBodyfileID), required: false);
-            return new DeferredBodyAction<CreateLanguageClassificationRequestResponse>(() =>
+            return new DeferredBodyAction<CreateLanguageClassificationRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/language";
                 var apiCallHttpMethod = "post";
@@ -237,10 +237,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<GetLanguageClassificationRequestStatusResponse> GetLanguageClassificationRequestStatus(Expression<Func<string>> requestId)
+        public IBodyWorkflowAction<GetLanguageClassificationRequestStatusResponse, ApiConnectionActionConfiguration> GetLanguageClassificationRequestStatus(Expression<Func<string>> requestId)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
-            return new DeferredBodyAction<GetLanguageClassificationRequestStatusResponse>(() =>
+            return new DeferredBodyAction<GetLanguageClassificationRequestStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/language/{0}", __workflow_requestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -250,10 +250,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<CreateMlcRequestResponse> CreateMlcRequest(Expression<Func<string>> fileIdBodyfileID = null)
+        public IBodyWorkflowAction<CreateMlcRequestResponse, ApiConnectionActionConfiguration> CreateMlcRequest(Expression<Func<string>> fileIdBodyfileID = null)
         {
             var __workflow_fileIdBodyfileID = WorkflowExpression.Compile(fileIdBodyfileID, nameof(fileIdBodyfileID), required: false);
-            return new DeferredBodyAction<CreateMlcRequestResponse>(() =>
+            return new DeferredBodyAction<CreateMlcRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/mlc";
                 var apiCallHttpMethod = "post";
@@ -276,10 +276,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<GetMlcRequestStatusResponse> GetMlcRequestStatus(Expression<Func<string>> requestId)
+        public IBodyWorkflowAction<GetMlcRequestStatusResponse, ApiConnectionActionConfiguration> GetMlcRequestStatus(Expression<Func<string>> requestId)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
-            return new DeferredBodyAction<GetMlcRequestStatusResponse>(() =>
+            return new DeferredBodyAction<GetMlcRequestStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/mlc/{0}", __workflow_requestId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -289,10 +289,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<NormalizeDatesResponse> NormalizeDates(Expression<Func<string>> textBodytext = null)
+        public IBodyWorkflowAction<NormalizeDatesResponse, ApiConnectionActionConfiguration> NormalizeDates(Expression<Func<string>> textBodytext = null)
         {
             var __workflow_textBodytext = WorkflowExpression.Compile(textBodytext, nameof(textBodytext), required: false);
-            return new DeferredBodyAction<NormalizeDatesResponse>(() =>
+            return new DeferredBodyAction<NormalizeDatesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/normalize/date";
                 var apiCallHttpMethod = "post";

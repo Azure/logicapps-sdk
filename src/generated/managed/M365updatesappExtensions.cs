@@ -15,10 +15,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.M365updatesapp
 
     public class M365updatesappTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken[]> ListReceivedReportsByReportDefinition(Expression<Func<string>> reportDefinitionId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken[], ApiConnectionTriggerConfiguration> ListReceivedReportsByReportDefinition(Expression<Func<string>> reportDefinitionId, FlowRecurrence recurrence = null)
         {
             var __workflow_reportDefinitionId = WorkflowExpression.Compile(reportDefinitionId, nameof(reportDefinitionId), required: true);
-            return new DeferredBodyTrigger<JToken[]>(() =>
+            return new DeferredBodyTrigger<JToken[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/connector/powerautomate/triggers/{0}/reports", __workflow_reportDefinitionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.M365updatesapp
             });
         }
 
-        public IBodyWorkflowTrigger<JToken[]> ListReceivedReports(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken[], ApiConnectionTriggerConfiguration> ListReceivedReports(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/connector/powerautomate/triggers/reports";
             var apiCallHttpMethod = "get";

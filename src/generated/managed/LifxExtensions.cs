@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
     public class LifxActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction MoveEffect(Expression<Func<string>> lights, Expression<Func<bodydirectionInput>> bodydirection = null, Expression<Func<double>> bodyperiod = null, Expression<Func<double>> bodycycles = null, Expression<Func<bool>> bodypowerOn = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MoveEffect(Expression<Func<string>> lights, Expression<Func<bodydirectionInput>> bodydirection = null, Expression<Func<double>> bodyperiod = null, Expression<Func<double>> bodycycles = null, Expression<Func<bool>> bodypowerOn = null)
         {
             var __workflow_lights = WorkflowExpression.Compile(lights, nameof(lights), required: true);
             var __workflow_bodydirection = WorkflowExpression.Compile(bodydirection, nameof(bodydirection), required: false);
             var __workflow_bodyperiod = WorkflowExpression.Compile(bodyperiod, nameof(bodyperiod), required: false);
             var __workflow_bodycycles = WorkflowExpression.Compile(bodycycles, nameof(bodycycles), required: false);
             var __workflow_bodypowerOn = WorkflowExpression.Compile(bodypowerOn, nameof(bodypowerOn), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/lights/{0}/effects/move", __workflow_lights.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction PulseEffect(Expression<Func<string>> lights, Expression<Func<bodycolorInput>> bodycolor, Expression<Func<bodyfromColorInput>> bodyfromColor = null, Expression<Func<double>> bodyperiod = null, Expression<Func<double>> bodycycles = null, Expression<Func<bool>> bodypersist = null, Expression<Func<bool>> bodypowerOn = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PulseEffect(Expression<Func<string>> lights, Expression<Func<bodycolorInput>> bodycolor, Expression<Func<bodyfromColorInput>> bodyfromColor = null, Expression<Func<double>> bodyperiod = null, Expression<Func<double>> bodycycles = null, Expression<Func<bool>> bodypersist = null, Expression<Func<bool>> bodypowerOn = null)
         {
             var __workflow_lights = WorkflowExpression.Compile(lights, nameof(lights), required: true);
             var __workflow_bodycolor = WorkflowExpression.Compile(bodycolor, nameof(bodycolor), required: true);
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             var __workflow_bodycycles = WorkflowExpression.Compile(bodycycles, nameof(bodycycles), required: false);
             var __workflow_bodypersist = WorkflowExpression.Compile(bodypersist, nameof(bodypersist), required: false);
             var __workflow_bodypowerOn = WorkflowExpression.Compile(bodypowerOn, nameof(bodypowerOn), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/lights/{0}/effects/pulse", __workflow_lights.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -168,11 +168,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction ActivateScene(Expression<Func<string>> scene, Expression<Func<int>> bodyduration = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ActivateScene(Expression<Func<string>> scene, Expression<Func<int>> bodyduration = null)
         {
             var __workflow_scene = WorkflowExpression.Compile(scene, nameof(scene), required: true);
             var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/scenes/{0}/activate", __workflow_scene.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IBodyWorkflowAction<SetStateResponse> SetState(Expression<Func<string>> lights, Expression<Func<bodypowerInput>> bodypower = null, Expression<Func<bodycolorInput>> bodycolor = null, Expression<Func<double>> bodybrightness = null, Expression<Func<double>> bodyduration = null, Expression<Func<double>> bodyinfrared = null)
+        public IBodyWorkflowAction<SetStateResponse, ApiConnectionActionConfiguration> SetState(Expression<Func<string>> lights, Expression<Func<bodypowerInput>> bodypower = null, Expression<Func<bodycolorInput>> bodycolor = null, Expression<Func<double>> bodybrightness = null, Expression<Func<double>> bodyduration = null, Expression<Func<double>> bodyinfrared = null)
         {
             var __workflow_lights = WorkflowExpression.Compile(lights, nameof(lights), required: true);
             var __workflow_bodypower = WorkflowExpression.Compile(bodypower, nameof(bodypower), required: false);
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             var __workflow_bodybrightness = WorkflowExpression.Compile(bodybrightness, nameof(bodybrightness), required: false);
             var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: false);
             var __workflow_bodyinfrared = WorkflowExpression.Compile(bodyinfrared, nameof(bodyinfrared), required: false);
-            return new DeferredBodyAction<SetStateResponse>(() =>
+            return new DeferredBodyAction<SetStateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/lights/{0}/state", __workflow_lights.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -280,11 +280,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction EffectsOff(Expression<Func<string>> lights, Expression<Func<bool>> bodypowerOff = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EffectsOff(Expression<Func<string>> lights, Expression<Func<bool>> bodypowerOff = null)
         {
             var __workflow_lights = WorkflowExpression.Compile(lights, nameof(lights), required: true);
             var __workflow_bodypowerOff = WorkflowExpression.Compile(bodypowerOff, nameof(bodypowerOff), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/lights/{0}/effects/off", __workflow_lights.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction SetStates(Expression<Func<bodystatesInputItem[]>> bodystates, Expression<Func<bodydefaultspowerInput>> bodydefaultspower = null, Expression<Func<bodydefaultscolorInput>> bodydefaultscolor = null, Expression<Func<double>> bodydefaultsbrightness = null, Expression<Func<double>> bodydefaultsduration = null, Expression<Func<double>> bodydefaultsinfrared = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetStates(Expression<Func<bodystatesInputItem[]>> bodystates, Expression<Func<bodydefaultspowerInput>> bodydefaultspower = null, Expression<Func<bodydefaultscolorInput>> bodydefaultscolor = null, Expression<Func<double>> bodydefaultsbrightness = null, Expression<Func<double>> bodydefaultsduration = null, Expression<Func<double>> bodydefaultsinfrared = null)
         {
             var __workflow_bodystates = WorkflowExpression.Compile(bodystates, nameof(bodystates), required: true);
             var __workflow_bodydefaultspower = WorkflowExpression.Compile(bodydefaultspower, nameof(bodydefaultspower), required: false);
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             var __workflow_bodydefaultsbrightness = WorkflowExpression.Compile(bodydefaultsbrightness, nameof(bodydefaultsbrightness), required: false);
             var __workflow_bodydefaultsduration = WorkflowExpression.Compile(bodydefaultsduration, nameof(bodydefaultsduration), required: false);
             var __workflow_bodydefaultsinfrared = WorkflowExpression.Compile(bodydefaultsinfrared, nameof(bodydefaultsinfrared), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/lights/states";
                 var apiCallHttpMethod = "put";
@@ -392,11 +392,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction TogglePower(Expression<Func<string>> lights, Expression<Func<double>> bodyduration = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> TogglePower(Expression<Func<string>> lights, Expression<Func<double>> bodyduration = null)
         {
             var __workflow_lights = WorkflowExpression.Compile(lights, nameof(lights), required: true);
             var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/lights/{0}/toggle", __workflow_lights.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -429,7 +429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction BreatheEffect(Expression<Func<string>> lights, Expression<Func<bodycolorInput>> bodycolor, Expression<Func<bodyfromColorInput>> bodyfromColor = null, Expression<Func<double>> bodyperiod = null, Expression<Func<double>> bodycycles = null, Expression<Func<bool>> bodypersist = null, Expression<Func<bool>> bodypowerOn = null, Expression<Func<double>> bodypeak = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BreatheEffect(Expression<Func<string>> lights, Expression<Func<bodycolorInput>> bodycolor, Expression<Func<bodyfromColorInput>> bodyfromColor = null, Expression<Func<double>> bodyperiod = null, Expression<Func<double>> bodycycles = null, Expression<Func<bool>> bodypersist = null, Expression<Func<bool>> bodypowerOn = null, Expression<Func<double>> bodypeak = null)
         {
             var __workflow_lights = WorkflowExpression.Compile(lights, nameof(lights), required: true);
             var __workflow_bodycolor = WorkflowExpression.Compile(bodycolor, nameof(bodycolor), required: true);
@@ -439,7 +439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
             var __workflow_bodypersist = WorkflowExpression.Compile(bodypersist, nameof(bodypersist), required: false);
             var __workflow_bodypowerOn = WorkflowExpression.Compile(bodypowerOn, nameof(bodypowerOn), required: false);
             var __workflow_bodypeak = WorkflowExpression.Compile(bodypeak, nameof(bodypeak), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/lights/{0}/effects/breathe", __workflow_lights.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -534,14 +534,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction MorphEffect(Expression<Func<string>> lights, Expression<Func<int>> bodyperiod = null, Expression<Func<int>> bodyduration = null, Expression<Func<string[]>> bodypalette = null, Expression<Func<bool>> bodypowerOn = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MorphEffect(Expression<Func<string>> lights, Expression<Func<int>> bodyperiod = null, Expression<Func<int>> bodyduration = null, Expression<Func<string[]>> bodypalette = null, Expression<Func<bool>> bodypowerOn = null)
         {
             var __workflow_lights = WorkflowExpression.Compile(lights, nameof(lights), required: true);
             var __workflow_bodyperiod = WorkflowExpression.Compile(bodyperiod, nameof(bodyperiod), required: false);
             var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: false);
             var __workflow_bodypalette = WorkflowExpression.Compile(bodypalette, nameof(bodypalette), required: false);
             var __workflow_bodypowerOn = WorkflowExpression.Compile(bodypowerOn, nameof(bodypowerOn), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/lights/{0}/effects/morph", __workflow_lights.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";

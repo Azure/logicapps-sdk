@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
     public class BizzyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<BotReplyResponse> SendReply(Expression<Func<string>> contentreplyText, Expression<Func<string>> contentreplyActivity, Expression<Func<bool>> contentshowInChat = null, Expression<Func<string>> contentcustomChannelData = null, Expression<Func<string>> contentsignalResponseJSON = null, Expression<Func<string>> contentmessageID = null)
+        public IBodyWorkflowAction<BotReplyResponse, ApiConnectionActionConfiguration> SendReply(Expression<Func<string>> contentreplyText, Expression<Func<string>> contentreplyActivity, Expression<Func<bool>> contentshowInChat = null, Expression<Func<string>> contentcustomChannelData = null, Expression<Func<string>> contentsignalResponseJSON = null, Expression<Func<string>> contentmessageID = null)
         {
             var __workflow_contentreplyText = WorkflowExpression.Compile(contentreplyText, nameof(contentreplyText), required: true);
             var __workflow_contentreplyActivity = WorkflowExpression.Compile(contentreplyActivity, nameof(contentreplyActivity), required: true);
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             var __workflow_contentcustomChannelData = WorkflowExpression.Compile(contentcustomChannelData, nameof(contentcustomChannelData), required: false);
             var __workflow_contentsignalResponseJSON = WorkflowExpression.Compile(contentsignalResponseJSON, nameof(contentsignalResponseJSON), required: false);
             var __workflow_contentmessageID = WorkflowExpression.Compile(contentmessageID, nameof(contentmessageID), required: false);
-            return new DeferredBodyAction<BotReplyResponse>(() =>
+            return new DeferredBodyAction<BotReplyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/reply";
                 var apiCallHttpMethod = "post";
@@ -75,11 +75,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<BotReplyResponse> SendReplyWithAdaptiveCard(Expression<Func<string>> selectedCard, Expression<Func<object>> content = null)
+        public IBodyWorkflowAction<BotReplyResponse, ApiConnectionActionConfiguration> SendReplyWithAdaptiveCard(Expression<Func<string>> selectedCard, Expression<Func<object>> content = null)
         {
             var __workflow_selectedCard = WorkflowExpression.Compile(selectedCard, nameof(selectedCard), required: true);
             var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: false);
-            return new DeferredBodyAction<BotReplyResponse>(() =>
+            return new DeferredBodyAction<BotReplyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/triggers/bot/adaptiveCards/{0}/replyWithAdaptiveCard", __workflow_selectedCard.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -90,11 +90,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<JToken> GenerateAdaptiveCard(Expression<Func<string>> selectedCard, Expression<Func<object>> content = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GenerateAdaptiveCard(Expression<Func<string>> selectedCard, Expression<Func<object>> content = null)
         {
             var __workflow_selectedCard = WorkflowExpression.Compile(selectedCard, nameof(selectedCard), required: true);
             var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: false);
-            return new DeferredBodyAction<JToken>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/triggers/bot/adaptiveCards/{0}/generateAdaptiveCard", __workflow_selectedCard.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -105,14 +105,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<BotReplyResponse> SendReplyWithAdaptiveCardSet(Expression<Func<cardSetdisplayStyleInput>> cardSetdisplayStyle, Expression<Func<string>> cardSetreplyActivity, Expression<Func<bool>> cardSetshowInTab = null, Expression<Func<string>> cardSettabButtonLabel = null, Expression<Func<string>> cardSettabButtonMessage = null)
+        public IBodyWorkflowAction<BotReplyResponse, ApiConnectionActionConfiguration> SendReplyWithAdaptiveCardSet(Expression<Func<cardSetdisplayStyleInput>> cardSetdisplayStyle, Expression<Func<string>> cardSetreplyActivity, Expression<Func<bool>> cardSetshowInTab = null, Expression<Func<string>> cardSettabButtonLabel = null, Expression<Func<string>> cardSettabButtonMessage = null)
         {
             var __workflow_cardSetdisplayStyle = WorkflowExpression.Compile(cardSetdisplayStyle, nameof(cardSetdisplayStyle), required: true);
             var __workflow_cardSetreplyActivity = WorkflowExpression.Compile(cardSetreplyActivity, nameof(cardSetreplyActivity), required: true);
             var __workflow_cardSetshowInTab = WorkflowExpression.Compile(cardSetshowInTab, nameof(cardSetshowInTab), required: false);
             var __workflow_cardSettabButtonLabel = WorkflowExpression.Compile(cardSettabButtonLabel, nameof(cardSettabButtonLabel), required: false);
             var __workflow_cardSettabButtonMessage = WorkflowExpression.Compile(cardSettabButtonMessage, nameof(cardSettabButtonMessage), required: false);
-            return new DeferredBodyAction<BotReplyResponse>(() =>
+            return new DeferredBodyAction<BotReplyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/adaptiveCards/sendCardSet";
                 var apiCallHttpMethod = "post";
@@ -169,10 +169,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<BotReplyResponse> UpdateAdaptiveCard(Expression<Func<string>> cardInforeplyActivity)
+        public IBodyWorkflowAction<BotReplyResponse, ApiConnectionActionConfiguration> UpdateAdaptiveCard(Expression<Func<string>> cardInforeplyActivity)
         {
             var __workflow_cardInforeplyActivity = WorkflowExpression.Compile(cardInforeplyActivity, nameof(cardInforeplyActivity), required: true);
-            return new DeferredBodyAction<BotReplyResponse>(() =>
+            return new DeferredBodyAction<BotReplyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/adaptiveCards/updateCard";
                 var apiCallHttpMethod = "post";
@@ -199,12 +199,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<BotConversationStartResponse> StartConversation(Expression<Func<string>> contenttargetBot, Expression<Func<string>> contentconversationText, Expression<Func<string>> contentuser)
+        public IBodyWorkflowAction<BotConversationStartResponse, ApiConnectionActionConfiguration> StartConversation(Expression<Func<string>> contenttargetBot, Expression<Func<string>> contentconversationText, Expression<Func<string>> contentuser)
         {
             var __workflow_contenttargetBot = WorkflowExpression.Compile(contenttargetBot, nameof(contenttargetBot), required: true);
             var __workflow_contentconversationText = WorkflowExpression.Compile(contentconversationText, nameof(contentconversationText), required: true);
             var __workflow_contentuser = WorkflowExpression.Compile(contentuser, nameof(contentuser), required: true);
-            return new DeferredBodyAction<BotConversationStartResponse>(() =>
+            return new DeferredBodyAction<BotConversationStartResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/startConversation";
                 var apiCallHttpMethod = "post";
@@ -227,12 +227,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<BotGroupConversationStartResponse> StartGroupConversation(Expression<Func<string>> contenttargetBot, Expression<Func<string>> contentchannelName, Expression<Func<string>> contentconversationText)
+        public IBodyWorkflowAction<BotGroupConversationStartResponse, ApiConnectionActionConfiguration> StartGroupConversation(Expression<Func<string>> contenttargetBot, Expression<Func<string>> contentchannelName, Expression<Func<string>> contentconversationText)
         {
             var __workflow_contenttargetBot = WorkflowExpression.Compile(contenttargetBot, nameof(contenttargetBot), required: true);
             var __workflow_contentchannelName = WorkflowExpression.Compile(contentchannelName, nameof(contentchannelName), required: true);
             var __workflow_contentconversationText = WorkflowExpression.Compile(contentconversationText, nameof(contentconversationText), required: true);
-            return new DeferredBodyAction<BotGroupConversationStartResponse>(() =>
+            return new DeferredBodyAction<BotGroupConversationStartResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/startGroupConversation";
                 var apiCallHttpMethod = "post";
@@ -263,10 +263,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IWorkflowAction SendBridgeEvent(Expression<Func<string>> contentreplyActivity)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendBridgeEvent(Expression<Func<string>> contentreplyActivity)
         {
             var __workflow_contentreplyActivity = WorkflowExpression.Compile(contentreplyActivity, nameof(contentreplyActivity), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/sendBridgeEvent";
                 var apiCallHttpMethod = "post";
@@ -293,14 +293,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponse(Expression<Func<string>> webHookmessage, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<bool>> webHookshowInChat = null)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponse(Expression<Func<string>> webHookmessage, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<bool>> webHookshowInChat = null)
         {
             var __workflow_webHookmessage = WorkflowExpression.Compile(webHookmessage, nameof(webHookmessage), required: true);
             var __workflow_webHookreplyActivity = WorkflowExpression.Compile(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
             var __workflow_webHookfilters = WorkflowExpression.Compile(webHookfilters, nameof(webHookfilters), required: false);
             var __workflow_webHookacceptResponseFrom = WorkflowExpression.Compile(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
             var __workflow_webHookshowInChat = WorkflowExpression.Compile(webHookshowInChat, nameof(webHookshowInChat), required: false);
-            return new DeferredBodyAction<WebHook>(() =>
+            return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse";
                 var apiCallHttpMethod = "post";
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseDATE(Expression<Func<webHookdateScopeInput>> webHookdateScope, Expression<Func<string>> webHookmessage, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseDATE(Expression<Func<webHookdateScopeInput>> webHookdateScope, Expression<Func<string>> webHookmessage, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null)
         {
             var __workflow_webHookdateScope = WorkflowExpression.Compile(webHookdateScope, nameof(webHookdateScope), required: true);
             var __workflow_webHookmessage = WorkflowExpression.Compile(webHookmessage, nameof(webHookmessage), required: true);
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             var __workflow_webHookacceptResponseFrom = WorkflowExpression.Compile(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
             var __workflow_webHookallowBranching = WorkflowExpression.Compile(webHookallowBranching, nameof(webHookallowBranching), required: false);
             var __workflow_webHookshowInChat = WorkflowExpression.Compile(webHookshowInChat, nameof(webHookshowInChat), required: false);
-            return new DeferredBodyAction<WebHook>(() =>
+            return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_Date";
                 var apiCallHttpMethod = "post";
@@ -481,7 +481,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseCHOICE(Expression<Func<string>> webHookmessage, Expression<Func<string>> webHookchoiceValues, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null, Expression<Func<bool>> webHooklistenForVoiceResponse = null)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseCHOICE(Expression<Func<string>> webHookmessage, Expression<Func<string>> webHookchoiceValues, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null, Expression<Func<bool>> webHooklistenForVoiceResponse = null)
         {
             var __workflow_webHookmessage = WorkflowExpression.Compile(webHookmessage, nameof(webHookmessage), required: true);
             var __workflow_webHookchoiceValues = WorkflowExpression.Compile(webHookchoiceValues, nameof(webHookchoiceValues), required: true);
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             var __workflow_webHookallowBranching = WorkflowExpression.Compile(webHookallowBranching, nameof(webHookallowBranching), required: false);
             var __workflow_webHookshowInChat = WorkflowExpression.Compile(webHookshowInChat, nameof(webHookshowInChat), required: false);
             var __workflow_webHooklistenForVoiceResponse = WorkflowExpression.Compile(webHooklistenForVoiceResponse, nameof(webHooklistenForVoiceResponse), required: false);
-            return new DeferredBodyAction<WebHook>(() =>
+            return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_Choice";
                 var apiCallHttpMethod = "post";
@@ -602,7 +602,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseCHOICELIST(Expression<Func<string>> webHookmessage, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<string>> webHookiconURL = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null, Expression<Func<bool>> webHooklistenForVoiceResponse = null)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseCHOICELIST(Expression<Func<string>> webHookmessage, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<string>> webHookiconURL = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null, Expression<Func<bool>> webHooklistenForVoiceResponse = null)
         {
             var __workflow_webHookmessage = WorkflowExpression.Compile(webHookmessage, nameof(webHookmessage), required: true);
             var __workflow_webHookreplyActivity = WorkflowExpression.Compile(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
@@ -612,7 +612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             var __workflow_webHookallowBranching = WorkflowExpression.Compile(webHookallowBranching, nameof(webHookallowBranching), required: false);
             var __workflow_webHookshowInChat = WorkflowExpression.Compile(webHookshowInChat, nameof(webHookshowInChat), required: false);
             var __workflow_webHooklistenForVoiceResponse = WorkflowExpression.Compile(webHooklistenForVoiceResponse, nameof(webHooklistenForVoiceResponse), required: false);
-            return new DeferredBodyAction<WebHook>(() =>
+            return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_ChoiceList";
                 var apiCallHttpMethod = "post";
@@ -735,7 +735,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponsePEOPLE(Expression<Func<string>> webHookmessage, Expression<Func<webHookmodeInput>> webHookmode, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<string>> webHooksearchString = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null, Expression<Func<bool>> webHooklistenForVoiceResponse = null)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponsePEOPLE(Expression<Func<string>> webHookmessage, Expression<Func<webHookmodeInput>> webHookmode, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<string>> webHooksearchString = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null, Expression<Func<bool>> webHooklistenForVoiceResponse = null)
         {
             var __workflow_webHookmessage = WorkflowExpression.Compile(webHookmessage, nameof(webHookmessage), required: true);
             var __workflow_webHookmode = WorkflowExpression.Compile(webHookmode, nameof(webHookmode), required: true);
@@ -746,7 +746,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             var __workflow_webHookallowBranching = WorkflowExpression.Compile(webHookallowBranching, nameof(webHookallowBranching), required: false);
             var __workflow_webHookshowInChat = WorkflowExpression.Compile(webHookshowInChat, nameof(webHookshowInChat), required: false);
             var __workflow_webHooklistenForVoiceResponse = WorkflowExpression.Compile(webHooklistenForVoiceResponse, nameof(webHooklistenForVoiceResponse), required: false);
-            return new DeferredBodyAction<WebHook>(() =>
+            return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_People";
                 var apiCallHttpMethod = "post";
@@ -863,7 +863,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseINTENTVECTOR(Expression<Func<string>> webHookmessage, Expression<Func<string>> webHooklUISIntentVector, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseINTENTVECTOR(Expression<Func<string>> webHookmessage, Expression<Func<string>> webHooklUISIntentVector, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null)
         {
             var __workflow_webHookmessage = WorkflowExpression.Compile(webHookmessage, nameof(webHookmessage), required: true);
             var __workflow_webHooklUISIntentVector = WorkflowExpression.Compile(webHooklUISIntentVector, nameof(webHooklUISIntentVector), required: true);
@@ -872,7 +872,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             var __workflow_webHookacceptResponseFrom = WorkflowExpression.Compile(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
             var __workflow_webHookallowBranching = WorkflowExpression.Compile(webHookallowBranching, nameof(webHookallowBranching), required: false);
             var __workflow_webHookshowInChat = WorkflowExpression.Compile(webHookshowInChat, nameof(webHookshowInChat), required: false);
-            return new DeferredBodyAction<WebHook>(() =>
+            return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_IntentVector";
                 var apiCallHttpMethod = "post";
@@ -967,7 +967,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseMEMORY(Expression<Func<string>> webHookmessage, Expression<Func<string>> webHookmemoryType, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<string>> webHookiconURL = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<string>> webHooktargetUser = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseMEMORY(Expression<Func<string>> webHookmessage, Expression<Func<string>> webHookmemoryType, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<string>> webHookiconURL = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<string>> webHooktargetUser = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null)
         {
             var __workflow_webHookmessage = WorkflowExpression.Compile(webHookmessage, nameof(webHookmessage), required: true);
             var __workflow_webHookmemoryType = WorkflowExpression.Compile(webHookmemoryType, nameof(webHookmemoryType), required: true);
@@ -978,7 +978,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             var __workflow_webHooktargetUser = WorkflowExpression.Compile(webHooktargetUser, nameof(webHooktargetUser), required: false);
             var __workflow_webHookallowBranching = WorkflowExpression.Compile(webHookallowBranching, nameof(webHookallowBranching), required: false);
             var __workflow_webHookshowInChat = WorkflowExpression.Compile(webHookshowInChat, nameof(webHookshowInChat), required: false);
-            return new DeferredBodyAction<WebHook>(() =>
+            return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_Memory";
                 var apiCallHttpMethod = "post";
@@ -1085,11 +1085,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseADAPTIVECARD(Expression<Func<string>> selectedCard, Expression<Func<object>> webHook = null)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseADAPTIVECARD(Expression<Func<string>> selectedCard, Expression<Func<object>> webHook = null)
         {
             var __workflow_selectedCard = WorkflowExpression.Compile(selectedCard, nameof(selectedCard), required: true);
             var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: false);
-            return new DeferredBodyAction<WebHook>(() =>
+            return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerResponse_AdaptiveCard";
                 var apiCallHttpMethod = "post";
@@ -1101,13 +1101,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInitiateBridge(Expression<Func<webHookparticipantsInputItem[]>> webHookparticipants, Expression<Func<string>> webHookendChatCommand, Expression<Func<int>> webHookidleTimeout, Expression<Func<string[]>> webHookfilters = null)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInitiateBridge(Expression<Func<webHookparticipantsInputItem[]>> webHookparticipants, Expression<Func<string>> webHookendChatCommand, Expression<Func<int>> webHookidleTimeout, Expression<Func<string[]>> webHookfilters = null)
         {
             var __workflow_webHookparticipants = WorkflowExpression.Compile(webHookparticipants, nameof(webHookparticipants), required: true);
             var __workflow_webHookendChatCommand = WorkflowExpression.Compile(webHookendChatCommand, nameof(webHookendChatCommand), required: true);
             var __workflow_webHookidleTimeout = WorkflowExpression.Compile(webHookidleTimeout, nameof(webHookidleTimeout), required: true);
             var __workflow_webHookfilters = WorkflowExpression.Compile(webHookfilters, nameof(webHookfilters), required: false);
-            return new DeferredBodyAction<WebHook>(() =>
+            return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerBridge";
                 var apiCallHttpMethod = "post";
@@ -1154,13 +1154,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<ResponseSaveBotMemory> SaveBotMemory(Expression<Func<string>> contentuserPrincipalName, Expression<Func<string>> contentmemoryType, Expression<Func<string>> contenttitle, Expression<Func<string>> contentvalue)
+        public IBodyWorkflowAction<ResponseSaveBotMemory, ApiConnectionActionConfiguration> SaveBotMemory(Expression<Func<string>> contentuserPrincipalName, Expression<Func<string>> contentmemoryType, Expression<Func<string>> contenttitle, Expression<Func<string>> contentvalue)
         {
             var __workflow_contentuserPrincipalName = WorkflowExpression.Compile(contentuserPrincipalName, nameof(contentuserPrincipalName), required: true);
             var __workflow_contentmemoryType = WorkflowExpression.Compile(contentmemoryType, nameof(contentmemoryType), required: true);
             var __workflow_contenttitle = WorkflowExpression.Compile(contenttitle, nameof(contenttitle), required: true);
             var __workflow_contentvalue = WorkflowExpression.Compile(contentvalue, nameof(contentvalue), required: true);
-            return new DeferredBodyAction<ResponseSaveBotMemory>(() =>
+            return new DeferredBodyAction<ResponseSaveBotMemory, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/saveBotMemory";
                 var apiCallHttpMethod = "post";
@@ -1185,12 +1185,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<ResponseDeleteBotMemory> DeleteBotMemory(Expression<Func<string>> contentuserPrincipalName, Expression<Func<string>> contentmemoryType, Expression<Func<string>> contentvalue)
+        public IBodyWorkflowAction<ResponseDeleteBotMemory, ApiConnectionActionConfiguration> DeleteBotMemory(Expression<Func<string>> contentuserPrincipalName, Expression<Func<string>> contentmemoryType, Expression<Func<string>> contentvalue)
         {
             var __workflow_contentuserPrincipalName = WorkflowExpression.Compile(contentuserPrincipalName, nameof(contentuserPrincipalName), required: true);
             var __workflow_contentmemoryType = WorkflowExpression.Compile(contentmemoryType, nameof(contentmemoryType), required: true);
             var __workflow_contentvalue = WorkflowExpression.Compile(contentvalue, nameof(contentvalue), required: true);
-            return new DeferredBodyAction<ResponseDeleteBotMemory>(() =>
+            return new DeferredBodyAction<ResponseDeleteBotMemory, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/deleteBotMemory";
                 var apiCallHttpMethod = "post";
@@ -1213,11 +1213,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<MemoryItem[]> GetMemoryItemsByType(Expression<Func<string>> checkMemoryInfouserPrincipalName, Expression<Func<string>> checkMemoryInfomemoryType)
+        public IBodyWorkflowAction<MemoryItem[], ApiConnectionActionConfiguration> GetMemoryItemsByType(Expression<Func<string>> checkMemoryInfouserPrincipalName, Expression<Func<string>> checkMemoryInfomemoryType)
         {
             var __workflow_checkMemoryInfouserPrincipalName = WorkflowExpression.Compile(checkMemoryInfouserPrincipalName, nameof(checkMemoryInfouserPrincipalName), required: true);
             var __workflow_checkMemoryInfomemoryType = WorkflowExpression.Compile(checkMemoryInfomemoryType, nameof(checkMemoryInfomemoryType), required: true);
-            return new DeferredBodyAction<MemoryItem[]>(() =>
+            return new DeferredBodyAction<MemoryItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/CheckMemoryByType";
                 var apiCallHttpMethod = "post";
@@ -1240,7 +1240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
     public class BizzyTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebHook> WebHookRegistrationsPost(Expression<Func<string>> webHooktriggerDescription, Expression<Func<webHookbotTriggerTypeInput>> webHookbotTriggerType, Expression<Func<string[]>> webHookfilters = null, Expression<Func<string>> webHookkeywords = null, Expression<Func<string>> webHookDeprecatedLUISAPIKey = null, Expression<Func<string>> webHookDeprecatedLUISApp = null, Expression<Func<string>> webHookDeprecatedLUISIntent = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHook, ApiConnectionTriggerConfiguration> WebHookRegistrationsPost(Expression<Func<string>> webHooktriggerDescription, Expression<Func<webHookbotTriggerTypeInput>> webHookbotTriggerType, Expression<Func<string[]>> webHookfilters = null, Expression<Func<string>> webHookkeywords = null, Expression<Func<string>> webHookDeprecatedLUISAPIKey = null, Expression<Func<string>> webHookDeprecatedLUISApp = null, Expression<Func<string>> webHookDeprecatedLUISIntent = null, FlowRecurrence recurrence = null)
         {
             var __workflow_webHooktriggerDescription = WorkflowExpression.Compile(webHooktriggerDescription, nameof(webHooktriggerDescription), required: true);
             var __workflow_webHookbotTriggerType = WorkflowExpression.Compile(webHookbotTriggerType, nameof(webHookbotTriggerType), required: true);
@@ -1249,7 +1249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             var __workflow_webHookDeprecatedLUISAPIKey = WorkflowExpression.Compile(webHookDeprecatedLUISAPIKey, nameof(webHookDeprecatedLUISAPIKey), required: false);
             var __workflow_webHookDeprecatedLUISApp = WorkflowExpression.Compile(webHookDeprecatedLUISApp, nameof(webHookDeprecatedLUISApp), required: false);
             var __workflow_webHookDeprecatedLUISIntent = WorkflowExpression.Compile(webHookDeprecatedLUISIntent, nameof(webHookDeprecatedLUISIntent), required: false);
-            return new DeferredBodyTrigger<WebHook>(() =>
+            return new DeferredBodyTrigger<WebHook, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/register";
                 var apiCallHttpMethod = "post";
@@ -1317,14 +1317,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             });
         }
 
-        public IBodyWorkflowTrigger<WebHook> WebHookRegistrationsVectorPost(Expression<Func<string>> webHooktriggerDescription, Expression<Func<webHookbotTriggerTypeInput>> webHookbotTriggerType, Expression<Func<string[]>> webHookfilters = null, Expression<Func<string>> webHooklUISIntentVector = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHook, ApiConnectionTriggerConfiguration> WebHookRegistrationsVectorPost(Expression<Func<string>> webHooktriggerDescription, Expression<Func<webHookbotTriggerTypeInput>> webHookbotTriggerType, Expression<Func<string[]>> webHookfilters = null, Expression<Func<string>> webHooklUISIntentVector = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, FlowRecurrence recurrence = null)
         {
             var __workflow_webHooktriggerDescription = WorkflowExpression.Compile(webHooktriggerDescription, nameof(webHooktriggerDescription), required: true);
             var __workflow_webHookbotTriggerType = WorkflowExpression.Compile(webHookbotTriggerType, nameof(webHookbotTriggerType), required: true);
             var __workflow_webHookfilters = WorkflowExpression.Compile(webHookfilters, nameof(webHookfilters), required: false);
             var __workflow_webHooklUISIntentVector = WorkflowExpression.Compile(webHooklUISIntentVector, nameof(webHooklUISIntentVector), required: false);
             var __workflow_webHookallowBranching = WorkflowExpression.Compile(webHookallowBranching, nameof(webHookallowBranching), required: false);
-            return new DeferredBodyTrigger<WebHook>(() =>
+            return new DeferredBodyTrigger<WebHook, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/webhooks/registerVector";
                 var apiCallHttpMethod = "post";

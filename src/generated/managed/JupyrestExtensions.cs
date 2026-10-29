@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
     public class JupyrestActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jupyrest")]
-        public IBodyWorkflowAction<NotebookResponse> GetNotebookExecution(Expression<Func<string>> executionId, Expression<Func<bool>> output, Expression<Func<bool>> html, Expression<Func<bool>> report = null)
+        public IBodyWorkflowAction<NotebookResponse, ApiConnectionActionConfiguration> GetNotebookExecution(Expression<Func<string>> executionId, Expression<Func<bool>> output, Expression<Func<bool>> html, Expression<Func<bool>> report = null)
         {
             var __workflow_executionId = WorkflowExpression.Compile(executionId, nameof(executionId), required: true);
             var __workflow_output = WorkflowExpression.Compile(output, nameof(output), required: true);
             var __workflow_html = WorkflowExpression.Compile(html, nameof(html), required: true);
             var __workflow_report = WorkflowExpression.Compile(report, nameof(report), required: false);
-            return new DeferredBodyAction<NotebookResponse>(() =>
+            return new DeferredBodyAction<NotebookResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/NotebookExecutions";
                 var apiCallHttpMethod = "get";
@@ -35,12 +35,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jupyrest")]
-        public IBodyWorkflowAction<NotebookResponse> NotebookExecution(Expression<Func<bool>> report = null, Expression<Func<string>> parametersnotebook = null, Expression<Func<object>> parametersparameters = null)
+        public IBodyWorkflowAction<NotebookResponse, ApiConnectionActionConfiguration> NotebookExecution(Expression<Func<bool>> report = null, Expression<Func<string>> parametersnotebook = null, Expression<Func<object>> parametersparameters = null)
         {
             var __workflow_report = WorkflowExpression.Compile(report, nameof(report), required: false);
             var __workflow_parametersnotebook = WorkflowExpression.Compile(parametersnotebook, nameof(parametersnotebook), required: false);
             var __workflow_parametersparameters = WorkflowExpression.Compile(parametersparameters, nameof(parametersparameters), required: false);
-            return new DeferredBodyAction<NotebookResponse>(() =>
+            return new DeferredBodyAction<NotebookResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/NotebookExecutions";
                 var apiCallHttpMethod = "post";
@@ -75,11 +75,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jupyrest")]
-        public IBodyWorkflowAction<SynapseResponse> UploadToSynapse(Expression<Func<string>> parametersnotebook = null, Expression<Func<object>> parametersparameters = null)
+        public IBodyWorkflowAction<SynapseResponse, ApiConnectionActionConfiguration> UploadToSynapse(Expression<Func<string>> parametersnotebook = null, Expression<Func<object>> parametersparameters = null)
         {
             var __workflow_parametersnotebook = WorkflowExpression.Compile(parametersnotebook, nameof(parametersnotebook), required: false);
             var __workflow_parametersparameters = WorkflowExpression.Compile(parametersparameters, nameof(parametersparameters), required: false);
-            return new DeferredBodyAction<SynapseResponse>(() =>
+            return new DeferredBodyAction<SynapseResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Synapse";
                 var apiCallHttpMethod = "post";

@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
     public class EdifactActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
-        public IBodyWorkflowAction<UpdateControlNumberResult[]> AddOrUpdateControlNumbers(Expression<Func<ReplicableControlNumberContent[]>> controlNumberContents = null)
+        public IBodyWorkflowAction<UpdateControlNumberResult[], ApiConnectionActionConfiguration> AddOrUpdateControlNumbers(Expression<Func<ReplicableControlNumberContent[]>> controlNumberContents = null)
         {
             var __workflow_controlNumberContents = WorkflowExpression.Compile(controlNumberContents, nameof(controlNumberContents), required: false);
-            return new DeferredBodyAction<UpdateControlNumberResult[]>(() =>
+            return new DeferredBodyAction<UpdateControlNumberResult[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/controlnumbers";
                 var apiCallHttpMethod = "put";
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
-        public IBodyWorkflowAction<EdiDecodeResponseEdifactDecodeResponseEdifactAcknowledgement> Decode(Expression<Func<int>> componentSeparator = null, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> releaseIndicator = null, Expression<Func<int>> repetitionSeparator = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<decimalIndicatorInput>> decimalIndicator = null, Expression<Func<payloadCharacterSetInput>> payloadCharacterSet = null, Expression<Func<bool>> preserveInterchange = null, Expression<Func<bool>> suspendInterchangeOnError = null, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<EdiDecodeResponseEdifactDecodeResponseEdifactAcknowledgement, ApiConnectionActionConfiguration> Decode(Expression<Func<int>> componentSeparator = null, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> releaseIndicator = null, Expression<Func<int>> repetitionSeparator = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<decimalIndicatorInput>> decimalIndicator = null, Expression<Func<payloadCharacterSetInput>> payloadCharacterSet = null, Expression<Func<bool>> preserveInterchange = null, Expression<Func<bool>> suspendInterchangeOnError = null, Expression<Func<string>> body = null)
         {
             var __workflow_componentSeparator = WorkflowExpression.Compile(componentSeparator, nameof(componentSeparator), required: false);
             var __workflow_dataElementSeparator = WorkflowExpression.Compile(dataElementSeparator, nameof(dataElementSeparator), required: false);
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             var __workflow_preserveInterchange = WorkflowExpression.Compile(preserveInterchange, nameof(preserveInterchange), required: false);
             var __workflow_suspendInterchangeOnError = WorkflowExpression.Compile(suspendInterchangeOnError, nameof(suspendInterchangeOnError), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<EdiDecodeResponseEdifactDecodeResponseEdifactAcknowledgement>(() =>
+            return new DeferredBodyAction<EdiDecodeResponseEdifactDecodeResponseEdifactAcknowledgement, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/decode";
                 var apiCallHttpMethod = "post";
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
-        public IBodyWorkflowAction<EdiAgreementProperties> ResolveAgreement(Expression<Func<int>> componentSeparator = null, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> releaseIndicator = null, Expression<Func<int>> repetitionSeparator = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<decimalIndicatorInput>> decimalIndicator = null, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<EdiAgreementProperties, ApiConnectionActionConfiguration> ResolveAgreement(Expression<Func<int>> componentSeparator = null, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> releaseIndicator = null, Expression<Func<int>> repetitionSeparator = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<decimalIndicatorInput>> decimalIndicator = null, Expression<Func<string>> body = null)
         {
             var __workflow_componentSeparator = WorkflowExpression.Compile(componentSeparator, nameof(componentSeparator), required: false);
             var __workflow_dataElementSeparator = WorkflowExpression.Compile(dataElementSeparator, nameof(dataElementSeparator), required: false);
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             var __workflow_segmentTerminatorSuffix = WorkflowExpression.Compile(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
             var __workflow_decimalIndicator = WorkflowExpression.Compile(decimalIndicator, nameof(decimalIndicator), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<EdiAgreementProperties>(() =>
+            return new DeferredBodyAction<EdiAgreementProperties, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/resolveAgreement";
                 var apiCallHttpMethod = "post";
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
-        public IBodyWorkflowAction<EdifactEncodeResponse> EncodeResolveByAgreementName(Expression<Func<string>> agreementName, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> releaseIndicator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> repetitionSeparator = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<decimalIndicatorInput>> decimalIndicator = null, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<EdifactEncodeResponse, ApiConnectionActionConfiguration> EncodeResolveByAgreementName(Expression<Func<string>> agreementName, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> releaseIndicator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> repetitionSeparator = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<decimalIndicatorInput>> decimalIndicator = null, Expression<Func<string>> body = null)
         {
             var __workflow_agreementName = WorkflowExpression.Compile(agreementName, nameof(agreementName), required: true);
             var __workflow_dataElementSeparator = WorkflowExpression.Compile(dataElementSeparator, nameof(dataElementSeparator), required: false);
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             var __workflow_segmentTerminatorSuffix = WorkflowExpression.Compile(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
             var __workflow_decimalIndicator = WorkflowExpression.Compile(decimalIndicator, nameof(decimalIndicator), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<EdifactEncodeResponse>(() =>
+            return new DeferredBodyAction<EdifactEncodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/encode/resolvebyname";
                 var apiCallHttpMethod = "post";
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
-        public IBodyWorkflowAction<EdifactEncodeV2Response> EncodeV2ResolveByAgreementName(Expression<Func<string>> agreementName, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> releaseIndicator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> repetitionSeparator = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<decimalIndicatorInput>> decimalIndicator = null, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<EdifactEncodeV2Response, ApiConnectionActionConfiguration> EncodeV2ResolveByAgreementName(Expression<Func<string>> agreementName, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> releaseIndicator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> repetitionSeparator = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<decimalIndicatorInput>> decimalIndicator = null, Expression<Func<string>> body = null)
         {
             var __workflow_agreementName = WorkflowExpression.Compile(agreementName, nameof(agreementName), required: true);
             var __workflow_dataElementSeparator = WorkflowExpression.Compile(dataElementSeparator, nameof(dataElementSeparator), required: false);
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             var __workflow_segmentTerminatorSuffix = WorkflowExpression.Compile(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
             var __workflow_decimalIndicator = WorkflowExpression.Compile(decimalIndicator, nameof(decimalIndicator), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<EdifactEncodeV2Response>(() =>
+            return new DeferredBodyAction<EdifactEncodeV2Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/EncodeV2/ResolveByName";
                 var apiCallHttpMethod = "post";
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
-        public IBodyWorkflowAction<EdifactBatchEncodeResponse> BatchEncodeResolveByAgreementName(Expression<Func<string>> agreementName, Expression<Func<string>> messagesToBatchbatchName = null, Expression<Func<string>> messagesToBatchpartitionName = null, Expression<Func<BatchItem[]>> messagesToBatchitems = null, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> releaseIndicator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> repetitionSeparator = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<decimalIndicatorInput>> decimalIndicator = null)
+        public IBodyWorkflowAction<EdifactBatchEncodeResponse, ApiConnectionActionConfiguration> BatchEncodeResolveByAgreementName(Expression<Func<string>> agreementName, Expression<Func<string>> messagesToBatchbatchName = null, Expression<Func<string>> messagesToBatchpartitionName = null, Expression<Func<BatchItem[]>> messagesToBatchitems = null, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> releaseIndicator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> repetitionSeparator = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<decimalIndicatorInput>> decimalIndicator = null)
         {
             var __workflow_agreementName = WorkflowExpression.Compile(agreementName, nameof(agreementName), required: true);
             var __workflow_messagesToBatchbatchName = WorkflowExpression.Compile(messagesToBatchbatchName, nameof(messagesToBatchbatchName), required: false);
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             var __workflow_segmentTerminator = WorkflowExpression.Compile(segmentTerminator, nameof(segmentTerminator), required: false);
             var __workflow_segmentTerminatorSuffix = WorkflowExpression.Compile(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
             var __workflow_decimalIndicator = WorkflowExpression.Compile(decimalIndicator, nameof(decimalIndicator), required: false);
-            return new DeferredBodyAction<EdifactBatchEncodeResponse>(() =>
+            return new DeferredBodyAction<EdifactBatchEncodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Encode/Batch/ResolveByName";
                 var apiCallHttpMethod = "post";
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
-        public IBodyWorkflowAction<EdifactBatchEncodeResponse> BatchEncodeResolveByPartnerIdentities(Expression<Func<string>> senderIdentifier, Expression<Func<string>> senderQualifier, Expression<Func<string>> receiverIdentifier, Expression<Func<string>> receiverQualifier, Expression<Func<string>> messagesToBatchbatchName = null, Expression<Func<string>> messagesToBatchpartitionName = null, Expression<Func<BatchItem[]>> messagesToBatchitems = null, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> releaseIndicator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> repetitionSeparator = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<decimalIndicatorInput>> decimalIndicator = null)
+        public IBodyWorkflowAction<EdifactBatchEncodeResponse, ApiConnectionActionConfiguration> BatchEncodeResolveByPartnerIdentities(Expression<Func<string>> senderIdentifier, Expression<Func<string>> senderQualifier, Expression<Func<string>> receiverIdentifier, Expression<Func<string>> receiverQualifier, Expression<Func<string>> messagesToBatchbatchName = null, Expression<Func<string>> messagesToBatchpartitionName = null, Expression<Func<BatchItem[]>> messagesToBatchitems = null, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> releaseIndicator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> repetitionSeparator = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<decimalIndicatorInput>> decimalIndicator = null)
         {
             var __workflow_senderIdentifier = WorkflowExpression.Compile(senderIdentifier, nameof(senderIdentifier), required: true);
             var __workflow_senderQualifier = WorkflowExpression.Compile(senderQualifier, nameof(senderQualifier), required: true);
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             var __workflow_segmentTerminator = WorkflowExpression.Compile(segmentTerminator, nameof(segmentTerminator), required: false);
             var __workflow_segmentTerminatorSuffix = WorkflowExpression.Compile(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
             var __workflow_decimalIndicator = WorkflowExpression.Compile(decimalIndicator, nameof(decimalIndicator), required: false);
-            return new DeferredBodyAction<EdifactBatchEncodeResponse>(() =>
+            return new DeferredBodyAction<EdifactBatchEncodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Encode/Batch/ResolveByIdentities";
                 var apiCallHttpMethod = "post";
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
-        public IBodyWorkflowAction<EdifactEncodeResponse> EncodeResolveByPartnerIdentities(Expression<Func<string>> senderIdentifier, Expression<Func<string>> receiverIdentifier, Expression<Func<string>> senderQualifier = null, Expression<Func<string>> receiverQualifier = null, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> releaseIndicator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> repetitionSeparator = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<decimalIndicatorInput>> decimalIndicator = null, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<EdifactEncodeResponse, ApiConnectionActionConfiguration> EncodeResolveByPartnerIdentities(Expression<Func<string>> senderIdentifier, Expression<Func<string>> receiverIdentifier, Expression<Func<string>> senderQualifier = null, Expression<Func<string>> receiverQualifier = null, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> releaseIndicator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> repetitionSeparator = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<decimalIndicatorInput>> decimalIndicator = null, Expression<Func<string>> body = null)
         {
             var __workflow_senderIdentifier = WorkflowExpression.Compile(senderIdentifier, nameof(senderIdentifier), required: true);
             var __workflow_receiverIdentifier = WorkflowExpression.Compile(receiverIdentifier, nameof(receiverIdentifier), required: true);
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             var __workflow_segmentTerminatorSuffix = WorkflowExpression.Compile(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
             var __workflow_decimalIndicator = WorkflowExpression.Compile(decimalIndicator, nameof(decimalIndicator), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<EdifactEncodeResponse>(() =>
+            return new DeferredBodyAction<EdifactEncodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/encode/resolvebyidentities";
                 var apiCallHttpMethod = "post";
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edifact")]
-        public IBodyWorkflowAction<EdifactEncodeV2Response> EncodeV2ResolveByPartnerIdentities(Expression<Func<string>> senderIdentifier, Expression<Func<string>> receiverIdentifier, Expression<Func<string>> senderQualifier = null, Expression<Func<string>> receiverQualifier = null, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> releaseIndicator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> repetitionSeparator = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<decimalIndicatorInput>> decimalIndicator = null, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<EdifactEncodeV2Response, ApiConnectionActionConfiguration> EncodeV2ResolveByPartnerIdentities(Expression<Func<string>> senderIdentifier, Expression<Func<string>> receiverIdentifier, Expression<Func<string>> senderQualifier = null, Expression<Func<string>> receiverQualifier = null, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> releaseIndicator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> repetitionSeparator = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<decimalIndicatorInput>> decimalIndicator = null, Expression<Func<string>> body = null)
         {
             var __workflow_senderIdentifier = WorkflowExpression.Compile(senderIdentifier, nameof(senderIdentifier), required: true);
             var __workflow_receiverIdentifier = WorkflowExpression.Compile(receiverIdentifier, nameof(receiverIdentifier), required: true);
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
             var __workflow_segmentTerminatorSuffix = WorkflowExpression.Compile(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
             var __workflow_decimalIndicator = WorkflowExpression.Compile(decimalIndicator, nameof(decimalIndicator), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<EdifactEncodeV2Response>(() =>
+            return new DeferredBodyAction<EdifactEncodeV2Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/EncodeV2/ResolveByIdentities";
                 var apiCallHttpMethod = "post";
@@ -418,10 +418,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
 
     public class EdifactTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ReplicableControlNumberContent[]> OnModifiedControlNumber(Expression<Func<string>> startSyncTime = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ReplicableControlNumberContent[], ApiConnectionTriggerConfiguration> OnModifiedControlNumber(Expression<Func<string>> startSyncTime = null, FlowRecurrence recurrence = null)
         {
             var __workflow_startSyncTime = WorkflowExpression.Compile(startSyncTime, nameof(startSyncTime), required: false);
-            return new DeferredBodyTrigger<ReplicableControlNumberContent[]>(() =>
+            return new DeferredBodyTrigger<ReplicableControlNumberContent[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/triggers/onmodifiedcontrolnumber";
                 var apiCallHttpMethod = "get";

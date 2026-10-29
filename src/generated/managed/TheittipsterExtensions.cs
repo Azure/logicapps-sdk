@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theittipster
     public class TheittipsterActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theittipster")]
-        public IBodyWorkflowAction<GenerateBarcodeResponse> GenerateBarcode(Expression<Func<string>> bodybarcodeNumber = null)
+        public IBodyWorkflowAction<GenerateBarcodeResponse, ApiConnectionActionConfiguration> GenerateBarcode(Expression<Func<string>> bodybarcodeNumber = null)
         {
             var __workflow_bodybarcodeNumber = WorkflowExpression.Compile(bodybarcodeNumber, nameof(bodybarcodeNumber), required: false);
-            return new DeferredBodyAction<GenerateBarcodeResponse>(() =>
+            return new DeferredBodyAction<GenerateBarcodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/generateBarcode";
                 var apiCallHttpMethod = "post";
@@ -38,10 +38,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theittipster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theittipster")]
-        public IBodyWorkflowAction<GenerateQRCodeResponse> GenerateQRCode(Expression<Func<string>> bodyqrcodeText = null)
+        public IBodyWorkflowAction<GenerateQRCodeResponse, ApiConnectionActionConfiguration> GenerateQRCode(Expression<Func<string>> bodyqrcodeText = null)
         {
             var __workflow_bodyqrcodeText = WorkflowExpression.Compile(bodyqrcodeText, nameof(bodyqrcodeText), required: false);
-            return new DeferredBodyAction<GenerateQRCodeResponse>(() =>
+            return new DeferredBodyAction<GenerateQRCodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/generateQRCode";
                 var apiCallHttpMethod = "post";

@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
     public class ReversinglabstitaniuActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetFileReputationSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<bool>> extended = null, Expression<Func<bool>> showHashes = null, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileReputationSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<bool>> extended = null, Expression<Func<bool>> showHashes = null, Expression<Func<formatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
             var __workflow_extended = WorkflowExpression.Compile(extended, nameof(extended), required: false);
             var __workflow_showHashes = WorkflowExpression.Compile(showHashes, nameof(showHashes), required: false);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/databrowser/malware_presence/query/{0}/{1}", __workflow_hashType.WithUrlEncoding(1), __workflow_hashValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -38,14 +38,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetFileReputationBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<bool>> extended = null, Expression<Func<bool>> showHashes = null, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileReputationBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<bool>> extended = null, Expression<Func<bool>> showHashes = null, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_extended = WorkflowExpression.Compile(extended, nameof(extended), required: false);
             var __workflow_showHashes = WorkflowExpression.Compile(showHashes, nameof(showHashes), required: false);
             var __workflow_bodyrlqueryhashType = WorkflowExpression.Compile(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
             var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/databrowser/malware_presence/bulk_query/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -94,13 +94,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetHistoricalAvRecordsSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<bool>> history = null, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetHistoricalAvRecordsSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<bool>> history = null, Expression<Func<formatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
             var __workflow_history = WorkflowExpression.Compile(history, nameof(history), required: false);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/xref/v2/query/{0}/{1}", __workflow_hashType.WithUrlEncoding(1), __workflow_hashValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -116,14 +116,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetHistoricalAvRecordsBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<bool>> history = null, Expression<Func<formatInput>> format = null, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetHistoricalAvRecordsBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<bool>> history = null, Expression<Func<formatInput>> format = null, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_history = WorkflowExpression.Compile(history, nameof(history), required: false);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_bodyrlqueryhashType = WorkflowExpression.Compile(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
             var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/xref/v2/bulk_query/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -173,12 +173,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetFileAnalysisSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileAnalysisSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/databrowser/rldata/query/{0}/{1}", __workflow_hashType.WithUrlEncoding(1), __workflow_hashValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -191,12 +191,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetFileAnalysisBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileAnalysisBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_bodyrlqueryhashType = WorkflowExpression.Compile(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
             var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/databrowser/rldata/bulk_query/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -241,11 +241,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetFileAnalysisNonMaliciousSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileAnalysisNonMaliciousSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/databrowser/rldata/goodware/query/{0}/{1}", __workflow_hashType.WithUrlEncoding(1), __workflow_hashValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -255,12 +255,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetFileAnalysisNonMaliciousBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileAnalysisNonMaliciousBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_bodyrlqueryhashType = WorkflowExpression.Compile(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
             var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/databrowser/rldata/goodware/bulk_query/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -305,12 +305,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetDynamicAnalysisMerged(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisMerged(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/dynamic/analysis/report/v1/query/{0}/{1}", __workflow_hashType.WithUrlEncoding(1), __workflow_hashValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -323,12 +323,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetDynamicAnalysisLatest(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisLatest(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/dynamic/analysis/report/v1/query/{0}/{1}/latest", __workflow_hashType.WithUrlEncoding(1), __workflow_hashValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -341,13 +341,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetDynamicAnalysisSpecific(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<string>> analysisId, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisSpecific(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<string>> analysisId, Expression<Func<formatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
             var __workflow_analysisId = WorkflowExpression.Compile(analysisId, nameof(analysisId), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/dynamic/analysis/report/v1/query/{0}/{1}/{2}", __workflow_hashType.WithUrlEncoding(1), __workflow_hashValue.WithUrlEncoding(1), __workflow_analysisId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -360,12 +360,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetDynamicAnalysisArchiveMerged(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisArchiveMerged(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/dynamic/analysis/report/v1/archive/query/{0}/{1}", __workflow_hashType.WithUrlEncoding(1), __workflow_hashValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -378,12 +378,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetDynamicAnalysisArchiveLatest(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisArchiveLatest(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/dynamic/analysis/report/v1/archive/query/{0}/{1}/latest", __workflow_hashType.WithUrlEncoding(1), __workflow_hashValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -396,11 +396,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction DownloadSample(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DownloadSample(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/spex/download/v2/query/{0}/{1}", __workflow_hashType.WithUrlEncoding(1), __workflow_hashValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -410,14 +410,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetSampleDownloadStatus(Expression<Func<postFormatInput>> postFormat, Expression<Func<formatInput>> format = null, Expression<Func<string>> contentType = null, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetSampleDownloadStatus(Expression<Func<postFormatInput>> postFormat, Expression<Func<formatInput>> format = null, Expression<Func<string>> contentType = null, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             var __workflow_bodyrlqueryhashType = WorkflowExpression.Compile(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
             var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/spex/download/v2/status/bulk_query/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -468,11 +468,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction UploadSample(Expression<Func<string>> sha1Value, Expression<Func<string>> contentType)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UploadSample(Expression<Func<string>> sha1Value, Expression<Func<string>> contentType)
         {
             var __workflow_sha1Value = WorkflowExpression.Compile(sha1Value, nameof(sha1Value), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/spex/upload/{0}", __workflow_sha1Value.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -490,13 +490,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction UploadSampleMetadata(Expression<Func<string>> sha1Value, Expression<Func<string>> contentType, Expression<Func<string>> subscribe = null, Expression<Func<string>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UploadSampleMetadata(Expression<Func<string>> sha1Value, Expression<Func<string>> contentType, Expression<Func<string>> subscribe = null, Expression<Func<string>> body = null)
         {
             var __workflow_sha1Value = WorkflowExpression.Compile(sha1Value, nameof(sha1Value), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_subscribe = WorkflowExpression.Compile(subscribe, nameof(subscribe), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/spex/upload/{0}/meta", __workflow_sha1Value.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -510,12 +510,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction DeleteSampleSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<string>> deleteOn = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteSampleSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<string>> deleteOn = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
             var __workflow_deleteOn = WorkflowExpression.Compile(deleteOn, nameof(deleteOn), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/delete/sample/v1/query/{0}/{1}", __workflow_hashType.WithUrlEncoding(1), __workflow_hashValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -527,13 +527,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction DeleteSamplesBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string>> bodyrlquerydeleteOn = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteSamplesBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string>> bodyrlquerydeleteOn = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_bodyrlqueryhashType = WorkflowExpression.Compile(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
             var __workflow_bodyrlquerydeleteOn = WorkflowExpression.Compile(bodyrlquerydeleteOn, nameof(bodyrlquerydeleteOn), required: false);
             var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/delete/sample/v1/bulk_query/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -584,11 +584,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction ReanalyzeSampleSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReanalyzeSampleSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rescan/v1/query/{0}/{1}", __workflow_hashType.WithUrlEncoding(1), __workflow_hashValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -598,13 +598,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction ReanalyzeSampleBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<formatInput>> format = null, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReanalyzeSampleBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<formatInput>> format = null, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_bodyrlqueryhashType = WorkflowExpression.Compile(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
             var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rescan/v1/bulk_query/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -652,12 +652,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction SubscribeToReputationChanges(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SubscribeToReputationChanges(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_bodyrlqueryhashType = WorkflowExpression.Compile(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
             var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/subscription/data_change/v1/bulk_query/subscribe/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -702,12 +702,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction UnsubscribeFromReputationChanges(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UnsubscribeFromReputationChanges(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_bodyrlqueryhashType = WorkflowExpression.Compile(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
             var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/subscription/data_change/v1/bulk_query/unsubscribe/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -752,11 +752,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction SetStartTimeForReputationChanges(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> timeValue)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetStartTimeForReputationChanges(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> timeValue)
         {
             var __workflow_timeFormat = WorkflowExpression.Compile(timeFormat, nameof(timeFormat), required: true);
             var __workflow_timeValue = WorkflowExpression.Compile(timeValue, nameof(timeValue), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/feed/data_change/v3/start/{0}/{1}", __workflow_timeFormat.WithUrlEncoding(1), __workflow_timeValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -766,12 +766,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetReputationDataChanges(Expression<Func<formatInput>> format = null, Expression<Func<string>> events = null, Expression<Func<int>> limit = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetReputationDataChanges(Expression<Func<formatInput>> format = null, Expression<Func<string>> events = null, Expression<Func<int>> limit = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_events = WorkflowExpression.Compile(events, nameof(events), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/feed/data_change/v3/pull";
                 var apiCallHttpMethod = "get";
@@ -788,13 +788,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetContinuousReputationDataChanges(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> timeValue, Expression<Func<formatInput>> format = null, Expression<Func<string>> events = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetContinuousReputationDataChanges(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> timeValue, Expression<Func<formatInput>> format = null, Expression<Func<string>> events = null)
         {
             var __workflow_timeFormat = WorkflowExpression.Compile(timeFormat, nameof(timeFormat), required: true);
             var __workflow_timeValue = WorkflowExpression.Compile(timeValue, nameof(timeValue), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_events = WorkflowExpression.Compile(events, nameof(events), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/feed/data_change/v3/query/{0}/{1}", __workflow_timeFormat.WithUrlEncoding(1), __workflow_timeValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -809,7 +809,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction SubmitSampleForDynamicAnalysis(Expression<Func<postFormatInput>> postFormat, Expression<Func<string>> bodyrlsha1 = null, Expression<Func<string>> bodyrlurl = null, Expression<Func<string>> bodyrlplatform = null, Expression<Func<bodyrlresponseFormatInput>> bodyrlresponseFormat = null, Expression<Func<string>> bodyrloptionalParameters = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SubmitSampleForDynamicAnalysis(Expression<Func<postFormatInput>> postFormat, Expression<Func<string>> bodyrlsha1 = null, Expression<Func<string>> bodyrlurl = null, Expression<Func<string>> bodyrlplatform = null, Expression<Func<bodyrlresponseFormatInput>> bodyrlresponseFormat = null, Expression<Func<string>> bodyrloptionalParameters = null)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_bodyrlsha1 = WorkflowExpression.Compile(bodyrlsha1, nameof(bodyrlsha1), required: false);
@@ -817,7 +817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlplatform = WorkflowExpression.Compile(bodyrlplatform, nameof(bodyrlplatform), required: false);
             var __workflow_bodyrlresponseFormat = WorkflowExpression.Compile(bodyrlresponseFormat, nameof(bodyrlresponseFormat), required: false);
             var __workflow_bodyrloptionalParameters = WorkflowExpression.Compile(bodyrloptionalParameters, nameof(bodyrloptionalParameters), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/dynamic/analysis/analyze/v1/query/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -882,14 +882,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction SubmitArchiveForDynamicAnalysis(Expression<Func<postFormatInput>> postFormat, Expression<Func<string>> bodyrlsha1 = null, Expression<Func<string>> bodyrlplatform = null, Expression<Func<string>> bodyrlresponseFormat = null, Expression<Func<string>> bodyrloptionalParameters = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SubmitArchiveForDynamicAnalysis(Expression<Func<postFormatInput>> postFormat, Expression<Func<string>> bodyrlsha1 = null, Expression<Func<string>> bodyrlplatform = null, Expression<Func<string>> bodyrlresponseFormat = null, Expression<Func<string>> bodyrloptionalParameters = null)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_bodyrlsha1 = WorkflowExpression.Compile(bodyrlsha1, nameof(bodyrlsha1), required: false);
             var __workflow_bodyrlplatform = WorkflowExpression.Compile(bodyrlplatform, nameof(bodyrlplatform), required: false);
             var __workflow_bodyrlresponseFormat = WorkflowExpression.Compile(bodyrlresponseFormat, nameof(bodyrlresponseFormat), required: false);
             var __workflow_bodyrloptionalParameters = WorkflowExpression.Compile(bodyrloptionalParameters, nameof(bodyrloptionalParameters), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/dynamic/analysis/analyze/v1/archive/query/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -938,12 +938,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction URIToHashSearchSha1FirstPage(Expression<Func<string>> uriSha1, Expression<Func<formatInput>> format = null, Expression<Func<string>> classification = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> URIToHashSearchSha1FirstPage(Expression<Func<string>> uriSha1, Expression<Func<formatInput>> format = null, Expression<Func<string>> classification = null)
         {
             var __workflow_uriSha1 = WorkflowExpression.Compile(uriSha1, nameof(uriSha1), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_classification = WorkflowExpression.Compile(classification, nameof(classification), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/uri_index/v1/query/{0}", __workflow_uriSha1.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -958,13 +958,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction URIToHashSearchSha1Paging(Expression<Func<string>> uriSha1, Expression<Func<string>> nextPageSha1, Expression<Func<formatInput>> format = null, Expression<Func<string>> classification = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> URIToHashSearchSha1Paging(Expression<Func<string>> uriSha1, Expression<Func<string>> nextPageSha1, Expression<Func<formatInput>> format = null, Expression<Func<string>> classification = null)
         {
             var __workflow_uriSha1 = WorkflowExpression.Compile(uriSha1, nameof(uriSha1), required: true);
             var __workflow_nextPageSha1 = WorkflowExpression.Compile(nextPageSha1, nameof(nextPageSha1), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_classification = WorkflowExpression.Compile(classification, nameof(classification), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/uri_index/v1/query/{0}/{1}", __workflow_uriSha1.WithUrlEncoding(1), __workflow_nextPageSha1.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -979,13 +979,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction URIToHashSearchTextPaging(Expression<Func<string>> contentType, Expression<Func<formatInput>> format = null, Expression<Func<string>> bodyrlqueryuri = null, Expression<Func<string>> bodyrlquerynextPageSha1 = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> URIToHashSearchTextPaging(Expression<Func<string>> contentType, Expression<Func<formatInput>> format = null, Expression<Func<string>> bodyrlqueryuri = null, Expression<Func<string>> bodyrlquerynextPageSha1 = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_bodyrlqueryuri = WorkflowExpression.Compile(bodyrlqueryuri, nameof(bodyrlqueryuri), required: false);
             var __workflow_bodyrlquerynextPageSha1 = WorkflowExpression.Compile(bodyrlquerynextPageSha1, nameof(bodyrlquerynextPageSha1), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/uri_index/v1/query";
                 var apiCallHttpMethod = "post";
@@ -1034,12 +1034,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetURLReport(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryurl = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetURLReport(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryurl = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_bodyrlqueryurl = WorkflowExpression.Compile(bodyrlqueryurl, nameof(bodyrlqueryurl), required: false);
             var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/url/v1/report/query/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1084,7 +1084,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction ListFilesFromURL(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryurl = null, Expression<Func<string>> bodyrlqueryanalysisId = null, Expression<Func<bool>> bodyrlquerylastAnalysis = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<bool>> bodyrlqueryextended = null, Expression<Func<string>> bodyrlqueryclassification = null, Expression<Func<string>> bodyrlquerypage = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ListFilesFromURL(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryurl = null, Expression<Func<string>> bodyrlqueryanalysisId = null, Expression<Func<bool>> bodyrlquerylastAnalysis = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<bool>> bodyrlqueryextended = null, Expression<Func<string>> bodyrlqueryclassification = null, Expression<Func<string>> bodyrlquerypage = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_bodyrlqueryurl = WorkflowExpression.Compile(bodyrlqueryurl, nameof(bodyrlqueryurl), required: false);
@@ -1095,7 +1095,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlqueryextended = WorkflowExpression.Compile(bodyrlqueryextended, nameof(bodyrlqueryextended), required: false);
             var __workflow_bodyrlqueryclassification = WorkflowExpression.Compile(bodyrlqueryclassification, nameof(bodyrlqueryclassification), required: false);
             var __workflow_bodyrlquerypage = WorkflowExpression.Compile(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/url/v1/downloaded_files/query/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1186,11 +1186,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetLatestURLAnalysesFirst(Expression<Func<formatInput>> format = null, Expression<Func<int>> limit = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetLatestURLAnalysesFirst(Expression<Func<formatInput>> format = null, Expression<Func<int>> limit = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/networking/url/v1/notifications/query/latest";
                 var apiCallHttpMethod = "get";
@@ -1205,12 +1205,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetLatestURLAnalysesPaging(Expression<Func<string>> page, Expression<Func<formatInput>> format = null, Expression<Func<int>> limit = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetLatestURLAnalysesPaging(Expression<Func<string>> page, Expression<Func<formatInput>> format = null, Expression<Func<int>> limit = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/url/v1/notifications/query/latest/page/{0}", __workflow_page.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1225,13 +1225,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetTimestampedURLAnalysesFirst(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> startTime, Expression<Func<formatInput>> format = null, Expression<Func<int>> limit = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetTimestampedURLAnalysesFirst(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> startTime, Expression<Func<formatInput>> format = null, Expression<Func<int>> limit = null)
         {
             var __workflow_timeFormat = WorkflowExpression.Compile(timeFormat, nameof(timeFormat), required: true);
             var __workflow_startTime = WorkflowExpression.Compile(startTime, nameof(startTime), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/url/v1/notifications/query/from/{0}/{1}", __workflow_timeFormat.WithUrlEncoding(1), __workflow_startTime.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1246,14 +1246,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetTimestampedURLAnalysesPaging(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> startTime, Expression<Func<string>> page, Expression<Func<formatInput>> format = null, Expression<Func<int>> limit = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetTimestampedURLAnalysesPaging(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> startTime, Expression<Func<string>> page, Expression<Func<formatInput>> format = null, Expression<Func<int>> limit = null)
         {
             var __workflow_timeFormat = WorkflowExpression.Compile(timeFormat, nameof(timeFormat), required: true);
             var __workflow_startTime = WorkflowExpression.Compile(startTime, nameof(startTime), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/url/v1/notifications/query/from/{0}/{1}/page/{2}", __workflow_timeFormat.WithUrlEncoding(1), __workflow_startTime.WithUrlEncoding(1), __workflow_page.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -1268,12 +1268,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction AnalyzeURL(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryurl = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AnalyzeURL(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryurl = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_bodyrlqueryurl = WorkflowExpression.Compile(bodyrlqueryurl, nameof(bodyrlqueryurl), required: false);
             var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/url/v1/analyze/query/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1328,12 +1328,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetDomainReport(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlquerydomain = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDomainReport(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlquerydomain = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_bodyrlquerydomain = WorkflowExpression.Compile(bodyrlquerydomain, nameof(bodyrlquerydomain), required: false);
             var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/domain/report/v1/query/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1388,7 +1388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction ListFilesFromDomain(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlquerydomain = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<bool>> bodyrlqueryextended = null, Expression<Func<string>> bodyrlqueryclassification = null, Expression<Func<string>> bodyrlquerypage = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ListFilesFromDomain(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlquerydomain = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<bool>> bodyrlqueryextended = null, Expression<Func<string>> bodyrlqueryclassification = null, Expression<Func<string>> bodyrlquerypage = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_bodyrlquerydomain = WorkflowExpression.Compile(bodyrlquerydomain, nameof(bodyrlquerydomain), required: false);
@@ -1397,7 +1397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlqueryextended = WorkflowExpression.Compile(bodyrlqueryextended, nameof(bodyrlqueryextended), required: false);
             var __workflow_bodyrlqueryclassification = WorkflowExpression.Compile(bodyrlqueryclassification, nameof(bodyrlqueryclassification), required: false);
             var __workflow_bodyrlquerypage = WorkflowExpression.Compile(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/domain/downloaded_files/v1/query/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1476,14 +1476,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetURLFromDomain(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlquerydomain = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<string>> bodyrlquerypage = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetURLFromDomain(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlquerydomain = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<string>> bodyrlquerypage = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_bodyrlquerydomain = WorkflowExpression.Compile(bodyrlquerydomain, nameof(bodyrlquerydomain), required: false);
             var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
             var __workflow_bodyrlquerylimit = WorkflowExpression.Compile(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
             var __workflow_bodyrlquerypage = WorkflowExpression.Compile(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/domain/urls/v1/query/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1550,14 +1550,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetDomainResolutions(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlquerydomain = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<string>> bodyrlquerypage = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDomainResolutions(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlquerydomain = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<string>> bodyrlquerypage = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_bodyrlquerydomain = WorkflowExpression.Compile(bodyrlquerydomain, nameof(bodyrlquerydomain), required: false);
             var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
             var __workflow_bodyrlquerylimit = WorkflowExpression.Compile(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
             var __workflow_bodyrlquerypage = WorkflowExpression.Compile(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/domain/resolutions/v1/query/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1624,14 +1624,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetDomainRelatedDomains(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlquerydomain = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<string>> bodyrlquerypage = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDomainRelatedDomains(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlquerydomain = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<string>> bodyrlquerypage = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_bodyrlquerydomain = WorkflowExpression.Compile(bodyrlquerydomain, nameof(bodyrlquerydomain), required: false);
             var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
             var __workflow_bodyrlquerylimit = WorkflowExpression.Compile(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
             var __workflow_bodyrlquerypage = WorkflowExpression.Compile(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/domain/related_domains/v1/query/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1698,12 +1698,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetIPAddressReport(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryip = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetIPAddressReport(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryip = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_bodyrlqueryip = WorkflowExpression.Compile(bodyrlqueryip, nameof(bodyrlqueryip), required: false);
             var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/ip/report/v1/query/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1758,7 +1758,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction ListFilesFromIPAddress(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryip = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<bool>> bodyrlqueryextended = null, Expression<Func<string>> bodyrlqueryclassification = null, Expression<Func<string>> bodyrlquerypage = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ListFilesFromIPAddress(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryip = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<bool>> bodyrlqueryextended = null, Expression<Func<string>> bodyrlqueryclassification = null, Expression<Func<string>> bodyrlquerypage = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_bodyrlqueryip = WorkflowExpression.Compile(bodyrlqueryip, nameof(bodyrlqueryip), required: false);
@@ -1767,7 +1767,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodyrlqueryextended = WorkflowExpression.Compile(bodyrlqueryextended, nameof(bodyrlqueryextended), required: false);
             var __workflow_bodyrlqueryclassification = WorkflowExpression.Compile(bodyrlqueryclassification, nameof(bodyrlqueryclassification), required: false);
             var __workflow_bodyrlquerypage = WorkflowExpression.Compile(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/ip/downloaded_files/v1/query/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1846,14 +1846,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetURLFromIPAddress(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryip = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<string>> bodyrlquerypage = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetURLFromIPAddress(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryip = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<string>> bodyrlquerypage = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_bodyrlqueryip = WorkflowExpression.Compile(bodyrlqueryip, nameof(bodyrlqueryip), required: false);
             var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
             var __workflow_bodyrlquerylimit = WorkflowExpression.Compile(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
             var __workflow_bodyrlquerypage = WorkflowExpression.Compile(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/ip/urls/v1/query/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1920,14 +1920,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetIPAddressResolutions(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryip = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<string>> bodyrlquerypage = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetIPAddressResolutions(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryip = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<string>> bodyrlquerypage = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_bodyrlqueryip = WorkflowExpression.Compile(bodyrlqueryip, nameof(bodyrlqueryip), required: false);
             var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
             var __workflow_bodyrlquerylimit = WorkflowExpression.Compile(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
             var __workflow_bodyrlquerypage = WorkflowExpression.Compile(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/ip/resolutions/v1/query/{0}", __workflow_format.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -1994,13 +1994,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction DailyAPIUsageUser(Expression<Func<formatInput>> format = null, Expression<Func<string>> date = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DailyAPIUsageUser(Expression<Func<formatInput>> format = null, Expression<Func<string>> date = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
             var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/customer_usage/v1/usage/daily";
                 var apiCallHttpMethod = "get";
@@ -2019,13 +2019,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction DailyAPIUsageCompany(Expression<Func<formatInput>> format = null, Expression<Func<string>> date = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DailyAPIUsageCompany(Expression<Func<formatInput>> format = null, Expression<Func<string>> date = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
             var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/customer_usage/v1/usage/company/daily";
                 var apiCallHttpMethod = "get";
@@ -2044,13 +2044,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction MonthlyAPIUsageUser(Expression<Func<formatInput>> format = null, Expression<Func<string>> month = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MonthlyAPIUsageUser(Expression<Func<formatInput>> format = null, Expression<Func<string>> month = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: false);
             var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/customer_usage/v1/usage/monthly";
                 var apiCallHttpMethod = "get";
@@ -2069,13 +2069,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction MonthlyAPIUsageCompany(Expression<Func<formatInput>> format = null, Expression<Func<string>> month = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MonthlyAPIUsageCompany(Expression<Func<formatInput>> format = null, Expression<Func<string>> month = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: false);
             var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/customer_usage/v1/usage/company/monthly";
                 var apiCallHttpMethod = "get";
@@ -2094,10 +2094,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction DateRangeAPIUsageUser(Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DateRangeAPIUsageUser(Expression<Func<formatInput>> format = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/customer_usage/v1/usage/date_range";
                 var apiCallHttpMethod = "get";
@@ -2110,10 +2110,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction DateRangeAPIUsageCompany(Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DateRangeAPIUsageCompany(Expression<Func<formatInput>> format = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/customer_usage/v1/usage/company/date_range";
                 var apiCallHttpMethod = "get";
@@ -2126,10 +2126,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetActiveYARARulesets(Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetActiveYARARulesets(Expression<Func<formatInput>> format = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/customer_usage/v1/usage/yara";
                 var apiCallHttpMethod = "get";
@@ -2142,10 +2142,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetAPIQuotaLimitsUser(Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetAPIQuotaLimitsUser(Expression<Func<formatInput>> format = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/customer_usage/v1/limits";
                 var apiCallHttpMethod = "get";
@@ -2158,10 +2158,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetAPIQuotaLimitsCompany(Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetAPIQuotaLimitsCompany(Expression<Func<formatInput>> format = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/customer_usage/v1/limits/company";
                 var apiCallHttpMethod = "get";
@@ -2174,12 +2174,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction NetworkReputationApi(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlquerynetworkLocationsInputItem[]>> bodyrlquerynetworkLocations, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> NetworkReputationApi(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlquerynetworkLocationsInputItem[]>> bodyrlquerynetworkLocations, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_bodyrlquerynetworkLocations = WorkflowExpression.Compile(bodyrlquerynetworkLocations, nameof(bodyrlquerynetworkLocations), required: true);
             var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/reputation/v1/query/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -2230,11 +2230,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction ListUserOverride(Expression<Func<string>> format = null, Expression<Func<string>> nextNetworkLocation = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ListUserOverride(Expression<Func<string>> format = null, Expression<Func<string>> nextNetworkLocation = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_nextNetworkLocation = WorkflowExpression.Compile(nextNetworkLocation, nameof(nextNetworkLocation), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/networking/user_override/v1/query/list_overrides";
                 var apiCallHttpMethod = "get";
@@ -2249,12 +2249,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction NetworkReputationUserOverride(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryuserOverrideoverrideNetworkLocationsInputItem[]>> bodyrlqueryuserOverrideoverrideNetworkLocations = null, Expression<Func<string>> bodyrlresponseFormat = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> NetworkReputationUserOverride(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryuserOverrideoverrideNetworkLocationsInputItem[]>> bodyrlqueryuserOverrideoverrideNetworkLocations = null, Expression<Func<string>> bodyrlresponseFormat = null)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_bodyrlqueryuserOverrideoverrideNetworkLocations = WorkflowExpression.Compile(bodyrlqueryuserOverrideoverrideNetworkLocations, nameof(bodyrlqueryuserOverrideoverrideNetworkLocations), required: false);
             var __workflow_bodyrlresponseFormat = WorkflowExpression.Compile(bodyrlresponseFormat, nameof(bodyrlresponseFormat), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/networking/user_override/v1/query/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -2317,13 +2317,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetSpecificDynamicAnalysisReportForUrlSha1(Expression<Func<string>> sha1Value, Expression<Func<string>> specificReport, Expression<Func<formatInput>> format = null, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetSpecificDynamicAnalysisReportForUrlSha1(Expression<Func<string>> sha1Value, Expression<Func<string>> specificReport, Expression<Func<formatInput>> format = null, Expression<Func<string>> contentType = null)
         {
             var __workflow_sha1Value = WorkflowExpression.Compile(sha1Value, nameof(sha1Value), required: true);
             var __workflow_specificReport = WorkflowExpression.Compile(specificReport, nameof(specificReport), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/dynamic/analysis/report/v1/query/url/sha1/{0}/{1}", __workflow_sha1Value.WithUrlEncoding(1), __workflow_specificReport.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2339,13 +2339,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetSpecificDynamicAnalysisReportForUrlBase64(Expression<Func<string>> base64Value, Expression<Func<string>> specificReport, Expression<Func<formatInput>> format = null, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetSpecificDynamicAnalysisReportForUrlBase64(Expression<Func<string>> base64Value, Expression<Func<string>> specificReport, Expression<Func<formatInput>> format = null, Expression<Func<string>> contentType = null)
         {
             var __workflow_base64Value = WorkflowExpression.Compile(base64Value, nameof(base64Value), required: true);
             var __workflow_specificReport = WorkflowExpression.Compile(specificReport, nameof(specificReport), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/dynamic/analysis/report/v1/query/url/base64/{0}/{1}", __workflow_base64Value.WithUrlEncoding(1), __workflow_specificReport.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2361,11 +2361,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetDynamicAnalysisReportForUrlSha1(Expression<Func<string>> sha1Value, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisReportForUrlSha1(Expression<Func<string>> sha1Value, Expression<Func<string>> contentType = null)
         {
             var __workflow_sha1Value = WorkflowExpression.Compile(sha1Value, nameof(sha1Value), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/dynamic/analysis/report/v1/query/url/sha1/{0}/latest", __workflow_sha1Value.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2378,11 +2378,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetDynamicAnalysisReportForUrlBase64(Expression<Func<string>> base64Value, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisReportForUrlBase64(Expression<Func<string>> base64Value, Expression<Func<string>> contentType = null)
         {
             var __workflow_base64Value = WorkflowExpression.Compile(base64Value, nameof(base64Value), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/dynamic/analysis/report/v1/query/url/base64/{0}/latest", __workflow_base64Value.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2395,10 +2395,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetYaraRulesetInformation(Expression<Func<string>> rulesetName)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetYaraRulesetInformation(Expression<Func<string>> rulesetName)
         {
             var __workflow_rulesetName = WorkflowExpression.Compile(rulesetName, nameof(rulesetName), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/yara/admin/v1/ruleset/{0}", __workflow_rulesetName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2408,10 +2408,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction DeleteYaraRuleset(Expression<Func<string>> rulesetName)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteYaraRuleset(Expression<Func<string>> rulesetName)
         {
             var __workflow_rulesetName = WorkflowExpression.Compile(rulesetName, nameof(rulesetName), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/yara/admin/v1/ruleset/{0}", __workflow_rulesetName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
@@ -2421,10 +2421,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetYaraRulesetText(Expression<Func<string>> rulesetName)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetYaraRulesetText(Expression<Func<string>> rulesetName)
         {
             var __workflow_rulesetName = WorkflowExpression.Compile(rulesetName, nameof(rulesetName), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/yara/admin/v1/ruleset/{0}/text", __workflow_rulesetName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2434,12 +2434,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetYaraMatchesFeed(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> timeValue, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetYaraMatchesFeed(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> timeValue, Expression<Func<formatInput>> format = null)
         {
             var __workflow_timeFormat = WorkflowExpression.Compile(timeFormat, nameof(timeFormat), required: true);
             var __workflow_timeValue = WorkflowExpression.Compile(timeValue, nameof(timeValue), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/feed/yara/v1/query/{0}/{1}", __workflow_timeFormat.WithUrlEncoding(1), __workflow_timeValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2452,13 +2452,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction CreateYaraRuleset(Expression<Func<string>> bodyrulesetName, Expression<Func<string>> bodytext, Expression<Func<bool>> bodysampleAvailable, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateYaraRuleset(Expression<Func<string>> bodyrulesetName, Expression<Func<string>> bodytext, Expression<Func<bool>> bodysampleAvailable, Expression<Func<string>> contentType = null)
         {
             var __workflow_bodyrulesetName = WorkflowExpression.Compile(bodyrulesetName, nameof(bodyrulesetName), required: true);
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
             var __workflow_bodysampleAvailable = WorkflowExpression.Compile(bodysampleAvailable, nameof(bodysampleAvailable), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/yara/admin/v1/ruleset";
                 var apiCallHttpMethod = "post";
@@ -2484,10 +2484,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetYaraRetroHuntingStatus(Expression<Func<string>> rulesetName)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetYaraRetroHuntingStatus(Expression<Func<string>> rulesetName)
         {
             var __workflow_rulesetName = WorkflowExpression.Compile(rulesetName, nameof(rulesetName), required: true);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/yara/admin/v1/ruleset/{0}/status-retro-hunt", __workflow_rulesetName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2497,12 +2497,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GetYaraRetroMatchesFeed(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> timeValue, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetYaraRetroMatchesFeed(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> timeValue, Expression<Func<formatInput>> format = null)
         {
             var __workflow_timeFormat = WorkflowExpression.Compile(timeFormat, nameof(timeFormat), required: true);
             var __workflow_timeValue = WorkflowExpression.Compile(timeValue, nameof(timeValue), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/feed/yara/retro/v1/query/{0}/{1}", __workflow_timeFormat.WithUrlEncoding(1), __workflow_timeValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2515,11 +2515,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction StartYaraRetroHunt(Expression<Func<string>> bodyrulesetName, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> StartYaraRetroHunt(Expression<Func<string>> bodyrulesetName, Expression<Func<string>> contentType = null)
         {
             var __workflow_bodyrulesetName = WorkflowExpression.Compile(bodyrulesetName, nameof(bodyrulesetName), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/yara/admin/v1/ruleset/start-retro-hunt";
                 var apiCallHttpMethod = "post";
@@ -2541,11 +2541,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction CancelYaraRetroHunt(Expression<Func<string>> bodyrulesetName, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CancelYaraRetroHunt(Expression<Func<string>> bodyrulesetName, Expression<Func<string>> contentType = null)
         {
             var __workflow_bodyrulesetName = WorkflowExpression.Compile(bodyrulesetName, nameof(bodyrulesetName), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/yara/admin/v1/ruleset/cancel-retro-hunt";
                 var apiCallHttpMethod = "post";
@@ -2567,7 +2567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction AdvancedSearch(Expression<Func<bodyqueryInputItem[]>> bodyquery, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<int>> bodyrecordsPerPage = null, Expression<Func<int>> bodypage = null, Expression<Func<string>> bodysort = null, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AdvancedSearch(Expression<Func<bodyqueryInputItem[]>> bodyquery, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<int>> bodyrecordsPerPage = null, Expression<Func<int>> bodypage = null, Expression<Func<string>> bodysort = null, Expression<Func<string>> contentType = null)
         {
             var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
             var __workflow_bodyformat = WorkflowExpression.Compile(bodyformat, nameof(bodyformat), required: false);
@@ -2575,7 +2575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_bodypage = WorkflowExpression.Compile(bodypage, nameof(bodypage), required: false);
             var __workflow_bodysort = WorkflowExpression.Compile(bodysort, nameof(bodysort), required: false);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/search/v1/query";
                 var apiCallHttpMethod = "post";
@@ -2651,7 +2651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction GroupByRha1SingleQuery(Expression<Func<string>> rha1Type, Expression<Func<string>> hashValue, Expression<Func<string>> nextPageSha1, Expression<Func<string>> contentType = null, Expression<Func<formatInput>> format = null, Expression<Func<int>> limit = null, Expression<Func<bool>> extended = null, Expression<Func<classificationInput>> classification = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GroupByRha1SingleQuery(Expression<Func<string>> rha1Type, Expression<Func<string>> hashValue, Expression<Func<string>> nextPageSha1, Expression<Func<string>> contentType = null, Expression<Func<formatInput>> format = null, Expression<Func<int>> limit = null, Expression<Func<bool>> extended = null, Expression<Func<classificationInput>> classification = null)
         {
             var __workflow_rha1Type = WorkflowExpression.Compile(rha1Type, nameof(rha1Type), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -2661,7 +2661,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_extended = WorkflowExpression.Compile(extended, nameof(extended), required: false);
             var __workflow_classification = WorkflowExpression.Compile(classification, nameof(classification), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/group_by_rha1/v1/query/{0}/{1}/{2}", __workflow_rha1Type.WithUrlEncoding(1), __workflow_hashValue.WithUrlEncoding(1), __workflow_nextPageSha1.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2684,12 +2684,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction ImportHashSimilarity(Expression<Func<string>> hashValue, Expression<Func<string>> contentType = null, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ImportHashSimilarity(Expression<Func<string>> hashValue, Expression<Func<string>> contentType = null, Expression<Func<formatInput>> format = null)
         {
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/imphash_index/v1/query/{0}", __workflow_hashValue.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2704,13 +2704,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction ImportHashSimilarityPaginated(Expression<Func<string>> hashValue, Expression<Func<string>> nextPageSha1, Expression<Func<string>> contentType = null, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ImportHashSimilarityPaginated(Expression<Func<string>> hashValue, Expression<Func<string>> nextPageSha1, Expression<Func<string>> contentType = null, Expression<Func<formatInput>> format = null)
         {
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
             var __workflow_nextPageSha1 = WorkflowExpression.Compile(nextPageSha1, nameof(nextPageSha1), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/imphash_index/v1/query/{0}/start_sha1/{1}", __workflow_hashValue.WithUrlEncoding(1), __workflow_nextPageSha1.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -2725,12 +2725,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction FileReputationUserOverride(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryoverrideSamplesInputItem[]>> bodyrlqueryoverrideSamples = null, Expression<Func<bodyrlqueryremoveOverrideInputItem[]>> bodyrlqueryremoveOverride = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FileReputationUserOverride(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryoverrideSamplesInputItem[]>> bodyrlqueryoverrideSamples = null, Expression<Func<bodyrlqueryremoveOverrideInputItem[]>> bodyrlqueryremoveOverride = null)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_bodyrlqueryoverrideSamples = WorkflowExpression.Compile(bodyrlqueryoverrideSamples, nameof(bodyrlqueryoverrideSamples), required: false);
             var __workflow_bodyrlqueryremoveOverride = WorkflowExpression.Compile(bodyrlqueryremoveOverride, nameof(bodyrlqueryremoveOverride), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/databrowser/malware_presence/user_override/{0}", __workflow_postFormat.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -2775,12 +2775,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction FileReputationListUserOverrides(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> startHash = null, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FileReputationListUserOverrides(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> startHash = null, Expression<Func<formatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_startHash = WorkflowExpression.Compile(startHash, nameof(startHash), required: false);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
-            return new DeferredWorkflowAction(() =>
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/databrowser/malware_presence/user_override/list_hashes/{0}", __workflow_hashType.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

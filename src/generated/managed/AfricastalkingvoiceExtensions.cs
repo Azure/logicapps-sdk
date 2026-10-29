@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingvoice
     public class AfricastalkingvoiceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingvoice")]
-        public IBodyWorkflowAction<CallResponse> Call(Expression<Func<string>> bodyusername, Expression<Func<string>> bodyfrom, Expression<Func<string[]>> bodyto, Expression<Func<bodyactionsInputItem[]>> bodyactions)
+        public IBodyWorkflowAction<CallResponse, ApiConnectionActionConfiguration> Call(Expression<Func<string>> bodyusername, Expression<Func<string>> bodyfrom, Expression<Func<string[]>> bodyto, Expression<Func<bodyactionsInputItem[]>> bodyactions)
         {
             var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: true);
             var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: true);
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodyactions = WorkflowExpression.Compile(bodyactions, nameof(bodyactions), required: true);
-            return new DeferredBodyAction<CallResponse>(() =>
+            return new DeferredBodyAction<CallResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/call";
                 var apiCallHttpMethod = "post";

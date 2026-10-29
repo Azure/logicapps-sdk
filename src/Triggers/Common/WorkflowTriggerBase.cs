@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+﻿// -----------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 // -----------------------------------------------------------
 
@@ -18,14 +18,21 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// on the first action directly after a trigger.
     /// </para>
     /// <para>
-    /// Subclasses must implement <see cref="GetTriggerDefinition"/> to produce the
+    /// Subclasses must implement <see cref="BuildTriggerDefinition"/> to produce the
     /// <see cref="FlowTemplateTrigger"/> that represents this trigger in the serialized workflow definition.
+    /// The public <see cref="GetTriggerDefinition"/> method then applies common trigger configuration.
     /// </para>
     /// </remarks>
     /// <seealso cref="IWorkflowTrigger"/>
-    /// <seealso cref="WorkflowActionBase"/>
-    public abstract class WorkflowTriggerBase : IWorkflowTrigger
+    public abstract class WorkflowTriggerBase<TConfiguration> :
+        IWorkflowTrigger<TConfiguration>
+        where TConfiguration : class, IWorkflowOperationConfiguration, new()
     {
+        internal WorkflowTriggerBase()
+        {
+            this.Configuration = new TConfiguration();
+        }
+
         /// <summary>
         /// Gets or sets the name of the trigger.
         /// </summary>
@@ -36,10 +43,30 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         public List<IWorkflowAction> Children { get; } = new List<IWorkflowAction>();
 
+        public TConfiguration Configuration { get; }
+
         /// <summary>
         /// Gets the trigger definition for the workflow.
         /// </summary>
-        public abstract FlowTemplateTrigger GetTriggerDefinition();
+        /// <param name="flowKind">The kind of workflow containing the trigger.</param>
+        public FlowTemplateTrigger GetTriggerDefinition(FlowKind? flowKind = null)
+        {
+            var definition = this.BuildTriggerDefinition(flowKind)
+                ?? throw new InvalidOperationException($"Trigger '{this.Name}' returned a null definition.");
+
+            WorkflowOperationConfiguration.ApplyTriggerConfiguration(
+                this.Configuration,
+                definition,
+                flowKind);
+
+            return definition;
+        }
+
+        /// <summary>
+        /// Builds the operation-specific trigger definition.
+        /// </summary>
+        /// <param name="flowKind">The kind of workflow containing the trigger.</param>
+        internal abstract FlowTemplateTrigger BuildTriggerDefinition(FlowKind? flowKind = null);
 
         /// <inheritdoc/>
         public OperationChain Then(IWorkflowAction action)

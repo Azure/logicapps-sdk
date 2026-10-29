@@ -6,10 +6,25 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
+    public sealed class ApiConnectionTriggerConfiguration :
+        IRetryPolicyConfiguration,
+        ISecureInputsConfiguration,
+        ISecureOutputsConfiguration,
+        ITriggerConcurrencyConfiguration,
+        IClientTrackingIdConfiguration
+    {
+        RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+        bool ISecureInputsConfiguration.SecureInputs { get; set; }
+        bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+        int? ITriggerConcurrencyConfiguration.ConcurrentRuns { get; set; }
+        int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
+        Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
+    }
+
     /// <summary>
     /// Represents an API connection trigger in a workflow.
     /// </summary>
-    public class ApiConnectionTrigger : WorkflowTriggerBase
+    public class ApiConnectionTrigger : WorkflowTriggerBase<ApiConnectionTriggerConfiguration>
     {
         /// <summary>
         /// The type of the flow template operation.
@@ -74,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets the trigger definition as a flow template trigger.
         /// </summary>
         /// <returns>A <see cref="FlowTemplateTrigger"/> containing the trigger configuration.</returns>
-        public override FlowTemplateTrigger GetTriggerDefinition()
+        internal override FlowTemplateTrigger BuildTriggerDefinition(FlowKind? flowKind = null)
         {
             return new FlowTemplateTrigger
             {
@@ -90,7 +105,9 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// Represents a generic API connection trigger with typed output in a workflow.
     /// </summary>
     /// <typeparam name="T">The type of the trigger output.</typeparam>
-    public class ApiConnectionTrigger<T> : ApiConnectionTrigger, IBodyWorkflowTrigger<T>
+    public class ApiConnectionTrigger<T> :
+        ApiConnectionTrigger,
+        IBodyWorkflowTrigger<T, ApiConnectionTriggerConfiguration>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiConnectionTrigger{T}"/> class with notification input.

@@ -46,6 +46,32 @@ var host = new HostBuilder()
     .Build();
 ```
 
+### Operation settings
+
+Use fluent settings methods on supported triggers and actions. Unsupported combinations fail while the workflow definition is built.
+
+```csharp
+var requestSchema = JObject.Parse(
+    """{"type":"object","properties":{"orderId":{"type":"string"}},"required":["orderId"]}""");
+
+var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger(requestBodyJsonSchema: requestSchema)
+    .WithSchemaValidation()
+    .WithClientTrackingId(() => "orders")
+    .WithConcurrency(runs: 1)
+    .WithSecureInputs()
+    .WithSecureOutputs();
+
+var call = WorkflowActions.BuiltIn.HttpAction(
+        uri: () => new Uri("https://api.example.com/orders"),
+        method: () => HttpMethod.Post)
+    .WithRetryPolicy(RetryPolicy.Fixed(count: 3, interval: TimeSpan.FromSeconds(30)))
+    .WithTrackedProperty("OrderId", () => trigger.TriggerOutput.Body["orderId"])
+    .WithSecureInputs()
+    .WithSecureOutputs();
+```
+
+Available settings depend on the operation. They include tracked properties, retry policies, secure inputs and outputs, trigger correlation and concurrency, HTTP request schema validation, and For Each iteration concurrency.
+
 ### 1. Minimal workflow with trigger/action
 
 An HTTP trigger feeds a service provider action (built-in Azure Queues connector) and returns the result:

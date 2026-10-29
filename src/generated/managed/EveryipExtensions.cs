@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Everyip
     public class EveryipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "everyip")]
-        public IBodyWorkflowAction<BrowseResponse> Browse(Expression<Func<string>> cause, Expression<Func<int>> take = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<BrowseResponse, ApiConnectionActionConfiguration> Browse(Expression<Func<string>> cause, Expression<Func<int>> take = null, Expression<Func<int>> page = null)
         {
             var __workflow_cause = WorkflowExpression.Compile(cause, nameof(cause), required: true);
             var __workflow_take = WorkflowExpression.Compile(take, nameof(take), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
-            return new DeferredBodyAction<BrowseResponse>(() =>
+            return new DeferredBodyAction<BrowseResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/browse/{0}", __workflow_cause.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -31,12 +31,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Everyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "everyip")]
-        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> term, Expression<Func<int>> take = null, Expression<Func<string>> cause = null)
+        public IBodyWorkflowAction<SearchResponse, ApiConnectionActionConfiguration> Search(Expression<Func<string>> term, Expression<Func<int>> take = null, Expression<Func<string>> cause = null)
         {
             var __workflow_term = WorkflowExpression.Compile(term, nameof(term), required: true);
             var __workflow_take = WorkflowExpression.Compile(take, nameof(take), required: false);
             var __workflow_cause = WorkflowExpression.Compile(cause, nameof(cause), required: false);
-            return new DeferredBodyAction<SearchResponse>(() =>
+            return new DeferredBodyAction<SearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/search/{0}", __workflow_term.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -50,10 +50,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Everyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "everyip")]
-        public IBodyWorkflowAction<DetailsResponse> Details(Expression<Func<string>> identifier)
+        public IBodyWorkflowAction<DetailsResponse, ApiConnectionActionConfiguration> Details(Expression<Func<string>> identifier)
         {
             var __workflow_identifier = WorkflowExpression.Compile(identifier, nameof(identifier), required: true);
-            return new DeferredBodyAction<DetailsResponse>(() =>
+            return new DeferredBodyAction<DetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/nonprofit/{0}", __workflow_identifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

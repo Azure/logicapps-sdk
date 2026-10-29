@@ -10,7 +10,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// The Until action repeatedly executes actions until a condition is met.
     /// </summary>
-    public class UntilAction : WorkflowActionBase
+    public class UntilAction : WorkflowActionBase<ControlActionConfiguration>
     {
         private readonly string expression;
         private readonly IWorkflowAction actionsRoot;
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="flowName">The flow name.</param>
         /// <param name="flowKind">The flow kind.</param>
-        public override FlowTemplateAction GetActionDefinition(string flowName, FlowKind? flowKind = null)
+        internal override FlowTemplateAction BuildActionDefinition(string flowName, FlowKind? flowKind = null)
         {
             var nestedActions = ControlActionHelper.CollectActions(this.actionsRoot, flowName, flowKind);
 

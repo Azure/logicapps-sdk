@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ameeopenbusinessip
     public class AmeeopenbusinessipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ameeopenbusinessip")]
-        public IBodyWorkflowAction<GetCompaniesResponse> GetCompanies(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> companyName = null, Expression<Func<int>> gupAmeeCompanyId = null, Expression<Func<bool>> isGup = null, Expression<Func<string>> city = null, Expression<Func<int>> postcode = null, Expression<Func<string>> provinceName = null, Expression<Func<string>> ukSic2007 = null, Expression<Func<int>> minEmployees = null, Expression<Func<int>> maxEmployees = null, Expression<Func<int>> minAnnualSalesLocal = null, Expression<Func<int>> maxAnnualSalesLocal = null, Expression<Func<int>> minScore = null, Expression<Func<int>> maxScore = null, Expression<Func<string>> fromLatLon = null, Expression<Func<int>> distance = null, Expression<Func<string>> stats = null)
+        public IBodyWorkflowAction<GetCompaniesResponse, ApiConnectionActionConfiguration> GetCompanies(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> companyName = null, Expression<Func<int>> gupAmeeCompanyId = null, Expression<Func<bool>> isGup = null, Expression<Func<string>> city = null, Expression<Func<int>> postcode = null, Expression<Func<string>> provinceName = null, Expression<Func<string>> ukSic2007 = null, Expression<Func<int>> minEmployees = null, Expression<Func<int>> maxEmployees = null, Expression<Func<int>> minAnnualSalesLocal = null, Expression<Func<int>> maxAnnualSalesLocal = null, Expression<Func<int>> minScore = null, Expression<Func<int>> maxScore = null, Expression<Func<string>> fromLatLon = null, Expression<Func<int>> distance = null, Expression<Func<string>> stats = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ameeopenbusinessip
             var __workflow_fromLatLon = WorkflowExpression.Compile(fromLatLon, nameof(fromLatLon), required: false);
             var __workflow_distance = WorkflowExpression.Compile(distance, nameof(distance), required: false);
             var __workflow_stats = WorkflowExpression.Compile(stats, nameof(stats), required: false);
-            return new DeferredBodyAction<GetCompaniesResponse>(() =>
+            return new DeferredBodyAction<GetCompaniesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/companies";
                 var apiCallHttpMethod = "get";
@@ -78,11 +78,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ameeopenbusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ameeopenbusinessip")]
-        public IBodyWorkflowAction<GetCompanyResponse> GetCompany(Expression<Func<string>> id, Expression<Func<string>> type = null)
+        public IBodyWorkflowAction<GetCompanyResponse, ApiConnectionActionConfiguration> GetCompany(Expression<Func<string>> id, Expression<Func<string>> type = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
-            return new DeferredBodyAction<GetCompanyResponse>(() =>
+            return new DeferredBodyAction<GetCompanyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/companies/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";

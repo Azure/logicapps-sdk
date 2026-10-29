@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
     public class MandrillActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mandrill")]
-        public IBodyWorkflowAction<UserInfo> CurrentUser()
+        public IBodyWorkflowAction<UserInfo, ApiConnectionActionConfiguration> CurrentUser()
         {
             var apiCallPath = "/users/info.json";
             var apiCallHttpMethod = "post";
@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mandrill")]
-        public IBodyWorkflowAction<ListScheduledInfo[]> ScheduledMessageInfo(Expression<Func<string>> listScheduledRequestto = null)
+        public IBodyWorkflowAction<ListScheduledInfo[], ApiConnectionActionConfiguration> ScheduledMessageInfo(Expression<Func<string>> listScheduledRequestto = null)
         {
             var __workflow_listScheduledRequestto = WorkflowExpression.Compile(listScheduledRequestto, nameof(listScheduledRequestto), required: false);
-            return new DeferredBodyAction<ListScheduledInfo[]>(() =>
+            return new DeferredBodyAction<ListScheduledInfo[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/messages/list-scheduled.json";
                 var apiCallHttpMethod = "post";
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mandrill")]
-        public IBodyWorkflowAction<SendMessageResponse[]> SendMessage(Expression<Func<string>> sendMessageRequestmessagesubject, Expression<Func<string>> sendMessageRequestmessagefromEmail, Expression<Func<RecipientInfo[]>> sendMessageRequestmessagesendTo, Expression<Func<string>> sendMessageRequestmessagecontentOfTheMessage = null, Expression<Func<string>> sendMessageRequestmessagefromName = null, Expression<Func<string>> sendMessageRequestmessageextraHeaders = null, Expression<Func<bool>> sendMessageRequestmessageisThisMessageImportantTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagetrackWhenMessageOpensTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagetrackClicksForThisMessageTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessageremoveContentLoggingTrueFalse = null, Expression<Func<string>> sendMessageRequestmessageoptionalBCCAddress = null, Expression<Func<string>> sendMessageRequestmessagecustomDomaingForTracking = null, Expression<Func<string[]>> sendMessageRequestmessagetags = null, Expression<Func<AttachmentInfo[]>> sendMessageRequestmessageattachments = null, Expression<Func<string>> sendMessageRequestsendAt = null, Expression<Func<bool>> sendMessageRequestenableAsyncTrueFalse = null, Expression<Func<string>> sendMessageRequestdedicatedIpPoolName = null)
+        public IBodyWorkflowAction<SendMessageResponse[], ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> sendMessageRequestmessagesubject, Expression<Func<string>> sendMessageRequestmessagefromEmail, Expression<Func<RecipientInfo[]>> sendMessageRequestmessagesendTo, Expression<Func<string>> sendMessageRequestmessagecontentOfTheMessage = null, Expression<Func<string>> sendMessageRequestmessagefromName = null, Expression<Func<string>> sendMessageRequestmessageextraHeaders = null, Expression<Func<bool>> sendMessageRequestmessageisThisMessageImportantTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagetrackWhenMessageOpensTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagetrackClicksForThisMessageTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessageremoveContentLoggingTrueFalse = null, Expression<Func<string>> sendMessageRequestmessageoptionalBCCAddress = null, Expression<Func<string>> sendMessageRequestmessagecustomDomaingForTracking = null, Expression<Func<string[]>> sendMessageRequestmessagetags = null, Expression<Func<AttachmentInfo[]>> sendMessageRequestmessageattachments = null, Expression<Func<string>> sendMessageRequestsendAt = null, Expression<Func<bool>> sendMessageRequestenableAsyncTrueFalse = null, Expression<Func<string>> sendMessageRequestdedicatedIpPoolName = null)
         {
             var __workflow_sendMessageRequestmessagesubject = WorkflowExpression.Compile(sendMessageRequestmessagesubject, nameof(sendMessageRequestmessagesubject), required: true);
             var __workflow_sendMessageRequestmessagefromEmail = WorkflowExpression.Compile(sendMessageRequestmessagefromEmail, nameof(sendMessageRequestmessagefromEmail), required: true);
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
             var __workflow_sendMessageRequestsendAt = WorkflowExpression.Compile(sendMessageRequestsendAt, nameof(sendMessageRequestsendAt), required: false);
             var __workflow_sendMessageRequestenableAsyncTrueFalse = WorkflowExpression.Compile(sendMessageRequestenableAsyncTrueFalse, nameof(sendMessageRequestenableAsyncTrueFalse), required: false);
             var __workflow_sendMessageRequestdedicatedIpPoolName = WorkflowExpression.Compile(sendMessageRequestdedicatedIpPoolName, nameof(sendMessageRequestdedicatedIpPoolName), required: false);
-            return new DeferredBodyAction<SendMessageResponse[]>(() =>
+            return new DeferredBodyAction<SendMessageResponse[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/messages/send.json";
                 var apiCallHttpMethod = "post";

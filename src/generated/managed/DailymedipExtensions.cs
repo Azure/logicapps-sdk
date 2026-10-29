@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
     public class DailymedipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<ApplicationNumberResponse> ApplicationNumber(Expression<Func<string>> applicationNumber = null, Expression<Func<string>> marketingCategoryCode = null, Expression<Func<string>> setid = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<ApplicationNumberResponse, ApiConnectionActionConfiguration> ApplicationNumber(Expression<Func<string>> applicationNumber = null, Expression<Func<string>> marketingCategoryCode = null, Expression<Func<string>> setid = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
         {
             var __workflow_applicationNumber = WorkflowExpression.Compile(applicationNumber, nameof(applicationNumber), required: false);
             var __workflow_marketingCategoryCode = WorkflowExpression.Compile(marketingCategoryCode, nameof(marketingCategoryCode), required: false);
             var __workflow_setid = WorkflowExpression.Compile(setid, nameof(setid), required: false);
             var __workflow_pagesize = WorkflowExpression.Compile(pagesize, nameof(pagesize), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
-            return new DeferredBodyAction<ApplicationNumberResponse>(() =>
+            return new DeferredBodyAction<ApplicationNumberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/applicationnumbers.json";
                 var apiCallHttpMethod = "get";
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<DrugClassResponse> DrugClass(Expression<Func<string>> drugClassCode = null, Expression<Func<string>> drugClassCodingSystem = null, Expression<Func<classCodeTypeInput>> classCodeType = null, Expression<Func<string>> className = null, Expression<Func<string>> uniiCode = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<DrugClassResponse, ApiConnectionActionConfiguration> DrugClass(Expression<Func<string>> drugClassCode = null, Expression<Func<string>> drugClassCodingSystem = null, Expression<Func<classCodeTypeInput>> classCodeType = null, Expression<Func<string>> className = null, Expression<Func<string>> uniiCode = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
         {
             var __workflow_drugClassCode = WorkflowExpression.Compile(drugClassCode, nameof(drugClassCode), required: false);
             var __workflow_drugClassCodingSystem = WorkflowExpression.Compile(drugClassCodingSystem, nameof(drugClassCodingSystem), required: false);
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             var __workflow_uniiCode = WorkflowExpression.Compile(uniiCode, nameof(uniiCode), required: false);
             var __workflow_pagesize = WorkflowExpression.Compile(pagesize, nameof(pagesize), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
-            return new DeferredBodyAction<DrugClassResponse>(() =>
+            return new DeferredBodyAction<DrugClassResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/drugclasses.json";
                 var apiCallHttpMethod = "get";
@@ -73,14 +73,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<DrugNameResponse> DrugName(Expression<Func<string>> drugName = null, Expression<Func<nameTypeInput>> nameType = null, Expression<Func<string>> manufacturer = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<DrugNameResponse, ApiConnectionActionConfiguration> DrugName(Expression<Func<string>> drugName = null, Expression<Func<nameTypeInput>> nameType = null, Expression<Func<string>> manufacturer = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
         {
             var __workflow_drugName = WorkflowExpression.Compile(drugName, nameof(drugName), required: false);
             var __workflow_nameType = WorkflowExpression.Compile(nameType, nameof(nameType), required: false);
             var __workflow_manufacturer = WorkflowExpression.Compile(manufacturer, nameof(manufacturer), required: false);
             var __workflow_pagesize = WorkflowExpression.Compile(pagesize, nameof(pagesize), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
-            return new DeferredBodyAction<DrugNameResponse>(() =>
+            return new DeferredBodyAction<DrugNameResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/drugnames.json";
                 var apiCallHttpMethod = "get";
@@ -101,11 +101,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<NDCResponse> NDC(Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<NDCResponse, ApiConnectionActionConfiguration> NDC(Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
         {
             var __workflow_pagesize = WorkflowExpression.Compile(pagesize, nameof(pagesize), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
-            return new DeferredBodyAction<NDCResponse>(() =>
+            return new DeferredBodyAction<NDCResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/ndcs.json";
                 var apiCallHttpMethod = "get";
@@ -119,14 +119,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<RxCUIResponse> RxCUI(Expression<Func<rxttyInput>> rxtty = null, Expression<Func<string>> rxstring = null, Expression<Func<int>> rxcui = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<RxCUIResponse, ApiConnectionActionConfiguration> RxCUI(Expression<Func<rxttyInput>> rxtty = null, Expression<Func<string>> rxstring = null, Expression<Func<int>> rxcui = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
         {
             var __workflow_rxtty = WorkflowExpression.Compile(rxtty, nameof(rxtty), required: false);
             var __workflow_rxstring = WorkflowExpression.Compile(rxstring, nameof(rxstring), required: false);
             var __workflow_rxcui = WorkflowExpression.Compile(rxcui, nameof(rxcui), required: false);
             var __workflow_pagesize = WorkflowExpression.Compile(pagesize, nameof(pagesize), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
-            return new DeferredBodyAction<RxCUIResponse>(() =>
+            return new DeferredBodyAction<RxCUIResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/rxcuis.json";
                 var apiCallHttpMethod = "get";
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<SPLAllResponse> SPLAll(Expression<Func<string>> applicationNumber = null, Expression<Func<bool>> boxedWarning = null, Expression<Func<deaScheduleCodeInput>> deaScheduleCode = null, Expression<Func<string>> doctype = null, Expression<Func<string>> drugClassCode = null, Expression<Func<string>> drugClassCodingSystem = null, Expression<Func<string>> drugName = null, Expression<Func<nameTypeInput>> nameType = null, Expression<Func<string>> labeler = null, Expression<Func<string>> manufacturer = null, Expression<Func<string>> marketingCategoryCode = null, Expression<Func<string>> ndc = null, Expression<Func<string>> publishedDate = null, Expression<Func<publishedDateComparisonInput>> publishedDateComparison = null, Expression<Func<string>> rxcui = null, Expression<Func<string>> uniiCode = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<SPLAllResponse, ApiConnectionActionConfiguration> SPLAll(Expression<Func<string>> applicationNumber = null, Expression<Func<bool>> boxedWarning = null, Expression<Func<deaScheduleCodeInput>> deaScheduleCode = null, Expression<Func<string>> doctype = null, Expression<Func<string>> drugClassCode = null, Expression<Func<string>> drugClassCodingSystem = null, Expression<Func<string>> drugName = null, Expression<Func<nameTypeInput>> nameType = null, Expression<Func<string>> labeler = null, Expression<Func<string>> manufacturer = null, Expression<Func<string>> marketingCategoryCode = null, Expression<Func<string>> ndc = null, Expression<Func<string>> publishedDate = null, Expression<Func<publishedDateComparisonInput>> publishedDateComparison = null, Expression<Func<string>> rxcui = null, Expression<Func<string>> uniiCode = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
         {
             var __workflow_applicationNumber = WorkflowExpression.Compile(applicationNumber, nameof(applicationNumber), required: false);
             var __workflow_boxedWarning = WorkflowExpression.Compile(boxedWarning, nameof(boxedWarning), required: false);
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             var __workflow_uniiCode = WorkflowExpression.Compile(uniiCode, nameof(uniiCode), required: false);
             var __workflow_pagesize = WorkflowExpression.Compile(pagesize, nameof(pagesize), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
-            return new DeferredBodyAction<SPLAllResponse>(() =>
+            return new DeferredBodyAction<SPLAllResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/spls.json";
                 var apiCallHttpMethod = "get";
@@ -216,10 +216,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<SPLHistoryResponse> SPLHistory(Expression<Func<string>> sETID)
+        public IBodyWorkflowAction<SPLHistoryResponse, ApiConnectionActionConfiguration> SPLHistory(Expression<Func<string>> sETID)
         {
             var __workflow_sETID = WorkflowExpression.Compile(sETID, nameof(sETID), required: true);
-            return new DeferredBodyAction<SPLHistoryResponse>(() =>
+            return new DeferredBodyAction<SPLHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/spls/{0}/history.json", __workflow_sETID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -229,10 +229,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<SPLMediaResponse> SPLMedia(Expression<Func<string>> sETID)
+        public IBodyWorkflowAction<SPLMediaResponse, ApiConnectionActionConfiguration> SPLMedia(Expression<Func<string>> sETID)
         {
             var __workflow_sETID = WorkflowExpression.Compile(sETID, nameof(sETID), required: true);
-            return new DeferredBodyAction<SPLMediaResponse>(() =>
+            return new DeferredBodyAction<SPLMediaResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/spls/{0}/media.json", __workflow_sETID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -242,10 +242,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<SPLNDCResponse> SPLNDC(Expression<Func<string>> sETID)
+        public IBodyWorkflowAction<SPLNDCResponse, ApiConnectionActionConfiguration> SPLNDC(Expression<Func<string>> sETID)
         {
             var __workflow_sETID = WorkflowExpression.Compile(sETID, nameof(sETID), required: true);
-            return new DeferredBodyAction<SPLNDCResponse>(() =>
+            return new DeferredBodyAction<SPLNDCResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/spls/{0}/ndcs.json", __workflow_sETID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -255,10 +255,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<SPLPackagingResponse> SPLPackaging(Expression<Func<string>> sETID)
+        public IBodyWorkflowAction<SPLPackagingResponse, ApiConnectionActionConfiguration> SPLPackaging(Expression<Func<string>> sETID)
         {
             var __workflow_sETID = WorkflowExpression.Compile(sETID, nameof(sETID), required: true);
-            return new DeferredBodyAction<SPLPackagingResponse>(() =>
+            return new DeferredBodyAction<SPLPackagingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/spls/{0}/packaging.json", __workflow_sETID.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<UNIIResponse> UNII(Expression<Func<string>> activeMoiety = null, Expression<Func<string>> drugClassCode = null, Expression<Func<string>> drugClassCodingSystem = null, Expression<Func<string>> rxcui = null, Expression<Func<string>> uniiCode = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<UNIIResponse, ApiConnectionActionConfiguration> UNII(Expression<Func<string>> activeMoiety = null, Expression<Func<string>> drugClassCode = null, Expression<Func<string>> drugClassCodingSystem = null, Expression<Func<string>> rxcui = null, Expression<Func<string>> uniiCode = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
         {
             var __workflow_activeMoiety = WorkflowExpression.Compile(activeMoiety, nameof(activeMoiety), required: false);
             var __workflow_drugClassCode = WorkflowExpression.Compile(drugClassCode, nameof(drugClassCode), required: false);
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             var __workflow_uniiCode = WorkflowExpression.Compile(uniiCode, nameof(uniiCode), required: false);
             var __workflow_pagesize = WorkflowExpression.Compile(pagesize, nameof(pagesize), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
-            return new DeferredBodyAction<UNIIResponse>(() =>
+            return new DeferredBodyAction<UNIIResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/uniis.json";
                 var apiCallHttpMethod = "get";
