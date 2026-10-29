@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbauddocuments
 {
     using System.Linq.Expressions;
@@ -52,13 +53,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbauddocuments
     public class ConstituentApiFileDefinition
     {
         [JsonProperty("file_id")]
-        public string FileID { get; set; }
+        public string FileId { get; set; }
 
         [JsonProperty("file_upload_request")]
         public ConstituentApiFileDefinitionFileUploadType FileUpload { get; set; }
 
         [JsonProperty("thumbnail_id")]
-        public string ThumbnailID { get; set; }
+        public string ThumbnailId { get; set; }
 
         [JsonProperty("thumbnail_upload_request")]
         public ConstituentApiFileDefinitionThumbnailUploadType ThumbnailUpload { get; set; }

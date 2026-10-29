@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
 {
     using System.Linq.Expressions;
@@ -14,19 +15,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
         public IBodyWorkflowAction<ProfileGetResponse, ApiConnectionActionConfiguration> ProfileGet()
         {
-            var apiCallPath = "/users/me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProfileGetResponse>(callPayload);
+            return new DeferredBodyAction<ProfileGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/users/me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ProfileGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
         public IBodyWorkflowAction<BalanceGetResponse, ApiConnectionActionConfiguration> BalanceGet()
         {
-            var apiCallPath = "/users/me/balance";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BalanceGetResponse>(callPayload);
+            return new DeferredBodyAction<BalanceGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/users/me/balance";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<BalanceGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
 {
     using System.Linq.Expressions;
@@ -12,11 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
     public class OpentextcoreshareActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<string>> bodyparentID, Expression<Func<string>> bodyfilefileName, Expression<Func<string>> bodyfilefileContent)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<string>> bodyparentId, Expression<Func<string>> bodyFilefileName, Expression<Func<string>> bodyFilefileContent)
         {
-            var __workflow_bodyparentID = WorkflowExpression.Compile(bodyparentID, nameof(bodyparentID), required: true);
-            var __workflow_bodyfilefileName = WorkflowExpression.Compile(bodyfilefileName, nameof(bodyfilefileName), required: true);
-            var __workflow_bodyfilefileContent = WorkflowExpression.Compile(bodyfilefileContent, nameof(bodyfilefileContent), required: true);
+            var __workflow_bodyparentId = WorkflowExpression.Compile(bodyparentId, nameof(bodyparentId), required: true);
+            var __workflow_bodyFilefileName = WorkflowExpression.Compile(bodyFilefileName, nameof(bodyFilefileName), required: true);
+            var __workflow_bodyFilefileContent = WorkflowExpression.Compile(bodyFilefileContent, nameof(bodyFilefileContent), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/document/create";
@@ -25,16 +26,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["parentId"] = ExpressionConverter.ConvertO(__workflow_bodyparentID);
-                var fileObject = new JObject();
-                var fileObjectpropCount = 0;
-                fileObjectpropCount++;
-                fileObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyfilefileName);
-                fileObjectpropCount++;
-                fileObject["content"] = ExpressionConverter.ConvertO(__workflow_bodyfilefileContent);
-                if (fileObjectpropCount > 0)
+                body["parentId"] = ExpressionConverter.ConvertO(__workflow_bodyparentId);
+                var @fileObject = new JObject();
+                var @fileObjectpropCount = 0;
+                @fileObjectpropCount++;
+                @fileObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyFilefileName);
+                @fileObjectpropCount++;
+                @fileObject["content"] = ExpressionConverter.ConvertO(__workflow_bodyFilefileContent);
+                if (@fileObjectpropCount > 0)
                 {
-                    body["file"] = fileObject;
+                    body["file"] = @fileObject;
                     bodypropCount++;
                 }
 
@@ -48,11 +49,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> bodyfilefileName, Expression<Func<string>> bodyfilefileContent)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> bodyFilefileName, Expression<Func<string>> bodyFilefileContent)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyfilefileName = WorkflowExpression.Compile(bodyfilefileName, nameof(bodyfilefileName), required: true);
-            var __workflow_bodyfilefileContent = WorkflowExpression.Compile(bodyfilefileContent, nameof(bodyfilefileContent), required: true);
+            var __workflow_bodyFilefileName = WorkflowExpression.Compile(bodyFilefileName, nameof(bodyFilefileName), required: true);
+            var __workflow_bodyFilefileContent = WorkflowExpression.Compile(bodyFilefileContent, nameof(bodyFilefileContent), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/document/update/{0}", __workflow_id.WithUrlEncoding(1)));
@@ -60,15 +61,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                var fileObject = new JObject();
-                var fileObjectpropCount = 0;
-                fileObjectpropCount++;
-                fileObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyfilefileName);
-                fileObjectpropCount++;
-                fileObject["content"] = ExpressionConverter.ConvertO(__workflow_bodyfilefileContent);
-                if (fileObjectpropCount > 0)
+                var @fileObject = new JObject();
+                var @fileObjectpropCount = 0;
+                @fileObjectpropCount++;
+                @fileObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyFilefileName);
+                @fileObjectpropCount++;
+                @fileObject["content"] = ExpressionConverter.ConvertO(__workflow_bodyFilefileContent);
+                if (@fileObjectpropCount > 0)
                 {
-                    body["file"] = fileObject;
+                    body["file"] = @fileObject;
                     bodypropCount++;
                 }
 
@@ -189,10 +190,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateFolder(Expression<Func<string>> bodyname, Expression<Func<string>> bodyparentID)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateFolder(Expression<Func<string>> bodyname, Expression<Func<string>> bodyparentId)
         {
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyparentID = WorkflowExpression.Compile(bodyparentID, nameof(bodyparentID), required: true);
+            var __workflow_bodyparentId = WorkflowExpression.Compile(bodyparentId, nameof(bodyparentId), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/folder/create";
@@ -203,7 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
                 bodypropCount++;
                 body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
                 bodypropCount++;
-                body["parentId"] = ExpressionConverter.ConvertO(__workflow_bodyparentID);
+                body["parentId"] = ExpressionConverter.ConvertO(__workflow_bodyparentId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -341,10 +342,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
     public class GetDocumentResponse
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("parentId")]
-        public string ParentID { get; set; }
+        public string ParentId { get; set; }
 
         [JsonProperty("metadata")]
         public GetDocumentResponseMetadataType Metadata { get; set; }
@@ -383,7 +384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
     public class Version
     {
         [JsonProperty("versionId")]
-        public string VersionID { get; set; }
+        public string VersionId { get; set; }
 
         [JsonProperty("versionLabel")]
         public string VersionLabel { get; set; }
@@ -404,10 +405,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
     public class GetFolderResponse
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("parentId")]
-        public string ParentID { get; set; }
+        public string ParentId { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -422,7 +423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
     public class ResultItem
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }

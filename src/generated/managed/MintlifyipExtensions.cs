@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
 {
     using System.Linq.Expressions;
@@ -70,19 +71,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mintlifyip")]
         public IBodyWorkflowAction<LanguageListResponse, ApiConnectionActionConfiguration> LanguageList()
         {
-            var apiCallPath = "/v1/list/languages";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<LanguageListResponse>(callPayload);
+            return new DeferredBodyAction<LanguageListResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/list/languages";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<LanguageListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mintlifyip")]
         public IBodyWorkflowAction<DocListResponse, ApiConnectionActionConfiguration> DocList()
         {
-            var apiCallPath = "/v1/list/formats";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DocListResponse>(callPayload);
+            return new DeferredBodyAction<DocListResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/list/formats";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DocListResponse>(callPayload);
+            });
         }
     }
 

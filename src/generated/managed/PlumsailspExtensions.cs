@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 {
     using System.Linq.Expressions;
@@ -103,10 +104,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsActivateFeature(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestfeatureID, Expression<Func<bool>> requestforce = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsActivateFeature(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestfeatureId, Expression<Func<bool>> requestforce = null)
         {
             var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestfeatureID = WorkflowExpression.Compile(requestfeatureID, nameof(requestfeatureID), required: true);
+            var __workflow_requestfeatureId = WorkflowExpression.Compile(requestfeatureId, nameof(requestfeatureId), required: true);
             var __workflow_requestforce = WorkflowExpression.Compile(requestforce, nameof(requestforce), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -118,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
                 requestpropCount++;
                 request["spUrl"] = ExpressionConverter.ConvertO(__workflow_requestsharePointSiteURL);
                 requestpropCount++;
-                request["featureId"] = ExpressionConverter.ConvertO(__workflow_requestfeatureID);
+                request["featureId"] = ExpressionConverter.ConvertO(__workflow_requestfeatureId);
                 if (__workflow_requestforce != null)
                 {
                     request["force"] = ExpressionConverter.ConvertO(__workflow_requestforce);
@@ -135,10 +136,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsDeactivateFeature(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestfeatureID, Expression<Func<bool>> requestforce = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsDeactivateFeature(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestfeatureId, Expression<Func<bool>> requestforce = null)
         {
             var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestfeatureID = WorkflowExpression.Compile(requestfeatureID, nameof(requestfeatureID), required: true);
+            var __workflow_requestfeatureId = WorkflowExpression.Compile(requestfeatureId, nameof(requestfeatureId), required: true);
             var __workflow_requestforce = WorkflowExpression.Compile(requestforce, nameof(requestforce), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -150,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
                 requestpropCount++;
                 request["spUrl"] = ExpressionConverter.ConvertO(__workflow_requestsharePointSiteURL);
                 requestpropCount++;
-                request["featureId"] = ExpressionConverter.ConvertO(__workflow_requestfeatureID);
+                request["featureId"] = ExpressionConverter.ConvertO(__workflow_requestfeatureId);
                 if (__workflow_requestforce != null)
                 {
                     request["force"] = ExpressionConverter.ConvertO(__workflow_requestforce);
@@ -1189,11 +1190,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<ListFileUrlsResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCopyAttachmentsToUrl(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<int>> requestitemID, Expression<Func<string>> requestdestinationFolderURL, Expression<Func<bool>> requestoverwrite = null)
+        public IBodyWorkflowAction<ListFileUrlsResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCopyAttachmentsToUrl(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<int>> requestitemId, Expression<Func<string>> requestdestinationFolderURL, Expression<Func<bool>> requestoverwrite = null)
         {
             var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
             var __workflow_requestlistURL = WorkflowExpression.Compile(requestlistURL, nameof(requestlistURL), required: true);
-            var __workflow_requestitemID = WorkflowExpression.Compile(requestitemID, nameof(requestitemID), required: true);
+            var __workflow_requestitemId = WorkflowExpression.Compile(requestitemId, nameof(requestitemId), required: true);
             var __workflow_requestdestinationFolderURL = WorkflowExpression.Compile(requestdestinationFolderURL, nameof(requestdestinationFolderURL), required: true);
             var __workflow_requestoverwrite = WorkflowExpression.Compile(requestoverwrite, nameof(requestoverwrite), required: false);
             return new DeferredBodyAction<ListFileUrlsResponse, ApiConnectionActionConfiguration>(() =>
@@ -1208,7 +1209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
                 requestpropCount++;
                 request["listUrl"] = ExpressionConverter.ConvertO(__workflow_requestlistURL);
                 requestpropCount++;
-                request["itemId"] = ExpressionConverter.ConvertO(__workflow_requestitemID);
+                request["itemId"] = ExpressionConverter.ConvertO(__workflow_requestitemId);
                 requestpropCount++;
                 request["destinationUrl"] = ExpressionConverter.ConvertO(__workflow_requestdestinationFolderURL);
                 if (__workflow_requestoverwrite != null)
@@ -1227,11 +1228,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<ListFileUrlsResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsMoveAttachmentsToUrl(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<int>> requestitemID, Expression<Func<string>> requestdestinationFolderURL, Expression<Func<bool>> requestoverwrite = null)
+        public IBodyWorkflowAction<ListFileUrlsResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsMoveAttachmentsToUrl(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<int>> requestitemId, Expression<Func<string>> requestdestinationFolderURL, Expression<Func<bool>> requestoverwrite = null)
         {
             var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
             var __workflow_requestlistURL = WorkflowExpression.Compile(requestlistURL, nameof(requestlistURL), required: true);
-            var __workflow_requestitemID = WorkflowExpression.Compile(requestitemID, nameof(requestitemID), required: true);
+            var __workflow_requestitemId = WorkflowExpression.Compile(requestitemId, nameof(requestitemId), required: true);
             var __workflow_requestdestinationFolderURL = WorkflowExpression.Compile(requestdestinationFolderURL, nameof(requestdestinationFolderURL), required: true);
             var __workflow_requestoverwrite = WorkflowExpression.Compile(requestoverwrite, nameof(requestoverwrite), required: false);
             return new DeferredBodyAction<ListFileUrlsResponse, ApiConnectionActionConfiguration>(() =>
@@ -1246,7 +1247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
                 requestpropCount++;
                 request["listUrl"] = ExpressionConverter.ConvertO(__workflow_requestlistURL);
                 requestpropCount++;
-                request["itemId"] = ExpressionConverter.ConvertO(__workflow_requestitemID);
+                request["itemId"] = ExpressionConverter.ConvertO(__workflow_requestitemId);
                 requestpropCount++;
                 request["destinationUrl"] = ExpressionConverter.ConvertO(__workflow_requestdestinationFolderURL);
                 if (__workflow_requestoverwrite != null)
@@ -1300,11 +1301,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<ListItemIdResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCopyListItemToSharePointList(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<string>> requestitemID, Expression<Func<string>> requestdestinationListURL, Expression<Func<bool>> requestcopyAttachments = null)
+        public IBodyWorkflowAction<ListItemIdResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCopyListItemToSharePointList(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<string>> requestitemId, Expression<Func<string>> requestdestinationListURL, Expression<Func<bool>> requestcopyAttachments = null)
         {
             var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
             var __workflow_requestlistURL = WorkflowExpression.Compile(requestlistURL, nameof(requestlistURL), required: true);
-            var __workflow_requestitemID = WorkflowExpression.Compile(requestitemID, nameof(requestitemID), required: true);
+            var __workflow_requestitemId = WorkflowExpression.Compile(requestitemId, nameof(requestitemId), required: true);
             var __workflow_requestdestinationListURL = WorkflowExpression.Compile(requestdestinationListURL, nameof(requestdestinationListURL), required: true);
             var __workflow_requestcopyAttachments = WorkflowExpression.Compile(requestcopyAttachments, nameof(requestcopyAttachments), required: false);
             return new DeferredBodyAction<ListItemIdResponse, ApiConnectionActionConfiguration>(() =>
@@ -1319,7 +1320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
                 requestpropCount++;
                 request["listUrl"] = ExpressionConverter.ConvertO(__workflow_requestlistURL);
                 requestpropCount++;
-                request["itemId"] = ExpressionConverter.ConvertO(__workflow_requestitemID);
+                request["itemId"] = ExpressionConverter.ConvertO(__workflow_requestitemId);
                 requestpropCount++;
                 request["destinationListUrl"] = ExpressionConverter.ConvertO(__workflow_requestdestinationListURL);
                 if (__workflow_requestcopyAttachments != null)
@@ -1338,11 +1339,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<ListItemIdResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsMoveListItemToSharePointList(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<string>> requestitemID, Expression<Func<string>> requestdestinationListURL, Expression<Func<bool>> requestmoveAttachments = null)
+        public IBodyWorkflowAction<ListItemIdResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsMoveListItemToSharePointList(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<string>> requestitemId, Expression<Func<string>> requestdestinationListURL, Expression<Func<bool>> requestmoveAttachments = null)
         {
             var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
             var __workflow_requestlistURL = WorkflowExpression.Compile(requestlistURL, nameof(requestlistURL), required: true);
-            var __workflow_requestitemID = WorkflowExpression.Compile(requestitemID, nameof(requestitemID), required: true);
+            var __workflow_requestitemId = WorkflowExpression.Compile(requestitemId, nameof(requestitemId), required: true);
             var __workflow_requestdestinationListURL = WorkflowExpression.Compile(requestdestinationListURL, nameof(requestdestinationListURL), required: true);
             var __workflow_requestmoveAttachments = WorkflowExpression.Compile(requestmoveAttachments, nameof(requestmoveAttachments), required: false);
             return new DeferredBodyAction<ListItemIdResponse, ApiConnectionActionConfiguration>(() =>
@@ -1357,7 +1358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
                 requestpropCount++;
                 request["listUrl"] = ExpressionConverter.ConvertO(__workflow_requestlistURL);
                 requestpropCount++;
-                request["itemId"] = ExpressionConverter.ConvertO(__workflow_requestitemID);
+                request["itemId"] = ExpressionConverter.ConvertO(__workflow_requestitemId);
                 requestpropCount++;
                 request["destinationListUrl"] = ExpressionConverter.ConvertO(__workflow_requestdestinationListURL);
                 if (__workflow_requestmoveAttachments != null)
@@ -1376,12 +1377,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<WorkflowGuidResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsStartListWorkflow(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestworkflowName, Expression<Func<string>> requestlistURL, Expression<Func<int>> requestitemID)
+        public IBodyWorkflowAction<WorkflowGuidResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsStartListWorkflow(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestworkflowName, Expression<Func<string>> requestlistURL, Expression<Func<int>> requestitemId)
         {
             var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
             var __workflow_requestworkflowName = WorkflowExpression.Compile(requestworkflowName, nameof(requestworkflowName), required: true);
             var __workflow_requestlistURL = WorkflowExpression.Compile(requestlistURL, nameof(requestlistURL), required: true);
-            var __workflow_requestitemID = WorkflowExpression.Compile(requestitemID, nameof(requestitemID), required: true);
+            var __workflow_requestitemId = WorkflowExpression.Compile(requestitemId, nameof(requestitemId), required: true);
             return new DeferredBodyAction<WorkflowGuidResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/StartListWorkflow";
@@ -1404,7 +1405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
                 requestpropCount++;
                 request["listUrl"] = ExpressionConverter.ConvertO(__workflow_requestlistURL);
                 requestpropCount++;
-                request["itemId"] = ExpressionConverter.ConvertO(__workflow_requestitemID);
+                request["itemId"] = ExpressionConverter.ConvertO(__workflow_requestitemId);
                 if (requestpropCount > 0)
                 {
                     callPayload.Body = request;
@@ -1483,11 +1484,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<VersionsHistoryResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsGetVersionsHistory(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<int>> requestitemID, Expression<Func<string>> requestfieldName)
+        public IBodyWorkflowAction<VersionsHistoryResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsGetVersionsHistory(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<int>> requestitemId, Expression<Func<string>> requestfieldName)
         {
             var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
             var __workflow_requestlistURL = WorkflowExpression.Compile(requestlistURL, nameof(requestlistURL), required: true);
-            var __workflow_requestitemID = WorkflowExpression.Compile(requestitemID, nameof(requestitemID), required: true);
+            var __workflow_requestitemId = WorkflowExpression.Compile(requestitemId, nameof(requestitemId), required: true);
             var __workflow_requestfieldName = WorkflowExpression.Compile(requestfieldName, nameof(requestfieldName), required: true);
             return new DeferredBodyAction<VersionsHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -1501,7 +1502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
                 requestpropCount++;
                 request["listUrl"] = ExpressionConverter.ConvertO(__workflow_requestlistURL);
                 requestpropCount++;
-                request["itemId"] = ExpressionConverter.ConvertO(__workflow_requestitemID);
+                request["itemId"] = ExpressionConverter.ConvertO(__workflow_requestitemId);
                 requestpropCount++;
                 request["fieldName"] = ExpressionConverter.ConvertO(__workflow_requestfieldName);
                 if (requestpropCount > 0)
@@ -1760,11 +1761,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsUpdateListItem(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistName, Expression<Func<string>> requestitemIDOrURL)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsUpdateListItem(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistName, Expression<Func<string>> requestitemIdOrURL)
         {
             var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
             var __workflow_requestlistName = WorkflowExpression.Compile(requestlistName, nameof(requestlistName), required: true);
-            var __workflow_requestitemIDOrURL = WorkflowExpression.Compile(requestitemIDOrURL, nameof(requestitemIDOrURL), required: true);
+            var __workflow_requestitemIdOrURL = WorkflowExpression.Compile(requestitemIdOrURL, nameof(requestitemIdOrURL), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/UpdateListItem";
@@ -1777,7 +1778,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
                 requestpropCount++;
                 request["listName"] = ExpressionConverter.ConvertO(__workflow_requestlistName);
                 requestpropCount++;
-                request["itemId"] = ExpressionConverter.ConvertO(__workflow_requestitemIDOrURL);
+                request["itemId"] = ExpressionConverter.ConvertO(__workflow_requestitemIdOrURL);
                 var dataObject = new JObject();
                 var dataObjectpropCount = 0;
                 if (dataObjectpropCount > 0)
@@ -1796,11 +1797,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsDeclareDocumentAsRecord(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistName, Expression<Func<string>> requestitemIDOrURL)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsDeclareDocumentAsRecord(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistName, Expression<Func<string>> requestitemIdOrURL)
         {
             var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
             var __workflow_requestlistName = WorkflowExpression.Compile(requestlistName, nameof(requestlistName), required: true);
-            var __workflow_requestitemIDOrURL = WorkflowExpression.Compile(requestitemIDOrURL, nameof(requestitemIDOrURL), required: true);
+            var __workflow_requestitemIdOrURL = WorkflowExpression.Compile(requestitemIdOrURL, nameof(requestitemIdOrURL), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/DeclareDocumentAsRecord";
@@ -1813,7 +1814,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
                 requestpropCount++;
                 request["listName"] = ExpressionConverter.ConvertO(__workflow_requestlistName);
                 requestpropCount++;
-                request["itemId"] = ExpressionConverter.ConvertO(__workflow_requestitemIDOrURL);
+                request["itemId"] = ExpressionConverter.ConvertO(__workflow_requestitemIdOrURL);
                 if (requestpropCount > 0)
                 {
                     callPayload.Body = request;
@@ -1824,11 +1825,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsUndeclareDocumentAsRecord(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistName, Expression<Func<string>> requestitemIDOrURL)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsUndeclareDocumentAsRecord(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistName, Expression<Func<string>> requestitemIdOrURL)
         {
             var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
             var __workflow_requestlistName = WorkflowExpression.Compile(requestlistName, nameof(requestlistName), required: true);
-            var __workflow_requestitemIDOrURL = WorkflowExpression.Compile(requestitemIDOrURL, nameof(requestitemIDOrURL), required: true);
+            var __workflow_requestitemIdOrURL = WorkflowExpression.Compile(requestitemIdOrURL, nameof(requestitemIdOrURL), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/UndeclareDocumentAsRecord";
@@ -1841,7 +1842,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
                 requestpropCount++;
                 request["listName"] = ExpressionConverter.ConvertO(__workflow_requestlistName);
                 requestpropCount++;
-                request["itemId"] = ExpressionConverter.ConvertO(__workflow_requestitemIDOrURL);
+                request["itemId"] = ExpressionConverter.ConvertO(__workflow_requestitemIdOrURL);
                 if (requestpropCount > 0)
                 {
                     callPayload.Body = request;
@@ -2035,7 +2036,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
     public class DocumentInfoResponse
     {
         [JsonProperty("id")]
-        public int DocumentID { get; set; }
+        public int DocumentId { get; set; }
 
         [JsonProperty("url")]
         public string DocumentURL { get; set; }
@@ -2044,7 +2045,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
     public class DocumentSetInfoResponse
     {
         [JsonProperty("id")]
-        public int DocumentSetID { get; set; }
+        public int DocumentSetId { get; set; }
 
         [JsonProperty("url")]
         public string DocumentSetURL { get; set; }
@@ -2053,7 +2054,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
     public class FolderInfoResponse
     {
         [JsonProperty("id")]
-        public int FolderID { get; set; }
+        public int FolderId { get; set; }
 
         [JsonProperty("url")]
         public string FolderURL { get; set; }
@@ -2082,7 +2083,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
     public class SharePointUserResponse
     {
         [JsonProperty("id")]
-        public int UserID { get; set; }
+        public int UserId { get; set; }
 
         [JsonProperty("loginName")]
         public string UserName { get; set; }
@@ -2115,7 +2116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
     public class ListItemIdResponse
     {
         [JsonProperty("resultItemId")]
-        public int ResultItemID { get; set; }
+        public int ResultItemId { get; set; }
     }
 
     public class WorkflowGuidResponse
@@ -2799,7 +2800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [EnumMember(Value = "ia-001")]
         Ia001,
         [EnumMember(Value = "id-ID")]
-        IdID,
+        IdId,
         [EnumMember(Value = "ig-NG")]
         IgNG,
         [EnumMember(Value = "ii-CN")]
@@ -2825,7 +2826,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [EnumMember(Value = "jmc-TZ")]
         JmcTZ,
         [EnumMember(Value = "jv-ID")]
-        JvID,
+        JvId,
         [EnumMember(Value = "ka-GE")]
         KaGE,
         [EnumMember(Value = "kab-DZ")]

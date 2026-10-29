@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
 {
     using System.Linq.Expressions;
@@ -54,10 +55,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IBodyWorkflowAction<ParseDocumentDeprecatedResponse, ApiConnectionActionConfiguration> ParseDocumentDeprecated(Expression<Func<string>> requestmodel, Expression<Func<string>> requestdocumentID, Expression<Func<requestpostprocessingtheOutputFormatInput>> requestpostprocessingtheOutputFormat = null, Expression<Func<requestpostprocessingtheStrategyUsedForAggregatingPredictionsInput>> requestpostprocessingtheStrategyUsedForAggregatingPredictions = null, Expression<Func<bool>> requestpreprocessingautoRotate = null, Expression<Func<int>> requestpreprocessingmaxPages = null, Expression<Func<string>> requestpreprocessingimageQuality = null)
+        public IBodyWorkflowAction<ParseDocumentDeprecatedResponse, ApiConnectionActionConfiguration> ParseDocumentDeprecated(Expression<Func<string>> requestmodel, Expression<Func<string>> requestdocumentId, Expression<Func<requestpostprocessingtheOutputFormatInput>> requestpostprocessingtheOutputFormat = null, Expression<Func<requestpostprocessingtheStrategyUsedForAggregatingPredictionsInput>> requestpostprocessingtheStrategyUsedForAggregatingPredictions = null, Expression<Func<bool>> requestpreprocessingautoRotate = null, Expression<Func<int>> requestpreprocessingmaxPages = null, Expression<Func<string>> requestpreprocessingimageQuality = null)
         {
             var __workflow_requestmodel = WorkflowExpression.Compile(requestmodel, nameof(requestmodel), required: true);
-            var __workflow_requestdocumentID = WorkflowExpression.Compile(requestdocumentID, nameof(requestdocumentID), required: true);
+            var __workflow_requestdocumentId = WorkflowExpression.Compile(requestdocumentId, nameof(requestdocumentId), required: true);
             var __workflow_requestpostprocessingtheOutputFormat = WorkflowExpression.Compile(requestpostprocessingtheOutputFormat, nameof(requestpostprocessingtheOutputFormat), required: false);
             var __workflow_requestpostprocessingtheStrategyUsedForAggregatingPredictions = WorkflowExpression.Compile(requestpostprocessingtheStrategyUsedForAggregatingPredictions, nameof(requestpostprocessingtheStrategyUsedForAggregatingPredictions), required: false);
             var __workflow_requestpreprocessingautoRotate = WorkflowExpression.Compile(requestpreprocessingautoRotate, nameof(requestpreprocessingautoRotate), required: false);
@@ -73,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
                 requestpropCount++;
                 request["modelId"] = ExpressionConverter.ConvertO(__workflow_requestmodel);
                 requestpropCount++;
-                request["documentId"] = ExpressionConverter.ConvertO(__workflow_requestdocumentID);
+                request["documentId"] = ExpressionConverter.ConvertO(__workflow_requestdocumentId);
                 var postprocessConfigObject = new JObject();
                 var postprocessConfigObjectpropCount = 0;
                 if (__workflow_requestpostprocessingtheOutputFormat != null)
@@ -150,48 +151,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IBodyWorkflowAction<CreateRunResponse, ApiConnectionActionConfiguration> CreateRun(Expression<Func<string>> agentId, Expression<Func<string>> variables = null, Expression<Func<string>> title = null, Expression<Func<string>> document = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateRun(Expression<Func<string>> agentId, Expression<Func<string>> actionId = null, Expression<Func<int>> maxWaitInterval = null, Expression<Func<string>> variables = null, Expression<Func<string>> title = null, Expression<Func<string>> document = null)
         {
             var __workflow_agentId = WorkflowExpression.Compile(agentId, nameof(agentId), required: true);
+            var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: false);
+            var __workflow_maxWaitInterval = WorkflowExpression.Compile(maxWaitInterval, nameof(maxWaitInterval), required: false);
             var __workflow_variables = WorkflowExpression.Compile(variables, nameof(variables), required: false);
             var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
             var __workflow_document = WorkflowExpression.Compile(document, nameof(document), required: false);
-            return new DeferredBodyAction<CreateRunResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/agents";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["AgentId"] = ExpressionConverter.Convert(__workflow_agentId);
                 if (__workflow_variables != null)
-                    callPayload.Headers["variables"] = ExpressionConverter.Convert(__workflow_variables);
+                    callPayload.Queries["variables"] = ExpressionConverter.Convert(__workflow_variables);
                 if (__workflow_title != null)
-                    callPayload.Headers["title"] = ExpressionConverter.Convert(__workflow_title);
+                    callPayload.Queries["title"] = ExpressionConverter.Convert(__workflow_title);
+                callPayload.Headers["AgentId"] = ExpressionConverter.Convert(__workflow_agentId);
+                if (__workflow_actionId != null)
+                    callPayload.Headers["ActionId"] = ExpressionConverter.Convert(__workflow_actionId);
+                if (__workflow_maxWaitInterval != null)
+                    callPayload.Headers["maxWaitInterval"] = ExpressionConverter.Convert(__workflow_maxWaitInterval);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_document);
-                return new ApiConnectionAction<CreateRunResponse>(callPayload);
+                return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Validate(Expression<Func<string>> actionId, Expression<Func<string>> xCradlSharedSecret)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Validate()
         {
-            var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
-            var __workflow_xCradlSharedSecret = WorkflowExpression.Compile(xCradlSharedSecret, nameof(xCradlSharedSecret), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/validate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["ActionId"] = ExpressionConverter.Convert(__workflow_actionId);
-                callPayload.Headers["X-Cradl-Shared-Secret"] = ExpressionConverter.Convert(__workflow_xCradlSharedSecret);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IBodyWorkflowAction<CreateExecutionDeprecatedResponse, ApiConnectionActionConfiguration> CreateExecutionDeprecated(Expression<Func<string>> workflowId, Expression<Func<string>> requestinputdocumentID, Expression<Func<string>> requestinputtitle = null)
+        public IBodyWorkflowAction<CreateExecutionDeprecatedResponse, ApiConnectionActionConfiguration> CreateExecutionDeprecated(Expression<Func<string>> workflowId, Expression<Func<string>> requestinputdocumentId, Expression<Func<string>> requestinputtitle = null)
         {
             var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
-            var __workflow_requestinputdocumentID = WorkflowExpression.Compile(requestinputdocumentID, nameof(requestinputdocumentID), required: true);
+            var __workflow_requestinputdocumentId = WorkflowExpression.Compile(requestinputdocumentId, nameof(requestinputdocumentId), required: true);
             var __workflow_requestinputtitle = WorkflowExpression.Compile(requestinputtitle, nameof(requestinputtitle), required: false);
             return new DeferredBodyAction<CreateExecutionDeprecatedResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -204,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
                 var inputObject = new JObject();
                 var inputObjectpropCount = 0;
                 inputObjectpropCount++;
-                inputObject["documentId"] = ExpressionConverter.ConvertO(__workflow_requestinputdocumentID);
+                inputObject["documentId"] = ExpressionConverter.ConvertO(__workflow_requestinputdocumentId);
                 if (__workflow_requestinputtitle != null)
                 {
                     inputObject["title"] = ExpressionConverter.ConvertO(__workflow_requestinputtitle);
@@ -369,15 +379,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         BESTNPAGES,
         [EnumMember(Value = "BEST_FIRST")]
         BESTFIRST
-    }
-
-    public class CreateRunResponse
-    {
-        [JsonProperty("runId")]
-        public string AgentRunId { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
     }
 
     public class CreateExecutionDeprecatedResponse

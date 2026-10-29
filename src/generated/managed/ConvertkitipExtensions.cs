@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
 {
     using System.Linq.Expressions;
@@ -14,19 +15,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<AccountResponse, ApiConnectionActionConfiguration> Account()
         {
-            var apiCallPath = "/account";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AccountResponse>(callPayload);
+            return new DeferredBodyAction<AccountResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/account";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AccountResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<FormListResponse, ApiConnectionActionConfiguration> FormList()
         {
-            var apiCallPath = "/forms";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FormListResponse>(callPayload);
+            return new DeferredBodyAction<FormListResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/forms";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FormListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
@@ -101,10 +108,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<SequenceListResponse, ApiConnectionActionConfiguration> SequenceList()
         {
-            var apiCallPath = "/sequences";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SequenceListResponse>(callPayload);
+            return new DeferredBodyAction<SequenceListResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/sequences";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SequenceListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
@@ -179,10 +189,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<TagListResponse, ApiConnectionActionConfiguration> TagList()
         {
-            var apiCallPath = "/tags";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TagListResponse>(callPayload);
+            return new DeferredBodyAction<TagListResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/tags";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TagListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
@@ -460,10 +473,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<BroadcastListResponse, ApiConnectionActionConfiguration> BroadcastList()
         {
-            var apiCallPath = "/broadcasts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BroadcastListResponse>(callPayload);
+            return new DeferredBodyAction<BroadcastListResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/broadcasts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<BroadcastListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]

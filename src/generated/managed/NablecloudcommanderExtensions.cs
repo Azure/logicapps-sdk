@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
 {
     using System.Linq.Expressions;
@@ -14,11 +15,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
         public IBodyWorkflowAction<GetOrganizationsResponse, ApiConnectionActionConfiguration> GetOrganizations()
         {
-            var apiCallPath = "/directory/v1/organizations";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["provider"] = Convert.ToString("spinpanel.platform");
-            return new ApiConnectionAction<GetOrganizationsResponse>(callPayload);
+            return new DeferredBodyAction<GetOrganizationsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/directory/v1/organizations";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["provider"] = Convert.ToString("spinpanel.platform");
+                return new ApiConnectionAction<GetOrganizationsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
@@ -561,11 +565,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
         public IBodyWorkflowAction<GetLocalesResponse, ApiConnectionActionConfiguration> GetLocales()
         {
-            var apiCallPath = "/directory/v1/locales";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["provider"] = Convert.ToString("spinpanel.platform");
-            return new ApiConnectionAction<GetLocalesResponse>(callPayload);
+            return new DeferredBodyAction<GetLocalesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/directory/v1/locales";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["provider"] = Convert.ToString("spinpanel.platform");
+                return new ApiConnectionAction<GetLocalesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
@@ -702,21 +709,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         public string ModifiedOn { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum skipInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "15")]
-        _15,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "100")]
-        _100
+        _0 = 0,
+        _5 = 5,
+        _15 = 15,
+        _30 = 30,
+        _50 = 50,
+        _100 = 100
     }
 
     public class CreateUserResponse

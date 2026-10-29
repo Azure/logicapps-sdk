@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 {
     using System.Linq.Expressions;
@@ -12,14 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
     public class BizzyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<BotReplyResponse, ApiConnectionActionConfiguration> SendReply(Expression<Func<string>> contentreplyText, Expression<Func<string>> contentreplyActivity, Expression<Func<bool>> contentshowInChat = null, Expression<Func<string>> contentcustomChannelData = null, Expression<Func<string>> contentsignalResponseJSON = null, Expression<Func<string>> contentmessageID = null)
+        public IBodyWorkflowAction<BotReplyResponse, ApiConnectionActionConfiguration> SendReply(Expression<Func<string>> contentreplyText, Expression<Func<string>> contentreplyActivity, Expression<Func<bool>> contentshowInChat = null, Expression<Func<string>> contentcustomChannelData = null, Expression<Func<string>> contentsignalResponseJSON = null, Expression<Func<string>> contentmessageId = null)
         {
             var __workflow_contentreplyText = WorkflowExpression.Compile(contentreplyText, nameof(contentreplyText), required: true);
             var __workflow_contentreplyActivity = WorkflowExpression.Compile(contentreplyActivity, nameof(contentreplyActivity), required: true);
             var __workflow_contentshowInChat = WorkflowExpression.Compile(contentshowInChat, nameof(contentshowInChat), required: false);
             var __workflow_contentcustomChannelData = WorkflowExpression.Compile(contentcustomChannelData, nameof(contentcustomChannelData), required: false);
             var __workflow_contentsignalResponseJSON = WorkflowExpression.Compile(contentsignalResponseJSON, nameof(contentsignalResponseJSON), required: false);
-            var __workflow_contentmessageID = WorkflowExpression.Compile(contentmessageID, nameof(contentmessageID), required: false);
+            var __workflow_contentmessageId = WorkflowExpression.Compile(contentmessageId, nameof(contentmessageId), required: false);
             return new DeferredBodyAction<BotReplyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/triggers/bot/reply";
@@ -59,9 +60,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                     contentpropCount++;
                 }
 
-                if (__workflow_contentmessageID != null)
+                if (__workflow_contentmessageId != null)
                 {
-                    content["messageId"] = ExpressionConverter.ConvertO(__workflow_contentmessageID);
+                    content["messageId"] = ExpressionConverter.ConvertO(__workflow_contentmessageId);
                     contentpropCount++;
                 }
 
@@ -241,11 +242,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var contentpropCount = 0;
                 contentpropCount++;
                 content["EnterpriseBot"] = ExpressionConverter.ConvertO(__workflow_contenttargetBot);
-                var teamIDStrObject = new JObject();
-                var teamIDStrObjectpropCount = 0;
-                if (teamIDStrObjectpropCount > 0)
+                var teamIdStrObject = new JObject();
+                var teamIdStrObjectpropCount = 0;
+                if (teamIdStrObjectpropCount > 0)
                 {
-                    content["teamIDStr"] = teamIDStrObject;
+                    content["teamIDStr"] = teamIdStrObject;
                     contentpropCount++;
                 }
 

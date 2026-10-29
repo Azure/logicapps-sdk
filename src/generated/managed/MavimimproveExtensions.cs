@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
 {
     using System.Linq.Expressions;
@@ -195,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateBooleanSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<bool>> bodydata = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateBooleanSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyRequired = null, Expression<Func<bool>> bodyReadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<bool>> bodydata = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -210,8 +211,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodysetName = WorkflowExpression.Compile(bodysetName, nameof(bodysetName), required: false);
             var __workflow_bodyfieldName = WorkflowExpression.Compile(bodyfieldName, nameof(bodyfieldName), required: false);
             var __workflow_bodyfieldValueType = WorkflowExpression.Compile(bodyfieldValueType, nameof(bodyfieldValueType), required: false);
-            var __workflow_bodyrequired = WorkflowExpression.Compile(bodyrequired, nameof(bodyrequired), required: false);
-            var __workflow_bodyreadonly = WorkflowExpression.Compile(bodyreadonly, nameof(bodyreadonly), required: false);
+            var __workflow_bodyRequired = WorkflowExpression.Compile(bodyRequired, nameof(bodyRequired), required: false);
+            var __workflow_bodyReadonly = WorkflowExpression.Compile(bodyReadonly, nameof(bodyReadonly), required: false);
             var __workflow_bodyusage = WorkflowExpression.Compile(bodyusage, nameof(bodyusage), required: false);
             var __workflow_bodyrelationshipCategorydcv = WorkflowExpression.Compile(bodyrelationshipCategorydcv, nameof(bodyrelationshipCategorydcv), required: false);
             var __workflow_bodyrelationshipCategoryname = WorkflowExpression.Compile(bodyrelationshipCategoryname, nameof(bodyrelationshipCategoryname), required: false);
@@ -276,15 +277,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyrequired != null)
+                if (__workflow_bodyRequired != null)
                 {
-                    body["required"] = ExpressionConverter.ConvertO(__workflow_bodyrequired);
+                    body["required"] = ExpressionConverter.ConvertO(__workflow_bodyRequired);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyreadonly != null)
+                if (__workflow_bodyReadonly != null)
                 {
-                    body["readonly"] = ExpressionConverter.ConvertO(__workflow_bodyreadonly);
+                    body["readonly"] = ExpressionConverter.ConvertO(__workflow_bodyReadonly);
                     bodypropCount++;
                 }
 
@@ -368,7 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateTextSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<string>> bodydata = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateTextSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyRequired = null, Expression<Func<bool>> bodyReadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<string>> bodydata = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -383,8 +384,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodysetName = WorkflowExpression.Compile(bodysetName, nameof(bodysetName), required: false);
             var __workflow_bodyfieldName = WorkflowExpression.Compile(bodyfieldName, nameof(bodyfieldName), required: false);
             var __workflow_bodyfieldValueType = WorkflowExpression.Compile(bodyfieldValueType, nameof(bodyfieldValueType), required: false);
-            var __workflow_bodyrequired = WorkflowExpression.Compile(bodyrequired, nameof(bodyrequired), required: false);
-            var __workflow_bodyreadonly = WorkflowExpression.Compile(bodyreadonly, nameof(bodyreadonly), required: false);
+            var __workflow_bodyRequired = WorkflowExpression.Compile(bodyRequired, nameof(bodyRequired), required: false);
+            var __workflow_bodyReadonly = WorkflowExpression.Compile(bodyReadonly, nameof(bodyReadonly), required: false);
             var __workflow_bodyusage = WorkflowExpression.Compile(bodyusage, nameof(bodyusage), required: false);
             var __workflow_bodyrelationshipCategorydcv = WorkflowExpression.Compile(bodyrelationshipCategorydcv, nameof(bodyrelationshipCategorydcv), required: false);
             var __workflow_bodyrelationshipCategoryname = WorkflowExpression.Compile(bodyrelationshipCategoryname, nameof(bodyrelationshipCategoryname), required: false);
@@ -449,15 +450,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyrequired != null)
+                if (__workflow_bodyRequired != null)
                 {
-                    body["required"] = ExpressionConverter.ConvertO(__workflow_bodyrequired);
+                    body["required"] = ExpressionConverter.ConvertO(__workflow_bodyRequired);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyreadonly != null)
+                if (__workflow_bodyReadonly != null)
                 {
-                    body["readonly"] = ExpressionConverter.ConvertO(__workflow_bodyreadonly);
+                    body["readonly"] = ExpressionConverter.ConvertO(__workflow_bodyReadonly);
                     bodypropCount++;
                 }
 
@@ -541,7 +542,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateTextMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<string[]>> bodydata = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateTextMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyRequired = null, Expression<Func<bool>> bodyReadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<string[]>> bodydata = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -556,8 +557,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodysetName = WorkflowExpression.Compile(bodysetName, nameof(bodysetName), required: false);
             var __workflow_bodyfieldName = WorkflowExpression.Compile(bodyfieldName, nameof(bodyfieldName), required: false);
             var __workflow_bodyfieldValueType = WorkflowExpression.Compile(bodyfieldValueType, nameof(bodyfieldValueType), required: false);
-            var __workflow_bodyrequired = WorkflowExpression.Compile(bodyrequired, nameof(bodyrequired), required: false);
-            var __workflow_bodyreadonly = WorkflowExpression.Compile(bodyreadonly, nameof(bodyreadonly), required: false);
+            var __workflow_bodyRequired = WorkflowExpression.Compile(bodyRequired, nameof(bodyRequired), required: false);
+            var __workflow_bodyReadonly = WorkflowExpression.Compile(bodyReadonly, nameof(bodyReadonly), required: false);
             var __workflow_bodyusage = WorkflowExpression.Compile(bodyusage, nameof(bodyusage), required: false);
             var __workflow_bodyrelationshipCategorydcv = WorkflowExpression.Compile(bodyrelationshipCategorydcv, nameof(bodyrelationshipCategorydcv), required: false);
             var __workflow_bodyrelationshipCategoryname = WorkflowExpression.Compile(bodyrelationshipCategoryname, nameof(bodyrelationshipCategoryname), required: false);
@@ -622,15 +623,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyrequired != null)
+                if (__workflow_bodyRequired != null)
                 {
-                    body["required"] = ExpressionConverter.ConvertO(__workflow_bodyrequired);
+                    body["required"] = ExpressionConverter.ConvertO(__workflow_bodyRequired);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyreadonly != null)
+                if (__workflow_bodyReadonly != null)
                 {
-                    body["readonly"] = ExpressionConverter.ConvertO(__workflow_bodyreadonly);
+                    body["readonly"] = ExpressionConverter.ConvertO(__workflow_bodyReadonly);
                     bodypropCount++;
                 }
 
@@ -714,7 +715,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateNumberSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<int>> bodydata = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateNumberSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyRequired = null, Expression<Func<bool>> bodyReadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<int>> bodydata = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -729,8 +730,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodysetName = WorkflowExpression.Compile(bodysetName, nameof(bodysetName), required: false);
             var __workflow_bodyfieldName = WorkflowExpression.Compile(bodyfieldName, nameof(bodyfieldName), required: false);
             var __workflow_bodyfieldValueType = WorkflowExpression.Compile(bodyfieldValueType, nameof(bodyfieldValueType), required: false);
-            var __workflow_bodyrequired = WorkflowExpression.Compile(bodyrequired, nameof(bodyrequired), required: false);
-            var __workflow_bodyreadonly = WorkflowExpression.Compile(bodyreadonly, nameof(bodyreadonly), required: false);
+            var __workflow_bodyRequired = WorkflowExpression.Compile(bodyRequired, nameof(bodyRequired), required: false);
+            var __workflow_bodyReadonly = WorkflowExpression.Compile(bodyReadonly, nameof(bodyReadonly), required: false);
             var __workflow_bodyusage = WorkflowExpression.Compile(bodyusage, nameof(bodyusage), required: false);
             var __workflow_bodyrelationshipCategorydcv = WorkflowExpression.Compile(bodyrelationshipCategorydcv, nameof(bodyrelationshipCategorydcv), required: false);
             var __workflow_bodyrelationshipCategoryname = WorkflowExpression.Compile(bodyrelationshipCategoryname, nameof(bodyrelationshipCategoryname), required: false);
@@ -795,15 +796,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyrequired != null)
+                if (__workflow_bodyRequired != null)
                 {
-                    body["required"] = ExpressionConverter.ConvertO(__workflow_bodyrequired);
+                    body["required"] = ExpressionConverter.ConvertO(__workflow_bodyRequired);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyreadonly != null)
+                if (__workflow_bodyReadonly != null)
                 {
-                    body["readonly"] = ExpressionConverter.ConvertO(__workflow_bodyreadonly);
+                    body["readonly"] = ExpressionConverter.ConvertO(__workflow_bodyReadonly);
                     bodypropCount++;
                 }
 
@@ -887,7 +888,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateNumberMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<int[]>> bodydata = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateNumberMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyRequired = null, Expression<Func<bool>> bodyReadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<int[]>> bodydata = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -902,8 +903,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodysetName = WorkflowExpression.Compile(bodysetName, nameof(bodysetName), required: false);
             var __workflow_bodyfieldName = WorkflowExpression.Compile(bodyfieldName, nameof(bodyfieldName), required: false);
             var __workflow_bodyfieldValueType = WorkflowExpression.Compile(bodyfieldValueType, nameof(bodyfieldValueType), required: false);
-            var __workflow_bodyrequired = WorkflowExpression.Compile(bodyrequired, nameof(bodyrequired), required: false);
-            var __workflow_bodyreadonly = WorkflowExpression.Compile(bodyreadonly, nameof(bodyreadonly), required: false);
+            var __workflow_bodyRequired = WorkflowExpression.Compile(bodyRequired, nameof(bodyRequired), required: false);
+            var __workflow_bodyReadonly = WorkflowExpression.Compile(bodyReadonly, nameof(bodyReadonly), required: false);
             var __workflow_bodyusage = WorkflowExpression.Compile(bodyusage, nameof(bodyusage), required: false);
             var __workflow_bodyrelationshipCategorydcv = WorkflowExpression.Compile(bodyrelationshipCategorydcv, nameof(bodyrelationshipCategorydcv), required: false);
             var __workflow_bodyrelationshipCategoryname = WorkflowExpression.Compile(bodyrelationshipCategoryname, nameof(bodyrelationshipCategoryname), required: false);
@@ -968,15 +969,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyrequired != null)
+                if (__workflow_bodyRequired != null)
                 {
-                    body["required"] = ExpressionConverter.ConvertO(__workflow_bodyrequired);
+                    body["required"] = ExpressionConverter.ConvertO(__workflow_bodyRequired);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyreadonly != null)
+                if (__workflow_bodyReadonly != null)
                 {
-                    body["readonly"] = ExpressionConverter.ConvertO(__workflow_bodyreadonly);
+                    body["readonly"] = ExpressionConverter.ConvertO(__workflow_bodyReadonly);
                     bodypropCount++;
                 }
 
@@ -1060,7 +1061,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateDecimalSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<double>> bodydata = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateDecimalSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyRequired = null, Expression<Func<bool>> bodyReadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<double>> bodydata = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -1075,8 +1076,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodysetName = WorkflowExpression.Compile(bodysetName, nameof(bodysetName), required: false);
             var __workflow_bodyfieldName = WorkflowExpression.Compile(bodyfieldName, nameof(bodyfieldName), required: false);
             var __workflow_bodyfieldValueType = WorkflowExpression.Compile(bodyfieldValueType, nameof(bodyfieldValueType), required: false);
-            var __workflow_bodyrequired = WorkflowExpression.Compile(bodyrequired, nameof(bodyrequired), required: false);
-            var __workflow_bodyreadonly = WorkflowExpression.Compile(bodyreadonly, nameof(bodyreadonly), required: false);
+            var __workflow_bodyRequired = WorkflowExpression.Compile(bodyRequired, nameof(bodyRequired), required: false);
+            var __workflow_bodyReadonly = WorkflowExpression.Compile(bodyReadonly, nameof(bodyReadonly), required: false);
             var __workflow_bodyusage = WorkflowExpression.Compile(bodyusage, nameof(bodyusage), required: false);
             var __workflow_bodyrelationshipCategorydcv = WorkflowExpression.Compile(bodyrelationshipCategorydcv, nameof(bodyrelationshipCategorydcv), required: false);
             var __workflow_bodyrelationshipCategoryname = WorkflowExpression.Compile(bodyrelationshipCategoryname, nameof(bodyrelationshipCategoryname), required: false);
@@ -1141,15 +1142,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyrequired != null)
+                if (__workflow_bodyRequired != null)
                 {
-                    body["required"] = ExpressionConverter.ConvertO(__workflow_bodyrequired);
+                    body["required"] = ExpressionConverter.ConvertO(__workflow_bodyRequired);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyreadonly != null)
+                if (__workflow_bodyReadonly != null)
                 {
-                    body["readonly"] = ExpressionConverter.ConvertO(__workflow_bodyreadonly);
+                    body["readonly"] = ExpressionConverter.ConvertO(__workflow_bodyReadonly);
                     bodypropCount++;
                 }
 
@@ -1233,7 +1234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateDecimalMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<double[]>> bodydata = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateDecimalMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyRequired = null, Expression<Func<bool>> bodyReadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<double[]>> bodydata = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -1248,8 +1249,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodysetName = WorkflowExpression.Compile(bodysetName, nameof(bodysetName), required: false);
             var __workflow_bodyfieldName = WorkflowExpression.Compile(bodyfieldName, nameof(bodyfieldName), required: false);
             var __workflow_bodyfieldValueType = WorkflowExpression.Compile(bodyfieldValueType, nameof(bodyfieldValueType), required: false);
-            var __workflow_bodyrequired = WorkflowExpression.Compile(bodyrequired, nameof(bodyrequired), required: false);
-            var __workflow_bodyreadonly = WorkflowExpression.Compile(bodyreadonly, nameof(bodyreadonly), required: false);
+            var __workflow_bodyRequired = WorkflowExpression.Compile(bodyRequired, nameof(bodyRequired), required: false);
+            var __workflow_bodyReadonly = WorkflowExpression.Compile(bodyReadonly, nameof(bodyReadonly), required: false);
             var __workflow_bodyusage = WorkflowExpression.Compile(bodyusage, nameof(bodyusage), required: false);
             var __workflow_bodyrelationshipCategorydcv = WorkflowExpression.Compile(bodyrelationshipCategorydcv, nameof(bodyrelationshipCategorydcv), required: false);
             var __workflow_bodyrelationshipCategoryname = WorkflowExpression.Compile(bodyrelationshipCategoryname, nameof(bodyrelationshipCategoryname), required: false);
@@ -1314,15 +1315,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyrequired != null)
+                if (__workflow_bodyRequired != null)
                 {
-                    body["required"] = ExpressionConverter.ConvertO(__workflow_bodyrequired);
+                    body["required"] = ExpressionConverter.ConvertO(__workflow_bodyRequired);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyreadonly != null)
+                if (__workflow_bodyReadonly != null)
                 {
-                    body["readonly"] = ExpressionConverter.ConvertO(__workflow_bodyreadonly);
+                    body["readonly"] = ExpressionConverter.ConvertO(__workflow_bodyReadonly);
                     bodypropCount++;
                 }
 
@@ -1406,7 +1407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateDateSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<string>> bodydata = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateDateSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyRequired = null, Expression<Func<bool>> bodyReadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<string>> bodydata = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -1421,8 +1422,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodysetName = WorkflowExpression.Compile(bodysetName, nameof(bodysetName), required: false);
             var __workflow_bodyfieldName = WorkflowExpression.Compile(bodyfieldName, nameof(bodyfieldName), required: false);
             var __workflow_bodyfieldValueType = WorkflowExpression.Compile(bodyfieldValueType, nameof(bodyfieldValueType), required: false);
-            var __workflow_bodyrequired = WorkflowExpression.Compile(bodyrequired, nameof(bodyrequired), required: false);
-            var __workflow_bodyreadonly = WorkflowExpression.Compile(bodyreadonly, nameof(bodyreadonly), required: false);
+            var __workflow_bodyRequired = WorkflowExpression.Compile(bodyRequired, nameof(bodyRequired), required: false);
+            var __workflow_bodyReadonly = WorkflowExpression.Compile(bodyReadonly, nameof(bodyReadonly), required: false);
             var __workflow_bodyusage = WorkflowExpression.Compile(bodyusage, nameof(bodyusage), required: false);
             var __workflow_bodyrelationshipCategorydcv = WorkflowExpression.Compile(bodyrelationshipCategorydcv, nameof(bodyrelationshipCategorydcv), required: false);
             var __workflow_bodyrelationshipCategoryname = WorkflowExpression.Compile(bodyrelationshipCategoryname, nameof(bodyrelationshipCategoryname), required: false);
@@ -1487,15 +1488,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyrequired != null)
+                if (__workflow_bodyRequired != null)
                 {
-                    body["required"] = ExpressionConverter.ConvertO(__workflow_bodyrequired);
+                    body["required"] = ExpressionConverter.ConvertO(__workflow_bodyRequired);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyreadonly != null)
+                if (__workflow_bodyReadonly != null)
                 {
-                    body["readonly"] = ExpressionConverter.ConvertO(__workflow_bodyreadonly);
+                    body["readonly"] = ExpressionConverter.ConvertO(__workflow_bodyReadonly);
                     bodypropCount++;
                 }
 
@@ -1579,7 +1580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateDateMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<string[]>> bodydata = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateDateMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyRequired = null, Expression<Func<bool>> bodyReadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<string[]>> bodydata = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -1594,8 +1595,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodysetName = WorkflowExpression.Compile(bodysetName, nameof(bodysetName), required: false);
             var __workflow_bodyfieldName = WorkflowExpression.Compile(bodyfieldName, nameof(bodyfieldName), required: false);
             var __workflow_bodyfieldValueType = WorkflowExpression.Compile(bodyfieldValueType, nameof(bodyfieldValueType), required: false);
-            var __workflow_bodyrequired = WorkflowExpression.Compile(bodyrequired, nameof(bodyrequired), required: false);
-            var __workflow_bodyreadonly = WorkflowExpression.Compile(bodyreadonly, nameof(bodyreadonly), required: false);
+            var __workflow_bodyRequired = WorkflowExpression.Compile(bodyRequired, nameof(bodyRequired), required: false);
+            var __workflow_bodyReadonly = WorkflowExpression.Compile(bodyReadonly, nameof(bodyReadonly), required: false);
             var __workflow_bodyusage = WorkflowExpression.Compile(bodyusage, nameof(bodyusage), required: false);
             var __workflow_bodyrelationshipCategorydcv = WorkflowExpression.Compile(bodyrelationshipCategorydcv, nameof(bodyrelationshipCategorydcv), required: false);
             var __workflow_bodyrelationshipCategoryname = WorkflowExpression.Compile(bodyrelationshipCategoryname, nameof(bodyrelationshipCategoryname), required: false);
@@ -1660,15 +1661,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyrequired != null)
+                if (__workflow_bodyRequired != null)
                 {
-                    body["required"] = ExpressionConverter.ConvertO(__workflow_bodyrequired);
+                    body["required"] = ExpressionConverter.ConvertO(__workflow_bodyRequired);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyreadonly != null)
+                if (__workflow_bodyReadonly != null)
                 {
-                    body["readonly"] = ExpressionConverter.ConvertO(__workflow_bodyreadonly);
+                    body["readonly"] = ExpressionConverter.ConvertO(__workflow_bodyReadonly);
                     bodypropCount++;
                 }
 
@@ -1752,7 +1753,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateListSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateListSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyRequired = null, Expression<Func<bool>> bodyReadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -1767,8 +1768,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
             var __workflow_bodysetName = WorkflowExpression.Compile(bodysetName, nameof(bodysetName), required: false);
             var __workflow_bodyfieldName = WorkflowExpression.Compile(bodyfieldName, nameof(bodyfieldName), required: false);
             var __workflow_bodyfieldValueType = WorkflowExpression.Compile(bodyfieldValueType, nameof(bodyfieldValueType), required: false);
-            var __workflow_bodyrequired = WorkflowExpression.Compile(bodyrequired, nameof(bodyrequired), required: false);
-            var __workflow_bodyreadonly = WorkflowExpression.Compile(bodyreadonly, nameof(bodyreadonly), required: false);
+            var __workflow_bodyRequired = WorkflowExpression.Compile(bodyRequired, nameof(bodyRequired), required: false);
+            var __workflow_bodyReadonly = WorkflowExpression.Compile(bodyReadonly, nameof(bodyReadonly), required: false);
             var __workflow_bodyusage = WorkflowExpression.Compile(bodyusage, nameof(bodyusage), required: false);
             var __workflow_bodyrelationshipCategorydcv = WorkflowExpression.Compile(bodyrelationshipCategorydcv, nameof(bodyrelationshipCategorydcv), required: false);
             var __workflow_bodyrelationshipCategoryname = WorkflowExpression.Compile(bodyrelationshipCategoryname, nameof(bodyrelationshipCategoryname), required: false);
@@ -1832,15 +1833,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyrequired != null)
+                if (__workflow_bodyRequired != null)
                 {
-                    body["required"] = ExpressionConverter.ConvertO(__workflow_bodyrequired);
+                    body["required"] = ExpressionConverter.ConvertO(__workflow_bodyRequired);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyreadonly != null)
+                if (__workflow_bodyReadonly != null)
                 {
-                    body["readonly"] = ExpressionConverter.ConvertO(__workflow_bodyreadonly);
+                    body["readonly"] = ExpressionConverter.ConvertO(__workflow_bodyReadonly);
                     bodypropCount++;
                 }
 
@@ -2534,10 +2535,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Version()
         {
-            var apiCallPath = "/v1/version";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/version";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 

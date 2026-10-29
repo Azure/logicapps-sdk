@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
 {
     using System.Linq.Expressions;
@@ -249,55 +250,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
 
     public class ProjectonlineTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggerProjectsWrapper, ApiConnectionTriggerConfiguration> OnNewProject(Expression<Func<string>> siteUrl, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerProjectsWrapper, ApiConnectionTriggerConfiguration> OnNewProject(Expression<Func<string>> siteUrl, Expression<Func<string>> select, FlowRecurrence recurrence = null)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: true);
             return new DeferredBodyTrigger<TriggerProjectsWrapper, ApiConnectionTriggerConfiguration>(() =>
             {
-                var apiCallPath = "/trigger/_api/ProjectData/Projects";
+                var apiCallPath = "/v2/trigger/_api/ProjectData/Projects";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
+                callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
                 return new ApiConnectionTrigger<TriggerProjectsWrapper>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<TriggerProjectsWrapper, ApiConnectionTriggerConfiguration> OnProjectPublished(Expression<Func<string>> siteUrl, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerResourcesWrapper, ApiConnectionTriggerConfiguration> OnNewResource(Expression<Func<string>> siteUrl, Expression<Func<string>> select, FlowRecurrence recurrence = null)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
-            return new DeferredBodyTrigger<TriggerProjectsWrapper, ApiConnectionTriggerConfiguration>(() =>
-            {
-                var apiCallPath = "/trigger/_api/ProjectData/PublishedProjects";
-                var apiCallHttpMethod = "get";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
-                return new ApiConnectionTrigger<TriggerProjectsWrapper>(callPayload, recurrence: recurrence);
-            });
-        }
-
-        public IBodyWorkflowTrigger<TriggerResourcesWrapper, ApiConnectionTriggerConfiguration> OnNewResource(Expression<Func<string>> siteUrl, FlowRecurrence recurrence = null)
-        {
-            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: true);
             return new DeferredBodyTrigger<TriggerResourcesWrapper, ApiConnectionTriggerConfiguration>(() =>
             {
-                var apiCallPath = "/trigger/_api/ProjectData/Resources";
+                var apiCallPath = "/v2/trigger/_api/ProjectData/Resources";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
+                callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
                 return new ApiConnectionTrigger<TriggerResourcesWrapper>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<TriggerTasksWrapper, ApiConnectionTriggerConfiguration> OnNewTask(Expression<Func<string>> siteUrl, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerTasksWrapper, ApiConnectionTriggerConfiguration> OnNewTask(Expression<Func<string>> siteUrl, Expression<Func<string>> select, FlowRecurrence recurrence = null)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: true);
             return new DeferredBodyTrigger<TriggerTasksWrapper, ApiConnectionTriggerConfiguration>(() =>
             {
-                var apiCallPath = "/trigger/_api/ProjectData/Tasks";
+                var apiCallPath = "/v2/trigger/_api/ProjectData/Tasks";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
+                callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
                 return new ApiConnectionTrigger<TriggerTasksWrapper>(callPayload, recurrence: recurrence);
+            });
+        }
+
+        public IBodyWorkflowTrigger<TriggerProjectsWrapper, ApiConnectionTriggerConfiguration> OnProjectPublished(Expression<Func<string>> siteUrl, Expression<Func<string>> select, FlowRecurrence recurrence = null)
+        {
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: true);
+            return new DeferredBodyTrigger<TriggerProjectsWrapper, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/v2/trigger/_api/ProjectData/PublishedProjects";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(__workflow_siteUrl);
+                callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
+                return new ApiConnectionTrigger<TriggerProjectsWrapper>(callPayload, recurrence: recurrence);
             });
         }
     }

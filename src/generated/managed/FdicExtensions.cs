@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
 {
     using System.Linq.Expressions;
@@ -781,50 +782,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         _1
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum Data1MAINOFFType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1
+        _0 = 0,
+        _1 = 1
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum Data1SERVTYPEType
     {
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "13")]
-        _13,
-        [EnumMember(Value = "14")]
-        _14,
-        [EnumMember(Value = "15")]
-        _15,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "21")]
-        _21,
-        [EnumMember(Value = "22")]
-        _22,
-        [EnumMember(Value = "23")]
-        _23,
-        [EnumMember(Value = "24")]
-        _24,
-        [EnumMember(Value = "25")]
-        _25,
-        [EnumMember(Value = "26")]
-        _26,
-        [EnumMember(Value = "27")]
-        _27,
-        [EnumMember(Value = "28")]
-        _28,
-        [EnumMember(Value = "29")]
-        _29,
-        [EnumMember(Value = "30")]
-        _30
+        _11 = 11,
+        _12 = 12,
+        _13 = 13,
+        _14 = 14,
+        _15 = 15,
+        _16 = 16,
+        _21 = 21,
+        _22 = 22,
+        _23 = 23,
+        _24 = 24,
+        _25 = 25,
+        _26 = 26,
+        _27 = 27,
+        _28 = 28,
+        _29 = 29,
+        _30 = 30
     }
 
     public class HistoryResponse
@@ -1581,7 +1562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         public int OTLNCNTA { get; set; }
 
         [JsonProperty("PAID_OFF")]
-        public int PAIDOFF { get; set; }
+        public int PAIdOFF { get; set; }
         public int P3LNLS { get; set; }
         public int P9LNLS { get; set; }
         public int PTXNOINC { get; set; }
@@ -1700,8 +1681,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         REP,
         [EnumMember(Value = "P&A")]
         PA,
+        [EnumMember(Value = "PA")]
+        PA2,
         PI,
-        IDT,
+        [EnumMember(Value = "IDT")]
+        IdT,
         MGR,
         PO
     }
@@ -1808,7 +1792,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         public double PLACENUM { get; set; }
         public string REGAGNT { get; set; }
         public double RSSDHCR { get; set; }
-        public double RSSDID { get; set; }
+
+        [JsonProperty("RSSDID")]
+        public double RSSDId { get; set; }
 
         [JsonProperty("SIMS_ACQUIRED_DATE")]
         public string SIMSACQUIREDDATE { get; set; }

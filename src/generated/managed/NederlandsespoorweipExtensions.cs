@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nederlandsespoorweip
 {
     using System.Linq.Expressions;
@@ -81,10 +82,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nederlandsespoorweip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nederlandsespoorweip")]
         public IBodyWorkflowAction<GetStationsResponse, ApiConnectionActionConfiguration> GetStations()
         {
-            var apiCallPath = "/api/v2/stations";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetStationsResponse>(callPayload);
+            return new DeferredBodyAction<GetStationsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/v2/stations";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetStationsResponse>(callPayload);
+            });
         }
     }
 

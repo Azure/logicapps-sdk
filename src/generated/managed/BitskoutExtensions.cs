@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         public IBodyWorkflowAction<ListPluginsResponseItem[], ApiConnectionActionConfiguration> ListPlugins()
         {
-            var apiCallPath = "/powerauto/plugins";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListPluginsResponseItem[]>(callPayload);
+            return new DeferredBodyAction<ListPluginsResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/powerauto/plugins";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListPluginsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
@@ -397,7 +401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         public string INVOICERECEIPTDATE { get; set; }
 
         [JsonProperty("INVOICE_RECEIPT_ID")]
-        public string INVOICERECEIPTID { get; set; }
+        public string INVOICERECEIPTId { get; set; }
 
         [JsonProperty("LINE_ITEMS")]
         public string LINEITEMS { get; set; }
@@ -449,7 +453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         public string PURCHASEORDERDATE { get; set; }
 
         [JsonProperty("PURCHASE_ORDER_ID")]
-        public string PURCHASEORDERID { get; set; }
+        public string PURCHASEORDERId { get; set; }
 
         [JsonProperty("PURCHASE_ORDER_NUMBER")]
         public string PURCHASEORDERNUMBER { get; set; }
@@ -465,7 +469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         public string RawJSON { get; set; }
 
         [JsonProperty("TAX_ID")]
-        public string TAXID { get; set; }
+        public string TAXId { get; set; }
         public string TOTAL { get; set; }
 
         [JsonProperty("TRACKING_NUMBER")]

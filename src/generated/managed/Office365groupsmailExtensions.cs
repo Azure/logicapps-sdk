@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
 {
     using System.Linq.Expressions;
@@ -550,7 +551,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         public string Context { get; set; }
 
         [JsonProperty("id")]
-        public string ConversationID { get; set; }
+        public string ConversationId { get; set; }
 
         [JsonProperty("threads@odata.context")]
         public string ThreadsOdataContext { get; set; }
@@ -562,7 +563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
     public class CreateConversationResponseConversationThreadsTypeItem
     {
         [JsonProperty("id")]
-        public string ThreadID { get; set; }
+        public string ThreadId { get; set; }
     }
 
     public class GetUsersGraphAction
@@ -590,7 +591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
     public class Conversation
     {
         [JsonProperty("id")]
-        public string ConversationID { get; set; }
+        public string ConversationId { get; set; }
 
         [JsonProperty("topic")]
         public string ConversationTopic { get; set; }
@@ -614,7 +615,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
     public class ConversationThread
     {
         [JsonProperty("id")]
-        public string ConversationThreadID { get; set; }
+        public string ConversationThreadId { get; set; }
 
         [JsonProperty("topic")]
         public string ConversationTopic { get; set; }
@@ -662,7 +663,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
     public class Post
     {
         [JsonProperty("id")]
-        public string PostID { get; set; }
+        public string PostId { get; set; }
 
         [JsonProperty("createdDateTime")]
         public string PostCreatedTimestamp { get; set; }
@@ -674,10 +675,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         public string PostChangeKey { get; set; }
 
         [JsonProperty("conversationId")]
-        public string PostConversationID { get; set; }
+        public string PostConversationId { get; set; }
 
         [JsonProperty("conversationThreadId")]
-        public string PostConversationThreadID { get; set; }
+        public string PostConversationThreadId { get; set; }
 
         [JsonProperty("categories")]
         public string[] PostCategories { get; set; }
@@ -716,7 +717,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
     public class Attachment
     {
         [JsonProperty("id")]
-        public string AttachmentID { get; set; }
+        public string AttachmentId { get; set; }
 
         [JsonProperty("name")]
         public string AttachmentName { get; set; }
@@ -749,7 +750,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         public string Context { get; set; }
 
         [JsonProperty("id")]
-        public string ConversationThreadID { get; set; }
+        public string ConversationThreadId { get; set; }
     }
 
     public class ListGroupThreadsResponse
@@ -804,7 +805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
     public class ConversationTriggerResponse
     {
         [JsonProperty("id")]
-        public string ConversationID { get; set; }
+        public string ConversationId { get; set; }
 
         [JsonProperty("lastDeliveredDateTime")]
         public string LastDeliveredTimestamp { get; set; }
@@ -816,7 +817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
     public class ConversationThreadTriggerResponse
     {
         [JsonProperty("id")]
-        public string ConversationThreadID { get; set; }
+        public string ConversationThreadId { get; set; }
 
         [JsonProperty("posts")]
         public PostTriggerResponse[] Posts { get; set; }
@@ -825,7 +826,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
     public class PostTriggerResponse
     {
         [JsonProperty("id")]
-        public string PostID { get; set; }
+        public string PostId { get; set; }
 
         [JsonProperty("lastModifiedDateTime")]
         public string PostLastModifiedTimestamp { get; set; }

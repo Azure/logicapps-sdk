@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
 {
     using System.Linq.Expressions;
@@ -80,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
 
     public class AzurequeuesTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Messages, ApiConnectionTriggerConfiguration> OnMessages(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<string>> visibilitytimeout = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Messages, ApiConnectionTriggerConfiguration> OnMessagesV2(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<string>> visibilitytimeout = null, FlowRecurrence recurrence = null)
         {
             var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
@@ -96,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
             });
         }
 
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> OnMessageThresholdReached(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<int>> threshold, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> OnMessageThresholdReachedV2(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<int>> threshold, FlowRecurrence recurrence = null)
         {
             var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
@@ -114,18 +115,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
 
     public class Messages
     {
-        public MessagesQueueMessagesListType QueueMessagesList { get; set; }
+        public QueueMessagesList QueueMessagesList { get; set; }
     }
 
-    public class MessagesQueueMessagesListType
+    public class QueueMessagesList
     {
-        public MessagesQueueMessagesListTypeQueueMessageTypeItem[] QueueMessage { get; set; }
+        public QueueMessage[] QueueMessage { get; set; }
     }
 
-    public class MessagesQueueMessagesListTypeQueueMessageTypeItem
+    public class QueueMessage
     {
-        [JsonProperty("MessageId")]
-        public string MessageID { get; set; }
+        public string MessageId { get; set; }
         public string InsertionTime { get; set; }
         public string ExpirationTime { get; set; }
         public string PopReceipt { get; set; }
@@ -133,6 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
         [JsonProperty("TimeNextVisible")]
         public string NextVisibleTime { get; set; }
         public string MessageText { get; set; }
+        public string DequeueCount { get; set; }
     }
 
     public class Queue

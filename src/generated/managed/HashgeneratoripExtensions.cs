@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashgeneratorip
 {
     using System.Linq.Expressions;
@@ -12,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashgeneratorip
     public class HashgeneratoripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashgeneratorip")]
-        public IBodyWorkflowAction<HashResponse, ApiConnectionActionConfiguration> Hash(Expression<Func<string>> bodystring, Expression<Func<bodytypeInput>> bodytype = null)
+        public IBodyWorkflowAction<HashResponse, ApiConnectionActionConfiguration> Hash(Expression<Func<string>> bodyString, Expression<Func<bodytypeInput>> bodytype = null)
         {
-            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodyString = WorkflowExpression.Compile(bodyString, nameof(bodyString), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
             return new DeferredBodyAction<HashResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -24,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashgeneratorip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodyString);
                 if (__workflow_bodytype != null)
                 {
                     if (__workflow_bodytype != null)

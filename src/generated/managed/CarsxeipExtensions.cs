@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
 {
     using System.Linq.Expressions;
@@ -846,14 +847,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
 
     public class HistoryGetResponseInsuranceInformationTypeItemReportingEntityAbstractType
     {
-        public string ContactEmailID { get; set; }
+        [JsonProperty("ContactEmailID")]
+        public string ContactEmailId { get; set; }
         public string LocationStateUSPostalServiceCode { get; set; }
         public string ReportingEntityCategoryCode { get; set; }
         public string ReportingEntityCategoryText { get; set; }
         public string EntityName { get; set; }
         public string LocationCityName { get; set; }
-        public string IdentificationID { get; set; }
-        public string TelephoneNumberFullID { get; set; }
+
+        [JsonProperty("IdentificationID")]
+        public string IdentificationId { get; set; }
+
+        [JsonProperty("TelephoneNumberFullID")]
+        public string TelephoneNumberFullId { get; set; }
     }
 
     public class HistoryGetResponseHistoryInformationTypeItem
@@ -867,7 +873,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
 
     public class HistoryGetResponseHistoryInformationTypeItemVehicleIdentificationType
     {
-        public string IdentificationID { get; set; }
+        [JsonProperty("IdentificationID")]
+        public string IdentificationId { get; set; }
     }
 
     public class HistoryGetResponseHistoryInformationTypeItemTitleIssueDateType
@@ -879,7 +886,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
     {
         public string VehicleOdometerReadingMeasure { get; set; }
         public string VehicleOdometerReadingUnitCode { get; set; }
-        public string RecordMatchSequenceID { get; set; }
+
+        [JsonProperty("RecordMatchSequenceID")]
+        public string RecordMatchSequenceId { get; set; }
         public HistoryGetResponseCurrentTitleInformationTypeItemHistoricTitleAbstractTypeItem[] HistoricTitleAbstract { get; set; }
         public string TitleIssuingAuthorityName { get; set; }
         public HistoryGetResponseCurrentTitleInformationTypeItemTitleIssueDateType TitleIssueDate { get; set; }
@@ -902,7 +911,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
 
     public class HistoryGetResponseCurrentTitleInformationTypeItemHistoricTitleAbstractTypeItemVehicleIdentificationType
     {
-        public string IdentificationID { get; set; }
+        [JsonProperty("IdentificationID")]
+        public string IdentificationId { get; set; }
     }
 
     public class HistoryGetResponseCurrentTitleInformationTypeItemTitleIssueDateType
@@ -912,7 +922,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
 
     public class HistoryGetResponseCurrentTitleInformationTypeItemVehicleIdentificationType
     {
-        public string IdentificationID { get; set; }
+        [JsonProperty("IdentificationID")]
+        public string IdentificationId { get; set; }
     }
 
     public class HistoryGetResponseBrandsInformationTypeItem
@@ -948,7 +959,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         public string EntityName { get; set; }
         public string ReportingEntityCategoryText { get; set; }
         public string ReportingEntityCategoryCode { get; set; }
-        public string IdentificationID { get; set; }
+
+        [JsonProperty("IdentificationID")]
+        public string IdentificationId { get; set; }
     }
 
     public class HistoryGetResponseJunkAndSalvageInformationTypeItem
@@ -964,9 +977,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         public string EntityName { get; set; }
         public string LocationCityName { get; set; }
         public string ReportingEntityCategoryText { get; set; }
-        public string ContactEmailID { get; set; }
-        public string TelephoneNumberFullID { get; set; }
-        public string IdentificationID { get; set; }
+
+        [JsonProperty("ContactEmailID")]
+        public string ContactEmailId { get; set; }
+
+        [JsonProperty("TelephoneNumberFullID")]
+        public string TelephoneNumberFullId { get; set; }
+
+        [JsonProperty("IdentificationID")]
+        public string IdentificationId { get; set; }
         public string LocationStateUSPostalServiceCode { get; set; }
         public string ReportingEntityCategoryCode { get; set; }
     }

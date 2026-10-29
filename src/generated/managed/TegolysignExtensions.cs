@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tegolysign
 {
     using System.Linq.Expressions;
@@ -11,18 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tegolysign
 
     public class TegolysignActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tegolysign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ImportPDF(Expression<Func<object>> file)
-        {
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/api/webhook/create-draft";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction(callPayload);
-            });
-        }
     }
 
     public class TegolysignTriggers([ConnectionName] string connectionId)

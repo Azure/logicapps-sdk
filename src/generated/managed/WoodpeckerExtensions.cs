@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
 {
     using System.Linq.Expressions;
@@ -335,7 +336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
     public enum sortInput
     {
         [EnumMember(Value = "+id")]
-        ID,
+        Id,
         [EnumMember(Value = "+email")]
         Email,
         [EnumMember(Value = "+first_name")]
@@ -345,7 +346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         [EnumMember(Value = "+company")]
         Company,
         [EnumMember(Value = "+organization_id")]
-        OrganizationID,
+        OrganizationId,
         [EnumMember(Value = "+industry")]
         Industry,
         [EnumMember(Value = "+website")]
@@ -375,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         [EnumMember(Value = "+status")]
         Status,
         [EnumMember(Value = "-id")]
-        IDDescending,
+        IdDescending,
         [EnumMember(Value = "-email")]
         EmailDescending,
         [EnumMember(Value = "-first_name")]
@@ -385,7 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         [EnumMember(Value = "-company")]
         CompanyDescending,
         [EnumMember(Value = "-organization_id")]
-        OrganizationIDDescending,
+        OrganizationIdDescending,
         [EnumMember(Value = "-industry")]
         IndustryDescending,
         [EnumMember(Value = "-website")]

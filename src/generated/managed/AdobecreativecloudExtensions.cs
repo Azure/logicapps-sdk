@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
 {
     using System.Linq.Expressions;
@@ -144,43 +145,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
     {
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookSubscribeToAssetCreatedEvents(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook1/csm/cc/events/asset_created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["webhookUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhook1/csm/cc/events/asset_created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["webhookUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookSubscribeToAssetUpdatedEvents(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook2/csm/cc/events/asset_updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["webhookUrl"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhook2/csm/cc/events/asset_updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["webhookUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 
     public class CreatedAssetDetails
     {
         [JsonProperty("urn")]
-        public string AssetID { get; set; }
+        public string AssetId { get; set; }
 
         [JsonProperty("name")]
         public string AssetName { get; set; }
@@ -195,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
     public class AssetMetadata
     {
         [JsonProperty("urn")]
-        public string AssetID { get; set; }
+        public string AssetId { get; set; }
 
         [JsonProperty("name")]
         public string AssetName { get; set; }

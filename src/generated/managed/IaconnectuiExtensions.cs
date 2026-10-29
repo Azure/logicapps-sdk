@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 {
     using System.Linq.Expressions;
@@ -5987,11 +5988,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetDesktopElementsResponse, ApiConnectionActionConfiguration> UIAGetDesktopElements(Expression<Func<string>> uIAGetDesktopElementsworkflow, Expression<Func<string>> uIAGetDesktopElementssearchElementLocalizedControlType = null, Expression<Func<int>> uIAGetDesktopElementssearchProcessID = null, Expression<Func<bool>> uIAGetDesktopElementsreturnElementHandle = null, Expression<Func<int>> uIAGetDesktopElementsfirstItemToReturn = null, Expression<Func<int>> uIAGetDesktopElementsmaxItemsToReturn = null, Expression<Func<bool>> uIAGetDesktopElementsincludeChildProcesses = null)
+        public IBodyWorkflowAction<UIAGetDesktopElementsResponse, ApiConnectionActionConfiguration> UIAGetDesktopElements(Expression<Func<string>> uIAGetDesktopElementsworkflow, Expression<Func<string>> uIAGetDesktopElementssearchElementLocalizedControlType = null, Expression<Func<int>> uIAGetDesktopElementssearchProcessId = null, Expression<Func<bool>> uIAGetDesktopElementsreturnElementHandle = null, Expression<Func<int>> uIAGetDesktopElementsfirstItemToReturn = null, Expression<Func<int>> uIAGetDesktopElementsmaxItemsToReturn = null, Expression<Func<bool>> uIAGetDesktopElementsincludeChildProcesses = null)
         {
             var __workflow_uIAGetDesktopElementsworkflow = WorkflowExpression.Compile(uIAGetDesktopElementsworkflow, nameof(uIAGetDesktopElementsworkflow), required: true);
             var __workflow_uIAGetDesktopElementssearchElementLocalizedControlType = WorkflowExpression.Compile(uIAGetDesktopElementssearchElementLocalizedControlType, nameof(uIAGetDesktopElementssearchElementLocalizedControlType), required: false);
-            var __workflow_uIAGetDesktopElementssearchProcessID = WorkflowExpression.Compile(uIAGetDesktopElementssearchProcessID, nameof(uIAGetDesktopElementssearchProcessID), required: false);
+            var __workflow_uIAGetDesktopElementssearchProcessId = WorkflowExpression.Compile(uIAGetDesktopElementssearchProcessId, nameof(uIAGetDesktopElementssearchProcessId), required: false);
             var __workflow_uIAGetDesktopElementsreturnElementHandle = WorkflowExpression.Compile(uIAGetDesktopElementsreturnElementHandle, nameof(uIAGetDesktopElementsreturnElementHandle), required: false);
             var __workflow_uIAGetDesktopElementsfirstItemToReturn = WorkflowExpression.Compile(uIAGetDesktopElementsfirstItemToReturn, nameof(uIAGetDesktopElementsfirstItemToReturn), required: false);
             var __workflow_uIAGetDesktopElementsmaxItemsToReturn = WorkflowExpression.Compile(uIAGetDesktopElementsmaxItemsToReturn, nameof(uIAGetDesktopElementsmaxItemsToReturn), required: false);
@@ -6009,11 +6010,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                     uIAGetDesktopElementspropCount++;
                 }
 
-                if (__workflow_uIAGetDesktopElementssearchProcessID != null)
+                if (__workflow_uIAGetDesktopElementssearchProcessId != null)
                 {
-                    if (__workflow_uIAGetDesktopElementssearchProcessID != null)
+                    if (__workflow_uIAGetDesktopElementssearchProcessId != null)
                     {
-                        uIAGetDesktopElements["SearchProcessID"] = ExpressionConverter.ConvertO(__workflow_uIAGetDesktopElementssearchProcessID);
+                        uIAGetDesktopElements["SearchProcessID"] = ExpressionConverter.ConvertO(__workflow_uIAGetDesktopElementssearchProcessId);
                         uIAGetDesktopElementspropCount++;
                     }
 

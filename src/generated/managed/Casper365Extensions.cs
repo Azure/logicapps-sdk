@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
 {
     using System.Linq.Expressions;
@@ -560,10 +561,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
         public IBodyWorkflowAction<bool, ApiConnectionActionConfiguration> StudentIsBrowserAppGet()
         {
-            var apiCallPath = "/Student/IsBrowserApp";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<bool>(callPayload);
+            return new DeferredBodyAction<bool, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/Student/IsBrowserApp";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<bool>(callPayload);
+            });
         }
     }
 

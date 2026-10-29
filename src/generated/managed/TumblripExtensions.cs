@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
 {
     using System.Linq.Expressions;
@@ -663,46 +664,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<UserInfoGetResponse, ApiConnectionActionConfiguration> UserInfoGet()
         {
-            var apiCallPath = "/v2/user/info";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserInfoGetResponse>(callPayload);
+            return new DeferredBodyAction<UserInfoGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v2/user/info";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UserInfoGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<UserLimitGetResponse, ApiConnectionActionConfiguration> UserLimitGet()
         {
-            var apiCallPath = "/v2/user/limits";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserLimitGetResponse>(callPayload);
+            return new DeferredBodyAction<UserLimitGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v2/user/limits";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UserLimitGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<UserDashboardGetResponse, ApiConnectionActionConfiguration> UserDashboardGet()
         {
-            var apiCallPath = "/v2/user/dashboard";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserDashboardGetResponse>(callPayload);
+            return new DeferredBodyAction<UserDashboardGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v2/user/dashboard";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UserDashboardGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<UserLikesGetResponse, ApiConnectionActionConfiguration> UserLikesGet()
         {
-            var apiCallPath = "/v2/user/likes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserLikesGetResponse>(callPayload);
+            return new DeferredBodyAction<UserLikesGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v2/user/likes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UserLikesGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
         public IBodyWorkflowAction<UserFollowingGetResponse, ApiConnectionActionConfiguration> UserFollowingGet()
         {
-            var apiCallPath = "/v2/user/following";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserFollowingGetResponse>(callPayload);
+            return new DeferredBodyAction<UserFollowingGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v2/user/following";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UserFollowingGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]

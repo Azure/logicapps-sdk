@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldsacademia
 {
     using System.Linq.Expressions;
@@ -14,19 +15,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldsacademia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
         public IBodyWorkflowAction<GetAllContinentsAndTheirMetadataResponseItem[], ApiConnectionActionConfiguration> GetAllContinentsAndTheirMetadata()
         {
-            var apiCallPath = "/api/v1/continentsdata";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAllContinentsAndTheirMetadataResponseItem[]>(callPayload);
+            return new DeferredBodyAction<GetAllContinentsAndTheirMetadataResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/v1/continentsdata";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetAllContinentsAndTheirMetadataResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
         public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> GetAListContinents()
         {
-            var apiCallPath = "/api/v1/continents";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/v1/continents";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
@@ -45,28 +52,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldsacademia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
         public IBodyWorkflowAction<int, ApiConnectionActionConfiguration> GetTheNumberOfUniversitiesAvailable()
         {
-            var apiCallPath = "/api/v1/sch/count";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<int>(callPayload);
+            return new DeferredBodyAction<int, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/v1/sch/count";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<int>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
         public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> GetAListOfCountriesWithUniversities()
         {
-            var apiCallPath = "/api/v1/sch/countries";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/v1/sch/countries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
         public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> GetAListOfCountriesCodesWithUniversities()
         {
-            var apiCallPath = "/api/v1/sch/countriescodes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/v1/sch/countriescodes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
@@ -111,19 +127,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldsacademia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
         public IBodyWorkflowAction<GetAllUniversitiesAndTheirMetadataResponseItem[], ApiConnectionActionConfiguration> GetAllUniversitiesAndTheirMetadata()
         {
-            var apiCallPath = "/api/v1/sch";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAllUniversitiesAndTheirMetadataResponseItem[]>(callPayload);
+            return new DeferredBodyAction<GetAllUniversitiesAndTheirMetadataResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/v1/sch";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetAllUniversitiesAndTheirMetadataResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
         public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> GetAListOfAllUniversities()
         {
-            var apiCallPath = "/api/v1/schlist";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/v1/schlist";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string[]>(callPayload);
+            });
         }
     }
 

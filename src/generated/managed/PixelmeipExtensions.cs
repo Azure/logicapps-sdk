@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelmeip")]
         public IBodyWorkflowAction<AccountGetResponse, ApiConnectionActionConfiguration> AccountGet()
         {
-            var apiCallPath = "/accounts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AccountGetResponse>(callPayload);
+            return new DeferredBodyAction<AccountGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/accounts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AccountGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelmeip")]
@@ -94,10 +98,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelmeip")]
         public IBodyWorkflowAction<RedirectsGetResponse, ApiConnectionActionConfiguration> RedirectsGet()
         {
-            var apiCallPath = "/redirects";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RedirectsGetResponse>(callPayload);
+            return new DeferredBodyAction<RedirectsGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/redirects";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<RedirectsGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelmeip")]

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
 {
     using System.Linq.Expressions;
@@ -652,7 +653,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
         DE,
         HK,
         IN,
-        ID,
+        [EnumMember(Value = "ID")]
+        Id,
         IT,
         JP,
         KR,

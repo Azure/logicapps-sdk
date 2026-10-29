@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
 {
     using System.Linq.Expressions;
@@ -359,11 +360,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<AccountResponse, ApiConnectionActionConfiguration> AccountInformation()
         {
-            var apiCallPath = "/account/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<AccountResponse>(callPayload);
+            return new DeferredBodyAction<AccountResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/account/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<AccountResponse>(callPayload);
+            });
         }
     }
 

@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sql
 {
     using System.Linq.Expressions;
@@ -11,21 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sql
 
     public class SqlActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sql")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ExecuteProcedure(Expression<Func<string>> procedure, Expression<Func<object>> parameters = null)
-        {
-            var __workflow_procedure = WorkflowExpression.Compile(procedure, nameof(procedure), required: true);
-            var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: false);
-            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/procedures/{0}", __workflow_procedure.WithUrlEncoding(2)));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);
-                return new ApiConnectionAction<JToken>(callPayload);
-            });
-        }
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sql")]
         public IWorkflowAction<ApiConnectionActionConfiguration> DeleteItem(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<string>> table, Expression<Func<string>> id)
         {
@@ -81,6 +67,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sql
                     callPayload.Body = query;
                 }
 
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sql")]
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ExecuteProcedure(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<string>> procedure, Expression<Func<object>> parameters = null)
+        {
+            var __workflow_server = WorkflowExpression.Compile(server, nameof(server), required: true);
+            var __workflow_database = WorkflowExpression.Compile(database, nameof(database), required: true);
+            var __workflow_procedure = WorkflowExpression.Compile(procedure, nameof(procedure), required: true);
+            var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: false);
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/datasets/{0},{1}/procedures/{2}", __workflow_server.WithUrlEncoding(2), __workflow_database.WithUrlEncoding(2), __workflow_procedure.WithUrlEncoding(2)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }

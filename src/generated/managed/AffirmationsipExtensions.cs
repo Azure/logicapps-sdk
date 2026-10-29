@@ -4,6 +4,8 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Affirmationsip
 {
+    using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -13,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Affirmationsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "affirmationsip")]
         public IBodyWorkflowAction<AffirmationResponse, ApiConnectionActionConfiguration> Affirmation()
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AffirmationResponse>(callPayload);
+            return new DeferredBodyAction<AffirmationResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AffirmationResponse>(callPayload);
+            });
         }
     }
 

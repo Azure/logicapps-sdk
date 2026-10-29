@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Numlookupapiip
 {
     using System.Linq.Expressions;
@@ -30,10 +31,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Numlookupapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "numlookupapiip")]
         public IBodyWorkflowAction<StatusGetResponse, ApiConnectionActionConfiguration> StatusGet()
         {
-            var apiCallPath = "/status";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<StatusGetResponse>(callPayload);
+            return new DeferredBodyAction<StatusGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/status";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<StatusGetResponse>(callPayload);
+            });
         }
     }
 

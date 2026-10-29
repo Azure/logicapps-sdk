@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebms
 {
     using System.Linq.Expressions;
@@ -12,10 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebms
     public class EbmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebms")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateProduct(Expression<Func<string>> bodytREEID, Expression<Func<string>> bodyiD = null, Expression<Func<double>> bodycTYPE = null, Expression<Func<string>> bodydESCR1 = null, Expression<Func<string>> bodydESCR2 = null, Expression<Func<string>> bodydESCR3 = null, Expression<Func<string>> bodytYPE = null, Expression<Func<string>> bodymEMO = null, Expression<Func<string>> bodyuPC = null, Expression<Func<string>> bodymFG = null, Expression<Func<string>> bodymFGPART = null, Expression<Func<string>> bodypRIVENDOR = null, Expression<Func<string>> bodyeACHUNIT = null, Expression<Func<double>> bodywEIGHT = null, Expression<Func<double>> bodycOST = null, Expression<Func<double>> bodybASE = null, Expression<Func<string>> bodyeXTERNALID = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateProduct(Expression<Func<string>> bodytREEId, Expression<Func<string>> bodyid = null, Expression<Func<double>> bodycTYPE = null, Expression<Func<string>> bodydESCR1 = null, Expression<Func<string>> bodydESCR2 = null, Expression<Func<string>> bodydESCR3 = null, Expression<Func<string>> bodytYPE = null, Expression<Func<string>> bodymEMO = null, Expression<Func<string>> bodyuPC = null, Expression<Func<string>> bodymFG = null, Expression<Func<string>> bodymFGPART = null, Expression<Func<string>> bodypRIVENDOR = null, Expression<Func<string>> bodyeACHUNIT = null, Expression<Func<double>> bodywEIGHT = null, Expression<Func<double>> bodycOST = null, Expression<Func<double>> bodybASE = null, Expression<Func<string>> bodyeXTERNALId = null)
         {
-            var __workflow_bodytREEID = WorkflowExpression.Compile(bodytREEID, nameof(bodytREEID), required: true);
-            var __workflow_bodyiD = WorkflowExpression.Compile(bodyiD, nameof(bodyiD), required: false);
+            var __workflow_bodytREEId = WorkflowExpression.Compile(bodytREEId, nameof(bodytREEId), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
             var __workflow_bodycTYPE = WorkflowExpression.Compile(bodycTYPE, nameof(bodycTYPE), required: false);
             var __workflow_bodydESCR1 = WorkflowExpression.Compile(bodydESCR1, nameof(bodydESCR1), required: false);
             var __workflow_bodydESCR2 = WorkflowExpression.Compile(bodydESCR2, nameof(bodydESCR2), required: false);
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebms
             var __workflow_bodywEIGHT = WorkflowExpression.Compile(bodywEIGHT, nameof(bodywEIGHT), required: false);
             var __workflow_bodycOST = WorkflowExpression.Compile(bodycOST, nameof(bodycOST), required: false);
             var __workflow_bodybASE = WorkflowExpression.Compile(bodybASE, nameof(bodybASE), required: false);
-            var __workflow_bodyeXTERNALID = WorkflowExpression.Compile(bodyeXTERNALID, nameof(bodyeXTERNALID), required: false);
+            var __workflow_bodyeXTERNALId = WorkflowExpression.Compile(bodyeXTERNALId, nameof(bodyeXTERNALId), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/INVENTRY";
@@ -38,14 +39,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (__workflow_bodyiD != null)
+                if (__workflow_bodyid != null)
                 {
-                    body["ID"] = ExpressionConverter.ConvertO(__workflow_bodyiD);
+                    body["ID"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-                body["TREE_ID"] = ExpressionConverter.ConvertO(__workflow_bodytREEID);
+                body["TREE_ID"] = ExpressionConverter.ConvertO(__workflow_bodytREEId);
                 if (__workflow_bodycTYPE != null)
                 {
                     body["C_TYPE"] = ExpressionConverter.ConvertO(__workflow_bodycTYPE);
@@ -130,9 +131,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebms
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyeXTERNALID != null)
+                if (__workflow_bodyeXTERNALId != null)
                 {
-                    body["EXTERNALID"] = ExpressionConverter.ConvertO(__workflow_bodyeXTERNALID);
+                    body["EXTERNALID"] = ExpressionConverter.ConvertO(__workflow_bodyeXTERNALId);
                     bodypropCount++;
                 }
 
@@ -146,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebms")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateProduct(Expression<Func<string>> productId, Expression<Func<string>> bodydESCR1 = null, Expression<Func<string>> bodydESCR2 = null, Expression<Func<string>> bodydESCR3 = null, Expression<Func<string>> bodytYPE = null, Expression<Func<string>> bodymEMO = null, Expression<Func<string>> bodyuPC = null, Expression<Func<string>> bodymFG = null, Expression<Func<string>> bodymFGPART = null, Expression<Func<string>> bodypRIVENDOR = null, Expression<Func<string>> bodyeACHUNIT = null, Expression<Func<double>> bodywEIGHT = null, Expression<Func<double>> bodycOST = null, Expression<Func<double>> bodybASE = null, Expression<Func<string>> bodyeXTERNALID = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateProduct(Expression<Func<string>> productId, Expression<Func<string>> bodydESCR1 = null, Expression<Func<string>> bodydESCR2 = null, Expression<Func<string>> bodydESCR3 = null, Expression<Func<string>> bodytYPE = null, Expression<Func<string>> bodymEMO = null, Expression<Func<string>> bodyuPC = null, Expression<Func<string>> bodymFG = null, Expression<Func<string>> bodymFGPART = null, Expression<Func<string>> bodypRIVENDOR = null, Expression<Func<string>> bodyeACHUNIT = null, Expression<Func<double>> bodywEIGHT = null, Expression<Func<double>> bodycOST = null, Expression<Func<double>> bodybASE = null, Expression<Func<string>> bodyeXTERNALId = null)
         {
             var __workflow_productId = WorkflowExpression.Compile(productId, nameof(productId), required: true);
             var __workflow_bodydESCR1 = WorkflowExpression.Compile(bodydESCR1, nameof(bodydESCR1), required: false);
@@ -162,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebms
             var __workflow_bodywEIGHT = WorkflowExpression.Compile(bodywEIGHT, nameof(bodywEIGHT), required: false);
             var __workflow_bodycOST = WorkflowExpression.Compile(bodycOST, nameof(bodycOST), required: false);
             var __workflow_bodybASE = WorkflowExpression.Compile(bodybASE, nameof(bodybASE), required: false);
-            var __workflow_bodyeXTERNALID = WorkflowExpression.Compile(bodyeXTERNALID, nameof(bodyeXTERNALID), required: false);
+            var __workflow_bodyeXTERNALId = WorkflowExpression.Compile(bodyeXTERNALId, nameof(bodyeXTERNALId), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/INVENTRY(ID='{0}')", __workflow_productId.WithUrlEncoding(1)));
@@ -248,9 +249,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebms
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyeXTERNALID != null)
+                if (__workflow_bodyeXTERNALId != null)
                 {
-                    body["EXTERNALID"] = ExpressionConverter.ConvertO(__workflow_bodyeXTERNALID);
+                    body["EXTERNALID"] = ExpressionConverter.ConvertO(__workflow_bodyeXTERNALId);
                     bodypropCount++;
                 }
 

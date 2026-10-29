@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
 {
     using System.Linq.Expressions;
@@ -14,11 +15,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<GetUserActivatedCouriersResponse, ApiConnectionActionConfiguration> GetUserActivatedCouriers()
         {
-            var apiCallPath = "/couriers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<GetUserActivatedCouriersResponse>(callPayload);
+            return new DeferredBodyAction<GetUserActivatedCouriersResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/couriers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<GetUserActivatedCouriersResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
@@ -59,21 +63,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<GetAllCouriersResponse, ApiConnectionActionConfiguration> GetAllCouriers()
         {
-            var apiCallPath = "/couriers/all";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<GetAllCouriersResponse>(callPayload);
+            return new DeferredBodyAction<GetAllCouriersResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/couriers/all";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<GetAllCouriersResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<GetTrackingsResponse, ApiConnectionActionConfiguration> GetTrackings()
         {
-            var apiCallPath = "/trackings";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<GetTrackingsResponse>(callPayload);
+            return new DeferredBodyAction<GetTrackingsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/trackings";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<GetTrackingsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]

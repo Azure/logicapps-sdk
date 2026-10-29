@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
 {
     using System.Linq.Expressions;
@@ -624,14 +625,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<CommercientCPQCreateNewCustomerResponse, ApiConnectionActionConfiguration> CommercientCPQCreateNewCustomer(Expression<Func<string>> bodybillingCity = null, Expression<Func<string>> bodybillingCounty = null, Expression<Func<string>> bodybillingPostalCode = null, Expression<Func<string>> bodybillingState = null, Expression<Func<string>> bodybillingStreet = null, Expression<Func<string>> bodygUID = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyshippingCity = null, Expression<Func<string>> bodyshippingCountry = null, Expression<Func<string>> bodyshippingPostalCode = null, Expression<Func<string>> bodyshippingState = null, Expression<Func<string>> bodyshippingStreet = null, Expression<Func<string>> bodyacnm = null)
+        public IBodyWorkflowAction<CommercientCPQCreateNewCustomerResponse, ApiConnectionActionConfiguration> CommercientCPQCreateNewCustomer(Expression<Func<string>> bodybillingCity = null, Expression<Func<string>> bodybillingCounty = null, Expression<Func<string>> bodybillingPostalCode = null, Expression<Func<string>> bodybillingState = null, Expression<Func<string>> bodybillingStreet = null, Expression<Func<string>> bodygUId = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyshippingCity = null, Expression<Func<string>> bodyshippingCountry = null, Expression<Func<string>> bodyshippingPostalCode = null, Expression<Func<string>> bodyshippingState = null, Expression<Func<string>> bodyshippingStreet = null, Expression<Func<string>> bodyacnm = null)
         {
             var __workflow_bodybillingCity = WorkflowExpression.Compile(bodybillingCity, nameof(bodybillingCity), required: false);
             var __workflow_bodybillingCounty = WorkflowExpression.Compile(bodybillingCounty, nameof(bodybillingCounty), required: false);
             var __workflow_bodybillingPostalCode = WorkflowExpression.Compile(bodybillingPostalCode, nameof(bodybillingPostalCode), required: false);
             var __workflow_bodybillingState = WorkflowExpression.Compile(bodybillingState, nameof(bodybillingState), required: false);
             var __workflow_bodybillingStreet = WorkflowExpression.Compile(bodybillingStreet, nameof(bodybillingStreet), required: false);
-            var __workflow_bodygUID = WorkflowExpression.Compile(bodygUID, nameof(bodygUID), required: false);
+            var __workflow_bodygUId = WorkflowExpression.Compile(bodygUId, nameof(bodygUId), required: false);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             var __workflow_bodyshippingCity = WorkflowExpression.Compile(bodyshippingCity, nameof(bodyshippingCity), required: false);
             var __workflow_bodyshippingCountry = WorkflowExpression.Compile(bodyshippingCountry, nameof(bodyshippingCountry), required: false);
@@ -676,9 +677,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                     bodypropCount++;
                 }
 
-                if (__workflow_bodygUID != null)
+                if (__workflow_bodygUId != null)
                 {
-                    body["GUID"] = ExpressionConverter.ConvertO(__workflow_bodygUID);
+                    body["GUID"] = ExpressionConverter.ConvertO(__workflow_bodygUId);
                     bodypropCount++;
                 }
 
@@ -793,7 +794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<QuickBookCreateNewCustomerResponse, ApiConnectionActionConfiguration> QuickBookCreateNewCustomer(Expression<Func<string>> bodyaccountNumber = null, Expression<Func<string>> bodyaltContact = null, Expression<Func<string>> bodyaltPhone = null, Expression<Func<string>> bodybillAddressAddr1 = null, Expression<Func<string>> bodybillAddressAddr2 = null, Expression<Func<string>> bodybillAddressAddr3 = null, Expression<Func<string>> bodybillAddressAddr4 = null, Expression<Func<string>> bodybillAddressAddr5 = null, Expression<Func<string>> bodybillAddressCity = null, Expression<Func<string>> bodybillAddressCountry = null, Expression<Func<string>> bodybillAddressNote = null, Expression<Func<string>> bodybillAddressPostalCode = null, Expression<Func<string>> bodybillAddressState = null, Expression<Func<string>> bodycc = null, Expression<Func<string>> bodyclassRef = null, Expression<Func<string>> bodycompanyName = null, Expression<Func<string>> bodycontact = null, Expression<Func<int>> bodycreditLimit = null, Expression<Func<string>> bodycustomerTypeRef = null, Expression<Func<string>> bodyeditSequence = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyextraField = null, Expression<Func<string>> bodyfax = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<bool>> bodyisActive = null, Expression<Func<string>> bodyitemSalesTaxRef = null, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodylistID = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodynotes = null, Expression<Func<int>> bodyopenBalance = null, Expression<Func<string>> bodyopenBalanceDate = null, Expression<Func<string>> bodyparentRef = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodypreferredPaymentMethodRef = null, Expression<Func<string>> bodypriceLevelRef = null, Expression<Func<string>> bodyresaleNumber = null, Expression<Func<string>> bodysalesRepRef = null, Expression<Func<string>> bodysalesTaxCodeRef = null, Expression<Func<string>> bodysalutation = null, Expression<Func<string>> bodyshipAddressAddr1 = null, Expression<Func<string>> bodyshipAddressAddr2 = null, Expression<Func<string>> bodyshipAddressAddr3 = null, Expression<Func<string>> bodyshipAddressAddr4 = null, Expression<Func<string>> bodyshipAddressAddr5 = null, Expression<Func<string>> bodyshipAddressCity = null, Expression<Func<string>> bodyshipAddressCountry = null, Expression<Func<string>> bodyshipAddressNote = null, Expression<Func<string>> bodyshipAddressPostalCode = null, Expression<Func<string>> bodyshipAddressState = null, Expression<Func<string>> bodytermsRef = null)
+        public IBodyWorkflowAction<QuickBookCreateNewCustomerResponse, ApiConnectionActionConfiguration> QuickBookCreateNewCustomer(Expression<Func<string>> bodyaccountNumber = null, Expression<Func<string>> bodyaltContact = null, Expression<Func<string>> bodyaltPhone = null, Expression<Func<string>> bodybillAddressAddr1 = null, Expression<Func<string>> bodybillAddressAddr2 = null, Expression<Func<string>> bodybillAddressAddr3 = null, Expression<Func<string>> bodybillAddressAddr4 = null, Expression<Func<string>> bodybillAddressAddr5 = null, Expression<Func<string>> bodybillAddressCity = null, Expression<Func<string>> bodybillAddressCountry = null, Expression<Func<string>> bodybillAddressNote = null, Expression<Func<string>> bodybillAddressPostalCode = null, Expression<Func<string>> bodybillAddressState = null, Expression<Func<string>> bodycc = null, Expression<Func<string>> bodyclassRef = null, Expression<Func<string>> bodycompanyName = null, Expression<Func<string>> bodycontact = null, Expression<Func<int>> bodycreditLimit = null, Expression<Func<string>> bodycustomerTypeRef = null, Expression<Func<string>> bodyeditSequence = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyextraField = null, Expression<Func<string>> bodyfax = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<bool>> bodyisActive = null, Expression<Func<string>> bodyitemSalesTaxRef = null, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodylistId = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodynotes = null, Expression<Func<int>> bodyopenBalance = null, Expression<Func<string>> bodyopenBalanceDate = null, Expression<Func<string>> bodyparentRef = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodypreferredPaymentMethodRef = null, Expression<Func<string>> bodypriceLevelRef = null, Expression<Func<string>> bodyresaleNumber = null, Expression<Func<string>> bodysalesRepRef = null, Expression<Func<string>> bodysalesTaxCodeRef = null, Expression<Func<string>> bodysalutation = null, Expression<Func<string>> bodyshipAddressAddr1 = null, Expression<Func<string>> bodyshipAddressAddr2 = null, Expression<Func<string>> bodyshipAddressAddr3 = null, Expression<Func<string>> bodyshipAddressAddr4 = null, Expression<Func<string>> bodyshipAddressAddr5 = null, Expression<Func<string>> bodyshipAddressCity = null, Expression<Func<string>> bodyshipAddressCountry = null, Expression<Func<string>> bodyshipAddressNote = null, Expression<Func<string>> bodyshipAddressPostalCode = null, Expression<Func<string>> bodyshipAddressState = null, Expression<Func<string>> bodytermsRef = null)
         {
             var __workflow_bodyaccountNumber = WorkflowExpression.Compile(bodyaccountNumber, nameof(bodyaccountNumber), required: false);
             var __workflow_bodyaltContact = WorkflowExpression.Compile(bodyaltContact, nameof(bodyaltContact), required: false);
@@ -823,7 +824,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
             var __workflow_bodyitemSalesTaxRef = WorkflowExpression.Compile(bodyitemSalesTaxRef, nameof(bodyitemSalesTaxRef), required: false);
             var __workflow_bodyjobTitle = WorkflowExpression.Compile(bodyjobTitle, nameof(bodyjobTitle), required: false);
             var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodylistID = WorkflowExpression.Compile(bodylistID, nameof(bodylistID), required: false);
+            var __workflow_bodylistId = WorkflowExpression.Compile(bodylistId, nameof(bodylistId), required: false);
             var __workflow_bodymiddleName = WorkflowExpression.Compile(bodymiddleName, nameof(bodymiddleName), required: false);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
@@ -1023,9 +1024,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                     bodypropCount++;
                 }
 
-                if (__workflow_bodylistID != null)
+                if (__workflow_bodylistId != null)
                 {
-                    body["ListID"] = ExpressionConverter.ConvertO(__workflow_bodylistID);
+                    body["ListID"] = ExpressionConverter.ConvertO(__workflow_bodylistId);
                     bodypropCount++;
                 }
 
@@ -1183,7 +1184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<QuickBookCreateNewSalesOrderResponse, ApiConnectionActionConfiguration> QuickBookCreateNewSalesOrder(Expression<Func<string>> bodybillAddressAddr1 = null, Expression<Func<string>> bodybillAddressAddr2 = null, Expression<Func<string>> bodybillAddressAddr3 = null, Expression<Func<string>> bodybillAddressAddr4 = null, Expression<Func<string>> bodybillAddressAddr5 = null, Expression<Func<string>> bodybillAddressCity = null, Expression<Func<string>> bodybillAddressCountry = null, Expression<Func<string>> bodybillAddressNote = null, Expression<Func<string>> bodybillAddressPostalCode = null, Expression<Func<string>> bodybillAddressState = null, Expression<Func<string>> bodyclassRef = null, Expression<Func<string>> bodycustomerRefListID = null, Expression<Func<string>> bodycustomerRefName = null, Expression<Func<string>> bodycustomerSalesTaxCodeRef = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodyeditSequence = null, Expression<Func<string>> bodyextraField = null, Expression<Func<string>> bodyitemSalesTaxRef = null, Expression<Func<string>> bodylistID = null, Expression<Func<string>> bodymemo = null, Expression<Func<string>> bodypONumber = null, Expression<Func<string>> bodyrefNumber = null, Expression<Func<bodysalesOrderLineItemInputItem22[]>> bodysalesOrderLineItem = null, Expression<Func<string>> bodysalesRepRef = null, Expression<Func<string>> bodyshipAddressAddr1 = null, Expression<Func<string>> bodyshipAddressAddr2 = null, Expression<Func<string>> bodyshipAddressAddr3 = null, Expression<Func<string>> bodyshipAddressAddr4 = null, Expression<Func<string>> bodyshipAddressAddr5 = null, Expression<Func<string>> bodyshipAddressCity = null, Expression<Func<string>> bodyshipAddressCountry = null, Expression<Func<string>> bodyshipAddressNote = null, Expression<Func<string>> bodyshipAddressPostalCode = null, Expression<Func<string>> bodyshipAddressState = null, Expression<Func<string>> bodytemplateRef = null, Expression<Func<string>> bodytermsRef = null, Expression<Func<string>> bodytxnDate = null)
+        public IBodyWorkflowAction<QuickBookCreateNewSalesOrderResponse, ApiConnectionActionConfiguration> QuickBookCreateNewSalesOrder(Expression<Func<string>> bodybillAddressAddr1 = null, Expression<Func<string>> bodybillAddressAddr2 = null, Expression<Func<string>> bodybillAddressAddr3 = null, Expression<Func<string>> bodybillAddressAddr4 = null, Expression<Func<string>> bodybillAddressAddr5 = null, Expression<Func<string>> bodybillAddressCity = null, Expression<Func<string>> bodybillAddressCountry = null, Expression<Func<string>> bodybillAddressNote = null, Expression<Func<string>> bodybillAddressPostalCode = null, Expression<Func<string>> bodybillAddressState = null, Expression<Func<string>> bodyclassRef = null, Expression<Func<string>> bodycustomerRefListId = null, Expression<Func<string>> bodycustomerRefName = null, Expression<Func<string>> bodycustomerSalesTaxCodeRef = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodyeditSequence = null, Expression<Func<string>> bodyextraField = null, Expression<Func<string>> bodyitemSalesTaxRef = null, Expression<Func<string>> bodylistId = null, Expression<Func<string>> bodymemo = null, Expression<Func<string>> bodypONumber = null, Expression<Func<string>> bodyrefNumber = null, Expression<Func<bodysalesOrderLineItemInputItem22[]>> bodysalesOrderLineItem = null, Expression<Func<string>> bodysalesRepRef = null, Expression<Func<string>> bodyshipAddressAddr1 = null, Expression<Func<string>> bodyshipAddressAddr2 = null, Expression<Func<string>> bodyshipAddressAddr3 = null, Expression<Func<string>> bodyshipAddressAddr4 = null, Expression<Func<string>> bodyshipAddressAddr5 = null, Expression<Func<string>> bodyshipAddressCity = null, Expression<Func<string>> bodyshipAddressCountry = null, Expression<Func<string>> bodyshipAddressNote = null, Expression<Func<string>> bodyshipAddressPostalCode = null, Expression<Func<string>> bodyshipAddressState = null, Expression<Func<string>> bodytemplateRef = null, Expression<Func<string>> bodytermsRef = null, Expression<Func<string>> bodytxnDate = null)
         {
             var __workflow_bodybillAddressAddr1 = WorkflowExpression.Compile(bodybillAddressAddr1, nameof(bodybillAddressAddr1), required: false);
             var __workflow_bodybillAddressAddr2 = WorkflowExpression.Compile(bodybillAddressAddr2, nameof(bodybillAddressAddr2), required: false);
@@ -1196,14 +1197,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
             var __workflow_bodybillAddressPostalCode = WorkflowExpression.Compile(bodybillAddressPostalCode, nameof(bodybillAddressPostalCode), required: false);
             var __workflow_bodybillAddressState = WorkflowExpression.Compile(bodybillAddressState, nameof(bodybillAddressState), required: false);
             var __workflow_bodyclassRef = WorkflowExpression.Compile(bodyclassRef, nameof(bodyclassRef), required: false);
-            var __workflow_bodycustomerRefListID = WorkflowExpression.Compile(bodycustomerRefListID, nameof(bodycustomerRefListID), required: false);
+            var __workflow_bodycustomerRefListId = WorkflowExpression.Compile(bodycustomerRefListId, nameof(bodycustomerRefListId), required: false);
             var __workflow_bodycustomerRefName = WorkflowExpression.Compile(bodycustomerRefName, nameof(bodycustomerRefName), required: false);
             var __workflow_bodycustomerSalesTaxCodeRef = WorkflowExpression.Compile(bodycustomerSalesTaxCodeRef, nameof(bodycustomerSalesTaxCodeRef), required: false);
             var __workflow_bodydueDate = WorkflowExpression.Compile(bodydueDate, nameof(bodydueDate), required: false);
             var __workflow_bodyeditSequence = WorkflowExpression.Compile(bodyeditSequence, nameof(bodyeditSequence), required: false);
             var __workflow_bodyextraField = WorkflowExpression.Compile(bodyextraField, nameof(bodyextraField), required: false);
             var __workflow_bodyitemSalesTaxRef = WorkflowExpression.Compile(bodyitemSalesTaxRef, nameof(bodyitemSalesTaxRef), required: false);
-            var __workflow_bodylistID = WorkflowExpression.Compile(bodylistID, nameof(bodylistID), required: false);
+            var __workflow_bodylistId = WorkflowExpression.Compile(bodylistId, nameof(bodylistId), required: false);
             var __workflow_bodymemo = WorkflowExpression.Compile(bodymemo, nameof(bodymemo), required: false);
             var __workflow_bodypONumber = WorkflowExpression.Compile(bodypONumber, nameof(bodypONumber), required: false);
             var __workflow_bodyrefNumber = WorkflowExpression.Compile(bodyrefNumber, nameof(bodyrefNumber), required: false);
@@ -1295,9 +1296,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                     bodypropCount++;
                 }
 
-                if (__workflow_bodycustomerRefListID != null)
+                if (__workflow_bodycustomerRefListId != null)
                 {
-                    body["CustomerRefListID"] = ExpressionConverter.ConvertO(__workflow_bodycustomerRefListID);
+                    body["CustomerRefListID"] = ExpressionConverter.ConvertO(__workflow_bodycustomerRefListId);
                     bodypropCount++;
                 }
 
@@ -1337,9 +1338,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                     bodypropCount++;
                 }
 
-                if (__workflow_bodylistID != null)
+                if (__workflow_bodylistId != null)
                 {
-                    body["ListID"] = ExpressionConverter.ConvertO(__workflow_bodylistID);
+                    body["ListID"] = ExpressionConverter.ConvertO(__workflow_bodylistId);
                     bodypropCount++;
                 }
 
@@ -1461,7 +1462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAGE50UKCreateNewCustomerResponse, ApiConnectionActionConfiguration> SAGE50UKCreateNewCustomer(Expression<Func<string>> bodyaCCOUNTOPENED = null, Expression<Func<string>> bodyaCCOUNTREF = null, Expression<Func<int>> bodyaCCOUNTSTATUS = null, Expression<Func<string>> bodyaDDRESS1 = null, Expression<Func<string>> bodyaDDRESS2 = null, Expression<Func<string>> bodyaDDRESS3 = null, Expression<Func<string>> bodyaDDRESS4 = null, Expression<Func<string>> bodyaDDRESS5 = null, Expression<Func<string>> bodyaNALYSIS1 = null, Expression<Func<string>> bodyaNALYSIS2 = null, Expression<Func<string>> bodyaNALYSIS3 = null, Expression<Func<int>> bodyaVERAGEPAYDAYS = null, Expression<Func<int>> bodybALANCE = null, Expression<Func<bool>> bodycANAPPLYCHARGES = null, Expression<Func<string>> bodycONTACTNAME = null, Expression<Func<string>> bodycOUNTRYCODE = null, Expression<Func<string>> bodycREDITAPPLIEDFOR = null, Expression<Func<int>> bodycREDITBUREAU = null, Expression<Func<int>> bodycREDITLIMIT = null, Expression<Func<int>> bodycREDITPOSITION = null, Expression<Func<string>> bodycREDITREFERENCE = null, Expression<Func<int>> bodycURRENCY = null, Expression<Func<string>> bodydATECREDITAPPRECEIVED = null, Expression<Func<string>> bodydEFNOMCODE = null, Expression<Func<int>> bodydEFTAXCODE = null, Expression<Func<int>> bodydEPTNUMBER = null, Expression<Func<int>> bodydISCOUNTRATE = null, Expression<Func<int>> bodydISCOUNTTYPE = null, Expression<Func<string>> bodydUNSNUMBER = null, Expression<Func<string>> bodyeMAIL = null, Expression<Func<string>> bodyeMAIL2 = null, Expression<Func<string>> bodyeMAIL3 = null, Expression<Func<string>> bodyextraField = null, Expression<Func<string>> bodyfAX = null, Expression<Func<bool>> bodyhOLDMAIL = null, Expression<Func<bool>> bodyiNACTIVEFLAG = null, Expression<Func<bool>> bodyisACCOUNTREFAutogenerate = null, Expression<Func<string>> bodylASTCREDITREV = null, Expression<Func<string>> bodynAME = null, Expression<Func<string>> bodynEXTCREDITREV = null, Expression<Func<bool>> bodyoVERRIDEPRODUCTNOMINAL = null, Expression<Func<bool>> bodyoVERRIDEPRODUCTTAX = null, Expression<Func<int>> bodypAYMENTDUEDAYS = null, Expression<Func<string>> bodypRICELISTREF = null, Expression<Func<bool>> bodypRIORITYTRADER = null, Expression<Func<bool>> bodysENDINVOICESELECTRONICALLY = null, Expression<Func<bool>> bodysENDLETTERSELECTRONICALLY = null, Expression<Func<int>> bodysETTLEMENTDISCRATE = null, Expression<Func<int>> bodysETTLEMENTDUEDAYS = null, Expression<Func<string>> bodytELEPHONE = null, Expression<Func<string>> bodytELEPHONE2 = null, Expression<Func<string>> bodytERMS = null, Expression<Func<bool>> bodytERMSAGREEDFLAG = null, Expression<Func<string>> bodytRADECONTACT = null, Expression<Func<string>> bodyvATREGNUMBER = null)
+        public IBodyWorkflowAction<SAGE50UKCreateNewCustomerResponse, ApiConnectionActionConfiguration> SAGE50UKCreateNewCustomer(Expression<Func<string>> bodyaCCOUNTOPENED = null, Expression<Func<string>> bodyaCCOUNTREF = null, Expression<Func<int>> bodyaCCOUNTSTATUS = null, Expression<Func<string>> bodyaDDRESS1 = null, Expression<Func<string>> bodyaDDRESS2 = null, Expression<Func<string>> bodyaDDRESS3 = null, Expression<Func<string>> bodyaDDRESS4 = null, Expression<Func<string>> bodyaDDRESS5 = null, Expression<Func<string>> bodyaNALYSIS1 = null, Expression<Func<string>> bodyaNALYSIS2 = null, Expression<Func<string>> bodyaNALYSIS3 = null, Expression<Func<int>> bodyaVERAGEPAYDAYS = null, Expression<Func<int>> bodybALANCE = null, Expression<Func<bool>> bodycANAPPLYCHARGES = null, Expression<Func<string>> bodycONTACTNAME = null, Expression<Func<string>> bodycOUNTRYCODE = null, Expression<Func<string>> bodycREDITAPPLIEDFOR = null, Expression<Func<int>> bodycREDITBUREAU = null, Expression<Func<int>> bodycREDITLIMIT = null, Expression<Func<int>> bodycREDITPOSITION = null, Expression<Func<string>> bodycREDITREFERENCE = null, Expression<Func<int>> bodycURRENCY = null, Expression<Func<string>> bodydATECREDITAPPRECEIVED = null, Expression<Func<string>> bodydEFNOMCODE = null, Expression<Func<int>> bodydEFTAXCODE = null, Expression<Func<int>> bodydEPTNUMBER = null, Expression<Func<int>> bodydISCOUNTRATE = null, Expression<Func<int>> bodydISCOUNTTYPE = null, Expression<Func<string>> bodydUNSNUMBER = null, Expression<Func<string>> bodyeMAIL = null, Expression<Func<string>> bodyeMAIL2 = null, Expression<Func<string>> bodyeMAIL3 = null, Expression<Func<string>> bodyextraField = null, Expression<Func<string>> bodyfAX = null, Expression<Func<bool>> bodyhOLDMAIL = null, Expression<Func<bool>> bodyiNACTIVEFLAG = null, Expression<Func<bool>> bodyisACCOUNTREFAutogenerate = null, Expression<Func<string>> bodylASTCREDITREV = null, Expression<Func<string>> bodynAME = null, Expression<Func<string>> bodynEXTCREDITREV = null, Expression<Func<bool>> bodyoVERRIdEPRODUCTNOMINAL = null, Expression<Func<bool>> bodyoVERRIdEPRODUCTTAX = null, Expression<Func<int>> bodypAYMENTDUEDAYS = null, Expression<Func<string>> bodypRICELISTREF = null, Expression<Func<bool>> bodypRIORITYTRADER = null, Expression<Func<bool>> bodysENDINVOICESELECTRONICALLY = null, Expression<Func<bool>> bodysENDLETTERSELECTRONICALLY = null, Expression<Func<int>> bodysETTLEMENTDISCRATE = null, Expression<Func<int>> bodysETTLEMENTDUEDAYS = null, Expression<Func<string>> bodytELEPHONE = null, Expression<Func<string>> bodytELEPHONE2 = null, Expression<Func<string>> bodytERMS = null, Expression<Func<bool>> bodytERMSAGREEDFLAG = null, Expression<Func<string>> bodytRADECONTACT = null, Expression<Func<string>> bodyvATREGNUMBER = null)
         {
             var __workflow_bodyaCCOUNTOPENED = WorkflowExpression.Compile(bodyaCCOUNTOPENED, nameof(bodyaCCOUNTOPENED), required: false);
             var __workflow_bodyaCCOUNTREF = WorkflowExpression.Compile(bodyaCCOUNTREF, nameof(bodyaCCOUNTREF), required: false);
@@ -1503,8 +1504,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
             var __workflow_bodylASTCREDITREV = WorkflowExpression.Compile(bodylASTCREDITREV, nameof(bodylASTCREDITREV), required: false);
             var __workflow_bodynAME = WorkflowExpression.Compile(bodynAME, nameof(bodynAME), required: false);
             var __workflow_bodynEXTCREDITREV = WorkflowExpression.Compile(bodynEXTCREDITREV, nameof(bodynEXTCREDITREV), required: false);
-            var __workflow_bodyoVERRIDEPRODUCTNOMINAL = WorkflowExpression.Compile(bodyoVERRIDEPRODUCTNOMINAL, nameof(bodyoVERRIDEPRODUCTNOMINAL), required: false);
-            var __workflow_bodyoVERRIDEPRODUCTTAX = WorkflowExpression.Compile(bodyoVERRIDEPRODUCTTAX, nameof(bodyoVERRIDEPRODUCTTAX), required: false);
+            var __workflow_bodyoVERRIdEPRODUCTNOMINAL = WorkflowExpression.Compile(bodyoVERRIdEPRODUCTNOMINAL, nameof(bodyoVERRIdEPRODUCTNOMINAL), required: false);
+            var __workflow_bodyoVERRIdEPRODUCTTAX = WorkflowExpression.Compile(bodyoVERRIdEPRODUCTTAX, nameof(bodyoVERRIdEPRODUCTTAX), required: false);
             var __workflow_bodypAYMENTDUEDAYS = WorkflowExpression.Compile(bodypAYMENTDUEDAYS, nameof(bodypAYMENTDUEDAYS), required: false);
             var __workflow_bodypRICELISTREF = WorkflowExpression.Compile(bodypRICELISTREF, nameof(bodypRICELISTREF), required: false);
             var __workflow_bodypRIORITYTRADER = WorkflowExpression.Compile(bodypRIORITYTRADER, nameof(bodypRIORITYTRADER), required: false);
@@ -1765,15 +1766,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyoVERRIDEPRODUCTNOMINAL != null)
+                if (__workflow_bodyoVERRIdEPRODUCTNOMINAL != null)
                 {
-                    body["OVERRIDE_PRODUCT_NOMINAL"] = ExpressionConverter.ConvertO(__workflow_bodyoVERRIDEPRODUCTNOMINAL);
+                    body["OVERRIDE_PRODUCT_NOMINAL"] = ExpressionConverter.ConvertO(__workflow_bodyoVERRIdEPRODUCTNOMINAL);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyoVERRIDEPRODUCTTAX != null)
+                if (__workflow_bodyoVERRIdEPRODUCTTAX != null)
                 {
-                    body["OVERRIDE_PRODUCT_TAX"] = ExpressionConverter.ConvertO(__workflow_bodyoVERRIDEPRODUCTTAX);
+                    body["OVERRIDE_PRODUCT_TAX"] = ExpressionConverter.ConvertO(__workflow_bodyoVERRIdEPRODUCTTAX);
                     bodypropCount++;
                 }
 
@@ -1865,7 +1866,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAGE50UKCreateNewSalesOrderResponse, ApiConnectionActionConfiguration> SAGE50UKCreateNewSalesOrder(Expression<Func<string>> bodyaCCOUNTREF = null, Expression<Func<string>> bodyaDDRESS1 = null, Expression<Func<string>> bodyaDDRESS2 = null, Expression<Func<string>> bodyaDDRESS3 = null, Expression<Func<string>> bodyaDDRESS4 = null, Expression<Func<string>> bodyaDDRESS5 = null, Expression<Func<int>> bodyaMOUNTPREPAID = null, Expression<Func<string>> bodyaNALYSIS1 = null, Expression<Func<string>> bodyaNALYSIS2 = null, Expression<Func<string>> bodyaNALYSIS3 = null, Expression<Func<int>> bodycARRDEPTNUMBER = null, Expression<Func<int>> bodycARRNET = null, Expression<Func<string>> bodycARRNOMCODE = null, Expression<Func<int>> bodycARRTAX = null, Expression<Func<int>> bodycARRTAXCODE = null, Expression<Func<string>> bodycONSIGNMENTREF = null, Expression<Func<string>> bodycONTACTNAME = null, Expression<Func<int>> bodycOURIER = null, Expression<Func<int>> bodycURRENCY = null, Expression<Func<int>> bodycUSTDISCRATE = null, Expression<Func<string>> bodycUSTORDERNUMBER = null, Expression<Func<string>> bodycUSTTELNUMBER = null, Expression<Func<int>> bodydEFTAXCODE = null, Expression<Func<bool>> bodydELETEDFLAG = null, Expression<Func<string>> bodydELIVERYNAME = null, Expression<Func<string>> bodydELADDRESS1 = null, Expression<Func<string>> bodydELADDRESS2 = null, Expression<Func<string>> bodydELADDRESS3 = null, Expression<Func<string>> bodydELADDRESS4 = null, Expression<Func<string>> bodydELADDRESS5 = null, Expression<Func<string>> bodydESPATCHDATE = null, Expression<Func<string>> bodydUNSNUMBER = null, Expression<Func<int>> bodygLOBALDEPTNUMBER = null, Expression<Func<string>> bodygLOBALDETAILS = null, Expression<Func<string>> bodygLOBALNOMCODE = null, Expression<Func<int>> bodygLOBALTAXCODE = null, Expression<Func<string>> bodyiNVOICENUMBER = null, Expression<Func<string>> bodynAME = null, Expression<Func<string>> bodyoRDERDATE = null, Expression<Func<int>> bodyoRDERNUMBER = null, Expression<Func<int>> bodyoRDERTYPE = null, Expression<Func<int>> bodysETTLEMENTDISCRATE = null, Expression<Func<int>> bodysETTLEMENTDUEDAYS = null, Expression<Func<bodysalesOrderLineItemInputItem222[]>> bodysalesOrderLineItem = null)
+        public IBodyWorkflowAction<SAGE50UKCreateNewSalesOrderResponse, ApiConnectionActionConfiguration> SAGE50UKCreateNewSalesOrder(Expression<Func<string>> bodyaCCOUNTREF = null, Expression<Func<string>> bodyaDDRESS1 = null, Expression<Func<string>> bodyaDDRESS2 = null, Expression<Func<string>> bodyaDDRESS3 = null, Expression<Func<string>> bodyaDDRESS4 = null, Expression<Func<string>> bodyaDDRESS5 = null, Expression<Func<int>> bodyaMOUNTPREPAId = null, Expression<Func<string>> bodyaNALYSIS1 = null, Expression<Func<string>> bodyaNALYSIS2 = null, Expression<Func<string>> bodyaNALYSIS3 = null, Expression<Func<int>> bodycARRDEPTNUMBER = null, Expression<Func<int>> bodycARRNET = null, Expression<Func<string>> bodycARRNOMCODE = null, Expression<Func<int>> bodycARRTAX = null, Expression<Func<int>> bodycARRTAXCODE = null, Expression<Func<string>> bodycONSIGNMENTREF = null, Expression<Func<string>> bodycONTACTNAME = null, Expression<Func<int>> bodycOURIER = null, Expression<Func<int>> bodycURRENCY = null, Expression<Func<int>> bodycUSTDISCRATE = null, Expression<Func<string>> bodycUSTORDERNUMBER = null, Expression<Func<string>> bodycUSTTELNUMBER = null, Expression<Func<int>> bodydEFTAXCODE = null, Expression<Func<bool>> bodydELETEDFLAG = null, Expression<Func<string>> bodydELIVERYNAME = null, Expression<Func<string>> bodydELADDRESS1 = null, Expression<Func<string>> bodydELADDRESS2 = null, Expression<Func<string>> bodydELADDRESS3 = null, Expression<Func<string>> bodydELADDRESS4 = null, Expression<Func<string>> bodydELADDRESS5 = null, Expression<Func<string>> bodydESPATCHDATE = null, Expression<Func<string>> bodydUNSNUMBER = null, Expression<Func<int>> bodygLOBALDEPTNUMBER = null, Expression<Func<string>> bodygLOBALDETAILS = null, Expression<Func<string>> bodygLOBALNOMCODE = null, Expression<Func<int>> bodygLOBALTAXCODE = null, Expression<Func<string>> bodyiNVOICENUMBER = null, Expression<Func<string>> bodynAME = null, Expression<Func<string>> bodyoRDERDATE = null, Expression<Func<int>> bodyoRDERNUMBER = null, Expression<Func<int>> bodyoRDERTYPE = null, Expression<Func<int>> bodysETTLEMENTDISCRATE = null, Expression<Func<int>> bodysETTLEMENTDUEDAYS = null, Expression<Func<bodysalesOrderLineItemInputItem222[]>> bodysalesOrderLineItem = null)
         {
             var __workflow_bodyaCCOUNTREF = WorkflowExpression.Compile(bodyaCCOUNTREF, nameof(bodyaCCOUNTREF), required: false);
             var __workflow_bodyaDDRESS1 = WorkflowExpression.Compile(bodyaDDRESS1, nameof(bodyaDDRESS1), required: false);
@@ -1873,7 +1874,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
             var __workflow_bodyaDDRESS3 = WorkflowExpression.Compile(bodyaDDRESS3, nameof(bodyaDDRESS3), required: false);
             var __workflow_bodyaDDRESS4 = WorkflowExpression.Compile(bodyaDDRESS4, nameof(bodyaDDRESS4), required: false);
             var __workflow_bodyaDDRESS5 = WorkflowExpression.Compile(bodyaDDRESS5, nameof(bodyaDDRESS5), required: false);
-            var __workflow_bodyaMOUNTPREPAID = WorkflowExpression.Compile(bodyaMOUNTPREPAID, nameof(bodyaMOUNTPREPAID), required: false);
+            var __workflow_bodyaMOUNTPREPAId = WorkflowExpression.Compile(bodyaMOUNTPREPAId, nameof(bodyaMOUNTPREPAId), required: false);
             var __workflow_bodyaNALYSIS1 = WorkflowExpression.Compile(bodyaNALYSIS1, nameof(bodyaNALYSIS1), required: false);
             var __workflow_bodyaNALYSIS2 = WorkflowExpression.Compile(bodyaNALYSIS2, nameof(bodyaNALYSIS2), required: false);
             var __workflow_bodyaNALYSIS3 = WorkflowExpression.Compile(bodyaNALYSIS3, nameof(bodyaNALYSIS3), required: false);
@@ -1954,9 +1955,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyaMOUNTPREPAID != null)
+                if (__workflow_bodyaMOUNTPREPAId != null)
                 {
-                    body["AMOUNT_PREPAID"] = ExpressionConverter.ConvertO(__workflow_bodyaMOUNTPREPAID);
+                    body["AMOUNT_PREPAID"] = ExpressionConverter.ConvertO(__workflow_bodyaMOUNTPREPAId);
                     bodypropCount++;
                 }
 
@@ -2192,7 +2193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAGE50USCreateNewCustomerResponse, ApiConnectionActionConfiguration> SAGE50USCreateNewCustomer(Expression<Func<string>> bodyaccountNumber = null, Expression<Func<string>> bodybillingCity = null, Expression<Func<string>> bodybillingCountry = null, Expression<Func<string>> bodybillingLastName = null, Expression<Func<string>> bodybillingName = null, Expression<Func<string>> bodybillingPostalCode = null, Expression<Func<string>> bodybillingState = null, Expression<Func<string>> bodybillingStreet = null, Expression<Func<bool>> bodycCSalesRepresentative = null, Expression<Func<bool>> bodychargeFinanceCharges = null, Expression<Func<string>> bodycontactName = null, Expression<Func<int>> bodycreditLimit = null, Expression<Func<int>> bodycreditStatus = null, Expression<Func<string>> bodycustomFieldValue1 = null, Expression<Func<string>> bodycustomFieldValue2 = null, Expression<Func<string>> bodycustomFieldValue3 = null, Expression<Func<string>> bodycustomFieldValue4 = null, Expression<Func<string>> bodycustomFieldValue5 = null, Expression<Func<string>> bodycustomerGUID = null, Expression<Func<string>> bodycustomerID = null, Expression<Func<int>> bodycustomerBalance = null, Expression<Func<string>> bodycustomerSinceDate = null, Expression<Func<string>> bodycustomerType = null, Expression<Func<int>> bodydiscountDays = null, Expression<Func<int>> bodydiscountPercent = null, Expression<Func<int>> bodydueDays = null, Expression<Func<string>> bodyeMailAddress = null, Expression<Func<string>> bodyfaxNumber = null, Expression<Func<int>> bodyformDeliveryMethod = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyphoneNo1 = null, Expression<Func<string>> bodyphoneNo2 = null, Expression<Func<int>> bodypricingLevel = null, Expression<Func<string>> bodysalesRepresentativeID = null, Expression<Func<string>> bodysalesTaxCode = null, Expression<Func<string>> bodyshippingCity = null, Expression<Func<string>> bodyshippingCountry = null, Expression<Func<string>> bodyshippingPostalCode = null, Expression<Func<string>> bodyshippingState = null, Expression<Func<string>> bodyshippingStreet = null, Expression<Func<bool>> bodytermsType = null, Expression<Func<bool>> bodyuseCODTerms = null, Expression<Func<bool>> bodyuseDueMonthEndTerms = null, Expression<Func<bool>> bodyusePrepaidTerms = null, Expression<Func<bool>> bodyuseStandardTerms = null, Expression<Func<bool>> bodyisInactive = null)
+        public IBodyWorkflowAction<SAGE50USCreateNewCustomerResponse, ApiConnectionActionConfiguration> SAGE50USCreateNewCustomer(Expression<Func<string>> bodyaccountNumber = null, Expression<Func<string>> bodybillingCity = null, Expression<Func<string>> bodybillingCountry = null, Expression<Func<string>> bodybillingLastName = null, Expression<Func<string>> bodybillingName = null, Expression<Func<string>> bodybillingPostalCode = null, Expression<Func<string>> bodybillingState = null, Expression<Func<string>> bodybillingStreet = null, Expression<Func<bool>> bodycCSalesRepresentative = null, Expression<Func<bool>> bodychargeFinanceCharges = null, Expression<Func<string>> bodycontactName = null, Expression<Func<int>> bodycreditLimit = null, Expression<Func<int>> bodycreditStatus = null, Expression<Func<string>> bodycustomFieldValue1 = null, Expression<Func<string>> bodycustomFieldValue2 = null, Expression<Func<string>> bodycustomFieldValue3 = null, Expression<Func<string>> bodycustomFieldValue4 = null, Expression<Func<string>> bodycustomFieldValue5 = null, Expression<Func<string>> bodycustomerGUID = null, Expression<Func<string>> bodycustomerId = null, Expression<Func<int>> bodycustomerBalance = null, Expression<Func<string>> bodycustomerSinceDate = null, Expression<Func<string>> bodycustomerType = null, Expression<Func<int>> bodydiscountDays = null, Expression<Func<int>> bodydiscountPercent = null, Expression<Func<int>> bodydueDays = null, Expression<Func<string>> bodyeMailAddress = null, Expression<Func<string>> bodyfaxNumber = null, Expression<Func<int>> bodyformDeliveryMethod = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyphoneNo1 = null, Expression<Func<string>> bodyphoneNo2 = null, Expression<Func<int>> bodypricingLevel = null, Expression<Func<string>> bodysalesRepresentativeId = null, Expression<Func<string>> bodysalesTaxCode = null, Expression<Func<string>> bodyshippingCity = null, Expression<Func<string>> bodyshippingCountry = null, Expression<Func<string>> bodyshippingPostalCode = null, Expression<Func<string>> bodyshippingState = null, Expression<Func<string>> bodyshippingStreet = null, Expression<Func<bool>> bodytermsType = null, Expression<Func<bool>> bodyuseCODTerms = null, Expression<Func<bool>> bodyuseDueMonthEndTerms = null, Expression<Func<bool>> bodyusePrepaidTerms = null, Expression<Func<bool>> bodyuseStandardTerms = null, Expression<Func<bool>> bodyisInactive = null)
         {
             var __workflow_bodyaccountNumber = WorkflowExpression.Compile(bodyaccountNumber, nameof(bodyaccountNumber), required: false);
             var __workflow_bodybillingCity = WorkflowExpression.Compile(bodybillingCity, nameof(bodybillingCity), required: false);
@@ -2213,7 +2214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
             var __workflow_bodycustomFieldValue4 = WorkflowExpression.Compile(bodycustomFieldValue4, nameof(bodycustomFieldValue4), required: false);
             var __workflow_bodycustomFieldValue5 = WorkflowExpression.Compile(bodycustomFieldValue5, nameof(bodycustomFieldValue5), required: false);
             var __workflow_bodycustomerGUID = WorkflowExpression.Compile(bodycustomerGUID, nameof(bodycustomerGUID), required: false);
-            var __workflow_bodycustomerID = WorkflowExpression.Compile(bodycustomerID, nameof(bodycustomerID), required: false);
+            var __workflow_bodycustomerId = WorkflowExpression.Compile(bodycustomerId, nameof(bodycustomerId), required: false);
             var __workflow_bodycustomerBalance = WorkflowExpression.Compile(bodycustomerBalance, nameof(bodycustomerBalance), required: false);
             var __workflow_bodycustomerSinceDate = WorkflowExpression.Compile(bodycustomerSinceDate, nameof(bodycustomerSinceDate), required: false);
             var __workflow_bodycustomerType = WorkflowExpression.Compile(bodycustomerType, nameof(bodycustomerType), required: false);
@@ -2227,7 +2228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
             var __workflow_bodyphoneNo1 = WorkflowExpression.Compile(bodyphoneNo1, nameof(bodyphoneNo1), required: false);
             var __workflow_bodyphoneNo2 = WorkflowExpression.Compile(bodyphoneNo2, nameof(bodyphoneNo2), required: false);
             var __workflow_bodypricingLevel = WorkflowExpression.Compile(bodypricingLevel, nameof(bodypricingLevel), required: false);
-            var __workflow_bodysalesRepresentativeID = WorkflowExpression.Compile(bodysalesRepresentativeID, nameof(bodysalesRepresentativeID), required: false);
+            var __workflow_bodysalesRepresentativeId = WorkflowExpression.Compile(bodysalesRepresentativeId, nameof(bodysalesRepresentativeId), required: false);
             var __workflow_bodysalesTaxCode = WorkflowExpression.Compile(bodysalesTaxCode, nameof(bodysalesTaxCode), required: false);
             var __workflow_bodyshippingCity = WorkflowExpression.Compile(bodyshippingCity, nameof(bodyshippingCity), required: false);
             var __workflow_bodyshippingCountry = WorkflowExpression.Compile(bodyshippingCountry, nameof(bodyshippingCountry), required: false);
@@ -2361,9 +2362,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                     bodypropCount++;
                 }
 
-                if (__workflow_bodycustomerID != null)
+                if (__workflow_bodycustomerId != null)
                 {
-                    body["CustomerID"] = ExpressionConverter.ConvertO(__workflow_bodycustomerID);
+                    body["CustomerID"] = ExpressionConverter.ConvertO(__workflow_bodycustomerId);
                     bodypropCount++;
                 }
 
@@ -2445,9 +2446,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                     bodypropCount++;
                 }
 
-                if (__workflow_bodysalesRepresentativeID != null)
+                if (__workflow_bodysalesRepresentativeId != null)
                 {
-                    body["Sales_Representative_ID"] = ExpressionConverter.ConvertO(__workflow_bodysalesRepresentativeID);
+                    body["Sales_Representative_ID"] = ExpressionConverter.ConvertO(__workflow_bodysalesRepresentativeId);
                     bodypropCount++;
                 }
 
@@ -2533,26 +2534,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAGE50USCreateNewSalesOrderResponse, ApiConnectionActionConfiguration> SAGE50USCreateNewSalesOrder(Expression<Func<string>> bodyaccountsReceivableAccount = null, Expression<Func<string>> bodyaccountsReceivableAcctGUID = null, Expression<Func<int>> bodyaccountsReceivableAmount = null, Expression<Func<bool>> bodyclosed = null, Expression<Func<string>> bodycustomerID = null, Expression<Func<string>> bodycustomerPO = null, Expression<Func<string>> bodydate = null, Expression<Func<int>> bodydiscountAmount = null, Expression<Func<string>> bodydisplayedTerms = null, Expression<Func<bool>> bodydropShip = null, Expression<Func<string>> bodygUID = null, Expression<Func<bool>> bodynotePrintsAfterLineItems = null, Expression<Func<bool>> bodyproposal = null, Expression<Func<bool>> bodyproposalAccepted = null, Expression<Func<bodysalesOrderLineItemInputItem2222[]>> bodysalesOrderLineItem = null, Expression<Func<string>> bodysalesOrderNumber = null, Expression<Func<string>> bodysalesRepresentativeGUID = null, Expression<Func<string>> bodysalesRepresentativeID = null, Expression<Func<string>> bodyshipAddressCity = null, Expression<Func<string>> bodyshipAddressCountry = null, Expression<Func<string>> bodyshipAddressLine1 = null, Expression<Func<string>> bodyshipAddressLine2 = null, Expression<Func<string>> bodyshipAddressName = null, Expression<Func<string>> bodyshipAddressState = null, Expression<Func<string>> bodyshipAddressZipCode = null, Expression<Func<string>> bodyshipBy = null, Expression<Func<string>> bodyshipVIA = null, Expression<Func<bool>> bodystatementNotePrintsBeforeInvRef = null)
+        public IBodyWorkflowAction<SAGE50USCreateNewSalesOrderResponse, ApiConnectionActionConfiguration> SAGE50USCreateNewSalesOrder(Expression<Func<string>> bodyaccountsReceivableAccount = null, Expression<Func<string>> bodyaccountsReceivableAcctGUID = null, Expression<Func<int>> bodyaccountsReceivableAmount = null, Expression<Func<bool>> bodyclosed = null, Expression<Func<string>> bodycustomerId = null, Expression<Func<string>> bodycustomerPO = null, Expression<Func<string>> bodydate = null, Expression<Func<int>> bodydiscountAmount = null, Expression<Func<string>> bodydisplayedTerms = null, Expression<Func<bool>> bodydropShip = null, Expression<Func<string>> bodygUId = null, Expression<Func<bool>> bodynotePrintsAfterLineItems = null, Expression<Func<bool>> bodyproposal = null, Expression<Func<bool>> bodyproposalAccepted = null, Expression<Func<bodysalesOrderLineItemInputItem2222[]>> bodysalesOrderLineItem = null, Expression<Func<string>> bodysalesOrderNumber = null, Expression<Func<string>> bodysalesRepresentativeGUID = null, Expression<Func<string>> bodysalesRepresentativeId = null, Expression<Func<string>> bodyshipAddressCity = null, Expression<Func<string>> bodyshipAddressCountry = null, Expression<Func<string>> bodyshipAddressLine1 = null, Expression<Func<string>> bodyshipAddressLine2 = null, Expression<Func<string>> bodyshipAddressName = null, Expression<Func<string>> bodyshipAddressState = null, Expression<Func<string>> bodyshipAddressZipCode = null, Expression<Func<string>> bodyshipBy = null, Expression<Func<string>> bodyshipVIA = null, Expression<Func<bool>> bodystatementNotePrintsBeforeInvRef = null)
         {
             var __workflow_bodyaccountsReceivableAccount = WorkflowExpression.Compile(bodyaccountsReceivableAccount, nameof(bodyaccountsReceivableAccount), required: false);
             var __workflow_bodyaccountsReceivableAcctGUID = WorkflowExpression.Compile(bodyaccountsReceivableAcctGUID, nameof(bodyaccountsReceivableAcctGUID), required: false);
             var __workflow_bodyaccountsReceivableAmount = WorkflowExpression.Compile(bodyaccountsReceivableAmount, nameof(bodyaccountsReceivableAmount), required: false);
             var __workflow_bodyclosed = WorkflowExpression.Compile(bodyclosed, nameof(bodyclosed), required: false);
-            var __workflow_bodycustomerID = WorkflowExpression.Compile(bodycustomerID, nameof(bodycustomerID), required: false);
+            var __workflow_bodycustomerId = WorkflowExpression.Compile(bodycustomerId, nameof(bodycustomerId), required: false);
             var __workflow_bodycustomerPO = WorkflowExpression.Compile(bodycustomerPO, nameof(bodycustomerPO), required: false);
             var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
             var __workflow_bodydiscountAmount = WorkflowExpression.Compile(bodydiscountAmount, nameof(bodydiscountAmount), required: false);
             var __workflow_bodydisplayedTerms = WorkflowExpression.Compile(bodydisplayedTerms, nameof(bodydisplayedTerms), required: false);
             var __workflow_bodydropShip = WorkflowExpression.Compile(bodydropShip, nameof(bodydropShip), required: false);
-            var __workflow_bodygUID = WorkflowExpression.Compile(bodygUID, nameof(bodygUID), required: false);
+            var __workflow_bodygUId = WorkflowExpression.Compile(bodygUId, nameof(bodygUId), required: false);
             var __workflow_bodynotePrintsAfterLineItems = WorkflowExpression.Compile(bodynotePrintsAfterLineItems, nameof(bodynotePrintsAfterLineItems), required: false);
             var __workflow_bodyproposal = WorkflowExpression.Compile(bodyproposal, nameof(bodyproposal), required: false);
             var __workflow_bodyproposalAccepted = WorkflowExpression.Compile(bodyproposalAccepted, nameof(bodyproposalAccepted), required: false);
             var __workflow_bodysalesOrderLineItem = WorkflowExpression.Compile(bodysalesOrderLineItem, nameof(bodysalesOrderLineItem), required: false);
             var __workflow_bodysalesOrderNumber = WorkflowExpression.Compile(bodysalesOrderNumber, nameof(bodysalesOrderNumber), required: false);
             var __workflow_bodysalesRepresentativeGUID = WorkflowExpression.Compile(bodysalesRepresentativeGUID, nameof(bodysalesRepresentativeGUID), required: false);
-            var __workflow_bodysalesRepresentativeID = WorkflowExpression.Compile(bodysalesRepresentativeID, nameof(bodysalesRepresentativeID), required: false);
+            var __workflow_bodysalesRepresentativeId = WorkflowExpression.Compile(bodysalesRepresentativeId, nameof(bodysalesRepresentativeId), required: false);
             var __workflow_bodyshipAddressCity = WorkflowExpression.Compile(bodyshipAddressCity, nameof(bodyshipAddressCity), required: false);
             var __workflow_bodyshipAddressCountry = WorkflowExpression.Compile(bodyshipAddressCountry, nameof(bodyshipAddressCountry), required: false);
             var __workflow_bodyshipAddressLine1 = WorkflowExpression.Compile(bodyshipAddressLine1, nameof(bodyshipAddressLine1), required: false);
@@ -2594,9 +2595,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                     bodypropCount++;
                 }
 
-                if (__workflow_bodycustomerID != null)
+                if (__workflow_bodycustomerId != null)
                 {
-                    body["Customer_ID"] = ExpressionConverter.ConvertO(__workflow_bodycustomerID);
+                    body["Customer_ID"] = ExpressionConverter.ConvertO(__workflow_bodycustomerId);
                     bodypropCount++;
                 }
 
@@ -2630,9 +2631,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                     bodypropCount++;
                 }
 
-                if (__workflow_bodygUID != null)
+                if (__workflow_bodygUId != null)
                 {
-                    body["GUID"] = ExpressionConverter.ConvertO(__workflow_bodygUID);
+                    body["GUID"] = ExpressionConverter.ConvertO(__workflow_bodygUId);
                     bodypropCount++;
                 }
 
@@ -2672,9 +2673,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                     bodypropCount++;
                 }
 
-                if (__workflow_bodysalesRepresentativeID != null)
+                if (__workflow_bodysalesRepresentativeId != null)
                 {
-                    body["Sales_Representative_ID"] = ExpressionConverter.ConvertO(__workflow_bodysalesRepresentativeID);
+                    body["Sales_Representative_ID"] = ExpressionConverter.ConvertO(__workflow_bodysalesRepresentativeId);
                     bodypropCount++;
                 }
 
@@ -2748,7 +2749,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAPB1CreateNewCustomerResponse, ApiConnectionActionConfiguration> SAPB1CreateNewCustomer(Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodybillingAddressName = null, Expression<Func<string>> bodybillingBlock = null, Expression<Func<string>> bodybillingCity = null, Expression<Func<string>> bodybillingCountry = null, Expression<Func<string>> bodybillingState = null, Expression<Func<string>> bodybillingStreet = null, Expression<Func<string>> bodybillingZipCode = null, Expression<Func<string>> bodycardCode = null, Expression<Func<string>> bodycardName = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodycontactPerson = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodycounty = null, Expression<Func<string>> bodycurrency = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<string>> bodyextraField = null, Expression<Func<string>> bodyfax = null, Expression<Func<string>> bodyfederalTaxID = null, Expression<Func<string>> bodyfreeText = null, Expression<Func<int>> bodygroupCode = null, Expression<Func<string>> bodymailAddress = null, Expression<Func<string>> bodymailCity = null, Expression<Func<string>> bodymailCountry = null, Expression<Func<string>> bodymailCounty = null, Expression<Func<string>> bodymailZipCode = null, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodyphone1 = null, Expression<Func<string>> bodyphone2 = null, Expression<Func<int>> bodysalesPersonCode = null, Expression<Func<int>> bodyseries = null, Expression<Func<string>> bodyshippingAddressName = null, Expression<Func<string>> bodyshippingBlock = null, Expression<Func<string>> bodyshippingCity = null, Expression<Func<string>> bodyshippingCountry = null, Expression<Func<string>> bodyshippingState = null, Expression<Func<string>> bodyshippingStreet = null, Expression<Func<string>> bodyshippingZipCode = null, Expression<Func<string>> bodywebSite = null, Expression<Func<string>> bodyzipCode = null, Expression<Func<bodylstContactEmployeesInputItem[]>> bodylstContactEmployees = null)
+        public IBodyWorkflowAction<SAPB1CreateNewCustomerResponse, ApiConnectionActionConfiguration> SAPB1CreateNewCustomer(Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodybillingAddressName = null, Expression<Func<string>> bodybillingBlock = null, Expression<Func<string>> bodybillingCity = null, Expression<Func<string>> bodybillingCountry = null, Expression<Func<string>> bodybillingState = null, Expression<Func<string>> bodybillingStreet = null, Expression<Func<string>> bodybillingZipCode = null, Expression<Func<string>> bodycardCode = null, Expression<Func<string>> bodycardName = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodycontactPerson = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodycounty = null, Expression<Func<string>> bodycurrency = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<string>> bodyextraField = null, Expression<Func<string>> bodyfax = null, Expression<Func<string>> bodyfederalTaxId = null, Expression<Func<string>> bodyfreeText = null, Expression<Func<int>> bodygroupCode = null, Expression<Func<string>> bodymailAddress = null, Expression<Func<string>> bodymailCity = null, Expression<Func<string>> bodymailCountry = null, Expression<Func<string>> bodymailCounty = null, Expression<Func<string>> bodymailZipCode = null, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodyphone1 = null, Expression<Func<string>> bodyphone2 = null, Expression<Func<int>> bodysalesPersonCode = null, Expression<Func<int>> bodyseries = null, Expression<Func<string>> bodyshippingAddressName = null, Expression<Func<string>> bodyshippingBlock = null, Expression<Func<string>> bodyshippingCity = null, Expression<Func<string>> bodyshippingCountry = null, Expression<Func<string>> bodyshippingState = null, Expression<Func<string>> bodyshippingStreet = null, Expression<Func<string>> bodyshippingZipCode = null, Expression<Func<string>> bodywebSite = null, Expression<Func<string>> bodyzipCode = null, Expression<Func<bodylstContactEmployeesInputItem[]>> bodylstContactEmployees = null)
         {
             var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: false);
             var __workflow_bodybillingAddressName = WorkflowExpression.Compile(bodybillingAddressName, nameof(bodybillingAddressName), required: false);
@@ -2768,7 +2769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
             var __workflow_bodyemailAddress = WorkflowExpression.Compile(bodyemailAddress, nameof(bodyemailAddress), required: false);
             var __workflow_bodyextraField = WorkflowExpression.Compile(bodyextraField, nameof(bodyextraField), required: false);
             var __workflow_bodyfax = WorkflowExpression.Compile(bodyfax, nameof(bodyfax), required: false);
-            var __workflow_bodyfederalTaxID = WorkflowExpression.Compile(bodyfederalTaxID, nameof(bodyfederalTaxID), required: false);
+            var __workflow_bodyfederalTaxId = WorkflowExpression.Compile(bodyfederalTaxId, nameof(bodyfederalTaxId), required: false);
             var __workflow_bodyfreeText = WorkflowExpression.Compile(bodyfreeText, nameof(bodyfreeText), required: false);
             var __workflow_bodygroupCode = WorkflowExpression.Compile(bodygroupCode, nameof(bodygroupCode), required: false);
             var __workflow_bodymailAddress = WorkflowExpression.Compile(bodymailAddress, nameof(bodymailAddress), required: false);
@@ -2906,9 +2907,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyfederalTaxID != null)
+                if (__workflow_bodyfederalTaxId != null)
                 {
-                    body["FederalTaxID"] = ExpressionConverter.ConvertO(__workflow_bodyfederalTaxID);
+                    body["FederalTaxID"] = ExpressionConverter.ConvertO(__workflow_bodyfederalTaxId);
                     bodypropCount++;
                 }
 
@@ -5088,7 +5089,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string ItemSalesTaxRef { get; set; }
         public string JobTitle { get; set; }
         public string LastName { get; set; }
-        public string ListID { get; set; }
+
+        [JsonProperty("ListID")]
+        public string ListId { get; set; }
         public string MiddleName { get; set; }
         public string Name { get; set; }
         public string Notes { get; set; }
@@ -5140,14 +5143,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string BillAddressPostalCode { get; set; }
         public string BillAddressState { get; set; }
         public string ClassRef { get; set; }
-        public string CustomerRefListID { get; set; }
+
+        [JsonProperty("CustomerRefListID")]
+        public string CustomerRefListId { get; set; }
         public string CustomerRefName { get; set; }
         public string CustomerSalesTaxCodeRef { get; set; }
         public string DueDate { get; set; }
         public string EditSequence { get; set; }
         public string ExtraField { get; set; }
         public string ItemSalesTaxRef { get; set; }
-        public string ListID { get; set; }
+
+        [JsonProperty("ListID")]
+        public string ListId { get; set; }
         public string Memo { get; set; }
         public string PONumber { get; set; }
         public string RefNumber { get; set; }
@@ -5174,7 +5181,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string ClassRef { get; set; }
         public string Desc { get; set; }
         public string EditSequence { get; set; }
-        public string ItemListID { get; set; }
+
+        [JsonProperty("ItemListID")]
+        public string ItemListId { get; set; }
         public string ItemRef { get; set; }
         public int Quantity { get; set; }
         public int Rate { get; set; }
@@ -5188,7 +5197,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string ClassRef { get; set; }
         public string Desc { get; set; }
         public string EditSequence { get; set; }
-        public string ItemListID { get; set; }
+
+        [JsonProperty("ItemListID")]
+        public string ItemListId { get; set; }
         public string ItemRef { get; set; }
         public int Quantity { get; set; }
         public int Rate { get; set; }
@@ -5320,10 +5331,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string NEXTCREDITREV { get; set; }
 
         [JsonProperty("OVERRIDE_PRODUCT_NOMINAL")]
-        public bool OVERRIDEPRODUCTNOMINAL { get; set; }
+        public bool OVERRIdEPRODUCTNOMINAL { get; set; }
 
         [JsonProperty("OVERRIDE_PRODUCT_TAX")]
-        public bool OVERRIDEPRODUCTTAX { get; set; }
+        public bool OVERRIdEPRODUCTTAX { get; set; }
 
         [JsonProperty("PAYMENT_DUE_DAYS")]
         public int PAYMENTDUEDAYS { get; set; }
@@ -5394,7 +5405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string ADDRESS5 { get; set; }
 
         [JsonProperty("AMOUNT_PREPAID")]
-        public int AMOUNTPREPAID { get; set; }
+        public int AMOUNTPREPAId { get; set; }
 
         [JsonProperty("ANALYSIS_1")]
         public string ANALYSIS1 { get; set; }
@@ -5576,7 +5587,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string CustomFieldValue4 { get; set; }
         public string CustomFieldValue5 { get; set; }
         public string CustomerGUID { get; set; }
-        public string CustomerID { get; set; }
+
+        [JsonProperty("CustomerID")]
+        public string CustomerId { get; set; }
 
         [JsonProperty("Customer_Balance")]
         public int CustomerBalance { get; set; }
@@ -5610,7 +5623,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public int PricingLevel { get; set; }
 
         [JsonProperty("Sales_Representative_ID")]
-        public string SalesRepresentativeID { get; set; }
+        public string SalesRepresentativeId { get; set; }
 
         [JsonProperty("Sales_Tax_Code")]
         public string SalesTaxCode { get; set; }
@@ -5664,7 +5677,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public bool Closed { get; set; }
 
         [JsonProperty("Customer_ID")]
-        public string CustomerID { get; set; }
+        public string CustomerId { get; set; }
 
         [JsonProperty("Customer_PO")]
         public string CustomerPO { get; set; }
@@ -5693,7 +5706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string SalesRepresentativeGUID { get; set; }
 
         [JsonProperty("Sales_Representative_ID")]
-        public string SalesRepresentativeID { get; set; }
+        public string SalesRepresentativeId { get; set; }
         public string ShipAddressCity { get; set; }
         public string ShipAddressCountry { get; set; }
         public string ShipAddressLine1 { get; set; }
@@ -5727,13 +5740,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string ItemGUID { get; set; }
 
         [JsonProperty("Item_ID")]
-        public string ItemID { get; set; }
+        public string ItemId { get; set; }
 
         [JsonProperty("Job_GUID")]
         public string JobGUID { get; set; }
 
         [JsonProperty("Job_ID")]
-        public string JobID { get; set; }
+        public string JobId { get; set; }
         public int Quantity { get; set; }
 
         [JsonProperty("SO_Description")]
@@ -5749,7 +5762,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public int TaxType { get; set; }
 
         [JsonProperty("UM_ID")]
-        public string UMID { get; set; }
+        public string UMId { get; set; }
 
         [JsonProperty("UM_Stocking_Units")]
         public int UMStockingUnits { get; set; }
@@ -5774,13 +5787,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string ItemGUID { get; set; }
 
         [JsonProperty("Item_ID")]
-        public string ItemID { get; set; }
+        public string ItemId { get; set; }
 
         [JsonProperty("Job_GUID")]
         public string JobGUID { get; set; }
 
         [JsonProperty("Job_ID")]
-        public string JobID { get; set; }
+        public string JobId { get; set; }
         public int Quantity { get; set; }
 
         [JsonProperty("SO_Description")]
@@ -5796,7 +5809,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public int TaxType { get; set; }
 
         [JsonProperty("UM_ID")]
-        public string UMID { get; set; }
+        public string UMId { get; set; }
 
         [JsonProperty("UM_Stocking_Units")]
         public int UMStockingUnits { get; set; }

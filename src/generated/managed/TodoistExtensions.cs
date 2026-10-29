@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
 {
     using System.Linq.Expressions;
@@ -150,10 +151,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         public IBodyWorkflowAction<TaskV2[], ApiConnectionActionConfiguration> ListItems()
         {
-            var apiCallPath = "/v4/tasks/getAll";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TaskV2[]>(callPayload);
+            return new DeferredBodyAction<TaskV2[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v4/tasks/getAll";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TaskV2[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
@@ -173,19 +177,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         public IBodyWorkflowAction<LabelV4[], ApiConnectionActionConfiguration> ListLabels()
         {
-            var apiCallPath = "/v4/labels/getAll";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<LabelV4[]>(callPayload);
+            return new DeferredBodyAction<LabelV4[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v4/labels/getAll";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<LabelV4[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         public IBodyWorkflowAction<ProjectV4[], ApiConnectionActionConfiguration> ListProjects()
         {
-            var apiCallPath = "/v4/projects/getAll";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProjectV4[]>(callPayload);
+            return new DeferredBodyAction<ProjectV4[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v4/projects/getAll";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ProjectV4[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
@@ -598,7 +608,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         public int DayOrder { get; set; }
 
         [JsonProperty("section_id")]
-        public string SectionID { get; set; }
+        public string SectionId { get; set; }
 
         [JsonProperty("collapsed")]
         public bool Collapsed { get; set; }

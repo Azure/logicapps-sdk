@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
 {
     using System.Linq.Expressions;
@@ -119,19 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
                 }
 
                 return new ApiConnectionAction<Base64DecodeResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<TextEncodingDetectResponse, ApiConnectionActionConfiguration> EditTextTextEncodingDetect(Expression<Func<object>> inputFile)
-        {
-            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: true);
-            return new DeferredBodyAction<TextEncodingDetectResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/convert/edit/text/encoding/detect";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<TextEncodingDetectResponse>(callPayload);
             });
         }
 
@@ -289,34 +277,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<DetectLineEndingsResponse, ApiConnectionActionConfiguration> EditTextDetectLineEndings(Expression<Func<object>> inputFile)
-        {
-            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: true);
-            return new DeferredBodyAction<DetectLineEndingsResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/convert/edit/text/line-endings/detect";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<DetectLineEndingsResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<ChangeLineEndingResponse, ApiConnectionActionConfiguration> EditTextChangeLineEndings(Expression<Func<string>> lineEndingType, Expression<Func<object>> inputFile)
-        {
-            var __workflow_lineEndingType = WorkflowExpression.Compile(lineEndingType, nameof(lineEndingType), required: true);
-            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: true);
-            return new DeferredBodyAction<ChangeLineEndingResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/convert/edit/text/line-endings/change";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["lineEndingType"] = ExpressionConverter.Convert(__workflow_lineEndingType);
-                return new ApiConnectionAction<ChangeLineEndingResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         public IBodyWorkflowAction<RemoveHtmlFromTextResponse, ApiConnectionActionConfiguration> EditTextRemoveHtml(Expression<Func<string>> requesttextContainingHtml = null)
         {
             var __workflow_requesttextContainingHtml = WorkflowExpression.Compile(requesttextContainingHtml, nameof(requesttextContainingHtml), required: false);
@@ -395,54 +355,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<DocumentValidationResult, ApiConnectionActionConfiguration> ValidateDocumentExecutableValidation(Expression<Func<object>> inputFile)
-        {
-            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: true);
-            return new DeferredBodyAction<DocumentValidationResult, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/convert/validate/executable";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<DocumentValidationResult>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<ViewerResponse, ApiConnectionActionConfiguration> ViewerToolsCreateSimple(Expression<Func<object>> inputFile)
-        {
-            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: true);
-            return new DeferredBodyAction<ViewerResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/convert/viewer/create/web/simple";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<ViewerResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ZipArchiveZipCreate(Expression<Func<object>> inputFile1, Expression<Func<object>> inputFile2 = null, Expression<Func<object>> inputFile3 = null, Expression<Func<object>> inputFile4 = null, Expression<Func<object>> inputFile5 = null, Expression<Func<object>> inputFile6 = null, Expression<Func<object>> inputFile7 = null, Expression<Func<object>> inputFile8 = null, Expression<Func<object>> inputFile9 = null, Expression<Func<object>> inputFile10 = null)
-        {
-            var __workflow_inputFile1 = WorkflowExpression.Compile(inputFile1, nameof(inputFile1), required: true);
-            var __workflow_inputFile2 = WorkflowExpression.Compile(inputFile2, nameof(inputFile2), required: false);
-            var __workflow_inputFile3 = WorkflowExpression.Compile(inputFile3, nameof(inputFile3), required: false);
-            var __workflow_inputFile4 = WorkflowExpression.Compile(inputFile4, nameof(inputFile4), required: false);
-            var __workflow_inputFile5 = WorkflowExpression.Compile(inputFile5, nameof(inputFile5), required: false);
-            var __workflow_inputFile6 = WorkflowExpression.Compile(inputFile6, nameof(inputFile6), required: false);
-            var __workflow_inputFile7 = WorkflowExpression.Compile(inputFile7, nameof(inputFile7), required: false);
-            var __workflow_inputFile8 = WorkflowExpression.Compile(inputFile8, nameof(inputFile8), required: false);
-            var __workflow_inputFile9 = WorkflowExpression.Compile(inputFile9, nameof(inputFile9), required: false);
-            var __workflow_inputFile10 = WorkflowExpression.Compile(inputFile10, nameof(inputFile10), required: false);
-            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/convert/archive/zip/create";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<string>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
         public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ZipArchiveZipCreateAdvanced(Expression<Func<ZipFile[]>> requestfilesInZip = null, Expression<Func<ZipDirectory[]>> requestdirectoriesInZip = null)
         {
             var __workflow_requestfilesInZip = WorkflowExpression.Compile(requestfilesInZip, nameof(requestfilesInZip), required: false);
@@ -472,19 +384,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
                 }
 
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<ZipExtractResponse, ApiConnectionActionConfiguration> ZipArchiveZipExtract(Expression<Func<object>> inputFile)
-        {
-            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: true);
-            return new DeferredBodyAction<ZipExtractResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/convert/archive/zip/extract";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<ZipExtractResponse>(callPayload);
             });
         }
 
@@ -524,21 +423,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
                     callPayload.Body = encryptionRequest;
                 }
 
-                return new ApiConnectionAction<JToken>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ZipArchiveZipDecrypt(Expression<Func<object>> inputFile, Expression<Func<string>> zipPassword)
-        {
-            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: true);
-            var __workflow_zipPassword = WorkflowExpression.Compile(zipPassword, nameof(zipPassword), required: true);
-            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/convert/archive/zip/decrypt";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["zipPassword"] = ExpressionConverter.Convert(__workflow_zipPassword);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -586,12 +470,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         public string ContentResult { get; set; }
     }
 
-    public class TextEncodingDetectResponse
-    {
-        public bool Successful { get; set; }
-        public string TextEncoding { get; set; }
-    }
-
     public class FindStringSimpleResponse
     {
         public bool Successful { get; set; }
@@ -634,20 +512,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         public string TextContentResult { get; set; }
     }
 
-    public class DetectLineEndingsResponse
-    {
-        public bool Successful { get; set; }
-        public string PrimaryNewlineType { get; set; }
-        public string PrimaryNewlineTerminator { get; set; }
-        public int InputLength { get; set; }
-    }
-
-    public class ChangeLineEndingResponse
-    {
-        public bool Successful { get; set; }
-        public string TextContentResult { get; set; }
-    }
-
     public class RemoveHtmlFromTextResponse
     {
         public bool Successful { get; set; }
@@ -658,29 +522,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
     {
         public bool Successful { get; set; }
         public string TextContentResult { get; set; }
-    }
-
-    public class DocumentValidationResult
-    {
-        public bool DocumentIsValid { get; set; }
-        public bool PasswordProtected { get; set; }
-        public int ErrorCount { get; set; }
-        public int WarningCount { get; set; }
-        public DocumentValidationError[] ErrorsAndWarnings { get; set; }
-    }
-
-    public class DocumentValidationError
-    {
-        public string Description { get; set; }
-        public string Path { get; set; }
-        public string Uri { get; set; }
-        public bool IsError { get; set; }
-    }
-
-    public class ViewerResponse
-    {
-        public string HtmlEmbed { get; set; }
-        public bool Successful { get; set; }
     }
 
     public class ZipFile
@@ -694,13 +535,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         public string DirectoryName { get; set; }
         public ZipDirectory[] DirectoriesInDirectory { get; set; }
         public ZipFile[] FilesInDirectory { get; set; }
-    }
-
-    public class ZipExtractResponse
-    {
-        public bool Successful { get; set; }
-        public ZipFile[] FilesInZip { get; set; }
-        public ZipDirectory[] DirectoriesInZip { get; set; }
     }
 }
 

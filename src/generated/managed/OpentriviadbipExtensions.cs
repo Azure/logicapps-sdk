@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentriviadbip")]
         public IBodyWorkflowAction<GetCategoriesResponse, ApiConnectionActionConfiguration> GetCategories()
         {
-            var apiCallPath = "/api_category.php";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetCategoriesResponse>(callPayload);
+            return new DeferredBodyAction<GetCategoriesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api_category.php";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetCategoriesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentriviadbip")]
@@ -60,10 +64,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentriviadbip")]
         public IBodyWorkflowAction<GlobalCountLookupResponse, ApiConnectionActionConfiguration> GlobalCountLookup()
         {
-            var apiCallPath = "/api_count_global.php";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GlobalCountLookupResponse>(callPayload);
+            return new DeferredBodyAction<GlobalCountLookupResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api_count_global.php";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GlobalCountLookupResponse>(callPayload);
+            });
         }
     }
 

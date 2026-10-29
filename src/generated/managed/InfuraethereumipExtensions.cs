@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
 {
     using System.Linq.Expressions;
@@ -14,45 +15,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infuraethereumip")]
         public IBodyWorkflowAction<EthGasPriceResponse, ApiConnectionActionConfiguration> EthGasPrice()
         {
-            var apiCallPath = "/eth_gasPrice";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["jsonrpc"] = "2.0";
-            bodypropCount++;
-            body["method"] = "eth_gasPrice";
-            bodypropCount++;
-            body["id"] = 1;
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredBodyAction<EthGasPriceResponse, ApiConnectionActionConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/eth_gasPrice";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["jsonrpc"] = "2.0";
+                bodypropCount++;
+                body["method"] = "eth_gasPrice";
+                bodypropCount++;
+                body["id"] = 1;
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<EthGasPriceResponse>(callPayload);
+                return new ApiConnectionAction<EthGasPriceResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infuraethereumip")]
         public IBodyWorkflowAction<EthBlockNumberResponse, ApiConnectionActionConfiguration> EthBlockNumber()
         {
-            var apiCallPath = "/eth_blockNumber";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["jsonrpc"] = "2.0";
-            bodypropCount++;
-            body["method"] = "eth_blockNumber";
-            bodypropCount++;
-            body["id"] = 1;
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredBodyAction<EthBlockNumberResponse, ApiConnectionActionConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/eth_blockNumber";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["jsonrpc"] = "2.0";
+                bodypropCount++;
+                body["method"] = "eth_blockNumber";
+                bodypropCount++;
+                body["id"] = 1;
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<EthBlockNumberResponse>(callPayload);
+                return new ApiConnectionAction<EthBlockNumberResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infuraethereumip")]

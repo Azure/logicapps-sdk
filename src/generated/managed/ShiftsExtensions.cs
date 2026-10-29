@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
 {
     using System.Linq.Expressions;
@@ -47,10 +48,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<TimeOffResponse, ApiConnectionActionConfiguration> CreateTimeOff(Expression<Func<string>> teamId, Expression<Func<string>> requestuserID, Expression<Func<string>> requestvaluetimeOffReason = null, Expression<Func<string>> requestvaluestartTime = null, Expression<Func<string>> requestvalueendTime = null, Expression<Func<requestvaluethemeInput>> requestvaluetheme = null)
+        public IBodyWorkflowAction<TimeOffResponse, ApiConnectionActionConfiguration> CreateTimeOff(Expression<Func<string>> teamId, Expression<Func<string>> requestuserId, Expression<Func<string>> requestvaluetimeOffReason = null, Expression<Func<string>> requestvaluestartTime = null, Expression<Func<string>> requestvalueendTime = null, Expression<Func<requestvaluethemeInput>> requestvaluetheme = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
-            var __workflow_requestuserID = WorkflowExpression.Compile(requestuserID, nameof(requestuserID), required: true);
+            var __workflow_requestuserId = WorkflowExpression.Compile(requestuserId, nameof(requestuserId), required: true);
             var __workflow_requestvaluetimeOffReason = WorkflowExpression.Compile(requestvaluetimeOffReason, nameof(requestvaluetimeOffReason), required: false);
             var __workflow_requestvaluestartTime = WorkflowExpression.Compile(requestvaluestartTime, nameof(requestvaluestartTime), required: false);
             var __workflow_requestvalueendTime = WorkflowExpression.Compile(requestvalueendTime, nameof(requestvalueendTime), required: false);
@@ -105,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 }
 
                 requestpropCount++;
-                request["userId"] = ExpressionConverter.ConvertO(__workflow_requestuserID);
+                request["userId"] = ExpressionConverter.ConvertO(__workflow_requestuserId);
                 if (requestpropCount > 0)
                 {
                     callPayload.Body = request;
@@ -166,11 +167,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<ShiftResponse, ApiConnectionActionConfiguration> CreateShift(Expression<Func<string>> teamId, Expression<Func<string>> requestuserID, Expression<Func<string>> requestschedulingGroupID = null, Expression<Func<string>> requestvaluedisplayName = null, Expression<Func<string>> requestvaluenotes = null, Expression<Func<string>> requestvaluestartTime = null, Expression<Func<string>> requestvalueendTime = null, Expression<Func<requestvaluethemeInput>> requestvaluetheme = null, Expression<Func<requestvalueactivitiesInputItem[]>> requestvalueactivities = null)
+        public IBodyWorkflowAction<ShiftResponse, ApiConnectionActionConfiguration> CreateShift(Expression<Func<string>> teamId, Expression<Func<string>> requestuserId, Expression<Func<string>> requestschedulingGroupId = null, Expression<Func<string>> requestvaluedisplayName = null, Expression<Func<string>> requestvaluenotes = null, Expression<Func<string>> requestvaluestartTime = null, Expression<Func<string>> requestvalueendTime = null, Expression<Func<requestvaluethemeInput>> requestvaluetheme = null, Expression<Func<requestvalueactivitiesInputItem[]>> requestvalueactivities = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
-            var __workflow_requestuserID = WorkflowExpression.Compile(requestuserID, nameof(requestuserID), required: true);
-            var __workflow_requestschedulingGroupID = WorkflowExpression.Compile(requestschedulingGroupID, nameof(requestschedulingGroupID), required: false);
+            var __workflow_requestuserId = WorkflowExpression.Compile(requestuserId, nameof(requestuserId), required: true);
+            var __workflow_requestschedulingGroupId = WorkflowExpression.Compile(requestschedulingGroupId, nameof(requestschedulingGroupId), required: false);
             var __workflow_requestvaluedisplayName = WorkflowExpression.Compile(requestvaluedisplayName, nameof(requestvaluedisplayName), required: false);
             var __workflow_requestvaluenotes = WorkflowExpression.Compile(requestvaluenotes, nameof(requestvaluenotes), required: false);
             var __workflow_requestvaluestartTime = WorkflowExpression.Compile(requestvaluestartTime, nameof(requestvaluestartTime), required: false);
@@ -184,9 +185,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
                 var requestpropCount = 0;
-                if (__workflow_requestschedulingGroupID != null)
+                if (__workflow_requestschedulingGroupId != null)
                 {
-                    request["schedulingGroupId"] = ExpressionConverter.ConvertO(__workflow_requestschedulingGroupID);
+                    request["schedulingGroupId"] = ExpressionConverter.ConvertO(__workflow_requestschedulingGroupId);
                     requestpropCount++;
                 }
 
@@ -245,7 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 }
 
                 requestpropCount++;
-                request["userId"] = ExpressionConverter.ConvertO(__workflow_requestuserID);
+                request["userId"] = ExpressionConverter.ConvertO(__workflow_requestuserId);
                 if (requestpropCount > 0)
                 {
                     callPayload.Body = request;
@@ -306,13 +307,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<OpenShiftResponse, ApiConnectionActionConfiguration> CreateOpenShift(Expression<Func<string>> teamId, Expression<Func<string>> requestsharedOpenShiftstartTime, Expression<Func<string>> requestsharedOpenShiftendTime, Expression<Func<int>> requestsharedOpenShiftopenSlotCount, Expression<Func<string>> requestschedulingGroupID = null, Expression<Func<string>> requestsharedOpenShiftdisplayName = null, Expression<Func<string>> requestsharedOpenShiftnotes = null, Expression<Func<requestsharedOpenShiftthemeInput>> requestsharedOpenShifttheme = null, Expression<Func<requestsharedOpenShiftactivitiesInputItem[]>> requestsharedOpenShiftactivities = null)
+        public IBodyWorkflowAction<OpenShiftResponse, ApiConnectionActionConfiguration> CreateOpenShift(Expression<Func<string>> teamId, Expression<Func<string>> requestsharedOpenShiftstartTime, Expression<Func<string>> requestsharedOpenShiftendTime, Expression<Func<int>> requestsharedOpenShiftopenSlotCount, Expression<Func<string>> requestschedulingGroupId = null, Expression<Func<string>> requestsharedOpenShiftdisplayName = null, Expression<Func<string>> requestsharedOpenShiftnotes = null, Expression<Func<requestsharedOpenShiftthemeInput>> requestsharedOpenShifttheme = null, Expression<Func<requestsharedOpenShiftactivitiesInputItem[]>> requestsharedOpenShiftactivities = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_requestsharedOpenShiftstartTime = WorkflowExpression.Compile(requestsharedOpenShiftstartTime, nameof(requestsharedOpenShiftstartTime), required: true);
             var __workflow_requestsharedOpenShiftendTime = WorkflowExpression.Compile(requestsharedOpenShiftendTime, nameof(requestsharedOpenShiftendTime), required: true);
             var __workflow_requestsharedOpenShiftopenSlotCount = WorkflowExpression.Compile(requestsharedOpenShiftopenSlotCount, nameof(requestsharedOpenShiftopenSlotCount), required: true);
-            var __workflow_requestschedulingGroupID = WorkflowExpression.Compile(requestschedulingGroupID, nameof(requestschedulingGroupID), required: false);
+            var __workflow_requestschedulingGroupId = WorkflowExpression.Compile(requestschedulingGroupId, nameof(requestschedulingGroupId), required: false);
             var __workflow_requestsharedOpenShiftdisplayName = WorkflowExpression.Compile(requestsharedOpenShiftdisplayName, nameof(requestsharedOpenShiftdisplayName), required: false);
             var __workflow_requestsharedOpenShiftnotes = WorkflowExpression.Compile(requestsharedOpenShiftnotes, nameof(requestsharedOpenShiftnotes), required: false);
             var __workflow_requestsharedOpenShifttheme = WorkflowExpression.Compile(requestsharedOpenShifttheme, nameof(requestsharedOpenShifttheme), required: false);
@@ -324,9 +325,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
                 var requestpropCount = 0;
-                if (__workflow_requestschedulingGroupID != null)
+                if (__workflow_requestschedulingGroupId != null)
                 {
-                    request["schedulingGroupId"] = ExpressionConverter.ConvertO(__workflow_requestschedulingGroupID);
+                    request["schedulingGroupId"] = ExpressionConverter.ConvertO(__workflow_requestschedulingGroupId);
                     requestpropCount++;
                 }
 
@@ -402,14 +403,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<OpenShiftResponse, ApiConnectionActionConfiguration> UpdateOpenShift(Expression<Func<string>> teamId, Expression<Func<string>> openShiftId, Expression<Func<string>> requestsharedOpenShiftstartTime, Expression<Func<string>> requestsharedOpenShiftendTime, Expression<Func<int>> requestsharedOpenShiftopenSlotCount, Expression<Func<string>> requestschedulingGroupID = null, Expression<Func<string>> requestsharedOpenShiftdisplayName = null, Expression<Func<string>> requestsharedOpenShiftnotes = null, Expression<Func<requestsharedOpenShiftthemeInput>> requestsharedOpenShifttheme = null, Expression<Func<requestsharedOpenShiftactivitiesInputItem[]>> requestsharedOpenShiftactivities = null)
+        public IBodyWorkflowAction<OpenShiftResponse, ApiConnectionActionConfiguration> UpdateOpenShift(Expression<Func<string>> teamId, Expression<Func<string>> openShiftId, Expression<Func<string>> requestsharedOpenShiftstartTime, Expression<Func<string>> requestsharedOpenShiftendTime, Expression<Func<int>> requestsharedOpenShiftopenSlotCount, Expression<Func<string>> requestschedulingGroupId = null, Expression<Func<string>> requestsharedOpenShiftdisplayName = null, Expression<Func<string>> requestsharedOpenShiftnotes = null, Expression<Func<requestsharedOpenShiftthemeInput>> requestsharedOpenShifttheme = null, Expression<Func<requestsharedOpenShiftactivitiesInputItem[]>> requestsharedOpenShiftactivities = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_openShiftId = WorkflowExpression.Compile(openShiftId, nameof(openShiftId), required: true);
             var __workflow_requestsharedOpenShiftstartTime = WorkflowExpression.Compile(requestsharedOpenShiftstartTime, nameof(requestsharedOpenShiftstartTime), required: true);
             var __workflow_requestsharedOpenShiftendTime = WorkflowExpression.Compile(requestsharedOpenShiftendTime, nameof(requestsharedOpenShiftendTime), required: true);
             var __workflow_requestsharedOpenShiftopenSlotCount = WorkflowExpression.Compile(requestsharedOpenShiftopenSlotCount, nameof(requestsharedOpenShiftopenSlotCount), required: true);
-            var __workflow_requestschedulingGroupID = WorkflowExpression.Compile(requestschedulingGroupID, nameof(requestschedulingGroupID), required: false);
+            var __workflow_requestschedulingGroupId = WorkflowExpression.Compile(requestschedulingGroupId, nameof(requestschedulingGroupId), required: false);
             var __workflow_requestsharedOpenShiftdisplayName = WorkflowExpression.Compile(requestsharedOpenShiftdisplayName, nameof(requestsharedOpenShiftdisplayName), required: false);
             var __workflow_requestsharedOpenShiftnotes = WorkflowExpression.Compile(requestsharedOpenShiftnotes, nameof(requestsharedOpenShiftnotes), required: false);
             var __workflow_requestsharedOpenShifttheme = WorkflowExpression.Compile(requestsharedOpenShifttheme, nameof(requestsharedOpenShifttheme), required: false);
@@ -421,9 +422,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
                 var requestpropCount = 0;
-                if (__workflow_requestschedulingGroupID != null)
+                if (__workflow_requestschedulingGroupId != null)
                 {
-                    request["schedulingGroupId"] = ExpressionConverter.ConvertO(__workflow_requestschedulingGroupID);
+                    request["schedulingGroupId"] = ExpressionConverter.ConvertO(__workflow_requestschedulingGroupId);
                     requestpropCount++;
                 }
 
@@ -1081,7 +1082,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
     public class ScheduleResponse
     {
         [JsonProperty("id")]
-        public string ScheduleID { get; set; }
+        public string ScheduleId { get; set; }
 
         [JsonProperty("timeZone")]
         public string ScheduleTimeZone { get; set; }
@@ -1105,7 +1106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
     public class TimeOffResponse
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("createdDateTime")]
         public string CreatedDateTime { get; set; }
@@ -1114,7 +1115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         public string ModifiedDateTime { get; set; }
 
         [JsonProperty("userId")]
-        public string AssignedToUserID { get; set; }
+        public string AssignedToUserId { get; set; }
 
         [JsonProperty("userInfo")]
         public UserInfo UserInfo { get; set; }
@@ -1150,7 +1151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
     public class SharedTimeOff
     {
         [JsonProperty("timeOffReasonId")]
-        public string TimeOffReasonID { get; set; }
+        public string TimeOffReasonId { get; set; }
 
         [JsonProperty("startDateTime")]
         public string StartTime { get; set; }
@@ -1194,7 +1195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
     public class DraftTimeOff
     {
         [JsonProperty("timeOffReasonId")]
-        public string TimeOffReasonID { get; set; }
+        public string TimeOffReasonId { get; set; }
 
         [JsonProperty("startDateTime")]
         public string StartTime { get; set; }
@@ -1247,7 +1248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
     public class ShiftResponse
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("createdDateTime")]
         public string CreatedDateTime { get; set; }
@@ -1256,10 +1257,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         public string ModifiedDateTime { get; set; }
 
         [JsonProperty("userId")]
-        public string AssignedToUserID { get; set; }
+        public string AssignedToUserId { get; set; }
 
         [JsonProperty("schedulingGroupId")]
-        public string SchedulingGroupID { get; set; }
+        public string SchedulingGroupId { get; set; }
 
         [JsonProperty("schedulingGroupInfo")]
         public SchedulingGroupInfo SchedulingGroupInfo { get; set; }
@@ -1379,7 +1380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
     public class OpenShiftResponse
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("createdDateTime")]
         public string CreatedDateTime { get; set; }
@@ -1388,7 +1389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         public string ModifiedDateTime { get; set; }
 
         [JsonProperty("schedulingGroupId")]
-        public string SchedulingGroupID { get; set; }
+        public string SchedulingGroupId { get; set; }
 
         [JsonProperty("schedulingGroupInfo")]
         public SchedulingGroupInfo SchedulingGroupInfo { get; set; }
@@ -1510,7 +1511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
     public class GetTimeOffReasonsResponseArrayContainingTimeOffReasonsTypeItem
     {
         [JsonProperty("id")]
-        public string TimeOffReasonID { get; set; }
+        public string TimeOffReasonId { get; set; }
 
         [JsonProperty("createdDateTime")]
         public string CreatedTime { get; set; }
@@ -1540,7 +1541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
     public class SchedulingGroupResponse
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
@@ -1564,7 +1565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
     public class TimeOffRequestResponse
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("createdDateTime")]
         public string CreatedTime { get; set; }
@@ -1585,7 +1586,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         public string SenderMessage { get; set; }
 
         [JsonProperty("senderUserId")]
-        public string SenderID { get; set; }
+        public string SenderId { get; set; }
 
         [JsonProperty("managerActionDateTime")]
         public string ManagerActionTime { get; set; }
@@ -1594,7 +1595,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         public string ManagerMessage { get; set; }
 
         [JsonProperty("managerUserId")]
-        public string ManagerID { get; set; }
+        public string ManagerId { get; set; }
 
         [JsonProperty("startDateTime")]
         public string StartTime { get; set; }
@@ -1603,7 +1604,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         public string EndTime { get; set; }
 
         [JsonProperty("timeOffReasonId")]
-        public string TimeOffReasonID { get; set; }
+        public string TimeOffReasonId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1638,7 +1639,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
     public class OfferShiftRequestResponse
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("createdDateTime")]
         public string CreatedTime { get; set; }
@@ -1659,10 +1660,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         public string SenderMessage { get; set; }
 
         [JsonProperty("senderUserId")]
-        public string SenderID { get; set; }
+        public string SenderId { get; set; }
 
         [JsonProperty("senderShiftId")]
-        public string SenderShiftID { get; set; }
+        public string SenderShiftId { get; set; }
 
         [JsonProperty("recipientActionDateTime")]
         public string ReceiverTime { get; set; }
@@ -1671,7 +1672,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         public string RecipientMessage { get; set; }
 
         [JsonProperty("recipientUserId")]
-        public string RecipientID { get; set; }
+        public string RecipientId { get; set; }
 
         [JsonProperty("managerActionDateTime")]
         public string ManagerActionTime { get; set; }
@@ -1680,7 +1681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         public string ManagerMessage { get; set; }
 
         [JsonProperty("managerUserId")]
-        public string ManagerID { get; set; }
+        public string ManagerId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1704,7 +1705,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
     public class SwapShiftsChangeRequestResponse
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("createdDateTime")]
         public string CreatedTime { get; set; }
@@ -1725,10 +1726,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         public string SenderMessage { get; set; }
 
         [JsonProperty("senderUserId")]
-        public string SenderID { get; set; }
+        public string SenderId { get; set; }
 
         [JsonProperty("senderShiftId")]
-        public string SenderShiftID { get; set; }
+        public string SenderShiftId { get; set; }
 
         [JsonProperty("recipientActionDateTime")]
         public string ReceiverTime { get; set; }
@@ -1737,10 +1738,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         public string RecipientMessage { get; set; }
 
         [JsonProperty("recipientUserId")]
-        public string RecipientID { get; set; }
+        public string RecipientId { get; set; }
 
         [JsonProperty("recipientShiftId")]
-        public string RecipientShiftID { get; set; }
+        public string RecipientShiftId { get; set; }
 
         [JsonProperty("managerActionDateTime")]
         public string ManagerActionTime { get; set; }
@@ -1749,7 +1750,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         public string ManagerMessage { get; set; }
 
         [JsonProperty("managerUserId")]
-        public string ManagerID { get; set; }
+        public string ManagerId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1773,7 +1774,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
     public class OpenShiftChangeRequestResponse
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("createdDateTime")]
         public string CreatedTime { get; set; }
@@ -1794,7 +1795,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         public string SenderMessage { get; set; }
 
         [JsonProperty("senderUserId")]
-        public string SenderID { get; set; }
+        public string SenderId { get; set; }
 
         [JsonProperty("managerActionDateTime")]
         public string ManagerActionTime { get; set; }
@@ -1803,10 +1804,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         public string ManagerMessage { get; set; }
 
         [JsonProperty("managerUserId")]
-        public string ManagerID { get; set; }
+        public string ManagerId { get; set; }
 
         [JsonProperty("openShiftId")]
-        public string OpenShiftID { get; set; }
+        public string OpenShiftId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apptigentpowertoolspro
 {
     using System.Linq.Expressions;
@@ -11,52 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apptigentpowertoolspro
 
     public class ApptigentpowertoolsproActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apptigentpowertoolspro")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CompositeImage(Expression<Func<positionInput>> position, Expression<Func<double>> opacity, Expression<Func<object>> background, Expression<Func<object>> foreground, Expression<Func<double>> horizontal = null, Expression<Func<double>> vertical = null, Expression<Func<string>> filename = null)
-        {
-            var __workflow_position = WorkflowExpression.Compile(position, nameof(position), required: true);
-            var __workflow_opacity = WorkflowExpression.Compile(opacity, nameof(opacity), required: true);
-            var __workflow_background = WorkflowExpression.Compile(background, nameof(background), required: true);
-            var __workflow_foreground = WorkflowExpression.Compile(foreground, nameof(foreground), required: true);
-            var __workflow_horizontal = WorkflowExpression.Compile(horizontal, nameof(horizontal), required: false);
-            var __workflow_vertical = WorkflowExpression.Compile(vertical, nameof(vertical), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
-            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/CompositeImage";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction(callPayload);
-            });
-        }
     }
 
     public class ApptigentpowertoolsproTriggers([ConnectionName] string connectionId)
     {
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum positionInput
-    {
-        Custom,
-        [EnumMember(Value = "Top Left")]
-        TopLeft,
-        [EnumMember(Value = "Top Center")]
-        TopCenter,
-        [EnumMember(Value = "Top Right")]
-        TopRight,
-        [EnumMember(Value = "Middle Left")]
-        MiddleLeft,
-        [EnumMember(Value = "Middle Center")]
-        MiddleCenter,
-        [EnumMember(Value = "Middle Right")]
-        MiddleRight,
-        [EnumMember(Value = "Bottom Left")]
-        BottomLeft,
-        [EnumMember(Value = "Bottom Center")]
-        BottomCenter,
-        [EnumMember(Value = "Bottom Right")]
-        BottomRight
     }
 }
 

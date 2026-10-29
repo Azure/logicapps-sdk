@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
 {
     using System.Linq.Expressions;
@@ -455,22 +456,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
     {
         public IBodyWorkflowTrigger<GESTRESPONSESTRIGGERResponse, ApiConnectionTriggerConfiguration> GESTRESPONSESTRIGGER(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/get_responses";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ignore_previous"] = Convert.ToString(true);
-            callPayload.Queries["mark_as_read"] = Convert.ToString(true);
-            return new ApiConnectionTrigger<GESTRESPONSESTRIGGERResponse>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<GESTRESPONSESTRIGGERResponse, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/get_responses";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ignore_previous"] = Convert.ToString(true);
+                callPayload.Queries["mark_as_read"] = Convert.ToString(true);
+                return new ApiConnectionTrigger<GESTRESPONSESTRIGGERResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<GETDRSTRIGGERResponse, ApiConnectionTriggerConfiguration> GETDRSTRIGGER(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/get_all_new_drs";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ignore_previous"] = Convert.ToString(true);
-            callPayload.Queries["drs_after"] = Convert.ToString("1990-01-01 00:00:00");
-            return new ApiConnectionTrigger<GETDRSTRIGGERResponse>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<GETDRSTRIGGERResponse, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/get_all_new_drs";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ignore_previous"] = Convert.ToString(true);
+                callPayload.Queries["drs_after"] = Convert.ToString("1990-01-01 00:00:00");
+                return new ApiConnectionTrigger<GETDRSTRIGGERResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

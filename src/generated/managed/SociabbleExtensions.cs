@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
 {
     using System.Linq.Expressions;
@@ -81,28 +82,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IBodyWorkflowAction<GetAudiencesResponseItem[], ApiConnectionActionConfiguration> GetAudiences()
         {
-            var apiCallPath = "/companies/audiences";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAudiencesResponseItem[]>(callPayload);
+            return new DeferredBodyAction<GetAudiencesResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/companies/audiences";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetAudiencesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IBodyWorkflowAction<GetChannelsResponseItem[], ApiConnectionActionConfiguration> GetChannels()
         {
-            var apiCallPath = "/channels";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetChannelsResponseItem[]>(callPayload);
+            return new DeferredBodyAction<GetChannelsResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/channels";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetChannelsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IBodyWorkflowAction<GetCategoriesResponseItem[], ApiConnectionActionConfiguration> GetCategories()
         {
-            var apiCallPath = "/categories";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetCategoriesResponseItem[]>(callPayload);
+            return new DeferredBodyAction<GetCategoriesResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/categories";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetCategoriesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
@@ -893,10 +903,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IBodyWorkflowAction<GetAllBadgesResponseItem[], ApiConnectionActionConfiguration> GetAllBadges()
         {
-            var apiCallPath = "/badges";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAllBadgesResponseItem[]>(callPayload);
+            return new DeferredBodyAction<GetAllBadgesResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/badges";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetAllBadgesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
@@ -909,64 +922,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<GetBadgeLevelsResponseItem[]>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<UploadMediaResponse, ApiConnectionActionConfiguration> UploadMediaByStream(Expression<Func<mediaVisibilityInput>> mediaVisibility, Expression<Func<object>> media)
-        {
-            var __workflow_mediaVisibility = WorkflowExpression.Compile(mediaVisibility, nameof(mediaVisibility), required: true);
-            var __workflow_media = WorkflowExpression.Compile(media, nameof(media), required: true);
-            return new DeferredBodyAction<UploadMediaResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/medias/ByStream";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<UploadMediaResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<UploadMediaResponse, ApiConnectionActionConfiguration> UploadMediaByUrl(Expression<Func<mediaVisibilityInput>> mediaVisibility, Expression<Func<string>> mediaUrl)
-        {
-            var __workflow_mediaVisibility = WorkflowExpression.Compile(mediaVisibility, nameof(mediaVisibility), required: true);
-            var __workflow_mediaUrl = WorkflowExpression.Compile(mediaUrl, nameof(mediaUrl), required: true);
-            return new DeferredBodyAction<UploadMediaResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/medias/ByUrl";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<UploadMediaResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<UploadMediaResponse, ApiConnectionActionConfiguration> UploadMediaByStreamByFolder(Expression<Func<mediaVisibilityInput>> mediaVisibility, Expression<Func<string>> folderId, Expression<Func<object>> media)
-        {
-            var __workflow_mediaVisibility = WorkflowExpression.Compile(mediaVisibility, nameof(mediaVisibility), required: true);
-            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
-            var __workflow_media = WorkflowExpression.Compile(media, nameof(media), required: true);
-            return new DeferredBodyAction<UploadMediaResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/medias/ByStreamByFolder";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<UploadMediaResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<UploadMediaResponse, ApiConnectionActionConfiguration> UploadMediaByUrlByFolder(Expression<Func<mediaVisibilityInput>> mediaVisibility, Expression<Func<string>> folderId, Expression<Func<string>> mediaUrl)
-        {
-            var __workflow_mediaVisibility = WorkflowExpression.Compile(mediaVisibility, nameof(mediaVisibility), required: true);
-            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
-            var __workflow_mediaUrl = WorkflowExpression.Compile(mediaUrl, nameof(mediaUrl), required: true);
-            return new DeferredBodyAction<UploadMediaResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/medias/ByUrlByFolder";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<UploadMediaResponse>(callPayload);
             });
         }
 
@@ -1774,24 +1729,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
 
         [JsonProperty("name")]
         public string Name { get; set; }
-    }
-
-    public class UploadMediaResponse
-    {
-        [JsonProperty("mediaId")]
-        public string MediaId { get; set; }
-
-        [JsonProperty("url")]
-        public string Url { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum mediaVisibilityInput
-    {
-        [EnumMember(Value = "private")]
-        Private,
-        [EnumMember(Value = "public")]
-        Public
     }
 
     public class GetFoldersResponse

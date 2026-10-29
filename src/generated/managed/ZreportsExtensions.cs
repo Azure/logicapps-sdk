@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
 {
     using System.Linq.Expressions;
@@ -14,24 +15,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zreports")]
         public IBodyWorkflowAction<GetStoresResponseItem[], ApiConnectionActionConfiguration> GetStores()
         {
-            var apiCallPath = "/stores";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetStoresResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zreports")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UploadDocument(Expression<Func<string>> brandId, Expression<Func<string>> storeId, Expression<Func<object>> document)
-        {
-            var __workflow_brandId = WorkflowExpression.Compile(brandId, nameof(brandId), required: true);
-            var __workflow_storeId = WorkflowExpression.Compile(storeId, nameof(storeId), required: true);
-            var __workflow_document = WorkflowExpression.Compile(document, nameof(document), required: true);
-            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetStoresResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/documents", __workflow_brandId.WithUrlEncoding(1), __workflow_storeId.WithUrlEncoding(1)));
-                var apiCallHttpMethod = "post";
+                var apiCallPath = "/stores";
+                var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction<GetStoresResponseItem[]>(callPayload);
             });
         }
     }

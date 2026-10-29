@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
 {
     using System.Linq.Expressions;
@@ -11,6 +12,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
 
     public class ArcgispaasActions([ConnectionName] string connectionId)
     {
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FeatureLayerApplyEdits(Expression<Func<string>> appLayer, Expression<Func<object>> data = null)
+        {
+            var __workflow_appLayer = WorkflowExpression.Compile(appLayer, nameof(appLayer), required: true);
+            var __workflow_data = WorkflowExpression.Compile(data, nameof(data), required: false);
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/featureLayer/applyEdits";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["appLayer"] = ExpressionConverter.Convert(__workflow_appLayer);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_data);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetFeatureLayerInfo(Expression<Func<string>> appLayer)
+        {
+            var __workflow_appLayer = WorkflowExpression.Compile(appLayer, nameof(appLayer), required: true);
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/featureLayer/information";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["appLayer"] = ExpressionConverter.Convert(__workflow_appLayer);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
         public IBodyWorkflowAction<ReverseGeocodeResponse, ApiConnectionActionConfiguration> ReverseGeocode(Expression<Func<double>> x, Expression<Func<double>> y, Expression<Func<string>> srs = null, Expression<Func<locationTypeInput>> locationType = null)
         {

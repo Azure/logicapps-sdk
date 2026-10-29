@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 {
     using System.Linq.Expressions;
@@ -344,19 +345,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
-        public IBodyWorkflowAction<UploadDocumentResponse, ApiConnectionActionConfiguration> UploadDocument(Expression<Func<object>> file)
-        {
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            return new DeferredBodyAction<UploadDocumentResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/document";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<UploadDocumentResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<DocumentProperties, ApiConnectionActionConfiguration> GetDoc(Expression<Func<bool>> template, Expression<Func<string>> docId)
         {
             var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: true);
@@ -623,11 +611,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
-        public IBodyWorkflowAction<ReplaceRecipientsInDocumentGroupInviteResponse, ApiConnectionActionConfiguration> ReplaceRecipientsInDocumentGroupInvite(Expression<Func<string>> id, Expression<Func<string>> inviteId, Expression<Func<string>> replaceTostepID = null, Expression<Func<string>> replaceTorecipientToReplace = null, Expression<Func<string>> replaceTonewRecipient = null, Expression<Func<int>> replaceToexpirationDays = null, Expression<Func<int>> replaceToreminder = null, Expression<Func<replaceToinviteActionAttributesInputItem[]>> replaceToinviteActionAttributes = null)
+        public IBodyWorkflowAction<ReplaceRecipientsInDocumentGroupInviteResponse, ApiConnectionActionConfiguration> ReplaceRecipientsInDocumentGroupInvite(Expression<Func<string>> id, Expression<Func<string>> inviteId, Expression<Func<string>> replaceTostepId = null, Expression<Func<string>> replaceTorecipientToReplace = null, Expression<Func<string>> replaceTonewRecipient = null, Expression<Func<int>> replaceToexpirationDays = null, Expression<Func<int>> replaceToreminder = null, Expression<Func<replaceToinviteActionAttributesInputItem[]>> replaceToinviteActionAttributes = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_inviteId = WorkflowExpression.Compile(inviteId, nameof(inviteId), required: true);
-            var __workflow_replaceTostepID = WorkflowExpression.Compile(replaceTostepID, nameof(replaceTostepID), required: false);
+            var __workflow_replaceTostepId = WorkflowExpression.Compile(replaceTostepId, nameof(replaceTostepId), required: false);
             var __workflow_replaceTorecipientToReplace = WorkflowExpression.Compile(replaceTorecipientToReplace, nameof(replaceTorecipientToReplace), required: false);
             var __workflow_replaceTonewRecipient = WorkflowExpression.Compile(replaceTonewRecipient, nameof(replaceTonewRecipient), required: false);
             var __workflow_replaceToexpirationDays = WorkflowExpression.Compile(replaceToexpirationDays, nameof(replaceToexpirationDays), required: false);
@@ -640,9 +628,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var replaceTo = new JObject();
                 var replaceTopropCount = 0;
-                if (__workflow_replaceTostepID != null)
+                if (__workflow_replaceTostepId != null)
                 {
-                    replaceTo["step_id"] = ExpressionConverter.ConvertO(__workflow_replaceTostepID);
+                    replaceTo["step_id"] = ExpressionConverter.ConvertO(__workflow_replaceTostepId);
                     replaceTopropCount++;
                 }
 
@@ -947,7 +935,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
-        public IBodyWorkflowAction<InviteToSignDocGroupAllOptionsResponse, ApiConnectionActionConfiguration> InviteToSignDocGroupAllOptions(Expression<Func<string>> id, Expression<Func<inviteinviteStepsInputItem[]>> inviteinviteSteps = null, Expression<Func<inviteinviteEmailsInputItem[]>> inviteinviteEmails = null, Expression<Func<inviteemailGroupsInputItem2[]>> inviteemailGroups = null, Expression<Func<invitecompletionEmailsInputItem[]>> invitecompletionEmails = null, Expression<Func<bool>> invitesignAsMerged = null, Expression<Func<int>> inviteclientTimestamp = null, Expression<Func<invitecCInputItem[]>> invitecC = null, Expression<Func<inviteqESSignatureInput>> inviteqESSignature = null)
+        public IBodyWorkflowAction<InviteToSignDocGroupAllOptionsResponse, ApiConnectionActionConfiguration> InviteToSignDocGroupAllOptions(Expression<Func<string>> id, Expression<Func<inviteinviteStepsInputItem[]>> inviteinviteSteps = null, Expression<Func<inviteinviteEmailsInputItem[]>> inviteinviteEmails = null, Expression<Func<inviteemailGroupsInputItem[]>> inviteemailGroups = null, Expression<Func<invitecompletionEmailsInputItem[]>> invitecompletionEmails = null, Expression<Func<bool>> invitesignAsMerged = null, Expression<Func<int>> inviteclientTimestamp = null, Expression<Func<invitecCInputItem[]>> invitecC = null, Expression<Func<inviteqESSignatureInput>> inviteqESSignature = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_inviteinviteSteps = WorkflowExpression.Compile(inviteinviteSteps, nameof(inviteinviteSteps), required: false);
@@ -1057,9 +1045,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
     public class SignnowTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggersV2Response, ApiConnectionTriggerConfiguration> Triggers(Expression<Func<string>> bodyevent, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggersV2Response, ApiConnectionTriggerConfiguration> Triggers(Expression<Func<string>> bodyEvent, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyevent = WorkflowExpression.Compile(bodyevent, nameof(bodyevent), required: true);
+            var __workflow_bodyEvent = WorkflowExpression.Compile(bodyEvent, nameof(bodyEvent), required: true);
             return new DeferredBodyTrigger<TriggersV2Response, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/multievent";
@@ -1068,7 +1056,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["event"] = ExpressionConverter.ConvertO(__workflow_bodyevent);
+                body["event"] = ExpressionConverter.ConvertO(__workflow_bodyEvent);
                 body["entity_id"] = "00000000-0000-0000-0000-000000000000";
                 bodypropCount++;
                 body["action"] = "callback";
@@ -1096,7 +1084,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
     public class CreateDocGroupEmbeddedInvitesResponse
     {
         [JsonProperty("id")]
-        public string InviteID { get; set; }
+        public string InviteId { get; set; }
     }
 
     public class inviteinvitesInputItem
@@ -1251,7 +1239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string Email { get; set; }
 
         [JsonProperty("role_id")]
-        public string RoleID { get; set; }
+        public string RoleId { get; set; }
 
         [JsonProperty("order")]
         public int Order { get; set; }
@@ -1404,7 +1392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string DocumentName { get; set; }
 
         [JsonProperty("origin_document_id")]
-        public string TemplateID { get; set; }
+        public string TemplateId { get; set; }
     }
 
     public class CreateDocumentGroupFromFilesResponse
@@ -1476,7 +1464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string TemplateName { get; set; }
 
         [JsonProperty("origin_document_id")]
-        public string TemplateID { get; set; }
+        public string TemplateId { get; set; }
 
         [JsonProperty("template")]
         public bool IsTemplate { get; set; }
@@ -1498,12 +1486,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
         [JsonProperty("name")]
         public string Name { get; set; }
-    }
-
-    public class UploadDocumentResponse
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
     }
 
     public class DeleteDocResponse
@@ -1602,7 +1584,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string ActionType { get; set; }
 
         [JsonProperty("invite_id")]
-        public string InviteID { get; set; }
+        public string InviteId { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -1641,7 +1623,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
     public class GetDocumentGroupInviteStatusResponseStepsTypeItem
     {
         [JsonProperty("step_id")]
-        public string StepID { get; set; }
+        public string StepId { get; set; }
 
         [JsonProperty("signing_order")]
         public int SigningOrder { get; set; }
@@ -1662,7 +1644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string ActionType { get; set; }
 
         [JsonProperty("invite_id")]
-        public string StepInviteID { get; set; }
+        public string StepInviteId { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -1689,7 +1671,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
     public class ReplaceRecipientsInDocumentInviteResponseReplacementsTypeItem
     {
         [JsonProperty("new_invite_id")]
-        public string NewInviteID { get; set; }
+        public string NewInviteId { get; set; }
 
         [JsonProperty("role")]
         public string Role { get; set; }
@@ -1752,7 +1734,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
     public class replaceToinviteActionAttributesInputItem
     {
         [JsonProperty("document_id")]
-        public string DocumentID { get; set; }
+        public string DocumentId { get; set; }
 
         [JsonProperty("allow_forwarding")]
         public bool AllowForwarding { get; set; }
@@ -2006,7 +1988,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
     public class inviteemailGroupsInputItem
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -2066,7 +2048,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public inviteinviteStepsInputItemActionType Action { get; set; }
 
         [JsonProperty("document_id")]
-        public string DocumentID { get; set; }
+        public string DocumentId { get; set; }
         public inviteinviteStepsInputItemAdvancedTypeItem[] Advanced { get; set; }
     }
 
@@ -2207,18 +2189,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
 
         [JsonProperty("remind_repeat")]
         public int SendReminderEveryXDays { get; set; }
-    }
-
-    public class inviteemailGroupsInputItem2
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("emails")]
-        public inviteemailGroupsInputItemEmailsTypeItem[] Emails { get; set; }
     }
 
     public class invitecompletionEmailsInputItem

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
 {
     using System.Linq.Expressions;
@@ -2872,7 +2873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
     public class SearchContactsResponseDataTypeSearchFirmContactsTypeModelsTypeItemAddressesTypeItem
     {
         [JsonProperty("addressID")]
-        public string AddressID { get; set; }
+        public string AddressId { get; set; }
 
         [JsonProperty("street")]
         public string Street { get; set; }

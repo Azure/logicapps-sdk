@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 {
     using System.Linq.Expressions;
@@ -659,10 +660,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownInfoResponse, ApiConnectionActionConfiguration> MarkdownInfo()
         {
-            var apiCallPath = "/info";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MarkdownInfoResponse>(callPayload);
+            return new DeferredBodyAction<MarkdownInfoResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/info";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<MarkdownInfoResponse>(callPayload);
+            });
         }
     }
 

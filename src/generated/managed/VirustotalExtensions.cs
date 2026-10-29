@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
 {
     using System.Linq.Expressions;
@@ -25,19 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
-        public IBodyWorkflowAction<FilesReport, ApiConnectionActionConfiguration> VirusTotalAnalyesFile(Expression<Func<object>> file)
-        {
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            return new DeferredBodyAction<FilesReport, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/api/v3/files";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<FilesReport>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         public IBodyWorkflowAction<DomainResult, ApiConnectionActionConfiguration> VirusTotalGetDomainReport(Expression<Func<string>> domain)
         {
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
@@ -47,19 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<DomainResult>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
-        public IBodyWorkflowAction<UrlReport, ApiConnectionActionConfiguration> VirusTotalAnalysisurl(Expression<Func<string>> url)
-        {
-            var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
-            return new DeferredBodyAction<UrlReport, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/api/v3/urls";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<UrlReport>(callPayload);
             });
         }
 
@@ -218,18 +193,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         public int Malicious { get; set; }
     }
 
-    public class FilesReport
-    {
-        [JsonProperty("data")]
-        public FilesReportDataType Data { get; set; }
-    }
-
-    public class FilesReportDataType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
     public class DomainResult
     {
         [JsonProperty("data")]
@@ -321,18 +284,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
 
         [JsonProperty("malicious")]
         public int Malicious { get; set; }
-    }
-
-    public class UrlReport
-    {
-        [JsonProperty("data")]
-        public UrlReportDataType Data { get; set; }
-    }
-
-    public class UrlReportDataType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
     }
 
     public class Ip
@@ -566,7 +517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         public FileDataTypeAttributesTypeTotalVotesType TotalVotes { get; set; }
 
         [JsonProperty("trid")]
-        public JToken[] TRID { get; set; }
+        public JToken[] TRId { get; set; }
 
         [JsonProperty("type_description")]
         public string TypeDescription { get; set; }

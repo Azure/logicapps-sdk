@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
 {
     using System.Linq.Expressions;
@@ -12,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
     public class RaptordocmanagementActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetUserToken(Expression<Func<string>> externalSystemID, Expression<Func<string>> secret, Expression<Func<string>> externalUserName)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetUserToken(Expression<Func<string>> externalSystemId, Expression<Func<string>> secret, Expression<Func<string>> externalUserName)
         {
-            var __workflow_externalSystemID = WorkflowExpression.Compile(externalSystemID, nameof(externalSystemID), required: true);
+            var __workflow_externalSystemId = WorkflowExpression.Compile(externalSystemId, nameof(externalSystemId), required: true);
             var __workflow_secret = WorkflowExpression.Compile(secret, nameof(secret), required: true);
             var __workflow_externalUserName = WorkflowExpression.Compile(externalUserName, nameof(externalUserName), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -22,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 var apiCallPath = "/User/getusertoken";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["externalSystemID"] = ExpressionConverter.Convert(__workflow_externalSystemID);
+                callPayload.Queries["externalSystemID"] = ExpressionConverter.Convert(__workflow_externalSystemId);
                 callPayload.Queries["secret"] = ExpressionConverter.Convert(__workflow_secret);
                 callPayload.Queries["externalUserName"] = ExpressionConverter.Convert(__workflow_externalUserName);
                 return new ApiConnectionAction<string>(callPayload);
@@ -1235,17 +1236,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string ChangedBy { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyorderByInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3
     }
 
     public class GetTagByTagIdResponse
@@ -2772,17 +2768,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string Value { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylabelsInputItemLanguageIdType
     {
-        [EnumMember(Value = "1031")]
-        _1031,
-        [EnumMember(Value = "1033")]
-        _1033,
-        [EnumMember(Value = "1036")]
-        _1036,
-        [EnumMember(Value = "2067")]
-        _2067
+        _1031 = 1031,
+        _1033 = 1033,
+        _1036 = 1036,
+        _2067 = 2067
     }
 }
 

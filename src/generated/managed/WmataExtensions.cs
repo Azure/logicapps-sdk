@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
 {
     using System.Linq.Expressions;
@@ -12,23 +13,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
     public class WmataActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        public IBodyWorkflowAction<GetNextBusesResponse, ApiConnectionActionConfiguration> GetNextBuses(Expression<Func<string>> stopID)
+        public IBodyWorkflowAction<GetNextBusesResponse, ApiConnectionActionConfiguration> GetNextBuses(Expression<Func<string>> stopId)
         {
-            var __workflow_stopID = WorkflowExpression.Compile(stopID, nameof(stopID), required: true);
+            var __workflow_stopId = WorkflowExpression.Compile(stopId, nameof(stopId), required: true);
             return new DeferredBodyAction<GetNextBusesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/NextBusService.svc/json/jPredictions";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["StopID"] = ExpressionConverter.Convert(__workflow_stopID);
+                callPayload.Queries["StopID"] = ExpressionConverter.Convert(__workflow_stopId);
                 return new ApiConnectionAction<GetNextBusesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        public IBodyWorkflowAction<GetBusPositionsResponse, ApiConnectionActionConfiguration> GetBusPositions(Expression<Func<string>> routeID = null, Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<double>> radius = null)
+        public IBodyWorkflowAction<GetBusPositionsResponse, ApiConnectionActionConfiguration> GetBusPositions(Expression<Func<string>> routeId = null, Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<double>> radius = null)
         {
-            var __workflow_routeID = WorkflowExpression.Compile(routeID, nameof(routeID), required: false);
+            var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: false);
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
             var __workflow_lon = WorkflowExpression.Compile(lon, nameof(lon), required: false);
             var __workflow_radius = WorkflowExpression.Compile(radius, nameof(radius), required: false);
@@ -37,8 +38,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
                 var apiCallPath = "/Bus.svc/json/jBusPositions";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_routeID != null)
-                    callPayload.Queries["RouteID"] = ExpressionConverter.Convert(__workflow_routeID);
+                if (__workflow_routeId != null)
+                    callPayload.Queries["RouteID"] = ExpressionConverter.Convert(__workflow_routeId);
                 if (__workflow_lat != null)
                     callPayload.Queries["Lat"] = ExpressionConverter.Convert(__workflow_lat);
                 if (__workflow_lon != null)
@@ -50,16 +51,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        public IBodyWorkflowAction<GetRouteDetailsResponse, ApiConnectionActionConfiguration> GetRouteDetails(Expression<Func<string>> routeID, Expression<Func<string>> date = null)
+        public IBodyWorkflowAction<GetRouteDetailsResponse, ApiConnectionActionConfiguration> GetRouteDetails(Expression<Func<string>> routeId, Expression<Func<string>> date = null)
         {
-            var __workflow_routeID = WorkflowExpression.Compile(routeID, nameof(routeID), required: true);
+            var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: true);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
             return new DeferredBodyAction<GetRouteDetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Bus.svc/json/jRouteDetails";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["RouteID"] = ExpressionConverter.Convert(__workflow_routeID);
+                callPayload.Queries["RouteID"] = ExpressionConverter.Convert(__workflow_routeId);
                 if (__workflow_date != null)
                     callPayload.Queries["Date"] = ExpressionConverter.Convert(__workflow_date);
                 return new ApiConnectionAction<GetRouteDetailsResponse>(callPayload);
@@ -69,23 +70,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetBusRoutesResponse, ApiConnectionActionConfiguration> GetBusRoutes()
         {
-            var apiCallPath = "/Bus.svc/json/jRoutes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetBusRoutesResponse>(callPayload);
+            return new DeferredBodyAction<GetBusRoutesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/Bus.svc/json/jRoutes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetBusRoutesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        public IBodyWorkflowAction<GetBusRouteScheduleResponse, ApiConnectionActionConfiguration> GetBusRouteSchedule(Expression<Func<string>> routeID, Expression<Func<string>> date = null)
+        public IBodyWorkflowAction<GetBusRouteScheduleResponse, ApiConnectionActionConfiguration> GetBusRouteSchedule(Expression<Func<string>> routeId, Expression<Func<string>> date = null)
         {
-            var __workflow_routeID = WorkflowExpression.Compile(routeID, nameof(routeID), required: true);
+            var __workflow_routeId = WorkflowExpression.Compile(routeId, nameof(routeId), required: true);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
             return new DeferredBodyAction<GetBusRouteScheduleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Bus.svc/json/jRouteSchedule";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["RouteID"] = ExpressionConverter.Convert(__workflow_routeID);
+                callPayload.Queries["RouteID"] = ExpressionConverter.Convert(__workflow_routeId);
                 if (__workflow_date != null)
                     callPayload.Queries["Date"] = ExpressionConverter.Convert(__workflow_date);
                 return new ApiConnectionAction<GetBusRouteScheduleResponse>(callPayload);
@@ -93,16 +97,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        public IBodyWorkflowAction<GetBusStopScheduleResponse, ApiConnectionActionConfiguration> GetBusStopSchedule(Expression<Func<string>> stopID, Expression<Func<string>> date = null)
+        public IBodyWorkflowAction<GetBusStopScheduleResponse, ApiConnectionActionConfiguration> GetBusStopSchedule(Expression<Func<string>> stopId, Expression<Func<string>> date = null)
         {
-            var __workflow_stopID = WorkflowExpression.Compile(stopID, nameof(stopID), required: true);
+            var __workflow_stopId = WorkflowExpression.Compile(stopId, nameof(stopId), required: true);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
             return new DeferredBodyAction<GetBusStopScheduleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Bus.svc/json/jStopSchedule";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["StopID"] = ExpressionConverter.Convert(__workflow_stopID);
+                callPayload.Queries["StopID"] = ExpressionConverter.Convert(__workflow_stopId);
                 if (__workflow_date != null)
                     callPayload.Queries["Date"] = ExpressionConverter.Convert(__workflow_date);
                 return new ApiConnectionAction<GetBusStopScheduleResponse>(callPayload);
@@ -146,10 +150,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetRailLinesResponse, ApiConnectionActionConfiguration> GetRailLines()
         {
-            var apiCallPath = "/Rail.svc/json/jLines";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetRailLinesResponse>(callPayload);
+            return new DeferredBodyAction<GetRailLinesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/Rail.svc/json/jLines";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetRailLinesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
@@ -266,31 +273,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetTrainPositionsResponse, ApiConnectionActionConfiguration> GetTrainPositions()
         {
-            var apiCallPath = "/TrainPositions/TrainPositions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["contentType"] = Convert.ToString("json");
-            return new ApiConnectionAction<GetTrainPositionsResponse>(callPayload);
+            return new DeferredBodyAction<GetTrainPositionsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/TrainPositions/TrainPositions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["contentType"] = Convert.ToString("json");
+                return new ApiConnectionAction<GetTrainPositionsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetStandardRoutesResponse, ApiConnectionActionConfiguration> GetStandardRoutes()
         {
-            var apiCallPath = "/TrainPositions/StandardRoutes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["contentType"] = Convert.ToString("json");
-            return new ApiConnectionAction<GetStandardRoutesResponse>(callPayload);
+            return new DeferredBodyAction<GetStandardRoutesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/TrainPositions/StandardRoutes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["contentType"] = Convert.ToString("json");
+                return new ApiConnectionAction<GetStandardRoutesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetTrackCircuitsResponse, ApiConnectionActionConfiguration> GetTrackCircuits()
         {
-            var apiCallPath = "/TrainPositions/TrackCircuits";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["contentType"] = Convert.ToString("json");
-            return new ApiConnectionAction<GetTrackCircuitsResponse>(callPayload);
+            return new DeferredBodyAction<GetTrackCircuitsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/TrainPositions/TrackCircuits";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["contentType"] = Convert.ToString("json");
+                return new ApiConnectionAction<GetTrackCircuitsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
@@ -326,91 +342,121 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetRailIncidentsResponse, ApiConnectionActionConfiguration> GetRailIncidents()
         {
-            var apiCallPath = "/Incidents.svc/json/Incidents";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetRailIncidentsResponse>(callPayload);
+            return new DeferredBodyAction<GetRailIncidentsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/Incidents.svc/json/Incidents";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetRailIncidentsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetBusGtfsStatic()
         {
-            var apiCallPath = "/gtfs/bus-gtfs-static.zip";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/gtfs/bus-gtfs-static.zip";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetBusGtfsRtAlerts()
         {
-            var apiCallPath = "/gtfs/bus-gtfsrt-alerts.pb";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/gtfs/bus-gtfsrt-alerts.pb";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetBusGtfsRtTripUpdates()
         {
-            var apiCallPath = "/gtfs/bus-gtfsrt-tripupdates.pb";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/gtfs/bus-gtfsrt-tripupdates.pb";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetBusGtfsRtVehiclePositions()
         {
-            var apiCallPath = "/gtfs/bus-gtfsrt-vehiclepositions.pb";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/gtfs/bus-gtfsrt-vehiclepositions.pb";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetRailGtfsStatic()
         {
-            var apiCallPath = "/gtfs/rail-gtfs-static.zip";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/gtfs/rail-gtfs-static.zip";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetRailGtfsRtAlerts()
         {
-            var apiCallPath = "/gtfs/rail-gtfsrt-alerts.pb";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/gtfs/rail-gtfsrt-alerts.pb";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetRailGtfsRtTripUpdates()
         {
-            var apiCallPath = "/gtfs/rail-gtfsrt-tripupdates.pb";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/gtfs/rail-gtfsrt-tripupdates.pb";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetRailGtfsRtVehiclePositions()
         {
-            var apiCallPath = "/gtfs/rail-gtfsrt-vehiclepositions.pb";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/gtfs/rail-gtfsrt-vehiclepositions.pb";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetRailBusCombinedGtfsStatic()
         {
-            var apiCallPath = "/gtfs/rail-bus-gtfs-static.zip";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/gtfs/rail-bus-gtfs-static.zip";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 
@@ -434,9 +480,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
 
         [JsonProperty("Minutes")]
         public int MinutesToArrival { get; set; }
-        public string RouteID { get; set; }
-        public string TripID { get; set; }
-        public string VehicleID { get; set; }
+
+        [JsonProperty("RouteID")]
+        public string RouteId { get; set; }
+
+        [JsonProperty("TripID")]
+        public string TripId { get; set; }
+
+        [JsonProperty("VehicleID")]
+        public string VehicleId { get; set; }
     }
 
     public class GetBusPositionsResponse
@@ -460,11 +512,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
 
         [JsonProperty("Lon")]
         public double Longitude { get; set; }
-        public string RouteID { get; set; }
+
+        [JsonProperty("RouteID")]
+        public string RouteId { get; set; }
         public string TripEndTime { get; set; }
         public string TripHeadsign { get; set; }
-        public string TripID { get; set; }
-        public string VehicleID { get; set; }
+
+        [JsonProperty("TripID")]
+        public string TripId { get; set; }
+
+        [JsonProperty("VehicleID")]
+        public string VehicleId { get; set; }
     }
 
     public class GetRouteDetailsResponse
@@ -509,7 +567,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
 
         [JsonProperty("Name")]
         public string StopName { get; set; }
-        public string StopID { get; set; }
+
+        [JsonProperty("StopID")]
+        public string StopId { get; set; }
 
         [JsonProperty("Routes")]
         public string[] RoutesAtStop { get; set; }
@@ -548,7 +608,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
 
         [JsonProperty("Name")]
         public string StopName { get; set; }
-        public string StopID { get; set; }
+
+        [JsonProperty("StopID")]
+        public string StopId { get; set; }
 
         [JsonProperty("Routes")]
         public string[] RoutesAtStop { get; set; }
@@ -562,7 +624,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
 
     public class GetBusRoutesResponseBusRoutesTypeItem
     {
-        public string RouteID { get; set; }
+        [JsonProperty("RouteID")]
+        public string RouteId { get; set; }
 
         [JsonProperty("Name")]
         public string RouteName { get; set; }
@@ -576,8 +639,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
 
     public class GetBusRouteScheduleResponseRouteSchedulesTypeItem
     {
-        public string RouteID { get; set; }
-        public string TripID { get; set; }
+        [JsonProperty("RouteID")]
+        public string RouteId { get; set; }
+
+        [JsonProperty("TripID")]
+        public string TripId { get; set; }
         public string StartTime { get; set; }
         public string EndTime { get; set; }
         public GetBusRouteScheduleResponseRouteSchedulesTypeItemStopsTypeItem[] Stops { get; set; }
@@ -585,7 +651,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
 
     public class GetBusRouteScheduleResponseRouteSchedulesTypeItemStopsTypeItem
     {
-        public string StopID { get; set; }
+        [JsonProperty("StopID")]
+        public string StopId { get; set; }
 
         [JsonProperty("Name")]
         public string StopName { get; set; }
@@ -601,8 +668,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
 
     public class GetBusStopScheduleResponseStopSchedulesTypeItem
     {
-        public string RouteID { get; set; }
-        public string TripID { get; set; }
+        [JsonProperty("RouteID")]
+        public string RouteId { get; set; }
+
+        [JsonProperty("TripID")]
+        public string TripId { get; set; }
         public string StartTime { get; set; }
         public string EndTime { get; set; }
     }
@@ -614,7 +684,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
 
     public class GetBusStopsResponseStopsTypeItem
     {
-        public string StopID { get; set; }
+        [JsonProperty("StopID")]
+        public string StopId { get; set; }
 
         [JsonProperty("Name")]
         public string StopName { get; set; }
@@ -917,16 +988,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
 
     public class GetTrainPositionsResponseTrainPositionsTypeItem
     {
-        [JsonProperty("TrainId")]
-        public string TrainID { get; set; }
+        public string TrainId { get; set; }
         public string TrainNumber { get; set; }
         public int CarCount { get; set; }
 
         [JsonProperty("DirectionNum")]
         public int DirectionNumber { get; set; }
-
-        [JsonProperty("CircuitId")]
-        public int CircuitID { get; set; }
+        public int CircuitId { get; set; }
         public string DestinationStationCode { get; set; }
         public string LineCode { get; set; }
         public int SecondsAtLocation { get; set; }
@@ -946,8 +1014,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
 
     public class GetStandardRoutesResponseStandardRoutesTypeItemTrackCircuitsTypeItem
     {
-        [JsonProperty("CircuitId")]
-        public int CircuitID { get; set; }
+        public int CircuitId { get; set; }
 
         [JsonProperty("SeqNum")]
         public int SequenceNumber { get; set; }
@@ -961,8 +1028,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
 
     public class GetTrackCircuitsResponseTrackCircuitsTypeItem
     {
-        [JsonProperty("CircuitId")]
-        public int CircuitID { get; set; }
+        public int CircuitId { get; set; }
 
         [JsonProperty("Track")]
         public int TrackNumber { get; set; }
@@ -988,7 +1054,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
 
         [JsonProperty("Description")]
         public string IncidentDescription { get; set; }
-        public string IncidentID { get; set; }
+
+        [JsonProperty("IncidentID")]
+        public string IncidentId { get; set; }
         public string IncidentType { get; set; }
         public string[] RoutesAffected { get; set; }
     }
@@ -1024,7 +1092,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
 
         [JsonProperty("Description")]
         public string IncidentDescription { get; set; }
-        public string IncidentID { get; set; }
+
+        [JsonProperty("IncidentID")]
+        public string IncidentId { get; set; }
         public string IncidentType { get; set; }
         public string LinesAffected { get; set; }
     }

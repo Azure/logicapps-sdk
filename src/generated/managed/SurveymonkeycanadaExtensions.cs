@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
 {
     using System.Linq.Expressions;
@@ -95,10 +96,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
     {
         public IBodyWorkflowTrigger<NewSurveysItem[], ApiConnectionTriggerConfiguration> OnSurveyCreated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger1/surveys";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<NewSurveysItem[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<NewSurveysItem[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger1/surveys";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<NewSurveysItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<NewCollectorsItem[], ApiConnectionTriggerConfiguration> OnSurveyCollectorCreated(Expression<Func<string>> surveyId, FlowRecurrence recurrence = null)
@@ -167,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
         public int PageCount { get; set; }
 
         [JsonProperty("id")]
-        public string SurveyID { get; set; }
+        public string SurveyId { get; set; }
 
         [JsonProperty("question_count")]
         public int QuestionCount { get; set; }
@@ -230,10 +234,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
     public class GetResponseDetailsResponse
     {
         [JsonProperty("id")]
-        public string ResponseID { get; set; }
+        public string ResponseId { get; set; }
 
         [JsonProperty("recipient_id")]
-        public string RecipientID { get; set; }
+        public string RecipientId { get; set; }
 
         [JsonProperty("collection_mode")]
         public string CollectionMode { get; set; }
@@ -285,10 +289,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
     public class GetResponseDetailsNoPagesResponse
     {
         [JsonProperty("id")]
-        public string ResponseID { get; set; }
+        public string ResponseId { get; set; }
 
         [JsonProperty("recipient_id")]
-        public string RecipientID { get; set; }
+        public string RecipientId { get; set; }
 
         [JsonProperty("collection_mode")]
         public string CollectionMode { get; set; }
@@ -375,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
         public string Link { get; set; }
 
         [JsonProperty("id")]
-        public string SurveyID { get; set; }
+        public string SurveyId { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -387,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
         public string Link { get; set; }
 
         [JsonProperty("id")]
-        public string CollectorID { get; set; }
+        public string CollectorId { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -405,7 +409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
         public string IPAddress { get; set; }
 
         [JsonProperty("id")]
-        public string ResponseID { get; set; }
+        public string ResponseId { get; set; }
 
         [JsonProperty("date_modified")]
         public string ModifiedDate { get; set; }
@@ -420,16 +424,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
         public string AnalyzeUrl { get; set; }
 
         [JsonProperty("recipient_id")]
-        public string RecipientID { get; set; }
+        public string RecipientId { get; set; }
 
         [JsonProperty("collector_id")]
-        public string CollectorID { get; set; }
+        public string CollectorId { get; set; }
 
         [JsonProperty("date_created")]
         public string CreatedDate { get; set; }
 
         [JsonProperty("survey_id")]
-        public string SurveyID { get; set; }
+        public string SurveyId { get; set; }
 
         [JsonProperty("collection_mode")]
         public string CollectionMode { get; set; }
@@ -468,7 +472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
     public class SurveyResponsesItemPagesTypeItem
     {
         [JsonProperty("id")]
-        public string PageID { get; set; }
+        public string PageId { get; set; }
 
         [JsonProperty("questions")]
         public SurveyResponsesItemPagesTypeItemQuestionsTypeItem[] Questions { get; set; }
@@ -477,7 +481,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
     public class SurveyResponsesItemPagesTypeItemQuestionsTypeItem
     {
         [JsonProperty("id")]
-        public string QuestionID { get; set; }
+        public string QuestionId { get; set; }
 
         [JsonProperty("answers")]
         public SurveyResponsesItemPagesTypeItemQuestionsTypeItemAnswersTypeItem[] Answers { get; set; }
@@ -486,7 +490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
     public class SurveyResponsesItemPagesTypeItemQuestionsTypeItemAnswersTypeItem
     {
         [JsonProperty("choice_id")]
-        public string ChoiceID { get; set; }
+        public string ChoiceId { get; set; }
     }
 }
 

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnationalvulnerip
 {
     using System.Linq.Expressions;
@@ -191,7 +192,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnationalvulnerip
 
     public class GetCVECollectionResponseResultTypeCVEItemsTypeItemCveTypeCVEDataMetaType
     {
-        public string ID { get; set; }
+        [JsonProperty("ID")]
+        public string Id { get; set; }
         public string ASSIGNER { get; set; }
     }
 

@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 {
     using System.Linq.Expressions;
@@ -1097,9 +1098,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileContentByPath(Expression<Func<string>> bodyfilePath)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileContentByPath(Expression<Func<string>> bodyfilePath, Expression<Func<bool>> bodyenableAISafeguards = null)
         {
             var __workflow_bodyfilePath = WorkflowExpression.Compile(bodyfilePath, nameof(bodyfilePath), required: true);
+            var __workflow_bodyenableAISafeguards = WorkflowExpression.Compile(bodyenableAISafeguards, nameof(bodyenableAISafeguards), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api-proxy/DownloadFileByPath";
@@ -1109,6 +1111,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var bodypropCount = 0;
                 bodypropCount++;
                 body["filePath"] = ExpressionConverter.ConvertO(__workflow_bodyfilePath);
+                if (__workflow_bodyenableAISafeguards != null)
+                {
+                    if (__workflow_bodyenableAISafeguards != null)
+                    {
+                        body["enableAISafeguards"] = ExpressionConverter.ConvertO(__workflow_bodyenableAISafeguards);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["enableAISafeguards"] = false;
+                    bodypropCount++;
+                }
+
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -1119,9 +1137,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileContentById(Expression<Func<string>> bodyfileId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileContentById(Expression<Func<string>> bodyfileId, Expression<Func<bool>> bodyenableAISafeguards = null)
         {
             var __workflow_bodyfileId = WorkflowExpression.Compile(bodyfileId, nameof(bodyfileId), required: true);
+            var __workflow_bodyenableAISafeguards = WorkflowExpression.Compile(bodyenableAISafeguards, nameof(bodyenableAISafeguards), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api-proxy/DownloadFileById";
@@ -1131,6 +1150,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var bodypropCount = 0;
                 bodypropCount++;
                 body["fileId"] = ExpressionConverter.ConvertO(__workflow_bodyfileId);
+                if (__workflow_bodyenableAISafeguards != null)
+                {
+                    if (__workflow_bodyenableAISafeguards != null)
+                    {
+                        body["enableAISafeguards"] = ExpressionConverter.ConvertO(__workflow_bodyenableAISafeguards);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["enableAISafeguards"] = false;
+                    bodypropCount++;
+                }
+
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -1227,10 +1262,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<NamespaceItem[], ApiConnectionActionConfiguration> GetAllNamespaces()
         {
-            var apiCallPath = "/api-proxy/GetAllNamespaces";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<NamespaceItem[]>(callPayload);
+            return new DeferredBodyAction<NamespaceItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api-proxy/GetAllNamespaces";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<NamespaceItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1306,15 +1344,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<UpdateNamespaceKeysResponse, ApiConnectionActionConfiguration> UpdateNamespaceKeys(Expression<Func<string>> bodyNamespace, Expression<Func<string>> bodykey, Expression<Func<string>> bodydisplayName = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<double>> bodypriority = null, Expression<Func<string>> bodydata = null, Expression<Func<string>> bodyhelpText = null)
+        public IBodyWorkflowAction<UpdateNamespaceKeysResponse, ApiConnectionActionConfiguration> UpdateNamespaceKeys(Expression<Func<string>> bodyNamespace, Expression<Func<string>> bodykey, Expression<Func<string>> bodyhelpText, Expression<Func<string>> bodydisplayName = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<double>> bodypriority = null, Expression<Func<string>> bodydata = null)
         {
             var __workflow_bodyNamespace = WorkflowExpression.Compile(bodyNamespace, nameof(bodyNamespace), required: true);
             var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: true);
+            var __workflow_bodyhelpText = WorkflowExpression.Compile(bodyhelpText, nameof(bodyhelpText), required: true);
             var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
             var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
-            var __workflow_bodyhelpText = WorkflowExpression.Compile(bodyhelpText, nameof(bodyhelpText), required: false);
             return new DeferredBodyAction<UpdateNamespaceKeysResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api-proxy/UpdateNamespaceKeys";
@@ -1350,12 +1388,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyhelpText != null)
-                {
-                    body["helpText"] = ExpressionConverter.ConvertO(__workflow_bodyhelpText);
-                    bodypropCount++;
-                }
-
+                bodypropCount++;
+                body["helpText"] = ExpressionConverter.ConvertO(__workflow_bodyhelpText);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -1419,10 +1453,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<ProjectItem[], ApiConnectionActionConfiguration> GetAllProjects()
         {
-            var apiCallPath = "/api-proxy/GetAllProjects";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProjectItem[]>(callPayload);
+            return new DeferredBodyAction<ProjectItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api-proxy/GetAllProjects";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ProjectItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1742,10 +1779,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<ProjectItem, ApiConnectionActionConfiguration> GetProjectByRootFolderId(Expression<Func<string>> bodyrootFolderId)
+        public IBodyWorkflowAction<ProjectItem[], ApiConnectionActionConfiguration> GetProjectByRootFolderId(Expression<Func<string>> bodyrootFolderId)
         {
             var __workflow_bodyrootFolderId = WorkflowExpression.Compile(bodyrootFolderId, nameof(bodyrootFolderId), required: true);
-            return new DeferredBodyAction<ProjectItem, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ProjectItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api-proxy/GetProjectByRootFolderId";
                 var apiCallHttpMethod = "post";
@@ -1759,7 +1796,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionAction<ProjectItem>(callPayload);
+                return new ApiConnectionAction<ProjectItem[]>(callPayload);
             });
         }
 
@@ -1803,14 +1840,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateMetadataKey(Expression<Func<string>> bodyNamespace, Expression<Func<string>> bodykey, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodydisplayName = null, Expression<Func<double>> bodypriority = null, Expression<Func<string>> bodyhelpText = null, Expression<Func<string[]>> bodydata = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateMetadataKey(Expression<Func<string>> bodyNamespace, Expression<Func<string>> bodykey, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodyhelpText, Expression<Func<string>> bodydisplayName = null, Expression<Func<double>> bodypriority = null, Expression<Func<string[]>> bodydata = null)
         {
             var __workflow_bodyNamespace = WorkflowExpression.Compile(bodyNamespace, nameof(bodyNamespace), required: true);
             var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
+            var __workflow_bodyhelpText = WorkflowExpression.Compile(bodyhelpText, nameof(bodyhelpText), required: true);
             var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
             var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodyhelpText = WorkflowExpression.Compile(bodyhelpText, nameof(bodyhelpText), required: false);
             var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -1837,12 +1874,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyhelpText != null)
-                {
-                    body["helpText"] = ExpressionConverter.ConvertO(__workflow_bodyhelpText);
-                    bodypropCount++;
-                }
-
+                bodypropCount++;
+                body["helpText"] = ExpressionConverter.ConvertO(__workflow_bodyhelpText);
                 if (__workflow_bodydata != null)
                 {
                     body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
@@ -2123,81 +2156,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 }
 
                 return new ApiConnectionAction<DeepLinksByPathResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<ListLinksResponse, ApiConnectionActionConfiguration> ListLinks(Expression<Func<string>> bodypath = null, Expression<Func<string>> bodyusername = null, Expression<Func<string>> bodycreatedBefore = null, Expression<Func<string>> bodycreatedAfter = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<bodyaccessibilityInput>> bodyaccessibility = null, Expression<Func<string>> bodyoffset = null, Expression<Func<string>> bodycount = null)
-        {
-            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: false);
-            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: false);
-            var __workflow_bodycreatedBefore = WorkflowExpression.Compile(bodycreatedBefore, nameof(bodycreatedBefore), required: false);
-            var __workflow_bodycreatedAfter = WorkflowExpression.Compile(bodycreatedAfter, nameof(bodycreatedAfter), required: false);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodyaccessibility = WorkflowExpression.Compile(bodyaccessibility, nameof(bodyaccessibility), required: false);
-            var __workflow_bodyoffset = WorkflowExpression.Compile(bodyoffset, nameof(bodyoffset), required: false);
-            var __workflow_bodycount = WorkflowExpression.Compile(bodycount, nameof(bodycount), required: false);
-            return new DeferredBodyAction<ListLinksResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/api-proxy/ListLinks";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodypath != null)
-                {
-                    body["path"] = ExpressionConverter.ConvertO(__workflow_bodypath);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyusername != null)
-                {
-                    body["username"] = ExpressionConverter.ConvertO(__workflow_bodyusername);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycreatedBefore != null)
-                {
-                    body["createdBefore"] = ExpressionConverter.ConvertO(__workflow_bodycreatedBefore);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycreatedAfter != null)
-                {
-                    body["createdAfter"] = ExpressionConverter.ConvertO(__workflow_bodycreatedAfter);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaccessibility != null)
-                {
-                    body["accessibility"] = ExpressionConverter.ConvertO(__workflow_bodyaccessibility);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyoffset != null)
-                {
-                    body["offset"] = ExpressionConverter.ConvertO(__workflow_bodyoffset);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycount != null)
-                {
-                    body["count"] = ExpressionConverter.ConvertO(__workflow_bodycount);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<ListLinksResponse>(callPayload);
             });
         }
 
@@ -2551,9 +2509,543 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<SearchV2Response, ApiConnectionActionConfiguration> Search(Expression<Func<string>> bodyquery, Expression<Func<int>> bodyoffset = null, Expression<Func<int>> bodycount = null, Expression<Func<string>> bodyfolder = null, Expression<Func<int>> bodymodifiedBefore = null, Expression<Func<int>> bodymodifiedAfter = null, Expression<Func<int>> bodyuploadedBefore = null, Expression<Func<int>> bodyuploadedAfter = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<bool>> bodysnippetRequested = null, Expression<Func<bodysortByInput>> bodysortBy = null, Expression<Func<bodysortDirectionInput>> bodysortDirection = null, Expression<Func<bodyfileQueryFieldsInputItem[]>> bodyfileQueryFields = null, Expression<Func<bodyfolderQueryFieldsInputItem[]>> bodyfolderQueryFields = null, Expression<Func<bodyqueryOperatorInput>> bodyqueryOperator = null, Expression<Func<string[]>> bodymlt = null, Expression<Func<string[]>> bodymltt = null)
+        public IBodyWorkflowAction<AICopilotResponse, ApiConnectionActionConfiguration> AskKnowledgeBase(Expression<Func<string>> bodykbId, Expression<Func<string>> bodyquestion = null, Expression<Func<bool>> bodyincludeCitations = null, Expression<Func<AIMessage[]>> bodychatHistorymessages = null)
+        {
+            var __workflow_bodykbId = WorkflowExpression.Compile(bodykbId, nameof(bodykbId), required: true);
+            var __workflow_bodyquestion = WorkflowExpression.Compile(bodyquestion, nameof(bodyquestion), required: false);
+            var __workflow_bodyincludeCitations = WorkflowExpression.Compile(bodyincludeCitations, nameof(bodyincludeCitations), required: false);
+            var __workflow_bodychatHistorymessages = WorkflowExpression.Compile(bodychatHistorymessages, nameof(bodychatHistorymessages), required: false);
+            return new DeferredBodyAction<AICopilotResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api-proxy/AskKnowledgeBase";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["kbId"] = ExpressionConverter.ConvertO(__workflow_bodykbId);
+                if (__workflow_bodyquestion != null)
+                {
+                    body["question"] = ExpressionConverter.ConvertO(__workflow_bodyquestion);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyincludeCitations != null)
+                {
+                    if (__workflow_bodyincludeCitations != null)
+                    {
+                        body["includeCitations"] = ExpressionConverter.ConvertO(__workflow_bodyincludeCitations);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["includeCitations"] = false;
+                    bodypropCount++;
+                }
+
+                var chatHistoryObject = new JObject();
+                var chatHistoryObjectpropCount = 0;
+                if (__workflow_bodychatHistorymessages != null)
+                {
+                    chatHistoryObject["messages"] = ExpressionConverter.ConvertO(__workflow_bodychatHistorymessages);
+                    chatHistoryObjectpropCount++;
+                }
+
+                if (chatHistoryObjectpropCount > 0)
+                {
+                    body["chatHistory"] = chatHistoryObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<AICopilotResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        public IBodyWorkflowAction<KnowledgeBaseListResponse, ApiConnectionActionConfiguration> ListKnowledgeBases(Expression<Func<bodysortByInput>> bodysortBy, Expression<Func<bodysortDirectionInput>> bodysortDirection, Expression<Func<bodystatusInput>> bodystatus, Expression<Func<int>> bodypage = null, Expression<Func<int>> bodysize = null, Expression<Func<string>> bodycreatedBy = null, Expression<Func<int>> bodycreatedAfter = null, Expression<Func<int>> bodycreatedBefore = null, Expression<Func<bool>> bodyincludePlaceholderData = null, Expression<Func<bool>> bodyincludeProcessingStatistics = null, Expression<Func<bool>> bodyincludePrompts = null)
+        {
+            var __workflow_bodysortBy = WorkflowExpression.Compile(bodysortBy, nameof(bodysortBy), required: true);
+            var __workflow_bodysortDirection = WorkflowExpression.Compile(bodysortDirection, nameof(bodysortDirection), required: true);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: true);
+            var __workflow_bodypage = WorkflowExpression.Compile(bodypage, nameof(bodypage), required: false);
+            var __workflow_bodysize = WorkflowExpression.Compile(bodysize, nameof(bodysize), required: false);
+            var __workflow_bodycreatedBy = WorkflowExpression.Compile(bodycreatedBy, nameof(bodycreatedBy), required: false);
+            var __workflow_bodycreatedAfter = WorkflowExpression.Compile(bodycreatedAfter, nameof(bodycreatedAfter), required: false);
+            var __workflow_bodycreatedBefore = WorkflowExpression.Compile(bodycreatedBefore, nameof(bodycreatedBefore), required: false);
+            var __workflow_bodyincludePlaceholderData = WorkflowExpression.Compile(bodyincludePlaceholderData, nameof(bodyincludePlaceholderData), required: false);
+            var __workflow_bodyincludeProcessingStatistics = WorkflowExpression.Compile(bodyincludeProcessingStatistics, nameof(bodyincludeProcessingStatistics), required: false);
+            var __workflow_bodyincludePrompts = WorkflowExpression.Compile(bodyincludePrompts, nameof(bodyincludePrompts), required: false);
+            return new DeferredBodyAction<KnowledgeBaseListResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api-proxy/ListKnowledgeBases";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["sortBy"] = ExpressionConverter.ConvertO(__workflow_bodysortBy);
+                bodypropCount++;
+                body["sortDirection"] = ExpressionConverter.ConvertO(__workflow_bodysortDirection);
+                bodypropCount++;
+                body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
+                if (__workflow_bodypage != null)
+                {
+                    body["page"] = ExpressionConverter.ConvertO(__workflow_bodypage);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodysize != null)
+                {
+                    body["size"] = ExpressionConverter.ConvertO(__workflow_bodysize);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycreatedBy != null)
+                {
+                    body["createdBy"] = ExpressionConverter.ConvertO(__workflow_bodycreatedBy);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycreatedAfter != null)
+                {
+                    body["createdAfter"] = ExpressionConverter.ConvertO(__workflow_bodycreatedAfter);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycreatedBefore != null)
+                {
+                    body["createdBefore"] = ExpressionConverter.ConvertO(__workflow_bodycreatedBefore);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyincludePlaceholderData != null)
+                {
+                    if (__workflow_bodyincludePlaceholderData != null)
+                    {
+                        body["includePlaceholderData"] = ExpressionConverter.ConvertO(__workflow_bodyincludePlaceholderData);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["includePlaceholderData"] = false;
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyincludeProcessingStatistics != null)
+                {
+                    if (__workflow_bodyincludeProcessingStatistics != null)
+                    {
+                        body["includeProcessingStatistics"] = ExpressionConverter.ConvertO(__workflow_bodyincludeProcessingStatistics);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["includeProcessingStatistics"] = false;
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyincludePrompts != null)
+                {
+                    if (__workflow_bodyincludePrompts != null)
+                    {
+                        body["includePrompts"] = ExpressionConverter.ConvertO(__workflow_bodyincludePrompts);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["includePrompts"] = false;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<KnowledgeBaseListResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        public IBodyWorkflowAction<HybridSearchResponse, ApiConnectionActionConfiguration> HybridSearch(Expression<Func<double>> bodysemanticWeight, Expression<Func<string>> bodyquery, Expression<Func<string>> bodyfolderPath = null, Expression<Func<string>> bodycollectionId = null, Expression<Func<string>> bodycreatedBy = null, Expression<Func<int>> bodycreatedAfter = null, Expression<Func<int>> bodycreatedBefore = null, Expression<Func<int>> bodylimit = null, Expression<Func<string>> bodypreferredFolderPath = null, Expression<Func<string[]>> bodyexcludeFolderPaths = null, Expression<Func<string[]>> bodyfolderPaths = null, Expression<Func<string[]>> bodyentryIds = null, Expression<Func<bool>> bodyenableAISafeguards = null)
+        {
+            var __workflow_bodysemanticWeight = WorkflowExpression.Compile(bodysemanticWeight, nameof(bodysemanticWeight), required: true);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
+            var __workflow_bodyfolderPath = WorkflowExpression.Compile(bodyfolderPath, nameof(bodyfolderPath), required: false);
+            var __workflow_bodycollectionId = WorkflowExpression.Compile(bodycollectionId, nameof(bodycollectionId), required: false);
+            var __workflow_bodycreatedBy = WorkflowExpression.Compile(bodycreatedBy, nameof(bodycreatedBy), required: false);
+            var __workflow_bodycreatedAfter = WorkflowExpression.Compile(bodycreatedAfter, nameof(bodycreatedAfter), required: false);
+            var __workflow_bodycreatedBefore = WorkflowExpression.Compile(bodycreatedBefore, nameof(bodycreatedBefore), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodypreferredFolderPath = WorkflowExpression.Compile(bodypreferredFolderPath, nameof(bodypreferredFolderPath), required: false);
+            var __workflow_bodyexcludeFolderPaths = WorkflowExpression.Compile(bodyexcludeFolderPaths, nameof(bodyexcludeFolderPaths), required: false);
+            var __workflow_bodyfolderPaths = WorkflowExpression.Compile(bodyfolderPaths, nameof(bodyfolderPaths), required: false);
+            var __workflow_bodyentryIds = WorkflowExpression.Compile(bodyentryIds, nameof(bodyentryIds), required: false);
+            var __workflow_bodyenableAISafeguards = WorkflowExpression.Compile(bodyenableAISafeguards, nameof(bodyenableAISafeguards), required: false);
+            return new DeferredBodyAction<HybridSearchResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api-proxy/HybridSearch";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["semanticWeight"] = ExpressionConverter.ConvertO(__workflow_bodysemanticWeight);
+                bodypropCount++;
+                body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
+                if (__workflow_bodyfolderPath != null)
+                {
+                    body["folderPath"] = ExpressionConverter.ConvertO(__workflow_bodyfolderPath);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycollectionId != null)
+                {
+                    body["collectionId"] = ExpressionConverter.ConvertO(__workflow_bodycollectionId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycreatedBy != null)
+                {
+                    body["createdBy"] = ExpressionConverter.ConvertO(__workflow_bodycreatedBy);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycreatedAfter != null)
+                {
+                    body["createdAfter"] = ExpressionConverter.ConvertO(__workflow_bodycreatedAfter);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycreatedBefore != null)
+                {
+                    body["createdBefore"] = ExpressionConverter.ConvertO(__workflow_bodycreatedBefore);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodylimit != null)
+                {
+                    if (__workflow_bodylimit != null)
+                    {
+                        body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["limit"] = 100;
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodypreferredFolderPath != null)
+                {
+                    body["preferredFolderPath"] = ExpressionConverter.ConvertO(__workflow_bodypreferredFolderPath);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyexcludeFolderPaths != null)
+                {
+                    body["excludeFolderPaths"] = ExpressionConverter.ConvertO(__workflow_bodyexcludeFolderPaths);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyfolderPaths != null)
+                {
+                    body["folderPaths"] = ExpressionConverter.ConvertO(__workflow_bodyfolderPaths);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyentryIds != null)
+                {
+                    body["entryIds"] = ExpressionConverter.ConvertO(__workflow_bodyentryIds);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyenableAISafeguards != null)
+                {
+                    if (__workflow_bodyenableAISafeguards != null)
+                    {
+                        body["enableAISafeguards"] = ExpressionConverter.ConvertO(__workflow_bodyenableAISafeguards);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["enableAISafeguards"] = false;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<HybridSearchResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        public IBodyWorkflowAction<AgentListResponseItem[], ApiConnectionActionConfiguration> ListAgents(Expression<Func<bodysortByInput>> bodysortBy = null, Expression<Func<bodysortOrderInput>> bodysortOrder = null)
+        {
+            var __workflow_bodysortBy = WorkflowExpression.Compile(bodysortBy, nameof(bodysortBy), required: false);
+            var __workflow_bodysortOrder = WorkflowExpression.Compile(bodysortOrder, nameof(bodysortOrder), required: false);
+            return new DeferredBodyAction<AgentListResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api-proxy/ListAgents";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodysortBy != null)
+                {
+                    if (__workflow_bodysortBy != null)
+                    {
+                        body["sortBy"] = ExpressionConverter.ConvertO(__workflow_bodysortBy);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["sortBy"] = "name";
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodysortOrder != null)
+                {
+                    if (__workflow_bodysortOrder != null)
+                    {
+                        body["sortOrder"] = ExpressionConverter.ConvertO(__workflow_bodysortOrder);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["sortOrder"] = "asc";
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<AgentListResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        public IBodyWorkflowAction<AskAgentResponse, ApiConnectionActionConfiguration> AskAgent(Expression<Func<string>> bodyagentId, Expression<Func<string>> bodyquestion, Expression<Func<string>> bodyinstructions = null, Expression<Func<string>> bodyconversationId = null, Expression<Func<AIMessage[]>> bodychatHistorymessages = null, Expression<Func<string[]>> bodyentryIds = null, Expression<Func<bodyselectedItemsfoldersInputItem[]>> bodyselectedItemsfolders = null, Expression<Func<bodyselectedItemsfilesInputItem[]>> bodyselectedItemsfiles = null)
+        {
+            var __workflow_bodyagentId = WorkflowExpression.Compile(bodyagentId, nameof(bodyagentId), required: true);
+            var __workflow_bodyquestion = WorkflowExpression.Compile(bodyquestion, nameof(bodyquestion), required: true);
+            var __workflow_bodyinstructions = WorkflowExpression.Compile(bodyinstructions, nameof(bodyinstructions), required: false);
+            var __workflow_bodyconversationId = WorkflowExpression.Compile(bodyconversationId, nameof(bodyconversationId), required: false);
+            var __workflow_bodychatHistorymessages = WorkflowExpression.Compile(bodychatHistorymessages, nameof(bodychatHistorymessages), required: false);
+            var __workflow_bodyentryIds = WorkflowExpression.Compile(bodyentryIds, nameof(bodyentryIds), required: false);
+            var __workflow_bodyselectedItemsfolders = WorkflowExpression.Compile(bodyselectedItemsfolders, nameof(bodyselectedItemsfolders), required: false);
+            var __workflow_bodyselectedItemsfiles = WorkflowExpression.Compile(bodyselectedItemsfiles, nameof(bodyselectedItemsfiles), required: false);
+            return new DeferredBodyAction<AskAgentResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api-proxy/AskAgent";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["agentId"] = ExpressionConverter.ConvertO(__workflow_bodyagentId);
+                bodypropCount++;
+                body["question"] = ExpressionConverter.ConvertO(__workflow_bodyquestion);
+                if (__workflow_bodyinstructions != null)
+                {
+                    body["instructions"] = ExpressionConverter.ConvertO(__workflow_bodyinstructions);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyconversationId != null)
+                {
+                    body["conversationId"] = ExpressionConverter.ConvertO(__workflow_bodyconversationId);
+                    bodypropCount++;
+                }
+
+                var chatHistoryObject = new JObject();
+                var chatHistoryObjectpropCount = 0;
+                if (__workflow_bodychatHistorymessages != null)
+                {
+                    chatHistoryObject["messages"] = ExpressionConverter.ConvertO(__workflow_bodychatHistorymessages);
+                    chatHistoryObjectpropCount++;
+                }
+
+                if (chatHistoryObjectpropCount > 0)
+                {
+                    body["chatHistory"] = chatHistoryObject;
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyentryIds != null)
+                {
+                    body["entryIds"] = ExpressionConverter.ConvertO(__workflow_bodyentryIds);
+                    bodypropCount++;
+                }
+
+                var selectedItemsObject = new JObject();
+                var selectedItemsObjectpropCount = 0;
+                if (__workflow_bodyselectedItemsfolders != null)
+                {
+                    selectedItemsObject["folders"] = ExpressionConverter.ConvertO(__workflow_bodyselectedItemsfolders);
+                    selectedItemsObjectpropCount++;
+                }
+
+                if (__workflow_bodyselectedItemsfiles != null)
+                {
+                    selectedItemsObject["files"] = ExpressionConverter.ConvertO(__workflow_bodyselectedItemsfiles);
+                    selectedItemsObjectpropCount++;
+                }
+
+                if (selectedItemsObjectpropCount > 0)
+                {
+                    body["selectedItems"] = selectedItemsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<AskAgentResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        public IBodyWorkflowAction<AgentExecutionStatusResponse, ApiConnectionActionConfiguration> GetAgentExecutionStatus(Expression<Func<string>> bodyagentId, Expression<Func<string>> bodyrequestId)
+        {
+            var __workflow_bodyagentId = WorkflowExpression.Compile(bodyagentId, nameof(bodyagentId), required: true);
+            var __workflow_bodyrequestId = WorkflowExpression.Compile(bodyrequestId, nameof(bodyrequestId), required: true);
+            return new DeferredBodyAction<AgentExecutionStatusResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api-proxy/GetAgentExecutionStatus";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["agentId"] = ExpressionConverter.ConvertO(__workflow_bodyagentId);
+                bodypropCount++;
+                body["requestId"] = ExpressionConverter.ConvertO(__workflow_bodyrequestId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<AgentExecutionStatusResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        public IBodyWorkflowAction<ListLinksV2Response, ApiConnectionActionConfiguration> ListLinks(Expression<Func<string>> bodypath = null, Expression<Func<string>> bodyusername = null, Expression<Func<string>> bodycreatedBefore = null, Expression<Func<string>> bodycreatedAfter = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<bodyaccessibilityInput>> bodyaccessibility = null, Expression<Func<string>> bodyoffset = null, Expression<Func<string>> bodycount = null)
+        {
+            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: false);
+            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: false);
+            var __workflow_bodycreatedBefore = WorkflowExpression.Compile(bodycreatedBefore, nameof(bodycreatedBefore), required: false);
+            var __workflow_bodycreatedAfter = WorkflowExpression.Compile(bodycreatedAfter, nameof(bodycreatedAfter), required: false);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_bodyaccessibility = WorkflowExpression.Compile(bodyaccessibility, nameof(bodyaccessibility), required: false);
+            var __workflow_bodyoffset = WorkflowExpression.Compile(bodyoffset, nameof(bodyoffset), required: false);
+            var __workflow_bodycount = WorkflowExpression.Compile(bodycount, nameof(bodycount), required: false);
+            return new DeferredBodyAction<ListLinksV2Response, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api-proxy/ListLinksV2";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodypath != null)
+                {
+                    body["path"] = ExpressionConverter.ConvertO(__workflow_bodypath);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyusername != null)
+                {
+                    body["username"] = ExpressionConverter.ConvertO(__workflow_bodyusername);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycreatedBefore != null)
+                {
+                    body["createdBefore"] = ExpressionConverter.ConvertO(__workflow_bodycreatedBefore);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycreatedAfter != null)
+                {
+                    body["createdAfter"] = ExpressionConverter.ConvertO(__workflow_bodycreatedAfter);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodytype != null)
+                {
+                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyaccessibility != null)
+                {
+                    body["accessibility"] = ExpressionConverter.ConvertO(__workflow_bodyaccessibility);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyoffset != null)
+                {
+                    body["offset"] = ExpressionConverter.ConvertO(__workflow_bodyoffset);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycount != null)
+                {
+                    body["count"] = ExpressionConverter.ConvertO(__workflow_bodycount);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ListLinksV2Response>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        public IBodyWorkflowAction<SearchV2Response, ApiConnectionActionConfiguration> Search(Expression<Func<string>> bodyquery, Expression<Func<bool>> bodyenableAISafeguards = null, Expression<Func<int>> bodyoffset = null, Expression<Func<int>> bodycount = null, Expression<Func<string>> bodyfolder = null, Expression<Func<int>> bodymodifiedBefore = null, Expression<Func<int>> bodymodifiedAfter = null, Expression<Func<int>> bodyuploadedBefore = null, Expression<Func<int>> bodyuploadedAfter = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<bool>> bodysnippetRequested = null, Expression<Func<bodysortByInput>> bodysortBy = null, Expression<Func<bodysortDirectionInput>> bodysortDirection = null, Expression<Func<bodyfileQueryFieldsInputItem[]>> bodyfileQueryFields = null, Expression<Func<bodyfolderQueryFieldsInputItem[]>> bodyfolderQueryFields = null, Expression<Func<bodyqueryOperatorInput>> bodyqueryOperator = null, Expression<Func<string[]>> bodymlt = null, Expression<Func<string[]>> bodymltt = null)
         {
             var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
+            var __workflow_bodyenableAISafeguards = WorkflowExpression.Compile(bodyenableAISafeguards, nameof(bodyenableAISafeguards), required: false);
             var __workflow_bodyoffset = WorkflowExpression.Compile(bodyoffset, nameof(bodyoffset), required: false);
             var __workflow_bodycount = WorkflowExpression.Compile(bodycount, nameof(bodycount), required: false);
             var __workflow_bodyfolder = WorkflowExpression.Compile(bodyfolder, nameof(bodyfolder), required: false);
@@ -2579,6 +3071,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var bodypropCount = 0;
                 bodypropCount++;
                 body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
+                if (__workflow_bodyenableAISafeguards != null)
+                {
+                    if (__workflow_bodyenableAISafeguards != null)
+                    {
+                        body["enableAISafeguards"] = ExpressionConverter.ConvertO(__workflow_bodyenableAISafeguards);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["enableAISafeguards"] = false;
+                    bodypropCount++;
+                }
+
                 if (__workflow_bodyoffset != null)
                 {
                     body["offset"] = ExpressionConverter.ConvertO(__workflow_bodyoffset);
@@ -3029,53 +3537,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GroupCreated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook/GroupCreated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhook/GroupCreated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GroupUpdated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook/GroupUpdated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhook/GroupUpdated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GroupDeleted(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook/GroupDeleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhook/GroupDeleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<PollCreatedFilesResponseItem[], ApiConnectionTriggerConfiguration> PollCreatedFiles(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
@@ -4426,16 +4943,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystatusInput
     {
-        [EnumMember(Value = "pending")]
-        Pending,
-        [EnumMember(Value = "in-progress")]
-        InProgress,
-        [EnumMember(Value = "completed")]
-        Completed,
-        [EnumMember(Value = "on-hold")]
-        OnHold,
-        [EnumMember(Value = "canceled")]
-        Canceled
+        ACTIVE,
+        DELETED,
+        CREATED
     }
 
     public class CreateProjectFromTemplateResponse
@@ -4525,36 +5035,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Url { get; set; }
     }
 
-    public class ListLinksResponse
-    {
-        [JsonProperty("ids")]
-        public string[] Ids { get; set; }
-
-        [JsonProperty("offset")]
-        public double Offset { get; set; }
-
-        [JsonProperty("count")]
-        public double Count { get; set; }
-
-        [JsonProperty("total_count")]
-        public double TotalCount { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyaccessibilityInput
-    {
-        [EnumMember(Value = "anyone")]
-        Anyone,
-        [EnumMember(Value = "password")]
-        Password,
-        [EnumMember(Value = "domain")]
-        Domain,
-        [EnumMember(Value = "recipients")]
-        Recipients,
-        [EnumMember(Value = "none")]
-        None
-    }
-
     public class ShowLinkDetailsResponse
     {
         [JsonProperty("links")]
@@ -4640,6 +5120,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         [JsonProperty("recipients")]
         public string[] Recipients { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodyaccessibilityInput
+    {
+        [EnumMember(Value = "anyone")]
+        Anyone,
+        [EnumMember(Value = "password")]
+        Password,
+        [EnumMember(Value = "domain")]
+        Domain,
+        [EnumMember(Value = "recipients")]
+        Recipients
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -4733,6 +5226,316 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string EntryId { get; set; }
     }
 
+    public class KnowledgeBaseListResponse
+    {
+        [JsonProperty("content")]
+        public KnowledgeBaseListResponseContentTypeItem[] Content { get; set; }
+
+        [JsonProperty("number")]
+        public int Number { get; set; }
+
+        [JsonProperty("size")]
+        public int Size { get; set; }
+
+        [JsonProperty("first")]
+        public bool First { get; set; }
+
+        [JsonProperty("last")]
+        public bool Last { get; set; }
+
+        [JsonProperty("empty")]
+        public bool Empty { get; set; }
+
+        [JsonProperty("numberOfElements")]
+        public int NumberOfElements { get; set; }
+
+        [JsonProperty("totalElements")]
+        public int TotalElements { get; set; }
+
+        [JsonProperty("totalPages")]
+        public int TotalPages { get; set; }
+
+        [JsonProperty("fileLimit")]
+        public int FileLimit { get; set; }
+    }
+
+    public class KnowledgeBaseListResponseContentTypeItem
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("paths")]
+        public KnowledgeBaseListResponseContentTypeItemPathsTypeItem[] Paths { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("createdBy")]
+        public string CreatedBy { get; set; }
+
+        [JsonProperty("createdByUser")]
+        public KnowledgeBaseListResponseContentTypeItemCreatedByUserType CreatedByUser { get; set; }
+
+        [JsonProperty("createdOn")]
+        public int CreatedOn { get; set; }
+
+        [JsonProperty("noResponseMessage")]
+        public string NoResponseMessage { get; set; }
+
+        [JsonProperty("iconName")]
+        public string IconName { get; set; }
+
+        [JsonProperty("subType")]
+        public string SubType { get; set; }
+
+        [JsonProperty("progress")]
+        public int Progress { get; set; }
+
+        [JsonProperty("lastProcessedAt")]
+        public int LastProcessedAt { get; set; }
+
+        [JsonProperty("pathCount")]
+        public int PathCount { get; set; }
+
+        [JsonProperty("prompts")]
+        public JToken[] Prompts { get; set; }
+    }
+
+    public class KnowledgeBaseListResponseContentTypeItemPathsTypeItem
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("folderId")]
+        public string FolderId { get; set; }
+
+        [JsonProperty("path")]
+        public string Path { get; set; }
+
+        [JsonProperty("permission")]
+        public string Permission { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+    }
+
+    public class KnowledgeBaseListResponseContentTypeItemCreatedByUserType
+    {
+        [JsonProperty("firstName")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("lastName")]
+        public string LastName { get; set; }
+
+        [JsonProperty("userName")]
+        public string UserName { get; set; }
+
+        [JsonProperty("userId")]
+        public int UserId { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodysortByInput
+    {
+        [EnumMember(Value = "last_modified")]
+        LastModified,
+        [EnumMember(Value = "size")]
+        Size,
+        [EnumMember(Value = "name")]
+        Name,
+        [EnumMember(Value = "score")]
+        Score
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodysortDirectionInput
+    {
+        [EnumMember(Value = "ascending")]
+        Ascending,
+        [EnumMember(Value = "descending")]
+        Descending
+    }
+
+    public class HybridSearchResponse
+    {
+        [JsonProperty("results")]
+        public HybridSearchResponseResultsTypeItem[] Results { get; set; }
+    }
+
+    public class HybridSearchResponseResultsTypeItem
+    {
+        [JsonProperty("filename")]
+        public string Filename { get; set; }
+
+        [JsonProperty("entryId")]
+        public string EntryId { get; set; }
+
+        [JsonProperty("groupId")]
+        public string GroupId { get; set; }
+
+        [JsonProperty("chunks")]
+        public HybridSearchResponseResultsTypeItemChunksTypeItem[] Chunks { get; set; }
+    }
+
+    public class HybridSearchResponseResultsTypeItemChunksTypeItem
+    {
+        [JsonProperty("chunkId")]
+        public string ChunkId { get; set; }
+
+        [JsonProperty("chunkText")]
+        public string ChunkText { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("score")]
+        public double Score { get; set; }
+    }
+
+    public class AgentListResponseItem
+    {
+        [JsonProperty("agentId")]
+        public string AgentId { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("subType")]
+        public string SubType { get; set; }
+
+        [JsonProperty("category")]
+        public string Category { get; set; }
+
+        [JsonProperty("instruction")]
+        public string Instruction { get; set; }
+
+        [JsonProperty("createdBy")]
+        public string CreatedBy { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodysortOrderInput
+    {
+        [EnumMember(Value = "asc")]
+        Asc,
+        [EnumMember(Value = "desc")]
+        Desc
+    }
+
+    public class AskAgentResponse
+    {
+        [JsonProperty("requestId")]
+        public string RequestId { get; set; }
+
+        [JsonProperty("conversationId")]
+        public string ConversationId { get; set; }
+    }
+
+    public class AgentExecutionStatusResponse
+    {
+        [JsonProperty("status")]
+        public AgentExecutionStatusResponseStatusType Status { get; set; }
+
+        [JsonProperty("responseText")]
+        public string ResponseText { get; set; }
+
+        [JsonProperty("citations")]
+        public AgentExecutionStatusResponseCitationsTypeItem[] Citations { get; set; }
+
+        [JsonProperty("lastUpdated")]
+        public int LastUpdated { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum AgentExecutionStatusResponseStatusType
+    {
+        PENDING,
+        RUNNING,
+        COMPLETED,
+        FAILED
+    }
+
+    public class AgentExecutionStatusResponseCitationsTypeItem
+    {
+        [JsonProperty("previewUrl")]
+        public string PreviewUrl { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public class ListLinksV2Response
+    {
+        [JsonProperty("links")]
+        public ListLinksV2ResponseLinksTypeItem[] Links { get; set; }
+
+        [JsonProperty("count")]
+        public double Count { get; set; }
+    }
+
+    public class ListLinksV2ResponseLinksTypeItem
+    {
+        [JsonProperty("path")]
+        public string Path { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("accessibility")]
+        public string Accessibility { get; set; }
+
+        [JsonProperty("protection")]
+        public string Protection { get; set; }
+
+        [JsonProperty("recipients")]
+        public string[] Recipients { get; set; }
+
+        [JsonProperty("notify")]
+        public bool Notify { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("link_to_current")]
+        public bool LinkToCurrent { get; set; }
+
+        [JsonProperty("creation_date")]
+        public string CreationDate { get; set; }
+
+        [JsonProperty("created_by")]
+        public string CreatedBy { get; set; }
+
+        [JsonProperty("resource_id")]
+        public string ResourceId { get; set; }
+
+        [JsonProperty("expiry_clicks")]
+        public double ExpiryClicks { get; set; }
+
+        [JsonProperty("last_accessed")]
+        public string LastAccessed { get; set; }
+
+        [JsonProperty("expiry_date")]
+        public string ExpiryDate { get; set; }
+    }
+
     public class SearchV2Response
     {
         [JsonProperty("results")]
@@ -4809,28 +5612,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         [JsonProperty("value")]
         public string Value { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodysortByInput
-    {
-        [EnumMember(Value = "last_modified")]
-        LastModified,
-        [EnumMember(Value = "size")]
-        Size,
-        [EnumMember(Value = "name")]
-        Name,
-        [EnumMember(Value = "score")]
-        Score
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodysortDirectionInput
-    {
-        [EnumMember(Value = "ascending")]
-        Ascending,
-        [EnumMember(Value = "descending")]
-        Descending
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

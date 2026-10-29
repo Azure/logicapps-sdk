@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
 {
     using System.Linq.Expressions;
@@ -217,10 +218,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
     {
         public IBodyWorkflowTrigger<ListRecipientListsResponse, ApiConnectionTriggerConfiguration> OnNewRecipientList(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/recipient-lists";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListRecipientListsResponse>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<ListRecipientListsResponse, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/recipient-lists";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<ListRecipientListsResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -239,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
     public class ListRecipientListsEntry
     {
         [JsonProperty("id")]
-        public string ListID { get; set; }
+        public string ListId { get; set; }
 
         [JsonProperty("name")]
         public string ListName { get; set; }

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
 {
     using System.Linq.Expressions;
@@ -27,15 +28,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokesioip")]
-        public IBodyWorkflowAction<JokeIDResponse, ApiConnectionActionConfiguration> JokeID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<JokeIdResponse, ApiConnectionActionConfiguration> JokeId(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<JokeIDResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<JokeIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/joke/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<JokeIDResponse>(callPayload);
+                return new ApiConnectionAction<JokeIdResponse>(callPayload);
             });
         }
 
@@ -99,16 +100,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
         public string Punchline { get; set; }
     }
 
-    public class JokeIDResponse
+    public class JokeIdResponse
     {
         [JsonProperty("success")]
         public bool Success { get; set; }
 
         [JsonProperty("body")]
-        public JokeIDResponseBodyType Body { get; set; }
+        public JokeIdResponseBodyType Body { get; set; }
     }
 
-    public class JokeIDResponseBodyType
+    public class JokeIdResponseBodyType
     {
         [JsonProperty("_id")]
         public string Id { get; set; }

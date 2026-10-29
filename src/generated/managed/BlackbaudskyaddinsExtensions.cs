@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
 {
     using System.Linq.Expressions;
@@ -12,10 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
     public class BlackbaudskyaddinsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudskyaddins")]
-        public IBodyWorkflowAction<PowerAutomateUIApiValidateUserIdentityTokenResponse, ApiConnectionActionConfiguration> ValidateUserIdentityToken(Expression<Func<string>> bodyuserIdentityToken, Expression<Func<string>> bodyapplicationID)
+        public IBodyWorkflowAction<PowerAutomateUIApiValidateUserIdentityTokenResponse, ApiConnectionActionConfiguration> ValidateUserIdentityToken(Expression<Func<string>> bodyuserIdentityToken, Expression<Func<string>> bodyapplicationId)
         {
             var __workflow_bodyuserIdentityToken = WorkflowExpression.Compile(bodyuserIdentityToken, nameof(bodyuserIdentityToken), required: true);
-            var __workflow_bodyapplicationID = WorkflowExpression.Compile(bodyapplicationID, nameof(bodyapplicationID), required: true);
+            var __workflow_bodyapplicationId = WorkflowExpression.Compile(bodyapplicationId, nameof(bodyapplicationId), required: true);
             return new DeferredBodyAction<PowerAutomateUIApiValidateUserIdentityTokenResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/powerautomateui/v1/useridentitytoken/validate";
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
                 bodypropCount++;
                 body["uit"] = ExpressionConverter.ConvertO(__workflow_bodyuserIdentityToken);
                 bodypropCount++;
-                body["application_id"] = ExpressionConverter.ConvertO(__workflow_bodyapplicationID);
+                body["application_id"] = ExpressionConverter.ConvertO(__workflow_bodyapplicationId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -92,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
     public class PowerAutomateUIApiValidateUserIdentityTokenResponse
     {
         [JsonProperty("user_id")]
-        public string UserID { get; set; }
+        public string UserId { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -104,10 +105,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
         public string FirstName { get; set; }
 
         [JsonProperty("application_id")]
-        public string SKYApplicationID { get; set; }
+        public string SKYApplicationId { get; set; }
 
         [JsonProperty("environment_id")]
-        public string EnvironmentID { get; set; }
+        public string EnvironmentId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

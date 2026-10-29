@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
         public IBodyWorkflowAction<GetCampaignsResponse, ApiConnectionActionConfiguration> GetCampaigns()
         {
-            var apiCallPath = "/campaigns";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetCampaignsResponse>(callPayload);
+            return new DeferredBodyAction<GetCampaignsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/campaigns";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetCampaignsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
@@ -324,19 +328,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
-        public IBodyWorkflowAction<CampaignResponseModel, ApiConnectionActionConfiguration> Newcampaign(Expression<Func<newCampaignRequestcampaignTypeInput>> newCampaignRequestcampaignType, Expression<Func<string>> newCampaignRequestrecipientslistId, Expression<Func<string>> newCampaignRequestsettingscampaignSubjectLine, Expression<Func<string>> newCampaignRequestsettingsfromName, Expression<Func<string>> newCampaignRequestsettingsreplyToAddress, Expression<Func<int>> newCampaignRequestrecipientssegmentOptssavedSegmentID = null, Expression<Func<string>> newCampaignRequestrecipientssegmentOptsmatchType = null, Expression<Func<string>> newCampaignRequestsettingstitle = null, Expression<Func<bool>> newCampaignRequestsettingsconversation = null, Expression<Func<string>> newCampaignRequestsettingstoName = null, Expression<Func<string>> newCampaignRequestsettingsfolderID = null, Expression<Func<bool>> newCampaignRequestsettingsauthentication = null, Expression<Func<bool>> newCampaignRequestsettingsautoFooter = null, Expression<Func<bool>> newCampaignRequestsettingsinlineCSS = null, Expression<Func<bool>> newCampaignRequestsettingsautoTweet = null, Expression<Func<int[]>> newCampaignRequestsettingsautoPostToFacebook = null, Expression<Func<bool>> newCampaignRequestsettingsfacebookComments = null, Expression<Func<string>> newCampaignRequestvariateSettingswinningCriteria = null, Expression<Func<int>> newCampaignRequestvariateSettingswaitTime = null, Expression<Func<int>> newCampaignRequestvariateSettingstestSize = null, Expression<Func<string[]>> newCampaignRequestvariateSettingssubjectLines = null, Expression<Func<string[]>> newCampaignRequestvariateSettingssendTimes = null, Expression<Func<string[]>> newCampaignRequestvariateSettingsfromNames = null, Expression<Func<string[]>> newCampaignRequestvariateSettingsreplyToAddresses = null, Expression<Func<bool>> newCampaignRequesttrackingopens = null, Expression<Func<bool>> newCampaignRequesttrackinghTMLClickTracking = null, Expression<Func<bool>> newCampaignRequesttrackingplainTextClickTracking = null, Expression<Func<bool>> newCampaignRequesttrackingmailChimpGoalTracking = null, Expression<Func<bool>> newCampaignRequesttrackingeCommerce360Tracking = null, Expression<Func<string>> newCampaignRequesttrackinggoogleAnalyticsTracking = null, Expression<Func<string>> newCampaignRequesttrackingclickTaleAnalyticsTracking = null, Expression<Func<bool>> newCampaignRequesttrackingsalesforcesalesforceCampaign = null, Expression<Func<bool>> newCampaignRequesttrackingsalesforcesalesforceNote = null, Expression<Func<bool>> newCampaignRequesttrackinghighrisehighriseCampaign = null, Expression<Func<bool>> newCampaignRequesttrackinghighrisehighriseNote = null, Expression<Func<bool>> newCampaignRequesttrackingcapsulecapsuleNote = null, Expression<Func<string>> newCampaignRequestrssOptsfeedURL = null, Expression<Func<newCampaignRequestrssOptsfrequencyInput>> newCampaignRequestrssOptsfrequency = null, Expression<Func<string>> newCampaignRequestrssOptsconstrainRSSImages = null, Expression<Func<int>> newCampaignRequestrssOptsschedulesendingHour = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendsunday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendmonday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendtuesday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendwednesday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendthursday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendfriday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendsaturday = null, Expression<Func<newCampaignRequestrssOptsscheduleweeklySendingDayInput>> newCampaignRequestrssOptsscheduleweeklySendingDay = null, Expression<Func<double>> newCampaignRequestrssOptsschedulemonthlySendingDay = null, Expression<Func<string>> newCampaignRequestsocialCardimageURL = null, Expression<Func<string>> newCampaignRequestsocialCardcampaignDescription = null, Expression<Func<string>> newCampaignRequestsocialCardtitle = null)
+        public IBodyWorkflowAction<CampaignResponseModel, ApiConnectionActionConfiguration> Newcampaign(Expression<Func<newCampaignRequestcampaignTypeInput>> newCampaignRequestcampaignType, Expression<Func<string>> newCampaignRequestrecipientslistId, Expression<Func<string>> newCampaignRequestsettingscampaignSubjectLine, Expression<Func<string>> newCampaignRequestsettingsfromName, Expression<Func<string>> newCampaignRequestsettingsreplyToAddress, Expression<Func<int>> newCampaignRequestrecipientssegmentOptssavedSegmentId = null, Expression<Func<string>> newCampaignRequestrecipientssegmentOptsmatchType = null, Expression<Func<string>> newCampaignRequestsettingstitle = null, Expression<Func<bool>> newCampaignRequestsettingsconversation = null, Expression<Func<string>> newCampaignRequestsettingstoName = null, Expression<Func<string>> newCampaignRequestsettingsfolderId = null, Expression<Func<bool>> newCampaignRequestsettingsauthentication = null, Expression<Func<bool>> newCampaignRequestsettingsautoFooter = null, Expression<Func<bool>> newCampaignRequestsettingsinlineCSS = null, Expression<Func<bool>> newCampaignRequestsettingsautoTweet = null, Expression<Func<int[]>> newCampaignRequestsettingsautoPostToFacebook = null, Expression<Func<bool>> newCampaignRequestsettingsfacebookComments = null, Expression<Func<string>> newCampaignRequestvariateSettingswinningCriteria = null, Expression<Func<int>> newCampaignRequestvariateSettingswaitTime = null, Expression<Func<int>> newCampaignRequestvariateSettingstestSize = null, Expression<Func<string[]>> newCampaignRequestvariateSettingssubjectLines = null, Expression<Func<string[]>> newCampaignRequestvariateSettingssendTimes = null, Expression<Func<string[]>> newCampaignRequestvariateSettingsfromNames = null, Expression<Func<string[]>> newCampaignRequestvariateSettingsreplyToAddresses = null, Expression<Func<bool>> newCampaignRequesttrackingopens = null, Expression<Func<bool>> newCampaignRequesttrackinghTMLClickTracking = null, Expression<Func<bool>> newCampaignRequesttrackingplainTextClickTracking = null, Expression<Func<bool>> newCampaignRequesttrackingmailChimpGoalTracking = null, Expression<Func<bool>> newCampaignRequesttrackingeCommerce360Tracking = null, Expression<Func<string>> newCampaignRequesttrackinggoogleAnalyticsTracking = null, Expression<Func<string>> newCampaignRequesttrackingclickTaleAnalyticsTracking = null, Expression<Func<bool>> newCampaignRequesttrackingsalesforcesalesforceCampaign = null, Expression<Func<bool>> newCampaignRequesttrackingsalesforcesalesforceNote = null, Expression<Func<bool>> newCampaignRequesttrackinghighrisehighriseCampaign = null, Expression<Func<bool>> newCampaignRequesttrackinghighrisehighriseNote = null, Expression<Func<bool>> newCampaignRequesttrackingcapsulecapsuleNote = null, Expression<Func<string>> newCampaignRequestrssOptsfeedURL = null, Expression<Func<newCampaignRequestrssOptsfrequencyInput>> newCampaignRequestrssOptsfrequency = null, Expression<Func<string>> newCampaignRequestrssOptsconstrainRSSImages = null, Expression<Func<int>> newCampaignRequestrssOptsschedulesendingHour = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendsunday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendmonday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendtuesday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendwednesday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendthursday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendfriday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendsaturday = null, Expression<Func<newCampaignRequestrssOptsscheduleweeklySendingDayInput>> newCampaignRequestrssOptsscheduleweeklySendingDay = null, Expression<Func<double>> newCampaignRequestrssOptsschedulemonthlySendingDay = null, Expression<Func<string>> newCampaignRequestsocialCardimageURL = null, Expression<Func<string>> newCampaignRequestsocialCardcampaignDescription = null, Expression<Func<string>> newCampaignRequestsocialCardtitle = null)
         {
             var __workflow_newCampaignRequestcampaignType = WorkflowExpression.Compile(newCampaignRequestcampaignType, nameof(newCampaignRequestcampaignType), required: true);
             var __workflow_newCampaignRequestrecipientslistId = WorkflowExpression.Compile(newCampaignRequestrecipientslistId, nameof(newCampaignRequestrecipientslistId), required: true);
             var __workflow_newCampaignRequestsettingscampaignSubjectLine = WorkflowExpression.Compile(newCampaignRequestsettingscampaignSubjectLine, nameof(newCampaignRequestsettingscampaignSubjectLine), required: true);
             var __workflow_newCampaignRequestsettingsfromName = WorkflowExpression.Compile(newCampaignRequestsettingsfromName, nameof(newCampaignRequestsettingsfromName), required: true);
             var __workflow_newCampaignRequestsettingsreplyToAddress = WorkflowExpression.Compile(newCampaignRequestsettingsreplyToAddress, nameof(newCampaignRequestsettingsreplyToAddress), required: true);
-            var __workflow_newCampaignRequestrecipientssegmentOptssavedSegmentID = WorkflowExpression.Compile(newCampaignRequestrecipientssegmentOptssavedSegmentID, nameof(newCampaignRequestrecipientssegmentOptssavedSegmentID), required: false);
+            var __workflow_newCampaignRequestrecipientssegmentOptssavedSegmentId = WorkflowExpression.Compile(newCampaignRequestrecipientssegmentOptssavedSegmentId, nameof(newCampaignRequestrecipientssegmentOptssavedSegmentId), required: false);
             var __workflow_newCampaignRequestrecipientssegmentOptsmatchType = WorkflowExpression.Compile(newCampaignRequestrecipientssegmentOptsmatchType, nameof(newCampaignRequestrecipientssegmentOptsmatchType), required: false);
             var __workflow_newCampaignRequestsettingstitle = WorkflowExpression.Compile(newCampaignRequestsettingstitle, nameof(newCampaignRequestsettingstitle), required: false);
             var __workflow_newCampaignRequestsettingsconversation = WorkflowExpression.Compile(newCampaignRequestsettingsconversation, nameof(newCampaignRequestsettingsconversation), required: false);
             var __workflow_newCampaignRequestsettingstoName = WorkflowExpression.Compile(newCampaignRequestsettingstoName, nameof(newCampaignRequestsettingstoName), required: false);
-            var __workflow_newCampaignRequestsettingsfolderID = WorkflowExpression.Compile(newCampaignRequestsettingsfolderID, nameof(newCampaignRequestsettingsfolderID), required: false);
+            var __workflow_newCampaignRequestsettingsfolderId = WorkflowExpression.Compile(newCampaignRequestsettingsfolderId, nameof(newCampaignRequestsettingsfolderId), required: false);
             var __workflow_newCampaignRequestsettingsauthentication = WorkflowExpression.Compile(newCampaignRequestsettingsauthentication, nameof(newCampaignRequestsettingsauthentication), required: false);
             var __workflow_newCampaignRequestsettingsautoFooter = WorkflowExpression.Compile(newCampaignRequestsettingsautoFooter, nameof(newCampaignRequestsettingsautoFooter), required: false);
             var __workflow_newCampaignRequestsettingsinlineCSS = WorkflowExpression.Compile(newCampaignRequestsettingsinlineCSS, nameof(newCampaignRequestsettingsinlineCSS), required: false);
@@ -393,9 +397,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
                 recipientsObject["list_id"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestrecipientslistId);
                 var segmentOptsObject = new JObject();
                 var segmentOptsObjectpropCount = 0;
-                if (__workflow_newCampaignRequestrecipientssegmentOptssavedSegmentID != null)
+                if (__workflow_newCampaignRequestrecipientssegmentOptssavedSegmentId != null)
                 {
-                    segmentOptsObject["saved_segment_id"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestrecipientssegmentOptssavedSegmentID);
+                    segmentOptsObject["saved_segment_id"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestrecipientssegmentOptssavedSegmentId);
                     segmentOptsObjectpropCount++;
                 }
 
@@ -443,9 +447,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
                     settingsObjectpropCount++;
                 }
 
-                if (__workflow_newCampaignRequestsettingsfolderID != null)
+                if (__workflow_newCampaignRequestsettingsfolderId != null)
                 {
-                    settingsObject["folder_id"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestsettingsfolderID);
+                    settingsObject["folder_id"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestsettingsfolderId);
                     settingsObjectpropCount++;
                 }
 
@@ -914,10 +918,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 
         public IBodyWorkflowTrigger<GetListsResponseModel, ApiConnectionTriggerConfiguration> OnCreateList(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/lists";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<GetListsResponseModel>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<GetListsResponseModel, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/lists";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<GetListsResponseModel>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -930,7 +937,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
     public class CampaignResponseModel
     {
         [JsonProperty("id")]
-        public string CampaignID { get; set; }
+        public string CampaignId { get; set; }
 
         [JsonProperty("type")]
         public CampaignResponseModelCampaignTypeType CampaignType { get; set; }
@@ -1013,7 +1020,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
     public class SegmentOpts
     {
         [JsonProperty("saved_segment_id")]
-        public int SavedSegmentID { get; set; }
+        public int SavedSegmentId { get; set; }
 
         [JsonProperty("match")]
         public string MatchType { get; set; }
@@ -1040,7 +1047,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string ToName { get; set; }
 
         [JsonProperty("folder_id")]
-        public string FolderID { get; set; }
+        public string FolderId { get; set; }
 
         [JsonProperty("authenticate")]
         public bool Authentication { get; set; }
@@ -1353,7 +1360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
     public class CreateNewListResponseModel
     {
         [JsonProperty("id")]
-        public string ListID { get; set; }
+        public string ListId { get; set; }
 
         [JsonProperty("name")]
         public string ListName { get; set; }
@@ -1824,13 +1831,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
     public class MemberResponseModel
     {
         [JsonProperty("id")]
-        public string EmailID { get; set; }
+        public string EmailId { get; set; }
 
         [JsonProperty("email_address")]
         public string EmailAddress { get; set; }
 
         [JsonProperty("unique_email_id")]
-        public string UniqueEmailID { get; set; }
+        public string UniqueEmailId { get; set; }
 
         [JsonProperty("email_type")]
         public string EmailType { get; set; }
@@ -1878,7 +1885,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public LastNote LastNote { get; set; }
 
         [JsonProperty("list_id")]
-        public string ListID { get; set; }
+        public string ListId { get; set; }
 
         [JsonProperty("_links")]
         public Link[] Links { get; set; }
@@ -1887,7 +1894,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
     public class LastNote
     {
         [JsonProperty("note_id")]
-        public int NoteID { get; set; }
+        public int NoteId { get; set; }
 
         [JsonProperty("created_at")]
         public string CreatedTime { get; set; }
@@ -2008,7 +2015,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public AddUserResponseModel[] Members { get; set; }
 
         [JsonProperty("list_id")]
-        public string ListID { get; set; }
+        public string ListId { get; set; }
 
         [JsonProperty("total_items")]
         public int ItemCount { get; set; }
@@ -2017,13 +2024,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
     public class AddUserResponseModel
     {
         [JsonProperty("id")]
-        public string EmailID { get; set; }
+        public string EmailId { get; set; }
 
         [JsonProperty("email_address")]
         public string EmailAddress { get; set; }
 
         [JsonProperty("unique_email_id")]
-        public string UniqueEmailID { get; set; }
+        public string UniqueEmailId { get; set; }
 
         [JsonProperty("email_type")]
         public string EmailType { get; set; }
@@ -2071,7 +2078,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public LastNote LastNote { get; set; }
 
         [JsonProperty("list_id")]
-        public string ListID { get; set; }
+        public string ListId { get; set; }
 
         [JsonProperty("_links")]
         public Link[] Links { get; set; }

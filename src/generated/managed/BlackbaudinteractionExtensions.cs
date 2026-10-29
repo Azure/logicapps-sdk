@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
 {
     using System.Linq.Expressions;
@@ -45,9 +46,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
-        public IBodyWorkflowAction<ConstituentApiCreatedAction, ApiConnectionActionConfiguration> CreateAction(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodydate, Expression<Func<bodycategoryInput>> bodycategory, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodysummary = null, Expression<Func<string>> bodynote = null, Expression<Func<bool>> bodycompleted = null, Expression<Func<string>> bodycompletedOn = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodydirectionInput>> bodydirection = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodyopportunityID = null, Expression<Func<bodyoutcomeInput>> bodyoutcome = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<string>> bodyauthor = null, Expression<Func<string[]>> bodyfundraiserS = null)
+        public IBodyWorkflowAction<ConstituentApiCreatedAction, ApiConnectionActionConfiguration> CreateAction(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodydate, Expression<Func<bodycategoryInput>> bodycategory, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodysummary = null, Expression<Func<string>> bodynote = null, Expression<Func<bool>> bodycompleted = null, Expression<Func<string>> bodycompletedOn = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodydirectionInput>> bodydirection = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodyopportunityId = null, Expression<Func<bodyoutcomeInput>> bodyoutcome = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<string>> bodyauthor = null, Expression<Func<string[]>> bodyfundraiserS = null)
         {
-            var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: true);
+            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
             var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: true);
             var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             var __workflow_bodydirection = WorkflowExpression.Compile(bodydirection, nameof(bodydirection), required: false);
             var __workflow_bodylocation = WorkflowExpression.Compile(bodylocation, nameof(bodylocation), required: false);
-            var __workflow_bodyopportunityID = WorkflowExpression.Compile(bodyopportunityID, nameof(bodyopportunityID), required: false);
+            var __workflow_bodyopportunityId = WorkflowExpression.Compile(bodyopportunityId, nameof(bodyopportunityId), required: false);
             var __workflow_bodyoutcome = WorkflowExpression.Compile(bodyoutcome, nameof(bodyoutcome), required: false);
             var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
             var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: false);
@@ -73,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentID);
+                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
                 bodypropCount++;
                 body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
                 bodypropCount++;
@@ -126,9 +127,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyopportunityID != null)
+                if (__workflow_bodyopportunityId != null)
                 {
-                    body["opportunity_id"] = ExpressionConverter.ConvertO(__workflow_bodyopportunityID);
+                    body["opportunity_id"] = ExpressionConverter.ConvertO(__workflow_bodyopportunityId);
                     bodypropCount++;
                 }
 
@@ -191,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditAction(Expression<Func<string>> actionId, Expression<Func<string>> bodydate = null, Expression<Func<bodycategoryInput>> bodycategory = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodysummary = null, Expression<Func<string>> bodynote = null, Expression<Func<bool>> bodycompleted = null, Expression<Func<string>> bodycompletedOn = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodydirectionInput>> bodydirection = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodyopportunityID = null, Expression<Func<bodyoutcomeInput>> bodyoutcome = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<string[]>> bodyfundraiserS = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditAction(Expression<Func<string>> actionId, Expression<Func<string>> bodydate = null, Expression<Func<bodycategoryInput>> bodycategory = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodysummary = null, Expression<Func<string>> bodynote = null, Expression<Func<bool>> bodycompleted = null, Expression<Func<string>> bodycompletedOn = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodydirectionInput>> bodydirection = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodyopportunityId = null, Expression<Func<bodyoutcomeInput>> bodyoutcome = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<string[]>> bodyfundraiserS = null)
         {
             var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
             var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
@@ -204,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             var __workflow_bodydirection = WorkflowExpression.Compile(bodydirection, nameof(bodydirection), required: false);
             var __workflow_bodylocation = WorkflowExpression.Compile(bodylocation, nameof(bodylocation), required: false);
-            var __workflow_bodyopportunityID = WorkflowExpression.Compile(bodyopportunityID, nameof(bodyopportunityID), required: false);
+            var __workflow_bodyopportunityId = WorkflowExpression.Compile(bodyopportunityId, nameof(bodyopportunityId), required: false);
             var __workflow_bodyoutcome = WorkflowExpression.Compile(bodyoutcome, nameof(bodyoutcome), required: false);
             var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
             var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: false);
@@ -277,9 +278,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyopportunityID != null)
+                if (__workflow_bodyopportunityId != null)
                 {
-                    body["opportunity_id"] = ExpressionConverter.ConvertO(__workflow_bodyopportunityID);
+                    body["opportunity_id"] = ExpressionConverter.ConvertO(__workflow_bodyopportunityId);
                     bodypropCount++;
                 }
 
@@ -349,16 +350,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
-        public IBodyWorkflowAction<ConstituentApiCreatedActionAttachment, ApiConnectionActionConfiguration> CreateActionAttachment(Expression<Func<string>> bodyactionID, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodyuRL = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodyfileID = null, Expression<Func<string>> bodythumbnailID = null, Expression<Func<string[]>> bodytags = null)
+        public IBodyWorkflowAction<ConstituentApiCreatedActionAttachment, ApiConnectionActionConfiguration> CreateActionAttachment(Expression<Func<string>> bodyactionId, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodyuRL = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodyfileId = null, Expression<Func<string>> bodythumbnailId = null, Expression<Func<string[]>> bodytags = null)
         {
-            var __workflow_bodyactionID = WorkflowExpression.Compile(bodyactionID, nameof(bodyactionID), required: true);
+            var __workflow_bodyactionId = WorkflowExpression.Compile(bodyactionId, nameof(bodyactionId), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
             var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
             var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: false);
-            var __workflow_bodyfileID = WorkflowExpression.Compile(bodyfileID, nameof(bodyfileID), required: false);
-            var __workflow_bodythumbnailID = WorkflowExpression.Compile(bodythumbnailID, nameof(bodythumbnailID), required: false);
+            var __workflow_bodyfileId = WorkflowExpression.Compile(bodyfileId, nameof(bodyfileId), required: false);
+            var __workflow_bodythumbnailId = WorkflowExpression.Compile(bodythumbnailId, nameof(bodythumbnailId), required: false);
             var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
             return new DeferredBodyAction<ConstituentApiCreatedActionAttachment, ApiConnectionActionConfiguration>(() =>
             {
@@ -368,7 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["parent_id"] = ExpressionConverter.ConvertO(__workflow_bodyactionID);
+                body["parent_id"] = ExpressionConverter.ConvertO(__workflow_bodyactionId);
                 bodypropCount++;
                 body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
                 if (__workflow_bodyname != null)
@@ -395,15 +396,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyfileID != null)
+                if (__workflow_bodyfileId != null)
                 {
-                    body["file_id"] = ExpressionConverter.ConvertO(__workflow_bodyfileID);
+                    body["file_id"] = ExpressionConverter.ConvertO(__workflow_bodyfileId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodythumbnailID != null)
+                if (__workflow_bodythumbnailId != null)
                 {
-                    body["thumbnail_id"] = ExpressionConverter.ConvertO(__workflow_bodythumbnailID);
+                    body["thumbnail_id"] = ExpressionConverter.ConvertO(__workflow_bodythumbnailId);
                     bodypropCount++;
                 }
 
@@ -471,9 +472,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
-        public IBodyWorkflowAction<ConstituentApiCreatedActionCustomField, ApiConnectionActionConfiguration> CreateActionCustomField(Expression<Func<string>> bodyactionID, Expression<Func<string>> bodycategory, Expression<Func<object>> bodyvalue = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodycomment = null)
+        public IBodyWorkflowAction<ConstituentApiCreatedActionCustomField, ApiConnectionActionConfiguration> CreateActionCustomField(Expression<Func<string>> bodyactionId, Expression<Func<string>> bodycategory, Expression<Func<object>> bodyvalue = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodycomment = null)
         {
-            var __workflow_bodyactionID = WorkflowExpression.Compile(bodyactionID, nameof(bodyactionID), required: true);
+            var __workflow_bodyactionId = WorkflowExpression.Compile(bodyactionId, nameof(bodyactionId), required: true);
             var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: true);
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
             var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
@@ -486,7 +487,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["parent_id"] = ExpressionConverter.ConvertO(__workflow_bodyactionID);
+                body["parent_id"] = ExpressionConverter.ConvertO(__workflow_bodyactionId);
                 bodypropCount++;
                 body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
                 if (__workflow_bodyvalue != null)
@@ -594,10 +595,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
     public class ConstituentApiActionRead
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("constituent_id")]
-        public string ConstituentID { get; set; }
+        public string ConstituentId { get; set; }
 
         [JsonProperty("category")]
         public string Category { get; set; }
@@ -624,7 +625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         public string Location { get; set; }
 
         [JsonProperty("opportunity_id")]
-        public string OpportunityID { get; set; }
+        public string OpportunityId { get; set; }
 
         [JsonProperty("outcome")]
         public ConstituentApiActionReadOutcomeType Outcome { get; set; }
@@ -693,7 +694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
     public class ConstituentApiCreatedAction
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -742,10 +743,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
     public class ConstituentApiActionAttachmentRead
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("parent_id")]
-        public string ActionID { get; set; }
+        public string ActionId { get; set; }
 
         [JsonProperty("type")]
         public ConstituentApiActionAttachmentReadTypeType Type { get; set; }
@@ -763,10 +764,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         public string FileName { get; set; }
 
         [JsonProperty("file_id")]
-        public string FileID { get; set; }
+        public string FileId { get; set; }
 
         [JsonProperty("thumbnail_id")]
-        public string ThumbnailID { get; set; }
+        public string ThumbnailId { get; set; }
 
         [JsonProperty("thumbnail_url")]
         public string ThumbnailURL { get; set; }
@@ -800,10 +801,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
     public class ConstituentApiActionCustomFieldRead
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("parent_id")]
-        public string ActionID { get; set; }
+        public string ActionId { get; set; }
 
         [JsonProperty("category")]
         public string Category { get; set; }
@@ -833,7 +834,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         public string TableEntryValue { get; set; }
 
         [JsonProperty("constituentid_value")]
-        public string ConstituentIDValue { get; set; }
+        public string ConstituentIdValue { get; set; }
 
         [JsonProperty("fuzzydate_value")]
         public ConstituentApiActionCustomFieldReadFuzzyDateValueType FuzzyDateValue { get; set; }
@@ -879,7 +880,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
     public class ConstituentApiCreatedActionAttachment
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -892,7 +893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
     public class ConstituentApiCreatedActionCustomField
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 }
 

@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpformsbyreenhancedl
 {
     using System.Linq.Expressions;
@@ -45,9 +46,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpformsbyreenhancedl
 
     public class WpformsbyreenhancedlTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateFlow(Expression<Func<string>> bodyformID, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateFlow(Expression<Func<string>> bodyformId, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyformID = WorkflowExpression.Compile(bodyformID, nameof(bodyformID), required: true);
+            var __workflow_bodyformId = WorkflowExpression.Compile(bodyformId, nameof(bodyformId), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/resources/flows";
@@ -56,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpformsbyreenhancedl
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["form_id"] = ExpressionConverter.ConvertO(__workflow_bodyformID);
+                body["form_id"] = ExpressionConverter.ConvertO(__workflow_bodyformId);
                 var metaObject = new JObject();
                 var metaObjectpropCount = 0;
                 metaObject["powerAutomateUrl"] = "#{listCallbackUrl()}";

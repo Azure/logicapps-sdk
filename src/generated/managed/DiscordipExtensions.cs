@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
 {
     using System.Linq.Expressions;
@@ -14,28 +15,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "discordip")]
         public IBodyWorkflowAction<User, ApiConnectionActionConfiguration> GetCurrentUser()
         {
-            var apiCallPath = "/v9/users/@me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<User>(callPayload);
+            return new DeferredBodyAction<User, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v9/users/@me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<User>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "discordip")]
         public IBodyWorkflowAction<Connection[], ApiConnectionActionConfiguration> GetUserConnections()
         {
-            var apiCallPath = "/v9/users/@me/connections";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Connection[]>(callPayload);
+            return new DeferredBodyAction<Connection[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v9/users/@me/connections";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Connection[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "discordip")]
         public IBodyWorkflowAction<Guild[], ApiConnectionActionConfiguration> GetCurrentUserGuilds()
         {
-            var apiCallPath = "/v9/users/@me/guilds";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Guild[]>(callPayload);
+            return new DeferredBodyAction<Guild[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v9/users/@me/guilds";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Guild[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "discordip")]
@@ -92,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
     public class User
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("username")]
         public string Username { get; set; }
@@ -179,16 +189,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
     public class Webhook
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("type")]
         public int Type { get; set; }
 
         [JsonProperty("guild_id")]
-        public string GuildID { get; set; }
+        public string GuildId { get; set; }
 
         [JsonProperty("channel_id")]
-        public string ChannelID { get; set; }
+        public string ChannelId { get; set; }
 
         [JsonProperty("user")]
         public User User { get; set; }
@@ -203,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
         public string Token { get; set; }
 
         [JsonProperty("application_id")]
-        public string ApplicationID { get; set; }
+        public string ApplicationId { get; set; }
 
         [JsonProperty("source_guild")]
         public Guild SourceGuild { get; set; }

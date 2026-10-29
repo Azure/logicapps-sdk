@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theeventscalendar
 {
     using System.Linq.Expressions;
@@ -189,26 +190,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theeventscalendar
     {
         public IBodyWorkflowTrigger<NewEventTriggerResponse, ApiConnectionTriggerConfiguration> NewEventTrigger(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/new-events/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<NewEventTriggerResponse>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<NewEventTriggerResponse, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/new-events/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<NewEventTriggerResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<UpdatedEventTriggerResponse, ApiConnectionTriggerConfiguration> UpdatedEventTrigger(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/updated-events/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<UpdatedEventTriggerResponse>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<UpdatedEventTriggerResponse, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/updated-events/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<UpdatedEventTriggerResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<CanceledEventTriggerResponse, ApiConnectionTriggerConfiguration> CanceledEventTrigger(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/canceled-events/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<CanceledEventTriggerResponse>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<CanceledEventTriggerResponse, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/canceled-events/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<CanceledEventTriggerResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

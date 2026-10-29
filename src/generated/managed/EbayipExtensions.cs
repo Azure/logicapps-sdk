@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
 {
     using System.Linq.Expressions;
@@ -3252,7 +3253,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         TUESDAY,
         WEDNESDAY,
         THURSDAY,
-        FRIDAY,
+        [EnumMember(Value = "FRIDAY")]
+        FRIdAY,
         SATURDAY,
         SUNDAY
     }

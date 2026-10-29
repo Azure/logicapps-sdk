@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
 {
     using System.Linq.Expressions;
@@ -81,10 +82,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infobip")]
         public IBodyWorkflowAction<BalanceSuccessResponseBody, ApiConnectionActionConfiguration> CheckCurrentBalance()
         {
-            var apiCallPath = "/account/1/balance";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BalanceSuccessResponseBody>(callPayload);
+            return new DeferredBodyAction<BalanceSuccessResponseBody, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/account/1/balance";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<BalanceSuccessResponseBody>(callPayload);
+            });
         }
     }
 

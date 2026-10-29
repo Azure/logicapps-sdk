@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Langai
 {
     using System.Linq.Expressions;
@@ -88,11 +89,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Langai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "langai")]
         public IBodyWorkflowAction<ProjectsResponseItem[], ApiConnectionActionConfiguration> Projects()
         {
-            var apiCallPath = "/api/v1/projects";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<ProjectsResponseItem[]>(callPayload);
+            return new DeferredBodyAction<ProjectsResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/v1/projects";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<ProjectsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "langai")]

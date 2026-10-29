@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
 {
     using System.Linq.Expressions;
@@ -93,11 +94,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RemoveParticipant(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<string>> bodycommunicationUseruserID = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RemoveParticipant(Expression<Func<string>> accessToken, Expression<Func<string>> chatThreadId, Expression<Func<string>> bodycommunicationUseruserId = null)
         {
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
             var __workflow_chatThreadId = WorkflowExpression.Compile(chatThreadId, nameof(chatThreadId), required: true);
-            var __workflow_bodycommunicationUseruserID = WorkflowExpression.Compile(bodycommunicationUseruserID, nameof(bodycommunicationUseruserID), required: false);
+            var __workflow_bodycommunicationUseruserId = WorkflowExpression.Compile(bodycommunicationUseruserId, nameof(bodycommunicationUseruserId), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/chat/threads/{0}/participants/:remove", __workflow_chatThreadId.WithUrlEncoding(1)));
@@ -109,9 +110,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
                 var bodypropCount = 0;
                 var communicationUserObject = new JObject();
                 var communicationUserObjectpropCount = 0;
-                if (__workflow_bodycommunicationUseruserID != null)
+                if (__workflow_bodycommunicationUseruserId != null)
                 {
-                    communicationUserObject["id"] = ExpressionConverter.ConvertO(__workflow_bodycommunicationUseruserID);
+                    communicationUserObject["id"] = ExpressionConverter.ConvertO(__workflow_bodycommunicationUseruserId);
                     communicationUserObjectpropCount++;
                 }
 
@@ -285,7 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
     public class ListMessagesResponseMessageListTypeItem
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -294,7 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
         public string Version { get; set; }
 
         [JsonProperty("sequenceId")]
-        public string SequenceID { get; set; }
+        public string SequenceId { get; set; }
 
         [JsonProperty("content")]
         public ListMessagesResponseMessageListTypeItemContentType Content { get; set; }
@@ -333,7 +334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
     public class CommunicationIdentifierCommunicationUserType
     {
         [JsonProperty("id")]
-        public string UserID { get; set; }
+        public string UserId { get; set; }
     }
 
     public class ListMessagesResponseMessageListTypeItemContentTypeParticipantsTypeItem
@@ -390,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
     public class ListChatThreadsResponseChatThreadsTypeItem
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("topic")]
         public string Topic { get; set; }
@@ -411,7 +412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
     public class CreateChatResponseChatThreadType
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("topic")]
         public string Topic { get; set; }
@@ -456,7 +457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
     public class GetThreadPropertiesResponse
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("topic")]
         public string Topic { get; set; }
@@ -474,7 +475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
     public class GetThreadPropertiesResponseCreatedByCommunicationIdentifierType
     {
         [JsonProperty("rawId")]
-        public string RawID { get; set; }
+        public string RawId { get; set; }
 
         [JsonProperty("communicationUser")]
         public GetThreadPropertiesResponseCreatedByCommunicationIdentifierTypeCommunicationUserType CommunicationUser { get; set; }
@@ -483,7 +484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
     public class GetThreadPropertiesResponseCreatedByCommunicationIdentifierTypeCommunicationUserType
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 }
 

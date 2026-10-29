@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
 {
     using System.Linq.Expressions;
@@ -97,10 +98,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         public IBodyWorkflowAction<GoogleMapsKeyResponse, ApiConnectionActionConfiguration> GoogleMapsKey()
         {
-            var apiCallPath = "/v1.0/Maps/google/key";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GoogleMapsKeyResponse>(callPayload);
+            return new DeferredBodyAction<GoogleMapsKeyResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1.0/Maps/google/key";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GoogleMapsKeyResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]

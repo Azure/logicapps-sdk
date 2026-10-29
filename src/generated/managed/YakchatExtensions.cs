@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
 {
     using System.Linq.Expressions;
@@ -12,14 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
     public class YakchatActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yakchat")]
-        public IBodyWorkflowAction<SendMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> bodyinboxEmail, Expression<Func<string>> bodymessageText, Expression<Func<string>> bodymessageTo)
+        public IBodyWorkflowAction<SendMessageV2Response, ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> bodyinboxEmail, Expression<Func<string>> bodymessageText, Expression<Func<string>> bodymessageTo)
         {
             var __workflow_bodyinboxEmail = WorkflowExpression.Compile(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
             var __workflow_bodymessageText = WorkflowExpression.Compile(bodymessageText, nameof(bodymessageText), required: true);
             var __workflow_bodymessageTo = WorkflowExpression.Compile(bodymessageTo, nameof(bodymessageTo), required: true);
-            return new DeferredBodyAction<SendMessageResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SendMessageV2Response, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = "/Automation/SendMessage";
+                var apiCallPath = "/v2/Automation/SendMessage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -35,59 +36,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionAction<SendMessageResponse>(callPayload);
+                return new ApiConnectionAction<SendMessageV2Response>(callPayload);
             });
         }
     }
 
     public class YakchatTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InboundMessage(Expression<Func<string>> bodyinboxEmail, FlowRecurrence recurrence = null)
-        {
-            var __workflow_bodyinboxEmail = WorkflowExpression.Compile(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
-            {
-                var apiCallPath = "/Automation/InboundMessageNotification";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["InboxEmail"] = ExpressionConverter.ConvertO(__workflow_bodyinboxEmail);
-                body["TargetUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
-        }
-
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OutboundMessage(Expression<Func<string>> bodyinboxEmail, FlowRecurrence recurrence = null)
-        {
-            var __workflow_bodyinboxEmail = WorkflowExpression.Compile(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
-            {
-                var apiCallPath = "/Automation/OutboundMessageNotification";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["InboxEmail"] = ExpressionConverter.ConvertO(__workflow_bodyinboxEmail);
-                body["TargetUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
-            });
-        }
-
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> BidirectionalMessage(Expression<Func<string>> bodyinboxEmail, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyinboxEmail = WorkflowExpression.Compile(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
@@ -110,10 +65,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
+
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InboundMessage(Expression<Func<string>> bodyinboxEmail, FlowRecurrence recurrence = null)
+        {
+            var __workflow_bodyinboxEmail = WorkflowExpression.Compile(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/v2/Automation/InboundMessageNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["InboxEmail"] = ExpressionConverter.ConvertO(__workflow_bodyinboxEmail);
+                body["TargetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
+        }
+
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OutboundMessage(Expression<Func<string>> bodyinboxEmail, FlowRecurrence recurrence = null)
+        {
+            var __workflow_bodyinboxEmail = WorkflowExpression.Compile(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/v2/Automation/OutboundMessageNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["InboxEmail"] = ExpressionConverter.ConvertO(__workflow_bodyinboxEmail);
+                body["TargetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
+        }
     }
 
-    public class SendMessageResponse
+    public class SendMessageV2Response
     {
+        public int Id { get; set; }
         public string Message { get; set; }
         public string Result { get; set; }
     }

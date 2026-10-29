@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
 {
     using System.Linq.Expressions;
@@ -95,10 +96,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
         public IBodyWorkflowAction<GetSoundsResponse, ApiConnectionActionConfiguration> GetSounds()
         {
-            var apiCallPath = "/1/sounds.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSoundsResponse>(callPayload);
+            return new DeferredBodyAction<GetSoundsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/1/sounds.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetSoundsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
@@ -133,10 +137,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
         public IBodyWorkflowAction<LimitsResponse, ApiConnectionActionConfiguration> Limits()
         {
-            var apiCallPath = "/1/apps/limits.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<LimitsResponse>(callPayload);
+            return new DeferredBodyAction<LimitsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/1/apps/limits.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<LimitsResponse>(callPayload);
+            });
         }
     }
 
@@ -153,26 +160,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
         public string Request { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypriorityInput
     {
-        [EnumMember(Value = "-2")]
-        Negative2,
-        [EnumMember(Value = "-1")]
-        Negative1,
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2
+        Negative2 = -2,
+        Negative1 = -1,
+        _0 = 0,
+        _1 = 1,
+        _2 = 2
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyhtmlInput
     {
-        [EnumMember(Value = "1")]
-        _1
+        _1 = 1
     }
 
     public class GetSoundsResponse

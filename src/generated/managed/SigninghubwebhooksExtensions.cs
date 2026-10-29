@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signinghubwebhooks
 {
     using System.Linq.Expressions;
@@ -65,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signinghubwebhooks
         REMINDED,
         COMPLETED,
         [EnumMember(Value = "EVIDENCE_REPORT_GENERATED")]
-        EVIDENCEREPORTGENERATED,
+        EVIdENCEREPORTGENERATED,
         [EnumMember(Value = "DOCUMENT_DELETED")]
         DOCUMENTDELETED
     }

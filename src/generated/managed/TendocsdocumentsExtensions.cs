@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 {
     using System.Linq.Expressions;
@@ -84,9 +85,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<AiSummaryResponse, ApiConnectionActionConfiguration> AiSummary(Expression<Func<string>> requestdocumentfile = null, Expression<Func<int>> requestconfigurationtargetWordCount = null)
+        public IBodyWorkflowAction<AiSummaryResponse, ApiConnectionActionConfiguration> AiSummary(Expression<Func<string>> requestdocumentFile = null, Expression<Func<int>> requestconfigurationtargetWordCount = null)
         {
-            var __workflow_requestdocumentfile = WorkflowExpression.Compile(requestdocumentfile, nameof(requestdocumentfile), required: false);
+            var __workflow_requestdocumentFile = WorkflowExpression.Compile(requestdocumentFile, nameof(requestdocumentFile), required: false);
             var __workflow_requestconfigurationtargetWordCount = WorkflowExpression.Compile(requestconfigurationtargetWordCount, nameof(requestconfigurationtargetWordCount), required: false);
             return new DeferredBodyAction<AiSummaryResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -97,9 +98,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
                 var requestpropCount = 0;
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (__workflow_requestdocumentfile != null)
+                if (__workflow_requestdocumentFile != null)
                 {
-                    documentObject["file"] = ExpressionConverter.ConvertO(__workflow_requestdocumentfile);
+                    documentObject["file"] = ExpressionConverter.ConvertO(__workflow_requestdocumentFile);
                     documentObjectpropCount++;
                 }
 
@@ -179,9 +180,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConversionConvert(Expression<Func<string>> requestdocumentfile = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConversionConvert(Expression<Func<string>> requestdocumentFile = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
         {
-            var __workflow_requestdocumentfile = WorkflowExpression.Compile(requestdocumentfile, nameof(requestdocumentfile), required: false);
+            var __workflow_requestdocumentFile = WorkflowExpression.Compile(requestdocumentFile, nameof(requestdocumentFile), required: false);
             var __workflow_requestconfigurationdocumentFormat = WorkflowExpression.Compile(requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
@@ -192,9 +193,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
                 var requestpropCount = 0;
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (__workflow_requestdocumentfile != null)
+                if (__workflow_requestdocumentFile != null)
                 {
-                    documentObject["file"] = ExpressionConverter.ConvertO(__workflow_requestdocumentfile);
+                    documentObject["file"] = ExpressionConverter.ConvertO(__workflow_requestdocumentFile);
                     documentObjectpropCount++;
                 }
 
@@ -387,7 +388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<InstancesResponse, ApiConnectionActionConfiguration> EnvelopesInstances(Expression<Func<string>> requestdocumentTitle, Expression<Func<string>> requestdocumentIntroduction, Expression<Func<string>> requestrecipientEmail, Expression<Func<string>> requestrecipientFirstName, Expression<Func<string>> requestrecipientLastName, Expression<Func<string>> requestexpiryDate, Expression<Func<bool>> requestsignatureRequired, Expression<Func<string>> requestorgansiationTitle, Expression<Func<string>> requestorganisationEmail, Expression<Func<string>> requestorganisationOwner, Expression<Func<string>> requestdocumentpDFDocument = null, Expression<Func<string>> requestdocumentLogo = null, Expression<Func<string>> requestcheckbox = null, Expression<Func<string>> requestorganisationWebsite = null, Expression<Func<string>> requestorganisationPhone = null, Expression<Func<string>> requestoragnisationOwnerTitle = null, Expression<Func<bool>> requestcomments = null, Expression<Func<string>> requestprojectID = null, Expression<Func<string>> requestcompleteButtonLabel = null, Expression<Func<string>> requestcompleteDocumentLabel = null, Expression<Func<string>> requestincompleteDocumentLabel = null)
+        public IBodyWorkflowAction<InstancesResponse, ApiConnectionActionConfiguration> EnvelopesInstances(Expression<Func<string>> requestdocumentTitle, Expression<Func<string>> requestdocumentIntroduction, Expression<Func<string>> requestrecipientEmail, Expression<Func<string>> requestrecipientFirstName, Expression<Func<string>> requestrecipientLastName, Expression<Func<string>> requestexpiryDate, Expression<Func<bool>> requestsignatureRequired, Expression<Func<string>> requestorgansiationTitle, Expression<Func<string>> requestorganisationEmail, Expression<Func<string>> requestorganisationOwner, Expression<Func<string>> requestdocumentpDFDocument = null, Expression<Func<string>> requestdocumentLogo = null, Expression<Func<string>> requestcheckbox = null, Expression<Func<string>> requestorganisationWebsite = null, Expression<Func<string>> requestorganisationPhone = null, Expression<Func<string>> requestoragnisationOwnerTitle = null, Expression<Func<bool>> requestcomments = null, Expression<Func<string>> requestprojectId = null, Expression<Func<string>> requestcompleteButtonLabel = null, Expression<Func<string>> requestcompleteDocumentLabel = null, Expression<Func<string>> requestincompleteDocumentLabel = null)
         {
             var __workflow_requestdocumentTitle = WorkflowExpression.Compile(requestdocumentTitle, nameof(requestdocumentTitle), required: true);
             var __workflow_requestdocumentIntroduction = WorkflowExpression.Compile(requestdocumentIntroduction, nameof(requestdocumentIntroduction), required: true);
@@ -406,7 +407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
             var __workflow_requestorganisationPhone = WorkflowExpression.Compile(requestorganisationPhone, nameof(requestorganisationPhone), required: false);
             var __workflow_requestoragnisationOwnerTitle = WorkflowExpression.Compile(requestoragnisationOwnerTitle, nameof(requestoragnisationOwnerTitle), required: false);
             var __workflow_requestcomments = WorkflowExpression.Compile(requestcomments, nameof(requestcomments), required: false);
-            var __workflow_requestprojectID = WorkflowExpression.Compile(requestprojectID, nameof(requestprojectID), required: false);
+            var __workflow_requestprojectId = WorkflowExpression.Compile(requestprojectId, nameof(requestprojectId), required: false);
             var __workflow_requestcompleteButtonLabel = WorkflowExpression.Compile(requestcompleteButtonLabel, nameof(requestcompleteButtonLabel), required: false);
             var __workflow_requestcompleteDocumentLabel = WorkflowExpression.Compile(requestcompleteDocumentLabel, nameof(requestcompleteDocumentLabel), required: false);
             var __workflow_requestincompleteDocumentLabel = WorkflowExpression.Compile(requestincompleteDocumentLabel, nameof(requestincompleteDocumentLabel), required: false);
@@ -503,9 +504,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
                     requestpropCount++;
                 }
 
-                if (__workflow_requestprojectID != null)
+                if (__workflow_requestprojectId != null)
                 {
-                    request["projectIdentifier"] = ExpressionConverter.ConvertO(__workflow_requestprojectID);
+                    request["projectIdentifier"] = ExpressionConverter.ConvertO(__workflow_requestprojectId);
                     requestpropCount++;
                 }
 

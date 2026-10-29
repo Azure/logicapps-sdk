@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
 {
     using System.Linq.Expressions;
@@ -12,10 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
     public class EmfluencempActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emfluencemp")]
-        public IBodyWorkflowAction<ContactsSearchSimpleResponse, ApiConnectionActionConfiguration> ContactsSearchSimple(Expression<Func<string>> email = null, Expression<Func<int>> groupID = null, Expression<Func<bool>> suppressed = null, Expression<Func<bool>> held = null, Expression<Func<int>> page = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<sortDirectionInput>> sortDirection = null)
+        public IBodyWorkflowAction<ContactsSearchSimpleResponse, ApiConnectionActionConfiguration> ContactsSearchSimple(Expression<Func<string>> email = null, Expression<Func<int>> groupId = null, Expression<Func<bool>> suppressed = null, Expression<Func<bool>> held = null, Expression<Func<int>> page = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<sortDirectionInput>> sortDirection = null)
         {
             var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: false);
-            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: false);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: false);
             var __workflow_suppressed = WorkflowExpression.Compile(suppressed, nameof(suppressed), required: false);
             var __workflow_held = WorkflowExpression.Compile(held, nameof(held), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
@@ -28,8 +29,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_email != null)
                     callPayload.Queries["email"] = ExpressionConverter.Convert(__workflow_email);
-                if (__workflow_groupID != null)
-                    callPayload.Queries["groupID"] = ExpressionConverter.Convert(__workflow_groupID);
+                if (__workflow_groupId != null)
+                    callPayload.Queries["groupID"] = ExpressionConverter.Convert(__workflow_groupId);
                 if (__workflow_suppressed != null)
                     callPayload.Queries["suppressed"] = ExpressionConverter.Convert(__workflow_suppressed);
                 if (__workflow_held != null)
@@ -45,15 +46,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emfluencemp")]
-        public IBodyWorkflowAction<ContactsSearchResponse, ApiConnectionActionConfiguration> ContactsSearch(Expression<Func<int>> bodygroupID = null, Expression<Func<bool>> bodysuppressed = null, Expression<Func<bool>> bodyheld = null, Expression<Func<JToken[]>> bodycontactIDs = null, Expression<Func<string>> bodyemail = null, Expression<Func<int>> bodyuserID = null, Expression<Func<string>> bodycustomerID = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodyfax = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodyzipCode = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodypurl = null, Expression<Func<string>> bodyfields = null, Expression<Func<int>> bodypage = null, Expression<Func<int>> bodyrpp = null, Expression<Func<bodysortFieldInput>> bodysortField = null, Expression<Func<bodysortDirectionInput>> bodysortDirection = null)
+        public IBodyWorkflowAction<ContactsSearchResponse, ApiConnectionActionConfiguration> ContactsSearch(Expression<Func<int>> bodygroupId = null, Expression<Func<bool>> bodysuppressed = null, Expression<Func<bool>> bodyheld = null, Expression<Func<JToken[]>> bodycontactIDs = null, Expression<Func<string>> bodyemail = null, Expression<Func<int>> bodyuserId = null, Expression<Func<string>> bodycustomerId = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodyfax = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodyzipCode = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodypurl = null, Expression<Func<string>> bodyfields = null, Expression<Func<int>> bodypage = null, Expression<Func<int>> bodyrpp = null, Expression<Func<bodysortFieldInput>> bodysortField = null, Expression<Func<bodysortDirectionInput>> bodysortDirection = null)
         {
-            var __workflow_bodygroupID = WorkflowExpression.Compile(bodygroupID, nameof(bodygroupID), required: false);
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: false);
             var __workflow_bodysuppressed = WorkflowExpression.Compile(bodysuppressed, nameof(bodysuppressed), required: false);
             var __workflow_bodyheld = WorkflowExpression.Compile(bodyheld, nameof(bodyheld), required: false);
             var __workflow_bodycontactIDs = WorkflowExpression.Compile(bodycontactIDs, nameof(bodycontactIDs), required: false);
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyuserID = WorkflowExpression.Compile(bodyuserID, nameof(bodyuserID), required: false);
-            var __workflow_bodycustomerID = WorkflowExpression.Compile(bodycustomerID, nameof(bodycustomerID), required: false);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodycustomerId = WorkflowExpression.Compile(bodycustomerId, nameof(bodycustomerId), required: false);
             var __workflow_bodycompany = WorkflowExpression.Compile(bodycompany, nameof(bodycompany), required: false);
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
             var __workflow_bodyphone = WorkflowExpression.Compile(bodyphone, nameof(bodyphone), required: false);
@@ -76,9 +77,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (__workflow_bodygroupID != null)
+                if (__workflow_bodygroupId != null)
                 {
-                    body["groupID"] = ExpressionConverter.ConvertO(__workflow_bodygroupID);
+                    body["groupID"] = ExpressionConverter.ConvertO(__workflow_bodygroupId);
                     bodypropCount++;
                 }
 
@@ -106,15 +107,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyuserID != null)
+                if (__workflow_bodyuserId != null)
                 {
-                    body["userID"] = ExpressionConverter.ConvertO(__workflow_bodyuserID);
+                    body["userID"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodycustomerID != null)
+                if (__workflow_bodycustomerId != null)
                 {
-                    body["customerID"] = ExpressionConverter.ConvertO(__workflow_bodycustomerID);
+                    body["customerID"] = ExpressionConverter.ConvertO(__workflow_bodycustomerId);
                     bodypropCount++;
                 }
 
@@ -238,12 +239,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emfluencemp")]
-        public IBodyWorkflowAction<ContactsSaveResponse, ApiConnectionActionConfiguration> ContactsSave(Expression<Func<int>> bodycontactID = null, Expression<Func<string>> bodyemail = null, Expression<Func<int>> bodyuserID = null, Expression<Func<string>> bodycustomerID = null, Expression<Func<bool>> bodysuppressed = null, Expression<Func<bool>> bodyheld = null, Expression<Func<string>> bodyoriginalSource = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodyfax = null, Expression<Func<string>> bodyaddress1 = null, Expression<Func<string>> bodyaddress2 = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodyzipCode = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodypurl = null, Expression<Func<string>> bodydateOfBirth = null, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodymemo = null, Expression<Func<int[]>> bodygroupIDs = null, Expression<Func<int[]>> bodyremoveGroupIDs = null)
+        public IBodyWorkflowAction<ContactsSaveResponse, ApiConnectionActionConfiguration> ContactsSave(Expression<Func<int>> bodycontactId = null, Expression<Func<string>> bodyemail = null, Expression<Func<int>> bodyuserId = null, Expression<Func<string>> bodycustomerId = null, Expression<Func<bool>> bodysuppressed = null, Expression<Func<bool>> bodyheld = null, Expression<Func<string>> bodyoriginalSource = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodyfax = null, Expression<Func<string>> bodyaddress1 = null, Expression<Func<string>> bodyaddress2 = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodyzipCode = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodypurl = null, Expression<Func<string>> bodydateOfBirth = null, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodymemo = null, Expression<Func<int[]>> bodygroupIDs = null, Expression<Func<int[]>> bodyremoveGroupIDs = null)
         {
-            var __workflow_bodycontactID = WorkflowExpression.Compile(bodycontactID, nameof(bodycontactID), required: false);
+            var __workflow_bodycontactId = WorkflowExpression.Compile(bodycontactId, nameof(bodycontactId), required: false);
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyuserID = WorkflowExpression.Compile(bodyuserID, nameof(bodyuserID), required: false);
-            var __workflow_bodycustomerID = WorkflowExpression.Compile(bodycustomerID, nameof(bodycustomerID), required: false);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodycustomerId = WorkflowExpression.Compile(bodycustomerId, nameof(bodycustomerId), required: false);
             var __workflow_bodysuppressed = WorkflowExpression.Compile(bodysuppressed, nameof(bodysuppressed), required: false);
             var __workflow_bodyheld = WorkflowExpression.Compile(bodyheld, nameof(bodyheld), required: false);
             var __workflow_bodyoriginalSource = WorkflowExpression.Compile(bodyoriginalSource, nameof(bodyoriginalSource), required: false);
@@ -273,9 +274,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (__workflow_bodycontactID != null)
+                if (__workflow_bodycontactId != null)
                 {
-                    body["contactID"] = ExpressionConverter.ConvertO(__workflow_bodycontactID);
+                    body["contactID"] = ExpressionConverter.ConvertO(__workflow_bodycontactId);
                     bodypropCount++;
                 }
 
@@ -285,15 +286,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyuserID != null)
+                if (__workflow_bodyuserId != null)
                 {
-                    body["userID"] = ExpressionConverter.ConvertO(__workflow_bodyuserID);
+                    body["userID"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodycustomerID != null)
+                if (__workflow_bodycustomerId != null)
                 {
-                    body["customerID"] = ExpressionConverter.ConvertO(__workflow_bodycustomerID);
+                    body["customerID"] = ExpressionConverter.ConvertO(__workflow_bodycustomerId);
                     bodypropCount++;
                 }
 
@@ -489,7 +490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         public string DateModified { get; set; }
 
         [JsonProperty("userID")]
-        public int UserID { get; set; }
+        public int UserId { get; set; }
 
         [JsonProperty("firstName")]
         public string FirstName { get; set; }
@@ -498,7 +499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         public string Email { get; set; }
 
         [JsonProperty("contactID")]
-        public int ContactID { get; set; }
+        public int ContactId { get; set; }
 
         [JsonProperty("suppressed")]
         public int Suppressed { get; set; }
@@ -529,7 +530,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
     public enum sortFieldInput
     {
         [EnumMember(Value = "contactID")]
-        ContactID,
+        ContactId,
         [EnumMember(Value = "email")]
         Email,
         [EnumMember(Value = "dateModified")]
@@ -601,7 +602,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         public string DateModified { get; set; }
 
         [JsonProperty("contactID")]
-        public int ContactID { get; set; }
+        public int ContactId { get; set; }
 
         [JsonProperty("suppressed")]
         public int Suppressed { get; set; }
@@ -613,7 +614,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         public string Email { get; set; }
 
         [JsonProperty("userID")]
-        public int UserID { get; set; }
+        public int UserId { get; set; }
 
         [JsonProperty("lastName")]
         public string LastName { get; set; }
@@ -623,7 +624,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
     public enum bodysortFieldInput
     {
         [EnumMember(Value = "contactID")]
-        ContactID,
+        ContactId,
         [EnumMember(Value = "email")]
         Email,
         [EnumMember(Value = "dateModified")]
@@ -671,7 +672,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         public string Email { get; set; }
 
         [JsonProperty("contactID")]
-        public int ContactID { get; set; }
+        public int ContactId { get; set; }
 
         [JsonProperty("groupIDs")]
         public JToken[] GroupIDs { get; set; }
@@ -680,7 +681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         public string Notes { get; set; }
 
         [JsonProperty("customerID")]
-        public string CustomerID { get; set; }
+        public string CustomerId { get; set; }
 
         [JsonProperty("dateSuppressed")]
         public string DateSuppressed { get; set; }
@@ -695,7 +696,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         public string LastName { get; set; }
 
         [JsonProperty("userID")]
-        public int UserID { get; set; }
+        public int UserId { get; set; }
 
         [JsonProperty("purl")]
         public string Purl { get; set; }
@@ -782,7 +783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         public string Email { get; set; }
 
         [JsonProperty("contactID")]
-        public int ContactID { get; set; }
+        public int ContactId { get; set; }
 
         [JsonProperty("groupIDs")]
         public JToken[] GroupIDs { get; set; }

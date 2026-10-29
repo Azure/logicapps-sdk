@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
 {
     using System.Linq.Expressions;
@@ -56,19 +57,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflowssms")]
         public IBodyWorkflowAction<Profile, ApiConnectionActionConfiguration> GetProfile()
         {
-            var apiCallPath = "/me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Profile>(callPayload);
+            return new DeferredBodyAction<Profile, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Profile>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflowssms")]
         public IBodyWorkflowAction<Balance, ApiConnectionActionConfiguration> GetBalance()
         {
-            var apiCallPath = "/balance";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Balance>(callPayload);
+            return new DeferredBodyAction<Balance, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/balance";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Balance>(callPayload);
+            });
         }
     }
 

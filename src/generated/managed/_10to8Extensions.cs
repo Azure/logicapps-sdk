@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
 {
     using System.Linq.Expressions;
@@ -164,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
         public string CustomerSPhoneNumber { get; set; }
 
         [JsonProperty("id")]
-        public int AppointmentIDNumber { get; set; }
+        public int AppointmentIdNumber { get; set; }
     }
 
     public class GetCustomersResponseItem
@@ -179,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
         public string CustomerSMobileNumber { get; set; }
 
         [JsonProperty("id")]
-        public int CustomerIDNumber { get; set; }
+        public int CustomerIdNumber { get; set; }
     }
 
     public class IncomingMessage
@@ -197,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
         public string ReceivedAtDateTime { get; set; }
 
         [JsonProperty("id")]
-        public int MessageID { get; set; }
+        public int MessageId { get; set; }
     }
 
     public class EventProposal
@@ -221,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
         public string TypeOfRequest { get; set; }
 
         [JsonProperty("id")]
-        public int RequestIDNumber { get; set; }
+        public int RequestIdNumber { get; set; }
     }
 }
 

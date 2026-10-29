@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
 {
     using System.Linq.Expressions;
@@ -40,10 +41,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
         public IBodyWorkflowAction<AcronymListGetResponse, ApiConnectionActionConfiguration> AcronymListGet()
         {
-            var apiCallPath = "/acronyms";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AcronymListGetResponse>(callPayload);
+            return new DeferredBodyAction<AcronymListGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/acronyms";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AcronymListGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]

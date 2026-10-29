@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
 {
     using System.Linq.Expressions;
@@ -72,10 +73,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
     {
         public IBodyWorkflowTrigger<CreatedLeadSubmissionResponse, ApiConnectionTriggerConfiguration> CreatedLeadSubmission(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/contacts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<CreatedLeadSubmissionResponse>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<CreatedLeadSubmissionResponse, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/contacts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<CreatedLeadSubmissionResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

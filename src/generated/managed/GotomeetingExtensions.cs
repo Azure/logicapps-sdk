@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
         public IBodyWorkflowAction<MeetingArrayItem[], ApiConnectionActionConfiguration> GetUpcomingMeetings()
         {
-            var apiCallPath = "/upcomingMeetings";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MeetingArrayItem[]>(callPayload);
+            return new DeferredBodyAction<MeetingArrayItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/upcomingMeetings";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<MeetingArrayItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
@@ -130,18 +134,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
     {
         public IBodyWorkflowTrigger<MeetingArrayItem[], ApiConnectionTriggerConfiguration> OnNewMeeting(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/new_meeting_trigger/upcomingMeetings";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<MeetingArrayItem[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<MeetingArrayItem[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/new_meeting_trigger/upcomingMeetings";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<MeetingArrayItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<MeetingArrayItem[], ApiConnectionTriggerConfiguration> OnMeetingComplete(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/completed_meeting_trigger/historicalMeetings";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<MeetingArrayItem[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<MeetingArrayItem[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/completed_meeting_trigger/historicalMeetings";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<MeetingArrayItem[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

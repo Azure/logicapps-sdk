@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
         public IBodyWorkflowAction<GetRelocationsResponse, ApiConnectionActionConfiguration> GetRelocations()
         {
-            var apiCallPath = "/relocation";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetRelocationsResponse>(callPayload);
+            return new DeferredBodyAction<GetRelocationsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/relocation";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetRelocationsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
@@ -621,7 +625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         public string UserTime { get; set; }
 
         [JsonProperty("contUID")]
-        public int ContUID { get; set; }
+        public int ContUId { get; set; }
 
         [JsonProperty("outOfOffice")]
         public bool OutOfOffice { get; set; }

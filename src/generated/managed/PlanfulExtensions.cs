@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planful
 {
     using System.Linq.Expressions;
@@ -14,27 +15,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planful
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planful")]
         public IBodyWorkflowAction<GetRulesResponseItem[], ApiConnectionActionConfiguration> GetRules()
         {
-            var apiCallPath = "/financemodel/data/rules";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetRulesResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planful")]
-        public IBodyWorkflowAction<FileLoadResponse, ApiConnectionActionConfiguration> FileLoad(Expression<Func<string>> columnDelimiter, Expression<Func<string>> dataLoadRuleName = null, Expression<Func<object>> file = null)
-        {
-            var __workflow_columnDelimiter = WorkflowExpression.Compile(columnDelimiter, nameof(columnDelimiter), required: true);
-            var __workflow_dataLoadRuleName = WorkflowExpression.Compile(dataLoadRuleName, nameof(dataLoadRuleName), required: false);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: false);
-            return new DeferredBodyAction<FileLoadResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetRulesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = "/financemodel/data/transferfile";
-                var apiCallHttpMethod = "post";
+                var apiCallPath = "/financemodel/data/rules";
+                var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_dataLoadRuleName != null)
-                    callPayload.Queries["DataLoadRuleName"] = ExpressionConverter.Convert(__workflow_dataLoadRuleName);
-                callPayload.Queries["ColumnDelimiter"] = ExpressionConverter.Convert(__workflow_columnDelimiter);
-                return new ApiConnectionAction<FileLoadResponse>(callPayload);
+                return new ApiConnectionAction<GetRulesResponseItem[]>(callPayload);
             });
         }
 
@@ -67,21 +53,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planful
         public int DataLoadRuleId { get; set; }
         public string Name { get; set; }
         public string LoadItem { get; set; }
-    }
-
-    public class FileLoadResponse
-    {
-        public int DataLoadRuleId { get; set; }
-        public string ExcecutionId { get; set; }
-        public bool RunAsynchronously { get; set; }
-        public int Attempts { get; set; }
-        public FileLoadResponseTransferResponseType TransferResponse { get; set; }
-    }
-
-    public class FileLoadResponseTransferResponseType
-    {
-        public bool Success { get; set; }
-        public string Message { get; set; }
     }
 
     public class GetGLdataResponseItem

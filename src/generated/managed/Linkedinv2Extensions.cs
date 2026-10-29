@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
 {
     using System.Linq.Expressions;
@@ -11,6 +12,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
 
     public class Linkedinv2Actions([ConnectionName] string connectionId)
     {
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkedinv2")]
+        public IBodyWorkflowAction<ListCompaniesResponseV2Item[], ApiConnectionActionConfiguration> ListCompanies()
+        {
+            return new DeferredBodyAction<ListCompaniesResponseV2Item[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v3/listCompanies";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListCompaniesResponseV2Item[]>(callPayload);
+            });
+        }
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkedinv2")]
         public IBodyWorkflowAction<ShareResponseV2, ApiConnectionActionConfiguration> PostCompanyUpdate(Expression<Func<string>> bodycompany, Expression<Func<string>> bodycommentary, Expression<Func<bodyvisibilityInput>> bodyvisibility, Expression<Func<string>> bodycontentarticleuRLOfTheArticle, Expression<Func<string>> bodycontentarticletitle, Expression<Func<bool>> bodyisReshareDisabledByAuthor = null, Expression<Func<string>> bodycontentarticledescription = null, Expression<Func<string>> bodycontentarticlethumbnailURL = null)
         {
@@ -24,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
             var __workflow_bodycontentarticlethumbnailURL = WorkflowExpression.Compile(bodycontentarticlethumbnailURL, nameof(bodycontentarticlethumbnailURL), required: false);
             return new DeferredBodyAction<ShareResponseV2, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = "/company/rest/posts";
+                var apiCallPath = "/company/rest/posts/v2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -126,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
             var __workflow_bodycontentarticlethumbnailURL = WorkflowExpression.Compile(bodycontentarticlethumbnailURL, nameof(bodycontentarticlethumbnailURL), required: false);
             return new DeferredBodyAction<ShareResponseV2, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = "/people/rest/posts";
+                var apiCallPath = "/people/rest/posts/v2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -213,25 +226,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
                 return new ApiConnectionAction<ShareResponseV2>(callPayload);
             });
         }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkedinv2")]
-        public IBodyWorkflowAction<ListCompaniesResponseV2Item[], ApiConnectionActionConfiguration> ListCompanies()
-        {
-            var apiCallPath = "/v2/organizationalEntityAcls";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListCompaniesResponseV2Item[]>(callPayload);
-        }
     }
 
     public class Linkedinv2Triggers([ConnectionName] string connectionId)
     {
     }
 
+    public class ListCompaniesResponseV2Item
+    {
+        [JsonProperty("companyUrn")]
+        public string CompanyUrn { get; set; }
+
+        [JsonProperty("companyName")]
+        public string CompanyName { get; set; }
+    }
+
     public class ShareResponseV2
     {
         [JsonProperty("id")]
-        public string UpdateID { get; set; }
+        public string UpdateId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -242,15 +255,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
         ConnectionsOnly,
         [EnumMember(Value = "Logged in members only")]
         LoggedInMembersOnly
-    }
-
-    public class ListCompaniesResponseV2Item
-    {
-        [JsonProperty("companyUrn")]
-        public string CompanyUrn { get; set; }
-
-        [JsonProperty("companyName")]
-        public string CompanyName { get; set; }
     }
 }
 

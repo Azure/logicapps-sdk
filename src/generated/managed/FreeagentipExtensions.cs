@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
 {
     using System.Linq.Expressions;
@@ -192,10 +193,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IBodyWorkflowAction<GetContactsResponse, ApiConnectionActionConfiguration> GetContacts()
         {
-            var apiCallPath = "/contacts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetContactsResponse>(callPayload);
+            return new DeferredBodyAction<GetContactsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/contacts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetContactsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
@@ -319,19 +323,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IBodyWorkflowAction<ListAllRecurringInvoicesResponse, ApiConnectionActionConfiguration> ListAllRecurringInvoices()
         {
-            var apiCallPath = "/recurring_invoices";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListAllRecurringInvoicesResponse>(callPayload);
+            return new DeferredBodyAction<ListAllRecurringInvoicesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/recurring_invoices";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListAllRecurringInvoicesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IBodyWorkflowAction<ListInvoicesResponse, ApiConnectionActionConfiguration> ListInvoices()
         {
-            var apiCallPath = "/invoices";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListInvoicesResponse>(callPayload);
+            return new DeferredBodyAction<ListInvoicesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/invoices";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListInvoicesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]

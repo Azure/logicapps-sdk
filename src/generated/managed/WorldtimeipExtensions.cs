@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldtimeip
 {
     using System.Linq.Expressions;
@@ -27,10 +28,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldtimeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldtimeip")]
         public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> GetTimezones()
         {
-            var apiCallPath = "/timezone";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/timezone";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldtimeip")]

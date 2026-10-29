@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
 {
     using System.Linq.Expressions;
@@ -11,6 +12,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
 
     public class SharepointonlineActions([ConnectionName] string connectionId)
     {
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration> CreateAgreementsSolutionDocument(Expression<Func<string>> dataset, Expression<Func<string>> template, Expression<Func<object>> item = null, Expression<Func<string>> documentName = null)
+        {
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: true);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
+            var __workflow_documentName = WorkflowExpression.Compile(documentName, nameof(documentName), required: false);
+            return new DeferredBodyAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/agreements/templates/{1}/createnewdocument", __workflow_dataset.WithUrlEncoding(2), __workflow_template.WithUrlEncoding(2)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_documentName != null)
+                    callPayload.Queries["documentName"] = ExpressionConverter.Convert(__workflow_documentName);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
+                return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
+            });
+        }
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<TablesList, ApiConnectionActionConfiguration> GetAllTables(Expression<Func<string>> dataset)
         {
@@ -259,29 +279,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<BlobMetadata[], ApiConnectionActionConfiguration> ListRootFolder(Expression<Func<string>> dataset)
-        {
-            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
-            return new DeferredBodyAction<BlobMetadata[], ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/folders", __workflow_dataset.WithUrlEncoding(2)));
-                var apiCallHttpMethod = "get";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<BlobMetadata[]>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<BlobMetadata[], ApiConnectionActionConfiguration> ListFolder(Expression<Func<string>> dataset, Expression<Func<string>> id)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetFileThumbnail(Expression<Func<string>> dataset, Expression<Func<string>> id, Expression<Func<string>> size)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<BlobMetadata[], ApiConnectionActionConfiguration>(() =>
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: true);
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/folders/{1}", __workflow_dataset.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/files/{1}/thumbnail", __workflow_dataset.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<BlobMetadata[]>(callPayload);
+                callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
+                return new ApiConnectionAction<string>(callPayload);
             });
         }
 
@@ -585,6 +594,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 if (__workflow_view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
                 return new ApiConnectionAction<SPListExpandedUser>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<TableForm, ApiConnectionActionConfiguration> GetTableForm(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> form)
+        {
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_form = WorkflowExpression.Compile(form, nameof(form), required: true);
+            return new DeferredBodyAction<TableForm, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/forms/{2}", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2), __workflow_form.WithUrlEncoding(2)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TableForm>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration> SubmitDocGenForm(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> form, Expression<Func<object>> item = null, Expression<Func<string>> view = null)
+        {
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_form = WorkflowExpression.Compile(form, nameof(form), required: true);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
+            var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
+            return new DeferredBodyAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/forms/{2}/submitdocgenform", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2), __workflow_form.WithUrlEncoding(2)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_view != null)
+                    callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
+                return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
             });
         }
 
@@ -1091,31 +1135,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration> CreateAgreementsSolutionDocument(Expression<Func<string>> dataset, Expression<Func<string>> template, Expression<Func<object>> item = null, Expression<Func<string>> documentName = null, Expression<Func<string>> table = null, Expression<Func<string>> view = null)
-        {
-            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
-            var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: true);
-            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
-            var __workflow_documentName = WorkflowExpression.Compile(documentName, nameof(documentName), required: false);
-            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: false);
-            var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
-            return new DeferredBodyAction<SPBlobMetadataResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/agreements/templates/{1}/createnewdocument", __workflow_dataset.WithUrlEncoding(2), __workflow_template.WithUrlEncoding(2)));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_documentName != null)
-                    callPayload.Queries["documentName"] = ExpressionConverter.Convert(__workflow_documentName);
-                if (__workflow_table != null)
-                    callPayload.Queries["table"] = ExpressionConverter.Convert(__workflow_table);
-                if (__workflow_view != null)
-                    callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
-                return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<BlobMetadata[], ApiConnectionActionConfiguration> ExtractFolder(Expression<Func<string>> dataset, Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
@@ -1223,6 +1242,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             });
         }
 
+        public IBodyWorkflowTrigger<ItemsList, ApiConnectionTriggerConfiguration> OnNewItemsFromForm(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> form, Expression<Func<string>> view = null, FlowRecurrence recurrence = null)
+        {
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_form = WorkflowExpression.Compile(form, nameof(form), required: true);
+            var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
+            return new DeferredBodyTrigger<ItemsList, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/onnewitemsfromform", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["form"] = ExpressionConverter.Convert(__workflow_form);
+                if (__workflow_view != null)
+                    callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
+                return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
+            });
+        }
+
+        public IBodyWorkflowTrigger<ItemsList, ApiConnectionTriggerConfiguration> OnRecurrenceDigest(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<bool>> update, Expression<Func<bool>> add, Expression<Func<string>> runSchedule, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, Expression<Func<string>> startTime = null, FlowRecurrence recurrence = null)
+        {
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_update = WorkflowExpression.Compile(update, nameof(update), required: true);
+            var __workflow_add = WorkflowExpression.Compile(add, nameof(add), required: true);
+            var __workflow_runSchedule = WorkflowExpression.Compile(runSchedule, nameof(runSchedule), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
+            var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
+            var __workflow_startTime = WorkflowExpression.Compile(startTime, nameof(startTime), required: false);
+            return new DeferredBodyTrigger<ItemsList, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/{0}/tables/{1}/onrecurrencedigest", __workflow_dataset.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["update"] = ExpressionConverter.Convert(__workflow_update);
+                callPayload.Queries["add"] = ExpressionConverter.Convert(__workflow_add);
+                callPayload.Queries["runSchedule"] = ExpressionConverter.Convert(__workflow_runSchedule);
+                if (__workflow_folderPath != null)
+                    callPayload.Queries["folderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
+                if (__workflow_view != null)
+                    callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
+                if (__workflow_startTime != null)
+                    callPayload.Queries["startTime"] = ExpressionConverter.Convert(__workflow_startTime);
+                return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
+            });
+        }
+
         public IBodyWorkflowTrigger<ItemsList, ApiConnectionTriggerConfiguration> OnUpdatedFileClassifiedTimes(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, FlowRecurrence recurrence = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
@@ -1317,6 +1382,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         }
     }
 
+    public class SPBlobMetadataResponse
+    {
+        public int ItemId { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string DisplayName { get; set; }
+        public string Path { get; set; }
+        public string LastModified { get; set; }
+        public int Size { get; set; }
+        public string MediaType { get; set; }
+        public bool IsFolder { get; set; }
+        public string ETag { get; set; }
+        public string FileLocator { get; set; }
+    }
+
     public class TablesList
     {
         [JsonProperty("value")]
@@ -1349,21 +1429,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
 
     public class BlobMetadata
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string DisplayName { get; set; }
-        public string Path { get; set; }
-        public string LastModified { get; set; }
-        public int Size { get; set; }
-        public string MediaType { get; set; }
-        public bool IsFolder { get; set; }
-        public string ETag { get; set; }
-        public string FileLocator { get; set; }
-    }
-
-    public class SPBlobMetadataResponse
-    {
-        public int ItemId { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }
         public string DisplayName { get; set; }
@@ -1413,6 +1478,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         public string Type { get; set; }
     }
 
+    public class TableForm
+    {
+        [JsonProperty("FormID")]
+        public string FormId { get; set; }
+        public string DisplayName { get; set; }
+        public string Type { get; set; }
+        public string Link { get; set; }
+        public string CreatedBy { get; set; }
+        public string Created { get; set; }
+        public string Modified { get; set; }
+        public string ModifiedBy { get; set; }
+        public string OutputFormat { get; set; }
+        public FormFieldMetadata[] FieldsMetadata { get; set; }
+    }
+
+    public class FormFieldMetadata
+    {
+        [JsonProperty("ID")]
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public bool IsRequired { get; set; }
+        public string DataType { get; set; }
+        public string DefaultValue { get; set; }
+    }
+
     public class ItemsList
     {
         [JsonProperty("value")]
@@ -1428,7 +1518,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
     public class ApprovalData
     {
         [JsonProperty("ApprovalId")]
-        public string ApprovalRequestID { get; set; }
+        public string ApprovalRequestId { get; set; }
     }
 
     public class SetApprovalStatusOutput
@@ -1463,7 +1553,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
 
     public class DeletedItem
     {
-        public int ID { get; set; }
+        [JsonProperty("ID")]
+        public int Id { get; set; }
         public string Name { get; set; }
 
         [JsonProperty("FileNameWithExtension")]

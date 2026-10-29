@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
 {
     using System.Linq.Expressions;
@@ -100,10 +101,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
         public IBodyWorkflowAction<RetrieveRecentMetadataResponseItem[], ApiConnectionActionConfiguration> RetrieveRecentMetadata()
         {
-            var apiCallPath = "/private/recent";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RetrieveRecentMetadataResponseItem[]>(callPayload);
+            return new DeferredBodyAction<RetrieveRecentMetadataResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/private/recent";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<RetrieveRecentMetadataResponseItem[]>(callPayload);
+            });
         }
     }
 

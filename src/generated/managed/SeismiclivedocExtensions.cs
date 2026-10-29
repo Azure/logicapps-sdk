@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
 {
     using System.Linq.Expressions;
@@ -203,23 +204,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
         public bool ClearNotes { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoutputsInputItemPptxOptionsTypeImageDpiType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "120")]
-        _120,
-        [EnumMember(Value = "144")]
-        _144,
-        [EnumMember(Value = "200")]
-        _200,
-        [EnumMember(Value = "300")]
-        _300,
-        [EnumMember(Value = "400")]
-        _400
+        _0 = 0,
+        _96 = 96,
+        _120 = 120,
+        _144 = 144,
+        _200 = 200,
+        _300 = 300,
+        _400 = 400
     }
 
     public class bodyoutputsInputItemDocxOptionsType
@@ -228,23 +221,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
         public bodyoutputsInputItemDocxOptionsTypeImageDpiType ImageDpi { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoutputsInputItemDocxOptionsTypeImageDpiType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "120")]
-        _120,
-        [EnumMember(Value = "144")]
-        _144,
-        [EnumMember(Value = "200")]
-        _200,
-        [EnumMember(Value = "300")]
-        _300,
-        [EnumMember(Value = "400")]
-        _400
+        _0 = 0,
+        _96 = 96,
+        _120 = 120,
+        _144 = 144,
+        _200 = 200,
+        _300 = 300,
+        _400 = 400
     }
 
     public class bodyoutputsInputItemPdfOptionsType

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         public IBodyWorkflowAction<GetLightsResponse, ApiConnectionActionConfiguration> GetLights()
         {
-            var apiCallPath = "/clip/v2/resource/light";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetLightsResponse>(callPayload);
+            return new DeferredBodyAction<GetLightsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/clip/v2/resource/light";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetLightsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
@@ -209,10 +213,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         public IBodyWorkflowAction<GetDevicesResponse, ApiConnectionActionConfiguration> GetDevices()
         {
-            var apiCallPath = "/clip/v2/resource/device";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetDevicesResponse>(callPayload);
+            return new DeferredBodyAction<GetDevicesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/clip/v2/resource/device";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetDevicesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
@@ -299,19 +306,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         public IBodyWorkflowAction<GetRoomsResponse, ApiConnectionActionConfiguration> GetRooms()
         {
-            var apiCallPath = "/clip/v2/resource/room";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetRoomsResponse>(callPayload);
+            return new DeferredBodyAction<GetRoomsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/clip/v2/resource/room";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetRoomsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         public IBodyWorkflowAction<GetScenesResponse, ApiConnectionActionConfiguration> GetScenes()
         {
-            var apiCallPath = "/clip/v2/resource/scene";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetScenesResponse>(callPayload);
+            return new DeferredBodyAction<GetScenesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/clip/v2/resource/scene";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetScenesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]

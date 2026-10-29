@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
 {
     using System.Linq.Expressions;
@@ -75,10 +76,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finalcadoneconnect")]
-        public IBodyWorkflowAction<InitResponse, ApiConnectionActionConfiguration> Init(Expression<Func<string>> bodyorganizationID = null, Expression<Func<string>> bodyprojectID = null)
+        public IBodyWorkflowAction<InitResponse, ApiConnectionActionConfiguration> Init(Expression<Func<string>> bodyorganizationId = null, Expression<Func<string>> bodyprojectId = null)
         {
-            var __workflow_bodyorganizationID = WorkflowExpression.Compile(bodyorganizationID, nameof(bodyorganizationID), required: false);
-            var __workflow_bodyprojectID = WorkflowExpression.Compile(bodyprojectID, nameof(bodyprojectID), required: false);
+            var __workflow_bodyorganizationId = WorkflowExpression.Compile(bodyorganizationId, nameof(bodyorganizationId), required: false);
+            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: false);
             return new DeferredBodyAction<InitResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/init";
@@ -86,15 +87,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (__workflow_bodyorganizationID != null)
+                if (__workflow_bodyorganizationId != null)
                 {
-                    body["business_organization_id"] = ExpressionConverter.ConvertO(__workflow_bodyorganizationID);
+                    body["business_organization_id"] = ExpressionConverter.ConvertO(__workflow_bodyorganizationId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyprojectID != null)
+                if (__workflow_bodyprojectId != null)
                 {
-                    body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectID);
+                    body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
                     bodypropCount++;
                 }
 
@@ -110,10 +111,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
 
     public class FinalcadoneconnectTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ThenObsCreated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ThenObsCreated(Expression<Func<string>> bodyorganizationId, Expression<Func<string>> bodyprojectId, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyorganizationID = WorkflowExpression.Compile(bodyorganizationID, nameof(bodyorganizationID), required: true);
-            var __workflow_bodyprojectID = WorkflowExpression.Compile(bodyprojectID, nameof(bodyprojectID), required: true);
+            var __workflow_bodyorganizationId = WorkflowExpression.Compile(bodyorganizationId, nameof(bodyorganizationId), required: true);
+            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/ev/201";
@@ -122,9 +123,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["business_organization_id"] = ExpressionConverter.ConvertO(__workflow_bodyorganizationID);
+                body["business_organization_id"] = ExpressionConverter.ConvertO(__workflow_bodyorganizationId);
                 bodypropCount++;
-                body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectID);
+                body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
                 body["client_url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
@@ -136,10 +137,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ThenObsUpdated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ThenObsUpdated(Expression<Func<string>> bodyorganizationId, Expression<Func<string>> bodyprojectId, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyorganizationID = WorkflowExpression.Compile(bodyorganizationID, nameof(bodyorganizationID), required: true);
-            var __workflow_bodyprojectID = WorkflowExpression.Compile(bodyprojectID, nameof(bodyprojectID), required: true);
+            var __workflow_bodyorganizationId = WorkflowExpression.Compile(bodyorganizationId, nameof(bodyorganizationId), required: true);
+            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/ev/202";
@@ -148,9 +149,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["business_organization_id"] = ExpressionConverter.ConvertO(__workflow_bodyorganizationID);
+                body["business_organization_id"] = ExpressionConverter.ConvertO(__workflow_bodyorganizationId);
                 bodypropCount++;
-                body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectID);
+                body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
                 body["client_url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
@@ -162,10 +163,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ThenFormCreated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ThenFormCreated(Expression<Func<string>> bodyorganizationId, Expression<Func<string>> bodyprojectId, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyorganizationID = WorkflowExpression.Compile(bodyorganizationID, nameof(bodyorganizationID), required: true);
-            var __workflow_bodyprojectID = WorkflowExpression.Compile(bodyprojectID, nameof(bodyprojectID), required: true);
+            var __workflow_bodyorganizationId = WorkflowExpression.Compile(bodyorganizationId, nameof(bodyorganizationId), required: true);
+            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/ev/301";
@@ -174,9 +175,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["business_organization_id"] = ExpressionConverter.ConvertO(__workflow_bodyorganizationID);
+                body["business_organization_id"] = ExpressionConverter.ConvertO(__workflow_bodyorganizationId);
                 bodypropCount++;
-                body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectID);
+                body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
                 body["client_url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
@@ -188,10 +189,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ThenFormUpdated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ThenFormUpdated(Expression<Func<string>> bodyorganizationId, Expression<Func<string>> bodyprojectId, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyorganizationID = WorkflowExpression.Compile(bodyorganizationID, nameof(bodyorganizationID), required: true);
-            var __workflow_bodyprojectID = WorkflowExpression.Compile(bodyprojectID, nameof(bodyprojectID), required: true);
+            var __workflow_bodyorganizationId = WorkflowExpression.Compile(bodyorganizationId, nameof(bodyorganizationId), required: true);
+            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/ev/302";
@@ -200,9 +201,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["business_organization_id"] = ExpressionConverter.ConvertO(__workflow_bodyorganizationID);
+                body["business_organization_id"] = ExpressionConverter.ConvertO(__workflow_bodyorganizationId);
                 bodypropCount++;
-                body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectID);
+                body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
                 body["client_url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
@@ -214,10 +215,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ThenDocumentCreated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ThenDocumentCreated(Expression<Func<string>> bodyorganizationId, Expression<Func<string>> bodyprojectId, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyorganizationID = WorkflowExpression.Compile(bodyorganizationID, nameof(bodyorganizationID), required: true);
-            var __workflow_bodyprojectID = WorkflowExpression.Compile(bodyprojectID, nameof(bodyprojectID), required: true);
+            var __workflow_bodyorganizationId = WorkflowExpression.Compile(bodyorganizationId, nameof(bodyorganizationId), required: true);
+            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/ev/401";
@@ -226,9 +227,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["business_organization_id"] = ExpressionConverter.ConvertO(__workflow_bodyorganizationID);
+                body["business_organization_id"] = ExpressionConverter.ConvertO(__workflow_bodyorganizationId);
                 bodypropCount++;
-                body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectID);
+                body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
                 body["client_url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
 {
     using System.Linq.Expressions;
@@ -83,10 +84,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<GetAuthenticatedUserResponse, ApiConnectionActionConfiguration> GetAuthenticatedUser()
         {
-            var apiCallPath = "/me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAuthenticatedUserResponse>(callPayload);
+            return new DeferredBodyAction<GetAuthenticatedUserResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetAuthenticatedUserResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]

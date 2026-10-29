@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
 {
     using System.Linq.Expressions;
@@ -92,12 +93,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<string>> configurationSet, Expression<Func<string>> documentDtoparentID, Expression<Func<string>> documentDtofilefileName, Expression<Func<string>> documentDtofilefileContent, Expression<Func<string>> documentDtometadatadisplayName, Expression<Func<object>> documentDtometadatafields, Expression<Func<string>> documentDtometadatadescription = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<string>> configurationSet, Expression<Func<string>> documentDtoparentId, Expression<Func<string>> documentDtoFilefileName, Expression<Func<string>> documentDtoFilefileContent, Expression<Func<string>> documentDtometadatadisplayName, Expression<Func<object>> documentDtometadatafields, Expression<Func<string>> documentDtometadatadescription = null)
         {
             var __workflow_configurationSet = WorkflowExpression.Compile(configurationSet, nameof(configurationSet), required: true);
-            var __workflow_documentDtoparentID = WorkflowExpression.Compile(documentDtoparentID, nameof(documentDtoparentID), required: true);
-            var __workflow_documentDtofilefileName = WorkflowExpression.Compile(documentDtofilefileName, nameof(documentDtofilefileName), required: true);
-            var __workflow_documentDtofilefileContent = WorkflowExpression.Compile(documentDtofilefileContent, nameof(documentDtofilefileContent), required: true);
+            var __workflow_documentDtoparentId = WorkflowExpression.Compile(documentDtoparentId, nameof(documentDtoparentId), required: true);
+            var __workflow_documentDtoFilefileName = WorkflowExpression.Compile(documentDtoFilefileName, nameof(documentDtoFilefileName), required: true);
+            var __workflow_documentDtoFilefileContent = WorkflowExpression.Compile(documentDtoFilefileContent, nameof(documentDtoFilefileContent), required: true);
             var __workflow_documentDtometadatadisplayName = WorkflowExpression.Compile(documentDtometadatadisplayName, nameof(documentDtometadatadisplayName), required: true);
             var __workflow_documentDtometadatafields = WorkflowExpression.Compile(documentDtometadatafields, nameof(documentDtometadatafields), required: true);
             var __workflow_documentDtometadatadescription = WorkflowExpression.Compile(documentDtometadatadescription, nameof(documentDtometadatadescription), required: false);
@@ -109,16 +110,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
                 var documentDto = new JObject();
                 var documentDtopropCount = 0;
                 documentDtopropCount++;
-                documentDto["parentId"] = ExpressionConverter.ConvertO(__workflow_documentDtoparentID);
-                var fileObject = new JObject();
-                var fileObjectpropCount = 0;
-                fileObjectpropCount++;
-                fileObject["name"] = ExpressionConverter.ConvertO(__workflow_documentDtofilefileName);
-                fileObjectpropCount++;
-                fileObject["content"] = ExpressionConverter.ConvertO(__workflow_documentDtofilefileContent);
-                if (fileObjectpropCount > 0)
+                documentDto["parentId"] = ExpressionConverter.ConvertO(__workflow_documentDtoparentId);
+                var @fileObject = new JObject();
+                var @fileObjectpropCount = 0;
+                @fileObjectpropCount++;
+                @fileObject["name"] = ExpressionConverter.ConvertO(__workflow_documentDtoFilefileName);
+                @fileObjectpropCount++;
+                @fileObject["content"] = ExpressionConverter.ConvertO(__workflow_documentDtoFilefileContent);
+                if (@fileObjectpropCount > 0)
                 {
-                    documentDto["file"] = fileObject;
+                    documentDto["file"] = @fileObject;
                     documentDtopropCount++;
                 }
 
@@ -150,12 +151,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> configurationSet, Expression<Func<string>> documentDtofilefileName, Expression<Func<string>> documentDtofilefileContent, Expression<Func<string>> documentDtometadatadisplayName, Expression<Func<object>> documentDtometadatafields, Expression<Func<string>> documentDtometadatadescription = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> configurationSet, Expression<Func<string>> documentDtoFilefileName, Expression<Func<string>> documentDtoFilefileContent, Expression<Func<string>> documentDtometadatadisplayName, Expression<Func<object>> documentDtometadatafields, Expression<Func<string>> documentDtometadatadescription = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_configurationSet = WorkflowExpression.Compile(configurationSet, nameof(configurationSet), required: true);
-            var __workflow_documentDtofilefileName = WorkflowExpression.Compile(documentDtofilefileName, nameof(documentDtofilefileName), required: true);
-            var __workflow_documentDtofilefileContent = WorkflowExpression.Compile(documentDtofilefileContent, nameof(documentDtofilefileContent), required: true);
+            var __workflow_documentDtoFilefileName = WorkflowExpression.Compile(documentDtoFilefileName, nameof(documentDtoFilefileName), required: true);
+            var __workflow_documentDtoFilefileContent = WorkflowExpression.Compile(documentDtoFilefileContent, nameof(documentDtoFilefileContent), required: true);
             var __workflow_documentDtometadatadisplayName = WorkflowExpression.Compile(documentDtometadatadisplayName, nameof(documentDtometadatadisplayName), required: true);
             var __workflow_documentDtometadatafields = WorkflowExpression.Compile(documentDtometadatafields, nameof(documentDtometadatafields), required: true);
             var __workflow_documentDtometadatadescription = WorkflowExpression.Compile(documentDtometadatadescription, nameof(documentDtometadatadescription), required: false);
@@ -166,15 +167,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var documentDto = new JObject();
                 var documentDtopropCount = 0;
-                var fileObject = new JObject();
-                var fileObjectpropCount = 0;
-                fileObjectpropCount++;
-                fileObject["name"] = ExpressionConverter.ConvertO(__workflow_documentDtofilefileName);
-                fileObjectpropCount++;
-                fileObject["content"] = ExpressionConverter.ConvertO(__workflow_documentDtofilefileContent);
-                if (fileObjectpropCount > 0)
+                var @fileObject = new JObject();
+                var @fileObjectpropCount = 0;
+                @fileObjectpropCount++;
+                @fileObject["name"] = ExpressionConverter.ConvertO(__workflow_documentDtoFilefileName);
+                @fileObjectpropCount++;
+                @fileObject["content"] = ExpressionConverter.ConvertO(__workflow_documentDtoFilefileContent);
+                if (@fileObjectpropCount > 0)
                 {
-                    documentDto["file"] = fileObject;
+                    documentDto["file"] = @fileObject;
                     documentDtopropCount++;
                 }
 
@@ -247,10 +248,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
     public class DocumentRead
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("parentId")]
-        public string ParentID { get; set; }
+        public string ParentId { get; set; }
 
         [JsonProperty("file")]
         public File File { get; set; }

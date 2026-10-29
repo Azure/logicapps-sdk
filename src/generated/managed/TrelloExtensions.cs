@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
 {
     using System.Linq.Expressions;
@@ -226,10 +227,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<Board[], ApiConnectionActionConfiguration> ListBoardsSimple()
         {
-            var apiCallPath = "/simple/member/me/boards";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Board[]>(callPayload);
+            return new DeferredBodyAction<Board[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/simple/member/me/boards";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Board[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
@@ -576,10 +580,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
         public IBodyWorkflowAction<Team[], ApiConnectionActionConfiguration> ListTeams()
         {
-            var apiCallPath = "/members/me/organizations";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Team[]>(callPayload);
+            return new DeferredBodyAction<Team[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/members/me/organizations";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Team[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]

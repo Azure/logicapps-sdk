@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsforapplications
 {
     using System.Linq.Expressions;
@@ -73,10 +74,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsforapplications
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsforapplications")]
         public IBodyWorkflowAction<VersionInfoResponse, ApiConnectionActionConfiguration> Get()
         {
-            var apiCallPath = "/version";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<VersionInfoResponse>(callPayload);
+            return new DeferredBodyAction<VersionInfoResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/version";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<VersionInfoResponse>(callPayload);
+            });
         }
     }
 

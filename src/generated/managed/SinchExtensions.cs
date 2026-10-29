@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
 {
     using System.Linq.Expressions;
@@ -77,10 +78,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
         public IBodyWorkflowAction<GetSenderIdResponse, ApiConnectionActionConfiguration> GetSenderId()
         {
-            var apiCallPath = "/v1/int-crm/integrations/account/sender-id";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSenderIdResponse>(callPayload);
+            return new DeferredBodyAction<GetSenderIdResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/int-power-automate/v1/int-crm/integrations/account/sender-id";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetSenderIdResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
+        public IBodyWorkflowAction<SendMmsResponse, ApiConnectionActionConfiguration> SendMms(Expression<Func<string>> bodyto, Expression<Func<string>> bodymessage, Expression<Func<string>> bodymedia = null, Expression<Func<string>> bodysourceNumber = null, Expression<Func<bodymetadataInputItem[]>> bodymetadata = null)
+        {
+            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
+            var __workflow_bodymedia = WorkflowExpression.Compile(bodymedia, nameof(bodymedia), required: false);
+            var __workflow_bodysourceNumber = WorkflowExpression.Compile(bodysourceNumber, nameof(bodysourceNumber), required: false);
+            var __workflow_bodymetadata = WorkflowExpression.Compile(bodymetadata, nameof(bodymetadata), required: false);
+            return new DeferredBodyAction<SendMmsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/int-power-automate/send-mms";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
+                bodypropCount++;
+                body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
+                if (__workflow_bodymedia != null)
+                {
+                    body["media"] = ExpressionConverter.ConvertO(__workflow_bodymedia);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodysourceNumber != null)
+                {
+                    body["source_number"] = ExpressionConverter.ConvertO(__workflow_bodysourceNumber);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodymetadata != null)
+                {
+                    body["metadata"] = ExpressionConverter.ConvertO(__workflow_bodymetadata);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendMmsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
@@ -102,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = "/v2/int-power-automate/message";
+                var apiCallPath = "/v1/int-power-automate/send-message-v2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
@@ -115,68 +165,74 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
     {
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> MessageArrived(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v1/webhooks/messages";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            body["method"] = "POST";
-            bodypropCount++;
-            body["encoding"] = "JSON";
-            bodypropCount++;
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            headersObject["Platform"] = "PowerAutomate";
-            headersObjectpropCount++;
-            if (headersObjectpropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                body["headers"] = headersObject;
+                var apiCallPath = "/v1/webhooks/messages";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                body["method"] = "POST";
+                bodypropCount++;
+                body["encoding"] = "JSON";
+                bodypropCount++;
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                headersObject["Platform"] = "PowerAutomate";
+                headersObjectpropCount++;
+                if (headersObjectpropCount > 0)
+                {
+                    body["headers"] = headersObject;
+                    bodypropCount++;
+                }
 
-            body["template"] = "{#if($version == 2)\"contact_message\":$jsonUtils.toJson($contact_message),#end#if($moContent)\"content\":\"$esc.json($moContent)\",#end\"message_id\": \"$messageId\",\"type\":\"$type\",#if($moId)\"reply_id\":\"$moId\",#end#if($statusCode)\"status_code\":\"$statusCode\",#end#if($status)\"status\":\"$status\",#end#if($submittedTimestamp)\"submitted_date\":\"$submittedTimestamp\",#end#if($receivedTimestamp)\"date_received\":\"$receivedTimestamp\",#end\"source_address\":\"$sourceAddress\",#if($destinationAddress)\"destination_address\":\"$destinationAddress\",#end\"attachments\": [#foreach ($entry in $attachments){\"attachment_type\":\"$entry.contentType\",\"attachment_content\":\"$entry.base64\",\"attachment_name\":\"$entry.originalName\"}#if($foreach.hasNext),#end#end],\"metadata\":[#foreach ($entry in $metadata.entrySet()){\"metadata_key\":\"$entry.key\",\"metadata_value\":\"$esc.json($entry.value)\"}#if($foreach.hasNext),#end#end]}";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                body["template"] = "{#if($version == 2)\"contact_message\":$jsonUtils.toJson($contact_message),#end#if($moContent)\"content\":\"$esc.json($moContent)\",#end#if($messageId)\"message_id\": \"$messageId\",#end\"type\":\"$type\",#if($moId)\"reply_id\":\"$moId\",#end#if($statusCode)\"status_code\":\"$statusCode\",#end#if($status)\"status\":\"$status\",#end#if($submittedTimestamp)\"submitted_date\":\"$submittedTimestamp\",#end#if($receivedTimestamp)\"date_received\":\"$receivedTimestamp\",#end\"source_address\":\"$sourceAddress\",#if($destinationAddress)\"destination_address\":\"$destinationAddress\",#end\"attachments\": [#foreach ($entry in $attachments){\"attachment_type\":\"$entry.contentType\",\"attachment_content\":\"$entry.base64\",\"attachment_name\":\"$entry.originalName\"}#if($foreach.hasNext),#end#end],\"metadata\":[#foreach ($entry in $metadata.entrySet()){\"metadata_key\":\"$entry.key\",\"metadata_value\":\"$esc.json($entry.value)\"}#if($foreach.hasNext),#end#end]}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GetDeliveryReceipt(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v1/webhooks/deliveryreports";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            body["method"] = "POST";
-            bodypropCount++;
-            body["encoding"] = "JSON";
-            bodypropCount++;
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            headersObject["Platform"] = "PowerAutomate";
-            headersObjectpropCount++;
-            if (headersObjectpropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                body["headers"] = headersObject;
+                var apiCallPath = "/v1/webhooks/deliveryreports";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                body["method"] = "POST";
+                bodypropCount++;
+                body["encoding"] = "JSON";
+                bodypropCount++;
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                headersObject["Platform"] = "PowerAutomate";
+                headersObjectpropCount++;
+                if (headersObjectpropCount > 0)
+                {
+                    body["headers"] = headersObject;
+                    bodypropCount++;
+                }
 
-            body["template"] = "{\"delivery_report_id\":\"$drId\",#if($statusCode)\"status_code\":\"$statusCode\",#end#if($status)\"status\":\"$status\",#end#if($destinationAddress)\"destination_address\":\"$destinationAddress\",#end#if($submittedTimestamp)\"submitted_date\":\"$submittedTimestamp\",#end#if($receivedTimestamp)\"date_received\":\"$receivedTimestamp\",#end\"type\":\"$type\",\"message_id\":\"$messageId\",\"source_address\":\"$sourceAddress\",\"content\":\"$esc.json($mtContent)\",\"attachments\":[#foreach ($entry in $attachments){\"attachment_type\":\"$entry.contentType\",\"attachment_content\":\"$entry.base64\",\"attachment_name\":\"$entry.originalName\"}#if( $foreach.hasNext ),#end#end],\"metadata\":[#foreach ($entry in $metadata.entrySet()){\"metadata_key\":\"$entry.key\",\"metadata_value\":\"$esc.json($entry.value)\"}#if( $foreach.hasNext ),#end#end]}";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                body["template"] = "{\"delivery_report_id\":\"$drId\",#if($statusCode)\"status_code\":\"$statusCode\",#end#if($status)\"status\":\"$status\",#end#if($destinationAddress)\"destination_address\":\"$destinationAddress\",#end#if($submittedTimestamp)\"submitted_date\":\"$submittedTimestamp\",#end#if($receivedTimestamp)\"date_received\":\"$receivedTimestamp\",#end\"type\":\"$type\",\"message_id\":\"$messageId\",\"source_address\":\"$sourceAddress\",\"content\":\"$esc.json($mtContent)\",\"attachments\":[#foreach ($entry in $attachments){\"attachment_type\":\"$entry.contentType\",\"attachment_content\":\"$entry.base64\",\"attachment_name\":\"$entry.originalName\"}#if( $foreach.hasNext ),#end#end],\"metadata\":[#foreach ($entry in $metadata.entrySet()){\"metadata_key\":\"$entry.key\",\"metadata_value\":\"$esc.json($entry.value)\"}#if( $foreach.hasNext ),#end#end]}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -310,6 +366,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         [JsonProperty("number")]
         public string Number { get; set; }
 
+        [JsonProperty("display_name")]
+        public string DisplayName { get; set; }
+
         [JsonProperty("number_id")]
         public string NumberId { get; set; }
 
@@ -321,6 +380,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
 
         [JsonProperty("number_status")]
         public string NumberStatus { get; set; }
+    }
+
+    public class SendMmsResponse
+    {
+        [JsonProperty("messages")]
+        public SendMmsResponseMessagesTypeItem[] Messages { get; set; }
+    }
+
+    public class SendMmsResponseMessagesTypeItem
+    {
+        [JsonProperty("callback_url")]
+        public string CallbackUrl { get; set; }
+
+        [JsonProperty("delivery_report")]
+        public bool DeliveryReport { get; set; }
+
+        [JsonProperty("destination_number")]
+        public string DestinationNumber { get; set; }
+
+        [JsonProperty("format")]
+        public string Format { get; set; }
+
+        [JsonProperty("message_expiry_timestamp")]
+        public string MessageExpiryTimestamp { get; set; }
+
+        [JsonProperty("message_id")]
+        public string MessageId { get; set; }
+
+        [JsonProperty("metadata")]
+        public SendMmsResponseMessagesTypeItemMetadataType Metadata { get; set; }
+
+        [JsonProperty("scheduled")]
+        public string Scheduled { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("content")]
+        public string Content { get; set; }
+
+        [JsonProperty("source_number")]
+        public string SourceNumber { get; set; }
+
+        [JsonProperty("media")]
+        public string[] Media { get; set; }
+
+        [JsonProperty("subject")]
+        public string Subject { get; set; }
+    }
+
+    public class SendMmsResponseMessagesTypeItemMetadataType
+    {
+        public string Source { get; set; }
     }
 
     public class Message

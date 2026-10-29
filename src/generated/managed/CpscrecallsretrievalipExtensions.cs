@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpscrecallsretrievalip
 {
     using System.Linq.Expressions;
@@ -12,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpscrecallsretrievalip
     public class CpscrecallsretrievalipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cpscrecallsretrievalip")]
-        public IBodyWorkflowAction<RecallGetResponseItem[], ApiConnectionActionConfiguration> RecallGet(Expression<Func<string>> recallID = null, Expression<Func<string>> recallNumber = null, Expression<Func<string>> recallDateStart = null, Expression<Func<string>> recallDateEnd = null, Expression<Func<string>> lastPublishDateStart = null, Expression<Func<string>> lastPublishDateEnd = null, Expression<Func<string>> recallURL = null, Expression<Func<string>> recallTitle = null, Expression<Func<string>> consumerContact = null, Expression<Func<string>> recallDescription = null, Expression<Func<string>> productName = null, Expression<Func<string>> productDescription = null, Expression<Func<string>> productModel = null, Expression<Func<string>> productType = null, Expression<Func<string>> inconjunctionURL = null, Expression<Func<string>> imageURL = null, Expression<Func<string>> injury = null, Expression<Func<string>> manufacturer = null, Expression<Func<string>> retailer = null, Expression<Func<string>> importer = null, Expression<Func<string>> distributor = null, Expression<Func<string>> manufacturerCountry = null, Expression<Func<string>> uPC = null, Expression<Func<string>> hazard = null, Expression<Func<string>> remedy = null, Expression<Func<string>> remedyOption = null)
+        public IBodyWorkflowAction<RecallGetResponseItem[], ApiConnectionActionConfiguration> RecallGet(Expression<Func<string>> recallId = null, Expression<Func<string>> recallNumber = null, Expression<Func<string>> recallDateStart = null, Expression<Func<string>> recallDateEnd = null, Expression<Func<string>> lastPublishDateStart = null, Expression<Func<string>> lastPublishDateEnd = null, Expression<Func<string>> recallURL = null, Expression<Func<string>> recallTitle = null, Expression<Func<string>> consumerContact = null, Expression<Func<string>> recallDescription = null, Expression<Func<string>> productName = null, Expression<Func<string>> productDescription = null, Expression<Func<string>> productModel = null, Expression<Func<string>> productType = null, Expression<Func<string>> inconjunctionURL = null, Expression<Func<string>> imageURL = null, Expression<Func<string>> injury = null, Expression<Func<string>> manufacturer = null, Expression<Func<string>> retailer = null, Expression<Func<string>> importer = null, Expression<Func<string>> distributor = null, Expression<Func<string>> manufacturerCountry = null, Expression<Func<string>> uPC = null, Expression<Func<string>> hazard = null, Expression<Func<string>> remedy = null, Expression<Func<string>> remedyOption = null)
         {
-            var __workflow_recallID = WorkflowExpression.Compile(recallID, nameof(recallID), required: false);
+            var __workflow_recallId = WorkflowExpression.Compile(recallId, nameof(recallId), required: false);
             var __workflow_recallNumber = WorkflowExpression.Compile(recallNumber, nameof(recallNumber), required: false);
             var __workflow_recallDateStart = WorkflowExpression.Compile(recallDateStart, nameof(recallDateStart), required: false);
             var __workflow_recallDateEnd = WorkflowExpression.Compile(recallDateEnd, nameof(recallDateEnd), required: false);
@@ -45,8 +46,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpscrecallsretrievalip
                 var apiCallPath = "/Recall";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_recallID != null)
-                    callPayload.Queries["RecallID"] = ExpressionConverter.Convert(__workflow_recallID);
+                if (__workflow_recallId != null)
+                    callPayload.Queries["RecallID"] = ExpressionConverter.Convert(__workflow_recallId);
                 if (__workflow_recallNumber != null)
                     callPayload.Queries["RecallNumber"] = ExpressionConverter.Convert(__workflow_recallNumber);
                 if (__workflow_recallDateStart != null)
@@ -108,7 +109,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpscrecallsretrievalip
 
     public class RecallGetResponseItem
     {
-        public int RecallID { get; set; }
+        [JsonProperty("RecallID")]
+        public int RecallId { get; set; }
         public string RecallNumber { get; set; }
         public string RecallDate { get; set; }
         public string Description { get; set; }
@@ -138,7 +140,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpscrecallsretrievalip
         public string Description { get; set; }
         public string Model { get; set; }
         public string Type { get; set; }
-        public string CategoryID { get; set; }
+
+        [JsonProperty("CategoryID")]
+        public string CategoryId { get; set; }
         public string NumberOfUnits { get; set; }
     }
 
@@ -160,25 +164,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpscrecallsretrievalip
     public class RecallGetResponseItemManufacturersTypeItem
     {
         public string Name { get; set; }
-        public string CompanyID { get; set; }
+
+        [JsonProperty("CompanyID")]
+        public string CompanyId { get; set; }
     }
 
     public class RecallGetResponseItemRetailersTypeItem
     {
         public string Name { get; set; }
-        public string CompanyID { get; set; }
+
+        [JsonProperty("CompanyID")]
+        public string CompanyId { get; set; }
     }
 
     public class RecallGetResponseItemImportersTypeItem
     {
         public string Name { get; set; }
-        public string CompanyID { get; set; }
+
+        [JsonProperty("CompanyID")]
+        public string CompanyId { get; set; }
     }
 
     public class RecallGetResponseItemDistributorsTypeItem
     {
         public string Name { get; set; }
-        public string CompanyID { get; set; }
+
+        [JsonProperty("CompanyID")]
+        public string CompanyId { get; set; }
     }
 
     public class RecallGetResponseItemManufacturerCountriesTypeItem
@@ -195,7 +207,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpscrecallsretrievalip
     {
         public string Name { get; set; }
         public string HazardType { get; set; }
-        public string HazardTypeID { get; set; }
+
+        [JsonProperty("HazardTypeID")]
+        public string HazardTypeId { get; set; }
     }
 
     public class RecallGetResponseItemRemediesTypeItem

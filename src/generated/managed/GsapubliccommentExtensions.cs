@@ -4,6 +4,8 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsapubliccomment
 {
+    using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -13,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsapubliccomment
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsapubliccomment")]
         public IBodyWorkflowAction<GetCommentsResponse, ApiConnectionActionConfiguration> GetComments()
         {
-            var apiCallPath = "/comments";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetCommentsResponse>(callPayload);
+            return new DeferredBodyAction<GetCommentsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/comments";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetCommentsResponse>(callPayload);
+            });
         }
     }
 

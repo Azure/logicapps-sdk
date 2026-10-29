@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
 {
     using System.Linq.Expressions;
@@ -301,7 +302,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
         public string ISSUEDATE { get; set; }
         public string POLICYNUMBER { get; set; }
         public string POLICYTYPE { get; set; }
-        public string BROKERID { get; set; }
+
+        [JsonProperty("BROKERID")]
+        public string BROKERId { get; set; }
         public string LASTCHANGED { get; set; }
         public string EXPIRYDATE { get; set; }
         public string CUSTOMERNUMBER { get; set; }
@@ -369,7 +372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
     public class PutCustomerdetailResponse200LGCMAREAType
     {
         [JsonProperty("CA_REQUEST_ID")]
-        public string CAREQUESTID { get; set; }
+        public string CAREQUESTId { get; set; }
 
         [JsonProperty("CA_RETURN_CODE")]
         public int CARETURNCODE { get; set; }
@@ -434,7 +437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
         public string CAREQUESTSPECIFIC { get; set; }
 
         [JsonProperty("CA_REQUEST_ID")]
-        public string CAREQUESTID { get; set; }
+        public string CAREQUESTId { get; set; }
 
         [JsonProperty("CA_CUSTOMER_REQUEST")]
         public GetCustomerDetailResponseLGCMAREATypeCACUSTOMERREQUESTType CACUSTOMERREQUEST { get; set; }
@@ -521,7 +524,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
         public int CAPAYMENT { get; set; }
 
         [JsonProperty("CA_BROKERID")]
-        public int CABROKERID { get; set; }
+        public int CABROKERId { get; set; }
 
         [JsonProperty("CA_EXPIRY_DATE")]
         public string CAEXPIRYDATE { get; set; }

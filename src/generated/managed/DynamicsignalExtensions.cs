@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
 {
     using System.Linq.Expressions;
@@ -43,28 +44,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         public IBodyWorkflowAction<ManageUserTagsResponse, ApiConnectionActionConfiguration> GetUserTags()
         {
-            var apiCallPath = "/manage/usertags";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ManageUserTagsResponse>(callPayload);
+            return new DeferredBodyAction<ManageUserTagsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/manage/usertags";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ManageUserTagsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         public IBodyWorkflowAction<DivisionsResponse, ApiConnectionActionConfiguration> GetDivisions()
         {
-            var apiCallPath = "/divisions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DivisionsResponse>(callPayload);
+            return new DeferredBodyAction<DivisionsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/divisions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DivisionsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<DocumentInfoResponse, ApiConnectionActionConfiguration> PutDocument(Expression<Func<string>> fileName, Expression<Func<string>> id, Expression<Func<string>> contentType, Expression<Func<string>> file = null)
+        public IBodyWorkflowAction<DocumentInfoResponse, ApiConnectionActionConfiguration> PutDocument(Expression<Func<string>> fileName, Expression<Func<string>> id, Expression<Func<string>> contentType, Expression<Func<string>> @file = null)
         {
             var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: false);
+            var __workflow_file = WorkflowExpression.Compile(@file, nameof(@file), required: false);
             return new DeferredBodyAction<DocumentInfoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/post/{0}/documents", __workflow_id.WithUrlEncoding(1)));
@@ -78,10 +85,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<UserRequestResponse, ApiConnectionActionConfiguration> PreregisterUser(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyexternalSsoUserID = null, Expression<Func<string>> bodyhandle = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<int[]>> bodydivisionIDs = null, Expression<Func<int[]>> bodytargetIDs = null, Expression<Func<UserTagRequestResponse[]>> bodytags = null, Expression<Func<bool>> bodysendInvitationEmail = null, Expression<Func<string>> bodyinvitationMessage = null, Expression<Func<bodynotificationsDefaultInput>> bodynotificationsDefault = null, Expression<Func<bool>> bodyvaluecanSharePosts = null, Expression<Func<bool>> bodyvaluecanCommentPosts = null, Expression<Func<bool>> bodyvaluecanSubmitPosts = null, Expression<Func<bool>> bodyvaluecanManageOrganization = null)
+        public IBodyWorkflowAction<UserRequestResponse, ApiConnectionActionConfiguration> PreregisterUser(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyexternalSsoUserId = null, Expression<Func<string>> bodyhandle = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<int[]>> bodydivisionIDs = null, Expression<Func<int[]>> bodytargetIDs = null, Expression<Func<UserTagRequestResponse[]>> bodytags = null, Expression<Func<bool>> bodysendInvitationEmail = null, Expression<Func<string>> bodyinvitationMessage = null, Expression<Func<bodynotificationsDefaultInput>> bodynotificationsDefault = null, Expression<Func<bool>> bodyvaluecanSharePosts = null, Expression<Func<bool>> bodyvaluecanCommentPosts = null, Expression<Func<bool>> bodyvaluecanSubmitPosts = null, Expression<Func<bool>> bodyvaluecanManageOrganization = null)
         {
             var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyexternalSsoUserID = WorkflowExpression.Compile(bodyexternalSsoUserID, nameof(bodyexternalSsoUserID), required: false);
+            var __workflow_bodyexternalSsoUserId = WorkflowExpression.Compile(bodyexternalSsoUserId, nameof(bodyexternalSsoUserId), required: false);
             var __workflow_bodyhandle = WorkflowExpression.Compile(bodyhandle, nameof(bodyhandle), required: false);
             var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
             var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
@@ -108,9 +115,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyexternalSsoUserID != null)
+                if (__workflow_bodyexternalSsoUserId != null)
                 {
-                    body["externalSsoUserId"] = ExpressionConverter.ConvertO(__workflow_bodyexternalSsoUserID);
+                    body["externalSsoUserId"] = ExpressionConverter.ConvertO(__workflow_bodyexternalSsoUserId);
                     bodypropCount++;
                 }
 
@@ -210,10 +217,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<UploadImageResponse, ApiConnectionActionConfiguration> ManageImage(Expression<Func<string>> contentType, Expression<Func<string>> file = null)
+        public IBodyWorkflowAction<UploadImageResponse, ApiConnectionActionConfiguration> ManageImage(Expression<Func<string>> contentType, Expression<Func<string>> @file = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: false);
+            var __workflow_file = WorkflowExpression.Compile(@file, nameof(@file), required: false);
             return new DeferredBodyAction<UploadImageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/manage/images";
@@ -242,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<PostResponse, ApiConnectionActionConfiguration> Create(Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodytagLine = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodycreatorComments = null, Expression<Func<string>> bodypermaLink = null, Expression<Func<bool>> bodyinternalDiscussionsEnabled = null, Expression<Func<string>> bodymemberVideoUrl = null, Expression<Func<bodypostTypeInput>> bodypostType = null, Expression<Func<bodyapprovalStateInput>> bodyapprovalState = null, Expression<Func<bodydisplayModeInput>> bodydisplayMode = null, Expression<Func<bool>> bodysharable = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodysuggestedShareText = null, Expression<Func<string>> bodyshortSuggestedShareText = null, Expression<Func<int>> bodysharePoints = null, Expression<Func<int>> bodyclickPoints = null, Expression<Func<bool>> bodyshareWithImages = null, Expression<Func<bool>> bodyshareImagesOnly = null, Expression<Func<PostTagRequestResponse[]>> bodytags = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string[]>> bodydocuments = null, Expression<Func<int>> bodycreatorID = null, Expression<Func<bool>> bodydisplayCreator = null, Expression<Func<int[]>> bodycategoryIDs = null, Expression<Func<int[]>> bodytargetIDs = null)
+        public IBodyWorkflowAction<PostResponse, ApiConnectionActionConfiguration> Create(Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodytagLine = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodycreatorComments = null, Expression<Func<string>> bodypermaLink = null, Expression<Func<bool>> bodyinternalDiscussionsEnabled = null, Expression<Func<string>> bodymemberVideoUrl = null, Expression<Func<bodypostTypeInput>> bodypostType = null, Expression<Func<bodyapprovalStateInput>> bodyapprovalState = null, Expression<Func<bodydisplayModeInput>> bodydisplayMode = null, Expression<Func<bool>> bodysharable = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodysuggestedShareText = null, Expression<Func<string>> bodyshortSuggestedShareText = null, Expression<Func<int>> bodysharePoints = null, Expression<Func<int>> bodyclickPoints = null, Expression<Func<bool>> bodyshareWithImages = null, Expression<Func<bool>> bodyshareImagesOnly = null, Expression<Func<PostTagRequestResponse[]>> bodytags = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string[]>> bodydocuments = null, Expression<Func<int>> bodycreatorId = null, Expression<Func<bool>> bodydisplayCreator = null, Expression<Func<int[]>> bodycategoryIDs = null, Expression<Func<int[]>> bodytargetIDs = null)
         {
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
@@ -267,7 +274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
             var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
             var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
             var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: false);
-            var __workflow_bodycreatorID = WorkflowExpression.Compile(bodycreatorID, nameof(bodycreatorID), required: false);
+            var __workflow_bodycreatorId = WorkflowExpression.Compile(bodycreatorId, nameof(bodycreatorId), required: false);
             var __workflow_bodydisplayCreator = WorkflowExpression.Compile(bodydisplayCreator, nameof(bodydisplayCreator), required: false);
             var __workflow_bodycategoryIDs = WorkflowExpression.Compile(bodycategoryIDs, nameof(bodycategoryIDs), required: false);
             var __workflow_bodytargetIDs = WorkflowExpression.Compile(bodytargetIDs, nameof(bodytargetIDs), required: false);
@@ -412,9 +419,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
                     bodypropCount++;
                 }
 
-                if (__workflow_bodycreatorID != null)
+                if (__workflow_bodycreatorId != null)
                 {
-                    body["creatorId"] = ExpressionConverter.ConvertO(__workflow_bodycreatorID);
+                    body["creatorId"] = ExpressionConverter.ConvertO(__workflow_bodycreatorId);
                     bodypropCount++;
                 }
 
@@ -446,11 +453,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<SuccessResponse, ApiConnectionActionConfiguration> PutImageTo(Expression<Func<string>> id, Expression<Func<string>> contentType, Expression<Func<string>> file = null)
+        public IBodyWorkflowAction<SuccessResponse, ApiConnectionActionConfiguration> PutImageTo(Expression<Func<string>> id, Expression<Func<string>> contentType, Expression<Func<string>> @file = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: false);
+            var __workflow_file = WorkflowExpression.Compile(@file, nameof(@file), required: false);
             return new DeferredBodyAction<SuccessResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/post/{0}/image", __workflow_id.WithUrlEncoding(1)));
@@ -557,28 +564,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         public IBodyWorkflowAction<ManagePostTagsResponse, ApiConnectionActionConfiguration> GetPostTags()
         {
-            var apiCallPath = "/manage/posttags";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ManagePostTagsResponse>(callPayload);
+            return new DeferredBodyAction<ManagePostTagsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/manage/posttags";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ManagePostTagsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         public IBodyWorkflowAction<CategoriesResponse, ApiConnectionActionConfiguration> GetCategories()
         {
-            var apiCallPath = "/categories";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CategoriesResponse>(callPayload);
+            return new DeferredBodyAction<CategoriesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/categories";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CategoriesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         public IBodyWorkflowAction<TargetDefinitionsInfoResponse, ApiConnectionActionConfiguration> GetTargets()
         {
-            var apiCallPath = "/targets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TargetDefinitionsInfoResponse>(callPayload);
+            return new DeferredBodyAction<TargetDefinitionsInfoResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/targets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TargetDefinitionsInfoResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
@@ -646,7 +662,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
     public class UserRequestResponse
     {
         [JsonProperty("id")]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -685,10 +701,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public string Location { get; set; }
 
         [JsonProperty("externalApiUserId")]
-        public string ExternalApiUserID { get; set; }
+        public string ExternalApiUserId { get; set; }
 
         [JsonProperty("managerUserId")]
-        public int ManagerUserID { get; set; }
+        public int ManagerUserId { get; set; }
 
         [JsonProperty("timeZone")]
         public string TimeZone { get; set; }
@@ -794,7 +810,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public int TotalInAppShareCount { get; set; }
 
         [JsonProperty("trackingId")]
-        public string TrackingID { get; set; }
+        public string TrackingId { get; set; }
 
         [JsonProperty("shareCount")]
         public int ShareCount { get; set; }
@@ -833,7 +849,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
     public class AffiliationQuestionResponse
     {
         [JsonProperty("questionId")]
-        public int QuestionID { get; set; }
+        public int QuestionId { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -865,7 +881,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
     public class AffiliationAnswerResponse
     {
         [JsonProperty("answerId")]
-        public int AnswerID { get; set; }
+        public int AnswerId { get; set; }
 
         [JsonProperty("answer")]
         public string Answer { get; set; }
@@ -886,22 +902,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
     public class DivisionResponse
     {
         [JsonProperty("divisionId")]
-        public int DivisionID { get; set; }
+        public int DivisionId { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("parentDivisionId")]
-        public int ParentDivisionID { get; set; }
+        public int ParentDivisionId { get; set; }
     }
 
     public class UserChannelResponse
     {
         [JsonProperty("userChannelId")]
-        public int UserChannelID { get; set; }
+        public int UserChannelId { get; set; }
 
         [JsonProperty("userId")]
-        public int UserID { get; set; }
+        public int UserId { get; set; }
 
         [JsonProperty("provider")]
         public UserChannelResponseProviderType Provider { get; set; }
@@ -913,7 +929,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public string DisplayName { get; set; }
 
         [JsonProperty("providerUserId")]
-        public string ProviderUserID { get; set; }
+        public string ProviderUserId { get; set; }
 
         [JsonProperty("status")]
         public UserChannelResponseStatusType Status { get; set; }
@@ -1115,7 +1131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
     public class AllowlistIdentifiersResponse
     {
         [JsonProperty("id")]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -1127,10 +1143,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public string Name { get; set; }
 
         [JsonProperty("id")]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("definitionId")]
-        public int DefinitionID { get; set; }
+        public int DefinitionId { get; set; }
     }
 
     public class UserDefaultsRequestResponse
@@ -1172,7 +1188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
     public class ManageUserTagResponse
     {
         [JsonProperty("id")]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1215,7 +1231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
     public class DocumentInfoResponse
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("fileName")]
         public string FileName { get; set; }
@@ -1252,10 +1268,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
     public class PostResponse
     {
         [JsonProperty("postId")]
-        public string PostID { get; set; }
+        public string PostId { get; set; }
 
         [JsonProperty("postSourceId")]
-        public int PostSourceID { get; set; }
+        public int PostSourceId { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -1369,7 +1385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public int ClickPoints { get; set; }
 
         [JsonProperty("providerPostId")]
-        public string ProviderPostID { get; set; }
+        public string ProviderPostId { get; set; }
 
         [JsonProperty("urlSlug")]
         public string UrlSlug { get; set; }
@@ -1456,7 +1472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
     public class UserOverviewResponse
     {
         [JsonProperty("userId")]
-        public int UserID { get; set; }
+        public int UserId { get; set; }
 
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
@@ -1534,7 +1550,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public string ProfileImageUrl { get; set; }
 
         [JsonProperty("providerUserId")]
-        public string ProviderUserID { get; set; }
+        public string ProviderUserId { get; set; }
 
         [JsonProperty("providerUserName")]
         public string ProviderUserName { get; set; }
@@ -1793,13 +1809,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
     public class CategoryOverviewResponse
     {
         [JsonProperty("id")]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("parentCategoryId")]
-        public int ParentCategoryID { get; set; }
+        public int ParentCategoryId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1839,7 +1855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
     public class ManagePostTagResponse
     {
         [JsonProperty("id")]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1869,7 +1885,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
     public class CategoryResponse
     {
         [JsonProperty("id")]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1896,7 +1912,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public bool IsUserSelectable { get; set; }
 
         [JsonProperty("parentCategoryId")]
-        public int ParentCategoryID { get; set; }
+        public int ParentCategoryId { get; set; }
 
         [JsonProperty("childCategories")]
         public CategoryResponse1[] ChildCategories { get; set; }
@@ -1905,7 +1921,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
     public class CategoryResponse1
     {
         [JsonProperty("id")]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1932,7 +1948,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public bool IsUserSelectable { get; set; }
 
         [JsonProperty("parentCategoryId")]
-        public int ParentCategoryID { get; set; }
+        public int ParentCategoryId { get; set; }
     }
 
     public class TargetDefinitionsInfoResponse
@@ -1944,7 +1960,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
     public class TargetDefinitionInfoResponse
     {
         [JsonProperty("id")]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1968,7 +1984,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
     public class TargetInfoResponse
     {
         [JsonProperty("id")]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1977,10 +1993,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public string Description { get; set; }
 
         [JsonProperty("definitionId")]
-        public int DefinitionID { get; set; }
+        public int DefinitionId { get; set; }
 
         [JsonProperty("parentId")]
-        public int ParentID { get; set; }
+        public int ParentId { get; set; }
 
         [JsonProperty("isSubscribed")]
         public bool IsSubscribed { get; set; }
@@ -1992,7 +2008,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
     public class TargetInfoResponse1
     {
         [JsonProperty("id")]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -2001,10 +2017,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public string Description { get; set; }
 
         [JsonProperty("definitionId")]
-        public int DefinitionID { get; set; }
+        public int DefinitionId { get; set; }
 
         [JsonProperty("parentId")]
-        public int ParentID { get; set; }
+        public int ParentId { get; set; }
 
         [JsonProperty("isSubscribed")]
         public bool IsSubscribed { get; set; }
@@ -2016,7 +2032,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
     public class TargetInfoResponse2
     {
         [JsonProperty("id")]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -2025,10 +2041,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public string Description { get; set; }
 
         [JsonProperty("definitionId")]
-        public int DefinitionID { get; set; }
+        public int DefinitionId { get; set; }
 
         [JsonProperty("parentId")]
-        public int ParentID { get; set; }
+        public int ParentId { get; set; }
 
         [JsonProperty("isSubscribed")]
         public bool IsSubscribed { get; set; }
@@ -2040,7 +2056,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
     public class TargetInfoResponse3
     {
         [JsonProperty("id")]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -2049,10 +2065,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public string Description { get; set; }
 
         [JsonProperty("definitionId")]
-        public int DefinitionID { get; set; }
+        public int DefinitionId { get; set; }
 
         [JsonProperty("parentId")]
-        public int ParentID { get; set; }
+        public int ParentId { get; set; }
 
         [JsonProperty("isSubscribed")]
         public bool IsSubscribed { get; set; }

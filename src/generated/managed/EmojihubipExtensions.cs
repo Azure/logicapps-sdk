@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
         public IBodyWorkflowAction<AllResponseItem[], ApiConnectionActionConfiguration> All()
         {
-            var apiCallPath = "/all";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AllResponseItem[]>(callPayload);
+            return new DeferredBodyAction<AllResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/all";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AllResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
@@ -49,10 +53,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
         public IBodyWorkflowAction<RandomResponse, ApiConnectionActionConfiguration> Random()
         {
-            var apiCallPath = "/random";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RandomResponse>(callPayload);
+            return new DeferredBodyAction<RandomResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/random";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<RandomResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]

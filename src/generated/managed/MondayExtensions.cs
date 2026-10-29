@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 {
     using System.Linq.Expressions;
@@ -573,19 +574,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<GetTagsV2Response, ApiConnectionActionConfiguration> GetTags()
         {
-            var apiCallPath = "/getData/getTagsV2";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTagsV2Response>(callPayload);
+            return new DeferredBodyAction<GetTagsV2Response, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/getData/getTagsV2";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetTagsV2Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<GetUsersV2Response, ApiConnectionActionConfiguration> GetUsers()
         {
-            var apiCallPath = "/getData/getUsersV2";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetUsersV2Response>(callPayload);
+            return new DeferredBodyAction<GetUsersV2Response, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/getData/getUsersV2";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetUsersV2Response>(callPayload);
+            });
         }
     }
 

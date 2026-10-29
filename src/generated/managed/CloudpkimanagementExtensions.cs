@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 {
     using System.Linq.Expressions;
@@ -735,10 +736,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
         public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetAuthentication()
         {
-            var apiCallPath = "/.auth/me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/.auth/me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 
@@ -1770,10 +1774,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     {
         public string ENABLEKEYREUSEONNTTOKENKEYSETSTORAGEFULL { get; set; }
         public string EXCLUDECRLDETAILSINCERT { get; set; }
-        public string PREVIOUSAPPROVALVALIDATEREENROLLMENT { get; set; }
+
+        [JsonProperty("PREVIOUSAPPROVALVALIDATEREENROLLMENT")]
+        public string PREVIOUSAPPROVALVALIdATEREENROLLMENT { get; set; }
         public string AUTOENROLLMENTCHECKUSERDSCERTIFICATE { get; set; }
         public string INCLUDEBASICCONSTRAINTSFOREECERTS { get; set; }
-        public string REMOVEINVALIDCERTIFICATEFROMPERSONALSTORE { get; set; }
+
+        [JsonProperty("REMOVEINVALIDCERTIFICATEFROMPERSONALSTORE")]
+        public string REMOVEINVALIdCERTIFICATEFROMPERSONALSTORE { get; set; }
         public string EXCLUDEOCSPDETAILSINCERT { get; set; }
         public string ALLOWISSUANCEPOLICIESFROMREQUEST { get; set; }
         public string AUTOENROLLMENT { get; set; }
@@ -1808,13 +1816,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string REQUIREALTERNATESIGNATUREALGORITHM { get; set; }
         public string EXPORTABLEKEY { get; set; }
         public string REQUIRESAMEKEYRENEWAL { get; set; }
-        public string EKVALIDATECERT { get; set; }
-        public string EKVALIDATEKEY { get; set; }
+
+        [JsonProperty("EKVALIDATECERT")]
+        public string EKVALIdATECERT { get; set; }
+
+        [JsonProperty("EKVALIDATEKEY")]
+        public string EKVALIdATEKEY { get; set; }
         public string STRONGKEYPROTECTIONREQUIRED { get; set; }
         public string ATTESTATIONWITHOUTPOLICY { get; set; }
         public string EKTRUSTONUSE { get; set; }
         public string ATTESTREQUIRED { get; set; }
-        public string USELEGACYPROVIDER { get; set; }
+
+        [JsonProperty("USELEGACYPROVIDER")]
+        public string USELEGACYPROVIdER { get; set; }
         public string ATTESTPREFERRED { get; set; }
         public string REQUIREPRIVATEKEYARCHIVAL { get; set; }
         public string ATTESTNONE { get; set; }
@@ -2065,10 +2079,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     {
         public string ENABLEKEYREUSEONNTTOKENKEYSETSTORAGEFULL { get; set; }
         public string EXCLUDECRLDETAILSINCERT { get; set; }
-        public string PREVIOUSAPPROVALVALIDATEREENROLLMENT { get; set; }
+
+        [JsonProperty("PREVIOUSAPPROVALVALIDATEREENROLLMENT")]
+        public string PREVIOUSAPPROVALVALIdATEREENROLLMENT { get; set; }
         public string AUTOENROLLMENTCHECKUSERDSCERTIFICATE { get; set; }
         public string INCLUDEBASICCONSTRAINTSFOREECERTS { get; set; }
-        public string REMOVEINVALIDCERTIFICATEFROMPERSONALSTORE { get; set; }
+
+        [JsonProperty("REMOVEINVALIDCERTIFICATEFROMPERSONALSTORE")]
+        public string REMOVEINVALIdCERTIFICATEFROMPERSONALSTORE { get; set; }
         public string EXCLUDEOCSPDETAILSINCERT { get; set; }
         public string ALLOWISSUANCEPOLICIESFROMREQUEST { get; set; }
         public string AUTOENROLLMENT { get; set; }
@@ -2103,13 +2121,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string REQUIREALTERNATESIGNATUREALGORITHM { get; set; }
         public string EXPORTABLEKEY { get; set; }
         public string REQUIRESAMEKEYRENEWAL { get; set; }
-        public string EKVALIDATECERT { get; set; }
-        public string EKVALIDATEKEY { get; set; }
+
+        [JsonProperty("EKVALIDATECERT")]
+        public string EKVALIdATECERT { get; set; }
+
+        [JsonProperty("EKVALIDATEKEY")]
+        public string EKVALIdATEKEY { get; set; }
         public string STRONGKEYPROTECTIONREQUIRED { get; set; }
         public string ATTESTATIONWITHOUTPOLICY { get; set; }
         public string EKTRUSTONUSE { get; set; }
         public string ATTESTREQUIRED { get; set; }
-        public string USELEGACYPROVIDER { get; set; }
+
+        [JsonProperty("USELEGACYPROVIDER")]
+        public string USELEGACYPROVIdER { get; set; }
         public string ATTESTPREFERRED { get; set; }
         public string REQUIREPRIVATEKEYARCHIVAL { get; set; }
         public string ATTESTNONE { get; set; }

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icanhazdadjokeip
 {
     using System.Linq.Expressions;
@@ -14,11 +15,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icanhazdadjokeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icanhazdadjokeip")]
         public IBodyWorkflowAction<FetchRandomJokeResponse, ApiConnectionActionConfiguration> FetchRandomJoke()
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<FetchRandomJokeResponse>(callPayload);
+            return new DeferredBodyAction<FetchRandomJokeResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<FetchRandomJokeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icanhazdadjokeip")]
@@ -65,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icanhazdadjokeip
     public class FetchRandomJokeResponse
     {
         [JsonProperty("id")]
-        public string JokeID { get; set; }
+        public string JokeId { get; set; }
 
         [JsonProperty("joke")]
         public string Joke { get; set; }
@@ -107,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icanhazdadjokeip
     public class SearchForDadJokesResponseResultsTypeItem
     {
         [JsonProperty("id")]
-        public string JokeID { get; set; }
+        public string JokeId { get; set; }
 
         [JsonProperty("joke")]
         public string Joke { get; set; }
@@ -116,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icanhazdadjokeip
     public class FetchaDadJokeResponse
     {
         [JsonProperty("id")]
-        public string JokeID { get; set; }
+        public string JokeId { get; set; }
 
         [JsonProperty("joke")]
         public string Joke { get; set; }

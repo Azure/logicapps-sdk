@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
 {
     using System.Linq.Expressions;
@@ -832,7 +833,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         public CertTypedName[] IssuerAlternativeNames { get; set; }
 
         [JsonProperty("issuerID")]
-        public string IssuerID { get; set; }
+        public string IssuerId { get; set; }
 
         [JsonProperty("lastSeen")]
         public int LastSeen { get; set; }
@@ -865,7 +866,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         public CertTypedName[] SubjectAlternativeNames { get; set; }
 
         [JsonProperty("subjectID")]
-        public string SubjectID { get; set; }
+        public string SubjectId { get; set; }
 
         [JsonProperty("version")]
         public int Version { get; set; }

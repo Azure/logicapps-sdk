@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7sms
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7sms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7sms")]
         public IBodyWorkflowAction<BalanceResponse, ApiConnectionActionConfiguration> Balance()
         {
-            var apiCallPath = "/balance";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BalanceResponse>(callPayload);
+            return new DeferredBodyAction<BalanceResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/balance";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<BalanceResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7sms")]

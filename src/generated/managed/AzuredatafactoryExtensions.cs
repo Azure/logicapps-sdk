@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatafactory
 {
     using System.Linq.Expressions;
@@ -122,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatafactory
     public class PipelineRunInvokedByType
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }

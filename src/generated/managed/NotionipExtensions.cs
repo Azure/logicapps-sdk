@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
 {
     using System.Linq.Expressions;
@@ -71,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Updateablock(Expression<Func<string>> blockId, Expression<Func<bodyparagraphrichTextInputItem[]>> bodyparagraphrichText = null, Expression<Func<string>> bodyparagraphcolor = null, Expression<Func<bodyheading1richTextInputItem[]>> bodyheading1richText = null, Expression<Func<string>> bodyheading1color = null, Expression<Func<bodyheading2richTextInputItem[]>> bodyheading2richText = null, Expression<Func<string>> bodyheading2color = null, Expression<Func<bodyheading3richTextInputItem[]>> bodyheading3richText = null, Expression<Func<string>> bodyheading3color = null, Expression<Func<bodybulletedListItemrichTextInputItem[]>> bodybulletedListItemrichText = null, Expression<Func<string>> bodybulletedListItemcolor = null, Expression<Func<bodynumberedListItemrichTextInputItem[]>> bodynumberedListItemrichText = null, Expression<Func<string>> bodynumberedListItemcolor = null, Expression<Func<bodytoDorichTextInputItem[]>> bodytoDorichText = null, Expression<Func<bool>> bodytoDochecked = null, Expression<Func<string>> bodytoDocolor = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Updateablock(Expression<Func<string>> blockId, Expression<Func<bodyparagraphrichTextInputItem[]>> bodyparagraphrichText = null, Expression<Func<string>> bodyparagraphcolor = null, Expression<Func<bodyheading1richTextInputItem[]>> bodyheading1richText = null, Expression<Func<string>> bodyheading1color = null, Expression<Func<bodyheading2richTextInputItem[]>> bodyheading2richText = null, Expression<Func<string>> bodyheading2color = null, Expression<Func<bodyheading3richTextInputItem[]>> bodyheading3richText = null, Expression<Func<string>> bodyheading3color = null, Expression<Func<bodybulletedListItemrichTextInputItem[]>> bodybulletedListItemrichText = null, Expression<Func<string>> bodybulletedListItemcolor = null, Expression<Func<bodynumberedListItemrichTextInputItem[]>> bodynumberedListItemrichText = null, Expression<Func<string>> bodynumberedListItemcolor = null, Expression<Func<bodytoDorichTextInputItem[]>> bodytoDorichText = null, Expression<Func<bool>> bodytoDoChecked = null, Expression<Func<string>> bodytoDocolor = null)
         {
             var __workflow_blockId = WorkflowExpression.Compile(blockId, nameof(blockId), required: true);
             var __workflow_bodyparagraphrichText = WorkflowExpression.Compile(bodyparagraphrichText, nameof(bodyparagraphrichText), required: false);
@@ -87,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             var __workflow_bodynumberedListItemrichText = WorkflowExpression.Compile(bodynumberedListItemrichText, nameof(bodynumberedListItemrichText), required: false);
             var __workflow_bodynumberedListItemcolor = WorkflowExpression.Compile(bodynumberedListItemcolor, nameof(bodynumberedListItemcolor), required: false);
             var __workflow_bodytoDorichText = WorkflowExpression.Compile(bodytoDorichText, nameof(bodytoDorichText), required: false);
-            var __workflow_bodytoDochecked = WorkflowExpression.Compile(bodytoDochecked, nameof(bodytoDochecked), required: false);
+            var __workflow_bodytoDoChecked = WorkflowExpression.Compile(bodytoDoChecked, nameof(bodytoDoChecked), required: false);
             var __workflow_bodytoDocolor = WorkflowExpression.Compile(bodytoDocolor, nameof(bodytoDocolor), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -226,9 +227,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
                     toDoObjectpropCount++;
                 }
 
-                if (__workflow_bodytoDochecked != null)
+                if (__workflow_bodytoDoChecked != null)
                 {
-                    toDoObject["checked"] = ExpressionConverter.ConvertO(__workflow_bodytoDochecked);
+                    toDoObject["checked"] = ExpressionConverter.ConvertO(__workflow_bodytoDoChecked);
                     toDoObjectpropCount++;
                 }
 
@@ -378,11 +379,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<RetrieveYourTokensBotUserResponse, ApiConnectionActionConfiguration> RetrieveYourTokensBotUser()
         {
-            var apiCallPath = "/v1/users/me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
-            return new ApiConnectionAction<RetrieveYourTokensBotUserResponse>(callPayload);
+            return new DeferredBodyAction<RetrieveYourTokensBotUserResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/users/me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Notion-Version"] = Convert.ToString("2022-06-28");
+                return new ApiConnectionAction<RetrieveYourTokensBotUserResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]

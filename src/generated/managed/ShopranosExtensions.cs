@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 {
     using System.Linq.Expressions;
@@ -158,10 +159,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<ProblemDetails, ApiConnectionActionConfiguration> FiltersPOSTBuildFilters()
         {
-            var apiCallPath = "/api/Filters/clear";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProblemDetails>(callPayload);
+            return new DeferredBodyAction<ProblemDetails, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/Filters/clear";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ProblemDetails>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]

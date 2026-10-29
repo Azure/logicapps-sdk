@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
 {
     using System.Linq.Expressions;
@@ -114,30 +115,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<UpdateAssetResponse, ApiConnectionActionConfiguration> UpdateAsset(Expression<Func<string>> account, Expression<Func<string>> assetId, Expression<Func<string>> bodybEFORELOANDEPARTMENTID = null, Expression<Func<string>> bodybEFORELOANEMPLOYEEID = null, Expression<Func<string>> bodybEFORELOANLOCATIONID = null, Expression<Func<string>> bodybILLINGPERIODICITYINMONTH = null, Expression<Func<string>> bodybUYBACKVALUE = null, Expression<Func<string>> bodybUYBACKVALUECURID = null, Expression<Func<string>> bodycATALOGID = null, Expression<Func<string>> bodycHARGEBACK = null, Expression<Func<string>> bodycHARGEBACKCURID = null, Expression<Func<string>> bodycISTATUSID = null, Expression<Func<string>> bodycIVERSION = null, Expression<Func<string>> bodycMDEFAULTCHANGEID = null, Expression<Func<string>> bodycONFIGURATIONID = null, Expression<Func<string>> bodycRITICALLEVELID = null, Expression<Func<string>> bodydELIVERYDATE = null, Expression<Func<string>> bodydELIVERYNUMBER = null, Expression<Func<string>> bodydEPARTMENTID = null, Expression<Func<string>> bodydEPRECIATIONRULEID = null, Expression<Func<string>> bodydHARDWAREGUID = null, Expression<Func<string>> bodyeMPLOYEEID = null, Expression<Func<string>> bodyeNDOFWARANTY = null, Expression<Func<string>> bodyeNTRYDATE = null, Expression<Func<string>> bodyeSTIMATEDPERCENTAGEUSE = null, Expression<Func<string>> bodyeXPECTEDENDLENDDATE = null, Expression<Func<string>> bodyeXPECTEDRETURNDATE = null, Expression<Func<string>> bodyfALLENTERM = null, Expression<Func<string>> bodyfIXEDASSETNUMBER = null, Expression<Func<string>> bodyiNITIALSTART = null, Expression<Func<string>> bodyiNSTALLATIONDATE = null, Expression<Func<string>> bodyiNTERNALDELIVERYDATE = null, Expression<Func<string>> bodyiNVOICENUMBER = null, Expression<Func<string>> bodyiSDML = null, Expression<Func<string>> bodylASTINTEGRATION = null, Expression<Func<string>> bodylASTPHYSICALINVENTORY = null, Expression<Func<string>> bodylASTUPDATE = null, Expression<Func<string>> bodylICENSEVERSION = null, Expression<Func<string>> bodylOCATIONID = null, Expression<Func<string>> bodymAINTENANCECOST = null, Expression<Func<string>> bodymAINTENANCECOSTCURID = null, Expression<Func<string>> bodymAINUSAGEID = null, Expression<Func<string>> bodymAXINSTALLS = null, Expression<Func<string>> bodymONTHLYFIXEDCOST = null, Expression<Func<string>> bodymONTHLYFIXEDCOSTCURID = null, Expression<Func<string>> bodymONTHLYNETRENTAL = null, Expression<Func<string>> bodymONTHLYNETRENTALCURID = null, Expression<Func<string>> bodymONTHDURATION = null, Expression<Func<string>> bodynETWORKIDENTIFIER = null, Expression<Func<string>> bodynEXTDEPARTMENTID = null, Expression<Func<string>> bodynEXTMAINTENANCEDATE = null, Expression<Func<string>> bodynEXTSTATUSID = null, Expression<Func<string>> bodynEXTUSERAPPLICATIONDATE = null, Expression<Func<string>> bodynEXTUSERID = null, Expression<Func<string>> bodynOTICE = null, Expression<Func<string>> bodyoRDERDETAILSID = null, Expression<Func<string>> bodyoRDERNUMBER = null, Expression<Func<string>> bodypIPELINESTATUSID = null, Expression<Func<string>> bodypOWERCONSUMPTIONWH = null, Expression<Func<string>> bodypROCESSORCOUNT = null, Expression<Func<string>> bodypROCESSORSOCKETCOUNT = null, Expression<Func<string>> bodypURCHASEDATE = null, Expression<Func<string>> bodypURCHASEPRICE = null, Expression<Func<string>> bodypURCHASEPRICECURID = null, Expression<Func<string>> bodypURCHASERATEID = null, Expression<Func<string>> bodyrECYCLEDDATE = null, Expression<Func<string>> bodyrECYCLINGPROVIDERID = null, Expression<Func<string>> bodyrEFORMNUMBER = null, Expression<Func<string>> bodyrEMOVEDDATE = null, Expression<Func<string>> bodyrENEWALDECISIONID = null, Expression<Func<string>> bodyrENEWALVALUE = null, Expression<Func<string>> bodyrENEWALVALUECURID = null, Expression<Func<string>> bodyrEPAIREDBYID = null, Expression<Func<string>> bodyrESALESVALUE = null, Expression<Func<string>> bodysCHEDULEDEND = null, Expression<Func<string>> bodysDCATALOGID = null, Expression<Func<string>> bodysERIALNUMBER = null, Expression<Func<string>> bodysLAID = null, Expression<Func<string>> bodysTATUSID = null, Expression<Func<string>> bodysUPPLIERID = null, Expression<Func<string>> bodytERM = null, Expression<Func<string>> bodyuPDATECOVERAGETERM = null, Expression<Func<string>> bodywARANTYTYPEID = null, Expression<Func<string>> bodyassetLabel = null, Expression<Func<string>> bodyassetTag = null, Expression<Func<string>> bodyautomaticRenewal = null, Expression<Func<string>> bodyavailabilitySlaId = null, Expression<Func<string>> bodyavailableField1 = null, Expression<Func<string>> bodyavailableField2 = null, Expression<Func<string>> bodyavailableField3 = null, Expression<Func<string>> bodyavailableField4 = null, Expression<Func<string>> bodyavailableField5 = null, Expression<Func<string>> bodyavailableField6 = null, Expression<Func<string>> bodycommentAsset = null)
+        public IBodyWorkflowAction<UpdateAssetResponse, ApiConnectionActionConfiguration> UpdateAsset(Expression<Func<string>> account, Expression<Func<string>> assetId, Expression<Func<string>> bodybEFORELOANDEPARTMENTId = null, Expression<Func<string>> bodybEFORELOANEMPLOYEEId = null, Expression<Func<string>> bodybEFORELOANLOCATIONId = null, Expression<Func<string>> bodybILLINGPERIODICITYINMONTH = null, Expression<Func<string>> bodybUYBACKVALUE = null, Expression<Func<string>> bodybUYBACKVALUECURId = null, Expression<Func<string>> bodycATALOGId = null, Expression<Func<string>> bodycHARGEBACK = null, Expression<Func<string>> bodycHARGEBACKCURId = null, Expression<Func<string>> bodycISTATUSId = null, Expression<Func<string>> bodycIVERSION = null, Expression<Func<string>> bodycMDEFAULTCHANGEId = null, Expression<Func<string>> bodycONFIGURATIONId = null, Expression<Func<string>> bodycRITICALLEVELId = null, Expression<Func<string>> bodydELIVERYDATE = null, Expression<Func<string>> bodydELIVERYNUMBER = null, Expression<Func<string>> bodydEPARTMENTId = null, Expression<Func<string>> bodydEPRECIATIONRULEId = null, Expression<Func<string>> bodydHARDWAREGUID = null, Expression<Func<string>> bodyeMPLOYEEId = null, Expression<Func<string>> bodyeNDOFWARANTY = null, Expression<Func<string>> bodyeNTRYDATE = null, Expression<Func<string>> bodyeSTIMATEDPERCENTAGEUSE = null, Expression<Func<string>> bodyeXPECTEDENDLENDDATE = null, Expression<Func<string>> bodyeXPECTEDRETURNDATE = null, Expression<Func<string>> bodyfALLENTERM = null, Expression<Func<string>> bodyfIXEDASSETNUMBER = null, Expression<Func<string>> bodyiNITIALSTART = null, Expression<Func<string>> bodyiNSTALLATIONDATE = null, Expression<Func<string>> bodyiNTERNALDELIVERYDATE = null, Expression<Func<string>> bodyiNVOICENUMBER = null, Expression<Func<string>> bodyiSDML = null, Expression<Func<string>> bodylASTINTEGRATION = null, Expression<Func<string>> bodylASTPHYSICALINVENTORY = null, Expression<Func<string>> bodylASTUPDATE = null, Expression<Func<string>> bodylICENSEVERSION = null, Expression<Func<string>> bodylOCATIONId = null, Expression<Func<string>> bodymAINTENANCECOST = null, Expression<Func<string>> bodymAINTENANCECOSTCURId = null, Expression<Func<string>> bodymAINUSAGEId = null, Expression<Func<string>> bodymAXINSTALLS = null, Expression<Func<string>> bodymONTHLYFIXEDCOST = null, Expression<Func<string>> bodymONTHLYFIXEDCOSTCURId = null, Expression<Func<string>> bodymONTHLYNETRENTAL = null, Expression<Func<string>> bodymONTHLYNETRENTALCURId = null, Expression<Func<string>> bodymONTHDURATION = null, Expression<Func<string>> bodynETWORKIdENTIFIER = null, Expression<Func<string>> bodynEXTDEPARTMENTId = null, Expression<Func<string>> bodynEXTMAINTENANCEDATE = null, Expression<Func<string>> bodynEXTSTATUSId = null, Expression<Func<string>> bodynEXTUSERAPPLICATIONDATE = null, Expression<Func<string>> bodynEXTUSERId = null, Expression<Func<string>> bodynOTICE = null, Expression<Func<string>> bodyoRDERDETAILSId = null, Expression<Func<string>> bodyoRDERNUMBER = null, Expression<Func<string>> bodypIPELINESTATUSId = null, Expression<Func<string>> bodypOWERCONSUMPTIONWH = null, Expression<Func<string>> bodypROCESSORCOUNT = null, Expression<Func<string>> bodypROCESSORSOCKETCOUNT = null, Expression<Func<string>> bodypURCHASEDATE = null, Expression<Func<string>> bodypURCHASEPRICE = null, Expression<Func<string>> bodypURCHASEPRICECURId = null, Expression<Func<string>> bodypURCHASERATEId = null, Expression<Func<string>> bodyrECYCLEDDATE = null, Expression<Func<string>> bodyrECYCLINGPROVIdERId = null, Expression<Func<string>> bodyrEFORMNUMBER = null, Expression<Func<string>> bodyrEMOVEDDATE = null, Expression<Func<string>> bodyrENEWALDECISIONId = null, Expression<Func<string>> bodyrENEWALVALUE = null, Expression<Func<string>> bodyrENEWALVALUECURId = null, Expression<Func<string>> bodyrEPAIREDBYId = null, Expression<Func<string>> bodyrESALESVALUE = null, Expression<Func<string>> bodysCHEDULEDEND = null, Expression<Func<string>> bodysDCATALOGId = null, Expression<Func<string>> bodysERIALNUMBER = null, Expression<Func<string>> bodysLAId = null, Expression<Func<string>> bodysTATUSId = null, Expression<Func<string>> bodysUPPLIERId = null, Expression<Func<string>> bodytERM = null, Expression<Func<string>> bodyuPDATECOVERAGETERM = null, Expression<Func<string>> bodywARANTYTYPEId = null, Expression<Func<string>> bodyassetLabel = null, Expression<Func<string>> bodyassetTag = null, Expression<Func<string>> bodyautomaticRenewal = null, Expression<Func<string>> bodyavailabilitySlaId = null, Expression<Func<string>> bodyavailableField1 = null, Expression<Func<string>> bodyavailableField2 = null, Expression<Func<string>> bodyavailableField3 = null, Expression<Func<string>> bodyavailableField4 = null, Expression<Func<string>> bodyavailableField5 = null, Expression<Func<string>> bodyavailableField6 = null, Expression<Func<string>> bodycommentAsset = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_assetId = WorkflowExpression.Compile(assetId, nameof(assetId), required: true);
-            var __workflow_bodybEFORELOANDEPARTMENTID = WorkflowExpression.Compile(bodybEFORELOANDEPARTMENTID, nameof(bodybEFORELOANDEPARTMENTID), required: false);
-            var __workflow_bodybEFORELOANEMPLOYEEID = WorkflowExpression.Compile(bodybEFORELOANEMPLOYEEID, nameof(bodybEFORELOANEMPLOYEEID), required: false);
-            var __workflow_bodybEFORELOANLOCATIONID = WorkflowExpression.Compile(bodybEFORELOANLOCATIONID, nameof(bodybEFORELOANLOCATIONID), required: false);
+            var __workflow_bodybEFORELOANDEPARTMENTId = WorkflowExpression.Compile(bodybEFORELOANDEPARTMENTId, nameof(bodybEFORELOANDEPARTMENTId), required: false);
+            var __workflow_bodybEFORELOANEMPLOYEEId = WorkflowExpression.Compile(bodybEFORELOANEMPLOYEEId, nameof(bodybEFORELOANEMPLOYEEId), required: false);
+            var __workflow_bodybEFORELOANLOCATIONId = WorkflowExpression.Compile(bodybEFORELOANLOCATIONId, nameof(bodybEFORELOANLOCATIONId), required: false);
             var __workflow_bodybILLINGPERIODICITYINMONTH = WorkflowExpression.Compile(bodybILLINGPERIODICITYINMONTH, nameof(bodybILLINGPERIODICITYINMONTH), required: false);
             var __workflow_bodybUYBACKVALUE = WorkflowExpression.Compile(bodybUYBACKVALUE, nameof(bodybUYBACKVALUE), required: false);
-            var __workflow_bodybUYBACKVALUECURID = WorkflowExpression.Compile(bodybUYBACKVALUECURID, nameof(bodybUYBACKVALUECURID), required: false);
-            var __workflow_bodycATALOGID = WorkflowExpression.Compile(bodycATALOGID, nameof(bodycATALOGID), required: false);
+            var __workflow_bodybUYBACKVALUECURId = WorkflowExpression.Compile(bodybUYBACKVALUECURId, nameof(bodybUYBACKVALUECURId), required: false);
+            var __workflow_bodycATALOGId = WorkflowExpression.Compile(bodycATALOGId, nameof(bodycATALOGId), required: false);
             var __workflow_bodycHARGEBACK = WorkflowExpression.Compile(bodycHARGEBACK, nameof(bodycHARGEBACK), required: false);
-            var __workflow_bodycHARGEBACKCURID = WorkflowExpression.Compile(bodycHARGEBACKCURID, nameof(bodycHARGEBACKCURID), required: false);
-            var __workflow_bodycISTATUSID = WorkflowExpression.Compile(bodycISTATUSID, nameof(bodycISTATUSID), required: false);
+            var __workflow_bodycHARGEBACKCURId = WorkflowExpression.Compile(bodycHARGEBACKCURId, nameof(bodycHARGEBACKCURId), required: false);
+            var __workflow_bodycISTATUSId = WorkflowExpression.Compile(bodycISTATUSId, nameof(bodycISTATUSId), required: false);
             var __workflow_bodycIVERSION = WorkflowExpression.Compile(bodycIVERSION, nameof(bodycIVERSION), required: false);
-            var __workflow_bodycMDEFAULTCHANGEID = WorkflowExpression.Compile(bodycMDEFAULTCHANGEID, nameof(bodycMDEFAULTCHANGEID), required: false);
-            var __workflow_bodycONFIGURATIONID = WorkflowExpression.Compile(bodycONFIGURATIONID, nameof(bodycONFIGURATIONID), required: false);
-            var __workflow_bodycRITICALLEVELID = WorkflowExpression.Compile(bodycRITICALLEVELID, nameof(bodycRITICALLEVELID), required: false);
+            var __workflow_bodycMDEFAULTCHANGEId = WorkflowExpression.Compile(bodycMDEFAULTCHANGEId, nameof(bodycMDEFAULTCHANGEId), required: false);
+            var __workflow_bodycONFIGURATIONId = WorkflowExpression.Compile(bodycONFIGURATIONId, nameof(bodycONFIGURATIONId), required: false);
+            var __workflow_bodycRITICALLEVELId = WorkflowExpression.Compile(bodycRITICALLEVELId, nameof(bodycRITICALLEVELId), required: false);
             var __workflow_bodydELIVERYDATE = WorkflowExpression.Compile(bodydELIVERYDATE, nameof(bodydELIVERYDATE), required: false);
             var __workflow_bodydELIVERYNUMBER = WorkflowExpression.Compile(bodydELIVERYNUMBER, nameof(bodydELIVERYNUMBER), required: false);
-            var __workflow_bodydEPARTMENTID = WorkflowExpression.Compile(bodydEPARTMENTID, nameof(bodydEPARTMENTID), required: false);
-            var __workflow_bodydEPRECIATIONRULEID = WorkflowExpression.Compile(bodydEPRECIATIONRULEID, nameof(bodydEPRECIATIONRULEID), required: false);
+            var __workflow_bodydEPARTMENTId = WorkflowExpression.Compile(bodydEPARTMENTId, nameof(bodydEPARTMENTId), required: false);
+            var __workflow_bodydEPRECIATIONRULEId = WorkflowExpression.Compile(bodydEPRECIATIONRULEId, nameof(bodydEPRECIATIONRULEId), required: false);
             var __workflow_bodydHARDWAREGUID = WorkflowExpression.Compile(bodydHARDWAREGUID, nameof(bodydHARDWAREGUID), required: false);
-            var __workflow_bodyeMPLOYEEID = WorkflowExpression.Compile(bodyeMPLOYEEID, nameof(bodyeMPLOYEEID), required: false);
+            var __workflow_bodyeMPLOYEEId = WorkflowExpression.Compile(bodyeMPLOYEEId, nameof(bodyeMPLOYEEId), required: false);
             var __workflow_bodyeNDOFWARANTY = WorkflowExpression.Compile(bodyeNDOFWARANTY, nameof(bodyeNDOFWARANTY), required: false);
             var __workflow_bodyeNTRYDATE = WorkflowExpression.Compile(bodyeNTRYDATE, nameof(bodyeNTRYDATE), required: false);
             var __workflow_bodyeSTIMATEDPERCENTAGEUSE = WorkflowExpression.Compile(bodyeSTIMATEDPERCENTAGEUSE, nameof(bodyeSTIMATEDPERCENTAGEUSE), required: false);
@@ -154,51 +155,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodylASTPHYSICALINVENTORY = WorkflowExpression.Compile(bodylASTPHYSICALINVENTORY, nameof(bodylASTPHYSICALINVENTORY), required: false);
             var __workflow_bodylASTUPDATE = WorkflowExpression.Compile(bodylASTUPDATE, nameof(bodylASTUPDATE), required: false);
             var __workflow_bodylICENSEVERSION = WorkflowExpression.Compile(bodylICENSEVERSION, nameof(bodylICENSEVERSION), required: false);
-            var __workflow_bodylOCATIONID = WorkflowExpression.Compile(bodylOCATIONID, nameof(bodylOCATIONID), required: false);
+            var __workflow_bodylOCATIONId = WorkflowExpression.Compile(bodylOCATIONId, nameof(bodylOCATIONId), required: false);
             var __workflow_bodymAINTENANCECOST = WorkflowExpression.Compile(bodymAINTENANCECOST, nameof(bodymAINTENANCECOST), required: false);
-            var __workflow_bodymAINTENANCECOSTCURID = WorkflowExpression.Compile(bodymAINTENANCECOSTCURID, nameof(bodymAINTENANCECOSTCURID), required: false);
-            var __workflow_bodymAINUSAGEID = WorkflowExpression.Compile(bodymAINUSAGEID, nameof(bodymAINUSAGEID), required: false);
+            var __workflow_bodymAINTENANCECOSTCURId = WorkflowExpression.Compile(bodymAINTENANCECOSTCURId, nameof(bodymAINTENANCECOSTCURId), required: false);
+            var __workflow_bodymAINUSAGEId = WorkflowExpression.Compile(bodymAINUSAGEId, nameof(bodymAINUSAGEId), required: false);
             var __workflow_bodymAXINSTALLS = WorkflowExpression.Compile(bodymAXINSTALLS, nameof(bodymAXINSTALLS), required: false);
             var __workflow_bodymONTHLYFIXEDCOST = WorkflowExpression.Compile(bodymONTHLYFIXEDCOST, nameof(bodymONTHLYFIXEDCOST), required: false);
-            var __workflow_bodymONTHLYFIXEDCOSTCURID = WorkflowExpression.Compile(bodymONTHLYFIXEDCOSTCURID, nameof(bodymONTHLYFIXEDCOSTCURID), required: false);
+            var __workflow_bodymONTHLYFIXEDCOSTCURId = WorkflowExpression.Compile(bodymONTHLYFIXEDCOSTCURId, nameof(bodymONTHLYFIXEDCOSTCURId), required: false);
             var __workflow_bodymONTHLYNETRENTAL = WorkflowExpression.Compile(bodymONTHLYNETRENTAL, nameof(bodymONTHLYNETRENTAL), required: false);
-            var __workflow_bodymONTHLYNETRENTALCURID = WorkflowExpression.Compile(bodymONTHLYNETRENTALCURID, nameof(bodymONTHLYNETRENTALCURID), required: false);
+            var __workflow_bodymONTHLYNETRENTALCURId = WorkflowExpression.Compile(bodymONTHLYNETRENTALCURId, nameof(bodymONTHLYNETRENTALCURId), required: false);
             var __workflow_bodymONTHDURATION = WorkflowExpression.Compile(bodymONTHDURATION, nameof(bodymONTHDURATION), required: false);
-            var __workflow_bodynETWORKIDENTIFIER = WorkflowExpression.Compile(bodynETWORKIDENTIFIER, nameof(bodynETWORKIDENTIFIER), required: false);
-            var __workflow_bodynEXTDEPARTMENTID = WorkflowExpression.Compile(bodynEXTDEPARTMENTID, nameof(bodynEXTDEPARTMENTID), required: false);
+            var __workflow_bodynETWORKIdENTIFIER = WorkflowExpression.Compile(bodynETWORKIdENTIFIER, nameof(bodynETWORKIdENTIFIER), required: false);
+            var __workflow_bodynEXTDEPARTMENTId = WorkflowExpression.Compile(bodynEXTDEPARTMENTId, nameof(bodynEXTDEPARTMENTId), required: false);
             var __workflow_bodynEXTMAINTENANCEDATE = WorkflowExpression.Compile(bodynEXTMAINTENANCEDATE, nameof(bodynEXTMAINTENANCEDATE), required: false);
-            var __workflow_bodynEXTSTATUSID = WorkflowExpression.Compile(bodynEXTSTATUSID, nameof(bodynEXTSTATUSID), required: false);
+            var __workflow_bodynEXTSTATUSId = WorkflowExpression.Compile(bodynEXTSTATUSId, nameof(bodynEXTSTATUSId), required: false);
             var __workflow_bodynEXTUSERAPPLICATIONDATE = WorkflowExpression.Compile(bodynEXTUSERAPPLICATIONDATE, nameof(bodynEXTUSERAPPLICATIONDATE), required: false);
-            var __workflow_bodynEXTUSERID = WorkflowExpression.Compile(bodynEXTUSERID, nameof(bodynEXTUSERID), required: false);
+            var __workflow_bodynEXTUSERId = WorkflowExpression.Compile(bodynEXTUSERId, nameof(bodynEXTUSERId), required: false);
             var __workflow_bodynOTICE = WorkflowExpression.Compile(bodynOTICE, nameof(bodynOTICE), required: false);
-            var __workflow_bodyoRDERDETAILSID = WorkflowExpression.Compile(bodyoRDERDETAILSID, nameof(bodyoRDERDETAILSID), required: false);
+            var __workflow_bodyoRDERDETAILSId = WorkflowExpression.Compile(bodyoRDERDETAILSId, nameof(bodyoRDERDETAILSId), required: false);
             var __workflow_bodyoRDERNUMBER = WorkflowExpression.Compile(bodyoRDERNUMBER, nameof(bodyoRDERNUMBER), required: false);
-            var __workflow_bodypIPELINESTATUSID = WorkflowExpression.Compile(bodypIPELINESTATUSID, nameof(bodypIPELINESTATUSID), required: false);
+            var __workflow_bodypIPELINESTATUSId = WorkflowExpression.Compile(bodypIPELINESTATUSId, nameof(bodypIPELINESTATUSId), required: false);
             var __workflow_bodypOWERCONSUMPTIONWH = WorkflowExpression.Compile(bodypOWERCONSUMPTIONWH, nameof(bodypOWERCONSUMPTIONWH), required: false);
             var __workflow_bodypROCESSORCOUNT = WorkflowExpression.Compile(bodypROCESSORCOUNT, nameof(bodypROCESSORCOUNT), required: false);
             var __workflow_bodypROCESSORSOCKETCOUNT = WorkflowExpression.Compile(bodypROCESSORSOCKETCOUNT, nameof(bodypROCESSORSOCKETCOUNT), required: false);
             var __workflow_bodypURCHASEDATE = WorkflowExpression.Compile(bodypURCHASEDATE, nameof(bodypURCHASEDATE), required: false);
             var __workflow_bodypURCHASEPRICE = WorkflowExpression.Compile(bodypURCHASEPRICE, nameof(bodypURCHASEPRICE), required: false);
-            var __workflow_bodypURCHASEPRICECURID = WorkflowExpression.Compile(bodypURCHASEPRICECURID, nameof(bodypURCHASEPRICECURID), required: false);
-            var __workflow_bodypURCHASERATEID = WorkflowExpression.Compile(bodypURCHASERATEID, nameof(bodypURCHASERATEID), required: false);
+            var __workflow_bodypURCHASEPRICECURId = WorkflowExpression.Compile(bodypURCHASEPRICECURId, nameof(bodypURCHASEPRICECURId), required: false);
+            var __workflow_bodypURCHASERATEId = WorkflowExpression.Compile(bodypURCHASERATEId, nameof(bodypURCHASERATEId), required: false);
             var __workflow_bodyrECYCLEDDATE = WorkflowExpression.Compile(bodyrECYCLEDDATE, nameof(bodyrECYCLEDDATE), required: false);
-            var __workflow_bodyrECYCLINGPROVIDERID = WorkflowExpression.Compile(bodyrECYCLINGPROVIDERID, nameof(bodyrECYCLINGPROVIDERID), required: false);
+            var __workflow_bodyrECYCLINGPROVIdERId = WorkflowExpression.Compile(bodyrECYCLINGPROVIdERId, nameof(bodyrECYCLINGPROVIdERId), required: false);
             var __workflow_bodyrEFORMNUMBER = WorkflowExpression.Compile(bodyrEFORMNUMBER, nameof(bodyrEFORMNUMBER), required: false);
             var __workflow_bodyrEMOVEDDATE = WorkflowExpression.Compile(bodyrEMOVEDDATE, nameof(bodyrEMOVEDDATE), required: false);
-            var __workflow_bodyrENEWALDECISIONID = WorkflowExpression.Compile(bodyrENEWALDECISIONID, nameof(bodyrENEWALDECISIONID), required: false);
+            var __workflow_bodyrENEWALDECISIONId = WorkflowExpression.Compile(bodyrENEWALDECISIONId, nameof(bodyrENEWALDECISIONId), required: false);
             var __workflow_bodyrENEWALVALUE = WorkflowExpression.Compile(bodyrENEWALVALUE, nameof(bodyrENEWALVALUE), required: false);
-            var __workflow_bodyrENEWALVALUECURID = WorkflowExpression.Compile(bodyrENEWALVALUECURID, nameof(bodyrENEWALVALUECURID), required: false);
-            var __workflow_bodyrEPAIREDBYID = WorkflowExpression.Compile(bodyrEPAIREDBYID, nameof(bodyrEPAIREDBYID), required: false);
+            var __workflow_bodyrENEWALVALUECURId = WorkflowExpression.Compile(bodyrENEWALVALUECURId, nameof(bodyrENEWALVALUECURId), required: false);
+            var __workflow_bodyrEPAIREDBYId = WorkflowExpression.Compile(bodyrEPAIREDBYId, nameof(bodyrEPAIREDBYId), required: false);
             var __workflow_bodyrESALESVALUE = WorkflowExpression.Compile(bodyrESALESVALUE, nameof(bodyrESALESVALUE), required: false);
             var __workflow_bodysCHEDULEDEND = WorkflowExpression.Compile(bodysCHEDULEDEND, nameof(bodysCHEDULEDEND), required: false);
-            var __workflow_bodysDCATALOGID = WorkflowExpression.Compile(bodysDCATALOGID, nameof(bodysDCATALOGID), required: false);
+            var __workflow_bodysDCATALOGId = WorkflowExpression.Compile(bodysDCATALOGId, nameof(bodysDCATALOGId), required: false);
             var __workflow_bodysERIALNUMBER = WorkflowExpression.Compile(bodysERIALNUMBER, nameof(bodysERIALNUMBER), required: false);
-            var __workflow_bodysLAID = WorkflowExpression.Compile(bodysLAID, nameof(bodysLAID), required: false);
-            var __workflow_bodysTATUSID = WorkflowExpression.Compile(bodysTATUSID, nameof(bodysTATUSID), required: false);
-            var __workflow_bodysUPPLIERID = WorkflowExpression.Compile(bodysUPPLIERID, nameof(bodysUPPLIERID), required: false);
+            var __workflow_bodysLAId = WorkflowExpression.Compile(bodysLAId, nameof(bodysLAId), required: false);
+            var __workflow_bodysTATUSId = WorkflowExpression.Compile(bodysTATUSId, nameof(bodysTATUSId), required: false);
+            var __workflow_bodysUPPLIERId = WorkflowExpression.Compile(bodysUPPLIERId, nameof(bodysUPPLIERId), required: false);
             var __workflow_bodytERM = WorkflowExpression.Compile(bodytERM, nameof(bodytERM), required: false);
             var __workflow_bodyuPDATECOVERAGETERM = WorkflowExpression.Compile(bodyuPDATECOVERAGETERM, nameof(bodyuPDATECOVERAGETERM), required: false);
-            var __workflow_bodywARANTYTYPEID = WorkflowExpression.Compile(bodywARANTYTYPEID, nameof(bodywARANTYTYPEID), required: false);
+            var __workflow_bodywARANTYTYPEId = WorkflowExpression.Compile(bodywARANTYTYPEId, nameof(bodywARANTYTYPEId), required: false);
             var __workflow_bodyassetLabel = WorkflowExpression.Compile(bodyassetLabel, nameof(bodyassetLabel), required: false);
             var __workflow_bodyassetTag = WorkflowExpression.Compile(bodyassetTag, nameof(bodyassetTag), required: false);
             var __workflow_bodyautomaticRenewal = WorkflowExpression.Compile(bodyautomaticRenewal, nameof(bodyautomaticRenewal), required: false);
@@ -217,21 +218,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (__workflow_bodybEFORELOANDEPARTMENTID != null)
+                if (__workflow_bodybEFORELOANDEPARTMENTId != null)
                 {
-                    body["BEFORE_LOAN_DEPARTMENT_ID"] = ExpressionConverter.ConvertO(__workflow_bodybEFORELOANDEPARTMENTID);
+                    body["BEFORE_LOAN_DEPARTMENT_ID"] = ExpressionConverter.ConvertO(__workflow_bodybEFORELOANDEPARTMENTId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodybEFORELOANEMPLOYEEID != null)
+                if (__workflow_bodybEFORELOANEMPLOYEEId != null)
                 {
-                    body["BEFORE_LOAN_EMPLOYEE_ID"] = ExpressionConverter.ConvertO(__workflow_bodybEFORELOANEMPLOYEEID);
+                    body["BEFORE_LOAN_EMPLOYEE_ID"] = ExpressionConverter.ConvertO(__workflow_bodybEFORELOANEMPLOYEEId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodybEFORELOANLOCATIONID != null)
+                if (__workflow_bodybEFORELOANLOCATIONId != null)
                 {
-                    body["BEFORE_LOAN_LOCATION_ID"] = ExpressionConverter.ConvertO(__workflow_bodybEFORELOANLOCATIONID);
+                    body["BEFORE_LOAN_LOCATION_ID"] = ExpressionConverter.ConvertO(__workflow_bodybEFORELOANLOCATIONId);
                     bodypropCount++;
                 }
 
@@ -247,15 +248,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodybUYBACKVALUECURID != null)
+                if (__workflow_bodybUYBACKVALUECURId != null)
                 {
-                    body["BUY_BACK_VALUE_CUR_ID"] = ExpressionConverter.ConvertO(__workflow_bodybUYBACKVALUECURID);
+                    body["BUY_BACK_VALUE_CUR_ID"] = ExpressionConverter.ConvertO(__workflow_bodybUYBACKVALUECURId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodycATALOGID != null)
+                if (__workflow_bodycATALOGId != null)
                 {
-                    body["CATALOG_ID"] = ExpressionConverter.ConvertO(__workflow_bodycATALOGID);
+                    body["CATALOG_ID"] = ExpressionConverter.ConvertO(__workflow_bodycATALOGId);
                     bodypropCount++;
                 }
 
@@ -265,15 +266,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodycHARGEBACKCURID != null)
+                if (__workflow_bodycHARGEBACKCURId != null)
                 {
-                    body["CHARGE_BACK_CUR_ID"] = ExpressionConverter.ConvertO(__workflow_bodycHARGEBACKCURID);
+                    body["CHARGE_BACK_CUR_ID"] = ExpressionConverter.ConvertO(__workflow_bodycHARGEBACKCURId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodycISTATUSID != null)
+                if (__workflow_bodycISTATUSId != null)
                 {
-                    body["CI_STATUS_ID"] = ExpressionConverter.ConvertO(__workflow_bodycISTATUSID);
+                    body["CI_STATUS_ID"] = ExpressionConverter.ConvertO(__workflow_bodycISTATUSId);
                     bodypropCount++;
                 }
 
@@ -283,21 +284,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodycMDEFAULTCHANGEID != null)
+                if (__workflow_bodycMDEFAULTCHANGEId != null)
                 {
-                    body["CM_DEFAULT_CHANGE_ID"] = ExpressionConverter.ConvertO(__workflow_bodycMDEFAULTCHANGEID);
+                    body["CM_DEFAULT_CHANGE_ID"] = ExpressionConverter.ConvertO(__workflow_bodycMDEFAULTCHANGEId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodycONFIGURATIONID != null)
+                if (__workflow_bodycONFIGURATIONId != null)
                 {
-                    body["CONFIGURATION_ID"] = ExpressionConverter.ConvertO(__workflow_bodycONFIGURATIONID);
+                    body["CONFIGURATION_ID"] = ExpressionConverter.ConvertO(__workflow_bodycONFIGURATIONId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodycRITICALLEVELID != null)
+                if (__workflow_bodycRITICALLEVELId != null)
                 {
-                    body["CRITICAL_LEVEL_ID"] = ExpressionConverter.ConvertO(__workflow_bodycRITICALLEVELID);
+                    body["CRITICAL_LEVEL_ID"] = ExpressionConverter.ConvertO(__workflow_bodycRITICALLEVELId);
                     bodypropCount++;
                 }
 
@@ -313,15 +314,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodydEPARTMENTID != null)
+                if (__workflow_bodydEPARTMENTId != null)
                 {
-                    body["DEPARTMENT_ID"] = ExpressionConverter.ConvertO(__workflow_bodydEPARTMENTID);
+                    body["DEPARTMENT_ID"] = ExpressionConverter.ConvertO(__workflow_bodydEPARTMENTId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodydEPRECIATIONRULEID != null)
+                if (__workflow_bodydEPRECIATIONRULEId != null)
                 {
-                    body["DEPRECIATION_RULE_ID"] = ExpressionConverter.ConvertO(__workflow_bodydEPRECIATIONRULEID);
+                    body["DEPRECIATION_RULE_ID"] = ExpressionConverter.ConvertO(__workflow_bodydEPRECIATIONRULEId);
                     bodypropCount++;
                 }
 
@@ -331,9 +332,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyeMPLOYEEID != null)
+                if (__workflow_bodyeMPLOYEEId != null)
                 {
-                    body["EMPLOYEE_ID"] = ExpressionConverter.ConvertO(__workflow_bodyeMPLOYEEID);
+                    body["EMPLOYEE_ID"] = ExpressionConverter.ConvertO(__workflow_bodyeMPLOYEEId);
                     bodypropCount++;
                 }
 
@@ -433,9 +434,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodylOCATIONID != null)
+                if (__workflow_bodylOCATIONId != null)
                 {
-                    body["LOCATION_ID"] = ExpressionConverter.ConvertO(__workflow_bodylOCATIONID);
+                    body["LOCATION_ID"] = ExpressionConverter.ConvertO(__workflow_bodylOCATIONId);
                     bodypropCount++;
                 }
 
@@ -445,15 +446,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodymAINTENANCECOSTCURID != null)
+                if (__workflow_bodymAINTENANCECOSTCURId != null)
                 {
-                    body["MAINTENANCE_COST_CUR_ID"] = ExpressionConverter.ConvertO(__workflow_bodymAINTENANCECOSTCURID);
+                    body["MAINTENANCE_COST_CUR_ID"] = ExpressionConverter.ConvertO(__workflow_bodymAINTENANCECOSTCURId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodymAINUSAGEID != null)
+                if (__workflow_bodymAINUSAGEId != null)
                 {
-                    body["MAIN_USAGE_ID"] = ExpressionConverter.ConvertO(__workflow_bodymAINUSAGEID);
+                    body["MAIN_USAGE_ID"] = ExpressionConverter.ConvertO(__workflow_bodymAINUSAGEId);
                     bodypropCount++;
                 }
 
@@ -469,9 +470,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodymONTHLYFIXEDCOSTCURID != null)
+                if (__workflow_bodymONTHLYFIXEDCOSTCURId != null)
                 {
-                    body["MONTHLY_FIXED_COST_CUR_ID"] = ExpressionConverter.ConvertO(__workflow_bodymONTHLYFIXEDCOSTCURID);
+                    body["MONTHLY_FIXED_COST_CUR_ID"] = ExpressionConverter.ConvertO(__workflow_bodymONTHLYFIXEDCOSTCURId);
                     bodypropCount++;
                 }
 
@@ -481,9 +482,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodymONTHLYNETRENTALCURID != null)
+                if (__workflow_bodymONTHLYNETRENTALCURId != null)
                 {
-                    body["MONTHLY_NET_RENTAL_CUR_ID"] = ExpressionConverter.ConvertO(__workflow_bodymONTHLYNETRENTALCURID);
+                    body["MONTHLY_NET_RENTAL_CUR_ID"] = ExpressionConverter.ConvertO(__workflow_bodymONTHLYNETRENTALCURId);
                     bodypropCount++;
                 }
 
@@ -493,15 +494,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodynETWORKIDENTIFIER != null)
+                if (__workflow_bodynETWORKIdENTIFIER != null)
                 {
-                    body["NETWORK_IDENTIFIER"] = ExpressionConverter.ConvertO(__workflow_bodynETWORKIDENTIFIER);
+                    body["NETWORK_IDENTIFIER"] = ExpressionConverter.ConvertO(__workflow_bodynETWORKIdENTIFIER);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodynEXTDEPARTMENTID != null)
+                if (__workflow_bodynEXTDEPARTMENTId != null)
                 {
-                    body["NEXT_DEPARTMENT_ID"] = ExpressionConverter.ConvertO(__workflow_bodynEXTDEPARTMENTID);
+                    body["NEXT_DEPARTMENT_ID"] = ExpressionConverter.ConvertO(__workflow_bodynEXTDEPARTMENTId);
                     bodypropCount++;
                 }
 
@@ -511,9 +512,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodynEXTSTATUSID != null)
+                if (__workflow_bodynEXTSTATUSId != null)
                 {
-                    body["NEXT_STATUS_ID"] = ExpressionConverter.ConvertO(__workflow_bodynEXTSTATUSID);
+                    body["NEXT_STATUS_ID"] = ExpressionConverter.ConvertO(__workflow_bodynEXTSTATUSId);
                     bodypropCount++;
                 }
 
@@ -523,9 +524,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodynEXTUSERID != null)
+                if (__workflow_bodynEXTUSERId != null)
                 {
-                    body["NEXT_USER_ID"] = ExpressionConverter.ConvertO(__workflow_bodynEXTUSERID);
+                    body["NEXT_USER_ID"] = ExpressionConverter.ConvertO(__workflow_bodynEXTUSERId);
                     bodypropCount++;
                 }
 
@@ -535,9 +536,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyoRDERDETAILSID != null)
+                if (__workflow_bodyoRDERDETAILSId != null)
                 {
-                    body["ORDER_DETAILS_ID"] = ExpressionConverter.ConvertO(__workflow_bodyoRDERDETAILSID);
+                    body["ORDER_DETAILS_ID"] = ExpressionConverter.ConvertO(__workflow_bodyoRDERDETAILSId);
                     bodypropCount++;
                 }
 
@@ -547,9 +548,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodypIPELINESTATUSID != null)
+                if (__workflow_bodypIPELINESTATUSId != null)
                 {
-                    body["PIPELINE_STATUS_ID"] = ExpressionConverter.ConvertO(__workflow_bodypIPELINESTATUSID);
+                    body["PIPELINE_STATUS_ID"] = ExpressionConverter.ConvertO(__workflow_bodypIPELINESTATUSId);
                     bodypropCount++;
                 }
 
@@ -583,15 +584,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodypURCHASEPRICECURID != null)
+                if (__workflow_bodypURCHASEPRICECURId != null)
                 {
-                    body["PURCHASE_PRICE_CUR_ID"] = ExpressionConverter.ConvertO(__workflow_bodypURCHASEPRICECURID);
+                    body["PURCHASE_PRICE_CUR_ID"] = ExpressionConverter.ConvertO(__workflow_bodypURCHASEPRICECURId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodypURCHASERATEID != null)
+                if (__workflow_bodypURCHASERATEId != null)
                 {
-                    body["PURCHASE_RATE_ID"] = ExpressionConverter.ConvertO(__workflow_bodypURCHASERATEID);
+                    body["PURCHASE_RATE_ID"] = ExpressionConverter.ConvertO(__workflow_bodypURCHASERATEId);
                     bodypropCount++;
                 }
 
@@ -601,9 +602,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyrECYCLINGPROVIDERID != null)
+                if (__workflow_bodyrECYCLINGPROVIdERId != null)
                 {
-                    body["RECYCLING_PROVIDER_ID"] = ExpressionConverter.ConvertO(__workflow_bodyrECYCLINGPROVIDERID);
+                    body["RECYCLING_PROVIDER_ID"] = ExpressionConverter.ConvertO(__workflow_bodyrECYCLINGPROVIdERId);
                     bodypropCount++;
                 }
 
@@ -619,9 +620,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyrENEWALDECISIONID != null)
+                if (__workflow_bodyrENEWALDECISIONId != null)
                 {
-                    body["RENEWAL_DECISION_ID"] = ExpressionConverter.ConvertO(__workflow_bodyrENEWALDECISIONID);
+                    body["RENEWAL_DECISION_ID"] = ExpressionConverter.ConvertO(__workflow_bodyrENEWALDECISIONId);
                     bodypropCount++;
                 }
 
@@ -631,15 +632,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyrENEWALVALUECURID != null)
+                if (__workflow_bodyrENEWALVALUECURId != null)
                 {
-                    body["RENEWAL_VALUE_CUR_ID"] = ExpressionConverter.ConvertO(__workflow_bodyrENEWALVALUECURID);
+                    body["RENEWAL_VALUE_CUR_ID"] = ExpressionConverter.ConvertO(__workflow_bodyrENEWALVALUECURId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyrEPAIREDBYID != null)
+                if (__workflow_bodyrEPAIREDBYId != null)
                 {
-                    body["REPAIRED_BY_ID"] = ExpressionConverter.ConvertO(__workflow_bodyrEPAIREDBYID);
+                    body["REPAIRED_BY_ID"] = ExpressionConverter.ConvertO(__workflow_bodyrEPAIREDBYId);
                     bodypropCount++;
                 }
 
@@ -655,9 +656,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodysDCATALOGID != null)
+                if (__workflow_bodysDCATALOGId != null)
                 {
-                    body["SD_CATALOG_ID"] = ExpressionConverter.ConvertO(__workflow_bodysDCATALOGID);
+                    body["SD_CATALOG_ID"] = ExpressionConverter.ConvertO(__workflow_bodysDCATALOGId);
                     bodypropCount++;
                 }
 
@@ -667,21 +668,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodysLAID != null)
+                if (__workflow_bodysLAId != null)
                 {
-                    body["SLA_ID"] = ExpressionConverter.ConvertO(__workflow_bodysLAID);
+                    body["SLA_ID"] = ExpressionConverter.ConvertO(__workflow_bodysLAId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodysTATUSID != null)
+                if (__workflow_bodysTATUSId != null)
                 {
-                    body["STATUS_ID"] = ExpressionConverter.ConvertO(__workflow_bodysTATUSID);
+                    body["STATUS_ID"] = ExpressionConverter.ConvertO(__workflow_bodysTATUSId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodysUPPLIERID != null)
+                if (__workflow_bodysUPPLIERId != null)
                 {
-                    body["SUPPLIER_ID"] = ExpressionConverter.ConvertO(__workflow_bodysUPPLIERID);
+                    body["SUPPLIER_ID"] = ExpressionConverter.ConvertO(__workflow_bodysUPPLIERId);
                     bodypropCount++;
                 }
 
@@ -697,9 +698,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodywARANTYTYPEID != null)
+                if (__workflow_bodywARANTYTYPEId != null)
                 {
-                    body["WARANTY_TYPE_ID"] = ExpressionConverter.ConvertO(__workflow_bodywARANTYTYPEID);
+                    body["WARANTY_TYPE_ID"] = ExpressionConverter.ConvertO(__workflow_bodywARANTYTYPEId);
                     bodypropCount++;
                 }
 
@@ -1092,12 +1093,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<CreateConfigurationItemLinkResponse, ApiConnectionActionConfiguration> CreateConfigurationItemLink(Expression<Func<string>> account, Expression<Func<string>> parentCiId, Expression<Func<string>> childCiId, Expression<Func<string>> bodyrelationTypeID, Expression<Func<string>> bodyblocking = null)
+        public IBodyWorkflowAction<CreateConfigurationItemLinkResponse, ApiConnectionActionConfiguration> CreateConfigurationItemLink(Expression<Func<string>> account, Expression<Func<string>> parentCiId, Expression<Func<string>> childCiId, Expression<Func<string>> bodyrelationTypeId, Expression<Func<string>> bodyblocking = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_parentCiId = WorkflowExpression.Compile(parentCiId, nameof(parentCiId), required: true);
             var __workflow_childCiId = WorkflowExpression.Compile(childCiId, nameof(childCiId), required: true);
-            var __workflow_bodyrelationTypeID = WorkflowExpression.Compile(bodyrelationTypeID, nameof(bodyrelationTypeID), required: true);
+            var __workflow_bodyrelationTypeId = WorkflowExpression.Compile(bodyrelationTypeId, nameof(bodyrelationTypeId), required: true);
             var __workflow_bodyblocking = WorkflowExpression.Compile(bodyblocking, nameof(bodyblocking), required: false);
             return new DeferredBodyAction<CreateConfigurationItemLinkResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -1113,7 +1114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                 }
 
                 bodypropCount++;
-                body["Relation_Type_ID"] = ExpressionConverter.ConvertO(__workflow_bodyrelationTypeID);
+                body["Relation_Type_ID"] = ExpressionConverter.ConvertO(__workflow_bodyrelationTypeId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -1124,13 +1125,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<UpdateConfigurationItemLinkResponse, ApiConnectionActionConfiguration> UpdateConfigurationItemLink(Expression<Func<string>> account, Expression<Func<string>> parentCiId, Expression<Func<string>> childCiId, Expression<Func<string>> bodyblocking = null, Expression<Func<string>> bodyrelationTypeID = null)
+        public IBodyWorkflowAction<UpdateConfigurationItemLinkResponse, ApiConnectionActionConfiguration> UpdateConfigurationItemLink(Expression<Func<string>> account, Expression<Func<string>> parentCiId, Expression<Func<string>> childCiId, Expression<Func<string>> bodyblocking = null, Expression<Func<string>> bodyrelationTypeId = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_parentCiId = WorkflowExpression.Compile(parentCiId, nameof(parentCiId), required: true);
             var __workflow_childCiId = WorkflowExpression.Compile(childCiId, nameof(childCiId), required: true);
             var __workflow_bodyblocking = WorkflowExpression.Compile(bodyblocking, nameof(bodyblocking), required: false);
-            var __workflow_bodyrelationTypeID = WorkflowExpression.Compile(bodyrelationTypeID, nameof(bodyrelationTypeID), required: false);
+            var __workflow_bodyrelationTypeId = WorkflowExpression.Compile(bodyrelationTypeId, nameof(bodyrelationTypeId), required: false);
             return new DeferredBodyAction<UpdateConfigurationItemLinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links/{2}", __workflow_account.WithUrlEncoding(1), __workflow_parentCiId.WithUrlEncoding(1), __workflow_childCiId.WithUrlEncoding(1)));
@@ -1144,9 +1145,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyrelationTypeID != null)
+                if (__workflow_bodyrelationTypeId != null)
                 {
-                    body["Relation_Type_ID"] = ExpressionConverter.ConvertO(__workflow_bodyrelationTypeID);
+                    body["Relation_Type_ID"] = ExpressionConverter.ConvertO(__workflow_bodyrelationTypeId);
                     bodypropCount++;
                 }
 
@@ -1199,11 +1200,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<UpdateDepartmentResponse, ApiConnectionActionConfiguration> UpdateDepartment(Expression<Func<string>> account, Expression<Func<string>> departmentId, Expression<Func<string>> bodypARENTDEPARTMENTID = null, Expression<Func<string>> bodydEPARTMENTEN = null, Expression<Func<string>> bodydEPARTMENTFR = null, Expression<Func<string>> bodydEPARTMENTSP = null, Expression<Func<string>> bodydEPARTMENTGE = null, Expression<Func<string>> bodydEPARTMENTIT = null, Expression<Func<string>> bodydEPARTMENTPO = null, Expression<Func<string>> bodydEPARTMENTLABEL = null, Expression<Func<string>> bodycOMMENTDEPARTMENT = null, Expression<Func<string>> bodymANAGERID = null, Expression<Func<string>> bodydEFAULTCOSTCENTERID = null, Expression<Func<string>> bodysTARTDATE = null, Expression<Func<string>> bodyeNDDATE = null, Expression<Func<string>> bodyuRLMAP = null, Expression<Func<string>> bodydEPARTMENTCODE = null, Expression<Func<string>> bodylASTUPDATE = null, Expression<Func<string>> bodylASTINTEGRATION = null, Expression<Func<string>> bodycURRENCYID = null, Expression<Func<string>> bodyaVAILABLEFIELD1 = null, Expression<Func<string>> bodyaVAILABLEFIELD2 = null, Expression<Func<string>> bodyaVAILABLEFIELD3 = null, Expression<Func<string>> bodyaVAILABLEFIELD4 = null, Expression<Func<string>> bodyaVAILABLEFIELD5 = null, Expression<Func<string>> bodyaVAILABLEFIELD6 = null, Expression<Func<string>> bodysLAID = null, Expression<Func<string>> bodydEPARTMENTL1 = null, Expression<Func<string>> bodydEPARTMENTL2 = null, Expression<Func<string>> bodydEPARTMENTL3 = null, Expression<Func<string>> bodydEPARTMENTL4 = null, Expression<Func<string>> bodydEPARTMENTL5 = null, Expression<Func<string>> bodydEPARTMENTL6 = null)
+        public IBodyWorkflowAction<UpdateDepartmentResponse, ApiConnectionActionConfiguration> UpdateDepartment(Expression<Func<string>> account, Expression<Func<string>> departmentId, Expression<Func<string>> bodypARENTDEPARTMENTId = null, Expression<Func<string>> bodydEPARTMENTEN = null, Expression<Func<string>> bodydEPARTMENTFR = null, Expression<Func<string>> bodydEPARTMENTSP = null, Expression<Func<string>> bodydEPARTMENTGE = null, Expression<Func<string>> bodydEPARTMENTIT = null, Expression<Func<string>> bodydEPARTMENTPO = null, Expression<Func<string>> bodydEPARTMENTLABEL = null, Expression<Func<string>> bodycOMMENTDEPARTMENT = null, Expression<Func<string>> bodymANAGERId = null, Expression<Func<string>> bodydEFAULTCOSTCENTERId = null, Expression<Func<string>> bodysTARTDATE = null, Expression<Func<string>> bodyeNDDATE = null, Expression<Func<string>> bodyuRLMAP = null, Expression<Func<string>> bodydEPARTMENTCODE = null, Expression<Func<string>> bodylASTUPDATE = null, Expression<Func<string>> bodylASTINTEGRATION = null, Expression<Func<string>> bodycURRENCYId = null, Expression<Func<string>> bodyaVAILABLEFIELD1 = null, Expression<Func<string>> bodyaVAILABLEFIELD2 = null, Expression<Func<string>> bodyaVAILABLEFIELD3 = null, Expression<Func<string>> bodyaVAILABLEFIELD4 = null, Expression<Func<string>> bodyaVAILABLEFIELD5 = null, Expression<Func<string>> bodyaVAILABLEFIELD6 = null, Expression<Func<string>> bodysLAId = null, Expression<Func<string>> bodydEPARTMENTL1 = null, Expression<Func<string>> bodydEPARTMENTL2 = null, Expression<Func<string>> bodydEPARTMENTL3 = null, Expression<Func<string>> bodydEPARTMENTL4 = null, Expression<Func<string>> bodydEPARTMENTL5 = null, Expression<Func<string>> bodydEPARTMENTL6 = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_departmentId = WorkflowExpression.Compile(departmentId, nameof(departmentId), required: true);
-            var __workflow_bodypARENTDEPARTMENTID = WorkflowExpression.Compile(bodypARENTDEPARTMENTID, nameof(bodypARENTDEPARTMENTID), required: false);
+            var __workflow_bodypARENTDEPARTMENTId = WorkflowExpression.Compile(bodypARENTDEPARTMENTId, nameof(bodypARENTDEPARTMENTId), required: false);
             var __workflow_bodydEPARTMENTEN = WorkflowExpression.Compile(bodydEPARTMENTEN, nameof(bodydEPARTMENTEN), required: false);
             var __workflow_bodydEPARTMENTFR = WorkflowExpression.Compile(bodydEPARTMENTFR, nameof(bodydEPARTMENTFR), required: false);
             var __workflow_bodydEPARTMENTSP = WorkflowExpression.Compile(bodydEPARTMENTSP, nameof(bodydEPARTMENTSP), required: false);
@@ -1212,22 +1213,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodydEPARTMENTPO = WorkflowExpression.Compile(bodydEPARTMENTPO, nameof(bodydEPARTMENTPO), required: false);
             var __workflow_bodydEPARTMENTLABEL = WorkflowExpression.Compile(bodydEPARTMENTLABEL, nameof(bodydEPARTMENTLABEL), required: false);
             var __workflow_bodycOMMENTDEPARTMENT = WorkflowExpression.Compile(bodycOMMENTDEPARTMENT, nameof(bodycOMMENTDEPARTMENT), required: false);
-            var __workflow_bodymANAGERID = WorkflowExpression.Compile(bodymANAGERID, nameof(bodymANAGERID), required: false);
-            var __workflow_bodydEFAULTCOSTCENTERID = WorkflowExpression.Compile(bodydEFAULTCOSTCENTERID, nameof(bodydEFAULTCOSTCENTERID), required: false);
+            var __workflow_bodymANAGERId = WorkflowExpression.Compile(bodymANAGERId, nameof(bodymANAGERId), required: false);
+            var __workflow_bodydEFAULTCOSTCENTERId = WorkflowExpression.Compile(bodydEFAULTCOSTCENTERId, nameof(bodydEFAULTCOSTCENTERId), required: false);
             var __workflow_bodysTARTDATE = WorkflowExpression.Compile(bodysTARTDATE, nameof(bodysTARTDATE), required: false);
             var __workflow_bodyeNDDATE = WorkflowExpression.Compile(bodyeNDDATE, nameof(bodyeNDDATE), required: false);
             var __workflow_bodyuRLMAP = WorkflowExpression.Compile(bodyuRLMAP, nameof(bodyuRLMAP), required: false);
             var __workflow_bodydEPARTMENTCODE = WorkflowExpression.Compile(bodydEPARTMENTCODE, nameof(bodydEPARTMENTCODE), required: false);
             var __workflow_bodylASTUPDATE = WorkflowExpression.Compile(bodylASTUPDATE, nameof(bodylASTUPDATE), required: false);
             var __workflow_bodylASTINTEGRATION = WorkflowExpression.Compile(bodylASTINTEGRATION, nameof(bodylASTINTEGRATION), required: false);
-            var __workflow_bodycURRENCYID = WorkflowExpression.Compile(bodycURRENCYID, nameof(bodycURRENCYID), required: false);
+            var __workflow_bodycURRENCYId = WorkflowExpression.Compile(bodycURRENCYId, nameof(bodycURRENCYId), required: false);
             var __workflow_bodyaVAILABLEFIELD1 = WorkflowExpression.Compile(bodyaVAILABLEFIELD1, nameof(bodyaVAILABLEFIELD1), required: false);
             var __workflow_bodyaVAILABLEFIELD2 = WorkflowExpression.Compile(bodyaVAILABLEFIELD2, nameof(bodyaVAILABLEFIELD2), required: false);
             var __workflow_bodyaVAILABLEFIELD3 = WorkflowExpression.Compile(bodyaVAILABLEFIELD3, nameof(bodyaVAILABLEFIELD3), required: false);
             var __workflow_bodyaVAILABLEFIELD4 = WorkflowExpression.Compile(bodyaVAILABLEFIELD4, nameof(bodyaVAILABLEFIELD4), required: false);
             var __workflow_bodyaVAILABLEFIELD5 = WorkflowExpression.Compile(bodyaVAILABLEFIELD5, nameof(bodyaVAILABLEFIELD5), required: false);
             var __workflow_bodyaVAILABLEFIELD6 = WorkflowExpression.Compile(bodyaVAILABLEFIELD6, nameof(bodyaVAILABLEFIELD6), required: false);
-            var __workflow_bodysLAID = WorkflowExpression.Compile(bodysLAID, nameof(bodysLAID), required: false);
+            var __workflow_bodysLAId = WorkflowExpression.Compile(bodysLAId, nameof(bodysLAId), required: false);
             var __workflow_bodydEPARTMENTL1 = WorkflowExpression.Compile(bodydEPARTMENTL1, nameof(bodydEPARTMENTL1), required: false);
             var __workflow_bodydEPARTMENTL2 = WorkflowExpression.Compile(bodydEPARTMENTL2, nameof(bodydEPARTMENTL2), required: false);
             var __workflow_bodydEPARTMENTL3 = WorkflowExpression.Compile(bodydEPARTMENTL3, nameof(bodydEPARTMENTL3), required: false);
@@ -1241,9 +1242,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (__workflow_bodypARENTDEPARTMENTID != null)
+                if (__workflow_bodypARENTDEPARTMENTId != null)
                 {
-                    body["PARENT_DEPARTMENT_ID"] = ExpressionConverter.ConvertO(__workflow_bodypARENTDEPARTMENTID);
+                    body["PARENT_DEPARTMENT_ID"] = ExpressionConverter.ConvertO(__workflow_bodypARENTDEPARTMENTId);
                     bodypropCount++;
                 }
 
@@ -1295,15 +1296,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodymANAGERID != null)
+                if (__workflow_bodymANAGERId != null)
                 {
-                    body["MANAGER_ID"] = ExpressionConverter.ConvertO(__workflow_bodymANAGERID);
+                    body["MANAGER_ID"] = ExpressionConverter.ConvertO(__workflow_bodymANAGERId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodydEFAULTCOSTCENTERID != null)
+                if (__workflow_bodydEFAULTCOSTCENTERId != null)
                 {
-                    body["DEFAULT_COST_CENTER_ID"] = ExpressionConverter.ConvertO(__workflow_bodydEFAULTCOSTCENTERID);
+                    body["DEFAULT_COST_CENTER_ID"] = ExpressionConverter.ConvertO(__workflow_bodydEFAULTCOSTCENTERId);
                     bodypropCount++;
                 }
 
@@ -1343,9 +1344,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodycURRENCYID != null)
+                if (__workflow_bodycURRENCYId != null)
                 {
-                    body["CURRENCY_ID"] = ExpressionConverter.ConvertO(__workflow_bodycURRENCYID);
+                    body["CURRENCY_ID"] = ExpressionConverter.ConvertO(__workflow_bodycURRENCYId);
                     bodypropCount++;
                 }
 
@@ -1385,9 +1386,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodysLAID != null)
+                if (__workflow_bodysLAId != null)
                 {
-                    body["SLA_ID"] = ExpressionConverter.ConvertO(__workflow_bodysLAID);
+                    body["SLA_ID"] = ExpressionConverter.ConvertO(__workflow_bodysLAId);
                     bodypropCount++;
                 }
 
@@ -1503,12 +1504,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<UpdateEmployeeResponse, ApiConnectionActionConfiguration> UpdateEmployee(Expression<Func<string>> account, Expression<Func<string>> employeeId, Expression<Func<string>> bodyaPPROVEDTOVALIDATE = null, Expression<Func<string>> bodyaVAILABILITYSTATUSID = null, Expression<Func<string>> bodyaVAILABLEFIELD1 = null, Expression<Func<string>> bodyaVAILABLEFIELD2 = null, Expression<Func<string>> bodyaVAILABLEFIELD3 = null, Expression<Func<string>> bodyaVAILABLEFIELD4 = null, Expression<Func<string>> bodyaVAILABLEFIELD5 = null, Expression<Func<string>> bodyaVAILABLEFIELD6 = null, Expression<Func<string>> bodybEGINOFCONTRACT = null, Expression<Func<string>> bodycELLULARNUMBER = null, Expression<Func<string>> bodycHATLOGIN = null, Expression<Func<string>> bodycIVILSTATUSID = null, Expression<Func<string>> bodycOMMENTEMPLOYEE = null, Expression<Func<string>> bodycOSTPERHOUR = null, Expression<Func<string>> bodycOSTPERHOURCURID = null, Expression<Func<string>> bodydEFAULTCOSTCENTERID = null, Expression<Func<string>> bodydELEGATIONFROM = null, Expression<Func<string>> bodydELEGATIONID = null, Expression<Func<string>> bodydELEGATIONTO = null, Expression<Func<string>> bodydEPARTMENTID = null, Expression<Func<string>> bodyeNDOFCONTRACT = null, Expression<Func<string>> bodyeMAIL = null, Expression<Func<string>> bodyfAXNUMBER = null, Expression<Func<string>> bodyfUNCTIONID = null, Expression<Func<string>> bodyiCQNUMBER = null, Expression<Func<string>> bodyiDENTIFICATION = null, Expression<Func<string>> bodyiSAUTOMATICSTATUS = null, Expression<Func<string>> bodyiTCORRESPONDENT = null, Expression<Func<string>> bodylANGUAGEID = null, Expression<Func<string>> bodylASTINTEGRATION = null, Expression<Func<string>> bodylASTNAME = null, Expression<Func<string>> bodylASTUPDATE = null, Expression<Func<string>> bodylOCATIONID = null, Expression<Func<string>> bodylOGIN = null, Expression<Func<string>> bodymANAGERID = null, Expression<Func<string>> bodymESSENGERSIGNNAME = null, Expression<Func<string>> bodynOTIFICATIONTYPEID = null, Expression<Func<string>> bodypASSWDLASTUPDATEUT = null, Expression<Func<string>> bodypHONENUMBER = null, Expression<Func<string>> bodypICTUREPATH = null, Expression<Func<string>> bodysUPPLIERID = null, Expression<Func<string>> bodyvALIDATORID = null, Expression<Func<string>> bodyvIPLEVELID = null, Expression<Func<string>> bodywAVEADDRESS = null)
+        public IBodyWorkflowAction<UpdateEmployeeResponse, ApiConnectionActionConfiguration> UpdateEmployee(Expression<Func<string>> account, Expression<Func<string>> employeeId, Expression<Func<string>> bodyaPPROVEDTOVALIdATE = null, Expression<Func<string>> bodyaVAILABILITYSTATUSId = null, Expression<Func<string>> bodyaVAILABLEFIELD1 = null, Expression<Func<string>> bodyaVAILABLEFIELD2 = null, Expression<Func<string>> bodyaVAILABLEFIELD3 = null, Expression<Func<string>> bodyaVAILABLEFIELD4 = null, Expression<Func<string>> bodyaVAILABLEFIELD5 = null, Expression<Func<string>> bodyaVAILABLEFIELD6 = null, Expression<Func<string>> bodybEGINOFCONTRACT = null, Expression<Func<string>> bodycELLULARNUMBER = null, Expression<Func<string>> bodycHATLOGIN = null, Expression<Func<string>> bodycIVILSTATUSId = null, Expression<Func<string>> bodycOMMENTEMPLOYEE = null, Expression<Func<string>> bodycOSTPERHOUR = null, Expression<Func<string>> bodycOSTPERHOURCURId = null, Expression<Func<string>> bodydEFAULTCOSTCENTERId = null, Expression<Func<string>> bodydELEGATIONFROM = null, Expression<Func<string>> bodydELEGATIONId = null, Expression<Func<string>> bodydELEGATIONTO = null, Expression<Func<string>> bodydEPARTMENTId = null, Expression<Func<string>> bodyeNDOFCONTRACT = null, Expression<Func<string>> bodyeMAIL = null, Expression<Func<string>> bodyfAXNUMBER = null, Expression<Func<string>> bodyfUNCTIONId = null, Expression<Func<string>> bodyiCQNUMBER = null, Expression<Func<string>> bodyidENTIFICATION = null, Expression<Func<string>> bodyiSAUTOMATICSTATUS = null, Expression<Func<string>> bodyiTCORRESPONDENT = null, Expression<Func<string>> bodylANGUAGEId = null, Expression<Func<string>> bodylASTINTEGRATION = null, Expression<Func<string>> bodylASTNAME = null, Expression<Func<string>> bodylASTUPDATE = null, Expression<Func<string>> bodylOCATIONId = null, Expression<Func<string>> bodylOGIN = null, Expression<Func<string>> bodymANAGERId = null, Expression<Func<string>> bodymESSENGERSIGNNAME = null, Expression<Func<string>> bodynOTIFICATIONTYPEId = null, Expression<Func<string>> bodypASSWDLASTUPDATEUT = null, Expression<Func<string>> bodypHONENUMBER = null, Expression<Func<string>> bodypICTUREPATH = null, Expression<Func<string>> bodysUPPLIERId = null, Expression<Func<string>> bodyvALIdATORId = null, Expression<Func<string>> bodyvIPLEVELId = null, Expression<Func<string>> bodywAVEADDRESS = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_employeeId = WorkflowExpression.Compile(employeeId, nameof(employeeId), required: true);
-            var __workflow_bodyaPPROVEDTOVALIDATE = WorkflowExpression.Compile(bodyaPPROVEDTOVALIDATE, nameof(bodyaPPROVEDTOVALIDATE), required: false);
-            var __workflow_bodyaVAILABILITYSTATUSID = WorkflowExpression.Compile(bodyaVAILABILITYSTATUSID, nameof(bodyaVAILABILITYSTATUSID), required: false);
+            var __workflow_bodyaPPROVEDTOVALIdATE = WorkflowExpression.Compile(bodyaPPROVEDTOVALIdATE, nameof(bodyaPPROVEDTOVALIdATE), required: false);
+            var __workflow_bodyaVAILABILITYSTATUSId = WorkflowExpression.Compile(bodyaVAILABILITYSTATUSId, nameof(bodyaVAILABILITYSTATUSId), required: false);
             var __workflow_bodyaVAILABLEFIELD1 = WorkflowExpression.Compile(bodyaVAILABLEFIELD1, nameof(bodyaVAILABLEFIELD1), required: false);
             var __workflow_bodyaVAILABLEFIELD2 = WorkflowExpression.Compile(bodyaVAILABLEFIELD2, nameof(bodyaVAILABLEFIELD2), required: false);
             var __workflow_bodyaVAILABLEFIELD3 = WorkflowExpression.Compile(bodyaVAILABLEFIELD3, nameof(bodyaVAILABLEFIELD3), required: false);
@@ -1518,38 +1519,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodybEGINOFCONTRACT = WorkflowExpression.Compile(bodybEGINOFCONTRACT, nameof(bodybEGINOFCONTRACT), required: false);
             var __workflow_bodycELLULARNUMBER = WorkflowExpression.Compile(bodycELLULARNUMBER, nameof(bodycELLULARNUMBER), required: false);
             var __workflow_bodycHATLOGIN = WorkflowExpression.Compile(bodycHATLOGIN, nameof(bodycHATLOGIN), required: false);
-            var __workflow_bodycIVILSTATUSID = WorkflowExpression.Compile(bodycIVILSTATUSID, nameof(bodycIVILSTATUSID), required: false);
+            var __workflow_bodycIVILSTATUSId = WorkflowExpression.Compile(bodycIVILSTATUSId, nameof(bodycIVILSTATUSId), required: false);
             var __workflow_bodycOMMENTEMPLOYEE = WorkflowExpression.Compile(bodycOMMENTEMPLOYEE, nameof(bodycOMMENTEMPLOYEE), required: false);
             var __workflow_bodycOSTPERHOUR = WorkflowExpression.Compile(bodycOSTPERHOUR, nameof(bodycOSTPERHOUR), required: false);
-            var __workflow_bodycOSTPERHOURCURID = WorkflowExpression.Compile(bodycOSTPERHOURCURID, nameof(bodycOSTPERHOURCURID), required: false);
-            var __workflow_bodydEFAULTCOSTCENTERID = WorkflowExpression.Compile(bodydEFAULTCOSTCENTERID, nameof(bodydEFAULTCOSTCENTERID), required: false);
+            var __workflow_bodycOSTPERHOURCURId = WorkflowExpression.Compile(bodycOSTPERHOURCURId, nameof(bodycOSTPERHOURCURId), required: false);
+            var __workflow_bodydEFAULTCOSTCENTERId = WorkflowExpression.Compile(bodydEFAULTCOSTCENTERId, nameof(bodydEFAULTCOSTCENTERId), required: false);
             var __workflow_bodydELEGATIONFROM = WorkflowExpression.Compile(bodydELEGATIONFROM, nameof(bodydELEGATIONFROM), required: false);
-            var __workflow_bodydELEGATIONID = WorkflowExpression.Compile(bodydELEGATIONID, nameof(bodydELEGATIONID), required: false);
+            var __workflow_bodydELEGATIONId = WorkflowExpression.Compile(bodydELEGATIONId, nameof(bodydELEGATIONId), required: false);
             var __workflow_bodydELEGATIONTO = WorkflowExpression.Compile(bodydELEGATIONTO, nameof(bodydELEGATIONTO), required: false);
-            var __workflow_bodydEPARTMENTID = WorkflowExpression.Compile(bodydEPARTMENTID, nameof(bodydEPARTMENTID), required: false);
+            var __workflow_bodydEPARTMENTId = WorkflowExpression.Compile(bodydEPARTMENTId, nameof(bodydEPARTMENTId), required: false);
             var __workflow_bodyeNDOFCONTRACT = WorkflowExpression.Compile(bodyeNDOFCONTRACT, nameof(bodyeNDOFCONTRACT), required: false);
             var __workflow_bodyeMAIL = WorkflowExpression.Compile(bodyeMAIL, nameof(bodyeMAIL), required: false);
             var __workflow_bodyfAXNUMBER = WorkflowExpression.Compile(bodyfAXNUMBER, nameof(bodyfAXNUMBER), required: false);
-            var __workflow_bodyfUNCTIONID = WorkflowExpression.Compile(bodyfUNCTIONID, nameof(bodyfUNCTIONID), required: false);
+            var __workflow_bodyfUNCTIONId = WorkflowExpression.Compile(bodyfUNCTIONId, nameof(bodyfUNCTIONId), required: false);
             var __workflow_bodyiCQNUMBER = WorkflowExpression.Compile(bodyiCQNUMBER, nameof(bodyiCQNUMBER), required: false);
-            var __workflow_bodyiDENTIFICATION = WorkflowExpression.Compile(bodyiDENTIFICATION, nameof(bodyiDENTIFICATION), required: false);
+            var __workflow_bodyidENTIFICATION = WorkflowExpression.Compile(bodyidENTIFICATION, nameof(bodyidENTIFICATION), required: false);
             var __workflow_bodyiSAUTOMATICSTATUS = WorkflowExpression.Compile(bodyiSAUTOMATICSTATUS, nameof(bodyiSAUTOMATICSTATUS), required: false);
             var __workflow_bodyiTCORRESPONDENT = WorkflowExpression.Compile(bodyiTCORRESPONDENT, nameof(bodyiTCORRESPONDENT), required: false);
-            var __workflow_bodylANGUAGEID = WorkflowExpression.Compile(bodylANGUAGEID, nameof(bodylANGUAGEID), required: false);
+            var __workflow_bodylANGUAGEId = WorkflowExpression.Compile(bodylANGUAGEId, nameof(bodylANGUAGEId), required: false);
             var __workflow_bodylASTINTEGRATION = WorkflowExpression.Compile(bodylASTINTEGRATION, nameof(bodylASTINTEGRATION), required: false);
             var __workflow_bodylASTNAME = WorkflowExpression.Compile(bodylASTNAME, nameof(bodylASTNAME), required: false);
             var __workflow_bodylASTUPDATE = WorkflowExpression.Compile(bodylASTUPDATE, nameof(bodylASTUPDATE), required: false);
-            var __workflow_bodylOCATIONID = WorkflowExpression.Compile(bodylOCATIONID, nameof(bodylOCATIONID), required: false);
+            var __workflow_bodylOCATIONId = WorkflowExpression.Compile(bodylOCATIONId, nameof(bodylOCATIONId), required: false);
             var __workflow_bodylOGIN = WorkflowExpression.Compile(bodylOGIN, nameof(bodylOGIN), required: false);
-            var __workflow_bodymANAGERID = WorkflowExpression.Compile(bodymANAGERID, nameof(bodymANAGERID), required: false);
+            var __workflow_bodymANAGERId = WorkflowExpression.Compile(bodymANAGERId, nameof(bodymANAGERId), required: false);
             var __workflow_bodymESSENGERSIGNNAME = WorkflowExpression.Compile(bodymESSENGERSIGNNAME, nameof(bodymESSENGERSIGNNAME), required: false);
-            var __workflow_bodynOTIFICATIONTYPEID = WorkflowExpression.Compile(bodynOTIFICATIONTYPEID, nameof(bodynOTIFICATIONTYPEID), required: false);
+            var __workflow_bodynOTIFICATIONTYPEId = WorkflowExpression.Compile(bodynOTIFICATIONTYPEId, nameof(bodynOTIFICATIONTYPEId), required: false);
             var __workflow_bodypASSWDLASTUPDATEUT = WorkflowExpression.Compile(bodypASSWDLASTUPDATEUT, nameof(bodypASSWDLASTUPDATEUT), required: false);
             var __workflow_bodypHONENUMBER = WorkflowExpression.Compile(bodypHONENUMBER, nameof(bodypHONENUMBER), required: false);
             var __workflow_bodypICTUREPATH = WorkflowExpression.Compile(bodypICTUREPATH, nameof(bodypICTUREPATH), required: false);
-            var __workflow_bodysUPPLIERID = WorkflowExpression.Compile(bodysUPPLIERID, nameof(bodysUPPLIERID), required: false);
-            var __workflow_bodyvALIDATORID = WorkflowExpression.Compile(bodyvALIDATORID, nameof(bodyvALIDATORID), required: false);
-            var __workflow_bodyvIPLEVELID = WorkflowExpression.Compile(bodyvIPLEVELID, nameof(bodyvIPLEVELID), required: false);
+            var __workflow_bodysUPPLIERId = WorkflowExpression.Compile(bodysUPPLIERId, nameof(bodysUPPLIERId), required: false);
+            var __workflow_bodyvALIdATORId = WorkflowExpression.Compile(bodyvALIdATORId, nameof(bodyvALIdATORId), required: false);
+            var __workflow_bodyvIPLEVELId = WorkflowExpression.Compile(bodyvIPLEVELId, nameof(bodyvIPLEVELId), required: false);
             var __workflow_bodywAVEADDRESS = WorkflowExpression.Compile(bodywAVEADDRESS, nameof(bodywAVEADDRESS), required: false);
             return new DeferredBodyAction<UpdateEmployeeResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -1558,15 +1559,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (__workflow_bodyaPPROVEDTOVALIDATE != null)
+                if (__workflow_bodyaPPROVEDTOVALIdATE != null)
                 {
-                    body["APPROVED_TO_VALIDATE"] = ExpressionConverter.ConvertO(__workflow_bodyaPPROVEDTOVALIDATE);
+                    body["APPROVED_TO_VALIDATE"] = ExpressionConverter.ConvertO(__workflow_bodyaPPROVEDTOVALIdATE);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyaVAILABILITYSTATUSID != null)
+                if (__workflow_bodyaVAILABILITYSTATUSId != null)
                 {
-                    body["AVAILABILITY_STATUS_ID"] = ExpressionConverter.ConvertO(__workflow_bodyaVAILABILITYSTATUSID);
+                    body["AVAILABILITY_STATUS_ID"] = ExpressionConverter.ConvertO(__workflow_bodyaVAILABILITYSTATUSId);
                     bodypropCount++;
                 }
 
@@ -1624,9 +1625,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodycIVILSTATUSID != null)
+                if (__workflow_bodycIVILSTATUSId != null)
                 {
-                    body["CIVIL_STATUS_ID"] = ExpressionConverter.ConvertO(__workflow_bodycIVILSTATUSID);
+                    body["CIVIL_STATUS_ID"] = ExpressionConverter.ConvertO(__workflow_bodycIVILSTATUSId);
                     bodypropCount++;
                 }
 
@@ -1642,15 +1643,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodycOSTPERHOURCURID != null)
+                if (__workflow_bodycOSTPERHOURCURId != null)
                 {
-                    body["COST_PER_HOUR_CUR_ID"] = ExpressionConverter.ConvertO(__workflow_bodycOSTPERHOURCURID);
+                    body["COST_PER_HOUR_CUR_ID"] = ExpressionConverter.ConvertO(__workflow_bodycOSTPERHOURCURId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodydEFAULTCOSTCENTERID != null)
+                if (__workflow_bodydEFAULTCOSTCENTERId != null)
                 {
-                    body["DEFAULT_COST_CENTER_ID"] = ExpressionConverter.ConvertO(__workflow_bodydEFAULTCOSTCENTERID);
+                    body["DEFAULT_COST_CENTER_ID"] = ExpressionConverter.ConvertO(__workflow_bodydEFAULTCOSTCENTERId);
                     bodypropCount++;
                 }
 
@@ -1660,9 +1661,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodydELEGATIONID != null)
+                if (__workflow_bodydELEGATIONId != null)
                 {
-                    body["DELEGATION_ID"] = ExpressionConverter.ConvertO(__workflow_bodydELEGATIONID);
+                    body["DELEGATION_ID"] = ExpressionConverter.ConvertO(__workflow_bodydELEGATIONId);
                     bodypropCount++;
                 }
 
@@ -1672,9 +1673,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodydEPARTMENTID != null)
+                if (__workflow_bodydEPARTMENTId != null)
                 {
-                    body["DEPARTMENT_ID"] = ExpressionConverter.ConvertO(__workflow_bodydEPARTMENTID);
+                    body["DEPARTMENT_ID"] = ExpressionConverter.ConvertO(__workflow_bodydEPARTMENTId);
                     bodypropCount++;
                 }
 
@@ -1696,9 +1697,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyfUNCTIONID != null)
+                if (__workflow_bodyfUNCTIONId != null)
                 {
-                    body["FUNCTION_ID"] = ExpressionConverter.ConvertO(__workflow_bodyfUNCTIONID);
+                    body["FUNCTION_ID"] = ExpressionConverter.ConvertO(__workflow_bodyfUNCTIONId);
                     bodypropCount++;
                 }
 
@@ -1708,9 +1709,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyiDENTIFICATION != null)
+                if (__workflow_bodyidENTIFICATION != null)
                 {
-                    body["IDENTIFICATION"] = ExpressionConverter.ConvertO(__workflow_bodyiDENTIFICATION);
+                    body["IDENTIFICATION"] = ExpressionConverter.ConvertO(__workflow_bodyidENTIFICATION);
                     bodypropCount++;
                 }
 
@@ -1726,9 +1727,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodylANGUAGEID != null)
+                if (__workflow_bodylANGUAGEId != null)
                 {
-                    body["LANGUAGE_ID"] = ExpressionConverter.ConvertO(__workflow_bodylANGUAGEID);
+                    body["LANGUAGE_ID"] = ExpressionConverter.ConvertO(__workflow_bodylANGUAGEId);
                     bodypropCount++;
                 }
 
@@ -1750,9 +1751,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodylOCATIONID != null)
+                if (__workflow_bodylOCATIONId != null)
                 {
-                    body["LOCATION_ID"] = ExpressionConverter.ConvertO(__workflow_bodylOCATIONID);
+                    body["LOCATION_ID"] = ExpressionConverter.ConvertO(__workflow_bodylOCATIONId);
                     bodypropCount++;
                 }
 
@@ -1762,9 +1763,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodymANAGERID != null)
+                if (__workflow_bodymANAGERId != null)
                 {
-                    body["MANAGER_ID"] = ExpressionConverter.ConvertO(__workflow_bodymANAGERID);
+                    body["MANAGER_ID"] = ExpressionConverter.ConvertO(__workflow_bodymANAGERId);
                     bodypropCount++;
                 }
 
@@ -1774,9 +1775,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodynOTIFICATIONTYPEID != null)
+                if (__workflow_bodynOTIFICATIONTYPEId != null)
                 {
-                    body["NOTIFICATION_TYPE_ID"] = ExpressionConverter.ConvertO(__workflow_bodynOTIFICATIONTYPEID);
+                    body["NOTIFICATION_TYPE_ID"] = ExpressionConverter.ConvertO(__workflow_bodynOTIFICATIONTYPEId);
                     bodypropCount++;
                 }
 
@@ -1798,21 +1799,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodysUPPLIERID != null)
+                if (__workflow_bodysUPPLIERId != null)
                 {
-                    body["SUPPLIER_ID"] = ExpressionConverter.ConvertO(__workflow_bodysUPPLIERID);
+                    body["SUPPLIER_ID"] = ExpressionConverter.ConvertO(__workflow_bodysUPPLIERId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyvALIDATORID != null)
+                if (__workflow_bodyvALIdATORId != null)
                 {
-                    body["VALIDATOR_ID"] = ExpressionConverter.ConvertO(__workflow_bodyvALIDATORID);
+                    body["VALIDATOR_ID"] = ExpressionConverter.ConvertO(__workflow_bodyvALIdATORId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyvIPLEVELID != null)
+                if (__workflow_bodyvIPLEVELId != null)
                 {
-                    body["VIP_LEVEL_ID"] = ExpressionConverter.ConvertO(__workflow_bodyvIPLEVELID);
+                    body["VIP_LEVEL_ID"] = ExpressionConverter.ConvertO(__workflow_bodyvIPLEVELId);
                     bodypropCount++;
                 }
 
@@ -1910,12 +1911,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<UpdateLocationResponse, ApiConnectionActionConfiguration> UpdateLocation(Expression<Func<string>> account, Expression<Func<string>> locationId, Expression<Func<string>> bodypARENTLOCATIONID = null, Expression<Func<string>> bodymANAGERID = null, Expression<Func<string>> bodylOCATIONEN = null, Expression<Func<string>> bodylOCATIONFR = null, Expression<Func<string>> bodylOCATIONGE = null, Expression<Func<string>> bodylOCATIONSP = null, Expression<Func<string>> bodylOCATIONIT = null, Expression<Func<string>> bodylOCATIONPO = null, Expression<Func<string>> bodysTREETADDRESS1 = null, Expression<Func<string>> bodysTREETADDRESS2 = null, Expression<Func<string>> bodycITY = null, Expression<Func<string>> bodypHONE = null, Expression<Func<string>> bodyzIPCODE = null, Expression<Func<string>> bodyfAX = null, Expression<Func<string>> bodycOMMENTLOCATION = null, Expression<Func<string>> bodyrEGIONZONEID = null, Expression<Func<string>> bodycOUNTRYID = null, Expression<Func<string>> bodysTATEID = null, Expression<Func<string>> bodysTARTDATE = null, Expression<Func<string>> bodyeNDDATE = null, Expression<Func<string>> bodyuRLMAP = null, Expression<Func<string>> bodydISCOVERYNAME = null, Expression<Func<string>> bodylOCATIONCODE = null, Expression<Func<string>> bodylASTUPDATE = null, Expression<Func<string>> bodylASTINTEGRATION = null, Expression<Func<string>> bodyiSDELIVERYADDRESS = null, Expression<Func<string>> bodytIMEZONEID = null, Expression<Func<string>> bodysTATUSID = null, Expression<Func<string>> bodyaVAILABLEFIELD1 = null, Expression<Func<string>> bodyaVAILABLEFIELD2 = null, Expression<Func<string>> bodyaVAILABLEFIELD3 = null, Expression<Func<string>> bodyaVAILABLEFIELD4 = null, Expression<Func<string>> bodyaVAILABLEFIELD5 = null, Expression<Func<string>> bodyaVAILABLEFIELD6 = null, Expression<Func<string>> bodysLAID = null, Expression<Func<string>> bodygMAPLAT = null, Expression<Func<string>> bodygMAPLNG = null, Expression<Func<string>> bodylOCATIONL1 = null, Expression<Func<string>> bodylOCATIONL2 = null, Expression<Func<string>> bodylOCATIONL3 = null, Expression<Func<string>> bodylOCATIONL4 = null, Expression<Func<string>> bodylOCATIONL5 = null, Expression<Func<string>> bodylOCATIONL6 = null, Expression<Func<string>> bodyeISMEETINGROOM = null, Expression<Func<string>> bodyeCAPACITY = null, Expression<Func<string>> bodyeWIFILOGIN = null)
+        public IBodyWorkflowAction<UpdateLocationResponse, ApiConnectionActionConfiguration> UpdateLocation(Expression<Func<string>> account, Expression<Func<string>> locationId, Expression<Func<string>> bodypARENTLOCATIONId = null, Expression<Func<string>> bodymANAGERId = null, Expression<Func<string>> bodylOCATIONEN = null, Expression<Func<string>> bodylOCATIONFR = null, Expression<Func<string>> bodylOCATIONGE = null, Expression<Func<string>> bodylOCATIONSP = null, Expression<Func<string>> bodylOCATIONIT = null, Expression<Func<string>> bodylOCATIONPO = null, Expression<Func<string>> bodysTREETADDRESS1 = null, Expression<Func<string>> bodysTREETADDRESS2 = null, Expression<Func<string>> bodycITY = null, Expression<Func<string>> bodypHONE = null, Expression<Func<string>> bodyzIPCODE = null, Expression<Func<string>> bodyfAX = null, Expression<Func<string>> bodycOMMENTLOCATION = null, Expression<Func<string>> bodyrEGIONZONEId = null, Expression<Func<string>> bodycOUNTRYId = null, Expression<Func<string>> bodysTATEId = null, Expression<Func<string>> bodysTARTDATE = null, Expression<Func<string>> bodyeNDDATE = null, Expression<Func<string>> bodyuRLMAP = null, Expression<Func<string>> bodydISCOVERYNAME = null, Expression<Func<string>> bodylOCATIONCODE = null, Expression<Func<string>> bodylASTUPDATE = null, Expression<Func<string>> bodylASTINTEGRATION = null, Expression<Func<string>> bodyiSDELIVERYADDRESS = null, Expression<Func<string>> bodytIMEZONEId = null, Expression<Func<string>> bodysTATUSId = null, Expression<Func<string>> bodyaVAILABLEFIELD1 = null, Expression<Func<string>> bodyaVAILABLEFIELD2 = null, Expression<Func<string>> bodyaVAILABLEFIELD3 = null, Expression<Func<string>> bodyaVAILABLEFIELD4 = null, Expression<Func<string>> bodyaVAILABLEFIELD5 = null, Expression<Func<string>> bodyaVAILABLEFIELD6 = null, Expression<Func<string>> bodysLAId = null, Expression<Func<string>> bodygMAPLAT = null, Expression<Func<string>> bodygMAPLNG = null, Expression<Func<string>> bodylOCATIONL1 = null, Expression<Func<string>> bodylOCATIONL2 = null, Expression<Func<string>> bodylOCATIONL3 = null, Expression<Func<string>> bodylOCATIONL4 = null, Expression<Func<string>> bodylOCATIONL5 = null, Expression<Func<string>> bodylOCATIONL6 = null, Expression<Func<string>> bodyeISMEETINGROOM = null, Expression<Func<string>> bodyeCAPACITY = null, Expression<Func<string>> bodyeWIFILOGIN = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_locationId = WorkflowExpression.Compile(locationId, nameof(locationId), required: true);
-            var __workflow_bodypARENTLOCATIONID = WorkflowExpression.Compile(bodypARENTLOCATIONID, nameof(bodypARENTLOCATIONID), required: false);
-            var __workflow_bodymANAGERID = WorkflowExpression.Compile(bodymANAGERID, nameof(bodymANAGERID), required: false);
+            var __workflow_bodypARENTLOCATIONId = WorkflowExpression.Compile(bodypARENTLOCATIONId, nameof(bodypARENTLOCATIONId), required: false);
+            var __workflow_bodymANAGERId = WorkflowExpression.Compile(bodymANAGERId, nameof(bodymANAGERId), required: false);
             var __workflow_bodylOCATIONEN = WorkflowExpression.Compile(bodylOCATIONEN, nameof(bodylOCATIONEN), required: false);
             var __workflow_bodylOCATIONFR = WorkflowExpression.Compile(bodylOCATIONFR, nameof(bodylOCATIONFR), required: false);
             var __workflow_bodylOCATIONGE = WorkflowExpression.Compile(bodylOCATIONGE, nameof(bodylOCATIONGE), required: false);
@@ -1929,9 +1930,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodyzIPCODE = WorkflowExpression.Compile(bodyzIPCODE, nameof(bodyzIPCODE), required: false);
             var __workflow_bodyfAX = WorkflowExpression.Compile(bodyfAX, nameof(bodyfAX), required: false);
             var __workflow_bodycOMMENTLOCATION = WorkflowExpression.Compile(bodycOMMENTLOCATION, nameof(bodycOMMENTLOCATION), required: false);
-            var __workflow_bodyrEGIONZONEID = WorkflowExpression.Compile(bodyrEGIONZONEID, nameof(bodyrEGIONZONEID), required: false);
-            var __workflow_bodycOUNTRYID = WorkflowExpression.Compile(bodycOUNTRYID, nameof(bodycOUNTRYID), required: false);
-            var __workflow_bodysTATEID = WorkflowExpression.Compile(bodysTATEID, nameof(bodysTATEID), required: false);
+            var __workflow_bodyrEGIONZONEId = WorkflowExpression.Compile(bodyrEGIONZONEId, nameof(bodyrEGIONZONEId), required: false);
+            var __workflow_bodycOUNTRYId = WorkflowExpression.Compile(bodycOUNTRYId, nameof(bodycOUNTRYId), required: false);
+            var __workflow_bodysTATEId = WorkflowExpression.Compile(bodysTATEId, nameof(bodysTATEId), required: false);
             var __workflow_bodysTARTDATE = WorkflowExpression.Compile(bodysTARTDATE, nameof(bodysTARTDATE), required: false);
             var __workflow_bodyeNDDATE = WorkflowExpression.Compile(bodyeNDDATE, nameof(bodyeNDDATE), required: false);
             var __workflow_bodyuRLMAP = WorkflowExpression.Compile(bodyuRLMAP, nameof(bodyuRLMAP), required: false);
@@ -1940,15 +1941,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodylASTUPDATE = WorkflowExpression.Compile(bodylASTUPDATE, nameof(bodylASTUPDATE), required: false);
             var __workflow_bodylASTINTEGRATION = WorkflowExpression.Compile(bodylASTINTEGRATION, nameof(bodylASTINTEGRATION), required: false);
             var __workflow_bodyiSDELIVERYADDRESS = WorkflowExpression.Compile(bodyiSDELIVERYADDRESS, nameof(bodyiSDELIVERYADDRESS), required: false);
-            var __workflow_bodytIMEZONEID = WorkflowExpression.Compile(bodytIMEZONEID, nameof(bodytIMEZONEID), required: false);
-            var __workflow_bodysTATUSID = WorkflowExpression.Compile(bodysTATUSID, nameof(bodysTATUSID), required: false);
+            var __workflow_bodytIMEZONEId = WorkflowExpression.Compile(bodytIMEZONEId, nameof(bodytIMEZONEId), required: false);
+            var __workflow_bodysTATUSId = WorkflowExpression.Compile(bodysTATUSId, nameof(bodysTATUSId), required: false);
             var __workflow_bodyaVAILABLEFIELD1 = WorkflowExpression.Compile(bodyaVAILABLEFIELD1, nameof(bodyaVAILABLEFIELD1), required: false);
             var __workflow_bodyaVAILABLEFIELD2 = WorkflowExpression.Compile(bodyaVAILABLEFIELD2, nameof(bodyaVAILABLEFIELD2), required: false);
             var __workflow_bodyaVAILABLEFIELD3 = WorkflowExpression.Compile(bodyaVAILABLEFIELD3, nameof(bodyaVAILABLEFIELD3), required: false);
             var __workflow_bodyaVAILABLEFIELD4 = WorkflowExpression.Compile(bodyaVAILABLEFIELD4, nameof(bodyaVAILABLEFIELD4), required: false);
             var __workflow_bodyaVAILABLEFIELD5 = WorkflowExpression.Compile(bodyaVAILABLEFIELD5, nameof(bodyaVAILABLEFIELD5), required: false);
             var __workflow_bodyaVAILABLEFIELD6 = WorkflowExpression.Compile(bodyaVAILABLEFIELD6, nameof(bodyaVAILABLEFIELD6), required: false);
-            var __workflow_bodysLAID = WorkflowExpression.Compile(bodysLAID, nameof(bodysLAID), required: false);
+            var __workflow_bodysLAId = WorkflowExpression.Compile(bodysLAId, nameof(bodysLAId), required: false);
             var __workflow_bodygMAPLAT = WorkflowExpression.Compile(bodygMAPLAT, nameof(bodygMAPLAT), required: false);
             var __workflow_bodygMAPLNG = WorkflowExpression.Compile(bodygMAPLNG, nameof(bodygMAPLNG), required: false);
             var __workflow_bodylOCATIONL1 = WorkflowExpression.Compile(bodylOCATIONL1, nameof(bodylOCATIONL1), required: false);
@@ -1967,15 +1968,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (__workflow_bodypARENTLOCATIONID != null)
+                if (__workflow_bodypARENTLOCATIONId != null)
                 {
-                    body["PARENT_LOCATION_ID"] = ExpressionConverter.ConvertO(__workflow_bodypARENTLOCATIONID);
+                    body["PARENT_LOCATION_ID"] = ExpressionConverter.ConvertO(__workflow_bodypARENTLOCATIONId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodymANAGERID != null)
+                if (__workflow_bodymANAGERId != null)
                 {
-                    body["MANAGER_ID"] = ExpressionConverter.ConvertO(__workflow_bodymANAGERID);
+                    body["MANAGER_ID"] = ExpressionConverter.ConvertO(__workflow_bodymANAGERId);
                     bodypropCount++;
                 }
 
@@ -2057,21 +2058,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyrEGIONZONEID != null)
+                if (__workflow_bodyrEGIONZONEId != null)
                 {
-                    body["REGION_ZONE_ID"] = ExpressionConverter.ConvertO(__workflow_bodyrEGIONZONEID);
+                    body["REGION_ZONE_ID"] = ExpressionConverter.ConvertO(__workflow_bodyrEGIONZONEId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodycOUNTRYID != null)
+                if (__workflow_bodycOUNTRYId != null)
                 {
-                    body["COUNTRY_ID"] = ExpressionConverter.ConvertO(__workflow_bodycOUNTRYID);
+                    body["COUNTRY_ID"] = ExpressionConverter.ConvertO(__workflow_bodycOUNTRYId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodysTATEID != null)
+                if (__workflow_bodysTATEId != null)
                 {
-                    body["STATE_ID"] = ExpressionConverter.ConvertO(__workflow_bodysTATEID);
+                    body["STATE_ID"] = ExpressionConverter.ConvertO(__workflow_bodysTATEId);
                     bodypropCount++;
                 }
 
@@ -2123,15 +2124,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodytIMEZONEID != null)
+                if (__workflow_bodytIMEZONEId != null)
                 {
-                    body["TIME_ZONE_ID"] = ExpressionConverter.ConvertO(__workflow_bodytIMEZONEID);
+                    body["TIME_ZONE_ID"] = ExpressionConverter.ConvertO(__workflow_bodytIMEZONEId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodysTATUSID != null)
+                if (__workflow_bodysTATUSId != null)
                 {
-                    body["STATUS_ID"] = ExpressionConverter.ConvertO(__workflow_bodysTATUSID);
+                    body["STATUS_ID"] = ExpressionConverter.ConvertO(__workflow_bodysTATUSId);
                     bodypropCount++;
                 }
 
@@ -2171,9 +2172,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodysLAID != null)
+                if (__workflow_bodysLAId != null)
                 {
-                    body["SLA_ID"] = ExpressionConverter.ConvertO(__workflow_bodysLAID);
+                    body["SLA_ID"] = ExpressionConverter.ConvertO(__workflow_bodysLAId);
                     bodypropCount++;
                 }
 
@@ -3421,7 +3422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<CreateResponseQuestionTicketResponse, ApiConnectionActionConfiguration> CreateResponseQuestionTicket(Expression<Func<string>> account, Expression<Func<string>> requestId, Expression<Func<string>> questionId, Expression<Func<string>> bodyrESULT = null, Expression<Func<string>> bodyrESULTSTRINGEN = null, Expression<Func<string>> bodyrESULTSTRINGFR = null, Expression<Func<string>> bodyrESULTSTRINGSP = null, Expression<Func<string>> bodyrESULTSTRINGGE = null, Expression<Func<string>> bodyrESULTSTRINGIT = null, Expression<Func<string>> bodyrESULTSTRINGPO = null, Expression<Func<string>> bodyrESULTDATE = null, Expression<Func<string>> bodyrESULTNUMBER = null, Expression<Func<string>> bodyrESULTBIT = null, Expression<Func<string>> bodyrESULTORDER = null, Expression<Func<string>> bodyrESULTSTRINGL1 = null, Expression<Func<string>> bodyrESULTSTRINGL2 = null, Expression<Func<string>> bodyrESULTSTRINGL3 = null, Expression<Func<string>> bodyrESULTSTRINGL4 = null, Expression<Func<string>> bodyrESULTSTRINGL5 = null, Expression<Func<string>> bodyrESULTSTRINGL6 = null, Expression<Func<string>> bodyqUESTIONDISPLAYED = null, Expression<Func<string>> bodydOCUMENTID = null, Expression<Func<string>> bodyqUESTIONREQUIRED = null, Expression<Func<string>> bodyiSCONDITIONNAL = null, Expression<Func<string>> bodyrESULTDURATION = null, Expression<Func<string>> bodysYSQUESTIONNAIREID = null, Expression<Func<string>> bodyoRIGINTOOLID = null, Expression<Func<string>> bodylASTQUESTIONNAIRE = null)
+        public IBodyWorkflowAction<CreateResponseQuestionTicketResponse, ApiConnectionActionConfiguration> CreateResponseQuestionTicket(Expression<Func<string>> account, Expression<Func<string>> requestId, Expression<Func<string>> questionId, Expression<Func<string>> bodyrESULT = null, Expression<Func<string>> bodyrESULTSTRINGEN = null, Expression<Func<string>> bodyrESULTSTRINGFR = null, Expression<Func<string>> bodyrESULTSTRINGSP = null, Expression<Func<string>> bodyrESULTSTRINGGE = null, Expression<Func<string>> bodyrESULTSTRINGIT = null, Expression<Func<string>> bodyrESULTSTRINGPO = null, Expression<Func<string>> bodyrESULTDATE = null, Expression<Func<string>> bodyrESULTNUMBER = null, Expression<Func<string>> bodyrESULTBIT = null, Expression<Func<string>> bodyrESULTORDER = null, Expression<Func<string>> bodyrESULTSTRINGL1 = null, Expression<Func<string>> bodyrESULTSTRINGL2 = null, Expression<Func<string>> bodyrESULTSTRINGL3 = null, Expression<Func<string>> bodyrESULTSTRINGL4 = null, Expression<Func<string>> bodyrESULTSTRINGL5 = null, Expression<Func<string>> bodyrESULTSTRINGL6 = null, Expression<Func<string>> bodyqUESTIONDISPLAYED = null, Expression<Func<string>> bodydOCUMENTId = null, Expression<Func<string>> bodyqUESTIONREQUIRED = null, Expression<Func<string>> bodyiSCONDITIONNAL = null, Expression<Func<string>> bodyrESULTDURATION = null, Expression<Func<string>> bodysYSQUESTIONNAIREId = null, Expression<Func<string>> bodyoRIGINTOOLId = null, Expression<Func<string>> bodylASTQUESTIONNAIRE = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
@@ -3444,12 +3445,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodyrESULTSTRINGL5 = WorkflowExpression.Compile(bodyrESULTSTRINGL5, nameof(bodyrESULTSTRINGL5), required: false);
             var __workflow_bodyrESULTSTRINGL6 = WorkflowExpression.Compile(bodyrESULTSTRINGL6, nameof(bodyrESULTSTRINGL6), required: false);
             var __workflow_bodyqUESTIONDISPLAYED = WorkflowExpression.Compile(bodyqUESTIONDISPLAYED, nameof(bodyqUESTIONDISPLAYED), required: false);
-            var __workflow_bodydOCUMENTID = WorkflowExpression.Compile(bodydOCUMENTID, nameof(bodydOCUMENTID), required: false);
+            var __workflow_bodydOCUMENTId = WorkflowExpression.Compile(bodydOCUMENTId, nameof(bodydOCUMENTId), required: false);
             var __workflow_bodyqUESTIONREQUIRED = WorkflowExpression.Compile(bodyqUESTIONREQUIRED, nameof(bodyqUESTIONREQUIRED), required: false);
             var __workflow_bodyiSCONDITIONNAL = WorkflowExpression.Compile(bodyiSCONDITIONNAL, nameof(bodyiSCONDITIONNAL), required: false);
             var __workflow_bodyrESULTDURATION = WorkflowExpression.Compile(bodyrESULTDURATION, nameof(bodyrESULTDURATION), required: false);
-            var __workflow_bodysYSQUESTIONNAIREID = WorkflowExpression.Compile(bodysYSQUESTIONNAIREID, nameof(bodysYSQUESTIONNAIREID), required: false);
-            var __workflow_bodyoRIGINTOOLID = WorkflowExpression.Compile(bodyoRIGINTOOLID, nameof(bodyoRIGINTOOLID), required: false);
+            var __workflow_bodysYSQUESTIONNAIREId = WorkflowExpression.Compile(bodysYSQUESTIONNAIREId, nameof(bodysYSQUESTIONNAIREId), required: false);
+            var __workflow_bodyoRIGINTOOLId = WorkflowExpression.Compile(bodyoRIGINTOOLId, nameof(bodyoRIGINTOOLId), required: false);
             var __workflow_bodylASTQUESTIONNAIRE = WorkflowExpression.Compile(bodylASTQUESTIONNAIRE, nameof(bodylASTQUESTIONNAIRE), required: false);
             return new DeferredBodyAction<CreateResponseQuestionTicketResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -3566,9 +3567,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodydOCUMENTID != null)
+                if (__workflow_bodydOCUMENTId != null)
                 {
-                    body["DOCUMENT_ID"] = ExpressionConverter.ConvertO(__workflow_bodydOCUMENTID);
+                    body["DOCUMENT_ID"] = ExpressionConverter.ConvertO(__workflow_bodydOCUMENTId);
                     bodypropCount++;
                 }
 
@@ -3590,15 +3591,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodysYSQUESTIONNAIREID != null)
+                if (__workflow_bodysYSQUESTIONNAIREId != null)
                 {
-                    body["SYS_QUESTIONNAIRE_ID"] = ExpressionConverter.ConvertO(__workflow_bodysYSQUESTIONNAIREID);
+                    body["SYS_QUESTIONNAIRE_ID"] = ExpressionConverter.ConvertO(__workflow_bodysYSQUESTIONNAIREId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyoRIGINTOOLID != null)
+                if (__workflow_bodyoRIGINTOOLId != null)
                 {
-                    body["ORIGIN_TOOL_ID"] = ExpressionConverter.ConvertO(__workflow_bodyoRIGINTOOLID);
+                    body["ORIGIN_TOOL_ID"] = ExpressionConverter.ConvertO(__workflow_bodyoRIGINTOOLId);
                     bodypropCount++;
                 }
 
@@ -3618,7 +3619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<UpdateResponseQuestionTicketResponse, ApiConnectionActionConfiguration> UpdateResponseQuestionTicket(Expression<Func<string>> account, Expression<Func<string>> requestId, Expression<Func<string>> questionId, Expression<Func<string>> bodyrESULT = null, Expression<Func<string>> bodyrESULTSTRINGEN = null, Expression<Func<string>> bodyrESULTSTRINGFR = null, Expression<Func<string>> bodyrESULTSTRINGSP = null, Expression<Func<string>> bodyrESULTSTRINGGE = null, Expression<Func<string>> bodyrESULTSTRINGIT = null, Expression<Func<string>> bodyrESULTSTRINGPO = null, Expression<Func<string>> bodyrESULTDATE = null, Expression<Func<string>> bodyrESULTNUMBER = null, Expression<Func<string>> bodyrESULTBIT = null, Expression<Func<string>> bodyrESULTORDER = null, Expression<Func<string>> bodyrESULTSTRINGL1 = null, Expression<Func<string>> bodyrESULTSTRINGL2 = null, Expression<Func<string>> bodyrESULTSTRINGL3 = null, Expression<Func<string>> bodyrESULTSTRINGL4 = null, Expression<Func<string>> bodyrESULTSTRINGL5 = null, Expression<Func<string>> bodyrESULTSTRINGL6 = null, Expression<Func<string>> bodyqUESTIONDISPLAYED = null, Expression<Func<string>> bodydOCUMENTID = null, Expression<Func<string>> bodyqUESTIONREQUIRED = null, Expression<Func<string>> bodyiSCONDITIONNAL = null, Expression<Func<string>> bodyrESULTDURATION = null, Expression<Func<string>> bodysYSQUESTIONNAIREID = null, Expression<Func<string>> bodyoRIGINTOOLID = null, Expression<Func<string>> bodylASTQUESTIONNAIRE = null)
+        public IBodyWorkflowAction<UpdateResponseQuestionTicketResponse, ApiConnectionActionConfiguration> UpdateResponseQuestionTicket(Expression<Func<string>> account, Expression<Func<string>> requestId, Expression<Func<string>> questionId, Expression<Func<string>> bodyrESULT = null, Expression<Func<string>> bodyrESULTSTRINGEN = null, Expression<Func<string>> bodyrESULTSTRINGFR = null, Expression<Func<string>> bodyrESULTSTRINGSP = null, Expression<Func<string>> bodyrESULTSTRINGGE = null, Expression<Func<string>> bodyrESULTSTRINGIT = null, Expression<Func<string>> bodyrESULTSTRINGPO = null, Expression<Func<string>> bodyrESULTDATE = null, Expression<Func<string>> bodyrESULTNUMBER = null, Expression<Func<string>> bodyrESULTBIT = null, Expression<Func<string>> bodyrESULTORDER = null, Expression<Func<string>> bodyrESULTSTRINGL1 = null, Expression<Func<string>> bodyrESULTSTRINGL2 = null, Expression<Func<string>> bodyrESULTSTRINGL3 = null, Expression<Func<string>> bodyrESULTSTRINGL4 = null, Expression<Func<string>> bodyrESULTSTRINGL5 = null, Expression<Func<string>> bodyrESULTSTRINGL6 = null, Expression<Func<string>> bodyqUESTIONDISPLAYED = null, Expression<Func<string>> bodydOCUMENTId = null, Expression<Func<string>> bodyqUESTIONREQUIRED = null, Expression<Func<string>> bodyiSCONDITIONNAL = null, Expression<Func<string>> bodyrESULTDURATION = null, Expression<Func<string>> bodysYSQUESTIONNAIREId = null, Expression<Func<string>> bodyoRIGINTOOLId = null, Expression<Func<string>> bodylASTQUESTIONNAIRE = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
@@ -3641,12 +3642,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodyrESULTSTRINGL5 = WorkflowExpression.Compile(bodyrESULTSTRINGL5, nameof(bodyrESULTSTRINGL5), required: false);
             var __workflow_bodyrESULTSTRINGL6 = WorkflowExpression.Compile(bodyrESULTSTRINGL6, nameof(bodyrESULTSTRINGL6), required: false);
             var __workflow_bodyqUESTIONDISPLAYED = WorkflowExpression.Compile(bodyqUESTIONDISPLAYED, nameof(bodyqUESTIONDISPLAYED), required: false);
-            var __workflow_bodydOCUMENTID = WorkflowExpression.Compile(bodydOCUMENTID, nameof(bodydOCUMENTID), required: false);
+            var __workflow_bodydOCUMENTId = WorkflowExpression.Compile(bodydOCUMENTId, nameof(bodydOCUMENTId), required: false);
             var __workflow_bodyqUESTIONREQUIRED = WorkflowExpression.Compile(bodyqUESTIONREQUIRED, nameof(bodyqUESTIONREQUIRED), required: false);
             var __workflow_bodyiSCONDITIONNAL = WorkflowExpression.Compile(bodyiSCONDITIONNAL, nameof(bodyiSCONDITIONNAL), required: false);
             var __workflow_bodyrESULTDURATION = WorkflowExpression.Compile(bodyrESULTDURATION, nameof(bodyrESULTDURATION), required: false);
-            var __workflow_bodysYSQUESTIONNAIREID = WorkflowExpression.Compile(bodysYSQUESTIONNAIREID, nameof(bodysYSQUESTIONNAIREID), required: false);
-            var __workflow_bodyoRIGINTOOLID = WorkflowExpression.Compile(bodyoRIGINTOOLID, nameof(bodyoRIGINTOOLID), required: false);
+            var __workflow_bodysYSQUESTIONNAIREId = WorkflowExpression.Compile(bodysYSQUESTIONNAIREId, nameof(bodysYSQUESTIONNAIREId), required: false);
+            var __workflow_bodyoRIGINTOOLId = WorkflowExpression.Compile(bodyoRIGINTOOLId, nameof(bodyoRIGINTOOLId), required: false);
             var __workflow_bodylASTQUESTIONNAIRE = WorkflowExpression.Compile(bodylASTQUESTIONNAIRE, nameof(bodylASTQUESTIONNAIRE), required: false);
             return new DeferredBodyAction<UpdateResponseQuestionTicketResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -3763,9 +3764,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodydOCUMENTID != null)
+                if (__workflow_bodydOCUMENTId != null)
                 {
-                    body["DOCUMENT_ID"] = ExpressionConverter.ConvertO(__workflow_bodydOCUMENTID);
+                    body["DOCUMENT_ID"] = ExpressionConverter.ConvertO(__workflow_bodydOCUMENTId);
                     bodypropCount++;
                 }
 
@@ -3787,15 +3788,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodysYSQUESTIONNAIREID != null)
+                if (__workflow_bodysYSQUESTIONNAIREId != null)
                 {
-                    body["SYS_QUESTIONNAIRE_ID"] = ExpressionConverter.ConvertO(__workflow_bodysYSQUESTIONNAIREID);
+                    body["SYS_QUESTIONNAIRE_ID"] = ExpressionConverter.ConvertO(__workflow_bodysYSQUESTIONNAIREId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyoRIGINTOOLID != null)
+                if (__workflow_bodyoRIGINTOOLId != null)
                 {
-                    body["ORIGIN_TOOL_ID"] = ExpressionConverter.ConvertO(__workflow_bodyoRIGINTOOLID);
+                    body["ORIGIN_TOOL_ID"] = ExpressionConverter.ConvertO(__workflow_bodyoRIGINTOOLId);
                     bodypropCount++;
                 }
 
@@ -3936,16 +3937,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<CreateActionTicketResponse, ApiConnectionActionConfiguration> CreateActionTicket(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<string>> bodyaCTIONNUMBER = null, Expression<Func<string>> bodyaSSETID = null, Expression<Func<string>> bodypARENTACTIONID = null, Expression<Func<string>> bodysUPPLIERID = null, Expression<Func<string>> bodydONEBYID = null, Expression<Func<string>> bodyvALIDATORID = null, Expression<Func<string>> bodyaCTIONLABELEN = null, Expression<Func<string>> bodytABLENAME = null, Expression<Func<string>> bodyfIELDNAME = null, Expression<Func<string>> bodyoLDVALUE = null, Expression<Func<string>> bodynEWVALUE = null, Expression<Func<string>> bodydELETEACTION = null, Expression<Func<string>> bodyaUTOMATICACTION = null, Expression<Func<string>> bodypROCESSSTEPID = null, Expression<Func<string>> bodyrEQUESTID = null, Expression<Func<string>> bodydESCRIPTION = null, Expression<Func<string>> bodynETCHARGE = null, Expression<Func<string>> bodynETCHARGECURID = null, Expression<Func<string>> bodyrESOLUTION = null, Expression<Func<string>> bodylOCATIONID = null, Expression<Func<string>> bodysUPPORTSTAFFID = null, Expression<Func<string>> bodycONTACTID = null, Expression<Func<string>> bodyeXPECTEDENDDATEUT = null, Expression<Func<string>> bodycOMMENT = null, Expression<Func<string>> bodysTARTDATEUT = null, Expression<Func<string>> bodyeNDDATEUT = null, Expression<Func<string>> bodyrENEWALDATEUT = null, Expression<Func<string>> bodyeXPECTEDSTARTDATEUT = null, Expression<Func<string>> bodycREATIONDATEUT = null, Expression<Func<string>> bodyaPPLICATIONDATEUT = null, Expression<Func<string>> bodywIZARDGUID = null, Expression<Func<string>> bodygROUPID = null, Expression<Func<string>> bodyaCTIONLABELFR = null, Expression<Func<string>> bodyaCTIONLABELSP = null, Expression<Func<string>> bodyaCTIONLABELGE = null, Expression<Func<string>> bodyaCTIONLABELIT = null, Expression<Func<string>> bodyaCTIONLABELPO = null, Expression<Func<string>> bodykNOWNPROBLEMID = null, Expression<Func<string>> bodymAXINTERVENTIONDATEUT = null, Expression<Func<string>> bodyeLAPSEDTIME = null, Expression<Func<string>> bodypRIORITYID = null, Expression<Func<string>> bodytAXID = null, Expression<Func<string>> bodysTATUSIDONCREATE = null, Expression<Func<string>> bodysTATUSIDONTERMINATE = null, Expression<Func<string>> bodyaCTIONTYPEID = null, Expression<Func<string>> bodydELAY = null, Expression<Func<string>> bodyaVAILABLEFIELD1 = null, Expression<Func<string>> bodyaVAILABLEFIELD2 = null, Expression<Func<string>> bodyaVAILABLEFIELD3 = null, Expression<Func<string>> bodyaVAILABLEFIELD4 = null, Expression<Func<string>> bodyaVAILABLEFIELD5 = null, Expression<Func<string>> bodyaVAILABLEFIELD6 = null, Expression<Func<string>> bodytIMEUSEDTOCOMPLETEACTION = null, Expression<Func<string>> bodycONTRACTUALCOST = null, Expression<Func<string>> bodycONTRACTUALCOSTCURID = null, Expression<Func<string>> bodytIMECOST = null, Expression<Func<string>> bodytIMECOSTCURID = null, Expression<Func<string>> bodyoRIGINACTIONID = null, Expression<Func<string>> bodywORKFLOWVALUE = null, Expression<Func<string>> bodycONTINUITYPLANID = null, Expression<Func<string>> bodycATEGORYTESTID = null, Expression<Func<string>> bodywORKFLOWID = null, Expression<Func<string>> bodyeXITVALUE = null, Expression<Func<string>> bodymAXRESOLUTIONDATEUT = null, Expression<Func<string>> bodypERCENTCOMPLETE = null, Expression<Func<string>> bodyeXPECTEDDURATION = null, Expression<Func<string>> bodywBSTASK = null, Expression<Func<string>> bodytASKPERSONCOSTPERHOUR = null, Expression<Func<string>> bodytASKPLANNEDBUDGET = null, Expression<Func<string>> bodyeSTIMATEDNETCHARGE = null, Expression<Func<string>> bodypREVIOUSSIBLINGID = null, Expression<Func<string>> bodyaCTIONLABELL1 = null, Expression<Func<string>> bodyaCTIONLABELL2 = null, Expression<Func<string>> bodyaCTIONLABELL3 = null, Expression<Func<string>> bodyaCTIONLABELL4 = null, Expression<Func<string>> bodyaCTIONLABELL5 = null, Expression<Func<string>> bodyaCTIONLABELL6 = null, Expression<Func<string>> bodyhISTORYID = null, Expression<Func<string>> bodytOTRUNC = null, Expression<Func<string>> bodysTAGEID = null, Expression<Func<string>> bodyiSLOCKEDPROGRESSPOINT = null, Expression<Func<string>> bodyoRIGINTOOLID = null, Expression<Func<string>> bodylASTUPDATE = null, Expression<Func<string>> bodyeLASTDATESUPDATE = null, Expression<Func<string>> bodybILLEDTIME = null, Expression<Func<string>> bodyiSBILLINGREVIEWED = null)
+        public IBodyWorkflowAction<CreateActionTicketResponse, ApiConnectionActionConfiguration> CreateActionTicket(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<string>> bodyaCTIONNUMBER = null, Expression<Func<string>> bodyaSSETId = null, Expression<Func<string>> bodypARENTACTIONId = null, Expression<Func<string>> bodysUPPLIERId = null, Expression<Func<string>> bodydONEBYId = null, Expression<Func<string>> bodyvALIdATORId = null, Expression<Func<string>> bodyaCTIONLABELEN = null, Expression<Func<string>> bodytABLENAME = null, Expression<Func<string>> bodyfIELDNAME = null, Expression<Func<string>> bodyoLDVALUE = null, Expression<Func<string>> bodynEWVALUE = null, Expression<Func<string>> bodydELETEACTION = null, Expression<Func<string>> bodyaUTOMATICACTION = null, Expression<Func<string>> bodypROCESSSTEPId = null, Expression<Func<string>> bodyrEQUESTId = null, Expression<Func<string>> bodydESCRIPTION = null, Expression<Func<string>> bodynETCHARGE = null, Expression<Func<string>> bodynETCHARGECURId = null, Expression<Func<string>> bodyrESOLUTION = null, Expression<Func<string>> bodylOCATIONId = null, Expression<Func<string>> bodysUPPORTSTAFFId = null, Expression<Func<string>> bodycONTACTId = null, Expression<Func<string>> bodyeXPECTEDENDDATEUT = null, Expression<Func<string>> bodycOMMENT = null, Expression<Func<string>> bodysTARTDATEUT = null, Expression<Func<string>> bodyeNDDATEUT = null, Expression<Func<string>> bodyrENEWALDATEUT = null, Expression<Func<string>> bodyeXPECTEDSTARTDATEUT = null, Expression<Func<string>> bodycREATIONDATEUT = null, Expression<Func<string>> bodyaPPLICATIONDATEUT = null, Expression<Func<string>> bodywIZARDGUID = null, Expression<Func<string>> bodygROUPId = null, Expression<Func<string>> bodyaCTIONLABELFR = null, Expression<Func<string>> bodyaCTIONLABELSP = null, Expression<Func<string>> bodyaCTIONLABELGE = null, Expression<Func<string>> bodyaCTIONLABELIT = null, Expression<Func<string>> bodyaCTIONLABELPO = null, Expression<Func<string>> bodykNOWNPROBLEMId = null, Expression<Func<string>> bodymAXINTERVENTIONDATEUT = null, Expression<Func<string>> bodyeLAPSEDTIME = null, Expression<Func<string>> bodypRIORITYId = null, Expression<Func<string>> bodytAXId = null, Expression<Func<string>> bodysTATUSIdONCREATE = null, Expression<Func<string>> bodysTATUSIdONTERMINATE = null, Expression<Func<string>> bodyaCTIONTYPEId = null, Expression<Func<string>> bodydELAY = null, Expression<Func<string>> bodyaVAILABLEFIELD1 = null, Expression<Func<string>> bodyaVAILABLEFIELD2 = null, Expression<Func<string>> bodyaVAILABLEFIELD3 = null, Expression<Func<string>> bodyaVAILABLEFIELD4 = null, Expression<Func<string>> bodyaVAILABLEFIELD5 = null, Expression<Func<string>> bodyaVAILABLEFIELD6 = null, Expression<Func<string>> bodytIMEUSEDTOCOMPLETEACTION = null, Expression<Func<string>> bodycONTRACTUALCOST = null, Expression<Func<string>> bodycONTRACTUALCOSTCURId = null, Expression<Func<string>> bodytIMECOST = null, Expression<Func<string>> bodytIMECOSTCURId = null, Expression<Func<string>> bodyoRIGINACTIONId = null, Expression<Func<string>> bodywORKFLOWVALUE = null, Expression<Func<string>> bodycONTINUITYPLANId = null, Expression<Func<string>> bodycATEGORYTESTId = null, Expression<Func<string>> bodywORKFLOWId = null, Expression<Func<string>> bodyeXITVALUE = null, Expression<Func<string>> bodymAXRESOLUTIONDATEUT = null, Expression<Func<string>> bodypERCENTCOMPLETE = null, Expression<Func<string>> bodyeXPECTEDDURATION = null, Expression<Func<string>> bodywBSTASK = null, Expression<Func<string>> bodytASKPERSONCOSTPERHOUR = null, Expression<Func<string>> bodytASKPLANNEDBUDGET = null, Expression<Func<string>> bodyeSTIMATEDNETCHARGE = null, Expression<Func<string>> bodypREVIOUSSIBLINGId = null, Expression<Func<string>> bodyaCTIONLABELL1 = null, Expression<Func<string>> bodyaCTIONLABELL2 = null, Expression<Func<string>> bodyaCTIONLABELL3 = null, Expression<Func<string>> bodyaCTIONLABELL4 = null, Expression<Func<string>> bodyaCTIONLABELL5 = null, Expression<Func<string>> bodyaCTIONLABELL6 = null, Expression<Func<string>> bodyhISTORYId = null, Expression<Func<string>> bodytOTRUNC = null, Expression<Func<string>> bodysTAGEId = null, Expression<Func<string>> bodyiSLOCKEDPROGRESSPOINT = null, Expression<Func<string>> bodyoRIGINTOOLId = null, Expression<Func<string>> bodylASTUPDATE = null, Expression<Func<string>> bodyeLASTDATESUPDATE = null, Expression<Func<string>> bodybILLEDTIME = null, Expression<Func<string>> bodyiSBILLINGREVIEWED = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_rfcNumber = WorkflowExpression.Compile(rfcNumber, nameof(rfcNumber), required: true);
             var __workflow_bodyaCTIONNUMBER = WorkflowExpression.Compile(bodyaCTIONNUMBER, nameof(bodyaCTIONNUMBER), required: false);
-            var __workflow_bodyaSSETID = WorkflowExpression.Compile(bodyaSSETID, nameof(bodyaSSETID), required: false);
-            var __workflow_bodypARENTACTIONID = WorkflowExpression.Compile(bodypARENTACTIONID, nameof(bodypARENTACTIONID), required: false);
-            var __workflow_bodysUPPLIERID = WorkflowExpression.Compile(bodysUPPLIERID, nameof(bodysUPPLIERID), required: false);
-            var __workflow_bodydONEBYID = WorkflowExpression.Compile(bodydONEBYID, nameof(bodydONEBYID), required: false);
-            var __workflow_bodyvALIDATORID = WorkflowExpression.Compile(bodyvALIDATORID, nameof(bodyvALIDATORID), required: false);
+            var __workflow_bodyaSSETId = WorkflowExpression.Compile(bodyaSSETId, nameof(bodyaSSETId), required: false);
+            var __workflow_bodypARENTACTIONId = WorkflowExpression.Compile(bodypARENTACTIONId, nameof(bodypARENTACTIONId), required: false);
+            var __workflow_bodysUPPLIERId = WorkflowExpression.Compile(bodysUPPLIERId, nameof(bodysUPPLIERId), required: false);
+            var __workflow_bodydONEBYId = WorkflowExpression.Compile(bodydONEBYId, nameof(bodydONEBYId), required: false);
+            var __workflow_bodyvALIdATORId = WorkflowExpression.Compile(bodyvALIdATORId, nameof(bodyvALIdATORId), required: false);
             var __workflow_bodyaCTIONLABELEN = WorkflowExpression.Compile(bodyaCTIONLABELEN, nameof(bodyaCTIONLABELEN), required: false);
             var __workflow_bodytABLENAME = WorkflowExpression.Compile(bodytABLENAME, nameof(bodytABLENAME), required: false);
             var __workflow_bodyfIELDNAME = WorkflowExpression.Compile(bodyfIELDNAME, nameof(bodyfIELDNAME), required: false);
@@ -3953,15 +3954,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodynEWVALUE = WorkflowExpression.Compile(bodynEWVALUE, nameof(bodynEWVALUE), required: false);
             var __workflow_bodydELETEACTION = WorkflowExpression.Compile(bodydELETEACTION, nameof(bodydELETEACTION), required: false);
             var __workflow_bodyaUTOMATICACTION = WorkflowExpression.Compile(bodyaUTOMATICACTION, nameof(bodyaUTOMATICACTION), required: false);
-            var __workflow_bodypROCESSSTEPID = WorkflowExpression.Compile(bodypROCESSSTEPID, nameof(bodypROCESSSTEPID), required: false);
-            var __workflow_bodyrEQUESTID = WorkflowExpression.Compile(bodyrEQUESTID, nameof(bodyrEQUESTID), required: false);
+            var __workflow_bodypROCESSSTEPId = WorkflowExpression.Compile(bodypROCESSSTEPId, nameof(bodypROCESSSTEPId), required: false);
+            var __workflow_bodyrEQUESTId = WorkflowExpression.Compile(bodyrEQUESTId, nameof(bodyrEQUESTId), required: false);
             var __workflow_bodydESCRIPTION = WorkflowExpression.Compile(bodydESCRIPTION, nameof(bodydESCRIPTION), required: false);
             var __workflow_bodynETCHARGE = WorkflowExpression.Compile(bodynETCHARGE, nameof(bodynETCHARGE), required: false);
-            var __workflow_bodynETCHARGECURID = WorkflowExpression.Compile(bodynETCHARGECURID, nameof(bodynETCHARGECURID), required: false);
+            var __workflow_bodynETCHARGECURId = WorkflowExpression.Compile(bodynETCHARGECURId, nameof(bodynETCHARGECURId), required: false);
             var __workflow_bodyrESOLUTION = WorkflowExpression.Compile(bodyrESOLUTION, nameof(bodyrESOLUTION), required: false);
-            var __workflow_bodylOCATIONID = WorkflowExpression.Compile(bodylOCATIONID, nameof(bodylOCATIONID), required: false);
-            var __workflow_bodysUPPORTSTAFFID = WorkflowExpression.Compile(bodysUPPORTSTAFFID, nameof(bodysUPPORTSTAFFID), required: false);
-            var __workflow_bodycONTACTID = WorkflowExpression.Compile(bodycONTACTID, nameof(bodycONTACTID), required: false);
+            var __workflow_bodylOCATIONId = WorkflowExpression.Compile(bodylOCATIONId, nameof(bodylOCATIONId), required: false);
+            var __workflow_bodysUPPORTSTAFFId = WorkflowExpression.Compile(bodysUPPORTSTAFFId, nameof(bodysUPPORTSTAFFId), required: false);
+            var __workflow_bodycONTACTId = WorkflowExpression.Compile(bodycONTACTId, nameof(bodycONTACTId), required: false);
             var __workflow_bodyeXPECTEDENDDATEUT = WorkflowExpression.Compile(bodyeXPECTEDENDDATEUT, nameof(bodyeXPECTEDENDDATEUT), required: false);
             var __workflow_bodycOMMENT = WorkflowExpression.Compile(bodycOMMENT, nameof(bodycOMMENT), required: false);
             var __workflow_bodysTARTDATEUT = WorkflowExpression.Compile(bodysTARTDATEUT, nameof(bodysTARTDATEUT), required: false);
@@ -3971,20 +3972,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodycREATIONDATEUT = WorkflowExpression.Compile(bodycREATIONDATEUT, nameof(bodycREATIONDATEUT), required: false);
             var __workflow_bodyaPPLICATIONDATEUT = WorkflowExpression.Compile(bodyaPPLICATIONDATEUT, nameof(bodyaPPLICATIONDATEUT), required: false);
             var __workflow_bodywIZARDGUID = WorkflowExpression.Compile(bodywIZARDGUID, nameof(bodywIZARDGUID), required: false);
-            var __workflow_bodygROUPID = WorkflowExpression.Compile(bodygROUPID, nameof(bodygROUPID), required: false);
+            var __workflow_bodygROUPId = WorkflowExpression.Compile(bodygROUPId, nameof(bodygROUPId), required: false);
             var __workflow_bodyaCTIONLABELFR = WorkflowExpression.Compile(bodyaCTIONLABELFR, nameof(bodyaCTIONLABELFR), required: false);
             var __workflow_bodyaCTIONLABELSP = WorkflowExpression.Compile(bodyaCTIONLABELSP, nameof(bodyaCTIONLABELSP), required: false);
             var __workflow_bodyaCTIONLABELGE = WorkflowExpression.Compile(bodyaCTIONLABELGE, nameof(bodyaCTIONLABELGE), required: false);
             var __workflow_bodyaCTIONLABELIT = WorkflowExpression.Compile(bodyaCTIONLABELIT, nameof(bodyaCTIONLABELIT), required: false);
             var __workflow_bodyaCTIONLABELPO = WorkflowExpression.Compile(bodyaCTIONLABELPO, nameof(bodyaCTIONLABELPO), required: false);
-            var __workflow_bodykNOWNPROBLEMID = WorkflowExpression.Compile(bodykNOWNPROBLEMID, nameof(bodykNOWNPROBLEMID), required: false);
+            var __workflow_bodykNOWNPROBLEMId = WorkflowExpression.Compile(bodykNOWNPROBLEMId, nameof(bodykNOWNPROBLEMId), required: false);
             var __workflow_bodymAXINTERVENTIONDATEUT = WorkflowExpression.Compile(bodymAXINTERVENTIONDATEUT, nameof(bodymAXINTERVENTIONDATEUT), required: false);
             var __workflow_bodyeLAPSEDTIME = WorkflowExpression.Compile(bodyeLAPSEDTIME, nameof(bodyeLAPSEDTIME), required: false);
-            var __workflow_bodypRIORITYID = WorkflowExpression.Compile(bodypRIORITYID, nameof(bodypRIORITYID), required: false);
-            var __workflow_bodytAXID = WorkflowExpression.Compile(bodytAXID, nameof(bodytAXID), required: false);
-            var __workflow_bodysTATUSIDONCREATE = WorkflowExpression.Compile(bodysTATUSIDONCREATE, nameof(bodysTATUSIDONCREATE), required: false);
-            var __workflow_bodysTATUSIDONTERMINATE = WorkflowExpression.Compile(bodysTATUSIDONTERMINATE, nameof(bodysTATUSIDONTERMINATE), required: false);
-            var __workflow_bodyaCTIONTYPEID = WorkflowExpression.Compile(bodyaCTIONTYPEID, nameof(bodyaCTIONTYPEID), required: false);
+            var __workflow_bodypRIORITYId = WorkflowExpression.Compile(bodypRIORITYId, nameof(bodypRIORITYId), required: false);
+            var __workflow_bodytAXId = WorkflowExpression.Compile(bodytAXId, nameof(bodytAXId), required: false);
+            var __workflow_bodysTATUSIdONCREATE = WorkflowExpression.Compile(bodysTATUSIdONCREATE, nameof(bodysTATUSIdONCREATE), required: false);
+            var __workflow_bodysTATUSIdONTERMINATE = WorkflowExpression.Compile(bodysTATUSIdONTERMINATE, nameof(bodysTATUSIdONTERMINATE), required: false);
+            var __workflow_bodyaCTIONTYPEId = WorkflowExpression.Compile(bodyaCTIONTYPEId, nameof(bodyaCTIONTYPEId), required: false);
             var __workflow_bodydELAY = WorkflowExpression.Compile(bodydELAY, nameof(bodydELAY), required: false);
             var __workflow_bodyaVAILABLEFIELD1 = WorkflowExpression.Compile(bodyaVAILABLEFIELD1, nameof(bodyaVAILABLEFIELD1), required: false);
             var __workflow_bodyaVAILABLEFIELD2 = WorkflowExpression.Compile(bodyaVAILABLEFIELD2, nameof(bodyaVAILABLEFIELD2), required: false);
@@ -3994,14 +3995,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodyaVAILABLEFIELD6 = WorkflowExpression.Compile(bodyaVAILABLEFIELD6, nameof(bodyaVAILABLEFIELD6), required: false);
             var __workflow_bodytIMEUSEDTOCOMPLETEACTION = WorkflowExpression.Compile(bodytIMEUSEDTOCOMPLETEACTION, nameof(bodytIMEUSEDTOCOMPLETEACTION), required: false);
             var __workflow_bodycONTRACTUALCOST = WorkflowExpression.Compile(bodycONTRACTUALCOST, nameof(bodycONTRACTUALCOST), required: false);
-            var __workflow_bodycONTRACTUALCOSTCURID = WorkflowExpression.Compile(bodycONTRACTUALCOSTCURID, nameof(bodycONTRACTUALCOSTCURID), required: false);
+            var __workflow_bodycONTRACTUALCOSTCURId = WorkflowExpression.Compile(bodycONTRACTUALCOSTCURId, nameof(bodycONTRACTUALCOSTCURId), required: false);
             var __workflow_bodytIMECOST = WorkflowExpression.Compile(bodytIMECOST, nameof(bodytIMECOST), required: false);
-            var __workflow_bodytIMECOSTCURID = WorkflowExpression.Compile(bodytIMECOSTCURID, nameof(bodytIMECOSTCURID), required: false);
-            var __workflow_bodyoRIGINACTIONID = WorkflowExpression.Compile(bodyoRIGINACTIONID, nameof(bodyoRIGINACTIONID), required: false);
+            var __workflow_bodytIMECOSTCURId = WorkflowExpression.Compile(bodytIMECOSTCURId, nameof(bodytIMECOSTCURId), required: false);
+            var __workflow_bodyoRIGINACTIONId = WorkflowExpression.Compile(bodyoRIGINACTIONId, nameof(bodyoRIGINACTIONId), required: false);
             var __workflow_bodywORKFLOWVALUE = WorkflowExpression.Compile(bodywORKFLOWVALUE, nameof(bodywORKFLOWVALUE), required: false);
-            var __workflow_bodycONTINUITYPLANID = WorkflowExpression.Compile(bodycONTINUITYPLANID, nameof(bodycONTINUITYPLANID), required: false);
-            var __workflow_bodycATEGORYTESTID = WorkflowExpression.Compile(bodycATEGORYTESTID, nameof(bodycATEGORYTESTID), required: false);
-            var __workflow_bodywORKFLOWID = WorkflowExpression.Compile(bodywORKFLOWID, nameof(bodywORKFLOWID), required: false);
+            var __workflow_bodycONTINUITYPLANId = WorkflowExpression.Compile(bodycONTINUITYPLANId, nameof(bodycONTINUITYPLANId), required: false);
+            var __workflow_bodycATEGORYTESTId = WorkflowExpression.Compile(bodycATEGORYTESTId, nameof(bodycATEGORYTESTId), required: false);
+            var __workflow_bodywORKFLOWId = WorkflowExpression.Compile(bodywORKFLOWId, nameof(bodywORKFLOWId), required: false);
             var __workflow_bodyeXITVALUE = WorkflowExpression.Compile(bodyeXITVALUE, nameof(bodyeXITVALUE), required: false);
             var __workflow_bodymAXRESOLUTIONDATEUT = WorkflowExpression.Compile(bodymAXRESOLUTIONDATEUT, nameof(bodymAXRESOLUTIONDATEUT), required: false);
             var __workflow_bodypERCENTCOMPLETE = WorkflowExpression.Compile(bodypERCENTCOMPLETE, nameof(bodypERCENTCOMPLETE), required: false);
@@ -4010,18 +4011,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             var __workflow_bodytASKPERSONCOSTPERHOUR = WorkflowExpression.Compile(bodytASKPERSONCOSTPERHOUR, nameof(bodytASKPERSONCOSTPERHOUR), required: false);
             var __workflow_bodytASKPLANNEDBUDGET = WorkflowExpression.Compile(bodytASKPLANNEDBUDGET, nameof(bodytASKPLANNEDBUDGET), required: false);
             var __workflow_bodyeSTIMATEDNETCHARGE = WorkflowExpression.Compile(bodyeSTIMATEDNETCHARGE, nameof(bodyeSTIMATEDNETCHARGE), required: false);
-            var __workflow_bodypREVIOUSSIBLINGID = WorkflowExpression.Compile(bodypREVIOUSSIBLINGID, nameof(bodypREVIOUSSIBLINGID), required: false);
+            var __workflow_bodypREVIOUSSIBLINGId = WorkflowExpression.Compile(bodypREVIOUSSIBLINGId, nameof(bodypREVIOUSSIBLINGId), required: false);
             var __workflow_bodyaCTIONLABELL1 = WorkflowExpression.Compile(bodyaCTIONLABELL1, nameof(bodyaCTIONLABELL1), required: false);
             var __workflow_bodyaCTIONLABELL2 = WorkflowExpression.Compile(bodyaCTIONLABELL2, nameof(bodyaCTIONLABELL2), required: false);
             var __workflow_bodyaCTIONLABELL3 = WorkflowExpression.Compile(bodyaCTIONLABELL3, nameof(bodyaCTIONLABELL3), required: false);
             var __workflow_bodyaCTIONLABELL4 = WorkflowExpression.Compile(bodyaCTIONLABELL4, nameof(bodyaCTIONLABELL4), required: false);
             var __workflow_bodyaCTIONLABELL5 = WorkflowExpression.Compile(bodyaCTIONLABELL5, nameof(bodyaCTIONLABELL5), required: false);
             var __workflow_bodyaCTIONLABELL6 = WorkflowExpression.Compile(bodyaCTIONLABELL6, nameof(bodyaCTIONLABELL6), required: false);
-            var __workflow_bodyhISTORYID = WorkflowExpression.Compile(bodyhISTORYID, nameof(bodyhISTORYID), required: false);
+            var __workflow_bodyhISTORYId = WorkflowExpression.Compile(bodyhISTORYId, nameof(bodyhISTORYId), required: false);
             var __workflow_bodytOTRUNC = WorkflowExpression.Compile(bodytOTRUNC, nameof(bodytOTRUNC), required: false);
-            var __workflow_bodysTAGEID = WorkflowExpression.Compile(bodysTAGEID, nameof(bodysTAGEID), required: false);
+            var __workflow_bodysTAGEId = WorkflowExpression.Compile(bodysTAGEId, nameof(bodysTAGEId), required: false);
             var __workflow_bodyiSLOCKEDPROGRESSPOINT = WorkflowExpression.Compile(bodyiSLOCKEDPROGRESSPOINT, nameof(bodyiSLOCKEDPROGRESSPOINT), required: false);
-            var __workflow_bodyoRIGINTOOLID = WorkflowExpression.Compile(bodyoRIGINTOOLID, nameof(bodyoRIGINTOOLID), required: false);
+            var __workflow_bodyoRIGINTOOLId = WorkflowExpression.Compile(bodyoRIGINTOOLId, nameof(bodyoRIGINTOOLId), required: false);
             var __workflow_bodylASTUPDATE = WorkflowExpression.Compile(bodylASTUPDATE, nameof(bodylASTUPDATE), required: false);
             var __workflow_bodyeLASTDATESUPDATE = WorkflowExpression.Compile(bodyeLASTDATESUPDATE, nameof(bodyeLASTDATESUPDATE), required: false);
             var __workflow_bodybILLEDTIME = WorkflowExpression.Compile(bodybILLEDTIME, nameof(bodybILLEDTIME), required: false);
@@ -4039,33 +4040,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyaSSETID != null)
+                if (__workflow_bodyaSSETId != null)
                 {
-                    body["ASSET_ID"] = ExpressionConverter.ConvertO(__workflow_bodyaSSETID);
+                    body["ASSET_ID"] = ExpressionConverter.ConvertO(__workflow_bodyaSSETId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodypARENTACTIONID != null)
+                if (__workflow_bodypARENTACTIONId != null)
                 {
-                    body["PARENT_ACTION_ID"] = ExpressionConverter.ConvertO(__workflow_bodypARENTACTIONID);
+                    body["PARENT_ACTION_ID"] = ExpressionConverter.ConvertO(__workflow_bodypARENTACTIONId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodysUPPLIERID != null)
+                if (__workflow_bodysUPPLIERId != null)
                 {
-                    body["SUPPLIER_ID"] = ExpressionConverter.ConvertO(__workflow_bodysUPPLIERID);
+                    body["SUPPLIER_ID"] = ExpressionConverter.ConvertO(__workflow_bodysUPPLIERId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodydONEBYID != null)
+                if (__workflow_bodydONEBYId != null)
                 {
-                    body["DONE_BY_ID"] = ExpressionConverter.ConvertO(__workflow_bodydONEBYID);
+                    body["DONE_BY_ID"] = ExpressionConverter.ConvertO(__workflow_bodydONEBYId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyvALIDATORID != null)
+                if (__workflow_bodyvALIdATORId != null)
                 {
-                    body["VALIDATOR_ID"] = ExpressionConverter.ConvertO(__workflow_bodyvALIDATORID);
+                    body["VALIDATOR_ID"] = ExpressionConverter.ConvertO(__workflow_bodyvALIdATORId);
                     bodypropCount++;
                 }
 
@@ -4111,15 +4112,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodypROCESSSTEPID != null)
+                if (__workflow_bodypROCESSSTEPId != null)
                 {
-                    body["PROCESS_STEP_ID"] = ExpressionConverter.ConvertO(__workflow_bodypROCESSSTEPID);
+                    body["PROCESS_STEP_ID"] = ExpressionConverter.ConvertO(__workflow_bodypROCESSSTEPId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyrEQUESTID != null)
+                if (__workflow_bodyrEQUESTId != null)
                 {
-                    body["REQUEST_ID"] = ExpressionConverter.ConvertO(__workflow_bodyrEQUESTID);
+                    body["REQUEST_ID"] = ExpressionConverter.ConvertO(__workflow_bodyrEQUESTId);
                     bodypropCount++;
                 }
 
@@ -4135,9 +4136,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodynETCHARGECURID != null)
+                if (__workflow_bodynETCHARGECURId != null)
                 {
-                    body["NET_CHARGE_CUR_ID"] = ExpressionConverter.ConvertO(__workflow_bodynETCHARGECURID);
+                    body["NET_CHARGE_CUR_ID"] = ExpressionConverter.ConvertO(__workflow_bodynETCHARGECURId);
                     bodypropCount++;
                 }
 
@@ -4147,21 +4148,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodylOCATIONID != null)
+                if (__workflow_bodylOCATIONId != null)
                 {
-                    body["LOCATION_ID"] = ExpressionConverter.ConvertO(__workflow_bodylOCATIONID);
+                    body["LOCATION_ID"] = ExpressionConverter.ConvertO(__workflow_bodylOCATIONId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodysUPPORTSTAFFID != null)
+                if (__workflow_bodysUPPORTSTAFFId != null)
                 {
-                    body["SUPPORT_STAFF_ID"] = ExpressionConverter.ConvertO(__workflow_bodysUPPORTSTAFFID);
+                    body["SUPPORT_STAFF_ID"] = ExpressionConverter.ConvertO(__workflow_bodysUPPORTSTAFFId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodycONTACTID != null)
+                if (__workflow_bodycONTACTId != null)
                 {
-                    body["CONTACT_ID"] = ExpressionConverter.ConvertO(__workflow_bodycONTACTID);
+                    body["CONTACT_ID"] = ExpressionConverter.ConvertO(__workflow_bodycONTACTId);
                     bodypropCount++;
                 }
 
@@ -4219,9 +4220,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodygROUPID != null)
+                if (__workflow_bodygROUPId != null)
                 {
-                    body["GROUP_ID"] = ExpressionConverter.ConvertO(__workflow_bodygROUPID);
+                    body["GROUP_ID"] = ExpressionConverter.ConvertO(__workflow_bodygROUPId);
                     bodypropCount++;
                 }
 
@@ -4255,9 +4256,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodykNOWNPROBLEMID != null)
+                if (__workflow_bodykNOWNPROBLEMId != null)
                 {
-                    body["KNOWN_PROBLEM_ID"] = ExpressionConverter.ConvertO(__workflow_bodykNOWNPROBLEMID);
+                    body["KNOWN_PROBLEM_ID"] = ExpressionConverter.ConvertO(__workflow_bodykNOWNPROBLEMId);
                     bodypropCount++;
                 }
 
@@ -4273,33 +4274,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodypRIORITYID != null)
+                if (__workflow_bodypRIORITYId != null)
                 {
-                    body["PRIORITY_ID"] = ExpressionConverter.ConvertO(__workflow_bodypRIORITYID);
+                    body["PRIORITY_ID"] = ExpressionConverter.ConvertO(__workflow_bodypRIORITYId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodytAXID != null)
+                if (__workflow_bodytAXId != null)
                 {
-                    body["TAX_ID"] = ExpressionConverter.ConvertO(__workflow_bodytAXID);
+                    body["TAX_ID"] = ExpressionConverter.ConvertO(__workflow_bodytAXId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodysTATUSIDONCREATE != null)
+                if (__workflow_bodysTATUSIdONCREATE != null)
                 {
-                    body["STATUS_ID_ON_CREATE"] = ExpressionConverter.ConvertO(__workflow_bodysTATUSIDONCREATE);
+                    body["STATUS_ID_ON_CREATE"] = ExpressionConverter.ConvertO(__workflow_bodysTATUSIdONCREATE);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodysTATUSIDONTERMINATE != null)
+                if (__workflow_bodysTATUSIdONTERMINATE != null)
                 {
-                    body["STATUS_ID_ON_TERMINATE"] = ExpressionConverter.ConvertO(__workflow_bodysTATUSIDONTERMINATE);
+                    body["STATUS_ID_ON_TERMINATE"] = ExpressionConverter.ConvertO(__workflow_bodysTATUSIdONTERMINATE);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyaCTIONTYPEID != null)
+                if (__workflow_bodyaCTIONTYPEId != null)
                 {
-                    body["ACTION_TYPE_ID"] = ExpressionConverter.ConvertO(__workflow_bodyaCTIONTYPEID);
+                    body["ACTION_TYPE_ID"] = ExpressionConverter.ConvertO(__workflow_bodyaCTIONTYPEId);
                     bodypropCount++;
                 }
 
@@ -4357,9 +4358,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodycONTRACTUALCOSTCURID != null)
+                if (__workflow_bodycONTRACTUALCOSTCURId != null)
                 {
-                    body["CONTRACTUAL_COST_CUR_ID"] = ExpressionConverter.ConvertO(__workflow_bodycONTRACTUALCOSTCURID);
+                    body["CONTRACTUAL_COST_CUR_ID"] = ExpressionConverter.ConvertO(__workflow_bodycONTRACTUALCOSTCURId);
                     bodypropCount++;
                 }
 
@@ -4369,15 +4370,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodytIMECOSTCURID != null)
+                if (__workflow_bodytIMECOSTCURId != null)
                 {
-                    body["TIME_COST_CUR_ID"] = ExpressionConverter.ConvertO(__workflow_bodytIMECOSTCURID);
+                    body["TIME_COST_CUR_ID"] = ExpressionConverter.ConvertO(__workflow_bodytIMECOSTCURId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyoRIGINACTIONID != null)
+                if (__workflow_bodyoRIGINACTIONId != null)
                 {
-                    body["ORIGIN_ACTION_ID"] = ExpressionConverter.ConvertO(__workflow_bodyoRIGINACTIONID);
+                    body["ORIGIN_ACTION_ID"] = ExpressionConverter.ConvertO(__workflow_bodyoRIGINACTIONId);
                     bodypropCount++;
                 }
 
@@ -4387,21 +4388,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodycONTINUITYPLANID != null)
+                if (__workflow_bodycONTINUITYPLANId != null)
                 {
-                    body["CONTINUITY_PLAN_ID"] = ExpressionConverter.ConvertO(__workflow_bodycONTINUITYPLANID);
+                    body["CONTINUITY_PLAN_ID"] = ExpressionConverter.ConvertO(__workflow_bodycONTINUITYPLANId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodycATEGORYTESTID != null)
+                if (__workflow_bodycATEGORYTESTId != null)
                 {
-                    body["CATEGORY_TEST_ID"] = ExpressionConverter.ConvertO(__workflow_bodycATEGORYTESTID);
+                    body["CATEGORY_TEST_ID"] = ExpressionConverter.ConvertO(__workflow_bodycATEGORYTESTId);
                     bodypropCount++;
                 }
 
-                if (__workflow_bodywORKFLOWID != null)
+                if (__workflow_bodywORKFLOWId != null)
                 {
-                    body["WORKFLOW_ID"] = ExpressionConverter.ConvertO(__workflow_bodywORKFLOWID);
+                    body["WORKFLOW_ID"] = ExpressionConverter.ConvertO(__workflow_bodywORKFLOWId);
                     bodypropCount++;
                 }
 
@@ -4453,9 +4454,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodypREVIOUSSIBLINGID != null)
+                if (__workflow_bodypREVIOUSSIBLINGId != null)
                 {
-                    body["PREVIOUS_SIBLING_ID"] = ExpressionConverter.ConvertO(__workflow_bodypREVIOUSSIBLINGID);
+                    body["PREVIOUS_SIBLING_ID"] = ExpressionConverter.ConvertO(__workflow_bodypREVIOUSSIBLINGId);
                     bodypropCount++;
                 }
 
@@ -4495,9 +4496,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyhISTORYID != null)
+                if (__workflow_bodyhISTORYId != null)
                 {
-                    body["HISTORY_ID"] = ExpressionConverter.ConvertO(__workflow_bodyhISTORYID);
+                    body["HISTORY_ID"] = ExpressionConverter.ConvertO(__workflow_bodyhISTORYId);
                     bodypropCount++;
                 }
 
@@ -4507,9 +4508,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodysTAGEID != null)
+                if (__workflow_bodysTAGEId != null)
                 {
-                    body["STAGE_ID"] = ExpressionConverter.ConvertO(__workflow_bodysTAGEID);
+                    body["STAGE_ID"] = ExpressionConverter.ConvertO(__workflow_bodysTAGEId);
                     bodypropCount++;
                 }
 
@@ -4519,9 +4520,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyoRIGINTOOLID != null)
+                if (__workflow_bodyoRIGINTOOLId != null)
                 {
-                    body["ORIGIN_TOOL_ID"] = ExpressionConverter.ConvertO(__workflow_bodyoRIGINTOOLID);
+                    body["ORIGIN_TOOL_ID"] = ExpressionConverter.ConvertO(__workflow_bodyoRIGINTOOLId);
                     bodypropCount++;
                 }
 
@@ -4684,7 +4685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
     public class ViewAssetsListResponseRecordsTypeItem
     {
         [JsonProperty("ASSET_ID")]
-        public string ASSETID { get; set; }
+        public string ASSETId { get; set; }
 
         [JsonProperty("ASSET_LABEL")]
         public string ASSETLABEL { get; set; }
@@ -4721,7 +4722,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string ARTICLEMODEL { get; set; }
 
         [JsonProperty("CATALOG_ID")]
-        public string CATALOGID { get; set; }
+        public string CATALOGId { get; set; }
         public string HREF { get; set; }
 
         [JsonProperty("NET_PRICE")]
@@ -4743,7 +4744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DEPARTMENTFR { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTID { get; set; }
+        public string DEPARTMENTId { get; set; }
 
         [JsonProperty("DEPARTMENT_LABEL")]
         public string DEPARTMENTLABEL { get; set; }
@@ -4764,7 +4765,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DEPARTMENTPATH { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEID { get; set; }
+        public string EMPLOYEEId { get; set; }
 
         [JsonProperty("E_MAIL")]
         public string EMAIL { get; set; }
@@ -4792,7 +4793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string LOCATIONFR { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONID { get; set; }
+        public string LOCATIONId { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
         public string LOCATIONPATH { get; set; }
@@ -4806,19 +4807,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
     public class bodyassetsInputItem
     {
         [JsonProperty("Acquisition_Type_ID")]
-        public string AcquisitionTypeID { get; set; }
+        public string AcquisitionTypeId { get; set; }
 
         [JsonProperty("Asset_Tag")]
         public string AssetTag { get; set; }
 
         [JsonProperty("Catalog_ID")]
-        public int CatalogID { get; set; }
+        public int CatalogId { get; set; }
 
         [JsonProperty("Comment_Asset")]
         public string CommentAsset { get; set; }
 
         [JsonProperty("Configuration_ID")]
-        public string ConfigurationID { get; set; }
+        public string ConfigurationId { get; set; }
 
         [JsonProperty("Delivery_Date")]
         public string DeliveryDate { get; set; }
@@ -4827,7 +4828,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DepartmentCode { get; set; }
 
         [JsonProperty("Employee_ID")]
-        public string EmployeeID { get; set; }
+        public string EmployeeId { get; set; }
 
         [JsonProperty("End_of_Waranty")]
         public string EndOfWaranty { get; set; }
@@ -4845,28 +4846,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string PowerConsumptionWH { get; set; }
 
         [JsonProperty("Recycling_Provider_ID")]
-        public string RecyclingProviderID { get; set; }
+        public string RecyclingProviderId { get; set; }
 
         [JsonProperty("Serial_Number")]
         public string SerialNumber { get; set; }
 
         [JsonProperty("Status_ID")]
-        public int StatusID { get; set; }
+        public int StatusId { get; set; }
 
         [JsonProperty("Waranty_Type_ID")]
-        public string WarantyTypeID { get; set; }
+        public string WarantyTypeId { get; set; }
     }
 
     public class ViewAssetResponse
     {
         [JsonProperty("ACQUISITION_TYPE_ID")]
-        public string ACQUISITIONTYPEID { get; set; }
+        public string ACQUISITIONTYPEId { get; set; }
 
         [JsonProperty("ASSET_GUID")]
         public string ASSETGUID { get; set; }
 
         [JsonProperty("ASSET_ID")]
-        public string ASSETID { get; set; }
+        public string ASSETId { get; set; }
 
         [JsonProperty("ASSET_LABEL")]
         public string ASSETLABEL { get; set; }
@@ -4878,7 +4879,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string AUTOMATICRENEWAL { get; set; }
 
         [JsonProperty("AVAILABILITY_SLA_ID")]
-        public string AVAILABILITYSLAID { get; set; }
+        public string AVAILABILITYSLAId { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_1")]
         public string AVAILABLEFIELD1 { get; set; }
@@ -4899,16 +4900,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string AVAILABLEFIELD6 { get; set; }
 
         [JsonProperty("BEFORE_LOAN_DEPARTMENT_ID")]
-        public string BEFORELOANDEPARTMENTID { get; set; }
+        public string BEFORELOANDEPARTMENTId { get; set; }
 
         [JsonProperty("BEFORE_LOAN_DEPARTMENT_PATH")]
         public string BEFORELOANDEPARTMENTPATH { get; set; }
 
         [JsonProperty("BEFORE_LOAN_EMPLOYEE_ID")]
-        public string BEFORELOANEMPLOYEEID { get; set; }
+        public string BEFORELOANEMPLOYEEId { get; set; }
 
         [JsonProperty("BEFORE_LOAN_LOCATION_ID")]
-        public string BEFORELOANLOCATIONID { get; set; }
+        public string BEFORELOANLOCATIONId { get; set; }
 
         [JsonProperty("BEFORE_LOAN_LOCATION_PATH")]
         public string BEFORELOANLOCATIONPATH { get; set; }
@@ -4917,37 +4918,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string BILLINGPERIODICITYINMONTH { get; set; }
 
         [JsonProperty("BUDGET_ID")]
-        public string BUDGETID { get; set; }
+        public string BUDGETId { get; set; }
 
         [JsonProperty("BUY_BACK_VALUE")]
         public string BUYBACKVALUE { get; set; }
 
         [JsonProperty("BUY_BACK_VALUE_CUR_ID")]
-        public string BUYBACKVALUECURID { get; set; }
+        public string BUYBACKVALUECURId { get; set; }
 
         [JsonProperty("CATALOG_ASSET")]
         public ViewAssetResponseCATALOGASSETType CATALOGASSET { get; set; }
 
         [JsonProperty("CATALOG_ID")]
-        public string CATALOGID { get; set; }
+        public string CATALOGId { get; set; }
 
         [JsonProperty("CHARGE_BACK")]
         public string CHARGEBACK { get; set; }
 
         [JsonProperty("CHARGE_BACK_CUR_ID")]
-        public string CHARGEBACKCURID { get; set; }
+        public string CHARGEBACKCURId { get; set; }
 
         [JsonProperty("CI_BACKUP_BY_DEFAULT")]
         public string CIBACKUPBYDEFAULT { get; set; }
 
         [JsonProperty("CI_STATUS_ID")]
-        public string CISTATUSID { get; set; }
+        public string CISTATUSId { get; set; }
 
         [JsonProperty("CI_VERSION")]
         public string CIVERSION { get; set; }
 
         [JsonProperty("CM_DEFAULT_CHANGE_ID")]
-        public string CMDEFAULTCHANGEID { get; set; }
+        public string CMDEFAULTCHANGEId { get; set; }
 
         [JsonProperty("CM_DEFAULT_CHANGE_PATH")]
         public string CMDEFAULTCHANGEPATH { get; set; }
@@ -4956,13 +4957,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewAssetResponseCOMMENTASSETType COMMENTASSET { get; set; }
 
         [JsonProperty("CONFIGURATION_ID")]
-        public string CONFIGURATIONID { get; set; }
+        public string CONFIGURATIONId { get; set; }
 
         [JsonProperty("CONTRACT_TYPE_ID")]
-        public string CONTRACTTYPEID { get; set; }
+        public string CONTRACTTYPEId { get; set; }
 
         [JsonProperty("CRITICAL_LEVEL_ID")]
-        public string CRITICALLEVELID { get; set; }
+        public string CRITICALLEVELId { get; set; }
 
         [JsonProperty("DELIVERY_DATE")]
         public string DELIVERYDATE { get; set; }
@@ -4972,20 +4973,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewAssetResponseDEPARTMENTType DEPARTMENT { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTID { get; set; }
+        public string DEPARTMENTId { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
         public string DEPARTMENTPATH { get; set; }
 
         [JsonProperty("DEPRECIATION_RULE_ID")]
-        public string DEPRECIATIONRULEID { get; set; }
+        public string DEPRECIATIONRULEId { get; set; }
 
         [JsonProperty("D_HARDWARE_GUID")]
         public string DHARDWAREGUID { get; set; }
         public ViewAssetResponseEMPLOYEEType EMPLOYEE { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEID { get; set; }
+        public string EMPLOYEEId { get; set; }
 
         [JsonProperty("END_OF_WARANTY")]
         public string ENDOFWARANTY { get; set; }
@@ -5022,7 +5023,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string INTERNALDISPO { get; set; }
 
         [JsonProperty("INVENTORY_ID")]
-        public string INVENTORYID { get; set; }
+        public string INVENTORYId { get; set; }
 
         [JsonProperty("INVOICE_NUMBER")]
         public string INVOICENUMBER { get; set; }
@@ -5049,7 +5050,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string LASTPAYMENT { get; set; }
 
         [JsonProperty("LAST_PAYMENT_CUR_ID")]
-        public string LASTPAYMENTCURID { get; set; }
+        public string LASTPAYMENTCURId { get; set; }
 
         [JsonProperty("LAST_PHYSICAL_INVENTORY")]
         public string LASTPHYSICALINVENTORY { get; set; }
@@ -5062,22 +5063,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewAssetResponseLOCATIONType LOCATION { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONID { get; set; }
+        public string LOCATIONId { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
         public string LOCATIONPATH { get; set; }
 
         [JsonProperty("LOCATION_TO_CHECK_REQUEST_ID")]
-        public string LOCATIONTOCHECKREQUESTID { get; set; }
+        public string LOCATIONTOCHECKREQUESTId { get; set; }
 
         [JsonProperty("MAINTENANCE_COST")]
         public string MAINTENANCECOST { get; set; }
 
         [JsonProperty("MAINTENANCE_COST_CUR_ID")]
-        public string MAINTENANCECOSTCURID { get; set; }
+        public string MAINTENANCECOSTCURId { get; set; }
 
         [JsonProperty("MAIN_USAGE_ID")]
-        public string MAINUSAGEID { get; set; }
+        public string MAINUSAGEId { get; set; }
 
         [JsonProperty("MAX_INSTALLS")]
         public string MAXINSTALLS { get; set; }
@@ -5086,25 +5087,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string MONTHLYFIXEDCOST { get; set; }
 
         [JsonProperty("MONTHLY_FIXED_COST_CUR_ID")]
-        public string MONTHLYFIXEDCOSTCURID { get; set; }
+        public string MONTHLYFIXEDCOSTCURId { get; set; }
 
         [JsonProperty("MONTHLY_NET_RENTAL")]
         public string MONTHLYNETRENTAL { get; set; }
 
         [JsonProperty("MONTHLY_NET_RENTAL_CUR_ID")]
-        public string MONTHLYNETRENTALCURID { get; set; }
+        public string MONTHLYNETRENTALCURId { get; set; }
 
         [JsonProperty("MONTH_DURATION")]
         public string MONTHDURATION { get; set; }
 
         [JsonProperty("NETWORK_IDENTIFIER")]
-        public string NETWORKIDENTIFIER { get; set; }
+        public string NETWORKIdENTIFIER { get; set; }
 
         [JsonProperty("NEXT_CI_VERSION")]
         public string NEXTCIVERSION { get; set; }
 
         [JsonProperty("NEXT_DEPARTMENT_ID")]
-        public string NEXTDEPARTMENTID { get; set; }
+        public string NEXTDEPARTMENTId { get; set; }
 
         [JsonProperty("NEXT_DEPARTMENT_PATH")]
         public string NEXTDEPARTMENTPATH { get; set; }
@@ -5113,29 +5114,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string NEXTMAINTENANCEDATE { get; set; }
 
         [JsonProperty("NEXT_STATUS_ID")]
-        public string NEXTSTATUSID { get; set; }
+        public string NEXTSTATUSId { get; set; }
 
         [JsonProperty("NEXT_USER_APPLICATION_DATE")]
         public string NEXTUSERAPPLICATIONDATE { get; set; }
 
         [JsonProperty("NEXT_USER_ID")]
-        public string NEXTUSERID { get; set; }
+        public string NEXTUSERId { get; set; }
         public string NOTICE { get; set; }
 
         [JsonProperty("ORDER_DETAILS_ID")]
-        public string ORDERDETAILSID { get; set; }
+        public string ORDERDETAILSId { get; set; }
 
         [JsonProperty("ORDER_NUMBER")]
         public string ORDERNUMBER { get; set; }
 
         [JsonProperty("OWNERSHIP_TO_CHECK_REQUEST_ID")]
-        public string OWNERSHIPTOCHECKREQUESTID { get; set; }
+        public string OWNERSHIPTOCHECKREQUESTId { get; set; }
 
         [JsonProperty("PACKAGE_PATH")]
         public string PACKAGEPATH { get; set; }
 
         [JsonProperty("PIPELINE_STATUS_ID")]
-        public string PIPELINESTATUSID { get; set; }
+        public string PIPELINESTATUSId { get; set; }
 
         [JsonProperty("POWER_CONSUMPTION_WH")]
         public string POWERCONSUMPTIONWH { get; set; }
@@ -5147,13 +5148,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string PROCESSORSOCKETCOUNT { get; set; }
 
         [JsonProperty("PROJECT_ID")]
-        public string PROJECTID { get; set; }
+        public string PROJECTId { get; set; }
 
         [JsonProperty("PROVIDER_ID")]
-        public string PROVIDERID { get; set; }
+        public string PROVIdERId { get; set; }
 
         [JsonProperty("PROVIDER_PATH")]
-        public string PROVIDERPATH { get; set; }
+        public string PROVIdERPATH { get; set; }
 
         [JsonProperty("PURCHASE_DATE")]
         public string PURCHASEDATE { get; set; }
@@ -5162,19 +5163,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string PURCHASEPRICE { get; set; }
 
         [JsonProperty("PURCHASE_PRICE_CUR_ID")]
-        public string PURCHASEPRICECURID { get; set; }
+        public string PURCHASEPRICECURId { get; set; }
 
         [JsonProperty("PURCHASE_RATE_ID")]
-        public string PURCHASERATEID { get; set; }
+        public string PURCHASERATEId { get; set; }
 
         [JsonProperty("RECYCLED_DATE")]
         public string RECYCLEDDATE { get; set; }
 
         [JsonProperty("RECYCLING_PROVIDER_ID")]
-        public string RECYCLINGPROVIDERID { get; set; }
+        public string RECYCLINGPROVIdERId { get; set; }
 
         [JsonProperty("RECYCLING_PROVIDER_PATH")]
-        public string RECYCLINGPROVIDERPATH { get; set; }
+        public string RECYCLINGPROVIdERPATH { get; set; }
 
         [JsonProperty("REFORM_NUMBER")]
         public string REFORMNUMBER { get; set; }
@@ -5183,22 +5184,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string REMOVEDDATE { get; set; }
 
         [JsonProperty("RENEWAL_DECISION_ID")]
-        public string RENEWALDECISIONID { get; set; }
+        public string RENEWALDECISIONId { get; set; }
 
         [JsonProperty("RENEWAL_VALUE")]
         public string RENEWALVALUE { get; set; }
 
         [JsonProperty("RENEWAL_VALUE_CUR_ID")]
-        public string RENEWALVALUECURID { get; set; }
+        public string RENEWALVALUECURId { get; set; }
 
         [JsonProperty("REPAIRED_BY_ID")]
-        public string REPAIREDBYID { get; set; }
+        public string REPAIREDBYId { get; set; }
 
         [JsonProperty("REPAIRED_BY_PATH")]
         public string REPAIREDBYPATH { get; set; }
 
         [JsonProperty("REQUEST_ID")]
-        public string REQUESTID { get; set; }
+        public string REQUESTId { get; set; }
 
         [JsonProperty("RESALES_VALUE")]
         public string RESALESVALUE { get; set; }
@@ -5207,19 +5208,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string SCHEDULEDEND { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGID { get; set; }
+        public string SDCATALOGId { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH")]
         public string SDCATALOGPATH { get; set; }
 
         [JsonProperty("SD_DEFAULT_INCIDENT_ID")]
-        public string SDDEFAULTINCIDENTID { get; set; }
+        public string SDDEFAULTINCIdENTId { get; set; }
 
         [JsonProperty("SD_DEFAULT_INCIDENT_PATH")]
-        public string SDDEFAULTINCIDENTPATH { get; set; }
+        public string SDDEFAULTINCIdENTPATH { get; set; }
 
         [JsonProperty("SD_DEFAULT_REQUEST_ID")]
-        public string SDDEFAULTREQUESTID { get; set; }
+        public string SDDEFAULTREQUESTId { get; set; }
 
         [JsonProperty("SD_DEFAULT_REQUEST_PATH")]
         public string SDDEFAULTREQUESTPATH { get; set; }
@@ -5228,16 +5229,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string SERIALNUMBER { get; set; }
 
         [JsonProperty("SERVER_TYPE_ID")]
-        public string SERVERTYPEID { get; set; }
+        public string SERVERTYPEId { get; set; }
 
         [JsonProperty("SLA_ID")]
-        public string SLAID { get; set; }
+        public string SLAId { get; set; }
 
         [JsonProperty("STATUS_ID")]
-        public string STATUSID { get; set; }
+        public string STATUSId { get; set; }
 
         [JsonProperty("SUPPLIER_ID")]
-        public string SUPPLIERID { get; set; }
+        public string SUPPLIERId { get; set; }
 
         [JsonProperty("SUPPLIER_PATH")]
         public string SUPPLIERPATH { get; set; }
@@ -5250,7 +5251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string UPDATECOVERAGETERM { get; set; }
 
         [JsonProperty("WARANTY_TYPE_ID")]
-        public string WARANTYTYPEID { get; set; }
+        public string WARANTYTYPEId { get; set; }
         public string XPOS { get; set; }
         public string YPOS { get; set; }
         public string ZPOS { get; set; }
@@ -5262,7 +5263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string ARTICLEMODEL { get; set; }
 
         [JsonProperty("CATALOG_ID")]
-        public string CATALOGID { get; set; }
+        public string CATALOGId { get; set; }
         public string HREF { get; set; }
 
         [JsonProperty("NET_PRICE")]
@@ -5289,7 +5290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DEPARTMENTFR { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTID { get; set; }
+        public string DEPARTMENTId { get; set; }
 
         [JsonProperty("DEPARTMENT_LABEL")]
         public string DEPARTMENTLABEL { get; set; }
@@ -5310,7 +5311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DEPARTMENTPATH { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEID { get; set; }
+        public string EMPLOYEEId { get; set; }
 
         [JsonProperty("E_MAIL")]
         public string EMAIL { get; set; }
@@ -5338,7 +5339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string LOCATIONFR { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONID { get; set; }
+        public string LOCATIONId { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
         public string LOCATIONPATH { get; set; }
@@ -5366,7 +5367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
     public class ViewAssetLinksResponseRecordsTypeItem
     {
         [JsonProperty("ASSET_ID")]
-        public string ASSETID { get; set; }
+        public string ASSETId { get; set; }
 
         [JsonProperty("CONTRACT_ROW")]
         public string CONTRACTROW { get; set; }
@@ -5376,7 +5377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string MONTHLYPAYMENT { get; set; }
 
         [JsonProperty("PARENT_ASSET_ID")]
-        public string PARENTASSETID { get; set; }
+        public string PARENTASSETId { get; set; }
 
         [JsonProperty("PARENT_HREF")]
         public string PARENTHREF { get; set; }
@@ -5395,7 +5396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
     public class ViewAssetLinkResponse
     {
         [JsonProperty("ASSET_ID")]
-        public string ASSETID { get; set; }
+        public string ASSETId { get; set; }
 
         [JsonProperty("CONTRACT_ROW")]
         public string CONTRACTROW { get; set; }
@@ -5405,7 +5406,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string MONTHLYPAYMENT { get; set; }
 
         [JsonProperty("PARENT_ASSET_ID")]
-        public string PARENTASSETID { get; set; }
+        public string PARENTASSETId { get; set; }
 
         [JsonProperty("PARENT_HREF")]
         public string PARENTHREF { get; set; }
@@ -5431,7 +5432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string ARTICLEMODEL { get; set; }
 
         [JsonProperty("CATALOG_ID")]
-        public string CATALOGID { get; set; }
+        public string CATALOGId { get; set; }
         public string HREF { get; set; }
         public ViewCatalogAssetsListResponseRecordsTypeItemMANUFACTURERType MANUFACTURER { get; set; }
 
@@ -5453,7 +5454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string MANUFACTURER { get; set; }
 
         [JsonProperty("MANUFACTURER_ID")]
-        public string MANUFACTURERID { get; set; }
+        public string MANUFACTURERId { get; set; }
     }
 
     public class ViewCatalogAssetResponse
@@ -5489,7 +5490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string CATALOGGUID { get; set; }
 
         [JsonProperty("CATALOG_ID")]
-        public string CATALOGID { get; set; }
+        public string CATALOGId { get; set; }
 
         [JsonProperty("CURRENT_LICENSE_VERSION")]
         public string CURRENTLICENSEVERSION { get; set; }
@@ -5498,25 +5499,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DEFAULTBUYBACKVALUE { get; set; }
 
         [JsonProperty("DEFAULT_BUY_BACK_VALUE_CUR_ID")]
-        public string DEFAULTBUYBACKVALUECURID { get; set; }
+        public string DEFAULTBUYBACKVALUECURId { get; set; }
 
         [JsonProperty("DEFAULT_CHARGE_BACK")]
         public string DEFAULTCHARGEBACK { get; set; }
 
         [JsonProperty("DEFAULT_CHARGE_BACK_CUR_ID")]
-        public string DEFAULTCHARGEBACKCURID { get; set; }
+        public string DEFAULTCHARGEBACKCURId { get; set; }
 
         [JsonProperty("DEFAULT_DISPOSAL_VALUE")]
         public string DEFAULTDISPOSALVALUE { get; set; }
 
         [JsonProperty("DEFAULT_DISPOSAL_VALUE_CUR_ID")]
-        public string DEFAULTDISPOSALVALUECURID { get; set; }
+        public string DEFAULTDISPOSALVALUECURId { get; set; }
 
         [JsonProperty("DEFAULT_RENEWAL_VALUE")]
         public string DEFAULTRENEWALVALUE { get; set; }
 
         [JsonProperty("DEFAULT_RENEWAL_VALUE_CUR_ID")]
-        public string DEFAULTRENEWALVALUECURID { get; set; }
+        public string DEFAULTRENEWALVALUECURId { get; set; }
 
         [JsonProperty("DESCRIPTION_EN")]
         public ViewCatalogAssetResponseDESCRIPTIONENType DESCRIPTIONEN { get; set; }
@@ -5568,7 +5569,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("IMPACT_ID")]
-        public string IMPACTID { get; set; }
+        public string IMPACTId { get; set; }
 
         [JsonProperty("INITIAL_STOCK")]
         public string INITIALSTOCK { get; set; }
@@ -5586,7 +5587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string LICENSEPRICEPERSEAT { get; set; }
 
         [JsonProperty("LICENSE_PRICE_PER_SEAT_CUR_ID")]
-        public string LICENSEPRICEPERSEATCURID { get; set; }
+        public string LICENSEPRICEPERSEATCURId { get; set; }
 
         [JsonProperty("LICENSE_PROGRAM")]
         public string LICENSEPROGRAM { get; set; }
@@ -5598,11 +5599,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string MANAGEDLICENSE { get; set; }
 
         [JsonProperty("MANAGER_ID")]
-        public string MANAGERID { get; set; }
+        public string MANAGERId { get; set; }
         public ViewCatalogAssetResponseMANUFACTURERType MANUFACTURER { get; set; }
 
         [JsonProperty("MANUFACTURER_ID")]
-        public string MANUFACTURERID { get; set; }
+        public string MANUFACTURERId { get; set; }
 
         [JsonProperty("MANUFACTURER_REF")]
         public string MANUFACTURERREF { get; set; }
@@ -5614,7 +5615,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string MONTHLYNETRENTAL { get; set; }
 
         [JsonProperty("MONTHLY_NET_RENTAL_CUR_ID")]
-        public string MONTHLYNETRENTALCURID { get; set; }
+        public string MONTHLYNETRENTALCURId { get; set; }
 
         [JsonProperty("NB_INSTALLS")]
         public string NBINSTALLS { get; set; }
@@ -5623,7 +5624,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string NETPRICE { get; set; }
 
         [JsonProperty("NET_PRICE_CUR_ID")]
-        public string NETPRICECURID { get; set; }
+        public string NETPRICECURId { get; set; }
 
         [JsonProperty("PERCENT_MAINTENANCE_COST")]
         public string PERCENTMAINTENANCECOST { get; set; }
@@ -5641,7 +5642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string REFSCCM { get; set; }
 
         [JsonProperty("SLA_ID")]
-        public string SLAID { get; set; }
+        public string SLAId { get; set; }
 
         [JsonProperty("SMBIOS_NAME")]
         public string SMBIOSNAME { get; set; }
@@ -5650,10 +5651,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string STARTDATE { get; set; }
 
         [JsonProperty("TAX_ID")]
-        public string TAXID { get; set; }
+        public string TAXId { get; set; }
 
         [JsonProperty("TECHNICAL_VALIDATION_REQUIRED")]
-        public string TECHNICALVALIDATIONREQUIRED { get; set; }
+        public string TECHNICALVALIdATIONREQUIRED { get; set; }
 
         [JsonProperty("TITLE_EN")]
         public string TITLEEN { get; set; }
@@ -5763,7 +5764,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string MANUFACTURER { get; set; }
 
         [JsonProperty("MANUFACTURER_ID")]
-        public string MANUFACTURERID { get; set; }
+        public string MANUFACTURERId { get; set; }
     }
 
     public class ViewCatalogRequestsListResponse
@@ -5792,7 +5793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewCatalogRequestsListResponseRecordsTypeItemMANAGERType MANAGER { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGID { get; set; }
+        public string SDCATALOGId { get; set; }
         public ViewCatalogRequestsListResponseRecordsTypeItemSLAType SLA { get; set; }
 
         [JsonProperty("TITLE_FR")]
@@ -5804,7 +5805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGID { get; set; }
+        public string SDCATALOGId { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH_FR")]
         public string SDCATALOGPATHFR { get; set; }
@@ -5822,7 +5823,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DEPARTMENTPATH { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEID { get; set; }
+        public string EMPLOYEEId { get; set; }
 
         [JsonProperty("E_MAIL")]
         public string EMAIL { get; set; }
@@ -5845,7 +5846,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string NAMEFR { get; set; }
 
         [JsonProperty("SLA_ID")]
-        public string SLAID { get; set; }
+        public string SLAId { get; set; }
     }
 
     public class ViewCatalogRequestsPathListResponse
@@ -5867,7 +5868,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGID { get; set; }
+        public string SDCATALOGId { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH_FR")]
         public string SDCATALOGPATHFR { get; set; }
@@ -5878,7 +5879,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGID { get; set; }
+        public string SDCATALOGId { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH_EN")]
         public string SDCATALOGPATHEN { get; set; }
@@ -5972,7 +5973,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DEFAULTREQUESTTA { get; set; }
 
         [JsonProperty("DEFAULT_URGENCY_ID")]
-        public string DEFAULTURGENCYID { get; set; }
+        public string DEFAULTURGENCYId { get; set; }
 
         [JsonProperty("DESCRIPTION_EN")]
         public ViewCatalogRequestResponseDESCRIPTIONENType DESCRIPTIONEN { get; set; }
@@ -6017,11 +6018,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string ENDOFNEWS { get; set; }
 
         [JsonProperty("GROUP_ID")]
-        public string GROUPID { get; set; }
+        public string GROUPId { get; set; }
         public string HREF { get; set; }
 
         [JsonProperty("IMPACT_ID")]
-        public string IMPACTID { get; set; }
+        public string IMPACTId { get; set; }
 
         [JsonProperty("LAST_INTEGRATION")]
         public string LASTINTEGRATION { get; set; }
@@ -6040,23 +6041,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string MONTHLYNETRENTAL { get; set; }
 
         [JsonProperty("MONTHLY_NET_RENTAL_CUR_ID")]
-        public string MONTHLYNETRENTALCURID { get; set; }
+        public string MONTHLYNETRENTALCURId { get; set; }
 
         [JsonProperty("NET_PRICE")]
         public string NETPRICE { get; set; }
 
         [JsonProperty("NET_PRICE_CUR_ID")]
-        public string NETPRICECURID { get; set; }
+        public string NETPRICECURId { get; set; }
 
         [JsonProperty("PACKAGE_NAME")]
         public string PACKAGENAME { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGID { get; set; }
+        public string SDCATALOGId { get; set; }
         public ViewCatalogRequestResponseSLAType SLA { get; set; }
 
         [JsonProperty("SLA_ID")]
-        public string SLAID { get; set; }
+        public string SLAId { get; set; }
 
         [JsonProperty("START_DATE")]
         public string STARTDATE { get; set; }
@@ -6106,7 +6107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGID { get; set; }
+        public string SDCATALOGId { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH_FR")]
         public string SDCATALOGPATHFR { get; set; }
@@ -6189,7 +6190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DEPARTMENTPATH { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEID { get; set; }
+        public string EMPLOYEEId { get; set; }
 
         [JsonProperty("E_MAIL")]
         public string EMAIL { get; set; }
@@ -6212,7 +6213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string NAMEFR { get; set; }
 
         [JsonProperty("SLA_ID")]
-        public string SLAID { get; set; }
+        public string SLAId { get; set; }
     }
 
     public class ViewConfigurationItemsListResponse
@@ -6232,32 +6233,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
     public class ViewConfigurationItemsListResponseRecordsTypeItem
     {
         [JsonProperty("ASSET_ID")]
-        public string ASSETID { get; set; }
+        public string ASSETId { get; set; }
 
         [JsonProperty("ASSET_TAG")]
         public string ASSETTAG { get; set; }
 
         [JsonProperty("CI_STATUS_ID")]
-        public string CISTATUSID { get; set; }
+        public string CISTATUSId { get; set; }
 
         [JsonProperty("CI_VERSION")]
         public string CIVERSION { get; set; }
         public string HREF { get; set; }
 
         [JsonProperty("NETWORK_IDENTIFIER")]
-        public string NETWORKIDENTIFIER { get; set; }
+        public string NETWORKIdENTIFIER { get; set; }
     }
 
     public class ViewConfigurationItemResponse
     {
         [JsonProperty("ACQUISITION_TYPE_ID")]
-        public string ACQUISITIONTYPEID { get; set; }
+        public string ACQUISITIONTYPEId { get; set; }
 
         [JsonProperty("ASSET_GUID")]
         public string ASSETGUID { get; set; }
 
         [JsonProperty("ASSET_ID")]
-        public string ASSETID { get; set; }
+        public string ASSETId { get; set; }
 
         [JsonProperty("ASSET_LABEL")]
         public string ASSETLABEL { get; set; }
@@ -6269,7 +6270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string AUTOMATICRENEWAL { get; set; }
 
         [JsonProperty("AVAILABILITY_SLA_ID")]
-        public string AVAILABILITYSLAID { get; set; }
+        public string AVAILABILITYSLAId { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_1")]
         public string AVAILABLEFIELD1 { get; set; }
@@ -6290,16 +6291,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string AVAILABLEFIELD6 { get; set; }
 
         [JsonProperty("BEFORE_LOAN_DEPARTMENT_ID")]
-        public string BEFORELOANDEPARTMENTID { get; set; }
+        public string BEFORELOANDEPARTMENTId { get; set; }
 
         [JsonProperty("BEFORE_LOAN_DEPARTMENT_PATH")]
         public string BEFORELOANDEPARTMENTPATH { get; set; }
 
         [JsonProperty("BEFORE_LOAN_EMPLOYEE_ID")]
-        public string BEFORELOANEMPLOYEEID { get; set; }
+        public string BEFORELOANEMPLOYEEId { get; set; }
 
         [JsonProperty("BEFORE_LOAN_LOCATION_ID")]
-        public string BEFORELOANLOCATIONID { get; set; }
+        public string BEFORELOANLOCATIONId { get; set; }
 
         [JsonProperty("BEFORE_LOAN_LOCATION_PATH")]
         public string BEFORELOANLOCATIONPATH { get; set; }
@@ -6308,34 +6309,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string BILLINGPERIODICITYINMONTH { get; set; }
 
         [JsonProperty("BUDGET_ID")]
-        public string BUDGETID { get; set; }
+        public string BUDGETId { get; set; }
 
         [JsonProperty("BUY_BACK_VALUE")]
         public string BUYBACKVALUE { get; set; }
 
         [JsonProperty("BUY_BACK_VALUE_CUR_ID")]
-        public string BUYBACKVALUECURID { get; set; }
+        public string BUYBACKVALUECURId { get; set; }
 
         [JsonProperty("CATALOG_ID")]
-        public string CATALOGID { get; set; }
+        public string CATALOGId { get; set; }
 
         [JsonProperty("CHARGE_BACK")]
         public string CHARGEBACK { get; set; }
 
         [JsonProperty("CHARGE_BACK_CUR_ID")]
-        public string CHARGEBACKCURID { get; set; }
+        public string CHARGEBACKCURId { get; set; }
 
         [JsonProperty("CI_BACKUP_BY_DEFAULT")]
         public string CIBACKUPBYDEFAULT { get; set; }
 
         [JsonProperty("CI_STATUS_ID")]
-        public string CISTATUSID { get; set; }
+        public string CISTATUSId { get; set; }
 
         [JsonProperty("CI_VERSION")]
         public string CIVERSION { get; set; }
 
         [JsonProperty("CM_DEFAULT_CHANGE_ID")]
-        public string CMDEFAULTCHANGEID { get; set; }
+        public string CMDEFAULTCHANGEId { get; set; }
 
         [JsonProperty("CM_DEFAULT_CHANGE_PATH")]
         public string CMDEFAULTCHANGEPATH { get; set; }
@@ -6344,13 +6345,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewConfigurationItemResponseCOMMENTASSETType COMMENTASSET { get; set; }
 
         [JsonProperty("CONFIGURATION_ID")]
-        public string CONFIGURATIONID { get; set; }
+        public string CONFIGURATIONId { get; set; }
 
         [JsonProperty("CONTRACT_TYPE_ID")]
-        public string CONTRACTTYPEID { get; set; }
+        public string CONTRACTTYPEId { get; set; }
 
         [JsonProperty("CRITICAL_LEVEL_ID")]
-        public string CRITICALLEVELID { get; set; }
+        public string CRITICALLEVELId { get; set; }
 
         [JsonProperty("DELIVERY_DATE")]
         public string DELIVERYDATE { get; set; }
@@ -6359,19 +6360,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DELIVERYNUMBER { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTID { get; set; }
+        public string DEPARTMENTId { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
         public string DEPARTMENTPATH { get; set; }
 
         [JsonProperty("DEPRECIATION_RULE_ID")]
-        public string DEPRECIATIONRULEID { get; set; }
+        public string DEPRECIATIONRULEId { get; set; }
 
         [JsonProperty("D_HARDWARE_GUID")]
         public string DHARDWAREGUID { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEID { get; set; }
+        public string EMPLOYEEId { get; set; }
 
         [JsonProperty("END_OF_WARANTY")]
         public string ENDOFWARANTY { get; set; }
@@ -6408,7 +6409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string INTERNALDISPO { get; set; }
 
         [JsonProperty("INVENTORY_ID")]
-        public string INVENTORYID { get; set; }
+        public string INVENTORYId { get; set; }
 
         [JsonProperty("INVOICE_NUMBER")]
         public string INVOICENUMBER { get; set; }
@@ -6435,7 +6436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string LASTPAYMENT { get; set; }
 
         [JsonProperty("LAST_PAYMENT_CUR_ID")]
-        public string LASTPAYMENTCURID { get; set; }
+        public string LASTPAYMENTCURId { get; set; }
 
         [JsonProperty("LAST_PHYSICAL_INVENTORY")]
         public string LASTPHYSICALINVENTORY { get; set; }
@@ -6447,22 +6448,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string LICENSEVERSION { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONID { get; set; }
+        public string LOCATIONId { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
         public string LOCATIONPATH { get; set; }
 
         [JsonProperty("LOCATION_TO_CHECK_REQUEST_ID")]
-        public string LOCATIONTOCHECKREQUESTID { get; set; }
+        public string LOCATIONTOCHECKREQUESTId { get; set; }
 
         [JsonProperty("MAINTENANCE_COST")]
         public string MAINTENANCECOST { get; set; }
 
         [JsonProperty("MAINTENANCE_COST_CUR_ID")]
-        public string MAINTENANCECOSTCURID { get; set; }
+        public string MAINTENANCECOSTCURId { get; set; }
 
         [JsonProperty("MAIN_USAGE_ID")]
-        public string MAINUSAGEID { get; set; }
+        public string MAINUSAGEId { get; set; }
 
         [JsonProperty("MAX_INSTALLS")]
         public string MAXINSTALLS { get; set; }
@@ -6471,25 +6472,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string MONTHLYFIXEDCOST { get; set; }
 
         [JsonProperty("MONTHLY_FIXED_COST_CUR_ID")]
-        public string MONTHLYFIXEDCOSTCURID { get; set; }
+        public string MONTHLYFIXEDCOSTCURId { get; set; }
 
         [JsonProperty("MONTHLY_NET_RENTAL")]
         public string MONTHLYNETRENTAL { get; set; }
 
         [JsonProperty("MONTHLY_NET_RENTAL_CUR_ID")]
-        public string MONTHLYNETRENTALCURID { get; set; }
+        public string MONTHLYNETRENTALCURId { get; set; }
 
         [JsonProperty("MONTH_DURATION")]
         public string MONTHDURATION { get; set; }
 
         [JsonProperty("NETWORK_IDENTIFIER")]
-        public string NETWORKIDENTIFIER { get; set; }
+        public string NETWORKIdENTIFIER { get; set; }
 
         [JsonProperty("NEXT_CI_VERSION")]
         public string NEXTCIVERSION { get; set; }
 
         [JsonProperty("NEXT_DEPARTMENT_ID")]
-        public string NEXTDEPARTMENTID { get; set; }
+        public string NEXTDEPARTMENTId { get; set; }
 
         [JsonProperty("NEXT_DEPARTMENT_PATH")]
         public string NEXTDEPARTMENTPATH { get; set; }
@@ -6498,29 +6499,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string NEXTMAINTENANCEDATE { get; set; }
 
         [JsonProperty("NEXT_STATUS_ID")]
-        public string NEXTSTATUSID { get; set; }
+        public string NEXTSTATUSId { get; set; }
 
         [JsonProperty("NEXT_USER_APPLICATION_DATE")]
         public string NEXTUSERAPPLICATIONDATE { get; set; }
 
         [JsonProperty("NEXT_USER_ID")]
-        public string NEXTUSERID { get; set; }
+        public string NEXTUSERId { get; set; }
         public string NOTICE { get; set; }
 
         [JsonProperty("ORDER_DETAILS_ID")]
-        public string ORDERDETAILSID { get; set; }
+        public string ORDERDETAILSId { get; set; }
 
         [JsonProperty("ORDER_NUMBER")]
         public string ORDERNUMBER { get; set; }
 
         [JsonProperty("OWNERSHIP_TO_CHECK_REQUEST_ID")]
-        public string OWNERSHIPTOCHECKREQUESTID { get; set; }
+        public string OWNERSHIPTOCHECKREQUESTId { get; set; }
 
         [JsonProperty("PACKAGE_PATH")]
         public string PACKAGEPATH { get; set; }
 
         [JsonProperty("PIPELINE_STATUS_ID")]
-        public string PIPELINESTATUSID { get; set; }
+        public string PIPELINESTATUSId { get; set; }
 
         [JsonProperty("POWER_CONSUMPTION_WH")]
         public string POWERCONSUMPTIONWH { get; set; }
@@ -6532,13 +6533,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string PROCESSORSOCKETCOUNT { get; set; }
 
         [JsonProperty("PROJECT_ID")]
-        public string PROJECTID { get; set; }
+        public string PROJECTId { get; set; }
 
         [JsonProperty("PROVIDER_ID")]
-        public string PROVIDERID { get; set; }
+        public string PROVIdERId { get; set; }
 
         [JsonProperty("PROVIDER_PATH")]
-        public string PROVIDERPATH { get; set; }
+        public string PROVIdERPATH { get; set; }
 
         [JsonProperty("PURCHASE_DATE")]
         public string PURCHASEDATE { get; set; }
@@ -6547,19 +6548,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string PURCHASEPRICE { get; set; }
 
         [JsonProperty("PURCHASE_PRICE_CUR_ID")]
-        public string PURCHASEPRICECURID { get; set; }
+        public string PURCHASEPRICECURId { get; set; }
 
         [JsonProperty("PURCHASE_RATE_ID")]
-        public string PURCHASERATEID { get; set; }
+        public string PURCHASERATEId { get; set; }
 
         [JsonProperty("RECYCLED_DATE")]
         public string RECYCLEDDATE { get; set; }
 
         [JsonProperty("RECYCLING_PROVIDER_ID")]
-        public string RECYCLINGPROVIDERID { get; set; }
+        public string RECYCLINGPROVIdERId { get; set; }
 
         [JsonProperty("RECYCLING_PROVIDER_PATH")]
-        public string RECYCLINGPROVIDERPATH { get; set; }
+        public string RECYCLINGPROVIdERPATH { get; set; }
 
         [JsonProperty("REFORM_NUMBER")]
         public string REFORMNUMBER { get; set; }
@@ -6568,22 +6569,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string REMOVEDDATE { get; set; }
 
         [JsonProperty("RENEWAL_DECISION_ID")]
-        public string RENEWALDECISIONID { get; set; }
+        public string RENEWALDECISIONId { get; set; }
 
         [JsonProperty("RENEWAL_VALUE")]
         public string RENEWALVALUE { get; set; }
 
         [JsonProperty("RENEWAL_VALUE_CUR_ID")]
-        public string RENEWALVALUECURID { get; set; }
+        public string RENEWALVALUECURId { get; set; }
 
         [JsonProperty("REPAIRED_BY_ID")]
-        public string REPAIREDBYID { get; set; }
+        public string REPAIREDBYId { get; set; }
 
         [JsonProperty("REPAIRED_BY_PATH")]
         public string REPAIREDBYPATH { get; set; }
 
         [JsonProperty("REQUEST_ID")]
-        public string REQUESTID { get; set; }
+        public string REQUESTId { get; set; }
 
         [JsonProperty("RESALES_VALUE")]
         public string RESALESVALUE { get; set; }
@@ -6592,19 +6593,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string SCHEDULEDEND { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGID { get; set; }
+        public string SDCATALOGId { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH")]
         public string SDCATALOGPATH { get; set; }
 
         [JsonProperty("SD_DEFAULT_INCIDENT_ID")]
-        public string SDDEFAULTINCIDENTID { get; set; }
+        public string SDDEFAULTINCIdENTId { get; set; }
 
         [JsonProperty("SD_DEFAULT_INCIDENT_PATH")]
-        public string SDDEFAULTINCIDENTPATH { get; set; }
+        public string SDDEFAULTINCIdENTPATH { get; set; }
 
         [JsonProperty("SD_DEFAULT_REQUEST_ID")]
-        public string SDDEFAULTREQUESTID { get; set; }
+        public string SDDEFAULTREQUESTId { get; set; }
 
         [JsonProperty("SD_DEFAULT_REQUEST_PATH")]
         public string SDDEFAULTREQUESTPATH { get; set; }
@@ -6613,16 +6614,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string SERIALNUMBER { get; set; }
 
         [JsonProperty("SERVER_TYPE_ID")]
-        public string SERVERTYPEID { get; set; }
+        public string SERVERTYPEId { get; set; }
 
         [JsonProperty("SLA_ID")]
-        public string SLAID { get; set; }
+        public string SLAId { get; set; }
 
         [JsonProperty("STATUS_ID")]
-        public string STATUSID { get; set; }
+        public string STATUSId { get; set; }
 
         [JsonProperty("SUPPLIER_ID")]
-        public string SUPPLIERID { get; set; }
+        public string SUPPLIERId { get; set; }
 
         [JsonProperty("SUPPLIER_PATH")]
         public string SUPPLIERPATH { get; set; }
@@ -6635,7 +6636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string UPDATECOVERAGETERM { get; set; }
 
         [JsonProperty("WARANTY_TYPE_ID")]
-        public string WARANTYTYPEID { get; set; }
+        public string WARANTYTYPEId { get; set; }
         public string XPOS { get; set; }
         public string YPOS { get; set; }
         public string ZPOS { get; set; }
@@ -6665,11 +6666,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string BLOCKING { get; set; }
 
         [JsonProperty("CHILD_CI_ID")]
-        public string CHILDCIID { get; set; }
+        public string CHILDCIId { get; set; }
         public string HREF { get; set; }
 
         [JsonProperty("PARENT_CI_ID")]
-        public string PARENTCIID { get; set; }
+        public string PARENTCIId { get; set; }
 
         [JsonProperty("PARENT_HREF")]
         public string PARENTHREF { get; set; }
@@ -6678,7 +6679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewConfigurationItemLinksResponseRecordsTypeItemRELATIONTYPEType RELATIONTYPE { get; set; }
 
         [JsonProperty("RELATION_TYPE_ID")]
-        public string RELATIONTYPEID { get; set; }
+        public string RELATIONTYPEId { get; set; }
     }
 
     public class ViewConfigurationItemLinksResponseRecordsTypeItemRELATIONTYPEType
@@ -6687,7 +6688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string REFERENCEFR { get; set; }
 
         [JsonProperty("REFERENCE_ID")]
-        public string REFERENCEID { get; set; }
+        public string REFERENCEId { get; set; }
     }
 
     public class ViewConfigurationItemLinkResponse
@@ -6695,11 +6696,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string BLOCKING { get; set; }
 
         [JsonProperty("CHILD_CI_ID")]
-        public string CHILDCIID { get; set; }
+        public string CHILDCIId { get; set; }
         public string HREF { get; set; }
 
         [JsonProperty("PARENT_CI_ID")]
-        public string PARENTCIID { get; set; }
+        public string PARENTCIId { get; set; }
 
         [JsonProperty("PARENT_HREF")]
         public string PARENTHREF { get; set; }
@@ -6708,7 +6709,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewConfigurationItemLinkResponseRELATIONTYPEType RELATIONTYPE { get; set; }
 
         [JsonProperty("RELATION_TYPE_ID")]
-        public string RELATIONTYPEID { get; set; }
+        public string RELATIONTYPEId { get; set; }
     }
 
     public class ViewConfigurationItemLinkResponseRELATIONTYPEType
@@ -6717,7 +6718,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string REFERENCEFR { get; set; }
 
         [JsonProperty("REFERENCE_ID")]
-        public string REFERENCEID { get; set; }
+        public string REFERENCEId { get; set; }
     }
 
     public class CreateConfigurationItemLinkResponse
@@ -6753,7 +6754,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DEPARTMENTFR { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTID { get; set; }
+        public string DEPARTMENTId { get; set; }
 
         [JsonProperty("DEPARTMENT_LABEL")]
         public string DEPARTMENTLABEL { get; set; }
@@ -6787,10 +6788,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewEntityResponseCOMMENTDEPARTMENTType COMMENTDEPARTMENT { get; set; }
 
         [JsonProperty("CURRENCY_ID")]
-        public string CURRENCYID { get; set; }
+        public string CURRENCYId { get; set; }
 
         [JsonProperty("DEFAULT_COST_CENTER_ID")]
-        public string DEFAULTCOSTCENTERID { get; set; }
+        public string DEFAULTCOSTCENTERId { get; set; }
 
         [JsonProperty("DEPARTMENT_CODE")]
         public string DEPARTMENTCODE { get; set; }
@@ -6805,7 +6806,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DEPARTMENTGE { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTID { get; set; }
+        public string DEPARTMENTId { get; set; }
 
         [JsonProperty("DEPARTMENT_IT")]
         public string DEPARTMENTIT { get; set; }
@@ -6852,16 +6853,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string LEVEL { get; set; }
 
         [JsonProperty("MANAGER_ID")]
-        public string MANAGERID { get; set; }
+        public string MANAGERId { get; set; }
 
         [JsonProperty("PARENT_DEPARTMENT_ID")]
-        public string PARENTDEPARTMENTID { get; set; }
+        public string PARENTDEPARTMENTId { get; set; }
 
         [JsonProperty("PARENT_DEPARTMENT_PATH")]
         public string PARENTDEPARTMENTPATH { get; set; }
 
         [JsonProperty("SLA_ID")]
-        public string SLAID { get; set; }
+        public string SLAId { get; set; }
 
         [JsonProperty("START_DATE")]
         public string STARTDATE { get; set; }
@@ -6904,13 +6905,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewEmployeesListResponseRecordsTypeItemDEPARTMENTType DEPARTMENT { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTID { get; set; }
+        public string DEPARTMENTId { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
         public string DEPARTMENTPATH { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEID { get; set; }
+        public string EMPLOYEEId { get; set; }
 
         [JsonProperty("E_MAIL")]
         public string EMAIL { get; set; }
@@ -6921,7 +6922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewEmployeesListResponseRecordsTypeItemLOCATIONType LOCATION { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONID { get; set; }
+        public string LOCATIONId { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
         public string LOCATIONPATH { get; set; }
@@ -6940,7 +6941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DEPARTMENTFR { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTID { get; set; }
+        public string DEPARTMENTId { get; set; }
 
         [JsonProperty("DEPARTMENT_LABEL")]
         public string DEPARTMENTLABEL { get; set; }
@@ -6962,7 +6963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string LOCATIONFR { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONID { get; set; }
+        public string LOCATIONId { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
         public string LOCATIONPATH { get; set; }
@@ -6980,7 +6981,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DEPARTMENTPATH { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEID { get; set; }
+        public string EMPLOYEEId { get; set; }
 
         [JsonProperty("E_MAIL")]
         public string EMAIL { get; set; }
@@ -7023,10 +7024,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
     public class ViewEmployeeResponse
     {
         [JsonProperty("APPROVED_TO_VALIDATE")]
-        public string APPROVEDTOVALIDATE { get; set; }
+        public string APPROVEDTOVALIdATE { get; set; }
 
         [JsonProperty("AVAILABILITY_STATUS_ID")]
-        public string AVAILABILITYSTATUSID { get; set; }
+        public string AVAILABILITYSTATUSId { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_1")]
         public string AVAILABLEFIELD1 { get; set; }
@@ -7056,7 +7057,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string CHATLOGIN { get; set; }
 
         [JsonProperty("CIVIL_STATUS_ID")]
-        public string CIVILSTATUSID { get; set; }
+        public string CIVILSTATUSId { get; set; }
 
         [JsonProperty("COMMENT_EMPLOYEE")]
         public ViewEmployeeResponseCOMMENTEMPLOYEEType COMMENTEMPLOYEE { get; set; }
@@ -7065,29 +7066,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string COSTPERHOUR { get; set; }
 
         [JsonProperty("COST_PER_HOUR_CUR_ID")]
-        public string COSTPERHOURCURID { get; set; }
+        public string COSTPERHOURCURId { get; set; }
 
         [JsonProperty("DEFAULT_COST_CENTER_ID")]
-        public string DEFAULTCOSTCENTERID { get; set; }
+        public string DEFAULTCOSTCENTERId { get; set; }
 
         [JsonProperty("DELEGATION_FROM")]
         public string DELEGATIONFROM { get; set; }
 
         [JsonProperty("DELEGATION_ID")]
-        public string DELEGATIONID { get; set; }
+        public string DELEGATIONId { get; set; }
 
         [JsonProperty("DELEGATION_TO")]
         public string DELEGATIONTO { get; set; }
         public ViewEmployeeResponseDEPARTMENTType DEPARTMENT { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTID { get; set; }
+        public string DEPARTMENTId { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
         public string DEPARTMENTPATH { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEID { get; set; }
+        public string EMPLOYEEId { get; set; }
 
         [JsonProperty("END_OF_CONTRACT")]
         public string ENDOFCONTRACT { get; set; }
@@ -7105,12 +7106,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string FAXNUMBER { get; set; }
 
         [JsonProperty("FUNCTION_ID")]
-        public string FUNCTIONID { get; set; }
+        public string FUNCTIONId { get; set; }
         public string HREF { get; set; }
 
         [JsonProperty("ICQ_NUMBER")]
         public string ICQNUMBER { get; set; }
-        public string IDENTIFICATION { get; set; }
+
+        [JsonProperty("IDENTIFICATION")]
+        public string IdENTIFICATION { get; set; }
         public string IMPACT { get; set; }
 
         [JsonProperty("IS_AUTOMATIC_STATUS")]
@@ -7123,7 +7126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string ITCORRESPONDENT { get; set; }
 
         [JsonProperty("LANGUAGE_ID")]
-        public string LANGUAGEID { get; set; }
+        public string LANGUAGEId { get; set; }
 
         [JsonProperty("LAST_INTEGRATION")]
         public string LASTINTEGRATION { get; set; }
@@ -7136,13 +7139,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewEmployeeResponseLOCATIONType LOCATION { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONID { get; set; }
+        public string LOCATIONId { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
         public string LOCATIONPATH { get; set; }
 
         [JsonProperty("LOCATION_TO_CHECK_REQUEST_ID")]
-        public string LOCATIONTOCHECKREQUESTID { get; set; }
+        public string LOCATIONTOCHECKREQUESTId { get; set; }
         public string LOGIN { get; set; }
 
         [JsonProperty("MAIL_ALERT")]
@@ -7150,13 +7153,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewEmployeeResponseMANAGERType MANAGER { get; set; }
 
         [JsonProperty("MANAGER_ID")]
-        public string MANAGERID { get; set; }
+        public string MANAGERId { get; set; }
 
         [JsonProperty("MESSENGER_SIGN_NAME")]
         public string MESSENGERSIGNNAME { get; set; }
 
         [JsonProperty("NOTIFICATION_TYPE_ID")]
-        public string NOTIFICATIONTYPEID { get; set; }
+        public string NOTIFICATIONTYPEId { get; set; }
 
         [JsonProperty("PASSWD_LAST_UPDATE_UT")]
         public string PASSWDLASTUPDATEUT { get; set; }
@@ -7171,32 +7174,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string PICTUREPATH { get; set; }
 
         [JsonProperty("PLANNING_ID")]
-        public string PLANNINGID { get; set; }
+        public string PLANNINGId { get; set; }
 
         [JsonProperty("STYLE_ID")]
-        public string STYLEID { get; set; }
+        public string STYLEId { get; set; }
 
         [JsonProperty("SUPPLIER_ID")]
-        public string SUPPLIERID { get; set; }
+        public string SUPPLIERId { get; set; }
 
         [JsonProperty("SUPPLIER_PATH")]
         public string SUPPLIERPATH { get; set; }
 
         [JsonProperty("TITLE_ID")]
-        public string TITLEID { get; set; }
+        public string TITLEId { get; set; }
 
         [JsonProperty("TRIAL_END")]
         public string TRIALEND { get; set; }
 
         [JsonProperty("VALIDATION_LEVEL")]
-        public string VALIDATIONLEVEL { get; set; }
+        public string VALIdATIONLEVEL { get; set; }
 
         [JsonProperty("VALIDATOR_ID")]
-        public string VALIDATORID { get; set; }
+        public string VALIdATORId { get; set; }
         public string VIP { get; set; }
 
         [JsonProperty("VIP_LEVEL_ID")]
-        public string VIPLEVELID { get; set; }
+        public string VIPLEVELId { get; set; }
 
         [JsonProperty("WAVE_ADDRESS")]
         public string WAVEADDRESS { get; set; }
@@ -7216,7 +7219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DEPARTMENTFR { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTID { get; set; }
+        public string DEPARTMENTId { get; set; }
 
         [JsonProperty("DEPARTMENT_LABEL")]
         public string DEPARTMENTLABEL { get; set; }
@@ -7238,7 +7241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string LOCATIONFR { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONID { get; set; }
+        public string LOCATIONId { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
         public string LOCATIONPATH { get; set; }
@@ -7256,7 +7259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DEPARTMENTPATH { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEID { get; set; }
+        public string EMPLOYEEId { get; set; }
 
         [JsonProperty("E_MAIL")]
         public string EMAIL { get; set; }
@@ -7295,7 +7298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("KNOWN_PROBLEMS_ID")]
-        public string KNOWNPROBLEMSID { get; set; }
+        public string KNOWNPROBLEMSId { get; set; }
 
         [JsonProperty("KNOWN_PROBLEM_PATH")]
         public string KNOWNPROBLEMPATH { get; set; }
@@ -7380,7 +7383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string IMPLEMENTATIONTIME { get; set; }
 
         [JsonProperty("KNOWN_PROBLEMS_ID")]
-        public string KNOWNPROBLEMSID { get; set; }
+        public string KNOWNPROBLEMSId { get; set; }
 
         [JsonProperty("KNOWN_PROBLEM_PATH")]
         public string KNOWNPROBLEMPATH { get; set; }
@@ -7529,7 +7532,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string LOCATIONFR { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONID { get; set; }
+        public string LOCATIONId { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
         public string LOCATIONPATH { get; set; }
@@ -7560,7 +7563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewLocationResponseCOMMENTLOCATIONType COMMENTLOCATION { get; set; }
 
         [JsonProperty("COUNTRY_ID")]
-        public string COUNTRYID { get; set; }
+        public string COUNTRYId { get; set; }
 
         [JsonProperty("DISCOVERY_NAME")]
         public string DISCOVERYNAME { get; set; }
@@ -7608,7 +7611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string LOCATIONGE { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONID { get; set; }
+        public string LOCATIONId { get; set; }
 
         [JsonProperty("LOCATION_IT")]
         public string LOCATIONIT { get; set; }
@@ -7641,29 +7644,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string LOCATIONSP { get; set; }
 
         [JsonProperty("MANAGER_ID")]
-        public string MANAGERID { get; set; }
+        public string MANAGERId { get; set; }
 
         [JsonProperty("PARENT_LOCATION_ID")]
-        public string PARENTLOCATIONID { get; set; }
+        public string PARENTLOCATIONId { get; set; }
 
         [JsonProperty("PARENT_LOCATION_PATH")]
         public string PARENTLOCATIONPATH { get; set; }
         public string PHONE { get; set; }
 
         [JsonProperty("REGION_ZONE_ID")]
-        public string REGIONZONEID { get; set; }
+        public string REGIONZONEId { get; set; }
 
         [JsonProperty("SLA_ID")]
-        public string SLAID { get; set; }
+        public string SLAId { get; set; }
 
         [JsonProperty("START_DATE")]
         public string STARTDATE { get; set; }
 
         [JsonProperty("STATE_ID")]
-        public string STATEID { get; set; }
+        public string STATEId { get; set; }
 
         [JsonProperty("STATUS_ID")]
-        public string STATUSID { get; set; }
+        public string STATUSId { get; set; }
 
         [JsonProperty("STREET_ADDRESS_1")]
         public string STREETADDRESS1 { get; set; }
@@ -7672,7 +7675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string STREETADDRESS2 { get; set; }
 
         [JsonProperty("TIME_ZONE_ID")]
-        public string TIMEZONEID { get; set; }
+        public string TIMEZONEId { get; set; }
 
         [JsonProperty("URL_MAP")]
         public string URLMAP { get; set; }
@@ -7713,7 +7716,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string MANUFACTURER { get; set; }
 
         [JsonProperty("MANUFACTURER_ID")]
-        public string MANUFACTURERID { get; set; }
+        public string MANUFACTURERId { get; set; }
     }
 
     public class ViewManufacturerResponse
@@ -7730,7 +7733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string MANUFACTURER { get; set; }
 
         [JsonProperty("MANUFACTURER_ID")]
-        public string MANUFACTURERID { get; set; }
+        public string MANUFACTURERId { get; set; }
 
         [JsonProperty("WEB_SITE")]
         public string WEBSITE { get; set; }
@@ -7783,7 +7786,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGID { get; set; }
+        public string SDCATALOGId { get; set; }
 
         [JsonProperty("TITLE_FR")]
         public string TITLEFR { get; set; }
@@ -7803,7 +7806,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DEPARTMENTFR { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTID { get; set; }
+        public string DEPARTMENTId { get; set; }
 
         [JsonProperty("DEPARTMENT_LABEL")]
         public string DEPARTMENTLABEL { get; set; }
@@ -7818,7 +7821,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("KNOWN_PROBLEMS_ID")]
-        public string KNOWNPROBLEMSID { get; set; }
+        public string KNOWNPROBLEMSId { get; set; }
 
         [JsonProperty("KNOWN_PROBLEM_PATH")]
         public string KNOWNPROBLEMPATH { get; set; }
@@ -7842,7 +7845,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string LOCATIONFR { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONID { get; set; }
+        public string LOCATIONId { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
         public string LOCATIONPATH { get; set; }
@@ -7860,7 +7863,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DEPARTMENTPATH { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEID { get; set; }
+        public string EMPLOYEEId { get; set; }
 
         [JsonProperty("E_MAIL")]
         public string EMAIL { get; set; }
@@ -7888,7 +7891,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DEPARTMENTPATH { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEID { get; set; }
+        public string EMPLOYEEId { get; set; }
 
         [JsonProperty("E_MAIL")]
         public string EMAIL { get; set; }
@@ -7915,7 +7918,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string STATUSGUID { get; set; }
 
         [JsonProperty("STATUS_ID")]
-        public string STATUSID { get; set; }
+        public string STATUSId { get; set; }
     }
 
     public class CreateRequestIncidentResponse
@@ -7926,7 +7929,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
     public class bodyrequestsInputItem
     {
         [JsonProperty("Asset_ID")]
-        public string AssetID { get; set; }
+        public string AssetId { get; set; }
 
         [JsonProperty("Asset_Label")]
         public string AssetLabel { get; set; }
@@ -7938,7 +7941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string CIAssetTag { get; set; }
 
         [JsonProperty("CI_ID")]
-        public string CIID { get; set; }
+        public string CIId { get; set; }
 
         [JsonProperty("CI_Name")]
         public string CIName { get; set; }
@@ -7950,7 +7953,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DepartmentCode { get; set; }
 
         [JsonProperty("Department_ID")]
-        public string DepartmentID { get; set; }
+        public string DepartmentId { get; set; }
         public string Description { get; set; }
 
         [JsonProperty("External_reference")]
@@ -7960,13 +7963,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string LocationCode { get; set; }
 
         [JsonProperty("Location_ID")]
-        public string LocationID { get; set; }
+        public string LocationId { get; set; }
         public string Origin { get; set; }
         public string ParentRequest { get; set; }
         public string Phone { get; set; }
 
         [JsonProperty("Recipient_ID")]
-        public string RecipientID { get; set; }
+        public string RecipientId { get; set; }
 
         [JsonProperty("Recipient_Identification")]
         public string RecipientIdentification { get; set; }
@@ -7987,22 +7990,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string RequestorName { get; set; }
 
         [JsonProperty("Severity_ID")]
-        public string SeverityID { get; set; }
+        public string SeverityId { get; set; }
 
         [JsonProperty("Urgency_ID")]
-        public string UrgencyID { get; set; }
+        public string UrgencyId { get; set; }
     }
 
     public class ViewRequestIncidentResponse
     {
         [JsonProperty("ANALYTICAL_CHARGE_ID")]
-        public string ANALYTICALCHARGEID { get; set; }
+        public string ANALYTICALCHARGEId { get; set; }
 
         [JsonProperty("ANALYTICAL_CHARGE_PATH")]
         public string ANALYTICALCHARGEPATH { get; set; }
 
         [JsonProperty("ASSET_ID")]
-        public string ASSETID { get; set; }
+        public string ASSETId { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_1")]
         public string AVAILABLEFIELD1 { get; set; }
@@ -8026,7 +8029,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string BUDGETEFFECTIVE { get; set; }
 
         [JsonProperty("BUDGET_ID")]
-        public string BUDGETID { get; set; }
+        public string BUDGETId { get; set; }
 
         [JsonProperty("BUDGET_PLANNED")]
         public string BUDGETPLANNED { get; set; }
@@ -8038,17 +8041,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewRequestIncidentResponseCATALOGREQUESTType CATALOGREQUEST { get; set; }
 
         [JsonProperty("CI_ID")]
-        public string CIID { get; set; }
+        public string CIId { get; set; }
 
         [JsonProperty("CLICK_2_GET_INSTALL_RESULT")]
         public string CLICK2GETINSTALLRESULT { get; set; }
         public ViewRequestIncidentResponseCOMMENTType COMMENT { get; set; }
 
         [JsonProperty("CONTINUITY_PLAN_ID")]
-        public string CONTINUITYPLANID { get; set; }
+        public string CONTINUITYPLANId { get; set; }
 
         [JsonProperty("COST_CENTER_ID")]
-        public string COSTCENTERID { get; set; }
+        public string COSTCENTERId { get; set; }
 
         [JsonProperty("CREATION_DATE_UT")]
         public string CREATIONDATEUT { get; set; }
@@ -8056,7 +8059,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewRequestIncidentResponseDEPARTMENTType DEPARTMENT { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTID { get; set; }
+        public string DEPARTMENTId { get; set; }
 
         [JsonProperty("DEPARTMENT_PATH")]
         public string DEPARTMENTPATH { get; set; }
@@ -8103,13 +8106,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("IMPACT_ID")]
-        public string IMPACTID { get; set; }
+        public string IMPACTId { get; set; }
 
         [JsonProperty("IMPUTATION_DATE")]
         public string IMPUTATIONDATE { get; set; }
 
         [JsonProperty("INITIAL_SD_CATALOG_ID")]
-        public string INITIALSDCATALOGID { get; set; }
+        public string INITIALSDCATALOGId { get; set; }
 
         [JsonProperty("INITIAL_SD_CATALOG_PATH")]
         public string INITIALSDCATALOGPATH { get; set; }
@@ -8118,35 +8121,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string ISFINANCIALCOMPTED { get; set; }
 
         [JsonProperty("IS_MAJOR_INCIDENT")]
-        public string ISMAJORINCIDENT { get; set; }
+        public string ISMAJORINCIdENT { get; set; }
 
         [JsonProperty("IS_TEMPLATE")]
         public string ISTEMPLATE { get; set; }
 
         [JsonProperty("KBASE_ID")]
-        public string KBASEID { get; set; }
+        public string KBASEId { get; set; }
 
         [JsonProperty("KNOWN_PROBLEM")]
         public ViewRequestIncidentResponseKNOWNPROBLEMType KNOWNPROBLEM { get; set; }
 
         [JsonProperty("KNOWN_PROBLEMS_ID")]
-        public string KNOWNPROBLEMSID { get; set; }
+        public string KNOWNPROBLEMSId { get; set; }
 
         [JsonProperty("KNOWN_PROBLEMS_PATH")]
         public string KNOWNPROBLEMSPATH { get; set; }
 
         [JsonProperty("LAST_DONE_BY_ID")]
-        public string LASTDONEBYID { get; set; }
+        public string LASTDONEBYId { get; set; }
 
         [JsonProperty("LAST_GROUP_ID")]
-        public string LASTGROUPID { get; set; }
+        public string LASTGROUPId { get; set; }
 
         [JsonProperty("LAST_UPDATE")]
         public string LASTUPDATE { get; set; }
         public ViewRequestIncidentResponseLOCATIONType LOCATION { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONID { get; set; }
+        public string LOCATIONId { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
         public string LOCATIONPATH { get; set; }
@@ -8161,37 +8164,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string MAXRESOLUTIONDATEUT { get; set; }
 
         [JsonProperty("MS_PROJECT_IMPORT_VALIDATION_WAITING")]
-        public string MSPROJECTIMPORTVALIDATIONWAITING { get; set; }
+        public string MSPROJECTIMPORTVALIdATIONWAITING { get; set; }
 
         [JsonProperty("NET_PRICE")]
         public string NETPRICE { get; set; }
 
         [JsonProperty("NET_PRICE_CUR_ID")]
-        public string NETPRICECURID { get; set; }
+        public string NETPRICECURId { get; set; }
 
         [JsonProperty("NEWS_ID")]
-        public string NEWSID { get; set; }
+        public string NEWSId { get; set; }
 
         [JsonProperty("NOT_DEDUCED_CALL")]
         public string NOTDEDUCEDCALL { get; set; }
 
         [JsonProperty("ORDER_ID")]
-        public string ORDERID { get; set; }
+        public string ORDERId { get; set; }
 
         [JsonProperty("ORDER_NET_PRICE")]
         public string ORDERNETPRICE { get; set; }
 
         [JsonProperty("ORIGIN_TOOL_ID")]
-        public string ORIGINTOOLID { get; set; }
+        public string ORIGINTOOLId { get; set; }
 
         [JsonProperty("OWNER_ID")]
-        public string OWNERID { get; set; }
+        public string OWNERId { get; set; }
 
         [JsonProperty("OWNING_GROUP_ID")]
-        public string OWNINGGROUPID { get; set; }
+        public string OWNINGGROUPId { get; set; }
 
         [JsonProperty("PARENT_REQUEST_ID")]
-        public string PARENTREQUESTID { get; set; }
+        public string PARENTREQUESTId { get; set; }
 
         [JsonProperty("PLANNED_CHANGE_DATE_END")]
         public string PLANNEDCHANGEDATEEND { get; set; }
@@ -8200,10 +8203,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string PLANNEDCHANGEDATESTART { get; set; }
 
         [JsonProperty("PM_STATUS_ID")]
-        public string PMSTATUSID { get; set; }
+        public string PMSTATUSId { get; set; }
 
         [JsonProperty("PROJECT_ID")]
-        public string PROJECTID { get; set; }
+        public string PROJECTId { get; set; }
 
         [JsonProperty("PROJECT_NAME")]
         public string PROJECTNAME { get; set; }
@@ -8214,16 +8217,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewRequestIncidentResponseRECIPIENTType RECIPIENT { get; set; }
 
         [JsonProperty("RECIPIENT_ID")]
-        public string RECIPIENTID { get; set; }
+        public string RECIPIENTId { get; set; }
 
         [JsonProperty("RELEASE_ID")]
-        public string RELEASEID { get; set; }
+        public string RELEASEId { get; set; }
 
         [JsonProperty("RENTAL_NET_PRICE")]
         public string RENTALNETPRICE { get; set; }
 
         [JsonProperty("RENTAL_NET_PRICE_CUR_ID")]
-        public string RENTALNETPRICECURID { get; set; }
+        public string RENTALNETPRICECURId { get; set; }
 
         [JsonProperty("REQUALIFICATION_PROCESSING")]
         public string REQUALIFICATIONPROCESSING { get; set; }
@@ -8239,7 +8242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string REQUESTORFEEDBACK { get; set; }
 
         [JsonProperty("REQUESTOR_ID")]
-        public string REQUESTORID { get; set; }
+        public string REQUESTORId { get; set; }
 
         [JsonProperty("REQUESTOR_IP_ADDRESS")]
         public string REQUESTORIPADDRESS { get; set; }
@@ -8248,13 +8251,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string REQUESTORPHONE { get; set; }
 
         [JsonProperty("REQUEST_ID")]
-        public string REQUESTID { get; set; }
+        public string REQUESTId { get; set; }
 
         [JsonProperty("REQUEST_ORIGIN_ID")]
-        public string REQUESTORIGINID { get; set; }
+        public string REQUESTORIGINId { get; set; }
 
         [JsonProperty("REQUEST_PROJECT_ID")]
-        public string REQUESTPROJECTID { get; set; }
+        public string REQUESTPROJECTId { get; set; }
 
         [JsonProperty("REQUIRED_DOWNTIME")]
         public string REQUIREDDOWNTIME { get; set; }
@@ -8269,26 +8272,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewRequestIncidentResponseRISKDESCRIPTIONType RISKDESCRIPTION { get; set; }
 
         [JsonProperty("RISK_LEVEL_ID")]
-        public string RISKLEVELID { get; set; }
+        public string RISKLEVELId { get; set; }
 
         [JsonProperty("ROOT_CAUSE_ID")]
-        public string ROOTCAUSEID { get; set; }
+        public string ROOTCAUSEId { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGID { get; set; }
+        public string SDCATALOGId { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH")]
         public string SDCATALOGPATH { get; set; }
 
         [JsonProperty("SEVERITY_ID")]
-        public string SEVERITYID { get; set; }
+        public string SEVERITYId { get; set; }
 
         [JsonProperty("SLA_ID")]
-        public string SLAID { get; set; }
+        public string SLAId { get; set; }
         public ViewRequestIncidentResponseSTATUSType STATUS { get; set; }
 
         [JsonProperty("STATUS_ID")]
-        public string STATUSID { get; set; }
+        public string STATUSId { get; set; }
 
         [JsonProperty("SUBMITTED_BY")]
         public string SUBMITTEDBY { get; set; }
@@ -8297,7 +8300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string SUBMITDATEUT { get; set; }
 
         [JsonProperty("SYSTEM_ID")]
-        public string SYSTEMID { get; set; }
+        public string SYSTEMId { get; set; }
 
         [JsonProperty("TIME_USED_TO_DELIVER_FEEDBACK")]
         public string TIMEUSEDTODELIVERFEEDBACK { get; set; }
@@ -8306,13 +8309,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string TIMEUSEDTOSOLVEREQUEST { get; set; }
 
         [JsonProperty("URGENCY_ID")]
-        public string URGENCYID { get; set; }
+        public string URGENCYId { get; set; }
 
         [JsonProperty("VALIDATION_LEVEL_REQUIRED")]
-        public string VALIDATIONLEVELREQUIRED { get; set; }
+        public string VALIdATIONLEVELREQUIRED { get; set; }
 
         [JsonProperty("WAVE_ID_TARGET")]
-        public string WAVEIDTARGET { get; set; }
+        public string WAVEIdTARGET { get; set; }
     }
 
     public class ViewRequestIncidentResponseCATALOGREQUESTType
@@ -8323,7 +8326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGID { get; set; }
+        public string SDCATALOGId { get; set; }
 
         [JsonProperty("TITLE_FR")]
         public string TITLEFR { get; set; }
@@ -8343,7 +8346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DEPARTMENTFR { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTID { get; set; }
+        public string DEPARTMENTId { get; set; }
 
         [JsonProperty("DEPARTMENT_LABEL")]
         public string DEPARTMENTLABEL { get; set; }
@@ -8368,7 +8371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("KNOWN_PROBLEMS_ID")]
-        public string KNOWNPROBLEMSID { get; set; }
+        public string KNOWNPROBLEMSId { get; set; }
 
         [JsonProperty("KNOWN_PROBLEM_PATH")]
         public string KNOWNPROBLEMPATH { get; set; }
@@ -8392,7 +8395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string LOCATIONFR { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONID { get; set; }
+        public string LOCATIONId { get; set; }
 
         [JsonProperty("LOCATION_PATH")]
         public string LOCATIONPATH { get; set; }
@@ -8410,7 +8413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DEPARTMENTPATH { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEID { get; set; }
+        public string EMPLOYEEId { get; set; }
 
         [JsonProperty("E_MAIL")]
         public string EMAIL { get; set; }
@@ -8438,7 +8441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DEPARTMENTPATH { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEID { get; set; }
+        public string EMPLOYEEId { get; set; }
 
         [JsonProperty("E_MAIL")]
         public string EMAIL { get; set; }
@@ -8470,7 +8473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string STATUSGUID { get; set; }
 
         [JsonProperty("STATUS_ID")]
-        public string STATUSID { get; set; }
+        public string STATUSId { get; set; }
     }
 
     public class CloseRequestIncidentResponse
@@ -8571,7 +8574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string NAMEFR { get; set; }
 
         [JsonProperty("SLA_ID")]
-        public string SLAID { get; set; }
+        public string SLAId { get; set; }
     }
 
     public class ViewSlaResponse
@@ -8579,7 +8582,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DELAY { get; set; }
 
         [JsonProperty("HOLIDAY_LIST_ID")]
-        public string HOLIDAYLISTID { get; set; }
+        public string HOLIdAYLISTId { get; set; }
         public string HREF { get; set; }
 
         [JsonProperty("NAME_EN")]
@@ -8625,7 +8628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string SLAGUID { get; set; }
 
         [JsonProperty("SLA_ID")]
-        public string SLAID { get; set; }
+        public string SLAId { get; set; }
 
         [JsonProperty("TIME_LIMIT")]
         public string TIMELIMIT { get; set; }
@@ -8634,7 +8637,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string TIMETARGET { get; set; }
 
         [JsonProperty("WORKING_HOURS_ID")]
-        public string WORKINGHOURSID { get; set; }
+        public string WORKINGHOURSId { get; set; }
     }
 
     public class ViewAllAtributesAssetsResponse
@@ -8656,10 +8659,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("ASSET_ID")]
-        public string ASSETID { get; set; }
+        public string ASSETId { get; set; }
 
         [JsonProperty("CHARACTERISTIC_ID")]
-        public string CHARACTERISTICID { get; set; }
+        public string CHARACTERISTICId { get; set; }
 
         [JsonProperty("DATA_1")]
         public string DATA1 { get; set; }
@@ -8680,7 +8683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("CHARACTERISTIC_ID")]
-        public string CHARACTERISTICID { get; set; }
+        public string CHARACTERISTICId { get; set; }
     }
 
     public class ViewAllAtributesAssetsResponseRecordsTypeItemASSETType
@@ -8688,7 +8691,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("ASSET_ID")]
-        public string ASSETID { get; set; }
+        public string ASSETId { get; set; }
 
         [JsonProperty("ASSET_LABEL")]
         public string ASSETLABEL { get; set; }
@@ -8746,7 +8749,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public int ISCI { get; set; }
 
         [JsonProperty("CI_STATUS_ID")]
-        public int CISTATUSID { get; set; }
+        public int CISTATUSId { get; set; }
 
         [JsonProperty("comment_asset")]
         public string CommentAsset { get; set; }
@@ -8798,16 +8801,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string BLOCKING { get; set; }
 
         [JsonProperty("CHILD_CI_ID")]
-        public string CHILDCIID { get; set; }
+        public string CHILDCIId { get; set; }
 
         [JsonProperty("PARENT_CI_ID")]
-        public string PARENTCIID { get; set; }
+        public string PARENTCIId { get; set; }
 
         [JsonProperty("PARENT_HREF")]
         public string PARENTHREF { get; set; }
 
         [JsonProperty("RELATION_TYPE_ID")]
-        public string RELATIONTYPEID { get; set; }
+        public string RELATIONTYPEId { get; set; }
 
         [JsonProperty("RELATION_TYPE")]
         public ViewlinksimpactonCIResponseRecordsTypeItemRELATIONTYPEType RELATIONTYPE { get; set; }
@@ -8819,7 +8822,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string REFERENCEFR { get; set; }
 
         [JsonProperty("REFERENCE_ID")]
-        public string REFERENCEID { get; set; }
+        public string REFERENCEId { get; set; }
     }
 
     public class ViewlinksimpactbyCIResponse
@@ -8842,16 +8845,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string BLOCKING { get; set; }
 
         [JsonProperty("CHILD_CI_ID")]
-        public string CHILDCIID { get; set; }
+        public string CHILDCIId { get; set; }
 
         [JsonProperty("PARENT_CI_ID")]
-        public string PARENTCIID { get; set; }
+        public string PARENTCIId { get; set; }
 
         [JsonProperty("PARENT_HREF")]
         public string PARENTHREF { get; set; }
 
         [JsonProperty("RELATION_TYPE_ID")]
-        public string RELATIONTYPEID { get; set; }
+        public string RELATIONTYPEId { get; set; }
 
         [JsonProperty("RELATION_TYPE")]
         public ViewlinksimpactbyCIResponseRecordsTypeItemRELATIONTYPEType RELATIONTYPE { get; set; }
@@ -8863,7 +8866,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string REFERENCEFR { get; set; }
 
         [JsonProperty("REFERENCE_ID")]
-        public string REFERENCEID { get; set; }
+        public string REFERENCEId { get; set; }
     }
 
     public class ViewTicketStatusListResponse
@@ -8891,7 +8894,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string STATUSGUID { get; set; }
 
         [JsonProperty("STATUS_ID")]
-        public string STATUSID { get; set; }
+        public string STATUSId { get; set; }
     }
 
     public class ViewListProblemsAttachedTicketsResponse
@@ -8913,7 +8916,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("REQUEST_ID")]
-        public string REQUESTID { get; set; }
+        public string REQUESTId { get; set; }
         public ViewListProblemsAttachedTicketsResponseRecordsTypeItemPROBLEMType PROBLEM { get; set; }
 
         [JsonProperty("RFC_NUMBER")]
@@ -8923,7 +8926,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
     public class ViewListProblemsAttachedTicketsResponseRecordsTypeItemPROBLEMType
     {
         [JsonProperty("REQUEST_ID")]
-        public string REQUESTID { get; set; }
+        public string REQUESTId { get; set; }
         public string HREF { get; set; }
 
         [JsonProperty("RFC_NUMBER")]
@@ -8955,10 +8958,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string ANALYTICALCHARGEPATH { get; set; }
 
         [JsonProperty("ANALYTICAL_CHARGE_ID")]
-        public string ANALYTICALCHARGEID { get; set; }
+        public string ANALYTICALCHARGEId { get; set; }
 
         [JsonProperty("ASSET_ID")]
-        public string ASSETID { get; set; }
+        public string ASSETId { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_1")]
         public string AVAILABLEFIELD1 { get; set; }
@@ -8982,7 +8985,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string BUDGETEFFECTIVE { get; set; }
 
         [JsonProperty("BUDGET_ID")]
-        public string BUDGETID { get; set; }
+        public string BUDGETId { get; set; }
 
         [JsonProperty("BUDGET_PLANNED")]
         public string BUDGETPLANNED { get; set; }
@@ -8991,17 +8994,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string CANBEDUPLICATED { get; set; }
 
         [JsonProperty("CI_ID")]
-        public string CIID { get; set; }
+        public string CIId { get; set; }
 
         [JsonProperty("CLICK_2_GET_INSTALL_RESULT")]
         public string CLICK2GETINSTALLRESULT { get; set; }
         public ViewListProblemsAttachedATicketsResponseRecordsTypeItemCOMMENTType COMMENT { get; set; }
 
         [JsonProperty("CONTINUITY_PLAN_ID")]
-        public string CONTINUITYPLANID { get; set; }
+        public string CONTINUITYPLANId { get; set; }
 
         [JsonProperty("COST_CENTER_ID")]
-        public string COSTCENTERID { get; set; }
+        public string COSTCENTERId { get; set; }
 
         [JsonProperty("CREATION_DATE_UT")]
         public string CREATIONDATEUT { get; set; }
@@ -9011,7 +9014,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DEPARTMENTPATH { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTID { get; set; }
+        public string DEPARTMENTId { get; set; }
         public ViewListProblemsAttachedATicketsResponseRecordsTypeItemDESCRIPTIONType DESCRIPTION { get; set; }
 
         [JsonProperty("DYNAMIC_DETAILS")]
@@ -9069,7 +9072,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HOURPERDAY { get; set; }
 
         [JsonProperty("IMPACT_ID")]
-        public string IMPACTID { get; set; }
+        public string IMPACTId { get; set; }
 
         [JsonProperty("IMPUTATION_DATE")]
         public string IMPUTATIONDATE { get; set; }
@@ -9078,31 +9081,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string INITIALSDCATALOGPATH { get; set; }
 
         [JsonProperty("INITIAL_SD_CATALOG_ID")]
-        public string INITIALSDCATALOGID { get; set; }
+        public string INITIALSDCATALOGId { get; set; }
 
         [JsonProperty("IS_FINANCIAL_COMPTED")]
         public string ISFINANCIALCOMPTED { get; set; }
 
         [JsonProperty("IS_MAJOR_INCIDENT")]
-        public string ISMAJORINCIDENT { get; set; }
+        public string ISMAJORINCIdENT { get; set; }
 
         [JsonProperty("IS_TEMPLATE")]
         public string ISTEMPLATE { get; set; }
 
         [JsonProperty("KBASE_ID")]
-        public string KBASEID { get; set; }
+        public string KBASEId { get; set; }
 
         [JsonProperty("KNOWN_PROBLEMS_PATH")]
         public string KNOWNPROBLEMSPATH { get; set; }
 
         [JsonProperty("KNOWN_PROBLEMS_ID")]
-        public string KNOWNPROBLEMSID { get; set; }
+        public string KNOWNPROBLEMSId { get; set; }
 
         [JsonProperty("LAST_DONE_BY_ID")]
-        public string LASTDONEBYID { get; set; }
+        public string LASTDONEBYId { get; set; }
 
         [JsonProperty("LAST_GROUP_ID")]
-        public string LASTGROUPID { get; set; }
+        public string LASTGROUPId { get; set; }
 
         [JsonProperty("LAST_UPDATE")]
         public string LASTUPDATE { get; set; }
@@ -9111,7 +9114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string LOCATIONPATH { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONID { get; set; }
+        public string LOCATIONId { get; set; }
 
         [JsonProperty("MARK_1")]
         public string MARK1 { get; set; }
@@ -9123,37 +9126,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string MAXRESOLUTIONDATEUT { get; set; }
 
         [JsonProperty("MS_PROJECT_IMPORT_VALIDATION_WAITING")]
-        public string MSPROJECTIMPORTVALIDATIONWAITING { get; set; }
+        public string MSPROJECTIMPORTVALIdATIONWAITING { get; set; }
 
         [JsonProperty("NET_PRICE")]
         public string NETPRICE { get; set; }
 
         [JsonProperty("NET_PRICE_CUR_ID")]
-        public string NETPRICECURID { get; set; }
+        public string NETPRICECURId { get; set; }
 
         [JsonProperty("NEWS_ID")]
-        public string NEWSID { get; set; }
+        public string NEWSId { get; set; }
 
         [JsonProperty("NOT_DEDUCED_CALL")]
         public string NOTDEDUCEDCALL { get; set; }
 
         [JsonProperty("ORDER_ID")]
-        public string ORDERID { get; set; }
+        public string ORDERId { get; set; }
 
         [JsonProperty("ORDER_NET_PRICE")]
         public string ORDERNETPRICE { get; set; }
 
         [JsonProperty("ORIGIN_TOOL_ID")]
-        public string ORIGINTOOLID { get; set; }
+        public string ORIGINTOOLId { get; set; }
 
         [JsonProperty("OWNER_ID")]
-        public string OWNERID { get; set; }
+        public string OWNERId { get; set; }
 
         [JsonProperty("OWNING_GROUP_ID")]
-        public string OWNINGGROUPID { get; set; }
+        public string OWNINGGROUPId { get; set; }
 
         [JsonProperty("PARENT_REQUEST_ID")]
-        public string PARENTREQUESTID { get; set; }
+        public string PARENTREQUESTId { get; set; }
 
         [JsonProperty("PLANNED_CHANGE_DATE_END")]
         public string PLANNEDCHANGEDATEEND { get; set; }
@@ -9162,10 +9165,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string PLANNEDCHANGEDATESTART { get; set; }
 
         [JsonProperty("PM_STATUS_ID")]
-        public string PMSTATUSID { get; set; }
+        public string PMSTATUSId { get; set; }
 
         [JsonProperty("PROJECT_ID")]
-        public string PROJECTID { get; set; }
+        public string PROJECTId { get; set; }
 
         [JsonProperty("PROJECT_NAME")]
         public string PROJECTNAME { get; set; }
@@ -9175,16 +9178,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string QTY { get; set; }
 
         [JsonProperty("RECIPIENT_ID")]
-        public string RECIPIENTID { get; set; }
+        public string RECIPIENTId { get; set; }
 
         [JsonProperty("RELEASE_ID")]
-        public string RELEASEID { get; set; }
+        public string RELEASEId { get; set; }
 
         [JsonProperty("RENTAL_NET_PRICE")]
         public string RENTALNETPRICE { get; set; }
 
         [JsonProperty("RENTAL_NET_PRICE_CUR_ID")]
-        public string RENTALNETPRICECURID { get; set; }
+        public string RENTALNETPRICECURId { get; set; }
 
         [JsonProperty("REOPEN_PROCESSING")]
         public string REOPENPROCESSING { get; set; }
@@ -9193,13 +9196,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string REQUALIFICATIONPROCESSING { get; set; }
 
         [JsonProperty("REQUEST_ID")]
-        public string REQUESTID { get; set; }
+        public string REQUESTId { get; set; }
 
         [JsonProperty("REQUEST_ORIGIN_ID")]
-        public string REQUESTORIGINID { get; set; }
+        public string REQUESTORIGINId { get; set; }
 
         [JsonProperty("REQUEST_PROJECT_ID")]
-        public string REQUESTPROJECTID { get; set; }
+        public string REQUESTPROJECTId { get; set; }
 
         [JsonProperty("REQUESTED_CHANGE_DATE_END")]
         public string REQUESTEDCHANGEDATEEND { get; set; }
@@ -9211,7 +9214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string REQUESTORFEEDBACK { get; set; }
 
         [JsonProperty("REQUESTOR_ID")]
-        public string REQUESTORID { get; set; }
+        public string REQUESTORId { get; set; }
 
         [JsonProperty("REQUESTOR_IP_ADDRESS")]
         public string REQUESTORIPADDRESS { get; set; }
@@ -9232,25 +9235,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewListProblemsAttachedATicketsResponseRecordsTypeItemRISKDESCRIPTIONType RISKDESCRIPTION { get; set; }
 
         [JsonProperty("RISK_LEVEL_ID")]
-        public string RISKLEVELID { get; set; }
+        public string RISKLEVELId { get; set; }
 
         [JsonProperty("ROOT_CAUSE_ID")]
-        public string ROOTCAUSEID { get; set; }
+        public string ROOTCAUSEId { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH")]
         public string SDCATALOGPATH { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGID { get; set; }
+        public string SDCATALOGId { get; set; }
 
         [JsonProperty("SEVERITY_ID")]
-        public string SEVERITYID { get; set; }
+        public string SEVERITYId { get; set; }
 
         [JsonProperty("SLA_ID")]
-        public string SLAID { get; set; }
+        public string SLAId { get; set; }
 
         [JsonProperty("STATUS_ID")]
-        public string STATUSID { get; set; }
+        public string STATUSId { get; set; }
 
         [JsonProperty("SUBMIT_DATE_UT")]
         public string SUBMITDATEUT { get; set; }
@@ -9262,7 +9265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewListProblemsAttachedATicketsResponseRecordsTypeItemSYSTEMAFFECTEDType SYSTEMAFFECTED { get; set; }
 
         [JsonProperty("SYSTEM_ID")]
-        public string SYSTEMID { get; set; }
+        public string SYSTEMId { get; set; }
 
         [JsonProperty("TIME_USED_TO_DELIVER_FEEDBACK")]
         public string TIMEUSEDTODELIVERFEEDBACK { get; set; }
@@ -9272,13 +9275,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string TITLE { get; set; }
 
         [JsonProperty("URGENCY_ID")]
-        public string URGENCYID { get; set; }
+        public string URGENCYId { get; set; }
 
         [JsonProperty("VALIDATION_LEVEL_REQUIRED")]
-        public string VALIDATIONLEVELREQUIRED { get; set; }
+        public string VALIdATIONLEVELREQUIRED { get; set; }
 
         [JsonProperty("WAVE_ID_TARGET")]
-        public string WAVEIDTARGET { get; set; }
+        public string WAVEIdTARGET { get; set; }
         public ViewListProblemsAttachedATicketsResponseRecordsTypeItemREQUESTType REQUEST { get; set; }
     }
 
@@ -9313,7 +9316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string MAXRESOLUTIONDATEUT { get; set; }
 
         [JsonProperty("REQUEST_ID")]
-        public string REQUESTID { get; set; }
+        public string REQUESTId { get; set; }
         public string HREF { get; set; }
 
         [JsonProperty("RFC_NUMBER")]
@@ -9348,10 +9351,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string ANALYTICALCHARGEPATH { get; set; }
 
         [JsonProperty("ANALYTICAL_CHARGE_ID")]
-        public string ANALYTICALCHARGEID { get; set; }
+        public string ANALYTICALCHARGEId { get; set; }
 
         [JsonProperty("ASSET_ID")]
-        public string ASSETID { get; set; }
+        public string ASSETId { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_1")]
         public string AVAILABLEFIELD1 { get; set; }
@@ -9375,7 +9378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string BUDGETEFFECTIVE { get; set; }
 
         [JsonProperty("BUDGET_ID")]
-        public string BUDGETID { get; set; }
+        public string BUDGETId { get; set; }
 
         [JsonProperty("BUDGET_PLANNED")]
         public string BUDGETPLANNED { get; set; }
@@ -9384,17 +9387,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string CANBEDUPLICATED { get; set; }
 
         [JsonProperty("CI_ID")]
-        public string CIID { get; set; }
+        public string CIId { get; set; }
 
         [JsonProperty("CLICK_2_GET_INSTALL_RESULT")]
         public string CLICK2GETINSTALLRESULT { get; set; }
         public ViewListTicketsAttachedtoaProblemResponseRecordsTypeItemCOMMENTType COMMENT { get; set; }
 
         [JsonProperty("CONTINUITY_PLAN_ID")]
-        public string CONTINUITYPLANID { get; set; }
+        public string CONTINUITYPLANId { get; set; }
 
         [JsonProperty("COST_CENTER_ID")]
-        public string COSTCENTERID { get; set; }
+        public string COSTCENTERId { get; set; }
 
         [JsonProperty("CREATION_DATE_UT")]
         public string CREATIONDATEUT { get; set; }
@@ -9404,7 +9407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DEPARTMENTPATH { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTID { get; set; }
+        public string DEPARTMENTId { get; set; }
         public ViewListTicketsAttachedtoaProblemResponseRecordsTypeItemDESCRIPTIONType DESCRIPTION { get; set; }
 
         [JsonProperty("DYNAMIC_DETAILS")]
@@ -9462,7 +9465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HOURPERDAY { get; set; }
 
         [JsonProperty("IMPACT_ID")]
-        public string IMPACTID { get; set; }
+        public string IMPACTId { get; set; }
 
         [JsonProperty("IMPUTATION_DATE")]
         public string IMPUTATIONDATE { get; set; }
@@ -9471,31 +9474,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string INITIALSDCATALOGPATH { get; set; }
 
         [JsonProperty("INITIAL_SD_CATALOG_ID")]
-        public string INITIALSDCATALOGID { get; set; }
+        public string INITIALSDCATALOGId { get; set; }
 
         [JsonProperty("IS_FINANCIAL_COMPTED")]
         public string ISFINANCIALCOMPTED { get; set; }
 
         [JsonProperty("IS_MAJOR_INCIDENT")]
-        public string ISMAJORINCIDENT { get; set; }
+        public string ISMAJORINCIdENT { get; set; }
 
         [JsonProperty("IS_TEMPLATE")]
         public string ISTEMPLATE { get; set; }
 
         [JsonProperty("KBASE_ID")]
-        public string KBASEID { get; set; }
+        public string KBASEId { get; set; }
 
         [JsonProperty("KNOWN_PROBLEMS_PATH")]
         public string KNOWNPROBLEMSPATH { get; set; }
 
         [JsonProperty("KNOWN_PROBLEMS_ID")]
-        public string KNOWNPROBLEMSID { get; set; }
+        public string KNOWNPROBLEMSId { get; set; }
 
         [JsonProperty("LAST_DONE_BY_ID")]
-        public string LASTDONEBYID { get; set; }
+        public string LASTDONEBYId { get; set; }
 
         [JsonProperty("LAST_GROUP_ID")]
-        public string LASTGROUPID { get; set; }
+        public string LASTGROUPId { get; set; }
 
         [JsonProperty("LAST_UPDATE")]
         public string LASTUPDATE { get; set; }
@@ -9504,7 +9507,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string LOCATIONPATH { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONID { get; set; }
+        public string LOCATIONId { get; set; }
 
         [JsonProperty("MARK_1")]
         public string MARK1 { get; set; }
@@ -9516,37 +9519,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string MAXRESOLUTIONDATEUT { get; set; }
 
         [JsonProperty("MS_PROJECT_IMPORT_VALIDATION_WAITING")]
-        public string MSPROJECTIMPORTVALIDATIONWAITING { get; set; }
+        public string MSPROJECTIMPORTVALIdATIONWAITING { get; set; }
 
         [JsonProperty("NET_PRICE")]
         public string NETPRICE { get; set; }
 
         [JsonProperty("NET_PRICE_CUR_ID")]
-        public string NETPRICECURID { get; set; }
+        public string NETPRICECURId { get; set; }
 
         [JsonProperty("NEWS_ID")]
-        public string NEWSID { get; set; }
+        public string NEWSId { get; set; }
 
         [JsonProperty("NOT_DEDUCED_CALL")]
         public string NOTDEDUCEDCALL { get; set; }
 
         [JsonProperty("ORDER_ID")]
-        public string ORDERID { get; set; }
+        public string ORDERId { get; set; }
 
         [JsonProperty("ORDER_NET_PRICE")]
         public string ORDERNETPRICE { get; set; }
 
         [JsonProperty("ORIGIN_TOOL_ID")]
-        public string ORIGINTOOLID { get; set; }
+        public string ORIGINTOOLId { get; set; }
 
         [JsonProperty("OWNER_ID")]
-        public string OWNERID { get; set; }
+        public string OWNERId { get; set; }
 
         [JsonProperty("OWNING_GROUP_ID")]
-        public string OWNINGGROUPID { get; set; }
+        public string OWNINGGROUPId { get; set; }
 
         [JsonProperty("PARENT_REQUEST_ID")]
-        public string PARENTREQUESTID { get; set; }
+        public string PARENTREQUESTId { get; set; }
 
         [JsonProperty("PLANNED_CHANGE_DATE_END")]
         public string PLANNEDCHANGEDATEEND { get; set; }
@@ -9555,10 +9558,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string PLANNEDCHANGEDATESTART { get; set; }
 
         [JsonProperty("PM_STATUS_ID")]
-        public string PMSTATUSID { get; set; }
+        public string PMSTATUSId { get; set; }
 
         [JsonProperty("PROJECT_ID")]
-        public string PROJECTID { get; set; }
+        public string PROJECTId { get; set; }
 
         [JsonProperty("PROJECT_NAME")]
         public string PROJECTNAME { get; set; }
@@ -9568,16 +9571,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string QTY { get; set; }
 
         [JsonProperty("RECIPIENT_ID")]
-        public string RECIPIENTID { get; set; }
+        public string RECIPIENTId { get; set; }
 
         [JsonProperty("RELEASE_ID")]
-        public string RELEASEID { get; set; }
+        public string RELEASEId { get; set; }
 
         [JsonProperty("RENTAL_NET_PRICE")]
         public string RENTALNETPRICE { get; set; }
 
         [JsonProperty("RENTAL_NET_PRICE_CUR_ID")]
-        public string RENTALNETPRICECURID { get; set; }
+        public string RENTALNETPRICECURId { get; set; }
 
         [JsonProperty("REOPEN_PROCESSING")]
         public string REOPENPROCESSING { get; set; }
@@ -9586,13 +9589,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string REQUALIFICATIONPROCESSING { get; set; }
 
         [JsonProperty("REQUEST_ID")]
-        public string REQUESTID { get; set; }
+        public string REQUESTId { get; set; }
 
         [JsonProperty("REQUEST_ORIGIN_ID")]
-        public string REQUESTORIGINID { get; set; }
+        public string REQUESTORIGINId { get; set; }
 
         [JsonProperty("REQUEST_PROJECT_ID")]
-        public string REQUESTPROJECTID { get; set; }
+        public string REQUESTPROJECTId { get; set; }
 
         [JsonProperty("REQUESTED_CHANGE_DATE_END")]
         public string REQUESTEDCHANGEDATEEND { get; set; }
@@ -9604,7 +9607,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string REQUESTORFEEDBACK { get; set; }
 
         [JsonProperty("REQUESTOR_ID")]
-        public string REQUESTORID { get; set; }
+        public string REQUESTORId { get; set; }
 
         [JsonProperty("REQUESTOR_IP_ADDRESS")]
         public string REQUESTORIPADDRESS { get; set; }
@@ -9625,25 +9628,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewListTicketsAttachedtoaProblemResponseRecordsTypeItemRISKDESCRIPTIONType RISKDESCRIPTION { get; set; }
 
         [JsonProperty("RISK_LEVEL_ID")]
-        public string RISKLEVELID { get; set; }
+        public string RISKLEVELId { get; set; }
 
         [JsonProperty("ROOT_CAUSE_ID")]
-        public string ROOTCAUSEID { get; set; }
+        public string ROOTCAUSEId { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH")]
         public string SDCATALOGPATH { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGID { get; set; }
+        public string SDCATALOGId { get; set; }
 
         [JsonProperty("SEVERITY_ID")]
-        public string SEVERITYID { get; set; }
+        public string SEVERITYId { get; set; }
 
         [JsonProperty("SLA_ID")]
-        public string SLAID { get; set; }
+        public string SLAId { get; set; }
 
         [JsonProperty("STATUS_ID")]
-        public string STATUSID { get; set; }
+        public string STATUSId { get; set; }
 
         [JsonProperty("SUBMIT_DATE_UT")]
         public string SUBMITDATEUT { get; set; }
@@ -9655,7 +9658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewListTicketsAttachedtoaProblemResponseRecordsTypeItemSYSTEMAFFECTEDType SYSTEMAFFECTED { get; set; }
 
         [JsonProperty("SYSTEM_ID")]
-        public string SYSTEMID { get; set; }
+        public string SYSTEMId { get; set; }
 
         [JsonProperty("TIME_USED_TO_DELIVER_FEEDBACK")]
         public string TIMEUSEDTODELIVERFEEDBACK { get; set; }
@@ -9665,13 +9668,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string TITLE { get; set; }
 
         [JsonProperty("URGENCY_ID")]
-        public string URGENCYID { get; set; }
+        public string URGENCYId { get; set; }
 
         [JsonProperty("VALIDATION_LEVEL_REQUIRED")]
-        public string VALIDATIONLEVELREQUIRED { get; set; }
+        public string VALIdATIONLEVELREQUIRED { get; set; }
 
         [JsonProperty("WAVE_ID_TARGET")]
-        public string WAVEIDTARGET { get; set; }
+        public string WAVEIdTARGET { get; set; }
         public ViewListTicketsAttachedtoaProblemResponseRecordsTypeItemREQUESTType REQUEST { get; set; }
     }
 
@@ -9706,7 +9709,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string MAXRESOLUTIONDATEUT { get; set; }
 
         [JsonProperty("REQUEST_ID")]
-        public string REQUESTID { get; set; }
+        public string REQUESTId { get; set; }
         public string HREF { get; set; }
 
         [JsonProperty("RFC_NUMBER")]
@@ -9759,7 +9762,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string QUESTIONGUID { get; set; }
 
         [JsonProperty("QUESTION_ID")]
-        public string QUESTIONID { get; set; }
+        public string QUESTIONId { get; set; }
 
         [JsonProperty("QUESTION_IT")]
         public string QUESTIONIT { get; set; }
@@ -9811,10 +9814,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("QUESTION_ID")]
-        public string QUESTIONID { get; set; }
+        public string QUESTIONId { get; set; }
 
         [JsonProperty("REQUEST_ID")]
-        public string REQUESTID { get; set; }
+        public string REQUESTId { get; set; }
         public ViewListQuestionsWithResponseResponseRecordsTypeItemREQUESTType REQUEST { get; set; }
         public ViewListQuestionsWithResponseResponseRecordsTypeItemQUESTIONType QUESTION { get; set; }
     }
@@ -9826,7 +9829,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("REQUEST_ID")]
-        public string REQUESTID { get; set; }
+        public string REQUESTId { get; set; }
 
         [JsonProperty("RFC_NUMBER")]
         public string RFCNUMBER { get; set; }
@@ -9863,7 +9866,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("QUESTION_ID")]
-        public string QUESTIONID { get; set; }
+        public string QUESTIONId { get; set; }
 
         [JsonProperty("QUESTION_IT")]
         public string QUESTIONIT { get; set; }
@@ -9925,7 +9928,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string QUESTIONGUID { get; set; }
 
         [JsonProperty("QUESTION_ID")]
-        public string QUESTIONID { get; set; }
+        public string QUESTIONId { get; set; }
 
         [JsonProperty("QUESTION_IT")]
         public string QUESTIONIT { get; set; }
@@ -9994,13 +9997,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string QUESTIONDISPLAYED { get; set; }
 
         [JsonProperty("QUESTION_ID")]
-        public string QUESTIONID { get; set; }
+        public string QUESTIONId { get; set; }
 
         [JsonProperty("QUESTION_REQUIRED")]
         public string QUESTIONREQUIRED { get; set; }
 
         [JsonProperty("REQUEST_ID")]
-        public string REQUESTID { get; set; }
+        public string REQUESTId { get; set; }
         public ViewAllResponsesListQuestionsofaTicketResponseRecordsTypeItemRESULTType RESULT { get; set; }
 
         [JsonProperty("RESULT_BIT")]
@@ -10055,7 +10058,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewAllResponsesListQuestionsofaTicketResponseRecordsTypeItemRESULTSTRINGSPType RESULTSTRINGSP { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGID { get; set; }
+        public string SDCATALOGId { get; set; }
         public string TABLENAME { get; set; }
         public ViewAllResponsesListQuestionsofaTicketResponseRecordsTypeItemREQUESTType REQUEST { get; set; }
         public ViewAllResponsesListQuestionsofaTicketResponseRecordsTypeItemQUESTIONType QUESTION { get; set; }
@@ -10133,7 +10136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("REQUEST_ID")]
-        public string REQUESTID { get; set; }
+        public string REQUESTId { get; set; }
 
         [JsonProperty("RFC_NUMBER")]
         public string RFCNUMBER { get; set; }
@@ -10170,7 +10173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("QUESTION_ID")]
-        public string QUESTIONID { get; set; }
+        public string QUESTIONId { get; set; }
 
         [JsonProperty("QUESTION_IT")]
         public string QUESTIONIT { get; set; }
@@ -10217,13 +10220,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string QUESTIONDISPLAYED { get; set; }
 
         [JsonProperty("QUESTION_ID")]
-        public string QUESTIONID { get; set; }
+        public string QUESTIONId { get; set; }
 
         [JsonProperty("QUESTION_REQUIRED")]
         public string QUESTIONREQUIRED { get; set; }
 
         [JsonProperty("REQUEST_ID")]
-        public string REQUESTID { get; set; }
+        public string REQUESTId { get; set; }
         public ViewResponseQuestionTicketResponseRESULTType RESULT { get; set; }
 
         [JsonProperty("RESULT_BIT")]
@@ -10278,7 +10281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewResponseQuestionTicketResponseRESULTSTRINGSPType RESULTSTRINGSP { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGID { get; set; }
+        public string SDCATALOGId { get; set; }
         public string TABLENAME { get; set; }
         public ViewResponseQuestionTicketResponseREQUESTType REQUEST { get; set; }
         public ViewResponseQuestionTicketResponseQUESTIONType QUESTION { get; set; }
@@ -10356,7 +10359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("REQUEST_ID")]
-        public string REQUESTID { get; set; }
+        public string REQUESTId { get; set; }
 
         [JsonProperty("RFC_NUMBER")]
         public string RFCNUMBER { get; set; }
@@ -10393,7 +10396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("QUESTION_ID")]
-        public string QUESTIONID { get; set; }
+        public string QUESTIONId { get; set; }
 
         [JsonProperty("QUESTION_IT")]
         public string QUESTIONIT { get; set; }
@@ -10467,7 +10470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string QUESTIONLISTGUID { get; set; }
 
         [JsonProperty("QUESTION_LIST_ID")]
-        public string QUESTIONLISTID { get; set; }
+        public string QUESTIONLISTId { get; set; }
 
         [JsonProperty("QUESTION_LIST_IT")]
         public string QUESTIONLISTIT { get; set; }
@@ -10543,7 +10546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string CONSTRAINTMESSAGESP { get; set; }
 
         [JsonProperty("CONSTRAINT_VALIDATION")]
-        public ViewQuestionnaireResponseCONSTRAINTVALIDATIONType CONSTRAINTVALIDATION { get; set; }
+        public ViewQuestionnaireResponseCONSTRAINTVALIdATIONType CONSTRAINTVALIdATION { get; set; }
         public string DISABLED { get; set; }
 
         [JsonProperty("DISPLAY_ORDER")]
@@ -10551,10 +10554,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string MANDATORY { get; set; }
 
         [JsonProperty("QUESTION_ID")]
-        public string QUESTIONID { get; set; }
+        public string QUESTIONId { get; set; }
 
         [JsonProperty("QUESTION_LIST_ID")]
-        public string QUESTIONLISTID { get; set; }
+        public string QUESTIONLISTId { get; set; }
 
         [JsonProperty("TARGET_FIELD_1")]
         public string TARGETFIELD1 { get; set; }
@@ -10576,7 +10579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
     }
 
-    public class ViewQuestionnaireResponseCONSTRAINTVALIDATIONType
+    public class ViewQuestionnaireResponseCONSTRAINTVALIdATIONType
     {
         public string HREF { get; set; }
     }
@@ -10614,7 +10617,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("QUESTION_ID")]
-        public string QUESTIONID { get; set; }
+        public string QUESTIONId { get; set; }
 
         [JsonProperty("QUESTION_IT")]
         public string QUESTIONIT { get; set; }
@@ -10667,7 +10670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewListProblemsResponseRecordsTypeItemCOMMENTType COMMENT { get; set; }
 
         [JsonProperty("REQUEST_ID")]
-        public string REQUESTID { get; set; }
+        public string REQUESTId { get; set; }
 
         [JsonProperty("RFC_NUMBER")]
         public string RFCNUMBER { get; set; }
@@ -10697,7 +10700,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string CATALOGREQUESTPATH { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGID { get; set; }
+        public string SDCATALOGId { get; set; }
 
         [JsonProperty("TITLE_FR")]
         public string TITLEFR { get; set; }
@@ -10718,7 +10721,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string STATUSGUID { get; set; }
 
         [JsonProperty("STATUS_ID")]
-        public string STATUSID { get; set; }
+        public string STATUSId { get; set; }
     }
 
     public class ViewListProblemsResponseRecordsTypeItemRECIPIENTType
@@ -10736,7 +10739,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string EMAIL { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEID { get; set; }
+        public string EMPLOYEEId { get; set; }
 
         [JsonProperty("LAST_NAME")]
         public string LASTNAME { get; set; }
@@ -10763,7 +10766,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string EMAIL { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEID { get; set; }
+        public string EMPLOYEEId { get; set; }
 
         [JsonProperty("LAST_NAME")]
         public string LASTNAME { get; set; }
@@ -10789,7 +10792,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string LOCATIONPATH { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONID { get; set; }
+        public string LOCATIONId { get; set; }
     }
 
     public class ViewListProblemsResponseRecordsTypeItemDEPARTMENTType
@@ -10804,7 +10807,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DEPARTMENTPATH { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTID { get; set; }
+        public string DEPARTMENTId { get; set; }
 
         [JsonProperty("DEPARTMENT_LABEL")]
         public string DEPARTMENTLABEL { get; set; }
@@ -10818,10 +10821,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string ANALYTICALCHARGEPATH { get; set; }
 
         [JsonProperty("ANALYTICAL_CHARGE_ID")]
-        public string ANALYTICALCHARGEID { get; set; }
+        public string ANALYTICALCHARGEId { get; set; }
 
         [JsonProperty("ASSET_ID")]
-        public string ASSETID { get; set; }
+        public string ASSETId { get; set; }
 
         [JsonProperty("AVAILABLE_FIELD_1")]
         public string AVAILABLEFIELD1 { get; set; }
@@ -10845,7 +10848,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string BUDGETEFFECTIVE { get; set; }
 
         [JsonProperty("BUDGET_ID")]
-        public string BUDGETID { get; set; }
+        public string BUDGETId { get; set; }
 
         [JsonProperty("BUDGET_PLANNED")]
         public string BUDGETPLANNED { get; set; }
@@ -10854,17 +10857,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string CANBEDUPLICATED { get; set; }
 
         [JsonProperty("CI_ID")]
-        public string CIID { get; set; }
+        public string CIId { get; set; }
 
         [JsonProperty("CLICK_2_GET_INSTALL_RESULT")]
         public string CLICK2GETINSTALLRESULT { get; set; }
         public ViewProblemResponseCOMMENTType COMMENT { get; set; }
 
         [JsonProperty("CONTINUITY_PLAN_ID")]
-        public string CONTINUITYPLANID { get; set; }
+        public string CONTINUITYPLANId { get; set; }
 
         [JsonProperty("COST_CENTER_ID")]
-        public string COSTCENTERID { get; set; }
+        public string COSTCENTERId { get; set; }
 
         [JsonProperty("CREATION_DATE_UT")]
         public string CREATIONDATEUT { get; set; }
@@ -10874,7 +10877,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DEPARTMENTPATH { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTID { get; set; }
+        public string DEPARTMENTId { get; set; }
         public ViewProblemResponseDESCRIPTIONType DESCRIPTION { get; set; }
 
         [JsonProperty("DYNAMIC_DETAILS")]
@@ -10932,7 +10935,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HOURPERDAY { get; set; }
 
         [JsonProperty("IMPACT_ID")]
-        public string IMPACTID { get; set; }
+        public string IMPACTId { get; set; }
 
         [JsonProperty("IMPUTATION_DATE")]
         public string IMPUTATIONDATE { get; set; }
@@ -10941,31 +10944,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string INITIALSDCATALOGPATH { get; set; }
 
         [JsonProperty("INITIAL_SD_CATALOG_ID")]
-        public string INITIALSDCATALOGID { get; set; }
+        public string INITIALSDCATALOGId { get; set; }
 
         [JsonProperty("IS_FINANCIAL_COMPTED")]
         public string ISFINANCIALCOMPTED { get; set; }
 
         [JsonProperty("IS_MAJOR_INCIDENT")]
-        public string ISMAJORINCIDENT { get; set; }
+        public string ISMAJORINCIdENT { get; set; }
 
         [JsonProperty("IS_TEMPLATE")]
         public string ISTEMPLATE { get; set; }
 
         [JsonProperty("KBASE_ID")]
-        public string KBASEID { get; set; }
+        public string KBASEId { get; set; }
 
         [JsonProperty("KNOWN_PROBLEMS_PATH")]
         public string KNOWNPROBLEMSPATH { get; set; }
 
         [JsonProperty("KNOWN_PROBLEMS_ID")]
-        public string KNOWNPROBLEMSID { get; set; }
+        public string KNOWNPROBLEMSId { get; set; }
 
         [JsonProperty("LAST_DONE_BY_ID")]
-        public string LASTDONEBYID { get; set; }
+        public string LASTDONEBYId { get; set; }
 
         [JsonProperty("LAST_GROUP_ID")]
-        public string LASTGROUPID { get; set; }
+        public string LASTGROUPId { get; set; }
 
         [JsonProperty("LAST_UPDATE")]
         public string LASTUPDATE { get; set; }
@@ -10974,7 +10977,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string LOCATIONPATH { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONID { get; set; }
+        public string LOCATIONId { get; set; }
 
         [JsonProperty("MARK_1")]
         public string MARK1 { get; set; }
@@ -10986,37 +10989,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string MAXRESOLUTIONDATEUT { get; set; }
 
         [JsonProperty("MS_PROJECT_IMPORT_VALIDATION_WAITING")]
-        public string MSPROJECTIMPORTVALIDATIONWAITING { get; set; }
+        public string MSPROJECTIMPORTVALIdATIONWAITING { get; set; }
 
         [JsonProperty("NET_PRICE")]
         public string NETPRICE { get; set; }
 
         [JsonProperty("NET_PRICE_CUR_ID")]
-        public string NETPRICECURID { get; set; }
+        public string NETPRICECURId { get; set; }
 
         [JsonProperty("NEWS_ID")]
-        public string NEWSID { get; set; }
+        public string NEWSId { get; set; }
 
         [JsonProperty("NOT_DEDUCED_CALL")]
         public string NOTDEDUCEDCALL { get; set; }
 
         [JsonProperty("ORDER_ID")]
-        public string ORDERID { get; set; }
+        public string ORDERId { get; set; }
 
         [JsonProperty("ORDER_NET_PRICE")]
         public string ORDERNETPRICE { get; set; }
 
         [JsonProperty("ORIGIN_TOOL_ID")]
-        public string ORIGINTOOLID { get; set; }
+        public string ORIGINTOOLId { get; set; }
 
         [JsonProperty("OWNER_ID")]
-        public string OWNERID { get; set; }
+        public string OWNERId { get; set; }
 
         [JsonProperty("OWNING_GROUP_ID")]
-        public string OWNINGGROUPID { get; set; }
+        public string OWNINGGROUPId { get; set; }
 
         [JsonProperty("PARENT_REQUEST_ID")]
-        public string PARENTREQUESTID { get; set; }
+        public string PARENTREQUESTId { get; set; }
 
         [JsonProperty("PLANNED_CHANGE_DATE_END")]
         public string PLANNEDCHANGEDATEEND { get; set; }
@@ -11025,10 +11028,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string PLANNEDCHANGEDATESTART { get; set; }
 
         [JsonProperty("PM_STATUS_ID")]
-        public string PMSTATUSID { get; set; }
+        public string PMSTATUSId { get; set; }
 
         [JsonProperty("PROJECT_ID")]
-        public string PROJECTID { get; set; }
+        public string PROJECTId { get; set; }
 
         [JsonProperty("PROJECT_NAME")]
         public string PROJECTNAME { get; set; }
@@ -11038,16 +11041,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string QTY { get; set; }
 
         [JsonProperty("RECIPIENT_ID")]
-        public string RECIPIENTID { get; set; }
+        public string RECIPIENTId { get; set; }
 
         [JsonProperty("RELEASE_ID")]
-        public string RELEASEID { get; set; }
+        public string RELEASEId { get; set; }
 
         [JsonProperty("RENTAL_NET_PRICE")]
         public string RENTALNETPRICE { get; set; }
 
         [JsonProperty("RENTAL_NET_PRICE_CUR_ID")]
-        public string RENTALNETPRICECURID { get; set; }
+        public string RENTALNETPRICECURId { get; set; }
 
         [JsonProperty("REOPEN_PROCESSING")]
         public string REOPENPROCESSING { get; set; }
@@ -11056,13 +11059,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string REQUALIFICATIONPROCESSING { get; set; }
 
         [JsonProperty("REQUEST_ID")]
-        public string REQUESTID { get; set; }
+        public string REQUESTId { get; set; }
 
         [JsonProperty("REQUEST_ORIGIN_ID")]
-        public string REQUESTORIGINID { get; set; }
+        public string REQUESTORIGINId { get; set; }
 
         [JsonProperty("REQUEST_PROJECT_ID")]
-        public string REQUESTPROJECTID { get; set; }
+        public string REQUESTPROJECTId { get; set; }
 
         [JsonProperty("REQUESTED_CHANGE_DATE_END")]
         public string REQUESTEDCHANGEDATEEND { get; set; }
@@ -11074,7 +11077,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string REQUESTORFEEDBACK { get; set; }
 
         [JsonProperty("REQUESTOR_ID")]
-        public string REQUESTORID { get; set; }
+        public string REQUESTORId { get; set; }
 
         [JsonProperty("REQUESTOR_IP_ADDRESS")]
         public string REQUESTORIPADDRESS { get; set; }
@@ -11095,25 +11098,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewProblemResponseRISKDESCRIPTIONType RISKDESCRIPTION { get; set; }
 
         [JsonProperty("RISK_LEVEL_ID")]
-        public string RISKLEVELID { get; set; }
+        public string RISKLEVELId { get; set; }
 
         [JsonProperty("ROOT_CAUSE_ID")]
-        public string ROOTCAUSEID { get; set; }
+        public string ROOTCAUSEId { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH")]
         public string SDCATALOGPATH { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGID { get; set; }
+        public string SDCATALOGId { get; set; }
 
         [JsonProperty("SEVERITY_ID")]
-        public string SEVERITYID { get; set; }
+        public string SEVERITYId { get; set; }
 
         [JsonProperty("SLA_ID")]
-        public string SLAID { get; set; }
+        public string SLAId { get; set; }
 
         [JsonProperty("STATUS_ID")]
-        public string STATUSID { get; set; }
+        public string STATUSId { get; set; }
 
         [JsonProperty("SUBMIT_DATE_UT")]
         public string SUBMITDATEUT { get; set; }
@@ -11125,7 +11128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewProblemResponseSYSTEMAFFECTEDType SYSTEMAFFECTED { get; set; }
 
         [JsonProperty("SYSTEM_ID")]
-        public string SYSTEMID { get; set; }
+        public string SYSTEMId { get; set; }
 
         [JsonProperty("TIME_USED_TO_DELIVER_FEEDBACK")]
         public string TIMEUSEDTODELIVERFEEDBACK { get; set; }
@@ -11135,13 +11138,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string TITLE { get; set; }
 
         [JsonProperty("URGENCY_ID")]
-        public string URGENCYID { get; set; }
+        public string URGENCYId { get; set; }
 
         [JsonProperty("VALIDATION_LEVEL_REQUIRED")]
-        public string VALIDATIONLEVELREQUIRED { get; set; }
+        public string VALIdATIONLEVELREQUIRED { get; set; }
 
         [JsonProperty("WAVE_ID_TARGET")]
-        public string WAVEIDTARGET { get; set; }
+        public string WAVEIdTARGET { get; set; }
 
         [JsonProperty("CATALOG_REQUEST")]
         public ViewProblemResponseCATALOGREQUESTType CATALOGREQUEST { get; set; }
@@ -11185,7 +11188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string CATALOGREQUESTPATH { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGID { get; set; }
+        public string SDCATALOGId { get; set; }
 
         [JsonProperty("TITLE_FR")]
         public string TITLEFR { get; set; }
@@ -11206,7 +11209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string STATUSGUID { get; set; }
 
         [JsonProperty("STATUS_ID")]
-        public string STATUSID { get; set; }
+        public string STATUSId { get; set; }
     }
 
     public class ViewProblemResponseRECIPIENTType
@@ -11224,7 +11227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string EMAIL { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEID { get; set; }
+        public string EMPLOYEEId { get; set; }
 
         [JsonProperty("LAST_NAME")]
         public string LASTNAME { get; set; }
@@ -11251,7 +11254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string EMAIL { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEID { get; set; }
+        public string EMPLOYEEId { get; set; }
 
         [JsonProperty("LAST_NAME")]
         public string LASTNAME { get; set; }
@@ -11277,7 +11280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string LOCATIONPATH { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONID { get; set; }
+        public string LOCATIONId { get; set; }
     }
 
     public class ViewProblemResponseDEPARTMENTType
@@ -11292,7 +11295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DEPARTMENTPATH { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTID { get; set; }
+        public string DEPARTMENTId { get; set; }
 
         [JsonProperty("DEPARTMENT_LABEL")]
         public string DEPARTMENTLABEL { get; set; }
@@ -11321,7 +11324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public ViewListNewsResponseRecordsTypeItemDESCRIPTIONType DESCRIPTION { get; set; }
 
         [JsonProperty("DOCUMENT_ID")]
-        public string DOCUMENTID { get; set; }
+        public string DOCUMENTId { get; set; }
 
         [JsonProperty("DOCUMENT_NAME")]
         public string DOCUMENTNAME { get; set; }
@@ -11351,13 +11354,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string LSP { get; set; }
 
         [JsonProperty("REQUEST_ID")]
-        public string REQUESTID { get; set; }
+        public string REQUESTId { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH")]
         public string SDCATALOGPATH { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGID { get; set; }
+        public string SDCATALOGId { get; set; }
 
         [JsonProperty("START_DATE")]
         public string STARTDATE { get; set; }
@@ -11375,7 +11378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string MAXRESOLUTIONDATEUT { get; set; }
 
         [JsonProperty("REQUEST_ID")]
-        public string REQUESTID { get; set; }
+        public string REQUESTId { get; set; }
 
         [JsonProperty("RFC_NUMBER")]
         public string RFCNUMBER { get; set; }
@@ -11403,14 +11406,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string DEPARTMENTPATH { get; set; }
 
         [JsonProperty("DEPARTMENT_ID")]
-        public string DEPARTMENTID { get; set; }
+        public string DEPARTMENTId { get; set; }
         public ViewNewsResponseDESCRIPTIONType DESCRIPTION { get; set; }
 
         [JsonProperty("DISPLAY_LAST_UPDATE")]
         public string DISPLAYLASTUPDATE { get; set; }
 
         [JsonProperty("DOCUMENT_ID")]
-        public string DOCUMENTID { get; set; }
+        public string DOCUMENTId { get; set; }
 
         [JsonProperty("DOCUMENT_NAME")]
         public string DOCUMENTNAME { get; set; }
@@ -11430,7 +11433,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         [JsonProperty("FRONT_OFFICE")]
         public string FRONTOFFICE { get; set; }
         public string GUID { get; set; }
-        public string ID { get; set; }
+
+        [JsonProperty("ID")]
+        public string Id { get; set; }
         public string INSTALL { get; set; }
 
         [JsonProperty("IS_EMBEDDED")]
@@ -11485,14 +11490,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string LOCATIONPATH { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONID { get; set; }
+        public string LOCATIONId { get; set; }
 
         [JsonProperty("MAJOR_INCIDENT_ID")]
-        public string MAJORINCIDENTID { get; set; }
+        public string MAJORINCIdENTId { get; set; }
         public string MODULE { get; set; }
 
         [JsonProperty("ORIGIN_TOOL_ID")]
-        public string ORIGINTOOLID { get; set; }
+        public string ORIGINTOOLId { get; set; }
 
         [JsonProperty("PHYSICAL_NAME")]
         public string PHYSICALNAME { get; set; }
@@ -11502,13 +11507,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string PRIORITY { get; set; }
 
         [JsonProperty("REQUEST_ID")]
-        public string REQUESTID { get; set; }
+        public string REQUESTId { get; set; }
 
         [JsonProperty("SD_CATALOG_PATH")]
         public string SDCATALOGPATH { get; set; }
 
         [JsonProperty("SD_CATALOG_ID")]
-        public string SDCATALOGID { get; set; }
+        public string SDCATALOGId { get; set; }
 
         [JsonProperty("START_DATE")]
         public string STARTDATE { get; set; }
@@ -11517,7 +11522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string TABLENAME { get; set; }
 
         [JsonProperty("UPLOADED_BY_ID")]
-        public string UPLOADEDBYID { get; set; }
+        public string UPLOADEDBYId { get; set; }
         public ViewNewsResponseREQUESTType REQUEST { get; set; }
     }
 
@@ -11532,7 +11537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string MAXRESOLUTIONDATEUT { get; set; }
 
         [JsonProperty("REQUEST_ID")]
-        public string REQUESTID { get; set; }
+        public string REQUESTId { get; set; }
 
         [JsonProperty("RFC_NUMBER")]
         public string RFCNUMBER { get; set; }
@@ -11565,7 +11570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("ACTION_ID")]
-        public string ACTIONID { get; set; }
+        public string ACTIONId { get; set; }
 
         [JsonProperty("ACTION_LABEL_FR")]
         public string ACTIONLABELFR { get; set; }
@@ -11574,7 +11579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string ACTIONNUMBER { get; set; }
 
         [JsonProperty("DONE_BY_ID")]
-        public string DONEBYID { get; set; }
+        public string DONEBYId { get; set; }
 
         [JsonProperty("EXPECTED_START_DATE_UT")]
         public string EXPECTEDSTARTDATEUT { get; set; }
@@ -11603,7 +11608,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("LOCATION_ID")]
-        public string LOCATIONID { get; set; }
+        public string LOCATIONId { get; set; }
     }
 
     public class ViewListActionsResponseRecordsTypeItemDONEBYType
@@ -11621,7 +11626,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string EMAIL { get; set; }
 
         [JsonProperty("EMPLOYEE_ID")]
-        public string EMPLOYEEID { get; set; }
+        public string EMPLOYEEId { get; set; }
 
         [JsonProperty("LAST_NAME")]
         public string LASTNAME { get; set; }
@@ -11639,7 +11644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string MAXRESOLUTIONDATEUT { get; set; }
 
         [JsonProperty("REQUEST_ID")]
-        public string REQUESTID { get; set; }
+        public string REQUESTId { get; set; }
         public string HREF { get; set; }
 
         [JsonProperty("RFC_NUMBER")]
@@ -11652,7 +11657,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
     public class ViewListActionsResponseRecordsTypeItemACTIONTYPEType
     {
         [JsonProperty("ACTION_TYPE_ID")]
-        public string ACTIONTYPEID { get; set; }
+        public string ACTIONTYPEId { get; set; }
 
         [JsonProperty("NAME_FR")]
         public string NAMEFR { get; set; }
@@ -11682,13 +11687,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("ASSET_ID")]
-        public string ASSETID { get; set; }
+        public string ASSETId { get; set; }
 
         [JsonProperty("CAPACITY_VALUE")]
         public string CAPACITYVALUE { get; set; }
 
         [JsonProperty("CHARACTERISTIC_ID")]
-        public string CHARACTERISTICID { get; set; }
+        public string CHARACTERISTICId { get; set; }
 
         [JsonProperty("DATA_1")]
         public string DATA1 { get; set; }
@@ -11715,7 +11720,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("CHARACTERISTIC_ID")]
-        public string CHARACTERISTICID { get; set; }
+        public string CHARACTERISTICId { get; set; }
     }
 
     public class ViewAllAtributesofanAssetsResponseRecordsTypeItemASSETType
@@ -11723,7 +11728,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
 
         [JsonProperty("ASSET_ID")]
-        public string ASSETID { get; set; }
+        public string ASSETId { get; set; }
 
         [JsonProperty("ASSET_LABEL")]
         public string ASSETLABEL { get; set; }

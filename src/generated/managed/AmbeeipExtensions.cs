@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
 {
     using System.Linq.Expressions;
@@ -128,19 +129,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<AirQualityMostPollutedResponse, ApiConnectionActionConfiguration> AirQualityMostPolluted()
         {
-            var apiCallPath = "/latest/by-order/worst";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AirQualityMostPollutedResponse>(callPayload);
+            return new DeferredBodyAction<AirQualityMostPollutedResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/latest/by-order/worst";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AirQualityMostPollutedResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<AirQualityLeastPollutedResponse, ApiConnectionActionConfiguration> AirQualityLeastPolluted()
         {
-            var apiCallPath = "/latest/by-order/best";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AirQualityLeastPollutedResponse>(callPayload);
+            return new DeferredBodyAction<AirQualityLeastPollutedResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/latest/by-order/best";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AirQualityLeastPollutedResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]

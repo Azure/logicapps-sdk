@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         public IBodyWorkflowAction<IndexStatsPostResponse, ApiConnectionActionConfiguration> IndexStats()
         {
-            var apiCallPath = "/describe_index_stats";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<IndexStatsPostResponse>(callPayload);
+            return new DeferredBodyAction<IndexStatsPostResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/describe_index_stats";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<IndexStatsPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
@@ -254,10 +258,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> CollectionsGet()
         {
-            var apiCallPath = "/collections";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/collections";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
@@ -314,10 +321,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> IndexesGet()
         {
-            var apiCallPath = "/databases";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/databases";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]

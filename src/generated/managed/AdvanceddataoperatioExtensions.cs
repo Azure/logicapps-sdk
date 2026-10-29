@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
 {
     using System.Linq.Expressions;
@@ -858,33 +859,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> JsonSchemaValidate()
         {
-            var apiCallPath = "/JsonSchemaValidate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var schemaObject = new JObject();
-            var schemaObjectpropCount = 0;
-            if (schemaObjectpropCount > 0)
+            return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
             {
-                body["schema"] = schemaObject;
-                bodypropCount++;
-            }
+                var apiCallPath = "/JsonSchemaValidate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var schemaObject = new JObject();
+                var schemaObjectpropCount = 0;
+                if (schemaObjectpropCount > 0)
+                {
+                    body["schema"] = schemaObject;
+                    bodypropCount++;
+                }
 
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
-                bodypropCount++;
-            }
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string[]>(callPayload);
+                return new ApiConnectionAction<string[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]

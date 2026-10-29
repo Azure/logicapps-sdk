@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
 {
     using System.Linq.Expressions;
@@ -58,10 +59,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> ListTimezones()
         {
-            var apiCallPath = "/TimeZone/AvailableTimeZones";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/TimeZone/AvailableTimeZones";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]

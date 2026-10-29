@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatismybrowserip
 {
     using System.Linq.Expressions;
@@ -40,10 +41,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatismybrowserip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whatismybrowserip")]
         public IBodyWorkflowAction<VersionGetResponse, ApiConnectionActionConfiguration> VersionGet()
         {
-            var apiCallPath = "/version_numbers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<VersionGetResponse>(callPayload);
+            return new DeferredBodyAction<VersionGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/version_numbers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<VersionGetResponse>(callPayload);
+            });
         }
     }
 

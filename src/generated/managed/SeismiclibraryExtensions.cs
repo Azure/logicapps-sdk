@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
 {
     using System.Linq.Expressions;
@@ -11,25 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
 
     public class SeismiclibraryActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse, ApiConnectionActionConfiguration> CreateLibraryFile(Expression<Func<string>> teamsiteId, Expression<Func<bool>> resolveNameCollision = null, Expression<Func<string>> metadata = null, Expression<Func<object>> content = null)
-        {
-            var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
-            var __workflow_resolveNameCollision = WorkflowExpression.Compile(resolveNameCollision, nameof(resolveNameCollision), required: false);
-            var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
-            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: false);
-            return new DeferredBodyAction<SeismicLibraryContentManagementLibraryFileDetailsResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/files", __workflow_teamsiteId.WithUrlEncoding(1)));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["resolveNameCollision"] = Convert.ToString(false);
-                if (__workflow_resolveNameCollision != null)
-                    callPayload.Queries["resolveNameCollision"] = ExpressionConverter.Convert(__workflow_resolveNameCollision);
-                return new ApiConnectionAction<SeismicLibraryContentManagementLibraryFileDetailsResponse>(callPayload);
-            });
-        }
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
         public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse, ApiConnectionActionConfiguration> GetLibraryFileDetails(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId)
         {
@@ -147,21 +129,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
                 if (__workflow_redirect != null)
                     callPayload.Queries["redirect"] = ExpressionConverter.Convert(__workflow_redirect);
                 return new ApiConnectionAction<SeismicCommonDownloadLocationResp>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse, ApiConnectionActionConfiguration> CreateLibraryFileVersion(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<object>> content = null)
-        {
-            var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
-            var __workflow_libraryContentId = WorkflowExpression.Compile(libraryContentId, nameof(libraryContentId), required: true);
-            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: false);
-            return new DeferredBodyAction<SeismicLibraryContentManagementLibraryFileDetailsResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/files/{1}/content", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1)));
-                var apiCallHttpMethod = "put";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<SeismicLibraryContentManagementLibraryFileDetailsResponse>(callPayload);
             });
         }
 

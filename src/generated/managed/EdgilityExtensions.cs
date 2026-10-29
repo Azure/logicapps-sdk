@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edgility")]
         public IBodyWorkflowAction<GetAccountResponse, ApiConnectionActionConfiguration> GetAccount()
         {
-            var apiCallPath = "/v2/account";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAccountResponse>(callPayload);
+            return new DeferredBodyAction<GetAccountResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v2/account";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetAccountResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edgility")]
