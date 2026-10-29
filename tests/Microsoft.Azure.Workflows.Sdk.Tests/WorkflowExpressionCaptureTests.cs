@@ -43,6 +43,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         [Fact]
+        public void VirtualAutoPropertyCapturesUseRuntimeDispatch()
+        {
+            CaptureBase overridden = new AutoPropertyOverride { Offset = 7 };
+            var overriddenAction = WorkflowActions.BuiltIn.Compose(() => overridden.Offset);
+            overridden.Offset = 70;
+
+            Assert.Equal(
+                7,
+                ((Newtonsoft.Json.Linq.JToken)overriddenAction.GetActionDefinition("flow").Inputs).ToObject<int>());
+
+            CaptureBase hidden = new HiddenAutoProperty { Offset = 9 };
+            var hiddenAction = WorkflowActions.BuiltIn.Compose(() => hidden.Offset);
+            Assert.Equal(
+                0,
+                ((Newtonsoft.Json.Linq.JToken)hiddenAction.GetActionDefinition("flow").Inputs).ToObject<int>());
+        }
+
+        [Fact]
+        public void ComputedVirtualPropertyOverridesAreRejected()
+        {
+            CaptureBase captured = new ComputedPropertyOverride();
+
+            Assert.Throws<NotSupportedException>(
+                () => WorkflowActions.BuiltIn.Compose(() => captured.Offset));
+        }
+
+        [Fact]
         public void CapturesPreserveTheirStaticClrTypes()
         {
             int? optional = 5;
@@ -106,5 +133,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         private int GetOffset() => 3;
+
+        private class CaptureBase
+        {
+            public virtual int Offset { get; set; }
+        }
+
+        private sealed class AutoPropertyOverride : CaptureBase
+        {
+            public override int Offset { get; set; }
+        }
+
+        private sealed class ComputedPropertyOverride : CaptureBase
+        {
+            public override int Offset => 7;
+        }
+
+        private sealed class HiddenAutoProperty : CaptureBase
+        {
+            public new int Offset { get; set; }
+        }
     }
 }
