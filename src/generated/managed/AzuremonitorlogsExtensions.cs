@@ -13,15 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
     public class AzuremonitorlogsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremonitorlogs")]
-        public IBodyWorkflowAction<TableV2, ApiConnectionActionConfiguration> QueryData(Expression<Func<string>> subscriptions, Expression<Func<string>> resourcegroups, Expression<Func<resourcetypeInput>> resourcetype, Expression<Func<string>> resourcename, Expression<Func<string>> bodyquery, Expression<Func<string>> bodytimeRangeType, Expression<Func<object>> bodytimerange)
+        public IBodyWorkflowAction<TableV2, ApiConnectionActionConfiguration> QueryData(Expression<Func<string>> subscriptions, Expression<Func<string>> resourcegroups, Expression<Func<resourcetypeInput>> resourcetype, Expression<Func<string>> resourcename, Expression<Func<QueryDataV2Input>> body)
         {
             var __workflow_subscriptions = WorkflowExpression.Compile(subscriptions, nameof(subscriptions), required: true);
             var __workflow_resourcegroups = WorkflowExpression.Compile(resourcegroups, nameof(resourcegroups), required: true);
             var __workflow_resourcetype = WorkflowExpression.Compile(resourcetype, nameof(resourcetype), required: true);
             var __workflow_resourcename = WorkflowExpression.Compile(resourcename, nameof(resourcename), required: true);
-            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
-            var __workflow_bodytimeRangeType = WorkflowExpression.Compile(bodytimeRangeType, nameof(bodytimeRangeType), required: true);
-            var __workflow_bodytimerange = WorkflowExpression.Compile(bodytimerange, nameof(bodytimerange), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TableV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/queryDataV2";
@@ -31,33 +29,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
                 callPayload.Queries["resourcegroups"] = ExpressionConverter.Convert(__workflow_resourcegroups);
                 callPayload.Queries["resourcetype"] = ExpressionConverter.Convert(__workflow_resourcetype);
                 callPayload.Queries["resourcename"] = ExpressionConverter.Convert(__workflow_resourcename);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
-                bodypropCount++;
-                body["timerangetype"] = ExpressionConverter.ConvertO(__workflow_bodytimeRangeType);
-                bodypropCount++;
-                body["timerange"] = ExpressionConverter.ConvertO(__workflow_bodytimerange);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TableV2>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremonitorlogs")]
-        public IBodyWorkflowAction<VisualizeResults, ApiConnectionActionConfiguration> VisualizeQuery(Expression<Func<string>> subscriptions, Expression<Func<string>> resourcegroups, Expression<Func<resourcetypeInput>> resourcetype, Expression<Func<string>> resourcename, Expression<Func<string>> bodyquery, Expression<Func<string>> bodytimeRangeType, Expression<Func<object>> bodytimerange, Expression<Func<visTypeInput>> visType)
+        public IBodyWorkflowAction<VisualizeResults, ApiConnectionActionConfiguration> VisualizeQuery(Expression<Func<string>> subscriptions, Expression<Func<string>> resourcegroups, Expression<Func<resourcetypeInput>> resourcetype, Expression<Func<string>> resourcename, Expression<Func<VisualizeQueryV2Input>> body, Expression<Func<visTypeInput>> visType)
         {
             var __workflow_subscriptions = WorkflowExpression.Compile(subscriptions, nameof(subscriptions), required: true);
             var __workflow_resourcegroups = WorkflowExpression.Compile(resourcegroups, nameof(resourcegroups), required: true);
             var __workflow_resourcetype = WorkflowExpression.Compile(resourcetype, nameof(resourcetype), required: true);
             var __workflow_resourcename = WorkflowExpression.Compile(resourcename, nameof(resourcename), required: true);
-            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
-            var __workflow_bodytimeRangeType = WorkflowExpression.Compile(bodytimeRangeType, nameof(bodytimeRangeType), required: true);
-            var __workflow_bodytimerange = WorkflowExpression.Compile(bodytimerange, nameof(bodytimerange), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_visType = WorkflowExpression.Compile(visType, nameof(visType), required: true);
             return new DeferredBodyAction<VisualizeResults, ApiConnectionActionConfiguration>(() =>
             {
@@ -69,19 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
                 callPayload.Queries["resourcetype"] = ExpressionConverter.Convert(__workflow_resourcetype);
                 callPayload.Queries["resourcename"] = ExpressionConverter.Convert(__workflow_resourcename);
                 callPayload.Queries["visType"] = ExpressionConverter.Convert(__workflow_visType);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
-                bodypropCount++;
-                body["timerangetype"] = ExpressionConverter.ConvertO(__workflow_bodytimeRangeType);
-                bodypropCount++;
-                body["timerange"] = ExpressionConverter.ConvertO(__workflow_bodytimerange);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<VisualizeResults>(callPayload);
             });
         }
@@ -115,6 +87,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
         ApplicationInsights
     }
 
+    public class QueryDataV2Input
+    {
+        [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Query { get; set; }
+
+        [JsonProperty("timerangetype", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TimeRangeType { get; set; }
+
+        [JsonProperty("timerange", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Timerange { get; set; }
+    }
+
     public class VisualizeResults
     {
         [JsonProperty("body")]
@@ -128,6 +112,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
 
         [JsonProperty("error")]
         public PartialQueryError Error { get; set; }
+    }
+
+    public class VisualizeQueryV2Input
+    {
+        [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Query { get; set; }
+
+        [JsonProperty("timerangetype", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TimeRangeType { get; set; }
+
+        [JsonProperty("timerange", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Timerange { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

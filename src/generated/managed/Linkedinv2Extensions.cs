@@ -25,204 +25,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkedinv2")]
-        public IBodyWorkflowAction<ShareResponseV2, ApiConnectionActionConfiguration> PostCompanyUpdate(Expression<Func<string>> bodycompany, Expression<Func<string>> bodycommentary, Expression<Func<bodyvisibilityInput>> bodyvisibility, Expression<Func<string>> bodycontentarticleuRLOfTheArticle, Expression<Func<string>> bodycontentarticletitle, Expression<Func<bool>> bodyisReshareDisabledByAuthor = null, Expression<Func<string>> bodycontentarticledescription = null, Expression<Func<string>> bodycontentarticlethumbnailURL = null)
+        public IBodyWorkflowAction<ShareResponseV2, ApiConnectionActionConfiguration> PostCompanyUpdate(Expression<Func<PostCompanyUpdateV2Input>> body)
         {
-            var __workflow_bodycompany = WorkflowExpression.Compile(bodycompany, nameof(bodycompany), required: true);
-            var __workflow_bodycommentary = WorkflowExpression.Compile(bodycommentary, nameof(bodycommentary), required: true);
-            var __workflow_bodyvisibility = WorkflowExpression.Compile(bodyvisibility, nameof(bodyvisibility), required: true);
-            var __workflow_bodycontentarticleuRLOfTheArticle = WorkflowExpression.Compile(bodycontentarticleuRLOfTheArticle, nameof(bodycontentarticleuRLOfTheArticle), required: true);
-            var __workflow_bodycontentarticletitle = WorkflowExpression.Compile(bodycontentarticletitle, nameof(bodycontentarticletitle), required: true);
-            var __workflow_bodyisReshareDisabledByAuthor = WorkflowExpression.Compile(bodyisReshareDisabledByAuthor, nameof(bodyisReshareDisabledByAuthor), required: false);
-            var __workflow_bodycontentarticledescription = WorkflowExpression.Compile(bodycontentarticledescription, nameof(bodycontentarticledescription), required: false);
-            var __workflow_bodycontentarticlethumbnailURL = WorkflowExpression.Compile(bodycontentarticlethumbnailURL, nameof(bodycontentarticlethumbnailURL), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ShareResponseV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/company/rest/posts/v2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["author"] = ExpressionConverter.ConvertO(__workflow_bodycompany);
-                bodypropCount++;
-                body["commentary"] = ExpressionConverter.ConvertO(__workflow_bodycommentary);
-                bodypropCount++;
-                body["visibility"] = ExpressionConverter.ConvertO(__workflow_bodyvisibility);
-                body["lifecycleState"] = "PUBLISHED";
-                bodypropCount++;
-                if (__workflow_bodyisReshareDisabledByAuthor != null)
-                {
-                    if (__workflow_bodyisReshareDisabledByAuthor != null)
-                    {
-                        body["isReshareDisabledByAuthor"] = ExpressionConverter.ConvertO(__workflow_bodyisReshareDisabledByAuthor);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["isReshareDisabledByAuthor"] = false;
-                    bodypropCount++;
-                }
-
-                var distributionObject = new JObject();
-                var distributionObjectpropCount = 0;
-                distributionObject["feedDistribution"] = "MAIN_FEED";
-                distributionObjectpropCount++;
-                if (distributionObjectpropCount > 0)
-                {
-                    body["distribution"] = distributionObject;
-                    bodypropCount++;
-                }
-
-                var contentObject = new JObject();
-                var contentObjectpropCount = 0;
-                var articleObject = new JObject();
-                var articleObjectpropCount = 0;
-                if (__workflow_bodycontentarticledescription != null)
-                {
-                    if (__workflow_bodycontentarticledescription != null)
-                    {
-                        articleObject["description"] = ExpressionConverter.ConvertO(__workflow_bodycontentarticledescription);
-                        articleObjectpropCount++;
-                    }
-
-                    articleObjectpropCount++;
-                }
-                else
-                {
-                    articleObject["description"] = "";
-                    articleObjectpropCount++;
-                }
-
-                articleObjectpropCount++;
-                articleObject["source"] = ExpressionConverter.ConvertO(__workflow_bodycontentarticleuRLOfTheArticle);
-                articleObjectpropCount++;
-                articleObject["title"] = ExpressionConverter.ConvertO(__workflow_bodycontentarticletitle);
-                if (__workflow_bodycontentarticlethumbnailURL != null)
-                {
-                    articleObject["thumbnail"] = ExpressionConverter.ConvertO(__workflow_bodycontentarticlethumbnailURL);
-                    articleObjectpropCount++;
-                }
-
-                if (articleObjectpropCount > 0)
-                {
-                    contentObject["article"] = articleObject;
-                    contentObjectpropCount++;
-                }
-
-                if (contentObjectpropCount > 0)
-                {
-                    body["content"] = contentObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ShareResponseV2>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkedinv2")]
-        public IBodyWorkflowAction<ShareResponseV2, ApiConnectionActionConfiguration> PostUpdate(Expression<Func<string>> bodycommentary, Expression<Func<bodyvisibilityInput>> bodyvisibility, Expression<Func<string>> bodycontentarticleuRLOfTheArticle, Expression<Func<string>> bodycontentarticletitle, Expression<Func<bool>> bodyisReshareDisabledByAuthor = null, Expression<Func<string>> bodycontentarticledescription = null, Expression<Func<string>> bodycontentarticlethumbnailURL = null)
+        public IBodyWorkflowAction<ShareResponseV2, ApiConnectionActionConfiguration> PostUpdate(Expression<Func<PostUpdateV2Input>> body)
         {
-            var __workflow_bodycommentary = WorkflowExpression.Compile(bodycommentary, nameof(bodycommentary), required: true);
-            var __workflow_bodyvisibility = WorkflowExpression.Compile(bodyvisibility, nameof(bodyvisibility), required: true);
-            var __workflow_bodycontentarticleuRLOfTheArticle = WorkflowExpression.Compile(bodycontentarticleuRLOfTheArticle, nameof(bodycontentarticleuRLOfTheArticle), required: true);
-            var __workflow_bodycontentarticletitle = WorkflowExpression.Compile(bodycontentarticletitle, nameof(bodycontentarticletitle), required: true);
-            var __workflow_bodyisReshareDisabledByAuthor = WorkflowExpression.Compile(bodyisReshareDisabledByAuthor, nameof(bodyisReshareDisabledByAuthor), required: false);
-            var __workflow_bodycontentarticledescription = WorkflowExpression.Compile(bodycontentarticledescription, nameof(bodycontentarticledescription), required: false);
-            var __workflow_bodycontentarticlethumbnailURL = WorkflowExpression.Compile(bodycontentarticlethumbnailURL, nameof(bodycontentarticlethumbnailURL), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ShareResponseV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/people/rest/posts/v2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["commentary"] = ExpressionConverter.ConvertO(__workflow_bodycommentary);
-                bodypropCount++;
-                body["visibility"] = ExpressionConverter.ConvertO(__workflow_bodyvisibility);
-                body["lifecycleState"] = "PUBLISHED";
-                bodypropCount++;
-                if (__workflow_bodyisReshareDisabledByAuthor != null)
-                {
-                    if (__workflow_bodyisReshareDisabledByAuthor != null)
-                    {
-                        body["isReshareDisabledByAuthor"] = ExpressionConverter.ConvertO(__workflow_bodyisReshareDisabledByAuthor);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["isReshareDisabledByAuthor"] = false;
-                    bodypropCount++;
-                }
-
-                var distributionObject = new JObject();
-                var distributionObjectpropCount = 0;
-                distributionObject["feedDistribution"] = "MAIN_FEED";
-                distributionObjectpropCount++;
-                if (distributionObjectpropCount > 0)
-                {
-                    body["distribution"] = distributionObject;
-                    bodypropCount++;
-                }
-
-                var contentObject = new JObject();
-                var contentObjectpropCount = 0;
-                var articleObject = new JObject();
-                var articleObjectpropCount = 0;
-                if (__workflow_bodycontentarticledescription != null)
-                {
-                    if (__workflow_bodycontentarticledescription != null)
-                    {
-                        articleObject["description"] = ExpressionConverter.ConvertO(__workflow_bodycontentarticledescription);
-                        articleObjectpropCount++;
-                    }
-
-                    articleObjectpropCount++;
-                }
-                else
-                {
-                    articleObject["description"] = "";
-                    articleObjectpropCount++;
-                }
-
-                articleObjectpropCount++;
-                articleObject["source"] = ExpressionConverter.ConvertO(__workflow_bodycontentarticleuRLOfTheArticle);
-                articleObjectpropCount++;
-                articleObject["title"] = ExpressionConverter.ConvertO(__workflow_bodycontentarticletitle);
-                if (__workflow_bodycontentarticlethumbnailURL != null)
-                {
-                    articleObject["thumbnail"] = ExpressionConverter.ConvertO(__workflow_bodycontentarticlethumbnailURL);
-                    articleObjectpropCount++;
-                }
-
-                if (articleObjectpropCount > 0)
-                {
-                    contentObject["article"] = articleObject;
-                    contentObjectpropCount++;
-                }
-
-                if (contentObjectpropCount > 0)
-                {
-                    body["content"] = contentObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ShareResponseV2>(callPayload);
             });
         }
@@ -247,14 +72,121 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
         public string UpdateId { get; set; }
     }
 
+    public class PostCompanyUpdateV2Input
+    {
+        [JsonProperty("author", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Company { get; set; }
+
+        [JsonProperty("commentary", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Commentary { get; set; }
+
+        [JsonProperty("visibility", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PostCompanyUpdateV2InputVisibilityType Visibility { get; set; }
+
+        [JsonProperty("lifecycleState", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string LifecycleState { get; set; } = "PUBLISHED";
+
+        [JsonProperty("isReshareDisabledByAuthor", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IsReshareDisabledByAuthor { get; set; } = false;
+
+        [JsonProperty("distribution", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PostCompanyUpdateV2InputDistributionType Distribution { get; set; }
+
+        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PostCompanyUpdateV2InputContentType Content { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyvisibilityInput
+    public enum PostCompanyUpdateV2InputVisibilityType
+    {
+        Public,
+        [EnumMember(Value = "Logged in members only")]
+        LoggedInMembersOnly
+    }
+
+    public class PostCompanyUpdateV2InputDistributionType
+    {
+        [JsonProperty("feedDistribution", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string FeedDistribution { get; set; } = "MAIN_FEED";
+    }
+
+    public class PostCompanyUpdateV2InputContentType
+    {
+        [JsonProperty("article")]
+        public PostCompanyUpdateV2InputContentTypeArticleType Article { get; set; }
+    }
+
+    public class PostCompanyUpdateV2InputContentTypeArticleType
+    {
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Description { get; set; } = "";
+
+        [JsonProperty("source", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string URLOfTheArticle { get; set; }
+
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("thumbnail")]
+        public string ThumbnailURL { get; set; }
+    }
+
+    public class PostUpdateV2Input
+    {
+        [JsonProperty("commentary", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Commentary { get; set; }
+
+        [JsonProperty("visibility", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PostUpdateV2InputVisibilityType Visibility { get; set; }
+
+        [JsonProperty("lifecycleState", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string LifecycleState { get; set; } = "PUBLISHED";
+
+        [JsonProperty("isReshareDisabledByAuthor", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IsReshareDisabledByAuthor { get; set; } = false;
+
+        [JsonProperty("distribution", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PostUpdateV2InputDistributionType Distribution { get; set; }
+
+        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PostUpdateV2InputContentType Content { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum PostUpdateV2InputVisibilityType
     {
         Public,
         [EnumMember(Value = "Connections Only")]
         ConnectionsOnly,
         [EnumMember(Value = "Logged in members only")]
         LoggedInMembersOnly
+    }
+
+    public class PostUpdateV2InputDistributionType
+    {
+        [JsonProperty("feedDistribution", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string FeedDistribution { get; set; } = "MAIN_FEED";
+    }
+
+    public class PostUpdateV2InputContentType
+    {
+        [JsonProperty("article")]
+        public PostUpdateV2InputContentTypeArticleType Article { get; set; }
+    }
+
+    public class PostUpdateV2InputContentTypeArticleType
+    {
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Description { get; set; } = "";
+
+        [JsonProperty("source", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string URLOfTheArticle { get; set; }
+
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("thumbnail")]
+        public string ThumbnailURL { get; set; }
     }
 }
 

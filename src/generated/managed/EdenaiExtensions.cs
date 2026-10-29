@@ -13,17 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
     public class EdenaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<TextToSpeechResponse, ApiConnectionActionConfiguration> TextToSpeech(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyoption = null, Expression<Func<double>> bodyrate = null, Expression<Func<double>> bodypitch = null, Expression<Func<double>> bodyvolume = null, Expression<Func<string>> bodyaudioFormat = null, Expression<Func<double>> bodysamplingRate = null)
+        public IBodyWorkflowAction<TextToSpeechResponse, ApiConnectionActionConfiguration> TextToSpeech(Expression<Func<TextToSpeechInput>> body)
         {
-            var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            var __workflow_bodyoption = WorkflowExpression.Compile(bodyoption, nameof(bodyoption), required: false);
-            var __workflow_bodyrate = WorkflowExpression.Compile(bodyrate, nameof(bodyrate), required: false);
-            var __workflow_bodypitch = WorkflowExpression.Compile(bodypitch, nameof(bodypitch), required: false);
-            var __workflow_bodyvolume = WorkflowExpression.Compile(bodyvolume, nameof(bodyvolume), required: false);
-            var __workflow_bodyaudioFormat = WorkflowExpression.Compile(bodyaudioFormat, nameof(bodyaudioFormat), required: false);
-            var __workflow_bodysamplingRate = WorkflowExpression.Compile(bodysamplingRate, nameof(bodysamplingRate), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TextToSpeechResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/audio/text_to_speech";
@@ -31,176 +23,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyproviders != null)
-                {
-                    if (__workflow_bodyproviders != null)
-                    {
-                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["providers"] = "google, microsoft, lovoai, ibm, amazon";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylanguage != null)
-                {
-                    if (__workflow_bodylanguage != null)
-                    {
-                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["language"] = "en";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytext != null)
-                {
-                    if (__workflow_bodytext != null)
-                    {
-                        body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["text"] = "Hello, my name is Jane.";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyoption != null)
-                {
-                    if (__workflow_bodyoption != null)
-                    {
-                        body["option"] = ExpressionConverter.ConvertO(__workflow_bodyoption);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["option"] = "FEMALE";
-                    bodypropCount++;
-                }
-
-                var settingsObject = new JObject();
-                var settingsObjectpropCount = 0;
-                if (settingsObjectpropCount > 0)
-                {
-                    body["settings"] = settingsObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrate != null)
-                {
-                    if (__workflow_bodyrate != null)
-                    {
-                        body["rate"] = ExpressionConverter.ConvertO(__workflow_bodyrate);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["rate"] = 0;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypitch != null)
-                {
-                    if (__workflow_bodypitch != null)
-                    {
-                        body["pitch"] = ExpressionConverter.ConvertO(__workflow_bodypitch);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["pitch"] = 0;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvolume != null)
-                {
-                    if (__workflow_bodyvolume != null)
-                    {
-                        body["volume"] = ExpressionConverter.ConvertO(__workflow_bodyvolume);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["volume"] = 0;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaudioFormat != null)
-                {
-                    if (__workflow_bodyaudioFormat != null)
-                    {
-                        body["audio_format"] = ExpressionConverter.ConvertO(__workflow_bodyaudioFormat);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["audio_format"] = "mp3";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysamplingRate != null)
-                {
-                    if (__workflow_bodysamplingRate != null)
-                    {
-                        body["sampling_rate"] = ExpressionConverter.ConvertO(__workflow_bodysamplingRate);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["sampling_rate"] = 0;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TextToSpeechResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<TextGenerationResponse, ApiConnectionActionConfiguration> TextGeneration(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodymaxTokens = null)
+        public IBodyWorkflowAction<TextGenerationResponse, ApiConnectionActionConfiguration> TextGeneration(Expression<Func<TextGenerationInput>> body)
         {
-            var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
-            var __workflow_bodymaxTokens = WorkflowExpression.Compile(bodymaxTokens, nameof(bodymaxTokens), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TextGenerationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/text/generation";
@@ -208,87 +39,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyproviders != null)
-                {
-                    if (__workflow_bodyproviders != null)
-                    {
-                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["providers"] = "openai, cohere";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytemperature != null)
-                {
-                    if (__workflow_bodytemperature != null)
-                    {
-                        body["temperature"] = ExpressionConverter.ConvertO(__workflow_bodytemperature);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["temperature"] = 0.3;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymaxTokens != null)
-                {
-                    if (__workflow_bodymaxTokens != null)
-                    {
-                        body["max_tokens"] = ExpressionConverter.ConvertO(__workflow_bodymaxTokens);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["max_tokens"] = 250;
-                    bodypropCount++;
-                }
-
-                var settingsObject = new JObject();
-                var settingsObjectpropCount = 0;
-                if (settingsObjectpropCount > 0)
-                {
-                    body["settings"] = settingsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TextGenerationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<ChatResponse, ApiConnectionActionConfiguration> Chat(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodychatGlobalAction = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodymaxTokens = null)
+        public IBodyWorkflowAction<ChatResponse, ApiConnectionActionConfiguration> Chat(Expression<Func<ChatInput>> body)
         {
-            var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            var __workflow_bodychatGlobalAction = WorkflowExpression.Compile(bodychatGlobalAction, nameof(bodychatGlobalAction), required: false);
-            var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
-            var __workflow_bodymaxTokens = WorkflowExpression.Compile(bodymaxTokens, nameof(bodymaxTokens), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ChatResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/text/chat";
@@ -296,91 +55,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyproviders != null)
-                {
-                    if (__workflow_bodyproviders != null)
-                    {
-                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["providers"] = "openai";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodychatGlobalAction != null)
-                {
-                    body["chat_global_action"] = ExpressionConverter.ConvertO(__workflow_bodychatGlobalAction);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytemperature != null)
-                {
-                    if (__workflow_bodytemperature != null)
-                    {
-                        body["temperature"] = ExpressionConverter.ConvertO(__workflow_bodytemperature);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["temperature"] = 0.3;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymaxTokens != null)
-                {
-                    if (__workflow_bodymaxTokens != null)
-                    {
-                        body["max_tokens"] = ExpressionConverter.ConvertO(__workflow_bodymaxTokens);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["max_tokens"] = 250;
-                    bodypropCount++;
-                }
-
-                var settingsObject = new JObject();
-                var settingsObjectpropCount = 0;
-                if (settingsObjectpropCount > 0)
-                {
-                    body["settings"] = settingsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ChatResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<TopicExtractionResponse, ApiConnectionActionConfiguration> TopicExtraction(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<TopicExtractionResponse, ApiConnectionActionConfiguration> TopicExtraction(Expression<Func<TopicExtractionInput>> body)
         {
-            var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TopicExtractionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/text/topic_extraction";
@@ -388,61 +71,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyproviders != null)
-                {
-                    if (__workflow_bodyproviders != null)
-                    {
-                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["providers"] = "google, openai, ibm";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylanguage != null)
-                {
-                    if (__workflow_bodylanguage != null)
-                    {
-                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["language"] = "en";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TopicExtractionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<KeywordExtractionResponse, ApiConnectionActionConfiguration> KeywordExtraction(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<KeywordExtractionResponse, ApiConnectionActionConfiguration> KeywordExtraction(Expression<Func<KeywordExtractionInput>> body)
         {
-            var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<KeywordExtractionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/text/keyword_extraction";
@@ -450,61 +87,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyproviders != null)
-                {
-                    if (__workflow_bodyproviders != null)
-                    {
-                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["providers"] = "amazon, openai, microsoft, ibm, oneai, emvista";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylanguage != null)
-                {
-                    if (__workflow_bodylanguage != null)
-                    {
-                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["language"] = "en";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<KeywordExtractionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<NamedEntityRecognitionResponse, ApiConnectionActionConfiguration> NamedEntityRecognition(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<NamedEntityRecognitionResponse, ApiConnectionActionConfiguration> NamedEntityRecognition(Expression<Func<NamedEntityRecognitionInput>> body)
         {
-            var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<NamedEntityRecognitionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/text/named_entity_recognition";
@@ -512,62 +103,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyproviders != null)
-                {
-                    if (__workflow_bodyproviders != null)
-                    {
-                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["providers"] = "amazon, google, openai, lettria, neuralspace, microsoft, ibm, oneai";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylanguage != null)
-                {
-                    if (__workflow_bodylanguage != null)
-                    {
-                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["language"] = "en";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<NamedEntityRecognitionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<ImageGenerationResponse, ApiConnectionActionConfiguration> ImageGeneration(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyresolution = null, Expression<Func<double>> bodynumImages = null)
+        public IBodyWorkflowAction<ImageGenerationResponse, ApiConnectionActionConfiguration> ImageGeneration(Expression<Func<ImageGenerationInput>> body)
         {
-            var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            var __workflow_bodyresolution = WorkflowExpression.Compile(bodyresolution, nameof(bodyresolution), required: false);
-            var __workflow_bodynumImages = WorkflowExpression.Compile(bodynumImages, nameof(bodynumImages), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ImageGenerationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/image/generation";
@@ -575,78 +119,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyproviders != null)
-                {
-                    if (__workflow_bodyproviders != null)
-                    {
-                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["providers"] = "stabilityai, openai, deepai";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyresolution != null)
-                {
-                    if (__workflow_bodyresolution != null)
-                    {
-                        body["resolution"] = ExpressionConverter.ConvertO(__workflow_bodyresolution);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["resolution"] = "512x512";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynumImages != null)
-                {
-                    if (__workflow_bodynumImages != null)
-                    {
-                        body["num_images"] = ExpressionConverter.ConvertO(__workflow_bodynumImages);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["num_images"] = 1;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ImageGenerationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<TranslationResponse, ApiConnectionActionConfiguration> Translation(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodysourceLanguage = null, Expression<Func<string>> bodytargetLanguage = null)
+        public IBodyWorkflowAction<TranslationResponse, ApiConnectionActionConfiguration> Translation(Expression<Func<TranslationInput>> body)
         {
-            var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            var __workflow_bodysourceLanguage = WorkflowExpression.Compile(bodysourceLanguage, nameof(bodysourceLanguage), required: false);
-            var __workflow_bodytargetLanguage = WorkflowExpression.Compile(bodytargetLanguage, nameof(bodytargetLanguage), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TranslationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/translation/automatic_translation";
@@ -654,77 +135,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyproviders != null)
-                {
-                    if (__workflow_bodyproviders != null)
-                    {
-                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["providers"] = "google, amazon, neuralspace, modernmt, phedone, deepl, openai, microsoft, ibm";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysourceLanguage != null)
-                {
-                    if (__workflow_bodysourceLanguage != null)
-                    {
-                        body["source_language"] = ExpressionConverter.ConvertO(__workflow_bodysourceLanguage);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["source_language"] = "en";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytargetLanguage != null)
-                {
-                    if (__workflow_bodytargetLanguage != null)
-                    {
-                        body["target_language"] = ExpressionConverter.ConvertO(__workflow_bodytargetLanguage);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["target_language"] = "fr";
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TranslationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<TextModerationResponse, ApiConnectionActionConfiguration> TextModeration(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<TextModerationResponse, ApiConnectionActionConfiguration> TextModeration(Expression<Func<TextModerationInput>> body)
         {
-            var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TextModerationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/text/moderation";
@@ -732,62 +151,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyproviders != null)
-                {
-                    if (__workflow_bodyproviders != null)
-                    {
-                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["providers"] = "microsoft, openai";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylanguage != null)
-                {
-                    if (__workflow_bodylanguage != null)
-                    {
-                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["language"] = "en";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TextModerationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<SummarizationResponse, ApiConnectionActionConfiguration> Summarization(Expression<Func<string>> bodyproviders = null, Expression<Func<double>> bodyoutputSentences = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodylanguage = null)
+        public IBodyWorkflowAction<SummarizationResponse, ApiConnectionActionConfiguration> Summarization(Expression<Func<SummarizationInput>> body)
         {
-            var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
-            var __workflow_bodyoutputSentences = WorkflowExpression.Compile(bodyoutputSentences, nameof(bodyoutputSentences), required: false);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SummarizationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/text/summarize";
@@ -795,84 +167,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyproviders != null)
-                {
-                    if (__workflow_bodyproviders != null)
-                    {
-                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["providers"] = "cohere, openai, microsoft, emvista, oneai, connexun";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyoutputSentences != null)
-                {
-                    if (__workflow_bodyoutputSentences != null)
-                    {
-                        body["output_sentences"] = ExpressionConverter.ConvertO(__workflow_bodyoutputSentences);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["output_sentences"] = 3;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylanguage != null)
-                {
-                    if (__workflow_bodylanguage != null)
-                    {
-                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["language"] = "en";
-                    bodypropCount++;
-                }
-
-                var settingsObject = new JObject();
-                var settingsObjectpropCount = 0;
-                if (settingsObjectpropCount > 0)
-                {
-                    body["settings"] = settingsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SummarizationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<LanguageDetectionResponse, ApiConnectionActionConfiguration> LanguageDetection(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<LanguageDetectionResponse, ApiConnectionActionConfiguration> LanguageDetection(Expression<Func<LanguageDetectionInput>> body)
         {
-            var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LanguageDetectionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/translation/language_detection";
@@ -880,45 +183,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyproviders != null)
-                {
-                    if (__workflow_bodyproviders != null)
-                    {
-                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["providers"] = "google, oneai, neuralspace, modernmt, amazon, ibm, openai, microsoft";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LanguageDetectionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<SentimentAnalysisResponse, ApiConnectionActionConfiguration> SentimentAnalysis(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<SentimentAnalysisResponse, ApiConnectionActionConfiguration> SentimentAnalysis(Expression<Func<SentimentAnalysisInput>> body)
         {
-            var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SentimentAnalysisResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/text/sentiment_analysis";
@@ -926,51 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyproviders != null)
-                {
-                    if (__workflow_bodyproviders != null)
-                    {
-                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["providers"] = "connexun, amazon, google, microsoft, oneai, emvista, openai, ibm, lettria";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylanguage != null)
-                {
-                    if (__workflow_bodylanguage != null)
-                    {
-                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["language"] = "en";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SentimentAnalysisResponse>(callPayload);
             });
         }
@@ -1058,6 +287,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         public string AudioResourceUrl { get; set; }
     }
 
+    public class TextToSpeechInput
+    {
+        [JsonProperty("providers", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Providers { get; set; } = "google, microsoft, lovoai, ibm, amazon";
+
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Language { get; set; } = "en";
+
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; } = "Hello, my name is Jane.";
+
+        [JsonProperty("option", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Option { get; set; } = "FEMALE";
+
+        [JsonProperty("settings", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Settings { get; set; } = JToken.Parse("{}");
+
+        [JsonProperty("rate", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? Rate { get; set; } = 0;
+
+        [JsonProperty("pitch", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? Pitch { get; set; } = 0;
+
+        [JsonProperty("volume", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? Volume { get; set; } = 0;
+
+        [JsonProperty("audio_format", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AudioFormat { get; set; } = "mp3";
+
+        [JsonProperty("sampling_rate", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? SamplingRate { get; set; } = 0;
+    }
+
     public class TextGenerationResponse
     {
         [JsonProperty("openai")]
@@ -1079,6 +341,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         public string GeneratedText { get; set; }
     }
 
+    public class TextGenerationInput
+    {
+        [JsonProperty("providers", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Providers { get; set; } = "openai, cohere";
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("temperature", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? Temperature { get; set; } = 0.3;
+
+        [JsonProperty("max_tokens", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? MaxTokens { get; set; } = 250;
+
+        [JsonProperty("settings", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Settings { get; set; } = JToken.Parse("{}");
+    }
+
     public class ChatResponse
     {
         [JsonProperty("openai")]
@@ -1092,6 +372,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 
         [JsonProperty("status")]
         public string Status { get; set; }
+    }
+
+    public class ChatInput
+    {
+        [JsonProperty("providers", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Providers { get; set; } = "openai";
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("chat_global_action")]
+        public string ChatGlobalAction { get; set; }
+
+        [JsonProperty("temperature", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? Temperature { get; set; } = 0.3;
+
+        [JsonProperty("max_tokens", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? MaxTokens { get; set; } = 250;
+
+        [JsonProperty("settings", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Settings { get; set; } = JToken.Parse("{}");
     }
 
     public class TopicExtractionResponse
@@ -1149,6 +450,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 
         [JsonProperty("importance")]
         public double Importance { get; set; }
+    }
+
+    public class TopicExtractionInput
+    {
+        [JsonProperty("providers", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Providers { get; set; } = "google, openai, ibm";
+
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Language { get; set; } = "en";
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
     }
 
     public class KeywordExtractionResponse
@@ -1260,6 +573,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 
         [JsonProperty("importance")]
         public double Importance { get; set; }
+    }
+
+    public class KeywordExtractionInput
+    {
+        [JsonProperty("providers", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Providers { get; set; } = "amazon, openai, microsoft, ibm, oneai, emvista";
+
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Language { get; set; } = "en";
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
     }
 
     public class NamedEntityRecognitionResponse
@@ -1433,6 +758,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         public double Importance { get; set; }
     }
 
+    public class NamedEntityRecognitionInput
+    {
+        [JsonProperty("providers", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Providers { get; set; } = "amazon, google, openai, lettria, neuralspace, microsoft, ibm, oneai";
+
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Language { get; set; } = "en";
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+    }
+
     public class ImageGenerationResponse
     {
         [JsonProperty("stabilityai")]
@@ -1488,6 +825,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 
         [JsonProperty("image_resource_url")]
         public string ImageResourceUrl { get; set; }
+    }
+
+    public class ImageGenerationInput
+    {
+        [JsonProperty("providers", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Providers { get; set; } = "stabilityai, openai, deepai";
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("resolution", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Resolution { get; set; } = "512x512";
+
+        [JsonProperty("num_images", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? NumImages { get; set; } = 1;
     }
 
     public class TranslationResponse
@@ -1574,6 +926,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         public string Text { get; set; }
     }
 
+    public class TranslationInput
+    {
+        [JsonProperty("providers", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Providers { get; set; } = "google, amazon, neuralspace, modernmt, phedone, deepl, openai, microsoft, ibm";
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("source_language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SourceLanguage { get; set; } = "en";
+
+        [JsonProperty("target_language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TargetLanguage { get; set; } = "fr";
+    }
+
     public class TextModerationResponse
     {
         [JsonProperty("microsoft")]
@@ -1617,6 +984,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 
         [JsonProperty("likelihood")]
         public double Likelihood { get; set; }
+    }
+
+    public class TextModerationInput
+    {
+        [JsonProperty("providers", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Providers { get; set; } = "microsoft, openai";
+
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Language { get; set; } = "en";
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
     }
 
     public class SummarizationResponse
@@ -1674,6 +1053,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
     {
         [JsonProperty("result")]
         public string Result { get; set; }
+    }
+
+    public class SummarizationInput
+    {
+        [JsonProperty("providers", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Providers { get; set; } = "cohere, openai, microsoft, emvista, oneai, connexun";
+
+        [JsonProperty("output_sentences", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? OutputSentences { get; set; } = 3;
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Language { get; set; } = "en";
+
+        [JsonProperty("settings", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Settings { get; set; } = JToken.Parse("{}");
     }
 
     public class LanguageDetectionResponse
@@ -1845,6 +1242,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 
         [JsonProperty("confidence")]
         public double Confidence { get; set; }
+    }
+
+    public class LanguageDetectionInput
+    {
+        [JsonProperty("providers", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Providers { get; set; } = "google, oneai, neuralspace, modernmt, amazon, ibm, openai, microsoft";
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
     }
 
     public class SentimentAnalysisResponse
@@ -2091,6 +1497,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 
         [JsonProperty("sentiment_rate")]
         public double SentimentRate { get; set; }
+    }
+
+    public class SentimentAnalysisInput
+    {
+        [JsonProperty("providers", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Providers { get; set; } = "connexun, amazon, google, microsoft, oneai, emvista, openai, ibm, lettria";
+
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Language { get; set; } = "en";
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
     }
 }
 

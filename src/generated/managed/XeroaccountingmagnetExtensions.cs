@@ -13,11 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
     public class XeroaccountingmagnetActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xeroaccountingmagnet")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateRecord(Expression<Func<string>> xeroTenantId, Expression<Func<string>> recordType, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateRecord(Expression<Func<string>> xeroTenantId, Expression<Func<string>> recordType, Expression<Func<object>> body)
         {
             var __workflow_xeroTenantId = WorkflowExpression.Compile(xeroTenantId, nameof(xeroTenantId), required: true);
             var __workflow_recordType = WorkflowExpression.Compile(recordType, nameof(recordType), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/actions/create/{0}", __workflow_recordType.WithUrlEncoding(1)));
@@ -30,14 +30,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xeroaccountingmagnet")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ListRecords(Expression<Func<string>> xeroTenantId, Expression<Func<string>> recordType, Expression<Func<string>> where = null, Expression<Func<string>> order = null, Expression<Func<int>> top = null, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ListRecords(Expression<Func<string>> xeroTenantId, Expression<Func<string>> recordType, Expression<Func<object>> body, Expression<Func<string>> where = null, Expression<Func<string>> order = null, Expression<Func<int>> top = null)
         {
             var __workflow_xeroTenantId = WorkflowExpression.Compile(xeroTenantId, nameof(xeroTenantId), required: true);
             var __workflow_recordType = WorkflowExpression.Compile(recordType, nameof(recordType), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_where = WorkflowExpression.Compile(where, nameof(where), required: false);
             var __workflow_order = WorkflowExpression.Compile(order, nameof(order), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/actions/list/{0}", __workflow_recordType.WithUrlEncoding(1)));
@@ -56,12 +56,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xeroaccountingmagnet")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetRecord(Expression<Func<string>> xeroTenantId, Expression<Func<string>> recordType, Expression<Func<string>> recordId, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetRecord(Expression<Func<string>> xeroTenantId, Expression<Func<string>> recordType, Expression<Func<string>> recordId, Expression<Func<object>> body)
         {
             var __workflow_xeroTenantId = WorkflowExpression.Compile(xeroTenantId, nameof(xeroTenantId), required: true);
             var __workflow_recordType = WorkflowExpression.Compile(recordType, nameof(recordType), required: true);
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/actions/get/{0}/{1}", __workflow_recordType.WithUrlEncoding(1), __workflow_recordId.WithUrlEncoding(1)));
@@ -74,12 +74,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xeroaccountingmagnet")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateRecord(Expression<Func<string>> xeroTenantId, Expression<Func<string>> recordType, Expression<Func<string>> recordId, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateRecord(Expression<Func<string>> xeroTenantId, Expression<Func<string>> recordType, Expression<Func<string>> recordId, Expression<Func<object>> body)
         {
             var __workflow_xeroTenantId = WorkflowExpression.Compile(xeroTenantId, nameof(xeroTenantId), required: true);
             var __workflow_recordType = WorkflowExpression.Compile(recordType, nameof(recordType), required: true);
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/actions/update/{0}/{1}", __workflow_recordType.WithUrlEncoding(1), __workflow_recordId.WithUrlEncoding(1)));
@@ -92,12 +92,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xeroaccountingmagnet")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DeleteRecord(Expression<Func<string>> xeroTenantId, Expression<Func<string>> recordType, Expression<Func<string>> recordId, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DeleteRecord(Expression<Func<string>> xeroTenantId, Expression<Func<string>> recordType, Expression<Func<string>> recordId, Expression<Func<object>> body)
         {
             var __workflow_xeroTenantId = WorkflowExpression.Compile(xeroTenantId, nameof(xeroTenantId), required: true);
             var __workflow_recordType = WorkflowExpression.Compile(recordType, nameof(recordType), required: true);
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/actions/delete/{0}/{1}", __workflow_recordType.WithUrlEncoding(1), __workflow_recordId.WithUrlEncoding(1)));
@@ -110,42 +110,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xeroaccountingmagnet")]
-        public IBodyWorkflowAction<SendHttpRequestResponse, ApiConnectionActionConfiguration> SendHttpRequest(Expression<Func<string>> xeroTenantId, Expression<Func<bodymethodInput>> bodymethod, Expression<Func<string>> bodyuri, Expression<Func<bodyheadersInputItem[]>> bodyheaders = null, Expression<Func<string>> bodybody = null)
+        public IBodyWorkflowAction<SendHttpRequestResponse, ApiConnectionActionConfiguration> SendHttpRequest(Expression<Func<string>> xeroTenantId, Expression<Func<SendHttpRequestInput>> body)
         {
             var __workflow_xeroTenantId = WorkflowExpression.Compile(xeroTenantId, nameof(xeroTenantId), required: true);
-            var __workflow_bodymethod = WorkflowExpression.Compile(bodymethod, nameof(bodymethod), required: true);
-            var __workflow_bodyuri = WorkflowExpression.Compile(bodyuri, nameof(bodyuri), required: true);
-            var __workflow_bodyheaders = WorkflowExpression.Compile(bodyheaders, nameof(bodyheaders), required: false);
-            var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendHttpRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/actions/sendhttprequest";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["xero-tenant-id"] = ExpressionConverter.Convert(__workflow_xeroTenantId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["method"] = ExpressionConverter.ConvertO(__workflow_bodymethod);
-                bodypropCount++;
-                body["uri"] = ExpressionConverter.ConvertO(__workflow_bodyuri);
-                if (__workflow_bodyheaders != null)
-                {
-                    body["headers"] = ExpressionConverter.ConvertO(__workflow_bodyheaders);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybody != null)
-                {
-                    body["body"] = ExpressionConverter.ConvertO(__workflow_bodybody);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SendHttpRequestResponse>(callPayload);
             });
         }
@@ -153,11 +128,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
 
     public class XeroaccountingmagnetTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerXero(Expression<Func<string>> xeroTenantId, Expression<Func<eventTypeInput>> eventType, Expression<Func<eventCategoryInput>> eventCategory, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerXero(Expression<Func<string>> xeroTenantId, Expression<Func<eventTypeInput>> eventType, Expression<Func<eventCategoryInput>> eventCategory, Expression<Func<TriggerXeroInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_xeroTenantId = WorkflowExpression.Compile(xeroTenantId, nameof(xeroTenantId), required: true);
             var __workflow_eventType = WorkflowExpression.Compile(eventType, nameof(eventType), required: true);
             var __workflow_eventCategory = WorkflowExpression.Compile(eventCategory, nameof(eventCategory), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhook/register";
@@ -166,15 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
                 callPayload.Queries["eventType"] = ExpressionConverter.Convert(__workflow_eventType);
                 callPayload.Queries["eventCategory"] = ExpressionConverter.Convert(__workflow_eventCategory);
                 callPayload.Headers["xero-tenant-id"] = ExpressionConverter.Convert(__workflow_xeroTenantId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["webhookUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -192,8 +160,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
         public int StatusCode { get; set; }
     }
 
+    public class SendHttpRequestInput
+    {
+        [JsonProperty("method", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SendHttpRequestInputMethodType Method { get; set; }
+
+        [JsonProperty("uri", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Uri { get; set; }
+
+        [JsonProperty("headers")]
+        public SendHttpRequestInputHeadersTypeItem[] Headers { get; set; }
+
+        [JsonProperty("body")]
+        public string Body { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodymethodInput
+    public enum SendHttpRequestInputMethodType
     {
         GET,
         POST,
@@ -202,9 +185,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
         DELETE
     }
 
-    public class bodyheadersInputItem
+    public class SendHttpRequestInputHeadersTypeItem
     {
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
         [JsonProperty("value")]
@@ -225,6 +208,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
     {
         Invoice,
         Contact
+    }
+
+    public class TriggerXeroInput
+    {
+        [JsonProperty("webhookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

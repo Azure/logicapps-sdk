@@ -58,125 +58,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
-        public IBodyWorkflowAction<CreateNewListResponseModel, ApiConnectionActionConfiguration> Newlist(Expression<Func<string>> newListRequestlistName, Expression<Func<string>> newListRequestcontactcompanyName, Expression<Func<string>> newListRequestcontactaddressLine1, Expression<Func<string>> newListRequestcontactcity, Expression<Func<string>> newListRequestcontactstate, Expression<Func<string>> newListRequestcontactpostalCode, Expression<Func<string>> newListRequestcontactcountryCode, Expression<Func<string>> newListRequestcontactphoneNumber, Expression<Func<string>> newListRequestpermissionReminder, Expression<Func<string>> newListRequestcampaignDefaultssenderSName, Expression<Func<string>> newListRequestcampaignDefaultssenderSEmailAddress, Expression<Func<string>> newListRequestcampaignDefaultssubject, Expression<Func<newListRequestcampaignDefaultslanguageInput>> newListRequestcampaignDefaultslanguage, Expression<Func<bool>> newListRequestallowUsersToChooseBetweenHTMLAndPlainTextTrueFalse, Expression<Func<string>> newListRequestcontactaddressLine2 = null, Expression<Func<bool>> newListRequestuseArchiveBar = null, Expression<Func<string>> newListRequestnotifyOnSubscribe = null, Expression<Func<string>> newListRequestnotifyOnUnsubscribe = null, Expression<Func<newListRequestvisibilityInput>> newListRequestvisibility = null)
+        public IBodyWorkflowAction<CreateNewListResponseModel, ApiConnectionActionConfiguration> Newlist(Expression<Func<NewlistInput>> newListRequest)
         {
-            var __workflow_newListRequestlistName = WorkflowExpression.Compile(newListRequestlistName, nameof(newListRequestlistName), required: true);
-            var __workflow_newListRequestcontactcompanyName = WorkflowExpression.Compile(newListRequestcontactcompanyName, nameof(newListRequestcontactcompanyName), required: true);
-            var __workflow_newListRequestcontactaddressLine1 = WorkflowExpression.Compile(newListRequestcontactaddressLine1, nameof(newListRequestcontactaddressLine1), required: true);
-            var __workflow_newListRequestcontactcity = WorkflowExpression.Compile(newListRequestcontactcity, nameof(newListRequestcontactcity), required: true);
-            var __workflow_newListRequestcontactstate = WorkflowExpression.Compile(newListRequestcontactstate, nameof(newListRequestcontactstate), required: true);
-            var __workflow_newListRequestcontactpostalCode = WorkflowExpression.Compile(newListRequestcontactpostalCode, nameof(newListRequestcontactpostalCode), required: true);
-            var __workflow_newListRequestcontactcountryCode = WorkflowExpression.Compile(newListRequestcontactcountryCode, nameof(newListRequestcontactcountryCode), required: true);
-            var __workflow_newListRequestcontactphoneNumber = WorkflowExpression.Compile(newListRequestcontactphoneNumber, nameof(newListRequestcontactphoneNumber), required: true);
-            var __workflow_newListRequestpermissionReminder = WorkflowExpression.Compile(newListRequestpermissionReminder, nameof(newListRequestpermissionReminder), required: true);
-            var __workflow_newListRequestcampaignDefaultssenderSName = WorkflowExpression.Compile(newListRequestcampaignDefaultssenderSName, nameof(newListRequestcampaignDefaultssenderSName), required: true);
-            var __workflow_newListRequestcampaignDefaultssenderSEmailAddress = WorkflowExpression.Compile(newListRequestcampaignDefaultssenderSEmailAddress, nameof(newListRequestcampaignDefaultssenderSEmailAddress), required: true);
-            var __workflow_newListRequestcampaignDefaultssubject = WorkflowExpression.Compile(newListRequestcampaignDefaultssubject, nameof(newListRequestcampaignDefaultssubject), required: true);
-            var __workflow_newListRequestcampaignDefaultslanguage = WorkflowExpression.Compile(newListRequestcampaignDefaultslanguage, nameof(newListRequestcampaignDefaultslanguage), required: true);
-            var __workflow_newListRequestallowUsersToChooseBetweenHTMLAndPlainTextTrueFalse = WorkflowExpression.Compile(newListRequestallowUsersToChooseBetweenHTMLAndPlainTextTrueFalse, nameof(newListRequestallowUsersToChooseBetweenHTMLAndPlainTextTrueFalse), required: true);
-            var __workflow_newListRequestcontactaddressLine2 = WorkflowExpression.Compile(newListRequestcontactaddressLine2, nameof(newListRequestcontactaddressLine2), required: false);
-            var __workflow_newListRequestuseArchiveBar = WorkflowExpression.Compile(newListRequestuseArchiveBar, nameof(newListRequestuseArchiveBar), required: false);
-            var __workflow_newListRequestnotifyOnSubscribe = WorkflowExpression.Compile(newListRequestnotifyOnSubscribe, nameof(newListRequestnotifyOnSubscribe), required: false);
-            var __workflow_newListRequestnotifyOnUnsubscribe = WorkflowExpression.Compile(newListRequestnotifyOnUnsubscribe, nameof(newListRequestnotifyOnUnsubscribe), required: false);
-            var __workflow_newListRequestvisibility = WorkflowExpression.Compile(newListRequestvisibility, nameof(newListRequestvisibility), required: false);
+            var __workflow_newListRequest = WorkflowExpression.Compile(newListRequest, nameof(newListRequest), required: true);
             return new DeferredBodyAction<CreateNewListResponseModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/lists";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var newListRequest = new JObject();
-                var newListRequestpropCount = 0;
-                newListRequestpropCount++;
-                newListRequest["name"] = ExpressionConverter.ConvertO(__workflow_newListRequestlistName);
-                var contactObject = new JObject();
-                var contactObjectpropCount = 0;
-                contactObjectpropCount++;
-                contactObject["company"] = ExpressionConverter.ConvertO(__workflow_newListRequestcontactcompanyName);
-                contactObjectpropCount++;
-                contactObject["address1"] = ExpressionConverter.ConvertO(__workflow_newListRequestcontactaddressLine1);
-                if (__workflow_newListRequestcontactaddressLine2 != null)
-                {
-                    contactObject["address2"] = ExpressionConverter.ConvertO(__workflow_newListRequestcontactaddressLine2);
-                    contactObjectpropCount++;
-                }
-
-                contactObjectpropCount++;
-                contactObject["city"] = ExpressionConverter.ConvertO(__workflow_newListRequestcontactcity);
-                contactObjectpropCount++;
-                contactObject["state"] = ExpressionConverter.ConvertO(__workflow_newListRequestcontactstate);
-                contactObjectpropCount++;
-                contactObject["zip"] = ExpressionConverter.ConvertO(__workflow_newListRequestcontactpostalCode);
-                contactObjectpropCount++;
-                contactObject["country"] = ExpressionConverter.ConvertO(__workflow_newListRequestcontactcountryCode);
-                contactObjectpropCount++;
-                contactObject["phone"] = ExpressionConverter.ConvertO(__workflow_newListRequestcontactphoneNumber);
-                if (contactObjectpropCount > 0)
-                {
-                    newListRequest["contact"] = contactObject;
-                    newListRequestpropCount++;
-                }
-
-                newListRequestpropCount++;
-                newListRequest["permission_reminder"] = ExpressionConverter.ConvertO(__workflow_newListRequestpermissionReminder);
-                if (__workflow_newListRequestuseArchiveBar != null)
-                {
-                    newListRequest["use_archive_bar"] = ExpressionConverter.ConvertO(__workflow_newListRequestuseArchiveBar);
-                    newListRequestpropCount++;
-                }
-
-                var campaignDefaultsObject = new JObject();
-                var campaignDefaultsObjectpropCount = 0;
-                campaignDefaultsObjectpropCount++;
-                campaignDefaultsObject["from_name"] = ExpressionConverter.ConvertO(__workflow_newListRequestcampaignDefaultssenderSName);
-                campaignDefaultsObjectpropCount++;
-                campaignDefaultsObject["from_email"] = ExpressionConverter.ConvertO(__workflow_newListRequestcampaignDefaultssenderSEmailAddress);
-                campaignDefaultsObjectpropCount++;
-                campaignDefaultsObject["subject"] = ExpressionConverter.ConvertO(__workflow_newListRequestcampaignDefaultssubject);
-                campaignDefaultsObjectpropCount++;
-                campaignDefaultsObject["language"] = ExpressionConverter.ConvertO(__workflow_newListRequestcampaignDefaultslanguage);
-                if (campaignDefaultsObjectpropCount > 0)
-                {
-                    newListRequest["campaign_defaults"] = campaignDefaultsObject;
-                    newListRequestpropCount++;
-                }
-
-                if (__workflow_newListRequestnotifyOnSubscribe != null)
-                {
-                    newListRequest["notify_on_subscribe"] = ExpressionConverter.ConvertO(__workflow_newListRequestnotifyOnSubscribe);
-                    newListRequestpropCount++;
-                }
-
-                if (__workflow_newListRequestnotifyOnUnsubscribe != null)
-                {
-                    newListRequest["notify_on_unsubscribe"] = ExpressionConverter.ConvertO(__workflow_newListRequestnotifyOnUnsubscribe);
-                    newListRequestpropCount++;
-                }
-
-                newListRequestpropCount++;
-                newListRequest["email_type_option"] = ExpressionConverter.ConvertO(__workflow_newListRequestallowUsersToChooseBetweenHTMLAndPlainTextTrueFalse);
-                if (__workflow_newListRequestvisibility != null)
-                {
-                    newListRequest["visibility"] = ExpressionConverter.ConvertO(__workflow_newListRequestvisibility);
-                    newListRequestpropCount++;
-                }
-
-                if (newListRequestpropCount > 0)
-                {
-                    callPayload.Body = newListRequest;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_newListRequest);
                 return new ApiConnectionAction<CreateNewListResponseModel>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
-        public IBodyWorkflowAction<GetAddMembersBatchResponseModel, ApiConnectionActionConfiguration> AddMembers(Expression<Func<string>> listId, Expression<Func<NewMemberInListRequest[]>> bodymembers, Expression<Func<bool>> skipMergeValidation = null, Expression<Func<bool>> skipDuplicateCheck = null, Expression<Func<bool>> bodyupdateExisting = null)
+        public IBodyWorkflowAction<GetAddMembersBatchResponseModel, ApiConnectionActionConfiguration> AddMembers(Expression<Func<string>> listId, Expression<Func<AddMembersInput>> body, Expression<Func<bool>> skipMergeValidation = null, Expression<Func<bool>> skipDuplicateCheck = null)
         {
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
-            var __workflow_bodymembers = WorkflowExpression.Compile(bodymembers, nameof(bodymembers), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_skipMergeValidation = WorkflowExpression.Compile(skipMergeValidation, nameof(skipMergeValidation), required: false);
             var __workflow_skipDuplicateCheck = WorkflowExpression.Compile(skipDuplicateCheck, nameof(skipDuplicateCheck), required: false);
-            var __workflow_bodyupdateExisting = WorkflowExpression.Compile(bodyupdateExisting, nameof(bodyupdateExisting), required: false);
             return new DeferredBodyAction<GetAddMembersBatchResponseModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}", __workflow_listId.WithUrlEncoding(1)));
@@ -186,21 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
                     callPayload.Queries["skip_merge_validation"] = ExpressionConverter.Convert(__workflow_skipMergeValidation);
                 if (__workflow_skipDuplicateCheck != null)
                     callPayload.Queries["skip_duplicate_check"] = ExpressionConverter.Convert(__workflow_skipDuplicateCheck);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["members"] = ExpressionConverter.ConvertO(__workflow_bodymembers);
-                if (__workflow_bodyupdateExisting != null)
-                {
-                    body["update_existing"] = ExpressionConverter.ConvertO(__workflow_bodyupdateExisting);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetAddMembersBatchResponseModel>(callPayload);
             });
         }
@@ -227,561 +114,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
-        public IBodyWorkflowAction<MemberResponseModel, ApiConnectionActionConfiguration> Addmember(Expression<Func<string>> listId, Expression<Func<newMemberInListstatusInput>> newMemberInListstatus, Expression<Func<string>> newMemberInListemailAddress, Expression<Func<newMemberInListemailTypeInput>> newMemberInListemailType = null, Expression<Func<string>> newMemberInListmergeFieldsfirstName = null, Expression<Func<string>> newMemberInListmergeFieldslastName = null, Expression<Func<string>> newMemberInListlanguage = null, Expression<Func<bool>> newMemberInListvIP = null, Expression<Func<double>> newMemberInListlocationlatitude = null, Expression<Func<double>> newMemberInListlocationlongitude = null)
+        public IBodyWorkflowAction<MemberResponseModel, ApiConnectionActionConfiguration> Addmember(Expression<Func<string>> listId, Expression<Func<AddmemberInput>> newMemberInList)
         {
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
-            var __workflow_newMemberInListstatus = WorkflowExpression.Compile(newMemberInListstatus, nameof(newMemberInListstatus), required: true);
-            var __workflow_newMemberInListemailAddress = WorkflowExpression.Compile(newMemberInListemailAddress, nameof(newMemberInListemailAddress), required: true);
-            var __workflow_newMemberInListemailType = WorkflowExpression.Compile(newMemberInListemailType, nameof(newMemberInListemailType), required: false);
-            var __workflow_newMemberInListmergeFieldsfirstName = WorkflowExpression.Compile(newMemberInListmergeFieldsfirstName, nameof(newMemberInListmergeFieldsfirstName), required: false);
-            var __workflow_newMemberInListmergeFieldslastName = WorkflowExpression.Compile(newMemberInListmergeFieldslastName, nameof(newMemberInListmergeFieldslastName), required: false);
-            var __workflow_newMemberInListlanguage = WorkflowExpression.Compile(newMemberInListlanguage, nameof(newMemberInListlanguage), required: false);
-            var __workflow_newMemberInListvIP = WorkflowExpression.Compile(newMemberInListvIP, nameof(newMemberInListvIP), required: false);
-            var __workflow_newMemberInListlocationlatitude = WorkflowExpression.Compile(newMemberInListlocationlatitude, nameof(newMemberInListlocationlatitude), required: false);
-            var __workflow_newMemberInListlocationlongitude = WorkflowExpression.Compile(newMemberInListlocationlongitude, nameof(newMemberInListlocationlongitude), required: false);
+            var __workflow_newMemberInList = WorkflowExpression.Compile(newMemberInList, nameof(newMemberInList), required: true);
             return new DeferredBodyAction<MemberResponseModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/members", __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var newMemberInList = new JObject();
-                var newMemberInListpropCount = 0;
-                if (__workflow_newMemberInListemailType != null)
-                {
-                    if (__workflow_newMemberInListemailType != null)
-                    {
-                        newMemberInList["email_type"] = ExpressionConverter.ConvertO(__workflow_newMemberInListemailType);
-                        newMemberInListpropCount++;
-                    }
-
-                    newMemberInListpropCount++;
-                }
-                else
-                {
-                    newMemberInList["email_type"] = "html";
-                    newMemberInListpropCount++;
-                }
-
-                newMemberInListpropCount++;
-                newMemberInList["status"] = ExpressionConverter.ConvertO(__workflow_newMemberInListstatus);
-                var mergeFieldsObject = new JObject();
-                var mergeFieldsObjectpropCount = 0;
-                if (__workflow_newMemberInListmergeFieldsfirstName != null)
-                {
-                    mergeFieldsObject["FNAME"] = ExpressionConverter.ConvertO(__workflow_newMemberInListmergeFieldsfirstName);
-                    mergeFieldsObjectpropCount++;
-                }
-
-                if (__workflow_newMemberInListmergeFieldslastName != null)
-                {
-                    mergeFieldsObject["LNAME"] = ExpressionConverter.ConvertO(__workflow_newMemberInListmergeFieldslastName);
-                    mergeFieldsObjectpropCount++;
-                }
-
-                if (mergeFieldsObjectpropCount > 0)
-                {
-                    newMemberInList["merge_fields"] = mergeFieldsObject;
-                    newMemberInListpropCount++;
-                }
-
-                if (__workflow_newMemberInListlanguage != null)
-                {
-                    newMemberInList["language"] = ExpressionConverter.ConvertO(__workflow_newMemberInListlanguage);
-                    newMemberInListpropCount++;
-                }
-
-                if (__workflow_newMemberInListvIP != null)
-                {
-                    newMemberInList["vip"] = ExpressionConverter.ConvertO(__workflow_newMemberInListvIP);
-                    newMemberInListpropCount++;
-                }
-
-                var locationObject = new JObject();
-                var locationObjectpropCount = 0;
-                if (__workflow_newMemberInListlocationlatitude != null)
-                {
-                    locationObject["latitude"] = ExpressionConverter.ConvertO(__workflow_newMemberInListlocationlatitude);
-                    locationObjectpropCount++;
-                }
-
-                if (__workflow_newMemberInListlocationlongitude != null)
-                {
-                    locationObject["longitude"] = ExpressionConverter.ConvertO(__workflow_newMemberInListlocationlongitude);
-                    locationObjectpropCount++;
-                }
-
-                if (locationObjectpropCount > 0)
-                {
-                    newMemberInList["location"] = locationObject;
-                    newMemberInListpropCount++;
-                }
-
-                newMemberInListpropCount++;
-                newMemberInList["email_address"] = ExpressionConverter.ConvertO(__workflow_newMemberInListemailAddress);
-                if (newMemberInListpropCount > 0)
-                {
-                    callPayload.Body = newMemberInList;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_newMemberInList);
                 return new ApiConnectionAction<MemberResponseModel>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
-        public IBodyWorkflowAction<CampaignResponseModel, ApiConnectionActionConfiguration> Newcampaign(Expression<Func<newCampaignRequestcampaignTypeInput>> newCampaignRequestcampaignType, Expression<Func<string>> newCampaignRequestrecipientslistId, Expression<Func<string>> newCampaignRequestsettingscampaignSubjectLine, Expression<Func<string>> newCampaignRequestsettingsfromName, Expression<Func<string>> newCampaignRequestsettingsreplyToAddress, Expression<Func<int>> newCampaignRequestrecipientssegmentOptssavedSegmentId = null, Expression<Func<string>> newCampaignRequestrecipientssegmentOptsmatchType = null, Expression<Func<string>> newCampaignRequestsettingstitle = null, Expression<Func<bool>> newCampaignRequestsettingsconversation = null, Expression<Func<string>> newCampaignRequestsettingstoName = null, Expression<Func<string>> newCampaignRequestsettingsfolderId = null, Expression<Func<bool>> newCampaignRequestsettingsauthentication = null, Expression<Func<bool>> newCampaignRequestsettingsautoFooter = null, Expression<Func<bool>> newCampaignRequestsettingsinlineCSS = null, Expression<Func<bool>> newCampaignRequestsettingsautoTweet = null, Expression<Func<int[]>> newCampaignRequestsettingsautoPostToFacebook = null, Expression<Func<bool>> newCampaignRequestsettingsfacebookComments = null, Expression<Func<string>> newCampaignRequestvariateSettingswinningCriteria = null, Expression<Func<int>> newCampaignRequestvariateSettingswaitTime = null, Expression<Func<int>> newCampaignRequestvariateSettingstestSize = null, Expression<Func<string[]>> newCampaignRequestvariateSettingssubjectLines = null, Expression<Func<string[]>> newCampaignRequestvariateSettingssendTimes = null, Expression<Func<string[]>> newCampaignRequestvariateSettingsfromNames = null, Expression<Func<string[]>> newCampaignRequestvariateSettingsreplyToAddresses = null, Expression<Func<bool>> newCampaignRequesttrackingopens = null, Expression<Func<bool>> newCampaignRequesttrackinghTMLClickTracking = null, Expression<Func<bool>> newCampaignRequesttrackingplainTextClickTracking = null, Expression<Func<bool>> newCampaignRequesttrackingmailChimpGoalTracking = null, Expression<Func<bool>> newCampaignRequesttrackingeCommerce360Tracking = null, Expression<Func<string>> newCampaignRequesttrackinggoogleAnalyticsTracking = null, Expression<Func<string>> newCampaignRequesttrackingclickTaleAnalyticsTracking = null, Expression<Func<bool>> newCampaignRequesttrackingsalesforcesalesforceCampaign = null, Expression<Func<bool>> newCampaignRequesttrackingsalesforcesalesforceNote = null, Expression<Func<bool>> newCampaignRequesttrackinghighrisehighriseCampaign = null, Expression<Func<bool>> newCampaignRequesttrackinghighrisehighriseNote = null, Expression<Func<bool>> newCampaignRequesttrackingcapsulecapsuleNote = null, Expression<Func<string>> newCampaignRequestrssOptsfeedURL = null, Expression<Func<newCampaignRequestrssOptsfrequencyInput>> newCampaignRequestrssOptsfrequency = null, Expression<Func<string>> newCampaignRequestrssOptsconstrainRSSImages = null, Expression<Func<int>> newCampaignRequestrssOptsschedulesendingHour = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendsunday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendmonday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendtuesday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendwednesday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendthursday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendfriday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendsaturday = null, Expression<Func<newCampaignRequestrssOptsscheduleweeklySendingDayInput>> newCampaignRequestrssOptsscheduleweeklySendingDay = null, Expression<Func<double>> newCampaignRequestrssOptsschedulemonthlySendingDay = null, Expression<Func<string>> newCampaignRequestsocialCardimageURL = null, Expression<Func<string>> newCampaignRequestsocialCardcampaignDescription = null, Expression<Func<string>> newCampaignRequestsocialCardtitle = null)
+        public IBodyWorkflowAction<CampaignResponseModel, ApiConnectionActionConfiguration> Newcampaign(Expression<Func<NewcampaignV2Input>> newCampaignRequest)
         {
-            var __workflow_newCampaignRequestcampaignType = WorkflowExpression.Compile(newCampaignRequestcampaignType, nameof(newCampaignRequestcampaignType), required: true);
-            var __workflow_newCampaignRequestrecipientslistId = WorkflowExpression.Compile(newCampaignRequestrecipientslistId, nameof(newCampaignRequestrecipientslistId), required: true);
-            var __workflow_newCampaignRequestsettingscampaignSubjectLine = WorkflowExpression.Compile(newCampaignRequestsettingscampaignSubjectLine, nameof(newCampaignRequestsettingscampaignSubjectLine), required: true);
-            var __workflow_newCampaignRequestsettingsfromName = WorkflowExpression.Compile(newCampaignRequestsettingsfromName, nameof(newCampaignRequestsettingsfromName), required: true);
-            var __workflow_newCampaignRequestsettingsreplyToAddress = WorkflowExpression.Compile(newCampaignRequestsettingsreplyToAddress, nameof(newCampaignRequestsettingsreplyToAddress), required: true);
-            var __workflow_newCampaignRequestrecipientssegmentOptssavedSegmentId = WorkflowExpression.Compile(newCampaignRequestrecipientssegmentOptssavedSegmentId, nameof(newCampaignRequestrecipientssegmentOptssavedSegmentId), required: false);
-            var __workflow_newCampaignRequestrecipientssegmentOptsmatchType = WorkflowExpression.Compile(newCampaignRequestrecipientssegmentOptsmatchType, nameof(newCampaignRequestrecipientssegmentOptsmatchType), required: false);
-            var __workflow_newCampaignRequestsettingstitle = WorkflowExpression.Compile(newCampaignRequestsettingstitle, nameof(newCampaignRequestsettingstitle), required: false);
-            var __workflow_newCampaignRequestsettingsconversation = WorkflowExpression.Compile(newCampaignRequestsettingsconversation, nameof(newCampaignRequestsettingsconversation), required: false);
-            var __workflow_newCampaignRequestsettingstoName = WorkflowExpression.Compile(newCampaignRequestsettingstoName, nameof(newCampaignRequestsettingstoName), required: false);
-            var __workflow_newCampaignRequestsettingsfolderId = WorkflowExpression.Compile(newCampaignRequestsettingsfolderId, nameof(newCampaignRequestsettingsfolderId), required: false);
-            var __workflow_newCampaignRequestsettingsauthentication = WorkflowExpression.Compile(newCampaignRequestsettingsauthentication, nameof(newCampaignRequestsettingsauthentication), required: false);
-            var __workflow_newCampaignRequestsettingsautoFooter = WorkflowExpression.Compile(newCampaignRequestsettingsautoFooter, nameof(newCampaignRequestsettingsautoFooter), required: false);
-            var __workflow_newCampaignRequestsettingsinlineCSS = WorkflowExpression.Compile(newCampaignRequestsettingsinlineCSS, nameof(newCampaignRequestsettingsinlineCSS), required: false);
-            var __workflow_newCampaignRequestsettingsautoTweet = WorkflowExpression.Compile(newCampaignRequestsettingsautoTweet, nameof(newCampaignRequestsettingsautoTweet), required: false);
-            var __workflow_newCampaignRequestsettingsautoPostToFacebook = WorkflowExpression.Compile(newCampaignRequestsettingsautoPostToFacebook, nameof(newCampaignRequestsettingsautoPostToFacebook), required: false);
-            var __workflow_newCampaignRequestsettingsfacebookComments = WorkflowExpression.Compile(newCampaignRequestsettingsfacebookComments, nameof(newCampaignRequestsettingsfacebookComments), required: false);
-            var __workflow_newCampaignRequestvariateSettingswinningCriteria = WorkflowExpression.Compile(newCampaignRequestvariateSettingswinningCriteria, nameof(newCampaignRequestvariateSettingswinningCriteria), required: false);
-            var __workflow_newCampaignRequestvariateSettingswaitTime = WorkflowExpression.Compile(newCampaignRequestvariateSettingswaitTime, nameof(newCampaignRequestvariateSettingswaitTime), required: false);
-            var __workflow_newCampaignRequestvariateSettingstestSize = WorkflowExpression.Compile(newCampaignRequestvariateSettingstestSize, nameof(newCampaignRequestvariateSettingstestSize), required: false);
-            var __workflow_newCampaignRequestvariateSettingssubjectLines = WorkflowExpression.Compile(newCampaignRequestvariateSettingssubjectLines, nameof(newCampaignRequestvariateSettingssubjectLines), required: false);
-            var __workflow_newCampaignRequestvariateSettingssendTimes = WorkflowExpression.Compile(newCampaignRequestvariateSettingssendTimes, nameof(newCampaignRequestvariateSettingssendTimes), required: false);
-            var __workflow_newCampaignRequestvariateSettingsfromNames = WorkflowExpression.Compile(newCampaignRequestvariateSettingsfromNames, nameof(newCampaignRequestvariateSettingsfromNames), required: false);
-            var __workflow_newCampaignRequestvariateSettingsreplyToAddresses = WorkflowExpression.Compile(newCampaignRequestvariateSettingsreplyToAddresses, nameof(newCampaignRequestvariateSettingsreplyToAddresses), required: false);
-            var __workflow_newCampaignRequesttrackingopens = WorkflowExpression.Compile(newCampaignRequesttrackingopens, nameof(newCampaignRequesttrackingopens), required: false);
-            var __workflow_newCampaignRequesttrackinghTMLClickTracking = WorkflowExpression.Compile(newCampaignRequesttrackinghTMLClickTracking, nameof(newCampaignRequesttrackinghTMLClickTracking), required: false);
-            var __workflow_newCampaignRequesttrackingplainTextClickTracking = WorkflowExpression.Compile(newCampaignRequesttrackingplainTextClickTracking, nameof(newCampaignRequesttrackingplainTextClickTracking), required: false);
-            var __workflow_newCampaignRequesttrackingmailChimpGoalTracking = WorkflowExpression.Compile(newCampaignRequesttrackingmailChimpGoalTracking, nameof(newCampaignRequesttrackingmailChimpGoalTracking), required: false);
-            var __workflow_newCampaignRequesttrackingeCommerce360Tracking = WorkflowExpression.Compile(newCampaignRequesttrackingeCommerce360Tracking, nameof(newCampaignRequesttrackingeCommerce360Tracking), required: false);
-            var __workflow_newCampaignRequesttrackinggoogleAnalyticsTracking = WorkflowExpression.Compile(newCampaignRequesttrackinggoogleAnalyticsTracking, nameof(newCampaignRequesttrackinggoogleAnalyticsTracking), required: false);
-            var __workflow_newCampaignRequesttrackingclickTaleAnalyticsTracking = WorkflowExpression.Compile(newCampaignRequesttrackingclickTaleAnalyticsTracking, nameof(newCampaignRequesttrackingclickTaleAnalyticsTracking), required: false);
-            var __workflow_newCampaignRequesttrackingsalesforcesalesforceCampaign = WorkflowExpression.Compile(newCampaignRequesttrackingsalesforcesalesforceCampaign, nameof(newCampaignRequesttrackingsalesforcesalesforceCampaign), required: false);
-            var __workflow_newCampaignRequesttrackingsalesforcesalesforceNote = WorkflowExpression.Compile(newCampaignRequesttrackingsalesforcesalesforceNote, nameof(newCampaignRequesttrackingsalesforcesalesforceNote), required: false);
-            var __workflow_newCampaignRequesttrackinghighrisehighriseCampaign = WorkflowExpression.Compile(newCampaignRequesttrackinghighrisehighriseCampaign, nameof(newCampaignRequesttrackinghighrisehighriseCampaign), required: false);
-            var __workflow_newCampaignRequesttrackinghighrisehighriseNote = WorkflowExpression.Compile(newCampaignRequesttrackinghighrisehighriseNote, nameof(newCampaignRequesttrackinghighrisehighriseNote), required: false);
-            var __workflow_newCampaignRequesttrackingcapsulecapsuleNote = WorkflowExpression.Compile(newCampaignRequesttrackingcapsulecapsuleNote, nameof(newCampaignRequesttrackingcapsulecapsuleNote), required: false);
-            var __workflow_newCampaignRequestrssOptsfeedURL = WorkflowExpression.Compile(newCampaignRequestrssOptsfeedURL, nameof(newCampaignRequestrssOptsfeedURL), required: false);
-            var __workflow_newCampaignRequestrssOptsfrequency = WorkflowExpression.Compile(newCampaignRequestrssOptsfrequency, nameof(newCampaignRequestrssOptsfrequency), required: false);
-            var __workflow_newCampaignRequestrssOptsconstrainRSSImages = WorkflowExpression.Compile(newCampaignRequestrssOptsconstrainRSSImages, nameof(newCampaignRequestrssOptsconstrainRSSImages), required: false);
-            var __workflow_newCampaignRequestrssOptsschedulesendingHour = WorkflowExpression.Compile(newCampaignRequestrssOptsschedulesendingHour, nameof(newCampaignRequestrssOptsschedulesendingHour), required: false);
-            var __workflow_newCampaignRequestrssOptsscheduledailySendsunday = WorkflowExpression.Compile(newCampaignRequestrssOptsscheduledailySendsunday, nameof(newCampaignRequestrssOptsscheduledailySendsunday), required: false);
-            var __workflow_newCampaignRequestrssOptsscheduledailySendmonday = WorkflowExpression.Compile(newCampaignRequestrssOptsscheduledailySendmonday, nameof(newCampaignRequestrssOptsscheduledailySendmonday), required: false);
-            var __workflow_newCampaignRequestrssOptsscheduledailySendtuesday = WorkflowExpression.Compile(newCampaignRequestrssOptsscheduledailySendtuesday, nameof(newCampaignRequestrssOptsscheduledailySendtuesday), required: false);
-            var __workflow_newCampaignRequestrssOptsscheduledailySendwednesday = WorkflowExpression.Compile(newCampaignRequestrssOptsscheduledailySendwednesday, nameof(newCampaignRequestrssOptsscheduledailySendwednesday), required: false);
-            var __workflow_newCampaignRequestrssOptsscheduledailySendthursday = WorkflowExpression.Compile(newCampaignRequestrssOptsscheduledailySendthursday, nameof(newCampaignRequestrssOptsscheduledailySendthursday), required: false);
-            var __workflow_newCampaignRequestrssOptsscheduledailySendfriday = WorkflowExpression.Compile(newCampaignRequestrssOptsscheduledailySendfriday, nameof(newCampaignRequestrssOptsscheduledailySendfriday), required: false);
-            var __workflow_newCampaignRequestrssOptsscheduledailySendsaturday = WorkflowExpression.Compile(newCampaignRequestrssOptsscheduledailySendsaturday, nameof(newCampaignRequestrssOptsscheduledailySendsaturday), required: false);
-            var __workflow_newCampaignRequestrssOptsscheduleweeklySendingDay = WorkflowExpression.Compile(newCampaignRequestrssOptsscheduleweeklySendingDay, nameof(newCampaignRequestrssOptsscheduleweeklySendingDay), required: false);
-            var __workflow_newCampaignRequestrssOptsschedulemonthlySendingDay = WorkflowExpression.Compile(newCampaignRequestrssOptsschedulemonthlySendingDay, nameof(newCampaignRequestrssOptsschedulemonthlySendingDay), required: false);
-            var __workflow_newCampaignRequestsocialCardimageURL = WorkflowExpression.Compile(newCampaignRequestsocialCardimageURL, nameof(newCampaignRequestsocialCardimageURL), required: false);
-            var __workflow_newCampaignRequestsocialCardcampaignDescription = WorkflowExpression.Compile(newCampaignRequestsocialCardcampaignDescription, nameof(newCampaignRequestsocialCardcampaignDescription), required: false);
-            var __workflow_newCampaignRequestsocialCardtitle = WorkflowExpression.Compile(newCampaignRequestsocialCardtitle, nameof(newCampaignRequestsocialCardtitle), required: false);
+            var __workflow_newCampaignRequest = WorkflowExpression.Compile(newCampaignRequest, nameof(newCampaignRequest), required: true);
             return new DeferredBodyAction<CampaignResponseModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/campaigns";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var newCampaignRequest = new JObject();
-                var newCampaignRequestpropCount = 0;
-                newCampaignRequestpropCount++;
-                newCampaignRequest["type"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestcampaignType);
-                var recipientsObject = new JObject();
-                var recipientsObjectpropCount = 0;
-                recipientsObjectpropCount++;
-                recipientsObject["list_id"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestrecipientslistId);
-                var segmentOptsObject = new JObject();
-                var segmentOptsObjectpropCount = 0;
-                if (__workflow_newCampaignRequestrecipientssegmentOptssavedSegmentId != null)
-                {
-                    segmentOptsObject["saved_segment_id"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestrecipientssegmentOptssavedSegmentId);
-                    segmentOptsObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestrecipientssegmentOptsmatchType != null)
-                {
-                    segmentOptsObject["match"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestrecipientssegmentOptsmatchType);
-                    segmentOptsObjectpropCount++;
-                }
-
-                if (segmentOptsObjectpropCount > 0)
-                {
-                    recipientsObject["segment_opts"] = segmentOptsObject;
-                    recipientsObjectpropCount++;
-                }
-
-                if (recipientsObjectpropCount > 0)
-                {
-                    newCampaignRequest["recipients"] = recipientsObject;
-                    newCampaignRequestpropCount++;
-                }
-
-                var settingsObject = new JObject();
-                var settingsObjectpropCount = 0;
-                settingsObjectpropCount++;
-                settingsObject["subject_line"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestsettingscampaignSubjectLine);
-                if (__workflow_newCampaignRequestsettingstitle != null)
-                {
-                    settingsObject["title"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestsettingstitle);
-                    settingsObjectpropCount++;
-                }
-
-                settingsObjectpropCount++;
-                settingsObject["from_name"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestsettingsfromName);
-                settingsObjectpropCount++;
-                settingsObject["reply_to"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestsettingsreplyToAddress);
-                if (__workflow_newCampaignRequestsettingsconversation != null)
-                {
-                    settingsObject["use_conversation"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestsettingsconversation);
-                    settingsObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestsettingstoName != null)
-                {
-                    settingsObject["to_name"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestsettingstoName);
-                    settingsObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestsettingsfolderId != null)
-                {
-                    settingsObject["folder_id"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestsettingsfolderId);
-                    settingsObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestsettingsauthentication != null)
-                {
-                    settingsObject["authenticate"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestsettingsauthentication);
-                    settingsObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestsettingsautoFooter != null)
-                {
-                    settingsObject["auto_footer"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestsettingsautoFooter);
-                    settingsObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestsettingsinlineCSS != null)
-                {
-                    settingsObject["inline_css"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestsettingsinlineCSS);
-                    settingsObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestsettingsautoTweet != null)
-                {
-                    settingsObject["auto_tweet"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestsettingsautoTweet);
-                    settingsObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestsettingsautoPostToFacebook != null)
-                {
-                    settingsObject["auto_fb_post"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestsettingsautoPostToFacebook);
-                    settingsObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestsettingsfacebookComments != null)
-                {
-                    settingsObject["fb_comments"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestsettingsfacebookComments);
-                    settingsObjectpropCount++;
-                }
-
-                if (settingsObjectpropCount > 0)
-                {
-                    newCampaignRequest["settings"] = settingsObject;
-                    newCampaignRequestpropCount++;
-                }
-
-                var variateSettingsObject = new JObject();
-                var variateSettingsObjectpropCount = 0;
-                if (__workflow_newCampaignRequestvariateSettingswinningCriteria != null)
-                {
-                    variateSettingsObject["winner_criteria"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestvariateSettingswinningCriteria);
-                    variateSettingsObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestvariateSettingswaitTime != null)
-                {
-                    variateSettingsObject["wait_time"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestvariateSettingswaitTime);
-                    variateSettingsObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestvariateSettingstestSize != null)
-                {
-                    variateSettingsObject["test_size"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestvariateSettingstestSize);
-                    variateSettingsObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestvariateSettingssubjectLines != null)
-                {
-                    variateSettingsObject["subject_lines"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestvariateSettingssubjectLines);
-                    variateSettingsObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestvariateSettingssendTimes != null)
-                {
-                    variateSettingsObject["send_times"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestvariateSettingssendTimes);
-                    variateSettingsObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestvariateSettingsfromNames != null)
-                {
-                    variateSettingsObject["from_names"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestvariateSettingsfromNames);
-                    variateSettingsObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestvariateSettingsreplyToAddresses != null)
-                {
-                    variateSettingsObject["reply_to_addresses"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestvariateSettingsreplyToAddresses);
-                    variateSettingsObjectpropCount++;
-                }
-
-                if (variateSettingsObjectpropCount > 0)
-                {
-                    newCampaignRequest["variate_settings"] = variateSettingsObject;
-                    newCampaignRequestpropCount++;
-                }
-
-                var trackingObject = new JObject();
-                var trackingObjectpropCount = 0;
-                if (__workflow_newCampaignRequesttrackingopens != null)
-                {
-                    trackingObject["opens"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequesttrackingopens);
-                    trackingObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequesttrackinghTMLClickTracking != null)
-                {
-                    trackingObject["html_clicks"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequesttrackinghTMLClickTracking);
-                    trackingObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequesttrackingplainTextClickTracking != null)
-                {
-                    trackingObject["text_clicks"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequesttrackingplainTextClickTracking);
-                    trackingObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequesttrackingmailChimpGoalTracking != null)
-                {
-                    trackingObject["goal_tracking"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequesttrackingmailChimpGoalTracking);
-                    trackingObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequesttrackingeCommerce360Tracking != null)
-                {
-                    trackingObject["ecomm360"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequesttrackingeCommerce360Tracking);
-                    trackingObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequesttrackinggoogleAnalyticsTracking != null)
-                {
-                    trackingObject["google_analytics"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequesttrackinggoogleAnalyticsTracking);
-                    trackingObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequesttrackingclickTaleAnalyticsTracking != null)
-                {
-                    trackingObject["clicktale"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequesttrackingclickTaleAnalyticsTracking);
-                    trackingObjectpropCount++;
-                }
-
-                var salesforceObject = new JObject();
-                var salesforceObjectpropCount = 0;
-                if (__workflow_newCampaignRequesttrackingsalesforcesalesforceCampaign != null)
-                {
-                    salesforceObject["campaign"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequesttrackingsalesforcesalesforceCampaign);
-                    salesforceObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequesttrackingsalesforcesalesforceNote != null)
-                {
-                    salesforceObject["notes"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequesttrackingsalesforcesalesforceNote);
-                    salesforceObjectpropCount++;
-                }
-
-                if (salesforceObjectpropCount > 0)
-                {
-                    trackingObject["salesforce"] = salesforceObject;
-                    trackingObjectpropCount++;
-                }
-
-                var highriseObject = new JObject();
-                var highriseObjectpropCount = 0;
-                if (__workflow_newCampaignRequesttrackinghighrisehighriseCampaign != null)
-                {
-                    highriseObject["campaign"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequesttrackinghighrisehighriseCampaign);
-                    highriseObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequesttrackinghighrisehighriseNote != null)
-                {
-                    highriseObject["notes"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequesttrackinghighrisehighriseNote);
-                    highriseObjectpropCount++;
-                }
-
-                if (highriseObjectpropCount > 0)
-                {
-                    trackingObject["highrise"] = highriseObject;
-                    trackingObjectpropCount++;
-                }
-
-                var capsuleObject = new JObject();
-                var capsuleObjectpropCount = 0;
-                if (__workflow_newCampaignRequesttrackingcapsulecapsuleNote != null)
-                {
-                    capsuleObject["notes"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequesttrackingcapsulecapsuleNote);
-                    capsuleObjectpropCount++;
-                }
-
-                if (capsuleObjectpropCount > 0)
-                {
-                    trackingObject["capsule"] = capsuleObject;
-                    trackingObjectpropCount++;
-                }
-
-                if (trackingObjectpropCount > 0)
-                {
-                    newCampaignRequest["tracking"] = trackingObject;
-                    newCampaignRequestpropCount++;
-                }
-
-                var rssOptsObject = new JObject();
-                var rssOptsObjectpropCount = 0;
-                if (__workflow_newCampaignRequestrssOptsfeedURL != null)
-                {
-                    rssOptsObject["feed_url"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestrssOptsfeedURL);
-                    rssOptsObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestrssOptsfrequency != null)
-                {
-                    rssOptsObject["frequency"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestrssOptsfrequency);
-                    rssOptsObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestrssOptsconstrainRSSImages != null)
-                {
-                    rssOptsObject["constrain_rss_img"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestrssOptsconstrainRSSImages);
-                    rssOptsObjectpropCount++;
-                }
-
-                var scheduleObject = new JObject();
-                var scheduleObjectpropCount = 0;
-                if (__workflow_newCampaignRequestrssOptsschedulesendingHour != null)
-                {
-                    scheduleObject["hour"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestrssOptsschedulesendingHour);
-                    scheduleObjectpropCount++;
-                }
-
-                var dailySendObject = new JObject();
-                var dailySendObjectpropCount = 0;
-                if (__workflow_newCampaignRequestrssOptsscheduledailySendsunday != null)
-                {
-                    dailySendObject["sunday"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestrssOptsscheduledailySendsunday);
-                    dailySendObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestrssOptsscheduledailySendmonday != null)
-                {
-                    dailySendObject["monday"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestrssOptsscheduledailySendmonday);
-                    dailySendObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestrssOptsscheduledailySendtuesday != null)
-                {
-                    dailySendObject["tuesday"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestrssOptsscheduledailySendtuesday);
-                    dailySendObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestrssOptsscheduledailySendwednesday != null)
-                {
-                    dailySendObject["wednesday"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestrssOptsscheduledailySendwednesday);
-                    dailySendObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestrssOptsscheduledailySendthursday != null)
-                {
-                    dailySendObject["thursday"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestrssOptsscheduledailySendthursday);
-                    dailySendObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestrssOptsscheduledailySendfriday != null)
-                {
-                    dailySendObject["friday"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestrssOptsscheduledailySendfriday);
-                    dailySendObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestrssOptsscheduledailySendsaturday != null)
-                {
-                    dailySendObject["saturday"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestrssOptsscheduledailySendsaturday);
-                    dailySendObjectpropCount++;
-                }
-
-                if (dailySendObjectpropCount > 0)
-                {
-                    scheduleObject["daily_send"] = dailySendObject;
-                    scheduleObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestrssOptsscheduleweeklySendingDay != null)
-                {
-                    scheduleObject["weekly_send_day"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestrssOptsscheduleweeklySendingDay);
-                    scheduleObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestrssOptsschedulemonthlySendingDay != null)
-                {
-                    scheduleObject["monthly_send_date"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestrssOptsschedulemonthlySendingDay);
-                    scheduleObjectpropCount++;
-                }
-
-                if (scheduleObjectpropCount > 0)
-                {
-                    rssOptsObject["schedule"] = scheduleObject;
-                    rssOptsObjectpropCount++;
-                }
-
-                if (rssOptsObjectpropCount > 0)
-                {
-                    newCampaignRequest["rss_opts"] = rssOptsObject;
-                    newCampaignRequestpropCount++;
-                }
-
-                var socialCardObject = new JObject();
-                var socialCardObjectpropCount = 0;
-                if (__workflow_newCampaignRequestsocialCardimageURL != null)
-                {
-                    socialCardObject["image_url"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestsocialCardimageURL);
-                    socialCardObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestsocialCardcampaignDescription != null)
-                {
-                    socialCardObject["description"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestsocialCardcampaignDescription);
-                    socialCardObjectpropCount++;
-                }
-
-                if (__workflow_newCampaignRequestsocialCardtitle != null)
-                {
-                    socialCardObject["title"] = ExpressionConverter.ConvertO(__workflow_newCampaignRequestsocialCardtitle);
-                    socialCardObjectpropCount++;
-                }
-
-                if (socialCardObjectpropCount > 0)
-                {
-                    newCampaignRequest["social_card"] = socialCardObject;
-                    newCampaignRequestpropCount++;
-                }
-
-                if (newCampaignRequestpropCount > 0)
-                {
-                    callPayload.Body = newCampaignRequest;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_newCampaignRequest);
                 return new ApiConnectionAction<CampaignResponseModel>(callPayload);
             });
         }
@@ -802,101 +158,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
-        public IBodyWorkflowAction<MemberResponseModel, ApiConnectionActionConfiguration> Updatemember(Expression<Func<string>> listId, Expression<Func<string>> memberEmail, Expression<Func<updateMemberInListRequeststatusInput>> updateMemberInListRequeststatus, Expression<Func<updateMemberInListRequestemailTypeInput>> updateMemberInListRequestemailType = null, Expression<Func<string>> updateMemberInListRequestmergeFieldsfirstName = null, Expression<Func<string>> updateMemberInListRequestmergeFieldslastName = null, Expression<Func<string>> updateMemberInListRequestlanguage = null, Expression<Func<bool>> updateMemberInListRequestvIP = null, Expression<Func<double>> updateMemberInListRequestlocationlatitude = null, Expression<Func<double>> updateMemberInListRequestlocationlongitude = null)
+        public IBodyWorkflowAction<MemberResponseModel, ApiConnectionActionConfiguration> Updatemember(Expression<Func<string>> listId, Expression<Func<string>> memberEmail, Expression<Func<UpdatememberV2Input>> updateMemberInListRequest)
         {
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
             var __workflow_memberEmail = WorkflowExpression.Compile(memberEmail, nameof(memberEmail), required: true);
-            var __workflow_updateMemberInListRequeststatus = WorkflowExpression.Compile(updateMemberInListRequeststatus, nameof(updateMemberInListRequeststatus), required: true);
-            var __workflow_updateMemberInListRequestemailType = WorkflowExpression.Compile(updateMemberInListRequestemailType, nameof(updateMemberInListRequestemailType), required: false);
-            var __workflow_updateMemberInListRequestmergeFieldsfirstName = WorkflowExpression.Compile(updateMemberInListRequestmergeFieldsfirstName, nameof(updateMemberInListRequestmergeFieldsfirstName), required: false);
-            var __workflow_updateMemberInListRequestmergeFieldslastName = WorkflowExpression.Compile(updateMemberInListRequestmergeFieldslastName, nameof(updateMemberInListRequestmergeFieldslastName), required: false);
-            var __workflow_updateMemberInListRequestlanguage = WorkflowExpression.Compile(updateMemberInListRequestlanguage, nameof(updateMemberInListRequestlanguage), required: false);
-            var __workflow_updateMemberInListRequestvIP = WorkflowExpression.Compile(updateMemberInListRequestvIP, nameof(updateMemberInListRequestvIP), required: false);
-            var __workflow_updateMemberInListRequestlocationlatitude = WorkflowExpression.Compile(updateMemberInListRequestlocationlatitude, nameof(updateMemberInListRequestlocationlatitude), required: false);
-            var __workflow_updateMemberInListRequestlocationlongitude = WorkflowExpression.Compile(updateMemberInListRequestlocationlongitude, nameof(updateMemberInListRequestlocationlongitude), required: false);
+            var __workflow_updateMemberInListRequest = WorkflowExpression.Compile(updateMemberInListRequest, nameof(updateMemberInListRequest), required: true);
             return new DeferredBodyAction<MemberResponseModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/replacemailwithhash/{0}/members", __workflow_listId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["member_email"] = ExpressionConverter.Convert(__workflow_memberEmail);
-                var updateMemberInListRequest = new JObject();
-                var updateMemberInListRequestpropCount = 0;
-                if (__workflow_updateMemberInListRequestemailType != null)
-                {
-                    if (__workflow_updateMemberInListRequestemailType != null)
-                    {
-                        updateMemberInListRequest["email_type"] = ExpressionConverter.ConvertO(__workflow_updateMemberInListRequestemailType);
-                        updateMemberInListRequestpropCount++;
-                    }
-
-                    updateMemberInListRequestpropCount++;
-                }
-                else
-                {
-                    updateMemberInListRequest["email_type"] = "html";
-                    updateMemberInListRequestpropCount++;
-                }
-
-                updateMemberInListRequestpropCount++;
-                updateMemberInListRequest["status"] = ExpressionConverter.ConvertO(__workflow_updateMemberInListRequeststatus);
-                var mergeFieldsObject = new JObject();
-                var mergeFieldsObjectpropCount = 0;
-                if (__workflow_updateMemberInListRequestmergeFieldsfirstName != null)
-                {
-                    mergeFieldsObject["FNAME"] = ExpressionConverter.ConvertO(__workflow_updateMemberInListRequestmergeFieldsfirstName);
-                    mergeFieldsObjectpropCount++;
-                }
-
-                if (__workflow_updateMemberInListRequestmergeFieldslastName != null)
-                {
-                    mergeFieldsObject["LNAME"] = ExpressionConverter.ConvertO(__workflow_updateMemberInListRequestmergeFieldslastName);
-                    mergeFieldsObjectpropCount++;
-                }
-
-                if (mergeFieldsObjectpropCount > 0)
-                {
-                    updateMemberInListRequest["merge_fields"] = mergeFieldsObject;
-                    updateMemberInListRequestpropCount++;
-                }
-
-                if (__workflow_updateMemberInListRequestlanguage != null)
-                {
-                    updateMemberInListRequest["language"] = ExpressionConverter.ConvertO(__workflow_updateMemberInListRequestlanguage);
-                    updateMemberInListRequestpropCount++;
-                }
-
-                if (__workflow_updateMemberInListRequestvIP != null)
-                {
-                    updateMemberInListRequest["vip"] = ExpressionConverter.ConvertO(__workflow_updateMemberInListRequestvIP);
-                    updateMemberInListRequestpropCount++;
-                }
-
-                var locationObject = new JObject();
-                var locationObjectpropCount = 0;
-                if (__workflow_updateMemberInListRequestlocationlatitude != null)
-                {
-                    locationObject["latitude"] = ExpressionConverter.ConvertO(__workflow_updateMemberInListRequestlocationlatitude);
-                    locationObjectpropCount++;
-                }
-
-                if (__workflow_updateMemberInListRequestlocationlongitude != null)
-                {
-                    locationObject["longitude"] = ExpressionConverter.ConvertO(__workflow_updateMemberInListRequestlocationlongitude);
-                    locationObjectpropCount++;
-                }
-
-                if (locationObjectpropCount > 0)
-                {
-                    updateMemberInListRequest["location"] = locationObject;
-                    updateMemberInListRequestpropCount++;
-                }
-
-                if (updateMemberInListRequestpropCount > 0)
-                {
-                    callPayload.Body = updateMemberInListRequest;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_updateMemberInListRequest);
                 return new ApiConnectionAction<MemberResponseModel>(callPayload);
             });
         }
@@ -1616,117 +889,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string DateOfLastListUnsubscribe { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum newListRequestcampaignDefaultslanguageInput
+    public class NewlistInput
     {
-        [EnumMember(Value = "")]
-        None,
-        [EnumMember(Value = "en")]
-        En,
-        [EnumMember(Value = "ar")]
-        Ar,
-        [EnumMember(Value = "af")]
-        Af,
-        [EnumMember(Value = "be")]
-        Be,
-        [EnumMember(Value = "bg")]
-        Bg,
-        [EnumMember(Value = "ca")]
-        Ca,
-        [EnumMember(Value = "zh")]
-        Zh,
-        [EnumMember(Value = "hr")]
-        Hr,
-        [EnumMember(Value = "cs")]
-        Cs,
-        [EnumMember(Value = "da")]
-        Da,
-        [EnumMember(Value = "nl")]
-        Nl,
-        [EnumMember(Value = "et")]
-        Et,
-        [EnumMember(Value = "fa")]
-        Fa,
-        [EnumMember(Value = "fi")]
-        Fi,
-        [EnumMember(Value = "fr")]
-        Fr,
-        [EnumMember(Value = "fr_CA")]
-        FrCA,
-        [EnumMember(Value = "de")]
-        De,
-        [EnumMember(Value = "el")]
-        El,
-        [EnumMember(Value = "he")]
-        He,
-        [EnumMember(Value = "hi")]
-        Hi,
-        [EnumMember(Value = "hu")]
-        Hu,
-        [EnumMember(Value = "is")]
-        Is,
-        [EnumMember(Value = "id")]
-        Id,
-        [EnumMember(Value = "ga")]
-        Ga,
-        [EnumMember(Value = "it")]
-        It,
-        [EnumMember(Value = "ja")]
-        Ja,
-        [EnumMember(Value = "km")]
-        Km,
-        [EnumMember(Value = "ko")]
-        Ko,
-        [EnumMember(Value = "lv")]
-        Lv,
-        [EnumMember(Value = "lt")]
-        Lt,
-        [EnumMember(Value = "mt")]
-        Mt,
-        [EnumMember(Value = "ms")]
-        Ms,
-        [EnumMember(Value = "mk")]
-        Mk,
-        [EnumMember(Value = "no")]
-        No,
-        [EnumMember(Value = "pl")]
-        Pl,
-        [EnumMember(Value = "pt")]
-        Pt,
-        [EnumMember(Value = "pt_PT")]
-        PtPT,
-        [EnumMember(Value = "ro")]
-        Ro,
-        [EnumMember(Value = "ru")]
-        Ru,
-        [EnumMember(Value = "sr")]
-        Sr,
-        [EnumMember(Value = "sk")]
-        Sk,
-        [EnumMember(Value = "sl")]
-        Sl,
-        [EnumMember(Value = "es")]
-        Es,
-        [EnumMember(Value = "es_ES")]
-        EsES,
-        [EnumMember(Value = "sw")]
-        Sw,
-        [EnumMember(Value = "sv")]
-        Sv,
-        [EnumMember(Value = "ta")]
-        Ta,
-        [EnumMember(Value = "th")]
-        Th,
-        [EnumMember(Value = "tr")]
-        Tr,
-        [EnumMember(Value = "uk")]
-        Uk,
-        [EnumMember(Value = "vi")]
-        Vi
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ListName { get; set; }
+
+        [JsonProperty("contact", DefaultValueHandling = DefaultValueHandling.Include)]
+        public Contact Contact { get; set; }
+
+        [JsonProperty("permission_reminder", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PermissionReminder { get; set; }
+
+        [JsonProperty("use_archive_bar")]
+        public bool? UseArchiveBar { get; set; }
+
+        [JsonProperty("campaign_defaults", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CampaignDefaults CampaignDefaults { get; set; }
+
+        [JsonProperty("notify_on_subscribe")]
+        public string NotifyOnSubscribe { get; set; }
+
+        [JsonProperty("notify_on_unsubscribe")]
+        public string NotifyOnUnsubscribe { get; set; }
+
+        [JsonProperty("email_type_option", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool EmailTypeOption { get; set; } = true;
+
+        [JsonProperty("visibility")]
+        public NewlistInputVisibilityType? Visibility { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum newListRequestvisibilityInput
+    public enum NewlistInputVisibilityType
     {
         [EnumMember(Value = "")]
         None,
@@ -1746,6 +940,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 
         [JsonProperty("error_count")]
         public int ErrorCount { get; set; }
+    }
+
+    public class AddMembersInput
+    {
+        [JsonProperty("members", DefaultValueHandling = DefaultValueHandling.Include)]
+        public NewMemberInListRequest[] Members { get; set; }
+
+        [JsonProperty("update_existing")]
+        public bool? UpdateExisting { get; set; }
     }
 
     public class NewMemberInListRequest
@@ -1906,8 +1109,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string Note { get; set; }
     }
 
+    public class AddmemberInput
+    {
+        [JsonProperty("email_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddmemberInputEmailTypeType? EmailType { get; set; } = AddmemberInputEmailTypeType.Html;
+
+        [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddmemberInputStatusType Status { get; set; }
+
+        [JsonProperty("merge_fields")]
+        public FirstAndLastName MergeFields { get; set; }
+
+        [JsonProperty("language")]
+        public string Language { get; set; }
+
+        [JsonProperty("vip")]
+        public bool? VIP { get; set; }
+
+        [JsonProperty("location")]
+        public Location Location { get; set; }
+
+        [JsonProperty("email_address", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EmailAddress { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum newMemberInListstatusInput
+    public enum AddmemberInputEmailTypeType
+    {
+        [EnumMember(Value = "")]
+        None,
+        [EnumMember(Value = "html")]
+        Html,
+        [EnumMember(Value = "text")]
+        Text
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum AddmemberInputStatusType
     {
         [EnumMember(Value = "")]
         None,
@@ -1921,19 +1159,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         Pending
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum newMemberInListemailTypeInput
+    public class NewcampaignV2Input
     {
-        [EnumMember(Value = "")]
-        None,
-        [EnumMember(Value = "html")]
-        Html,
-        [EnumMember(Value = "text")]
-        Text
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public NewcampaignV2InputCampaignTypeType CampaignType { get; set; }
+
+        [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
+        public Recipient Recipients { get; set; }
+
+        [JsonProperty("settings", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SettingsV2 Settings { get; set; }
+
+        [JsonProperty("variate_settings")]
+        public VariateSettings VariateSettings { get; set; }
+
+        [JsonProperty("tracking")]
+        public Tracking Tracking { get; set; }
+
+        [JsonProperty("rss_opts")]
+        public RSSOpts RssOpts { get; set; }
+
+        [JsonProperty("social_card")]
+        public SocialCard SocialCard { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum newCampaignRequestcampaignTypeInput
+    public enum NewcampaignV2InputCampaignTypeType
     {
         [EnumMember(Value = "")]
         None,
@@ -1949,42 +1200,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         Variate
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum newCampaignRequestrssOptsfrequencyInput
+    public class UpdatememberV2Input
     {
-        [EnumMember(Value = "")]
-        None,
-        [EnumMember(Value = "daily")]
-        Daily,
-        [EnumMember(Value = "weekly")]
-        Weekly,
-        [EnumMember(Value = "monthly")]
-        Monthly
+        [JsonProperty("email_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdatememberV2InputEmailTypeType? EmailType { get; set; } = UpdatememberV2InputEmailTypeType.Html;
+
+        [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdatememberV2InputStatusType Status { get; set; }
+
+        [JsonProperty("merge_fields")]
+        public FirstAndLastName MergeFields { get; set; }
+
+        [JsonProperty("language")]
+        public string Language { get; set; }
+
+        [JsonProperty("vip")]
+        public bool? VIP { get; set; }
+
+        [JsonProperty("location")]
+        public Location Location { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum newCampaignRequestrssOptsscheduleweeklySendingDayInput
+    public enum UpdatememberV2InputEmailTypeType
     {
         [EnumMember(Value = "")]
         None,
-        [EnumMember(Value = "sunday")]
-        Sunday,
-        [EnumMember(Value = "monday")]
-        Monday,
-        [EnumMember(Value = "tuesday")]
-        Tuesday,
-        [EnumMember(Value = "wednesday")]
-        Wednesday,
-        [EnumMember(Value = "thursday")]
-        Thursday,
-        [EnumMember(Value = "friday")]
-        Friday,
-        [EnumMember(Value = "saturday")]
-        Saturday
+        [EnumMember(Value = "html")]
+        Html,
+        [EnumMember(Value = "text")]
+        Text
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum updateMemberInListRequeststatusInput
+    public enum UpdatememberV2InputStatusType
     {
         [EnumMember(Value = "")]
         None,
@@ -1996,17 +1245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         Cleaned,
         [EnumMember(Value = "pending")]
         Pending
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum updateMemberInListRequestemailTypeInput
-    {
-        [EnumMember(Value = "")]
-        None,
-        [EnumMember(Value = "html")]
-        Html,
-        [EnumMember(Value = "text")]
-        Text
     }
 
     public class GetMembersResponseModel

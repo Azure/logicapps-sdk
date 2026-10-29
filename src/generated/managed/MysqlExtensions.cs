@@ -53,10 +53,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mysql
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mysql")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PostItem(Expression<Func<string>> table, Expression<Func<object>> item = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PostItem(Expression<Func<string>> table, Expression<Func<object>> item)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
-            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/tables/{0}/items", __workflow_table.WithUrlEncoding(2)));
@@ -96,11 +96,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mysql
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mysql")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PatchItem(Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<object>> item = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PatchItem(Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<object>> item)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/tables/{0}/items/{1}", __workflow_table.WithUrlEncoding(2), __workflow_id.WithUrlEncoding(2)));

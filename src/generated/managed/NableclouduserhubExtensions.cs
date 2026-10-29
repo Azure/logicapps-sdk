@@ -69,44 +69,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PatchGraphUserPassword(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<bool>> bodypasswordProfileforceChangePasswordNextSignIn = null, Expression<Func<string>> bodypasswordProfilepassword = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PatchGraphUserPassword(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<PatchGraphUserPasswordInput>> body = null)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_microsoftObjectId = WorkflowExpression.Compile(microsoftObjectId, nameof(microsoftObjectId), required: true);
-            var __workflow_bodypasswordProfileforceChangePasswordNextSignIn = WorkflowExpression.Compile(bodypasswordProfileforceChangePasswordNextSignIn, nameof(bodypasswordProfileforceChangePasswordNextSignIn), required: false);
-            var __workflow_bodypasswordProfilepassword = WorkflowExpression.Compile(bodypasswordProfilepassword, nameof(bodypasswordProfilepassword), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}", __workflow_organizationId.WithUrlEncoding(1), __workflow_microsoftObjectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var passwordProfileObject = new JObject();
-                var passwordProfileObjectpropCount = 0;
-                if (__workflow_bodypasswordProfileforceChangePasswordNextSignIn != null)
-                {
-                    passwordProfileObject["forceChangePasswordNextSignIn"] = ExpressionConverter.ConvertO(__workflow_bodypasswordProfileforceChangePasswordNextSignIn);
-                    passwordProfileObjectpropCount++;
-                }
-
-                if (__workflow_bodypasswordProfilepassword != null)
-                {
-                    passwordProfileObject["password"] = ExpressionConverter.ConvertO(__workflow_bodypasswordProfilepassword);
-                    passwordProfileObjectpropCount++;
-                }
-
-                if (passwordProfileObjectpropCount > 0)
-                {
-                    body["passwordProfile"] = passwordProfileObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -125,71 +99,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
-        public IBodyWorkflowAction<PostGraphUserResponse, ApiConnectionActionConfiguration> PostGraphUser(Expression<Func<string>> organizationId, Expression<Func<bool>> bodyaccountEnabled = null, Expression<Func<string>> bodydisplayName = null, Expression<Func<string>> bodymailNickname = null, Expression<Func<string>> bodyuserPrincipalName = null, Expression<Func<bool>> bodypasswordProfileforceChangePasswordNextSignIn = null, Expression<Func<string>> bodypasswordProfilepassword = null)
+        public IBodyWorkflowAction<PostGraphUserResponse, ApiConnectionActionConfiguration> PostGraphUser(Expression<Func<string>> organizationId, Expression<Func<PostGraphUserInput>> body = null)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
-            var __workflow_bodyaccountEnabled = WorkflowExpression.Compile(bodyaccountEnabled, nameof(bodyaccountEnabled), required: false);
-            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
-            var __workflow_bodymailNickname = WorkflowExpression.Compile(bodymailNickname, nameof(bodymailNickname), required: false);
-            var __workflow_bodyuserPrincipalName = WorkflowExpression.Compile(bodyuserPrincipalName, nameof(bodyuserPrincipalName), required: false);
-            var __workflow_bodypasswordProfileforceChangePasswordNextSignIn = WorkflowExpression.Compile(bodypasswordProfileforceChangePasswordNextSignIn, nameof(bodypasswordProfileforceChangePasswordNextSignIn), required: false);
-            var __workflow_bodypasswordProfilepassword = WorkflowExpression.Compile(bodypasswordProfilepassword, nameof(bodypasswordProfilepassword), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PostGraphUserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graph/v1/organizations/{0}/v1.0/users", __workflow_organizationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyaccountEnabled != null)
-                {
-                    body["accountEnabled"] = ExpressionConverter.ConvertO(__workflow_bodyaccountEnabled);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydisplayName != null)
-                {
-                    body["displayName"] = ExpressionConverter.ConvertO(__workflow_bodydisplayName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymailNickname != null)
-                {
-                    body["mailNickname"] = ExpressionConverter.ConvertO(__workflow_bodymailNickname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuserPrincipalName != null)
-                {
-                    body["userPrincipalName"] = ExpressionConverter.ConvertO(__workflow_bodyuserPrincipalName);
-                    bodypropCount++;
-                }
-
-                var passwordProfileObject = new JObject();
-                var passwordProfileObjectpropCount = 0;
-                if (__workflow_bodypasswordProfileforceChangePasswordNextSignIn != null)
-                {
-                    passwordProfileObject["forceChangePasswordNextSignIn"] = ExpressionConverter.ConvertO(__workflow_bodypasswordProfileforceChangePasswordNextSignIn);
-                    passwordProfileObjectpropCount++;
-                }
-
-                if (__workflow_bodypasswordProfilepassword != null)
-                {
-                    passwordProfileObject["password"] = ExpressionConverter.ConvertO(__workflow_bodypasswordProfilepassword);
-                    passwordProfileObjectpropCount++;
-                }
-
-                if (passwordProfileObjectpropCount > 0)
-                {
-                    body["passwordProfile"] = passwordProfileObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostGraphUserResponse>(callPayload);
             });
         }
@@ -222,36 +142,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
-        public IBodyWorkflowAction<PostUserLicenseResponse, ApiConnectionActionConfiguration> PostUserLicense(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<bodyaddLicensesInputItem[]>> bodyaddLicenses = null, Expression<Func<JToken[]>> bodyremoveLicenses = null)
+        public IBodyWorkflowAction<PostUserLicenseResponse, ApiConnectionActionConfiguration> PostUserLicense(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<PostUserLicenseInput>> body = null)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_microsoftObjectId = WorkflowExpression.Compile(microsoftObjectId, nameof(microsoftObjectId), required: true);
-            var __workflow_bodyaddLicenses = WorkflowExpression.Compile(bodyaddLicenses, nameof(bodyaddLicenses), required: false);
-            var __workflow_bodyremoveLicenses = WorkflowExpression.Compile(bodyremoveLicenses, nameof(bodyremoveLicenses), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PostUserLicenseResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}/assignlicense", __workflow_organizationId.WithUrlEncoding(1), __workflow_microsoftObjectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyaddLicenses != null)
-                {
-                    body["addLicenses"] = ExpressionConverter.ConvertO(__workflow_bodyaddLicenses);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyremoveLicenses != null)
-                {
-                    body["removeLicenses"] = ExpressionConverter.ConvertO(__workflow_bodyremoveLicenses);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostUserLicenseResponse>(callPayload);
             });
         }
@@ -301,63 +203,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
-        public IBodyWorkflowAction<PostGraphGroupResponse, ApiConnectionActionConfiguration> PostGraphGroup(Expression<Func<string>> organizationId, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodydisplayName = null, Expression<Func<string[]>> bodygroupTypes = null, Expression<Func<bool>> bodymailEnabled = null, Expression<Func<string>> bodymailNickname = null, Expression<Func<bool>> bodysecurityEnabled = null)
+        public IBodyWorkflowAction<PostGraphGroupResponse, ApiConnectionActionConfiguration> PostGraphGroup(Expression<Func<string>> organizationId, Expression<Func<PostGraphGroupInput>> body = null)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
-            var __workflow_bodygroupTypes = WorkflowExpression.Compile(bodygroupTypes, nameof(bodygroupTypes), required: false);
-            var __workflow_bodymailEnabled = WorkflowExpression.Compile(bodymailEnabled, nameof(bodymailEnabled), required: false);
-            var __workflow_bodymailNickname = WorkflowExpression.Compile(bodymailNickname, nameof(bodymailNickname), required: false);
-            var __workflow_bodysecurityEnabled = WorkflowExpression.Compile(bodysecurityEnabled, nameof(bodysecurityEnabled), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PostGraphGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graph/v1/organizations/{0}/v1.0/groups", __workflow_organizationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydisplayName != null)
-                {
-                    body["displayName"] = ExpressionConverter.ConvertO(__workflow_bodydisplayName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygroupTypes != null)
-                {
-                    body["groupTypes"] = ExpressionConverter.ConvertO(__workflow_bodygroupTypes);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymailEnabled != null)
-                {
-                    body["mailEnabled"] = ExpressionConverter.ConvertO(__workflow_bodymailEnabled);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymailNickname != null)
-                {
-                    body["mailNickname"] = ExpressionConverter.ConvertO(__workflow_bodymailNickname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysecurityEnabled != null)
-                {
-                    body["securityEnabled"] = ExpressionConverter.ConvertO(__workflow_bodysecurityEnabled);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostGraphGroupResponse>(callPayload);
             });
         }
@@ -420,25 +276,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddGraphGroupMember(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<string>> bodyid)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddGraphGroupMember(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<AddGraphGroupMemberInput>> body = null)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_microsoftObjectId = WorkflowExpression.Compile(microsoftObjectId, nameof(microsoftObjectId), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graph/v1/organizations/{0}/v1.0/groups/{1}/members/$ref", __workflow_organizationId.WithUrlEncoding(1), __workflow_microsoftObjectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["@odata.id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -474,31 +323,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nableclouduserhub")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PatchSubscriptionQuantity(Expression<Func<string>> partnerId, Expression<Func<string>> customerId, Expression<Func<string>> tenantId, Expression<Func<string>> subscriptionId, Expression<Func<int>> bodyquantity = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PatchSubscriptionQuantity(Expression<Func<string>> partnerId, Expression<Func<string>> customerId, Expression<Func<string>> tenantId, Expression<Func<string>> subscriptionId, Expression<Func<PatchSubscriptionQuantityInput>> body = null)
         {
             var __workflow_partnerId = WorkflowExpression.Compile(partnerId, nameof(partnerId), required: true);
             var __workflow_customerId = WorkflowExpression.Compile(customerId, nameof(customerId), required: true);
             var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: true);
             var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_bodyquantity = WorkflowExpression.Compile(bodyquantity, nameof(bodyquantity), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/partnercenter/v1/partners/{0}/organizations/{1}/v1.0/customers/{2}/subscriptions/{3}", __workflow_partnerId.WithUrlEncoding(1), __workflow_customerId.WithUrlEncoding(1), __workflow_tenantId.WithUrlEncoding(1), __workflow_subscriptionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyquantity != null)
-                {
-                    body["quantity"] = ExpressionConverter.ConvertO(__workflow_bodyquantity);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -631,6 +469,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         public string Country { get; set; }
     }
 
+    public class PatchGraphUserPasswordInput
+    {
+        [JsonProperty("passwordProfile")]
+        public PatchGraphUserPasswordInputPasswordProfileType PasswordProfile { get; set; }
+    }
+
+    public class PatchGraphUserPasswordInputPasswordProfileType
+    {
+        [JsonProperty("forceChangePasswordNextSignIn")]
+        public bool? ForceChangePasswordNextSignIn { get; set; }
+
+        [JsonProperty("password")]
+        public string Password { get; set; }
+    }
+
     public class GetOrganizationsResponse
     {
         [JsonProperty("@odata.count")]
@@ -695,6 +548,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
 
         [JsonProperty("userPrincipalName")]
         public string UserPrincipalName { get; set; }
+    }
+
+    public class PostGraphUserInput
+    {
+        [JsonProperty("accountEnabled")]
+        public bool? AccountEnabled { get; set; }
+
+        [JsonProperty("displayName")]
+        public string DisplayName { get; set; }
+
+        [JsonProperty("mailNickname")]
+        public string MailNickname { get; set; }
+
+        [JsonProperty("userPrincipalName")]
+        public string UserPrincipalName { get; set; }
+
+        [JsonProperty("passwordProfile")]
+        public PostGraphUserInputPasswordProfileType PasswordProfile { get; set; }
+    }
+
+    public class PostGraphUserInputPasswordProfileType
+    {
+        [JsonProperty("forceChangePasswordNextSignIn")]
+        public bool? ForceChangePasswordNextSignIn { get; set; }
+
+        [JsonProperty("password")]
+        public string Password { get; set; }
     }
 
     public class GetUserLicenseDetailsResponse
@@ -829,7 +709,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         public string AppliesTo { get; set; }
     }
 
-    public class bodyaddLicensesInputItem
+    public class PostUserLicenseInput
+    {
+        [JsonProperty("addLicenses")]
+        public PostUserLicenseInputAddLicensesTypeItem[] AddLicenses { get; set; }
+
+        [JsonProperty("removeLicenses")]
+        public JToken[] RemoveLicenses { get; set; }
+    }
+
+    public class PostUserLicenseInputAddLicensesTypeItem
     {
         [JsonProperty("disabledPlans")]
         public JToken[] DisabledPlans { get; set; }
@@ -994,6 +883,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
         public string[] OnPremisesProvisioningErrors { get; set; }
     }
 
+    public class PostGraphGroupInput
+    {
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("displayName")]
+        public string DisplayName { get; set; }
+
+        [JsonProperty("groupTypes")]
+        public string[] GroupTypes { get; set; }
+
+        [JsonProperty("mailEnabled")]
+        public bool? MailEnabled { get; set; }
+
+        [JsonProperty("mailNickname")]
+        public string MailNickname { get; set; }
+
+        [JsonProperty("securityEnabled")]
+        public bool? SecurityEnabled { get; set; }
+    }
+
     public class GetGraphDomainsResponse
     {
         [JsonProperty("value")]
@@ -1037,6 +947,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
 
         [JsonProperty("state")]
         public string State { get; set; }
+    }
+
+    public class AddGraphGroupMemberInput
+    {
+        [JsonProperty("@odata.id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
     }
 
     public class GetSubscriptionsResponse
@@ -1145,6 +1061,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nableclouduserhub
     {
         [JsonProperty("objectType")]
         public string ObjectType { get; set; }
+    }
+
+    public class PatchSubscriptionQuantityInput
+    {
+        [JsonProperty("quantity")]
+        public int? Quantity { get; set; }
     }
 }
 

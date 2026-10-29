@@ -62,11 +62,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<PositionCreateResponse, ApiConnectionActionConfiguration> PositionCreate(Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<bodyInputItem[]>> body = null)
+        public IBodyWorkflowAction<PositionCreateResponse, ApiConnectionActionConfiguration> PositionCreate(Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<bodyInputItem[]>> body)
         {
             var __workflow_auth = WorkflowExpression.Compile(auth, nameof(auth), required: true);
             var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PositionCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/public_api/positions";
@@ -97,13 +97,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<PositionUpdateByIdResponse, ApiConnectionActionConfiguration> PositionUpdateById(Expression<Func<string>> positionId, Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<string>> bodyimportId = null, Expression<Func<string>> bodyname = null)
+        public IBodyWorkflowAction<PositionUpdateByIdResponse, ApiConnectionActionConfiguration> PositionUpdateById(Expression<Func<string>> positionId, Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<PositionUpdateByIdInput>> body = null)
         {
             var __workflow_positionId = WorkflowExpression.Compile(positionId, nameof(positionId), required: true);
             var __workflow_auth = WorkflowExpression.Compile(auth, nameof(auth), required: true);
             var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
-            var __workflow_bodyimportId = WorkflowExpression.Compile(bodyimportId, nameof(bodyimportId), required: false);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PositionUpdateByIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/public_api/positions/{0}", __workflow_positionId.WithUrlEncoding(1)));
@@ -111,25 +110,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Auth"] = ExpressionConverter.Convert(__workflow_auth);
                 callPayload.Headers["subdomain"] = ExpressionConverter.Convert(__workflow_subdomain);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyimportId != null)
-                {
-                    body["import_id"] = ExpressionConverter.ConvertO(__workflow_bodyimportId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PositionUpdateByIdResponse>(callPayload);
             });
         }
@@ -151,11 +133,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<GroupCreateResponse, ApiConnectionActionConfiguration> GroupCreate(Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<bodyInputItem[]>> body = null)
+        public IBodyWorkflowAction<GroupCreateResponse, ApiConnectionActionConfiguration> GroupCreate(Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<bodyInputItem[]>> body)
         {
             var __workflow_auth = WorkflowExpression.Compile(auth, nameof(auth), required: true);
             var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GroupCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/public_api/groups";
@@ -343,6 +325,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         [JsonProperty("id")]
         public int Id { get; set; }
 
+        [JsonProperty("import_id")]
+        public string ImportId { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class PositionUpdateByIdInput
+    {
         [JsonProperty("import_id")]
         public string ImportId { get; set; }
 

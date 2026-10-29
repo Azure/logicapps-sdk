@@ -13,49 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerappsnotification
     public class PowerappsnotificationActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerappsnotification")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendPushNotification(Expression<Func<string[]>> payloadrecipients = null, Expression<Func<string>> payloadmessage = null, Expression<Func<bool>> payloadopenApp = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendPushNotification(Expression<Func<SendPushNotificationInput>> payload)
         {
-            var __workflow_payloadrecipients = WorkflowExpression.Compile(payloadrecipients, nameof(payloadrecipients), required: false);
-            var __workflow_payloadmessage = WorkflowExpression.Compile(payloadmessage, nameof(payloadmessage), required: false);
-            var __workflow_payloadopenApp = WorkflowExpression.Compile(payloadopenApp, nameof(payloadopenApp), required: false);
+            var __workflow_payload = WorkflowExpression.Compile(payload, nameof(payload), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/providers/Microsoft.PowerApps/scopes/connector/sendPushNotification";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var payload = new JObject();
-                var payloadpropCount = 0;
-                if (__workflow_payloadrecipients != null)
-                {
-                    payload["recipients"] = ExpressionConverter.ConvertO(__workflow_payloadrecipients);
-                    payloadpropCount++;
-                }
-
-                if (__workflow_payloadmessage != null)
-                {
-                    payload["message"] = ExpressionConverter.ConvertO(__workflow_payloadmessage);
-                    payloadpropCount++;
-                }
-
-                if (__workflow_payloadopenApp != null)
-                {
-                    payload["openApp"] = ExpressionConverter.ConvertO(__workflow_payloadopenApp);
-                    payloadpropCount++;
-                }
-
-                var @paramsObject = new JObject();
-                var @paramsObjectpropCount = 0;
-                if (@paramsObjectpropCount > 0)
-                {
-                    payload["params"] = @paramsObject;
-                    payloadpropCount++;
-                }
-
-                if (payloadpropCount > 0)
-                {
-                    callPayload.Body = payload;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_payload);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -63,6 +29,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerappsnotification
 
     public class PowerappsnotificationTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class SendPushNotificationInput
+    {
+        [JsonProperty("recipients")]
+        public string[] Recipients { get; set; }
+
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("openApp")]
+        public bool? OpenApp { get; set; }
+
+        [JsonProperty("params")]
+        public JToken Parameters { get; set; }
     }
 }
 

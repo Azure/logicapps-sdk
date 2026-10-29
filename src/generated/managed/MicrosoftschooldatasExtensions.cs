@@ -13,21 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
     public class MicrosoftschooldatasActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
-        public IBodyWorkflowAction<GetDelegatedTokenResponse, ApiConnectionActionConfiguration> GetDelegatedToken()
+        public IBodyWorkflowAction<GetDelegatedTokenResponse, ApiConnectionActionConfiguration> GetDelegatedToken(Expression<Func<object>> body)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetDelegatedTokenResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/common/oauth2/token";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/x-www-form-urlencoded");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetDelegatedTokenResponse>(callPayload);
             });
         }

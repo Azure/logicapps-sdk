@@ -13,159 +13,85 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
     public class CyberproofActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CPCreateExecution(Expression<Func<string>> actionReqselectAction, Expression<Func<object>> actionReqparameters)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CPCreateExecution(Expression<Func<CPCreateExecutionInput>> actionReq)
         {
-            var __workflow_actionReqselectAction = WorkflowExpression.Compile(actionReqselectAction, nameof(actionReqselectAction), required: true);
-            var __workflow_actionReqparameters = WorkflowExpression.Compile(actionReqparameters, nameof(actionReqparameters), required: true);
+            var __workflow_actionReq = WorkflowExpression.Compile(actionReq, nameof(actionReq), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/executions/async";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var actionReq = new JObject();
-                var actionReqpropCount = 0;
-                actionReqpropCount++;
-                actionReq["action"] = ExpressionConverter.ConvertO(__workflow_actionReqselectAction);
-                actionReqpropCount++;
-                actionReq["parameters"] = ExpressionConverter.ConvertO(__workflow_actionReqparameters);
-                if (actionReqpropCount > 0)
-                {
-                    callPayload.Body = actionReq;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_actionReq);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CPCreateWebhookExecution(Expression<Func<string>> actionReqselectAction, Expression<Func<object>> actionReqparameters)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CPCreateWebhookExecution(Expression<Func<CPCreateWebhookExecutionInput>> actionReq)
         {
-            var __workflow_actionReqselectAction = WorkflowExpression.Compile(actionReqselectAction, nameof(actionReqselectAction), required: true);
-            var __workflow_actionReqparameters = WorkflowExpression.Compile(actionReqparameters, nameof(actionReqparameters), required: true);
+            var __workflow_actionReq = WorkflowExpression.Compile(actionReq, nameof(actionReq), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/webhooks/user-action";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var actionReq = new JObject();
-                var actionReqpropCount = 0;
-                actionReq["url"] = "#{listCallbackUrl()}";
-                actionReqpropCount++;
-                actionReqpropCount++;
-                actionReq["action"] = ExpressionConverter.ConvertO(__workflow_actionReqselectAction);
-                actionReqpropCount++;
-                actionReq["parameters"] = ExpressionConverter.ConvertO(__workflow_actionReqparameters);
-                if (actionReqpropCount > 0)
-                {
-                    callPayload.Body = actionReq;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_actionReq);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CPSetAlertCustomField(Expression<Func<string>> actionCustomReqalertId, Expression<Func<string>> actionCustomReqselectClassification, Expression<Func<object>> actionCustomReqselectField)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CPSetAlertCustomField(Expression<Func<CPSetAlertCustomFieldInput>> actionCustomReq)
         {
-            var __workflow_actionCustomReqalertId = WorkflowExpression.Compile(actionCustomReqalertId, nameof(actionCustomReqalertId), required: true);
-            var __workflow_actionCustomReqselectClassification = WorkflowExpression.Compile(actionCustomReqselectClassification, nameof(actionCustomReqselectClassification), required: true);
-            var __workflow_actionCustomReqselectField = WorkflowExpression.Compile(actionCustomReqselectField, nameof(actionCustomReqselectField), required: true);
+            var __workflow_actionCustomReq = WorkflowExpression.Compile(actionCustomReq, nameof(actionCustomReq), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/custom-fields/alert-extended-properties/set";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var actionCustomReq = new JObject();
-                var actionCustomReqpropCount = 0;
-                actionCustomReqpropCount++;
-                actionCustomReq["alert_id"] = ExpressionConverter.ConvertO(__workflow_actionCustomReqalertId);
-                actionCustomReqpropCount++;
-                actionCustomReq["classifications"] = ExpressionConverter.ConvertO(__workflow_actionCustomReqselectClassification);
-                actionCustomReqpropCount++;
-                actionCustomReq["parameters"] = ExpressionConverter.ConvertO(__workflow_actionCustomReqselectField);
-                if (actionCustomReqpropCount > 0)
-                {
-                    callPayload.Body = actionCustomReq;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_actionCustomReq);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CPGetAlertCustomField(Expression<Func<string>> actionCustomReqalertId, Expression<Func<string>> actionCustomReqselectClassification, Expression<Func<object>> actionCustomReqselectField)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CPGetAlertCustomField(Expression<Func<CPGetAlertCustomFieldInput>> actionCustomReq)
         {
-            var __workflow_actionCustomReqalertId = WorkflowExpression.Compile(actionCustomReqalertId, nameof(actionCustomReqalertId), required: true);
-            var __workflow_actionCustomReqselectClassification = WorkflowExpression.Compile(actionCustomReqselectClassification, nameof(actionCustomReqselectClassification), required: true);
-            var __workflow_actionCustomReqselectField = WorkflowExpression.Compile(actionCustomReqselectField, nameof(actionCustomReqselectField), required: true);
+            var __workflow_actionCustomReq = WorkflowExpression.Compile(actionCustomReq, nameof(actionCustomReq), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/custom-fields/alert-extended-properties/get";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var actionCustomReq = new JObject();
-                var actionCustomReqpropCount = 0;
-                actionCustomReqpropCount++;
-                actionCustomReq["alert_id"] = ExpressionConverter.ConvertO(__workflow_actionCustomReqalertId);
-                actionCustomReqpropCount++;
-                actionCustomReq["classifications"] = ExpressionConverter.ConvertO(__workflow_actionCustomReqselectClassification);
-                actionCustomReqpropCount++;
-                actionCustomReq["parameters"] = ExpressionConverter.ConvertO(__workflow_actionCustomReqselectField);
-                if (actionCustomReqpropCount > 0)
-                {
-                    callPayload.Body = actionCustomReq;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_actionCustomReq);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CPGetIncidentSummary(Expression<Func<string>> actionCustomReqincidentId, Expression<Func<object>> actionCustomReqselectIncidentSummary)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CPGetIncidentSummary(Expression<Func<CPGetIncidentSummaryInput>> actionCustomReq)
         {
-            var __workflow_actionCustomReqincidentId = WorkflowExpression.Compile(actionCustomReqincidentId, nameof(actionCustomReqincidentId), required: true);
-            var __workflow_actionCustomReqselectIncidentSummary = WorkflowExpression.Compile(actionCustomReqselectIncidentSummary, nameof(actionCustomReqselectIncidentSummary), required: true);
+            var __workflow_actionCustomReq = WorkflowExpression.Compile(actionCustomReq, nameof(actionCustomReq), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/custom-fields/incident-summary/get";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var actionCustomReq = new JObject();
-                var actionCustomReqpropCount = 0;
-                actionCustomReqpropCount++;
-                actionCustomReq["incident_id"] = ExpressionConverter.ConvertO(__workflow_actionCustomReqincidentId);
-                actionCustomReqpropCount++;
-                actionCustomReq["parameters"] = ExpressionConverter.ConvertO(__workflow_actionCustomReqselectIncidentSummary);
-                if (actionCustomReqpropCount > 0)
-                {
-                    callPayload.Body = actionCustomReq;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_actionCustomReq);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CPSetIncidentSummary(Expression<Func<string>> actionCustomReqincidentId, Expression<Func<object>> actionCustomReqselectValue)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CPSetIncidentSummary(Expression<Func<CPSetIncidentSummaryInput>> actionCustomReq)
         {
-            var __workflow_actionCustomReqincidentId = WorkflowExpression.Compile(actionCustomReqincidentId, nameof(actionCustomReqincidentId), required: true);
-            var __workflow_actionCustomReqselectValue = WorkflowExpression.Compile(actionCustomReqselectValue, nameof(actionCustomReqselectValue), required: true);
+            var __workflow_actionCustomReq = WorkflowExpression.Compile(actionCustomReq, nameof(actionCustomReq), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/custom-fields/incident-summary/set";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var actionCustomReq = new JObject();
-                var actionCustomReqpropCount = 0;
-                actionCustomReqpropCount++;
-                actionCustomReq["incident_id"] = ExpressionConverter.ConvertO(__workflow_actionCustomReqincidentId);
-                actionCustomReqpropCount++;
-                actionCustomReq["parameters"] = ExpressionConverter.ConvertO(__workflow_actionCustomReqselectValue);
-                if (actionCustomReqpropCount > 0)
-                {
-                    callPayload.Body = actionCustomReq;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_actionCustomReq);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -173,31 +99,93 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
 
     public class CyberproofTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CPTrigger(Expression<Func<string>> actionReqselectTrigger, Expression<Func<object>> actionReqparameters, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CPTrigger(Expression<Func<CPTriggerInput>> actionReq, FlowRecurrence recurrence = null)
         {
-            var __workflow_actionReqselectTrigger = WorkflowExpression.Compile(actionReqselectTrigger, nameof(actionReqselectTrigger), required: true);
-            var __workflow_actionReqparameters = WorkflowExpression.Compile(actionReqparameters, nameof(actionReqparameters), required: true);
+            var __workflow_actionReq = WorkflowExpression.Compile(actionReq, nameof(actionReq), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var actionReq = new JObject();
-                var actionReqpropCount = 0;
-                actionReq["url"] = "#{listCallbackUrl()}";
-                actionReqpropCount++;
-                actionReqpropCount++;
-                actionReq["action"] = ExpressionConverter.ConvertO(__workflow_actionReqselectTrigger);
-                actionReqpropCount++;
-                actionReq["parameters"] = ExpressionConverter.ConvertO(__workflow_actionReqparameters);
-                if (actionReqpropCount > 0)
-                {
-                    callPayload.Body = actionReq;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_actionReq);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
+    }
+
+    public class CPCreateExecutionInput
+    {
+        [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SelectAction { get; set; }
+
+        [JsonProperty("parameters", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Parameters { get; set; }
+    }
+
+    public class CPCreateWebhookExecutionInput
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SelectAction { get; set; }
+
+        [JsonProperty("parameters", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Parameters { get; set; }
+    }
+
+    public class CPSetAlertCustomFieldInput
+    {
+        [JsonProperty("alert_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AlertId { get; set; }
+
+        [JsonProperty("classifications", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SelectClassification { get; set; }
+
+        [JsonProperty("parameters", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken SelectField { get; set; }
+    }
+
+    public class CPGetAlertCustomFieldInput
+    {
+        [JsonProperty("alert_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AlertId { get; set; }
+
+        [JsonProperty("classifications", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SelectClassification { get; set; }
+
+        [JsonProperty("parameters", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken SelectField { get; set; }
+    }
+
+    public class CPGetIncidentSummaryInput
+    {
+        [JsonProperty("incident_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string IncidentId { get; set; }
+
+        [JsonProperty("parameters", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken SelectIncidentSummary { get; set; }
+    }
+
+    public class CPSetIncidentSummaryInput
+    {
+        [JsonProperty("incident_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string IncidentId { get; set; }
+
+        [JsonProperty("parameters", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken SelectValue { get; set; }
+    }
+
+    public class CPTriggerInput
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SelectTrigger { get; set; }
+
+        [JsonProperty("parameters", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Parameters { get; set; }
     }
 }
 

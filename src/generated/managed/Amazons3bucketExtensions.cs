@@ -93,7 +93,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3bucket
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/aws/s3/{0}/{1}/{2}", __workflow_region.WithUrlEncoding(1), __workflow_bucket.WithUrlEncoding(1), __workflow_key.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }

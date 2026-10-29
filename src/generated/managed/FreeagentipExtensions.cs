@@ -39,57 +39,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateContact(Expression<Func<string>> contactId, Expression<Func<bool>> bodycontactcontactNameOnInvoices = null, Expression<Func<int>> bodycontactdefaultPaymentTermsInDays = null, Expression<Func<string>> bodycontactlocale = null, Expression<Func<string>> bodycontactcountry = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateContact(Expression<Func<string>> contactId, Expression<Func<UpdateContactInput>> body)
         {
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
-            var __workflow_bodycontactcontactNameOnInvoices = WorkflowExpression.Compile(bodycontactcontactNameOnInvoices, nameof(bodycontactcontactNameOnInvoices), required: false);
-            var __workflow_bodycontactdefaultPaymentTermsInDays = WorkflowExpression.Compile(bodycontactdefaultPaymentTermsInDays, nameof(bodycontactdefaultPaymentTermsInDays), required: false);
-            var __workflow_bodycontactlocale = WorkflowExpression.Compile(bodycontactlocale, nameof(bodycontactlocale), required: false);
-            var __workflow_bodycontactcountry = WorkflowExpression.Compile(bodycontactcountry, nameof(bodycontactcountry), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/contacts/{0}", __workflow_contactId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var contactObject = new JObject();
-                var contactObjectpropCount = 0;
-                if (__workflow_bodycontactcontactNameOnInvoices != null)
-                {
-                    contactObject["contact_name_on_invoices"] = ExpressionConverter.ConvertO(__workflow_bodycontactcontactNameOnInvoices);
-                    contactObjectpropCount++;
-                }
-
-                if (__workflow_bodycontactdefaultPaymentTermsInDays != null)
-                {
-                    contactObject["default_payment_terms_in_days"] = ExpressionConverter.ConvertO(__workflow_bodycontactdefaultPaymentTermsInDays);
-                    contactObjectpropCount++;
-                }
-
-                if (__workflow_bodycontactlocale != null)
-                {
-                    contactObject["locale"] = ExpressionConverter.ConvertO(__workflow_bodycontactlocale);
-                    contactObjectpropCount++;
-                }
-
-                if (__workflow_bodycontactcountry != null)
-                {
-                    contactObject["country"] = ExpressionConverter.ConvertO(__workflow_bodycontactcountry);
-                    contactObjectpropCount++;
-                }
-
-                if (contactObjectpropCount > 0)
-                {
-                    body["contact"] = contactObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -121,71 +80,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateInvoice(Expression<Func<string>> id, Expression<Func<string>> bodyinvoicedatedOn = null, Expression<Func<string>> bodyinvoicedueOn = null, Expression<Func<string>> bodyinvoicecurrency = null, Expression<Func<string>> bodyinvoiceexchangeRate = null, Expression<Func<string>> bodyinvoicestatus = null, Expression<Func<bodyinvoiceinvoiceItemsInputItem[]>> bodyinvoiceinvoiceItems = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateInvoice(Expression<Func<string>> id, Expression<Func<UpdateInvoiceInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyinvoicedatedOn = WorkflowExpression.Compile(bodyinvoicedatedOn, nameof(bodyinvoicedatedOn), required: false);
-            var __workflow_bodyinvoicedueOn = WorkflowExpression.Compile(bodyinvoicedueOn, nameof(bodyinvoicedueOn), required: false);
-            var __workflow_bodyinvoicecurrency = WorkflowExpression.Compile(bodyinvoicecurrency, nameof(bodyinvoicecurrency), required: false);
-            var __workflow_bodyinvoiceexchangeRate = WorkflowExpression.Compile(bodyinvoiceexchangeRate, nameof(bodyinvoiceexchangeRate), required: false);
-            var __workflow_bodyinvoicestatus = WorkflowExpression.Compile(bodyinvoicestatus, nameof(bodyinvoicestatus), required: false);
-            var __workflow_bodyinvoiceinvoiceItems = WorkflowExpression.Compile(bodyinvoiceinvoiceItems, nameof(bodyinvoiceinvoiceItems), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/invoices/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var invoiceObject = new JObject();
-                var invoiceObjectpropCount = 0;
-                if (__workflow_bodyinvoicedatedOn != null)
-                {
-                    invoiceObject["dated_on"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicedatedOn);
-                    invoiceObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvoicedueOn != null)
-                {
-                    invoiceObject["due_on"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicedueOn);
-                    invoiceObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvoicecurrency != null)
-                {
-                    invoiceObject["currency"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicecurrency);
-                    invoiceObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvoiceexchangeRate != null)
-                {
-                    invoiceObject["exchange_rate"] = ExpressionConverter.ConvertO(__workflow_bodyinvoiceexchangeRate);
-                    invoiceObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvoicestatus != null)
-                {
-                    invoiceObject["status"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicestatus);
-                    invoiceObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvoiceinvoiceItems != null)
-                {
-                    invoiceObject["invoice_items"] = ExpressionConverter.ConvertO(__workflow_bodyinvoiceinvoiceItems);
-                    invoiceObjectpropCount++;
-                }
-
-                if (invoiceObjectpropCount > 0)
-                {
-                    body["invoice"] = invoiceObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -203,119 +107,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<string>> bodycontactfirstName = null, Expression<Func<string>> bodycontactlastName = null, Expression<Func<string>> bodycontactorganisationName = null, Expression<Func<string>> bodycontactemail = null, Expression<Func<string>> bodycontacttelephone = null, Expression<Func<string>> bodycontactmobile = null, Expression<Func<string>> bodycontactaddress1 = null, Expression<Func<string>> bodycontactaddress2 = null, Expression<Func<string>> bodycontactaddress3 = null, Expression<Func<string>> bodycontacttown = null, Expression<Func<string>> bodycontactregion = null, Expression<Func<string>> bodycontactpostcode = null, Expression<Func<string>> bodycontactcountry = null)
+        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<CreateContactInput>> body)
         {
-            var __workflow_bodycontactfirstName = WorkflowExpression.Compile(bodycontactfirstName, nameof(bodycontactfirstName), required: false);
-            var __workflow_bodycontactlastName = WorkflowExpression.Compile(bodycontactlastName, nameof(bodycontactlastName), required: false);
-            var __workflow_bodycontactorganisationName = WorkflowExpression.Compile(bodycontactorganisationName, nameof(bodycontactorganisationName), required: false);
-            var __workflow_bodycontactemail = WorkflowExpression.Compile(bodycontactemail, nameof(bodycontactemail), required: false);
-            var __workflow_bodycontacttelephone = WorkflowExpression.Compile(bodycontacttelephone, nameof(bodycontacttelephone), required: false);
-            var __workflow_bodycontactmobile = WorkflowExpression.Compile(bodycontactmobile, nameof(bodycontactmobile), required: false);
-            var __workflow_bodycontactaddress1 = WorkflowExpression.Compile(bodycontactaddress1, nameof(bodycontactaddress1), required: false);
-            var __workflow_bodycontactaddress2 = WorkflowExpression.Compile(bodycontactaddress2, nameof(bodycontactaddress2), required: false);
-            var __workflow_bodycontactaddress3 = WorkflowExpression.Compile(bodycontactaddress3, nameof(bodycontactaddress3), required: false);
-            var __workflow_bodycontacttown = WorkflowExpression.Compile(bodycontacttown, nameof(bodycontacttown), required: false);
-            var __workflow_bodycontactregion = WorkflowExpression.Compile(bodycontactregion, nameof(bodycontactregion), required: false);
-            var __workflow_bodycontactpostcode = WorkflowExpression.Compile(bodycontactpostcode, nameof(bodycontactpostcode), required: false);
-            var __workflow_bodycontactcountry = WorkflowExpression.Compile(bodycontactcountry, nameof(bodycontactcountry), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/contacts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var contactObject = new JObject();
-                var contactObjectpropCount = 0;
-                if (__workflow_bodycontactfirstName != null)
-                {
-                    contactObject["first_name"] = ExpressionConverter.ConvertO(__workflow_bodycontactfirstName);
-                    contactObjectpropCount++;
-                }
-
-                if (__workflow_bodycontactlastName != null)
-                {
-                    contactObject["last_name"] = ExpressionConverter.ConvertO(__workflow_bodycontactlastName);
-                    contactObjectpropCount++;
-                }
-
-                if (__workflow_bodycontactorganisationName != null)
-                {
-                    contactObject["organisation_name"] = ExpressionConverter.ConvertO(__workflow_bodycontactorganisationName);
-                    contactObjectpropCount++;
-                }
-
-                if (__workflow_bodycontactemail != null)
-                {
-                    contactObject["email"] = ExpressionConverter.ConvertO(__workflow_bodycontactemail);
-                    contactObjectpropCount++;
-                }
-
-                if (__workflow_bodycontacttelephone != null)
-                {
-                    contactObject["phone_number"] = ExpressionConverter.ConvertO(__workflow_bodycontacttelephone);
-                    contactObjectpropCount++;
-                }
-
-                if (__workflow_bodycontactmobile != null)
-                {
-                    contactObject["mobile"] = ExpressionConverter.ConvertO(__workflow_bodycontactmobile);
-                    contactObjectpropCount++;
-                }
-
-                if (__workflow_bodycontactaddress1 != null)
-                {
-                    contactObject["address1"] = ExpressionConverter.ConvertO(__workflow_bodycontactaddress1);
-                    contactObjectpropCount++;
-                }
-
-                if (__workflow_bodycontactaddress2 != null)
-                {
-                    contactObject["address2"] = ExpressionConverter.ConvertO(__workflow_bodycontactaddress2);
-                    contactObjectpropCount++;
-                }
-
-                if (__workflow_bodycontactaddress3 != null)
-                {
-                    contactObject["address3"] = ExpressionConverter.ConvertO(__workflow_bodycontactaddress3);
-                    contactObjectpropCount++;
-                }
-
-                if (__workflow_bodycontacttown != null)
-                {
-                    contactObject["town"] = ExpressionConverter.ConvertO(__workflow_bodycontacttown);
-                    contactObjectpropCount++;
-                }
-
-                if (__workflow_bodycontactregion != null)
-                {
-                    contactObject["region"] = ExpressionConverter.ConvertO(__workflow_bodycontactregion);
-                    contactObjectpropCount++;
-                }
-
-                if (__workflow_bodycontactpostcode != null)
-                {
-                    contactObject["postcode"] = ExpressionConverter.ConvertO(__workflow_bodycontactpostcode);
-                    contactObjectpropCount++;
-                }
-
-                if (__workflow_bodycontactcountry != null)
-                {
-                    contactObject["country"] = ExpressionConverter.ConvertO(__workflow_bodycontactcountry);
-                    contactObjectpropCount++;
-                }
-
-                if (contactObjectpropCount > 0)
-                {
-                    body["contact"] = contactObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateContactResponse>(callPayload);
             });
         }
@@ -345,77 +145,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        public IBodyWorkflowAction<CreateInvoiceResponse, ApiConnectionActionConfiguration> CreateInvoice(Expression<Func<string>> bodyinvoicecontact = null, Expression<Func<string>> bodyinvoicedatedOn = null, Expression<Func<string>> bodyinvoicedueOn = null, Expression<Func<string>> bodyinvoicecurrency = null, Expression<Func<bool>> bodyinvoiceomitHeader = null, Expression<Func<bool>> bodyinvoicealwaysShowBICAndIBAN = null, Expression<Func<int>> bodyinvoicepaymentTermsInDays = null)
+        public IBodyWorkflowAction<CreateInvoiceResponse, ApiConnectionActionConfiguration> CreateInvoice(Expression<Func<CreateInvoiceInput>> body)
         {
-            var __workflow_bodyinvoicecontact = WorkflowExpression.Compile(bodyinvoicecontact, nameof(bodyinvoicecontact), required: false);
-            var __workflow_bodyinvoicedatedOn = WorkflowExpression.Compile(bodyinvoicedatedOn, nameof(bodyinvoicedatedOn), required: false);
-            var __workflow_bodyinvoicedueOn = WorkflowExpression.Compile(bodyinvoicedueOn, nameof(bodyinvoicedueOn), required: false);
-            var __workflow_bodyinvoicecurrency = WorkflowExpression.Compile(bodyinvoicecurrency, nameof(bodyinvoicecurrency), required: false);
-            var __workflow_bodyinvoiceomitHeader = WorkflowExpression.Compile(bodyinvoiceomitHeader, nameof(bodyinvoiceomitHeader), required: false);
-            var __workflow_bodyinvoicealwaysShowBICAndIBAN = WorkflowExpression.Compile(bodyinvoicealwaysShowBICAndIBAN, nameof(bodyinvoicealwaysShowBICAndIBAN), required: false);
-            var __workflow_bodyinvoicepaymentTermsInDays = WorkflowExpression.Compile(bodyinvoicepaymentTermsInDays, nameof(bodyinvoicepaymentTermsInDays), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateInvoiceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/invoices";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var invoiceObject = new JObject();
-                var invoiceObjectpropCount = 0;
-                if (__workflow_bodyinvoicecontact != null)
-                {
-                    invoiceObject["contact"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicecontact);
-                    invoiceObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvoicedatedOn != null)
-                {
-                    invoiceObject["dated_on"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicedatedOn);
-                    invoiceObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvoicedueOn != null)
-                {
-                    invoiceObject["due_on"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicedueOn);
-                    invoiceObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvoicecurrency != null)
-                {
-                    invoiceObject["currency"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicecurrency);
-                    invoiceObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvoiceomitHeader != null)
-                {
-                    invoiceObject["omit_header"] = ExpressionConverter.ConvertO(__workflow_bodyinvoiceomitHeader);
-                    invoiceObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvoicealwaysShowBICAndIBAN != null)
-                {
-                    invoiceObject["always_show_bic_and_iban"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicealwaysShowBICAndIBAN);
-                    invoiceObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvoicepaymentTermsInDays != null)
-                {
-                    invoiceObject["payment_terms_in_days"] = ExpressionConverter.ConvertO(__workflow_bodyinvoicepaymentTermsInDays);
-                    invoiceObjectpropCount++;
-                }
-
-                if (invoiceObjectpropCount > 0)
-                {
-                    body["invoice"] = invoiceObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateInvoiceResponse>(callPayload);
             });
         }
@@ -580,6 +318,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         public string UpdatedAt { get; set; }
     }
 
+    public class UpdateContactInput
+    {
+        [JsonProperty("contact")]
+        public UpdateContactInputContactType Contact { get; set; }
+    }
+
+    public class UpdateContactInputContactType
+    {
+        [JsonProperty("contact_name_on_invoices")]
+        public bool? ContactNameOnInvoices { get; set; }
+
+        [JsonProperty("default_payment_terms_in_days")]
+        public int? DefaultPaymentTermsInDays { get; set; }
+
+        [JsonProperty("locale")]
+        public string Locale { get; set; }
+
+        [JsonProperty("country")]
+        public string Country { get; set; }
+    }
+
     public class ShowInvoiceResponse
     {
         [JsonProperty("invoice")]
@@ -691,13 +450,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         public string Quantity { get; set; }
     }
 
-    public class bodyinvoiceinvoiceItemsInputItem
+    public class UpdateInvoiceInput
+    {
+        [JsonProperty("invoice")]
+        public UpdateInvoiceInputInvoiceType Invoice { get; set; }
+    }
+
+    public class UpdateInvoiceInputInvoiceType
+    {
+        [JsonProperty("dated_on")]
+        public string DatedOn { get; set; }
+
+        [JsonProperty("due_on")]
+        public string DueOn { get; set; }
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
+        [JsonProperty("exchange_rate")]
+        public string ExchangeRate { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("invoice_items")]
+        public UpdateInvoiceInputInvoiceTypeInvoiceItemsTypeItem[] InvoiceItems { get; set; }
+    }
+
+    public class UpdateInvoiceInputInvoiceTypeInvoiceItemsTypeItem
     {
         [JsonProperty("description")]
         public string Description { get; set; }
 
         [JsonProperty("item_type")]
-        public bodyinvoiceinvoiceItemsInputItemItemTypeType ItemType { get; set; }
+        public UpdateInvoiceInputInvoiceTypeInvoiceItemsTypeItemItemTypeType? ItemType { get; set; }
 
         [JsonProperty("price")]
         public string Price { get; set; }
@@ -707,7 +493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyinvoiceinvoiceItemsInputItemItemTypeType
+    public enum UpdateInvoiceInputInvoiceTypeInvoiceItemsTypeItemItemTypeType
     {
         Hours,
         Days,
@@ -904,6 +690,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
 
         [JsonProperty("updated_at")]
         public string UpdatedAt { get; set; }
+    }
+
+    public class CreateContactInput
+    {
+        [JsonProperty("contact")]
+        public CreateContactInputContactType Contact { get; set; }
+    }
+
+    public class CreateContactInputContactType
+    {
+        [JsonProperty("first_name")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("last_name")]
+        public string LastName { get; set; }
+
+        [JsonProperty("organisation_name")]
+        public string OrganisationName { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("phone_number")]
+        public string Telephone { get; set; }
+
+        [JsonProperty("mobile")]
+        public string Mobile { get; set; }
+
+        [JsonProperty("address1")]
+        public string Address1 { get; set; }
+
+        [JsonProperty("address2")]
+        public string Address2 { get; set; }
+
+        [JsonProperty("address3")]
+        public string Address3 { get; set; }
+
+        [JsonProperty("town")]
+        public string Town { get; set; }
+
+        [JsonProperty("region")]
+        public string Region { get; set; }
+
+        [JsonProperty("postcode")]
+        public string Postcode { get; set; }
+
+        [JsonProperty("country")]
+        public string Country { get; set; }
     }
 
     public class ListAllRecurringInvoicesResponse
@@ -1165,6 +999,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
 
         [JsonProperty("quantity")]
         public string Quantity { get; set; }
+    }
+
+    public class CreateInvoiceInput
+    {
+        [JsonProperty("invoice")]
+        public CreateInvoiceInputInvoiceType Invoice { get; set; }
+    }
+
+    public class CreateInvoiceInputInvoiceType
+    {
+        [JsonProperty("contact")]
+        public string Contact { get; set; }
+
+        [JsonProperty("dated_on")]
+        public string DatedOn { get; set; }
+
+        [JsonProperty("due_on")]
+        public string DueOn { get; set; }
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
+        [JsonProperty("omit_header")]
+        public bool? OmitHeader { get; set; }
+
+        [JsonProperty("always_show_bic_and_iban")]
+        public bool? AlwaysShowBICAndIBAN { get; set; }
+
+        [JsonProperty("payment_terms_in_days")]
+        public int? PaymentTermsInDays { get; set; }
     }
 
     public class ShowRecurringInvoiceResponse

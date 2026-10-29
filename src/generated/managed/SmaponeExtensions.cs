@@ -76,11 +76,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<DataSourceVersionModel, ApiConnectionActionConfiguration> PUTDataSourceDefinitionValues(Expression<Func<string>> dataSourceId, Expression<Func<string>> dataSourceVersion, Expression<Func<JToken[]>> values = null)
+        public IBodyWorkflowAction<DataSourceVersionModel, ApiConnectionActionConfiguration> PUTDataSourceDefinitionValues(Expression<Func<string>> dataSourceId, Expression<Func<string>> dataSourceVersion, Expression<Func<JToken[]>> values)
         {
             var __workflow_dataSourceId = WorkflowExpression.Compile(dataSourceId, nameof(dataSourceId), required: true);
             var __workflow_dataSourceVersion = WorkflowExpression.Compile(dataSourceVersion, nameof(dataSourceVersion), required: true);
-            var __workflow_values = WorkflowExpression.Compile(values, nameof(values), required: false);
+            var __workflow_values = WorkflowExpression.Compile(values, nameof(values), required: true);
             return new DeferredBodyAction<DataSourceVersionModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/intern/DataSource/{0}/Versions/{1}/Definition/Values", __workflow_dataSourceId.WithUrlEncoding(1), __workflow_dataSourceVersion.WithUrlEncoding(1)));
@@ -200,54 +200,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<DataRecordApi, ApiConnectionActionConfiguration> POSTSmapsDataVersion(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> tasktitle, Expression<Func<string>> taskuserEmail = null, Expression<Func<string>> taskcomment = null, Expression<Func<bool>> taskhasPriority = null)
+        public IBodyWorkflowAction<DataRecordApi, ApiConnectionActionConfiguration> POSTSmapsDataVersion(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<POSTSmapsDataVersionInput>> task)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
-            var __workflow_tasktitle = WorkflowExpression.Compile(tasktitle, nameof(tasktitle), required: true);
-            var __workflow_taskuserEmail = WorkflowExpression.Compile(taskuserEmail, nameof(taskuserEmail), required: false);
-            var __workflow_taskcomment = WorkflowExpression.Compile(taskcomment, nameof(taskcomment), required: false);
-            var __workflow_taskhasPriority = WorkflowExpression.Compile(taskhasPriority, nameof(taskhasPriority), required: false);
+            var __workflow_task = WorkflowExpression.Compile(task, nameof(task), required: true);
             return new DeferredBodyAction<DataRecordApi, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/intern/Smaps/{0}/Versions/{1}/Data", __workflow_smapId.WithUrlEncoding(1), __workflow_version.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var task = new JObject();
-                var taskpropCount = 0;
-                if (__workflow_taskuserEmail != null)
-                {
-                    task["userEmail"] = ExpressionConverter.ConvertO(__workflow_taskuserEmail);
-                    taskpropCount++;
-                }
-
-                taskpropCount++;
-                task["title"] = ExpressionConverter.ConvertO(__workflow_tasktitle);
-                if (__workflow_taskcomment != null)
-                {
-                    task["comment"] = ExpressionConverter.ConvertO(__workflow_taskcomment);
-                    taskpropCount++;
-                }
-
-                if (__workflow_taskhasPriority != null)
-                {
-                    task["hasPriority"] = ExpressionConverter.ConvertO(__workflow_taskhasPriority);
-                    taskpropCount++;
-                }
-
-                var dataObject = new JObject();
-                var dataObjectpropCount = 0;
-                if (dataObjectpropCount > 0)
-                {
-                    task["data"] = dataObject;
-                    taskpropCount++;
-                }
-
-                if (taskpropCount > 0)
-                {
-                    callPayload.Body = task;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_task);
                 return new ApiConnectionAction<DataRecordApi>(callPayload);
             });
         }
@@ -367,37 +330,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<DataRecordApi, ApiConnectionActionConfiguration> PUTSmapVersionTaskState(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> taskId, Expression<Func<stateactionInput>> stateaction = null, Expression<Func<string>> stateuserEmail = null)
+        public IBodyWorkflowAction<DataRecordApi, ApiConnectionActionConfiguration> PUTSmapVersionTaskState(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> taskId, Expression<Func<PUTSmapVersionTaskStateInput>> state)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
-            var __workflow_stateaction = WorkflowExpression.Compile(stateaction, nameof(stateaction), required: false);
-            var __workflow_stateuserEmail = WorkflowExpression.Compile(stateuserEmail, nameof(stateuserEmail), required: false);
+            var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
             return new DeferredBodyAction<DataRecordApi, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/intern/Smaps/{0}/Versions/{1}/Tasks/{2}/State", __workflow_smapId.WithUrlEncoding(1), __workflow_version.WithUrlEncoding(1), __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var state = new JObject();
-                var statepropCount = 0;
-                if (__workflow_stateaction != null)
-                {
-                    state["action"] = ExpressionConverter.ConvertO(__workflow_stateaction);
-                    statepropCount++;
-                }
-
-                if (__workflow_stateuserEmail != null)
-                {
-                    state["userEmail"] = ExpressionConverter.ConvertO(__workflow_stateuserEmail);
-                    statepropCount++;
-                }
-
-                if (statepropCount > 0)
-                {
-                    callPayload.Body = state;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_state);
                 return new ApiConnectionAction<DataRecordApi>(callPayload);
             });
         }
@@ -916,6 +860,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         Incomplete
     }
 
+    public class POSTSmapsDataVersionInput
+    {
+        [JsonProperty("userEmail")]
+        public string UserEmail { get; set; }
+
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
+
+        [JsonProperty("hasPriority")]
+        public bool? HasPriority { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Data { get; set; }
+    }
+
     public class SingleFileValue
     {
         [JsonProperty("fileId")]
@@ -949,8 +911,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         public string AudioDuration { get; set; }
     }
 
+    public class PUTSmapVersionTaskStateInput
+    {
+        [JsonProperty("action")]
+        public PUTSmapVersionTaskStateInputActionType? Action { get; set; }
+
+        [JsonProperty("userEmail")]
+        public string UserEmail { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum stateactionInput
+    public enum PUTSmapVersionTaskStateInputActionType
     {
         Assign,
         Remove

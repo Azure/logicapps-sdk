@@ -13,10 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dbftoxmlconverter
     public class DbftoxmlconverterActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dbftoxmlconverter")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Dbf2XmlConvert(Expression<Func<string>> bodycontenType, Expression<Func<bodyencodingInput>> bodyencoding)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Dbf2XmlConvert(Expression<Func<Dbf2XmlConvertInput>> body)
         {
-            var __workflow_bodycontenType = WorkflowExpression.Compile(bodycontenType, nameof(bodycontenType), required: true);
-            var __workflow_bodyencoding = WorkflowExpression.Compile(bodyencoding, nameof(bodyencoding), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/DBF2XML";
@@ -24,17 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dbftoxmlconverter
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["code"] = Convert.ToString("ZeBVvhUSY/fpGA2uJTOKvIRTYkNXNQEl2TaHJO9Wq39wQB8ZXdYPWA==");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["conten_type"] = ExpressionConverter.ConvertO(__workflow_bodycontenType);
-                bodypropCount++;
-                body["encoding"] = ExpressionConverter.ConvertO(__workflow_bodyencoding);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -44,8 +33,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dbftoxmlconverter
     {
     }
 
+    public class Dbf2XmlConvertInput
+    {
+        [JsonProperty("conten_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ContenType { get; set; }
+
+        [JsonProperty("encoding", DefaultValueHandling = DefaultValueHandling.Include)]
+        public Dbf2XmlConvertInputEncodingType Encoding { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyencodingInput
+    public enum Dbf2XmlConvertInputEncodingType
     {
         [EnumMember(Value = "cp1251")]
         Cp1251,

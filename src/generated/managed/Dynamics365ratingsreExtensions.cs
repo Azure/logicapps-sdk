@@ -13,21 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamics365ratingsre
     public class Dynamics365ratingsreActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamics365ratingsre")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SubmitReview(Expression<Func<string>> productId, Expression<Func<string>> tenantId, Expression<Func<string>> locale, Expression<Func<string>> encodedUser, Expression<Func<string>> bodyrating, Expression<Func<string>> bodytitle, Expression<Func<string>> bodyreviewText, Expression<Func<string>> bodyproductName, Expression<Func<string>> channelId = null, Expression<Func<string>> market = null, Expression<Func<string>> bodysku = null, Expression<Func<string>> bodylegalEntity = null, Expression<Func<string>> bodysubmittedDateTime = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SubmitReview(Expression<Func<string>> productId, Expression<Func<string>> tenantId, Expression<Func<string>> locale, Expression<Func<string>> encodedUser, Expression<Func<SubmitReviewInput>> body, Expression<Func<string>> channelId = null, Expression<Func<string>> market = null)
         {
             var __workflow_productId = WorkflowExpression.Compile(productId, nameof(productId), required: true);
             var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: true);
             var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: true);
             var __workflow_encodedUser = WorkflowExpression.Compile(encodedUser, nameof(encodedUser), required: true);
-            var __workflow_bodyrating = WorkflowExpression.Compile(bodyrating, nameof(bodyrating), required: true);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodyreviewText = WorkflowExpression.Compile(bodyreviewText, nameof(bodyreviewText), required: true);
-            var __workflow_bodyproductName = WorkflowExpression.Compile(bodyproductName, nameof(bodyproductName), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: false);
             var __workflow_market = WorkflowExpression.Compile(market, nameof(market), required: false);
-            var __workflow_bodysku = WorkflowExpression.Compile(bodysku, nameof(bodysku), required: false);
-            var __workflow_bodylegalEntity = WorkflowExpression.Compile(bodylegalEntity, nameof(bodylegalEntity), required: false);
-            var __workflow_bodysubmittedDateTime = WorkflowExpression.Compile(bodysubmittedDateTime, nameof(bodysubmittedDateTime), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2.0/reviews/product/{0}/user", __workflow_productId.WithUrlEncoding(1)));
@@ -40,47 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamics365ratingsre
                     callPayload.Queries["market"] = ExpressionConverter.Convert(__workflow_market);
                 callPayload.Queries["locale"] = ExpressionConverter.Convert(__workflow_locale);
                 callPayload.Queries["encodedUser"] = ExpressionConverter.Convert(__workflow_encodedUser);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["Rating"] = ExpressionConverter.ConvertO(__workflow_bodyrating);
-                bodypropCount++;
-                body["Title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                bodypropCount++;
-                body["ReviewText"] = ExpressionConverter.ConvertO(__workflow_bodyreviewText);
-                if (__workflow_bodysku != null)
-                {
-                    body["Sku"] = ExpressionConverter.ConvertO(__workflow_bodysku);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["ProductName"] = ExpressionConverter.ConvertO(__workflow_bodyproductName);
-                if (__workflow_bodylegalEntity != null)
-                {
-                    body["LegalEntity"] = ExpressionConverter.ConvertO(__workflow_bodylegalEntity);
-                    bodypropCount++;
-                }
-
-                var extendedPropertiesObject = new JObject();
-                var extendedPropertiesObjectpropCount = 0;
-                if (extendedPropertiesObjectpropCount > 0)
-                {
-                    body["ExtendedProperties"] = extendedPropertiesObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysubmittedDateTime != null)
-                {
-                    body["submittedDateTime"] = ExpressionConverter.ConvertO(__workflow_bodysubmittedDateTime);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -102,6 +56,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamics365ratingsre
 
     public class Dynamics365ratingsreTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class SubmitReviewInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Rating { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ReviewText { get; set; }
+        public string Sku { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ProductName { get; set; }
+        public string LegalEntity { get; set; }
+        public JToken ExtendedProperties { get; set; }
+
+        [JsonProperty("submittedDateTime")]
+        public string SubmittedDateTime { get; set; }
     }
 
     public class ExportSuccessfulResponse

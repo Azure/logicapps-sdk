@@ -81,29 +81,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SubmitLibraryItemToWorkflow(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<string>> commentcomments = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SubmitLibraryItemToWorkflow(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<SubmitLibraryItemToWorkflowInput>> comment = null)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_libraryContentId = WorkflowExpression.Compile(libraryContentId, nameof(libraryContentId), required: true);
-            var __workflow_commentcomments = WorkflowExpression.Compile(commentcomments, nameof(commentcomments), required: false);
+            var __workflow_comment = WorkflowExpression.Compile(comment, nameof(comment), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/items/{1}/submit", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var comment = new JObject();
-                var commentpropCount = 0;
-                if (__workflow_commentcomments != null)
-                {
-                    comment["comments"] = ExpressionConverter.ConvertO(__workflow_commentcomments);
-                    commentpropCount++;
-                }
-
-                if (commentpropCount > 0)
-                {
-                    callPayload.Body = comment;
-                }
-
+                if (__workflow_comment != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_comment);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -123,73 +112,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2LiveDocsModelsResponseModelsLiveDocGenSuccinctResultResp, ApiConnectionActionConfiguration> GenerateAsync(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentVersionId, Expression<Func<genInputReqoutputsInputItem[]>> genInputReqoutputs, Expression<Func<V2AdHocInputs[]>> genInputReqadHocInputs = null)
+        public IBodyWorkflowAction<V2LiveDocsModelsResponseModelsLiveDocGenSuccinctResultResp, ApiConnectionActionConfiguration> GenerateAsync(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentVersionId, Expression<Func<GenerateAsyncInput>> genInputReq = null)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_libraryContentVersionId = WorkflowExpression.Compile(libraryContentVersionId, nameof(libraryContentVersionId), required: true);
-            var __workflow_genInputReqoutputs = WorkflowExpression.Compile(genInputReqoutputs, nameof(genInputReqoutputs), required: true);
-            var __workflow_genInputReqadHocInputs = WorkflowExpression.Compile(genInputReqadHocInputs, nameof(genInputReqadHocInputs), required: false);
+            var __workflow_genInputReq = WorkflowExpression.Compile(genInputReq, nameof(genInputReq), required: false);
             return new DeferredBodyAction<V2LiveDocsModelsResponseModelsLiveDocGenSuccinctResultResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/livedocVersions/{1}", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentVersionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var genInputReq = new JObject();
-                var genInputReqpropCount = 0;
-                if (__workflow_genInputReqadHocInputs != null)
-                {
-                    genInputReq["adHocInputs"] = ExpressionConverter.ConvertO(__workflow_genInputReqadHocInputs);
-                    genInputReqpropCount++;
-                }
-
-                genInputReqpropCount++;
-                genInputReq["outputs"] = ExpressionConverter.ConvertO(__workflow_genInputReqoutputs);
-                if (genInputReqpropCount > 0)
-                {
-                    callPayload.Body = genInputReq;
-                }
-
+                if (__workflow_genInputReq != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_genInputReq);
                 return new ApiConnectionAction<V2LiveDocsModelsResponseModelsLiveDocGenSuccinctResultResp>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2LibraryPublishingPublishResponse, ApiConnectionActionConfiguration> PublishLibraryItems(Expression<Func<string>> teamsiteId, Expression<Func<string>> publishRequestcomment = null, Expression<Func<V2LibraryPublishingPublishContentItem[]>> publishRequestcontent = null, Expression<Func<string>> publishRequestpublishAt = null)
+        public IBodyWorkflowAction<V2LibraryPublishingPublishResponse, ApiConnectionActionConfiguration> PublishLibraryItems(Expression<Func<string>> teamsiteId, Expression<Func<PublishLibraryItemsInput>> publishRequest = null)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
-            var __workflow_publishRequestcomment = WorkflowExpression.Compile(publishRequestcomment, nameof(publishRequestcomment), required: false);
-            var __workflow_publishRequestcontent = WorkflowExpression.Compile(publishRequestcontent, nameof(publishRequestcontent), required: false);
-            var __workflow_publishRequestpublishAt = WorkflowExpression.Compile(publishRequestpublishAt, nameof(publishRequestpublishAt), required: false);
+            var __workflow_publishRequest = WorkflowExpression.Compile(publishRequest, nameof(publishRequest), required: false);
             return new DeferredBodyAction<V2LibraryPublishingPublishResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/publish", __workflow_teamsiteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var publishRequest = new JObject();
-                var publishRequestpropCount = 0;
-                if (__workflow_publishRequestcomment != null)
-                {
-                    publishRequest["comment"] = ExpressionConverter.ConvertO(__workflow_publishRequestcomment);
-                    publishRequestpropCount++;
-                }
-
-                if (__workflow_publishRequestcontent != null)
-                {
-                    publishRequest["content"] = ExpressionConverter.ConvertO(__workflow_publishRequestcontent);
-                    publishRequestpropCount++;
-                }
-
-                if (__workflow_publishRequestpublishAt != null)
-                {
-                    publishRequest["publishAt"] = ExpressionConverter.ConvertO(__workflow_publishRequestpublishAt);
-                    publishRequestpropCount++;
-                }
-
-                if (publishRequestpropCount > 0)
-                {
-                    callPayload.Body = publishRequest;
-                }
-
+                if (__workflow_publishRequest != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_publishRequest);
                 return new ApiConnectionAction<V2LibraryPublishingPublishResponse>(callPayload);
             });
         }
@@ -208,88 +158,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFolderResp, ApiConnectionActionConfiguration> CreateWorkspaceFolder(Expression<Func<string>> foldername = null, Expression<Func<string>> folderparentFolderId = null)
+        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFolderResp, ApiConnectionActionConfiguration> CreateWorkspaceFolder(Expression<Func<CreateWorkspaceFolderInput>> folder = null)
         {
-            var __workflow_foldername = WorkflowExpression.Compile(foldername, nameof(foldername), required: false);
-            var __workflow_folderparentFolderId = WorkflowExpression.Compile(folderparentFolderId, nameof(folderparentFolderId), required: false);
+            var __workflow_folder = WorkflowExpression.Compile(folder, nameof(folder), required: false);
             return new DeferredBodyAction<V2WorkSpaceContentManagerModelsWsFolderResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/workspace/folders";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var folder = new JObject();
-                var folderpropCount = 0;
-                if (__workflow_foldername != null)
-                {
-                    folder["name"] = ExpressionConverter.ConvertO(__workflow_foldername);
-                    folderpropCount++;
-                }
-
-                if (__workflow_folderparentFolderId != null)
-                {
-                    folder["parentFolderId"] = ExpressionConverter.ConvertO(__workflow_folderparentFolderId);
-                    folderpropCount++;
-                }
-
-                if (folderpropCount > 0)
-                {
-                    callPayload.Body = folder;
-                }
-
+                if (__workflow_folder != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_folder);
                 return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsFolderResp>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFolderResp, ApiConnectionActionConfiguration> CreateWorkspaceContextualFolder(Expression<Func<string>> foldercontextId = null, Expression<Func<string>> foldercontextType = null, Expression<Func<string>> foldercontextTypePlural = null, Expression<Func<string>> foldername = null, Expression<Func<string>> foldersystemType = null)
+        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFolderResp, ApiConnectionActionConfiguration> CreateWorkspaceContextualFolder(Expression<Func<CreateWorkspaceContextualFolderInput>> folder = null)
         {
-            var __workflow_foldercontextId = WorkflowExpression.Compile(foldercontextId, nameof(foldercontextId), required: false);
-            var __workflow_foldercontextType = WorkflowExpression.Compile(foldercontextType, nameof(foldercontextType), required: false);
-            var __workflow_foldercontextTypePlural = WorkflowExpression.Compile(foldercontextTypePlural, nameof(foldercontextTypePlural), required: false);
-            var __workflow_foldername = WorkflowExpression.Compile(foldername, nameof(foldername), required: false);
-            var __workflow_foldersystemType = WorkflowExpression.Compile(foldersystemType, nameof(foldersystemType), required: false);
+            var __workflow_folder = WorkflowExpression.Compile(folder, nameof(folder), required: false);
             return new DeferredBodyAction<V2WorkSpaceContentManagerModelsWsFolderResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/workspace/folders/createContextualFolder";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var folder = new JObject();
-                var folderpropCount = 0;
-                if (__workflow_foldercontextId != null)
-                {
-                    folder["contextId"] = ExpressionConverter.ConvertO(__workflow_foldercontextId);
-                    folderpropCount++;
-                }
-
-                if (__workflow_foldercontextType != null)
-                {
-                    folder["contextType"] = ExpressionConverter.ConvertO(__workflow_foldercontextType);
-                    folderpropCount++;
-                }
-
-                if (__workflow_foldercontextTypePlural != null)
-                {
-                    folder["contextTypePlural"] = ExpressionConverter.ConvertO(__workflow_foldercontextTypePlural);
-                    folderpropCount++;
-                }
-
-                if (__workflow_foldername != null)
-                {
-                    folder["name"] = ExpressionConverter.ConvertO(__workflow_foldername);
-                    folderpropCount++;
-                }
-
-                if (__workflow_foldersystemType != null)
-                {
-                    folder["systemType"] = ExpressionConverter.ConvertO(__workflow_foldersystemType);
-                    folderpropCount++;
-                }
-
-                if (folderpropCount > 0)
-                {
-                    callPayload.Body = folder;
-                }
-
+                if (__workflow_folder != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_folder);
                 return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsFolderResp>(callPayload);
             });
         }
@@ -617,6 +510,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         Livecomponent
     }
 
+    public class SubmitLibraryItemToWorkflowInput
+    {
+        [JsonProperty("comments")]
+        public string Comments { get; set; }
+    }
+
     public class V2LiveDocsModelsResponseModelsLiveDocVersionResp
     {
         [JsonProperty("adhocInputs")]
@@ -650,34 +549,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public string GeneratedLivedocId { get; set; }
     }
 
-    public class genInputReqoutputsInputItem
+    public class GenerateAsyncInput
+    {
+        [JsonProperty("adHocInputs")]
+        public V2AdHocInputs[] AdHocInputs { get; set; }
+
+        [JsonProperty("outputs", DefaultValueHandling = DefaultValueHandling.Include)]
+        public GenerateAsyncInputOutputsTypeItem[] Outputs { get; set; }
+    }
+
+    public class V2AdHocInputs
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class GenerateAsyncInputOutputsTypeItem
     {
         [JsonProperty("docxOptions")]
-        public genInputReqoutputsInputItemDocxOptionsType DocxOptions { get; set; }
+        public GenerateAsyncInputOutputsTypeItemDocxOptionsType DocxOptions { get; set; }
 
-        [JsonProperty("format")]
-        public genInputReqoutputsInputItemFormatType Format { get; set; }
+        [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
+        public GenerateAsyncInputOutputsTypeItemFormatType Format { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("pdfOptions")]
-        public genInputReqoutputsInputItemPdfOptionsType PdfOptions { get; set; }
+        public GenerateAsyncInputOutputsTypeItemPdfOptionsType PdfOptions { get; set; }
 
         [JsonProperty("pptxOptions")]
-        public genInputReqoutputsInputItemPptxOptionsType PptxOptions { get; set; }
+        public GenerateAsyncInputOutputsTypeItemPptxOptionsType PptxOptions { get; set; }
 
         [JsonProperty("xlsxOptions")]
-        public genInputReqoutputsInputItemXlsxOptionsType XlsxOptions { get; set; }
+        public GenerateAsyncInputOutputsTypeItemXlsxOptionsType XlsxOptions { get; set; }
     }
 
-    public class genInputReqoutputsInputItemDocxOptionsType
+    public class GenerateAsyncInputOutputsTypeItemDocxOptionsType
     {
-        [JsonProperty("imageDpi")]
-        public genInputReqoutputsInputItemDocxOptionsTypeImageDpiType ImageDpi { get; set; }
+        [JsonProperty("imageDpi", DefaultValueHandling = DefaultValueHandling.Include)]
+        public GenerateAsyncInputOutputsTypeItemDocxOptionsTypeImageDpiType? ImageDpi { get; set; } = GenerateAsyncInputOutputsTypeItemDocxOptionsTypeImageDpiType._200;
     }
 
-    public enum genInputReqoutputsInputItemDocxOptionsTypeImageDpiType
+    public enum GenerateAsyncInputOutputsTypeItemDocxOptionsTypeImageDpiType
     {
         _0 = 0,
         _96 = 96,
@@ -689,7 +606,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum genInputReqoutputsInputItemFormatType
+    public enum GenerateAsyncInputOutputsTypeItemFormatType
     {
         PPTX,
         DOCX,
@@ -697,13 +614,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         XLSX
     }
 
-    public class genInputReqoutputsInputItemPdfOptionsType
+    public class GenerateAsyncInputOutputsTypeItemPdfOptionsType
     {
-        [JsonProperty("compatibility")]
-        public genInputReqoutputsInputItemPdfOptionsTypeCompatibilityType Compatibility { get; set; }
+        [JsonProperty("compatibility", DefaultValueHandling = DefaultValueHandling.Include)]
+        public GenerateAsyncInputOutputsTypeItemPdfOptionsTypeCompatibilityType? Compatibility { get; set; } = GenerateAsyncInputOutputsTypeItemPdfOptionsTypeCompatibilityType.Acrobat90;
 
-        [JsonProperty("layout")]
-        public genInputReqoutputsInputItemPdfOptionsTypeLayoutType Layout { get; set; }
+        [JsonProperty("layout", DefaultValueHandling = DefaultValueHandling.Include)]
+        public GenerateAsyncInputOutputsTypeItemPdfOptionsTypeLayoutType? Layout { get; set; } = GenerateAsyncInputOutputsTypeItemPdfOptionsTypeLayoutType.FullPageSlides;
 
         [JsonProperty("openPassword")]
         public string OpenPassword { get; set; }
@@ -716,7 +633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum genInputReqoutputsInputItemPdfOptionsTypeCompatibilityType
+    public enum GenerateAsyncInputOutputsTypeItemPdfOptionsTypeCompatibilityType
     {
         [EnumMember(Value = "Acrobat 5.0")]
         Acrobat50,
@@ -727,7 +644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum genInputReqoutputsInputItemPdfOptionsTypeLayoutType
+    public enum GenerateAsyncInputOutputsTypeItemPdfOptionsTypeLayoutType
     {
         [EnumMember(Value = "Full Page Slides")]
         FullPageSlides,
@@ -735,16 +652,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         NotePages
     }
 
-    public class genInputReqoutputsInputItemPptxOptionsType
+    public class GenerateAsyncInputOutputsTypeItemPptxOptionsType
     {
-        [JsonProperty("clearNotes")]
-        public bool ClearNotes { get; set; }
+        [JsonProperty("clearNotes", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ClearNotes { get; set; } = false;
 
-        [JsonProperty("imageDpi")]
-        public genInputReqoutputsInputItemPptxOptionsTypeImageDpiType ImageDpi { get; set; }
+        [JsonProperty("imageDpi", DefaultValueHandling = DefaultValueHandling.Include)]
+        public GenerateAsyncInputOutputsTypeItemPptxOptionsTypeImageDpiType? ImageDpi { get; set; } = GenerateAsyncInputOutputsTypeItemPptxOptionsTypeImageDpiType._200;
     }
 
-    public enum genInputReqoutputsInputItemPptxOptionsTypeImageDpiType
+    public enum GenerateAsyncInputOutputsTypeItemPptxOptionsTypeImageDpiType
     {
         _0 = 0,
         _96 = 96,
@@ -755,19 +672,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         _400 = 400
     }
 
-    public class genInputReqoutputsInputItemXlsxOptionsType
+    public class GenerateAsyncInputOutputsTypeItemXlsxOptionsType
     {
-        [JsonProperty("datasource")]
+        [JsonProperty("datasource", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Datasource { get; set; }
-    }
-
-    public class V2AdHocInputs
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
     }
 
     public class V2LibraryPublishingPublishResponse
@@ -807,6 +715,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
 
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    public class PublishLibraryItemsInput
+    {
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
+
+        [JsonProperty("content")]
+        public V2LibraryPublishingPublishContentItem[] Content { get; set; }
+
+        [JsonProperty("publishAt")]
+        public string PublishAt { get; set; }
     }
 
     public class V2LibraryPublishingPublishContentItem
@@ -955,6 +875,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         Url,
         [EnumMember(Value = "file")]
         File
+    }
+
+    public class CreateWorkspaceFolderInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("parentFolderId")]
+        public string ParentFolderId { get; set; }
+    }
+
+    public class CreateWorkspaceContextualFolderInput
+    {
+        [JsonProperty("contextId")]
+        public string ContextId { get; set; }
+
+        [JsonProperty("contextType")]
+        public string ContextType { get; set; }
+
+        [JsonProperty("contextTypePlural")]
+        public string ContextTypePlural { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("systemType")]
+        public string SystemType { get; set; }
     }
 
     public class V2WorkSpaceContentManagerModelsItemsOfV2WorkSpaceContentManagerModelsWsItemResp

@@ -13,53 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Itoc360
     public class Itoc360Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "itoc360")]
-        public IBodyWorkflowAction<SendEventResponse, ApiConnectionActionConfiguration> SendEvent(Expression<Func<bodyeventTypeInput>> bodyeventType, Expression<Func<string>> bodytitle, Expression<Func<string>> bodyhost, Expression<Func<bodyseverityInput>> bodyseverity, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodytimestamp = null)
+        public IBodyWorkflowAction<SendEventResponse, ApiConnectionActionConfiguration> SendEvent(Expression<Func<SendEventInput>> body)
         {
-            var __workflow_bodyeventType = WorkflowExpression.Compile(bodyeventType, nameof(bodyeventType), required: true);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodyhost = WorkflowExpression.Compile(bodyhost, nameof(bodyhost), required: true);
-            var __workflow_bodyseverity = WorkflowExpression.Compile(bodyseverity, nameof(bodyseverity), required: true);
-            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
-            var __workflow_bodysource = WorkflowExpression.Compile(bodysource, nameof(bodysource), required: false);
-            var __workflow_bodytimestamp = WorkflowExpression.Compile(bodytimestamp, nameof(bodytimestamp), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendEventResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/events";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["event_type"] = ExpressionConverter.ConvertO(__workflow_bodyeventType);
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                bodypropCount++;
-                body["host"] = ExpressionConverter.ConvertO(__workflow_bodyhost);
-                bodypropCount++;
-                body["severity"] = ExpressionConverter.ConvertO(__workflow_bodyseverity);
-                if (__workflow_bodymessage != null)
-                {
-                    body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysource != null)
-                {
-                    body["source"] = ExpressionConverter.ConvertO(__workflow_bodysource);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytimestamp != null)
-                {
-                    body["timestamp"] = ExpressionConverter.ConvertO(__workflow_bodytimestamp);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SendEventResponse>(callPayload);
             });
         }
@@ -96,8 +58,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Itoc360
         public string Fingerprint { get; set; }
     }
 
+    public class SendEventInput
+    {
+        [JsonProperty("event_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SendEventInputEventTypeType EventType { get; set; } = SendEventInputEventTypeType.Alert;
+
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("host", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Host { get; set; }
+
+        [JsonProperty("severity", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SendEventInputSeverityType Severity { get; set; } = SendEventInputSeverityType.Medium;
+
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("source")]
+        public string Source { get; set; }
+
+        [JsonProperty("timestamp")]
+        public string Timestamp { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyeventTypeInput
+    public enum SendEventInputEventTypeType
     {
         [EnumMember(Value = "alert")]
         Alert,
@@ -106,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Itoc360
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyseverityInput
+    public enum SendEventInputSeverityType
     {
         [EnumMember(Value = "critical")]
         Critical,

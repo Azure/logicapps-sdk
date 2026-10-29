@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsdocsip
     public class DynamicsdocsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsdocsip")]
-        public IBodyWorkflowAction<CompileTemplateResponse, ApiConnectionActionConfiguration> CompileTemplate(Expression<Func<string>> templateToken, Expression<Func<string>> docDeliveryType = null, Expression<Func<int>> docUrlExpiresIn = null, Expression<Func<string>> latexCompiler = null, Expression<Func<int>> latexRuns = null, Expression<Func<string>> mainFileName = null, Expression<Func<string>> docFileName = null, Expression<Func<string>> encryptType = null)
+        public IBodyWorkflowAction<CompileTemplateResponse, ApiConnectionActionConfiguration> CompileTemplate(Expression<Func<string>> templateToken, Expression<Func<string>> docDeliveryType = null, Expression<Func<int>> docUrlExpiresIn = null, Expression<Func<string>> latexCompiler = null, Expression<Func<int>> latexRuns = null, Expression<Func<string>> mainFileName = null, Expression<Func<string>> docFileName = null, Expression<Func<string>> encryptType = null, Expression<Func<object>> body = null)
         {
             var __workflow_templateToken = WorkflowExpression.Compile(templateToken, nameof(templateToken), required: true);
             var __workflow_docDeliveryType = WorkflowExpression.Compile(docDeliveryType, nameof(docDeliveryType), required: false);
@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsdocsip
             var __workflow_mainFileName = WorkflowExpression.Compile(mainFileName, nameof(mainFileName), required: false);
             var __workflow_docFileName = WorkflowExpression.Compile(docFileName, nameof(docFileName), required: false);
             var __workflow_encryptType = WorkflowExpression.Compile(encryptType, nameof(encryptType), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CompileTemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/templates/{0}/compile", __workflow_templateToken.WithUrlEncoding(1)));
@@ -46,13 +47,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsdocsip
                 callPayload.Queries["encrypt-type"] = Convert.ToString("na");
                 if (__workflow_encryptType != null)
                     callPayload.Queries["encrypt-type"] = ExpressionConverter.Convert(__workflow_encryptType);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CompileTemplateResponse>(callPayload);
             });
         }

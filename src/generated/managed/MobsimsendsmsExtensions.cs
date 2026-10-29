@@ -13,11 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobsimsendsms
     public class MobsimsendsmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobsimsendsms")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SMS(Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodygroupMsg = null, Expression<Func<bodymessagesInputItem[]>> bodymessages = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SMS(Expression<Func<SMSInput>> body = null)
         {
-            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: false);
-            var __workflow_bodygroupMsg = WorkflowExpression.Compile(bodygroupMsg, nameof(bodygroupMsg), required: false);
-            var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sms";
@@ -25,31 +23,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobsimsendsms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodygroupId != null)
-                {
-                    body["groupId"] = ExpressionConverter.ConvertO(__workflow_bodygroupId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygroupMsg != null)
-                {
-                    body["groupMsg"] = ExpressionConverter.ConvertO(__workflow_bodygroupMsg);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymessages != null)
-                {
-                    body["messages"] = ExpressionConverter.ConvertO(__workflow_bodymessages);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -59,7 +34,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobsimsendsms
     {
     }
 
-    public class bodymessagesInputItem
+    public class SMSInput
+    {
+        [JsonProperty("groupId")]
+        public string GroupId { get; set; }
+
+        [JsonProperty("groupMsg")]
+        public string GroupMsg { get; set; }
+
+        [JsonProperty("messages")]
+        public SMSInputMessagesTypeItem[] Messages { get; set; }
+    }
+
+    public class SMSInputMessagesTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }

@@ -13,28 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
     public class AcsidentityActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
-        public IBodyWorkflowAction<CreateCommunicationIdentityResponse, ApiConnectionActionConfiguration> CreateCommunicationIdentity(Expression<Func<TokenScopes[]>> bodytokenScopes = null)
+        public IBodyWorkflowAction<CreateCommunicationIdentityResponse, ApiConnectionActionConfiguration> CreateCommunicationIdentity(Expression<Func<CreateCommunicationIdentityInput>> body = null)
         {
-            var __workflow_bodytokenScopes = WorkflowExpression.Compile(bodytokenScopes, nameof(bodytokenScopes), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateCommunicationIdentityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/identities";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2021-03-07");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytokenScopes != null)
-                {
-                    body["createTokenWithScopes"] = ExpressionConverter.ConvertO(__workflow_bodytokenScopes);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateCommunicationIdentityResponse>(callPayload);
             });
         }
@@ -54,25 +43,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
-        public IBodyWorkflowAction<AccessTokenInfo, ApiConnectionActionConfiguration> IssueIdentityAccessToken(Expression<Func<string>> identityId, Expression<Func<TokenScopes[]>> bodytokenScopes)
+        public IBodyWorkflowAction<AccessTokenInfo, ApiConnectionActionConfiguration> IssueIdentityAccessToken(Expression<Func<string>> identityId, Expression<Func<IssueIdentityAccessTokenInput>> body)
         {
             var __workflow_identityId = WorkflowExpression.Compile(identityId, nameof(identityId), required: true);
-            var __workflow_bodytokenScopes = WorkflowExpression.Compile(bodytokenScopes, nameof(bodytokenScopes), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AccessTokenInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/identities/{0}/:issueAccessToken", __workflow_identityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = Convert.ToString("2021-03-07");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["scopes"] = ExpressionConverter.ConvertO(__workflow_bodytokenScopes);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AccessTokenInfo>(callPayload);
             });
         }
@@ -120,6 +101,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         public string TokenExpiry { get; set; }
     }
 
+    public class CreateCommunicationIdentityInput
+    {
+        [JsonProperty("createTokenWithScopes")]
+        public TokenScopes[] TokenScopes { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TokenScopes
     {
@@ -127,6 +114,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         Chat,
         [EnumMember(Value = "voip")]
         Voip
+    }
+
+    public class IssueIdentityAccessTokenInput
+    {
+        [JsonProperty("scopes", DefaultValueHandling = DefaultValueHandling.Include)]
+        public TokenScopes[] TokenScopes { get; set; } = new TokenScopes[]
+        {
+            (TokenScopes)0
+        };
     }
 }
 

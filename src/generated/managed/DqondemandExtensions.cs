@@ -362,7 +362,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var apiCallPath = "/Generate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
+                if (__workflow_input != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
                 return new ApiConnectionAction<GeneratePatternResponse>(callPayload);
             });
         }
@@ -440,7 +441,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var apiCallPath = "/Scoring";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
+                if (__workflow_input != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
                 return new ApiConnectionAction<ScoringResponse>(callPayload);
             });
         }
@@ -476,7 +478,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var apiCallPath = "/SequenceTransform";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
+                if (__workflow_input != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
                 return new ApiConnectionAction<SequenceTransformResponse>(callPayload);
             });
         }

@@ -26,112 +26,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipedrive")]
-        public IBodyWorkflowAction<DealResponse, ApiConnectionActionConfiguration> UpdateDealStatus(Expression<Func<int>> dealId, Expression<Func<bodystatusInput>> bodystatus, Expression<Func<string>> bodylostReason = null)
+        public IBodyWorkflowAction<DealResponse, ApiConnectionActionConfiguration> UpdateDealStatus(Expression<Func<int>> dealId, Expression<Func<UpdateDealStatusInput>> body)
         {
             var __workflow_dealId = WorkflowExpression.Compile(dealId, nameof(dealId), required: true);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: true);
-            var __workflow_bodylostReason = WorkflowExpression.Compile(bodylostReason, nameof(bodylostReason), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DealResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/update_status_deal/v1/deals/{0}", __workflow_dealId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                if (__workflow_bodylostReason != null)
-                {
-                    body["lost_reason"] = ExpressionConverter.ConvertO(__workflow_bodylostReason);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DealResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipedrive")]
-        public IBodyWorkflowAction<ActivityResponse, ApiConnectionActionConfiguration> AddActivity(Expression<Func<string>> bodytype, Expression<Func<string>> bodysubject, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodydueTime = null, Expression<Func<string>> bodyduration = null, Expression<Func<string>> bodynotes = null, Expression<Func<int>> bodyassignedTo = null, Expression<Func<int>> bodydealId = null, Expression<Func<int>> bodycontactId = null, Expression<Func<int>> bodyorganizationId = null)
+        public IBodyWorkflowAction<ActivityResponse, ApiConnectionActionConfiguration> AddActivity(Expression<Func<AddActivityInput>> body)
         {
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: true);
-            var __workflow_bodydueDate = WorkflowExpression.Compile(bodydueDate, nameof(bodydueDate), required: false);
-            var __workflow_bodydueTime = WorkflowExpression.Compile(bodydueTime, nameof(bodydueTime), required: false);
-            var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: false);
-            var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
-            var __workflow_bodyassignedTo = WorkflowExpression.Compile(bodyassignedTo, nameof(bodyassignedTo), required: false);
-            var __workflow_bodydealId = WorkflowExpression.Compile(bodydealId, nameof(bodydealId), required: false);
-            var __workflow_bodycontactId = WorkflowExpression.Compile(bodycontactId, nameof(bodycontactId), required: false);
-            var __workflow_bodyorganizationId = WorkflowExpression.Compile(bodyorganizationId, nameof(bodyorganizationId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ActivityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/activities";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                bodypropCount++;
-                body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
-                if (__workflow_bodydueDate != null)
-                {
-                    body["due_date"] = ExpressionConverter.ConvertO(__workflow_bodydueDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydueTime != null)
-                {
-                    body["due_time"] = ExpressionConverter.ConvertO(__workflow_bodydueTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyduration != null)
-                {
-                    body["duration"] = ExpressionConverter.ConvertO(__workflow_bodyduration);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynotes != null)
-                {
-                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynotes);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyassignedTo != null)
-                {
-                    body["user_id"] = ExpressionConverter.ConvertO(__workflow_bodyassignedTo);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydealId != null)
-                {
-                    body["deal_id"] = ExpressionConverter.ConvertO(__workflow_bodydealId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontactId != null)
-                {
-                    body["person_id"] = ExpressionConverter.ConvertO(__workflow_bodycontactId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyorganizationId != null)
-                {
-                    body["org_id"] = ExpressionConverter.ConvertO(__workflow_bodyorganizationId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ActivityResponse>(callPayload);
             });
         }
@@ -150,119 +68,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipedrive")]
-        public IBodyWorkflowAction<DealResponseV2, ApiConnectionActionConfiguration> AddDeal(Expression<Func<string>> bodytitle, Expression<Func<string>> bodypipelineId = null, Expression<Func<string>> bodystageId = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<int>> bodyvalue = null, Expression<Func<string>> bodycurrency = null, Expression<Func<string>> bodycontactId = null, Expression<Func<string>> bodyorganizationId = null, Expression<Func<string>> bodyexpectedCloseDate = null, Expression<Func<bodyvisiblityInput>> bodyvisiblity = null)
+        public IBodyWorkflowAction<DealResponseV2, ApiConnectionActionConfiguration> AddDeal(Expression<Func<AddDealV2Input>> body)
         {
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodypipelineId = WorkflowExpression.Compile(bodypipelineId, nameof(bodypipelineId), required: false);
-            var __workflow_bodystageId = WorkflowExpression.Compile(bodystageId, nameof(bodystageId), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            var __workflow_bodycurrency = WorkflowExpression.Compile(bodycurrency, nameof(bodycurrency), required: false);
-            var __workflow_bodycontactId = WorkflowExpression.Compile(bodycontactId, nameof(bodycontactId), required: false);
-            var __workflow_bodyorganizationId = WorkflowExpression.Compile(bodyorganizationId, nameof(bodyorganizationId), required: false);
-            var __workflow_bodyexpectedCloseDate = WorkflowExpression.Compile(bodyexpectedCloseDate, nameof(bodyexpectedCloseDate), required: false);
-            var __workflow_bodyvisiblity = WorkflowExpression.Compile(bodyvisiblity, nameof(bodyvisiblity), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DealResponseV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/connector-v2/v1/deals";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                if (__workflow_bodypipelineId != null)
-                {
-                    body["pipeline_id"] = ExpressionConverter.ConvertO(__workflow_bodypipelineId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystageId != null)
-                {
-                    body["stage_id"] = ExpressionConverter.ConvertO(__workflow_bodystageId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvalue != null)
-                {
-                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycurrency != null)
-                {
-                    body["currency"] = ExpressionConverter.ConvertO(__workflow_bodycurrency);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontactId != null)
-                {
-                    body["person_id"] = ExpressionConverter.ConvertO(__workflow_bodycontactId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyorganizationId != null)
-                {
-                    body["org_id"] = ExpressionConverter.ConvertO(__workflow_bodyorganizationId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpectedCloseDate != null)
-                {
-                    body["expected_close_date"] = ExpressionConverter.ConvertO(__workflow_bodyexpectedCloseDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvisiblity != null)
-                {
-                    body["visible_to"] = ExpressionConverter.ConvertO(__workflow_bodyvisiblity);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DealResponseV2>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipedrive")]
-        public IBodyWorkflowAction<DealResponseV2, ApiConnectionActionConfiguration> UpdateDealStage(Expression<Func<int>> dealId, Expression<Func<string>> bodypipelineId, Expression<Func<string>> bodystageId, Expression<Func<string>> bodyexpectedCloseDate = null)
+        public IBodyWorkflowAction<DealResponseV2, ApiConnectionActionConfiguration> UpdateDealStage(Expression<Func<int>> dealId, Expression<Func<UpdateDealStageV2Input>> body)
         {
             var __workflow_dealId = WorkflowExpression.Compile(dealId, nameof(dealId), required: true);
-            var __workflow_bodypipelineId = WorkflowExpression.Compile(bodypipelineId, nameof(bodypipelineId), required: true);
-            var __workflow_bodystageId = WorkflowExpression.Compile(bodystageId, nameof(bodystageId), required: true);
-            var __workflow_bodyexpectedCloseDate = WorkflowExpression.Compile(bodyexpectedCloseDate, nameof(bodyexpectedCloseDate), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DealResponseV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/connector-v2/update_stage_deal/v1/deals/{0}", __workflow_dealId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["pipeline_id"] = ExpressionConverter.ConvertO(__workflow_bodypipelineId);
-                bodypropCount++;
-                body["stage_id"] = ExpressionConverter.ConvertO(__workflow_bodystageId);
-                if (__workflow_bodyexpectedCloseDate != null)
-                {
-                    body["expected_close_date"] = ExpressionConverter.ConvertO(__workflow_bodyexpectedCloseDate);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DealResponseV2>(callPayload);
             });
         }
@@ -458,12 +287,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
         public int Id { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodystatusInput
+    public class UpdateDealStatusInput
     {
+        [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateDealStatusInputStatusType Status { get; set; }
+
+        [JsonProperty("lost_reason")]
+        public string LostReason { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum UpdateDealStatusInputStatusType
+    {
+        [EnumMember(Value = "open")]
         Open,
+        [EnumMember(Value = "won")]
         Won,
+        [EnumMember(Value = "lost")]
         Lost,
+        [EnumMember(Value = "deleted")]
         Deleted
     }
 
@@ -537,6 +379,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
 
         [JsonProperty("owner_name")]
         public string OwnerName { get; set; }
+    }
+
+    public class AddActivityInput
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Type { get; set; }
+
+        [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Subject { get; set; }
+
+        [JsonProperty("due_date")]
+        public string DueDate { get; set; }
+
+        [JsonProperty("due_time")]
+        public string DueTime { get; set; }
+
+        [JsonProperty("duration")]
+        public string Duration { get; set; }
+
+        [JsonProperty("note")]
+        public string Notes { get; set; }
+
+        [JsonProperty("user_id")]
+        public int? AssignedTo { get; set; }
+
+        [JsonProperty("deal_id")]
+        public int? DealId { get; set; }
+
+        [JsonProperty("person_id")]
+        public int? ContactId { get; set; }
+
+        [JsonProperty("org_id")]
+        public int? OrganizationId { get; set; }
     }
 
     public class StageResponse
@@ -710,13 +585,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
         public int Id { get; set; }
     }
 
+    public class AddDealV2Input
+    {
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("pipeline_id")]
+        public string PipelineId { get; set; }
+
+        [JsonProperty("stage_id")]
+        public string StageId { get; set; }
+
+        [JsonProperty("status")]
+        public AddDealV2InputStatusType? Status { get; set; }
+
+        [JsonProperty("value")]
+        public int? Value { get; set; }
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
+        [JsonProperty("person_id")]
+        public string ContactId { get; set; }
+
+        [JsonProperty("org_id")]
+        public string OrganizationId { get; set; }
+
+        [JsonProperty("expected_close_date")]
+        public string ExpectedCloseDate { get; set; }
+
+        [JsonProperty("visible_to")]
+        public AddDealV2InputVisiblityType? Visiblity { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyvisiblityInput
+    public enum AddDealV2InputStatusType
+    {
+        Open,
+        Won,
+        Lost,
+        Deleted
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum AddDealV2InputVisiblityType
     {
         [EnumMember(Value = "Owner and followers")]
         OwnerAndFollowers,
         [EnumMember(Value = "Entire company")]
         EntireCompany
+    }
+
+    public class UpdateDealStageV2Input
+    {
+        [JsonProperty("pipeline_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PipelineId { get; set; }
+
+        [JsonProperty("stage_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string StageId { get; set; }
+
+        [JsonProperty("expected_close_date")]
+        public string ExpectedCloseDate { get; set; }
     }
 }
 

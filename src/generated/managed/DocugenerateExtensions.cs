@@ -65,50 +65,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
-        public IBodyWorkflowAction<GenerateDocumentResponse, ApiConnectionActionConfiguration> GenerateDocument(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodydata, Expression<Func<string>> bodyname = null, Expression<Func<bodyoutputFormatInput>> bodyoutputFormat = null)
+        public IBodyWorkflowAction<GenerateDocumentResponse, ApiConnectionActionConfiguration> GenerateDocument(Expression<Func<GenerateDocumentInput>> body)
         {
-            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: true);
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyoutputFormat = WorkflowExpression.Compile(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GenerateDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/document";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["template_id"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
-                bodypropCount++;
-                body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyoutputFormat != null)
-                {
-                    if (__workflow_bodyoutputFormat != null)
-                    {
-                        body["output_format"] = ExpressionConverter.ConvertO(__workflow_bodyoutputFormat);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["output_format"] = ".pdf";
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GenerateDocumentResponse>(callPayload);
             });
         }
@@ -140,28 +105,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
-        public IBodyWorkflowAction<UpdateDocumentResponse, ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> bodyname = null)
+        public IBodyWorkflowAction<UpdateDocumentResponse, ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> id, Expression<Func<UpdateDocumentInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UpdateDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateDocumentResponse>(callPayload);
             });
         }
@@ -357,8 +311,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
         public string DocumentUri { get; set; }
     }
 
+    public class GenerateDocumentInput
+    {
+        [JsonProperty("template_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TemplateId { get; set; }
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Data { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
+        public GenerateDocumentInputOutputFormatType? OutputFormat { get; set; } = GenerateDocumentInputOutputFormatType.Pdf;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyoutputFormatInput
+    public enum GenerateDocumentInputOutputFormatType
     {
         [EnumMember(Value = ".docx")]
         Docx,
@@ -428,6 +397,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
 
         [JsonProperty("document_uri")]
         public string DocumentUri { get; set; }
+    }
+
+    public class UpdateDocumentInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
     }
 }
 

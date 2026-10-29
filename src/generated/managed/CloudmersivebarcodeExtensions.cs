@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
     public class CloudmersivebarcodeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
-        public IBodyWorkflowAction<BarcodeLookupResponse, ApiConnectionActionConfiguration> BarcodeLookupEanLookup(Expression<Func<string>> value = null)
+        public IBodyWorkflowAction<BarcodeLookupResponse, ApiConnectionActionConfiguration> BarcodeLookupEanLookup(Expression<Func<string>> value)
         {
-            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: false);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             return new DeferredBodyAction<BarcodeLookupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/barcode/lookup/ean";
@@ -27,9 +27,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateBarcodeQRCode(Expression<Func<string>> value = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateBarcodeQRCode(Expression<Func<string>> value)
         {
-            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: false);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/barcode/generate/qrcode";
@@ -41,9 +41,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateBarcodeUPCA(Expression<Func<string>> value = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateBarcodeUPCA(Expression<Func<string>> value)
         {
-            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: false);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/barcode/generate/upc-a";
@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateBarcodeUPCE(Expression<Func<string>> value = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateBarcodeUPCE(Expression<Func<string>> value)
         {
-            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: false);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/barcode/generate/upc-e";
@@ -69,9 +69,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateBarcodeEAN13(Expression<Func<string>> value = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateBarcodeEAN13(Expression<Func<string>> value)
         {
-            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: false);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/barcode/generate/ean-13";
@@ -83,9 +83,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateBarcodeEAN8(Expression<Func<string>> value = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateBarcodeEAN8(Expression<Func<string>> value)
         {
-            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: false);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/barcode/generate/ean-8";

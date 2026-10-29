@@ -13,100 +13,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Authbinder
     public class AuthbinderActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "authbinder")]
-        public IBodyWorkflowAction<EventResponse, ApiConnectionActionConfiguration> LogAgentEvent(Expression<Func<string>> bodytenantId, Expression<Func<string>> bodyagentId, Expression<Func<string>> bodytool, Expression<Func<string>> bodydestination = null, Expression<Func<string>> bodyaction = null, Expression<Func<bool>> bodyapproved = null, Expression<Func<bool>> bodysuccess = null, Expression<Func<string>> bodyuserId = null, Expression<Func<int>> bodydurationMs = null, Expression<Func<string>> bodytimestamp = null)
+        public IBodyWorkflowAction<EventResponse, ApiConnectionActionConfiguration> LogAgentEvent(Expression<Func<LogAgentEventInput>> body)
         {
-            var __workflow_bodytenantId = WorkflowExpression.Compile(bodytenantId, nameof(bodytenantId), required: true);
-            var __workflow_bodyagentId = WorkflowExpression.Compile(bodyagentId, nameof(bodyagentId), required: true);
-            var __workflow_bodytool = WorkflowExpression.Compile(bodytool, nameof(bodytool), required: true);
-            var __workflow_bodydestination = WorkflowExpression.Compile(bodydestination, nameof(bodydestination), required: false);
-            var __workflow_bodyaction = WorkflowExpression.Compile(bodyaction, nameof(bodyaction), required: false);
-            var __workflow_bodyapproved = WorkflowExpression.Compile(bodyapproved, nameof(bodyapproved), required: false);
-            var __workflow_bodysuccess = WorkflowExpression.Compile(bodysuccess, nameof(bodysuccess), required: false);
-            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
-            var __workflow_bodydurationMs = WorkflowExpression.Compile(bodydurationMs, nameof(bodydurationMs), required: false);
-            var __workflow_bodytimestamp = WorkflowExpression.Compile(bodytimestamp, nameof(bodytimestamp), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<EventResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/events";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["tenantId"] = ExpressionConverter.ConvertO(__workflow_bodytenantId);
-                bodypropCount++;
-                body["agentId"] = ExpressionConverter.ConvertO(__workflow_bodyagentId);
-                bodypropCount++;
-                body["tool"] = ExpressionConverter.ConvertO(__workflow_bodytool);
-                if (__workflow_bodydestination != null)
-                {
-                    body["destination"] = ExpressionConverter.ConvertO(__workflow_bodydestination);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaction != null)
-                {
-                    body["action"] = ExpressionConverter.ConvertO(__workflow_bodyaction);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyapproved != null)
-                {
-                    body["approved"] = ExpressionConverter.ConvertO(__workflow_bodyapproved);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysuccess != null)
-                {
-                    body["success"] = ExpressionConverter.ConvertO(__workflow_bodysuccess);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuserId != null)
-                {
-                    body["userId"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydurationMs != null)
-                {
-                    body["durationMs"] = ExpressionConverter.ConvertO(__workflow_bodydurationMs);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytimestamp != null)
-                {
-                    body["timestamp"] = ExpressionConverter.ConvertO(__workflow_bodytimestamp);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EventResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "authbinder")]
-        public IBodyWorkflowAction<BatchResponse, ApiConnectionActionConfiguration> LogAgentEventsBatch(Expression<Func<EventIngest[]>> bodyevents)
+        public IBodyWorkflowAction<BatchResponse, ApiConnectionActionConfiguration> LogAgentEventsBatch(Expression<Func<LogAgentEventsBatchInput>> body)
         {
-            var __workflow_bodyevents = WorkflowExpression.Compile(bodyevents, nameof(bodyevents), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<BatchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/events/batch";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["events"] = ExpressionConverter.ConvertO(__workflow_bodyevents);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<BatchResponse>(callPayload);
             });
         }
@@ -226,6 +155,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Authbinder
         Critical
     }
 
+    public class LogAgentEventInput
+    {
+        [JsonProperty("tenantId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TenantId { get; set; }
+
+        [JsonProperty("agentId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AgentId { get; set; }
+
+        [JsonProperty("tool", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Tool { get; set; }
+
+        [JsonProperty("destination")]
+        public string Destination { get; set; }
+
+        [JsonProperty("action")]
+        public string Action { get; set; }
+
+        [JsonProperty("approved")]
+        public bool? Approved { get; set; }
+
+        [JsonProperty("success")]
+        public bool? Success { get; set; }
+
+        [JsonProperty("userId")]
+        public string UserId { get; set; }
+
+        [JsonProperty("durationMs")]
+        public int? DurationMs { get; set; }
+
+        [JsonProperty("timestamp")]
+        public string Timestamp { get; set; }
+    }
+
     public class BatchResponse
     {
         [JsonProperty("ingested")]
@@ -236,6 +198,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Authbinder
 
         [JsonProperty("errors")]
         public JToken[] Errors { get; set; }
+    }
+
+    public class LogAgentEventsBatchInput
+    {
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        public EventIngest[] Events { get; set; }
     }
 
     public class EventIngest

@@ -69,17 +69,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiccontentdiscov")]
-        public IBodyWorkflowAction<SeismicSearchSearchResponse, ApiConnectionActionConfiguration> QueryContent(Expression<Func<string>> continuationToken = null, Expression<Func<string>> searchRequestBodyterm = null, Expression<Func<int>> searchRequestBodyoptionspageSize = null, Expression<Func<searchRequestBodyoptionssearchFieldsInputItem[]>> searchRequestBodyoptionssearchFields = null, Expression<Func<searchRequestBodyoptionsreturnFieldsInputItem[]>> searchRequestBodyoptionsreturnFields = null, Expression<Func<SeismicSearchSortConstraint[]>> searchRequestBodysort = null, Expression<Func<SeismicSearchConditionExpressionInfo[]>> searchRequestBodyfiltercondition = null, Expression<Func<SeismicSearchFilterExpressionInfo[]>> searchRequestBodyfilterfilter = null, Expression<Func<string>> searchRequestBodyfilterOperator = null)
+        public IBodyWorkflowAction<SeismicSearchSearchResponse, ApiConnectionActionConfiguration> QueryContent(Expression<Func<string>> continuationToken = null, Expression<Func<QueryContentInput>> searchRequestBody = null)
         {
             var __workflow_continuationToken = WorkflowExpression.Compile(continuationToken, nameof(continuationToken), required: false);
-            var __workflow_searchRequestBodyterm = WorkflowExpression.Compile(searchRequestBodyterm, nameof(searchRequestBodyterm), required: false);
-            var __workflow_searchRequestBodyoptionspageSize = WorkflowExpression.Compile(searchRequestBodyoptionspageSize, nameof(searchRequestBodyoptionspageSize), required: false);
-            var __workflow_searchRequestBodyoptionssearchFields = WorkflowExpression.Compile(searchRequestBodyoptionssearchFields, nameof(searchRequestBodyoptionssearchFields), required: false);
-            var __workflow_searchRequestBodyoptionsreturnFields = WorkflowExpression.Compile(searchRequestBodyoptionsreturnFields, nameof(searchRequestBodyoptionsreturnFields), required: false);
-            var __workflow_searchRequestBodysort = WorkflowExpression.Compile(searchRequestBodysort, nameof(searchRequestBodysort), required: false);
-            var __workflow_searchRequestBodyfiltercondition = WorkflowExpression.Compile(searchRequestBodyfiltercondition, nameof(searchRequestBodyfiltercondition), required: false);
-            var __workflow_searchRequestBodyfilterfilter = WorkflowExpression.Compile(searchRequestBodyfilterfilter, nameof(searchRequestBodyfilterfilter), required: false);
-            var __workflow_searchRequestBodyfilterOperator = WorkflowExpression.Compile(searchRequestBodyfilterOperator, nameof(searchRequestBodyfilterOperator), required: false);
+            var __workflow_searchRequestBody = WorkflowExpression.Compile(searchRequestBody, nameof(searchRequestBody), required: false);
             return new DeferredBodyAction<SeismicSearchSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/search/v1/content/query";
@@ -87,77 +80,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_continuationToken != null)
                     callPayload.Queries["continuationToken"] = ExpressionConverter.Convert(__workflow_continuationToken);
-                var searchRequestBody = new JObject();
-                var searchRequestBodypropCount = 0;
-                if (__workflow_searchRequestBodyterm != null)
-                {
-                    searchRequestBody["term"] = ExpressionConverter.ConvertO(__workflow_searchRequestBodyterm);
-                    searchRequestBodypropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_searchRequestBodyoptionspageSize != null)
-                {
-                    optionsObject["pageSize"] = ExpressionConverter.ConvertO(__workflow_searchRequestBodyoptionspageSize);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_searchRequestBodyoptionssearchFields != null)
-                {
-                    optionsObject["searchFields"] = ExpressionConverter.ConvertO(__workflow_searchRequestBodyoptionssearchFields);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_searchRequestBodyoptionsreturnFields != null)
-                {
-                    optionsObject["returnFields"] = ExpressionConverter.ConvertO(__workflow_searchRequestBodyoptionsreturnFields);
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    searchRequestBody["options"] = optionsObject;
-                    searchRequestBodypropCount++;
-                }
-
-                if (__workflow_searchRequestBodysort != null)
-                {
-                    searchRequestBody["sort"] = ExpressionConverter.ConvertO(__workflow_searchRequestBodysort);
-                    searchRequestBodypropCount++;
-                }
-
-                var filterObject = new JObject();
-                var filterObjectpropCount = 0;
-                if (__workflow_searchRequestBodyfiltercondition != null)
-                {
-                    filterObject["conditions"] = ExpressionConverter.ConvertO(__workflow_searchRequestBodyfiltercondition);
-                    filterObjectpropCount++;
-                }
-
-                if (__workflow_searchRequestBodyfilterfilter != null)
-                {
-                    filterObject["filters"] = ExpressionConverter.ConvertO(__workflow_searchRequestBodyfilterfilter);
-                    filterObjectpropCount++;
-                }
-
-                if (__workflow_searchRequestBodyfilterOperator != null)
-                {
-                    filterObject["operator"] = ExpressionConverter.ConvertO(__workflow_searchRequestBodyfilterOperator);
-                    filterObjectpropCount++;
-                }
-
-                if (filterObjectpropCount > 0)
-                {
-                    searchRequestBody["filter"] = filterObject;
-                    searchRequestBodypropCount++;
-                }
-
-                if (searchRequestBodypropCount > 0)
-                {
-                    callPayload.Body = searchRequestBody;
-                }
-
+                if (__workflow_searchRequestBody != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_searchRequestBody);
                 return new ApiConnectionAction<SeismicSearchSearchResponse>(callPayload);
             });
         }
@@ -524,8 +448,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
         public string ApplicationUrl { get; set; }
     }
 
+    public class QueryContentInput
+    {
+        [JsonProperty("term")]
+        public string Term { get; set; }
+
+        [JsonProperty("options")]
+        public SeismicSearchSearchOptions Options { get; set; }
+
+        [JsonProperty("sort")]
+        public SeismicSearchSortConstraint[] Sort { get; set; }
+
+        [JsonProperty("filter")]
+        public SeismicSearchFilterExpressionInfo Filter { get; set; }
+    }
+
+    public class SeismicSearchSearchOptions
+    {
+        [JsonProperty("pageSize")]
+        public int PageSize { get; set; }
+
+        [JsonProperty("searchFields")]
+        public SeismicSearchSearchOptionsSearchFieldsTypeItem[] SearchFields { get; set; }
+
+        [JsonProperty("returnFields")]
+        public SeismicSearchSearchOptionsReturnFieldsTypeItem[] ReturnFields { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum searchRequestBodyoptionssearchFieldsInputItem
+    public enum SeismicSearchSearchOptionsSearchFieldsTypeItem
     {
         Name,
         Description,
@@ -534,7 +485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum searchRequestBodyoptionsreturnFieldsInputItem
+    public enum SeismicSearchSearchOptionsReturnFieldsTypeItem
     {
         Repository,
         Name,
@@ -571,18 +522,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
         Desc
     }
 
-    public class SeismicSearchConditionExpressionInfo
-    {
-        [JsonProperty("attribute")]
-        public string Attribute { get; set; }
-
-        [JsonProperty("operator")]
-        public string Operator { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
     public class SeismicSearchFilterExpressionInfo
     {
         [JsonProperty("conditions")]
@@ -593,6 +532,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
 
         [JsonProperty("operator")]
         public string Operator { get; set; }
+    }
+
+    public class SeismicSearchConditionExpressionInfo
+    {
+        [JsonProperty("attribute")]
+        public string Attribute { get; set; }
+
+        [JsonProperty("operator")]
+        public string Operator { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
     }
 }
 

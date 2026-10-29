@@ -13,91 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
     public class GoveeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "govee")]
-        public IBodyWorkflowAction<RunCommandOnDeviceResponse, ApiConnectionActionConfiguration> RunCommandOnDevice(Expression<Func<string>> bodydeviceMACAddress, Expression<Func<string>> bodydeviceModel, Expression<Func<bodycmdcommandNameInput>> bodycmdcommandName = null, Expression<Func<bodyturnInput>> bodyturn = null, Expression<Func<int>> bodybrightness = null, Expression<Func<int>> bodycolorcolorRed = null, Expression<Func<int>> bodycolorcolorGreen = null, Expression<Func<int>> bodycolorcolorBlue = null, Expression<Func<int>> bodycolorTemperature = null)
+        public IBodyWorkflowAction<RunCommandOnDeviceResponse, ApiConnectionActionConfiguration> RunCommandOnDevice(Expression<Func<RunCommandOnDeviceInput>> body)
         {
-            var __workflow_bodydeviceMACAddress = WorkflowExpression.Compile(bodydeviceMACAddress, nameof(bodydeviceMACAddress), required: true);
-            var __workflow_bodydeviceModel = WorkflowExpression.Compile(bodydeviceModel, nameof(bodydeviceModel), required: true);
-            var __workflow_bodycmdcommandName = WorkflowExpression.Compile(bodycmdcommandName, nameof(bodycmdcommandName), required: false);
-            var __workflow_bodyturn = WorkflowExpression.Compile(bodyturn, nameof(bodyturn), required: false);
-            var __workflow_bodybrightness = WorkflowExpression.Compile(bodybrightness, nameof(bodybrightness), required: false);
-            var __workflow_bodycolorcolorRed = WorkflowExpression.Compile(bodycolorcolorRed, nameof(bodycolorcolorRed), required: false);
-            var __workflow_bodycolorcolorGreen = WorkflowExpression.Compile(bodycolorcolorGreen, nameof(bodycolorcolorGreen), required: false);
-            var __workflow_bodycolorcolorBlue = WorkflowExpression.Compile(bodycolorcolorBlue, nameof(bodycolorcolorBlue), required: false);
-            var __workflow_bodycolorTemperature = WorkflowExpression.Compile(bodycolorTemperature, nameof(bodycolorTemperature), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<RunCommandOnDeviceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/devices/control";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["device"] = ExpressionConverter.ConvertO(__workflow_bodydeviceMACAddress);
-                bodypropCount++;
-                body["model"] = ExpressionConverter.ConvertO(__workflow_bodydeviceModel);
-                var cmdObject = new JObject();
-                var cmdObjectpropCount = 0;
-                if (__workflow_bodycmdcommandName != null)
-                {
-                    cmdObject["name"] = ExpressionConverter.ConvertO(__workflow_bodycmdcommandName);
-                    cmdObjectpropCount++;
-                }
-
-                if (cmdObjectpropCount > 0)
-                {
-                    body["cmd"] = cmdObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyturn != null)
-                {
-                    body["turn"] = ExpressionConverter.ConvertO(__workflow_bodyturn);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybrightness != null)
-                {
-                    body["brightness"] = ExpressionConverter.ConvertO(__workflow_bodybrightness);
-                    bodypropCount++;
-                }
-
-                var colorObject = new JObject();
-                var colorObjectpropCount = 0;
-                if (__workflow_bodycolorcolorRed != null)
-                {
-                    colorObject["r"] = ExpressionConverter.ConvertO(__workflow_bodycolorcolorRed);
-                    colorObjectpropCount++;
-                }
-
-                if (__workflow_bodycolorcolorGreen != null)
-                {
-                    colorObject["g"] = ExpressionConverter.ConvertO(__workflow_bodycolorcolorGreen);
-                    colorObjectpropCount++;
-                }
-
-                if (__workflow_bodycolorcolorBlue != null)
-                {
-                    colorObject["b"] = ExpressionConverter.ConvertO(__workflow_bodycolorcolorBlue);
-                    colorObjectpropCount++;
-                }
-
-                if (colorObjectpropCount > 0)
-                {
-                    body["color"] = colorObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycolorTemperature != null)
-                {
-                    body["colorTem"] = ExpressionConverter.ConvertO(__workflow_bodycolorTemperature);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<RunCommandOnDeviceResponse>(callPayload);
             });
         }
@@ -137,8 +61,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
         public JToken Data { get; set; }
     }
 
+    public class RunCommandOnDeviceInput
+    {
+        [JsonProperty("device", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DeviceMACAddress { get; set; }
+
+        [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DeviceModel { get; set; }
+
+        [JsonProperty("cmd", DefaultValueHandling = DefaultValueHandling.Include)]
+        public RunCommandOnDeviceInputCmdType Cmd { get; set; }
+
+        [JsonProperty("turn")]
+        public RunCommandOnDeviceInputTurnType? Turn { get; set; }
+
+        [JsonProperty("brightness")]
+        public int? Brightness { get; set; }
+
+        [JsonProperty("color")]
+        public RunCommandOnDeviceInputColorType Color { get; set; }
+
+        [JsonProperty("colorTem")]
+        public int? ColorTemperature { get; set; }
+    }
+
+    public class RunCommandOnDeviceInputCmdType
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public RunCommandOnDeviceInputCmdTypeCommandNameType CommandName { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodycmdcommandNameInput
+    public enum RunCommandOnDeviceInputCmdTypeCommandNameType
     {
         [EnumMember(Value = "turn")]
         Turn,
@@ -151,12 +105,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyturnInput
+    public enum RunCommandOnDeviceInputTurnType
     {
         [EnumMember(Value = "on")]
         On,
         [EnumMember(Value = "off")]
         Off
+    }
+
+    public class RunCommandOnDeviceInputColorType
+    {
+        [JsonProperty("r")]
+        public int? ColorRed { get; set; }
+
+        [JsonProperty("g")]
+        public int? ColorGreen { get; set; }
+
+        [JsonProperty("b")]
+        public int? ColorBlue { get; set; }
     }
 
     public class GetDeviceInformationResponse

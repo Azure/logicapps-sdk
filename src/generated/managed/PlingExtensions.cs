@@ -13,41 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
     public class PlingActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pling")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendNotification(Expression<Func<string>> profileId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodycontent, Expression<Func<string[]>> bodyaudienceUsers)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendNotification(Expression<Func<string>> profileId, Expression<Func<SendNotificationInput>> body)
         {
             var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: true);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: true);
-            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: true);
-            var __workflow_bodyaudienceUsers = WorkflowExpression.Compile(bodyaudienceUsers, nameof(bodyaudienceUsers), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/profiles/{0}/messages", __workflow_profileId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                bodypropCount++;
-                body["templateId"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
-                bodypropCount++;
-                body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
-                bodypropCount++;
-                body["audienceUsers"] = ExpressionConverter.ConvertO(__workflow_bodyaudienceUsers);
-                var additionalTemplateDataObject = new JObject();
-                var additionalTemplateDataObjectpropCount = 0;
-                if (additionalTemplateDataObjectpropCount > 0)
-                {
-                    body["additionalTemplateData"] = additionalTemplateDataObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -80,6 +55,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
 
     public class PlingTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class SendNotificationInput
+    {
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("templateId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TemplateId { get; set; }
+
+        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Content { get; set; }
+
+        [JsonProperty("audienceUsers", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] AudienceUsers { get; set; }
+
+        [JsonProperty("additionalTemplateData", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken AdditionalTemplateData { get; set; } = JToken.Parse("{\"imageUrl\":\"Insert your image url here if the chosen template includes an image\",\"priority\":\"Default\",\"property1\":\"Insert more properties here for your custom templates\",\"property2\":\"Find your properties inside the Pling app in Microsoft Teams\"}");
     }
 
     public class GetProfilesResponseItem

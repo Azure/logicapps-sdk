@@ -97,117 +97,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<AddEmploymentResponse, ApiConnectionActionConfiguration> AddEmployment(Expression<Func<string>> bodyfullName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodycompanyId, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodyapproverId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodyemployeeCode = null, Expression<Func<bool>> bodyisAdmin = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyholidayLocation = null, Expression<Func<string>> bodyallowanceUnitIsDays = null, Expression<Func<string>> bodyminutesPerWorkingDay = null)
+        public IBodyWorkflowAction<AddEmploymentResponse, ApiConnectionActionConfiguration> AddEmployment(Expression<Func<AddEmploymentInput>> body)
         {
-            var __workflow_bodyfullName = WorkflowExpression.Compile(bodyfullName, nameof(bodyfullName), required: true);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: true);
-            var __workflow_bodyjobTitle = WorkflowExpression.Compile(bodyjobTitle, nameof(bodyjobTitle), required: false);
-            var __workflow_bodytimezone = WorkflowExpression.Compile(bodytimezone, nameof(bodytimezone), required: false);
-            var __workflow_bodyapproverId = WorkflowExpression.Compile(bodyapproverId, nameof(bodyapproverId), required: false);
-            var __workflow_bodydepartmentId = WorkflowExpression.Compile(bodydepartmentId, nameof(bodydepartmentId), required: false);
-            var __workflow_bodyemployeeCode = WorkflowExpression.Compile(bodyemployeeCode, nameof(bodyemployeeCode), required: false);
-            var __workflow_bodyisAdmin = WorkflowExpression.Compile(bodyisAdmin, nameof(bodyisAdmin), required: false);
-            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
-            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
-            var __workflow_bodyholidayLocation = WorkflowExpression.Compile(bodyholidayLocation, nameof(bodyholidayLocation), required: false);
-            var __workflow_bodyallowanceUnitIsDays = WorkflowExpression.Compile(bodyallowanceUnitIsDays, nameof(bodyallowanceUnitIsDays), required: false);
-            var __workflow_bodyminutesPerWorkingDay = WorkflowExpression.Compile(bodyminutesPerWorkingDay, nameof(bodyminutesPerWorkingDay), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddEmploymentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/employments";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyjobTitle != null)
-                {
-                    body["job_title"] = ExpressionConverter.ConvertO(__workflow_bodyjobTitle);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["full_name"] = ExpressionConverter.ConvertO(__workflow_bodyfullName);
-                bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                if (__workflow_bodytimezone != null)
-                {
-                    body["timezone"] = ExpressionConverter.ConvertO(__workflow_bodytimezone);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["company_id"] = ExpressionConverter.ConvertO(__workflow_bodycompanyId);
-                if (__workflow_bodyapproverId != null)
-                {
-                    body["approver_id"] = ExpressionConverter.ConvertO(__workflow_bodyapproverId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydepartmentId != null)
-                {
-                    body["department_id"] = ExpressionConverter.ConvertO(__workflow_bodydepartmentId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyemployeeCode != null)
-                {
-                    body["employee_code"] = ExpressionConverter.ConvertO(__workflow_bodyemployeeCode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisAdmin != null)
-                {
-                    if (__workflow_bodyisAdmin != null)
-                    {
-                        body["is_admin"] = ExpressionConverter.ConvertO(__workflow_bodyisAdmin);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["is_admin"] = false;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystartDate != null)
-                {
-                    body["start_date"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyendDate != null)
-                {
-                    body["end_date"] = ExpressionConverter.ConvertO(__workflow_bodyendDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyholidayLocation != null)
-                {
-                    body["holiday_location"] = ExpressionConverter.ConvertO(__workflow_bodyholidayLocation);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyallowanceUnitIsDays != null)
-                {
-                    body["allowance_unit_is_days"] = ExpressionConverter.ConvertO(__workflow_bodyallowanceUnitIsDays);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyminutesPerWorkingDay != null)
-                {
-                    body["minutes_per_working_day"] = ExpressionConverter.ConvertO(__workflow_bodyminutesPerWorkingDay);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AddEmploymentResponse>(callPayload);
             });
         }
@@ -228,142 +127,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DeleteEmployment(Expression<Func<string>> id, Expression<Func<string>> bodycompanyId)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DeleteEmployment(Expression<Func<string>> id, Expression<Func<DeleteEmploymentInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/employments/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["company_id"] = ExpressionConverter.ConvertO(__workflow_bodycompanyId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<UpdateEmploymentResponse, ApiConnectionActionConfiguration> UpdateEmployment(Expression<Func<string>> id, Expression<Func<string>> bodyfullName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodycompanyId, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodyapproverId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodyemployeeCode = null, Expression<Func<bool>> bodyisAdmin = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyholidayLocation = null, Expression<Func<string>> bodyallowanceUnitIsDays = null, Expression<Func<string>> bodyminutesPerWorkingDay = null)
+        public IBodyWorkflowAction<UpdateEmploymentResponse, ApiConnectionActionConfiguration> UpdateEmployment(Expression<Func<string>> id, Expression<Func<UpdateEmploymentInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyfullName = WorkflowExpression.Compile(bodyfullName, nameof(bodyfullName), required: true);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: true);
-            var __workflow_bodyjobTitle = WorkflowExpression.Compile(bodyjobTitle, nameof(bodyjobTitle), required: false);
-            var __workflow_bodytimezone = WorkflowExpression.Compile(bodytimezone, nameof(bodytimezone), required: false);
-            var __workflow_bodyapproverId = WorkflowExpression.Compile(bodyapproverId, nameof(bodyapproverId), required: false);
-            var __workflow_bodydepartmentId = WorkflowExpression.Compile(bodydepartmentId, nameof(bodydepartmentId), required: false);
-            var __workflow_bodyemployeeCode = WorkflowExpression.Compile(bodyemployeeCode, nameof(bodyemployeeCode), required: false);
-            var __workflow_bodyisAdmin = WorkflowExpression.Compile(bodyisAdmin, nameof(bodyisAdmin), required: false);
-            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
-            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
-            var __workflow_bodyholidayLocation = WorkflowExpression.Compile(bodyholidayLocation, nameof(bodyholidayLocation), required: false);
-            var __workflow_bodyallowanceUnitIsDays = WorkflowExpression.Compile(bodyallowanceUnitIsDays, nameof(bodyallowanceUnitIsDays), required: false);
-            var __workflow_bodyminutesPerWorkingDay = WorkflowExpression.Compile(bodyminutesPerWorkingDay, nameof(bodyminutesPerWorkingDay), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateEmploymentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/employments/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyjobTitle != null)
-                {
-                    body["job_title"] = ExpressionConverter.ConvertO(__workflow_bodyjobTitle);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["full_name"] = ExpressionConverter.ConvertO(__workflow_bodyfullName);
-                bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                if (__workflow_bodytimezone != null)
-                {
-                    body["timezone"] = ExpressionConverter.ConvertO(__workflow_bodytimezone);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["company_id"] = ExpressionConverter.ConvertO(__workflow_bodycompanyId);
-                if (__workflow_bodyapproverId != null)
-                {
-                    body["approver_id"] = ExpressionConverter.ConvertO(__workflow_bodyapproverId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydepartmentId != null)
-                {
-                    body["department_id"] = ExpressionConverter.ConvertO(__workflow_bodydepartmentId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyemployeeCode != null)
-                {
-                    body["employee_code"] = ExpressionConverter.ConvertO(__workflow_bodyemployeeCode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisAdmin != null)
-                {
-                    if (__workflow_bodyisAdmin != null)
-                    {
-                        body["is_admin"] = ExpressionConverter.ConvertO(__workflow_bodyisAdmin);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["is_admin"] = false;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystartDate != null)
-                {
-                    body["start_date"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyendDate != null)
-                {
-                    body["end_date"] = ExpressionConverter.ConvertO(__workflow_bodyendDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyholidayLocation != null)
-                {
-                    body["holiday_location"] = ExpressionConverter.ConvertO(__workflow_bodyholidayLocation);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyallowanceUnitIsDays != null)
-                {
-                    body["allowance_unit_is_days"] = ExpressionConverter.ConvertO(__workflow_bodyallowanceUnitIsDays);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyminutesPerWorkingDay != null)
-                {
-                    body["minutes_per_working_day"] = ExpressionConverter.ConvertO(__workflow_bodyminutesPerWorkingDay);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateEmploymentResponse>(callPayload);
             });
         }
@@ -384,119 +174,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> UpdateLeave(Expression<Func<string>> id, Expression<Func<string>> bodycompanyId, Expression<Func<string>> bodytypeId, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodyreason = null, Expression<Func<bodyleaveBreakdownsInputItem[]>> bodyleaveBreakdowns = null)
+        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> UpdateLeave(Expression<Func<string>> id, Expression<Func<UpdateLeaveInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: true);
-            var __workflow_bodytypeId = WorkflowExpression.Compile(bodytypeId, nameof(bodytypeId), required: true);
-            var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: false);
-            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: false);
-            var __workflow_bodyreason = WorkflowExpression.Compile(bodyreason, nameof(bodyreason), required: false);
-            var __workflow_bodyleaveBreakdowns = WorkflowExpression.Compile(bodyleaveBreakdowns, nameof(bodyleaveBreakdowns), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/leaves/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["company_id"] = ExpressionConverter.ConvertO(__workflow_bodycompanyId);
-                if (__workflow_bodyfrom != null)
-                {
-                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyto != null)
-                {
-                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["type_id"] = ExpressionConverter.ConvertO(__workflow_bodytypeId);
-                if (__workflow_bodyreason != null)
-                {
-                    body["reason"] = ExpressionConverter.ConvertO(__workflow_bodyreason);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyleaveBreakdowns != null)
-                {
-                    body["leave_breakdowns"] = ExpressionConverter.ConvertO(__workflow_bodyleaveBreakdowns);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> RequestLeave(Expression<Func<string>> bodycompanyId, Expression<Func<string>> bodyfrom, Expression<Func<string>> bodyto, Expression<Func<string>> bodytypeId, Expression<Func<string>> bodyreason = null, Expression<Func<bool>> bodyisPrivate = null, Expression<Func<bodyleaveBreakdownsInputItem2[]>> bodyleaveBreakdowns = null)
+        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> RequestLeave(Expression<Func<RequestLeaveInput>> body)
         {
-            var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: true);
-            var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: true);
-            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
-            var __workflow_bodytypeId = WorkflowExpression.Compile(bodytypeId, nameof(bodytypeId), required: true);
-            var __workflow_bodyreason = WorkflowExpression.Compile(bodyreason, nameof(bodyreason), required: false);
-            var __workflow_bodyisPrivate = WorkflowExpression.Compile(bodyisPrivate, nameof(bodyisPrivate), required: false);
-            var __workflow_bodyleaveBreakdowns = WorkflowExpression.Compile(bodyleaveBreakdowns, nameof(bodyleaveBreakdowns), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/leaves";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["content-type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["company_id"] = ExpressionConverter.ConvertO(__workflow_bodycompanyId);
-                bodypropCount++;
-                body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
-                bodypropCount++;
-                body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
-                bodypropCount++;
-                body["type_id"] = ExpressionConverter.ConvertO(__workflow_bodytypeId);
-                if (__workflow_bodyreason != null)
-                {
-                    body["reason"] = ExpressionConverter.ConvertO(__workflow_bodyreason);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisPrivate != null)
-                {
-                    if (__workflow_bodyisPrivate != null)
-                    {
-                        body["is_private"] = ExpressionConverter.ConvertO(__workflow_bodyisPrivate);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["is_private"] = false;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyleaveBreakdowns != null)
-                {
-                    body["leave_breakdowns"] = ExpressionConverter.ConvertO(__workflow_bodyleaveBreakdowns);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string[]>(callPayload);
             });
         }
@@ -689,6 +392,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         public string Id { get; set; }
     }
 
+    public class AddEmploymentInput
+    {
+        [JsonProperty("job_title")]
+        public string JobTitle { get; set; }
+
+        [JsonProperty("full_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FullName { get; set; }
+
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty("timezone")]
+        public string Timezone { get; set; }
+
+        [JsonProperty("company_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CompanyId { get; set; }
+
+        [JsonProperty("approver_id")]
+        public string ApproverId { get; set; }
+
+        [JsonProperty("department_id")]
+        public string DepartmentId { get; set; }
+
+        [JsonProperty("employee_code")]
+        public string EmployeeCode { get; set; }
+
+        [JsonProperty("is_admin", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IsAdmin { get; set; } = false;
+
+        [JsonProperty("start_date")]
+        public string StartDate { get; set; }
+
+        [JsonProperty("end_date")]
+        public string EndDate { get; set; }
+
+        [JsonProperty("holiday_location")]
+        public string HolidayLocation { get; set; }
+
+        [JsonProperty("allowance_unit_is_days")]
+        public string AllowanceUnitIsDays { get; set; }
+
+        [JsonProperty("minutes_per_working_day")]
+        public string MinutesPerWorkingDay { get; set; }
+    }
+
     public class GetDetailsEmployeeResponse
     {
         [JsonProperty("user")]
@@ -728,6 +476,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         public string AvatarUrl { get; set; }
     }
 
+    public class DeleteEmploymentInput
+    {
+        [JsonProperty("company_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CompanyId { get; set; }
+    }
+
     public class UpdateEmploymentResponse
     {
         [JsonProperty("job_title")]
@@ -759,6 +513,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
 
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class UpdateEmploymentInput
+    {
+        [JsonProperty("job_title")]
+        public string JobTitle { get; set; }
+
+        [JsonProperty("full_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FullName { get; set; }
+
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty("timezone")]
+        public string Timezone { get; set; }
+
+        [JsonProperty("company_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CompanyId { get; set; }
+
+        [JsonProperty("approver_id")]
+        public string ApproverId { get; set; }
+
+        [JsonProperty("department_id")]
+        public string DepartmentId { get; set; }
+
+        [JsonProperty("employee_code")]
+        public string EmployeeCode { get; set; }
+
+        [JsonProperty("is_admin", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IsAdmin { get; set; } = false;
+
+        [JsonProperty("start_date")]
+        public string StartDate { get; set; }
+
+        [JsonProperty("end_date")]
+        public string EndDate { get; set; }
+
+        [JsonProperty("holiday_location")]
+        public string HolidayLocation { get; set; }
+
+        [JsonProperty("allowance_unit_is_days")]
+        public string AllowanceUnitIsDays { get; set; }
+
+        [JsonProperty("minutes_per_working_day")]
+        public string MinutesPerWorkingDay { get; set; }
     }
 
     public class GetLeaveDetailsResponse
@@ -815,7 +614,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         public string Name { get; set; }
     }
 
-    public class bodyleaveBreakdownsInputItem
+    public class UpdateLeaveInput
+    {
+        [JsonProperty("company_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CompanyId { get; set; }
+
+        [JsonProperty("from")]
+        public string From { get; set; }
+
+        [JsonProperty("to")]
+        public string To { get; set; }
+
+        [JsonProperty("type_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TypeId { get; set; }
+
+        [JsonProperty("reason")]
+        public string Reason { get; set; }
+
+        [JsonProperty("leave_breakdowns")]
+        public UpdateLeaveInputLeaveBreakdownsTypeItem[] LeaveBreakdowns { get; set; }
+    }
+
+    public class UpdateLeaveInputLeaveBreakdownsTypeItem
     {
         [JsonProperty("from")]
         public string From { get; set; }
@@ -830,16 +650,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         public string Duration { get; set; }
     }
 
-    public class bodyleaveBreakdownsInputItem2
+    public class RequestLeaveInput
     {
-        [JsonProperty("owner_id")]
+        [JsonProperty("company_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CompanyId { get; set; }
+
+        [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string From { get; set; }
+
+        [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string To { get; set; }
+
+        [JsonProperty("type_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TypeId { get; set; }
+
+        [JsonProperty("reason")]
+        public string Reason { get; set; }
+
+        [JsonProperty("is_private", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IsPrivate { get; set; } = false;
+
+        [JsonProperty("leave_breakdowns")]
+        public RequestLeaveInputLeaveBreakdownsTypeItem[] LeaveBreakdowns { get; set; }
+    }
+
+    public class RequestLeaveInputLeaveBreakdownsTypeItem
+    {
+        [JsonProperty("owner_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OwnerId { get; set; }
 
         [JsonProperty("breakdowns")]
-        public bodyleaveBreakdownsInputItemBreakdownsTypeItem[] Breakdowns { get; set; }
+        public RequestLeaveInputLeaveBreakdownsTypeItemBreakdownsTypeItem[] Breakdowns { get; set; }
     }
 
-    public class bodyleaveBreakdownsInputItemBreakdownsTypeItem
+    public class RequestLeaveInputLeaveBreakdownsTypeItemBreakdownsTypeItem
     {
         [JsonProperty("from")]
         public string From { get; set; }

@@ -13,50 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certopus
     public class CertopusActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "certopus")]
-        public IBodyWorkflowAction<CreateCredentialResponse, ApiConnectionActionConfiguration> CreateCredential(Expression<Func<string>> bodyorganisationId, Expression<Func<string>> bodyeventId, Expression<Func<string>> bodycategoryId, Expression<Func<bool>> bodygenerate = null, Expression<Func<bool>> bodypublish = null, Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients = null)
+        public IBodyWorkflowAction<CreateCredentialResponse, ApiConnectionActionConfiguration> CreateCredential(Expression<Func<CreateCredentialInput>> body)
         {
-            var __workflow_bodyorganisationId = WorkflowExpression.Compile(bodyorganisationId, nameof(bodyorganisationId), required: true);
-            var __workflow_bodyeventId = WorkflowExpression.Compile(bodyeventId, nameof(bodyeventId), required: true);
-            var __workflow_bodycategoryId = WorkflowExpression.Compile(bodycategoryId, nameof(bodycategoryId), required: true);
-            var __workflow_bodygenerate = WorkflowExpression.Compile(bodygenerate, nameof(bodygenerate), required: false);
-            var __workflow_bodypublish = WorkflowExpression.Compile(bodypublish, nameof(bodypublish), required: false);
-            var __workflow_bodyrecipients = WorkflowExpression.Compile(bodyrecipients, nameof(bodyrecipients), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateCredentialResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/certificates";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["organisationId"] = ExpressionConverter.ConvertO(__workflow_bodyorganisationId);
-                bodypropCount++;
-                body["eventId"] = ExpressionConverter.ConvertO(__workflow_bodyeventId);
-                bodypropCount++;
-                body["categoryId"] = ExpressionConverter.ConvertO(__workflow_bodycategoryId);
-                if (__workflow_bodygenerate != null)
-                {
-                    body["generate"] = ExpressionConverter.ConvertO(__workflow_bodygenerate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypublish != null)
-                {
-                    body["publish"] = ExpressionConverter.ConvertO(__workflow_bodypublish);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrecipients != null)
-                {
-                    body["recipients"] = ExpressionConverter.ConvertO(__workflow_bodyrecipients);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateCredentialResponse>(callPayload);
             });
         }
@@ -132,16 +97,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certopus
         public string Name { get; set; }
     }
 
-    public class bodyrecipientsInputItem
+    public class CreateCredentialInput
+    {
+        [JsonProperty("organisationId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string OrganisationId { get; set; }
+
+        [JsonProperty("eventId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EventId { get; set; }
+
+        [JsonProperty("categoryId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CategoryId { get; set; }
+
+        [JsonProperty("generate")]
+        public bool? Generate { get; set; }
+
+        [JsonProperty("publish")]
+        public bool? Publish { get; set; }
+
+        [JsonProperty("recipients")]
+        public CreateCredentialInputRecipientsTypeItem[] Recipients { get; set; }
+    }
+
+    public class CreateCredentialInputRecipientsTypeItem
     {
         [JsonProperty("data")]
-        public bodyrecipientsInputItemDataType Data { get; set; }
+        public CreateCredentialInputRecipientsTypeItemDataType Data { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }
     }
 
-    public class bodyrecipientsInputItemDataType
+    public class CreateCredentialInputRecipientsTypeItemDataType
     {
         [JsonProperty("{Name}")]
         public string Name { get; set; }

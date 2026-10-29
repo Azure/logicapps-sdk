@@ -13,34 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbauddocuments
     public class BlackbauddocumentsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbauddocuments")]
-        public IBodyWorkflowAction<ConstituentApiFileDefinition, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<string>> bodyfileName = null, Expression<Func<bool>> bodyincludeThumbnail = null)
+        public IBodyWorkflowAction<ConstituentApiFileDefinition, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<CreateDocumentInput>> body)
         {
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: false);
-            var __workflow_bodyincludeThumbnail = WorkflowExpression.Compile(bodyincludeThumbnail, nameof(bodyincludeThumbnail), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConstituentApiFileDefinition, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/constituent/v1/documents";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfileName != null)
-                {
-                    body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyincludeThumbnail != null)
-                {
-                    body["upload_thumbnail"] = ExpressionConverter.ConvertO(__workflow_bodyincludeThumbnail);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ConstituentApiFileDefinition>(callPayload);
             });
         }
@@ -96,6 +77,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbauddocuments
 
         [JsonProperty("headers")]
         public ConstituentApiHeader[] Headers { get; set; }
+    }
+
+    public class CreateDocumentInput
+    {
+        [JsonProperty("file_name")]
+        public string FileName { get; set; }
+
+        [JsonProperty("upload_thumbnail")]
+        public bool? IncludeThumbnail { get; set; }
     }
 }
 

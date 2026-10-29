@@ -27,211 +27,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
-        public IBodyWorkflowAction<CreateAirmeetResponse, ApiConnectionActionConfiguration> CreateAirmeet(Expression<Func<string>> bodyhostEmail, Expression<Func<string>> bodyeventName, Expression<Func<string>> bodyshortDesc, Expression<Func<string>> bodyeventImage = null, Expression<Func<string>> bodylongDesc = null, Expression<Func<bodyaccessInput>> bodyaccess = null, Expression<Func<int>> bodytimingstartTime = null, Expression<Func<int>> bodytimingendTime = null, Expression<Func<string>> bodytimingtimezone = null, Expression<Func<bool>> bodyconfignetworking = null, Expression<Func<int>> bodyconfigtableCount = null)
+        public IBodyWorkflowAction<CreateAirmeetResponse, ApiConnectionActionConfiguration> CreateAirmeet(Expression<Func<CreateAirmeetInput>> body = null)
         {
-            var __workflow_bodyhostEmail = WorkflowExpression.Compile(bodyhostEmail, nameof(bodyhostEmail), required: true);
-            var __workflow_bodyeventName = WorkflowExpression.Compile(bodyeventName, nameof(bodyeventName), required: true);
-            var __workflow_bodyshortDesc = WorkflowExpression.Compile(bodyshortDesc, nameof(bodyshortDesc), required: true);
-            var __workflow_bodyeventImage = WorkflowExpression.Compile(bodyeventImage, nameof(bodyeventImage), required: false);
-            var __workflow_bodylongDesc = WorkflowExpression.Compile(bodylongDesc, nameof(bodylongDesc), required: false);
-            var __workflow_bodyaccess = WorkflowExpression.Compile(bodyaccess, nameof(bodyaccess), required: false);
-            var __workflow_bodytimingstartTime = WorkflowExpression.Compile(bodytimingstartTime, nameof(bodytimingstartTime), required: false);
-            var __workflow_bodytimingendTime = WorkflowExpression.Compile(bodytimingendTime, nameof(bodytimingendTime), required: false);
-            var __workflow_bodytimingtimezone = WorkflowExpression.Compile(bodytimingtimezone, nameof(bodytimingtimezone), required: false);
-            var __workflow_bodyconfignetworking = WorkflowExpression.Compile(bodyconfignetworking, nameof(bodyconfignetworking), required: false);
-            var __workflow_bodyconfigtableCount = WorkflowExpression.Compile(bodyconfigtableCount, nameof(bodyconfigtableCount), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateAirmeetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/airmeet";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["hostEmail"] = ExpressionConverter.ConvertO(__workflow_bodyhostEmail);
-                bodypropCount++;
-                body["eventName"] = ExpressionConverter.ConvertO(__workflow_bodyeventName);
-                bodypropCount++;
-                body["shortDesc"] = ExpressionConverter.ConvertO(__workflow_bodyshortDesc);
-                if (__workflow_bodyeventImage != null)
-                {
-                    body["eventImage"] = ExpressionConverter.ConvertO(__workflow_bodyeventImage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylongDesc != null)
-                {
-                    body["longDesc"] = ExpressionConverter.ConvertO(__workflow_bodylongDesc);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaccess != null)
-                {
-                    if (__workflow_bodyaccess != null)
-                    {
-                        body["access"] = ExpressionConverter.ConvertO(__workflow_bodyaccess);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["access"] = "INVITED_ONLY";
-                    bodypropCount++;
-                }
-
-                body["eventType"] = "MEETUP";
-                bodypropCount++;
-                var timingObject = new JObject();
-                var timingObjectpropCount = 0;
-                if (__workflow_bodytimingstartTime != null)
-                {
-                    timingObject["startTime"] = ExpressionConverter.ConvertO(__workflow_bodytimingstartTime);
-                    timingObjectpropCount++;
-                }
-
-                if (__workflow_bodytimingendTime != null)
-                {
-                    timingObject["endTime"] = ExpressionConverter.ConvertO(__workflow_bodytimingendTime);
-                    timingObjectpropCount++;
-                }
-
-                if (__workflow_bodytimingtimezone != null)
-                {
-                    if (__workflow_bodytimingtimezone != null)
-                    {
-                        timingObject["timezone"] = ExpressionConverter.ConvertO(__workflow_bodytimingtimezone);
-                        timingObjectpropCount++;
-                    }
-
-                    timingObjectpropCount++;
-                }
-                else
-                {
-                    timingObject["timezone"] = "Asia/Kolkata";
-                    timingObjectpropCount++;
-                }
-
-                if (timingObjectpropCount > 0)
-                {
-                    body["timing"] = timingObject;
-                    bodypropCount++;
-                }
-
-                var configObject = new JObject();
-                var configObjectpropCount = 0;
-                if (__workflow_bodyconfignetworking != null)
-                {
-                    if (__workflow_bodyconfignetworking != null)
-                    {
-                        configObject["networking"] = ExpressionConverter.ConvertO(__workflow_bodyconfignetworking);
-                        configObjectpropCount++;
-                    }
-
-                    configObjectpropCount++;
-                }
-                else
-                {
-                    configObject["networking"] = true;
-                    configObjectpropCount++;
-                }
-
-                if (__workflow_bodyconfigtableCount != null)
-                {
-                    if (__workflow_bodyconfigtableCount != null)
-                    {
-                        configObject["tableCount"] = ExpressionConverter.ConvertO(__workflow_bodyconfigtableCount);
-                        configObjectpropCount++;
-                    }
-
-                    configObjectpropCount++;
-                }
-                else
-                {
-                    configObject["tableCount"] = 12;
-                    configObjectpropCount++;
-                }
-
-                if (configObjectpropCount > 0)
-                {
-                    body["config"] = configObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateAirmeetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
-        public IBodyWorkflowAction<CreateSpeakerResponse, ApiConnectionActionConfiguration> CreateSpeaker(Expression<Func<string>> airmeetId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyorganisation = null, Expression<Func<string>> bodydesignation = null, Expression<Func<string>> bodyimageUrl = null, Expression<Func<string>> bodybio = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodycountry = null)
+        public IBodyWorkflowAction<CreateSpeakerResponse, ApiConnectionActionConfiguration> CreateSpeaker(Expression<Func<string>> airmeetId, Expression<Func<CreateSpeakerInput>> body = null)
         {
             var __workflow_airmeetId = WorkflowExpression.Compile(airmeetId, nameof(airmeetId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyorganisation = WorkflowExpression.Compile(bodyorganisation, nameof(bodyorganisation), required: false);
-            var __workflow_bodydesignation = WorkflowExpression.Compile(bodydesignation, nameof(bodydesignation), required: false);
-            var __workflow_bodyimageUrl = WorkflowExpression.Compile(bodyimageUrl, nameof(bodyimageUrl), required: false);
-            var __workflow_bodybio = WorkflowExpression.Compile(bodybio, nameof(bodybio), required: false);
-            var __workflow_bodycity = WorkflowExpression.Compile(bodycity, nameof(bodycity), required: false);
-            var __workflow_bodycountry = WorkflowExpression.Compile(bodycountry, nameof(bodycountry), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateSpeakerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/airmeet/{0}/speaker", __workflow_airmeetId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                if (__workflow_bodyorganisation != null)
-                {
-                    body["organisation"] = ExpressionConverter.ConvertO(__workflow_bodyorganisation);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydesignation != null)
-                {
-                    body["designation"] = ExpressionConverter.ConvertO(__workflow_bodydesignation);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyimageUrl != null)
-                {
-                    body["imageUrl"] = ExpressionConverter.ConvertO(__workflow_bodyimageUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybio != null)
-                {
-                    body["bio"] = ExpressionConverter.ConvertO(__workflow_bodybio);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycity != null)
-                {
-                    body["city"] = ExpressionConverter.ConvertO(__workflow_bodycity);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycountry != null)
-                {
-                    body["country"] = ExpressionConverter.ConvertO(__workflow_bodycountry);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateSpeakerResponse>(callPayload);
             });
         }
@@ -250,24 +71,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
-        public IBodyWorkflowAction<StartAndEndAirmeetResponse, ApiConnectionActionConfiguration> StartAndEndAirmeet(Expression<Func<string>> airmeetId, Expression<Func<bodystatusInput>> bodystatus)
+        public IBodyWorkflowAction<StartAndEndAirmeetResponse, ApiConnectionActionConfiguration> StartAndEndAirmeet(Expression<Func<string>> airmeetId, Expression<Func<StartAndEndAirmeetInput>> body)
         {
             var __workflow_airmeetId = WorkflowExpression.Compile(airmeetId, nameof(airmeetId), required: true);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<StartAndEndAirmeetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/airmeet/{0}/status", __workflow_airmeetId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<StartAndEndAirmeetResponse>(callPayload);
             });
         }
@@ -373,343 +186,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
-        public IBodyWorkflowAction<CreateBoothResponse, ApiConnectionActionConfiguration> CreateBooth(Expression<Func<string>> airmeetId, Expression<Func<string>> bodyname, Expression<Func<bodyexhibitorInfoInputItem[]>> bodyexhibitorInfo, Expression<Func<string[]>> bodytags = null, Expression<Func<bool>> bodymetaDatachatEnabled = null, Expression<Func<bool>> bodymetaDataloungeEnabled = null, Expression<Func<bool>> bodymetaDatabroadcastEnabled = null, Expression<Func<int>> bodymetaDatatableCount = null)
+        public IBodyWorkflowAction<CreateBoothResponse, ApiConnectionActionConfiguration> CreateBooth(Expression<Func<string>> airmeetId, Expression<Func<CreateBoothInput>> body = null)
         {
             var __workflow_airmeetId = WorkflowExpression.Compile(airmeetId, nameof(airmeetId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyexhibitorInfo = WorkflowExpression.Compile(bodyexhibitorInfo, nameof(bodyexhibitorInfo), required: true);
-            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
-            var __workflow_bodymetaDatachatEnabled = WorkflowExpression.Compile(bodymetaDatachatEnabled, nameof(bodymetaDatachatEnabled), required: false);
-            var __workflow_bodymetaDataloungeEnabled = WorkflowExpression.Compile(bodymetaDataloungeEnabled, nameof(bodymetaDataloungeEnabled), required: false);
-            var __workflow_bodymetaDatabroadcastEnabled = WorkflowExpression.Compile(bodymetaDatabroadcastEnabled, nameof(bodymetaDatabroadcastEnabled), required: false);
-            var __workflow_bodymetaDatatableCount = WorkflowExpression.Compile(bodymetaDatatableCount, nameof(bodymetaDatatableCount), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateBoothResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/airmeet/{0}/booths", __workflow_airmeetId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["exhibitorInfo"] = ExpressionConverter.ConvertO(__workflow_bodyexhibitorInfo);
-                if (__workflow_bodytags != null)
-                {
-                    body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
-                    bodypropCount++;
-                }
-
-                var metaDataObject = new JObject();
-                var metaDataObjectpropCount = 0;
-                if (__workflow_bodymetaDatachatEnabled != null)
-                {
-                    if (__workflow_bodymetaDatachatEnabled != null)
-                    {
-                        metaDataObject["chatEnabled"] = ExpressionConverter.ConvertO(__workflow_bodymetaDatachatEnabled);
-                        metaDataObjectpropCount++;
-                    }
-
-                    metaDataObjectpropCount++;
-                }
-                else
-                {
-                    metaDataObject["chatEnabled"] = false;
-                    metaDataObjectpropCount++;
-                }
-
-                if (__workflow_bodymetaDataloungeEnabled != null)
-                {
-                    if (__workflow_bodymetaDataloungeEnabled != null)
-                    {
-                        metaDataObject["loungeEnabled"] = ExpressionConverter.ConvertO(__workflow_bodymetaDataloungeEnabled);
-                        metaDataObjectpropCount++;
-                    }
-
-                    metaDataObjectpropCount++;
-                }
-                else
-                {
-                    metaDataObject["loungeEnabled"] = false;
-                    metaDataObjectpropCount++;
-                }
-
-                if (__workflow_bodymetaDatabroadcastEnabled != null)
-                {
-                    if (__workflow_bodymetaDatabroadcastEnabled != null)
-                    {
-                        metaDataObject["broadcastEnabled"] = ExpressionConverter.ConvertO(__workflow_bodymetaDatabroadcastEnabled);
-                        metaDataObjectpropCount++;
-                    }
-
-                    metaDataObjectpropCount++;
-                }
-                else
-                {
-                    metaDataObject["broadcastEnabled"] = false;
-                    metaDataObjectpropCount++;
-                }
-
-                if (__workflow_bodymetaDatatableCount != null)
-                {
-                    if (__workflow_bodymetaDatatableCount != null)
-                    {
-                        metaDataObject["tableCount"] = ExpressionConverter.ConvertO(__workflow_bodymetaDatatableCount);
-                        metaDataObjectpropCount++;
-                    }
-
-                    metaDataObjectpropCount++;
-                }
-                else
-                {
-                    metaDataObject["tableCount"] = 6;
-                    metaDataObjectpropCount++;
-                }
-
-                if (metaDataObjectpropCount > 0)
-                {
-                    body["metaData"] = metaDataObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateBoothResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
-        public IBodyWorkflowAction<AddAuthorizedAttendeeResponse, ApiConnectionActionConfiguration> AddAuthorizedAttendee(Expression<Func<string>> airmeetId, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName, Expression<Func<string>> bodylastName, Expression<Func<bool>> bodyregisterAttendee, Expression<Func<bool>> bodysendEmailInvite, Expression<Func<bodyattendanceTypeInput>> bodyattendanceType = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodydesignation = null, Expression<Func<string>> bodyorganisation = null, Expression<Func<bodycustomFieldMappingInputItem[]>> bodycustomFieldMapping = null)
+        public IBodyWorkflowAction<AddAuthorizedAttendeeResponse, ApiConnectionActionConfiguration> AddAuthorizedAttendee(Expression<Func<string>> airmeetId, Expression<Func<AddAuthorizedAttendeeInput>> body = null)
         {
             var __workflow_airmeetId = WorkflowExpression.Compile(airmeetId, nameof(airmeetId), required: true);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: true);
-            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: true);
-            var __workflow_bodyregisterAttendee = WorkflowExpression.Compile(bodyregisterAttendee, nameof(bodyregisterAttendee), required: true);
-            var __workflow_bodysendEmailInvite = WorkflowExpression.Compile(bodysendEmailInvite, nameof(bodysendEmailInvite), required: true);
-            var __workflow_bodyattendanceType = WorkflowExpression.Compile(bodyattendanceType, nameof(bodyattendanceType), required: false);
-            var __workflow_bodycity = WorkflowExpression.Compile(bodycity, nameof(bodycity), required: false);
-            var __workflow_bodycountry = WorkflowExpression.Compile(bodycountry, nameof(bodycountry), required: false);
-            var __workflow_bodydesignation = WorkflowExpression.Compile(bodydesignation, nameof(bodydesignation), required: false);
-            var __workflow_bodyorganisation = WorkflowExpression.Compile(bodyorganisation, nameof(bodyorganisation), required: false);
-            var __workflow_bodycustomFieldMapping = WorkflowExpression.Compile(bodycustomFieldMapping, nameof(bodycustomFieldMapping), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<AddAuthorizedAttendeeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/airmeet/{0}/attendee", __workflow_airmeetId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                bodypropCount++;
-                body["firstName"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
-                bodypropCount++;
-                body["lastName"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
-                if (__workflow_bodyattendanceType != null)
-                {
-                    if (__workflow_bodyattendanceType != null)
-                    {
-                        body["attendance_type"] = ExpressionConverter.ConvertO(__workflow_bodyattendanceType);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["attendance_type"] = "IN-PERSON";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycity != null)
-                {
-                    body["city"] = ExpressionConverter.ConvertO(__workflow_bodycity);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycountry != null)
-                {
-                    body["country"] = ExpressionConverter.ConvertO(__workflow_bodycountry);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydesignation != null)
-                {
-                    body["designation"] = ExpressionConverter.ConvertO(__workflow_bodydesignation);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyorganisation != null)
-                {
-                    body["organisation"] = ExpressionConverter.ConvertO(__workflow_bodyorganisation);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["registerAttendee"] = ExpressionConverter.ConvertO(__workflow_bodyregisterAttendee);
-                bodypropCount++;
-                body["sendEmailInvite"] = ExpressionConverter.ConvertO(__workflow_bodysendEmailInvite);
-                if (__workflow_bodycustomFieldMapping != null)
-                {
-                    body["customFieldMapping"] = ExpressionConverter.ConvertO(__workflow_bodycustomFieldMapping);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AddAuthorizedAttendeeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
-        public IBodyWorkflowAction<CreateSessionResponse, ApiConnectionActionConfiguration> CreateSession(Expression<Func<string>> airmeetId, Expression<Func<int>> bodysessionStartTime, Expression<Func<string>> bodyhostEmail, Expression<Func<string>> bodysessionTitle = null, Expression<Func<int>> bodysessionDuration = null, Expression<Func<string>> bodysessionSummary = null, Expression<Func<string[]>> bodyspeakerEmails = null, Expression<Func<string[]>> bodycohostEmails = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<string[]>> bodytracks = null, Expression<Func<string[]>> bodytags = null, Expression<Func<string>> bodyboothId = null, Expression<Func<int>> bodyspeedNetworkingDataconversationTime = null, Expression<Func<int>> bodyspeedNetworkingDataextendNetworkingTime = null, Expression<Func<bool>> bodysessionMetahideHost = null)
+        public IBodyWorkflowAction<CreateSessionResponse, ApiConnectionActionConfiguration> CreateSession(Expression<Func<string>> airmeetId, Expression<Func<CreateSessionInput>> body = null)
         {
             var __workflow_airmeetId = WorkflowExpression.Compile(airmeetId, nameof(airmeetId), required: true);
-            var __workflow_bodysessionStartTime = WorkflowExpression.Compile(bodysessionStartTime, nameof(bodysessionStartTime), required: true);
-            var __workflow_bodyhostEmail = WorkflowExpression.Compile(bodyhostEmail, nameof(bodyhostEmail), required: true);
-            var __workflow_bodysessionTitle = WorkflowExpression.Compile(bodysessionTitle, nameof(bodysessionTitle), required: false);
-            var __workflow_bodysessionDuration = WorkflowExpression.Compile(bodysessionDuration, nameof(bodysessionDuration), required: false);
-            var __workflow_bodysessionSummary = WorkflowExpression.Compile(bodysessionSummary, nameof(bodysessionSummary), required: false);
-            var __workflow_bodyspeakerEmails = WorkflowExpression.Compile(bodyspeakerEmails, nameof(bodyspeakerEmails), required: false);
-            var __workflow_bodycohostEmails = WorkflowExpression.Compile(bodycohostEmails, nameof(bodycohostEmails), required: false);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodytracks = WorkflowExpression.Compile(bodytracks, nameof(bodytracks), required: false);
-            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
-            var __workflow_bodyboothId = WorkflowExpression.Compile(bodyboothId, nameof(bodyboothId), required: false);
-            var __workflow_bodyspeedNetworkingDataconversationTime = WorkflowExpression.Compile(bodyspeedNetworkingDataconversationTime, nameof(bodyspeedNetworkingDataconversationTime), required: false);
-            var __workflow_bodyspeedNetworkingDataextendNetworkingTime = WorkflowExpression.Compile(bodyspeedNetworkingDataextendNetworkingTime, nameof(bodyspeedNetworkingDataextendNetworkingTime), required: false);
-            var __workflow_bodysessionMetahideHost = WorkflowExpression.Compile(bodysessionMetahideHost, nameof(bodysessionMetahideHost), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateSessionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/airmeet/{0}/session", __workflow_airmeetId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodysessionTitle != null)
-                {
-                    body["sessionTitle"] = ExpressionConverter.ConvertO(__workflow_bodysessionTitle);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["sessionStartTime"] = ExpressionConverter.ConvertO(__workflow_bodysessionStartTime);
-                if (__workflow_bodysessionDuration != null)
-                {
-                    if (__workflow_bodysessionDuration != null)
-                    {
-                        body["sessionDuration"] = ExpressionConverter.ConvertO(__workflow_bodysessionDuration);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["sessionDuration"] = 30;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysessionSummary != null)
-                {
-                    body["sessionSummary"] = ExpressionConverter.ConvertO(__workflow_bodysessionSummary);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["hostEmail"] = ExpressionConverter.ConvertO(__workflow_bodyhostEmail);
-                if (__workflow_bodyspeakerEmails != null)
-                {
-                    body["speakerEmails"] = ExpressionConverter.ConvertO(__workflow_bodyspeakerEmails);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycohostEmails != null)
-                {
-                    body["cohostEmails"] = ExpressionConverter.ConvertO(__workflow_bodycohostEmails);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytype != null)
-                {
-                    if (__workflow_bodytype != null)
-                    {
-                        body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["type"] = "HOSTING";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytracks != null)
-                {
-                    body["tracks"] = ExpressionConverter.ConvertO(__workflow_bodytracks);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytags != null)
-                {
-                    body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyboothId != null)
-                {
-                    body["boothId"] = ExpressionConverter.ConvertO(__workflow_bodyboothId);
-                    bodypropCount++;
-                }
-
-                var speedNetworkingDataObject = new JObject();
-                var speedNetworkingDataObjectpropCount = 0;
-                if (__workflow_bodyspeedNetworkingDataconversationTime != null)
-                {
-                    speedNetworkingDataObject["conversationTime"] = ExpressionConverter.ConvertO(__workflow_bodyspeedNetworkingDataconversationTime);
-                    speedNetworkingDataObjectpropCount++;
-                }
-
-                if (__workflow_bodyspeedNetworkingDataextendNetworkingTime != null)
-                {
-                    speedNetworkingDataObject["extendNetworkingTime"] = ExpressionConverter.ConvertO(__workflow_bodyspeedNetworkingDataextendNetworkingTime);
-                    speedNetworkingDataObjectpropCount++;
-                }
-
-                if (speedNetworkingDataObjectpropCount > 0)
-                {
-                    body["speedNetworkingData"] = speedNetworkingDataObject;
-                    bodypropCount++;
-                }
-
-                var sessionMetaObject = new JObject();
-                var sessionMetaObjectpropCount = 0;
-                if (__workflow_bodysessionMetahideHost != null)
-                {
-                    sessionMetaObject["hideHost"] = ExpressionConverter.ConvertO(__workflow_bodysessionMetahideHost);
-                    sessionMetaObjectpropCount++;
-                }
-
-                if (sessionMetaObjectpropCount > 0)
-                {
-                    body["sessionMeta"] = sessionMetaObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateSessionResponse>(callPayload);
             });
         }
@@ -773,8 +292,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         public string Status { get; set; }
     }
 
+    public class CreateAirmeetInput
+    {
+        [JsonProperty("hostEmail", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string HostEmail { get; set; }
+
+        [JsonProperty("eventName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EventName { get; set; }
+
+        [JsonProperty("shortDesc", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ShortDesc { get; set; }
+
+        [JsonProperty("eventImage")]
+        public string EventImage { get; set; }
+
+        [JsonProperty("longDesc")]
+        public string LongDesc { get; set; }
+
+        [JsonProperty("access", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateAirmeetInputAccessType? Access { get; set; } = CreateAirmeetInputAccessType.INVITEDONLY;
+
+        [JsonProperty("eventType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string EventType { get; set; } = "MEETUP";
+
+        [JsonProperty("timing", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateAirmeetInputTimingType Timing { get; set; }
+
+        [JsonProperty("config")]
+        public CreateAirmeetInputConfigType Config { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyaccessInput
+    public enum CreateAirmeetInputAccessType
     {
         [EnumMember(Value = "INVITED_ONLY")]
         INVITEDONLY,
@@ -784,6 +333,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         WITHOUTVERIFIEDEMAIL
     }
 
+    public class CreateAirmeetInputTimingType
+    {
+        [JsonProperty("startTime", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int StartTime { get; set; }
+
+        [JsonProperty("endTime", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int EndTime { get; set; }
+
+        [JsonProperty("timezone", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Timezone { get; set; } = "Asia/Kolkata";
+    }
+
+    public class CreateAirmeetInputConfigType
+    {
+        [JsonProperty("networking", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Networking { get; set; } = true;
+
+        [JsonProperty("tableCount", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? TableCount { get; set; } = 12;
+    }
+
     public class CreateSpeakerResponse
     {
         [JsonProperty("speakerEmail")]
@@ -791,6 +361,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
 
         [JsonProperty("status")]
         public string Status { get; set; }
+    }
+
+    public class CreateSpeakerInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty("organisation")]
+        public string Organisation { get; set; }
+
+        [JsonProperty("designation")]
+        public string Designation { get; set; }
+
+        [JsonProperty("imageUrl")]
+        public string ImageUrl { get; set; }
+
+        [JsonProperty("bio")]
+        public string Bio { get; set; }
+
+        [JsonProperty("city")]
+        public string City { get; set; }
+
+        [JsonProperty("country")]
+        public string Country { get; set; }
     }
 
     public class AirmeetSessionsResponse
@@ -841,8 +438,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         public bool StatusUpdated { get; set; }
     }
 
+    public class StartAndEndAirmeetInput
+    {
+        [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
+        public StartAndEndAirmeetInputStatusType Status { get; set; } = StartAndEndAirmeetInputStatusType.ONGOING;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodystatusInput
+    public enum StartAndEndAirmeetInputStatusType
     {
         ONGOING,
         FINISHED
@@ -1138,21 +741,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         public string Uuid { get; set; }
     }
 
-    public class bodyexhibitorInfoInputItem
+    public class CreateBoothInput
     {
-        [JsonProperty("email")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("exhibitorInfo", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateBoothInputExhibitorInfoTypeItem[] ExhibitorInfo { get; set; }
+
+        [JsonProperty("tags")]
+        public string[] Tags { get; set; }
+
+        [JsonProperty("metaData", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateBoothInputMetaDataType MetaData { get; set; }
+    }
+
+    public class CreateBoothInputExhibitorInfoTypeItem
+    {
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
-        [JsonProperty("exhibitorAttendanceType")]
-        public bodyexhibitorInfoInputItemExhibitorAttendanceTypeType ExhibitorAttendanceType { get; set; }
+        [JsonProperty("exhibitorAttendanceType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateBoothInputExhibitorInfoTypeItemExhibitorAttendanceTypeType? ExhibitorAttendanceType { get; set; } = CreateBoothInputExhibitorInfoTypeItemExhibitorAttendanceTypeType.HYBRId;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyexhibitorInfoInputItemExhibitorAttendanceTypeType
+    public enum CreateBoothInputExhibitorInfoTypeItemExhibitorAttendanceTypeType
     {
         [EnumMember(Value = "HYBRID")]
         HYBRId,
         ONLINE
+    }
+
+    public class CreateBoothInputMetaDataType
+    {
+        [JsonProperty("chatEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool ChatEnabled { get; set; } = false;
+
+        [JsonProperty("loungeEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool LoungeEnabled { get; set; } = false;
+
+        [JsonProperty("broadcastEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool BroadcastEnabled { get; set; } = false;
+
+        [JsonProperty("tableCount", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? TableCount { get; set; } = 6;
     }
 
     public class AddAuthorizedAttendeeResponse
@@ -1164,15 +797,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         public string EntryLink { get; set; }
     }
 
+    public class AddAuthorizedAttendeeInput
+    {
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty("firstName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FirstName { get; set; }
+
+        [JsonProperty("lastName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LastName { get; set; }
+
+        [JsonProperty("attendance_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddAuthorizedAttendeeInputAttendanceTypeType? AttendanceType { get; set; } = AddAuthorizedAttendeeInputAttendanceTypeType.INPERSON;
+
+        [JsonProperty("city")]
+        public string City { get; set; }
+
+        [JsonProperty("country")]
+        public string Country { get; set; }
+
+        [JsonProperty("designation")]
+        public string Designation { get; set; }
+
+        [JsonProperty("organisation")]
+        public string Organisation { get; set; }
+
+        [JsonProperty("registerAttendee", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool RegisterAttendee { get; set; } = false;
+
+        [JsonProperty("sendEmailInvite", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool SendEmailInvite { get; set; } = false;
+
+        [JsonProperty("customFieldMapping")]
+        public AddAuthorizedAttendeeInputCustomFieldMappingTypeItem[] CustomFieldMapping { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyattendanceTypeInput
+    public enum AddAuthorizedAttendeeInputAttendanceTypeType
     {
         VIRTUAL,
         [EnumMember(Value = "IN-PERSON")]
         INPERSON
     }
 
-    public class bodycustomFieldMappingInputItem
+    public class AddAuthorizedAttendeeInputCustomFieldMappingTypeItem
     {
         [JsonProperty("fieldId")]
         public string FieldId { get; set; }
@@ -1187,8 +856,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         public string Uuid { get; set; }
     }
 
+    public class CreateSessionInput
+    {
+        [JsonProperty("sessionTitle")]
+        public string SessionTitle { get; set; }
+
+        [JsonProperty("sessionStartTime", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SessionStartTime { get; set; }
+
+        [JsonProperty("sessionDuration", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? SessionDuration { get; set; } = 30;
+
+        [JsonProperty("sessionSummary")]
+        public string SessionSummary { get; set; }
+
+        [JsonProperty("hostEmail", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string HostEmail { get; set; }
+
+        [JsonProperty("speakerEmails")]
+        public string[] SpeakerEmails { get; set; }
+
+        [JsonProperty("cohostEmails")]
+        public string[] CohostEmails { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateSessionInputTypeType? Type { get; set; } = CreateSessionInputTypeType.HOSTING;
+
+        [JsonProperty("tracks")]
+        public string[] Tracks { get; set; }
+
+        [JsonProperty("tags")]
+        public string[] Tags { get; set; }
+
+        [JsonProperty("boothId")]
+        public string BoothId { get; set; }
+
+        [JsonProperty("speedNetworkingData")]
+        public CreateSessionInputSpeedNetworkingDataType SpeedNetworkingData { get; set; }
+
+        [JsonProperty("sessionMeta")]
+        public CreateSessionInputSessionMetaType SessionMeta { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytypeInput
+    public enum CreateSessionInputTypeType
     {
         HOSTING,
         [EnumMember(Value = "FLUID_LOUNGE")]
@@ -1200,6 +911,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         [EnumMember(Value = "SPEED_NETWORKING")]
         SPEEDNETWORKING,
         STREAMING
+    }
+
+    public class CreateSessionInputSpeedNetworkingDataType
+    {
+        [JsonProperty("conversationTime")]
+        public int? ConversationTime { get; set; }
+
+        [JsonProperty("extendNetworkingTime")]
+        public int? ExtendNetworkingTime { get; set; }
+    }
+
+    public class CreateSessionInputSessionMetaType
+    {
+        [JsonProperty("hideHost")]
+        public bool? HideHost { get; set; }
     }
 }
 

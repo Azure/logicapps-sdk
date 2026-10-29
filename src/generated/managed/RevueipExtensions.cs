@@ -124,87 +124,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Subscriber, ApiConnectionActionConfiguration> AddSubscriber(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<bool>> bodydoubleOptIn = null)
+        public IBodyWorkflowAction<Subscriber, ApiConnectionActionConfiguration> AddSubscriber(Expression<Func<AddSubscriberInput>> body = null)
         {
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodydoubleOptIn = WorkflowExpression.Compile(bodydoubleOptIn, nameof(bodydoubleOptIn), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Subscriber, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/subscribers";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                if (__workflow_bodyfirstName != null)
-                {
-                    body["first_name"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylastName != null)
-                {
-                    body["last_name"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydoubleOptIn != null)
-                {
-                    body["double_opt_in"] = ExpressionConverter.ConvertO(__workflow_bodydoubleOptIn);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Subscriber>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Subscriber, ApiConnectionActionConfiguration> UpdateSubscriber(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<bool>> bodydoubleOptIn = null)
+        public IBodyWorkflowAction<Subscriber, ApiConnectionActionConfiguration> UpdateSubscriber(Expression<Func<UpdateSubscriberInput>> body = null)
         {
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodydoubleOptIn = WorkflowExpression.Compile(bodydoubleOptIn, nameof(bodydoubleOptIn), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Subscriber, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/subscribers";
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                if (__workflow_bodyfirstName != null)
-                {
-                    body["first_name"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylastName != null)
-                {
-                    body["last_name"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydoubleOptIn != null)
-                {
-                    body["double_opt_in"] = ExpressionConverter.ConvertO(__workflow_bodydoubleOptIn);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Subscriber>(callPayload);
             });
         }
@@ -222,58 +166,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Subscriber, ApiConnectionActionConfiguration> UnsubscribeSubscriber(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<bool>> bodydoubleOptIn = null)
+        public IBodyWorkflowAction<Subscriber, ApiConnectionActionConfiguration> UnsubscribeSubscriber(Expression<Func<UnsubscribeSubscriberInput>> body = null)
         {
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodydoubleOptIn = WorkflowExpression.Compile(bodydoubleOptIn, nameof(bodydoubleOptIn), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Subscriber, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/subscribers/unsubscribe";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyemail != null)
-                {
-                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfirstName != null)
-                {
-                    body["first_name"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylastName != null)
-                {
-                    body["last_name"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydoubleOptIn != null)
-                {
-                    if (__workflow_bodydoubleOptIn != null)
-                    {
-                        body["double_opt_in"] = ExpressionConverter.ConvertO(__workflow_bodydoubleOptIn);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["double_opt_in"] = true;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Subscriber>(callPayload);
             });
         }
@@ -440,6 +342,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
 
         [JsonProperty("double_opt_in")]
         public bool DoubleOptIn { get; set; }
+    }
+
+    public class AddSubscriberInput
+    {
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty("first_name")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("last_name")]
+        public string LastName { get; set; }
+
+        [JsonProperty("double_opt_in")]
+        public bool? DoubleOptIn { get; set; }
+    }
+
+    public class UpdateSubscriberInput
+    {
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty("first_name")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("last_name")]
+        public string LastName { get; set; }
+
+        [JsonProperty("double_opt_in")]
+        public bool? DoubleOptIn { get; set; }
+    }
+
+    public class UnsubscribeSubscriberInput
+    {
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("first_name")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("last_name")]
+        public string LastName { get; set; }
+
+        [JsonProperty("double_opt_in", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? DoubleOptIn { get; set; } = true;
     }
 
     public class Account

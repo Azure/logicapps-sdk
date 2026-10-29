@@ -50,61 +50,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tomorrowioip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tomorrowioip")]
-        public IBodyWorkflowAction<TimelinePostResponse, ApiConnectionActionConfiguration> Timeline(Expression<Func<string>> bodylocation, Expression<Func<string[]>> bodyfields, Expression<Func<bodyunitsInput>> bodyunits = null, Expression<Func<string[]>> bodytimesteps = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<string>> bodytimezone = null)
+        public IBodyWorkflowAction<TimelinePostResponse, ApiConnectionActionConfiguration> Timeline(Expression<Func<TimelinePostInput>> body = null)
         {
-            var __workflow_bodylocation = WorkflowExpression.Compile(bodylocation, nameof(bodylocation), required: true);
-            var __workflow_bodyfields = WorkflowExpression.Compile(bodyfields, nameof(bodyfields), required: true);
-            var __workflow_bodyunits = WorkflowExpression.Compile(bodyunits, nameof(bodyunits), required: false);
-            var __workflow_bodytimesteps = WorkflowExpression.Compile(bodytimesteps, nameof(bodytimesteps), required: false);
-            var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: false);
-            var __workflow_bodyendTime = WorkflowExpression.Compile(bodyendTime, nameof(bodyendTime), required: false);
-            var __workflow_bodytimezone = WorkflowExpression.Compile(bodytimezone, nameof(bodytimezone), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<TimelinePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/timelines";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["location"] = ExpressionConverter.ConvertO(__workflow_bodylocation);
-                bodypropCount++;
-                body["fields"] = ExpressionConverter.ConvertO(__workflow_bodyfields);
-                if (__workflow_bodyunits != null)
-                {
-                    body["units"] = ExpressionConverter.ConvertO(__workflow_bodyunits);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytimesteps != null)
-                {
-                    body["timesteps"] = ExpressionConverter.ConvertO(__workflow_bodytimesteps);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystartTime != null)
-                {
-                    body["startTime"] = ExpressionConverter.ConvertO(__workflow_bodystartTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyendTime != null)
-                {
-                    body["endTime"] = ExpressionConverter.ConvertO(__workflow_bodyendTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytimezone != null)
-                {
-                    body["timezone"] = ExpressionConverter.ConvertO(__workflow_bodytimezone);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TimelinePostResponse>(callPayload);
             });
         }
@@ -764,8 +719,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tomorrowioip
         public double Temperature { get; set; }
     }
 
+    public class TimelinePostInput
+    {
+        [JsonProperty("location", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Location { get; set; }
+
+        [JsonProperty("fields", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] Fields { get; set; }
+
+        [JsonProperty("units")]
+        public TimelinePostInputUnitsType? Units { get; set; }
+
+        [JsonProperty("timesteps")]
+        public string[] Timesteps { get; set; }
+
+        [JsonProperty("startTime")]
+        public string StartTime { get; set; }
+
+        [JsonProperty("endTime")]
+        public string EndTime { get; set; }
+
+        [JsonProperty("timezone")]
+        public string Timezone { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyunitsInput
+    public enum TimelinePostInputUnitsType
     {
         [EnumMember(Value = "metric")]
         Metric,

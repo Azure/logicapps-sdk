@@ -34,127 +34,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<BookingCreateResponse, ApiConnectionActionConfiguration> BookingCreate(Expression<Func<string>> bodybookingcustomerId = null, Expression<Func<string>> bodybookingstartAt = null, Expression<Func<string>> bodybookinglocationId = null, Expression<Func<bodybookingappointmentSegmentsInputItem[]>> bodybookingappointmentSegments = null)
+        public IBodyWorkflowAction<BookingCreateResponse, ApiConnectionActionConfiguration> BookingCreate(Expression<Func<BookingCreateInput>> body = null)
         {
-            var __workflow_bodybookingcustomerId = WorkflowExpression.Compile(bodybookingcustomerId, nameof(bodybookingcustomerId), required: false);
-            var __workflow_bodybookingstartAt = WorkflowExpression.Compile(bodybookingstartAt, nameof(bodybookingstartAt), required: false);
-            var __workflow_bodybookinglocationId = WorkflowExpression.Compile(bodybookinglocationId, nameof(bodybookinglocationId), required: false);
-            var __workflow_bodybookingappointmentSegments = WorkflowExpression.Compile(bodybookingappointmentSegments, nameof(bodybookingappointmentSegments), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<BookingCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/bookings";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var bookingObject = new JObject();
-                var bookingObjectpropCount = 0;
-                if (__workflow_bodybookingcustomerId != null)
-                {
-                    bookingObject["customer_id"] = ExpressionConverter.ConvertO(__workflow_bodybookingcustomerId);
-                    bookingObjectpropCount++;
-                }
-
-                if (__workflow_bodybookingstartAt != null)
-                {
-                    bookingObject["start_at"] = ExpressionConverter.ConvertO(__workflow_bodybookingstartAt);
-                    bookingObjectpropCount++;
-                }
-
-                if (__workflow_bodybookinglocationId != null)
-                {
-                    bookingObject["location_id"] = ExpressionConverter.ConvertO(__workflow_bodybookinglocationId);
-                    bookingObjectpropCount++;
-                }
-
-                if (__workflow_bodybookingappointmentSegments != null)
-                {
-                    bookingObject["appointment_segments"] = ExpressionConverter.ConvertO(__workflow_bodybookingappointmentSegments);
-                    bookingObjectpropCount++;
-                }
-
-                if (bookingObjectpropCount > 0)
-                {
-                    body["booking"] = bookingObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<BookingCreateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<BookingAvailabilityResponse, ApiConnectionActionConfiguration> BookingAvailability(Expression<Func<string>> bodyqueryfilterstartAtRangestartAt = null, Expression<Func<string>> bodyqueryfilterstartAtRangeendAt = null, Expression<Func<string>> bodyqueryfilterlocationId = null, Expression<Func<bodyqueryfiltersegmentFiltersInputItem[]>> bodyqueryfiltersegmentFilters = null)
+        public IBodyWorkflowAction<BookingAvailabilityResponse, ApiConnectionActionConfiguration> BookingAvailability(Expression<Func<BookingAvailabilityInput>> body = null)
         {
-            var __workflow_bodyqueryfilterstartAtRangestartAt = WorkflowExpression.Compile(bodyqueryfilterstartAtRangestartAt, nameof(bodyqueryfilterstartAtRangestartAt), required: false);
-            var __workflow_bodyqueryfilterstartAtRangeendAt = WorkflowExpression.Compile(bodyqueryfilterstartAtRangeendAt, nameof(bodyqueryfilterstartAtRangeendAt), required: false);
-            var __workflow_bodyqueryfilterlocationId = WorkflowExpression.Compile(bodyqueryfilterlocationId, nameof(bodyqueryfilterlocationId), required: false);
-            var __workflow_bodyqueryfiltersegmentFilters = WorkflowExpression.Compile(bodyqueryfiltersegmentFilters, nameof(bodyqueryfiltersegmentFilters), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<BookingAvailabilityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/bookings/availability/search";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var queryObject = new JObject();
-                var queryObjectpropCount = 0;
-                var filterObject = new JObject();
-                var filterObjectpropCount = 0;
-                var startAtRangeObject = new JObject();
-                var startAtRangeObjectpropCount = 0;
-                if (__workflow_bodyqueryfilterstartAtRangestartAt != null)
-                {
-                    startAtRangeObject["start_at"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfilterstartAtRangestartAt);
-                    startAtRangeObjectpropCount++;
-                }
-
-                if (__workflow_bodyqueryfilterstartAtRangeendAt != null)
-                {
-                    startAtRangeObject["end_at"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfilterstartAtRangeendAt);
-                    startAtRangeObjectpropCount++;
-                }
-
-                if (startAtRangeObjectpropCount > 0)
-                {
-                    filterObject["start_at_range"] = startAtRangeObject;
-                    filterObjectpropCount++;
-                }
-
-                if (__workflow_bodyqueryfilterlocationId != null)
-                {
-                    filterObject["location_id"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfilterlocationId);
-                    filterObjectpropCount++;
-                }
-
-                if (__workflow_bodyqueryfiltersegmentFilters != null)
-                {
-                    filterObject["segment_filters"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfiltersegmentFilters);
-                    filterObjectpropCount++;
-                }
-
-                if (filterObjectpropCount > 0)
-                {
-                    queryObject["filter"] = filterObject;
-                    queryObjectpropCount++;
-                }
-
-                if (queryObjectpropCount > 0)
-                {
-                    body["query"] = queryObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<BookingAvailabilityResponse>(callPayload);
             });
         }
@@ -263,192 +167,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<CheckoutCreateResponse, ApiConnectionActionConfiguration> CheckoutCreate(Expression<Func<string>> locationId, Expression<Func<string>> bodyidempotencyKey = null, Expression<Func<string>> bodyredirectUrl = null, Expression<Func<string>> bodyorderidempotencyKey = null, Expression<Func<string>> bodyorderorderlocationId = null, Expression<Func<string>> bodyorderordercustomerId = null, Expression<Func<string>> bodyorderorderreferenceId = null, Expression<Func<bodyorderorderlineItemsInputItem[]>> bodyorderorderlineItems = null, Expression<Func<bodyorderordertaxesInputItem[]>> bodyorderordertaxes = null, Expression<Func<bodyorderorderdiscountsInputItem[]>> bodyorderorderdiscounts = null, Expression<Func<bodyadditionalRecipientsInputItem[]>> bodyadditionalRecipients = null, Expression<Func<bool>> bodyaskForShippingAddress = null, Expression<Func<string>> bodymerchantSupportEmail = null, Expression<Func<string>> bodyprePopulateBuyerEmail = null, Expression<Func<string>> bodyprePopulateShippingAddressaddressLine1 = null, Expression<Func<string>> bodyprePopulateShippingAddressaddressLine2 = null, Expression<Func<string>> bodyprePopulateShippingAddresslocality = null, Expression<Func<string>> bodyprePopulateShippingAddressadministrativeDistrictLevel1 = null, Expression<Func<string>> bodyprePopulateShippingAddresspostalCode = null, Expression<Func<string>> bodyprePopulateShippingAddresscountry = null, Expression<Func<string>> bodyprePopulateShippingAddressfirstName = null, Expression<Func<string>> bodyprePopulateShippingAddresslastName = null)
+        public IBodyWorkflowAction<CheckoutCreateResponse, ApiConnectionActionConfiguration> CheckoutCreate(Expression<Func<string>> locationId, Expression<Func<CheckoutCreateInput>> body)
         {
             var __workflow_locationId = WorkflowExpression.Compile(locationId, nameof(locationId), required: true);
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            var __workflow_bodyredirectUrl = WorkflowExpression.Compile(bodyredirectUrl, nameof(bodyredirectUrl), required: false);
-            var __workflow_bodyorderidempotencyKey = WorkflowExpression.Compile(bodyorderidempotencyKey, nameof(bodyorderidempotencyKey), required: false);
-            var __workflow_bodyorderorderlocationId = WorkflowExpression.Compile(bodyorderorderlocationId, nameof(bodyorderorderlocationId), required: false);
-            var __workflow_bodyorderordercustomerId = WorkflowExpression.Compile(bodyorderordercustomerId, nameof(bodyorderordercustomerId), required: false);
-            var __workflow_bodyorderorderreferenceId = WorkflowExpression.Compile(bodyorderorderreferenceId, nameof(bodyorderorderreferenceId), required: false);
-            var __workflow_bodyorderorderlineItems = WorkflowExpression.Compile(bodyorderorderlineItems, nameof(bodyorderorderlineItems), required: false);
-            var __workflow_bodyorderordertaxes = WorkflowExpression.Compile(bodyorderordertaxes, nameof(bodyorderordertaxes), required: false);
-            var __workflow_bodyorderorderdiscounts = WorkflowExpression.Compile(bodyorderorderdiscounts, nameof(bodyorderorderdiscounts), required: false);
-            var __workflow_bodyadditionalRecipients = WorkflowExpression.Compile(bodyadditionalRecipients, nameof(bodyadditionalRecipients), required: false);
-            var __workflow_bodyaskForShippingAddress = WorkflowExpression.Compile(bodyaskForShippingAddress, nameof(bodyaskForShippingAddress), required: false);
-            var __workflow_bodymerchantSupportEmail = WorkflowExpression.Compile(bodymerchantSupportEmail, nameof(bodymerchantSupportEmail), required: false);
-            var __workflow_bodyprePopulateBuyerEmail = WorkflowExpression.Compile(bodyprePopulateBuyerEmail, nameof(bodyprePopulateBuyerEmail), required: false);
-            var __workflow_bodyprePopulateShippingAddressaddressLine1 = WorkflowExpression.Compile(bodyprePopulateShippingAddressaddressLine1, nameof(bodyprePopulateShippingAddressaddressLine1), required: false);
-            var __workflow_bodyprePopulateShippingAddressaddressLine2 = WorkflowExpression.Compile(bodyprePopulateShippingAddressaddressLine2, nameof(bodyprePopulateShippingAddressaddressLine2), required: false);
-            var __workflow_bodyprePopulateShippingAddresslocality = WorkflowExpression.Compile(bodyprePopulateShippingAddresslocality, nameof(bodyprePopulateShippingAddresslocality), required: false);
-            var __workflow_bodyprePopulateShippingAddressadministrativeDistrictLevel1 = WorkflowExpression.Compile(bodyprePopulateShippingAddressadministrativeDistrictLevel1, nameof(bodyprePopulateShippingAddressadministrativeDistrictLevel1), required: false);
-            var __workflow_bodyprePopulateShippingAddresspostalCode = WorkflowExpression.Compile(bodyprePopulateShippingAddresspostalCode, nameof(bodyprePopulateShippingAddresspostalCode), required: false);
-            var __workflow_bodyprePopulateShippingAddresscountry = WorkflowExpression.Compile(bodyprePopulateShippingAddresscountry, nameof(bodyprePopulateShippingAddresscountry), required: false);
-            var __workflow_bodyprePopulateShippingAddressfirstName = WorkflowExpression.Compile(bodyprePopulateShippingAddressfirstName, nameof(bodyprePopulateShippingAddressfirstName), required: false);
-            var __workflow_bodyprePopulateShippingAddresslastName = WorkflowExpression.Compile(bodyprePopulateShippingAddresslastName, nameof(bodyprePopulateShippingAddresslastName), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CheckoutCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/locations/{0}/checkouts", __workflow_locationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyredirectUrl != null)
-                {
-                    body["redirect_url"] = ExpressionConverter.ConvertO(__workflow_bodyredirectUrl);
-                    bodypropCount++;
-                }
-
-                var orderObject = new JObject();
-                var orderObjectpropCount = 0;
-                if (__workflow_bodyorderidempotencyKey != null)
-                {
-                    orderObject["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyorderidempotencyKey);
-                    orderObjectpropCount++;
-                }
-
-                var orderObject2 = new JObject();
-                var orderObject2propCount = 0;
-                if (__workflow_bodyorderorderlocationId != null)
-                {
-                    orderObject2["location_id"] = ExpressionConverter.ConvertO(__workflow_bodyorderorderlocationId);
-                    orderObject2propCount++;
-                }
-
-                if (__workflow_bodyorderordercustomerId != null)
-                {
-                    orderObject2["customer_id"] = ExpressionConverter.ConvertO(__workflow_bodyorderordercustomerId);
-                    orderObject2propCount++;
-                }
-
-                if (__workflow_bodyorderorderreferenceId != null)
-                {
-                    orderObject2["reference_id"] = ExpressionConverter.ConvertO(__workflow_bodyorderorderreferenceId);
-                    orderObject2propCount++;
-                }
-
-                if (__workflow_bodyorderorderlineItems != null)
-                {
-                    orderObject2["line_items"] = ExpressionConverter.ConvertO(__workflow_bodyorderorderlineItems);
-                    orderObject2propCount++;
-                }
-
-                if (__workflow_bodyorderordertaxes != null)
-                {
-                    orderObject2["taxes"] = ExpressionConverter.ConvertO(__workflow_bodyorderordertaxes);
-                    orderObject2propCount++;
-                }
-
-                if (__workflow_bodyorderorderdiscounts != null)
-                {
-                    orderObject2["discounts"] = ExpressionConverter.ConvertO(__workflow_bodyorderorderdiscounts);
-                    orderObject2propCount++;
-                }
-
-                if (orderObject2propCount > 0)
-                {
-                    orderObject["order"] = orderObject2;
-                    orderObjectpropCount++;
-                }
-
-                if (orderObjectpropCount > 0)
-                {
-                    body["order"] = orderObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyadditionalRecipients != null)
-                {
-                    body["additional_recipients"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalRecipients);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaskForShippingAddress != null)
-                {
-                    body["ask_for_shipping_address"] = ExpressionConverter.ConvertO(__workflow_bodyaskForShippingAddress);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymerchantSupportEmail != null)
-                {
-                    body["merchant_support_email"] = ExpressionConverter.ConvertO(__workflow_bodymerchantSupportEmail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprePopulateBuyerEmail != null)
-                {
-                    body["pre_populate_buyer_email"] = ExpressionConverter.ConvertO(__workflow_bodyprePopulateBuyerEmail);
-                    bodypropCount++;
-                }
-
-                var prePopulateShippingAddressObject = new JObject();
-                var prePopulateShippingAddressObjectpropCount = 0;
-                if (__workflow_bodyprePopulateShippingAddressaddressLine1 != null)
-                {
-                    prePopulateShippingAddressObject["address_line_1"] = ExpressionConverter.ConvertO(__workflow_bodyprePopulateShippingAddressaddressLine1);
-                    prePopulateShippingAddressObjectpropCount++;
-                }
-
-                if (__workflow_bodyprePopulateShippingAddressaddressLine2 != null)
-                {
-                    prePopulateShippingAddressObject["address_line_2"] = ExpressionConverter.ConvertO(__workflow_bodyprePopulateShippingAddressaddressLine2);
-                    prePopulateShippingAddressObjectpropCount++;
-                }
-
-                if (__workflow_bodyprePopulateShippingAddresslocality != null)
-                {
-                    prePopulateShippingAddressObject["locality"] = ExpressionConverter.ConvertO(__workflow_bodyprePopulateShippingAddresslocality);
-                    prePopulateShippingAddressObjectpropCount++;
-                }
-
-                if (__workflow_bodyprePopulateShippingAddressadministrativeDistrictLevel1 != null)
-                {
-                    prePopulateShippingAddressObject["administrative_district_level_1"] = ExpressionConverter.ConvertO(__workflow_bodyprePopulateShippingAddressadministrativeDistrictLevel1);
-                    prePopulateShippingAddressObjectpropCount++;
-                }
-
-                if (__workflow_bodyprePopulateShippingAddresspostalCode != null)
-                {
-                    prePopulateShippingAddressObject["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodyprePopulateShippingAddresspostalCode);
-                    prePopulateShippingAddressObjectpropCount++;
-                }
-
-                if (__workflow_bodyprePopulateShippingAddresscountry != null)
-                {
-                    prePopulateShippingAddressObject["country"] = ExpressionConverter.ConvertO(__workflow_bodyprePopulateShippingAddresscountry);
-                    prePopulateShippingAddressObjectpropCount++;
-                }
-
-                if (__workflow_bodyprePopulateShippingAddressfirstName != null)
-                {
-                    prePopulateShippingAddressObject["first_name"] = ExpressionConverter.ConvertO(__workflow_bodyprePopulateShippingAddressfirstName);
-                    prePopulateShippingAddressObjectpropCount++;
-                }
-
-                if (__workflow_bodyprePopulateShippingAddresslastName != null)
-                {
-                    prePopulateShippingAddressObject["last_name"] = ExpressionConverter.ConvertO(__workflow_bodyprePopulateShippingAddresslastName);
-                    prePopulateShippingAddressObjectpropCount++;
-                }
-
-                if (prePopulateShippingAddressObjectpropCount > 0)
-                {
-                    body["pre_populate_shipping_address"] = prePopulateShippingAddressObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CheckoutCreateResponse>(callPayload);
             });
         }
@@ -478,56 +206,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<DeviceCreateResponse, ApiConnectionActionConfiguration> DeviceCreate(Expression<Func<string>> bodyidempotencyKey = null, Expression<Func<string>> bodydeviceCodename = null, Expression<Func<string>> bodydeviceCodelocationId = null, Expression<Func<string>> bodydeviceCodeproductType = null)
+        public IBodyWorkflowAction<DeviceCreateResponse, ApiConnectionActionConfiguration> DeviceCreate(Expression<Func<DeviceCreateInput>> body = null)
         {
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            var __workflow_bodydeviceCodename = WorkflowExpression.Compile(bodydeviceCodename, nameof(bodydeviceCodename), required: false);
-            var __workflow_bodydeviceCodelocationId = WorkflowExpression.Compile(bodydeviceCodelocationId, nameof(bodydeviceCodelocationId), required: false);
-            var __workflow_bodydeviceCodeproductType = WorkflowExpression.Compile(bodydeviceCodeproductType, nameof(bodydeviceCodeproductType), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DeviceCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/devices/codes";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                var deviceCodeObject = new JObject();
-                var deviceCodeObjectpropCount = 0;
-                if (__workflow_bodydeviceCodename != null)
-                {
-                    deviceCodeObject["name"] = ExpressionConverter.ConvertO(__workflow_bodydeviceCodename);
-                    deviceCodeObjectpropCount++;
-                }
-
-                if (__workflow_bodydeviceCodelocationId != null)
-                {
-                    deviceCodeObject["location_id"] = ExpressionConverter.ConvertO(__workflow_bodydeviceCodelocationId);
-                    deviceCodeObjectpropCount++;
-                }
-
-                if (__workflow_bodydeviceCodeproductType != null)
-                {
-                    deviceCodeObject["product_type"] = ExpressionConverter.ConvertO(__workflow_bodydeviceCodeproductType);
-                    deviceCodeObjectpropCount++;
-                }
-
-                if (deviceCodeObjectpropCount > 0)
-                {
-                    body["device_code"] = deviceCodeObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DeviceCreateResponse>(callPayload);
             });
         }
@@ -583,184 +271,76 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<GiftCardCreateResponse, ApiConnectionActionConfiguration> GiftCardCreate(Expression<Func<string>> bodyidempotencyKey = null, Expression<Func<string>> bodygiftCardActivitygiftCardId = null, Expression<Func<bodygiftCardActivitytypeInput>> bodygiftCardActivitytype = null, Expression<Func<string>> bodygiftCardActivitylocationId = null, Expression<Func<string>> bodygiftCardActivityactivateActivityDetailsorderId = null, Expression<Func<string>> bodygiftCardActivityactivateActivityDetailslineItemUid = null)
+        public IBodyWorkflowAction<GiftCardCreateResponse, ApiConnectionActionConfiguration> GiftCardCreate(Expression<Func<GiftCardCreateInput>> body = null)
         {
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            var __workflow_bodygiftCardActivitygiftCardId = WorkflowExpression.Compile(bodygiftCardActivitygiftCardId, nameof(bodygiftCardActivitygiftCardId), required: false);
-            var __workflow_bodygiftCardActivitytype = WorkflowExpression.Compile(bodygiftCardActivitytype, nameof(bodygiftCardActivitytype), required: false);
-            var __workflow_bodygiftCardActivitylocationId = WorkflowExpression.Compile(bodygiftCardActivitylocationId, nameof(bodygiftCardActivitylocationId), required: false);
-            var __workflow_bodygiftCardActivityactivateActivityDetailsorderId = WorkflowExpression.Compile(bodygiftCardActivityactivateActivityDetailsorderId, nameof(bodygiftCardActivityactivateActivityDetailsorderId), required: false);
-            var __workflow_bodygiftCardActivityactivateActivityDetailslineItemUid = WorkflowExpression.Compile(bodygiftCardActivityactivateActivityDetailslineItemUid, nameof(bodygiftCardActivityactivateActivityDetailslineItemUid), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GiftCardCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/gift-cards/activities";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                var giftCardActivityObject = new JObject();
-                var giftCardActivityObjectpropCount = 0;
-                if (__workflow_bodygiftCardActivitygiftCardId != null)
-                {
-                    giftCardActivityObject["gift_card_id"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardActivitygiftCardId);
-                    giftCardActivityObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCardActivitytype != null)
-                {
-                    giftCardActivityObject["type"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardActivitytype);
-                    giftCardActivityObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCardActivitylocationId != null)
-                {
-                    giftCardActivityObject["location_id"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardActivitylocationId);
-                    giftCardActivityObjectpropCount++;
-                }
-
-                var activateActivityDetailsObject = new JObject();
-                var activateActivityDetailsObjectpropCount = 0;
-                if (__workflow_bodygiftCardActivityactivateActivityDetailsorderId != null)
-                {
-                    activateActivityDetailsObject["order_id"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardActivityactivateActivityDetailsorderId);
-                    activateActivityDetailsObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftCardActivityactivateActivityDetailslineItemUid != null)
-                {
-                    activateActivityDetailsObject["line_item_uid"] = ExpressionConverter.ConvertO(__workflow_bodygiftCardActivityactivateActivityDetailslineItemUid);
-                    activateActivityDetailsObjectpropCount++;
-                }
-
-                if (activateActivityDetailsObjectpropCount > 0)
-                {
-                    giftCardActivityObject["activate_activity_details"] = activateActivityDetailsObject;
-                    giftCardActivityObjectpropCount++;
-                }
-
-                if (giftCardActivityObjectpropCount > 0)
-                {
-                    body["gift_card_activity"] = giftCardActivityObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GiftCardCreateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<GiftCardRetrieveGANResponse, ApiConnectionActionConfiguration> GiftCardRetrieveGAN(Expression<Func<string>> bodygan = null)
+        public IBodyWorkflowAction<GiftCardRetrieveGANResponse, ApiConnectionActionConfiguration> GiftCardRetrieveGAN(Expression<Func<GiftCardRetrieveGANInput>> body)
         {
-            var __workflow_bodygan = WorkflowExpression.Compile(bodygan, nameof(bodygan), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GiftCardRetrieveGANResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/gift-cards/from-gan";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodygan != null)
-                {
-                    body["gan"] = ExpressionConverter.ConvertO(__workflow_bodygan);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GiftCardRetrieveGANResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<GiftCardRetrieveNonceResponse, ApiConnectionActionConfiguration> GiftCardRetrieveNonce(Expression<Func<string>> bodynonce = null)
+        public IBodyWorkflowAction<GiftCardRetrieveNonceResponse, ApiConnectionActionConfiguration> GiftCardRetrieveNonce(Expression<Func<GiftCardRetrieveNonceInput>> body = null)
         {
-            var __workflow_bodynonce = WorkflowExpression.Compile(bodynonce, nameof(bodynonce), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GiftCardRetrieveNonceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/gift-cards/from-nonce";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodynonce != null)
-                {
-                    body["nonce"] = ExpressionConverter.ConvertO(__workflow_bodynonce);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GiftCardRetrieveNonceResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<GiftCardLinkResponse, ApiConnectionActionConfiguration> GiftCardLink(Expression<Func<string>> giftCardId, Expression<Func<string>> bodycustomerId = null)
+        public IBodyWorkflowAction<GiftCardLinkResponse, ApiConnectionActionConfiguration> GiftCardLink(Expression<Func<string>> giftCardId, Expression<Func<GiftCardLinkInput>> body = null)
         {
             var __workflow_giftCardId = WorkflowExpression.Compile(giftCardId, nameof(giftCardId), required: true);
-            var __workflow_bodycustomerId = WorkflowExpression.Compile(bodycustomerId, nameof(bodycustomerId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GiftCardLinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/gift-cards/{0}/link-customer", __workflow_giftCardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycustomerId != null)
-                {
-                    body["customer_id"] = ExpressionConverter.ConvertO(__workflow_bodycustomerId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GiftCardLinkResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<GiftCardUnlinkResponse, ApiConnectionActionConfiguration> GiftCardUnlink(Expression<Func<string>> giftCardId, Expression<Func<string>> bodycustomerId = null)
+        public IBodyWorkflowAction<GiftCardUnlinkResponse, ApiConnectionActionConfiguration> GiftCardUnlink(Expression<Func<string>> giftCardId, Expression<Func<GiftCardUnlinkInput>> body)
         {
             var __workflow_giftCardId = WorkflowExpression.Compile(giftCardId, nameof(giftCardId), required: true);
-            var __workflow_bodycustomerId = WorkflowExpression.Compile(bodycustomerId, nameof(bodycustomerId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GiftCardUnlinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/gift-cards/{0}/unlink-customer", __workflow_giftCardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycustomerId != null)
-                {
-                    body["customer_id"] = ExpressionConverter.ConvertO(__workflow_bodycustomerId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GiftCardUnlinkResponse>(callPayload);
             });
         }
@@ -800,63 +380,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LaborCreateBreakResponse, ApiConnectionActionConfiguration> LaborCreateBreak(Expression<Func<string>> bodyidempotencyKey = null, Expression<Func<string>> bodybreakTypelocationId = null, Expression<Func<string>> bodybreakTypebreakName = null, Expression<Func<string>> bodybreakTypeexpectedDuration = null, Expression<Func<bool>> bodybreakTypeisPaid = null)
+        public IBodyWorkflowAction<LaborCreateBreakResponse, ApiConnectionActionConfiguration> LaborCreateBreak(Expression<Func<LaborCreateBreakInput>> body)
         {
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            var __workflow_bodybreakTypelocationId = WorkflowExpression.Compile(bodybreakTypelocationId, nameof(bodybreakTypelocationId), required: false);
-            var __workflow_bodybreakTypebreakName = WorkflowExpression.Compile(bodybreakTypebreakName, nameof(bodybreakTypebreakName), required: false);
-            var __workflow_bodybreakTypeexpectedDuration = WorkflowExpression.Compile(bodybreakTypeexpectedDuration, nameof(bodybreakTypeexpectedDuration), required: false);
-            var __workflow_bodybreakTypeisPaid = WorkflowExpression.Compile(bodybreakTypeisPaid, nameof(bodybreakTypeisPaid), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LaborCreateBreakResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/labor/break-types";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                var breakTypeObject = new JObject();
-                var breakTypeObjectpropCount = 0;
-                if (__workflow_bodybreakTypelocationId != null)
-                {
-                    breakTypeObject["location_id"] = ExpressionConverter.ConvertO(__workflow_bodybreakTypelocationId);
-                    breakTypeObjectpropCount++;
-                }
-
-                if (__workflow_bodybreakTypebreakName != null)
-                {
-                    breakTypeObject["break_name"] = ExpressionConverter.ConvertO(__workflow_bodybreakTypebreakName);
-                    breakTypeObjectpropCount++;
-                }
-
-                if (__workflow_bodybreakTypeexpectedDuration != null)
-                {
-                    breakTypeObject["expected_duration"] = ExpressionConverter.ConvertO(__workflow_bodybreakTypeexpectedDuration);
-                    breakTypeObjectpropCount++;
-                }
-
-                if (__workflow_bodybreakTypeisPaid != null)
-                {
-                    breakTypeObject["is_paid"] = ExpressionConverter.ConvertO(__workflow_bodybreakTypeisPaid);
-                    breakTypeObjectpropCount++;
-                }
-
-                if (breakTypeObjectpropCount > 0)
-                {
-                    body["break_type"] = breakTypeObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LaborCreateBreakResponse>(callPayload);
             });
         }
@@ -888,256 +420,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LaborUpdateBreakResponse, ApiConnectionActionConfiguration> LaborUpdateBreak(Expression<Func<string>> id, Expression<Func<string>> bodybreakTypelocationId = null, Expression<Func<string>> bodybreakTypebreakName = null, Expression<Func<string>> bodybreakTypeexpectedDuration = null, Expression<Func<bool>> bodybreakTypeisPaid = null, Expression<Func<int>> bodybreakTypeversion = null)
+        public IBodyWorkflowAction<LaborUpdateBreakResponse, ApiConnectionActionConfiguration> LaborUpdateBreak(Expression<Func<string>> id, Expression<Func<LaborUpdateBreakInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodybreakTypelocationId = WorkflowExpression.Compile(bodybreakTypelocationId, nameof(bodybreakTypelocationId), required: false);
-            var __workflow_bodybreakTypebreakName = WorkflowExpression.Compile(bodybreakTypebreakName, nameof(bodybreakTypebreakName), required: false);
-            var __workflow_bodybreakTypeexpectedDuration = WorkflowExpression.Compile(bodybreakTypeexpectedDuration, nameof(bodybreakTypeexpectedDuration), required: false);
-            var __workflow_bodybreakTypeisPaid = WorkflowExpression.Compile(bodybreakTypeisPaid, nameof(bodybreakTypeisPaid), required: false);
-            var __workflow_bodybreakTypeversion = WorkflowExpression.Compile(bodybreakTypeversion, nameof(bodybreakTypeversion), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LaborUpdateBreakResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/labor/break-types/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var breakTypeObject = new JObject();
-                var breakTypeObjectpropCount = 0;
-                if (__workflow_bodybreakTypelocationId != null)
-                {
-                    breakTypeObject["location_id"] = ExpressionConverter.ConvertO(__workflow_bodybreakTypelocationId);
-                    breakTypeObjectpropCount++;
-                }
-
-                if (__workflow_bodybreakTypebreakName != null)
-                {
-                    breakTypeObject["break_name"] = ExpressionConverter.ConvertO(__workflow_bodybreakTypebreakName);
-                    breakTypeObjectpropCount++;
-                }
-
-                if (__workflow_bodybreakTypeexpectedDuration != null)
-                {
-                    breakTypeObject["expected_duration"] = ExpressionConverter.ConvertO(__workflow_bodybreakTypeexpectedDuration);
-                    breakTypeObjectpropCount++;
-                }
-
-                if (__workflow_bodybreakTypeisPaid != null)
-                {
-                    breakTypeObject["is_paid"] = ExpressionConverter.ConvertO(__workflow_bodybreakTypeisPaid);
-                    breakTypeObjectpropCount++;
-                }
-
-                if (__workflow_bodybreakTypeversion != null)
-                {
-                    breakTypeObject["version"] = ExpressionConverter.ConvertO(__workflow_bodybreakTypeversion);
-                    breakTypeObjectpropCount++;
-                }
-
-                if (breakTypeObjectpropCount > 0)
-                {
-                    body["break_type"] = breakTypeObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LaborUpdateBreakResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LaborCreateShiftResponse, ApiConnectionActionConfiguration> LaborCreateShift(Expression<Func<string>> bodyidempotencyKey = null, Expression<Func<string>> bodyshiftteamMemberId = null, Expression<Func<string>> bodyshiftlocationId = null, Expression<Func<string>> bodyshiftstartAt = null, Expression<Func<string>> bodyshiftendAt = null, Expression<Func<string>> bodyshiftwagetitle = null, Expression<Func<int>> bodyshiftwagehourlyRateamount = null, Expression<Func<string>> bodyshiftwagehourlyRatecurrency = null, Expression<Func<bodyshiftbreaksInputItem[]>> bodyshiftbreaks = null)
+        public IBodyWorkflowAction<LaborCreateShiftResponse, ApiConnectionActionConfiguration> LaborCreateShift(Expression<Func<LaborCreateShiftInput>> body)
         {
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            var __workflow_bodyshiftteamMemberId = WorkflowExpression.Compile(bodyshiftteamMemberId, nameof(bodyshiftteamMemberId), required: false);
-            var __workflow_bodyshiftlocationId = WorkflowExpression.Compile(bodyshiftlocationId, nameof(bodyshiftlocationId), required: false);
-            var __workflow_bodyshiftstartAt = WorkflowExpression.Compile(bodyshiftstartAt, nameof(bodyshiftstartAt), required: false);
-            var __workflow_bodyshiftendAt = WorkflowExpression.Compile(bodyshiftendAt, nameof(bodyshiftendAt), required: false);
-            var __workflow_bodyshiftwagetitle = WorkflowExpression.Compile(bodyshiftwagetitle, nameof(bodyshiftwagetitle), required: false);
-            var __workflow_bodyshiftwagehourlyRateamount = WorkflowExpression.Compile(bodyshiftwagehourlyRateamount, nameof(bodyshiftwagehourlyRateamount), required: false);
-            var __workflow_bodyshiftwagehourlyRatecurrency = WorkflowExpression.Compile(bodyshiftwagehourlyRatecurrency, nameof(bodyshiftwagehourlyRatecurrency), required: false);
-            var __workflow_bodyshiftbreaks = WorkflowExpression.Compile(bodyshiftbreaks, nameof(bodyshiftbreaks), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LaborCreateShiftResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/labor/shifts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                var shiftObject = new JObject();
-                var shiftObjectpropCount = 0;
-                if (__workflow_bodyshiftteamMemberId != null)
-                {
-                    shiftObject["team_member_id"] = ExpressionConverter.ConvertO(__workflow_bodyshiftteamMemberId);
-                    shiftObjectpropCount++;
-                }
-
-                if (__workflow_bodyshiftlocationId != null)
-                {
-                    shiftObject["location_id"] = ExpressionConverter.ConvertO(__workflow_bodyshiftlocationId);
-                    shiftObjectpropCount++;
-                }
-
-                if (__workflow_bodyshiftstartAt != null)
-                {
-                    shiftObject["start_at"] = ExpressionConverter.ConvertO(__workflow_bodyshiftstartAt);
-                    shiftObjectpropCount++;
-                }
-
-                if (__workflow_bodyshiftendAt != null)
-                {
-                    shiftObject["end_at"] = ExpressionConverter.ConvertO(__workflow_bodyshiftendAt);
-                    shiftObjectpropCount++;
-                }
-
-                var wageObject = new JObject();
-                var wageObjectpropCount = 0;
-                if (__workflow_bodyshiftwagetitle != null)
-                {
-                    wageObject["title"] = ExpressionConverter.ConvertO(__workflow_bodyshiftwagetitle);
-                    wageObjectpropCount++;
-                }
-
-                var hourlyRateObject = new JObject();
-                var hourlyRateObjectpropCount = 0;
-                if (__workflow_bodyshiftwagehourlyRateamount != null)
-                {
-                    hourlyRateObject["amount"] = ExpressionConverter.ConvertO(__workflow_bodyshiftwagehourlyRateamount);
-                    hourlyRateObjectpropCount++;
-                }
-
-                if (__workflow_bodyshiftwagehourlyRatecurrency != null)
-                {
-                    hourlyRateObject["currency"] = ExpressionConverter.ConvertO(__workflow_bodyshiftwagehourlyRatecurrency);
-                    hourlyRateObjectpropCount++;
-                }
-
-                if (hourlyRateObjectpropCount > 0)
-                {
-                    wageObject["hourly_rate"] = hourlyRateObject;
-                    wageObjectpropCount++;
-                }
-
-                if (wageObjectpropCount > 0)
-                {
-                    shiftObject["wage"] = wageObject;
-                    shiftObjectpropCount++;
-                }
-
-                if (__workflow_bodyshiftbreaks != null)
-                {
-                    shiftObject["breaks"] = ExpressionConverter.ConvertO(__workflow_bodyshiftbreaks);
-                    shiftObjectpropCount++;
-                }
-
-                if (shiftObjectpropCount > 0)
-                {
-                    body["shift"] = shiftObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LaborCreateShiftResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LaborSearchShiftsResponse, ApiConnectionActionConfiguration> LaborSearchShifts(Expression<Func<string>> bodyqueryfilterworkdaydateRangestartDate = null, Expression<Func<string>> bodyqueryfilterworkdaydateRangeendDate = null, Expression<Func<string>> bodyqueryfilterworkdaymatchShiftsBy = null, Expression<Func<string>> bodyqueryfilterworkdaydefaultTimezone = null, Expression<Func<int>> bodylimit = null)
+        public IBodyWorkflowAction<LaborSearchShiftsResponse, ApiConnectionActionConfiguration> LaborSearchShifts(Expression<Func<LaborSearchShiftsInput>> body)
         {
-            var __workflow_bodyqueryfilterworkdaydateRangestartDate = WorkflowExpression.Compile(bodyqueryfilterworkdaydateRangestartDate, nameof(bodyqueryfilterworkdaydateRangestartDate), required: false);
-            var __workflow_bodyqueryfilterworkdaydateRangeendDate = WorkflowExpression.Compile(bodyqueryfilterworkdaydateRangeendDate, nameof(bodyqueryfilterworkdaydateRangeendDate), required: false);
-            var __workflow_bodyqueryfilterworkdaymatchShiftsBy = WorkflowExpression.Compile(bodyqueryfilterworkdaymatchShiftsBy, nameof(bodyqueryfilterworkdaymatchShiftsBy), required: false);
-            var __workflow_bodyqueryfilterworkdaydefaultTimezone = WorkflowExpression.Compile(bodyqueryfilterworkdaydefaultTimezone, nameof(bodyqueryfilterworkdaydefaultTimezone), required: false);
-            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LaborSearchShiftsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/labor/shifts/search";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var queryObject = new JObject();
-                var queryObjectpropCount = 0;
-                var filterObject = new JObject();
-                var filterObjectpropCount = 0;
-                var workdayObject = new JObject();
-                var workdayObjectpropCount = 0;
-                var dateRangeObject = new JObject();
-                var dateRangeObjectpropCount = 0;
-                if (__workflow_bodyqueryfilterworkdaydateRangestartDate != null)
-                {
-                    dateRangeObject["start_date"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfilterworkdaydateRangestartDate);
-                    dateRangeObjectpropCount++;
-                }
-
-                if (__workflow_bodyqueryfilterworkdaydateRangeendDate != null)
-                {
-                    dateRangeObject["end_date"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfilterworkdaydateRangeendDate);
-                    dateRangeObjectpropCount++;
-                }
-
-                if (dateRangeObjectpropCount > 0)
-                {
-                    workdayObject["date_range"] = dateRangeObject;
-                    workdayObjectpropCount++;
-                }
-
-                if (__workflow_bodyqueryfilterworkdaymatchShiftsBy != null)
-                {
-                    workdayObject["match_shifts_by"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfilterworkdaymatchShiftsBy);
-                    workdayObjectpropCount++;
-                }
-
-                if (__workflow_bodyqueryfilterworkdaydefaultTimezone != null)
-                {
-                    workdayObject["default_timezone"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfilterworkdaydefaultTimezone);
-                    workdayObjectpropCount++;
-                }
-
-                if (workdayObjectpropCount > 0)
-                {
-                    filterObject["workday"] = workdayObject;
-                    filterObjectpropCount++;
-                }
-
-                if (filterObjectpropCount > 0)
-                {
-                    queryObject["filter"] = filterObject;
-                    queryObjectpropCount++;
-                }
-
-                if (queryObjectpropCount > 0)
-                {
-                    body["query"] = queryObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylimit != null)
-                {
-                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LaborSearchShiftsResponse>(callPayload);
             });
         }
@@ -1169,108 +489,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LaborUpdateShiftResponse, ApiConnectionActionConfiguration> LaborUpdateShift(Expression<Func<string>> id, Expression<Func<string>> bodyshiftteamMemberId = null, Expression<Func<string>> bodyshiftlocationId = null, Expression<Func<string>> bodyshiftstartAt = null, Expression<Func<string>> bodyshiftendAt = null, Expression<Func<string>> bodyshiftwagetitle = null, Expression<Func<int>> bodyshiftwagehourlyRateamount = null, Expression<Func<string>> bodyshiftwagehourlyRatecurrency = null, Expression<Func<bodyshiftbreaksInputItem2[]>> bodyshiftbreaks = null, Expression<Func<int>> bodyshiftversion = null)
+        public IBodyWorkflowAction<LaborUpdateShiftResponse, ApiConnectionActionConfiguration> LaborUpdateShift(Expression<Func<string>> id, Expression<Func<LaborUpdateShiftInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyshiftteamMemberId = WorkflowExpression.Compile(bodyshiftteamMemberId, nameof(bodyshiftteamMemberId), required: false);
-            var __workflow_bodyshiftlocationId = WorkflowExpression.Compile(bodyshiftlocationId, nameof(bodyshiftlocationId), required: false);
-            var __workflow_bodyshiftstartAt = WorkflowExpression.Compile(bodyshiftstartAt, nameof(bodyshiftstartAt), required: false);
-            var __workflow_bodyshiftendAt = WorkflowExpression.Compile(bodyshiftendAt, nameof(bodyshiftendAt), required: false);
-            var __workflow_bodyshiftwagetitle = WorkflowExpression.Compile(bodyshiftwagetitle, nameof(bodyshiftwagetitle), required: false);
-            var __workflow_bodyshiftwagehourlyRateamount = WorkflowExpression.Compile(bodyshiftwagehourlyRateamount, nameof(bodyshiftwagehourlyRateamount), required: false);
-            var __workflow_bodyshiftwagehourlyRatecurrency = WorkflowExpression.Compile(bodyshiftwagehourlyRatecurrency, nameof(bodyshiftwagehourlyRatecurrency), required: false);
-            var __workflow_bodyshiftbreaks = WorkflowExpression.Compile(bodyshiftbreaks, nameof(bodyshiftbreaks), required: false);
-            var __workflow_bodyshiftversion = WorkflowExpression.Compile(bodyshiftversion, nameof(bodyshiftversion), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<LaborUpdateShiftResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/labor/shifts/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var shiftObject = new JObject();
-                var shiftObjectpropCount = 0;
-                if (__workflow_bodyshiftteamMemberId != null)
-                {
-                    shiftObject["team_member_id"] = ExpressionConverter.ConvertO(__workflow_bodyshiftteamMemberId);
-                    shiftObjectpropCount++;
-                }
-
-                if (__workflow_bodyshiftlocationId != null)
-                {
-                    shiftObject["location_id"] = ExpressionConverter.ConvertO(__workflow_bodyshiftlocationId);
-                    shiftObjectpropCount++;
-                }
-
-                if (__workflow_bodyshiftstartAt != null)
-                {
-                    shiftObject["start_at"] = ExpressionConverter.ConvertO(__workflow_bodyshiftstartAt);
-                    shiftObjectpropCount++;
-                }
-
-                if (__workflow_bodyshiftendAt != null)
-                {
-                    shiftObject["end_at"] = ExpressionConverter.ConvertO(__workflow_bodyshiftendAt);
-                    shiftObjectpropCount++;
-                }
-
-                var wageObject = new JObject();
-                var wageObjectpropCount = 0;
-                if (__workflow_bodyshiftwagetitle != null)
-                {
-                    wageObject["title"] = ExpressionConverter.ConvertO(__workflow_bodyshiftwagetitle);
-                    wageObjectpropCount++;
-                }
-
-                var hourlyRateObject = new JObject();
-                var hourlyRateObjectpropCount = 0;
-                if (__workflow_bodyshiftwagehourlyRateamount != null)
-                {
-                    hourlyRateObject["amount"] = ExpressionConverter.ConvertO(__workflow_bodyshiftwagehourlyRateamount);
-                    hourlyRateObjectpropCount++;
-                }
-
-                if (__workflow_bodyshiftwagehourlyRatecurrency != null)
-                {
-                    hourlyRateObject["currency"] = ExpressionConverter.ConvertO(__workflow_bodyshiftwagehourlyRatecurrency);
-                    hourlyRateObjectpropCount++;
-                }
-
-                if (hourlyRateObjectpropCount > 0)
-                {
-                    wageObject["hourly_rate"] = hourlyRateObject;
-                    wageObjectpropCount++;
-                }
-
-                if (wageObjectpropCount > 0)
-                {
-                    shiftObject["wage"] = wageObject;
-                    shiftObjectpropCount++;
-                }
-
-                if (__workflow_bodyshiftbreaks != null)
-                {
-                    shiftObject["breaks"] = ExpressionConverter.ConvertO(__workflow_bodyshiftbreaks);
-                    shiftObjectpropCount++;
-                }
-
-                if (__workflow_bodyshiftversion != null)
-                {
-                    shiftObject["version"] = ExpressionConverter.ConvertO(__workflow_bodyshiftversion);
-                    shiftObjectpropCount++;
-                }
-
-                if (shiftObjectpropCount > 0)
-                {
-                    body["shift"] = shiftObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LaborUpdateShiftResponse>(callPayload);
             });
         }
@@ -1328,50 +557,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LaborUpdateConfigResponse, ApiConnectionActionConfiguration> LaborUpdateConfig(Expression<Func<string>> id, Expression<Func<string>> bodyworkweekConfigstartOfWeek = null, Expression<Func<string>> bodyworkweekConfigstartOfDayLocalTime = null, Expression<Func<int>> bodyworkweekConfigversion = null)
+        public IBodyWorkflowAction<LaborUpdateConfigResponse, ApiConnectionActionConfiguration> LaborUpdateConfig(Expression<Func<string>> id, Expression<Func<LaborUpdateConfigInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyworkweekConfigstartOfWeek = WorkflowExpression.Compile(bodyworkweekConfigstartOfWeek, nameof(bodyworkweekConfigstartOfWeek), required: false);
-            var __workflow_bodyworkweekConfigstartOfDayLocalTime = WorkflowExpression.Compile(bodyworkweekConfigstartOfDayLocalTime, nameof(bodyworkweekConfigstartOfDayLocalTime), required: false);
-            var __workflow_bodyworkweekConfigversion = WorkflowExpression.Compile(bodyworkweekConfigversion, nameof(bodyworkweekConfigversion), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LaborUpdateConfigResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/labor/workweek-configs/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var workweekConfigObject = new JObject();
-                var workweekConfigObjectpropCount = 0;
-                if (__workflow_bodyworkweekConfigstartOfWeek != null)
-                {
-                    workweekConfigObject["start_of_week"] = ExpressionConverter.ConvertO(__workflow_bodyworkweekConfigstartOfWeek);
-                    workweekConfigObjectpropCount++;
-                }
-
-                if (__workflow_bodyworkweekConfigstartOfDayLocalTime != null)
-                {
-                    workweekConfigObject["start_of_day_local_time"] = ExpressionConverter.ConvertO(__workflow_bodyworkweekConfigstartOfDayLocalTime);
-                    workweekConfigObjectpropCount++;
-                }
-
-                if (__workflow_bodyworkweekConfigversion != null)
-                {
-                    workweekConfigObject["version"] = ExpressionConverter.ConvertO(__workflow_bodyworkweekConfigversion);
-                    workweekConfigObjectpropCount++;
-                }
-
-                if (workweekConfigObjectpropCount > 0)
-                {
-                    body["workweek_config"] = workweekConfigObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LaborUpdateConfigResponse>(callPayload);
             });
         }
@@ -1389,85 +584,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LocationCreateResponse, ApiConnectionActionConfiguration> LocationCreate(Expression<Func<string>> bodylocationname = null, Expression<Func<string>> bodylocationdescription = null, Expression<Func<string>> bodylocationfacebookUrl = null, Expression<Func<string>> bodylocationaddressaddressLine1 = null, Expression<Func<string>> bodylocationaddressadministrativeDistrictLevel1 = null, Expression<Func<string>> bodylocationaddresslocality = null, Expression<Func<string>> bodylocationaddresspostalCode = null)
+        public IBodyWorkflowAction<LocationCreateResponse, ApiConnectionActionConfiguration> LocationCreate(Expression<Func<LocationCreateInput>> body)
         {
-            var __workflow_bodylocationname = WorkflowExpression.Compile(bodylocationname, nameof(bodylocationname), required: false);
-            var __workflow_bodylocationdescription = WorkflowExpression.Compile(bodylocationdescription, nameof(bodylocationdescription), required: false);
-            var __workflow_bodylocationfacebookUrl = WorkflowExpression.Compile(bodylocationfacebookUrl, nameof(bodylocationfacebookUrl), required: false);
-            var __workflow_bodylocationaddressaddressLine1 = WorkflowExpression.Compile(bodylocationaddressaddressLine1, nameof(bodylocationaddressaddressLine1), required: false);
-            var __workflow_bodylocationaddressadministrativeDistrictLevel1 = WorkflowExpression.Compile(bodylocationaddressadministrativeDistrictLevel1, nameof(bodylocationaddressadministrativeDistrictLevel1), required: false);
-            var __workflow_bodylocationaddresslocality = WorkflowExpression.Compile(bodylocationaddresslocality, nameof(bodylocationaddresslocality), required: false);
-            var __workflow_bodylocationaddresspostalCode = WorkflowExpression.Compile(bodylocationaddresspostalCode, nameof(bodylocationaddresspostalCode), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LocationCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/locations";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var locationObject = new JObject();
-                var locationObjectpropCount = 0;
-                if (__workflow_bodylocationname != null)
-                {
-                    locationObject["name"] = ExpressionConverter.ConvertO(__workflow_bodylocationname);
-                    locationObjectpropCount++;
-                }
-
-                if (__workflow_bodylocationdescription != null)
-                {
-                    locationObject["description"] = ExpressionConverter.ConvertO(__workflow_bodylocationdescription);
-                    locationObjectpropCount++;
-                }
-
-                if (__workflow_bodylocationfacebookUrl != null)
-                {
-                    locationObject["facebook_url"] = ExpressionConverter.ConvertO(__workflow_bodylocationfacebookUrl);
-                    locationObjectpropCount++;
-                }
-
-                var addressObject = new JObject();
-                var addressObjectpropCount = 0;
-                if (__workflow_bodylocationaddressaddressLine1 != null)
-                {
-                    addressObject["address_line_1"] = ExpressionConverter.ConvertO(__workflow_bodylocationaddressaddressLine1);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodylocationaddressadministrativeDistrictLevel1 != null)
-                {
-                    addressObject["administrative_district_level_1"] = ExpressionConverter.ConvertO(__workflow_bodylocationaddressadministrativeDistrictLevel1);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodylocationaddresslocality != null)
-                {
-                    addressObject["locality"] = ExpressionConverter.ConvertO(__workflow_bodylocationaddresslocality);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodylocationaddresspostalCode != null)
-                {
-                    addressObject["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodylocationaddresspostalCode);
-                    addressObjectpropCount++;
-                }
-
-                if (addressObjectpropCount > 0)
-                {
-                    locationObject["address"] = addressObject;
-                    locationObjectpropCount++;
-                }
-
-                if (locationObjectpropCount > 0)
-                {
-                    body["location"] = locationObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LocationCreateResponse>(callPayload);
             });
         }
@@ -1486,205 +611,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LocationUpdateResponse, ApiConnectionActionConfiguration> LocationUpdate(Expression<Func<string>> locationId, Expression<Func<string>> bodylocationname = null, Expression<Func<string>> bodylocationdescription = null, Expression<Func<string>> bodylocationfacebookUrl = null, Expression<Func<string>> bodylocationtwitterUsername = null, Expression<Func<string>> bodylocationinstagramUsername = null, Expression<Func<string>> bodylocationaddressaddressLine1 = null, Expression<Func<string>> bodylocationaddressadministrativeDistrictLevel1 = null, Expression<Func<string>> bodylocationaddresslocality = null, Expression<Func<string>> bodylocationaddresspostalCode = null, Expression<Func<bodylocationbusinessHoursperiodsInputItem[]>> bodylocationbusinessHoursperiods = null)
+        public IBodyWorkflowAction<LocationUpdateResponse, ApiConnectionActionConfiguration> LocationUpdate(Expression<Func<string>> locationId, Expression<Func<LocationUpdateInput>> body)
         {
             var __workflow_locationId = WorkflowExpression.Compile(locationId, nameof(locationId), required: true);
-            var __workflow_bodylocationname = WorkflowExpression.Compile(bodylocationname, nameof(bodylocationname), required: false);
-            var __workflow_bodylocationdescription = WorkflowExpression.Compile(bodylocationdescription, nameof(bodylocationdescription), required: false);
-            var __workflow_bodylocationfacebookUrl = WorkflowExpression.Compile(bodylocationfacebookUrl, nameof(bodylocationfacebookUrl), required: false);
-            var __workflow_bodylocationtwitterUsername = WorkflowExpression.Compile(bodylocationtwitterUsername, nameof(bodylocationtwitterUsername), required: false);
-            var __workflow_bodylocationinstagramUsername = WorkflowExpression.Compile(bodylocationinstagramUsername, nameof(bodylocationinstagramUsername), required: false);
-            var __workflow_bodylocationaddressaddressLine1 = WorkflowExpression.Compile(bodylocationaddressaddressLine1, nameof(bodylocationaddressaddressLine1), required: false);
-            var __workflow_bodylocationaddressadministrativeDistrictLevel1 = WorkflowExpression.Compile(bodylocationaddressadministrativeDistrictLevel1, nameof(bodylocationaddressadministrativeDistrictLevel1), required: false);
-            var __workflow_bodylocationaddresslocality = WorkflowExpression.Compile(bodylocationaddresslocality, nameof(bodylocationaddresslocality), required: false);
-            var __workflow_bodylocationaddresspostalCode = WorkflowExpression.Compile(bodylocationaddresspostalCode, nameof(bodylocationaddresspostalCode), required: false);
-            var __workflow_bodylocationbusinessHoursperiods = WorkflowExpression.Compile(bodylocationbusinessHoursperiods, nameof(bodylocationbusinessHoursperiods), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LocationUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/locations/{0}", __workflow_locationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var locationObject = new JObject();
-                var locationObjectpropCount = 0;
-                if (__workflow_bodylocationname != null)
-                {
-                    locationObject["name"] = ExpressionConverter.ConvertO(__workflow_bodylocationname);
-                    locationObjectpropCount++;
-                }
-
-                if (__workflow_bodylocationdescription != null)
-                {
-                    locationObject["description"] = ExpressionConverter.ConvertO(__workflow_bodylocationdescription);
-                    locationObjectpropCount++;
-                }
-
-                if (__workflow_bodylocationfacebookUrl != null)
-                {
-                    locationObject["facebook_url"] = ExpressionConverter.ConvertO(__workflow_bodylocationfacebookUrl);
-                    locationObjectpropCount++;
-                }
-
-                if (__workflow_bodylocationtwitterUsername != null)
-                {
-                    locationObject["twitter_username"] = ExpressionConverter.ConvertO(__workflow_bodylocationtwitterUsername);
-                    locationObjectpropCount++;
-                }
-
-                if (__workflow_bodylocationinstagramUsername != null)
-                {
-                    locationObject["instagram_username"] = ExpressionConverter.ConvertO(__workflow_bodylocationinstagramUsername);
-                    locationObjectpropCount++;
-                }
-
-                var addressObject = new JObject();
-                var addressObjectpropCount = 0;
-                if (__workflow_bodylocationaddressaddressLine1 != null)
-                {
-                    addressObject["address_line_1"] = ExpressionConverter.ConvertO(__workflow_bodylocationaddressaddressLine1);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodylocationaddressadministrativeDistrictLevel1 != null)
-                {
-                    addressObject["administrative_district_level_1"] = ExpressionConverter.ConvertO(__workflow_bodylocationaddressadministrativeDistrictLevel1);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodylocationaddresslocality != null)
-                {
-                    addressObject["locality"] = ExpressionConverter.ConvertO(__workflow_bodylocationaddresslocality);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodylocationaddresspostalCode != null)
-                {
-                    addressObject["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodylocationaddresspostalCode);
-                    addressObjectpropCount++;
-                }
-
-                if (addressObjectpropCount > 0)
-                {
-                    locationObject["address"] = addressObject;
-                    locationObjectpropCount++;
-                }
-
-                var businessHoursObject = new JObject();
-                var businessHoursObjectpropCount = 0;
-                if (__workflow_bodylocationbusinessHoursperiods != null)
-                {
-                    businessHoursObject["periods"] = ExpressionConverter.ConvertO(__workflow_bodylocationbusinessHoursperiods);
-                    businessHoursObjectpropCount++;
-                }
-
-                if (businessHoursObjectpropCount > 0)
-                {
-                    locationObject["business_hours"] = businessHoursObject;
-                    locationObjectpropCount++;
-                }
-
-                if (locationObjectpropCount > 0)
-                {
-                    body["location"] = locationObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LocationUpdateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LoyaltyCreateAccountResponse, ApiConnectionActionConfiguration> LoyaltyCreateAccount(Expression<Func<string>> bodyloyaltyAccountmappingphoneNumber = null, Expression<Func<string>> bodyloyaltyAccountprogramId = null, Expression<Func<string>> bodyidempotencyKey = null)
+        public IBodyWorkflowAction<LoyaltyCreateAccountResponse, ApiConnectionActionConfiguration> LoyaltyCreateAccount(Expression<Func<LoyaltyCreateAccountInput>> body)
         {
-            var __workflow_bodyloyaltyAccountmappingphoneNumber = WorkflowExpression.Compile(bodyloyaltyAccountmappingphoneNumber, nameof(bodyloyaltyAccountmappingphoneNumber), required: false);
-            var __workflow_bodyloyaltyAccountprogramId = WorkflowExpression.Compile(bodyloyaltyAccountprogramId, nameof(bodyloyaltyAccountprogramId), required: false);
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LoyaltyCreateAccountResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/loyalty/accounts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var loyaltyAccountObject = new JObject();
-                var loyaltyAccountObjectpropCount = 0;
-                var mappingObject = new JObject();
-                var mappingObjectpropCount = 0;
-                if (__workflow_bodyloyaltyAccountmappingphoneNumber != null)
-                {
-                    mappingObject["phone_number"] = ExpressionConverter.ConvertO(__workflow_bodyloyaltyAccountmappingphoneNumber);
-                    mappingObjectpropCount++;
-                }
-
-                if (mappingObjectpropCount > 0)
-                {
-                    loyaltyAccountObject["mapping"] = mappingObject;
-                    loyaltyAccountObjectpropCount++;
-                }
-
-                if (__workflow_bodyloyaltyAccountprogramId != null)
-                {
-                    loyaltyAccountObject["program_id"] = ExpressionConverter.ConvertO(__workflow_bodyloyaltyAccountprogramId);
-                    loyaltyAccountObjectpropCount++;
-                }
-
-                if (loyaltyAccountObjectpropCount > 0)
-                {
-                    body["loyalty_account"] = loyaltyAccountObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LoyaltyCreateAccountResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LoyaltySearchAccountsResponse, ApiConnectionActionConfiguration> LoyaltySearchAccounts(Expression<Func<int>> bodylimit = null)
+        public IBodyWorkflowAction<LoyaltySearchAccountsResponse, ApiConnectionActionConfiguration> LoyaltySearchAccounts(Expression<Func<LoyaltySearchAccountsInput>> body)
         {
-            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LoyaltySearchAccountsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/loyalty/accounts/search";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var queryObject = new JObject();
-                var queryObjectpropCount = 0;
-                if (queryObjectpropCount > 0)
-                {
-                    body["query"] = queryObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylimit != null)
-                {
-                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LoyaltySearchAccountsResponse>(callPayload);
             });
         }
@@ -1703,156 +667,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LoyaltyAccumulatePointsResponse, ApiConnectionActionConfiguration> LoyaltyAccumulatePoints(Expression<Func<string>> accountId, Expression<Func<string>> bodyaccumulatePointsorderId = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodyidempotencyKey = null)
+        public IBodyWorkflowAction<LoyaltyAccumulatePointsResponse, ApiConnectionActionConfiguration> LoyaltyAccumulatePoints(Expression<Func<string>> accountId, Expression<Func<LoyaltyAccumulatePointsInput>> body)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
-            var __workflow_bodyaccumulatePointsorderId = WorkflowExpression.Compile(bodyaccumulatePointsorderId, nameof(bodyaccumulatePointsorderId), required: false);
-            var __workflow_bodylocationId = WorkflowExpression.Compile(bodylocationId, nameof(bodylocationId), required: false);
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LoyaltyAccumulatePointsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/loyalty/accounts/{0}/accumulate", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var accumulatePointsObject = new JObject();
-                var accumulatePointsObjectpropCount = 0;
-                if (__workflow_bodyaccumulatePointsorderId != null)
-                {
-                    accumulatePointsObject["order_id"] = ExpressionConverter.ConvertO(__workflow_bodyaccumulatePointsorderId);
-                    accumulatePointsObjectpropCount++;
-                }
-
-                if (accumulatePointsObjectpropCount > 0)
-                {
-                    body["accumulate_points"] = accumulatePointsObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylocationId != null)
-                {
-                    body["location_id"] = ExpressionConverter.ConvertO(__workflow_bodylocationId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LoyaltyAccumulatePointsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LoyaltyAdjustPointsResponse, ApiConnectionActionConfiguration> LoyaltyAdjustPoints(Expression<Func<string>> accountId, Expression<Func<int>> bodyadjustPointspoints = null, Expression<Func<string>> bodyadjustPointsreason = null, Expression<Func<string>> bodyidempotencyKey = null)
+        public IBodyWorkflowAction<LoyaltyAdjustPointsResponse, ApiConnectionActionConfiguration> LoyaltyAdjustPoints(Expression<Func<string>> accountId, Expression<Func<LoyaltyAdjustPointsInput>> body = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
-            var __workflow_bodyadjustPointspoints = WorkflowExpression.Compile(bodyadjustPointspoints, nameof(bodyadjustPointspoints), required: false);
-            var __workflow_bodyadjustPointsreason = WorkflowExpression.Compile(bodyadjustPointsreason, nameof(bodyadjustPointsreason), required: false);
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<LoyaltyAdjustPointsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/loyalty/accounts/{0}/adjust", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var adjustPointsObject = new JObject();
-                var adjustPointsObjectpropCount = 0;
-                if (__workflow_bodyadjustPointspoints != null)
-                {
-                    adjustPointsObject["points"] = ExpressionConverter.ConvertO(__workflow_bodyadjustPointspoints);
-                    adjustPointsObjectpropCount++;
-                }
-
-                if (__workflow_bodyadjustPointsreason != null)
-                {
-                    adjustPointsObject["reason"] = ExpressionConverter.ConvertO(__workflow_bodyadjustPointsreason);
-                    adjustPointsObjectpropCount++;
-                }
-
-                if (adjustPointsObjectpropCount > 0)
-                {
-                    body["adjust_points"] = adjustPointsObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LoyaltyAdjustPointsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LoyaltySearchEventsResponse, ApiConnectionActionConfiguration> LoyaltySearchEvents(Expression<Func<string>> bodyqueryfilterorderFilterorderId = null, Expression<Func<int>> bodylimit = null)
+        public IBodyWorkflowAction<LoyaltySearchEventsResponse, ApiConnectionActionConfiguration> LoyaltySearchEvents(Expression<Func<LoyaltySearchEventsInput>> body)
         {
-            var __workflow_bodyqueryfilterorderFilterorderId = WorkflowExpression.Compile(bodyqueryfilterorderFilterorderId, nameof(bodyqueryfilterorderFilterorderId), required: false);
-            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LoyaltySearchEventsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/loyalty/events/search";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var queryObject = new JObject();
-                var queryObjectpropCount = 0;
-                var filterObject = new JObject();
-                var filterObjectpropCount = 0;
-                var orderFilterObject = new JObject();
-                var orderFilterObjectpropCount = 0;
-                if (__workflow_bodyqueryfilterorderFilterorderId != null)
-                {
-                    orderFilterObject["order_id"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfilterorderFilterorderId);
-                    orderFilterObjectpropCount++;
-                }
-
-                if (orderFilterObjectpropCount > 0)
-                {
-                    filterObject["order_filter"] = orderFilterObject;
-                    filterObjectpropCount++;
-                }
-
-                if (filterObjectpropCount > 0)
-                {
-                    queryObject["filter"] = filterObject;
-                    queryObjectpropCount++;
-                }
-
-                if (queryObjectpropCount > 0)
-                {
-                    body["query"] = queryObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylimit != null)
-                {
-                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LoyaltySearchEventsResponse>(callPayload);
             });
         }
@@ -1871,124 +725,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LoyaltyCalculatePointsResponse, ApiConnectionActionConfiguration> LoyaltyCalculatePoints(Expression<Func<string>> programId, Expression<Func<string>> bodyorderId = null)
+        public IBodyWorkflowAction<LoyaltyCalculatePointsResponse, ApiConnectionActionConfiguration> LoyaltyCalculatePoints(Expression<Func<string>> programId, Expression<Func<LoyaltyCalculatePointsInput>> body)
         {
             var __workflow_programId = WorkflowExpression.Compile(programId, nameof(programId), required: true);
-            var __workflow_bodyorderId = WorkflowExpression.Compile(bodyorderId, nameof(bodyorderId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LoyaltyCalculatePointsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/loyalty/programs/{0}/calculate", __workflow_programId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyorderId != null)
-                {
-                    body["order_id"] = ExpressionConverter.ConvertO(__workflow_bodyorderId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LoyaltyCalculatePointsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LoyaltyCreateRewardResponse, ApiConnectionActionConfiguration> LoyaltyCreateReward(Expression<Func<string>> bodyrewardloyaltyAccountId = null, Expression<Func<string>> bodyrewardrewardTierId = null, Expression<Func<string>> bodyrewardorderId = null, Expression<Func<string>> bodyidempotencyKey = null)
+        public IBodyWorkflowAction<LoyaltyCreateRewardResponse, ApiConnectionActionConfiguration> LoyaltyCreateReward(Expression<Func<LoyaltyCreateRewardInput>> body)
         {
-            var __workflow_bodyrewardloyaltyAccountId = WorkflowExpression.Compile(bodyrewardloyaltyAccountId, nameof(bodyrewardloyaltyAccountId), required: false);
-            var __workflow_bodyrewardrewardTierId = WorkflowExpression.Compile(bodyrewardrewardTierId, nameof(bodyrewardrewardTierId), required: false);
-            var __workflow_bodyrewardorderId = WorkflowExpression.Compile(bodyrewardorderId, nameof(bodyrewardorderId), required: false);
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LoyaltyCreateRewardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/loyalty/rewards";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var rewardObject = new JObject();
-                var rewardObjectpropCount = 0;
-                if (__workflow_bodyrewardloyaltyAccountId != null)
-                {
-                    rewardObject["loyalty_account_id"] = ExpressionConverter.ConvertO(__workflow_bodyrewardloyaltyAccountId);
-                    rewardObjectpropCount++;
-                }
-
-                if (__workflow_bodyrewardrewardTierId != null)
-                {
-                    rewardObject["reward_tier_id"] = ExpressionConverter.ConvertO(__workflow_bodyrewardrewardTierId);
-                    rewardObjectpropCount++;
-                }
-
-                if (__workflow_bodyrewardorderId != null)
-                {
-                    rewardObject["order_id"] = ExpressionConverter.ConvertO(__workflow_bodyrewardorderId);
-                    rewardObjectpropCount++;
-                }
-
-                if (rewardObjectpropCount > 0)
-                {
-                    body["reward"] = rewardObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LoyaltyCreateRewardResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LoyaltySearchRewardsResponse, ApiConnectionActionConfiguration> LoyaltySearchRewards(Expression<Func<string>> bodyqueryloyaltyAccountId = null, Expression<Func<int>> bodylimit = null)
+        public IBodyWorkflowAction<LoyaltySearchRewardsResponse, ApiConnectionActionConfiguration> LoyaltySearchRewards(Expression<Func<LoyaltySearchRewardsInput>> body)
         {
-            var __workflow_bodyqueryloyaltyAccountId = WorkflowExpression.Compile(bodyqueryloyaltyAccountId, nameof(bodyqueryloyaltyAccountId), required: false);
-            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LoyaltySearchRewardsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/loyalty/rewards/search";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var queryObject = new JObject();
-                var queryObjectpropCount = 0;
-                if (__workflow_bodyqueryloyaltyAccountId != null)
-                {
-                    queryObject["loyalty_account_id"] = ExpressionConverter.ConvertO(__workflow_bodyqueryloyaltyAccountId);
-                    queryObjectpropCount++;
-                }
-
-                if (queryObjectpropCount > 0)
-                {
-                    body["query"] = queryObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylimit != null)
-                {
-                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LoyaltySearchRewardsResponse>(callPayload);
             });
         }
@@ -2020,35 +794,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LoyaltyRedeemRewardResponse, ApiConnectionActionConfiguration> LoyaltyRedeemReward(Expression<Func<string>> rewardId, Expression<Func<string>> bodyidempotencyKey = null, Expression<Func<string>> bodylocationId = null)
+        public IBodyWorkflowAction<LoyaltyRedeemRewardResponse, ApiConnectionActionConfiguration> LoyaltyRedeemReward(Expression<Func<string>> rewardId, Expression<Func<LoyaltyRedeemRewardInput>> body)
         {
             var __workflow_rewardId = WorkflowExpression.Compile(rewardId, nameof(rewardId), required: true);
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            var __workflow_bodylocationId = WorkflowExpression.Compile(bodylocationId, nameof(bodylocationId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LoyaltyRedeemRewardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/loyalty/rewards/{0}/redeem", __workflow_rewardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylocationId != null)
-                {
-                    body["location_id"] = ExpressionConverter.ConvertO(__workflow_bodylocationId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LoyaltyRedeemRewardResponse>(callPayload);
             });
         }
@@ -2082,27 +837,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<MobileAuthorizationCreateResponse, ApiConnectionActionConfiguration> MobileAuthorizationCreate(Expression<Func<string>> bodylocationId = null)
+        public IBodyWorkflowAction<MobileAuthorizationCreateResponse, ApiConnectionActionConfiguration> MobileAuthorizationCreate(Expression<Func<MobileAuthorizationCreateInput>> body = null)
         {
-            var __workflow_bodylocationId = WorkflowExpression.Compile(bodylocationId, nameof(bodylocationId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<MobileAuthorizationCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/mobile/authorization-code";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodylocationId != null)
-                {
-                    body["location_id"] = ExpressionConverter.ConvertO(__workflow_bodylocationId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MobileAuthorizationCreateResponse>(callPayload);
             });
         }
@@ -2146,550 +890,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<SnippetUpsertResponse, ApiConnectionActionConfiguration> SnippetUpsert(Expression<Func<string>> siteId, Expression<Func<string>> bodysnippetcontent = null)
+        public IBodyWorkflowAction<SnippetUpsertResponse, ApiConnectionActionConfiguration> SnippetUpsert(Expression<Func<string>> siteId, Expression<Func<SnippetUpsertInput>> body)
         {
             var __workflow_siteId = WorkflowExpression.Compile(siteId, nameof(siteId), required: true);
-            var __workflow_bodysnippetcontent = WorkflowExpression.Compile(bodysnippetcontent, nameof(bodysnippetcontent), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SnippetUpsertResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sites/{0}/snippet", __workflow_siteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var snippetObject = new JObject();
-                var snippetObjectpropCount = 0;
-                if (__workflow_bodysnippetcontent != null)
-                {
-                    snippetObject["content"] = ExpressionConverter.ConvertO(__workflow_bodysnippetcontent);
-                    snippetObjectpropCount++;
-                }
-
-                if (snippetObjectpropCount > 0)
-                {
-                    body["snippet"] = snippetObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SnippetUpsertResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<TeamCreateMemberResponse, ApiConnectionActionConfiguration> TeamCreateMember(Expression<Func<string>> bodyidempotencyKey = null, Expression<Func<string>> bodyteamMemberreferenceId = null, Expression<Func<string>> bodyteamMemberstatus = null, Expression<Func<string>> bodyteamMembergivenName = null, Expression<Func<string>> bodyteamMemberfamilyName = null, Expression<Func<string>> bodyteamMemberemailAddress = null, Expression<Func<string>> bodyteamMemberphoneNumber = null, Expression<Func<string[]>> bodyteamMemberassignedLocationslocationIds = null, Expression<Func<string>> bodyteamMemberassignedLocationsassignmentType = null)
+        public IBodyWorkflowAction<TeamCreateMemberResponse, ApiConnectionActionConfiguration> TeamCreateMember(Expression<Func<TeamCreateMemberInput>> body)
         {
-            var __workflow_bodyidempotencyKey = WorkflowExpression.Compile(bodyidempotencyKey, nameof(bodyidempotencyKey), required: false);
-            var __workflow_bodyteamMemberreferenceId = WorkflowExpression.Compile(bodyteamMemberreferenceId, nameof(bodyteamMemberreferenceId), required: false);
-            var __workflow_bodyteamMemberstatus = WorkflowExpression.Compile(bodyteamMemberstatus, nameof(bodyteamMemberstatus), required: false);
-            var __workflow_bodyteamMembergivenName = WorkflowExpression.Compile(bodyteamMembergivenName, nameof(bodyteamMembergivenName), required: false);
-            var __workflow_bodyteamMemberfamilyName = WorkflowExpression.Compile(bodyteamMemberfamilyName, nameof(bodyteamMemberfamilyName), required: false);
-            var __workflow_bodyteamMemberemailAddress = WorkflowExpression.Compile(bodyteamMemberemailAddress, nameof(bodyteamMemberemailAddress), required: false);
-            var __workflow_bodyteamMemberphoneNumber = WorkflowExpression.Compile(bodyteamMemberphoneNumber, nameof(bodyteamMemberphoneNumber), required: false);
-            var __workflow_bodyteamMemberassignedLocationslocationIds = WorkflowExpression.Compile(bodyteamMemberassignedLocationslocationIds, nameof(bodyteamMemberassignedLocationslocationIds), required: false);
-            var __workflow_bodyteamMemberassignedLocationsassignmentType = WorkflowExpression.Compile(bodyteamMemberassignedLocationsassignmentType, nameof(bodyteamMemberassignedLocationsassignmentType), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TeamCreateMemberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/team-members";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyidempotencyKey != null)
-                {
-                    body["idempotency_key"] = ExpressionConverter.ConvertO(__workflow_bodyidempotencyKey);
-                    bodypropCount++;
-                }
-
-                var teamMemberObject = new JObject();
-                var teamMemberObjectpropCount = 0;
-                if (__workflow_bodyteamMemberreferenceId != null)
-                {
-                    teamMemberObject["reference_id"] = ExpressionConverter.ConvertO(__workflow_bodyteamMemberreferenceId);
-                    teamMemberObjectpropCount++;
-                }
-
-                if (__workflow_bodyteamMemberstatus != null)
-                {
-                    teamMemberObject["status"] = ExpressionConverter.ConvertO(__workflow_bodyteamMemberstatus);
-                    teamMemberObjectpropCount++;
-                }
-
-                if (__workflow_bodyteamMembergivenName != null)
-                {
-                    teamMemberObject["given_name"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembergivenName);
-                    teamMemberObjectpropCount++;
-                }
-
-                if (__workflow_bodyteamMemberfamilyName != null)
-                {
-                    teamMemberObject["family_name"] = ExpressionConverter.ConvertO(__workflow_bodyteamMemberfamilyName);
-                    teamMemberObjectpropCount++;
-                }
-
-                if (__workflow_bodyteamMemberemailAddress != null)
-                {
-                    teamMemberObject["email_address"] = ExpressionConverter.ConvertO(__workflow_bodyteamMemberemailAddress);
-                    teamMemberObjectpropCount++;
-                }
-
-                if (__workflow_bodyteamMemberphoneNumber != null)
-                {
-                    teamMemberObject["phone_number"] = ExpressionConverter.ConvertO(__workflow_bodyteamMemberphoneNumber);
-                    teamMemberObjectpropCount++;
-                }
-
-                var assignedLocationsObject = new JObject();
-                var assignedLocationsObjectpropCount = 0;
-                if (__workflow_bodyteamMemberassignedLocationslocationIds != null)
-                {
-                    assignedLocationsObject["location_ids"] = ExpressionConverter.ConvertO(__workflow_bodyteamMemberassignedLocationslocationIds);
-                    assignedLocationsObjectpropCount++;
-                }
-
-                if (__workflow_bodyteamMemberassignedLocationsassignmentType != null)
-                {
-                    assignedLocationsObject["assignment_type"] = ExpressionConverter.ConvertO(__workflow_bodyteamMemberassignedLocationsassignmentType);
-                    assignedLocationsObjectpropCount++;
-                }
-
-                if (assignedLocationsObjectpropCount > 0)
-                {
-                    teamMemberObject["assigned_locations"] = assignedLocationsObject;
-                    teamMemberObjectpropCount++;
-                }
-
-                if (teamMemberObjectpropCount > 0)
-                {
-                    body["team_member"] = teamMemberObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TeamCreateMemberResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<TeamCreateBulkMembersResponse, ApiConnectionActionConfiguration> TeamCreateBulkMembers(Expression<Func<string>> bodyteamMembersidempotencyKey1teamMembergivenName = null, Expression<Func<string>> bodyteamMembersidempotencyKey1teamMemberfamilyName = null, Expression<Func<string>> bodyteamMembersidempotencyKey1teamMemberemailAddress = null, Expression<Func<string>> bodyteamMembersidempotencyKey1teamMemberreferenceId = null, Expression<Func<string>> bodyteamMembersidempotencyKey1teamMemberphoneNumber = null, Expression<Func<string[]>> bodyteamMembersidempotencyKey1teamMemberassignedLocationslocationIds = null, Expression<Func<string>> bodyteamMembersidempotencyKey1teamMemberassignedLocationsassignmentType = null, Expression<Func<string>> bodyteamMembersidempotencyKey2teamMembergivenName = null, Expression<Func<string>> bodyteamMembersidempotencyKey2teamMemberfamilyName = null, Expression<Func<string>> bodyteamMembersidempotencyKey2teamMemberemailAddress = null, Expression<Func<string>> bodyteamMembersidempotencyKey2teamMemberreferenceId = null, Expression<Func<string>> bodyteamMembersidempotencyKey2teamMemberphoneNumber = null, Expression<Func<string>> bodyteamMembersidempotencyKey2teamMemberassignedLocationsassignmentType = null)
+        public IBodyWorkflowAction<TeamCreateBulkMembersResponse, ApiConnectionActionConfiguration> TeamCreateBulkMembers(Expression<Func<TeamCreateBulkMembersInput>> body)
         {
-            var __workflow_bodyteamMembersidempotencyKey1teamMembergivenName = WorkflowExpression.Compile(bodyteamMembersidempotencyKey1teamMembergivenName, nameof(bodyteamMembersidempotencyKey1teamMembergivenName), required: false);
-            var __workflow_bodyteamMembersidempotencyKey1teamMemberfamilyName = WorkflowExpression.Compile(bodyteamMembersidempotencyKey1teamMemberfamilyName, nameof(bodyteamMembersidempotencyKey1teamMemberfamilyName), required: false);
-            var __workflow_bodyteamMembersidempotencyKey1teamMemberemailAddress = WorkflowExpression.Compile(bodyteamMembersidempotencyKey1teamMemberemailAddress, nameof(bodyteamMembersidempotencyKey1teamMemberemailAddress), required: false);
-            var __workflow_bodyteamMembersidempotencyKey1teamMemberreferenceId = WorkflowExpression.Compile(bodyteamMembersidempotencyKey1teamMemberreferenceId, nameof(bodyteamMembersidempotencyKey1teamMemberreferenceId), required: false);
-            var __workflow_bodyteamMembersidempotencyKey1teamMemberphoneNumber = WorkflowExpression.Compile(bodyteamMembersidempotencyKey1teamMemberphoneNumber, nameof(bodyteamMembersidempotencyKey1teamMemberphoneNumber), required: false);
-            var __workflow_bodyteamMembersidempotencyKey1teamMemberassignedLocationslocationIds = WorkflowExpression.Compile(bodyteamMembersidempotencyKey1teamMemberassignedLocationslocationIds, nameof(bodyteamMembersidempotencyKey1teamMemberassignedLocationslocationIds), required: false);
-            var __workflow_bodyteamMembersidempotencyKey1teamMemberassignedLocationsassignmentType = WorkflowExpression.Compile(bodyteamMembersidempotencyKey1teamMemberassignedLocationsassignmentType, nameof(bodyteamMembersidempotencyKey1teamMemberassignedLocationsassignmentType), required: false);
-            var __workflow_bodyteamMembersidempotencyKey2teamMembergivenName = WorkflowExpression.Compile(bodyteamMembersidempotencyKey2teamMembergivenName, nameof(bodyteamMembersidempotencyKey2teamMembergivenName), required: false);
-            var __workflow_bodyteamMembersidempotencyKey2teamMemberfamilyName = WorkflowExpression.Compile(bodyteamMembersidempotencyKey2teamMemberfamilyName, nameof(bodyteamMembersidempotencyKey2teamMemberfamilyName), required: false);
-            var __workflow_bodyteamMembersidempotencyKey2teamMemberemailAddress = WorkflowExpression.Compile(bodyteamMembersidempotencyKey2teamMemberemailAddress, nameof(bodyteamMembersidempotencyKey2teamMemberemailAddress), required: false);
-            var __workflow_bodyteamMembersidempotencyKey2teamMemberreferenceId = WorkflowExpression.Compile(bodyteamMembersidempotencyKey2teamMemberreferenceId, nameof(bodyteamMembersidempotencyKey2teamMemberreferenceId), required: false);
-            var __workflow_bodyteamMembersidempotencyKey2teamMemberphoneNumber = WorkflowExpression.Compile(bodyteamMembersidempotencyKey2teamMemberphoneNumber, nameof(bodyteamMembersidempotencyKey2teamMemberphoneNumber), required: false);
-            var __workflow_bodyteamMembersidempotencyKey2teamMemberassignedLocationsassignmentType = WorkflowExpression.Compile(bodyteamMembersidempotencyKey2teamMemberassignedLocationsassignmentType, nameof(bodyteamMembersidempotencyKey2teamMemberassignedLocationsassignmentType), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TeamCreateBulkMembersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/team-members/bulk-create";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var teamMembersObject = new JObject();
-                var teamMembersObjectpropCount = 0;
-                var idempotencyKey1Object = new JObject();
-                var idempotencyKey1ObjectpropCount = 0;
-                var teamMemberObject = new JObject();
-                var teamMemberObjectpropCount = 0;
-                if (__workflow_bodyteamMembersidempotencyKey1teamMembergivenName != null)
-                {
-                    teamMemberObject["given_name"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersidempotencyKey1teamMembergivenName);
-                    teamMemberObjectpropCount++;
-                }
-
-                if (__workflow_bodyteamMembersidempotencyKey1teamMemberfamilyName != null)
-                {
-                    teamMemberObject["family_name"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersidempotencyKey1teamMemberfamilyName);
-                    teamMemberObjectpropCount++;
-                }
-
-                if (__workflow_bodyteamMembersidempotencyKey1teamMemberemailAddress != null)
-                {
-                    teamMemberObject["email_address"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersidempotencyKey1teamMemberemailAddress);
-                    teamMemberObjectpropCount++;
-                }
-
-                if (__workflow_bodyteamMembersidempotencyKey1teamMemberreferenceId != null)
-                {
-                    teamMemberObject["reference_id"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersidempotencyKey1teamMemberreferenceId);
-                    teamMemberObjectpropCount++;
-                }
-
-                if (__workflow_bodyteamMembersidempotencyKey1teamMemberphoneNumber != null)
-                {
-                    teamMemberObject["phone_number"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersidempotencyKey1teamMemberphoneNumber);
-                    teamMemberObjectpropCount++;
-                }
-
-                var assignedLocationsObject = new JObject();
-                var assignedLocationsObjectpropCount = 0;
-                if (__workflow_bodyteamMembersidempotencyKey1teamMemberassignedLocationslocationIds != null)
-                {
-                    assignedLocationsObject["location_ids"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersidempotencyKey1teamMemberassignedLocationslocationIds);
-                    assignedLocationsObjectpropCount++;
-                }
-
-                if (__workflow_bodyteamMembersidempotencyKey1teamMemberassignedLocationsassignmentType != null)
-                {
-                    assignedLocationsObject["assignment_type"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersidempotencyKey1teamMemberassignedLocationsassignmentType);
-                    assignedLocationsObjectpropCount++;
-                }
-
-                if (assignedLocationsObjectpropCount > 0)
-                {
-                    teamMemberObject["assigned_locations"] = assignedLocationsObject;
-                    teamMemberObjectpropCount++;
-                }
-
-                if (teamMemberObjectpropCount > 0)
-                {
-                    idempotencyKey1Object["team_member"] = teamMemberObject;
-                    idempotencyKey1ObjectpropCount++;
-                }
-
-                if (idempotencyKey1ObjectpropCount > 0)
-                {
-                    teamMembersObject["idempotency-key-1"] = idempotencyKey1Object;
-                    teamMembersObjectpropCount++;
-                }
-
-                var idempotencyKey2Object = new JObject();
-                var idempotencyKey2ObjectpropCount = 0;
-                var teamMemberObject2 = new JObject();
-                var teamMemberObject2propCount = 0;
-                if (__workflow_bodyteamMembersidempotencyKey2teamMembergivenName != null)
-                {
-                    teamMemberObject2["given_name"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersidempotencyKey2teamMembergivenName);
-                    teamMemberObject2propCount++;
-                }
-
-                if (__workflow_bodyteamMembersidempotencyKey2teamMemberfamilyName != null)
-                {
-                    teamMemberObject2["family_name"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersidempotencyKey2teamMemberfamilyName);
-                    teamMemberObject2propCount++;
-                }
-
-                if (__workflow_bodyteamMembersidempotencyKey2teamMemberemailAddress != null)
-                {
-                    teamMemberObject2["email_address"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersidempotencyKey2teamMemberemailAddress);
-                    teamMemberObject2propCount++;
-                }
-
-                if (__workflow_bodyteamMembersidempotencyKey2teamMemberreferenceId != null)
-                {
-                    teamMemberObject2["reference_id"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersidempotencyKey2teamMemberreferenceId);
-                    teamMemberObject2propCount++;
-                }
-
-                if (__workflow_bodyteamMembersidempotencyKey2teamMemberphoneNumber != null)
-                {
-                    teamMemberObject2["phone_number"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersidempotencyKey2teamMemberphoneNumber);
-                    teamMemberObject2propCount++;
-                }
-
-                var assignedLocationsObject2 = new JObject();
-                var assignedLocationsObject2propCount = 0;
-                if (__workflow_bodyteamMembersidempotencyKey2teamMemberassignedLocationsassignmentType != null)
-                {
-                    assignedLocationsObject2["assignment_type"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersidempotencyKey2teamMemberassignedLocationsassignmentType);
-                    assignedLocationsObject2propCount++;
-                }
-
-                if (assignedLocationsObject2propCount > 0)
-                {
-                    teamMemberObject2["assigned_locations"] = assignedLocationsObject2;
-                    teamMemberObject2propCount++;
-                }
-
-                if (teamMemberObject2propCount > 0)
-                {
-                    idempotencyKey2Object["team_member"] = teamMemberObject2;
-                    idempotencyKey2ObjectpropCount++;
-                }
-
-                if (idempotencyKey2ObjectpropCount > 0)
-                {
-                    teamMembersObject["idempotency-key-2"] = idempotencyKey2Object;
-                    teamMembersObjectpropCount++;
-                }
-
-                if (teamMembersObjectpropCount > 0)
-                {
-                    body["team_members"] = teamMembersObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TeamCreateBulkMembersResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<TeamUpdateBulkMembersResponse, ApiConnectionActionConfiguration> TeamUpdateBulkMembers(Expression<Func<string>> bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberreferenceId = null, Expression<Func<bool>> bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberisOwner = null, Expression<Func<string>> bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberstatus = null, Expression<Func<string>> bodyteamMembersfpgteZNMaf0qOKA4t6PteamMembergivenName = null, Expression<Func<string>> bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberfamilyName = null, Expression<Func<string>> bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberemailAddress = null, Expression<Func<string>> bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberphoneNumber = null, Expression<Func<string[]>> bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberassignedLocationslocationIds = null, Expression<Func<string>> bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberassignedLocationsassignmentType = null, Expression<Func<string>> bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberreferenceId = null, Expression<Func<bool>> bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberisOwner = null, Expression<Func<string>> bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberstatus = null, Expression<Func<string>> bodyteamMembersaFMwA08kRMIF3Vs0OEteamMembergivenName = null, Expression<Func<string>> bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberfamilyName = null, Expression<Func<string>> bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberemailAddress = null, Expression<Func<string>> bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberphoneNumber = null, Expression<Func<string>> bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberassignedLocationsassignmentType = null)
+        public IBodyWorkflowAction<TeamUpdateBulkMembersResponse, ApiConnectionActionConfiguration> TeamUpdateBulkMembers(Expression<Func<TeamUpdateBulkMembersInput>> body)
         {
-            var __workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberreferenceId = WorkflowExpression.Compile(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberreferenceId, nameof(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberreferenceId), required: false);
-            var __workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberisOwner = WorkflowExpression.Compile(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberisOwner, nameof(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberisOwner), required: false);
-            var __workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberstatus = WorkflowExpression.Compile(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberstatus, nameof(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberstatus), required: false);
-            var __workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMembergivenName = WorkflowExpression.Compile(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMembergivenName, nameof(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMembergivenName), required: false);
-            var __workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberfamilyName = WorkflowExpression.Compile(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberfamilyName, nameof(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberfamilyName), required: false);
-            var __workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberemailAddress = WorkflowExpression.Compile(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberemailAddress, nameof(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberemailAddress), required: false);
-            var __workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberphoneNumber = WorkflowExpression.Compile(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberphoneNumber, nameof(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberphoneNumber), required: false);
-            var __workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberassignedLocationslocationIds = WorkflowExpression.Compile(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberassignedLocationslocationIds, nameof(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberassignedLocationslocationIds), required: false);
-            var __workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberassignedLocationsassignmentType = WorkflowExpression.Compile(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberassignedLocationsassignmentType, nameof(bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberassignedLocationsassignmentType), required: false);
-            var __workflow_bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberreferenceId = WorkflowExpression.Compile(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberreferenceId, nameof(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberreferenceId), required: false);
-            var __workflow_bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberisOwner = WorkflowExpression.Compile(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberisOwner, nameof(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberisOwner), required: false);
-            var __workflow_bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberstatus = WorkflowExpression.Compile(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberstatus, nameof(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberstatus), required: false);
-            var __workflow_bodyteamMembersaFMwA08kRMIF3Vs0OEteamMembergivenName = WorkflowExpression.Compile(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMembergivenName, nameof(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMembergivenName), required: false);
-            var __workflow_bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberfamilyName = WorkflowExpression.Compile(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberfamilyName, nameof(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberfamilyName), required: false);
-            var __workflow_bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberemailAddress = WorkflowExpression.Compile(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberemailAddress, nameof(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberemailAddress), required: false);
-            var __workflow_bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberphoneNumber = WorkflowExpression.Compile(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberphoneNumber, nameof(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberphoneNumber), required: false);
-            var __workflow_bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberassignedLocationsassignmentType = WorkflowExpression.Compile(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberassignedLocationsassignmentType, nameof(bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberassignedLocationsassignmentType), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TeamUpdateBulkMembersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/team-members/bulk-update";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var teamMembersObject = new JObject();
-                var teamMembersObjectpropCount = 0;
-                var fpgteZNMaf0qOKA4t6PObject = new JObject();
-                var fpgteZNMaf0qOKA4t6PObjectpropCount = 0;
-                var teamMemberObject = new JObject();
-                var teamMemberObjectpropCount = 0;
-                if (__workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberreferenceId != null)
-                {
-                    teamMemberObject["reference_id"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberreferenceId);
-                    teamMemberObjectpropCount++;
-                }
-
-                if (__workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberisOwner != null)
-                {
-                    teamMemberObject["is_owner"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberisOwner);
-                    teamMemberObjectpropCount++;
-                }
-
-                if (__workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberstatus != null)
-                {
-                    teamMemberObject["status"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberstatus);
-                    teamMemberObjectpropCount++;
-                }
-
-                if (__workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMembergivenName != null)
-                {
-                    teamMemberObject["given_name"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMembergivenName);
-                    teamMemberObjectpropCount++;
-                }
-
-                if (__workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberfamilyName != null)
-                {
-                    teamMemberObject["family_name"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberfamilyName);
-                    teamMemberObjectpropCount++;
-                }
-
-                if (__workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberemailAddress != null)
-                {
-                    teamMemberObject["email_address"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberemailAddress);
-                    teamMemberObjectpropCount++;
-                }
-
-                if (__workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberphoneNumber != null)
-                {
-                    teamMemberObject["phone_number"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberphoneNumber);
-                    teamMemberObjectpropCount++;
-                }
-
-                var assignedLocationsObject = new JObject();
-                var assignedLocationsObjectpropCount = 0;
-                if (__workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberassignedLocationslocationIds != null)
-                {
-                    assignedLocationsObject["location_ids"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberassignedLocationslocationIds);
-                    assignedLocationsObjectpropCount++;
-                }
-
-                if (__workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberassignedLocationsassignmentType != null)
-                {
-                    assignedLocationsObject["assignment_type"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersfpgteZNMaf0qOKA4t6PteamMemberassignedLocationsassignmentType);
-                    assignedLocationsObjectpropCount++;
-                }
-
-                if (assignedLocationsObjectpropCount > 0)
-                {
-                    teamMemberObject["assigned_locations"] = assignedLocationsObject;
-                    teamMemberObjectpropCount++;
-                }
-
-                if (teamMemberObjectpropCount > 0)
-                {
-                    fpgteZNMaf0qOKA4t6PObject["team_member"] = teamMemberObject;
-                    fpgteZNMaf0qOKA4t6PObjectpropCount++;
-                }
-
-                if (fpgteZNMaf0qOKA4t6PObjectpropCount > 0)
-                {
-                    teamMembersObject["fpgteZNMaf0qOK-a4t6P"] = fpgteZNMaf0qOKA4t6PObject;
-                    teamMembersObjectpropCount++;
-                }
-
-                var aFMwA08kRMIF3Vs0OEObject = new JObject();
-                var aFMwA08kRMIF3Vs0OEObjectpropCount = 0;
-                var teamMemberObject2 = new JObject();
-                var teamMemberObject2propCount = 0;
-                if (__workflow_bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberreferenceId != null)
-                {
-                    teamMemberObject2["reference_id"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberreferenceId);
-                    teamMemberObject2propCount++;
-                }
-
-                if (__workflow_bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberisOwner != null)
-                {
-                    teamMemberObject2["is_owner"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberisOwner);
-                    teamMemberObject2propCount++;
-                }
-
-                if (__workflow_bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberstatus != null)
-                {
-                    teamMemberObject2["status"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberstatus);
-                    teamMemberObject2propCount++;
-                }
-
-                if (__workflow_bodyteamMembersaFMwA08kRMIF3Vs0OEteamMembergivenName != null)
-                {
-                    teamMemberObject2["given_name"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersaFMwA08kRMIF3Vs0OEteamMembergivenName);
-                    teamMemberObject2propCount++;
-                }
-
-                if (__workflow_bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberfamilyName != null)
-                {
-                    teamMemberObject2["family_name"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberfamilyName);
-                    teamMemberObject2propCount++;
-                }
-
-                if (__workflow_bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberemailAddress != null)
-                {
-                    teamMemberObject2["email_address"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberemailAddress);
-                    teamMemberObject2propCount++;
-                }
-
-                if (__workflow_bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberphoneNumber != null)
-                {
-                    teamMemberObject2["phone_number"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberphoneNumber);
-                    teamMemberObject2propCount++;
-                }
-
-                var assignedLocationsObject2 = new JObject();
-                var assignedLocationsObject2propCount = 0;
-                if (__workflow_bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberassignedLocationsassignmentType != null)
-                {
-                    assignedLocationsObject2["assignment_type"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembersaFMwA08kRMIF3Vs0OEteamMemberassignedLocationsassignmentType);
-                    assignedLocationsObject2propCount++;
-                }
-
-                if (assignedLocationsObject2propCount > 0)
-                {
-                    teamMemberObject2["assigned_locations"] = assignedLocationsObject2;
-                    teamMemberObject2propCount++;
-                }
-
-                if (teamMemberObject2propCount > 0)
-                {
-                    aFMwA08kRMIF3Vs0OEObject["team_member"] = teamMemberObject2;
-                    aFMwA08kRMIF3Vs0OEObjectpropCount++;
-                }
-
-                if (aFMwA08kRMIF3Vs0OEObjectpropCount > 0)
-                {
-                    teamMembersObject["AFMwA08kR-MIF-3Vs0OE"] = aFMwA08kRMIF3Vs0OEObject;
-                    teamMembersObjectpropCount++;
-                }
-
-                if (teamMembersObjectpropCount > 0)
-                {
-                    body["team_members"] = teamMembersObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TeamUpdateBulkMembersResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<TeamSearchResponse, ApiConnectionActionConfiguration> TeamSearch(Expression<Func<string[]>> bodyqueryfilterlocationIds = null, Expression<Func<string>> bodyqueryfilterstatus = null, Expression<Func<int>> bodylimit = null)
+        public IBodyWorkflowAction<TeamSearchResponse, ApiConnectionActionConfiguration> TeamSearch(Expression<Func<TeamSearchInput>> body)
         {
-            var __workflow_bodyqueryfilterlocationIds = WorkflowExpression.Compile(bodyqueryfilterlocationIds, nameof(bodyqueryfilterlocationIds), required: false);
-            var __workflow_bodyqueryfilterstatus = WorkflowExpression.Compile(bodyqueryfilterstatus, nameof(bodyqueryfilterstatus), required: false);
-            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TeamSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/team-members/search";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var queryObject = new JObject();
-                var queryObjectpropCount = 0;
-                var filterObject = new JObject();
-                var filterObjectpropCount = 0;
-                if (__workflow_bodyqueryfilterlocationIds != null)
-                {
-                    filterObject["location_ids"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfilterlocationIds);
-                    filterObjectpropCount++;
-                }
-
-                if (__workflow_bodyqueryfilterstatus != null)
-                {
-                    filterObject["status"] = ExpressionConverter.ConvertO(__workflow_bodyqueryfilterstatus);
-                    filterObjectpropCount++;
-                }
-
-                if (filterObjectpropCount > 0)
-                {
-                    queryObject["filter"] = filterObject;
-                    queryObjectpropCount++;
-                }
-
-                if (queryObjectpropCount > 0)
-                {
-                    body["query"] = queryObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylimit != null)
-                {
-                    body["limit"] = ExpressionConverter.ConvertO(__workflow_bodylimit);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TeamSearchResponse>(callPayload);
             });
         }
@@ -2708,93 +974,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<TeamUpdateResponse, ApiConnectionActionConfiguration> TeamUpdate(Expression<Func<string>> teamMemberId, Expression<Func<string>> bodyteamMemberreferenceId = null, Expression<Func<string>> bodyteamMemberstatus = null, Expression<Func<string>> bodyteamMembergivenName = null, Expression<Func<string>> bodyteamMemberfamilyName = null, Expression<Func<string>> bodyteamMemberemailAddress = null, Expression<Func<string>> bodyteamMemberphoneNumber = null, Expression<Func<string[]>> bodyteamMemberassignedLocationslocationIds = null, Expression<Func<string>> bodyteamMemberassignedLocationsassignmentType = null)
+        public IBodyWorkflowAction<TeamUpdateResponse, ApiConnectionActionConfiguration> TeamUpdate(Expression<Func<string>> teamMemberId, Expression<Func<TeamUpdateInput>> body)
         {
             var __workflow_teamMemberId = WorkflowExpression.Compile(teamMemberId, nameof(teamMemberId), required: true);
-            var __workflow_bodyteamMemberreferenceId = WorkflowExpression.Compile(bodyteamMemberreferenceId, nameof(bodyteamMemberreferenceId), required: false);
-            var __workflow_bodyteamMemberstatus = WorkflowExpression.Compile(bodyteamMemberstatus, nameof(bodyteamMemberstatus), required: false);
-            var __workflow_bodyteamMembergivenName = WorkflowExpression.Compile(bodyteamMembergivenName, nameof(bodyteamMembergivenName), required: false);
-            var __workflow_bodyteamMemberfamilyName = WorkflowExpression.Compile(bodyteamMemberfamilyName, nameof(bodyteamMemberfamilyName), required: false);
-            var __workflow_bodyteamMemberemailAddress = WorkflowExpression.Compile(bodyteamMemberemailAddress, nameof(bodyteamMemberemailAddress), required: false);
-            var __workflow_bodyteamMemberphoneNumber = WorkflowExpression.Compile(bodyteamMemberphoneNumber, nameof(bodyteamMemberphoneNumber), required: false);
-            var __workflow_bodyteamMemberassignedLocationslocationIds = WorkflowExpression.Compile(bodyteamMemberassignedLocationslocationIds, nameof(bodyteamMemberassignedLocationslocationIds), required: false);
-            var __workflow_bodyteamMemberassignedLocationsassignmentType = WorkflowExpression.Compile(bodyteamMemberassignedLocationsassignmentType, nameof(bodyteamMemberassignedLocationsassignmentType), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TeamUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/team-members/{0}", __workflow_teamMemberId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var teamMemberObject = new JObject();
-                var teamMemberObjectpropCount = 0;
-                if (__workflow_bodyteamMemberreferenceId != null)
-                {
-                    teamMemberObject["reference_id"] = ExpressionConverter.ConvertO(__workflow_bodyteamMemberreferenceId);
-                    teamMemberObjectpropCount++;
-                }
-
-                if (__workflow_bodyteamMemberstatus != null)
-                {
-                    teamMemberObject["status"] = ExpressionConverter.ConvertO(__workflow_bodyteamMemberstatus);
-                    teamMemberObjectpropCount++;
-                }
-
-                if (__workflow_bodyteamMembergivenName != null)
-                {
-                    teamMemberObject["given_name"] = ExpressionConverter.ConvertO(__workflow_bodyteamMembergivenName);
-                    teamMemberObjectpropCount++;
-                }
-
-                if (__workflow_bodyteamMemberfamilyName != null)
-                {
-                    teamMemberObject["family_name"] = ExpressionConverter.ConvertO(__workflow_bodyteamMemberfamilyName);
-                    teamMemberObjectpropCount++;
-                }
-
-                if (__workflow_bodyteamMemberemailAddress != null)
-                {
-                    teamMemberObject["email_address"] = ExpressionConverter.ConvertO(__workflow_bodyteamMemberemailAddress);
-                    teamMemberObjectpropCount++;
-                }
-
-                if (__workflow_bodyteamMemberphoneNumber != null)
-                {
-                    teamMemberObject["phone_number"] = ExpressionConverter.ConvertO(__workflow_bodyteamMemberphoneNumber);
-                    teamMemberObjectpropCount++;
-                }
-
-                var assignedLocationsObject = new JObject();
-                var assignedLocationsObjectpropCount = 0;
-                if (__workflow_bodyteamMemberassignedLocationslocationIds != null)
-                {
-                    assignedLocationsObject["location_ids"] = ExpressionConverter.ConvertO(__workflow_bodyteamMemberassignedLocationslocationIds);
-                    assignedLocationsObjectpropCount++;
-                }
-
-                if (__workflow_bodyteamMemberassignedLocationsassignmentType != null)
-                {
-                    assignedLocationsObject["assignment_type"] = ExpressionConverter.ConvertO(__workflow_bodyteamMemberassignedLocationsassignmentType);
-                    assignedLocationsObjectpropCount++;
-                }
-
-                if (assignedLocationsObjectpropCount > 0)
-                {
-                    teamMemberObject["assigned_locations"] = assignedLocationsObject;
-                    teamMemberObjectpropCount++;
-                }
-
-                if (teamMemberObjectpropCount > 0)
-                {
-                    body["team_member"] = teamMemberObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TeamUpdateResponse>(callPayload);
             });
         }
@@ -2813,43 +1002,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<TeamUpdateWageResponse, ApiConnectionActionConfiguration> TeamUpdateWage(Expression<Func<string>> teamMemberId, Expression<Func<bool>> bodywageSettingisOvertimeExempt = null, Expression<Func<bodywageSettingjobAssignmentsInputItem[]>> bodywageSettingjobAssignments = null)
+        public IBodyWorkflowAction<TeamUpdateWageResponse, ApiConnectionActionConfiguration> TeamUpdateWage(Expression<Func<string>> teamMemberId, Expression<Func<TeamUpdateWageInput>> body)
         {
             var __workflow_teamMemberId = WorkflowExpression.Compile(teamMemberId, nameof(teamMemberId), required: true);
-            var __workflow_bodywageSettingisOvertimeExempt = WorkflowExpression.Compile(bodywageSettingisOvertimeExempt, nameof(bodywageSettingisOvertimeExempt), required: false);
-            var __workflow_bodywageSettingjobAssignments = WorkflowExpression.Compile(bodywageSettingjobAssignments, nameof(bodywageSettingjobAssignments), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TeamUpdateWageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/team-members/{0}/wage-setting", __workflow_teamMemberId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var wageSettingObject = new JObject();
-                var wageSettingObjectpropCount = 0;
-                if (__workflow_bodywageSettingisOvertimeExempt != null)
-                {
-                    wageSettingObject["is_overtime_exempt"] = ExpressionConverter.ConvertO(__workflow_bodywageSettingisOvertimeExempt);
-                    wageSettingObjectpropCount++;
-                }
-
-                if (__workflow_bodywageSettingjobAssignments != null)
-                {
-                    wageSettingObject["job_assignments"] = ExpressionConverter.ConvertO(__workflow_bodywageSettingjobAssignments);
-                    wageSettingObjectpropCount++;
-                }
-
-                if (wageSettingObjectpropCount > 0)
-                {
-                    body["wage_setting"] = wageSettingObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TeamUpdateWageResponse>(callPayload);
             });
         }
@@ -2980,10 +1142,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public int ServiceVariationVersion { get; set; }
     }
 
-    public class bodybookingappointmentSegmentsInputItem
+    public class BookingCreateInput
+    {
+        [JsonProperty("booking")]
+        public BookingCreateInputBookingType Booking { get; set; }
+    }
+
+    public class BookingCreateInputBookingType
+    {
+        [JsonProperty("customer_id")]
+        public string CustomerId { get; set; }
+
+        [JsonProperty("start_at")]
+        public string StartAt { get; set; }
+
+        [JsonProperty("location_id")]
+        public string LocationId { get; set; }
+
+        [JsonProperty("appointment_segments")]
+        public BookingCreateInputBookingTypeAppointmentSegmentsTypeItem[] AppointmentSegments { get; set; }
+    }
+
+    public class BookingCreateInputBookingTypeAppointmentSegmentsTypeItem
     {
         [JsonProperty("duration_minutes")]
-        public int DurationMinutes { get; set; }
+        public int? DurationMinutes { get; set; }
 
         [JsonProperty("team_member_id")]
         public string TeamMemberId { get; set; }
@@ -2992,7 +1175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string ServiceVariationId { get; set; }
 
         [JsonProperty("service_variation_version")]
-        public int ServiceVariationVersion { get; set; }
+        public int? ServiceVariationVersion { get; set; }
     }
 
     public class BookingAvailabilityResponse
@@ -3031,16 +1214,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public int ServiceVariationVersion { get; set; }
     }
 
-    public class bodyqueryfiltersegmentFiltersInputItem
+    public class BookingAvailabilityInput
+    {
+        [JsonProperty("query")]
+        public BookingAvailabilityInputQueryType Query { get; set; }
+    }
+
+    public class BookingAvailabilityInputQueryType
+    {
+        [JsonProperty("filter")]
+        public BookingAvailabilityInputQueryTypeFilterType Filter { get; set; }
+    }
+
+    public class BookingAvailabilityInputQueryTypeFilterType
+    {
+        [JsonProperty("start_at_range")]
+        public BookingAvailabilityInputQueryTypeFilterTypeStartAtRangeType StartAtRange { get; set; }
+
+        [JsonProperty("location_id")]
+        public string LocationId { get; set; }
+
+        [JsonProperty("segment_filters")]
+        public BookingAvailabilityInputQueryTypeFilterTypeSegmentFiltersTypeItem[] SegmentFilters { get; set; }
+    }
+
+    public class BookingAvailabilityInputQueryTypeFilterTypeStartAtRangeType
+    {
+        [JsonProperty("start_at")]
+        public string StartAt { get; set; }
+
+        [JsonProperty("end_at")]
+        public string EndAt { get; set; }
+    }
+
+    public class BookingAvailabilityInputQueryTypeFilterTypeSegmentFiltersTypeItem
     {
         [JsonProperty("service_variation_id")]
         public string ServiceVariationId { get; set; }
 
         [JsonProperty("team_member_id_filter")]
-        public bodyqueryfiltersegmentFiltersInputItemTeamMemberIdFilterType TeamMemberIdFilter { get; set; }
+        public BookingAvailabilityInputQueryTypeFilterTypeSegmentFiltersTypeItemTeamMemberIdFilterType TeamMemberIdFilter { get; set; }
     }
 
-    public class bodyqueryfiltersegmentFiltersInputItemTeamMemberIdFilterType
+    public class BookingAvailabilityInputQueryTypeFilterTypeSegmentFiltersTypeItemTeamMemberIdFilterType
     {
         [JsonProperty("any")]
         public string[] Any { get; set; }
@@ -3668,7 +1884,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Currency { get; set; }
     }
 
-    public class bodyorderorderlineItemsInputItem
+    public class CheckoutCreateInput
+    {
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+
+        [JsonProperty("redirect_url")]
+        public string RedirectUrl { get; set; }
+
+        [JsonProperty("order")]
+        public CheckoutCreateInputOrderType Order { get; set; }
+
+        [JsonProperty("additional_recipients")]
+        public CheckoutCreateInputAdditionalRecipientsTypeItem[] AdditionalRecipients { get; set; }
+
+        [JsonProperty("ask_for_shipping_address")]
+        public bool? AskForShippingAddress { get; set; }
+
+        [JsonProperty("merchant_support_email")]
+        public string MerchantSupportEmail { get; set; }
+
+        [JsonProperty("pre_populate_buyer_email")]
+        public string PrePopulateBuyerEmail { get; set; }
+
+        [JsonProperty("pre_populate_shipping_address")]
+        public CheckoutCreateInputPrePopulateShippingAddressType PrePopulateShippingAddress { get; set; }
+    }
+
+    public class CheckoutCreateInputOrderType
+    {
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+
+        [JsonProperty("order")]
+        public CheckoutCreateInputOrderTypeOrderType Order { get; set; }
+    }
+
+    public class CheckoutCreateInputOrderTypeOrderType
+    {
+        [JsonProperty("location_id")]
+        public string LocationId { get; set; }
+
+        [JsonProperty("customer_id")]
+        public string CustomerId { get; set; }
+
+        [JsonProperty("reference_id")]
+        public string ReferenceId { get; set; }
+
+        [JsonProperty("line_items")]
+        public CheckoutCreateInputOrderTypeOrderTypeLineItemsTypeItem[] LineItems { get; set; }
+
+        [JsonProperty("taxes")]
+        public CheckoutCreateInputOrderTypeOrderTypeTaxesTypeItem[] Taxes { get; set; }
+
+        [JsonProperty("discounts")]
+        public CheckoutCreateInputOrderTypeOrderTypeDiscountsTypeItem[] Discounts { get; set; }
+    }
+
+    public class CheckoutCreateInputOrderTypeOrderTypeLineItemsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -3677,37 +1950,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Quantity { get; set; }
 
         [JsonProperty("base_price_money")]
-        public bodyorderorderlineItemsInputItemBasePriceMoneyType BasePriceMoney { get; set; }
+        public CheckoutCreateInputOrderTypeOrderTypeLineItemsTypeItemBasePriceMoneyType BasePriceMoney { get; set; }
 
         [JsonProperty("applied_discounts")]
-        public bodyorderorderlineItemsInputItemAppliedDiscountsTypeItem[] AppliedDiscounts { get; set; }
+        public CheckoutCreateInputOrderTypeOrderTypeLineItemsTypeItemAppliedDiscountsTypeItem[] AppliedDiscounts { get; set; }
 
         [JsonProperty("applied_taxes")]
-        public bodyorderorderlineItemsInputItemAppliedTaxesTypeItem[] AppliedTaxes { get; set; }
+        public CheckoutCreateInputOrderTypeOrderTypeLineItemsTypeItemAppliedTaxesTypeItem[] AppliedTaxes { get; set; }
     }
 
-    public class bodyorderorderlineItemsInputItemBasePriceMoneyType
+    public class CheckoutCreateInputOrderTypeOrderTypeLineItemsTypeItemBasePriceMoneyType
     {
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public int? Amount { get; set; }
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
     }
 
-    public class bodyorderorderlineItemsInputItemAppliedDiscountsTypeItem
+    public class CheckoutCreateInputOrderTypeOrderTypeLineItemsTypeItemAppliedDiscountsTypeItem
     {
         [JsonProperty("discount_uid")]
         public string DiscountUid { get; set; }
     }
 
-    public class bodyorderorderlineItemsInputItemAppliedTaxesTypeItem
+    public class CheckoutCreateInputOrderTypeOrderTypeLineItemsTypeItemAppliedTaxesTypeItem
     {
         [JsonProperty("tax_uid")]
         public string TaxUid { get; set; }
     }
 
-    public class bodyorderordertaxesInputItem
+    public class CheckoutCreateInputOrderTypeOrderTypeTaxesTypeItem
     {
         [JsonProperty("uid")]
         public string Uid { get; set; }
@@ -3722,7 +1995,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Scope { get; set; }
     }
 
-    public class bodyorderorderdiscountsInputItem
+    public class CheckoutCreateInputOrderTypeOrderTypeDiscountsTypeItem
     {
         [JsonProperty("uid")]
         public string Uid { get; set; }
@@ -3734,19 +2007,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Scope { get; set; }
 
         [JsonProperty("amount_money")]
-        public bodyorderorderdiscountsInputItemAmountMoneyType AmountMoney { get; set; }
+        public CheckoutCreateInputOrderTypeOrderTypeDiscountsTypeItemAmountMoneyType AmountMoney { get; set; }
     }
 
-    public class bodyorderorderdiscountsInputItemAmountMoneyType
+    public class CheckoutCreateInputOrderTypeOrderTypeDiscountsTypeItemAmountMoneyType
     {
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public int? Amount { get; set; }
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
     }
 
-    public class bodyadditionalRecipientsInputItem
+    public class CheckoutCreateInputAdditionalRecipientsTypeItem
     {
         [JsonProperty("location_id")]
         public string LocationId { get; set; }
@@ -3755,16 +2028,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Title { get; set; }
 
         [JsonProperty("amount_money")]
-        public bodyadditionalRecipientsInputItemAmountMoneyType AmountMoney { get; set; }
+        public CheckoutCreateInputAdditionalRecipientsTypeItemAmountMoneyType AmountMoney { get; set; }
     }
 
-    public class bodyadditionalRecipientsInputItemAmountMoneyType
+    public class CheckoutCreateInputAdditionalRecipientsTypeItemAmountMoneyType
     {
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public int? Amount { get; set; }
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
+    }
+
+    public class CheckoutCreateInputPrePopulateShippingAddressType
+    {
+        [JsonProperty("address_line_1")]
+        public string AddressLine1 { get; set; }
+
+        [JsonProperty("address_line_2")]
+        public string AddressLine2 { get; set; }
+
+        [JsonProperty("locality")]
+        public string Locality { get; set; }
+
+        [JsonProperty("administrative_district_level_1")]
+        public string AdministrativeDistrictLevel1 { get; set; }
+
+        [JsonProperty("postal_code")]
+        public string PostalCode { get; set; }
+
+        [JsonProperty("country")]
+        public string Country { get; set; }
+
+        [JsonProperty("first_name")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("last_name")]
+        public string LastName { get; set; }
     }
 
     public class DeviceListResponse
@@ -3849,6 +2149,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
 
         [JsonProperty("status_changed_at")]
         public string StatusChangedAt { get; set; }
+    }
+
+    public class DeviceCreateInput
+    {
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+
+        [JsonProperty("device_code")]
+        public DeviceCreateInputDeviceCodeType DeviceCode { get; set; }
+    }
+
+    public class DeviceCreateInputDeviceCodeType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("location_id")]
+        public string LocationId { get; set; }
+
+        [JsonProperty("product_type")]
+        public string ProductType { get; set; }
     }
 
     public class DeviceGetResponse
@@ -4034,8 +2355,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Currency { get; set; }
     }
 
+    public class GiftCardCreateInput
+    {
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+
+        [JsonProperty("gift_card_activity")]
+        public GiftCardCreateInputGiftCardActivityType GiftCardActivity { get; set; }
+    }
+
+    public class GiftCardCreateInputGiftCardActivityType
+    {
+        [JsonProperty("gift_card_id")]
+        public string GiftCardId { get; set; }
+
+        [JsonProperty("type")]
+        public GiftCardCreateInputGiftCardActivityTypeTypeType? Type { get; set; }
+
+        [JsonProperty("location_id")]
+        public string LocationId { get; set; }
+
+        [JsonProperty("activate_activity_details")]
+        public GiftCardCreateInputGiftCardActivityTypeActivateActivityDetailsType ActivateActivityDetails { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodygiftCardActivitytypeInput
+    public enum GiftCardCreateInputGiftCardActivityTypeTypeType
     {
         ACTIVATE,
         LOAD,
@@ -4055,6 +2400,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         UNBLOCK,
         [EnumMember(Value = "IMPORT_REVERSAL")]
         IMPORTREVERSAL
+    }
+
+    public class GiftCardCreateInputGiftCardActivityTypeActivateActivityDetailsType
+    {
+        [JsonProperty("order_id")]
+        public string OrderId { get; set; }
+
+        [JsonProperty("line_item_uid")]
+        public string LineItemUid { get; set; }
     }
 
     public class GiftCardRetrieveGANResponse
@@ -4096,6 +2450,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Currency { get; set; }
     }
 
+    public class GiftCardRetrieveGANInput
+    {
+        [JsonProperty("gan")]
+        public string Gan { get; set; }
+    }
+
     public class GiftCardRetrieveNonceResponse
     {
         [JsonProperty("gift_card")]
@@ -4133,6 +2493,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
+    }
+
+    public class GiftCardRetrieveNonceInput
+    {
+        [JsonProperty("nonce")]
+        public string Nonce { get; set; }
     }
 
     public class GiftCardLinkResponse
@@ -4177,6 +2543,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Currency { get; set; }
     }
 
+    public class GiftCardLinkInput
+    {
+        [JsonProperty("customer_id")]
+        public string CustomerId { get; set; }
+    }
+
     public class GiftCardUnlinkResponse
     {
         [JsonProperty("gift_card")]
@@ -4214,6 +2586,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
+    }
+
+    public class GiftCardUnlinkInput
+    {
+        [JsonProperty("customer_id")]
+        public string CustomerId { get; set; }
     }
 
     public class GiftCardRetrieveResponse
@@ -4324,6 +2702,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string UpdatedAt { get; set; }
     }
 
+    public class LaborCreateBreakInput
+    {
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+
+        [JsonProperty("break_type")]
+        public LaborCreateBreakInputBreakTypeType BreakType { get; set; }
+    }
+
+    public class LaborCreateBreakInputBreakTypeType
+    {
+        [JsonProperty("location_id")]
+        public string LocationId { get; set; }
+
+        [JsonProperty("break_name")]
+        public string BreakName { get; set; }
+
+        [JsonProperty("expected_duration")]
+        public string ExpectedDuration { get; set; }
+
+        [JsonProperty("is_paid")]
+        public bool? IsPaid { get; set; }
+    }
+
     public class LaborGetBreakResponse
     {
         [JsonProperty("break_type")]
@@ -4388,6 +2790,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
 
         [JsonProperty("updated_at")]
         public string UpdatedAt { get; set; }
+    }
+
+    public class LaborUpdateBreakInput
+    {
+        [JsonProperty("break_type")]
+        public LaborUpdateBreakInputBreakTypeType BreakType { get; set; }
+    }
+
+    public class LaborUpdateBreakInputBreakTypeType
+    {
+        [JsonProperty("location_id")]
+        public string LocationId { get; set; }
+
+        [JsonProperty("break_name")]
+        public string BreakName { get; set; }
+
+        [JsonProperty("expected_duration")]
+        public string ExpectedDuration { get; set; }
+
+        [JsonProperty("is_paid")]
+        public bool? IsPaid { get; set; }
+
+        [JsonProperty("version")]
+        public int? Version { get; set; }
     }
 
     public class LaborCreateShiftResponse
@@ -4480,7 +2906,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public bool IsPaid { get; set; }
     }
 
-    public class bodyshiftbreaksInputItem
+    public class LaborCreateShiftInput
+    {
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+
+        [JsonProperty("shift")]
+        public LaborCreateShiftInputShiftType Shift { get; set; }
+    }
+
+    public class LaborCreateShiftInputShiftType
+    {
+        [JsonProperty("team_member_id")]
+        public string TeamMemberId { get; set; }
+
+        [JsonProperty("location_id")]
+        public string LocationId { get; set; }
+
+        [JsonProperty("start_at")]
+        public string StartAt { get; set; }
+
+        [JsonProperty("end_at")]
+        public string EndAt { get; set; }
+
+        [JsonProperty("wage")]
+        public LaborCreateShiftInputShiftTypeWageType Wage { get; set; }
+
+        [JsonProperty("breaks")]
+        public LaborCreateShiftInputShiftTypeBreaksTypeItem[] Breaks { get; set; }
+    }
+
+    public class LaborCreateShiftInputShiftTypeWageType
+    {
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("hourly_rate")]
+        public LaborCreateShiftInputShiftTypeWageTypeHourlyRateType HourlyRate { get; set; }
+    }
+
+    public class LaborCreateShiftInputShiftTypeWageTypeHourlyRateType
+    {
+        [JsonProperty("amount")]
+        public int? Amount { get; set; }
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+    }
+
+    public class LaborCreateShiftInputShiftTypeBreaksTypeItem
     {
         [JsonProperty("start_at")]
         public string StartAt { get; set; }
@@ -4498,7 +2972,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string ExpectedDuration { get; set; }
 
         [JsonProperty("is_paid")]
-        public bool IsPaid { get; set; }
+        public bool? IsPaid { get; set; }
     }
 
     public class LaborSearchShiftsResponse
@@ -4586,6 +3060,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
 
         [JsonProperty("is_paid")]
         public bool IsPaid { get; set; }
+    }
+
+    public class LaborSearchShiftsInput
+    {
+        [JsonProperty("query")]
+        public LaborSearchShiftsInputQueryType Query { get; set; }
+
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
+    }
+
+    public class LaborSearchShiftsInputQueryType
+    {
+        [JsonProperty("filter")]
+        public LaborSearchShiftsInputQueryTypeFilterType Filter { get; set; }
+    }
+
+    public class LaborSearchShiftsInputQueryTypeFilterType
+    {
+        [JsonProperty("workday")]
+        public LaborSearchShiftsInputQueryTypeFilterTypeWorkdayType Workday { get; set; }
+    }
+
+    public class LaborSearchShiftsInputQueryTypeFilterTypeWorkdayType
+    {
+        [JsonProperty("date_range")]
+        public LaborSearchShiftsInputQueryTypeFilterTypeWorkdayTypeDateRangeType DateRange { get; set; }
+
+        [JsonProperty("match_shifts_by")]
+        public string MatchShiftsBy { get; set; }
+
+        [JsonProperty("default_timezone")]
+        public string DefaultTimezone { get; set; }
+    }
+
+    public class LaborSearchShiftsInputQueryTypeFilterTypeWorkdayTypeDateRangeType
+    {
+        [JsonProperty("start_date")]
+        public string StartDate { get; set; }
+
+        [JsonProperty("end_date")]
+        public string EndDate { get; set; }
     }
 
     public class LaborGetShiftResponse
@@ -4768,7 +3284,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public bool IsPaid { get; set; }
     }
 
-    public class bodyshiftbreaksInputItem2
+    public class LaborUpdateShiftInput
+    {
+        [JsonProperty("shift")]
+        public LaborUpdateShiftInputShiftType Shift { get; set; }
+    }
+
+    public class LaborUpdateShiftInputShiftType
+    {
+        [JsonProperty("team_member_id")]
+        public string TeamMemberId { get; set; }
+
+        [JsonProperty("location_id")]
+        public string LocationId { get; set; }
+
+        [JsonProperty("start_at")]
+        public string StartAt { get; set; }
+
+        [JsonProperty("end_at")]
+        public string EndAt { get; set; }
+
+        [JsonProperty("wage")]
+        public LaborUpdateShiftInputShiftTypeWageType Wage { get; set; }
+
+        [JsonProperty("breaks")]
+        public LaborUpdateShiftInputShiftTypeBreaksTypeItem[] Breaks { get; set; }
+
+        [JsonProperty("version")]
+        public int? Version { get; set; }
+    }
+
+    public class LaborUpdateShiftInputShiftTypeWageType
+    {
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("hourly_rate")]
+        public LaborUpdateShiftInputShiftTypeWageTypeHourlyRateType HourlyRate { get; set; }
+    }
+
+    public class LaborUpdateShiftInputShiftTypeWageTypeHourlyRateType
+    {
+        [JsonProperty("amount")]
+        public int? Amount { get; set; }
+
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+    }
+
+    public class LaborUpdateShiftInputShiftTypeBreaksTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -4789,7 +3353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string ExpectedDuration { get; set; }
 
         [JsonProperty("is_paid")]
-        public bool IsPaid { get; set; }
+        public bool? IsPaid { get; set; }
     }
 
     public class LaborListWagesResponse
@@ -4910,6 +3474,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
 
         [JsonProperty("updated_at")]
         public string UpdatedAt { get; set; }
+    }
+
+    public class LaborUpdateConfigInput
+    {
+        [JsonProperty("workweek_config")]
+        public LaborUpdateConfigInputWorkweekConfigType WorkweekConfig { get; set; }
+    }
+
+    public class LaborUpdateConfigInputWorkweekConfigType
+    {
+        [JsonProperty("start_of_week")]
+        public string StartOfWeek { get; set; }
+
+        [JsonProperty("start_of_day_local_time")]
+        public string StartOfDayLocalTime { get; set; }
+
+        [JsonProperty("version")]
+        public int? Version { get; set; }
     }
 
     public class LocationListResponse
@@ -5060,6 +3642,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
 
         [JsonProperty("longitude")]
         public double Longitude { get; set; }
+    }
+
+    public class LocationCreateInput
+    {
+        [JsonProperty("location")]
+        public LocationCreateInputLocationType Location { get; set; }
+    }
+
+    public class LocationCreateInputLocationType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("facebook_url")]
+        public string FacebookUrl { get; set; }
+
+        [JsonProperty("address")]
+        public LocationCreateInputLocationTypeAddressType Address { get; set; }
+    }
+
+    public class LocationCreateInputLocationTypeAddressType
+    {
+        [JsonProperty("address_line_1")]
+        public string AddressLine1 { get; set; }
+
+        [JsonProperty("administrative_district_level_1")]
+        public string AdministrativeDistrictLevel1 { get; set; }
+
+        [JsonProperty("locality")]
+        public string Locality { get; set; }
+
+        [JsonProperty("postal_code")]
+        public string PostalCode { get; set; }
     }
 
     public class LocationRetrieveResponse
@@ -5245,7 +3863,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public double Longitude { get; set; }
     }
 
-    public class bodylocationbusinessHoursperiodsInputItem
+    public class LocationUpdateInput
+    {
+        [JsonProperty("location")]
+        public LocationUpdateInputLocationType Location { get; set; }
+    }
+
+    public class LocationUpdateInputLocationType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("facebook_url")]
+        public string FacebookUrl { get; set; }
+
+        [JsonProperty("twitter_username")]
+        public string TwitterUsername { get; set; }
+
+        [JsonProperty("instagram_username")]
+        public string InstagramUsername { get; set; }
+
+        [JsonProperty("address")]
+        public LocationUpdateInputLocationTypeAddressType Address { get; set; }
+
+        [JsonProperty("business_hours")]
+        public LocationUpdateInputLocationTypeBusinessHoursType BusinessHours { get; set; }
+    }
+
+    public class LocationUpdateInputLocationTypeAddressType
+    {
+        [JsonProperty("address_line_1")]
+        public string AddressLine1 { get; set; }
+
+        [JsonProperty("administrative_district_level_1")]
+        public string AdministrativeDistrictLevel1 { get; set; }
+
+        [JsonProperty("locality")]
+        public string Locality { get; set; }
+
+        [JsonProperty("postal_code")]
+        public string PostalCode { get; set; }
+    }
+
+    public class LocationUpdateInputLocationTypeBusinessHoursType
+    {
+        [JsonProperty("periods")]
+        public LocationUpdateInputLocationTypeBusinessHoursTypePeriodsTypeItem[] Periods { get; set; }
+    }
+
+    public class LocationUpdateInputLocationTypeBusinessHoursTypePeriodsTypeItem
     {
         [JsonProperty("day_of_week")]
         public string DayOfWeek { get; set; }
@@ -5299,6 +3968,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string CreatedAt { get; set; }
     }
 
+    public class LoyaltyCreateAccountInput
+    {
+        [JsonProperty("loyalty_account")]
+        public LoyaltyCreateAccountInputLoyaltyAccountType LoyaltyAccount { get; set; }
+
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+    }
+
+    public class LoyaltyCreateAccountInputLoyaltyAccountType
+    {
+        [JsonProperty("mapping")]
+        public LoyaltyCreateAccountInputLoyaltyAccountTypeMappingType Mapping { get; set; }
+
+        [JsonProperty("program_id")]
+        public string ProgramId { get; set; }
+    }
+
+    public class LoyaltyCreateAccountInputLoyaltyAccountTypeMappingType
+    {
+        [JsonProperty("phone_number")]
+        public string PhoneNumber { get; set; }
+    }
+
     public class LoyaltySearchAccountsResponse
     {
         [JsonProperty("loyalty_accounts")]
@@ -5345,6 +4038,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
 
         [JsonProperty("created_at")]
         public string CreatedAt { get; set; }
+    }
+
+    public class LoyaltySearchAccountsInput
+    {
+        [JsonProperty("query")]
+        public JToken Query { get; set; }
+
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
     }
 
     public class LoyaltyRetrieveAccountResponse
@@ -5434,6 +4136,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string OrderId { get; set; }
     }
 
+    public class LoyaltyAccumulatePointsInput
+    {
+        [JsonProperty("accumulate_points")]
+        public LoyaltyAccumulatePointsInputAccumulatePointsType AccumulatePoints { get; set; }
+
+        [JsonProperty("location_id")]
+        public string LocationId { get; set; }
+
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+    }
+
+    public class LoyaltyAccumulatePointsInputAccumulatePointsType
+    {
+        [JsonProperty("order_id")]
+        public string OrderId { get; set; }
+    }
+
     public class LoyaltyAdjustPointsResponse
     {
         [JsonProperty("event")]
@@ -5468,6 +4188,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
 
         [JsonProperty("points")]
         public int Points { get; set; }
+
+        [JsonProperty("reason")]
+        public string Reason { get; set; }
+    }
+
+    public class LoyaltyAdjustPointsInput
+    {
+        [JsonProperty("adjust_points")]
+        public LoyaltyAdjustPointsInputAdjustPointsType AdjustPoints { get; set; }
+
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+    }
+
+    public class LoyaltyAdjustPointsInputAdjustPointsType
+    {
+        [JsonProperty("points")]
+        public int? Points { get; set; }
 
         [JsonProperty("reason")]
         public string Reason { get; set; }
@@ -5543,6 +4281,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
 
         [JsonProperty("points")]
         public int Points { get; set; }
+    }
+
+    public class LoyaltySearchEventsInput
+    {
+        [JsonProperty("query")]
+        public LoyaltySearchEventsInputQueryType Query { get; set; }
+
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
+    }
+
+    public class LoyaltySearchEventsInputQueryType
+    {
+        [JsonProperty("filter")]
+        public LoyaltySearchEventsInputQueryTypeFilterType Filter { get; set; }
+    }
+
+    public class LoyaltySearchEventsInputQueryTypeFilterType
+    {
+        [JsonProperty("order_filter")]
+        public LoyaltySearchEventsInputQueryTypeFilterTypeOrderFilterType OrderFilter { get; set; }
+    }
+
+    public class LoyaltySearchEventsInputQueryTypeFilterTypeOrderFilterType
+    {
+        [JsonProperty("order_id")]
+        public string OrderId { get; set; }
     }
 
     public class LoyaltyRetrieveProgramResponse
@@ -5659,6 +4424,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public int Points { get; set; }
     }
 
+    public class LoyaltyCalculatePointsInput
+    {
+        [JsonProperty("order_id")]
+        public string OrderId { get; set; }
+    }
+
     public class LoyaltyCreateRewardResponse
     {
         [JsonProperty("reward")]
@@ -5690,6 +4461,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
 
         [JsonProperty("updated_at")]
         public string UpdatedAt { get; set; }
+    }
+
+    public class LoyaltyCreateRewardInput
+    {
+        [JsonProperty("reward")]
+        public LoyaltyCreateRewardInputRewardType Reward { get; set; }
+
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+    }
+
+    public class LoyaltyCreateRewardInputRewardType
+    {
+        [JsonProperty("loyalty_account_id")]
+        public string LoyaltyAccountId { get; set; }
+
+        [JsonProperty("reward_tier_id")]
+        public string RewardTierId { get; set; }
+
+        [JsonProperty("order_id")]
+        public string OrderId { get; set; }
     }
 
     public class LoyaltySearchRewardsResponse
@@ -5726,6 +4518,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
 
         [JsonProperty("redeemed_at")]
         public string RedeemedAt { get; set; }
+    }
+
+    public class LoyaltySearchRewardsInput
+    {
+        [JsonProperty("query")]
+        public LoyaltySearchRewardsInputQueryType Query { get; set; }
+
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
+    }
+
+    public class LoyaltySearchRewardsInputQueryType
+    {
+        [JsonProperty("loyalty_account_id")]
+        public string LoyaltyAccountId { get; set; }
     }
 
     public class LoyaltyRetrieveRewardResponse
@@ -5800,6 +4607,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string RewardId { get; set; }
     }
 
+    public class LoyaltyRedeemRewardInput
+    {
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+
+        [JsonProperty("location_id")]
+        public string LocationId { get; set; }
+    }
+
     public class MerchantListResponse
     {
         [JsonProperty("merchant")]
@@ -5867,6 +4683,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
 
         [JsonProperty("expires_at")]
         public string ExpiresAt { get; set; }
+    }
+
+    public class MobileAuthorizationCreateInput
+    {
+        [JsonProperty("location_id")]
+        public string LocationId { get; set; }
     }
 
     public class SiteListResponse
@@ -5944,6 +4766,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string UpdatedAt { get; set; }
     }
 
+    public class SnippetUpsertInput
+    {
+        [JsonProperty("snippet")]
+        public SnippetUpsertInputSnippetType Snippet { get; set; }
+    }
+
+    public class SnippetUpsertInputSnippetType
+    {
+        [JsonProperty("content")]
+        public string Content { get; set; }
+    }
+
     public class TeamCreateMemberResponse
     {
         [JsonProperty("team_member")]
@@ -5987,6 +4821,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
 
         [JsonProperty("location_ids")]
         public string[] LocationIds { get; set; }
+    }
+
+    public class TeamCreateMemberInput
+    {
+        [JsonProperty("idempotency_key")]
+        public string IdempotencyKey { get; set; }
+
+        [JsonProperty("team_member")]
+        public TeamCreateMemberInputTeamMemberType TeamMember { get; set; }
+    }
+
+    public class TeamCreateMemberInputTeamMemberType
+    {
+        [JsonProperty("reference_id")]
+        public string ReferenceId { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("given_name")]
+        public string GivenName { get; set; }
+
+        [JsonProperty("family_name")]
+        public string FamilyName { get; set; }
+
+        [JsonProperty("email_address")]
+        public string EmailAddress { get; set; }
+
+        [JsonProperty("phone_number")]
+        public string PhoneNumber { get; set; }
+
+        [JsonProperty("assigned_locations")]
+        public TeamCreateMemberInputTeamMemberTypeAssignedLocationsType AssignedLocations { get; set; }
+    }
+
+    public class TeamCreateMemberInputTeamMemberTypeAssignedLocationsType
+    {
+        [JsonProperty("location_ids")]
+        public string[] LocationIds { get; set; }
+
+        [JsonProperty("assignment_type")]
+        public string AssignmentType { get; set; }
     }
 
     public class TeamCreateBulkMembersResponse
@@ -6091,6 +4967,90 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string AssignmentType { get; set; }
     }
 
+    public class TeamCreateBulkMembersInput
+    {
+        [JsonProperty("team_members")]
+        public TeamCreateBulkMembersInputTeamMembersType TeamMembers { get; set; }
+    }
+
+    public class TeamCreateBulkMembersInputTeamMembersType
+    {
+        [JsonProperty("idempotency-key-1")]
+        public TeamCreateBulkMembersInputTeamMembersTypeIdempotencyKey1Type IdempotencyKey1 { get; set; }
+
+        [JsonProperty("idempotency-key-2")]
+        public TeamCreateBulkMembersInputTeamMembersTypeIdempotencyKey2Type IdempotencyKey2 { get; set; }
+    }
+
+    public class TeamCreateBulkMembersInputTeamMembersTypeIdempotencyKey1Type
+    {
+        [JsonProperty("team_member")]
+        public TeamCreateBulkMembersInputTeamMembersTypeIdempotencyKey1TypeTeamMemberType TeamMember { get; set; }
+    }
+
+    public class TeamCreateBulkMembersInputTeamMembersTypeIdempotencyKey1TypeTeamMemberType
+    {
+        [JsonProperty("given_name")]
+        public string GivenName { get; set; }
+
+        [JsonProperty("family_name")]
+        public string FamilyName { get; set; }
+
+        [JsonProperty("email_address")]
+        public string EmailAddress { get; set; }
+
+        [JsonProperty("reference_id")]
+        public string ReferenceId { get; set; }
+
+        [JsonProperty("phone_number")]
+        public string PhoneNumber { get; set; }
+
+        [JsonProperty("assigned_locations")]
+        public TeamCreateBulkMembersInputTeamMembersTypeIdempotencyKey1TypeTeamMemberTypeAssignedLocationsType AssignedLocations { get; set; }
+    }
+
+    public class TeamCreateBulkMembersInputTeamMembersTypeIdempotencyKey1TypeTeamMemberTypeAssignedLocationsType
+    {
+        [JsonProperty("location_ids")]
+        public string[] LocationIds { get; set; }
+
+        [JsonProperty("assignment_type")]
+        public string AssignmentType { get; set; }
+    }
+
+    public class TeamCreateBulkMembersInputTeamMembersTypeIdempotencyKey2Type
+    {
+        [JsonProperty("team_member")]
+        public TeamCreateBulkMembersInputTeamMembersTypeIdempotencyKey2TypeTeamMemberType TeamMember { get; set; }
+    }
+
+    public class TeamCreateBulkMembersInputTeamMembersTypeIdempotencyKey2TypeTeamMemberType
+    {
+        [JsonProperty("given_name")]
+        public string GivenName { get; set; }
+
+        [JsonProperty("family_name")]
+        public string FamilyName { get; set; }
+
+        [JsonProperty("email_address")]
+        public string EmailAddress { get; set; }
+
+        [JsonProperty("reference_id")]
+        public string ReferenceId { get; set; }
+
+        [JsonProperty("phone_number")]
+        public string PhoneNumber { get; set; }
+
+        [JsonProperty("assigned_locations")]
+        public TeamCreateBulkMembersInputTeamMembersTypeIdempotencyKey2TypeTeamMemberTypeAssignedLocationsType AssignedLocations { get; set; }
+    }
+
+    public class TeamCreateBulkMembersInputTeamMembersTypeIdempotencyKey2TypeTeamMemberTypeAssignedLocationsType
+    {
+        [JsonProperty("assignment_type")]
+        public string AssignmentType { get; set; }
+    }
+
     public class TeamUpdateBulkMembersResponse
     {
         [JsonProperty("team_members")]
@@ -6151,6 +5111,102 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string[] LocationIds { get; set; }
     }
 
+    public class TeamUpdateBulkMembersInput
+    {
+        [JsonProperty("team_members")]
+        public TeamUpdateBulkMembersInputTeamMembersType TeamMembers { get; set; }
+    }
+
+    public class TeamUpdateBulkMembersInputTeamMembersType
+    {
+        [JsonProperty("fpgteZNMaf0qOK-a4t6P")]
+        public TeamUpdateBulkMembersInputTeamMembersTypeFpgteZNMaf0qOKA4t6PType FpgteZNMaf0qOKA4t6P { get; set; }
+
+        [JsonProperty("AFMwA08kR-MIF-3Vs0OE")]
+        public TeamUpdateBulkMembersInputTeamMembersTypeAFMwA08kRMIF3Vs0OEType AFMwA08kRMIF3Vs0OE { get; set; }
+    }
+
+    public class TeamUpdateBulkMembersInputTeamMembersTypeFpgteZNMaf0qOKA4t6PType
+    {
+        [JsonProperty("team_member")]
+        public TeamUpdateBulkMembersInputTeamMembersTypeFpgteZNMaf0qOKA4t6PTypeTeamMemberType TeamMember { get; set; }
+    }
+
+    public class TeamUpdateBulkMembersInputTeamMembersTypeFpgteZNMaf0qOKA4t6PTypeTeamMemberType
+    {
+        [JsonProperty("reference_id")]
+        public string ReferenceId { get; set; }
+
+        [JsonProperty("is_owner")]
+        public bool? IsOwner { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("given_name")]
+        public string GivenName { get; set; }
+
+        [JsonProperty("family_name")]
+        public string FamilyName { get; set; }
+
+        [JsonProperty("email_address")]
+        public string EmailAddress { get; set; }
+
+        [JsonProperty("phone_number")]
+        public string PhoneNumber { get; set; }
+
+        [JsonProperty("assigned_locations")]
+        public TeamUpdateBulkMembersInputTeamMembersTypeFpgteZNMaf0qOKA4t6PTypeTeamMemberTypeAssignedLocationsType AssignedLocations { get; set; }
+    }
+
+    public class TeamUpdateBulkMembersInputTeamMembersTypeFpgteZNMaf0qOKA4t6PTypeTeamMemberTypeAssignedLocationsType
+    {
+        [JsonProperty("location_ids")]
+        public string[] LocationIds { get; set; }
+
+        [JsonProperty("assignment_type")]
+        public string AssignmentType { get; set; }
+    }
+
+    public class TeamUpdateBulkMembersInputTeamMembersTypeAFMwA08kRMIF3Vs0OEType
+    {
+        [JsonProperty("team_member")]
+        public TeamUpdateBulkMembersInputTeamMembersTypeAFMwA08kRMIF3Vs0OETypeTeamMemberType TeamMember { get; set; }
+    }
+
+    public class TeamUpdateBulkMembersInputTeamMembersTypeAFMwA08kRMIF3Vs0OETypeTeamMemberType
+    {
+        [JsonProperty("reference_id")]
+        public string ReferenceId { get; set; }
+
+        [JsonProperty("is_owner")]
+        public bool? IsOwner { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("given_name")]
+        public string GivenName { get; set; }
+
+        [JsonProperty("family_name")]
+        public string FamilyName { get; set; }
+
+        [JsonProperty("email_address")]
+        public string EmailAddress { get; set; }
+
+        [JsonProperty("phone_number")]
+        public string PhoneNumber { get; set; }
+
+        [JsonProperty("assigned_locations")]
+        public TeamUpdateBulkMembersInputTeamMembersTypeAFMwA08kRMIF3Vs0OETypeTeamMemberTypeAssignedLocationsType AssignedLocations { get; set; }
+    }
+
+    public class TeamUpdateBulkMembersInputTeamMembersTypeAFMwA08kRMIF3Vs0OETypeTeamMemberTypeAssignedLocationsType
+    {
+        [JsonProperty("assignment_type")]
+        public string AssignmentType { get; set; }
+    }
+
     public class TeamSearchResponse
     {
         [JsonProperty("team_members")]
@@ -6200,6 +5256,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
     {
         [JsonProperty("assignment_type")]
         public string AssignmentType { get; set; }
+    }
+
+    public class TeamSearchInput
+    {
+        [JsonProperty("query")]
+        public TeamSearchInputQueryType Query { get; set; }
+
+        [JsonProperty("limit")]
+        public int? Limit { get; set; }
+    }
+
+    public class TeamSearchInputQueryType
+    {
+        [JsonProperty("filter")]
+        public TeamSearchInputQueryTypeFilterType Filter { get; set; }
+    }
+
+    public class TeamSearchInputQueryTypeFilterType
+    {
+        [JsonProperty("location_ids")]
+        public string[] LocationIds { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
     }
 
     public class TeamRetrieveMemberResponse
@@ -6299,6 +5379,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
 
         [JsonProperty("location_ids")]
         public string[] LocationIds { get; set; }
+    }
+
+    public class TeamUpdateInput
+    {
+        [JsonProperty("team_member")]
+        public TeamUpdateInputTeamMemberType TeamMember { get; set; }
+    }
+
+    public class TeamUpdateInputTeamMemberType
+    {
+        [JsonProperty("reference_id")]
+        public string ReferenceId { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("given_name")]
+        public string GivenName { get; set; }
+
+        [JsonProperty("family_name")]
+        public string FamilyName { get; set; }
+
+        [JsonProperty("email_address")]
+        public string EmailAddress { get; set; }
+
+        [JsonProperty("phone_number")]
+        public string PhoneNumber { get; set; }
+
+        [JsonProperty("assigned_locations")]
+        public TeamUpdateInputTeamMemberTypeAssignedLocationsType AssignedLocations { get; set; }
+    }
+
+    public class TeamUpdateInputTeamMemberTypeAssignedLocationsType
+    {
+        [JsonProperty("location_ids")]
+        public string[] LocationIds { get; set; }
+
+        [JsonProperty("assignment_type")]
+        public string AssignmentType { get; set; }
     }
 
     public class TeamRetrieveWageResponse
@@ -6427,7 +5546,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Currency { get; set; }
     }
 
-    public class bodywageSettingjobAssignmentsInputItem
+    public class TeamUpdateWageInput
+    {
+        [JsonProperty("wage_setting")]
+        public TeamUpdateWageInputWageSettingType WageSetting { get; set; }
+    }
+
+    public class TeamUpdateWageInputWageSettingType
+    {
+        [JsonProperty("is_overtime_exempt")]
+        public bool? IsOvertimeExempt { get; set; }
+
+        [JsonProperty("job_assignments")]
+        public TeamUpdateWageInputWageSettingTypeJobAssignmentsTypeItem[] JobAssignments { get; set; }
+    }
+
+    public class TeamUpdateWageInputWageSettingTypeJobAssignmentsTypeItem
     {
         [JsonProperty("job_title")]
         public string JobTitle { get; set; }
@@ -6436,28 +5570,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string PayType { get; set; }
 
         [JsonProperty("annual_rate")]
-        public bodywageSettingjobAssignmentsInputItemAnnualRateType AnnualRate { get; set; }
+        public TeamUpdateWageInputWageSettingTypeJobAssignmentsTypeItemAnnualRateType AnnualRate { get; set; }
 
         [JsonProperty("weekly_hours")]
-        public int WeeklyHours { get; set; }
+        public int? WeeklyHours { get; set; }
 
         [JsonProperty("hourly_rate")]
-        public bodywageSettingjobAssignmentsInputItemHourlyRateType HourlyRate { get; set; }
+        public TeamUpdateWageInputWageSettingTypeJobAssignmentsTypeItemHourlyRateType HourlyRate { get; set; }
     }
 
-    public class bodywageSettingjobAssignmentsInputItemAnnualRateType
+    public class TeamUpdateWageInputWageSettingTypeJobAssignmentsTypeItemAnnualRateType
     {
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public int? Amount { get; set; }
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
     }
 
-    public class bodywageSettingjobAssignmentsInputItemHourlyRateType
+    public class TeamUpdateWageInputWageSettingTypeJobAssignmentsTypeItemHourlyRateType
     {
         [JsonProperty("amount")]
-        public int Amount { get; set; }
+        public int? Amount { get; set; }
 
         [JsonProperty("currency")]
         public string Currency { get; set; }

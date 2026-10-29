@@ -13,53 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecsms
     public class TyntecsmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecsms")]
-        public IBodyWorkflowAction<SendSMSv3Response, ApiConnectionActionConfiguration> SendSMSv3(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontenttext = null)
+        public IBodyWorkflowAction<SendSMSv3Response, ApiConnectionActionConfiguration> SendSMSv3(Expression<Func<SendSMSv3Input>> body = null)
         {
-            var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: false);
-            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: false);
-            var __workflow_bodycontenttext = WorkflowExpression.Compile(bodycontenttext, nameof(bodycontenttext), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendSMSv3Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/sms/text";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfrom != null)
-                {
-                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyto != null)
-                {
-                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
-                    bodypropCount++;
-                }
-
-                body["channel"] = "sms";
-                bodypropCount++;
-                var contentObject = new JObject();
-                var contentObjectpropCount = 0;
-                contentObject["contentType"] = "text";
-                contentObjectpropCount++;
-                if (__workflow_bodycontenttext != null)
-                {
-                    contentObject["text"] = ExpressionConverter.ConvertO(__workflow_bodycontenttext);
-                    contentObjectpropCount++;
-                }
-
-                if (contentObjectpropCount > 0)
-                {
-                    body["content"] = contentObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SendSMSv3Response>(callPayload);
             });
         }
@@ -80,23 +43,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecsms
 
     public class TyntecsmsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> Incoming(Expression<Func<string>> smsSender, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> Incoming(Expression<Func<string>> smsSender, Expression<Func<IncomingV3Input>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_smsSender = WorkflowExpression.Compile(smsSender, nameof(smsSender), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/power-automate/webhooks/channels/sms/phone-numbers/{0}", __workflow_smsSender.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["inboundMessageUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -106,6 +63,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecsms
     {
         [JsonProperty("messageId")]
         public string MessageId { get; set; }
+    }
+
+    public class SendSMSv3Input
+    {
+        [JsonProperty("from")]
+        public string From { get; set; }
+
+        [JsonProperty("to")]
+        public string To { get; set; }
+
+        [JsonProperty("channel", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Channel { get; set; } = "sms";
+
+        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SendSMSv3InputContentType Content { get; set; }
+    }
+
+    public class SendSMSv3InputContentType
+    {
+        [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ContentType { get; set; } = "text";
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
     }
 
     public class StatusCheckV3Response
@@ -121,6 +102,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecsms
 
         [JsonProperty("timestamp")]
         public string Timestamp { get; set; }
+    }
+
+    public class IncomingV3Input
+    {
+        [JsonProperty("inboundMessageUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string InboundMessageUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

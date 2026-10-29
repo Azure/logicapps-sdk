@@ -25,34 +25,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> StoreReturnDocumentConfiguration(Expression<Func<string>> bodytemplate = null, Expression<Func<string>> bodysubject = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> StoreReturnDocumentConfiguration(Expression<Func<StoreReturnDocumentConfigurationInput>> body)
         {
-            var __workflow_bodytemplate = WorkflowExpression.Compile(bodytemplate, nameof(bodytemplate), required: false);
-            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/configuration/return-to-issuer";
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytemplate != null)
-                {
-                    body["template"] = ExpressionConverter.ConvertO(__workflow_bodytemplate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysubject != null)
-                {
-                    body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -76,358 +57,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReturnDocument(Expression<Func<string>> documentId, Expression<Func<string[]>> bodyadditionalDocuments = null, Expression<Func<string>> bodyrecipientEmail = null, Expression<Func<string>> bodyreason = null, Expression<Func<string>> bodyrequestedByUserId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReturnDocument(Expression<Func<string>> documentId, Expression<Func<ReturnDocumentInput>> body = null)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
-            var __workflow_bodyadditionalDocuments = WorkflowExpression.Compile(bodyadditionalDocuments, nameof(bodyadditionalDocuments), required: false);
-            var __workflow_bodyrecipientEmail = WorkflowExpression.Compile(bodyrecipientEmail, nameof(bodyrecipientEmail), required: false);
-            var __workflow_bodyreason = WorkflowExpression.Compile(bodyreason, nameof(bodyreason), required: false);
-            var __workflow_bodyrequestedByUserId = WorkflowExpression.Compile(bodyrequestedByUserId, nameof(bodyrequestedByUserId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/documents/{0}/return-to-issuer", __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyadditionalDocuments != null)
-                {
-                    body["additionalDocuments"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalDocuments);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrecipientEmail != null)
-                {
-                    body["recipientEmail"] = ExpressionConverter.ConvertO(__workflow_bodyrecipientEmail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreason != null)
-                {
-                    body["reason"] = ExpressionConverter.ConvertO(__workflow_bodyreason);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrequestedByUserId != null)
-                {
-                    body["requestedByUserId"] = ExpressionConverter.ConvertO(__workflow_bodyrequestedByUserId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IBodyWorkflowAction<ApiDocumentApiListResult, ApiConnectionActionConfiguration> ListAllDocuments(Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyfilterfileNamevalue = null, Expression<Func<DocumentState[]>> bodyfilterstatevalues = null, Expression<Func<ApprovalState[]>> bodyfilterapprovalStatevalues = null, Expression<Func<string>> bodyfiltertypevalue = null, Expression<Func<string>> bodyfiltersourceInfovalue = null, Expression<Func<bool>> bodyfilterisPostProcessCompletedvalue = null, Expression<Func<bool>> bodyfilterisReturnedToSendervalue = null, Expression<Func<DocumentSource[]>> bodyfiltersourcevalues = null, Expression<Func<string[]>> bodyfilterownerIdvalues = null, Expression<Func<string[]>> bodyfiltervalidatorIdvalues = null, Expression<Func<string>> bodyfiltercreatedDatefrom = null, Expression<Func<string>> bodyfiltercreatedDateto = null, Expression<Func<string>> bodyfiltervalidatedDatefrom = null, Expression<Func<string>> bodyfiltervalidatedDateto = null, Expression<Func<string>> bodyfilterapprovedDatefrom = null, Expression<Func<string>> bodyfilterapprovedDateto = null, Expression<Func<int>> bodycontrolskip = null, Expression<Func<int>> bodycontroltake = null, Expression<Func<bodysortfieldInput>> bodysortfield = null, Expression<Func<bodysortdirectionInput>> bodysortdirection = null, Expression<Func<ApiDocumentScope[]>> bodyscopes = null)
+        public IBodyWorkflowAction<ApiDocumentApiListResult, ApiConnectionActionConfiguration> ListAllDocuments(Expression<Func<ListAllDocumentsInput>> body = null)
         {
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            var __workflow_bodyfilterfileNamevalue = WorkflowExpression.Compile(bodyfilterfileNamevalue, nameof(bodyfilterfileNamevalue), required: false);
-            var __workflow_bodyfilterstatevalues = WorkflowExpression.Compile(bodyfilterstatevalues, nameof(bodyfilterstatevalues), required: false);
-            var __workflow_bodyfilterapprovalStatevalues = WorkflowExpression.Compile(bodyfilterapprovalStatevalues, nameof(bodyfilterapprovalStatevalues), required: false);
-            var __workflow_bodyfiltertypevalue = WorkflowExpression.Compile(bodyfiltertypevalue, nameof(bodyfiltertypevalue), required: false);
-            var __workflow_bodyfiltersourceInfovalue = WorkflowExpression.Compile(bodyfiltersourceInfovalue, nameof(bodyfiltersourceInfovalue), required: false);
-            var __workflow_bodyfilterisPostProcessCompletedvalue = WorkflowExpression.Compile(bodyfilterisPostProcessCompletedvalue, nameof(bodyfilterisPostProcessCompletedvalue), required: false);
-            var __workflow_bodyfilterisReturnedToSendervalue = WorkflowExpression.Compile(bodyfilterisReturnedToSendervalue, nameof(bodyfilterisReturnedToSendervalue), required: false);
-            var __workflow_bodyfiltersourcevalues = WorkflowExpression.Compile(bodyfiltersourcevalues, nameof(bodyfiltersourcevalues), required: false);
-            var __workflow_bodyfilterownerIdvalues = WorkflowExpression.Compile(bodyfilterownerIdvalues, nameof(bodyfilterownerIdvalues), required: false);
-            var __workflow_bodyfiltervalidatorIdvalues = WorkflowExpression.Compile(bodyfiltervalidatorIdvalues, nameof(bodyfiltervalidatorIdvalues), required: false);
-            var __workflow_bodyfiltercreatedDatefrom = WorkflowExpression.Compile(bodyfiltercreatedDatefrom, nameof(bodyfiltercreatedDatefrom), required: false);
-            var __workflow_bodyfiltercreatedDateto = WorkflowExpression.Compile(bodyfiltercreatedDateto, nameof(bodyfiltercreatedDateto), required: false);
-            var __workflow_bodyfiltervalidatedDatefrom = WorkflowExpression.Compile(bodyfiltervalidatedDatefrom, nameof(bodyfiltervalidatedDatefrom), required: false);
-            var __workflow_bodyfiltervalidatedDateto = WorkflowExpression.Compile(bodyfiltervalidatedDateto, nameof(bodyfiltervalidatedDateto), required: false);
-            var __workflow_bodyfilterapprovedDatefrom = WorkflowExpression.Compile(bodyfilterapprovedDatefrom, nameof(bodyfilterapprovedDatefrom), required: false);
-            var __workflow_bodyfilterapprovedDateto = WorkflowExpression.Compile(bodyfilterapprovedDateto, nameof(bodyfilterapprovedDateto), required: false);
-            var __workflow_bodycontrolskip = WorkflowExpression.Compile(bodycontrolskip, nameof(bodycontrolskip), required: false);
-            var __workflow_bodycontroltake = WorkflowExpression.Compile(bodycontroltake, nameof(bodycontroltake), required: false);
-            var __workflow_bodysortfield = WorkflowExpression.Compile(bodysortfield, nameof(bodysortfield), required: false);
-            var __workflow_bodysortdirection = WorkflowExpression.Compile(bodysortdirection, nameof(bodysortdirection), required: false);
-            var __workflow_bodyscopes = WorkflowExpression.Compile(bodyscopes, nameof(bodyscopes), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ApiDocumentApiListResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/documents/list";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                var filterObject = new JObject();
-                var filterObjectpropCount = 0;
-                var fileNameObject = new JObject();
-                var fileNameObjectpropCount = 0;
-                if (__workflow_bodyfilterfileNamevalue != null)
-                {
-                    fileNameObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyfilterfileNamevalue);
-                    fileNameObjectpropCount++;
-                }
-
-                if (fileNameObjectpropCount > 0)
-                {
-                    filterObject["fileName"] = fileNameObject;
-                    filterObjectpropCount++;
-                }
-
-                var stateObject = new JObject();
-                var stateObjectpropCount = 0;
-                if (__workflow_bodyfilterstatevalues != null)
-                {
-                    stateObject["values"] = ExpressionConverter.ConvertO(__workflow_bodyfilterstatevalues);
-                    stateObjectpropCount++;
-                }
-
-                if (stateObjectpropCount > 0)
-                {
-                    filterObject["state"] = stateObject;
-                    filterObjectpropCount++;
-                }
-
-                var approvalStateObject = new JObject();
-                var approvalStateObjectpropCount = 0;
-                if (__workflow_bodyfilterapprovalStatevalues != null)
-                {
-                    approvalStateObject["values"] = ExpressionConverter.ConvertO(__workflow_bodyfilterapprovalStatevalues);
-                    approvalStateObjectpropCount++;
-                }
-
-                if (approvalStateObjectpropCount > 0)
-                {
-                    filterObject["approvalState"] = approvalStateObject;
-                    filterObjectpropCount++;
-                }
-
-                var typeObject = new JObject();
-                var typeObjectpropCount = 0;
-                if (__workflow_bodyfilterfileNamevalue != null)
-                {
-                    typeObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyfilterfileNamevalue);
-                    typeObjectpropCount++;
-                }
-
-                if (typeObjectpropCount > 0)
-                {
-                    filterObject["type"] = typeObject;
-                    filterObjectpropCount++;
-                }
-
-                var sourceInfoObject = new JObject();
-                var sourceInfoObjectpropCount = 0;
-                if (__workflow_bodyfiltersourceInfovalue != null)
-                {
-                    sourceInfoObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyfiltersourceInfovalue);
-                    sourceInfoObjectpropCount++;
-                }
-
-                if (sourceInfoObjectpropCount > 0)
-                {
-                    filterObject["sourceInfo"] = sourceInfoObject;
-                    filterObjectpropCount++;
-                }
-
-                var isPostProcessCompletedObject = new JObject();
-                var isPostProcessCompletedObjectpropCount = 0;
-                if (__workflow_bodyfilterisPostProcessCompletedvalue != null)
-                {
-                    isPostProcessCompletedObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyfilterisPostProcessCompletedvalue);
-                    isPostProcessCompletedObjectpropCount++;
-                }
-
-                if (isPostProcessCompletedObjectpropCount > 0)
-                {
-                    filterObject["isPostProcessCompleted"] = isPostProcessCompletedObject;
-                    filterObjectpropCount++;
-                }
-
-                var isReturnedToSenderObject = new JObject();
-                var isReturnedToSenderObjectpropCount = 0;
-                if (__workflow_bodyfilterisPostProcessCompletedvalue != null)
-                {
-                    isReturnedToSenderObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyfilterisPostProcessCompletedvalue);
-                    isReturnedToSenderObjectpropCount++;
-                }
-
-                if (isReturnedToSenderObjectpropCount > 0)
-                {
-                    filterObject["isReturnedToSender"] = isReturnedToSenderObject;
-                    filterObjectpropCount++;
-                }
-
-                var sourceObject = new JObject();
-                var sourceObjectpropCount = 0;
-                if (__workflow_bodyfiltersourcevalues != null)
-                {
-                    sourceObject["values"] = ExpressionConverter.ConvertO(__workflow_bodyfiltersourcevalues);
-                    sourceObjectpropCount++;
-                }
-
-                if (sourceObjectpropCount > 0)
-                {
-                    filterObject["source"] = sourceObject;
-                    filterObjectpropCount++;
-                }
-
-                var ownerIdObject = new JObject();
-                var ownerIdObjectpropCount = 0;
-                if (__workflow_bodyfilterownerIdvalues != null)
-                {
-                    ownerIdObject["values"] = ExpressionConverter.ConvertO(__workflow_bodyfilterownerIdvalues);
-                    ownerIdObjectpropCount++;
-                }
-
-                if (ownerIdObjectpropCount > 0)
-                {
-                    filterObject["ownerId"] = ownerIdObject;
-                    filterObjectpropCount++;
-                }
-
-                var validatorIdObject = new JObject();
-                var validatorIdObjectpropCount = 0;
-                if (__workflow_bodyfilterownerIdvalues != null)
-                {
-                    validatorIdObject["values"] = ExpressionConverter.ConvertO(__workflow_bodyfilterownerIdvalues);
-                    validatorIdObjectpropCount++;
-                }
-
-                if (validatorIdObjectpropCount > 0)
-                {
-                    filterObject["validatorId"] = validatorIdObject;
-                    filterObjectpropCount++;
-                }
-
-                var createdDateObject = new JObject();
-                var createdDateObjectpropCount = 0;
-                if (__workflow_bodyfiltercreatedDatefrom != null)
-                {
-                    createdDateObject["from"] = ExpressionConverter.ConvertO(__workflow_bodyfiltercreatedDatefrom);
-                    createdDateObjectpropCount++;
-                }
-
-                if (__workflow_bodyfiltercreatedDateto != null)
-                {
-                    createdDateObject["to"] = ExpressionConverter.ConvertO(__workflow_bodyfiltercreatedDateto);
-                    createdDateObjectpropCount++;
-                }
-
-                if (createdDateObjectpropCount > 0)
-                {
-                    filterObject["createdDate"] = createdDateObject;
-                    filterObjectpropCount++;
-                }
-
-                var validatedDateObject = new JObject();
-                var validatedDateObjectpropCount = 0;
-                if (__workflow_bodyfiltercreatedDatefrom != null)
-                {
-                    validatedDateObject["from"] = ExpressionConverter.ConvertO(__workflow_bodyfiltercreatedDatefrom);
-                    validatedDateObjectpropCount++;
-                }
-
-                if (__workflow_bodyfiltercreatedDateto != null)
-                {
-                    validatedDateObject["to"] = ExpressionConverter.ConvertO(__workflow_bodyfiltercreatedDateto);
-                    validatedDateObjectpropCount++;
-                }
-
-                if (validatedDateObjectpropCount > 0)
-                {
-                    filterObject["validatedDate"] = validatedDateObject;
-                    filterObjectpropCount++;
-                }
-
-                var approvedDateObject = new JObject();
-                var approvedDateObjectpropCount = 0;
-                if (__workflow_bodyfiltercreatedDatefrom != null)
-                {
-                    approvedDateObject["from"] = ExpressionConverter.ConvertO(__workflow_bodyfiltercreatedDatefrom);
-                    approvedDateObjectpropCount++;
-                }
-
-                if (__workflow_bodyfiltercreatedDateto != null)
-                {
-                    approvedDateObject["to"] = ExpressionConverter.ConvertO(__workflow_bodyfiltercreatedDateto);
-                    approvedDateObjectpropCount++;
-                }
-
-                if (approvedDateObjectpropCount > 0)
-                {
-                    filterObject["approvedDate"] = approvedDateObject;
-                    filterObjectpropCount++;
-                }
-
-                var fieldsObject = new JObject();
-                var fieldsObjectpropCount = 0;
-                if (fieldsObjectpropCount > 0)
-                {
-                    filterObject["fields"] = fieldsObject;
-                    filterObjectpropCount++;
-                }
-
-                if (filterObjectpropCount > 0)
-                {
-                    body["filter"] = filterObject;
-                    bodypropCount++;
-                }
-
-                var controlObject = new JObject();
-                var controlObjectpropCount = 0;
-                if (__workflow_bodycontrolskip != null)
-                {
-                    controlObject["skip"] = ExpressionConverter.ConvertO(__workflow_bodycontrolskip);
-                    controlObjectpropCount++;
-                }
-
-                if (__workflow_bodycontroltake != null)
-                {
-                    controlObject["take"] = ExpressionConverter.ConvertO(__workflow_bodycontroltake);
-                    controlObjectpropCount++;
-                }
-
-                if (controlObjectpropCount > 0)
-                {
-                    body["control"] = controlObject;
-                    bodypropCount++;
-                }
-
-                var sortObject = new JObject();
-                var sortObjectpropCount = 0;
-                if (__workflow_bodysortfield != null)
-                {
-                    sortObject["field"] = ExpressionConverter.ConvertO(__workflow_bodysortfield);
-                    sortObjectpropCount++;
-                }
-
-                if (__workflow_bodysortdirection != null)
-                {
-                    sortObject["direction"] = ExpressionConverter.ConvertO(__workflow_bodysortdirection);
-                    sortObjectpropCount++;
-                }
-
-                if (sortObjectpropCount > 0)
-                {
-                    body["sort"] = sortObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyscopes != null)
-                {
-                    body["scopes"] = ExpressionConverter.ConvertO(__workflow_bodyscopes);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ApiDocumentApiListResult>(callPayload);
             });
         }
@@ -476,259 +131,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IBodyWorkflowAction<RedQueStatus, ApiConnectionActionConfiguration> UpdateDocuments(Expression<Func<string>> documentId, Expression<Func<string>> bodydocumentId = null, Expression<Func<string>> bodyexternalDocumentIdvalue = null, Expression<Func<string>> bodycontainerIdvalue = null, Expression<Func<string>> bodyfileNamevalue = null, Expression<Func<string>> bodycontentTypevalue = null, Expression<Func<bodysourcevalueInput>> bodysourcevalue = null, Expression<Func<string>> bodysourceInfovalue = null, Expression<Func<string>> bodydocumentClassvalue = null, Expression<Func<bool>> bodyisAttachmentvalue = null, Expression<Func<bool>> bodyeditedvalue = null, Expression<Func<string>> bodynotevalue = null, Expression<Func<ApiFieldValueUpdate[]>> bodyfields = null, Expression<Func<ApiFieldValueUpdate[][]>> bodyitems = null, Expression<Func<string>> bodyvalidatevalueuserId = null, Expression<Func<string>> bodyapprovevalueuserId = null, Expression<Func<bodyapprovevaluestateInput>> bodyapprovevaluestate = null, Expression<Func<StringApiListValueUpdate[]>> bodyauthorizeUsers = null, Expression<Func<StringApiListValueUpdate[]>> bodyduplicateDocIds = null)
+        public IBodyWorkflowAction<RedQueStatus, ApiConnectionActionConfiguration> UpdateDocuments(Expression<Func<string>> documentId, Expression<Func<UpdateDocumentsInput>> body = null)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
-            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: false);
-            var __workflow_bodyexternalDocumentIdvalue = WorkflowExpression.Compile(bodyexternalDocumentIdvalue, nameof(bodyexternalDocumentIdvalue), required: false);
-            var __workflow_bodycontainerIdvalue = WorkflowExpression.Compile(bodycontainerIdvalue, nameof(bodycontainerIdvalue), required: false);
-            var __workflow_bodyfileNamevalue = WorkflowExpression.Compile(bodyfileNamevalue, nameof(bodyfileNamevalue), required: false);
-            var __workflow_bodycontentTypevalue = WorkflowExpression.Compile(bodycontentTypevalue, nameof(bodycontentTypevalue), required: false);
-            var __workflow_bodysourcevalue = WorkflowExpression.Compile(bodysourcevalue, nameof(bodysourcevalue), required: false);
-            var __workflow_bodysourceInfovalue = WorkflowExpression.Compile(bodysourceInfovalue, nameof(bodysourceInfovalue), required: false);
-            var __workflow_bodydocumentClassvalue = WorkflowExpression.Compile(bodydocumentClassvalue, nameof(bodydocumentClassvalue), required: false);
-            var __workflow_bodyisAttachmentvalue = WorkflowExpression.Compile(bodyisAttachmentvalue, nameof(bodyisAttachmentvalue), required: false);
-            var __workflow_bodyeditedvalue = WorkflowExpression.Compile(bodyeditedvalue, nameof(bodyeditedvalue), required: false);
-            var __workflow_bodynotevalue = WorkflowExpression.Compile(bodynotevalue, nameof(bodynotevalue), required: false);
-            var __workflow_bodyfields = WorkflowExpression.Compile(bodyfields, nameof(bodyfields), required: false);
-            var __workflow_bodyitems = WorkflowExpression.Compile(bodyitems, nameof(bodyitems), required: false);
-            var __workflow_bodyvalidatevalueuserId = WorkflowExpression.Compile(bodyvalidatevalueuserId, nameof(bodyvalidatevalueuserId), required: false);
-            var __workflow_bodyapprovevalueuserId = WorkflowExpression.Compile(bodyapprovevalueuserId, nameof(bodyapprovevalueuserId), required: false);
-            var __workflow_bodyapprovevaluestate = WorkflowExpression.Compile(bodyapprovevaluestate, nameof(bodyapprovevaluestate), required: false);
-            var __workflow_bodyauthorizeUsers = WorkflowExpression.Compile(bodyauthorizeUsers, nameof(bodyauthorizeUsers), required: false);
-            var __workflow_bodyduplicateDocIds = WorkflowExpression.Compile(bodyduplicateDocIds, nameof(bodyduplicateDocIds), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<RedQueStatus, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/documents/{0}", __workflow_documentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydocumentId != null)
-                {
-                    body["documentId"] = ExpressionConverter.ConvertO(__workflow_bodydocumentId);
-                    bodypropCount++;
-                }
-
-                var externalDocumentIdObject = new JObject();
-                var externalDocumentIdObjectpropCount = 0;
-                if (__workflow_bodyexternalDocumentIdvalue != null)
-                {
-                    externalDocumentIdObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyexternalDocumentIdvalue);
-                    externalDocumentIdObjectpropCount++;
-                }
-
-                if (externalDocumentIdObjectpropCount > 0)
-                {
-                    body["externalDocumentId"] = externalDocumentIdObject;
-                    bodypropCount++;
-                }
-
-                var containerIdObject = new JObject();
-                var containerIdObjectpropCount = 0;
-                if (__workflow_bodyexternalDocumentIdvalue != null)
-                {
-                    containerIdObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyexternalDocumentIdvalue);
-                    containerIdObjectpropCount++;
-                }
-
-                if (containerIdObjectpropCount > 0)
-                {
-                    body["containerId"] = containerIdObject;
-                    bodypropCount++;
-                }
-
-                var fileNameObject = new JObject();
-                var fileNameObjectpropCount = 0;
-                if (__workflow_bodyexternalDocumentIdvalue != null)
-                {
-                    fileNameObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyexternalDocumentIdvalue);
-                    fileNameObjectpropCount++;
-                }
-
-                if (fileNameObjectpropCount > 0)
-                {
-                    body["fileName"] = fileNameObject;
-                    bodypropCount++;
-                }
-
-                var contentTypeObject = new JObject();
-                var contentTypeObjectpropCount = 0;
-                if (__workflow_bodyexternalDocumentIdvalue != null)
-                {
-                    contentTypeObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyexternalDocumentIdvalue);
-                    contentTypeObjectpropCount++;
-                }
-
-                if (contentTypeObjectpropCount > 0)
-                {
-                    body["contentType"] = contentTypeObject;
-                    bodypropCount++;
-                }
-
-                var sourceObject = new JObject();
-                var sourceObjectpropCount = 0;
-                if (__workflow_bodysourcevalue != null)
-                {
-                    sourceObject["value"] = ExpressionConverter.ConvertO(__workflow_bodysourcevalue);
-                    sourceObjectpropCount++;
-                }
-
-                if (sourceObjectpropCount > 0)
-                {
-                    body["source"] = sourceObject;
-                    bodypropCount++;
-                }
-
-                var sourceInfoObject = new JObject();
-                var sourceInfoObjectpropCount = 0;
-                if (__workflow_bodyexternalDocumentIdvalue != null)
-                {
-                    sourceInfoObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyexternalDocumentIdvalue);
-                    sourceInfoObjectpropCount++;
-                }
-
-                if (sourceInfoObjectpropCount > 0)
-                {
-                    body["sourceInfo"] = sourceInfoObject;
-                    bodypropCount++;
-                }
-
-                var documentClassObject = new JObject();
-                var documentClassObjectpropCount = 0;
-                if (__workflow_bodyexternalDocumentIdvalue != null)
-                {
-                    documentClassObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyexternalDocumentIdvalue);
-                    documentClassObjectpropCount++;
-                }
-
-                if (documentClassObjectpropCount > 0)
-                {
-                    body["documentClass"] = documentClassObject;
-                    bodypropCount++;
-                }
-
-                var isAttachmentObject = new JObject();
-                var isAttachmentObjectpropCount = 0;
-                if (__workflow_bodyisAttachmentvalue != null)
-                {
-                    isAttachmentObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyisAttachmentvalue);
-                    isAttachmentObjectpropCount++;
-                }
-
-                if (isAttachmentObjectpropCount > 0)
-                {
-                    body["isAttachment"] = isAttachmentObject;
-                    bodypropCount++;
-                }
-
-                var editedObject = new JObject();
-                var editedObjectpropCount = 0;
-                if (__workflow_bodyisAttachmentvalue != null)
-                {
-                    editedObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyisAttachmentvalue);
-                    editedObjectpropCount++;
-                }
-
-                if (editedObjectpropCount > 0)
-                {
-                    body["edited"] = editedObject;
-                    bodypropCount++;
-                }
-
-                var noteObject = new JObject();
-                var noteObjectpropCount = 0;
-                if (__workflow_bodyexternalDocumentIdvalue != null)
-                {
-                    noteObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyexternalDocumentIdvalue);
-                    noteObjectpropCount++;
-                }
-
-                if (noteObjectpropCount > 0)
-                {
-                    body["note"] = noteObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfields != null)
-                {
-                    body["fields"] = ExpressionConverter.ConvertO(__workflow_bodyfields);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyitems != null)
-                {
-                    body["items"] = ExpressionConverter.ConvertO(__workflow_bodyitems);
-                    bodypropCount++;
-                }
-
-                var validateObject = new JObject();
-                var validateObjectpropCount = 0;
-                var valueObject = new JObject();
-                var valueObjectpropCount = 0;
-                if (__workflow_bodyvalidatevalueuserId != null)
-                {
-                    valueObject["userId"] = ExpressionConverter.ConvertO(__workflow_bodyvalidatevalueuserId);
-                    valueObjectpropCount++;
-                }
-
-                if (valueObjectpropCount > 0)
-                {
-                    validateObject["value"] = valueObject;
-                    validateObjectpropCount++;
-                }
-
-                if (validateObjectpropCount > 0)
-                {
-                    body["validate"] = validateObject;
-                    bodypropCount++;
-                }
-
-                var approveObject = new JObject();
-                var approveObjectpropCount = 0;
-                var valueObject2 = new JObject();
-                var valueObject2propCount = 0;
-                if (__workflow_bodyapprovevalueuserId != null)
-                {
-                    valueObject2["userId"] = ExpressionConverter.ConvertO(__workflow_bodyapprovevalueuserId);
-                    valueObject2propCount++;
-                }
-
-                if (__workflow_bodyapprovevaluestate != null)
-                {
-                    valueObject2["state"] = ExpressionConverter.ConvertO(__workflow_bodyapprovevaluestate);
-                    valueObject2propCount++;
-                }
-
-                if (valueObject2propCount > 0)
-                {
-                    approveObject["value"] = valueObject2;
-                    approveObjectpropCount++;
-                }
-
-                if (approveObjectpropCount > 0)
-                {
-                    body["approve"] = approveObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyauthorizeUsers != null)
-                {
-                    body["authorizeUsers"] = ExpressionConverter.ConvertO(__workflow_bodyauthorizeUsers);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyduplicateDocIds != null)
-                {
-                    body["duplicateDocIds"] = ExpressionConverter.ConvertO(__workflow_bodyduplicateDocIds);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<RedQueStatus>(callPayload);
             });
         }
@@ -760,51 +173,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GrantDocumentAccess(Expression<Func<string>> documentId, Expression<Func<string>> userId, Expression<Func<string>> bodydocumentId = null, Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodydatamessage = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GrantDocumentAccess(Expression<Func<string>> documentId, Expression<Func<string>> userId, Expression<Func<GrantDocumentAccessInput>> body = null)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
-            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: false);
-            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
-            var __workflow_bodydatamessage = WorkflowExpression.Compile(bodydatamessage, nameof(bodydatamessage), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/documents/{0}/users/{1}", __workflow_documentId.WithUrlEncoding(1), __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydocumentId != null)
-                {
-                    body["documentId"] = ExpressionConverter.ConvertO(__workflow_bodydocumentId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuserId != null)
-                {
-                    body["userId"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
-                    bodypropCount++;
-                }
-
-                var dataObject = new JObject();
-                var dataObjectpropCount = 0;
-                if (__workflow_bodydatamessage != null)
-                {
-                    dataObject["message"] = ExpressionConverter.ConvertO(__workflow_bodydatamessage);
-                    dataObjectpropCount++;
-                }
-
-                if (dataObjectpropCount > 0)
-                {
-                    body["data"] = dataObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -836,49 +216,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IBodyWorkflowAction<StringApiValue, ApiConnectionActionConfiguration> CreateEnum(Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyname = null, Expression<Func<bool>> bodyisEditable = null)
+        public IBodyWorkflowAction<StringApiValue, ApiConnectionActionConfiguration> CreateEnum(Expression<Func<CreateEnumInput>> body = null)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyisEditable = WorkflowExpression.Compile(bodyisEditable, nameof(bodyisEditable), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<StringApiValue, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/enums";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                var valuesObject = new JObject();
-                var valuesObjectpropCount = 0;
-                if (valuesObjectpropCount > 0)
-                {
-                    body["values"] = valuesObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisEditable != null)
-                {
-                    body["isEditable"] = ExpressionConverter.ConvertO(__workflow_bodyisEditable);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<StringApiValue>(callPayload);
             });
         }
@@ -897,50 +244,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateEnum(Expression<Func<string>> id, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyname = null, Expression<Func<bool>> bodyisEditable = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateEnum(Expression<Func<string>> id, Expression<Func<UpdateEnumInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyisEditable = WorkflowExpression.Compile(bodyisEditable, nameof(bodyisEditable), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/enums/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                var valuesObject = new JObject();
-                var valuesObjectpropCount = 0;
-                if (valuesObjectpropCount > 0)
-                {
-                    body["values"] = valuesObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisEditable != null)
-                {
-                    body["isEditable"] = ExpressionConverter.ConvertO(__workflow_bodyisEditable);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -1027,50 +341,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateContainerData(Expression<Func<string>> folderId, Expression<Func<string>> bodyfolderId = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodycreated = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateContainerData(Expression<Func<string>> folderId, Expression<Func<UpdateContainerDataInput>> body = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
-            var __workflow_bodyfolderId = WorkflowExpression.Compile(bodyfolderId, nameof(bodyfolderId), required: false);
-            var __workflow_bodyownerId = WorkflowExpression.Compile(bodyownerId, nameof(bodyownerId), required: false);
-            var __workflow_bodycreated = WorkflowExpression.Compile(bodycreated, nameof(bodycreated), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/folder/{0}", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfolderId != null)
-                {
-                    body["folderId"] = ExpressionConverter.ConvertO(__workflow_bodyfolderId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyownerId != null)
-                {
-                    body["ownerId"] = ExpressionConverter.ConvertO(__workflow_bodyownerId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycreated != null)
-                {
-                    body["created"] = ExpressionConverter.ConvertO(__workflow_bodycreated);
-                    bodypropCount++;
-                }
-
-                var metadataObject = new JObject();
-                var metadataObjectpropCount = 0;
-                if (metadataObjectpropCount > 0)
-                {
-                    body["metadata"] = metadataObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -1124,171 +405,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IBodyWorkflowAction<ApiUserApiListResult, ApiConnectionActionConfiguration> ListOfUsers(Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyfilterfirstNamevalue = null, Expression<Func<string>> bodyfilterlastNamevalue = null, Expression<Func<string>> bodyfilteremailvalue = null, Expression<Func<int>> bodycontrolskip = null, Expression<Func<int>> bodycontroltake = null, Expression<Func<bodysortfieldInput>> bodysortfield = null, Expression<Func<bodysortdirectionInput>> bodysortdirection = null)
+        public IBodyWorkflowAction<ApiUserApiListResult, ApiConnectionActionConfiguration> ListOfUsers(Expression<Func<ListOfUsersInput>> body = null)
         {
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            var __workflow_bodyfilterfirstNamevalue = WorkflowExpression.Compile(bodyfilterfirstNamevalue, nameof(bodyfilterfirstNamevalue), required: false);
-            var __workflow_bodyfilterlastNamevalue = WorkflowExpression.Compile(bodyfilterlastNamevalue, nameof(bodyfilterlastNamevalue), required: false);
-            var __workflow_bodyfilteremailvalue = WorkflowExpression.Compile(bodyfilteremailvalue, nameof(bodyfilteremailvalue), required: false);
-            var __workflow_bodycontrolskip = WorkflowExpression.Compile(bodycontrolskip, nameof(bodycontrolskip), required: false);
-            var __workflow_bodycontroltake = WorkflowExpression.Compile(bodycontroltake, nameof(bodycontroltake), required: false);
-            var __workflow_bodysortfield = WorkflowExpression.Compile(bodysortfield, nameof(bodysortfield), required: false);
-            var __workflow_bodysortdirection = WorkflowExpression.Compile(bodysortdirection, nameof(bodysortdirection), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ApiUserApiListResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/list";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                var filterObject = new JObject();
-                var filterObjectpropCount = 0;
-                var firstNameObject = new JObject();
-                var firstNameObjectpropCount = 0;
-                if (__workflow_bodyfilterfirstNamevalue != null)
-                {
-                    firstNameObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyfilterfirstNamevalue);
-                    firstNameObjectpropCount++;
-                }
-
-                if (firstNameObjectpropCount > 0)
-                {
-                    filterObject["firstName"] = firstNameObject;
-                    filterObjectpropCount++;
-                }
-
-                var lastNameObject = new JObject();
-                var lastNameObjectpropCount = 0;
-                if (__workflow_bodyfilterfirstNamevalue != null)
-                {
-                    lastNameObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyfilterfirstNamevalue);
-                    lastNameObjectpropCount++;
-                }
-
-                if (lastNameObjectpropCount > 0)
-                {
-                    filterObject["lastName"] = lastNameObject;
-                    filterObjectpropCount++;
-                }
-
-                var emailObject = new JObject();
-                var emailObjectpropCount = 0;
-                if (__workflow_bodyfilterfirstNamevalue != null)
-                {
-                    emailObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyfilterfirstNamevalue);
-                    emailObjectpropCount++;
-                }
-
-                if (emailObjectpropCount > 0)
-                {
-                    filterObject["email"] = emailObject;
-                    filterObjectpropCount++;
-                }
-
-                if (filterObjectpropCount > 0)
-                {
-                    body["filter"] = filterObject;
-                    bodypropCount++;
-                }
-
-                var controlObject = new JObject();
-                var controlObjectpropCount = 0;
-                if (__workflow_bodycontrolskip != null)
-                {
-                    controlObject["skip"] = ExpressionConverter.ConvertO(__workflow_bodycontrolskip);
-                    controlObjectpropCount++;
-                }
-
-                if (__workflow_bodycontroltake != null)
-                {
-                    controlObject["take"] = ExpressionConverter.ConvertO(__workflow_bodycontroltake);
-                    controlObjectpropCount++;
-                }
-
-                if (controlObjectpropCount > 0)
-                {
-                    body["control"] = controlObject;
-                    bodypropCount++;
-                }
-
-                var sortObject = new JObject();
-                var sortObjectpropCount = 0;
-                if (__workflow_bodysortfield != null)
-                {
-                    sortObject["field"] = ExpressionConverter.ConvertO(__workflow_bodysortfield);
-                    sortObjectpropCount++;
-                }
-
-                if (__workflow_bodysortdirection != null)
-                {
-                    sortObject["direction"] = ExpressionConverter.ConvertO(__workflow_bodysortdirection);
-                    sortObjectpropCount++;
-                }
-
-                if (sortObjectpropCount > 0)
-                {
-                    body["sort"] = sortObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ApiUserApiListResult>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateUser(Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodyemail = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserInput>> body = null)
         {
-            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfirstName != null)
-                {
-                    body["firstName"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylastName != null)
-                {
-                    body["lastName"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypassword != null)
-                {
-                    body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyemail != null)
-                {
-                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -1303,48 +444,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/users/{0}/password", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ForceUserPasswordChange(Expression<Func<string>> userId, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodyaccountId = null, Expression<Func<string>> bodyactivationkey = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ForceUserPasswordChange(Expression<Func<string>> userId, Expression<Func<ForceUserPasswordChangeInput>> body = null)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
-            var __workflow_bodyaccountId = WorkflowExpression.Compile(bodyaccountId, nameof(bodyaccountId), required: false);
-            var __workflow_bodyactivationkey = WorkflowExpression.Compile(bodyactivationkey, nameof(bodyactivationkey), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/users/{0}/password", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodypassword != null)
-                {
-                    body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaccountId != null)
-                {
-                    body["accountId"] = ExpressionConverter.ConvertO(__workflow_bodyaccountId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyactivationkey != null)
-                {
-                    body["activationkey"] = ExpressionConverter.ConvertO(__workflow_bodyactivationkey);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -1376,89 +493,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateUser(Expression<Func<string>> userId, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateUser(Expression<Func<string>> userId, Expression<Func<UpdateUserInput>> body = null)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
-            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/users/{0}", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfirstName != null)
-                {
-                    body["firstName"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylastName != null)
-                {
-                    body["lastName"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddUserPermissions(Expression<Func<string>> userId, Expression<Func<string[]>> bodypermissions = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddUserPermissions(Expression<Func<string>> userId, Expression<Func<AddUserPermissionsInput>> body = null)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
-            var __workflow_bodypermissions = WorkflowExpression.Compile(bodypermissions, nameof(bodypermissions), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/users/{0}/permission", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodypermissions != null)
-                {
-                    body["permissions"] = ExpressionConverter.ConvertO(__workflow_bodypermissions);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RemoveUserPermissions(Expression<Func<string>> userId, Expression<Func<string[]>> bodypermissions = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RemoveUserPermissions(Expression<Func<string>> userId, Expression<Func<RemoveUserPermissionsInput>> body = null)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
-            var __workflow_bodypermissions = WorkflowExpression.Compile(bodypermissions, nameof(bodypermissions), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/users/{0}/permission", __workflow_userId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodypermissions != null)
-                {
-                    body["permissions"] = ExpressionConverter.ConvertO(__workflow_bodypermissions);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -1466,6 +543,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
 
     public class RedquesmartinvoicecaTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class StoreReturnDocumentConfigurationInput
+    {
+        [JsonProperty("template")]
+        public string Template { get; set; }
+
+        [JsonProperty("subject")]
+        public string Subject { get; set; }
+    }
+
+    public class ReturnDocumentInput
+    {
+        [JsonProperty("additionalDocuments")]
+        public string[] AdditionalDocuments { get; set; }
+
+        [JsonProperty("recipientEmail")]
+        public string RecipientEmail { get; set; }
+
+        [JsonProperty("reason")]
+        public string Reason { get; set; }
+
+        [JsonProperty("requestedByUserId")]
+        public string RequestedByUserId { get; set; }
     }
 
     public class ApiDocumentApiListResult
@@ -1823,16 +924,149 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         public string Note { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodysortfieldInput
+    public class ListAllDocumentsInput
     {
-        FirstName,
-        LastName,
-        Email
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("filter")]
+        public ApiDocumentFilter Filter { get; set; }
+
+        [JsonProperty("control")]
+        public ApiListControl Control { get; set; }
+
+        [JsonProperty("sort")]
+        public ApiDocumentListSortFieldsApiListSort Sort { get; set; }
+
+        [JsonProperty("scopes")]
+        public ApiDocumentScope[] Scopes { get; set; }
+    }
+
+    public class ApiDocumentFilter
+    {
+        [JsonProperty("fileName")]
+        public StringApiFilterEqual FileName { get; set; }
+
+        [JsonProperty("state")]
+        public DocumentStateApiFilterMultipleChoice State { get; set; }
+
+        [JsonProperty("approvalState")]
+        public ApprovalStateApiFilterMultipleChoice ApprovalState { get; set; }
+
+        [JsonProperty("type")]
+        public StringApiFilterEqual Type { get; set; }
+
+        [JsonProperty("sourceInfo")]
+        public StringApiFilterNotEqual SourceInfo { get; set; }
+
+        [JsonProperty("isPostProcessCompleted")]
+        public BooleanApiFilterEqual IsPostProcessCompleted { get; set; }
+
+        [JsonProperty("isReturnedToSender")]
+        public BooleanApiFilterEqual IsReturnedToSender { get; set; }
+
+        [JsonProperty("source")]
+        public DocumentSourceApiFilterMultipleChoice Source { get; set; }
+
+        [JsonProperty("ownerId")]
+        public StringApiFilterMultipleChoice OwnerId { get; set; }
+
+        [JsonProperty("validatorId")]
+        public StringApiFilterMultipleChoice ValidatorId { get; set; }
+
+        [JsonProperty("createdDate")]
+        public DateTimeNullableApiFilterEqualRange CreatedDate { get; set; }
+
+        [JsonProperty("validatedDate")]
+        public DateTimeNullableApiFilterEqualRange ValidatedDate { get; set; }
+
+        [JsonProperty("approvedDate")]
+        public DateTimeNullableApiFilterEqualRange ApprovedDate { get; set; }
+
+        [JsonProperty("fields")]
+        public JToken Fields { get; set; }
+    }
+
+    public class StringApiFilterEqual
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class DocumentStateApiFilterMultipleChoice
+    {
+        [JsonProperty("values")]
+        public DocumentState[] Values { get; set; }
+    }
+
+    public class ApprovalStateApiFilterMultipleChoice
+    {
+        [JsonProperty("values")]
+        public ApprovalState[] Values { get; set; }
+    }
+
+    public class StringApiFilterNotEqual
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class BooleanApiFilterEqual
+    {
+        [JsonProperty("value")]
+        public bool Value { get; set; }
+    }
+
+    public class DocumentSourceApiFilterMultipleChoice
+    {
+        [JsonProperty("values")]
+        public DocumentSource[] Values { get; set; }
+    }
+
+    public class StringApiFilterMultipleChoice
+    {
+        [JsonProperty("values")]
+        public string[] Values { get; set; }
+    }
+
+    public class DateTimeNullableApiFilterEqualRange
+    {
+        [JsonProperty("from")]
+        public string From { get; set; }
+
+        [JsonProperty("to")]
+        public string To { get; set; }
+    }
+
+    public class ApiListControl
+    {
+        [JsonProperty("skip")]
+        public int Skip { get; set; }
+
+        [JsonProperty("take")]
+        public int Take { get; set; }
+    }
+
+    public class ApiDocumentListSortFieldsApiListSort
+    {
+        [JsonProperty("field")]
+        public ApiDocumentListSortFields Field { get; set; }
+
+        [JsonProperty("direction")]
+        public ApiListSortDirection Direction { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodysortdirectionInput
+    public enum ApiDocumentListSortFields
+    {
+        FileName,
+        CreationTime,
+        TotalAmount,
+        IssuedByName
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ApiListSortDirection
     {
         Ascending,
         Descending
@@ -1858,13 +1092,76 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         public string Message { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodysourcevalueInput
+    public class UpdateDocumentsInput
     {
-        WebApp,
-        Mail,
-        API,
-        Plugin
+        [JsonProperty("documentId")]
+        public string DocumentId { get; set; }
+
+        [JsonProperty("externalDocumentId")]
+        public StringApiValueUpdate ExternalDocumentId { get; set; }
+
+        [JsonProperty("containerId")]
+        public StringApiValueUpdate ContainerId { get; set; }
+
+        [JsonProperty("fileName")]
+        public StringApiValueUpdate FileName { get; set; }
+
+        [JsonProperty("contentType")]
+        public StringApiValueUpdate ContentType { get; set; }
+
+        [JsonProperty("source")]
+        public DocumentSourceApiValueUpdate Source { get; set; }
+
+        [JsonProperty("sourceInfo")]
+        public StringApiValueUpdate SourceInfo { get; set; }
+
+        [JsonProperty("documentClass")]
+        public StringApiValueUpdate DocumentClass { get; set; }
+
+        [JsonProperty("isAttachment")]
+        public BooleanApiValueUpdate IsAttachment { get; set; }
+
+        [JsonProperty("edited")]
+        public BooleanApiValueUpdate Edited { get; set; }
+
+        [JsonProperty("note")]
+        public StringApiValueUpdate Note { get; set; }
+
+        [JsonProperty("fields")]
+        public ApiFieldValueUpdate[] Fields { get; set; }
+
+        [JsonProperty("items")]
+        public ApiFieldValueUpdate[][] Items { get; set; }
+
+        [JsonProperty("validate")]
+        public ApiValidateApiValueUpdate Validate { get; set; }
+
+        [JsonProperty("approve")]
+        public ApiApproveApiValueUpdate Approve { get; set; }
+
+        [JsonProperty("authorizeUsers")]
+        public StringApiListValueUpdate[] AuthorizeUsers { get; set; }
+
+        [JsonProperty("duplicateDocIds")]
+        public StringApiListValueUpdate[] DuplicateDocIds { get; set; }
+    }
+
+    public class StringApiValueUpdate
+    {
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class DocumentSourceApiValueUpdate
+    {
+        [JsonProperty("value")]
+        public DocumentSource Value { get; set; }
+    }
+
+    public class BooleanApiValueUpdate
+    {
+        [JsonProperty("value")]
+        public bool Value { get; set; }
     }
 
     public class ApiFieldValueUpdate
@@ -1898,16 +1195,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         Remove
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyapprovevaluestateInput
+    public class ApiValidateApiValueUpdate
     {
-        UNAPPROVED,
-        PREAPPROVED,
-        PREREJECTED,
-        DELEGATED,
-        ABANDONED,
-        APPROVED,
-        REJECTED
+        [JsonProperty("value")]
+        public ApiValidate Value { get; set; }
+    }
+
+    public class ApiValidate
+    {
+        [JsonProperty("userId")]
+        public string UserId { get; set; }
+    }
+
+    public class ApiApproveApiValueUpdate
+    {
+        [JsonProperty("value")]
+        public ApiApprove Value { get; set; }
+    }
+
+    public class ApiApprove
+    {
+        [JsonProperty("userId")]
+        public string UserId { get; set; }
+
+        [JsonProperty("state")]
+        public ApprovalState State { get; set; }
     }
 
     public class StringApiListValueUpdate
@@ -1917,6 +1229,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
 
         [JsonProperty("operation")]
         public ApiListValueOperation Operation { get; set; }
+    }
+
+    public class GrantDocumentAccessInput
+    {
+        [JsonProperty("documentId")]
+        public string DocumentId { get; set; }
+
+        [JsonProperty("userId")]
+        public string UserId { get; set; }
+
+        [JsonProperty("data")]
+        public ApiDocumentGrantAccessRequest Data { get; set; }
+    }
+
+    public class ApiDocumentGrantAccessRequest
+    {
+        [JsonProperty("message")]
+        public string Message { get; set; }
     }
 
     public class ApiEnum
@@ -1938,6 +1268,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
     {
         [JsonProperty("value")]
         public string Value { get; set; }
+    }
+
+    public class CreateEnumInput
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("values")]
+        public JToken Values { get; set; }
+
+        [JsonProperty("isEditable")]
+        public bool? IsEditable { get; set; }
+    }
+
+    public class UpdateEnumInput
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("values")]
+        public JToken Values { get; set; }
+
+        [JsonProperty("isEditable")]
+        public bool? IsEditable { get; set; }
     }
 
     public class ApiFolderCreationResult
@@ -1962,6 +1322,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
 
         [JsonProperty("members")]
         public ApiDocument[] Members { get; set; }
+    }
+
+    public class UpdateContainerDataInput
+    {
+        [JsonProperty("folderId")]
+        public string FolderId { get; set; }
+
+        [JsonProperty("ownerId")]
+        public string OwnerId { get; set; }
+
+        [JsonProperty("created")]
+        public string Created { get; set; }
+
+        [JsonProperty("metadata")]
+        public JToken Metadata { get; set; }
     }
 
     public class MLicense
@@ -2228,6 +1603,98 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
 
         [JsonProperty("offset")]
         public int Offset { get; set; }
+    }
+
+    public class ListOfUsersInput
+    {
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("filter")]
+        public ApiUserFilter Filter { get; set; }
+
+        [JsonProperty("control")]
+        public ApiListControl Control { get; set; }
+
+        [JsonProperty("sort")]
+        public ApiUserSortListFieldsApiListSort Sort { get; set; }
+    }
+
+    public class ApiUserFilter
+    {
+        [JsonProperty("firstName")]
+        public StringApiFilterEqual FirstName { get; set; }
+
+        [JsonProperty("lastName")]
+        public StringApiFilterEqual LastName { get; set; }
+
+        [JsonProperty("email")]
+        public StringApiFilterEqual Email { get; set; }
+    }
+
+    public class ApiUserSortListFieldsApiListSort
+    {
+        [JsonProperty("field")]
+        public ApiUserSortListFields Field { get; set; }
+
+        [JsonProperty("direction")]
+        public ApiListSortDirection Direction { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ApiUserSortListFields
+    {
+        FirstName,
+        LastName,
+        Email
+    }
+
+    public class CreateUserInput
+    {
+        [JsonProperty("firstName")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("lastName")]
+        public string LastName { get; set; }
+
+        [JsonProperty("password")]
+        public string Password { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+    }
+
+    public class ForceUserPasswordChangeInput
+    {
+        [JsonProperty("password")]
+        public string Password { get; set; }
+
+        [JsonProperty("accountId")]
+        public string AccountId { get; set; }
+
+        [JsonProperty("activationkey")]
+        public string Activationkey { get; set; }
+    }
+
+    public class UpdateUserInput
+    {
+        [JsonProperty("firstName")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("lastName")]
+        public string LastName { get; set; }
+    }
+
+    public class AddUserPermissionsInput
+    {
+        [JsonProperty("permissions")]
+        public string[] Permissions { get; set; }
+    }
+
+    public class RemoveUserPermissionsInput
+    {
+        [JsonProperty("permissions")]
+        public string[] Permissions { get; set; }
     }
 }
 

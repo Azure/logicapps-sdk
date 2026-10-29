@@ -13,60 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
     public class BlackbaudraisersedgeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<CommPrefApiCreatedConstituentConsent, ApiConnectionActionConfiguration> CreateConstituentConsent(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodychannel, Expression<Func<bodyresponseInput>> bodyresponse, Expression<Func<string>> bodydate, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodyconsentStatement = null, Expression<Func<string>> bodyprivacyNotice = null)
+        public IBodyWorkflowAction<CommPrefApiCreatedConstituentConsent, ApiConnectionActionConfiguration> CreateConstituentConsent(Expression<Func<CreateConstituentConsentInput>> body)
         {
-            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            var __workflow_bodychannel = WorkflowExpression.Compile(bodychannel, nameof(bodychannel), required: true);
-            var __workflow_bodyresponse = WorkflowExpression.Compile(bodyresponse, nameof(bodyresponse), required: true);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: true);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodysource = WorkflowExpression.Compile(bodysource, nameof(bodysource), required: false);
-            var __workflow_bodyconsentStatement = WorkflowExpression.Compile(bodyconsentStatement, nameof(bodyconsentStatement), required: false);
-            var __workflow_bodyprivacyNotice = WorkflowExpression.Compile(bodyprivacyNotice, nameof(bodyprivacyNotice), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CommPrefApiCreatedConstituentConsent, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/commpref/v1/consent/consents";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
-                bodypropCount++;
-                body["channel"] = ExpressionConverter.ConvertO(__workflow_bodychannel);
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysource != null)
-                {
-                    body["source"] = ExpressionConverter.ConvertO(__workflow_bodysource);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["constituent_consent_response"] = ExpressionConverter.ConvertO(__workflow_bodyresponse);
-                bodypropCount++;
-                body["consent_date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                if (__workflow_bodyconsentStatement != null)
-                {
-                    body["consent_statement"] = ExpressionConverter.ConvertO(__workflow_bodyconsentStatement);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprivacyNotice != null)
-                {
-                    body["privacy_notice"] = ExpressionConverter.ConvertO(__workflow_bodyprivacyNotice);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CommPrefApiCreatedConstituentConsent>(callPayload);
             });
         }
@@ -101,81 +56,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<CommPrefApiCreatedConstituentSolicitCode, ApiConnectionActionConfiguration> CreateConstituentSolicitCode(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodysolicitCode, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null)
+        public IBodyWorkflowAction<CommPrefApiCreatedConstituentSolicitCode, ApiConnectionActionConfiguration> CreateConstituentSolicitCode(Expression<Func<CreateConstituentSolicitCodeInput>> body)
         {
-            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            var __workflow_bodysolicitCode = WorkflowExpression.Compile(bodysolicitCode, nameof(bodysolicitCode), required: true);
-            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
-            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CommPrefApiCreatedConstituentSolicitCode, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/commpref/v1/constituentsolicitcodes";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
-                bodypropCount++;
-                body["solicit_code"] = ExpressionConverter.ConvertO(__workflow_bodysolicitCode);
-                if (__workflow_bodystartDate != null)
-                {
-                    body["start_date"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyendDate != null)
-                {
-                    body["end_date"] = ExpressionConverter.ConvertO(__workflow_bodyendDate);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CommPrefApiCreatedConstituentSolicitCode>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentSolicitCode(Expression<Func<string>> constituentSolicitCodeId, Expression<Func<string>> bodysolicitCode = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentSolicitCode(Expression<Func<string>> constituentSolicitCodeId, Expression<Func<EditConstituentSolicitCodeInput>> body)
         {
             var __workflow_constituentSolicitCodeId = WorkflowExpression.Compile(constituentSolicitCodeId, nameof(constituentSolicitCodeId), required: true);
-            var __workflow_bodysolicitCode = WorkflowExpression.Compile(bodysolicitCode, nameof(bodysolicitCode), required: false);
-            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
-            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/commpref/v1/constituentsolicitcodes/{0}", __workflow_constituentSolicitCodeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodysolicitCode != null)
-                {
-                    body["solicit_code"] = ExpressionConverter.ConvertO(__workflow_bodysolicitCode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystartDate != null)
-                {
-                    body["start_date"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyendDate != null)
-                {
-                    body["end_date"] = ExpressionConverter.ConvertO(__workflow_bodyendDate);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -214,127 +118,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<ConstituentApiCreatedAction, ApiConnectionActionConfiguration> CreateAction(Expression<Func<string>> bodyconstituentId, Expression<Func<bodycategoryInput>> bodycategory, Expression<Func<string>> bodydate, Expression<Func<bool>> bodycompleted = null, Expression<Func<string>> bodycompletedOn = null, Expression<Func<string>> bodynote = null, Expression<Func<bodydirectionInput>> bodydirection = null, Expression<Func<string[]>> bodyfundraiserS = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodyopportunityId = null, Expression<Func<bodyoutcomeInput>> bodyoutcome = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodysummary = null, Expression<Func<string>> bodytype = null)
+        public IBodyWorkflowAction<ConstituentApiCreatedAction, ApiConnectionActionConfiguration> CreateAction(Expression<Func<CreateActionInput>> body)
         {
-            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: true);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: true);
-            var __workflow_bodycompleted = WorkflowExpression.Compile(bodycompleted, nameof(bodycompleted), required: false);
-            var __workflow_bodycompletedOn = WorkflowExpression.Compile(bodycompletedOn, nameof(bodycompletedOn), required: false);
-            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
-            var __workflow_bodydirection = WorkflowExpression.Compile(bodydirection, nameof(bodydirection), required: false);
-            var __workflow_bodyfundraiserS = WorkflowExpression.Compile(bodyfundraiserS, nameof(bodyfundraiserS), required: false);
-            var __workflow_bodylocation = WorkflowExpression.Compile(bodylocation, nameof(bodylocation), required: false);
-            var __workflow_bodyopportunityId = WorkflowExpression.Compile(bodyopportunityId, nameof(bodyopportunityId), required: false);
-            var __workflow_bodyoutcome = WorkflowExpression.Compile(bodyoutcome, nameof(bodyoutcome), required: false);
-            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: false);
-            var __workflow_bodyendTime = WorkflowExpression.Compile(bodyendTime, nameof(bodyendTime), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodysummary = WorkflowExpression.Compile(bodysummary, nameof(bodysummary), required: false);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConstituentApiCreatedAction, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/constituent/v1/actions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
-                bodypropCount++;
-                body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                if (__workflow_bodycompleted != null)
-                {
-                    body["completed"] = ExpressionConverter.ConvertO(__workflow_bodycompleted);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycompletedOn != null)
-                {
-                    body["completed_date"] = ExpressionConverter.ConvertO(__workflow_bodycompletedOn);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                if (__workflow_bodynote != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodynote);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydirection != null)
-                {
-                    body["direction"] = ExpressionConverter.ConvertO(__workflow_bodydirection);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfundraiserS != null)
-                {
-                    body["fundraisers"] = ExpressionConverter.ConvertO(__workflow_bodyfundraiserS);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylocation != null)
-                {
-                    body["location"] = ExpressionConverter.ConvertO(__workflow_bodylocation);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyopportunityId != null)
-                {
-                    body["opportunity_id"] = ExpressionConverter.ConvertO(__workflow_bodyopportunityId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyoutcome != null)
-                {
-                    body["outcome"] = ExpressionConverter.ConvertO(__workflow_bodyoutcome);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypriority != null)
-                {
-                    body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystartTime != null)
-                {
-                    body["start_time"] = ExpressionConverter.ConvertO(__workflow_bodystartTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyendTime != null)
-                {
-                    body["end_time"] = ExpressionConverter.ConvertO(__workflow_bodyendTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysummary != null)
-                {
-                    body["summary"] = ExpressionConverter.ConvertO(__workflow_bodysummary);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ConstituentApiCreatedAction>(callPayload);
             });
         }
@@ -353,133 +145,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditAction(Expression<Func<string>> actionId, Expression<Func<bodycategoryInput>> bodycategory = null, Expression<Func<bool>> bodycompleted = null, Expression<Func<string>> bodycompletedOn = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodynote = null, Expression<Func<bodydirectionInput>> bodydirection = null, Expression<Func<string[]>> bodyfundraiserS = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodyopportunityId = null, Expression<Func<bodyoutcomeInput>> bodyoutcome = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodysummary = null, Expression<Func<string>> bodytype = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditAction(Expression<Func<string>> actionId, Expression<Func<EditActionInput>> body)
         {
             var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodycompleted = WorkflowExpression.Compile(bodycompleted, nameof(bodycompleted), required: false);
-            var __workflow_bodycompletedOn = WorkflowExpression.Compile(bodycompletedOn, nameof(bodycompletedOn), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
-            var __workflow_bodydirection = WorkflowExpression.Compile(bodydirection, nameof(bodydirection), required: false);
-            var __workflow_bodyfundraiserS = WorkflowExpression.Compile(bodyfundraiserS, nameof(bodyfundraiserS), required: false);
-            var __workflow_bodylocation = WorkflowExpression.Compile(bodylocation, nameof(bodylocation), required: false);
-            var __workflow_bodyopportunityId = WorkflowExpression.Compile(bodyopportunityId, nameof(bodyopportunityId), required: false);
-            var __workflow_bodyoutcome = WorkflowExpression.Compile(bodyoutcome, nameof(bodyoutcome), required: false);
-            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: false);
-            var __workflow_bodyendTime = WorkflowExpression.Compile(bodyendTime, nameof(bodyendTime), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodysummary = WorkflowExpression.Compile(bodysummary, nameof(bodysummary), required: false);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/constituent/v1/actions/{0}", __workflow_actionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycompleted != null)
-                {
-                    body["completed"] = ExpressionConverter.ConvertO(__workflow_bodycompleted);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycompletedOn != null)
-                {
-                    body["completed_date"] = ExpressionConverter.ConvertO(__workflow_bodycompletedOn);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynote != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodynote);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydirection != null)
-                {
-                    body["direction"] = ExpressionConverter.ConvertO(__workflow_bodydirection);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfundraiserS != null)
-                {
-                    body["fundraisers"] = ExpressionConverter.ConvertO(__workflow_bodyfundraiserS);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylocation != null)
-                {
-                    body["location"] = ExpressionConverter.ConvertO(__workflow_bodylocation);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyopportunityId != null)
-                {
-                    body["opportunity_id"] = ExpressionConverter.ConvertO(__workflow_bodyopportunityId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyoutcome != null)
-                {
-                    body["outcome"] = ExpressionConverter.ConvertO(__workflow_bodyoutcome);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypriority != null)
-                {
-                    body["priority"] = ExpressionConverter.ConvertO(__workflow_bodypriority);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystartTime != null)
-                {
-                    body["start_time"] = ExpressionConverter.ConvertO(__workflow_bodystartTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyendTime != null)
-                {
-                    body["end_time"] = ExpressionConverter.ConvertO(__workflow_bodyendTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysummary != null)
-                {
-                    body["summary"] = ExpressionConverter.ConvertO(__workflow_bodysummary);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -511,751 +186,131 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<ConstituentApiCreatedActionAttachment, ApiConnectionActionConfiguration> CreateActionAttachment(Expression<Func<string>> bodyactionId, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodyuRL = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodyfileId = null, Expression<Func<string>> bodythumbnailId = null)
+        public IBodyWorkflowAction<ConstituentApiCreatedActionAttachment, ApiConnectionActionConfiguration> CreateActionAttachment(Expression<Func<CreateActionAttachmentInput>> body)
         {
-            var __workflow_bodyactionId = WorkflowExpression.Compile(bodyactionId, nameof(bodyactionId), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: false);
-            var __workflow_bodyfileId = WorkflowExpression.Compile(bodyfileId, nameof(bodyfileId), required: false);
-            var __workflow_bodythumbnailId = WorkflowExpression.Compile(bodythumbnailId, nameof(bodythumbnailId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConstituentApiCreatedActionAttachment, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/constituent/v1/actions/attachments";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["parent_id"] = ExpressionConverter.ConvertO(__workflow_bodyactionId);
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuRL != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileName != null)
-                {
-                    body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileId != null)
-                {
-                    body["file_id"] = ExpressionConverter.ConvertO(__workflow_bodyfileId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodythumbnailId != null)
-                {
-                    body["thumbnail_id"] = ExpressionConverter.ConvertO(__workflow_bodythumbnailId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ConstituentApiCreatedActionAttachment>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditActionAttachment(Expression<Func<string>> attachmentId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodyuRL = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditActionAttachment(Expression<Func<string>> attachmentId, Expression<Func<EditActionAttachmentInput>> body)
         {
             var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/constituent/v1/actions/attachments/{0}", __workflow_attachmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuRL != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<ConstituentApiCreatedActionCustomField, ApiConnectionActionConfiguration> CreateActionCustomField(Expression<Func<string>> bodyactionId, Expression<Func<string>> bodycategory, Expression<Func<object>> bodyvalue = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodycomment = null)
+        public IBodyWorkflowAction<ConstituentApiCreatedActionCustomField, ApiConnectionActionConfiguration> CreateActionCustomField(Expression<Func<CreateActionCustomFieldInput>> body)
         {
-            var __workflow_bodyactionId = WorkflowExpression.Compile(bodyactionId, nameof(bodyactionId), required: true);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: true);
-            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConstituentApiCreatedActionCustomField, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/constituent/v1/actions/customfields";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["parent_id"] = ExpressionConverter.ConvertO(__workflow_bodyactionId);
-                bodypropCount++;
-                body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                if (__workflow_bodyvalue != null)
-                {
-                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycomment != null)
-                {
-                    body["comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ConstituentApiCreatedActionCustomField>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditActionCustomField(Expression<Func<string>> customFieldId, Expression<Func<string>> bodycategory = null, Expression<Func<object>> bodyvalue = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodycomment = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditActionCustomField(Expression<Func<string>> customFieldId, Expression<Func<EditActionCustomFieldInput>> body)
         {
             var __workflow_customFieldId = WorkflowExpression.Compile(customFieldId, nameof(customFieldId), required: true);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/constituent/v1/actions/customfields/{0}", __workflow_customFieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvalue != null)
-                {
-                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycomment != null)
-                {
-                    body["comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<ConstituentApiCreatedConstituentAddress, ApiConnectionActionConfiguration> CreateConstituentAddress(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodyaddressType, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodyaddressLines = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypostalCode = null, Expression<Func<string>> bodysuburb = null, Expression<Func<string>> bodycounty = null, Expression<Func<string>> bodyinformationSource = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodycART = null, Expression<Func<string>> bodylOT = null, Expression<Func<string>> bodydPC = null, Expression<Func<string>> bodyvalidFrom = null, Expression<Func<string>> bodyvalidTo = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<bool>> bodydoNotMail = null, Expression<Func<int>> bodyseasonalStartday = null, Expression<Func<int>> bodyseasonalStartmonth = null, Expression<Func<int>> bodyseasonalStartyear = null, Expression<Func<int>> bodyseasonalEndday = null, Expression<Func<int>> bodyseasonalEndmonth = null, Expression<Func<int>> bodyseasonalEndyear = null)
+        public IBodyWorkflowAction<ConstituentApiCreatedConstituentAddress, ApiConnectionActionConfiguration> CreateConstituentAddress(Expression<Func<CreateConstituentAddressInput>> body)
         {
-            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            var __workflow_bodyaddressType = WorkflowExpression.Compile(bodyaddressType, nameof(bodyaddressType), required: true);
-            var __workflow_bodycountry = WorkflowExpression.Compile(bodycountry, nameof(bodycountry), required: false);
-            var __workflow_bodyaddressLines = WorkflowExpression.Compile(bodyaddressLines, nameof(bodyaddressLines), required: false);
-            var __workflow_bodycity = WorkflowExpression.Compile(bodycity, nameof(bodycity), required: false);
-            var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: false);
-            var __workflow_bodypostalCode = WorkflowExpression.Compile(bodypostalCode, nameof(bodypostalCode), required: false);
-            var __workflow_bodysuburb = WorkflowExpression.Compile(bodysuburb, nameof(bodysuburb), required: false);
-            var __workflow_bodycounty = WorkflowExpression.Compile(bodycounty, nameof(bodycounty), required: false);
-            var __workflow_bodyinformationSource = WorkflowExpression.Compile(bodyinformationSource, nameof(bodyinformationSource), required: false);
-            var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: false);
-            var __workflow_bodycART = WorkflowExpression.Compile(bodycART, nameof(bodycART), required: false);
-            var __workflow_bodylOT = WorkflowExpression.Compile(bodylOT, nameof(bodylOT), required: false);
-            var __workflow_bodydPC = WorkflowExpression.Compile(bodydPC, nameof(bodydPC), required: false);
-            var __workflow_bodyvalidFrom = WorkflowExpression.Compile(bodyvalidFrom, nameof(bodyvalidFrom), required: false);
-            var __workflow_bodyvalidTo = WorkflowExpression.Compile(bodyvalidTo, nameof(bodyvalidTo), required: false);
-            var __workflow_bodyprimary = WorkflowExpression.Compile(bodyprimary, nameof(bodyprimary), required: false);
-            var __workflow_bodydoNotMail = WorkflowExpression.Compile(bodydoNotMail, nameof(bodydoNotMail), required: false);
-            var __workflow_bodyseasonalStartday = WorkflowExpression.Compile(bodyseasonalStartday, nameof(bodyseasonalStartday), required: false);
-            var __workflow_bodyseasonalStartmonth = WorkflowExpression.Compile(bodyseasonalStartmonth, nameof(bodyseasonalStartmonth), required: false);
-            var __workflow_bodyseasonalStartyear = WorkflowExpression.Compile(bodyseasonalStartyear, nameof(bodyseasonalStartyear), required: false);
-            var __workflow_bodyseasonalEndday = WorkflowExpression.Compile(bodyseasonalEndday, nameof(bodyseasonalEndday), required: false);
-            var __workflow_bodyseasonalEndmonth = WorkflowExpression.Compile(bodyseasonalEndmonth, nameof(bodyseasonalEndmonth), required: false);
-            var __workflow_bodyseasonalEndyear = WorkflowExpression.Compile(bodyseasonalEndyear, nameof(bodyseasonalEndyear), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConstituentApiCreatedConstituentAddress, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/constituent/v1/addresses";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodyaddressType);
-                if (__workflow_bodycountry != null)
-                {
-                    body["country"] = ExpressionConverter.ConvertO(__workflow_bodycountry);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaddressLines != null)
-                {
-                    body["address_lines"] = ExpressionConverter.ConvertO(__workflow_bodyaddressLines);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycity != null)
-                {
-                    body["city"] = ExpressionConverter.ConvertO(__workflow_bodycity);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystate != null)
-                {
-                    body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypostalCode != null)
-                {
-                    body["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodypostalCode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysuburb != null)
-                {
-                    body["suburb"] = ExpressionConverter.ConvertO(__workflow_bodysuburb);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycounty != null)
-                {
-                    body["county"] = ExpressionConverter.ConvertO(__workflow_bodycounty);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinformationSource != null)
-                {
-                    body["information_source"] = ExpressionConverter.ConvertO(__workflow_bodyinformationSource);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyregion != null)
-                {
-                    body["region"] = ExpressionConverter.ConvertO(__workflow_bodyregion);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycART != null)
-                {
-                    body["cart"] = ExpressionConverter.ConvertO(__workflow_bodycART);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylOT != null)
-                {
-                    body["lot"] = ExpressionConverter.ConvertO(__workflow_bodylOT);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydPC != null)
-                {
-                    body["dpc"] = ExpressionConverter.ConvertO(__workflow_bodydPC);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvalidFrom != null)
-                {
-                    body["start"] = ExpressionConverter.ConvertO(__workflow_bodyvalidFrom);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvalidTo != null)
-                {
-                    body["end"] = ExpressionConverter.ConvertO(__workflow_bodyvalidTo);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprimary != null)
-                {
-                    body["preferred"] = ExpressionConverter.ConvertO(__workflow_bodyprimary);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydoNotMail != null)
-                {
-                    body["do_not_mail"] = ExpressionConverter.ConvertO(__workflow_bodydoNotMail);
-                    bodypropCount++;
-                }
-
-                var seasonalStartObject = new JObject();
-                var seasonalStartObjectpropCount = 0;
-                if (__workflow_bodyseasonalStartday != null)
-                {
-                    seasonalStartObject["d"] = ExpressionConverter.ConvertO(__workflow_bodyseasonalStartday);
-                    seasonalStartObjectpropCount++;
-                }
-
-                if (__workflow_bodyseasonalStartmonth != null)
-                {
-                    seasonalStartObject["m"] = ExpressionConverter.ConvertO(__workflow_bodyseasonalStartmonth);
-                    seasonalStartObjectpropCount++;
-                }
-
-                if (__workflow_bodyseasonalStartyear != null)
-                {
-                    seasonalStartObject["y"] = ExpressionConverter.ConvertO(__workflow_bodyseasonalStartyear);
-                    seasonalStartObjectpropCount++;
-                }
-
-                if (seasonalStartObjectpropCount > 0)
-                {
-                    body["seasonal_start"] = seasonalStartObject;
-                    bodypropCount++;
-                }
-
-                var seasonalEndObject = new JObject();
-                var seasonalEndObjectpropCount = 0;
-                if (__workflow_bodyseasonalEndday != null)
-                {
-                    seasonalEndObject["d"] = ExpressionConverter.ConvertO(__workflow_bodyseasonalEndday);
-                    seasonalEndObjectpropCount++;
-                }
-
-                if (__workflow_bodyseasonalEndmonth != null)
-                {
-                    seasonalEndObject["m"] = ExpressionConverter.ConvertO(__workflow_bodyseasonalEndmonth);
-                    seasonalEndObjectpropCount++;
-                }
-
-                if (__workflow_bodyseasonalEndyear != null)
-                {
-                    seasonalEndObject["y"] = ExpressionConverter.ConvertO(__workflow_bodyseasonalEndyear);
-                    seasonalEndObjectpropCount++;
-                }
-
-                if (seasonalEndObjectpropCount > 0)
-                {
-                    body["seasonal_end"] = seasonalEndObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ConstituentApiCreatedConstituentAddress>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentAddress(Expression<Func<string>> addressId, Expression<Func<string>> bodyaddressType = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodyaddressLines = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypostalCode = null, Expression<Func<string>> bodysuburb = null, Expression<Func<string>> bodycounty = null, Expression<Func<string>> bodyinformationSource = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodycART = null, Expression<Func<string>> bodylOT = null, Expression<Func<string>> bodydPC = null, Expression<Func<string>> bodyvalidFrom = null, Expression<Func<string>> bodyvalidTo = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<bool>> bodydoNotMail = null, Expression<Func<int>> bodyseasonalStartday = null, Expression<Func<int>> bodyseasonalStartmonth = null, Expression<Func<int>> bodyseasonalStartyear = null, Expression<Func<int>> bodyseasonalEndday = null, Expression<Func<int>> bodyseasonalEndmonth = null, Expression<Func<int>> bodyseasonalEndyear = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentAddress(Expression<Func<string>> addressId, Expression<Func<EditConstituentAddressInput>> body)
         {
             var __workflow_addressId = WorkflowExpression.Compile(addressId, nameof(addressId), required: true);
-            var __workflow_bodyaddressType = WorkflowExpression.Compile(bodyaddressType, nameof(bodyaddressType), required: false);
-            var __workflow_bodycountry = WorkflowExpression.Compile(bodycountry, nameof(bodycountry), required: false);
-            var __workflow_bodyaddressLines = WorkflowExpression.Compile(bodyaddressLines, nameof(bodyaddressLines), required: false);
-            var __workflow_bodycity = WorkflowExpression.Compile(bodycity, nameof(bodycity), required: false);
-            var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: false);
-            var __workflow_bodypostalCode = WorkflowExpression.Compile(bodypostalCode, nameof(bodypostalCode), required: false);
-            var __workflow_bodysuburb = WorkflowExpression.Compile(bodysuburb, nameof(bodysuburb), required: false);
-            var __workflow_bodycounty = WorkflowExpression.Compile(bodycounty, nameof(bodycounty), required: false);
-            var __workflow_bodyinformationSource = WorkflowExpression.Compile(bodyinformationSource, nameof(bodyinformationSource), required: false);
-            var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: false);
-            var __workflow_bodycART = WorkflowExpression.Compile(bodycART, nameof(bodycART), required: false);
-            var __workflow_bodylOT = WorkflowExpression.Compile(bodylOT, nameof(bodylOT), required: false);
-            var __workflow_bodydPC = WorkflowExpression.Compile(bodydPC, nameof(bodydPC), required: false);
-            var __workflow_bodyvalidFrom = WorkflowExpression.Compile(bodyvalidFrom, nameof(bodyvalidFrom), required: false);
-            var __workflow_bodyvalidTo = WorkflowExpression.Compile(bodyvalidTo, nameof(bodyvalidTo), required: false);
-            var __workflow_bodyprimary = WorkflowExpression.Compile(bodyprimary, nameof(bodyprimary), required: false);
-            var __workflow_bodydoNotMail = WorkflowExpression.Compile(bodydoNotMail, nameof(bodydoNotMail), required: false);
-            var __workflow_bodyseasonalStartday = WorkflowExpression.Compile(bodyseasonalStartday, nameof(bodyseasonalStartday), required: false);
-            var __workflow_bodyseasonalStartmonth = WorkflowExpression.Compile(bodyseasonalStartmonth, nameof(bodyseasonalStartmonth), required: false);
-            var __workflow_bodyseasonalStartyear = WorkflowExpression.Compile(bodyseasonalStartyear, nameof(bodyseasonalStartyear), required: false);
-            var __workflow_bodyseasonalEndday = WorkflowExpression.Compile(bodyseasonalEndday, nameof(bodyseasonalEndday), required: false);
-            var __workflow_bodyseasonalEndmonth = WorkflowExpression.Compile(bodyseasonalEndmonth, nameof(bodyseasonalEndmonth), required: false);
-            var __workflow_bodyseasonalEndyear = WorkflowExpression.Compile(bodyseasonalEndyear, nameof(bodyseasonalEndyear), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/constituent/v1/addresses/{0}", __workflow_addressId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyaddressType != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodyaddressType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycountry != null)
-                {
-                    body["country"] = ExpressionConverter.ConvertO(__workflow_bodycountry);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaddressLines != null)
-                {
-                    body["address_lines"] = ExpressionConverter.ConvertO(__workflow_bodyaddressLines);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycity != null)
-                {
-                    body["city"] = ExpressionConverter.ConvertO(__workflow_bodycity);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystate != null)
-                {
-                    body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypostalCode != null)
-                {
-                    body["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodypostalCode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysuburb != null)
-                {
-                    body["suburb"] = ExpressionConverter.ConvertO(__workflow_bodysuburb);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycounty != null)
-                {
-                    body["county"] = ExpressionConverter.ConvertO(__workflow_bodycounty);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinformationSource != null)
-                {
-                    body["information_source"] = ExpressionConverter.ConvertO(__workflow_bodyinformationSource);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyregion != null)
-                {
-                    body["region"] = ExpressionConverter.ConvertO(__workflow_bodyregion);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycART != null)
-                {
-                    body["cart"] = ExpressionConverter.ConvertO(__workflow_bodycART);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylOT != null)
-                {
-                    body["lot"] = ExpressionConverter.ConvertO(__workflow_bodylOT);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydPC != null)
-                {
-                    body["dpc"] = ExpressionConverter.ConvertO(__workflow_bodydPC);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvalidFrom != null)
-                {
-                    body["start"] = ExpressionConverter.ConvertO(__workflow_bodyvalidFrom);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvalidTo != null)
-                {
-                    body["end"] = ExpressionConverter.ConvertO(__workflow_bodyvalidTo);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprimary != null)
-                {
-                    body["preferred"] = ExpressionConverter.ConvertO(__workflow_bodyprimary);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydoNotMail != null)
-                {
-                    body["do_not_mail"] = ExpressionConverter.ConvertO(__workflow_bodydoNotMail);
-                    bodypropCount++;
-                }
-
-                var seasonalStartObject = new JObject();
-                var seasonalStartObjectpropCount = 0;
-                if (__workflow_bodyseasonalStartday != null)
-                {
-                    seasonalStartObject["d"] = ExpressionConverter.ConvertO(__workflow_bodyseasonalStartday);
-                    seasonalStartObjectpropCount++;
-                }
-
-                if (__workflow_bodyseasonalStartmonth != null)
-                {
-                    seasonalStartObject["m"] = ExpressionConverter.ConvertO(__workflow_bodyseasonalStartmonth);
-                    seasonalStartObjectpropCount++;
-                }
-
-                if (__workflow_bodyseasonalStartyear != null)
-                {
-                    seasonalStartObject["y"] = ExpressionConverter.ConvertO(__workflow_bodyseasonalStartyear);
-                    seasonalStartObjectpropCount++;
-                }
-
-                if (seasonalStartObjectpropCount > 0)
-                {
-                    body["seasonal_start"] = seasonalStartObject;
-                    bodypropCount++;
-                }
-
-                var seasonalEndObject = new JObject();
-                var seasonalEndObjectpropCount = 0;
-                if (__workflow_bodyseasonalEndday != null)
-                {
-                    seasonalEndObject["d"] = ExpressionConverter.ConvertO(__workflow_bodyseasonalEndday);
-                    seasonalEndObjectpropCount++;
-                }
-
-                if (__workflow_bodyseasonalEndmonth != null)
-                {
-                    seasonalEndObject["m"] = ExpressionConverter.ConvertO(__workflow_bodyseasonalEndmonth);
-                    seasonalEndObjectpropCount++;
-                }
-
-                if (__workflow_bodyseasonalEndyear != null)
-                {
-                    seasonalEndObject["y"] = ExpressionConverter.ConvertO(__workflow_bodyseasonalEndyear);
-                    seasonalEndObjectpropCount++;
-                }
-
-                if (seasonalEndObjectpropCount > 0)
-                {
-                    body["seasonal_end"] = seasonalEndObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<ConstituentApiCreatedConstituentAlias, ApiConnectionActionConfiguration> CreateConstituentAlias(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodyalias, Expression<Func<string>> bodytype = null)
+        public IBodyWorkflowAction<ConstituentApiCreatedConstituentAlias, ApiConnectionActionConfiguration> CreateConstituentAlias(Expression<Func<CreateConstituentAliasInput>> body)
         {
-            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            var __workflow_bodyalias = WorkflowExpression.Compile(bodyalias, nameof(bodyalias), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConstituentApiCreatedConstituentAlias, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/constituent/v1/aliases";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyalias);
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ConstituentApiCreatedConstituentAlias>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentAlias(Expression<Func<string>> aliasId, Expression<Func<string>> bodyalias = null, Expression<Func<string>> bodytype = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentAlias(Expression<Func<string>> aliasId, Expression<Func<EditConstituentAliasInput>> body)
         {
             var __workflow_aliasId = WorkflowExpression.Compile(aliasId, nameof(aliasId), required: true);
-            var __workflow_bodyalias = WorkflowExpression.Compile(bodyalias, nameof(bodyalias), required: false);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/constituent/v1/aliases/{0}", __workflow_aliasId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyalias != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyalias);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<ConstituentApiCreatedConstituentCode, ApiConnectionActionConfiguration> CreateConstituentCode(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodyconstituentCode, Expression<Func<int>> bodystartday = null, Expression<Func<int>> bodystartmonth = null, Expression<Func<int>> bodystartyear = null, Expression<Func<int>> bodyendday = null, Expression<Func<int>> bodyendmonth = null, Expression<Func<int>> bodyendyear = null, Expression<Func<int>> bodysequence = null)
+        public IBodyWorkflowAction<ConstituentApiCreatedConstituentCode, ApiConnectionActionConfiguration> CreateConstituentCode(Expression<Func<CreateConstituentCodeInput>> body)
         {
-            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            var __workflow_bodyconstituentCode = WorkflowExpression.Compile(bodyconstituentCode, nameof(bodyconstituentCode), required: true);
-            var __workflow_bodystartday = WorkflowExpression.Compile(bodystartday, nameof(bodystartday), required: false);
-            var __workflow_bodystartmonth = WorkflowExpression.Compile(bodystartmonth, nameof(bodystartmonth), required: false);
-            var __workflow_bodystartyear = WorkflowExpression.Compile(bodystartyear, nameof(bodystartyear), required: false);
-            var __workflow_bodyendday = WorkflowExpression.Compile(bodyendday, nameof(bodyendday), required: false);
-            var __workflow_bodyendmonth = WorkflowExpression.Compile(bodyendmonth, nameof(bodyendmonth), required: false);
-            var __workflow_bodyendyear = WorkflowExpression.Compile(bodyendyear, nameof(bodyendyear), required: false);
-            var __workflow_bodysequence = WorkflowExpression.Compile(bodysequence, nameof(bodysequence), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConstituentApiCreatedConstituentCode, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/constituent/v1/constituentcodes";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
-                bodypropCount++;
-                body["description"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentCode);
-                var startObject = new JObject();
-                var startObjectpropCount = 0;
-                if (__workflow_bodystartday != null)
-                {
-                    startObject["d"] = ExpressionConverter.ConvertO(__workflow_bodystartday);
-                    startObjectpropCount++;
-                }
-
-                if (__workflow_bodystartmonth != null)
-                {
-                    startObject["m"] = ExpressionConverter.ConvertO(__workflow_bodystartmonth);
-                    startObjectpropCount++;
-                }
-
-                if (__workflow_bodystartyear != null)
-                {
-                    startObject["y"] = ExpressionConverter.ConvertO(__workflow_bodystartyear);
-                    startObjectpropCount++;
-                }
-
-                if (startObjectpropCount > 0)
-                {
-                    body["start"] = startObject;
-                    bodypropCount++;
-                }
-
-                var endObject = new JObject();
-                var endObjectpropCount = 0;
-                if (__workflow_bodyendday != null)
-                {
-                    endObject["d"] = ExpressionConverter.ConvertO(__workflow_bodyendday);
-                    endObjectpropCount++;
-                }
-
-                if (__workflow_bodyendmonth != null)
-                {
-                    endObject["m"] = ExpressionConverter.ConvertO(__workflow_bodyendmonth);
-                    endObjectpropCount++;
-                }
-
-                if (__workflow_bodyendyear != null)
-                {
-                    endObject["y"] = ExpressionConverter.ConvertO(__workflow_bodyendyear);
-                    endObjectpropCount++;
-                }
-
-                if (endObjectpropCount > 0)
-                {
-                    body["end"] = endObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysequence != null)
-                {
-                    body["sequence"] = ExpressionConverter.ConvertO(__workflow_bodysequence);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ConstituentApiCreatedConstituentCode>(callPayload);
             });
         }
@@ -1274,86 +329,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentCode(Expression<Func<string>> constituentCodeId, Expression<Func<int>> bodystartday = null, Expression<Func<int>> bodystartmonth = null, Expression<Func<int>> bodystartyear = null, Expression<Func<int>> bodyendday = null, Expression<Func<int>> bodyendmonth = null, Expression<Func<int>> bodyendyear = null, Expression<Func<int>> bodysequence = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentCode(Expression<Func<string>> constituentCodeId, Expression<Func<EditConstituentCodeInput>> body)
         {
             var __workflow_constituentCodeId = WorkflowExpression.Compile(constituentCodeId, nameof(constituentCodeId), required: true);
-            var __workflow_bodystartday = WorkflowExpression.Compile(bodystartday, nameof(bodystartday), required: false);
-            var __workflow_bodystartmonth = WorkflowExpression.Compile(bodystartmonth, nameof(bodystartmonth), required: false);
-            var __workflow_bodystartyear = WorkflowExpression.Compile(bodystartyear, nameof(bodystartyear), required: false);
-            var __workflow_bodyendday = WorkflowExpression.Compile(bodyendday, nameof(bodyendday), required: false);
-            var __workflow_bodyendmonth = WorkflowExpression.Compile(bodyendmonth, nameof(bodyendmonth), required: false);
-            var __workflow_bodyendyear = WorkflowExpression.Compile(bodyendyear, nameof(bodyendyear), required: false);
-            var __workflow_bodysequence = WorkflowExpression.Compile(bodysequence, nameof(bodysequence), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/constituent/v1/constituentcodes/{0}", __workflow_constituentCodeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var startObject = new JObject();
-                var startObjectpropCount = 0;
-                if (__workflow_bodystartday != null)
-                {
-                    startObject["d"] = ExpressionConverter.ConvertO(__workflow_bodystartday);
-                    startObjectpropCount++;
-                }
-
-                if (__workflow_bodystartmonth != null)
-                {
-                    startObject["m"] = ExpressionConverter.ConvertO(__workflow_bodystartmonth);
-                    startObjectpropCount++;
-                }
-
-                if (__workflow_bodystartyear != null)
-                {
-                    startObject["y"] = ExpressionConverter.ConvertO(__workflow_bodystartyear);
-                    startObjectpropCount++;
-                }
-
-                if (startObjectpropCount > 0)
-                {
-                    body["start"] = startObject;
-                    bodypropCount++;
-                }
-
-                var endObject = new JObject();
-                var endObjectpropCount = 0;
-                if (__workflow_bodyendday != null)
-                {
-                    endObject["d"] = ExpressionConverter.ConvertO(__workflow_bodyendday);
-                    endObjectpropCount++;
-                }
-
-                if (__workflow_bodyendmonth != null)
-                {
-                    endObject["m"] = ExpressionConverter.ConvertO(__workflow_bodyendmonth);
-                    endObjectpropCount++;
-                }
-
-                if (__workflow_bodyendyear != null)
-                {
-                    endObject["y"] = ExpressionConverter.ConvertO(__workflow_bodyendyear);
-                    endObjectpropCount++;
-                }
-
-                if (endObjectpropCount > 0)
-                {
-                    body["end"] = endObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysequence != null)
-                {
-                    body["sequence"] = ExpressionConverter.ConvertO(__workflow_bodysequence);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -1423,314 +408,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituent(Expression<Func<string>> constituentId, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodyorganizationName = null, Expression<Func<string>> bodysuffix = null, Expression<Func<string>> bodypreferredName = null, Expression<Func<string>> bodylookupId = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodyformerName = null, Expression<Func<string>> bodytitle2 = null, Expression<Func<string>> bodysuffix2 = null, Expression<Func<string>> bodymaritalStatus = null, Expression<Func<bool>> bodygivesAnonymously = null, Expression<Func<bool>> bodyinactive = null, Expression<Func<int>> bodybirthdateday = null, Expression<Func<int>> bodybirthdatemonth = null, Expression<Func<int>> bodybirthdateyear = null, Expression<Func<string>> bodybirthplace = null, Expression<Func<string>> bodyethnicity = null, Expression<Func<string>> bodyincome = null, Expression<Func<string>> bodyreligion = null, Expression<Func<string>> bodyindustry = null, Expression<Func<int>> bodynumberOfEmployees = null, Expression<Func<bool>> bodymatchesGifts = null, Expression<Func<double>> bodymatchingGiftFactor = null, Expression<Func<double>> bodymatchingGiftPerGiftMinminMatchPerGift = null, Expression<Func<double>> bodymatchingGiftPerGiftMaxmaxMatchPerGift = null, Expression<Func<double>> bodymatchingGiftTotalMinminMatchPerConstit = null, Expression<Func<double>> bodymatchingGiftTotalMaxmaxMatchPerConstit = null, Expression<Func<string>> bodymatchingGiftNotes = null, Expression<Func<bool>> bodydeceased = null, Expression<Func<int>> bodydeceasedDateday = null, Expression<Func<int>> bodydeceasedDatemonth = null, Expression<Func<int>> bodydeceasedDateyear = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituent(Expression<Func<string>> constituentId, Expression<Func<EditConstituentInput>> body)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodyorganizationName = WorkflowExpression.Compile(bodyorganizationName, nameof(bodyorganizationName), required: false);
-            var __workflow_bodysuffix = WorkflowExpression.Compile(bodysuffix, nameof(bodysuffix), required: false);
-            var __workflow_bodypreferredName = WorkflowExpression.Compile(bodypreferredName, nameof(bodypreferredName), required: false);
-            var __workflow_bodylookupId = WorkflowExpression.Compile(bodylookupId, nameof(bodylookupId), required: false);
-            var __workflow_bodygender = WorkflowExpression.Compile(bodygender, nameof(bodygender), required: false);
-            var __workflow_bodymiddleName = WorkflowExpression.Compile(bodymiddleName, nameof(bodymiddleName), required: false);
-            var __workflow_bodyformerName = WorkflowExpression.Compile(bodyformerName, nameof(bodyformerName), required: false);
-            var __workflow_bodytitle2 = WorkflowExpression.Compile(bodytitle2, nameof(bodytitle2), required: false);
-            var __workflow_bodysuffix2 = WorkflowExpression.Compile(bodysuffix2, nameof(bodysuffix2), required: false);
-            var __workflow_bodymaritalStatus = WorkflowExpression.Compile(bodymaritalStatus, nameof(bodymaritalStatus), required: false);
-            var __workflow_bodygivesAnonymously = WorkflowExpression.Compile(bodygivesAnonymously, nameof(bodygivesAnonymously), required: false);
-            var __workflow_bodyinactive = WorkflowExpression.Compile(bodyinactive, nameof(bodyinactive), required: false);
-            var __workflow_bodybirthdateday = WorkflowExpression.Compile(bodybirthdateday, nameof(bodybirthdateday), required: false);
-            var __workflow_bodybirthdatemonth = WorkflowExpression.Compile(bodybirthdatemonth, nameof(bodybirthdatemonth), required: false);
-            var __workflow_bodybirthdateyear = WorkflowExpression.Compile(bodybirthdateyear, nameof(bodybirthdateyear), required: false);
-            var __workflow_bodybirthplace = WorkflowExpression.Compile(bodybirthplace, nameof(bodybirthplace), required: false);
-            var __workflow_bodyethnicity = WorkflowExpression.Compile(bodyethnicity, nameof(bodyethnicity), required: false);
-            var __workflow_bodyincome = WorkflowExpression.Compile(bodyincome, nameof(bodyincome), required: false);
-            var __workflow_bodyreligion = WorkflowExpression.Compile(bodyreligion, nameof(bodyreligion), required: false);
-            var __workflow_bodyindustry = WorkflowExpression.Compile(bodyindustry, nameof(bodyindustry), required: false);
-            var __workflow_bodynumberOfEmployees = WorkflowExpression.Compile(bodynumberOfEmployees, nameof(bodynumberOfEmployees), required: false);
-            var __workflow_bodymatchesGifts = WorkflowExpression.Compile(bodymatchesGifts, nameof(bodymatchesGifts), required: false);
-            var __workflow_bodymatchingGiftFactor = WorkflowExpression.Compile(bodymatchingGiftFactor, nameof(bodymatchingGiftFactor), required: false);
-            var __workflow_bodymatchingGiftPerGiftMinminMatchPerGift = WorkflowExpression.Compile(bodymatchingGiftPerGiftMinminMatchPerGift, nameof(bodymatchingGiftPerGiftMinminMatchPerGift), required: false);
-            var __workflow_bodymatchingGiftPerGiftMaxmaxMatchPerGift = WorkflowExpression.Compile(bodymatchingGiftPerGiftMaxmaxMatchPerGift, nameof(bodymatchingGiftPerGiftMaxmaxMatchPerGift), required: false);
-            var __workflow_bodymatchingGiftTotalMinminMatchPerConstit = WorkflowExpression.Compile(bodymatchingGiftTotalMinminMatchPerConstit, nameof(bodymatchingGiftTotalMinminMatchPerConstit), required: false);
-            var __workflow_bodymatchingGiftTotalMaxmaxMatchPerConstit = WorkflowExpression.Compile(bodymatchingGiftTotalMaxmaxMatchPerConstit, nameof(bodymatchingGiftTotalMaxmaxMatchPerConstit), required: false);
-            var __workflow_bodymatchingGiftNotes = WorkflowExpression.Compile(bodymatchingGiftNotes, nameof(bodymatchingGiftNotes), required: false);
-            var __workflow_bodydeceased = WorkflowExpression.Compile(bodydeceased, nameof(bodydeceased), required: false);
-            var __workflow_bodydeceasedDateday = WorkflowExpression.Compile(bodydeceasedDateday, nameof(bodydeceasedDateday), required: false);
-            var __workflow_bodydeceasedDatemonth = WorkflowExpression.Compile(bodydeceasedDatemonth, nameof(bodydeceasedDatemonth), required: false);
-            var __workflow_bodydeceasedDateyear = WorkflowExpression.Compile(bodydeceasedDateyear, nameof(bodydeceasedDateyear), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/constituent/v1/constituents/{0}", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfirstName != null)
-                {
-                    body["first"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylastName != null)
-                {
-                    body["last"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyorganizationName != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyorganizationName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysuffix != null)
-                {
-                    body["suffix"] = ExpressionConverter.ConvertO(__workflow_bodysuffix);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypreferredName != null)
-                {
-                    body["preferred_name"] = ExpressionConverter.ConvertO(__workflow_bodypreferredName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylookupId != null)
-                {
-                    body["lookup_id"] = ExpressionConverter.ConvertO(__workflow_bodylookupId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygender != null)
-                {
-                    body["gender"] = ExpressionConverter.ConvertO(__workflow_bodygender);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymiddleName != null)
-                {
-                    body["middle"] = ExpressionConverter.ConvertO(__workflow_bodymiddleName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyformerName != null)
-                {
-                    body["former_name"] = ExpressionConverter.ConvertO(__workflow_bodyformerName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle2 != null)
-                {
-                    body["title_2"] = ExpressionConverter.ConvertO(__workflow_bodytitle2);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysuffix2 != null)
-                {
-                    body["suffix_2"] = ExpressionConverter.ConvertO(__workflow_bodysuffix2);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymaritalStatus != null)
-                {
-                    body["marital_status"] = ExpressionConverter.ConvertO(__workflow_bodymaritalStatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygivesAnonymously != null)
-                {
-                    body["gives_anonymously"] = ExpressionConverter.ConvertO(__workflow_bodygivesAnonymously);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinactive != null)
-                {
-                    body["inactive"] = ExpressionConverter.ConvertO(__workflow_bodyinactive);
-                    bodypropCount++;
-                }
-
-                var birthdateObject = new JObject();
-                var birthdateObjectpropCount = 0;
-                if (__workflow_bodybirthdateday != null)
-                {
-                    birthdateObject["d"] = ExpressionConverter.ConvertO(__workflow_bodybirthdateday);
-                    birthdateObjectpropCount++;
-                }
-
-                if (__workflow_bodybirthdatemonth != null)
-                {
-                    birthdateObject["m"] = ExpressionConverter.ConvertO(__workflow_bodybirthdatemonth);
-                    birthdateObjectpropCount++;
-                }
-
-                if (__workflow_bodybirthdateyear != null)
-                {
-                    birthdateObject["y"] = ExpressionConverter.ConvertO(__workflow_bodybirthdateyear);
-                    birthdateObjectpropCount++;
-                }
-
-                if (birthdateObjectpropCount > 0)
-                {
-                    body["birthdate"] = birthdateObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybirthplace != null)
-                {
-                    body["birthplace"] = ExpressionConverter.ConvertO(__workflow_bodybirthplace);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyethnicity != null)
-                {
-                    body["ethnicity"] = ExpressionConverter.ConvertO(__workflow_bodyethnicity);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyincome != null)
-                {
-                    body["income"] = ExpressionConverter.ConvertO(__workflow_bodyincome);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreligion != null)
-                {
-                    body["religion"] = ExpressionConverter.ConvertO(__workflow_bodyreligion);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyindustry != null)
-                {
-                    body["industry"] = ExpressionConverter.ConvertO(__workflow_bodyindustry);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynumberOfEmployees != null)
-                {
-                    body["num_employees"] = ExpressionConverter.ConvertO(__workflow_bodynumberOfEmployees);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymatchesGifts != null)
-                {
-                    body["matches_gifts"] = ExpressionConverter.ConvertO(__workflow_bodymatchesGifts);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymatchingGiftFactor != null)
-                {
-                    body["matching_gift_factor"] = ExpressionConverter.ConvertO(__workflow_bodymatchingGiftFactor);
-                    bodypropCount++;
-                }
-
-                var matchingGiftPerGiftMinObject = new JObject();
-                var matchingGiftPerGiftMinObjectpropCount = 0;
-                if (__workflow_bodymatchingGiftPerGiftMinminMatchPerGift != null)
-                {
-                    matchingGiftPerGiftMinObject["value"] = ExpressionConverter.ConvertO(__workflow_bodymatchingGiftPerGiftMinminMatchPerGift);
-                    matchingGiftPerGiftMinObjectpropCount++;
-                }
-
-                if (matchingGiftPerGiftMinObjectpropCount > 0)
-                {
-                    body["matching_gift_per_gift_min"] = matchingGiftPerGiftMinObject;
-                    bodypropCount++;
-                }
-
-                var matchingGiftPerGiftMaxObject = new JObject();
-                var matchingGiftPerGiftMaxObjectpropCount = 0;
-                if (__workflow_bodymatchingGiftPerGiftMaxmaxMatchPerGift != null)
-                {
-                    matchingGiftPerGiftMaxObject["value"] = ExpressionConverter.ConvertO(__workflow_bodymatchingGiftPerGiftMaxmaxMatchPerGift);
-                    matchingGiftPerGiftMaxObjectpropCount++;
-                }
-
-                if (matchingGiftPerGiftMaxObjectpropCount > 0)
-                {
-                    body["matching_gift_per_gift_max"] = matchingGiftPerGiftMaxObject;
-                    bodypropCount++;
-                }
-
-                var matchingGiftTotalMinObject = new JObject();
-                var matchingGiftTotalMinObjectpropCount = 0;
-                if (__workflow_bodymatchingGiftTotalMinminMatchPerConstit != null)
-                {
-                    matchingGiftTotalMinObject["value"] = ExpressionConverter.ConvertO(__workflow_bodymatchingGiftTotalMinminMatchPerConstit);
-                    matchingGiftTotalMinObjectpropCount++;
-                }
-
-                if (matchingGiftTotalMinObjectpropCount > 0)
-                {
-                    body["matching_gift_total_min"] = matchingGiftTotalMinObject;
-                    bodypropCount++;
-                }
-
-                var matchingGiftTotalMaxObject = new JObject();
-                var matchingGiftTotalMaxObjectpropCount = 0;
-                if (__workflow_bodymatchingGiftTotalMaxmaxMatchPerConstit != null)
-                {
-                    matchingGiftTotalMaxObject["value"] = ExpressionConverter.ConvertO(__workflow_bodymatchingGiftTotalMaxmaxMatchPerConstit);
-                    matchingGiftTotalMaxObjectpropCount++;
-                }
-
-                if (matchingGiftTotalMaxObjectpropCount > 0)
-                {
-                    body["matching_gift_total_max"] = matchingGiftTotalMaxObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymatchingGiftNotes != null)
-                {
-                    body["matching_gift_notes"] = ExpressionConverter.ConvertO(__workflow_bodymatchingGiftNotes);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydeceased != null)
-                {
-                    body["deceased"] = ExpressionConverter.ConvertO(__workflow_bodydeceased);
-                    bodypropCount++;
-                }
-
-                var deceasedDateObject = new JObject();
-                var deceasedDateObjectpropCount = 0;
-                if (__workflow_bodydeceasedDateday != null)
-                {
-                    deceasedDateObject["d"] = ExpressionConverter.ConvertO(__workflow_bodydeceasedDateday);
-                    deceasedDateObjectpropCount++;
-                }
-
-                if (__workflow_bodydeceasedDatemonth != null)
-                {
-                    deceasedDateObject["m"] = ExpressionConverter.ConvertO(__workflow_bodydeceasedDatemonth);
-                    deceasedDateObjectpropCount++;
-                }
-
-                if (__workflow_bodydeceasedDateyear != null)
-                {
-                    deceasedDateObject["y"] = ExpressionConverter.ConvertO(__workflow_bodydeceasedDateyear);
-                    deceasedDateObjectpropCount++;
-                }
-
-                if (deceasedDateObjectpropCount > 0)
-                {
-                    body["deceased_date"] = deceasedDateObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -1972,30 +659,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentProfilePicture(Expression<Func<string>> constituentId, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodythumbnailId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentProfilePicture(Expression<Func<string>> constituentId, Expression<Func<EditConstituentProfilePictureInput>> body)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
-            var __workflow_bodythumbnailId = WorkflowExpression.Compile(bodythumbnailId, nameof(bodythumbnailId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/constituent/v1/constituents/{0}/profilepicture", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                bodypropCount++;
-                body["document_id"] = ExpressionConverter.ConvertO(__workflow_bodydocumentId);
-                bodypropCount++;
-                body["thumbnail_id"] = ExpressionConverter.ConvertO(__workflow_bodythumbnailId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -2052,203 +725,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<ConstituentApiCreatedConstituentAttachment, ApiConnectionActionConfiguration> CreateConstituentAttachment(Expression<Func<string>> bodyconstituentId, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodyuRL = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodyfileId = null, Expression<Func<string>> bodythumbnailId = null)
+        public IBodyWorkflowAction<ConstituentApiCreatedConstituentAttachment, ApiConnectionActionConfiguration> CreateConstituentAttachment(Expression<Func<CreateConstituentAttachmentInput>> body)
         {
-            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: false);
-            var __workflow_bodyfileId = WorkflowExpression.Compile(bodyfileId, nameof(bodyfileId), required: false);
-            var __workflow_bodythumbnailId = WorkflowExpression.Compile(bodythumbnailId, nameof(bodythumbnailId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConstituentApiCreatedConstituentAttachment, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/constituent/v1/constituents/attachments";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["parent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuRL != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileName != null)
-                {
-                    body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileId != null)
-                {
-                    body["file_id"] = ExpressionConverter.ConvertO(__workflow_bodyfileId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodythumbnailId != null)
-                {
-                    body["thumbnail_id"] = ExpressionConverter.ConvertO(__workflow_bodythumbnailId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ConstituentApiCreatedConstituentAttachment>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentAttachment(Expression<Func<string>> attachmentId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodyuRL = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentAttachment(Expression<Func<string>> attachmentId, Expression<Func<EditConstituentAttachmentInput>> body)
         {
             var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/constituent/v1/constituents/attachments/{0}", __workflow_attachmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuRL != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<ConstituentApiCreatedConstituentCustomField, ApiConnectionActionConfiguration> CreateConstituentCustomField(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodycategory, Expression<Func<object>> bodyvalue = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodycomment = null)
+        public IBodyWorkflowAction<ConstituentApiCreatedConstituentCustomField, ApiConnectionActionConfiguration> CreateConstituentCustomField(Expression<Func<CreateConstituentCustomFieldInput>> body)
         {
-            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: true);
-            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConstituentApiCreatedConstituentCustomField, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/constituent/v1/constituents/customfields";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["parent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
-                bodypropCount++;
-                body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                if (__workflow_bodyvalue != null)
-                {
-                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycomment != null)
-                {
-                    body["comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ConstituentApiCreatedConstituentCustomField>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentCustomField(Expression<Func<string>> customFieldId, Expression<Func<string>> bodycategory = null, Expression<Func<object>> bodyvalue = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodycomment = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentCustomField(Expression<Func<string>> customFieldId, Expression<Func<EditConstituentCustomFieldInput>> body)
         {
             var __workflow_customFieldId = WorkflowExpression.Compile(customFieldId, nameof(customFieldId), required: true);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/constituent/v1/constituents/customfields/{0}", __workflow_customFieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvalue != null)
-                {
-                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycomment != null)
-                {
-                    body["comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -2286,2000 +815,245 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<ConstituentApiFileDefinition, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<string>> bodyfileName = null, Expression<Func<bool>> bodyincludeThumbnail = null)
+        public IBodyWorkflowAction<ConstituentApiFileDefinition, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<CreateDocumentInput>> body)
         {
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: false);
-            var __workflow_bodyincludeThumbnail = WorkflowExpression.Compile(bodyincludeThumbnail, nameof(bodyincludeThumbnail), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConstituentApiFileDefinition, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/constituent/v1/documents";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfileName != null)
-                {
-                    body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyincludeThumbnail != null)
-                {
-                    body["upload_thumbnail"] = ExpressionConverter.ConvertO(__workflow_bodyincludeThumbnail);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ConstituentApiFileDefinition>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<ConstituentApiCreatedConstituentEducation, ApiConnectionActionConfiguration> CreateConstituentEducation(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodyschool, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyclassOf = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodydateEnteredday = null, Expression<Func<int>> bodydateEnteredmonth = null, Expression<Func<int>> bodydateEnteredyear = null, Expression<Func<int>> bodydateLeftday = null, Expression<Func<int>> bodydateLeftmonth = null, Expression<Func<int>> bodydateLeftyear = null, Expression<Func<int>> bodydateGraduatedday = null, Expression<Func<int>> bodydateGraduatedmonth = null, Expression<Func<int>> bodydateGraduatedyear = null, Expression<Func<string>> bodydegree = null, Expression<Func<double>> bodygPA = null, Expression<Func<string>> bodysubjectOfStudy = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<string[]>> bodymajors = null, Expression<Func<string[]>> bodyminors = null, Expression<Func<string>> bodycampus = null, Expression<Func<string>> bodysocialOrganization = null, Expression<Func<string>> bodyknownName = null, Expression<Func<string>> bodyclassOfDegree = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodyfaculty = null, Expression<Func<string>> bodyregistrationNumber = null)
+        public IBodyWorkflowAction<ConstituentApiCreatedConstituentEducation, ApiConnectionActionConfiguration> CreateConstituentEducation(Expression<Func<CreateConstituentEducationInput>> body)
         {
-            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            var __workflow_bodyschool = WorkflowExpression.Compile(bodyschool, nameof(bodyschool), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodyclassOf = WorkflowExpression.Compile(bodyclassOf, nameof(bodyclassOf), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodydateEnteredday = WorkflowExpression.Compile(bodydateEnteredday, nameof(bodydateEnteredday), required: false);
-            var __workflow_bodydateEnteredmonth = WorkflowExpression.Compile(bodydateEnteredmonth, nameof(bodydateEnteredmonth), required: false);
-            var __workflow_bodydateEnteredyear = WorkflowExpression.Compile(bodydateEnteredyear, nameof(bodydateEnteredyear), required: false);
-            var __workflow_bodydateLeftday = WorkflowExpression.Compile(bodydateLeftday, nameof(bodydateLeftday), required: false);
-            var __workflow_bodydateLeftmonth = WorkflowExpression.Compile(bodydateLeftmonth, nameof(bodydateLeftmonth), required: false);
-            var __workflow_bodydateLeftyear = WorkflowExpression.Compile(bodydateLeftyear, nameof(bodydateLeftyear), required: false);
-            var __workflow_bodydateGraduatedday = WorkflowExpression.Compile(bodydateGraduatedday, nameof(bodydateGraduatedday), required: false);
-            var __workflow_bodydateGraduatedmonth = WorkflowExpression.Compile(bodydateGraduatedmonth, nameof(bodydateGraduatedmonth), required: false);
-            var __workflow_bodydateGraduatedyear = WorkflowExpression.Compile(bodydateGraduatedyear, nameof(bodydateGraduatedyear), required: false);
-            var __workflow_bodydegree = WorkflowExpression.Compile(bodydegree, nameof(bodydegree), required: false);
-            var __workflow_bodygPA = WorkflowExpression.Compile(bodygPA, nameof(bodygPA), required: false);
-            var __workflow_bodysubjectOfStudy = WorkflowExpression.Compile(bodysubjectOfStudy, nameof(bodysubjectOfStudy), required: false);
-            var __workflow_bodyprimary = WorkflowExpression.Compile(bodyprimary, nameof(bodyprimary), required: false);
-            var __workflow_bodymajors = WorkflowExpression.Compile(bodymajors, nameof(bodymajors), required: false);
-            var __workflow_bodyminors = WorkflowExpression.Compile(bodyminors, nameof(bodyminors), required: false);
-            var __workflow_bodycampus = WorkflowExpression.Compile(bodycampus, nameof(bodycampus), required: false);
-            var __workflow_bodysocialOrganization = WorkflowExpression.Compile(bodysocialOrganization, nameof(bodysocialOrganization), required: false);
-            var __workflow_bodyknownName = WorkflowExpression.Compile(bodyknownName, nameof(bodyknownName), required: false);
-            var __workflow_bodyclassOfDegree = WorkflowExpression.Compile(bodyclassOfDegree, nameof(bodyclassOfDegree), required: false);
-            var __workflow_bodydepartment = WorkflowExpression.Compile(bodydepartment, nameof(bodydepartment), required: false);
-            var __workflow_bodyfaculty = WorkflowExpression.Compile(bodyfaculty, nameof(bodyfaculty), required: false);
-            var __workflow_bodyregistrationNumber = WorkflowExpression.Compile(bodyregistrationNumber, nameof(bodyregistrationNumber), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConstituentApiCreatedConstituentEducation, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/constituent/v1/educations";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
-                bodypropCount++;
-                body["school"] = ExpressionConverter.ConvertO(__workflow_bodyschool);
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyclassOf != null)
-                {
-                    body["class_of"] = ExpressionConverter.ConvertO(__workflow_bodyclassOf);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                var dateEnteredObject = new JObject();
-                var dateEnteredObjectpropCount = 0;
-                if (__workflow_bodydateEnteredday != null)
-                {
-                    dateEnteredObject["d"] = ExpressionConverter.ConvertO(__workflow_bodydateEnteredday);
-                    dateEnteredObjectpropCount++;
-                }
-
-                if (__workflow_bodydateEnteredmonth != null)
-                {
-                    dateEnteredObject["m"] = ExpressionConverter.ConvertO(__workflow_bodydateEnteredmonth);
-                    dateEnteredObjectpropCount++;
-                }
-
-                if (__workflow_bodydateEnteredyear != null)
-                {
-                    dateEnteredObject["y"] = ExpressionConverter.ConvertO(__workflow_bodydateEnteredyear);
-                    dateEnteredObjectpropCount++;
-                }
-
-                if (dateEnteredObjectpropCount > 0)
-                {
-                    body["date_entered"] = dateEnteredObject;
-                    bodypropCount++;
-                }
-
-                var dateLeftObject = new JObject();
-                var dateLeftObjectpropCount = 0;
-                if (__workflow_bodydateLeftday != null)
-                {
-                    dateLeftObject["d"] = ExpressionConverter.ConvertO(__workflow_bodydateLeftday);
-                    dateLeftObjectpropCount++;
-                }
-
-                if (__workflow_bodydateLeftmonth != null)
-                {
-                    dateLeftObject["m"] = ExpressionConverter.ConvertO(__workflow_bodydateLeftmonth);
-                    dateLeftObjectpropCount++;
-                }
-
-                if (__workflow_bodydateLeftyear != null)
-                {
-                    dateLeftObject["y"] = ExpressionConverter.ConvertO(__workflow_bodydateLeftyear);
-                    dateLeftObjectpropCount++;
-                }
-
-                if (dateLeftObjectpropCount > 0)
-                {
-                    body["date_left"] = dateLeftObject;
-                    bodypropCount++;
-                }
-
-                var dateGraduatedObject = new JObject();
-                var dateGraduatedObjectpropCount = 0;
-                if (__workflow_bodydateGraduatedday != null)
-                {
-                    dateGraduatedObject["d"] = ExpressionConverter.ConvertO(__workflow_bodydateGraduatedday);
-                    dateGraduatedObjectpropCount++;
-                }
-
-                if (__workflow_bodydateGraduatedmonth != null)
-                {
-                    dateGraduatedObject["m"] = ExpressionConverter.ConvertO(__workflow_bodydateGraduatedmonth);
-                    dateGraduatedObjectpropCount++;
-                }
-
-                if (__workflow_bodydateGraduatedyear != null)
-                {
-                    dateGraduatedObject["y"] = ExpressionConverter.ConvertO(__workflow_bodydateGraduatedyear);
-                    dateGraduatedObjectpropCount++;
-                }
-
-                if (dateGraduatedObjectpropCount > 0)
-                {
-                    body["date_graduated"] = dateGraduatedObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydegree != null)
-                {
-                    body["degree"] = ExpressionConverter.ConvertO(__workflow_bodydegree);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygPA != null)
-                {
-                    body["gpa"] = ExpressionConverter.ConvertO(__workflow_bodygPA);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysubjectOfStudy != null)
-                {
-                    body["subject_of_study"] = ExpressionConverter.ConvertO(__workflow_bodysubjectOfStudy);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprimary != null)
-                {
-                    body["primary"] = ExpressionConverter.ConvertO(__workflow_bodyprimary);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymajors != null)
-                {
-                    body["majors"] = ExpressionConverter.ConvertO(__workflow_bodymajors);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyminors != null)
-                {
-                    body["minors"] = ExpressionConverter.ConvertO(__workflow_bodyminors);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycampus != null)
-                {
-                    body["campus"] = ExpressionConverter.ConvertO(__workflow_bodycampus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysocialOrganization != null)
-                {
-                    body["social_organization"] = ExpressionConverter.ConvertO(__workflow_bodysocialOrganization);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyknownName != null)
-                {
-                    body["known_name"] = ExpressionConverter.ConvertO(__workflow_bodyknownName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyclassOfDegree != null)
-                {
-                    body["class_of_degree"] = ExpressionConverter.ConvertO(__workflow_bodyclassOfDegree);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydepartment != null)
-                {
-                    body["department"] = ExpressionConverter.ConvertO(__workflow_bodydepartment);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfaculty != null)
-                {
-                    body["faculty"] = ExpressionConverter.ConvertO(__workflow_bodyfaculty);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyregistrationNumber != null)
-                {
-                    body["registration_number"] = ExpressionConverter.ConvertO(__workflow_bodyregistrationNumber);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ConstituentApiCreatedConstituentEducation>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentEducation(Expression<Func<string>> educationId, Expression<Func<string>> bodyschool = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyclassOf = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodydateEnteredday = null, Expression<Func<int>> bodydateEnteredmonth = null, Expression<Func<int>> bodydateEnteredyear = null, Expression<Func<int>> bodydateLeftday = null, Expression<Func<int>> bodydateLeftmonth = null, Expression<Func<int>> bodydateLeftyear = null, Expression<Func<int>> bodydateGraduatedday = null, Expression<Func<int>> bodydateGraduatedmonth = null, Expression<Func<int>> bodydateGraduatedyear = null, Expression<Func<string>> bodydegree = null, Expression<Func<double>> bodygPA = null, Expression<Func<string>> bodysubjectOfStudy = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<string[]>> bodymajors = null, Expression<Func<string[]>> bodyminors = null, Expression<Func<string>> bodycampus = null, Expression<Func<string>> bodysocialOrganization = null, Expression<Func<string>> bodyknownName = null, Expression<Func<string>> bodyclassOfDegree = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodyfaculty = null, Expression<Func<string>> bodyregistrationNumber = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentEducation(Expression<Func<string>> educationId, Expression<Func<EditConstituentEducationInput>> body)
         {
             var __workflow_educationId = WorkflowExpression.Compile(educationId, nameof(educationId), required: true);
-            var __workflow_bodyschool = WorkflowExpression.Compile(bodyschool, nameof(bodyschool), required: false);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodyclassOf = WorkflowExpression.Compile(bodyclassOf, nameof(bodyclassOf), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodydateEnteredday = WorkflowExpression.Compile(bodydateEnteredday, nameof(bodydateEnteredday), required: false);
-            var __workflow_bodydateEnteredmonth = WorkflowExpression.Compile(bodydateEnteredmonth, nameof(bodydateEnteredmonth), required: false);
-            var __workflow_bodydateEnteredyear = WorkflowExpression.Compile(bodydateEnteredyear, nameof(bodydateEnteredyear), required: false);
-            var __workflow_bodydateLeftday = WorkflowExpression.Compile(bodydateLeftday, nameof(bodydateLeftday), required: false);
-            var __workflow_bodydateLeftmonth = WorkflowExpression.Compile(bodydateLeftmonth, nameof(bodydateLeftmonth), required: false);
-            var __workflow_bodydateLeftyear = WorkflowExpression.Compile(bodydateLeftyear, nameof(bodydateLeftyear), required: false);
-            var __workflow_bodydateGraduatedday = WorkflowExpression.Compile(bodydateGraduatedday, nameof(bodydateGraduatedday), required: false);
-            var __workflow_bodydateGraduatedmonth = WorkflowExpression.Compile(bodydateGraduatedmonth, nameof(bodydateGraduatedmonth), required: false);
-            var __workflow_bodydateGraduatedyear = WorkflowExpression.Compile(bodydateGraduatedyear, nameof(bodydateGraduatedyear), required: false);
-            var __workflow_bodydegree = WorkflowExpression.Compile(bodydegree, nameof(bodydegree), required: false);
-            var __workflow_bodygPA = WorkflowExpression.Compile(bodygPA, nameof(bodygPA), required: false);
-            var __workflow_bodysubjectOfStudy = WorkflowExpression.Compile(bodysubjectOfStudy, nameof(bodysubjectOfStudy), required: false);
-            var __workflow_bodyprimary = WorkflowExpression.Compile(bodyprimary, nameof(bodyprimary), required: false);
-            var __workflow_bodymajors = WorkflowExpression.Compile(bodymajors, nameof(bodymajors), required: false);
-            var __workflow_bodyminors = WorkflowExpression.Compile(bodyminors, nameof(bodyminors), required: false);
-            var __workflow_bodycampus = WorkflowExpression.Compile(bodycampus, nameof(bodycampus), required: false);
-            var __workflow_bodysocialOrganization = WorkflowExpression.Compile(bodysocialOrganization, nameof(bodysocialOrganization), required: false);
-            var __workflow_bodyknownName = WorkflowExpression.Compile(bodyknownName, nameof(bodyknownName), required: false);
-            var __workflow_bodyclassOfDegree = WorkflowExpression.Compile(bodyclassOfDegree, nameof(bodyclassOfDegree), required: false);
-            var __workflow_bodydepartment = WorkflowExpression.Compile(bodydepartment, nameof(bodydepartment), required: false);
-            var __workflow_bodyfaculty = WorkflowExpression.Compile(bodyfaculty, nameof(bodyfaculty), required: false);
-            var __workflow_bodyregistrationNumber = WorkflowExpression.Compile(bodyregistrationNumber, nameof(bodyregistrationNumber), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/constituent/v1/educations/{0}", __workflow_educationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyschool != null)
-                {
-                    body["school"] = ExpressionConverter.ConvertO(__workflow_bodyschool);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyclassOf != null)
-                {
-                    body["class_of"] = ExpressionConverter.ConvertO(__workflow_bodyclassOf);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                var dateEnteredObject = new JObject();
-                var dateEnteredObjectpropCount = 0;
-                if (__workflow_bodydateEnteredday != null)
-                {
-                    dateEnteredObject["d"] = ExpressionConverter.ConvertO(__workflow_bodydateEnteredday);
-                    dateEnteredObjectpropCount++;
-                }
-
-                if (__workflow_bodydateEnteredmonth != null)
-                {
-                    dateEnteredObject["m"] = ExpressionConverter.ConvertO(__workflow_bodydateEnteredmonth);
-                    dateEnteredObjectpropCount++;
-                }
-
-                if (__workflow_bodydateEnteredyear != null)
-                {
-                    dateEnteredObject["y"] = ExpressionConverter.ConvertO(__workflow_bodydateEnteredyear);
-                    dateEnteredObjectpropCount++;
-                }
-
-                if (dateEnteredObjectpropCount > 0)
-                {
-                    body["date_entered"] = dateEnteredObject;
-                    bodypropCount++;
-                }
-
-                var dateLeftObject = new JObject();
-                var dateLeftObjectpropCount = 0;
-                if (__workflow_bodydateLeftday != null)
-                {
-                    dateLeftObject["d"] = ExpressionConverter.ConvertO(__workflow_bodydateLeftday);
-                    dateLeftObjectpropCount++;
-                }
-
-                if (__workflow_bodydateLeftmonth != null)
-                {
-                    dateLeftObject["m"] = ExpressionConverter.ConvertO(__workflow_bodydateLeftmonth);
-                    dateLeftObjectpropCount++;
-                }
-
-                if (__workflow_bodydateLeftyear != null)
-                {
-                    dateLeftObject["y"] = ExpressionConverter.ConvertO(__workflow_bodydateLeftyear);
-                    dateLeftObjectpropCount++;
-                }
-
-                if (dateLeftObjectpropCount > 0)
-                {
-                    body["date_left"] = dateLeftObject;
-                    bodypropCount++;
-                }
-
-                var dateGraduatedObject = new JObject();
-                var dateGraduatedObjectpropCount = 0;
-                if (__workflow_bodydateGraduatedday != null)
-                {
-                    dateGraduatedObject["d"] = ExpressionConverter.ConvertO(__workflow_bodydateGraduatedday);
-                    dateGraduatedObjectpropCount++;
-                }
-
-                if (__workflow_bodydateGraduatedmonth != null)
-                {
-                    dateGraduatedObject["m"] = ExpressionConverter.ConvertO(__workflow_bodydateGraduatedmonth);
-                    dateGraduatedObjectpropCount++;
-                }
-
-                if (__workflow_bodydateGraduatedyear != null)
-                {
-                    dateGraduatedObject["y"] = ExpressionConverter.ConvertO(__workflow_bodydateGraduatedyear);
-                    dateGraduatedObjectpropCount++;
-                }
-
-                if (dateGraduatedObjectpropCount > 0)
-                {
-                    body["date_graduated"] = dateGraduatedObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydegree != null)
-                {
-                    body["degree"] = ExpressionConverter.ConvertO(__workflow_bodydegree);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygPA != null)
-                {
-                    body["gpa"] = ExpressionConverter.ConvertO(__workflow_bodygPA);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysubjectOfStudy != null)
-                {
-                    body["subject_of_study"] = ExpressionConverter.ConvertO(__workflow_bodysubjectOfStudy);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprimary != null)
-                {
-                    body["primary"] = ExpressionConverter.ConvertO(__workflow_bodyprimary);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymajors != null)
-                {
-                    body["majors"] = ExpressionConverter.ConvertO(__workflow_bodymajors);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyminors != null)
-                {
-                    body["minors"] = ExpressionConverter.ConvertO(__workflow_bodyminors);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycampus != null)
-                {
-                    body["campus"] = ExpressionConverter.ConvertO(__workflow_bodycampus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysocialOrganization != null)
-                {
-                    body["social_organization"] = ExpressionConverter.ConvertO(__workflow_bodysocialOrganization);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyknownName != null)
-                {
-                    body["known_name"] = ExpressionConverter.ConvertO(__workflow_bodyknownName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyclassOfDegree != null)
-                {
-                    body["class_of_degree"] = ExpressionConverter.ConvertO(__workflow_bodyclassOfDegree);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydepartment != null)
-                {
-                    body["department"] = ExpressionConverter.ConvertO(__workflow_bodydepartment);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfaculty != null)
-                {
-                    body["faculty"] = ExpressionConverter.ConvertO(__workflow_bodyfaculty);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyregistrationNumber != null)
-                {
-                    body["registration_number"] = ExpressionConverter.ConvertO(__workflow_bodyregistrationNumber);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<ConstituentApiCreatedConstituentEmailAddress, ApiConnectionActionConfiguration> CreateConstituentEmailAddress(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodyemailType, Expression<Func<string>> bodyemailAddress, Expression<Func<bool>> bodyprimary = null, Expression<Func<bool>> bodydoNotEmail = null, Expression<Func<bool>> bodyinactive = null)
+        public IBodyWorkflowAction<ConstituentApiCreatedConstituentEmailAddress, ApiConnectionActionConfiguration> CreateConstituentEmailAddress(Expression<Func<CreateConstituentEmailAddressInput>> body)
         {
-            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            var __workflow_bodyemailType = WorkflowExpression.Compile(bodyemailType, nameof(bodyemailType), required: true);
-            var __workflow_bodyemailAddress = WorkflowExpression.Compile(bodyemailAddress, nameof(bodyemailAddress), required: true);
-            var __workflow_bodyprimary = WorkflowExpression.Compile(bodyprimary, nameof(bodyprimary), required: false);
-            var __workflow_bodydoNotEmail = WorkflowExpression.Compile(bodydoNotEmail, nameof(bodydoNotEmail), required: false);
-            var __workflow_bodyinactive = WorkflowExpression.Compile(bodyinactive, nameof(bodyinactive), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConstituentApiCreatedConstituentEmailAddress, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/constituent/v1/emailaddresses";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodyemailType);
-                bodypropCount++;
-                body["address"] = ExpressionConverter.ConvertO(__workflow_bodyemailAddress);
-                if (__workflow_bodyprimary != null)
-                {
-                    body["primary"] = ExpressionConverter.ConvertO(__workflow_bodyprimary);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydoNotEmail != null)
-                {
-                    body["do_not_email"] = ExpressionConverter.ConvertO(__workflow_bodydoNotEmail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinactive != null)
-                {
-                    body["inactive"] = ExpressionConverter.ConvertO(__workflow_bodyinactive);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ConstituentApiCreatedConstituentEmailAddress>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentEmailAddress(Expression<Func<string>> emailAddressId, Expression<Func<string>> bodyemailType = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<bool>> bodydoNotEmail = null, Expression<Func<bool>> bodyinactive = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentEmailAddress(Expression<Func<string>> emailAddressId, Expression<Func<EditConstituentEmailAddressInput>> body)
         {
             var __workflow_emailAddressId = WorkflowExpression.Compile(emailAddressId, nameof(emailAddressId), required: true);
-            var __workflow_bodyemailType = WorkflowExpression.Compile(bodyemailType, nameof(bodyemailType), required: false);
-            var __workflow_bodyemailAddress = WorkflowExpression.Compile(bodyemailAddress, nameof(bodyemailAddress), required: false);
-            var __workflow_bodyprimary = WorkflowExpression.Compile(bodyprimary, nameof(bodyprimary), required: false);
-            var __workflow_bodydoNotEmail = WorkflowExpression.Compile(bodydoNotEmail, nameof(bodydoNotEmail), required: false);
-            var __workflow_bodyinactive = WorkflowExpression.Compile(bodyinactive, nameof(bodyinactive), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/constituent/v1/emailaddresses/{0}", __workflow_emailAddressId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyemailType != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodyemailType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyemailAddress != null)
-                {
-                    body["address"] = ExpressionConverter.ConvertO(__workflow_bodyemailAddress);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprimary != null)
-                {
-                    body["primary"] = ExpressionConverter.ConvertO(__workflow_bodyprimary);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydoNotEmail != null)
-                {
-                    body["do_not_email"] = ExpressionConverter.ConvertO(__workflow_bodydoNotEmail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinactive != null)
-                {
-                    body["inactive"] = ExpressionConverter.ConvertO(__workflow_bodyinactive);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<ConstituentApiCreatedConstituentNote, ApiConnectionActionConfiguration> CreateConstituentNote(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodytype, Expression<Func<int>> bodydateday = null, Expression<Func<int>> bodydatemonth = null, Expression<Func<int>> bodydateyear = null, Expression<Func<string>> bodysummary = null, Expression<Func<string>> bodynote = null)
+        public IBodyWorkflowAction<ConstituentApiCreatedConstituentNote, ApiConnectionActionConfiguration> CreateConstituentNote(Expression<Func<CreateConstituentNoteInput>> body)
         {
-            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodydateday = WorkflowExpression.Compile(bodydateday, nameof(bodydateday), required: false);
-            var __workflow_bodydatemonth = WorkflowExpression.Compile(bodydatemonth, nameof(bodydatemonth), required: false);
-            var __workflow_bodydateyear = WorkflowExpression.Compile(bodydateyear, nameof(bodydateyear), required: false);
-            var __workflow_bodysummary = WorkflowExpression.Compile(bodysummary, nameof(bodysummary), required: false);
-            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConstituentApiCreatedConstituentNote, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/constituent/v1/notes";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                var dateObject = new JObject();
-                var dateObjectpropCount = 0;
-                if (__workflow_bodydateday != null)
-                {
-                    dateObject["d"] = ExpressionConverter.ConvertO(__workflow_bodydateday);
-                    dateObjectpropCount++;
-                }
-
-                if (__workflow_bodydatemonth != null)
-                {
-                    dateObject["m"] = ExpressionConverter.ConvertO(__workflow_bodydatemonth);
-                    dateObjectpropCount++;
-                }
-
-                if (__workflow_bodydateyear != null)
-                {
-                    dateObject["y"] = ExpressionConverter.ConvertO(__workflow_bodydateyear);
-                    dateObjectpropCount++;
-                }
-
-                if (dateObjectpropCount > 0)
-                {
-                    body["date"] = dateObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysummary != null)
-                {
-                    body["summary"] = ExpressionConverter.ConvertO(__workflow_bodysummary);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynote != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodynote);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ConstituentApiCreatedConstituentNote>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentNote(Expression<Func<string>> noteId, Expression<Func<string>> bodytype = null, Expression<Func<int>> bodydateday = null, Expression<Func<int>> bodydatemonth = null, Expression<Func<int>> bodydateyear = null, Expression<Func<string>> bodysummary = null, Expression<Func<string>> bodynote = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentNote(Expression<Func<string>> noteId, Expression<Func<EditConstituentNoteInput>> body)
         {
             var __workflow_noteId = WorkflowExpression.Compile(noteId, nameof(noteId), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodydateday = WorkflowExpression.Compile(bodydateday, nameof(bodydateday), required: false);
-            var __workflow_bodydatemonth = WorkflowExpression.Compile(bodydatemonth, nameof(bodydatemonth), required: false);
-            var __workflow_bodydateyear = WorkflowExpression.Compile(bodydateyear, nameof(bodydateyear), required: false);
-            var __workflow_bodysummary = WorkflowExpression.Compile(bodysummary, nameof(bodysummary), required: false);
-            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/constituent/v1/notes/{0}", __workflow_noteId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                var dateObject = new JObject();
-                var dateObjectpropCount = 0;
-                if (__workflow_bodydateday != null)
-                {
-                    dateObject["d"] = ExpressionConverter.ConvertO(__workflow_bodydateday);
-                    dateObjectpropCount++;
-                }
-
-                if (__workflow_bodydatemonth != null)
-                {
-                    dateObject["m"] = ExpressionConverter.ConvertO(__workflow_bodydatemonth);
-                    dateObjectpropCount++;
-                }
-
-                if (__workflow_bodydateyear != null)
-                {
-                    dateObject["y"] = ExpressionConverter.ConvertO(__workflow_bodydateyear);
-                    dateObjectpropCount++;
-                }
-
-                if (dateObjectpropCount > 0)
-                {
-                    body["date"] = dateObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysummary != null)
-                {
-                    body["summary"] = ExpressionConverter.ConvertO(__workflow_bodysummary);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynote != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodynote);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<ConstituentApiCreatedConstituentOnlinePresence, ApiConnectionActionConfiguration> CreateConstituentOnlinePresence(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodytype, Expression<Func<string>> bodylink, Expression<Func<bool>> bodyprimary = null, Expression<Func<bool>> bodyinactive = null)
+        public IBodyWorkflowAction<ConstituentApiCreatedConstituentOnlinePresence, ApiConnectionActionConfiguration> CreateConstituentOnlinePresence(Expression<Func<CreateConstituentOnlinePresenceInput>> body)
         {
-            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodylink = WorkflowExpression.Compile(bodylink, nameof(bodylink), required: true);
-            var __workflow_bodyprimary = WorkflowExpression.Compile(bodyprimary, nameof(bodyprimary), required: false);
-            var __workflow_bodyinactive = WorkflowExpression.Compile(bodyinactive, nameof(bodyinactive), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConstituentApiCreatedConstituentOnlinePresence, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/constituent/v1/onlinepresences";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                bodypropCount++;
-                body["address"] = ExpressionConverter.ConvertO(__workflow_bodylink);
-                if (__workflow_bodyprimary != null)
-                {
-                    body["primary"] = ExpressionConverter.ConvertO(__workflow_bodyprimary);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinactive != null)
-                {
-                    body["inactive"] = ExpressionConverter.ConvertO(__workflow_bodyinactive);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ConstituentApiCreatedConstituentOnlinePresence>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentOnlinePresence(Expression<Func<string>> onlinePresenceId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodylink = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<bool>> bodyinactive = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentOnlinePresence(Expression<Func<string>> onlinePresenceId, Expression<Func<EditConstituentOnlinePresenceInput>> body)
         {
             var __workflow_onlinePresenceId = WorkflowExpression.Compile(onlinePresenceId, nameof(onlinePresenceId), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodylink = WorkflowExpression.Compile(bodylink, nameof(bodylink), required: false);
-            var __workflow_bodyprimary = WorkflowExpression.Compile(bodyprimary, nameof(bodyprimary), required: false);
-            var __workflow_bodyinactive = WorkflowExpression.Compile(bodyinactive, nameof(bodyinactive), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/constituent/v1/onlinepresences/{0}", __workflow_onlinePresenceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylink != null)
-                {
-                    body["address"] = ExpressionConverter.ConvertO(__workflow_bodylink);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprimary != null)
-                {
-                    body["primary"] = ExpressionConverter.ConvertO(__workflow_bodyprimary);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinactive != null)
-                {
-                    body["inactive"] = ExpressionConverter.ConvertO(__workflow_bodyinactive);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<ConstituentApiCreatedConstituentPhone, ApiConnectionActionConfiguration> CreateConstituentPhone(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodytype, Expression<Func<string>> bodynumber, Expression<Func<bool>> bodyprimary = null, Expression<Func<bool>> bodydoNotCall = null, Expression<Func<bool>> bodyinactive = null)
+        public IBodyWorkflowAction<ConstituentApiCreatedConstituentPhone, ApiConnectionActionConfiguration> CreateConstituentPhone(Expression<Func<CreateConstituentPhoneInput>> body)
         {
-            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodynumber = WorkflowExpression.Compile(bodynumber, nameof(bodynumber), required: true);
-            var __workflow_bodyprimary = WorkflowExpression.Compile(bodyprimary, nameof(bodyprimary), required: false);
-            var __workflow_bodydoNotCall = WorkflowExpression.Compile(bodydoNotCall, nameof(bodydoNotCall), required: false);
-            var __workflow_bodyinactive = WorkflowExpression.Compile(bodyinactive, nameof(bodyinactive), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConstituentApiCreatedConstituentPhone, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/constituent/v1/phones";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                bodypropCount++;
-                body["number"] = ExpressionConverter.ConvertO(__workflow_bodynumber);
-                if (__workflow_bodyprimary != null)
-                {
-                    body["primary"] = ExpressionConverter.ConvertO(__workflow_bodyprimary);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydoNotCall != null)
-                {
-                    body["do_not_call"] = ExpressionConverter.ConvertO(__workflow_bodydoNotCall);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinactive != null)
-                {
-                    body["inactive"] = ExpressionConverter.ConvertO(__workflow_bodyinactive);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ConstituentApiCreatedConstituentPhone>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentPhone(Expression<Func<string>> phoneId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodynumber = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<bool>> bodydoNotCall = null, Expression<Func<bool>> bodyinactive = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentPhone(Expression<Func<string>> phoneId, Expression<Func<EditConstituentPhoneInput>> body)
         {
             var __workflow_phoneId = WorkflowExpression.Compile(phoneId, nameof(phoneId), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodynumber = WorkflowExpression.Compile(bodynumber, nameof(bodynumber), required: false);
-            var __workflow_bodyprimary = WorkflowExpression.Compile(bodyprimary, nameof(bodyprimary), required: false);
-            var __workflow_bodydoNotCall = WorkflowExpression.Compile(bodydoNotCall, nameof(bodydoNotCall), required: false);
-            var __workflow_bodyinactive = WorkflowExpression.Compile(bodyinactive, nameof(bodyinactive), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/constituent/v1/phones/{0}", __workflow_phoneId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynumber != null)
-                {
-                    body["number"] = ExpressionConverter.ConvertO(__workflow_bodynumber);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprimary != null)
-                {
-                    body["primary"] = ExpressionConverter.ConvertO(__workflow_bodyprimary);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydoNotCall != null)
-                {
-                    body["do_not_call"] = ExpressionConverter.ConvertO(__workflow_bodydoNotCall);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinactive != null)
-                {
-                    body["inactive"] = ExpressionConverter.ConvertO(__workflow_bodyinactive);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<ConstituentApiCreatedConstituentRating, ApiConnectionActionConfiguration> CreateConstituentRating(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodysource, Expression<Func<string>> bodycategory, Expression<Func<string>> bodydate, Expression<Func<object>> bodyvalue = null, Expression<Func<string>> bodycomments = null)
+        public IBodyWorkflowAction<ConstituentApiCreatedConstituentRating, ApiConnectionActionConfiguration> CreateConstituentRating(Expression<Func<CreateConstituentRatingInput>> body)
         {
-            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            var __workflow_bodysource = WorkflowExpression.Compile(bodysource, nameof(bodysource), required: true);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: true);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: true);
-            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConstituentApiCreatedConstituentRating, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/constituent/v1/ratings";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
-                bodypropCount++;
-                body["source"] = ExpressionConverter.ConvertO(__workflow_bodysource);
-                bodypropCount++;
-                body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                bodypropCount++;
-                body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                if (__workflow_bodyvalue != null)
-                {
-                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycomments != null)
-                {
-                    body["comment"] = ExpressionConverter.ConvertO(__workflow_bodycomments);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ConstituentApiCreatedConstituentRating>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentRelationship(Expression<Func<string>> relationshipId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyreciprocalType = null, Expression<Func<int>> bodystartday = null, Expression<Func<int>> bodystartmonth = null, Expression<Func<int>> bodystartyear = null, Expression<Func<int>> bodyendday = null, Expression<Func<int>> bodyendmonth = null, Expression<Func<int>> bodyendyear = null, Expression<Func<bool>> bodyisSpouse = null, Expression<Func<bool>> bodyisConstituentHeadOfHousehold = null, Expression<Func<bool>> bodyisSpouseHeadOfHousehold = null, Expression<Func<string>> bodynotes = null, Expression<Func<bool>> bodyisContact = null, Expression<Func<bool>> bodyisPrimaryBusiness = null, Expression<Func<string>> bodycontactType = null, Expression<Func<string>> bodyposition = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentRelationship(Expression<Func<string>> relationshipId, Expression<Func<EditConstituentRelationshipInput>> body)
         {
             var __workflow_relationshipId = WorkflowExpression.Compile(relationshipId, nameof(relationshipId), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodyreciprocalType = WorkflowExpression.Compile(bodyreciprocalType, nameof(bodyreciprocalType), required: false);
-            var __workflow_bodystartday = WorkflowExpression.Compile(bodystartday, nameof(bodystartday), required: false);
-            var __workflow_bodystartmonth = WorkflowExpression.Compile(bodystartmonth, nameof(bodystartmonth), required: false);
-            var __workflow_bodystartyear = WorkflowExpression.Compile(bodystartyear, nameof(bodystartyear), required: false);
-            var __workflow_bodyendday = WorkflowExpression.Compile(bodyendday, nameof(bodyendday), required: false);
-            var __workflow_bodyendmonth = WorkflowExpression.Compile(bodyendmonth, nameof(bodyendmonth), required: false);
-            var __workflow_bodyendyear = WorkflowExpression.Compile(bodyendyear, nameof(bodyendyear), required: false);
-            var __workflow_bodyisSpouse = WorkflowExpression.Compile(bodyisSpouse, nameof(bodyisSpouse), required: false);
-            var __workflow_bodyisConstituentHeadOfHousehold = WorkflowExpression.Compile(bodyisConstituentHeadOfHousehold, nameof(bodyisConstituentHeadOfHousehold), required: false);
-            var __workflow_bodyisSpouseHeadOfHousehold = WorkflowExpression.Compile(bodyisSpouseHeadOfHousehold, nameof(bodyisSpouseHeadOfHousehold), required: false);
-            var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
-            var __workflow_bodyisContact = WorkflowExpression.Compile(bodyisContact, nameof(bodyisContact), required: false);
-            var __workflow_bodyisPrimaryBusiness = WorkflowExpression.Compile(bodyisPrimaryBusiness, nameof(bodyisPrimaryBusiness), required: false);
-            var __workflow_bodycontactType = WorkflowExpression.Compile(bodycontactType, nameof(bodycontactType), required: false);
-            var __workflow_bodyposition = WorkflowExpression.Compile(bodyposition, nameof(bodyposition), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/constituent/v1/relationships/{0}", __workflow_relationshipId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreciprocalType != null)
-                {
-                    body["reciprocal_type"] = ExpressionConverter.ConvertO(__workflow_bodyreciprocalType);
-                    bodypropCount++;
-                }
-
-                var startObject = new JObject();
-                var startObjectpropCount = 0;
-                if (__workflow_bodystartday != null)
-                {
-                    startObject["d"] = ExpressionConverter.ConvertO(__workflow_bodystartday);
-                    startObjectpropCount++;
-                }
-
-                if (__workflow_bodystartmonth != null)
-                {
-                    startObject["m"] = ExpressionConverter.ConvertO(__workflow_bodystartmonth);
-                    startObjectpropCount++;
-                }
-
-                if (__workflow_bodystartyear != null)
-                {
-                    startObject["y"] = ExpressionConverter.ConvertO(__workflow_bodystartyear);
-                    startObjectpropCount++;
-                }
-
-                if (startObjectpropCount > 0)
-                {
-                    body["start"] = startObject;
-                    bodypropCount++;
-                }
-
-                var endObject = new JObject();
-                var endObjectpropCount = 0;
-                if (__workflow_bodyendday != null)
-                {
-                    endObject["d"] = ExpressionConverter.ConvertO(__workflow_bodyendday);
-                    endObjectpropCount++;
-                }
-
-                if (__workflow_bodyendmonth != null)
-                {
-                    endObject["m"] = ExpressionConverter.ConvertO(__workflow_bodyendmonth);
-                    endObjectpropCount++;
-                }
-
-                if (__workflow_bodyendyear != null)
-                {
-                    endObject["y"] = ExpressionConverter.ConvertO(__workflow_bodyendyear);
-                    endObjectpropCount++;
-                }
-
-                if (endObjectpropCount > 0)
-                {
-                    body["end"] = endObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisSpouse != null)
-                {
-                    body["is_spouse"] = ExpressionConverter.ConvertO(__workflow_bodyisSpouse);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisConstituentHeadOfHousehold != null)
-                {
-                    body["is_constituent_head_of_household"] = ExpressionConverter.ConvertO(__workflow_bodyisConstituentHeadOfHousehold);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisSpouseHeadOfHousehold != null)
-                {
-                    body["is_spouse_head_of_household"] = ExpressionConverter.ConvertO(__workflow_bodyisSpouseHeadOfHousehold);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynotes != null)
-                {
-                    body["comment"] = ExpressionConverter.ConvertO(__workflow_bodynotes);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisContact != null)
-                {
-                    body["is_organization_contact"] = ExpressionConverter.ConvertO(__workflow_bodyisContact);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisPrimaryBusiness != null)
-                {
-                    body["is_primary_business"] = ExpressionConverter.ConvertO(__workflow_bodyisPrimaryBusiness);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontactType != null)
-                {
-                    body["organization_contact_type"] = ExpressionConverter.ConvertO(__workflow_bodycontactType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyposition != null)
-                {
-                    body["position"] = ExpressionConverter.ConvertO(__workflow_bodyposition);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<ConstituentApiCreatedIndividualConstituent, ApiConnectionActionConfiguration> CreateIndividualConstituent(Expression<Func<string>> bodylastName, Expression<Func<string>> bodyaddresstype, Expression<Func<string>> bodyphonetype, Expression<Func<string>> bodyphonenumber, Expression<Func<string>> bodyemailtype, Expression<Func<string>> bodyemailaddress, Expression<Func<string>> bodyonlinePresencetype, Expression<Func<string>> bodyonlinePresenceaddress, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodysuffix = null, Expression<Func<string>> bodylookupId = null, Expression<Func<string>> bodyaddresscountry = null, Expression<Func<string>> bodyaddresslines = null, Expression<Func<string>> bodyaddresscity = null, Expression<Func<string>> bodyaddressstate = null, Expression<Func<string>> bodyaddresspostalCode = null, Expression<Func<string>> bodyaddresssuburb = null, Expression<Func<string>> bodyaddresscounty = null, Expression<Func<string>> bodyaddressstart = null, Expression<Func<string>> bodyaddressend = null, Expression<Func<bool>> bodyphoneisPrimary = null, Expression<Func<bool>> bodyemailisPrimary = null, Expression<Func<bool>> bodyonlinePresenceisPrimary = null, Expression<Func<string>> bodypreferredName = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodyformerName = null, Expression<Func<string>> bodytitle2 = null, Expression<Func<string>> bodysuffix2 = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodymaritalStatus = null, Expression<Func<bool>> bodygivesAnonymously = null, Expression<Func<int>> bodybirthdateday = null, Expression<Func<int>> bodybirthdatemonth = null, Expression<Func<int>> bodybirthdateyear = null, Expression<Func<string>> bodybirthplace = null, Expression<Func<string>> bodyethnicity = null, Expression<Func<string>> bodyincome = null, Expression<Func<string>> bodyreligion = null, Expression<Func<bool>> bodyprimaryAddresseecustomAddressee = null, Expression<Func<string>> bodyprimaryAddresseeaddresseeFormat = null, Expression<Func<string>> bodyprimaryAddresseeaddresseeCustomName = null, Expression<Func<bool>> bodyprimarySalutationcustomSalutation = null, Expression<Func<string>> bodyprimarySalutationsalutationFormat = null, Expression<Func<string>> bodyprimarySalutationsalutationCustomName = null)
+        public IBodyWorkflowAction<ConstituentApiCreatedIndividualConstituent, ApiConnectionActionConfiguration> CreateIndividualConstituent(Expression<Func<CreateIndividualConstituentInput>> body)
         {
-            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: true);
-            var __workflow_bodyaddresstype = WorkflowExpression.Compile(bodyaddresstype, nameof(bodyaddresstype), required: true);
-            var __workflow_bodyphonetype = WorkflowExpression.Compile(bodyphonetype, nameof(bodyphonetype), required: true);
-            var __workflow_bodyphonenumber = WorkflowExpression.Compile(bodyphonenumber, nameof(bodyphonenumber), required: true);
-            var __workflow_bodyemailtype = WorkflowExpression.Compile(bodyemailtype, nameof(bodyemailtype), required: true);
-            var __workflow_bodyemailaddress = WorkflowExpression.Compile(bodyemailaddress, nameof(bodyemailaddress), required: true);
-            var __workflow_bodyonlinePresencetype = WorkflowExpression.Compile(bodyonlinePresencetype, nameof(bodyonlinePresencetype), required: true);
-            var __workflow_bodyonlinePresenceaddress = WorkflowExpression.Compile(bodyonlinePresenceaddress, nameof(bodyonlinePresenceaddress), required: true);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodysuffix = WorkflowExpression.Compile(bodysuffix, nameof(bodysuffix), required: false);
-            var __workflow_bodylookupId = WorkflowExpression.Compile(bodylookupId, nameof(bodylookupId), required: false);
-            var __workflow_bodyaddresscountry = WorkflowExpression.Compile(bodyaddresscountry, nameof(bodyaddresscountry), required: false);
-            var __workflow_bodyaddresslines = WorkflowExpression.Compile(bodyaddresslines, nameof(bodyaddresslines), required: false);
-            var __workflow_bodyaddresscity = WorkflowExpression.Compile(bodyaddresscity, nameof(bodyaddresscity), required: false);
-            var __workflow_bodyaddressstate = WorkflowExpression.Compile(bodyaddressstate, nameof(bodyaddressstate), required: false);
-            var __workflow_bodyaddresspostalCode = WorkflowExpression.Compile(bodyaddresspostalCode, nameof(bodyaddresspostalCode), required: false);
-            var __workflow_bodyaddresssuburb = WorkflowExpression.Compile(bodyaddresssuburb, nameof(bodyaddresssuburb), required: false);
-            var __workflow_bodyaddresscounty = WorkflowExpression.Compile(bodyaddresscounty, nameof(bodyaddresscounty), required: false);
-            var __workflow_bodyaddressstart = WorkflowExpression.Compile(bodyaddressstart, nameof(bodyaddressstart), required: false);
-            var __workflow_bodyaddressend = WorkflowExpression.Compile(bodyaddressend, nameof(bodyaddressend), required: false);
-            var __workflow_bodyphoneisPrimary = WorkflowExpression.Compile(bodyphoneisPrimary, nameof(bodyphoneisPrimary), required: false);
-            var __workflow_bodyemailisPrimary = WorkflowExpression.Compile(bodyemailisPrimary, nameof(bodyemailisPrimary), required: false);
-            var __workflow_bodyonlinePresenceisPrimary = WorkflowExpression.Compile(bodyonlinePresenceisPrimary, nameof(bodyonlinePresenceisPrimary), required: false);
-            var __workflow_bodypreferredName = WorkflowExpression.Compile(bodypreferredName, nameof(bodypreferredName), required: false);
-            var __workflow_bodymiddleName = WorkflowExpression.Compile(bodymiddleName, nameof(bodymiddleName), required: false);
-            var __workflow_bodyformerName = WorkflowExpression.Compile(bodyformerName, nameof(bodyformerName), required: false);
-            var __workflow_bodytitle2 = WorkflowExpression.Compile(bodytitle2, nameof(bodytitle2), required: false);
-            var __workflow_bodysuffix2 = WorkflowExpression.Compile(bodysuffix2, nameof(bodysuffix2), required: false);
-            var __workflow_bodygender = WorkflowExpression.Compile(bodygender, nameof(bodygender), required: false);
-            var __workflow_bodymaritalStatus = WorkflowExpression.Compile(bodymaritalStatus, nameof(bodymaritalStatus), required: false);
-            var __workflow_bodygivesAnonymously = WorkflowExpression.Compile(bodygivesAnonymously, nameof(bodygivesAnonymously), required: false);
-            var __workflow_bodybirthdateday = WorkflowExpression.Compile(bodybirthdateday, nameof(bodybirthdateday), required: false);
-            var __workflow_bodybirthdatemonth = WorkflowExpression.Compile(bodybirthdatemonth, nameof(bodybirthdatemonth), required: false);
-            var __workflow_bodybirthdateyear = WorkflowExpression.Compile(bodybirthdateyear, nameof(bodybirthdateyear), required: false);
-            var __workflow_bodybirthplace = WorkflowExpression.Compile(bodybirthplace, nameof(bodybirthplace), required: false);
-            var __workflow_bodyethnicity = WorkflowExpression.Compile(bodyethnicity, nameof(bodyethnicity), required: false);
-            var __workflow_bodyincome = WorkflowExpression.Compile(bodyincome, nameof(bodyincome), required: false);
-            var __workflow_bodyreligion = WorkflowExpression.Compile(bodyreligion, nameof(bodyreligion), required: false);
-            var __workflow_bodyprimaryAddresseecustomAddressee = WorkflowExpression.Compile(bodyprimaryAddresseecustomAddressee, nameof(bodyprimaryAddresseecustomAddressee), required: false);
-            var __workflow_bodyprimaryAddresseeaddresseeFormat = WorkflowExpression.Compile(bodyprimaryAddresseeaddresseeFormat, nameof(bodyprimaryAddresseeaddresseeFormat), required: false);
-            var __workflow_bodyprimaryAddresseeaddresseeCustomName = WorkflowExpression.Compile(bodyprimaryAddresseeaddresseeCustomName, nameof(bodyprimaryAddresseeaddresseeCustomName), required: false);
-            var __workflow_bodyprimarySalutationcustomSalutation = WorkflowExpression.Compile(bodyprimarySalutationcustomSalutation, nameof(bodyprimarySalutationcustomSalutation), required: false);
-            var __workflow_bodyprimarySalutationsalutationFormat = WorkflowExpression.Compile(bodyprimarySalutationsalutationFormat, nameof(bodyprimarySalutationsalutationFormat), required: false);
-            var __workflow_bodyprimarySalutationsalutationCustomName = WorkflowExpression.Compile(bodyprimarySalutationsalutationCustomName, nameof(bodyprimarySalutationsalutationCustomName), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConstituentApiCreatedIndividualConstituent, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/constituent/v1/virtual/individuals";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["type"] = "Individual";
-                bodypropCount++;
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfirstName != null)
-                {
-                    body["first"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["last"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
-                if (__workflow_bodysuffix != null)
-                {
-                    body["suffix"] = ExpressionConverter.ConvertO(__workflow_bodysuffix);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylookupId != null)
-                {
-                    body["lookup_id"] = ExpressionConverter.ConvertO(__workflow_bodylookupId);
-                    bodypropCount++;
-                }
-
-                var addressObject = new JObject();
-                var addressObjectpropCount = 0;
-                addressObjectpropCount++;
-                addressObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyaddresstype);
-                if (__workflow_bodyaddresscountry != null)
-                {
-                    addressObject["country"] = ExpressionConverter.ConvertO(__workflow_bodyaddresscountry);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodyaddresslines != null)
-                {
-                    addressObject["address_lines"] = ExpressionConverter.ConvertO(__workflow_bodyaddresslines);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodyaddresscity != null)
-                {
-                    addressObject["city"] = ExpressionConverter.ConvertO(__workflow_bodyaddresscity);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodyaddressstate != null)
-                {
-                    addressObject["state"] = ExpressionConverter.ConvertO(__workflow_bodyaddressstate);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodyaddresspostalCode != null)
-                {
-                    addressObject["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodyaddresspostalCode);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodyaddresssuburb != null)
-                {
-                    addressObject["suburb"] = ExpressionConverter.ConvertO(__workflow_bodyaddresssuburb);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodyaddresscounty != null)
-                {
-                    addressObject["county"] = ExpressionConverter.ConvertO(__workflow_bodyaddresscounty);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodyaddressstart != null)
-                {
-                    addressObject["start"] = ExpressionConverter.ConvertO(__workflow_bodyaddressstart);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodyaddressend != null)
-                {
-                    addressObject["end"] = ExpressionConverter.ConvertO(__workflow_bodyaddressend);
-                    addressObjectpropCount++;
-                }
-
-                if (addressObjectpropCount > 0)
-                {
-                    body["address"] = addressObject;
-                    bodypropCount++;
-                }
-
-                var phoneObject = new JObject();
-                var phoneObjectpropCount = 0;
-                phoneObjectpropCount++;
-                phoneObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyphonetype);
-                phoneObjectpropCount++;
-                phoneObject["number"] = ExpressionConverter.ConvertO(__workflow_bodyphonenumber);
-                if (__workflow_bodyphoneisPrimary != null)
-                {
-                    phoneObject["primary"] = ExpressionConverter.ConvertO(__workflow_bodyphoneisPrimary);
-                    phoneObjectpropCount++;
-                }
-
-                if (phoneObjectpropCount > 0)
-                {
-                    body["phone"] = phoneObject;
-                    bodypropCount++;
-                }
-
-                var emailObject = new JObject();
-                var emailObjectpropCount = 0;
-                emailObjectpropCount++;
-                emailObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyemailtype);
-                emailObjectpropCount++;
-                emailObject["address"] = ExpressionConverter.ConvertO(__workflow_bodyemailaddress);
-                if (__workflow_bodyemailisPrimary != null)
-                {
-                    emailObject["primary"] = ExpressionConverter.ConvertO(__workflow_bodyemailisPrimary);
-                    emailObjectpropCount++;
-                }
-
-                if (emailObjectpropCount > 0)
-                {
-                    body["email"] = emailObject;
-                    bodypropCount++;
-                }
-
-                var onlinePresenceObject = new JObject();
-                var onlinePresenceObjectpropCount = 0;
-                onlinePresenceObjectpropCount++;
-                onlinePresenceObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyonlinePresencetype);
-                onlinePresenceObjectpropCount++;
-                onlinePresenceObject["address"] = ExpressionConverter.ConvertO(__workflow_bodyonlinePresenceaddress);
-                if (__workflow_bodyonlinePresenceisPrimary != null)
-                {
-                    onlinePresenceObject["primary"] = ExpressionConverter.ConvertO(__workflow_bodyonlinePresenceisPrimary);
-                    onlinePresenceObjectpropCount++;
-                }
-
-                if (onlinePresenceObjectpropCount > 0)
-                {
-                    body["online_presence"] = onlinePresenceObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypreferredName != null)
-                {
-                    body["preferred_name"] = ExpressionConverter.ConvertO(__workflow_bodypreferredName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymiddleName != null)
-                {
-                    body["middle"] = ExpressionConverter.ConvertO(__workflow_bodymiddleName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyformerName != null)
-                {
-                    body["former_name"] = ExpressionConverter.ConvertO(__workflow_bodyformerName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle2 != null)
-                {
-                    body["title_2"] = ExpressionConverter.ConvertO(__workflow_bodytitle2);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysuffix2 != null)
-                {
-                    body["suffix_2"] = ExpressionConverter.ConvertO(__workflow_bodysuffix2);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygender != null)
-                {
-                    body["gender"] = ExpressionConverter.ConvertO(__workflow_bodygender);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymaritalStatus != null)
-                {
-                    body["marital_status"] = ExpressionConverter.ConvertO(__workflow_bodymaritalStatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygivesAnonymously != null)
-                {
-                    body["gives_anonymously"] = ExpressionConverter.ConvertO(__workflow_bodygivesAnonymously);
-                    bodypropCount++;
-                }
-
-                var birthdateObject = new JObject();
-                var birthdateObjectpropCount = 0;
-                if (__workflow_bodybirthdateday != null)
-                {
-                    birthdateObject["d"] = ExpressionConverter.ConvertO(__workflow_bodybirthdateday);
-                    birthdateObjectpropCount++;
-                }
-
-                if (__workflow_bodybirthdatemonth != null)
-                {
-                    birthdateObject["m"] = ExpressionConverter.ConvertO(__workflow_bodybirthdatemonth);
-                    birthdateObjectpropCount++;
-                }
-
-                if (__workflow_bodybirthdateyear != null)
-                {
-                    birthdateObject["y"] = ExpressionConverter.ConvertO(__workflow_bodybirthdateyear);
-                    birthdateObjectpropCount++;
-                }
-
-                if (birthdateObjectpropCount > 0)
-                {
-                    body["birthdate"] = birthdateObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybirthplace != null)
-                {
-                    body["birthplace"] = ExpressionConverter.ConvertO(__workflow_bodybirthplace);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyethnicity != null)
-                {
-                    body["ethnicity"] = ExpressionConverter.ConvertO(__workflow_bodyethnicity);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyincome != null)
-                {
-                    body["income"] = ExpressionConverter.ConvertO(__workflow_bodyincome);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreligion != null)
-                {
-                    body["religion"] = ExpressionConverter.ConvertO(__workflow_bodyreligion);
-                    bodypropCount++;
-                }
-
-                var primaryAddresseeObject = new JObject();
-                var primaryAddresseeObjectpropCount = 0;
-                if (__workflow_bodyprimaryAddresseecustomAddressee != null)
-                {
-                    primaryAddresseeObject["custom_format"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryAddresseecustomAddressee);
-                    primaryAddresseeObjectpropCount++;
-                }
-
-                if (__workflow_bodyprimaryAddresseeaddresseeFormat != null)
-                {
-                    primaryAddresseeObject["configuration_id"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryAddresseeaddresseeFormat);
-                    primaryAddresseeObjectpropCount++;
-                }
-
-                if (__workflow_bodyprimaryAddresseeaddresseeCustomName != null)
-                {
-                    primaryAddresseeObject["formatted_name"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryAddresseeaddresseeCustomName);
-                    primaryAddresseeObjectpropCount++;
-                }
-
-                if (primaryAddresseeObjectpropCount > 0)
-                {
-                    body["primary_addressee"] = primaryAddresseeObject;
-                    bodypropCount++;
-                }
-
-                var primarySalutationObject = new JObject();
-                var primarySalutationObjectpropCount = 0;
-                if (__workflow_bodyprimarySalutationcustomSalutation != null)
-                {
-                    primarySalutationObject["custom_format"] = ExpressionConverter.ConvertO(__workflow_bodyprimarySalutationcustomSalutation);
-                    primarySalutationObjectpropCount++;
-                }
-
-                if (__workflow_bodyprimarySalutationsalutationFormat != null)
-                {
-                    primarySalutationObject["configuration_id"] = ExpressionConverter.ConvertO(__workflow_bodyprimarySalutationsalutationFormat);
-                    primarySalutationObjectpropCount++;
-                }
-
-                if (__workflow_bodyprimarySalutationsalutationCustomName != null)
-                {
-                    primarySalutationObject["formatted_name"] = ExpressionConverter.ConvertO(__workflow_bodyprimarySalutationsalutationCustomName);
-                    primarySalutationObjectpropCount++;
-                }
-
-                if (primarySalutationObjectpropCount > 0)
-                {
-                    body["primary_salutation"] = primarySalutationObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ConstituentApiCreatedIndividualConstituent>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<ConstituentApiCreatedIndividualRelationship, ApiConnectionActionConfiguration> CreateIndividualRelationship(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodyrelationId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyreciprocalType = null, Expression<Func<int>> bodystartday = null, Expression<Func<int>> bodystartmonth = null, Expression<Func<int>> bodystartyear = null, Expression<Func<int>> bodyendday = null, Expression<Func<int>> bodyendmonth = null, Expression<Func<int>> bodyendyear = null, Expression<Func<bool>> bodyisSpouse = null, Expression<Func<bool>> bodyisConstituentHeadOfHousehold = null, Expression<Func<bool>> bodyisSpouseHeadOfHousehold = null, Expression<Func<string>> bodynotes = null)
+        public IBodyWorkflowAction<ConstituentApiCreatedIndividualRelationship, ApiConnectionActionConfiguration> CreateIndividualRelationship(Expression<Func<CreateIndividualRelationshipInput>> body)
         {
-            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            var __workflow_bodyrelationId = WorkflowExpression.Compile(bodyrelationId, nameof(bodyrelationId), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodyreciprocalType = WorkflowExpression.Compile(bodyreciprocalType, nameof(bodyreciprocalType), required: false);
-            var __workflow_bodystartday = WorkflowExpression.Compile(bodystartday, nameof(bodystartday), required: false);
-            var __workflow_bodystartmonth = WorkflowExpression.Compile(bodystartmonth, nameof(bodystartmonth), required: false);
-            var __workflow_bodystartyear = WorkflowExpression.Compile(bodystartyear, nameof(bodystartyear), required: false);
-            var __workflow_bodyendday = WorkflowExpression.Compile(bodyendday, nameof(bodyendday), required: false);
-            var __workflow_bodyendmonth = WorkflowExpression.Compile(bodyendmonth, nameof(bodyendmonth), required: false);
-            var __workflow_bodyendyear = WorkflowExpression.Compile(bodyendyear, nameof(bodyendyear), required: false);
-            var __workflow_bodyisSpouse = WorkflowExpression.Compile(bodyisSpouse, nameof(bodyisSpouse), required: false);
-            var __workflow_bodyisConstituentHeadOfHousehold = WorkflowExpression.Compile(bodyisConstituentHeadOfHousehold, nameof(bodyisConstituentHeadOfHousehold), required: false);
-            var __workflow_bodyisSpouseHeadOfHousehold = WorkflowExpression.Compile(bodyisSpouseHeadOfHousehold, nameof(bodyisSpouseHeadOfHousehold), required: false);
-            var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConstituentApiCreatedIndividualRelationship, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/constituent/v1/virtual/individualrelationships";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
-                bodypropCount++;
-                body["relation_id"] = ExpressionConverter.ConvertO(__workflow_bodyrelationId);
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreciprocalType != null)
-                {
-                    body["reciprocal_type"] = ExpressionConverter.ConvertO(__workflow_bodyreciprocalType);
-                    bodypropCount++;
-                }
-
-                var startObject = new JObject();
-                var startObjectpropCount = 0;
-                if (__workflow_bodystartday != null)
-                {
-                    startObject["d"] = ExpressionConverter.ConvertO(__workflow_bodystartday);
-                    startObjectpropCount++;
-                }
-
-                if (__workflow_bodystartmonth != null)
-                {
-                    startObject["m"] = ExpressionConverter.ConvertO(__workflow_bodystartmonth);
-                    startObjectpropCount++;
-                }
-
-                if (__workflow_bodystartyear != null)
-                {
-                    startObject["y"] = ExpressionConverter.ConvertO(__workflow_bodystartyear);
-                    startObjectpropCount++;
-                }
-
-                if (startObjectpropCount > 0)
-                {
-                    body["start"] = startObject;
-                    bodypropCount++;
-                }
-
-                var endObject = new JObject();
-                var endObjectpropCount = 0;
-                if (__workflow_bodyendday != null)
-                {
-                    endObject["d"] = ExpressionConverter.ConvertO(__workflow_bodyendday);
-                    endObjectpropCount++;
-                }
-
-                if (__workflow_bodyendmonth != null)
-                {
-                    endObject["m"] = ExpressionConverter.ConvertO(__workflow_bodyendmonth);
-                    endObjectpropCount++;
-                }
-
-                if (__workflow_bodyendyear != null)
-                {
-                    endObject["y"] = ExpressionConverter.ConvertO(__workflow_bodyendyear);
-                    endObjectpropCount++;
-                }
-
-                if (endObjectpropCount > 0)
-                {
-                    body["end"] = endObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisSpouse != null)
-                {
-                    body["is_spouse"] = ExpressionConverter.ConvertO(__workflow_bodyisSpouse);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisConstituentHeadOfHousehold != null)
-                {
-                    body["is_constituent_head_of_household"] = ExpressionConverter.ConvertO(__workflow_bodyisConstituentHeadOfHousehold);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisSpouseHeadOfHousehold != null)
-                {
-                    body["is_spouse_head_of_household"] = ExpressionConverter.ConvertO(__workflow_bodyisSpouseHeadOfHousehold);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynotes != null)
-                {
-                    body["comment"] = ExpressionConverter.ConvertO(__workflow_bodynotes);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ConstituentApiCreatedIndividualRelationship>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<ConstituentApiCreatedOrganizationConstituent, ApiConnectionActionConfiguration> CreateOrganizationConstituent(Expression<Func<string>> bodyname, Expression<Func<string>> bodyaddresstype, Expression<Func<string>> bodyphonetype, Expression<Func<string>> bodyphonenumber, Expression<Func<string>> bodyemailtype, Expression<Func<string>> bodyemailaddress, Expression<Func<string>> bodyonlinePresencetype, Expression<Func<string>> bodyonlinePresenceaddress, Expression<Func<string>> bodylookupId = null, Expression<Func<string>> bodyaddresscountry = null, Expression<Func<string>> bodyaddresslines = null, Expression<Func<string>> bodyaddresscity = null, Expression<Func<string>> bodyaddressstate = null, Expression<Func<string>> bodyaddresspostalCode = null, Expression<Func<string>> bodyaddresssuburb = null, Expression<Func<string>> bodyaddresscounty = null, Expression<Func<string>> bodyaddressstart = null, Expression<Func<string>> bodyaddressend = null, Expression<Func<bool>> bodyphoneisPrimary = null, Expression<Func<bool>> bodyemailisPrimary = null, Expression<Func<bool>> bodyonlinePresenceisPrimary = null, Expression<Func<bool>> bodygivesAnonymously = null, Expression<Func<string>> bodyindustry = null, Expression<Func<int>> bodynumberOfEmployees = null, Expression<Func<bool>> bodymatchesGifts = null, Expression<Func<double>> bodymatchingGiftFactor = null, Expression<Func<double>> bodymatchingGiftPerGiftMinminMatchPerGift = null, Expression<Func<double>> bodymatchingGiftPerGiftMaxmaxMatchPerGift = null, Expression<Func<double>> bodymatchingGiftTotalMinminMatchPerConstit = null, Expression<Func<double>> bodymatchingGiftTotalMaxmaxMatchPerConstit = null, Expression<Func<string>> bodymatchingGiftNotes = null)
+        public IBodyWorkflowAction<ConstituentApiCreatedOrganizationConstituent, ApiConnectionActionConfiguration> CreateOrganizationConstituent(Expression<Func<CreateOrganizationConstituentInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyaddresstype = WorkflowExpression.Compile(bodyaddresstype, nameof(bodyaddresstype), required: true);
-            var __workflow_bodyphonetype = WorkflowExpression.Compile(bodyphonetype, nameof(bodyphonetype), required: true);
-            var __workflow_bodyphonenumber = WorkflowExpression.Compile(bodyphonenumber, nameof(bodyphonenumber), required: true);
-            var __workflow_bodyemailtype = WorkflowExpression.Compile(bodyemailtype, nameof(bodyemailtype), required: true);
-            var __workflow_bodyemailaddress = WorkflowExpression.Compile(bodyemailaddress, nameof(bodyemailaddress), required: true);
-            var __workflow_bodyonlinePresencetype = WorkflowExpression.Compile(bodyonlinePresencetype, nameof(bodyonlinePresencetype), required: true);
-            var __workflow_bodyonlinePresenceaddress = WorkflowExpression.Compile(bodyonlinePresenceaddress, nameof(bodyonlinePresenceaddress), required: true);
-            var __workflow_bodylookupId = WorkflowExpression.Compile(bodylookupId, nameof(bodylookupId), required: false);
-            var __workflow_bodyaddresscountry = WorkflowExpression.Compile(bodyaddresscountry, nameof(bodyaddresscountry), required: false);
-            var __workflow_bodyaddresslines = WorkflowExpression.Compile(bodyaddresslines, nameof(bodyaddresslines), required: false);
-            var __workflow_bodyaddresscity = WorkflowExpression.Compile(bodyaddresscity, nameof(bodyaddresscity), required: false);
-            var __workflow_bodyaddressstate = WorkflowExpression.Compile(bodyaddressstate, nameof(bodyaddressstate), required: false);
-            var __workflow_bodyaddresspostalCode = WorkflowExpression.Compile(bodyaddresspostalCode, nameof(bodyaddresspostalCode), required: false);
-            var __workflow_bodyaddresssuburb = WorkflowExpression.Compile(bodyaddresssuburb, nameof(bodyaddresssuburb), required: false);
-            var __workflow_bodyaddresscounty = WorkflowExpression.Compile(bodyaddresscounty, nameof(bodyaddresscounty), required: false);
-            var __workflow_bodyaddressstart = WorkflowExpression.Compile(bodyaddressstart, nameof(bodyaddressstart), required: false);
-            var __workflow_bodyaddressend = WorkflowExpression.Compile(bodyaddressend, nameof(bodyaddressend), required: false);
-            var __workflow_bodyphoneisPrimary = WorkflowExpression.Compile(bodyphoneisPrimary, nameof(bodyphoneisPrimary), required: false);
-            var __workflow_bodyemailisPrimary = WorkflowExpression.Compile(bodyemailisPrimary, nameof(bodyemailisPrimary), required: false);
-            var __workflow_bodyonlinePresenceisPrimary = WorkflowExpression.Compile(bodyonlinePresenceisPrimary, nameof(bodyonlinePresenceisPrimary), required: false);
-            var __workflow_bodygivesAnonymously = WorkflowExpression.Compile(bodygivesAnonymously, nameof(bodygivesAnonymously), required: false);
-            var __workflow_bodyindustry = WorkflowExpression.Compile(bodyindustry, nameof(bodyindustry), required: false);
-            var __workflow_bodynumberOfEmployees = WorkflowExpression.Compile(bodynumberOfEmployees, nameof(bodynumberOfEmployees), required: false);
-            var __workflow_bodymatchesGifts = WorkflowExpression.Compile(bodymatchesGifts, nameof(bodymatchesGifts), required: false);
-            var __workflow_bodymatchingGiftFactor = WorkflowExpression.Compile(bodymatchingGiftFactor, nameof(bodymatchingGiftFactor), required: false);
-            var __workflow_bodymatchingGiftPerGiftMinminMatchPerGift = WorkflowExpression.Compile(bodymatchingGiftPerGiftMinminMatchPerGift, nameof(bodymatchingGiftPerGiftMinminMatchPerGift), required: false);
-            var __workflow_bodymatchingGiftPerGiftMaxmaxMatchPerGift = WorkflowExpression.Compile(bodymatchingGiftPerGiftMaxmaxMatchPerGift, nameof(bodymatchingGiftPerGiftMaxmaxMatchPerGift), required: false);
-            var __workflow_bodymatchingGiftTotalMinminMatchPerConstit = WorkflowExpression.Compile(bodymatchingGiftTotalMinminMatchPerConstit, nameof(bodymatchingGiftTotalMinminMatchPerConstit), required: false);
-            var __workflow_bodymatchingGiftTotalMaxmaxMatchPerConstit = WorkflowExpression.Compile(bodymatchingGiftTotalMaxmaxMatchPerConstit, nameof(bodymatchingGiftTotalMaxmaxMatchPerConstit), required: false);
-            var __workflow_bodymatchingGiftNotes = WorkflowExpression.Compile(bodymatchingGiftNotes, nameof(bodymatchingGiftNotes), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConstituentApiCreatedOrganizationConstituent, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/constituent/v1/virtual/organizations";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["type"] = "Organization";
-                bodypropCount++;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (__workflow_bodylookupId != null)
-                {
-                    body["lookup_id"] = ExpressionConverter.ConvertO(__workflow_bodylookupId);
-                    bodypropCount++;
-                }
-
-                var addressObject = new JObject();
-                var addressObjectpropCount = 0;
-                addressObjectpropCount++;
-                addressObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyaddresstype);
-                if (__workflow_bodyaddresscountry != null)
-                {
-                    addressObject["country"] = ExpressionConverter.ConvertO(__workflow_bodyaddresscountry);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodyaddresslines != null)
-                {
-                    addressObject["address_lines"] = ExpressionConverter.ConvertO(__workflow_bodyaddresslines);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodyaddresscity != null)
-                {
-                    addressObject["city"] = ExpressionConverter.ConvertO(__workflow_bodyaddresscity);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodyaddressstate != null)
-                {
-                    addressObject["state"] = ExpressionConverter.ConvertO(__workflow_bodyaddressstate);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodyaddresspostalCode != null)
-                {
-                    addressObject["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodyaddresspostalCode);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodyaddresssuburb != null)
-                {
-                    addressObject["suburb"] = ExpressionConverter.ConvertO(__workflow_bodyaddresssuburb);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodyaddresscounty != null)
-                {
-                    addressObject["county"] = ExpressionConverter.ConvertO(__workflow_bodyaddresscounty);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodyaddressstart != null)
-                {
-                    addressObject["start"] = ExpressionConverter.ConvertO(__workflow_bodyaddressstart);
-                    addressObjectpropCount++;
-                }
-
-                if (__workflow_bodyaddressend != null)
-                {
-                    addressObject["end"] = ExpressionConverter.ConvertO(__workflow_bodyaddressend);
-                    addressObjectpropCount++;
-                }
-
-                if (addressObjectpropCount > 0)
-                {
-                    body["address"] = addressObject;
-                    bodypropCount++;
-                }
-
-                var phoneObject = new JObject();
-                var phoneObjectpropCount = 0;
-                phoneObjectpropCount++;
-                phoneObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyphonetype);
-                phoneObjectpropCount++;
-                phoneObject["number"] = ExpressionConverter.ConvertO(__workflow_bodyphonenumber);
-                if (__workflow_bodyphoneisPrimary != null)
-                {
-                    phoneObject["primary"] = ExpressionConverter.ConvertO(__workflow_bodyphoneisPrimary);
-                    phoneObjectpropCount++;
-                }
-
-                if (phoneObjectpropCount > 0)
-                {
-                    body["phone"] = phoneObject;
-                    bodypropCount++;
-                }
-
-                var emailObject = new JObject();
-                var emailObjectpropCount = 0;
-                emailObjectpropCount++;
-                emailObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyemailtype);
-                emailObjectpropCount++;
-                emailObject["address"] = ExpressionConverter.ConvertO(__workflow_bodyemailaddress);
-                if (__workflow_bodyemailisPrimary != null)
-                {
-                    emailObject["primary"] = ExpressionConverter.ConvertO(__workflow_bodyemailisPrimary);
-                    emailObjectpropCount++;
-                }
-
-                if (emailObjectpropCount > 0)
-                {
-                    body["email"] = emailObject;
-                    bodypropCount++;
-                }
-
-                var onlinePresenceObject = new JObject();
-                var onlinePresenceObjectpropCount = 0;
-                onlinePresenceObjectpropCount++;
-                onlinePresenceObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyonlinePresencetype);
-                onlinePresenceObjectpropCount++;
-                onlinePresenceObject["address"] = ExpressionConverter.ConvertO(__workflow_bodyonlinePresenceaddress);
-                if (__workflow_bodyonlinePresenceisPrimary != null)
-                {
-                    onlinePresenceObject["primary"] = ExpressionConverter.ConvertO(__workflow_bodyonlinePresenceisPrimary);
-                    onlinePresenceObjectpropCount++;
-                }
-
-                if (onlinePresenceObjectpropCount > 0)
-                {
-                    body["online_presence"] = onlinePresenceObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygivesAnonymously != null)
-                {
-                    body["gives_anonymously"] = ExpressionConverter.ConvertO(__workflow_bodygivesAnonymously);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyindustry != null)
-                {
-                    body["industry"] = ExpressionConverter.ConvertO(__workflow_bodyindustry);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynumberOfEmployees != null)
-                {
-                    body["num_employees"] = ExpressionConverter.ConvertO(__workflow_bodynumberOfEmployees);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymatchesGifts != null)
-                {
-                    body["matches_gifts"] = ExpressionConverter.ConvertO(__workflow_bodymatchesGifts);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymatchingGiftFactor != null)
-                {
-                    body["matching_gift_factor"] = ExpressionConverter.ConvertO(__workflow_bodymatchingGiftFactor);
-                    bodypropCount++;
-                }
-
-                var matchingGiftPerGiftMinObject = new JObject();
-                var matchingGiftPerGiftMinObjectpropCount = 0;
-                if (__workflow_bodymatchingGiftPerGiftMinminMatchPerGift != null)
-                {
-                    matchingGiftPerGiftMinObject["value"] = ExpressionConverter.ConvertO(__workflow_bodymatchingGiftPerGiftMinminMatchPerGift);
-                    matchingGiftPerGiftMinObjectpropCount++;
-                }
-
-                if (matchingGiftPerGiftMinObjectpropCount > 0)
-                {
-                    body["matching_gift_per_gift_min"] = matchingGiftPerGiftMinObject;
-                    bodypropCount++;
-                }
-
-                var matchingGiftPerGiftMaxObject = new JObject();
-                var matchingGiftPerGiftMaxObjectpropCount = 0;
-                if (__workflow_bodymatchingGiftPerGiftMaxmaxMatchPerGift != null)
-                {
-                    matchingGiftPerGiftMaxObject["value"] = ExpressionConverter.ConvertO(__workflow_bodymatchingGiftPerGiftMaxmaxMatchPerGift);
-                    matchingGiftPerGiftMaxObjectpropCount++;
-                }
-
-                if (matchingGiftPerGiftMaxObjectpropCount > 0)
-                {
-                    body["matching_gift_per_gift_max"] = matchingGiftPerGiftMaxObject;
-                    bodypropCount++;
-                }
-
-                var matchingGiftTotalMinObject = new JObject();
-                var matchingGiftTotalMinObjectpropCount = 0;
-                if (__workflow_bodymatchingGiftTotalMinminMatchPerConstit != null)
-                {
-                    matchingGiftTotalMinObject["value"] = ExpressionConverter.ConvertO(__workflow_bodymatchingGiftTotalMinminMatchPerConstit);
-                    matchingGiftTotalMinObjectpropCount++;
-                }
-
-                if (matchingGiftTotalMinObjectpropCount > 0)
-                {
-                    body["matching_gift_total_min"] = matchingGiftTotalMinObject;
-                    bodypropCount++;
-                }
-
-                var matchingGiftTotalMaxObject = new JObject();
-                var matchingGiftTotalMaxObjectpropCount = 0;
-                if (__workflow_bodymatchingGiftTotalMaxmaxMatchPerConstit != null)
-                {
-                    matchingGiftTotalMaxObject["value"] = ExpressionConverter.ConvertO(__workflow_bodymatchingGiftTotalMaxmaxMatchPerConstit);
-                    matchingGiftTotalMaxObjectpropCount++;
-                }
-
-                if (matchingGiftTotalMaxObjectpropCount > 0)
-                {
-                    body["matching_gift_total_max"] = matchingGiftTotalMaxObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymatchingGiftNotes != null)
-                {
-                    body["matching_gift_notes"] = ExpressionConverter.ConvertO(__workflow_bodymatchingGiftNotes);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ConstituentApiCreatedOrganizationConstituent>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<ConstituentApiCreatedOrganizationRelationship, ApiConnectionActionConfiguration> CreateOrganizationRelationship(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodyrelationId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyreciprocalType = null, Expression<Func<int>> bodystartday = null, Expression<Func<int>> bodystartmonth = null, Expression<Func<int>> bodystartyear = null, Expression<Func<int>> bodyendday = null, Expression<Func<int>> bodyendmonth = null, Expression<Func<int>> bodyendyear = null, Expression<Func<bool>> bodyisContact = null, Expression<Func<string>> bodycontactType = null, Expression<Func<string>> bodyposition = null, Expression<Func<bool>> bodyisPrimaryBusiness = null, Expression<Func<string>> bodynotes = null)
+        public IBodyWorkflowAction<ConstituentApiCreatedOrganizationRelationship, ApiConnectionActionConfiguration> CreateOrganizationRelationship(Expression<Func<CreateOrganizationRelationshipInput>> body)
         {
-            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            var __workflow_bodyrelationId = WorkflowExpression.Compile(bodyrelationId, nameof(bodyrelationId), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodyreciprocalType = WorkflowExpression.Compile(bodyreciprocalType, nameof(bodyreciprocalType), required: false);
-            var __workflow_bodystartday = WorkflowExpression.Compile(bodystartday, nameof(bodystartday), required: false);
-            var __workflow_bodystartmonth = WorkflowExpression.Compile(bodystartmonth, nameof(bodystartmonth), required: false);
-            var __workflow_bodystartyear = WorkflowExpression.Compile(bodystartyear, nameof(bodystartyear), required: false);
-            var __workflow_bodyendday = WorkflowExpression.Compile(bodyendday, nameof(bodyendday), required: false);
-            var __workflow_bodyendmonth = WorkflowExpression.Compile(bodyendmonth, nameof(bodyendmonth), required: false);
-            var __workflow_bodyendyear = WorkflowExpression.Compile(bodyendyear, nameof(bodyendyear), required: false);
-            var __workflow_bodyisContact = WorkflowExpression.Compile(bodyisContact, nameof(bodyisContact), required: false);
-            var __workflow_bodycontactType = WorkflowExpression.Compile(bodycontactType, nameof(bodycontactType), required: false);
-            var __workflow_bodyposition = WorkflowExpression.Compile(bodyposition, nameof(bodyposition), required: false);
-            var __workflow_bodyisPrimaryBusiness = WorkflowExpression.Compile(bodyisPrimaryBusiness, nameof(bodyisPrimaryBusiness), required: false);
-            var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConstituentApiCreatedOrganizationRelationship, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/constituent/v1/virtual/organizationrelationships";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
-                bodypropCount++;
-                body["relation_id"] = ExpressionConverter.ConvertO(__workflow_bodyrelationId);
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreciprocalType != null)
-                {
-                    body["reciprocal_type"] = ExpressionConverter.ConvertO(__workflow_bodyreciprocalType);
-                    bodypropCount++;
-                }
-
-                var startObject = new JObject();
-                var startObjectpropCount = 0;
-                if (__workflow_bodystartday != null)
-                {
-                    startObject["d"] = ExpressionConverter.ConvertO(__workflow_bodystartday);
-                    startObjectpropCount++;
-                }
-
-                if (__workflow_bodystartmonth != null)
-                {
-                    startObject["m"] = ExpressionConverter.ConvertO(__workflow_bodystartmonth);
-                    startObjectpropCount++;
-                }
-
-                if (__workflow_bodystartyear != null)
-                {
-                    startObject["y"] = ExpressionConverter.ConvertO(__workflow_bodystartyear);
-                    startObjectpropCount++;
-                }
-
-                if (startObjectpropCount > 0)
-                {
-                    body["start"] = startObject;
-                    bodypropCount++;
-                }
-
-                var endObject = new JObject();
-                var endObjectpropCount = 0;
-                if (__workflow_bodyendday != null)
-                {
-                    endObject["d"] = ExpressionConverter.ConvertO(__workflow_bodyendday);
-                    endObjectpropCount++;
-                }
-
-                if (__workflow_bodyendmonth != null)
-                {
-                    endObject["m"] = ExpressionConverter.ConvertO(__workflow_bodyendmonth);
-                    endObjectpropCount++;
-                }
-
-                if (__workflow_bodyendyear != null)
-                {
-                    endObject["y"] = ExpressionConverter.ConvertO(__workflow_bodyendyear);
-                    endObjectpropCount++;
-                }
-
-                if (endObjectpropCount > 0)
-                {
-                    body["end"] = endObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisContact != null)
-                {
-                    body["is_organization_contact"] = ExpressionConverter.ConvertO(__workflow_bodyisContact);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontactType != null)
-                {
-                    body["organization_contact_type"] = ExpressionConverter.ConvertO(__workflow_bodycontactType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyposition != null)
-                {
-                    body["position"] = ExpressionConverter.ConvertO(__workflow_bodyposition);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisPrimaryBusiness != null)
-                {
-                    body["is_primary_business"] = ExpressionConverter.ConvertO(__workflow_bodyisPrimaryBusiness);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynotes != null)
-                {
-                    body["comment"] = ExpressionConverter.ConvertO(__workflow_bodynotes);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ConstituentApiCreatedOrganizationRelationship>(callPayload);
             });
         }
@@ -4327,107 +1101,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<EventApiCreatedEvent, ApiConnectionActionConfiguration> CreateEvent(Expression<Func<string>> bodyeventName, Expression<Func<string>> bodycategorycategory, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyendTime = null, Expression<Func<string>> bodylookupId = null, Expression<Func<int>> bodycapacity = null, Expression<Func<double>> bodygoal = null, Expression<Func<string>> bodycampaignId = null, Expression<Func<string>> bodyfundId = null, Expression<Func<bool>> bodyinactive = null)
+        public IBodyWorkflowAction<EventApiCreatedEvent, ApiConnectionActionConfiguration> CreateEvent(Expression<Func<CreateEventInput>> body)
         {
-            var __workflow_bodyeventName = WorkflowExpression.Compile(bodyeventName, nameof(bodyeventName), required: true);
-            var __workflow_bodycategorycategory = WorkflowExpression.Compile(bodycategorycategory, nameof(bodycategorycategory), required: true);
-            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: false);
-            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
-            var __workflow_bodyendTime = WorkflowExpression.Compile(bodyendTime, nameof(bodyendTime), required: false);
-            var __workflow_bodylookupId = WorkflowExpression.Compile(bodylookupId, nameof(bodylookupId), required: false);
-            var __workflow_bodycapacity = WorkflowExpression.Compile(bodycapacity, nameof(bodycapacity), required: false);
-            var __workflow_bodygoal = WorkflowExpression.Compile(bodygoal, nameof(bodygoal), required: false);
-            var __workflow_bodycampaignId = WorkflowExpression.Compile(bodycampaignId, nameof(bodycampaignId), required: false);
-            var __workflow_bodyfundId = WorkflowExpression.Compile(bodyfundId, nameof(bodyfundId), required: false);
-            var __workflow_bodyinactive = WorkflowExpression.Compile(bodyinactive, nameof(bodyinactive), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<EventApiCreatedEvent, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/event/v1/events";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyeventName);
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                var categoryObject = new JObject();
-                var categoryObjectpropCount = 0;
-                categoryObjectpropCount++;
-                categoryObject["name"] = ExpressionConverter.ConvertO(__workflow_bodycategorycategory);
-                if (categoryObjectpropCount > 0)
-                {
-                    body["category"] = categoryObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["start_date"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
-                if (__workflow_bodystartTime != null)
-                {
-                    body["start_time"] = ExpressionConverter.ConvertO(__workflow_bodystartTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyendDate != null)
-                {
-                    body["end_date"] = ExpressionConverter.ConvertO(__workflow_bodyendDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyendTime != null)
-                {
-                    body["end_time"] = ExpressionConverter.ConvertO(__workflow_bodyendTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylookupId != null)
-                {
-                    body["lookup_id"] = ExpressionConverter.ConvertO(__workflow_bodylookupId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycapacity != null)
-                {
-                    body["capacity"] = ExpressionConverter.ConvertO(__workflow_bodycapacity);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygoal != null)
-                {
-                    body["goal"] = ExpressionConverter.ConvertO(__workflow_bodygoal);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycampaignId != null)
-                {
-                    body["campaign_id"] = ExpressionConverter.ConvertO(__workflow_bodycampaignId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfundId != null)
-                {
-                    body["fund_id"] = ExpressionConverter.ConvertO(__workflow_bodyfundId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinactive != null)
-                {
-                    body["inactive"] = ExpressionConverter.ConvertO(__workflow_bodyinactive);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EventApiCreatedEvent>(callPayload);
             });
         }
@@ -4446,116 +1128,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditEvent(Expression<Func<string>> eventId, Expression<Func<string>> bodycategorycategory, Expression<Func<string>> bodyeventName = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyendTime = null, Expression<Func<string>> bodylookupId = null, Expression<Func<int>> bodycapacity = null, Expression<Func<double>> bodygoal = null, Expression<Func<string>> bodycampaignId = null, Expression<Func<string>> bodyfundId = null, Expression<Func<bool>> bodyinactive = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditEvent(Expression<Func<string>> eventId, Expression<Func<EditEventInput>> body)
         {
             var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
-            var __workflow_bodycategorycategory = WorkflowExpression.Compile(bodycategorycategory, nameof(bodycategorycategory), required: true);
-            var __workflow_bodyeventName = WorkflowExpression.Compile(bodyeventName, nameof(bodyeventName), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
-            var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: false);
-            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
-            var __workflow_bodyendTime = WorkflowExpression.Compile(bodyendTime, nameof(bodyendTime), required: false);
-            var __workflow_bodylookupId = WorkflowExpression.Compile(bodylookupId, nameof(bodylookupId), required: false);
-            var __workflow_bodycapacity = WorkflowExpression.Compile(bodycapacity, nameof(bodycapacity), required: false);
-            var __workflow_bodygoal = WorkflowExpression.Compile(bodygoal, nameof(bodygoal), required: false);
-            var __workflow_bodycampaignId = WorkflowExpression.Compile(bodycampaignId, nameof(bodycampaignId), required: false);
-            var __workflow_bodyfundId = WorkflowExpression.Compile(bodyfundId, nameof(bodyfundId), required: false);
-            var __workflow_bodyinactive = WorkflowExpression.Compile(bodyinactive, nameof(bodyinactive), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/events/{0}", __workflow_eventId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyeventName != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyeventName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                var categoryObject = new JObject();
-                var categoryObjectpropCount = 0;
-                categoryObjectpropCount++;
-                categoryObject["name"] = ExpressionConverter.ConvertO(__workflow_bodycategorycategory);
-                if (categoryObjectpropCount > 0)
-                {
-                    body["category"] = categoryObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystartDate != null)
-                {
-                    body["start_date"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystartTime != null)
-                {
-                    body["start_time"] = ExpressionConverter.ConvertO(__workflow_bodystartTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyendDate != null)
-                {
-                    body["end_date"] = ExpressionConverter.ConvertO(__workflow_bodyendDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyendTime != null)
-                {
-                    body["end_time"] = ExpressionConverter.ConvertO(__workflow_bodyendTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylookupId != null)
-                {
-                    body["lookup_id"] = ExpressionConverter.ConvertO(__workflow_bodylookupId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycapacity != null)
-                {
-                    body["capacity"] = ExpressionConverter.ConvertO(__workflow_bodycapacity);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygoal != null)
-                {
-                    body["goal"] = ExpressionConverter.ConvertO(__workflow_bodygoal);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycampaignId != null)
-                {
-                    body["campaign_id"] = ExpressionConverter.ConvertO(__workflow_bodycampaignId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfundId != null)
-                {
-                    body["fund_id"] = ExpressionConverter.ConvertO(__workflow_bodyfundId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinactive != null)
-                {
-                    body["inactive"] = ExpressionConverter.ConvertO(__workflow_bodyinactive);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -4574,30 +1156,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<EventApiCreatedEventFee, ApiConnectionActionConfiguration> CreateEventFee(Expression<Func<string>> eventId, Expression<Func<string>> bodyname, Expression<Func<double>> bodyfeeAmount, Expression<Func<double>> bodycontributionAmount)
+        public IBodyWorkflowAction<EventApiCreatedEventFee, ApiConnectionActionConfiguration> CreateEventFee(Expression<Func<string>> eventId, Expression<Func<CreateEventFeeInput>> body)
         {
             var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyfeeAmount = WorkflowExpression.Compile(bodyfeeAmount, nameof(bodyfeeAmount), required: true);
-            var __workflow_bodycontributionAmount = WorkflowExpression.Compile(bodycontributionAmount, nameof(bodycontributionAmount), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<EventApiCreatedEventFee, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/events/{0}/eventfees", __workflow_eventId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["cost"] = ExpressionConverter.ConvertO(__workflow_bodyfeeAmount);
-                bodypropCount++;
-                body["contribution_amount"] = ExpressionConverter.ConvertO(__workflow_bodycontributionAmount);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EventApiCreatedEventFee>(callPayload);
             });
         }
@@ -4616,41 +1184,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<EventApiCreatedEventParticipantOption, ApiConnectionActionConfiguration> CreateEventParticipantOption(Expression<Func<string>> eventId, Expression<Func<string>> bodyname, Expression<Func<bodyinputTypeInput>> bodyinputType, Expression<Func<bool>> bodyallowMultiSelect = null, Expression<Func<EventApiCreateParticipantOptionListOption[]>> bodylistOptions = null)
+        public IBodyWorkflowAction<EventApiCreatedEventParticipantOption, ApiConnectionActionConfiguration> CreateEventParticipantOption(Expression<Func<string>> eventId, Expression<Func<CreateEventParticipantOptionInput>> body)
         {
             var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyinputType = WorkflowExpression.Compile(bodyinputType, nameof(bodyinputType), required: true);
-            var __workflow_bodyallowMultiSelect = WorkflowExpression.Compile(bodyallowMultiSelect, nameof(bodyallowMultiSelect), required: false);
-            var __workflow_bodylistOptions = WorkflowExpression.Compile(bodylistOptions, nameof(bodylistOptions), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<EventApiCreatedEventParticipantOption, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/events/{0}/eventparticipantoptions", __workflow_eventId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["input_type"] = ExpressionConverter.ConvertO(__workflow_bodyinputType);
-                if (__workflow_bodyallowMultiSelect != null)
-                {
-                    body["multi_select"] = ExpressionConverter.ConvertO(__workflow_bodyallowMultiSelect);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylistOptions != null)
-                {
-                    body["list_options"] = ExpressionConverter.ConvertO(__workflow_bodylistOptions);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EventApiCreatedEventParticipantOption>(callPayload);
             });
         }
@@ -4709,144 +1252,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<EventApiCreatedParticipant, ApiConnectionActionConfiguration> CreateParticipant(Expression<Func<string>> eventId, Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodyparticipationLevelparticipationLevel, Expression<Func<string>> bodyhostId = null, Expression<Func<bodyrSVPStatusInput>> bodyrSVPStatus = null, Expression<Func<bool>> bodyattended = null, Expression<Func<bodyinvitationStatusInput>> bodyinvitationStatus = null, Expression<Func<int>> bodyrSVPDateday = null, Expression<Func<int>> bodyrSVPDatemonth = null, Expression<Func<int>> bodyrSVPDateyear = null, Expression<Func<int>> bodyinvitationDateday = null, Expression<Func<int>> bodyinvitationDatemonth = null, Expression<Func<int>> bodyinvitationDateyear = null)
+        public IBodyWorkflowAction<EventApiCreatedParticipant, ApiConnectionActionConfiguration> CreateParticipant(Expression<Func<string>> eventId, Expression<Func<CreateParticipantInput>> body)
         {
             var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
-            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            var __workflow_bodyparticipationLevelparticipationLevel = WorkflowExpression.Compile(bodyparticipationLevelparticipationLevel, nameof(bodyparticipationLevelparticipationLevel), required: true);
-            var __workflow_bodyhostId = WorkflowExpression.Compile(bodyhostId, nameof(bodyhostId), required: false);
-            var __workflow_bodyrSVPStatus = WorkflowExpression.Compile(bodyrSVPStatus, nameof(bodyrSVPStatus), required: false);
-            var __workflow_bodyattended = WorkflowExpression.Compile(bodyattended, nameof(bodyattended), required: false);
-            var __workflow_bodyinvitationStatus = WorkflowExpression.Compile(bodyinvitationStatus, nameof(bodyinvitationStatus), required: false);
-            var __workflow_bodyrSVPDateday = WorkflowExpression.Compile(bodyrSVPDateday, nameof(bodyrSVPDateday), required: false);
-            var __workflow_bodyrSVPDatemonth = WorkflowExpression.Compile(bodyrSVPDatemonth, nameof(bodyrSVPDatemonth), required: false);
-            var __workflow_bodyrSVPDateyear = WorkflowExpression.Compile(bodyrSVPDateyear, nameof(bodyrSVPDateyear), required: false);
-            var __workflow_bodyinvitationDateday = WorkflowExpression.Compile(bodyinvitationDateday, nameof(bodyinvitationDateday), required: false);
-            var __workflow_bodyinvitationDatemonth = WorkflowExpression.Compile(bodyinvitationDatemonth, nameof(bodyinvitationDatemonth), required: false);
-            var __workflow_bodyinvitationDateyear = WorkflowExpression.Compile(bodyinvitationDateyear, nameof(bodyinvitationDateyear), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<EventApiCreatedParticipant, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/events/{0}/participants", __workflow_eventId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
-                if (__workflow_bodyhostId != null)
-                {
-                    body["host_id"] = ExpressionConverter.ConvertO(__workflow_bodyhostId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrSVPStatus != null)
-                {
-                    body["rsvp_status"] = ExpressionConverter.ConvertO(__workflow_bodyrSVPStatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyattended != null)
-                {
-                    body["attended"] = ExpressionConverter.ConvertO(__workflow_bodyattended);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinvitationStatus != null)
-                {
-                    body["invitation_status"] = ExpressionConverter.ConvertO(__workflow_bodyinvitationStatus);
-                    bodypropCount++;
-                }
-
-                var rsvpDateObject = new JObject();
-                var rsvpDateObjectpropCount = 0;
-                if (__workflow_bodyrSVPDateday != null)
-                {
-                    rsvpDateObject["d"] = ExpressionConverter.ConvertO(__workflow_bodyrSVPDateday);
-                    rsvpDateObjectpropCount++;
-                }
-
-                if (__workflow_bodyrSVPDatemonth != null)
-                {
-                    rsvpDateObject["m"] = ExpressionConverter.ConvertO(__workflow_bodyrSVPDatemonth);
-                    rsvpDateObjectpropCount++;
-                }
-
-                if (__workflow_bodyrSVPDateyear != null)
-                {
-                    rsvpDateObject["y"] = ExpressionConverter.ConvertO(__workflow_bodyrSVPDateyear);
-                    rsvpDateObjectpropCount++;
-                }
-
-                if (rsvpDateObjectpropCount > 0)
-                {
-                    body["rsvp_date"] = rsvpDateObject;
-                    bodypropCount++;
-                }
-
-                var invitationDateObject = new JObject();
-                var invitationDateObjectpropCount = 0;
-                if (__workflow_bodyinvitationDateday != null)
-                {
-                    invitationDateObject["d"] = ExpressionConverter.ConvertO(__workflow_bodyinvitationDateday);
-                    invitationDateObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvitationDatemonth != null)
-                {
-                    invitationDateObject["m"] = ExpressionConverter.ConvertO(__workflow_bodyinvitationDatemonth);
-                    invitationDateObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvitationDateyear != null)
-                {
-                    invitationDateObject["y"] = ExpressionConverter.ConvertO(__workflow_bodyinvitationDateyear);
-                    invitationDateObjectpropCount++;
-                }
-
-                if (invitationDateObjectpropCount > 0)
-                {
-                    body["invitation_date"] = invitationDateObject;
-                    bodypropCount++;
-                }
-
-                var participationLevelObject = new JObject();
-                var participationLevelObjectpropCount = 0;
-                participationLevelObjectpropCount++;
-                participationLevelObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyparticipationLevelparticipationLevel);
-                if (participationLevelObjectpropCount > 0)
-                {
-                    body["participation_level"] = participationLevelObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EventApiCreatedParticipant>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditParticipantOption(Expression<Func<string>> optionId, Expression<Func<string>> bodyvalue)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditParticipantOption(Expression<Func<string>> optionId, Expression<Func<EditParticipantOptionInput>> body)
         {
             var __workflow_optionId = WorkflowExpression.Compile(optionId, nameof(optionId), required: true);
-            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participantoptions/{0}", __workflow_optionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["option_value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -4865,125 +1295,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditParticipant(Expression<Func<string>> participantId, Expression<Func<string>> bodyparticipationLevelparticipationLevel, Expression<Func<string>> bodyconstituentId = null, Expression<Func<string>> bodyhostId = null, Expression<Func<bodyrSVPStatusInput>> bodyrSVPStatus = null, Expression<Func<bool>> bodyattended = null, Expression<Func<bodyinvitationStatusInput>> bodyinvitationStatus = null, Expression<Func<int>> bodyrSVPDateday = null, Expression<Func<int>> bodyrSVPDatemonth = null, Expression<Func<int>> bodyrSVPDateyear = null, Expression<Func<int>> bodyinvitationDateday = null, Expression<Func<int>> bodyinvitationDatemonth = null, Expression<Func<int>> bodyinvitationDateyear = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditParticipant(Expression<Func<string>> participantId, Expression<Func<EditParticipantInput>> body)
         {
             var __workflow_participantId = WorkflowExpression.Compile(participantId, nameof(participantId), required: true);
-            var __workflow_bodyparticipationLevelparticipationLevel = WorkflowExpression.Compile(bodyparticipationLevelparticipationLevel, nameof(bodyparticipationLevelparticipationLevel), required: true);
-            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: false);
-            var __workflow_bodyhostId = WorkflowExpression.Compile(bodyhostId, nameof(bodyhostId), required: false);
-            var __workflow_bodyrSVPStatus = WorkflowExpression.Compile(bodyrSVPStatus, nameof(bodyrSVPStatus), required: false);
-            var __workflow_bodyattended = WorkflowExpression.Compile(bodyattended, nameof(bodyattended), required: false);
-            var __workflow_bodyinvitationStatus = WorkflowExpression.Compile(bodyinvitationStatus, nameof(bodyinvitationStatus), required: false);
-            var __workflow_bodyrSVPDateday = WorkflowExpression.Compile(bodyrSVPDateday, nameof(bodyrSVPDateday), required: false);
-            var __workflow_bodyrSVPDatemonth = WorkflowExpression.Compile(bodyrSVPDatemonth, nameof(bodyrSVPDatemonth), required: false);
-            var __workflow_bodyrSVPDateyear = WorkflowExpression.Compile(bodyrSVPDateyear, nameof(bodyrSVPDateyear), required: false);
-            var __workflow_bodyinvitationDateday = WorkflowExpression.Compile(bodyinvitationDateday, nameof(bodyinvitationDateday), required: false);
-            var __workflow_bodyinvitationDatemonth = WorkflowExpression.Compile(bodyinvitationDatemonth, nameof(bodyinvitationDatemonth), required: false);
-            var __workflow_bodyinvitationDateyear = WorkflowExpression.Compile(bodyinvitationDateyear, nameof(bodyinvitationDateyear), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participants/{0}", __workflow_participantId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyconstituentId != null)
-                {
-                    body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyhostId != null)
-                {
-                    body["host_id"] = ExpressionConverter.ConvertO(__workflow_bodyhostId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrSVPStatus != null)
-                {
-                    body["rsvp_status"] = ExpressionConverter.ConvertO(__workflow_bodyrSVPStatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyattended != null)
-                {
-                    body["attended"] = ExpressionConverter.ConvertO(__workflow_bodyattended);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinvitationStatus != null)
-                {
-                    body["invitation_status"] = ExpressionConverter.ConvertO(__workflow_bodyinvitationStatus);
-                    bodypropCount++;
-                }
-
-                var rsvpDateObject = new JObject();
-                var rsvpDateObjectpropCount = 0;
-                if (__workflow_bodyrSVPDateday != null)
-                {
-                    rsvpDateObject["d"] = ExpressionConverter.ConvertO(__workflow_bodyrSVPDateday);
-                    rsvpDateObjectpropCount++;
-                }
-
-                if (__workflow_bodyrSVPDatemonth != null)
-                {
-                    rsvpDateObject["m"] = ExpressionConverter.ConvertO(__workflow_bodyrSVPDatemonth);
-                    rsvpDateObjectpropCount++;
-                }
-
-                if (__workflow_bodyrSVPDateyear != null)
-                {
-                    rsvpDateObject["y"] = ExpressionConverter.ConvertO(__workflow_bodyrSVPDateyear);
-                    rsvpDateObjectpropCount++;
-                }
-
-                if (rsvpDateObjectpropCount > 0)
-                {
-                    body["rsvp_date"] = rsvpDateObject;
-                    bodypropCount++;
-                }
-
-                var invitationDateObject = new JObject();
-                var invitationDateObjectpropCount = 0;
-                if (__workflow_bodyinvitationDateday != null)
-                {
-                    invitationDateObject["d"] = ExpressionConverter.ConvertO(__workflow_bodyinvitationDateday);
-                    invitationDateObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvitationDatemonth != null)
-                {
-                    invitationDateObject["m"] = ExpressionConverter.ConvertO(__workflow_bodyinvitationDatemonth);
-                    invitationDateObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvitationDateyear != null)
-                {
-                    invitationDateObject["y"] = ExpressionConverter.ConvertO(__workflow_bodyinvitationDateyear);
-                    invitationDateObjectpropCount++;
-                }
-
-                if (invitationDateObjectpropCount > 0)
-                {
-                    body["invitation_date"] = invitationDateObject;
-                    bodypropCount++;
-                }
-
-                var participationLevelObject = new JObject();
-                var participationLevelObjectpropCount = 0;
-                participationLevelObjectpropCount++;
-                participationLevelObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyparticipationLevelparticipationLevel);
-                if (participationLevelObjectpropCount > 0)
-                {
-                    body["participation_level"] = participationLevelObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -5009,24 +1330,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<EventApiCreatedParticipantDonation, ApiConnectionActionConfiguration> CreateParticipantDonation(Expression<Func<string>> participantId, Expression<Func<string>> bodygiftId)
+        public IBodyWorkflowAction<EventApiCreatedParticipantDonation, ApiConnectionActionConfiguration> CreateParticipantDonation(Expression<Func<string>> participantId, Expression<Func<CreateParticipantDonationInput>> body)
         {
             var __workflow_participantId = WorkflowExpression.Compile(participantId, nameof(participantId), required: true);
-            var __workflow_bodygiftId = WorkflowExpression.Compile(bodygiftId, nameof(bodygiftId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<EventApiCreatedParticipantDonation, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participants/{0}/donations", __workflow_participantId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["gift_id"] = ExpressionConverter.ConvertO(__workflow_bodygiftId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EventApiCreatedParticipantDonation>(callPayload);
             });
         }
@@ -5052,27 +1365,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<EventApiCreatedParticipantFeePayment, ApiConnectionActionConfiguration> CreateParticipantFeePayment(Expression<Func<string>> participantId, Expression<Func<string>> bodygiftId, Expression<Func<double>> bodyappliedAmount)
+        public IBodyWorkflowAction<EventApiCreatedParticipantFeePayment, ApiConnectionActionConfiguration> CreateParticipantFeePayment(Expression<Func<string>> participantId, Expression<Func<CreateParticipantFeePaymentInput>> body)
         {
             var __workflow_participantId = WorkflowExpression.Compile(participantId, nameof(participantId), required: true);
-            var __workflow_bodygiftId = WorkflowExpression.Compile(bodygiftId, nameof(bodygiftId), required: true);
-            var __workflow_bodyappliedAmount = WorkflowExpression.Compile(bodyappliedAmount, nameof(bodyappliedAmount), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<EventApiCreatedParticipantFeePayment, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participants/{0}/feepayments", __workflow_participantId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["gift_id"] = ExpressionConverter.ConvertO(__workflow_bodygiftId);
-                bodypropCount++;
-                body["applied_amount"] = ExpressionConverter.ConvertO(__workflow_bodyappliedAmount);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EventApiCreatedParticipantFeePayment>(callPayload);
             });
         }
@@ -5098,65 +1400,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<EventApiCreatedParticipantFee, ApiConnectionActionConfiguration> CreateParticipantFee(Expression<Func<string>> participantId, Expression<Func<string>> bodyeventId, Expression<Func<string>> bodyfee, Expression<Func<int>> bodyquantity, Expression<Func<double>> bodyfeeAmount, Expression<Func<double>> bodycontributionAmount, Expression<Func<int>> bodydateday = null, Expression<Func<int>> bodydatemonth = null, Expression<Func<int>> bodydateyear = null)
+        public IBodyWorkflowAction<EventApiCreatedParticipantFee, ApiConnectionActionConfiguration> CreateParticipantFee(Expression<Func<string>> participantId, Expression<Func<CreateParticipantFeeInput>> body)
         {
             var __workflow_participantId = WorkflowExpression.Compile(participantId, nameof(participantId), required: true);
-            var __workflow_bodyeventId = WorkflowExpression.Compile(bodyeventId, nameof(bodyeventId), required: true);
-            var __workflow_bodyfee = WorkflowExpression.Compile(bodyfee, nameof(bodyfee), required: true);
-            var __workflow_bodyquantity = WorkflowExpression.Compile(bodyquantity, nameof(bodyquantity), required: true);
-            var __workflow_bodyfeeAmount = WorkflowExpression.Compile(bodyfeeAmount, nameof(bodyfeeAmount), required: true);
-            var __workflow_bodycontributionAmount = WorkflowExpression.Compile(bodycontributionAmount, nameof(bodycontributionAmount), required: true);
-            var __workflow_bodydateday = WorkflowExpression.Compile(bodydateday, nameof(bodydateday), required: false);
-            var __workflow_bodydatemonth = WorkflowExpression.Compile(bodydatemonth, nameof(bodydatemonth), required: false);
-            var __workflow_bodydateyear = WorkflowExpression.Compile(bodydateyear, nameof(bodydateyear), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<EventApiCreatedParticipantFee, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participants/{0}/fees", __workflow_participantId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["event_id"] = ExpressionConverter.ConvertO(__workflow_bodyeventId);
-                bodypropCount++;
-                body["event_fee_id"] = ExpressionConverter.ConvertO(__workflow_bodyfee);
-                bodypropCount++;
-                body["quantity"] = ExpressionConverter.ConvertO(__workflow_bodyquantity);
-                bodypropCount++;
-                body["fee_amount"] = ExpressionConverter.ConvertO(__workflow_bodyfeeAmount);
-                bodypropCount++;
-                body["contribution_amount"] = ExpressionConverter.ConvertO(__workflow_bodycontributionAmount);
-                var dateObject = new JObject();
-                var dateObjectpropCount = 0;
-                if (__workflow_bodydateday != null)
-                {
-                    dateObject["d"] = ExpressionConverter.ConvertO(__workflow_bodydateday);
-                    dateObjectpropCount++;
-                }
-
-                if (__workflow_bodydatemonth != null)
-                {
-                    dateObject["m"] = ExpressionConverter.ConvertO(__workflow_bodydatemonth);
-                    dateObjectpropCount++;
-                }
-
-                if (__workflow_bodydateyear != null)
-                {
-                    dateObject["y"] = ExpressionConverter.ConvertO(__workflow_bodydateyear);
-                    dateObjectpropCount++;
-                }
-
-                if (dateObjectpropCount > 0)
-                {
-                    body["date"] = dateObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EventApiCreatedParticipantFee>(callPayload);
             });
         }
@@ -5175,30 +1428,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<EventApiCreatedParticipantOption, ApiConnectionActionConfiguration> CreateParticipantOption(Expression<Func<string>> participantId, Expression<Func<string>> bodyeventId, Expression<Func<string>> bodyoption, Expression<Func<object>> bodyoptionValue)
+        public IBodyWorkflowAction<EventApiCreatedParticipantOption, ApiConnectionActionConfiguration> CreateParticipantOption(Expression<Func<string>> participantId, Expression<Func<CreateParticipantOptionInput>> body)
         {
             var __workflow_participantId = WorkflowExpression.Compile(participantId, nameof(participantId), required: true);
-            var __workflow_bodyeventId = WorkflowExpression.Compile(bodyeventId, nameof(bodyeventId), required: true);
-            var __workflow_bodyoption = WorkflowExpression.Compile(bodyoption, nameof(bodyoption), required: true);
-            var __workflow_bodyoptionValue = WorkflowExpression.Compile(bodyoptionValue, nameof(bodyoptionValue), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<EventApiCreatedParticipantOption, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/event/v1/participants/{0}/participantoptions", __workflow_participantId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["event_id"] = ExpressionConverter.ConvertO(__workflow_bodyeventId);
-                bodypropCount++;
-                body["event_participant_option_id"] = ExpressionConverter.ConvertO(__workflow_bodyoption);
-                bodypropCount++;
-                body["option_value"] = ExpressionConverter.ConvertO(__workflow_bodyoptionValue);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EventApiCreatedParticipantOption>(callPayload);
             });
         }
@@ -5270,203 +1509,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<FundraisingApiCreatedAppealAttachment, ApiConnectionActionConfiguration> CreateAppealAttachment(Expression<Func<string>> bodyappealId, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodyuRL = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodyfileId = null, Expression<Func<string>> bodythumbnailId = null)
+        public IBodyWorkflowAction<FundraisingApiCreatedAppealAttachment, ApiConnectionActionConfiguration> CreateAppealAttachment(Expression<Func<CreateAppealAttachmentInput>> body)
         {
-            var __workflow_bodyappealId = WorkflowExpression.Compile(bodyappealId, nameof(bodyappealId), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: false);
-            var __workflow_bodyfileId = WorkflowExpression.Compile(bodyfileId, nameof(bodyfileId), required: false);
-            var __workflow_bodythumbnailId = WorkflowExpression.Compile(bodythumbnailId, nameof(bodythumbnailId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FundraisingApiCreatedAppealAttachment, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/fundraising/v1/appeals/attachments";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["parent_id"] = ExpressionConverter.ConvertO(__workflow_bodyappealId);
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuRL != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileName != null)
-                {
-                    body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileId != null)
-                {
-                    body["file_id"] = ExpressionConverter.ConvertO(__workflow_bodyfileId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodythumbnailId != null)
-                {
-                    body["thumbnail_id"] = ExpressionConverter.ConvertO(__workflow_bodythumbnailId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FundraisingApiCreatedAppealAttachment>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditAppealAttachment(Expression<Func<string>> attachmentId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodyuRL = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditAppealAttachment(Expression<Func<string>> attachmentId, Expression<Func<EditAppealAttachmentInput>> body)
         {
             var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/fundraising/v1/appeals/attachments/{0}", __workflow_attachmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuRL != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<FundraisingApiCreatedAppealCustomField, ApiConnectionActionConfiguration> CreateAppealCustomField(Expression<Func<string>> bodyappealId, Expression<Func<string>> bodycategory, Expression<Func<object>> bodyvalue = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodycomment = null)
+        public IBodyWorkflowAction<FundraisingApiCreatedAppealCustomField, ApiConnectionActionConfiguration> CreateAppealCustomField(Expression<Func<CreateAppealCustomFieldInput>> body)
         {
-            var __workflow_bodyappealId = WorkflowExpression.Compile(bodyappealId, nameof(bodyappealId), required: true);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: true);
-            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FundraisingApiCreatedAppealCustomField, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/fundraising/v1/appeals/customfields";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["parent_id"] = ExpressionConverter.ConvertO(__workflow_bodyappealId);
-                bodypropCount++;
-                body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                if (__workflow_bodyvalue != null)
-                {
-                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycomment != null)
-                {
-                    body["comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FundraisingApiCreatedAppealCustomField>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditAppealCustomField(Expression<Func<string>> customFieldId, Expression<Func<string>> bodycategory = null, Expression<Func<object>> bodyvalue = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodycomment = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditAppealCustomField(Expression<Func<string>> customFieldId, Expression<Func<EditAppealCustomFieldInput>> body)
         {
             var __workflow_customFieldId = WorkflowExpression.Compile(customFieldId, nameof(customFieldId), required: true);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/fundraising/v1/appeals/customfields/{0}", __workflow_customFieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvalue != null)
-                {
-                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycomment != null)
-                {
-                    body["comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -5538,281 +1633,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<FundraisingApiCreatedCampaignAttachment, ApiConnectionActionConfiguration> CreateCampaignAttachment(Expression<Func<string>> bodycampaignId, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodyuRL = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodyfileId = null, Expression<Func<string>> bodythumbnailId = null)
+        public IBodyWorkflowAction<FundraisingApiCreatedCampaignAttachment, ApiConnectionActionConfiguration> CreateCampaignAttachment(Expression<Func<CreateCampaignAttachmentInput>> body)
         {
-            var __workflow_bodycampaignId = WorkflowExpression.Compile(bodycampaignId, nameof(bodycampaignId), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: false);
-            var __workflow_bodyfileId = WorkflowExpression.Compile(bodyfileId, nameof(bodyfileId), required: false);
-            var __workflow_bodythumbnailId = WorkflowExpression.Compile(bodythumbnailId, nameof(bodythumbnailId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FundraisingApiCreatedCampaignAttachment, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/fundraising/v1/campaigns/attachments";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["parent_id"] = ExpressionConverter.ConvertO(__workflow_bodycampaignId);
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuRL != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileName != null)
-                {
-                    body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileId != null)
-                {
-                    body["file_id"] = ExpressionConverter.ConvertO(__workflow_bodyfileId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodythumbnailId != null)
-                {
-                    body["thumbnail_id"] = ExpressionConverter.ConvertO(__workflow_bodythumbnailId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FundraisingApiCreatedCampaignAttachment>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditCampaignAttachment(Expression<Func<string>> attachmentId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodyuRL = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditCampaignAttachment(Expression<Func<string>> attachmentId, Expression<Func<EditCampaignAttachmentInput>> body)
         {
             var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/fundraising/v1/campaigns/attachments/{0}", __workflow_attachmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuRL != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<FundraisingApiCreatedCampaignCustomField, ApiConnectionActionConfiguration> CreateCampaignCustomField(Expression<Func<string>> bodycampaignId, Expression<Func<string>> bodycategory, Expression<Func<object>> bodyvalue = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodycomment = null)
+        public IBodyWorkflowAction<FundraisingApiCreatedCampaignCustomField, ApiConnectionActionConfiguration> CreateCampaignCustomField(Expression<Func<CreateCampaignCustomFieldInput>> body)
         {
-            var __workflow_bodycampaignId = WorkflowExpression.Compile(bodycampaignId, nameof(bodycampaignId), required: true);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: true);
-            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FundraisingApiCreatedCampaignCustomField, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/fundraising/v1/campaigns/customfields";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["parent_id"] = ExpressionConverter.ConvertO(__workflow_bodycampaignId);
-                bodypropCount++;
-                body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                if (__workflow_bodyvalue != null)
-                {
-                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycomment != null)
-                {
-                    body["comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FundraisingApiCreatedCampaignCustomField>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditCampaignCustomField(Expression<Func<string>> customFieldId, Expression<Func<string>> bodycategory = null, Expression<Func<object>> bodyvalue = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodycomment = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditCampaignCustomField(Expression<Func<string>> customFieldId, Expression<Func<EditCampaignCustomFieldInput>> body)
         {
             var __workflow_customFieldId = WorkflowExpression.Compile(customFieldId, nameof(customFieldId), required: true);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/fundraising/v1/campaigns/customfields/{0}", __workflow_customFieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvalue != null)
-                {
-                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycomment != null)
-                {
-                    body["comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<FundraisingApiCreatedFundraiserAssignment, ApiConnectionActionConfiguration> CreateFundraiserAssignment(Expression<Func<string>> bodyfundraiserId, Expression<Func<string>> bodyconstituentId, Expression<Func<double>> bodyamountamount, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyassignmentStarts = null, Expression<Func<string>> bodyassignmentEnds = null, Expression<Func<string>> bodycampaignId = null, Expression<Func<string>> bodyfundId = null, Expression<Func<string>> bodyappealId = null)
+        public IBodyWorkflowAction<FundraisingApiCreatedFundraiserAssignment, ApiConnectionActionConfiguration> CreateFundraiserAssignment(Expression<Func<CreateFundraiserAssignmentInput>> body)
         {
-            var __workflow_bodyfundraiserId = WorkflowExpression.Compile(bodyfundraiserId, nameof(bodyfundraiserId), required: true);
-            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            var __workflow_bodyamountamount = WorkflowExpression.Compile(bodyamountamount, nameof(bodyamountamount), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodyassignmentStarts = WorkflowExpression.Compile(bodyassignmentStarts, nameof(bodyassignmentStarts), required: false);
-            var __workflow_bodyassignmentEnds = WorkflowExpression.Compile(bodyassignmentEnds, nameof(bodyassignmentEnds), required: false);
-            var __workflow_bodycampaignId = WorkflowExpression.Compile(bodycampaignId, nameof(bodycampaignId), required: false);
-            var __workflow_bodyfundId = WorkflowExpression.Compile(bodyfundId, nameof(bodyfundId), required: false);
-            var __workflow_bodyappealId = WorkflowExpression.Compile(bodyappealId, nameof(bodyappealId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FundraisingApiCreatedFundraiserAssignment, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/fundraising/v1/fundraisers/assignments";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["fundraiser_id"] = ExpressionConverter.ConvertO(__workflow_bodyfundraiserId);
-                bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyassignmentStarts != null)
-                {
-                    body["start"] = ExpressionConverter.ConvertO(__workflow_bodyassignmentStarts);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyassignmentEnds != null)
-                {
-                    body["end"] = ExpressionConverter.ConvertO(__workflow_bodyassignmentEnds);
-                    bodypropCount++;
-                }
-
-                var amountObject = new JObject();
-                var amountObjectpropCount = 0;
-                amountObjectpropCount++;
-                amountObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyamountamount);
-                if (amountObjectpropCount > 0)
-                {
-                    body["amount"] = amountObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycampaignId != null)
-                {
-                    body["campaign_id"] = ExpressionConverter.ConvertO(__workflow_bodycampaignId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfundId != null)
-                {
-                    body["fund_id"] = ExpressionConverter.ConvertO(__workflow_bodyfundId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyappealId != null)
-                {
-                    body["appeal_id"] = ExpressionConverter.ConvertO(__workflow_bodyappealId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FundraisingApiCreatedFundraiserAssignment>(callPayload);
             });
         }
@@ -5903,203 +1790,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<FundraisingApiCreatedFundAttachment, ApiConnectionActionConfiguration> CreateFundAttachment(Expression<Func<string>> bodyfundId, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodyuRL = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodyfileId = null, Expression<Func<string>> bodythumbnailId = null)
+        public IBodyWorkflowAction<FundraisingApiCreatedFundAttachment, ApiConnectionActionConfiguration> CreateFundAttachment(Expression<Func<CreateFundAttachmentInput>> body)
         {
-            var __workflow_bodyfundId = WorkflowExpression.Compile(bodyfundId, nameof(bodyfundId), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: false);
-            var __workflow_bodyfileId = WorkflowExpression.Compile(bodyfileId, nameof(bodyfileId), required: false);
-            var __workflow_bodythumbnailId = WorkflowExpression.Compile(bodythumbnailId, nameof(bodythumbnailId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FundraisingApiCreatedFundAttachment, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/fundraising/v1/funds/attachments";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["parent_id"] = ExpressionConverter.ConvertO(__workflow_bodyfundId);
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuRL != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileName != null)
-                {
-                    body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileId != null)
-                {
-                    body["file_id"] = ExpressionConverter.ConvertO(__workflow_bodyfileId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodythumbnailId != null)
-                {
-                    body["thumbnail_id"] = ExpressionConverter.ConvertO(__workflow_bodythumbnailId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FundraisingApiCreatedFundAttachment>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditFundAttachment(Expression<Func<string>> attachmentId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodyuRL = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditFundAttachment(Expression<Func<string>> attachmentId, Expression<Func<EditFundAttachmentInput>> body)
         {
             var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/fundraising/v1/funds/attachments/{0}", __workflow_attachmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuRL != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<FundraisingApiCreatedFundCustomField, ApiConnectionActionConfiguration> CreateFundCustomField(Expression<Func<string>> bodyfundId, Expression<Func<string>> bodycategory, Expression<Func<object>> bodyvalue = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodycomment = null)
+        public IBodyWorkflowAction<FundraisingApiCreatedFundCustomField, ApiConnectionActionConfiguration> CreateFundCustomField(Expression<Func<CreateFundCustomFieldInput>> body)
         {
-            var __workflow_bodyfundId = WorkflowExpression.Compile(bodyfundId, nameof(bodyfundId), required: true);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: true);
-            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FundraisingApiCreatedFundCustomField, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/fundraising/v1/funds/customfields";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["parent_id"] = ExpressionConverter.ConvertO(__workflow_bodyfundId);
-                bodypropCount++;
-                body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                if (__workflow_bodyvalue != null)
-                {
-                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycomment != null)
-                {
-                    body["comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FundraisingApiCreatedFundCustomField>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditFundCustomField(Expression<Func<string>> customFieldId, Expression<Func<string>> bodycategory = null, Expression<Func<object>> bodyvalue = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodycomment = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditFundCustomField(Expression<Func<string>> customFieldId, Expression<Func<EditFundCustomFieldInput>> body)
         {
             var __workflow_customFieldId = WorkflowExpression.Compile(customFieldId, nameof(customFieldId), required: true);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/fundraising/v1/funds/customfields/{0}", __workflow_customFieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvalue != null)
-                {
-                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycomment != null)
-                {
-                    body["comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -6148,98 +1891,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditGiftAcknowledgement(Expression<Func<string>> acknowledgementId, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodyletter = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditGiftAcknowledgement(Expression<Func<string>> acknowledgementId, Expression<Func<EditGiftAcknowledgementInput>> body)
         {
             var __workflow_acknowledgementId = WorkflowExpression.Compile(acknowledgementId, nameof(acknowledgementId), required: true);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodyletter = WorkflowExpression.Compile(bodyletter, nameof(bodyletter), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/gift/v1/giftacknowledgements/{0}", __workflow_acknowledgementId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyletter != null)
-                {
-                    body["letter"] = ExpressionConverter.ConvertO(__workflow_bodyletter);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditGiftReceipt(Expression<Func<string>> receiptId, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<double>> bodyamountvalue = null, Expression<Func<string>> bodydate = null, Expression<Func<int>> bodynumber = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditGiftReceipt(Expression<Func<string>> receiptId, Expression<Func<EditGiftReceiptInput>> body)
         {
             var __workflow_receiptId = WorkflowExpression.Compile(receiptId, nameof(receiptId), required: true);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyamountvalue = WorkflowExpression.Compile(bodyamountvalue, nameof(bodyamountvalue), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodynumber = WorkflowExpression.Compile(bodynumber, nameof(bodynumber), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/gift/v1/giftreceipts/{0}", __workflow_receiptId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                var amountObject = new JObject();
-                var amountObjectpropCount = 0;
-                if (__workflow_bodyamountvalue != null)
-                {
-                    amountObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyamountvalue);
-                    amountObjectpropCount++;
-                }
-
-                if (amountObjectpropCount > 0)
-                {
-                    body["amount"] = amountObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynumber != null)
-                {
-                    body["number"] = ExpressionConverter.ConvertO(__workflow_bodynumber);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -6308,252 +1984,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<GiftApiCreatedGift, ApiConnectionActionConfiguration> CreateGift(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodydate, Expression<Func<bodytypeInput>> bodytype, Expression<Func<GiftApiGiftSplitAdd[]>> bodysplits, Expression<Func<bodyreceiptsreceiptStatusInput>> bodyreceiptsreceiptStatus, Expression<Func<double>> bodyreceiptsamountreceiptAmount, Expression<Func<double>> bodyamountamount = null, Expression<Func<bodypaymentspaymentMethodInput>> bodypaymentspaymentMethod = null, Expression<Func<string>> bodypaymentscheckNumber = null, Expression<Func<int>> bodypaymentscheckDateday = null, Expression<Func<int>> bodypaymentscheckDatemonth = null, Expression<Func<int>> bodypaymentscheckDateyear = null, Expression<Func<string>> bodypaymentsreference = null, Expression<Func<int>> bodypaymentsreferenceDateday = null, Expression<Func<int>> bodypaymentsreferenceDatemonth = null, Expression<Func<int>> bodypaymentsreferenceDateyear = null, Expression<Func<bool>> bodyisAnonymous = null, Expression<Func<string>> bodysubtype = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodylookupId = null, Expression<Func<bool>> bodyuseFundraiserCredits = null, Expression<Func<bool>> bodyuseSoftCredits = null, Expression<Func<string>> bodyconstituency = null, Expression<Func<string>> bodybatchPrefix = null, Expression<Func<string>> bodybatchNumber = null, Expression<Func<bodypostStatusInput>> bodypostStatus = null, Expression<Func<string>> bodypostDate = null, Expression<Func<string>> bodyreceiptsreceiptDate = null)
+        public IBodyWorkflowAction<GiftApiCreatedGift, ApiConnectionActionConfiguration> CreateGift(Expression<Func<CreateGiftInput>> body)
         {
-            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodysplits = WorkflowExpression.Compile(bodysplits, nameof(bodysplits), required: true);
-            var __workflow_bodyreceiptsreceiptStatus = WorkflowExpression.Compile(bodyreceiptsreceiptStatus, nameof(bodyreceiptsreceiptStatus), required: true);
-            var __workflow_bodyreceiptsamountreceiptAmount = WorkflowExpression.Compile(bodyreceiptsamountreceiptAmount, nameof(bodyreceiptsamountreceiptAmount), required: true);
-            var __workflow_bodyamountamount = WorkflowExpression.Compile(bodyamountamount, nameof(bodyamountamount), required: false);
-            var __workflow_bodypaymentspaymentMethod = WorkflowExpression.Compile(bodypaymentspaymentMethod, nameof(bodypaymentspaymentMethod), required: false);
-            var __workflow_bodypaymentscheckNumber = WorkflowExpression.Compile(bodypaymentscheckNumber, nameof(bodypaymentscheckNumber), required: false);
-            var __workflow_bodypaymentscheckDateday = WorkflowExpression.Compile(bodypaymentscheckDateday, nameof(bodypaymentscheckDateday), required: false);
-            var __workflow_bodypaymentscheckDatemonth = WorkflowExpression.Compile(bodypaymentscheckDatemonth, nameof(bodypaymentscheckDatemonth), required: false);
-            var __workflow_bodypaymentscheckDateyear = WorkflowExpression.Compile(bodypaymentscheckDateyear, nameof(bodypaymentscheckDateyear), required: false);
-            var __workflow_bodypaymentsreference = WorkflowExpression.Compile(bodypaymentsreference, nameof(bodypaymentsreference), required: false);
-            var __workflow_bodypaymentsreferenceDateday = WorkflowExpression.Compile(bodypaymentsreferenceDateday, nameof(bodypaymentsreferenceDateday), required: false);
-            var __workflow_bodypaymentsreferenceDatemonth = WorkflowExpression.Compile(bodypaymentsreferenceDatemonth, nameof(bodypaymentsreferenceDatemonth), required: false);
-            var __workflow_bodypaymentsreferenceDateyear = WorkflowExpression.Compile(bodypaymentsreferenceDateyear, nameof(bodypaymentsreferenceDateyear), required: false);
-            var __workflow_bodyisAnonymous = WorkflowExpression.Compile(bodyisAnonymous, nameof(bodyisAnonymous), required: false);
-            var __workflow_bodysubtype = WorkflowExpression.Compile(bodysubtype, nameof(bodysubtype), required: false);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
-            var __workflow_bodylookupId = WorkflowExpression.Compile(bodylookupId, nameof(bodylookupId), required: false);
-            var __workflow_bodyuseFundraiserCredits = WorkflowExpression.Compile(bodyuseFundraiserCredits, nameof(bodyuseFundraiserCredits), required: false);
-            var __workflow_bodyuseSoftCredits = WorkflowExpression.Compile(bodyuseSoftCredits, nameof(bodyuseSoftCredits), required: false);
-            var __workflow_bodyconstituency = WorkflowExpression.Compile(bodyconstituency, nameof(bodyconstituency), required: false);
-            var __workflow_bodybatchPrefix = WorkflowExpression.Compile(bodybatchPrefix, nameof(bodybatchPrefix), required: false);
-            var __workflow_bodybatchNumber = WorkflowExpression.Compile(bodybatchNumber, nameof(bodybatchNumber), required: false);
-            var __workflow_bodypostStatus = WorkflowExpression.Compile(bodypostStatus, nameof(bodypostStatus), required: false);
-            var __workflow_bodypostDate = WorkflowExpression.Compile(bodypostDate, nameof(bodypostDate), required: false);
-            var __workflow_bodyreceiptsreceiptDate = WorkflowExpression.Compile(bodyreceiptsreceiptDate, nameof(bodyreceiptsreceiptDate), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GiftApiCreatedGift, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/gift/v1/gifts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
-                var amountObject = new JObject();
-                var amountObjectpropCount = 0;
-                if (__workflow_bodyamountamount != null)
-                {
-                    amountObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyamountamount);
-                    amountObjectpropCount++;
-                }
-
-                if (amountObjectpropCount > 0)
-                {
-                    body["amount"] = amountObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                bodypropCount++;
-                body["gift_splits"] = ExpressionConverter.ConvertO(__workflow_bodysplits);
-                var paymentsObject = new JObject();
-                var paymentsObjectpropCount = 0;
-                if (__workflow_bodypaymentspaymentMethod != null)
-                {
-                    if (__workflow_bodypaymentspaymentMethod != null)
-                    {
-                        paymentsObject["payment_method"] = ExpressionConverter.ConvertO(__workflow_bodypaymentspaymentMethod);
-                        paymentsObjectpropCount++;
-                    }
-
-                    paymentsObjectpropCount++;
-                }
-                else
-                {
-                    paymentsObject["payment_method"] = "Cash";
-                    paymentsObjectpropCount++;
-                }
-
-                if (__workflow_bodypaymentscheckNumber != null)
-                {
-                    paymentsObject["check_number"] = ExpressionConverter.ConvertO(__workflow_bodypaymentscheckNumber);
-                    paymentsObjectpropCount++;
-                }
-
-                var checkDateObject = new JObject();
-                var checkDateObjectpropCount = 0;
-                if (__workflow_bodypaymentscheckDateday != null)
-                {
-                    checkDateObject["d"] = ExpressionConverter.ConvertO(__workflow_bodypaymentscheckDateday);
-                    checkDateObjectpropCount++;
-                }
-
-                if (__workflow_bodypaymentscheckDatemonth != null)
-                {
-                    checkDateObject["m"] = ExpressionConverter.ConvertO(__workflow_bodypaymentscheckDatemonth);
-                    checkDateObjectpropCount++;
-                }
-
-                if (__workflow_bodypaymentscheckDateyear != null)
-                {
-                    checkDateObject["y"] = ExpressionConverter.ConvertO(__workflow_bodypaymentscheckDateyear);
-                    checkDateObjectpropCount++;
-                }
-
-                if (checkDateObjectpropCount > 0)
-                {
-                    paymentsObject["check_date"] = checkDateObject;
-                    paymentsObjectpropCount++;
-                }
-
-                if (__workflow_bodypaymentsreference != null)
-                {
-                    paymentsObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodypaymentsreference);
-                    paymentsObjectpropCount++;
-                }
-
-                var referenceDateObject = new JObject();
-                var referenceDateObjectpropCount = 0;
-                if (__workflow_bodypaymentsreferenceDateday != null)
-                {
-                    referenceDateObject["d"] = ExpressionConverter.ConvertO(__workflow_bodypaymentsreferenceDateday);
-                    referenceDateObjectpropCount++;
-                }
-
-                if (__workflow_bodypaymentsreferenceDatemonth != null)
-                {
-                    referenceDateObject["m"] = ExpressionConverter.ConvertO(__workflow_bodypaymentsreferenceDatemonth);
-                    referenceDateObjectpropCount++;
-                }
-
-                if (__workflow_bodypaymentsreferenceDateyear != null)
-                {
-                    referenceDateObject["y"] = ExpressionConverter.ConvertO(__workflow_bodypaymentsreferenceDateyear);
-                    referenceDateObjectpropCount++;
-                }
-
-                if (referenceDateObjectpropCount > 0)
-                {
-                    paymentsObject["reference_date"] = referenceDateObject;
-                    paymentsObjectpropCount++;
-                }
-
-                if (paymentsObjectpropCount > 0)
-                {
-                    body["payments"] = paymentsObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisAnonymous != null)
-                {
-                    body["is_anonymous"] = ExpressionConverter.ConvertO(__workflow_bodyisAnonymous);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysubtype != null)
-                {
-                    body["subtype"] = ExpressionConverter.ConvertO(__workflow_bodysubtype);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycomment != null)
-                {
-                    body["reference"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylookupId != null)
-                {
-                    body["lookup_id"] = ExpressionConverter.ConvertO(__workflow_bodylookupId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuseFundraiserCredits != null)
-                {
-                    body["default_fundraiser_credits"] = ExpressionConverter.ConvertO(__workflow_bodyuseFundraiserCredits);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuseSoftCredits != null)
-                {
-                    body["default_soft_credits"] = ExpressionConverter.ConvertO(__workflow_bodyuseSoftCredits);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyconstituency != null)
-                {
-                    body["constituency"] = ExpressionConverter.ConvertO(__workflow_bodyconstituency);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybatchPrefix != null)
-                {
-                    body["batch_prefix"] = ExpressionConverter.ConvertO(__workflow_bodybatchPrefix);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybatchNumber != null)
-                {
-                    body["batch_number"] = ExpressionConverter.ConvertO(__workflow_bodybatchNumber);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypostStatus != null)
-                {
-                    body["post_status"] = ExpressionConverter.ConvertO(__workflow_bodypostStatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypostDate != null)
-                {
-                    body["post_date"] = ExpressionConverter.ConvertO(__workflow_bodypostDate);
-                    bodypropCount++;
-                }
-
-                body["origin"] = "{ \"name\": \"Power Platform\" }";
-                bodypropCount++;
-                var receiptsObject = new JObject();
-                var receiptsObjectpropCount = 0;
-                receiptsObjectpropCount++;
-                receiptsObject["status"] = ExpressionConverter.ConvertO(__workflow_bodyreceiptsreceiptStatus);
-                var amountObject2 = new JObject();
-                var amountObject2propCount = 0;
-                amountObject2propCount++;
-                amountObject2["value"] = ExpressionConverter.ConvertO(__workflow_bodyreceiptsamountreceiptAmount);
-                if (amountObject2propCount > 0)
-                {
-                    receiptsObject["amount"] = amountObject2;
-                    receiptsObjectpropCount++;
-                }
-
-                if (__workflow_bodyreceiptsreceiptDate != null)
-                {
-                    receiptsObject["date"] = ExpressionConverter.ConvertO(__workflow_bodyreceiptsreceiptDate);
-                    receiptsObjectpropCount++;
-                }
-
-                if (receiptsObjectpropCount > 0)
-                {
-                    body["receipts"] = receiptsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GiftApiCreatedGift>(callPayload);
             });
         }
@@ -6598,447 +2037,74 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<GiftApiCreatedGiftAttachment, ApiConnectionActionConfiguration> CreateGiftAttachment(Expression<Func<string>> bodygiftId, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodyuRL = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodyfileId = null, Expression<Func<string>> bodythumbnailId = null)
+        public IBodyWorkflowAction<GiftApiCreatedGiftAttachment, ApiConnectionActionConfiguration> CreateGiftAttachment(Expression<Func<CreateGiftAttachmentInput>> body)
         {
-            var __workflow_bodygiftId = WorkflowExpression.Compile(bodygiftId, nameof(bodygiftId), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: false);
-            var __workflow_bodyfileId = WorkflowExpression.Compile(bodyfileId, nameof(bodyfileId), required: false);
-            var __workflow_bodythumbnailId = WorkflowExpression.Compile(bodythumbnailId, nameof(bodythumbnailId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GiftApiCreatedGiftAttachment, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/gift/v1/gifts/attachments";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["parent_id"] = ExpressionConverter.ConvertO(__workflow_bodygiftId);
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuRL != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileName != null)
-                {
-                    body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileId != null)
-                {
-                    body["file_id"] = ExpressionConverter.ConvertO(__workflow_bodyfileId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodythumbnailId != null)
-                {
-                    body["thumbnail_id"] = ExpressionConverter.ConvertO(__workflow_bodythumbnailId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GiftApiCreatedGiftAttachment>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditGiftAttachment(Expression<Func<string>> attachmentId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodyuRL = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditGiftAttachment(Expression<Func<string>> attachmentId, Expression<Func<EditGiftAttachmentInput>> body)
         {
             var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/gift/v1/gifts/attachments/{0}", __workflow_attachmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuRL != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<GiftApiCreatedGiftCustomField, ApiConnectionActionConfiguration> CreateGiftCustomField(Expression<Func<string>> bodygiftId, Expression<Func<string>> bodycategory, Expression<Func<object>> bodyvalue = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodycomment = null)
+        public IBodyWorkflowAction<GiftApiCreatedGiftCustomField, ApiConnectionActionConfiguration> CreateGiftCustomField(Expression<Func<CreateGiftCustomFieldInput>> body)
         {
-            var __workflow_bodygiftId = WorkflowExpression.Compile(bodygiftId, nameof(bodygiftId), required: true);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: true);
-            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GiftApiCreatedGiftCustomField, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/gift/v1/gifts/customfields";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["parent_id"] = ExpressionConverter.ConvertO(__workflow_bodygiftId);
-                bodypropCount++;
-                body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                if (__workflow_bodyvalue != null)
-                {
-                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycomment != null)
-                {
-                    body["comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GiftApiCreatedGiftCustomField>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditGiftCustomField(Expression<Func<string>> customFieldId, Expression<Func<string>> bodycategory = null, Expression<Func<object>> bodyvalue = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodycomment = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditGiftCustomField(Expression<Func<string>> customFieldId, Expression<Func<EditGiftCustomFieldInput>> body)
         {
             var __workflow_customFieldId = WorkflowExpression.Compile(customFieldId, nameof(customFieldId), required: true);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/gift/v1/gifts/customfields/{0}", __workflow_customFieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvalue != null)
-                {
-                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycomment != null)
-                {
-                    body["comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<GiftApiBatchGiftAddResults, ApiConnectionActionConfiguration> AddGiftToBatch(Expression<Func<string>> batchId, Expression<Func<double>> bodygiftsamountamount, Expression<Func<bodygiftspaymentspaymentMethodInput>> bodygiftspaymentspaymentMethod, Expression<Func<bodygiftsreceiptsreceiptStatusInput>> bodygiftsreceiptsreceiptStatus, Expression<Func<double>> bodygiftsreceiptsamountreceiptAmount, Expression<Func<string>> bodygiftsconstituentId = null, Expression<Func<string>> bodygiftsdate = null, Expression<Func<bodygiftstypeInput>> bodygiftstype = null, Expression<Func<GiftApiVirtualBatchGiftSplitAdd[]>> bodygiftssplits = null, Expression<Func<string>> bodygiftspaymentscheckNumber = null, Expression<Func<int>> bodygiftspaymentscheckDateday = null, Expression<Func<int>> bodygiftspaymentscheckDatemonth = null, Expression<Func<int>> bodygiftspaymentscheckDateyear = null, Expression<Func<string>> bodygiftspaymentsreference = null, Expression<Func<int>> bodygiftspaymentsreferenceDateday = null, Expression<Func<int>> bodygiftspaymentsreferenceDatemonth = null, Expression<Func<int>> bodygiftspaymentsreferenceDateyear = null, Expression<Func<bool>> bodygiftsisAnonymous = null, Expression<Func<string>> bodygiftssubtype = null, Expression<Func<string>> bodygiftscomment = null, Expression<Func<string>> bodygiftslookupId = null, Expression<Func<bool>> bodygiftsuseFundraiserCredits = null, Expression<Func<bool>> bodygiftsuseSoftCredits = null, Expression<Func<string>> bodygiftsconstituency = null, Expression<Func<bodygiftspostStatusInput>> bodygiftspostStatus = null, Expression<Func<string>> bodygiftspostDate = null, Expression<Func<string>> bodygiftsreceiptsreceiptDate = null)
+        public IBodyWorkflowAction<GiftApiBatchGiftAddResults, ApiConnectionActionConfiguration> AddGiftToBatch(Expression<Func<string>> batchId, Expression<Func<AddGiftToBatchInput>> body)
         {
             var __workflow_batchId = WorkflowExpression.Compile(batchId, nameof(batchId), required: true);
-            var __workflow_bodygiftsamountamount = WorkflowExpression.Compile(bodygiftsamountamount, nameof(bodygiftsamountamount), required: true);
-            var __workflow_bodygiftspaymentspaymentMethod = WorkflowExpression.Compile(bodygiftspaymentspaymentMethod, nameof(bodygiftspaymentspaymentMethod), required: true);
-            var __workflow_bodygiftsreceiptsreceiptStatus = WorkflowExpression.Compile(bodygiftsreceiptsreceiptStatus, nameof(bodygiftsreceiptsreceiptStatus), required: true);
-            var __workflow_bodygiftsreceiptsamountreceiptAmount = WorkflowExpression.Compile(bodygiftsreceiptsamountreceiptAmount, nameof(bodygiftsreceiptsamountreceiptAmount), required: true);
-            var __workflow_bodygiftsconstituentId = WorkflowExpression.Compile(bodygiftsconstituentId, nameof(bodygiftsconstituentId), required: false);
-            var __workflow_bodygiftsdate = WorkflowExpression.Compile(bodygiftsdate, nameof(bodygiftsdate), required: false);
-            var __workflow_bodygiftstype = WorkflowExpression.Compile(bodygiftstype, nameof(bodygiftstype), required: false);
-            var __workflow_bodygiftssplits = WorkflowExpression.Compile(bodygiftssplits, nameof(bodygiftssplits), required: false);
-            var __workflow_bodygiftspaymentscheckNumber = WorkflowExpression.Compile(bodygiftspaymentscheckNumber, nameof(bodygiftspaymentscheckNumber), required: false);
-            var __workflow_bodygiftspaymentscheckDateday = WorkflowExpression.Compile(bodygiftspaymentscheckDateday, nameof(bodygiftspaymentscheckDateday), required: false);
-            var __workflow_bodygiftspaymentscheckDatemonth = WorkflowExpression.Compile(bodygiftspaymentscheckDatemonth, nameof(bodygiftspaymentscheckDatemonth), required: false);
-            var __workflow_bodygiftspaymentscheckDateyear = WorkflowExpression.Compile(bodygiftspaymentscheckDateyear, nameof(bodygiftspaymentscheckDateyear), required: false);
-            var __workflow_bodygiftspaymentsreference = WorkflowExpression.Compile(bodygiftspaymentsreference, nameof(bodygiftspaymentsreference), required: false);
-            var __workflow_bodygiftspaymentsreferenceDateday = WorkflowExpression.Compile(bodygiftspaymentsreferenceDateday, nameof(bodygiftspaymentsreferenceDateday), required: false);
-            var __workflow_bodygiftspaymentsreferenceDatemonth = WorkflowExpression.Compile(bodygiftspaymentsreferenceDatemonth, nameof(bodygiftspaymentsreferenceDatemonth), required: false);
-            var __workflow_bodygiftspaymentsreferenceDateyear = WorkflowExpression.Compile(bodygiftspaymentsreferenceDateyear, nameof(bodygiftspaymentsreferenceDateyear), required: false);
-            var __workflow_bodygiftsisAnonymous = WorkflowExpression.Compile(bodygiftsisAnonymous, nameof(bodygiftsisAnonymous), required: false);
-            var __workflow_bodygiftssubtype = WorkflowExpression.Compile(bodygiftssubtype, nameof(bodygiftssubtype), required: false);
-            var __workflow_bodygiftscomment = WorkflowExpression.Compile(bodygiftscomment, nameof(bodygiftscomment), required: false);
-            var __workflow_bodygiftslookupId = WorkflowExpression.Compile(bodygiftslookupId, nameof(bodygiftslookupId), required: false);
-            var __workflow_bodygiftsuseFundraiserCredits = WorkflowExpression.Compile(bodygiftsuseFundraiserCredits, nameof(bodygiftsuseFundraiserCredits), required: false);
-            var __workflow_bodygiftsuseSoftCredits = WorkflowExpression.Compile(bodygiftsuseSoftCredits, nameof(bodygiftsuseSoftCredits), required: false);
-            var __workflow_bodygiftsconstituency = WorkflowExpression.Compile(bodygiftsconstituency, nameof(bodygiftsconstituency), required: false);
-            var __workflow_bodygiftspostStatus = WorkflowExpression.Compile(bodygiftspostStatus, nameof(bodygiftspostStatus), required: false);
-            var __workflow_bodygiftspostDate = WorkflowExpression.Compile(bodygiftspostDate, nameof(bodygiftspostDate), required: false);
-            var __workflow_bodygiftsreceiptsreceiptDate = WorkflowExpression.Compile(bodygiftsreceiptsreceiptDate, nameof(bodygiftsreceiptsreceiptDate), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GiftApiBatchGiftAddResults, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/gift/v1/virtual/giftbatches/{0}/gifts", __workflow_batchId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var giftsObject = new JObject();
-                var giftsObjectpropCount = 0;
-                if (__workflow_bodygiftsconstituentId != null)
-                {
-                    giftsObject["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodygiftsconstituentId);
-                    giftsObjectpropCount++;
-                }
-
-                var amountObject = new JObject();
-                var amountObjectpropCount = 0;
-                amountObjectpropCount++;
-                amountObject["value"] = ExpressionConverter.ConvertO(__workflow_bodygiftsamountamount);
-                if (amountObjectpropCount > 0)
-                {
-                    giftsObject["amount"] = amountObject;
-                    giftsObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftsdate != null)
-                {
-                    giftsObject["date"] = ExpressionConverter.ConvertO(__workflow_bodygiftsdate);
-                    giftsObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftstype != null)
-                {
-                    giftsObject["type"] = ExpressionConverter.ConvertO(__workflow_bodygiftstype);
-                    giftsObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftssplits != null)
-                {
-                    giftsObject["gift_splits"] = ExpressionConverter.ConvertO(__workflow_bodygiftssplits);
-                    giftsObjectpropCount++;
-                }
-
-                var paymentsObject = new JObject();
-                var paymentsObjectpropCount = 0;
-                paymentsObjectpropCount++;
-                paymentsObject["payment_method"] = ExpressionConverter.ConvertO(__workflow_bodygiftspaymentspaymentMethod);
-                if (__workflow_bodygiftspaymentscheckNumber != null)
-                {
-                    paymentsObject["check_number"] = ExpressionConverter.ConvertO(__workflow_bodygiftspaymentscheckNumber);
-                    paymentsObjectpropCount++;
-                }
-
-                var checkDateObject = new JObject();
-                var checkDateObjectpropCount = 0;
-                if (__workflow_bodygiftspaymentscheckDateday != null)
-                {
-                    checkDateObject["d"] = ExpressionConverter.ConvertO(__workflow_bodygiftspaymentscheckDateday);
-                    checkDateObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftspaymentscheckDatemonth != null)
-                {
-                    checkDateObject["m"] = ExpressionConverter.ConvertO(__workflow_bodygiftspaymentscheckDatemonth);
-                    checkDateObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftspaymentscheckDateyear != null)
-                {
-                    checkDateObject["y"] = ExpressionConverter.ConvertO(__workflow_bodygiftspaymentscheckDateyear);
-                    checkDateObjectpropCount++;
-                }
-
-                if (checkDateObjectpropCount > 0)
-                {
-                    paymentsObject["check_date"] = checkDateObject;
-                    paymentsObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftspaymentsreference != null)
-                {
-                    paymentsObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodygiftspaymentsreference);
-                    paymentsObjectpropCount++;
-                }
-
-                var referenceDateObject = new JObject();
-                var referenceDateObjectpropCount = 0;
-                if (__workflow_bodygiftspaymentsreferenceDateday != null)
-                {
-                    referenceDateObject["d"] = ExpressionConverter.ConvertO(__workflow_bodygiftspaymentsreferenceDateday);
-                    referenceDateObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftspaymentsreferenceDatemonth != null)
-                {
-                    referenceDateObject["m"] = ExpressionConverter.ConvertO(__workflow_bodygiftspaymentsreferenceDatemonth);
-                    referenceDateObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftspaymentsreferenceDateyear != null)
-                {
-                    referenceDateObject["y"] = ExpressionConverter.ConvertO(__workflow_bodygiftspaymentsreferenceDateyear);
-                    referenceDateObjectpropCount++;
-                }
-
-                if (referenceDateObjectpropCount > 0)
-                {
-                    paymentsObject["reference_date"] = referenceDateObject;
-                    paymentsObjectpropCount++;
-                }
-
-                if (paymentsObjectpropCount > 0)
-                {
-                    giftsObject["payments"] = paymentsObject;
-                    giftsObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftsisAnonymous != null)
-                {
-                    giftsObject["is_anonymous"] = ExpressionConverter.ConvertO(__workflow_bodygiftsisAnonymous);
-                    giftsObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftssubtype != null)
-                {
-                    giftsObject["subtype"] = ExpressionConverter.ConvertO(__workflow_bodygiftssubtype);
-                    giftsObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftscomment != null)
-                {
-                    giftsObject["reference"] = ExpressionConverter.ConvertO(__workflow_bodygiftscomment);
-                    giftsObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftslookupId != null)
-                {
-                    giftsObject["lookup_id"] = ExpressionConverter.ConvertO(__workflow_bodygiftslookupId);
-                    giftsObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftsuseFundraiserCredits != null)
-                {
-                    giftsObject["default_fundraiser_credits"] = ExpressionConverter.ConvertO(__workflow_bodygiftsuseFundraiserCredits);
-                    giftsObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftsuseSoftCredits != null)
-                {
-                    giftsObject["default_soft_credits"] = ExpressionConverter.ConvertO(__workflow_bodygiftsuseSoftCredits);
-                    giftsObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftsconstituency != null)
-                {
-                    giftsObject["constituency"] = ExpressionConverter.ConvertO(__workflow_bodygiftsconstituency);
-                    giftsObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftspostStatus != null)
-                {
-                    giftsObject["post_status"] = ExpressionConverter.ConvertO(__workflow_bodygiftspostStatus);
-                    giftsObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftspostDate != null)
-                {
-                    giftsObject["post_date"] = ExpressionConverter.ConvertO(__workflow_bodygiftspostDate);
-                    giftsObjectpropCount++;
-                }
-
-                giftsObject["origin"] = "{ \"name\": \"Power Platform\" }";
-                giftsObjectpropCount++;
-                var receiptsObject = new JObject();
-                var receiptsObjectpropCount = 0;
-                receiptsObjectpropCount++;
-                receiptsObject["status"] = ExpressionConverter.ConvertO(__workflow_bodygiftsreceiptsreceiptStatus);
-                var amountObject2 = new JObject();
-                var amountObject2propCount = 0;
-                amountObject2propCount++;
-                amountObject2["value"] = ExpressionConverter.ConvertO(__workflow_bodygiftsreceiptsamountreceiptAmount);
-                if (amountObject2propCount > 0)
-                {
-                    receiptsObject["amount"] = amountObject2;
-                    receiptsObjectpropCount++;
-                }
-
-                if (__workflow_bodygiftsreceiptsreceiptDate != null)
-                {
-                    receiptsObject["date"] = ExpressionConverter.ConvertO(__workflow_bodygiftsreceiptsreceiptDate);
-                    receiptsObjectpropCount++;
-                }
-
-                if (receiptsObjectpropCount > 0)
-                {
-                    giftsObject["receipts"] = receiptsObject;
-                    giftsObjectpropCount++;
-                }
-
-                if (giftsObjectpropCount > 0)
-                {
-                    body["gifts"] = giftsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GiftApiBatchGiftAddResults>(callPayload);
             });
         }
@@ -7077,110 +2143,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<GiftBatchApiCreatedBatch, ApiConnectionActionConfiguration> CreateGiftBatch(Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodyexpectedNumber = null, Expression<Func<double>> bodyexpectedTotal = null, Expression<Func<string>> bodybatchNumber = null)
+        public IBodyWorkflowAction<GiftBatchApiCreatedBatch, ApiConnectionActionConfiguration> CreateGiftBatch(Expression<Func<CreateGiftBatchInput>> body)
         {
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyexpectedNumber = WorkflowExpression.Compile(bodyexpectedNumber, nameof(bodyexpectedNumber), required: false);
-            var __workflow_bodyexpectedTotal = WorkflowExpression.Compile(bodyexpectedTotal, nameof(bodyexpectedTotal), required: false);
-            var __workflow_bodybatchNumber = WorkflowExpression.Compile(bodybatchNumber, nameof(bodybatchNumber), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GiftBatchApiCreatedBatch, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/gift-batch/v1/giftbatches";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydescription != null)
-                {
-                    body["batch_description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpectedNumber != null)
-                {
-                    body["expected_number"] = ExpressionConverter.ConvertO(__workflow_bodyexpectedNumber);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpectedTotal != null)
-                {
-                    body["expected_batch_total"] = ExpressionConverter.ConvertO(__workflow_bodyexpectedTotal);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybatchNumber != null)
-                {
-                    body["batch_number"] = ExpressionConverter.ConvertO(__workflow_bodybatchNumber);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GiftBatchApiCreatedBatch>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AppendIDsToList(Expression<Func<bodylistTypeInput>> bodylistType, Expression<Func<string>> bodylist, Expression<Func<string[]>> bodyidS)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AppendIDsToList(Expression<Func<AppendIDsToListInput>> body = null)
         {
-            var __workflow_bodylistType = WorkflowExpression.Compile(bodylistType, nameof(bodylistType), required: true);
-            var __workflow_bodylist = WorkflowExpression.Compile(bodylist, nameof(bodylist), required: true);
-            var __workflow_bodyidS = WorkflowExpression.Compile(bodyidS, nameof(bodyidS), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/list/v1/appendidstolist";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["list_type"] = ExpressionConverter.ConvertO(__workflow_bodylistType);
-                bodypropCount++;
-                body["list_id"] = ExpressionConverter.ConvertO(__workflow_bodylist);
-                bodypropCount++;
-                body["ids"] = ExpressionConverter.ConvertO(__workflow_bodyidS);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<ListApiCreatedList, ApiConnectionActionConfiguration> CreateListFromIDs(Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription, Expression<Func<bodylistTypeInput>> bodylistType, Expression<Func<bodypermissionsInput>> bodypermissions, Expression<Func<string[]>> bodyidS)
+        public IBodyWorkflowAction<ListApiCreatedList, ApiConnectionActionConfiguration> CreateListFromIDs(Expression<Func<CreateListFromIDsInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
-            var __workflow_bodylistType = WorkflowExpression.Compile(bodylistType, nameof(bodylistType), required: true);
-            var __workflow_bodypermissions = WorkflowExpression.Compile(bodypermissions, nameof(bodypermissions), required: true);
-            var __workflow_bodyidS = WorkflowExpression.Compile(bodyidS, nameof(bodyidS), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ListApiCreatedList, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/list/v1/createlistfromids";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                bodypropCount++;
-                body["list_type"] = ExpressionConverter.ConvertO(__workflow_bodylistType);
-                bodypropCount++;
-                body["list_permissions"] = ExpressionConverter.ConvertO(__workflow_bodypermissions);
-                bodypropCount++;
-                body["ids"] = ExpressionConverter.ConvertO(__workflow_bodyidS);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ListApiCreatedList>(callPayload);
             });
         }
@@ -7219,137 +2219,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<OpportunityApiCreatedOpportunity, ApiConnectionActionConfiguration> CreateOpportunity(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodypurpose, Expression<Func<string>> bodyname, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodydeadline = null, Expression<Func<string>> bodyaskDate = null, Expression<Func<double>> bodyaskAmountvalue = null, Expression<Func<string>> bodyexpectedDate = null, Expression<Func<double>> bodyexpectedAmountvalue = null, Expression<Func<string>> bodyfundedDate = null, Expression<Func<double>> bodyfundedAmountvalue = null, Expression<Func<string>> bodycampaignId = null, Expression<Func<string>> bodyfundId = null, Expression<Func<OpportunityApiFundraiser[]>> bodyfundraiserS = null, Expression<Func<bool>> bodyinactive = null)
+        public IBodyWorkflowAction<OpportunityApiCreatedOpportunity, ApiConnectionActionConfiguration> CreateOpportunity(Expression<Func<CreateOpportunityInput>> body)
         {
-            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
-            var __workflow_bodypurpose = WorkflowExpression.Compile(bodypurpose, nameof(bodypurpose), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodydeadline = WorkflowExpression.Compile(bodydeadline, nameof(bodydeadline), required: false);
-            var __workflow_bodyaskDate = WorkflowExpression.Compile(bodyaskDate, nameof(bodyaskDate), required: false);
-            var __workflow_bodyaskAmountvalue = WorkflowExpression.Compile(bodyaskAmountvalue, nameof(bodyaskAmountvalue), required: false);
-            var __workflow_bodyexpectedDate = WorkflowExpression.Compile(bodyexpectedDate, nameof(bodyexpectedDate), required: false);
-            var __workflow_bodyexpectedAmountvalue = WorkflowExpression.Compile(bodyexpectedAmountvalue, nameof(bodyexpectedAmountvalue), required: false);
-            var __workflow_bodyfundedDate = WorkflowExpression.Compile(bodyfundedDate, nameof(bodyfundedDate), required: false);
-            var __workflow_bodyfundedAmountvalue = WorkflowExpression.Compile(bodyfundedAmountvalue, nameof(bodyfundedAmountvalue), required: false);
-            var __workflow_bodycampaignId = WorkflowExpression.Compile(bodycampaignId, nameof(bodycampaignId), required: false);
-            var __workflow_bodyfundId = WorkflowExpression.Compile(bodyfundId, nameof(bodyfundId), required: false);
-            var __workflow_bodyfundraiserS = WorkflowExpression.Compile(bodyfundraiserS, nameof(bodyfundraiserS), required: false);
-            var __workflow_bodyinactive = WorkflowExpression.Compile(bodyinactive, nameof(bodyinactive), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<OpportunityApiCreatedOpportunity, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/opportunity/v1/opportunities";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
-                bodypropCount++;
-                body["purpose"] = ExpressionConverter.ConvertO(__workflow_bodypurpose);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydeadline != null)
-                {
-                    body["deadline"] = ExpressionConverter.ConvertO(__workflow_bodydeadline);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaskDate != null)
-                {
-                    body["ask_date"] = ExpressionConverter.ConvertO(__workflow_bodyaskDate);
-                    bodypropCount++;
-                }
-
-                var askAmountObject = new JObject();
-                var askAmountObjectpropCount = 0;
-                if (__workflow_bodyaskAmountvalue != null)
-                {
-                    askAmountObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyaskAmountvalue);
-                    askAmountObjectpropCount++;
-                }
-
-                if (askAmountObjectpropCount > 0)
-                {
-                    body["ask_amount"] = askAmountObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpectedDate != null)
-                {
-                    body["expected_date"] = ExpressionConverter.ConvertO(__workflow_bodyexpectedDate);
-                    bodypropCount++;
-                }
-
-                var expectedAmountObject = new JObject();
-                var expectedAmountObjectpropCount = 0;
-                if (__workflow_bodyexpectedAmountvalue != null)
-                {
-                    expectedAmountObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyexpectedAmountvalue);
-                    expectedAmountObjectpropCount++;
-                }
-
-                if (expectedAmountObjectpropCount > 0)
-                {
-                    body["expected_amount"] = expectedAmountObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfundedDate != null)
-                {
-                    body["funded_date"] = ExpressionConverter.ConvertO(__workflow_bodyfundedDate);
-                    bodypropCount++;
-                }
-
-                var fundedAmountObject = new JObject();
-                var fundedAmountObjectpropCount = 0;
-                if (__workflow_bodyfundedAmountvalue != null)
-                {
-                    fundedAmountObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyfundedAmountvalue);
-                    fundedAmountObjectpropCount++;
-                }
-
-                if (fundedAmountObjectpropCount > 0)
-                {
-                    body["funded_amount"] = fundedAmountObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycampaignId != null)
-                {
-                    body["campaign_id"] = ExpressionConverter.ConvertO(__workflow_bodycampaignId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfundId != null)
-                {
-                    body["fund_id"] = ExpressionConverter.ConvertO(__workflow_bodyfundId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfundraiserS != null)
-                {
-                    body["fundraisers"] = ExpressionConverter.ConvertO(__workflow_bodyfundraiserS);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinactive != null)
-                {
-                    body["inactive"] = ExpressionConverter.ConvertO(__workflow_bodyinactive);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<OpportunityApiCreatedOpportunity>(callPayload);
             });
         }
@@ -7368,143 +2246,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditOpportunity(Expression<Func<string>> opportunityId, Expression<Func<string>> bodypurpose = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodydeadline = null, Expression<Func<string>> bodyaskDate = null, Expression<Func<double>> bodyaskAmountvalue = null, Expression<Func<string>> bodyexpectedDate = null, Expression<Func<double>> bodyexpectedAmountvalue = null, Expression<Func<string>> bodyfundedDate = null, Expression<Func<double>> bodyfundedAmountvalue = null, Expression<Func<string>> bodycampaignId = null, Expression<Func<string>> bodyfundId = null, Expression<Func<OpportunityApiFundraiser[]>> bodyfundraiserS = null, Expression<Func<bool>> bodyinactive = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditOpportunity(Expression<Func<string>> opportunityId, Expression<Func<EditOpportunityInput>> body)
         {
             var __workflow_opportunityId = WorkflowExpression.Compile(opportunityId, nameof(opportunityId), required: true);
-            var __workflow_bodypurpose = WorkflowExpression.Compile(bodypurpose, nameof(bodypurpose), required: false);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodydeadline = WorkflowExpression.Compile(bodydeadline, nameof(bodydeadline), required: false);
-            var __workflow_bodyaskDate = WorkflowExpression.Compile(bodyaskDate, nameof(bodyaskDate), required: false);
-            var __workflow_bodyaskAmountvalue = WorkflowExpression.Compile(bodyaskAmountvalue, nameof(bodyaskAmountvalue), required: false);
-            var __workflow_bodyexpectedDate = WorkflowExpression.Compile(bodyexpectedDate, nameof(bodyexpectedDate), required: false);
-            var __workflow_bodyexpectedAmountvalue = WorkflowExpression.Compile(bodyexpectedAmountvalue, nameof(bodyexpectedAmountvalue), required: false);
-            var __workflow_bodyfundedDate = WorkflowExpression.Compile(bodyfundedDate, nameof(bodyfundedDate), required: false);
-            var __workflow_bodyfundedAmountvalue = WorkflowExpression.Compile(bodyfundedAmountvalue, nameof(bodyfundedAmountvalue), required: false);
-            var __workflow_bodycampaignId = WorkflowExpression.Compile(bodycampaignId, nameof(bodycampaignId), required: false);
-            var __workflow_bodyfundId = WorkflowExpression.Compile(bodyfundId, nameof(bodyfundId), required: false);
-            var __workflow_bodyfundraiserS = WorkflowExpression.Compile(bodyfundraiserS, nameof(bodyfundraiserS), required: false);
-            var __workflow_bodyinactive = WorkflowExpression.Compile(bodyinactive, nameof(bodyinactive), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/opportunity/v1/opportunities/{0}", __workflow_opportunityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodypurpose != null)
-                {
-                    body["purpose"] = ExpressionConverter.ConvertO(__workflow_bodypurpose);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydeadline != null)
-                {
-                    body["deadline"] = ExpressionConverter.ConvertO(__workflow_bodydeadline);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaskDate != null)
-                {
-                    body["ask_date"] = ExpressionConverter.ConvertO(__workflow_bodyaskDate);
-                    bodypropCount++;
-                }
-
-                var askAmountObject = new JObject();
-                var askAmountObjectpropCount = 0;
-                if (__workflow_bodyaskAmountvalue != null)
-                {
-                    askAmountObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyaskAmountvalue);
-                    askAmountObjectpropCount++;
-                }
-
-                if (askAmountObjectpropCount > 0)
-                {
-                    body["ask_amount"] = askAmountObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpectedDate != null)
-                {
-                    body["expected_date"] = ExpressionConverter.ConvertO(__workflow_bodyexpectedDate);
-                    bodypropCount++;
-                }
-
-                var expectedAmountObject = new JObject();
-                var expectedAmountObjectpropCount = 0;
-                if (__workflow_bodyexpectedAmountvalue != null)
-                {
-                    expectedAmountObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyexpectedAmountvalue);
-                    expectedAmountObjectpropCount++;
-                }
-
-                if (expectedAmountObjectpropCount > 0)
-                {
-                    body["expected_amount"] = expectedAmountObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfundedDate != null)
-                {
-                    body["funded_date"] = ExpressionConverter.ConvertO(__workflow_bodyfundedDate);
-                    bodypropCount++;
-                }
-
-                var fundedAmountObject = new JObject();
-                var fundedAmountObjectpropCount = 0;
-                if (__workflow_bodyfundedAmountvalue != null)
-                {
-                    fundedAmountObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyfundedAmountvalue);
-                    fundedAmountObjectpropCount++;
-                }
-
-                if (fundedAmountObjectpropCount > 0)
-                {
-                    body["funded_amount"] = fundedAmountObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycampaignId != null)
-                {
-                    body["campaign_id"] = ExpressionConverter.ConvertO(__workflow_bodycampaignId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfundId != null)
-                {
-                    body["fund_id"] = ExpressionConverter.ConvertO(__workflow_bodyfundId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfundraiserS != null)
-                {
-                    body["fundraisers"] = ExpressionConverter.ConvertO(__workflow_bodyfundraiserS);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinactive != null)
-                {
-                    body["inactive"] = ExpressionConverter.ConvertO(__workflow_bodyinactive);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -7536,203 +2287,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<OpportunityApiCreatedOpportunityAttachment, ApiConnectionActionConfiguration> CreateOpportunityAttachment(Expression<Func<string>> bodyopportunityId, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodyuRL = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodyfileId = null, Expression<Func<string>> bodythumbnailId = null)
+        public IBodyWorkflowAction<OpportunityApiCreatedOpportunityAttachment, ApiConnectionActionConfiguration> CreateOpportunityAttachment(Expression<Func<CreateOpportunityAttachmentInput>> body)
         {
-            var __workflow_bodyopportunityId = WorkflowExpression.Compile(bodyopportunityId, nameof(bodyopportunityId), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: false);
-            var __workflow_bodyfileId = WorkflowExpression.Compile(bodyfileId, nameof(bodyfileId), required: false);
-            var __workflow_bodythumbnailId = WorkflowExpression.Compile(bodythumbnailId, nameof(bodythumbnailId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<OpportunityApiCreatedOpportunityAttachment, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/opportunity/v1/opportunities/attachments";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["parent_id"] = ExpressionConverter.ConvertO(__workflow_bodyopportunityId);
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuRL != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileName != null)
-                {
-                    body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfileId != null)
-                {
-                    body["file_id"] = ExpressionConverter.ConvertO(__workflow_bodyfileId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodythumbnailId != null)
-                {
-                    body["thumbnail_id"] = ExpressionConverter.ConvertO(__workflow_bodythumbnailId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<OpportunityApiCreatedOpportunityAttachment>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditOpportunityAttachment(Expression<Func<string>> attachmentId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodyuRL = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditOpportunityAttachment(Expression<Func<string>> attachmentId, Expression<Func<EditOpportunityAttachmentInput>> body)
         {
             var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/opportunity/v1/opportunities/attachments/{0}", __workflow_attachmentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuRL != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<OpportunityApiCreatedOpportunityCustomField, ApiConnectionActionConfiguration> CreateOpportunityCustomField(Expression<Func<string>> bodyopportunityId, Expression<Func<string>> bodycategory, Expression<Func<object>> bodyvalue = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodycomment = null)
+        public IBodyWorkflowAction<OpportunityApiCreatedOpportunityCustomField, ApiConnectionActionConfiguration> CreateOpportunityCustomField(Expression<Func<CreateOpportunityCustomFieldInput>> body)
         {
-            var __workflow_bodyopportunityId = WorkflowExpression.Compile(bodyopportunityId, nameof(bodyopportunityId), required: true);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: true);
-            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<OpportunityApiCreatedOpportunityCustomField, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/opportunity/v1/opportunities/customfields";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["parent_id"] = ExpressionConverter.ConvertO(__workflow_bodyopportunityId);
-                bodypropCount++;
-                body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                if (__workflow_bodyvalue != null)
-                {
-                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycomment != null)
-                {
-                    body["comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<OpportunityApiCreatedOpportunityCustomField>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditOpportunityCustomField(Expression<Func<string>> customFieldId, Expression<Func<string>> bodycategory = null, Expression<Func<object>> bodyvalue = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodycomment = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditOpportunityCustomField(Expression<Func<string>> customFieldId, Expression<Func<EditOpportunityCustomFieldInput>> body)
         {
             var __workflow_customFieldId = WorkflowExpression.Compile(customFieldId, nameof(customFieldId), required: true);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/opportunity/v1/opportunities/customfields/{0}", __workflow_customFieldId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvalue != null)
-                {
-                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycomment != null)
-                {
-                    body["comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -7748,8 +2355,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Id { get; set; }
     }
 
+    public class CreateConstituentConsentInput
+    {
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("channel", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Channel { get; set; }
+
+        [JsonProperty("category")]
+        public string Category { get; set; }
+
+        [JsonProperty("source")]
+        public string Source { get; set; }
+
+        [JsonProperty("constituent_consent_response", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateConstituentConsentInputResponseType Response { get; set; }
+
+        [JsonProperty("consent_date", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Date { get; set; }
+
+        [JsonProperty("consent_statement")]
+        public string ConsentStatement { get; set; }
+
+        [JsonProperty("privacy_notice")]
+        public string PrivacyNotice { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyresponseInput
+    public enum CreateConstituentConsentInputResponseType
     {
         OptIn,
         OptOut,
@@ -7834,6 +2468,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class CreateConstituentSolicitCodeInput
+    {
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("solicit_code", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SolicitCode { get; set; }
+
+        [JsonProperty("start_date")]
+        public string StartDate { get; set; }
+
+        [JsonProperty("end_date")]
+        public string EndDate { get; set; }
+    }
+
+    public class EditConstituentSolicitCodeInput
+    {
+        [JsonProperty("solicit_code")]
+        public string SolicitCode { get; set; }
+
+        [JsonProperty("start_date")]
+        public string StartDate { get; set; }
+
+        [JsonProperty("end_date")]
+        public string EndDate { get; set; }
     }
 
     public class ConstituentApiApiCollectionOfActionRead
@@ -7950,8 +2611,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Id { get; set; }
     }
 
+    public class CreateActionInput
+    {
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("category", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateActionInputCategoryType Category { get; set; }
+
+        [JsonProperty("completed")]
+        public bool? Completed { get; set; }
+
+        [JsonProperty("completed_date")]
+        public string CompletedOn { get; set; }
+
+        [JsonProperty("date", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Date { get; set; }
+
+        [JsonProperty("description")]
+        public string Note { get; set; }
+
+        [JsonProperty("direction")]
+        public CreateActionInputDirectionType? Direction { get; set; }
+
+        [JsonProperty("fundraisers")]
+        public string[] FundraiserS { get; set; }
+
+        [JsonProperty("location")]
+        public string Location { get; set; }
+
+        [JsonProperty("opportunity_id")]
+        public string OpportunityId { get; set; }
+
+        [JsonProperty("outcome")]
+        public CreateActionInputOutcomeType? Outcome { get; set; }
+
+        [JsonProperty("priority")]
+        public CreateActionInputPriorityType? Priority { get; set; }
+
+        [JsonProperty("start_time")]
+        public string StartTime { get; set; }
+
+        [JsonProperty("end_time")]
+        public string EndTime { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("summary")]
+        public string Summary { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodycategoryInput
+    public enum CreateActionInputCategoryType
     {
         [EnumMember(Value = "Phone Call")]
         PhoneCall,
@@ -7963,21 +2678,106 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodydirectionInput
+    public enum CreateActionInputDirectionType
     {
         Inbound,
         Outbound
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyoutcomeInput
+    public enum CreateActionInputOutcomeType
     {
         Successful,
         Unsuccessful
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodypriorityInput
+    public enum CreateActionInputPriorityType
+    {
+        Normal,
+        High,
+        Low
+    }
+
+    public class EditActionInput
+    {
+        [JsonProperty("category")]
+        public EditActionInputCategoryType? Category { get; set; }
+
+        [JsonProperty("completed")]
+        public bool? Completed { get; set; }
+
+        [JsonProperty("completed_date")]
+        public string CompletedOn { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("description")]
+        public string Note { get; set; }
+
+        [JsonProperty("direction")]
+        public EditActionInputDirectionType? Direction { get; set; }
+
+        [JsonProperty("fundraisers")]
+        public string[] FundraiserS { get; set; }
+
+        [JsonProperty("location")]
+        public string Location { get; set; }
+
+        [JsonProperty("opportunity_id")]
+        public string OpportunityId { get; set; }
+
+        [JsonProperty("outcome")]
+        public EditActionInputOutcomeType? Outcome { get; set; }
+
+        [JsonProperty("priority")]
+        public EditActionInputPriorityType? Priority { get; set; }
+
+        [JsonProperty("start_time")]
+        public string StartTime { get; set; }
+
+        [JsonProperty("end_time")]
+        public string EndTime { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("summary")]
+        public string Summary { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum EditActionInputCategoryType
+    {
+        [EnumMember(Value = "Phone Call")]
+        PhoneCall,
+        Meeting,
+        Mailing,
+        Email,
+        [EnumMember(Value = "Task/Other")]
+        TaskOther
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum EditActionInputDirectionType
+    {
+        Inbound,
+        Outbound
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum EditActionInputOutcomeType
+    {
+        Successful,
+        Unsuccessful
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum EditActionInputPriorityType
     {
         Normal,
         High,
@@ -8097,11 +2897,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Id { get; set; }
     }
 
+    public class CreateActionAttachmentInput
+    {
+        [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ActionId { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateActionAttachmentInputTypeType Type { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("url")]
+        public string URL { get; set; }
+
+        [JsonProperty("file_name")]
+        public string FileName { get; set; }
+
+        [JsonProperty("file_id")]
+        public string FileId { get; set; }
+
+        [JsonProperty("thumbnail_id")]
+        public string ThumbnailId { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytypeInput
+    public enum CreateActionAttachmentInputTypeType
     {
         Link,
         Physical
+    }
+
+    public class EditActionAttachmentInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("url")]
+        public string URL { get; set; }
     }
 
     public class ConstituentApiCreatedActionCustomField
@@ -8110,10 +2949,214 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Id { get; set; }
     }
 
+    public class CreateActionCustomFieldInput
+    {
+        [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ActionId { get; set; }
+
+        [JsonProperty("category", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Category { get; set; }
+
+        [JsonProperty("value")]
+        public JToken Value { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
+    }
+
+    public class EditActionCustomFieldInput
+    {
+        [JsonProperty("category")]
+        public string Category { get; set; }
+
+        [JsonProperty("value")]
+        public JToken Value { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
+    }
+
     public class ConstituentApiCreatedConstituentAddress
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class CreateConstituentAddressInput
+    {
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AddressType { get; set; }
+
+        [JsonProperty("country")]
+        public string Country { get; set; }
+
+        [JsonProperty("address_lines")]
+        public string AddressLines { get; set; }
+
+        [JsonProperty("city")]
+        public string City { get; set; }
+
+        [JsonProperty("state")]
+        public string State { get; set; }
+
+        [JsonProperty("postal_code")]
+        public string PostalCode { get; set; }
+
+        [JsonProperty("suburb")]
+        public string Suburb { get; set; }
+
+        [JsonProperty("county")]
+        public string County { get; set; }
+
+        [JsonProperty("information_source")]
+        public string InformationSource { get; set; }
+
+        [JsonProperty("region")]
+        public string Region { get; set; }
+
+        [JsonProperty("cart")]
+        public string CART { get; set; }
+
+        [JsonProperty("lot")]
+        public string LOT { get; set; }
+
+        [JsonProperty("dpc")]
+        public string DPC { get; set; }
+
+        [JsonProperty("start")]
+        public string ValidFrom { get; set; }
+
+        [JsonProperty("end")]
+        public string ValidTo { get; set; }
+
+        [JsonProperty("preferred")]
+        public bool? Primary { get; set; }
+
+        [JsonProperty("do_not_mail")]
+        public bool? DoNotMail { get; set; }
+
+        [JsonProperty("seasonal_start")]
+        public CreateConstituentAddressInputSeasonalStartType SeasonalStart { get; set; }
+
+        [JsonProperty("seasonal_end")]
+        public CreateConstituentAddressInputSeasonalEndType SeasonalEnd { get; set; }
+    }
+
+    public class CreateConstituentAddressInputSeasonalStartType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class CreateConstituentAddressInputSeasonalEndType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class EditConstituentAddressInput
+    {
+        [JsonProperty("type")]
+        public string AddressType { get; set; }
+
+        [JsonProperty("country")]
+        public string Country { get; set; }
+
+        [JsonProperty("address_lines")]
+        public string AddressLines { get; set; }
+
+        [JsonProperty("city")]
+        public string City { get; set; }
+
+        [JsonProperty("state")]
+        public string State { get; set; }
+
+        [JsonProperty("postal_code")]
+        public string PostalCode { get; set; }
+
+        [JsonProperty("suburb")]
+        public string Suburb { get; set; }
+
+        [JsonProperty("county")]
+        public string County { get; set; }
+
+        [JsonProperty("information_source")]
+        public string InformationSource { get; set; }
+
+        [JsonProperty("region")]
+        public string Region { get; set; }
+
+        [JsonProperty("cart")]
+        public string CART { get; set; }
+
+        [JsonProperty("lot")]
+        public string LOT { get; set; }
+
+        [JsonProperty("dpc")]
+        public string DPC { get; set; }
+
+        [JsonProperty("start")]
+        public string ValidFrom { get; set; }
+
+        [JsonProperty("end")]
+        public string ValidTo { get; set; }
+
+        [JsonProperty("preferred")]
+        public bool? Primary { get; set; }
+
+        [JsonProperty("do_not_mail")]
+        public bool? DoNotMail { get; set; }
+
+        [JsonProperty("seasonal_start")]
+        public EditConstituentAddressInputSeasonalStartType SeasonalStart { get; set; }
+
+        [JsonProperty("seasonal_end")]
+        public EditConstituentAddressInputSeasonalEndType SeasonalEnd { get; set; }
+    }
+
+    public class EditConstituentAddressInputSeasonalStartType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class EditConstituentAddressInputSeasonalEndType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
     }
 
     public class ConstituentApiCreatedConstituentAlias
@@ -8122,10 +3165,109 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Id { get; set; }
     }
 
+    public class CreateConstituentAliasInput
+    {
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Alias { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public class EditConstituentAliasInput
+    {
+        [JsonProperty("name")]
+        public string Alias { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
     public class ConstituentApiCreatedConstituentCode
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class CreateConstituentCodeInput
+    {
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConstituentCode { get; set; }
+
+        [JsonProperty("start")]
+        public CreateConstituentCodeInputStartType Start { get; set; }
+
+        [JsonProperty("end")]
+        public CreateConstituentCodeInputEndType End { get; set; }
+
+        [JsonProperty("sequence")]
+        public int? Sequence { get; set; }
+    }
+
+    public class CreateConstituentCodeInputStartType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class CreateConstituentCodeInputEndType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class EditConstituentCodeInput
+    {
+        [JsonProperty("start")]
+        public EditConstituentCodeInputStartType Start { get; set; }
+
+        [JsonProperty("end")]
+        public EditConstituentCodeInputEndType End { get; set; }
+
+        [JsonProperty("sequence")]
+        public int? Sequence { get; set; }
+    }
+
+    public class EditConstituentCodeInputStartType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class EditConstituentCodeInputEndType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
     }
 
     public class ConstituentApiApiCollectionOfConstituentRead
@@ -8492,6 +3634,150 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
 
         [JsonProperty("is_head_of_household")]
         public bool IsHeadOfHousehold { get; set; }
+    }
+
+    public class EditConstituentInput
+    {
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("first")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("last")]
+        public string LastName { get; set; }
+
+        [JsonProperty("name")]
+        public string OrganizationName { get; set; }
+
+        [JsonProperty("suffix")]
+        public string Suffix { get; set; }
+
+        [JsonProperty("preferred_name")]
+        public string PreferredName { get; set; }
+
+        [JsonProperty("lookup_id")]
+        public string LookupId { get; set; }
+
+        [JsonProperty("gender")]
+        public string Gender { get; set; }
+
+        [JsonProperty("middle")]
+        public string MiddleName { get; set; }
+
+        [JsonProperty("former_name")]
+        public string FormerName { get; set; }
+
+        [JsonProperty("title_2")]
+        public string Title2 { get; set; }
+
+        [JsonProperty("suffix_2")]
+        public string Suffix2 { get; set; }
+
+        [JsonProperty("marital_status")]
+        public string MaritalStatus { get; set; }
+
+        [JsonProperty("gives_anonymously")]
+        public bool? GivesAnonymously { get; set; }
+
+        [JsonProperty("inactive")]
+        public bool? Inactive { get; set; }
+
+        [JsonProperty("birthdate")]
+        public EditConstituentInputBirthdateType Birthdate { get; set; }
+
+        [JsonProperty("birthplace")]
+        public string Birthplace { get; set; }
+
+        [JsonProperty("ethnicity")]
+        public string Ethnicity { get; set; }
+
+        [JsonProperty("income")]
+        public string Income { get; set; }
+
+        [JsonProperty("religion")]
+        public string Religion { get; set; }
+
+        [JsonProperty("industry")]
+        public string Industry { get; set; }
+
+        [JsonProperty("num_employees")]
+        public int? NumberOfEmployees { get; set; }
+
+        [JsonProperty("matches_gifts")]
+        public bool? MatchesGifts { get; set; }
+
+        [JsonProperty("matching_gift_factor")]
+        public double? MatchingGiftFactor { get; set; }
+
+        [JsonProperty("matching_gift_per_gift_min")]
+        public EditConstituentInputMatchingGiftPerGiftMinType MatchingGiftPerGiftMin { get; set; }
+
+        [JsonProperty("matching_gift_per_gift_max")]
+        public EditConstituentInputMatchingGiftPerGiftMaxType MatchingGiftPerGiftMax { get; set; }
+
+        [JsonProperty("matching_gift_total_min")]
+        public EditConstituentInputMatchingGiftTotalMinType MatchingGiftTotalMin { get; set; }
+
+        [JsonProperty("matching_gift_total_max")]
+        public EditConstituentInputMatchingGiftTotalMaxType MatchingGiftTotalMax { get; set; }
+
+        [JsonProperty("matching_gift_notes")]
+        public string MatchingGiftNotes { get; set; }
+
+        [JsonProperty("deceased")]
+        public bool? Deceased { get; set; }
+
+        [JsonProperty("deceased_date")]
+        public EditConstituentInputDeceasedDateType DeceasedDate { get; set; }
+    }
+
+    public class EditConstituentInputBirthdateType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class EditConstituentInputMatchingGiftPerGiftMinType
+    {
+        [JsonProperty("value")]
+        public double? MinMatchPerGift { get; set; }
+    }
+
+    public class EditConstituentInputMatchingGiftPerGiftMaxType
+    {
+        [JsonProperty("value")]
+        public double? MaxMatchPerGift { get; set; }
+    }
+
+    public class EditConstituentInputMatchingGiftTotalMinType
+    {
+        [JsonProperty("value")]
+        public double? MinMatchPerConstit { get; set; }
+    }
+
+    public class EditConstituentInputMatchingGiftTotalMaxType
+    {
+        [JsonProperty("value")]
+        public double? MaxMatchPerConstit { get; set; }
+    }
+
+    public class EditConstituentInputDeceasedDateType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
     }
 
     public class ConstituentApiApiCollectionOfAddressRead
@@ -9255,6 +4541,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string ThumbnailURL { get; set; }
     }
 
+    public class EditConstituentProfilePictureInput
+    {
+        [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileName { get; set; }
+
+        [JsonProperty("document_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DocumentId { get; set; }
+
+        [JsonProperty("thumbnail_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ThumbnailId { get; set; }
+    }
+
     public class ConstituentApiProspectStatusRead
     {
         [JsonProperty("status")]
@@ -9420,10 +4718,89 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Id { get; set; }
     }
 
+    public class CreateConstituentAttachmentInput
+    {
+        [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateConstituentAttachmentInputTypeType Type { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("url")]
+        public string URL { get; set; }
+
+        [JsonProperty("file_name")]
+        public string FileName { get; set; }
+
+        [JsonProperty("file_id")]
+        public string FileId { get; set; }
+
+        [JsonProperty("thumbnail_id")]
+        public string ThumbnailId { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateConstituentAttachmentInputTypeType
+    {
+        Link,
+        Physical
+    }
+
+    public class EditConstituentAttachmentInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("url")]
+        public string URL { get; set; }
+    }
+
     public class ConstituentApiCreatedConstituentCustomField
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class CreateConstituentCustomFieldInput
+    {
+        [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("category", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Category { get; set; }
+
+        [JsonProperty("value")]
+        public JToken Value { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
+    }
+
+    public class EditConstituentCustomFieldInput
+    {
+        [JsonProperty("category")]
+        public string Category { get; set; }
+
+        [JsonProperty("value")]
+        public JToken Value { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
     }
 
     public class ConstituentApiApiCollectionOfSearchResultRead
@@ -9517,10 +4894,220 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public ConstituentApiHeader[] Headers { get; set; }
     }
 
+    public class CreateDocumentInput
+    {
+        [JsonProperty("file_name")]
+        public string FileName { get; set; }
+
+        [JsonProperty("upload_thumbnail")]
+        public bool? IncludeThumbnail { get; set; }
+    }
+
     public class ConstituentApiCreatedConstituentEducation
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class CreateConstituentEducationInput
+    {
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("school", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string School { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("class_of")]
+        public string ClassOf { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("date_entered")]
+        public CreateConstituentEducationInputDateEnteredType DateEntered { get; set; }
+
+        [JsonProperty("date_left")]
+        public CreateConstituentEducationInputDateLeftType DateLeft { get; set; }
+
+        [JsonProperty("date_graduated")]
+        public CreateConstituentEducationInputDateGraduatedType DateGraduated { get; set; }
+
+        [JsonProperty("degree")]
+        public string Degree { get; set; }
+
+        [JsonProperty("gpa")]
+        public double? GPA { get; set; }
+
+        [JsonProperty("subject_of_study")]
+        public string SubjectOfStudy { get; set; }
+
+        [JsonProperty("primary")]
+        public bool? Primary { get; set; }
+
+        [JsonProperty("majors")]
+        public string[] Majors { get; set; }
+
+        [JsonProperty("minors")]
+        public string[] Minors { get; set; }
+
+        [JsonProperty("campus")]
+        public string Campus { get; set; }
+
+        [JsonProperty("social_organization")]
+        public string SocialOrganization { get; set; }
+
+        [JsonProperty("known_name")]
+        public string KnownName { get; set; }
+
+        [JsonProperty("class_of_degree")]
+        public string ClassOfDegree { get; set; }
+
+        [JsonProperty("department")]
+        public string Department { get; set; }
+
+        [JsonProperty("faculty")]
+        public string Faculty { get; set; }
+
+        [JsonProperty("registration_number")]
+        public string RegistrationNumber { get; set; }
+    }
+
+    public class CreateConstituentEducationInputDateEnteredType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class CreateConstituentEducationInputDateLeftType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class CreateConstituentEducationInputDateGraduatedType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class EditConstituentEducationInput
+    {
+        [JsonProperty("school")]
+        public string School { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("class_of")]
+        public string ClassOf { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("date_entered")]
+        public EditConstituentEducationInputDateEnteredType DateEntered { get; set; }
+
+        [JsonProperty("date_left")]
+        public EditConstituentEducationInputDateLeftType DateLeft { get; set; }
+
+        [JsonProperty("date_graduated")]
+        public EditConstituentEducationInputDateGraduatedType DateGraduated { get; set; }
+
+        [JsonProperty("degree")]
+        public string Degree { get; set; }
+
+        [JsonProperty("gpa")]
+        public double? GPA { get; set; }
+
+        [JsonProperty("subject_of_study")]
+        public string SubjectOfStudy { get; set; }
+
+        [JsonProperty("primary")]
+        public bool? Primary { get; set; }
+
+        [JsonProperty("majors")]
+        public string[] Majors { get; set; }
+
+        [JsonProperty("minors")]
+        public string[] Minors { get; set; }
+
+        [JsonProperty("campus")]
+        public string Campus { get; set; }
+
+        [JsonProperty("social_organization")]
+        public string SocialOrganization { get; set; }
+
+        [JsonProperty("known_name")]
+        public string KnownName { get; set; }
+
+        [JsonProperty("class_of_degree")]
+        public string ClassOfDegree { get; set; }
+
+        [JsonProperty("department")]
+        public string Department { get; set; }
+
+        [JsonProperty("faculty")]
+        public string Faculty { get; set; }
+
+        [JsonProperty("registration_number")]
+        public string RegistrationNumber { get; set; }
+    }
+
+    public class EditConstituentEducationInputDateEnteredType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class EditConstituentEducationInputDateLeftType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class EditConstituentEducationInputDateGraduatedType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
     }
 
     public class ConstituentApiCreatedConstituentEmailAddress
@@ -9529,10 +5116,106 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Id { get; set; }
     }
 
+    public class CreateConstituentEmailAddressInput
+    {
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EmailType { get; set; }
+
+        [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EmailAddress { get; set; }
+
+        [JsonProperty("primary")]
+        public bool? Primary { get; set; }
+
+        [JsonProperty("do_not_email")]
+        public bool? DoNotEmail { get; set; }
+
+        [JsonProperty("inactive")]
+        public bool? Inactive { get; set; }
+    }
+
+    public class EditConstituentEmailAddressInput
+    {
+        [JsonProperty("type")]
+        public string EmailType { get; set; }
+
+        [JsonProperty("address")]
+        public string EmailAddress { get; set; }
+
+        [JsonProperty("primary")]
+        public bool? Primary { get; set; }
+
+        [JsonProperty("do_not_email")]
+        public bool? DoNotEmail { get; set; }
+
+        [JsonProperty("inactive")]
+        public bool? Inactive { get; set; }
+    }
+
     public class ConstituentApiCreatedConstituentNote
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class CreateConstituentNoteInput
+    {
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Type { get; set; }
+
+        [JsonProperty("date", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateConstituentNoteInputDateType Date { get; set; }
+
+        [JsonProperty("summary")]
+        public string Summary { get; set; }
+
+        [JsonProperty("text")]
+        public string Note { get; set; }
+    }
+
+    public class CreateConstituentNoteInputDateType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class EditConstituentNoteInput
+    {
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("date")]
+        public EditConstituentNoteInputDateType Date { get; set; }
+
+        [JsonProperty("summary")]
+        public string Summary { get; set; }
+
+        [JsonProperty("text")]
+        public string Note { get; set; }
+    }
+
+    public class EditConstituentNoteInputDateType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
     }
 
     public class ConstituentApiCreatedConstituentOnlinePresence
@@ -9541,10 +5224,82 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Id { get; set; }
     }
 
+    public class CreateConstituentOnlinePresenceInput
+    {
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Type { get; set; }
+
+        [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Link { get; set; }
+
+        [JsonProperty("primary")]
+        public bool? Primary { get; set; }
+
+        [JsonProperty("inactive")]
+        public bool? Inactive { get; set; }
+    }
+
+    public class EditConstituentOnlinePresenceInput
+    {
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("address")]
+        public string Link { get; set; }
+
+        [JsonProperty("primary")]
+        public bool? Primary { get; set; }
+
+        [JsonProperty("inactive")]
+        public bool? Inactive { get; set; }
+    }
+
     public class ConstituentApiCreatedConstituentPhone
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class CreateConstituentPhoneInput
+    {
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Type { get; set; }
+
+        [JsonProperty("number", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Number { get; set; }
+
+        [JsonProperty("primary")]
+        public bool? Primary { get; set; }
+
+        [JsonProperty("do_not_call")]
+        public bool? DoNotCall { get; set; }
+
+        [JsonProperty("inactive")]
+        public bool? Inactive { get; set; }
+    }
+
+    public class EditConstituentPhoneInput
+    {
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("number")]
+        public string Number { get; set; }
+
+        [JsonProperty("primary")]
+        public bool? Primary { get; set; }
+
+        [JsonProperty("do_not_call")]
+        public bool? DoNotCall { get; set; }
+
+        [JsonProperty("inactive")]
+        public bool? Inactive { get; set; }
     }
 
     public class ConstituentApiCreatedConstituentRating
@@ -9553,10 +5308,283 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Id { get; set; }
     }
 
+    public class CreateConstituentRatingInput
+    {
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("source", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Source { get; set; }
+
+        [JsonProperty("category", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Category { get; set; }
+
+        [JsonProperty("date", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Date { get; set; }
+
+        [JsonProperty("value")]
+        public JToken Value { get; set; }
+
+        [JsonProperty("comment")]
+        public string Comments { get; set; }
+    }
+
+    public class EditConstituentRelationshipInput
+    {
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("reciprocal_type")]
+        public string ReciprocalType { get; set; }
+
+        [JsonProperty("start")]
+        public EditConstituentRelationshipInputStartType Start { get; set; }
+
+        [JsonProperty("end")]
+        public EditConstituentRelationshipInputEndType End { get; set; }
+
+        [JsonProperty("is_spouse")]
+        public bool? IsSpouse { get; set; }
+
+        [JsonProperty("is_constituent_head_of_household")]
+        public bool? IsConstituentHeadOfHousehold { get; set; }
+
+        [JsonProperty("is_spouse_head_of_household")]
+        public bool? IsSpouseHeadOfHousehold { get; set; }
+
+        [JsonProperty("comment")]
+        public string Notes { get; set; }
+
+        [JsonProperty("is_organization_contact")]
+        public bool? IsContact { get; set; }
+
+        [JsonProperty("is_primary_business")]
+        public bool? IsPrimaryBusiness { get; set; }
+
+        [JsonProperty("organization_contact_type")]
+        public string ContactType { get; set; }
+
+        [JsonProperty("position")]
+        public string Position { get; set; }
+    }
+
+    public class EditConstituentRelationshipInputStartType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class EditConstituentRelationshipInputEndType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
     public class ConstituentApiCreatedIndividualConstituent
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class CreateIndividualConstituentInput
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal CreateIndividualConstituentInputTypeType Type { get; set; } = CreateIndividualConstituentInputTypeType.Individual;
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("first")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("last", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LastName { get; set; }
+
+        [JsonProperty("suffix")]
+        public string Suffix { get; set; }
+
+        [JsonProperty("lookup_id")]
+        public string LookupId { get; set; }
+
+        [JsonProperty("address")]
+        public CreateIndividualConstituentInputAddressType Address { get; set; }
+
+        [JsonProperty("phone")]
+        public CreateIndividualConstituentInputPhoneType Phone { get; set; }
+
+        [JsonProperty("email")]
+        public CreateIndividualConstituentInputEmailType Email { get; set; }
+
+        [JsonProperty("online_presence")]
+        public CreateIndividualConstituentInputOnlinePresenceType OnlinePresence { get; set; }
+
+        [JsonProperty("preferred_name")]
+        public string PreferredName { get; set; }
+
+        [JsonProperty("middle")]
+        public string MiddleName { get; set; }
+
+        [JsonProperty("former_name")]
+        public string FormerName { get; set; }
+
+        [JsonProperty("title_2")]
+        public string Title2 { get; set; }
+
+        [JsonProperty("suffix_2")]
+        public string Suffix2 { get; set; }
+
+        [JsonProperty("gender")]
+        public string Gender { get; set; }
+
+        [JsonProperty("marital_status")]
+        public string MaritalStatus { get; set; }
+
+        [JsonProperty("gives_anonymously")]
+        public bool? GivesAnonymously { get; set; }
+
+        [JsonProperty("birthdate")]
+        public CreateIndividualConstituentInputBirthdateType Birthdate { get; set; }
+
+        [JsonProperty("birthplace")]
+        public string Birthplace { get; set; }
+
+        [JsonProperty("ethnicity")]
+        public string Ethnicity { get; set; }
+
+        [JsonProperty("income")]
+        public string Income { get; set; }
+
+        [JsonProperty("religion")]
+        public string Religion { get; set; }
+
+        [JsonProperty("primary_addressee")]
+        public CreateIndividualConstituentInputPrimaryAddresseeType PrimaryAddressee { get; set; }
+
+        [JsonProperty("primary_salutation")]
+        public CreateIndividualConstituentInputPrimarySalutationType PrimarySalutation { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateIndividualConstituentInputTypeType
+    {
+        Individual
+    }
+
+    public class CreateIndividualConstituentInputAddressType
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Type { get; set; }
+
+        [JsonProperty("country")]
+        public string Country { get; set; }
+
+        [JsonProperty("address_lines")]
+        public string Lines { get; set; }
+
+        [JsonProperty("city")]
+        public string City { get; set; }
+
+        [JsonProperty("state")]
+        public string State { get; set; }
+
+        [JsonProperty("postal_code")]
+        public string PostalCode { get; set; }
+
+        [JsonProperty("suburb")]
+        public string Suburb { get; set; }
+
+        [JsonProperty("county")]
+        public string County { get; set; }
+
+        [JsonProperty("start")]
+        public string Start { get; set; }
+
+        [JsonProperty("end")]
+        public string End { get; set; }
+    }
+
+    public class CreateIndividualConstituentInputPhoneType
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Type { get; set; }
+
+        [JsonProperty("number", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Number { get; set; }
+
+        [JsonProperty("primary")]
+        public bool? IsPrimary { get; set; }
+    }
+
+    public class CreateIndividualConstituentInputEmailType
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Type { get; set; }
+
+        [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Address { get; set; }
+
+        [JsonProperty("primary")]
+        public bool? IsPrimary { get; set; }
+    }
+
+    public class CreateIndividualConstituentInputOnlinePresenceType
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Type { get; set; }
+
+        [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Address { get; set; }
+
+        [JsonProperty("primary")]
+        public bool? IsPrimary { get; set; }
+    }
+
+    public class CreateIndividualConstituentInputBirthdateType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class CreateIndividualConstituentInputPrimaryAddresseeType
+    {
+        [JsonProperty("custom_format")]
+        public bool? CustomAddressee { get; set; }
+
+        [JsonProperty("configuration_id")]
+        public string AddresseeFormat { get; set; }
+
+        [JsonProperty("formatted_name")]
+        public string AddresseeCustomName { get; set; }
+    }
+
+    public class CreateIndividualConstituentInputPrimarySalutationType
+    {
+        [JsonProperty("custom_format")]
+        public bool? CustomSalutation { get; set; }
+
+        [JsonProperty("configuration_id")]
+        public string SalutationFormat { get; set; }
+
+        [JsonProperty("formatted_name")]
+        public string SalutationCustomName { get; set; }
     }
 
     public class ConstituentApiCreatedIndividualRelationship
@@ -9565,16 +5593,286 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Id { get; set; }
     }
 
+    public class CreateIndividualRelationshipInput
+    {
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("relation_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RelationId { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("reciprocal_type")]
+        public string ReciprocalType { get; set; }
+
+        [JsonProperty("start")]
+        public CreateIndividualRelationshipInputStartType Start { get; set; }
+
+        [JsonProperty("end")]
+        public CreateIndividualRelationshipInputEndType End { get; set; }
+
+        [JsonProperty("is_spouse")]
+        public bool? IsSpouse { get; set; }
+
+        [JsonProperty("is_constituent_head_of_household")]
+        public bool? IsConstituentHeadOfHousehold { get; set; }
+
+        [JsonProperty("is_spouse_head_of_household")]
+        public bool? IsSpouseHeadOfHousehold { get; set; }
+
+        [JsonProperty("comment")]
+        public string Notes { get; set; }
+    }
+
+    public class CreateIndividualRelationshipInputStartType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class CreateIndividualRelationshipInputEndType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
     public class ConstituentApiCreatedOrganizationConstituent
     {
         [JsonProperty("id")]
         public string Id { get; set; }
     }
 
+    public class CreateOrganizationConstituentInput
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal CreateOrganizationConstituentInputTypeType Type { get; set; } = CreateOrganizationConstituentInputTypeType.Organization;
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("lookup_id")]
+        public string LookupId { get; set; }
+
+        [JsonProperty("address")]
+        public CreateOrganizationConstituentInputAddressType Address { get; set; }
+
+        [JsonProperty("phone")]
+        public CreateOrganizationConstituentInputPhoneType Phone { get; set; }
+
+        [JsonProperty("email")]
+        public CreateOrganizationConstituentInputEmailType Email { get; set; }
+
+        [JsonProperty("online_presence")]
+        public CreateOrganizationConstituentInputOnlinePresenceType OnlinePresence { get; set; }
+
+        [JsonProperty("gives_anonymously")]
+        public bool? GivesAnonymously { get; set; }
+
+        [JsonProperty("industry")]
+        public string Industry { get; set; }
+
+        [JsonProperty("num_employees")]
+        public int? NumberOfEmployees { get; set; }
+
+        [JsonProperty("matches_gifts")]
+        public bool? MatchesGifts { get; set; }
+
+        [JsonProperty("matching_gift_factor")]
+        public double? MatchingGiftFactor { get; set; }
+
+        [JsonProperty("matching_gift_per_gift_min")]
+        public CreateOrganizationConstituentInputMatchingGiftPerGiftMinType MatchingGiftPerGiftMin { get; set; }
+
+        [JsonProperty("matching_gift_per_gift_max")]
+        public CreateOrganizationConstituentInputMatchingGiftPerGiftMaxType MatchingGiftPerGiftMax { get; set; }
+
+        [JsonProperty("matching_gift_total_min")]
+        public CreateOrganizationConstituentInputMatchingGiftTotalMinType MatchingGiftTotalMin { get; set; }
+
+        [JsonProperty("matching_gift_total_max")]
+        public CreateOrganizationConstituentInputMatchingGiftTotalMaxType MatchingGiftTotalMax { get; set; }
+
+        [JsonProperty("matching_gift_notes")]
+        public string MatchingGiftNotes { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateOrganizationConstituentInputTypeType
+    {
+        Organization
+    }
+
+    public class CreateOrganizationConstituentInputAddressType
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Type { get; set; }
+
+        [JsonProperty("country")]
+        public string Country { get; set; }
+
+        [JsonProperty("address_lines")]
+        public string Lines { get; set; }
+
+        [JsonProperty("city")]
+        public string City { get; set; }
+
+        [JsonProperty("state")]
+        public string State { get; set; }
+
+        [JsonProperty("postal_code")]
+        public string PostalCode { get; set; }
+
+        [JsonProperty("suburb")]
+        public string Suburb { get; set; }
+
+        [JsonProperty("county")]
+        public string County { get; set; }
+
+        [JsonProperty("start")]
+        public string Start { get; set; }
+
+        [JsonProperty("end")]
+        public string End { get; set; }
+    }
+
+    public class CreateOrganizationConstituentInputPhoneType
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Type { get; set; }
+
+        [JsonProperty("number", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Number { get; set; }
+
+        [JsonProperty("primary")]
+        public bool? IsPrimary { get; set; }
+    }
+
+    public class CreateOrganizationConstituentInputEmailType
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Type { get; set; }
+
+        [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Address { get; set; }
+
+        [JsonProperty("primary")]
+        public bool? IsPrimary { get; set; }
+    }
+
+    public class CreateOrganizationConstituentInputOnlinePresenceType
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Type { get; set; }
+
+        [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Address { get; set; }
+
+        [JsonProperty("primary")]
+        public bool? IsPrimary { get; set; }
+    }
+
+    public class CreateOrganizationConstituentInputMatchingGiftPerGiftMinType
+    {
+        [JsonProperty("value")]
+        public double? MinMatchPerGift { get; set; }
+    }
+
+    public class CreateOrganizationConstituentInputMatchingGiftPerGiftMaxType
+    {
+        [JsonProperty("value")]
+        public double? MaxMatchPerGift { get; set; }
+    }
+
+    public class CreateOrganizationConstituentInputMatchingGiftTotalMinType
+    {
+        [JsonProperty("value")]
+        public double? MinMatchPerConstit { get; set; }
+    }
+
+    public class CreateOrganizationConstituentInputMatchingGiftTotalMaxType
+    {
+        [JsonProperty("value")]
+        public double? MaxMatchPerConstit { get; set; }
+    }
+
     public class ConstituentApiCreatedOrganizationRelationship
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class CreateOrganizationRelationshipInput
+    {
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("relation_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RelationId { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("reciprocal_type")]
+        public string ReciprocalType { get; set; }
+
+        [JsonProperty("start")]
+        public CreateOrganizationRelationshipInputStartType Start { get; set; }
+
+        [JsonProperty("end")]
+        public CreateOrganizationRelationshipInputEndType End { get; set; }
+
+        [JsonProperty("is_organization_contact")]
+        public bool? IsContact { get; set; }
+
+        [JsonProperty("organization_contact_type")]
+        public string ContactType { get; set; }
+
+        [JsonProperty("position")]
+        public string Position { get; set; }
+
+        [JsonProperty("is_primary_business")]
+        public bool? IsPrimaryBusiness { get; set; }
+
+        [JsonProperty("comment")]
+        public string Notes { get; set; }
+    }
+
+    public class CreateOrganizationRelationshipInputStartType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class CreateOrganizationRelationshipInputEndType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
     }
 
     public class EventApiApiCollectionOfEventListEntry
@@ -9659,6 +5957,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class CreateEventInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EventName { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("category")]
+        public CreateEventInputCategoryType Category { get; set; }
+
+        [JsonProperty("start_date", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string StartDate { get; set; }
+
+        [JsonProperty("start_time")]
+        public string StartTime { get; set; }
+
+        [JsonProperty("end_date")]
+        public string EndDate { get; set; }
+
+        [JsonProperty("end_time")]
+        public string EndTime { get; set; }
+
+        [JsonProperty("lookup_id")]
+        public string LookupId { get; set; }
+
+        [JsonProperty("capacity")]
+        public int? Capacity { get; set; }
+
+        [JsonProperty("goal")]
+        public double? Goal { get; set; }
+
+        [JsonProperty("campaign_id")]
+        public string CampaignId { get; set; }
+
+        [JsonProperty("fund_id")]
+        public string FundId { get; set; }
+
+        [JsonProperty("inactive")]
+        public bool? Inactive { get; set; }
+    }
+
+    public class CreateEventInputCategoryType
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Category { get; set; }
     }
 
     public class EventApiEvent
@@ -9784,6 +6130,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string ISOCode { get; set; }
     }
 
+    public class EditEventInput
+    {
+        [JsonProperty("name")]
+        public string EventName { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("category")]
+        public EditEventInputCategoryType Category { get; set; }
+
+        [JsonProperty("start_date")]
+        public string StartDate { get; set; }
+
+        [JsonProperty("start_time")]
+        public string StartTime { get; set; }
+
+        [JsonProperty("end_date")]
+        public string EndDate { get; set; }
+
+        [JsonProperty("end_time")]
+        public string EndTime { get; set; }
+
+        [JsonProperty("lookup_id")]
+        public string LookupId { get; set; }
+
+        [JsonProperty("capacity")]
+        public int? Capacity { get; set; }
+
+        [JsonProperty("goal")]
+        public double? Goal { get; set; }
+
+        [JsonProperty("campaign_id")]
+        public string CampaignId { get; set; }
+
+        [JsonProperty("fund_id")]
+        public string FundId { get; set; }
+
+        [JsonProperty("inactive")]
+        public bool? Inactive { get; set; }
+    }
+
+    public class EditEventInputCategoryType
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Category { get; set; }
+    }
+
     public class EventApiApiCollectionOfEventFee
     {
         [JsonProperty("count")]
@@ -9815,6 +6209,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class CreateEventFeeInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("cost", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double FeeAmount { get; set; }
+
+        [JsonProperty("contribution_amount", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double ContributionAmount { get; set; }
     }
 
     public class EventApiApiCollectionOfEventParticipantOption
@@ -9891,8 +6297,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Id { get; set; }
     }
 
+    public class CreateEventParticipantOptionInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("input_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateEventParticipantOptionInputInputTypeType InputType { get; set; }
+
+        [JsonProperty("multi_select")]
+        public bool? AllowMultiSelect { get; set; }
+
+        [JsonProperty("list_options")]
+        public EventApiCreateParticipantOptionListOption[] ListOptions { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyinputTypeInput
+    public enum CreateEventParticipantOptionInputInputTypeType
     {
         Boolean,
         String,
@@ -10122,8 +6543,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Id { get; set; }
     }
 
+    public class CreateParticipantInput
+    {
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("host_id")]
+        public string HostId { get; set; }
+
+        [JsonProperty("rsvp_status")]
+        public CreateParticipantInputRSVPStatusType? RSVPStatus { get; set; }
+
+        [JsonProperty("attended")]
+        public bool? Attended { get; set; }
+
+        [JsonProperty("invitation_status")]
+        public CreateParticipantInputInvitationStatusType? InvitationStatus { get; set; }
+
+        [JsonProperty("rsvp_date")]
+        public CreateParticipantInputRSVPDateType RSVPDate { get; set; }
+
+        [JsonProperty("invitation_date")]
+        public CreateParticipantInputInvitationDateType InvitationDate { get; set; }
+
+        [JsonProperty("participation_level")]
+        public CreateParticipantInputParticipationLevelType ParticipationLevel { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyrSVPStatusInput
+    public enum CreateParticipantInputRSVPStatusType
     {
         NoResponse,
         Attending,
@@ -10135,11 +6583,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyinvitationStatusInput
+    public enum CreateParticipantInputInvitationStatusType
     {
         NotApplicable,
         NotInvited,
         Invited
+    }
+
+    public class CreateParticipantInputRSVPDateType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class CreateParticipantInputInvitationDateType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class CreateParticipantInputParticipationLevelType
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ParticipationLevel { get; set; }
+    }
+
+    public class EditParticipantOptionInput
+    {
+        [JsonProperty("option_value", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Value { get; set; }
     }
 
     public class EventApiParticipant
@@ -10225,6 +6709,83 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public int Year { get; set; }
     }
 
+    public class EditParticipantInput
+    {
+        [JsonProperty("constituent_id")]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("host_id")]
+        public string HostId { get; set; }
+
+        [JsonProperty("rsvp_status")]
+        public EditParticipantInputRSVPStatusType? RSVPStatus { get; set; }
+
+        [JsonProperty("attended")]
+        public bool? Attended { get; set; }
+
+        [JsonProperty("invitation_status")]
+        public EditParticipantInputInvitationStatusType? InvitationStatus { get; set; }
+
+        [JsonProperty("rsvp_date")]
+        public EditParticipantInputRSVPDateType RSVPDate { get; set; }
+
+        [JsonProperty("invitation_date")]
+        public EditParticipantInputInvitationDateType InvitationDate { get; set; }
+
+        [JsonProperty("participation_level")]
+        public EditParticipantInputParticipationLevelType ParticipationLevel { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum EditParticipantInputRSVPStatusType
+    {
+        NoResponse,
+        Attending,
+        Declined,
+        Interested,
+        Canceled,
+        Waitlisted,
+        NotApplicable
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum EditParticipantInputInvitationStatusType
+    {
+        NotApplicable,
+        NotInvited,
+        Invited
+    }
+
+    public class EditParticipantInputRSVPDateType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class EditParticipantInputInvitationDateType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class EditParticipantInputParticipationLevelType
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ParticipationLevel { get; set; }
+    }
+
     public class EventApiApiCollectionOfParticipantDonation
     {
         [JsonProperty("count")]
@@ -10247,6 +6808,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class CreateParticipantDonationInput
+    {
+        [JsonProperty("gift_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string GiftId { get; set; }
     }
 
     public class EventApiApiCollectionOfParticipantFeePayment
@@ -10277,6 +6844,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class CreateParticipantFeePaymentInput
+    {
+        [JsonProperty("gift_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string GiftId { get; set; }
+
+        [JsonProperty("applied_amount", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double AppliedAmount { get; set; }
     }
 
     public class EventApiApiCollectionOfParticipantFee
@@ -10330,6 +6906,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Id { get; set; }
     }
 
+    public class CreateParticipantFeeInput
+    {
+        [JsonProperty("event_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EventId { get; set; }
+
+        [JsonProperty("event_fee_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Fee { get; set; }
+
+        [JsonProperty("quantity", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Quantity { get; set; }
+
+        [JsonProperty("fee_amount", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double FeeAmount { get; set; }
+
+        [JsonProperty("contribution_amount", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double ContributionAmount { get; set; }
+
+        [JsonProperty("date")]
+        public CreateParticipantFeeInputDateType Date { get; set; }
+    }
+
+    public class CreateParticipantFeeInputDateType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
     public class EventApiApiCollectionOfParticipantOption
     {
         [JsonProperty("count")]
@@ -10379,6 +6988,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class CreateParticipantOptionInput
+    {
+        [JsonProperty("event_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EventId { get; set; }
+
+        [JsonProperty("event_participant_option_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Option { get; set; }
+
+        [JsonProperty("option_value", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken OptionValue { get; set; }
     }
 
     public class FundraisingApiApiCollectionOfAppealRead
@@ -10542,10 +7163,89 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Id { get; set; }
     }
 
+    public class CreateAppealAttachmentInput
+    {
+        [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AppealId { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateAppealAttachmentInputTypeType Type { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("url")]
+        public string URL { get; set; }
+
+        [JsonProperty("file_name")]
+        public string FileName { get; set; }
+
+        [JsonProperty("file_id")]
+        public string FileId { get; set; }
+
+        [JsonProperty("thumbnail_id")]
+        public string ThumbnailId { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateAppealAttachmentInputTypeType
+    {
+        Link,
+        Physical
+    }
+
+    public class EditAppealAttachmentInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("url")]
+        public string URL { get; set; }
+    }
+
     public class FundraisingApiCreatedAppealCustomField
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class CreateAppealCustomFieldInput
+    {
+        [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AppealId { get; set; }
+
+        [JsonProperty("category", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Category { get; set; }
+
+        [JsonProperty("value")]
+        public JToken Value { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
+    }
+
+    public class EditAppealCustomFieldInput
+    {
+        [JsonProperty("category")]
+        public string Category { get; set; }
+
+        [JsonProperty("value")]
+        public JToken Value { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
     }
 
     public class FundraisingApiApiCollectionOfCampaignRead
@@ -10709,16 +7409,131 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Id { get; set; }
     }
 
+    public class CreateCampaignAttachmentInput
+    {
+        [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CampaignId { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateCampaignAttachmentInputTypeType Type { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("url")]
+        public string URL { get; set; }
+
+        [JsonProperty("file_name")]
+        public string FileName { get; set; }
+
+        [JsonProperty("file_id")]
+        public string FileId { get; set; }
+
+        [JsonProperty("thumbnail_id")]
+        public string ThumbnailId { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateCampaignAttachmentInputTypeType
+    {
+        Link,
+        Physical
+    }
+
+    public class EditCampaignAttachmentInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("url")]
+        public string URL { get; set; }
+    }
+
     public class FundraisingApiCreatedCampaignCustomField
     {
         [JsonProperty("id")]
         public string Id { get; set; }
     }
 
+    public class CreateCampaignCustomFieldInput
+    {
+        [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CampaignId { get; set; }
+
+        [JsonProperty("category", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Category { get; set; }
+
+        [JsonProperty("value")]
+        public JToken Value { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
+    }
+
+    public class EditCampaignCustomFieldInput
+    {
+        [JsonProperty("category")]
+        public string Category { get; set; }
+
+        [JsonProperty("value")]
+        public JToken Value { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
+    }
+
     public class FundraisingApiCreatedFundraiserAssignment
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class CreateFundraiserAssignmentInput
+    {
+        [JsonProperty("fundraiser_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FundraiserId { get; set; }
+
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("start")]
+        public string AssignmentStarts { get; set; }
+
+        [JsonProperty("end")]
+        public string AssignmentEnds { get; set; }
+
+        [JsonProperty("amount")]
+        public CreateFundraiserAssignmentInputAmountType Amount { get; set; }
+
+        [JsonProperty("campaign_id")]
+        public string CampaignId { get; set; }
+
+        [JsonProperty("fund_id")]
+        public string FundId { get; set; }
+
+        [JsonProperty("appeal_id")]
+        public string AppealId { get; set; }
+    }
+
+    public class CreateFundraiserAssignmentInputAmountType
+    {
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double Amount { get; set; }
     }
 
     public class FundraisingApiApiCollectionOfFundraiserAssignmentRead
@@ -10930,10 +7745,89 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Id { get; set; }
     }
 
+    public class CreateFundAttachmentInput
+    {
+        [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FundId { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateFundAttachmentInputTypeType Type { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("url")]
+        public string URL { get; set; }
+
+        [JsonProperty("file_name")]
+        public string FileName { get; set; }
+
+        [JsonProperty("file_id")]
+        public string FileId { get; set; }
+
+        [JsonProperty("thumbnail_id")]
+        public string ThumbnailId { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateFundAttachmentInputTypeType
+    {
+        Link,
+        Physical
+    }
+
+    public class EditFundAttachmentInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("url")]
+        public string URL { get; set; }
+    }
+
     public class FundraisingApiCreatedFundCustomField
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class CreateFundCustomFieldInput
+    {
+        [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FundId { get; set; }
+
+        [JsonProperty("category", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Category { get; set; }
+
+        [JsonProperty("value")]
+        public JToken Value { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
+    }
+
+    public class EditFundCustomFieldInput
+    {
+        [JsonProperty("category")]
+        public string Category { get; set; }
+
+        [JsonProperty("value")]
+        public JToken Value { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
     }
 
     public class FundraisingApiApiCollectionOfPackageRead
@@ -11002,12 +7896,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public double Value { get; set; }
     }
 
+    public class EditGiftAcknowledgementInput
+    {
+        [JsonProperty("status")]
+        public EditGiftAcknowledgementInputStatusType? Status { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("letter")]
+        public string Letter { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodystatusInput
+    public enum EditGiftAcknowledgementInputStatusType
+    {
+        Acknowledged,
+        NeedsAcknowledgement,
+        DoNotAcknowledge
+    }
+
+    public class EditGiftReceiptInput
+    {
+        [JsonProperty("status")]
+        public EditGiftReceiptInputStatusType? Status { get; set; }
+
+        [JsonProperty("amount")]
+        public EditGiftReceiptInputAmountType Amount { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("number")]
+        public int? Number { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum EditGiftReceiptInputStatusType
     {
         Receipted,
         NeedsReceipt,
         DoNotReceipt
+    }
+
+    public class EditGiftReceiptInputAmountType
+    {
+        [JsonProperty("value")]
+        public double? Value { get; set; }
     }
 
     public class GiftApiApiCollectionOfGiftRead
@@ -11322,6 +8257,80 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Id { get; set; }
     }
 
+    public class CreateGiftInput
+    {
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateGiftInputAmountType Amount { get; set; }
+
+        [JsonProperty("date", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Date { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateGiftInputTypeType Type { get; set; }
+
+        [JsonProperty("gift_splits", DefaultValueHandling = DefaultValueHandling.Include)]
+        public GiftApiGiftSplitAdd[] Splits { get; set; }
+
+        [JsonProperty("payments", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateGiftInputPaymentsType Payments { get; set; }
+
+        [JsonProperty("is_anonymous")]
+        public bool? IsAnonymous { get; set; }
+
+        [JsonProperty("subtype")]
+        public string Subtype { get; set; }
+
+        [JsonProperty("reference")]
+        public string Comment { get; set; }
+
+        [JsonProperty("lookup_id")]
+        public string LookupId { get; set; }
+
+        [JsonProperty("default_fundraiser_credits")]
+        public bool? UseFundraiserCredits { get; set; }
+
+        [JsonProperty("default_soft_credits")]
+        public bool? UseSoftCredits { get; set; }
+
+        [JsonProperty("constituency")]
+        public string Constituency { get; set; }
+
+        [JsonProperty("batch_prefix")]
+        public string BatchPrefix { get; set; }
+
+        [JsonProperty("batch_number")]
+        public string BatchNumber { get; set; }
+
+        [JsonProperty("post_status")]
+        public CreateGiftInputPostStatusType? PostStatus { get; set; }
+
+        [JsonProperty("post_date")]
+        public string PostDate { get; set; }
+
+        [JsonProperty("origin", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Origin { get; set; } = "{ \"name\": \"Power Platform\" }";
+
+        [JsonProperty("receipts")]
+        public CreateGiftInputReceiptsType Receipts { get; set; }
+    }
+
+    public class CreateGiftInputAmountType
+    {
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double Amount { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateGiftInputTypeType
+    {
+        Donation,
+        Other,
+        GiftInKind
+    }
+
     public class GiftApiGiftSplitAdd
     {
         [JsonProperty("campaign_id")]
@@ -11346,16 +8355,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public double Amount { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyreceiptsreceiptStatusInput
+    public class CreateGiftInputPaymentsType
     {
-        Receipted,
-        NeedsReceipt,
-        DoNotReceipt
+        [JsonProperty("payment_method", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateGiftInputPaymentsTypePaymentMethodType PaymentMethod { get; set; } = CreateGiftInputPaymentsTypePaymentMethodType.Cash;
+
+        [JsonProperty("check_number")]
+        public string CheckNumber { get; set; }
+
+        [JsonProperty("check_date")]
+        public CreateGiftInputPaymentsTypeCheckDateType CheckDate { get; set; }
+
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+
+        [JsonProperty("reference_date")]
+        public CreateGiftInputPaymentsTypeReferenceDateType ReferenceDate { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodypaymentspaymentMethodInput
+    public enum CreateGiftInputPaymentsTypePaymentMethodType
     {
         Cash,
         CreditCard,
@@ -11366,12 +8385,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         Venmo
     }
 
+    public class CreateGiftInputPaymentsTypeCheckDateType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class CreateGiftInputPaymentsTypeReferenceDateType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodypostStatusInput
+    public enum CreateGiftInputPostStatusType
     {
         Posted,
         NotPosted,
         DoNotPost
+    }
+
+    public class CreateGiftInputReceiptsType
+    {
+        [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateGiftInputReceiptsTypeReceiptStatusType ReceiptStatus { get; set; } = CreateGiftInputReceiptsTypeReceiptStatusType.NeedsReceipt;
+
+        [JsonProperty("amount")]
+        public CreateGiftInputReceiptsTypeAmountType Amount { get; set; }
+
+        [JsonProperty("date")]
+        public string ReceiptDate { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateGiftInputReceiptsTypeReceiptStatusType
+    {
+        Receipted,
+        NeedsReceipt,
+        DoNotReceipt
+    }
+
+    public class CreateGiftInputReceiptsTypeAmountType
+    {
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double ReceiptAmount { get; set; }
     }
 
     public class GiftApiApiCollectionOfGiftAttachmentRead
@@ -11487,10 +8556,89 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Id { get; set; }
     }
 
+    public class CreateGiftAttachmentInput
+    {
+        [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string GiftId { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateGiftAttachmentInputTypeType Type { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("url")]
+        public string URL { get; set; }
+
+        [JsonProperty("file_name")]
+        public string FileName { get; set; }
+
+        [JsonProperty("file_id")]
+        public string FileId { get; set; }
+
+        [JsonProperty("thumbnail_id")]
+        public string ThumbnailId { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateGiftAttachmentInputTypeType
+    {
+        Link,
+        Physical
+    }
+
+    public class EditGiftAttachmentInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("url")]
+        public string URL { get; set; }
+    }
+
     public class GiftApiCreatedGiftCustomField
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class CreateGiftCustomFieldInput
+    {
+        [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string GiftId { get; set; }
+
+        [JsonProperty("category", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Category { get; set; }
+
+        [JsonProperty("value")]
+        public JToken Value { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
+    }
+
+    public class EditGiftCustomFieldInput
+    {
+        [JsonProperty("category")]
+        public string Category { get; set; }
+
+        [JsonProperty("value")]
+        public JToken Value { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
     }
 
     public class GiftApiBatchGiftAddResults
@@ -11667,28 +8815,74 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public double Value { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodygiftspaymentspaymentMethodInput
+    public class AddGiftToBatchInput
     {
-        Cash,
-        CreditCard,
-        PersonalCheck,
-        DirectDebit,
-        Other,
-        PayPal,
-        Venmo
+        [JsonProperty("gifts", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddGiftToBatchInputGiftsType Gifts { get; set; }
+    }
+
+    public class AddGiftToBatchInputGiftsType
+    {
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddGiftToBatchInputGiftsTypeAmountType Amount { get; set; }
+
+        [JsonProperty("date", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Date { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddGiftToBatchInputGiftsTypeTypeType Type { get; set; }
+
+        [JsonProperty("gift_splits", DefaultValueHandling = DefaultValueHandling.Include)]
+        public GiftApiVirtualBatchGiftSplitAdd[] Splits { get; set; }
+
+        [JsonProperty("payments", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddGiftToBatchInputGiftsTypePaymentsType Payments { get; set; }
+
+        [JsonProperty("is_anonymous")]
+        public bool? IsAnonymous { get; set; }
+
+        [JsonProperty("subtype")]
+        public string Subtype { get; set; }
+
+        [JsonProperty("reference")]
+        public string Comment { get; set; }
+
+        [JsonProperty("lookup_id")]
+        public string LookupId { get; set; }
+
+        [JsonProperty("default_fundraiser_credits")]
+        public bool? UseFundraiserCredits { get; set; }
+
+        [JsonProperty("default_soft_credits")]
+        public bool? UseSoftCredits { get; set; }
+
+        [JsonProperty("constituency")]
+        public string Constituency { get; set; }
+
+        [JsonProperty("post_status")]
+        public AddGiftToBatchInputGiftsTypePostStatusType? PostStatus { get; set; }
+
+        [JsonProperty("post_date")]
+        public string PostDate { get; set; }
+
+        [JsonProperty("origin", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Origin { get; set; } = "{ \"name\": \"Power Platform\" }";
+
+        [JsonProperty("receipts")]
+        public AddGiftToBatchInputGiftsTypeReceiptsType Receipts { get; set; }
+    }
+
+    public class AddGiftToBatchInputGiftsTypeAmountType
+    {
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double Amount { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodygiftsreceiptsreceiptStatusInput
-    {
-        Receipted,
-        NeedsReceipt,
-        DoNotReceipt
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodygiftstypeInput
+    public enum AddGiftToBatchInputGiftsTypeTypeType
     {
         Donation,
         Other,
@@ -11719,12 +8913,92 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public double Amount { get; set; }
     }
 
+    public class AddGiftToBatchInputGiftsTypePaymentsType
+    {
+        [JsonProperty("payment_method", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddGiftToBatchInputGiftsTypePaymentsTypePaymentMethodType PaymentMethod { get; set; } = AddGiftToBatchInputGiftsTypePaymentsTypePaymentMethodType.Cash;
+
+        [JsonProperty("check_number")]
+        public string CheckNumber { get; set; }
+
+        [JsonProperty("check_date")]
+        public AddGiftToBatchInputGiftsTypePaymentsTypeCheckDateType CheckDate { get; set; }
+
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+
+        [JsonProperty("reference_date")]
+        public AddGiftToBatchInputGiftsTypePaymentsTypeReferenceDateType ReferenceDate { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodygiftspostStatusInput
+    public enum AddGiftToBatchInputGiftsTypePaymentsTypePaymentMethodType
+    {
+        Cash,
+        CreditCard,
+        PersonalCheck,
+        DirectDebit,
+        Other,
+        PayPal,
+        Venmo
+    }
+
+    public class AddGiftToBatchInputGiftsTypePaymentsTypeCheckDateType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    public class AddGiftToBatchInputGiftsTypePaymentsTypeReferenceDateType
+    {
+        [JsonProperty("d")]
+        public int? Day { get; set; }
+
+        [JsonProperty("m")]
+        public int? Month { get; set; }
+
+        [JsonProperty("y")]
+        public int? Year { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum AddGiftToBatchInputGiftsTypePostStatusType
     {
         Posted,
         NotPosted,
         DoNotPost
+    }
+
+    public class AddGiftToBatchInputGiftsTypeReceiptsType
+    {
+        [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddGiftToBatchInputGiftsTypeReceiptsTypeReceiptStatusType ReceiptStatus { get; set; } = AddGiftToBatchInputGiftsTypeReceiptsTypeReceiptStatusType.NeedsReceipt;
+
+        [JsonProperty("amount")]
+        public AddGiftToBatchInputGiftsTypeReceiptsTypeAmountType Amount { get; set; }
+
+        [JsonProperty("date")]
+        public string ReceiptDate { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum AddGiftToBatchInputGiftsTypeReceiptsTypeReceiptStatusType
+    {
+        Receipted,
+        NeedsReceipt,
+        DoNotReceipt
+    }
+
+    public class AddGiftToBatchInputGiftsTypeReceiptsTypeAmountType
+    {
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double ReceiptAmount { get; set; }
     }
 
     public class GiftBatchApiApiCollectionOfGiftBatch
@@ -11778,8 +9052,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Id { get; set; }
     }
 
+    public class CreateGiftBatchInput
+    {
+        [JsonProperty("batch_description")]
+        public string Description { get; set; }
+
+        [JsonProperty("expected_number")]
+        public int? ExpectedNumber { get; set; }
+
+        [JsonProperty("expected_batch_total")]
+        public double? ExpectedTotal { get; set; }
+
+        [JsonProperty("batch_number")]
+        public string BatchNumber { get; set; }
+    }
+
+    public class AppendIDsToListInput
+    {
+        [JsonProperty("list_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AppendIDsToListInputListTypeType ListType { get; set; }
+
+        [JsonProperty("list_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string List { get; set; }
+
+        [JsonProperty("ids", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] IdS { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodylistTypeInput
+    public enum AppendIDsToListInputListTypeType
     {
         Constituent,
         Gift,
@@ -11793,8 +9094,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Id { get; set; }
     }
 
+    public class CreateListFromIDsInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Description { get; set; }
+
+        [JsonProperty("list_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateListFromIDsInputListTypeType ListType { get; set; }
+
+        [JsonProperty("list_permissions", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateListFromIDsInputPermissionsType Permissions { get; set; }
+
+        [JsonProperty("ids", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] IdS { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodypermissionsInput
+    public enum CreateListFromIDsInputListTypeType
+    {
+        Constituent,
+        Gift,
+        Action,
+        Opportunity
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateListFromIDsInputPermissionsType
     {
         OnlyOwnerCanAccess,
         OthersCanView,
@@ -11907,6 +9235,135 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class CreateOpportunityInput
+    {
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("purpose", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Purpose { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("deadline")]
+        public string Deadline { get; set; }
+
+        [JsonProperty("ask_date")]
+        public string AskDate { get; set; }
+
+        [JsonProperty("ask_amount")]
+        public CreateOpportunityInputAskAmountType AskAmount { get; set; }
+
+        [JsonProperty("expected_date")]
+        public string ExpectedDate { get; set; }
+
+        [JsonProperty("expected_amount")]
+        public CreateOpportunityInputExpectedAmountType ExpectedAmount { get; set; }
+
+        [JsonProperty("funded_date")]
+        public string FundedDate { get; set; }
+
+        [JsonProperty("funded_amount")]
+        public CreateOpportunityInputFundedAmountType FundedAmount { get; set; }
+
+        [JsonProperty("campaign_id")]
+        public string CampaignId { get; set; }
+
+        [JsonProperty("fund_id")]
+        public string FundId { get; set; }
+
+        [JsonProperty("fundraisers")]
+        public OpportunityApiFundraiser[] FundraiserS { get; set; }
+
+        [JsonProperty("inactive")]
+        public bool? Inactive { get; set; }
+    }
+
+    public class CreateOpportunityInputAskAmountType
+    {
+        [JsonProperty("value")]
+        public double? Value { get; set; }
+    }
+
+    public class CreateOpportunityInputExpectedAmountType
+    {
+        [JsonProperty("value")]
+        public double? Value { get; set; }
+    }
+
+    public class CreateOpportunityInputFundedAmountType
+    {
+        [JsonProperty("value")]
+        public double? Value { get; set; }
+    }
+
+    public class EditOpportunityInput
+    {
+        [JsonProperty("purpose")]
+        public string Purpose { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("deadline")]
+        public string Deadline { get; set; }
+
+        [JsonProperty("ask_date")]
+        public string AskDate { get; set; }
+
+        [JsonProperty("ask_amount")]
+        public EditOpportunityInputAskAmountType AskAmount { get; set; }
+
+        [JsonProperty("expected_date")]
+        public string ExpectedDate { get; set; }
+
+        [JsonProperty("expected_amount")]
+        public EditOpportunityInputExpectedAmountType ExpectedAmount { get; set; }
+
+        [JsonProperty("funded_date")]
+        public string FundedDate { get; set; }
+
+        [JsonProperty("funded_amount")]
+        public EditOpportunityInputFundedAmountType FundedAmount { get; set; }
+
+        [JsonProperty("campaign_id")]
+        public string CampaignId { get; set; }
+
+        [JsonProperty("fund_id")]
+        public string FundId { get; set; }
+
+        [JsonProperty("fundraisers")]
+        public OpportunityApiFundraiser[] FundraiserS { get; set; }
+
+        [JsonProperty("inactive")]
+        public bool? Inactive { get; set; }
+    }
+
+    public class EditOpportunityInputAskAmountType
+    {
+        [JsonProperty("value")]
+        public double? Value { get; set; }
+    }
+
+    public class EditOpportunityInputExpectedAmountType
+    {
+        [JsonProperty("value")]
+        public double? Value { get; set; }
+    }
+
+    public class EditOpportunityInputFundedAmountType
+    {
+        [JsonProperty("value")]
+        public double? Value { get; set; }
     }
 
     public class OpportunityApiApiCollectionOfOpportunityAttachmentRead
@@ -12022,10 +9479,89 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Id { get; set; }
     }
 
+    public class CreateOpportunityAttachmentInput
+    {
+        [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string OpportunityId { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateOpportunityAttachmentInputTypeType Type { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("url")]
+        public string URL { get; set; }
+
+        [JsonProperty("file_name")]
+        public string FileName { get; set; }
+
+        [JsonProperty("file_id")]
+        public string FileId { get; set; }
+
+        [JsonProperty("thumbnail_id")]
+        public string ThumbnailId { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateOpportunityAttachmentInputTypeType
+    {
+        Link,
+        Physical
+    }
+
+    public class EditOpportunityAttachmentInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("url")]
+        public string URL { get; set; }
+    }
+
     public class OpportunityApiCreatedOpportunityCustomField
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class CreateOpportunityCustomFieldInput
+    {
+        [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string OpportunityId { get; set; }
+
+        [JsonProperty("category", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Category { get; set; }
+
+        [JsonProperty("value")]
+        public JToken Value { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
+    }
+
+    public class EditOpportunityCustomFieldInput
+    {
+        [JsonProperty("category")]
+        public string Category { get; set; }
+
+        [JsonProperty("value")]
+        public JToken Value { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
     }
 }
 

@@ -31,57 +31,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
-        public IBodyWorkflowAction<SendMessageByPhoneNumberResponse, ApiConnectionActionConfiguration> SendMessageByPhoneNumber(Expression<Func<int>> dashboardId, Expression<Func<string>> phoneNumber, Expression<Func<string>> bodymessageBody = null, Expression<Func<string>> bodynameOfTheSender = null, Expression<Func<string>> bodycallbackUrlForWhenTheMessageStatusUpdates = null, Expression<Func<string>> bodycallbackUrlForLocationRequestsIfThisMessageIncludesOne = null, Expression<Func<string[]>> bodymMSMediaAttachmentsForThisMessage = null)
+        public IBodyWorkflowAction<SendMessageByPhoneNumberResponse, ApiConnectionActionConfiguration> SendMessageByPhoneNumber(Expression<Func<int>> dashboardId, Expression<Func<string>> phoneNumber, Expression<Func<SendMessageByPhoneNumberInput>> body)
         {
             var __workflow_dashboardId = WorkflowExpression.Compile(dashboardId, nameof(dashboardId), required: true);
             var __workflow_phoneNumber = WorkflowExpression.Compile(phoneNumber, nameof(phoneNumber), required: true);
-            var __workflow_bodymessageBody = WorkflowExpression.Compile(bodymessageBody, nameof(bodymessageBody), required: false);
-            var __workflow_bodynameOfTheSender = WorkflowExpression.Compile(bodynameOfTheSender, nameof(bodynameOfTheSender), required: false);
-            var __workflow_bodycallbackUrlForWhenTheMessageStatusUpdates = WorkflowExpression.Compile(bodycallbackUrlForWhenTheMessageStatusUpdates, nameof(bodycallbackUrlForWhenTheMessageStatusUpdates), required: false);
-            var __workflow_bodycallbackUrlForLocationRequestsIfThisMessageIncludesOne = WorkflowExpression.Compile(bodycallbackUrlForLocationRequestsIfThisMessageIncludesOne, nameof(bodycallbackUrlForLocationRequestsIfThisMessageIncludesOne), required: false);
-            var __workflow_bodymMSMediaAttachmentsForThisMessage = WorkflowExpression.Compile(bodymMSMediaAttachmentsForThisMessage, nameof(bodymMSMediaAttachmentsForThisMessage), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendMessageByPhoneNumberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/dashboards/{0}/contacts/{1}/messages", __workflow_dashboardId.WithUrlEncoding(1), __workflow_phoneNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodymessageBody != null)
-                {
-                    body["body"] = ExpressionConverter.ConvertO(__workflow_bodymessageBody);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynameOfTheSender != null)
-                {
-                    body["sender_name"] = ExpressionConverter.ConvertO(__workflow_bodynameOfTheSender);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycallbackUrlForWhenTheMessageStatusUpdates != null)
-                {
-                    body["status_callback"] = ExpressionConverter.ConvertO(__workflow_bodycallbackUrlForWhenTheMessageStatusUpdates);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycallbackUrlForLocationRequestsIfThisMessageIncludesOne != null)
-                {
-                    body["location_callback"] = ExpressionConverter.ConvertO(__workflow_bodycallbackUrlForLocationRequestsIfThisMessageIncludesOne);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymMSMediaAttachmentsForThisMessage != null)
-                {
-                    body["mms_media"] = ExpressionConverter.ConvertO(__workflow_bodymMSMediaAttachmentsForThisMessage);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SendMessageByPhoneNumberResponse>(callPayload);
             });
         }
@@ -143,106 +103,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
-        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<int>> dashboardId, Expression<Func<string>> phoneNumber, Expression<Func<string>> bodyfirstNameOfContact = null, Expression<Func<string>> bodylastNameOfContact = null, Expression<Func<string>> bodyfullNameOfContact = null, Expression<Func<bool>> bodywhetherMessagesFromThisContactAreSuppressed = null, Expression<Func<bool>> bodywhetherMessagesFromThisContactAreArchived = null, Expression<Func<bool>> bodywhetherMessagesFromThisContactAreBlocked = null, Expression<Func<string>> bodyreasonForSuppressingThisContact = null, Expression<Func<string>> bodycontactNote = null, Expression<Func<int[]>> bodycontactGroups = null, Expression<Func<string[]>> bodycontactTags = null, Expression<Func<bodycontactCustomFieldsInputItem[]>> bodycontactCustomFields = null, Expression<Func<bool>> bodywhetherTheCurrentConversationWithThisContactHasBeenResolved = null)
+        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<int>> dashboardId, Expression<Func<string>> phoneNumber, Expression<Func<CreateContactInput>> body)
         {
             var __workflow_dashboardId = WorkflowExpression.Compile(dashboardId, nameof(dashboardId), required: true);
             var __workflow_phoneNumber = WorkflowExpression.Compile(phoneNumber, nameof(phoneNumber), required: true);
-            var __workflow_bodyfirstNameOfContact = WorkflowExpression.Compile(bodyfirstNameOfContact, nameof(bodyfirstNameOfContact), required: false);
-            var __workflow_bodylastNameOfContact = WorkflowExpression.Compile(bodylastNameOfContact, nameof(bodylastNameOfContact), required: false);
-            var __workflow_bodyfullNameOfContact = WorkflowExpression.Compile(bodyfullNameOfContact, nameof(bodyfullNameOfContact), required: false);
-            var __workflow_bodywhetherMessagesFromThisContactAreSuppressed = WorkflowExpression.Compile(bodywhetherMessagesFromThisContactAreSuppressed, nameof(bodywhetherMessagesFromThisContactAreSuppressed), required: false);
-            var __workflow_bodywhetherMessagesFromThisContactAreArchived = WorkflowExpression.Compile(bodywhetherMessagesFromThisContactAreArchived, nameof(bodywhetherMessagesFromThisContactAreArchived), required: false);
-            var __workflow_bodywhetherMessagesFromThisContactAreBlocked = WorkflowExpression.Compile(bodywhetherMessagesFromThisContactAreBlocked, nameof(bodywhetherMessagesFromThisContactAreBlocked), required: false);
-            var __workflow_bodyreasonForSuppressingThisContact = WorkflowExpression.Compile(bodyreasonForSuppressingThisContact, nameof(bodyreasonForSuppressingThisContact), required: false);
-            var __workflow_bodycontactNote = WorkflowExpression.Compile(bodycontactNote, nameof(bodycontactNote), required: false);
-            var __workflow_bodycontactGroups = WorkflowExpression.Compile(bodycontactGroups, nameof(bodycontactGroups), required: false);
-            var __workflow_bodycontactTags = WorkflowExpression.Compile(bodycontactTags, nameof(bodycontactTags), required: false);
-            var __workflow_bodycontactCustomFields = WorkflowExpression.Compile(bodycontactCustomFields, nameof(bodycontactCustomFields), required: false);
-            var __workflow_bodywhetherTheCurrentConversationWithThisContactHasBeenResolved = WorkflowExpression.Compile(bodywhetherTheCurrentConversationWithThisContactHasBeenResolved, nameof(bodywhetherTheCurrentConversationWithThisContactHasBeenResolved), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/dashboards/{0}/contacts/{1}", __workflow_dashboardId.WithUrlEncoding(1), __workflow_phoneNumber.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfirstNameOfContact != null)
-                {
-                    body["first_name"] = ExpressionConverter.ConvertO(__workflow_bodyfirstNameOfContact);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylastNameOfContact != null)
-                {
-                    body["last_name"] = ExpressionConverter.ConvertO(__workflow_bodylastNameOfContact);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfullNameOfContact != null)
-                {
-                    body["display_name"] = ExpressionConverter.ConvertO(__workflow_bodyfullNameOfContact);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodywhetherMessagesFromThisContactAreSuppressed != null)
-                {
-                    body["is_suppressed"] = ExpressionConverter.ConvertO(__workflow_bodywhetherMessagesFromThisContactAreSuppressed);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodywhetherMessagesFromThisContactAreArchived != null)
-                {
-                    body["is_archived"] = ExpressionConverter.ConvertO(__workflow_bodywhetherMessagesFromThisContactAreArchived);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodywhetherMessagesFromThisContactAreBlocked != null)
-                {
-                    body["is_blocked"] = ExpressionConverter.ConvertO(__workflow_bodywhetherMessagesFromThisContactAreBlocked);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreasonForSuppressingThisContact != null)
-                {
-                    body["suppressed_reason"] = ExpressionConverter.ConvertO(__workflow_bodyreasonForSuppressingThisContact);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontactNote != null)
-                {
-                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodycontactNote);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontactGroups != null)
-                {
-                    body["groups"] = ExpressionConverter.ConvertO(__workflow_bodycontactGroups);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontactTags != null)
-                {
-                    body["contact_tags"] = ExpressionConverter.ConvertO(__workflow_bodycontactTags);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontactCustomFields != null)
-                {
-                    body["custom_fields"] = ExpressionConverter.ConvertO(__workflow_bodycontactCustomFields);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodywhetherTheCurrentConversationWithThisContactHasBeenResolved != null)
-                {
-                    body["is_resolved"] = ExpressionConverter.ConvertO(__workflow_bodywhetherTheCurrentConversationWithThisContactHasBeenResolved);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateContactResponse>(callPayload);
             });
         }
@@ -337,10 +208,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
-        public IBodyWorkflowAction<BulkUpdateContactsResponseItem[], ApiConnectionActionConfiguration> BulkUpdateContacts(Expression<Func<int>> dashboardId, Expression<Func<bodyInputItem[]>> body = null)
+        public IBodyWorkflowAction<BulkUpdateContactsResponseItem[], ApiConnectionActionConfiguration> BulkUpdateContacts(Expression<Func<int>> dashboardId, Expression<Func<bodyInputItem[]>> body)
         {
             var __workflow_dashboardId = WorkflowExpression.Compile(dashboardId, nameof(dashboardId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<BulkUpdateContactsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/dashboards/{0}/contacts", __workflow_dashboardId.WithUrlEncoding(1)));
@@ -380,36 +251,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
-        public IBodyWorkflowAction<UpdateGroupResponse, ApiConnectionActionConfiguration> UpdateGroup(Expression<Func<int>> dashboardId, Expression<Func<int>> groupId, Expression<Func<string>> bodygroupName = null, Expression<Func<string>> bodygroupNote = null)
+        public IBodyWorkflowAction<UpdateGroupResponse, ApiConnectionActionConfiguration> UpdateGroup(Expression<Func<int>> dashboardId, Expression<Func<int>> groupId, Expression<Func<UpdateGroupInput>> body)
         {
             var __workflow_dashboardId = WorkflowExpression.Compile(dashboardId, nameof(dashboardId), required: true);
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
-            var __workflow_bodygroupName = WorkflowExpression.Compile(bodygroupName, nameof(bodygroupName), required: false);
-            var __workflow_bodygroupNote = WorkflowExpression.Compile(bodygroupNote, nameof(bodygroupNote), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/dashboards/{0}/groups/{1}", __workflow_dashboardId.WithUrlEncoding(1), __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodygroupName != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodygroupName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygroupNote != null)
-                {
-                    body["notes"] = ExpressionConverter.ConvertO(__workflow_bodygroupNote);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateGroupResponse>(callPayload);
             });
         }
@@ -432,35 +284,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
-        public IBodyWorkflowAction<CreateGroupResponse, ApiConnectionActionConfiguration> CreateGroup(Expression<Func<int>> dashboardId, Expression<Func<string>> bodygroupName = null, Expression<Func<string>> bodygroupNote = null)
+        public IBodyWorkflowAction<CreateGroupResponse, ApiConnectionActionConfiguration> CreateGroup(Expression<Func<int>> dashboardId, Expression<Func<CreateGroupInput>> body)
         {
             var __workflow_dashboardId = WorkflowExpression.Compile(dashboardId, nameof(dashboardId), required: true);
-            var __workflow_bodygroupName = WorkflowExpression.Compile(bodygroupName, nameof(bodygroupName), required: false);
-            var __workflow_bodygroupNote = WorkflowExpression.Compile(bodygroupNote, nameof(bodygroupNote), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/dashboards/{0}/groups", __workflow_dashboardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodygroupName != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodygroupName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygroupNote != null)
-                {
-                    body["notes"] = ExpressionConverter.ConvertO(__workflow_bodygroupNote);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateGroupResponse>(callPayload);
             });
         }
@@ -585,56 +418,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
-        public IBodyWorkflowAction<CreatePaymentResponse, ApiConnectionActionConfiguration> CreatePayment(Expression<Func<int>> dashboardId, Expression<Func<string>> bodypaymentDescription = null, Expression<Func<string>> bodyrecipientPhoneNumber = null, Expression<Func<double>> bodyamountRequestedInDollars = null, Expression<Func<string>> bodypaymentMessageTextBody = null, Expression<Func<string>> bodyreferenceStringOfThePayment = null)
+        public IBodyWorkflowAction<CreatePaymentResponse, ApiConnectionActionConfiguration> CreatePayment(Expression<Func<int>> dashboardId, Expression<Func<CreatePaymentInput>> body)
         {
             var __workflow_dashboardId = WorkflowExpression.Compile(dashboardId, nameof(dashboardId), required: true);
-            var __workflow_bodypaymentDescription = WorkflowExpression.Compile(bodypaymentDescription, nameof(bodypaymentDescription), required: false);
-            var __workflow_bodyrecipientPhoneNumber = WorkflowExpression.Compile(bodyrecipientPhoneNumber, nameof(bodyrecipientPhoneNumber), required: false);
-            var __workflow_bodyamountRequestedInDollars = WorkflowExpression.Compile(bodyamountRequestedInDollars, nameof(bodyamountRequestedInDollars), required: false);
-            var __workflow_bodypaymentMessageTextBody = WorkflowExpression.Compile(bodypaymentMessageTextBody, nameof(bodypaymentMessageTextBody), required: false);
-            var __workflow_bodyreferenceStringOfThePayment = WorkflowExpression.Compile(bodyreferenceStringOfThePayment, nameof(bodyreferenceStringOfThePayment), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreatePaymentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/dashboards/{0}/payments", __workflow_dashboardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodypaymentDescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodypaymentDescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrecipientPhoneNumber != null)
-                {
-                    body["customer_phone"] = ExpressionConverter.ConvertO(__workflow_bodyrecipientPhoneNumber);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyamountRequestedInDollars != null)
-                {
-                    body["amount_requested"] = ExpressionConverter.ConvertO(__workflow_bodyamountRequestedInDollars);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypaymentMessageTextBody != null)
-                {
-                    body["message"] = ExpressionConverter.ConvertO(__workflow_bodypaymentMessageTextBody);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreferenceStringOfThePayment != null)
-                {
-                    body["reference_number"] = ExpressionConverter.ConvertO(__workflow_bodyreferenceStringOfThePayment);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreatePaymentResponse>(callPayload);
             });
         }
@@ -666,28 +459,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
-        public IBodyWorkflowAction<UpdateDashboardsNameResponse, ApiConnectionActionConfiguration> UpdateDashboardsName(Expression<Func<int>> dashboardId, Expression<Func<string>> bodydashboardName = null)
+        public IBodyWorkflowAction<UpdateDashboardsNameResponse, ApiConnectionActionConfiguration> UpdateDashboardsName(Expression<Func<int>> dashboardId, Expression<Func<UpdateDashboardsNameInput>> body)
         {
             var __workflow_dashboardId = WorkflowExpression.Compile(dashboardId, nameof(dashboardId), required: true);
-            var __workflow_bodydashboardName = WorkflowExpression.Compile(bodydashboardName, nameof(bodydashboardName), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateDashboardsNameResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/dashboards/{0}", __workflow_dashboardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydashboardName != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodydashboardName);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateDashboardsNameResponse>(callPayload);
             });
         }
@@ -749,34 +530,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
-        public IBodyWorkflowAction<CreateDashboardResponse, ApiConnectionActionConfiguration> CreateDashboard(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyphone = null)
+        public IBodyWorkflowAction<CreateDashboardResponse, ApiConnectionActionConfiguration> CreateDashboard(Expression<Func<CreateDashboardInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyphone = WorkflowExpression.Compile(bodyphone, nameof(bodyphone), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateDashboardResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/dashboards";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyphone != null)
-                {
-                    body["phone"] = ExpressionConverter.ConvertO(__workflow_bodyphone);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateDashboardResponse>(callPayload);
             });
         }
@@ -784,28 +546,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
 
     public class TextrequestTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TextingWebhookResponse, ApiConnectionTriggerConfiguration> TextingWebhook(Expression<Func<string>> dashboardId, Expression<Func<bodyEventInput>> bodyEvent, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TextingWebhookResponse, ApiConnectionTriggerConfiguration> TextingWebhook(Expression<Func<string>> dashboardId, Expression<Func<TextingWebhookInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_dashboardId = WorkflowExpression.Compile(dashboardId, nameof(dashboardId), required: true);
-            var __workflow_bodyEvent = WorkflowExpression.Compile(bodyEvent, nameof(bodyEvent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<TextingWebhookResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/dashboards/{0}/hooks", __workflow_dashboardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["target_url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                bodypropCount++;
-                body["event"] = ExpressionConverter.ConvertO(__workflow_bodyEvent);
-                body["httpVerb"] = "POST";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<TextingWebhookResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -884,6 +634,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
 
         [JsonProperty("mms_media")]
         public string[] MmsMedia { get; set; }
+    }
+
+    public class SendMessageByPhoneNumberInput
+    {
+        [JsonProperty("body")]
+        public string MessageBody { get; set; }
+
+        [JsonProperty("sender_name")]
+        public string NameOfTheSender { get; set; }
+
+        [JsonProperty("status_callback")]
+        public string CallbackUrlForWhenTheMessageStatusUpdates { get; set; }
+
+        [JsonProperty("location_callback")]
+        public string LocationCallback { get; set; }
+
+        [JsonProperty("mms_media")]
+        public string[] MMSMediaAttachmentsForThisMessage { get; set; }
     }
 
     public class GetContactByPhoneNumberResponse
@@ -1102,7 +870,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         public string[] MmsMedia { get; set; }
     }
 
-    public class bodycontactCustomFieldsInputItem
+    public class CreateContactInput
+    {
+        [JsonProperty("first_name")]
+        public string FirstNameOfContact { get; set; }
+
+        [JsonProperty("last_name")]
+        public string LastNameOfContact { get; set; }
+
+        [JsonProperty("display_name")]
+        public string FullNameOfContact { get; set; }
+
+        [JsonProperty("is_suppressed")]
+        public bool? WhetherMessagesFromThisContactAreSuppressed { get; set; }
+
+        [JsonProperty("is_archived")]
+        public bool? WhetherMessagesFromThisContactAreArchived { get; set; }
+
+        [JsonProperty("is_blocked")]
+        public bool? WhetherMessagesFromThisContactAreBlocked { get; set; }
+
+        [JsonProperty("suppressed_reason")]
+        public string ReasonForSuppressingThisContact { get; set; }
+
+        [JsonProperty("note")]
+        public string ContactNote { get; set; }
+
+        [JsonProperty("groups")]
+        public int[] ContactGroups { get; set; }
+
+        [JsonProperty("contact_tags")]
+        public string[] ContactTags { get; set; }
+
+        [JsonProperty("custom_fields")]
+        public CreateContactInputContactCustomFieldsTypeItem[] ContactCustomFields { get; set; }
+
+        [JsonProperty("is_resolved")]
+        public bool? IsResolved { get; set; }
+    }
+
+    public class CreateContactInputContactCustomFieldsTypeItem
     {
         [JsonProperty("id")]
         public string CustomFieldId { get; set; }
@@ -1441,6 +1248,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         public string LastMessageSentUtc { get; set; }
     }
 
+    public class UpdateGroupInput
+    {
+        [JsonProperty("name")]
+        public string GroupName { get; set; }
+
+        [JsonProperty("notes")]
+        public string GroupNote { get; set; }
+    }
+
     public class GetGroupsResponse
     {
         [JsonProperty("meta")]
@@ -1502,6 +1318,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
 
         [JsonProperty("last_message_sent_utc")]
         public string LastMessageSentUtc { get; set; }
+    }
+
+    public class CreateGroupInput
+    {
+        [JsonProperty("name")]
+        public string GroupName { get; set; }
+
+        [JsonProperty("notes")]
+        public string GroupNote { get; set; }
     }
 
     public class GetTagsResponse
@@ -1783,6 +1608,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         public string ReferenceNumber { get; set; }
     }
 
+    public class CreatePaymentInput
+    {
+        [JsonProperty("description")]
+        public string PaymentDescription { get; set; }
+
+        [JsonProperty("customer_phone")]
+        public string RecipientPhoneNumber { get; set; }
+
+        [JsonProperty("amount_requested")]
+        public double? AmountRequestedInDollars { get; set; }
+
+        [JsonProperty("message")]
+        public string PaymentMessageTextBody { get; set; }
+
+        [JsonProperty("reference_number")]
+        public string ReferenceStringOfThePayment { get; set; }
+    }
+
     public class GetDashboardResponse
     {
         [JsonProperty("id")]
@@ -1805,6 +1648,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
 
         [JsonProperty("phone")]
         public string Phone { get; set; }
+    }
+
+    public class UpdateDashboardsNameInput
+    {
+        [JsonProperty("name")]
+        public string DashboardName { get; set; }
     }
 
     public class GetConversationsResponse
@@ -1909,6 +1758,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         public string Phone { get; set; }
     }
 
+    public class CreateDashboardInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("phone")]
+        public string Phone { get; set; }
+    }
+
     public class TextingWebhookResponse
     {
         [JsonProperty("id")]
@@ -1921,8 +1779,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         public string Event { get; set; }
     }
 
+    public class TextingWebhookInput
+    {
+        [JsonProperty("target_url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
+        public TextingWebhookInputEventType Event { get; set; }
+
+        [JsonProperty("httpVerb", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string HttpVerb { get; set; } = "POST";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyEventInput
+    public enum TextingWebhookInputEventType
     {
         [EnumMember(Value = "msg_received")]
         MsgReceived,

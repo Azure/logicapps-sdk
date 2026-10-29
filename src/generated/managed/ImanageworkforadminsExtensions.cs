@@ -86,246 +86,76 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateCustomOrPropertyLookup(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodylookupFieldId, Expression<Func<object>> bodyaliasInfo)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateCustomOrPropertyLookup(Expression<Func<CreateCustomOrPropertyLookupInput>> body)
         {
-            var __workflow_bodylibraryId = WorkflowExpression.Compile(bodylibraryId, nameof(bodylibraryId), required: true);
-            var __workflow_bodylookupFieldId = WorkflowExpression.Compile(bodylookupFieldId, nameof(bodylookupFieldId), required: true);
-            var __workflow_bodyaliasInfo = WorkflowExpression.Compile(bodyaliasInfo, nameof(bodyaliasInfo), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/createCustomOrPropertyLookup";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["libraryId"] = ExpressionConverter.ConvertO(__workflow_bodylibraryId);
-                bodypropCount++;
-                body["lookupFieldId"] = ExpressionConverter.ConvertO(__workflow_bodylookupFieldId);
-                bodypropCount++;
-                body["aliasInfo"] = ExpressionConverter.ConvertO(__workflow_bodyaliasInfo);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<CreateUserResponse, ApiConnectionActionConfiguration> CreateUser(Expression<Func<string>> bodyfullName, Expression<Func<string>> bodyid, Expression<Func<string>> bodyemail, Expression<Func<bool>> bodyisExternal, Expression<Func<string>> bodypreferredLibrary, Expression<Func<string>> bodyrole, Expression<Func<bool>> bodyignoreIfUserAlreadyExists, Expression<Func<bodypasswordCreateMethodInput>> bodypasswordCreateMethod, Expression<Func<object>> bodycreatePassword)
+        public IBodyWorkflowAction<CreateUserResponse, ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserInput>> body)
         {
-            var __workflow_bodyfullName = WorkflowExpression.Compile(bodyfullName, nameof(bodyfullName), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyisExternal = WorkflowExpression.Compile(bodyisExternal, nameof(bodyisExternal), required: true);
-            var __workflow_bodypreferredLibrary = WorkflowExpression.Compile(bodypreferredLibrary, nameof(bodypreferredLibrary), required: true);
-            var __workflow_bodyrole = WorkflowExpression.Compile(bodyrole, nameof(bodyrole), required: true);
-            var __workflow_bodyignoreIfUserAlreadyExists = WorkflowExpression.Compile(bodyignoreIfUserAlreadyExists, nameof(bodyignoreIfUserAlreadyExists), required: true);
-            var __workflow_bodypasswordCreateMethod = WorkflowExpression.Compile(bodypasswordCreateMethod, nameof(bodypasswordCreateMethod), required: true);
-            var __workflow_bodycreatePassword = WorkflowExpression.Compile(bodycreatePassword, nameof(bodycreatePassword), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateUserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/createUser";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["full_name"] = ExpressionConverter.ConvertO(__workflow_bodyfullName);
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                bodypropCount++;
-                body["is_external"] = ExpressionConverter.ConvertO(__workflow_bodyisExternal);
-                bodypropCount++;
-                body["preferred_library"] = ExpressionConverter.ConvertO(__workflow_bodypreferredLibrary);
-                bodypropCount++;
-                body["role"] = ExpressionConverter.ConvertO(__workflow_bodyrole);
-                bodypropCount++;
-                body["ignore_if_user_already_exists"] = ExpressionConverter.ConvertO(__workflow_bodyignoreIfUserAlreadyExists);
-                bodypropCount++;
-                body["password_create_method"] = ExpressionConverter.ConvertO(__workflow_bodypasswordCreateMethod);
-                bodypropCount++;
-                body["create_password"] = ExpressionConverter.ConvertO(__workflow_bodycreatePassword);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateUserResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<AssignUserToLibraryResponse, ApiConnectionActionConfiguration> AssignUserToLibrary(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyuserId, Expression<Func<string>> bodyrole, Expression<Func<bool>> bodyisPreferredLibrary)
+        public IBodyWorkflowAction<AssignUserToLibraryResponse, ApiConnectionActionConfiguration> AssignUserToLibrary(Expression<Func<AssignUserToLibraryInput>> body)
         {
-            var __workflow_bodylibraryId = WorkflowExpression.Compile(bodylibraryId, nameof(bodylibraryId), required: true);
-            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: true);
-            var __workflow_bodyrole = WorkflowExpression.Compile(bodyrole, nameof(bodyrole), required: true);
-            var __workflow_bodyisPreferredLibrary = WorkflowExpression.Compile(bodyisPreferredLibrary, nameof(bodyisPreferredLibrary), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AssignUserToLibraryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/assignUserToLibrary";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["libraryId"] = ExpressionConverter.ConvertO(__workflow_bodylibraryId);
-                bodypropCount++;
-                body["user_id"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
-                bodypropCount++;
-                body["role"] = ExpressionConverter.ConvertO(__workflow_bodyrole);
-                bodypropCount++;
-                body["is_preferred_library"] = ExpressionConverter.ConvertO(__workflow_bodyisPreferredLibrary);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AssignUserToLibraryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<CreateFolderResponseBody, ApiConnectionActionConfiguration> AddFolder(Expression<Func<string>> bodyname, Expression<Func<string>> bodyparentId, Expression<Func<bodyparentTypeInput>> bodyparentType, Expression<Func<bodydefaultSecurityInput>> bodydefaultSecurity, Expression<Func<bodyinheritProfileFromWorkspaceInput>> bodyinheritProfileFromWorkspace, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyowner = null, Expression<Func<string>> bodyClass = null, Expression<Func<string>> bodysubclass = null, Expression<Func<bool>> bodyisExternalAsNormal = null, Expression<Func<object>> bodyprofileProperties = null)
+        public IBodyWorkflowAction<CreateFolderResponseBody, ApiConnectionActionConfiguration> AddFolder(Expression<Func<AddFolderInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyparentId = WorkflowExpression.Compile(bodyparentId, nameof(bodyparentId), required: true);
-            var __workflow_bodyparentType = WorkflowExpression.Compile(bodyparentType, nameof(bodyparentType), required: true);
-            var __workflow_bodydefaultSecurity = WorkflowExpression.Compile(bodydefaultSecurity, nameof(bodydefaultSecurity), required: true);
-            var __workflow_bodyinheritProfileFromWorkspace = WorkflowExpression.Compile(bodyinheritProfileFromWorkspace, nameof(bodyinheritProfileFromWorkspace), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyowner = WorkflowExpression.Compile(bodyowner, nameof(bodyowner), required: false);
-            var __workflow_bodyClass = WorkflowExpression.Compile(bodyClass, nameof(bodyClass), required: false);
-            var __workflow_bodysubclass = WorkflowExpression.Compile(bodysubclass, nameof(bodysubclass), required: false);
-            var __workflow_bodyisExternalAsNormal = WorkflowExpression.Compile(bodyisExternalAsNormal, nameof(bodyisExternalAsNormal), required: false);
-            var __workflow_bodyprofileProperties = WorkflowExpression.Compile(bodyprofileProperties, nameof(bodyprofileProperties), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateFolderResponseBody, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/addFolder";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["parentId"] = ExpressionConverter.ConvertO(__workflow_bodyparentId);
-                bodypropCount++;
-                body["parentType"] = ExpressionConverter.ConvertO(__workflow_bodyparentType);
-                bodypropCount++;
-                body["default_security"] = ExpressionConverter.ConvertO(__workflow_bodydefaultSecurity);
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyemail != null)
-                {
-                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyowner != null)
-                {
-                    body["owner"] = ExpressionConverter.ConvertO(__workflow_bodyowner);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyClass != null)
-                {
-                    body["class"] = ExpressionConverter.ConvertO(__workflow_bodyClass);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysubclass != null)
-                {
-                    body["subclass"] = ExpressionConverter.ConvertO(__workflow_bodysubclass);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisExternalAsNormal != null)
-                {
-                    if (__workflow_bodyisExternalAsNormal != null)
-                    {
-                        body["is_external_as_normal"] = ExpressionConverter.ConvertO(__workflow_bodyisExternalAsNormal);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["is_external_as_normal"] = false;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["inherit_profile_from_workspace"] = ExpressionConverter.ConvertO(__workflow_bodyinheritProfileFromWorkspace);
-                if (__workflow_bodyprofileProperties != null)
-                {
-                    body["profileProperties"] = ExpressionConverter.ConvertO(__workflow_bodyprofileProperties);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateFolderResponseBody>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<CreateTabResponseBody, ApiConnectionActionConfiguration> AddTab(Expression<Func<string>> bodyname, Expression<Func<string>> bodyparentId, Expression<Func<bodydefaultSecurityInput>> bodydefaultSecurity, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyowner = null)
+        public IBodyWorkflowAction<CreateTabResponseBody, ApiConnectionActionConfiguration> AddTab(Expression<Func<AddTabInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyparentId = WorkflowExpression.Compile(bodyparentId, nameof(bodyparentId), required: true);
-            var __workflow_bodydefaultSecurity = WorkflowExpression.Compile(bodydefaultSecurity, nameof(bodydefaultSecurity), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyowner = WorkflowExpression.Compile(bodyowner, nameof(bodyowner), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateTabResponseBody, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/addTab";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["parentId"] = ExpressionConverter.ConvertO(__workflow_bodyparentId);
-                bodypropCount++;
-                body["default_security"] = ExpressionConverter.ConvertO(__workflow_bodydefaultSecurity);
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyowner != null)
-                {
-                    body["owner"] = ExpressionConverter.ConvertO(__workflow_bodyowner);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateTabResponseBody>(callPayload);
             });
         }
@@ -346,238 +176,76 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<AddShortcutsToMyMattersAdminResponse, ApiConnectionActionConfiguration> AddShortcutsToMyMattersAdmin(Expression<Func<string>> bodyuserId, Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodycategoryId = null)
+        public IBodyWorkflowAction<AddShortcutsToMyMattersAdminResponse, ApiConnectionActionConfiguration> AddShortcutsToMyMattersAdmin(Expression<Func<AddShortcutsToMyMattersAdminInput>> body)
         {
-            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: true);
-            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodycategoryId = WorkflowExpression.Compile(bodycategoryId, nameof(bodycategoryId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddShortcutsToMyMattersAdminResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/addShortcutsToMyMattersAdmin";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["user_id"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
-                bodypropCount++;
-                body["workspace_id"] = ExpressionConverter.ConvertO(__workflow_bodyworkspaceId);
-                if (__workflow_bodycategoryId != null)
-                {
-                    body["category_id"] = ExpressionConverter.ConvertO(__workflow_bodycategoryId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AddShortcutsToMyMattersAdminResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateCustomField(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodylookupFieldId, Expression<Func<object>> bodyaliasInfo)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateCustomField(Expression<Func<UpdateCustomFieldInput>> body)
         {
-            var __workflow_bodylibraryId = WorkflowExpression.Compile(bodylibraryId, nameof(bodylibraryId), required: true);
-            var __workflow_bodylookupFieldId = WorkflowExpression.Compile(bodylookupFieldId, nameof(bodylookupFieldId), required: true);
-            var __workflow_bodyaliasInfo = WorkflowExpression.Compile(bodyaliasInfo, nameof(bodyaliasInfo), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/updateCustomField";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["libraryId"] = ExpressionConverter.ConvertO(__workflow_bodylibraryId);
-                bodypropCount++;
-                body["lookupFieldId"] = ExpressionConverter.ConvertO(__workflow_bodylookupFieldId);
-                bodypropCount++;
-                body["aliasInfo"] = ExpressionConverter.ConvertO(__workflow_bodyaliasInfo);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<GetRowsFromCSVDocumentResponse, ApiConnectionActionConfiguration> GetRowsFromCSVDocument(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodycolumnNames, Expression<Func<bool>> bodylatest = null)
+        public IBodyWorkflowAction<GetRowsFromCSVDocumentResponse, ApiConnectionActionConfiguration> GetRowsFromCSVDocument(Expression<Func<GetRowsFromCSVDocumentInput>> body)
         {
-            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
-            var __workflow_bodycolumnNames = WorkflowExpression.Compile(bodycolumnNames, nameof(bodycolumnNames), required: true);
-            var __workflow_bodylatest = WorkflowExpression.Compile(bodylatest, nameof(bodylatest), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetRowsFromCSVDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getRowsFromCSVDocument";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["documentId"] = ExpressionConverter.ConvertO(__workflow_bodydocumentId);
-                bodypropCount++;
-                body["column_names"] = ExpressionConverter.ConvertO(__workflow_bodycolumnNames);
-                if (__workflow_bodylatest != null)
-                {
-                    if (__workflow_bodylatest != null)
-                    {
-                        body["latest"] = ExpressionConverter.ConvertO(__workflow_bodylatest);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["latest"] = false;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetRowsFromCSVDocumentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<MoveFolderResponseBody, ApiConnectionActionConfiguration> MoveFolder(Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodydestinationId)
+        public IBodyWorkflowAction<MoveFolderResponseBody, ApiConnectionActionConfiguration> MoveFolder(Expression<Func<MoveFolderInput>> body)
         {
-            var __workflow_bodyfolderId = WorkflowExpression.Compile(bodyfolderId, nameof(bodyfolderId), required: true);
-            var __workflow_bodydestinationId = WorkflowExpression.Compile(bodydestinationId, nameof(bodydestinationId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MoveFolderResponseBody, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/moveFolder";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["folder_id"] = ExpressionConverter.ConvertO(__workflow_bodyfolderId);
-                bodypropCount++;
-                body["destination_id"] = ExpressionConverter.ConvertO(__workflow_bodydestinationId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MoveFolderResponseBody>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<UpdateFolderPropertiesResponseBody, ApiConnectionActionConfiguration> UpdateFolder(Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodyname = null, Expression<Func<bodydefaultSecurityInput>> bodydefaultSecurity = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyowner = null, Expression<Func<string>> bodyClass = null, Expression<Func<string>> bodysubclass = null, Expression<Func<bool>> bodyisExternalAsNormal = null, Expression<Func<object>> bodyprofile = null)
+        public IBodyWorkflowAction<UpdateFolderPropertiesResponseBody, ApiConnectionActionConfiguration> UpdateFolder(Expression<Func<UpdateFolderInput>> body)
         {
-            var __workflow_bodyfolderId = WorkflowExpression.Compile(bodyfolderId, nameof(bodyfolderId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydefaultSecurity = WorkflowExpression.Compile(bodydefaultSecurity, nameof(bodydefaultSecurity), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyowner = WorkflowExpression.Compile(bodyowner, nameof(bodyowner), required: false);
-            var __workflow_bodyClass = WorkflowExpression.Compile(bodyClass, nameof(bodyClass), required: false);
-            var __workflow_bodysubclass = WorkflowExpression.Compile(bodysubclass, nameof(bodysubclass), required: false);
-            var __workflow_bodyisExternalAsNormal = WorkflowExpression.Compile(bodyisExternalAsNormal, nameof(bodyisExternalAsNormal), required: false);
-            var __workflow_bodyprofile = WorkflowExpression.Compile(bodyprofile, nameof(bodyprofile), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateFolderPropertiesResponseBody, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/updateFolder";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["folderId"] = ExpressionConverter.ConvertO(__workflow_bodyfolderId);
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydefaultSecurity != null)
-                {
-                    if (__workflow_bodydefaultSecurity != null)
-                    {
-                        body["default_security"] = ExpressionConverter.ConvertO(__workflow_bodydefaultSecurity);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["default_security"] = "no change";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyemail != null)
-                {
-                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyowner != null)
-                {
-                    body["owner"] = ExpressionConverter.ConvertO(__workflow_bodyowner);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyClass != null)
-                {
-                    body["class"] = ExpressionConverter.ConvertO(__workflow_bodyClass);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysubclass != null)
-                {
-                    body["subclass"] = ExpressionConverter.ConvertO(__workflow_bodysubclass);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisExternalAsNormal != null)
-                {
-                    if (__workflow_bodyisExternalAsNormal != null)
-                    {
-                        body["is_external_as_normal"] = ExpressionConverter.ConvertO(__workflow_bodyisExternalAsNormal);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["is_external_as_normal"] = false;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprofile != null)
-                {
-                    body["profile"] = ExpressionConverter.ConvertO(__workflow_bodyprofile);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateFolderPropertiesResponseBody>(callPayload);
             });
         }
@@ -671,6 +339,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         BothEnabledAndDisabled
     }
 
+    public class CreateCustomOrPropertyLookupInput
+    {
+        [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LibraryId { get; set; }
+
+        [JsonProperty("lookupFieldId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LookupFieldId { get; set; }
+
+        [JsonProperty("aliasInfo", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken AliasInfo { get; set; }
+    }
+
     public class CreateUserResponse
     {
         [JsonProperty("data")]
@@ -737,8 +417,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         public bool UserCreated { get; set; }
     }
 
+    public class CreateUserInput
+    {
+        [JsonProperty("full_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FullName { get; set; }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty("is_external", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool IsExternal { get; set; } = false;
+
+        [JsonProperty("preferred_library", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PreferredLibrary { get; set; }
+
+        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Role { get; set; }
+
+        [JsonProperty("ignore_if_user_already_exists", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool IgnoreIfUserAlreadyExists { get; set; } = true;
+
+        [JsonProperty("password_create_method", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateUserInputPasswordCreateMethodType PasswordCreateMethod { get; set; } = CreateUserInputPasswordCreateMethodType.SendAnEmail;
+
+        [JsonProperty("create_password", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken CreatePassword { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodypasswordCreateMethodInput
+    public enum CreateUserInputPasswordCreateMethodType
     {
         [EnumMember(Value = "Send an email")]
         SendAnEmail,
@@ -756,6 +466,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
     {
         [JsonProperty("user_num")]
         public double UserNum { get; set; }
+    }
+
+    public class AssignUserToLibraryInput
+    {
+        [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LibraryId { get; set; }
+
+        [JsonProperty("user_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UserId { get; set; }
+
+        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Role { get; set; }
+
+        [JsonProperty("is_preferred_library", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool IsPreferredLibrary { get; set; } = false;
     }
 
     public class CreateFolderResponseBody
@@ -1027,8 +752,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         WorkspaceShortcut
     }
 
+    public class AddFolderInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("parentId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ParentId { get; set; }
+
+        [JsonProperty("parentType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddFolderInputParentTypeType ParentType { get; set; }
+
+        [JsonProperty("default_security", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddFolderInputDefaultSecurityType DefaultSecurity { get; set; } = AddFolderInputDefaultSecurityType.Inherit;
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("owner")]
+        public string Owner { get; set; }
+
+        [JsonProperty("class")]
+        public string Class { get; set; }
+
+        [JsonProperty("subclass")]
+        public string Subclass { get; set; }
+
+        [JsonProperty("is_external_as_normal", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IsExternalAsNormal { get; set; } = false;
+
+        [JsonProperty("inherit_profile_from_workspace", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddFolderInputInheritProfileFromWorkspaceType InheritProfileFromWorkspace { get; set; } = AddFolderInputInheritProfileFromWorkspaceType.Yes;
+
+        [JsonProperty("profileProperties")]
+        public JToken ProfileProperties { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyparentTypeInput
+    public enum AddFolderInputParentTypeType
     {
         Folder,
         Workspace,
@@ -1036,10 +800,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodydefaultSecurityInput
+    public enum AddFolderInputDefaultSecurityType
     {
-        [EnumMember(Value = "no change")]
-        NoChange,
         [EnumMember(Value = "inherit")]
         Inherit,
         [EnumMember(Value = "private")]
@@ -1051,7 +813,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyinheritProfileFromWorkspaceInput
+    public enum AddFolderInputInheritProfileFromWorkspaceType
     {
         Yes,
         No
@@ -1098,6 +860,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum NewTabProfileDefaultSecurityType
+    {
+        [EnumMember(Value = "inherit")]
+        Inherit,
+        [EnumMember(Value = "private")]
+        Private,
+        [EnumMember(Value = "view")]
+        View,
+        [EnumMember(Value = "public")]
+        Public
+    }
+
+    public class AddTabInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("parentId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ParentId { get; set; }
+
+        [JsonProperty("default_security", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddTabInputDefaultSecurityType DefaultSecurity { get; set; } = AddTabInputDefaultSecurityType.Inherit;
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("owner")]
+        public string Owner { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum AddTabInputDefaultSecurityType
     {
         [EnumMember(Value = "inherit")]
         Inherit,
@@ -1198,6 +991,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         public string Id { get; set; }
     }
 
+    public class AddShortcutsToMyMattersAdminInput
+    {
+        [JsonProperty("user_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UserId { get; set; }
+
+        [JsonProperty("workspace_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string WorkspaceId { get; set; }
+
+        [JsonProperty("category_id")]
+        public string CategoryId { get; set; }
+    }
+
+    public class UpdateCustomFieldInput
+    {
+        [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LibraryId { get; set; }
+
+        [JsonProperty("lookupFieldId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LookupFieldId { get; set; }
+
+        [JsonProperty("aliasInfo", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken AliasInfo { get; set; }
+    }
+
     public class GetRowsFromCSVDocumentResponse
     {
         [JsonProperty("data")]
@@ -1211,6 +1028,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
 
         [JsonProperty("count")]
         public int Count { get; set; }
+    }
+
+    public class GetRowsFromCSVDocumentInput
+    {
+        [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DocumentId { get; set; }
+
+        [JsonProperty("column_names", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ColumnNames { get; set; }
+
+        [JsonProperty("latest", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Latest { get; set; } = false;
     }
 
     public class MoveFolderResponseBody
@@ -1231,10 +1060,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         public string FolderUrl { get; set; }
     }
 
+    public class MoveFolderInput
+    {
+        [JsonProperty("folder_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FolderId { get; set; }
+
+        [JsonProperty("destination_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DestinationId { get; set; }
+    }
+
     public class UpdateFolderPropertiesResponseBody
     {
         [JsonProperty("data")]
         public NewFolderProfile Data { get; set; }
+    }
+
+    public class UpdateFolderInput
+    {
+        [JsonProperty("folderId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FolderId { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("default_security", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateFolderInputDefaultSecurityType? DefaultSecurity { get; set; } = UpdateFolderInputDefaultSecurityType.NoChange;
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("owner")]
+        public string Owner { get; set; }
+
+        [JsonProperty("class")]
+        public string Class { get; set; }
+
+        [JsonProperty("subclass")]
+        public string Subclass { get; set; }
+
+        [JsonProperty("is_external_as_normal", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IsExternalAsNormal { get; set; } = false;
+
+        [JsonProperty("profile")]
+        public JToken Profile { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum UpdateFolderInputDefaultSecurityType
+    {
+        [EnumMember(Value = "no change")]
+        NoChange,
+        [EnumMember(Value = "inherit")]
+        Inherit,
+        [EnumMember(Value = "private")]
+        Private,
+        [EnumMember(Value = "view")]
+        View,
+        [EnumMember(Value = "public")]
+        Public
     }
 }
 

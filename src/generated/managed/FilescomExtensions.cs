@@ -39,98 +39,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IBodyWorkflowAction<PatchUsersIdResponse, ApiConnectionActionConfiguration> PatchUsersId(Expression<Func<int>> id, Expression<Func<bodyauthenticationMethodInput>> bodyauthenticationMethod = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodygroupIds = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodypassword = null, Expression<Func<bool>> bodyrequirePasswordChange = null, Expression<Func<string>> bodyuserHome = null, Expression<Func<string>> bodyuserRoot = null, Expression<Func<string>> bodyusername = null)
+        public IBodyWorkflowAction<PatchUsersIdResponse, ApiConnectionActionConfiguration> PatchUsersId(Expression<Func<int>> id, Expression<Func<PatchUsersIdInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyauthenticationMethod = WorkflowExpression.Compile(bodyauthenticationMethod, nameof(bodyauthenticationMethod), required: false);
-            var __workflow_bodycompany = WorkflowExpression.Compile(bodycompany, nameof(bodycompany), required: false);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodygroupIds = WorkflowExpression.Compile(bodygroupIds, nameof(bodygroupIds), required: false);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
-            var __workflow_bodyrequirePasswordChange = WorkflowExpression.Compile(bodyrequirePasswordChange, nameof(bodyrequirePasswordChange), required: false);
-            var __workflow_bodyuserHome = WorkflowExpression.Compile(bodyuserHome, nameof(bodyuserHome), required: false);
-            var __workflow_bodyuserRoot = WorkflowExpression.Compile(bodyuserRoot, nameof(bodyuserRoot), required: false);
-            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PatchUsersIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyauthenticationMethod != null)
-                {
-                    body["authentication_method"] = ExpressionConverter.ConvertO(__workflow_bodyauthenticationMethod);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycompany != null)
-                {
-                    body["company"] = ExpressionConverter.ConvertO(__workflow_bodycompany);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyemail != null)
-                {
-                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygroupIds != null)
-                {
-                    body["group_ids"] = ExpressionConverter.ConvertO(__workflow_bodygroupIds);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynotes != null)
-                {
-                    body["notes"] = ExpressionConverter.ConvertO(__workflow_bodynotes);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypassword != null)
-                {
-                    body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrequirePasswordChange != null)
-                {
-                    body["require_password_change"] = ExpressionConverter.ConvertO(__workflow_bodyrequirePasswordChange);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuserHome != null)
-                {
-                    body["user_home"] = ExpressionConverter.ConvertO(__workflow_bodyuserHome);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuserRoot != null)
-                {
-                    body["user_root"] = ExpressionConverter.ConvertO(__workflow_bodyuserRoot);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyusername != null)
-                {
-                    body["username"] = ExpressionConverter.ConvertO(__workflow_bodyusername);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PatchUsersIdResponse>(callPayload);
             });
         }
@@ -148,93 +67,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IBodyWorkflowAction<PostUsersResponse, ApiConnectionActionConfiguration> PostUsers(Expression<Func<string>> bodyusername, Expression<Func<bodyauthenticationMethodInput>> bodyauthenticationMethod = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodygroupIds = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodypassword = null, Expression<Func<bool>> bodyrequirePasswordChange = null, Expression<Func<string>> bodyuserHome = null, Expression<Func<string>> bodyuserRoot = null)
+        public IBodyWorkflowAction<PostUsersResponse, ApiConnectionActionConfiguration> PostUsers(Expression<Func<PostUsersInput>> body)
         {
-            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: true);
-            var __workflow_bodyauthenticationMethod = WorkflowExpression.Compile(bodyauthenticationMethod, nameof(bodyauthenticationMethod), required: false);
-            var __workflow_bodycompany = WorkflowExpression.Compile(bodycompany, nameof(bodycompany), required: false);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodygroupIds = WorkflowExpression.Compile(bodygroupIds, nameof(bodygroupIds), required: false);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
-            var __workflow_bodyrequirePasswordChange = WorkflowExpression.Compile(bodyrequirePasswordChange, nameof(bodyrequirePasswordChange), required: false);
-            var __workflow_bodyuserHome = WorkflowExpression.Compile(bodyuserHome, nameof(bodyuserHome), required: false);
-            var __workflow_bodyuserRoot = WorkflowExpression.Compile(bodyuserRoot, nameof(bodyuserRoot), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostUsersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/users";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyauthenticationMethod != null)
-                {
-                    body["authentication_method"] = ExpressionConverter.ConvertO(__workflow_bodyauthenticationMethod);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycompany != null)
-                {
-                    body["company"] = ExpressionConverter.ConvertO(__workflow_bodycompany);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyemail != null)
-                {
-                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygroupIds != null)
-                {
-                    body["group_ids"] = ExpressionConverter.ConvertO(__workflow_bodygroupIds);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynotes != null)
-                {
-                    body["notes"] = ExpressionConverter.ConvertO(__workflow_bodynotes);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypassword != null)
-                {
-                    body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrequirePasswordChange != null)
-                {
-                    body["require_password_change"] = ExpressionConverter.ConvertO(__workflow_bodyrequirePasswordChange);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuserHome != null)
-                {
-                    body["user_home"] = ExpressionConverter.ConvertO(__workflow_bodyuserHome);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuserRoot != null)
-                {
-                    body["user_root"] = ExpressionConverter.ConvertO(__workflow_bodyuserRoot);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["username"] = ExpressionConverter.ConvertO(__workflow_bodyusername);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostUsersResponse>(callPayload);
             });
         }
@@ -281,35 +122,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IBodyWorkflowAction<PatchBundleNotificationsIdResponse, ApiConnectionActionConfiguration> PatchBundleNotificationsId(Expression<Func<int>> id, Expression<Func<bool>> bodynotifyOnRegistration = null, Expression<Func<bool>> bodynotifyOnUpload = null)
+        public IBodyWorkflowAction<PatchBundleNotificationsIdResponse, ApiConnectionActionConfiguration> PatchBundleNotificationsId(Expression<Func<int>> id, Expression<Func<PatchBundleNotificationsIdInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodynotifyOnRegistration = WorkflowExpression.Compile(bodynotifyOnRegistration, nameof(bodynotifyOnRegistration), required: false);
-            var __workflow_bodynotifyOnUpload = WorkflowExpression.Compile(bodynotifyOnUpload, nameof(bodynotifyOnUpload), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PatchBundleNotificationsIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/bundle_notifications/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodynotifyOnRegistration != null)
-                {
-                    body["notify_on_registration"] = ExpressionConverter.ConvertO(__workflow_bodynotifyOnRegistration);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynotifyOnUpload != null)
-                {
-                    body["notify_on_upload"] = ExpressionConverter.ConvertO(__workflow_bodynotifyOnUpload);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PatchBundleNotificationsIdResponse>(callPayload);
             });
         }
@@ -327,30 +150,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IBodyWorkflowAction<PostBundleNotificationsResponse, ApiConnectionActionConfiguration> PostBundleNotifications(Expression<Func<int>> bodybundleId, Expression<Func<int>> bodynotifyUserId = null)
+        public IBodyWorkflowAction<PostBundleNotificationsResponse, ApiConnectionActionConfiguration> PostBundleNotifications(Expression<Func<PostBundleNotificationsInput>> body)
         {
-            var __workflow_bodybundleId = WorkflowExpression.Compile(bodybundleId, nameof(bodybundleId), required: true);
-            var __workflow_bodynotifyUserId = WorkflowExpression.Compile(bodynotifyUserId, nameof(bodynotifyUserId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostBundleNotificationsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/bundle_notifications";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["bundle_id"] = ExpressionConverter.ConvertO(__workflow_bodybundleId);
-                if (__workflow_bodynotifyUserId != null)
-                {
-                    body["notify_user_id"] = ExpressionConverter.ConvertO(__workflow_bodynotifyUserId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostBundleNotificationsResponse>(callPayload);
             });
         }
@@ -370,47 +178,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IBodyWorkflowAction<PostBundleRecipientsResponse, ApiConnectionActionConfiguration> PostBundleRecipients(Expression<Func<int>> bodybundleId, Expression<Func<string>> bodyrecipient, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodynote = null)
+        public IBodyWorkflowAction<PostBundleRecipientsResponse, ApiConnectionActionConfiguration> PostBundleRecipients(Expression<Func<PostBundleRecipientsInput>> body)
         {
-            var __workflow_bodybundleId = WorkflowExpression.Compile(bodybundleId, nameof(bodybundleId), required: true);
-            var __workflow_bodyrecipient = WorkflowExpression.Compile(bodyrecipient, nameof(bodyrecipient), required: true);
-            var __workflow_bodycompany = WorkflowExpression.Compile(bodycompany, nameof(bodycompany), required: false);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostBundleRecipientsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/bundle_recipients";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["bundle_id"] = ExpressionConverter.ConvertO(__workflow_bodybundleId);
-                if (__workflow_bodycompany != null)
-                {
-                    body["company"] = ExpressionConverter.ConvertO(__workflow_bodycompany);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynote != null)
-                {
-                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["recipient"] = ExpressionConverter.ConvertO(__workflow_bodyrecipient);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostBundleRecipientsResponse>(callPayload);
             });
         }
@@ -457,35 +233,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IBodyWorkflowAction<PatchBundlesIdResponse, ApiConnectionActionConfiguration> PatchBundlesId(Expression<Func<int>> id, Expression<Func<string>> bodyexpiresAt = null, Expression<Func<bodypermissionsInput>> bodypermissions = null)
+        public IBodyWorkflowAction<PatchBundlesIdResponse, ApiConnectionActionConfiguration> PatchBundlesId(Expression<Func<int>> id, Expression<Func<PatchBundlesIdInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyexpiresAt = WorkflowExpression.Compile(bodyexpiresAt, nameof(bodyexpiresAt), required: false);
-            var __workflow_bodypermissions = WorkflowExpression.Compile(bodypermissions, nameof(bodypermissions), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PatchBundlesIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/bundles/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyexpiresAt != null)
-                {
-                    body["expires_at"] = ExpressionConverter.ConvertO(__workflow_bodyexpiresAt);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypermissions != null)
-                {
-                    body["permissions"] = ExpressionConverter.ConvertO(__workflow_bodypermissions);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PatchBundlesIdResponse>(callPayload);
             });
         }
@@ -503,72 +261,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IBodyWorkflowAction<PostBundlesResponse, ApiConnectionActionConfiguration> PostBundles(Expression<Func<string[]>> bodypaths, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyexpiresAt = null, Expression<Func<int>> bodymaxUses = null, Expression<Func<string>> bodynote = null, Expression<Func<string>> bodypassword = null, Expression<Func<bodypermissionsInput>> bodypermissions = null, Expression<Func<bool>> bodyrequireRegistration = null)
+        public IBodyWorkflowAction<PostBundlesResponse, ApiConnectionActionConfiguration> PostBundles(Expression<Func<PostBundlesInput>> body)
         {
-            var __workflow_bodypaths = WorkflowExpression.Compile(bodypaths, nameof(bodypaths), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyexpiresAt = WorkflowExpression.Compile(bodyexpiresAt, nameof(bodyexpiresAt), required: false);
-            var __workflow_bodymaxUses = WorkflowExpression.Compile(bodymaxUses, nameof(bodymaxUses), required: false);
-            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
-            var __workflow_bodypermissions = WorkflowExpression.Compile(bodypermissions, nameof(bodypermissions), required: false);
-            var __workflow_bodyrequireRegistration = WorkflowExpression.Compile(bodyrequireRegistration, nameof(bodyrequireRegistration), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostBundlesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/bundles";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexpiresAt != null)
-                {
-                    body["expires_at"] = ExpressionConverter.ConvertO(__workflow_bodyexpiresAt);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymaxUses != null)
-                {
-                    body["max_uses"] = ExpressionConverter.ConvertO(__workflow_bodymaxUses);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynote != null)
-                {
-                    body["note"] = ExpressionConverter.ConvertO(__workflow_bodynote);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypassword != null)
-                {
-                    body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["paths"] = ExpressionConverter.ConvertO(__workflow_bodypaths);
-                if (__workflow_bodypermissions != null)
-                {
-                    body["permissions"] = ExpressionConverter.ConvertO(__workflow_bodypermissions);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrequireRegistration != null)
-                {
-                    body["require_registration"] = ExpressionConverter.ConvertO(__workflow_bodyrequireRegistration);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostBundlesResponse>(callPayload);
             });
         }
@@ -600,69 +301,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IBodyWorkflowAction<FileActionCopyResponse, ApiConnectionActionConfiguration> FileActionCopy(Expression<Func<string>> path, Expression<Func<string>> bodydestinationFolderPath = null, Expression<Func<string>> bodydestinationName = null)
+        public IBodyWorkflowAction<FileActionCopyResponse, ApiConnectionActionConfiguration> FileActionCopy(Expression<Func<string>> path, Expression<Func<FileActionCopyInput>> body = null)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
-            var __workflow_bodydestinationFolderPath = WorkflowExpression.Compile(bodydestinationFolderPath, nameof(bodydestinationFolderPath), required: false);
-            var __workflow_bodydestinationName = WorkflowExpression.Compile(bodydestinationName, nameof(bodydestinationName), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<FileActionCopyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/file_actions/copy/{0}", __workflow_path.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydestinationFolderPath != null)
-                {
-                    body["destination_folder_path"] = ExpressionConverter.ConvertO(__workflow_bodydestinationFolderPath);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydestinationName != null)
-                {
-                    body["destination_name"] = ExpressionConverter.ConvertO(__workflow_bodydestinationName);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FileActionCopyResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IBodyWorkflowAction<FileActionMoveResponse, ApiConnectionActionConfiguration> FileActionMove(Expression<Func<string>> path, Expression<Func<string>> bodydestinationFolderPath = null, Expression<Func<string>> bodydestinationName = null)
+        public IBodyWorkflowAction<FileActionMoveResponse, ApiConnectionActionConfiguration> FileActionMove(Expression<Func<string>> path, Expression<Func<FileActionMoveInput>> body = null)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
-            var __workflow_bodydestinationFolderPath = WorkflowExpression.Compile(bodydestinationFolderPath, nameof(bodydestinationFolderPath), required: false);
-            var __workflow_bodydestinationName = WorkflowExpression.Compile(bodydestinationName, nameof(bodydestinationName), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<FileActionMoveResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/file_actions/move/{0}", __workflow_path.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydestinationFolderPath != null)
-                {
-                    body["destination_folder_path"] = ExpressionConverter.ConvertO(__workflow_bodydestinationFolderPath);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydestinationName != null)
-                {
-                    body["destination_name"] = ExpressionConverter.ConvertO(__workflow_bodydestinationName);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FileActionMoveResponse>(callPayload);
             });
         }
@@ -694,94 +359,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IBodyWorkflowAction<PostGroupsGroupIdUsersResponse, ApiConnectionActionConfiguration> PostGroupsGroupIdUsers(Expression<Func<int>> groupId, Expression<Func<string>> bodyusername, Expression<Func<bodyauthenticationMethodInput>> bodyauthenticationMethod = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodygroupIds = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodypassword = null, Expression<Func<bool>> bodyrequirePasswordChange = null, Expression<Func<string>> bodyuserHome = null, Expression<Func<string>> bodyuserRoot = null)
+        public IBodyWorkflowAction<PostGroupsGroupIdUsersResponse, ApiConnectionActionConfiguration> PostGroupsGroupIdUsers(Expression<Func<int>> groupId, Expression<Func<PostGroupsGroupIdUsersInput>> body)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
-            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: true);
-            var __workflow_bodyauthenticationMethod = WorkflowExpression.Compile(bodyauthenticationMethod, nameof(bodyauthenticationMethod), required: false);
-            var __workflow_bodycompany = WorkflowExpression.Compile(bodycompany, nameof(bodycompany), required: false);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodygroupIds = WorkflowExpression.Compile(bodygroupIds, nameof(bodygroupIds), required: false);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
-            var __workflow_bodyrequirePasswordChange = WorkflowExpression.Compile(bodyrequirePasswordChange, nameof(bodyrequirePasswordChange), required: false);
-            var __workflow_bodyuserHome = WorkflowExpression.Compile(bodyuserHome, nameof(bodyuserHome), required: false);
-            var __workflow_bodyuserRoot = WorkflowExpression.Compile(bodyuserRoot, nameof(bodyuserRoot), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostGroupsGroupIdUsersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/users", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyauthenticationMethod != null)
-                {
-                    body["authentication_method"] = ExpressionConverter.ConvertO(__workflow_bodyauthenticationMethod);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycompany != null)
-                {
-                    body["company"] = ExpressionConverter.ConvertO(__workflow_bodycompany);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyemail != null)
-                {
-                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygroupIds != null)
-                {
-                    body["group_ids"] = ExpressionConverter.ConvertO(__workflow_bodygroupIds);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynotes != null)
-                {
-                    body["notes"] = ExpressionConverter.ConvertO(__workflow_bodynotes);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypassword != null)
-                {
-                    body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrequirePasswordChange != null)
-                {
-                    body["require_password_change"] = ExpressionConverter.ConvertO(__workflow_bodyrequirePasswordChange);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuserHome != null)
-                {
-                    body["user_home"] = ExpressionConverter.ConvertO(__workflow_bodyuserHome);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuserRoot != null)
-                {
-                    body["user_root"] = ExpressionConverter.ConvertO(__workflow_bodyuserRoot);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["username"] = ExpressionConverter.ConvertO(__workflow_bodyusername);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostGroupsGroupIdUsersResponse>(callPayload);
             });
         }
@@ -813,49 +400,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IBodyWorkflowAction<PatchGroupsIdResponse, ApiConnectionActionConfiguration> PatchGroupsId(Expression<Func<int>> id, Expression<Func<string>> bodyadminIds = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodyuserIds = null)
+        public IBodyWorkflowAction<PatchGroupsIdResponse, ApiConnectionActionConfiguration> PatchGroupsId(Expression<Func<int>> id, Expression<Func<PatchGroupsIdInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyadminIds = WorkflowExpression.Compile(bodyadminIds, nameof(bodyadminIds), required: false);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
-            var __workflow_bodyuserIds = WorkflowExpression.Compile(bodyuserIds, nameof(bodyuserIds), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PatchGroupsIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyadminIds != null)
-                {
-                    body["admin_ids"] = ExpressionConverter.ConvertO(__workflow_bodyadminIds);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynotes != null)
-                {
-                    body["notes"] = ExpressionConverter.ConvertO(__workflow_bodynotes);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuserIds != null)
-                {
-                    body["user_ids"] = ExpressionConverter.ConvertO(__workflow_bodyuserIds);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PatchGroupsIdResponse>(callPayload);
             });
         }
@@ -873,44 +428,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IBodyWorkflowAction<PostGroupsResponse, ApiConnectionActionConfiguration> PostGroups(Expression<Func<string>> bodyname, Expression<Func<string>> bodyadminIds = null, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodyuserIds = null)
+        public IBodyWorkflowAction<PostGroupsResponse, ApiConnectionActionConfiguration> PostGroups(Expression<Func<PostGroupsInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyadminIds = WorkflowExpression.Compile(bodyadminIds, nameof(bodyadminIds), required: false);
-            var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
-            var __workflow_bodyuserIds = WorkflowExpression.Compile(bodyuserIds, nameof(bodyuserIds), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostGroupsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/groups";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyadminIds != null)
-                {
-                    body["admin_ids"] = ExpressionConverter.ConvertO(__workflow_bodyadminIds);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (__workflow_bodynotes != null)
-                {
-                    body["notes"] = ExpressionConverter.ConvertO(__workflow_bodynotes);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuserIds != null)
-                {
-                    body["user_ids"] = ExpressionConverter.ConvertO(__workflow_bodyuserIds);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostGroupsResponse>(callPayload);
             });
         }
@@ -933,10 +459,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UploadFile(Expression<Func<string>> path, Expression<Func<string>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UploadFile(Expression<Func<string>> path, Expression<Func<string>> body)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/file_contents/{0}", __workflow_path.WithUrlEncoding(1)));
@@ -948,12 +474,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UploadFileToRemoteServer(Expression<Func<int>> remoteServerId, Expression<Func<string>> destinationName, Expression<Func<string>> destinationFolderPath = null, Expression<Func<string>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UploadFileToRemoteServer(Expression<Func<int>> remoteServerId, Expression<Func<string>> destinationName, Expression<Func<string>> body, Expression<Func<string>> destinationFolderPath = null)
         {
             var __workflow_remoteServerId = WorkflowExpression.Compile(remoteServerId, nameof(remoteServerId), required: true);
             var __workflow_destinationName = WorkflowExpression.Compile(destinationName, nameof(destinationName), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_destinationFolderPath = WorkflowExpression.Compile(destinationFolderPath, nameof(destinationFolderPath), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/_power_automate_underscore/upload_to_remote_server";
@@ -1025,12 +551,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UploadFileToSnapshot(Expression<Func<int>> snapshotId, Expression<Func<string>> destinationName, Expression<Func<string>> destinationFolderPath = null, Expression<Func<string>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UploadFileToSnapshot(Expression<Func<int>> snapshotId, Expression<Func<string>> destinationName, Expression<Func<string>> body, Expression<Func<string>> destinationFolderPath = null)
         {
             var __workflow_snapshotId = WorkflowExpression.Compile(snapshotId, nameof(snapshotId), required: true);
             var __workflow_destinationName = WorkflowExpression.Compile(destinationName, nameof(destinationName), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_destinationFolderPath = WorkflowExpression.Compile(destinationFolderPath, nameof(destinationFolderPath), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/_power_automate_underscore/upload_to_snapshot";
@@ -1102,12 +628,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UploadFileToChildSite(Expression<Func<int>> siteId, Expression<Func<string>> destinationName, Expression<Func<string>> destinationFolderPath = null, Expression<Func<string>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UploadFileToChildSite(Expression<Func<int>> siteId, Expression<Func<string>> destinationName, Expression<Func<string>> body, Expression<Func<string>> destinationFolderPath = null)
         {
             var __workflow_siteId = WorkflowExpression.Compile(siteId, nameof(siteId), required: true);
             var __workflow_destinationName = WorkflowExpression.Compile(destinationName, nameof(destinationName), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_destinationFolderPath = WorkflowExpression.Compile(destinationFolderPath, nameof(destinationFolderPath), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/_power_automate_underscore/upload_to_child_site";
@@ -1699,8 +1225,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public string PasswordExpireAt { get; set; }
     }
 
+    public class PatchUsersIdInput
+    {
+        [JsonProperty("authentication_method")]
+        public PatchUsersIdInputAuthenticationMethodType? AuthenticationMethod { get; set; }
+
+        [JsonProperty("company")]
+        public string Company { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("group_ids")]
+        public string GroupIds { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("notes")]
+        public string Notes { get; set; }
+
+        [JsonProperty("password")]
+        public string Password { get; set; }
+
+        [JsonProperty("require_password_change")]
+        public bool? RequirePasswordChange { get; set; }
+
+        [JsonProperty("user_home")]
+        public string UserHome { get; set; }
+
+        [JsonProperty("user_root")]
+        public string UserRoot { get; set; }
+
+        [JsonProperty("username")]
+        public string Username { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyauthenticationMethodInput
+    public enum PatchUsersIdInputAuthenticationMethodType
     {
         [EnumMember(Value = "password")]
         Password,
@@ -2224,6 +1786,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public string PasswordExpireAt { get; set; }
     }
 
+    public class PostUsersInput
+    {
+        [JsonProperty("authentication_method")]
+        public PostUsersInputAuthenticationMethodType? AuthenticationMethod { get; set; }
+
+        [JsonProperty("company")]
+        public string Company { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("group_ids")]
+        public string GroupIds { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("notes")]
+        public string Notes { get; set; }
+
+        [JsonProperty("password")]
+        public string Password { get; set; }
+
+        [JsonProperty("require_password_change")]
+        public bool? RequirePasswordChange { get; set; }
+
+        [JsonProperty("user_home")]
+        public string UserHome { get; set; }
+
+        [JsonProperty("user_root")]
+        public string UserRoot { get; set; }
+
+        [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Username { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum PostUsersInputAuthenticationMethodType
+    {
+        [EnumMember(Value = "password")]
+        Password,
+        [EnumMember(Value = "email_signup")]
+        EmailSignup
+    }
+
     public class GetBundleDownloadsResponseItem
     {
         [JsonProperty("bundle_registration")]
@@ -2335,6 +1942,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public int WorkspaceId { get; set; }
     }
 
+    public class PatchBundleNotificationsIdInput
+    {
+        [JsonProperty("notify_on_registration")]
+        public bool? NotifyOnRegistration { get; set; }
+
+        [JsonProperty("notify_on_upload")]
+        public bool? NotifyOnUpload { get; set; }
+    }
+
     public class GetBundleNotificationsResponseItem
     {
         [JsonProperty("bundle_id")]
@@ -2383,6 +1999,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public int WorkspaceId { get; set; }
     }
 
+    public class PostBundleNotificationsInput
+    {
+        [JsonProperty("bundle_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int BundleId { get; set; }
+
+        [JsonProperty("notify_user_id")]
+        public int? NotifyUserId { get; set; }
+    }
+
     public class GetBundleRecipientsResponseItem
     {
         [JsonProperty("company")]
@@ -2423,6 +2048,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
 
         [JsonProperty("workspace_id")]
         public int WorkspaceId { get; set; }
+    }
+
+    public class PostBundleRecipientsInput
+    {
+        [JsonProperty("bundle_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int BundleId { get; set; }
+
+        [JsonProperty("company")]
+        public string Company { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("note")]
+        public string Note { get; set; }
+
+        [JsonProperty("recipient", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Recipient { get; set; }
     }
 
     public class GetBundleRegistrationsResponseItem
@@ -2830,8 +2473,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public string Uri { get; set; }
     }
 
+    public class PatchBundlesIdInput
+    {
+        [JsonProperty("expires_at")]
+        public string ExpiresAt { get; set; }
+
+        [JsonProperty("permissions")]
+        public PatchBundlesIdInputPermissionsType? Permissions { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodypermissionsInput
+    public enum PatchBundlesIdInputPermissionsType
     {
         [EnumMember(Value = "read")]
         Read,
@@ -3207,6 +2859,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public string Uri { get; set; }
     }
 
+    public class PostBundlesInput
+    {
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("expires_at")]
+        public string ExpiresAt { get; set; }
+
+        [JsonProperty("max_uses")]
+        public int? MaxUses { get; set; }
+
+        [JsonProperty("note")]
+        public string Note { get; set; }
+
+        [JsonProperty("password")]
+        public string Password { get; set; }
+
+        [JsonProperty("paths", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] Paths { get; set; }
+
+        [JsonProperty("permissions")]
+        public PostBundlesInputPermissionsType? Permissions { get; set; }
+
+        [JsonProperty("require_registration")]
+        public bool? RequireRegistration { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum PostBundlesInputPermissionsType
+    {
+        [EnumMember(Value = "read")]
+        Read,
+        [EnumMember(Value = "write")]
+        Write,
+        [EnumMember(Value = "read_write")]
+        ReadWrite,
+        [EnumMember(Value = "full")]
+        Full,
+        [EnumMember(Value = "none")]
+        None,
+        [EnumMember(Value = "preview_only")]
+        PreviewOnly
+    }
+
     public class FileActionFindResponse
     {
         [JsonProperty("path")]
@@ -3342,6 +3038,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public int FileMigrationId { get; set; }
     }
 
+    public class FileActionCopyInput
+    {
+        [JsonProperty("destination_folder_path")]
+        public string DestinationFolderPath { get; set; }
+
+        [JsonProperty("destination_name")]
+        public string DestinationName { get; set; }
+    }
+
     public class FileActionMoveResponse
     {
         [JsonProperty("status")]
@@ -3349,6 +3054,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
 
         [JsonProperty("file_migration_id")]
         public int FileMigrationId { get; set; }
+    }
+
+    public class FileActionMoveInput
+    {
+        [JsonProperty("destination_folder_path")]
+        public string DestinationFolderPath { get; set; }
+
+        [JsonProperty("destination_name")]
+        public string DestinationName { get; set; }
     }
 
     public class FolderListForPathResponseItem
@@ -3861,6 +3575,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public string PasswordExpireAt { get; set; }
     }
 
+    public class PostGroupsGroupIdUsersInput
+    {
+        [JsonProperty("authentication_method")]
+        public PostGroupsGroupIdUsersInputAuthenticationMethodType? AuthenticationMethod { get; set; }
+
+        [JsonProperty("company")]
+        public string Company { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("group_ids")]
+        public string GroupIds { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("notes")]
+        public string Notes { get; set; }
+
+        [JsonProperty("password")]
+        public string Password { get; set; }
+
+        [JsonProperty("require_password_change")]
+        public bool? RequirePasswordChange { get; set; }
+
+        [JsonProperty("user_home")]
+        public string UserHome { get; set; }
+
+        [JsonProperty("user_root")]
+        public string UserRoot { get; set; }
+
+        [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Username { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum PostGroupsGroupIdUsersInputAuthenticationMethodType
+    {
+        [EnumMember(Value = "password")]
+        Password,
+        [EnumMember(Value = "email_signup")]
+        EmailSignup
+    }
+
     public class GetGroupsIdResponse
     {
         [JsonProperty("id")]
@@ -3957,6 +3716,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public int WorkspaceId { get; set; }
     }
 
+    public class PatchGroupsIdInput
+    {
+        [JsonProperty("admin_ids")]
+        public string AdminIds { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("notes")]
+        public string Notes { get; set; }
+
+        [JsonProperty("user_ids")]
+        public string UserIds { get; set; }
+    }
+
     public class GetGroupsResponseItem
     {
         [JsonProperty("id")]
@@ -4051,6 +3825,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
 
         [JsonProperty("workspace_id")]
         public int WorkspaceId { get; set; }
+    }
+
+    public class PostGroupsInput
+    {
+        [JsonProperty("admin_ids")]
+        public string AdminIds { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("notes")]
+        public string Notes { get; set; }
+
+        [JsonProperty("user_ids")]
+        public string UserIds { get; set; }
     }
 
     public class CopyFileToRemoteServerResponse

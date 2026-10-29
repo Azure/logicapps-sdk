@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingvoice
     public class AfricastalkingvoiceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingvoice")]
-        public IBodyWorkflowAction<CallResponse, ApiConnectionActionConfiguration> Call(Expression<Func<string>> bodyusername, Expression<Func<string>> bodyfrom, Expression<Func<string[]>> bodyto, Expression<Func<bodyactionsInputItem[]>> bodyactions)
+        public IBodyWorkflowAction<CallResponse, ApiConnectionActionConfiguration> Call(Expression<Func<CallInput>> body)
         {
-            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: true);
-            var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: true);
-            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
-            var __workflow_bodyactions = WorkflowExpression.Compile(bodyactions, nameof(bodyactions), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CallResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/call";
@@ -26,21 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingvoice
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["username"] = ExpressionConverter.ConvertO(__workflow_bodyusername);
-                bodypropCount++;
-                body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
-                bodypropCount++;
-                body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
-                bodypropCount++;
-                body["actions"] = ExpressionConverter.ConvertO(__workflow_bodyactions);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CallResponse>(callPayload);
             });
         }
@@ -71,10 +54,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingvoice
         public string SessionId { get; set; }
     }
 
-    public class bodyactionsInputItem
+    public class CallInput
     {
-        [JsonProperty("actionType")]
-        public bodyactionsInputItemActionTypeType ActionType { get; set; }
+        [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Username { get; set; }
+
+        [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string From { get; set; }
+
+        [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] To { get; set; }
+
+        [JsonProperty("actions", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CallInputActionsTypeItem[] Actions { get; set; }
+    }
+
+    public class CallInputActionsTypeItem
+    {
+        [JsonProperty("actionType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CallInputActionsTypeItemActionTypeType ActionType { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -83,21 +81,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingvoice
         public string Url { get; set; }
 
         [JsonProperty("voice")]
-        public bodyactionsInputItemVoiceType Voice { get; set; }
+        public CallInputActionsTypeItemVoiceType? Voice { get; set; }
 
         [JsonProperty("playBeep")]
-        public bool PlayBeep { get; set; }
+        public bool? PlayBeep { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyactionsInputItemActionTypeType
+    public enum CallInputActionsTypeItemActionTypeType
     {
         Play,
         Say
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyactionsInputItemVoiceType
+    public enum CallInputActionsTypeItemVoiceType
     {
         [EnumMember(Value = "man")]
         Man,

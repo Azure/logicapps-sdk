@@ -80,56 +80,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simplesurvey
 
     public class SimplesurveyTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ResponseSubmitted(Expression<Func<string>> idProject, Expression<Func<int>> automationId, Expression<Func<string>> xSAKKey, Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ResponseSubmitted(Expression<Func<string>> idProject, Expression<Func<int>> automationId, Expression<Func<string>> xSAKKey, Expression<Func<ResponseSubmittedInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_idProject = WorkflowExpression.Compile(idProject, nameof(idProject), required: true);
             var __workflow_automationId = WorkflowExpression.Compile(automationId, nameof(automationId), required: true);
             var __workflow_xSAKKey = WorkflowExpression.Compile(xSAKKey, nameof(xSAKKey), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/events/{0}/automations/{1}/webhooks/register", __workflow_idProject.WithUrlEncoding(1), __workflow_automationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-SAKKey"] = ExpressionConverter.Convert(__workflow_xSAKKey);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["CallbackUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                bodypropCount++;
-                body["Name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ResponseChanged(Expression<Func<string>> idProject, Expression<Func<int>> automationId, Expression<Func<string>> xSAKKey, Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ResponseChanged(Expression<Func<string>> idProject, Expression<Func<int>> automationId, Expression<Func<string>> xSAKKey, Expression<Func<ResponseChangedInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_idProject = WorkflowExpression.Compile(idProject, nameof(idProject), required: true);
             var __workflow_automationId = WorkflowExpression.Compile(automationId, nameof(automationId), required: true);
             var __workflow_xSAKKey = WorkflowExpression.Compile(xSAKKey, nameof(xSAKKey), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/events/{0}/automations/{1}/webhooks/register/cr", __workflow_idProject.WithUrlEncoding(1), __workflow_automationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-SAKKey"] = ExpressionConverter.Convert(__workflow_xSAKKey);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["CallbackUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                bodypropCount++;
-                body["Name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -547,6 +527,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simplesurvey
 
         [JsonProperty("count")]
         public int Count { get; set; }
+    }
+
+    public class ResponseSubmittedInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+    }
+
+    public class ResponseChangedInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
     }
 }
 

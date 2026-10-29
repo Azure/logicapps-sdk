@@ -13,48 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
     public class NameapiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nameapi")]
-        public IBodyWorkflowAction<ParseNameResponse, ApiConnectionActionConfiguration> ParseName(Expression<Func<JToken[]>> bodyinputPersonpersonNamepersonNames, Expression<Func<bodyinputPersongenderInput>> bodyinputPersongender = null)
+        public IBodyWorkflowAction<ParseNameResponse, ApiConnectionActionConfiguration> ParseName(Expression<Func<ParseNameInput>> body)
         {
-            var __workflow_bodyinputPersonpersonNamepersonNames = WorkflowExpression.Compile(bodyinputPersonpersonNamepersonNames, nameof(bodyinputPersonpersonNamepersonNames), required: true);
-            var __workflow_bodyinputPersongender = WorkflowExpression.Compile(bodyinputPersongender, nameof(bodyinputPersongender), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ParseNameResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v5.3/parser/personnameparser";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var inputPersonObject = new JObject();
-                var inputPersonObjectpropCount = 0;
-                inputPersonObject["type"] = "NaturalInputPerson";
-                inputPersonObjectpropCount++;
-                var personNameObject = new JObject();
-                var personNameObjectpropCount = 0;
-                personNameObjectpropCount++;
-                personNameObject["nameFields"] = ExpressionConverter.ConvertO(__workflow_bodyinputPersonpersonNamepersonNames);
-                if (personNameObjectpropCount > 0)
-                {
-                    inputPersonObject["personName"] = personNameObject;
-                    inputPersonObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputPersongender != null)
-                {
-                    inputPersonObject["gender"] = ExpressionConverter.ConvertO(__workflow_bodyinputPersongender);
-                    inputPersonObjectpropCount++;
-                }
-
-                if (inputPersonObjectpropCount > 0)
-                {
-                    body["inputPerson"] = inputPersonObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ParseNameResponse>(callPayload);
             });
         }
@@ -168,8 +135,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
         public double Confidence { get; set; }
     }
 
+    public class ParseNameInput
+    {
+        [JsonProperty("inputPerson", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ParseNameInputInputPersonType InputPerson { get; set; }
+    }
+
+    public class ParseNameInputInputPersonType
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "NaturalInputPerson";
+
+        [JsonProperty("personName")]
+        public ParseNameInputInputPersonTypePersonNameType PersonName { get; set; }
+
+        [JsonProperty("gender")]
+        public ParseNameInputInputPersonTypeGenderType? Gender { get; set; }
+    }
+
+    public class ParseNameInputInputPersonTypePersonNameType
+    {
+        [JsonProperty("nameFields", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken[] PersonNames { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyinputPersongenderInput
+    public enum ParseNameInputInputPersonTypeGenderType
     {
         MALE,
         FEMALE,

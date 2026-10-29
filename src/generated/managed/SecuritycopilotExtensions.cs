@@ -13,29 +13,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securitycopilot
     public class SecuritycopilotActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "securitycopilot")]
-        public IBodyWorkflowAction<ExecutionDetail, ApiConnectionActionConfiguration> ExecuteAgent(Expression<Func<string>> agentId, Expression<Func<string>> triggerName, Expression<Func<object>> agentInputsinputs = null)
+        public IBodyWorkflowAction<ExecutionDetail, ApiConnectionActionConfiguration> ExecuteAgent(Expression<Func<string>> agentId, Expression<Func<string>> triggerName, Expression<Func<ExecuteAgentInput>> agentInputs = null)
         {
             var __workflow_agentId = WorkflowExpression.Compile(agentId, nameof(agentId), required: true);
             var __workflow_triggerName = WorkflowExpression.Compile(triggerName, nameof(triggerName), required: true);
-            var __workflow_agentInputsinputs = WorkflowExpression.Compile(agentInputsinputs, nameof(agentInputsinputs), required: false);
+            var __workflow_agentInputs = WorkflowExpression.Compile(agentInputs, nameof(agentInputs), required: false);
             return new DeferredBodyAction<ExecutionDetail, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}/triggers/{1}/execute", __workflow_agentId.WithUrlEncoding(1), __workflow_triggerName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var agentInputs = new JObject();
-                var agentInputspropCount = 0;
-                if (__workflow_agentInputsinputs != null)
-                {
-                    agentInputs["Inputs"] = ExpressionConverter.ConvertO(__workflow_agentInputsinputs);
-                    agentInputspropCount++;
-                }
-
-                if (agentInputspropCount > 0)
-                {
-                    callPayload.Body = agentInputs;
-                }
-
+                if (__workflow_agentInputs != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_agentInputs);
                 return new ApiConnectionAction<ExecutionDetail>(callPayload);
             });
         }
@@ -158,6 +147,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securitycopilot
 
         [JsonProperty("retryable")]
         public bool Retryable { get; set; }
+    }
+
+    public class ExecuteAgentInput
+    {
+        public JToken Inputs { get; set; }
     }
 }
 

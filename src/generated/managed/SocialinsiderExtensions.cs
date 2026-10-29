@@ -13,182 +13,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
     public class SocialinsiderActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ProfileTimeBasedMetrics(Expression<Func<string>> bodykey = null, Expression<Func<string>> bodyprojectname = null, Expression<Func<string>> bodyplatform = null, Expression<Func<string[]>> bodyprofile = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ProfileTimeBasedMetrics(Expression<Func<ProfileTimeBasedMetricsInput>> body = null)
         {
-            var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: false);
-            var __workflow_bodyprojectname = WorkflowExpression.Compile(bodyprojectname, nameof(bodyprojectname), required: false);
-            var __workflow_bodyplatform = WorkflowExpression.Compile(bodyplatform, nameof(bodyplatform), required: false);
-            var __workflow_bodyprofile = WorkflowExpression.Compile(bodyprofile, nameof(bodyprofile), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/profile_time_based_metrics";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodykey != null)
-                {
-                    body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprojectname != null)
-                {
-                    body["projectname"] = ExpressionConverter.ConvertO(__workflow_bodyprojectname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplatform != null)
-                {
-                    body["platform"] = ExpressionConverter.ConvertO(__workflow_bodyplatform);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprofile != null)
-                {
-                    body["profile"] = ExpressionConverter.ConvertO(__workflow_bodyprofile);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ProfileAggregatedMetrics(Expression<Func<string>> bodykey = null, Expression<Func<string>> bodyprojectname = null, Expression<Func<string>> bodyplatform = null, Expression<Func<string[]>> bodyprofiles = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ProfileAggregatedMetrics(Expression<Func<ProfileAggregatedMetricsInput>> body = null)
         {
-            var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: false);
-            var __workflow_bodyprojectname = WorkflowExpression.Compile(bodyprojectname, nameof(bodyprojectname), required: false);
-            var __workflow_bodyplatform = WorkflowExpression.Compile(bodyplatform, nameof(bodyplatform), required: false);
-            var __workflow_bodyprofiles = WorkflowExpression.Compile(bodyprofiles, nameof(bodyprofiles), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/profiles_aggregated_metrics";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodykey != null)
-                {
-                    body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprojectname != null)
-                {
-                    body["projectname"] = ExpressionConverter.ConvertO(__workflow_bodyprojectname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplatform != null)
-                {
-                    body["platform"] = ExpressionConverter.ConvertO(__workflow_bodyplatform);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprofiles != null)
-                {
-                    body["profiles"] = ExpressionConverter.ConvertO(__workflow_bodyprofiles);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Posts(Expression<Func<string>> bodykey = null, Expression<Func<string>> bodyprojectname = null, Expression<Func<string>> bodyplatform = null, Expression<Func<string[]>> bodyprofiles = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Posts(Expression<Func<PostsInput>> body = null)
         {
-            var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: false);
-            var __workflow_bodyprojectname = WorkflowExpression.Compile(bodyprojectname, nameof(bodyprojectname), required: false);
-            var __workflow_bodyplatform = WorkflowExpression.Compile(bodyplatform, nameof(bodyplatform), required: false);
-            var __workflow_bodyprofiles = WorkflowExpression.Compile(bodyprofiles, nameof(bodyprofiles), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/posts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodykey != null)
-                {
-                    body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprojectname != null)
-                {
-                    body["projectname"] = ExpressionConverter.ConvertO(__workflow_bodyprojectname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyplatform != null)
-                {
-                    body["platform"] = ExpressionConverter.ConvertO(__workflow_bodyplatform);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprofiles != null)
-                {
-                    body["profiles"] = ExpressionConverter.ConvertO(__workflow_bodyprofiles);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Stories(Expression<Func<string>> bodykey = null, Expression<Func<string>> bodyprojectname = null, Expression<Func<string[]>> bodyprofiles = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Stories(Expression<Func<StoriesInput>> body = null)
         {
-            var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: false);
-            var __workflow_bodyprojectname = WorkflowExpression.Compile(bodyprojectname, nameof(bodyprojectname), required: false);
-            var __workflow_bodyprofiles = WorkflowExpression.Compile(bodyprofiles, nameof(bodyprofiles), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stories";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodykey != null)
-                {
-                    body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprojectname != null)
-                {
-                    body["projectname"] = ExpressionConverter.ConvertO(__workflow_bodyprojectname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprofiles != null)
-                {
-                    body["profiles"] = ExpressionConverter.ConvertO(__workflow_bodyprofiles);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -196,6 +75,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
 
     public class SocialinsiderTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class ProfileTimeBasedMetricsInput
+    {
+        [JsonProperty("key")]
+        public string Key { get; set; }
+
+        [JsonProperty("projectname")]
+        public string Projectname { get; set; }
+
+        [JsonProperty("platform")]
+        public string Platform { get; set; }
+
+        [JsonProperty("profile")]
+        public string[] Profile { get; set; }
+    }
+
+    public class ProfileAggregatedMetricsInput
+    {
+        [JsonProperty("key")]
+        public string Key { get; set; }
+
+        [JsonProperty("projectname")]
+        public string Projectname { get; set; }
+
+        [JsonProperty("platform")]
+        public string Platform { get; set; }
+
+        [JsonProperty("profiles")]
+        public string[] Profiles { get; set; }
+    }
+
+    public class PostsInput
+    {
+        [JsonProperty("key")]
+        public string Key { get; set; }
+
+        [JsonProperty("projectname")]
+        public string Projectname { get; set; }
+
+        [JsonProperty("platform")]
+        public string Platform { get; set; }
+
+        [JsonProperty("profiles")]
+        public string[] Profiles { get; set; }
+    }
+
+    public class StoriesInput
+    {
+        [JsonProperty("key")]
+        public string Key { get; set; }
+
+        [JsonProperty("projectname")]
+        public string Projectname { get; set; }
+
+        [JsonProperty("profiles")]
+        public string[] Profiles { get; set; }
     }
 }
 

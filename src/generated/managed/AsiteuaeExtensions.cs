@@ -27,11 +27,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteuae
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asiteuae")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SETFILEMETADATA(Expression<Func<string>> projectId, Expression<Func<string>> folderId, Expression<Func<object>> items = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SETFILEMETADATA(Expression<Func<string>> projectId, Expression<Func<string>> folderId, Expression<Func<object>> items)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
-            var __workflow_items = WorkflowExpression.Compile(items, nameof(items), required: false);
+            var __workflow_items = WorkflowExpression.Compile(items, nameof(items), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/saveMetadataForUpload";
@@ -45,13 +45,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteuae
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asiteuae")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UPLOADBINARYFILE(Expression<Func<string>> projectId, Expression<Func<string>> folderId, Expression<Func<string>> fileName, Expression<Func<string>> metadataId, Expression<Func<string>> fileBinary = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UPLOADBINARYFILE(Expression<Func<string>> projectId, Expression<Func<string>> folderId, Expression<Func<string>> fileName, Expression<Func<string>> metadataId, Expression<Func<string>> fileBinary)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
             var __workflow_metadataId = WorkflowExpression.Compile(metadataId, nameof(metadataId), required: true);
-            var __workflow_fileBinary = WorkflowExpression.Compile(fileBinary, nameof(fileBinary), required: false);
+            var __workflow_fileBinary = WorkflowExpression.Compile(fileBinary, nameof(fileBinary), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/uploadFileFromExternalSystem";
@@ -69,10 +69,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteuae
 
     public class AsiteuaeTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ASITETRIGGEREVENT(Expression<Func<string>> projectId, Expression<Func<string>> bodytriggerName, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ASITETRIGGEREVENT(Expression<Func<string>> projectId, Expression<Func<ASITETRIGGEREVENTInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            var __workflow_bodytriggerName = WorkflowExpression.Compile(bodytriggerName, nameof(bodytriggerName), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/asitePullDataWebhook";
@@ -80,27 +80,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteuae
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
                 callPayload.Headers["Accept"] = Convert.ToString("*/*");
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["webhookUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                bodypropCount++;
-                body["resourceId"] = ExpressionConverter.ConvertO(__workflow_bodytriggerName);
-                body["resourceType"] = 1;
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ASITETRIGGEREVENTAPPFORM(Expression<Func<string>> projectId, Expression<Func<string>> bodytriggerName, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ASITETRIGGEREVENTAPPFORM(Expression<Func<string>> projectId, Expression<Func<ASITETRIGGEREVENTAPPFORMInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            var __workflow_bodytriggerName = WorkflowExpression.Compile(bodytriggerName, nameof(bodytriggerName), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/asitePullAppFormDataWebhook";
@@ -108,22 +96,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteuae
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["projectId"] = ExpressionConverter.Convert(__workflow_projectId);
                 callPayload.Headers["Accept"] = Convert.ToString("*/*");
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["webhookUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                bodypropCount++;
-                body["resourceId"] = ExpressionConverter.ConvertO(__workflow_bodytriggerName);
-                body["resourceType"] = 1;
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
+    }
+
+    public class ASITETRIGGEREVENTInput
+    {
+        [JsonProperty("webhookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("resourceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TriggerName { get; set; }
+
+        [JsonProperty("resourceType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal int ResourceType { get; set; } = 1;
+    }
+
+    public class ASITETRIGGEREVENTAPPFORMInput
+    {
+        [JsonProperty("webhookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("resourceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TriggerName { get; set; }
+
+        [JsonProperty("resourceType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal int ResourceType { get; set; } = 1;
     }
 }
 

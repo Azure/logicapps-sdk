@@ -13,61 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurecommunicationservicessms
     public class AzurecommunicationservicessmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurecommunicationservicessms")]
-        public IBodyWorkflowAction<SendSMSv2Response, ApiConnectionActionConfiguration> SendSMSv2(Expression<Func<string>> bodyfromPhoneNumber, Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients, Expression<Func<string>> bodymessage, Expression<Func<bool>> bodysmsSendOptionsdeliveryReport = null, Expression<Func<string>> bodysmsSendOptionstag = null)
+        public IBodyWorkflowAction<SendSMSv2Response, ApiConnectionActionConfiguration> SendSMSv2(Expression<Func<SendSMSv2Input>> body)
         {
-            var __workflow_bodyfromPhoneNumber = WorkflowExpression.Compile(bodyfromPhoneNumber, nameof(bodyfromPhoneNumber), required: true);
-            var __workflow_bodyrecipients = WorkflowExpression.Compile(bodyrecipients, nameof(bodyrecipients), required: true);
-            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
-            var __workflow_bodysmsSendOptionsdeliveryReport = WorkflowExpression.Compile(bodysmsSendOptionsdeliveryReport, nameof(bodysmsSendOptionsdeliveryReport), required: false);
-            var __workflow_bodysmsSendOptionstag = WorkflowExpression.Compile(bodysmsSendOptionstag, nameof(bodysmsSendOptionstag), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendSMSv2Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/sms";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfromPhoneNumber);
-                bodypropCount++;
-                body["smsRecipients"] = ExpressionConverter.ConvertO(__workflow_bodyrecipients);
-                bodypropCount++;
-                body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
-                var smsSendOptionsObject = new JObject();
-                var smsSendOptionsObjectpropCount = 0;
-                if (__workflow_bodysmsSendOptionsdeliveryReport != null)
-                {
-                    if (__workflow_bodysmsSendOptionsdeliveryReport != null)
-                    {
-                        smsSendOptionsObject["enableDeliveryReport"] = ExpressionConverter.ConvertO(__workflow_bodysmsSendOptionsdeliveryReport);
-                        smsSendOptionsObjectpropCount++;
-                    }
-
-                    smsSendOptionsObjectpropCount++;
-                }
-                else
-                {
-                    smsSendOptionsObject["enableDeliveryReport"] = false;
-                    smsSendOptionsObjectpropCount++;
-                }
-
-                if (__workflow_bodysmsSendOptionstag != null)
-                {
-                    smsSendOptionsObject["tag"] = ExpressionConverter.ConvertO(__workflow_bodysmsSendOptionstag);
-                    smsSendOptionsObjectpropCount++;
-                }
-
-                if (smsSendOptionsObjectpropCount > 0)
-                {
-                    body["smsSendOptions"] = smsSendOptionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SendSMSv2Response>(callPayload);
             });
         }
@@ -113,16 +67,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurecommunicationservicessms
         Rejected
     }
 
-    public class bodyrecipientsInputItem
+    public class SendSMSv2Input
     {
-        [JsonProperty("to")]
+        [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FromPhoneNumber { get; set; }
+
+        [JsonProperty("smsRecipients", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SendSMSv2InputRecipientsTypeItem[] Recipients { get; set; }
+
+        [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Message { get; set; }
+
+        [JsonProperty("smsSendOptions")]
+        public SendSMSv2InputSmsSendOptionsType SmsSendOptions { get; set; }
+    }
+
+    public class SendSMSv2InputRecipientsTypeItem
+    {
+        [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
+    }
 
-        [JsonProperty("repeatabilityRequestId")]
-        public string RequestId { get; set; }
+    public class SendSMSv2InputSmsSendOptionsType
+    {
+        [JsonProperty("enableDeliveryReport", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? DeliveryReport { get; set; } = false;
 
-        [JsonProperty("repeatabilityFirstSent")]
-        public string FirstSent { get; set; }
+        [JsonProperty("tag")]
+        public string Tag { get; set; }
     }
 }
 

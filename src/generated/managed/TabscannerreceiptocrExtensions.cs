@@ -13,55 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tabscannerreceiptocr
     public class TabscannerreceiptocrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tabscannerreceiptocr")]
-        public IBodyWorkflowAction<Process, ApiConnectionActionConfiguration> Process(Expression<Func<string>> bodyimage = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodydocumentType = null, Expression<Func<string>> bodydefaultDateParsing = null, Expression<Func<string>> bodydecimalPlaces = null)
+        public IBodyWorkflowAction<Process, ApiConnectionActionConfiguration> Process(Expression<Func<ProcessInput>> body)
         {
-            var __workflow_bodyimage = WorkflowExpression.Compile(bodyimage, nameof(bodyimage), required: false);
-            var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: false);
-            var __workflow_bodydocumentType = WorkflowExpression.Compile(bodydocumentType, nameof(bodydocumentType), required: false);
-            var __workflow_bodydefaultDateParsing = WorkflowExpression.Compile(bodydefaultDateParsing, nameof(bodydefaultDateParsing), required: false);
-            var __workflow_bodydecimalPlaces = WorkflowExpression.Compile(bodydecimalPlaces, nameof(bodydecimalPlaces), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Process, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/2/processbase64";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyimage != null)
-                {
-                    body["image"] = ExpressionConverter.ConvertO(__workflow_bodyimage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyregion != null)
-                {
-                    body["region"] = ExpressionConverter.ConvertO(__workflow_bodyregion);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydocumentType != null)
-                {
-                    body["documentType"] = ExpressionConverter.ConvertO(__workflow_bodydocumentType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydefaultDateParsing != null)
-                {
-                    body["defaultDateParsing"] = ExpressionConverter.ConvertO(__workflow_bodydefaultDateParsing);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydecimalPlaces != null)
-                {
-                    body["decimalPlaces"] = ExpressionConverter.ConvertO(__workflow_bodydecimalPlaces);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Process>(callPayload);
             });
         }
@@ -109,6 +69,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tabscannerreceiptocr
 
         [JsonProperty("duplicateToken")]
         public string DuplicateToken { get; set; }
+    }
+
+    public class ProcessInput
+    {
+        [JsonProperty("image")]
+        public string Image { get; set; }
+
+        [JsonProperty("region")]
+        public string Region { get; set; }
+
+        [JsonProperty("documentType")]
+        public string DocumentType { get; set; }
+
+        [JsonProperty("defaultDateParsing")]
+        public string DefaultDateParsing { get; set; }
+
+        [JsonProperty("decimalPlaces")]
+        public string DecimalPlaces { get; set; }
     }
 
     public class Result

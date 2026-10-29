@@ -48,12 +48,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
-        public IBodyWorkflowAction<CreateASingleEmployeeRecordResponse, ApiConnectionActionConfiguration> CreateASingleEmployeeRecord(Expression<Func<int>> companyId, Expression<Func<string>> customAuthHeader, Expression<Func<string>> customEnvironmentHeader, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<CreateASingleEmployeeRecordResponse, ApiConnectionActionConfiguration> CreateASingleEmployeeRecord(Expression<Func<int>> companyId, Expression<Func<string>> customAuthHeader, Expression<Func<string>> customEnvironmentHeader, Expression<Func<string>> body)
         {
             var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
             var __workflow_customAuthHeader = WorkflowExpression.Compile(customAuthHeader, nameof(customAuthHeader), required: true);
             var __workflow_customEnvironmentHeader = WorkflowExpression.Compile(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateASingleEmployeeRecordResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/v1.1/{0}/Employee", __workflow_companyId.WithUrlEncoding(1)));
@@ -116,13 +116,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
-        public IBodyWorkflowAction<UpdateASingleEmployeeRecordResponse, ApiConnectionActionConfiguration> UpdateASingleEmployeeRecord(Expression<Func<string>> companyId, Expression<Func<string>> employeeId, Expression<Func<string>> customAuthHeader, Expression<Func<string>> customEnvironmentHeader, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<UpdateASingleEmployeeRecordResponse, ApiConnectionActionConfiguration> UpdateASingleEmployeeRecord(Expression<Func<string>> companyId, Expression<Func<string>> employeeId, Expression<Func<string>> customAuthHeader, Expression<Func<string>> customEnvironmentHeader, Expression<Func<string>> body)
         {
             var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
             var __workflow_employeeId = WorkflowExpression.Compile(employeeId, nameof(employeeId), required: true);
             var __workflow_customAuthHeader = WorkflowExpression.Compile(customAuthHeader, nameof(customAuthHeader), required: true);
             var __workflow_customEnvironmentHeader = WorkflowExpression.Compile(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateASingleEmployeeRecordResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/v1.1/{0}/Employee({1})", __workflow_companyId.WithUrlEncoding(1), __workflow_employeeId.WithUrlEncoding(1)));
@@ -202,12 +202,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
-        public IBodyWorkflowAction<CreateASingleEmploymentStatusRecordResponse, ApiConnectionActionConfiguration> CreateASingleEmploymentStatusRecord(Expression<Func<int>> companyId, Expression<Func<string>> customAuthHeader, Expression<Func<string>> customEnvironmentHeader, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<CreateASingleEmploymentStatusRecordResponse, ApiConnectionActionConfiguration> CreateASingleEmploymentStatusRecord(Expression<Func<int>> companyId, Expression<Func<string>> customAuthHeader, Expression<Func<string>> customEnvironmentHeader, Expression<Func<string>> body)
         {
             var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
             var __workflow_customAuthHeader = WorkflowExpression.Compile(customAuthHeader, nameof(customAuthHeader), required: true);
             var __workflow_customEnvironmentHeader = WorkflowExpression.Compile(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateASingleEmploymentStatusRecordResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/v1.1/{0}/EmployeeEmploymentStatus", __workflow_companyId.WithUrlEncoding(1)));
@@ -280,12 +280,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
-        public IBodyWorkflowAction<CreateASinglePositionRecordResponse, ApiConnectionActionConfiguration> CreateASinglePositionRecord(Expression<Func<int>> companyId, Expression<Func<string>> customAuthHeader, Expression<Func<string>> customEnvironmentHeader, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<CreateASinglePositionRecordResponse, ApiConnectionActionConfiguration> CreateASinglePositionRecord(Expression<Func<int>> companyId, Expression<Func<string>> customAuthHeader, Expression<Func<string>> customEnvironmentHeader, Expression<Func<string>> body)
         {
             var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
             var __workflow_customAuthHeader = WorkflowExpression.Compile(customAuthHeader, nameof(customAuthHeader), required: true);
             var __workflow_customEnvironmentHeader = WorkflowExpression.Compile(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateASinglePositionRecordResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/v1.1/{0}/EmployeePosition", __workflow_companyId.WithUrlEncoding(1)));
@@ -317,13 +317,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateASinglePositionRecord(Expression<Func<int>> employeePositionId, Expression<Func<int>> companyId, Expression<Func<string>> customAuthHeader, Expression<Func<string>> customEnvironmentHeader, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateASinglePositionRecord(Expression<Func<int>> employeePositionId, Expression<Func<int>> companyId, Expression<Func<string>> customAuthHeader, Expression<Func<string>> customEnvironmentHeader, Expression<Func<string>> body)
         {
             var __workflow_employeePositionId = WorkflowExpression.Compile(employeePositionId, nameof(employeePositionId), required: true);
             var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
             var __workflow_customAuthHeader = WorkflowExpression.Compile(customAuthHeader, nameof(customAuthHeader), required: true);
             var __workflow_customEnvironmentHeader = WorkflowExpression.Compile(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/v1.1/{0}/EmployeePosition({1})", __workflow_companyId.WithUrlEncoding(1), __workflow_employeePositionId.WithUrlEncoding(1)));
@@ -397,12 +397,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
-        public IBodyWorkflowAction<CreateASingleEmployeeAttachmentRecordResponse, ApiConnectionActionConfiguration> CreateASingleEmployeeAttachmentRecord(Expression<Func<int>> companyId, Expression<Func<string>> customAuthHeader, Expression<Func<string>> customEnvironmentHeader, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<CreateASingleEmployeeAttachmentRecordResponse, ApiConnectionActionConfiguration> CreateASingleEmployeeAttachmentRecord(Expression<Func<int>> companyId, Expression<Func<string>> customAuthHeader, Expression<Func<string>> customEnvironmentHeader, Expression<Func<string>> body)
         {
             var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
             var __workflow_customAuthHeader = WorkflowExpression.Compile(customAuthHeader, nameof(customAuthHeader), required: true);
             var __workflow_customEnvironmentHeader = WorkflowExpression.Compile(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateASingleEmployeeAttachmentRecordResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/v1.1/{0}/EmployeeAttachment", __workflow_companyId.WithUrlEncoding(1)));
@@ -452,13 +452,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateASingleEmployeeAttachmentRecord(Expression<Func<int>> companyId, Expression<Func<int>> attachmentId, Expression<Func<string>> customAuthHeader, Expression<Func<string>> customEnvironmentHeader, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateASingleEmployeeAttachmentRecord(Expression<Func<int>> companyId, Expression<Func<int>> attachmentId, Expression<Func<string>> customAuthHeader, Expression<Func<string>> customEnvironmentHeader, Expression<Func<string>> body)
         {
             var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
             var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
             var __workflow_customAuthHeader = WorkflowExpression.Compile(customAuthHeader, nameof(customAuthHeader), required: true);
             var __workflow_customEnvironmentHeader = WorkflowExpression.Compile(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/v1.1/{0}/EmployeeAttachment({1})", __workflow_companyId.WithUrlEncoding(1), __workflow_attachmentId.WithUrlEncoding(1)));
@@ -501,12 +501,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
-        public IBodyWorkflowAction<CreateASingleBankDetailRecordResponse, ApiConnectionActionConfiguration> CreateASingleBankDetailRecord(Expression<Func<int>> companyId, Expression<Func<string>> customAuthHeader, Expression<Func<string>> customEnvironmentHeader, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<CreateASingleBankDetailRecordResponse, ApiConnectionActionConfiguration> CreateASingleBankDetailRecord(Expression<Func<int>> companyId, Expression<Func<string>> body, Expression<Func<string>> customAuthHeader, Expression<Func<string>> customEnvironmentHeader)
         {
             var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_customAuthHeader = WorkflowExpression.Compile(customAuthHeader, nameof(customAuthHeader), required: true);
             var __workflow_customEnvironmentHeader = WorkflowExpression.Compile(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateASingleBankDetailRecordResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/v1.1/{0}/EmployeeBankDetail", __workflow_companyId.WithUrlEncoding(1)));
@@ -556,13 +556,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Payspaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "payspaceip")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateASingleBankDetailRecord(Expression<Func<int>> companyId, Expression<Func<int>> bankDetailId, Expression<Func<string>> customAuthHeader, Expression<Func<string>> customEnvironmentHeader, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateASingleBankDetailRecord(Expression<Func<int>> companyId, Expression<Func<int>> bankDetailId, Expression<Func<string>> customAuthHeader, Expression<Func<string>> customEnvironmentHeader, Expression<Func<string>> body)
         {
             var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
             var __workflow_bankDetailId = WorkflowExpression.Compile(bankDetailId, nameof(bankDetailId), required: true);
             var __workflow_customAuthHeader = WorkflowExpression.Compile(customAuthHeader, nameof(customAuthHeader), required: true);
             var __workflow_customEnvironmentHeader = WorkflowExpression.Compile(customEnvironmentHeader, nameof(customEnvironmentHeader), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/odata/v1.1/{0}/EmployeeBankDetail({1})", __workflow_companyId.WithUrlEncoding(1), __workflow_bankDetailId.WithUrlEncoding(1)));

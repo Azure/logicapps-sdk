@@ -13,26 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Transform2all
     public class Transform2allActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "transform2all")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Transform(Expression<Func<string>> bodyconfigId, Expression<Func<string>> bodybase64Content)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Transform(Expression<Func<TransformInput>> body)
         {
-            var __workflow_bodyconfigId = WorkflowExpression.Compile(bodyconfigId, nameof(bodyconfigId), required: true);
-            var __workflow_bodybase64Content = WorkflowExpression.Compile(bodybase64Content, nameof(bodybase64Content), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/1.0/translate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["configId"] = ExpressionConverter.ConvertO(__workflow_bodyconfigId);
-                bodypropCount++;
-                body["base64Content"] = ExpressionConverter.ConvertO(__workflow_bodybase64Content);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -40,6 +29,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Transform2all
 
     public class Transform2allTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class TransformInput
+    {
+        [JsonProperty("configId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConfigId { get; set; }
+
+        [JsonProperty("base64Content", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Base64Content { get; set; }
     }
 }
 

@@ -13,34 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfless
     public class PdflessActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfless")]
-        public IBodyWorkflowAction<PDFDtoApiResult, ApiConnectionActionConfiguration> CreatePDF(Expression<Func<string>> version, Expression<Func<string>> commandtemplateId, Expression<Func<string>> commandpayload, Expression<Func<string>> commandreferenceId = null)
+        public IBodyWorkflowAction<PDFDtoApiResult, ApiConnectionActionConfiguration> CreatePDF(Expression<Func<string>> version, Expression<Func<CreatePDFInput>> command)
         {
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
-            var __workflow_commandtemplateId = WorkflowExpression.Compile(commandtemplateId, nameof(commandtemplateId), required: true);
-            var __workflow_commandpayload = WorkflowExpression.Compile(commandpayload, nameof(commandpayload), required: true);
-            var __workflow_commandreferenceId = WorkflowExpression.Compile(commandreferenceId, nameof(commandreferenceId), required: false);
+            var __workflow_command = WorkflowExpression.Compile(command, nameof(command), required: true);
             return new DeferredBodyAction<PDFDtoApiResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v{0}/pdfs", __workflow_version.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var command = new JObject();
-                var commandpropCount = 0;
-                commandpropCount++;
-                command["template_id"] = ExpressionConverter.ConvertO(__workflow_commandtemplateId);
-                commandpropCount++;
-                command["payload"] = ExpressionConverter.ConvertO(__workflow_commandpayload);
-                if (__workflow_commandreferenceId != null)
-                {
-                    command["reference_id"] = ExpressionConverter.ConvertO(__workflow_commandreferenceId);
-                    commandpropCount++;
-                }
-
-                if (commandpropCount > 0)
-                {
-                    callPayload.Body = command;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_command);
                 return new ApiConnectionAction<PDFDtoApiResult>(callPayload);
             });
         }
@@ -75,6 +57,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfless
 
         [JsonProperty("created_at")]
         public string CreatedAt { get; set; }
+    }
+
+    public class CreatePDFInput
+    {
+        [JsonProperty("template_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TemplateId { get; set; }
+
+        [JsonProperty("payload", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Payload { get; set; }
+
+        [JsonProperty("reference_id")]
+        public string ReferenceId { get; set; }
     }
 }
 

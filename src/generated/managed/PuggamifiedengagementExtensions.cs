@@ -13,13 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Puggamifiedengagement
     public class PuggamifiedengagementActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "puggamifiedengagement")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreatePlayer(Expression<Func<string>> bodyplayeremail = null, Expression<Func<string>> bodyplayerprofilefirstName = null, Expression<Func<string>> bodyplayerprofilelastName = null, Expression<Func<string>> bodyplayerexternalRealm = null, Expression<Func<string>> bodyplayerexternalRealmId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreatePlayer(Expression<Func<CreatePlayerInput>> body = null)
         {
-            var __workflow_bodyplayeremail = WorkflowExpression.Compile(bodyplayeremail, nameof(bodyplayeremail), required: false);
-            var __workflow_bodyplayerprofilefirstName = WorkflowExpression.Compile(bodyplayerprofilefirstName, nameof(bodyplayerprofilefirstName), required: false);
-            var __workflow_bodyplayerprofilelastName = WorkflowExpression.Compile(bodyplayerprofilelastName, nameof(bodyplayerprofilelastName), required: false);
-            var __workflow_bodyplayerexternalRealm = WorkflowExpression.Compile(bodyplayerexternalRealm, nameof(bodyplayerexternalRealm), required: false);
-            var __workflow_bodyplayerexternalRealmId = WorkflowExpression.Compile(bodyplayerexternalRealmId, nameof(bodyplayerexternalRealmId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/players/create_player";
@@ -27,59 +23,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Puggamifiedengagement
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString(" application/vnd.sno-ge.iapi+json");
                 callPayload.Headers["Accept"] = Convert.ToString(" application/vnd.sno-ge.iapi+json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                var playerObject = new JObject();
-                var playerObjectpropCount = 0;
-                if (__workflow_bodyplayeremail != null)
-                {
-                    playerObject["email"] = ExpressionConverter.ConvertO(__workflow_bodyplayeremail);
-                    playerObjectpropCount++;
-                }
-
-                var profileObject = new JObject();
-                var profileObjectpropCount = 0;
-                if (__workflow_bodyplayerprofilefirstName != null)
-                {
-                    profileObject["first_name"] = ExpressionConverter.ConvertO(__workflow_bodyplayerprofilefirstName);
-                    profileObjectpropCount++;
-                }
-
-                if (__workflow_bodyplayerprofilelastName != null)
-                {
-                    profileObject["last_name"] = ExpressionConverter.ConvertO(__workflow_bodyplayerprofilelastName);
-                    profileObjectpropCount++;
-                }
-
-                if (profileObjectpropCount > 0)
-                {
-                    playerObject["profile"] = profileObject;
-                    playerObjectpropCount++;
-                }
-
-                if (__workflow_bodyplayerexternalRealm != null)
-                {
-                    playerObject["external_realm"] = ExpressionConverter.ConvertO(__workflow_bodyplayerexternalRealm);
-                    playerObjectpropCount++;
-                }
-
-                if (__workflow_bodyplayerexternalRealmId != null)
-                {
-                    playerObject["external_realm_id"] = ExpressionConverter.ConvertO(__workflow_bodyplayerexternalRealmId);
-                    playerObjectpropCount++;
-                }
-
-                if (playerObjectpropCount > 0)
-                {
-                    body["player"] = playerObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -293,6 +238,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Puggamifiedengagement
 
     public class PuggamifiedengagementTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class CreatePlayerInput
+    {
+        [JsonProperty("player")]
+        public CreatePlayerInputPlayerType Player { get; set; }
+    }
+
+    public class CreatePlayerInputPlayerType
+    {
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("profile")]
+        public CreatePlayerInputPlayerTypeProfileType Profile { get; set; }
+
+        [JsonProperty("external_realm")]
+        public string ExternalRealm { get; set; }
+
+        [JsonProperty("external_realm_id")]
+        public string ExternalRealmId { get; set; }
+    }
+
+    public class CreatePlayerInputPlayerTypeProfileType
+    {
+        [JsonProperty("first_name")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("last_name")]
+        public string LastName { get; set; }
     }
 }
 

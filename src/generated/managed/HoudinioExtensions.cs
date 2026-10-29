@@ -13,30 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
     public class HoudinioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "houdinio")]
-        public IBodyWorkflowAction<ScanResponse, ApiConnectionActionConfiguration> LaunchScan(Expression<Func<string>> bodyartifact, Expression<Func<string[]>> bodyscanOn = null)
+        public IBodyWorkflowAction<ScanResponse, ApiConnectionActionConfiguration> LaunchScan(Expression<Func<LaunchScanInput>> body)
         {
-            var __workflow_bodyartifact = WorkflowExpression.Compile(bodyartifact, nameof(bodyartifact), required: true);
-            var __workflow_bodyscanOn = WorkflowExpression.Compile(bodyscanOn, nameof(bodyscanOn), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ScanResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/scan/launch";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["artifact"] = ExpressionConverter.ConvertO(__workflow_bodyartifact);
-                if (__workflow_bodyscanOn != null)
-                {
-                    body["scanOn"] = ExpressionConverter.ConvertO(__workflow_bodyscanOn);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ScanResponse>(callPayload);
             });
         }
@@ -67,6 +52,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
 
         [JsonProperty("status")]
         public string Status { get; set; }
+    }
+
+    public class LaunchScanInput
+    {
+        [JsonProperty("artifact", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Artifact { get; set; }
+
+        [JsonProperty("scanOn")]
+        public string[] ScanOn { get; set; }
     }
 
     public class ScanResult

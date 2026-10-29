@@ -13,11 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flowforma
     public class FlowformaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "flowforma")]
-        public IBodyWorkflowAction<FlowCreatedResponse, ApiConnectionActionConfiguration> CreateForm(Expression<Func<string>> connectionUrl, Expression<Func<string>> flows, Expression<Func<object>> question = null)
+        public IBodyWorkflowAction<FlowCreatedResponse, ApiConnectionActionConfiguration> CreateForm(Expression<Func<string>> connectionUrl, Expression<Func<string>> flows, Expression<Func<object>> question)
         {
             var __workflow_connectionUrl = WorkflowExpression.Compile(connectionUrl, nameof(connectionUrl), required: true);
             var __workflow_flows = WorkflowExpression.Compile(flows, nameof(flows), required: true);
-            var __workflow_question = WorkflowExpression.Compile(question, nameof(question), required: false);
+            var __workflow_question = WorkflowExpression.Compile(question, nameof(question), required: true);
             return new DeferredBodyAction<FlowCreatedResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/flowforma";

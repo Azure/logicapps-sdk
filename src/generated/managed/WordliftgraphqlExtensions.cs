@@ -13,11 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordliftgraphql
     public class WordliftgraphqlActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordliftgraphql")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ExecuteGraphQL(Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyquery = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ExecuteGraphQL(Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<ExecuteGraphQLInput>> body = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: false);
-            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/";
@@ -27,27 +27,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordliftgraphql
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 if (__workflow_accept != null)
                     callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyquery != null)
-                {
-                    body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
-                    bodypropCount++;
-                }
-
-                var variablesObject = new JObject();
-                var variablesObjectpropCount = 0;
-                if (variablesObjectpropCount > 0)
-                {
-                    body["variables"] = variablesObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -55,6 +36,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordliftgraphql
 
     public class WordliftgraphqlTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class ExecuteGraphQLInput
+    {
+        [JsonProperty("query")]
+        public string Query { get; set; }
+
+        [JsonProperty("variables")]
+        public JToken Variables { get; set; }
     }
 }
 

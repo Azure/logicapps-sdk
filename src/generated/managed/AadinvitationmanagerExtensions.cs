@@ -13,91 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aadinvitationmanager
     public class AadinvitationmanagerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aadinvitationmanager")]
-        public IBodyWorkflowAction<CreateInvitationResponse, ApiConnectionActionConfiguration> CreateInvitation(Expression<Func<string>> bodyinvitedUserDisplayName = null, Expression<Func<string>> bodyinvitedUserEmailAddress = null, Expression<Func<bodyinvitedUserMessageInfoccRecipientsInputItem[]>> bodyinvitedUserMessageInfoccRecipients = null, Expression<Func<string>> bodyinvitedUserMessageInfocustomizedMessageBody = null, Expression<Func<string>> bodyinvitedUserMessageInfomessageLanguage = null, Expression<Func<string>> bodyinvitedUserType = null, Expression<Func<string>> bodyinviteRedirectUrl = null, Expression<Func<bool>> bodyresetRedemption = null, Expression<Func<bool>> bodysendInvitationMessage = null)
+        public IBodyWorkflowAction<CreateInvitationResponse, ApiConnectionActionConfiguration> CreateInvitation(Expression<Func<CreateInvitationInput>> body = null)
         {
-            var __workflow_bodyinvitedUserDisplayName = WorkflowExpression.Compile(bodyinvitedUserDisplayName, nameof(bodyinvitedUserDisplayName), required: false);
-            var __workflow_bodyinvitedUserEmailAddress = WorkflowExpression.Compile(bodyinvitedUserEmailAddress, nameof(bodyinvitedUserEmailAddress), required: false);
-            var __workflow_bodyinvitedUserMessageInfoccRecipients = WorkflowExpression.Compile(bodyinvitedUserMessageInfoccRecipients, nameof(bodyinvitedUserMessageInfoccRecipients), required: false);
-            var __workflow_bodyinvitedUserMessageInfocustomizedMessageBody = WorkflowExpression.Compile(bodyinvitedUserMessageInfocustomizedMessageBody, nameof(bodyinvitedUserMessageInfocustomizedMessageBody), required: false);
-            var __workflow_bodyinvitedUserMessageInfomessageLanguage = WorkflowExpression.Compile(bodyinvitedUserMessageInfomessageLanguage, nameof(bodyinvitedUserMessageInfomessageLanguage), required: false);
-            var __workflow_bodyinvitedUserType = WorkflowExpression.Compile(bodyinvitedUserType, nameof(bodyinvitedUserType), required: false);
-            var __workflow_bodyinviteRedirectUrl = WorkflowExpression.Compile(bodyinviteRedirectUrl, nameof(bodyinviteRedirectUrl), required: false);
-            var __workflow_bodyresetRedemption = WorkflowExpression.Compile(bodyresetRedemption, nameof(bodyresetRedemption), required: false);
-            var __workflow_bodysendInvitationMessage = WorkflowExpression.Compile(bodysendInvitationMessage, nameof(bodysendInvitationMessage), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateInvitationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1.0/invitations";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyinvitedUserDisplayName != null)
-                {
-                    body["invitedUserDisplayName"] = ExpressionConverter.ConvertO(__workflow_bodyinvitedUserDisplayName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinvitedUserEmailAddress != null)
-                {
-                    body["invitedUserEmailAddress"] = ExpressionConverter.ConvertO(__workflow_bodyinvitedUserEmailAddress);
-                    bodypropCount++;
-                }
-
-                var invitedUserMessageInfoObject = new JObject();
-                var invitedUserMessageInfoObjectpropCount = 0;
-                if (__workflow_bodyinvitedUserMessageInfoccRecipients != null)
-                {
-                    invitedUserMessageInfoObject["ccRecipients"] = ExpressionConverter.ConvertO(__workflow_bodyinvitedUserMessageInfoccRecipients);
-                    invitedUserMessageInfoObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvitedUserMessageInfocustomizedMessageBody != null)
-                {
-                    invitedUserMessageInfoObject["customizedMessageBody"] = ExpressionConverter.ConvertO(__workflow_bodyinvitedUserMessageInfocustomizedMessageBody);
-                    invitedUserMessageInfoObjectpropCount++;
-                }
-
-                if (__workflow_bodyinvitedUserMessageInfomessageLanguage != null)
-                {
-                    invitedUserMessageInfoObject["messageLanguage"] = ExpressionConverter.ConvertO(__workflow_bodyinvitedUserMessageInfomessageLanguage);
-                    invitedUserMessageInfoObjectpropCount++;
-                }
-
-                if (invitedUserMessageInfoObjectpropCount > 0)
-                {
-                    body["invitedUserMessageInfo"] = invitedUserMessageInfoObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinvitedUserType != null)
-                {
-                    body["invitedUserType"] = ExpressionConverter.ConvertO(__workflow_bodyinvitedUserType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinviteRedirectUrl != null)
-                {
-                    body["inviteRedirectUrl"] = ExpressionConverter.ConvertO(__workflow_bodyinviteRedirectUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyresetRedemption != null)
-                {
-                    body["resetRedemption"] = ExpressionConverter.ConvertO(__workflow_bodyresetRedemption);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysendInvitationMessage != null)
-                {
-                    body["sendInvitationMessage"] = ExpressionConverter.ConvertO(__workflow_bodysendInvitationMessage);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateInvitationResponse>(callPayload);
             });
         }
@@ -167,10 +92,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aadinvitationmanager
         public string Id { get; set; }
     }
 
-    public class bodyinvitedUserMessageInfoccRecipientsInputItem
+    public class CreateInvitationInput
     {
-        [JsonProperty("emailAddress")]
-        public EmailAddress EmailAddress { get; set; }
+        [JsonProperty("invitedUserDisplayName")]
+        public string InvitedUserDisplayName { get; set; }
+
+        [JsonProperty("invitedUserEmailAddress")]
+        public string InvitedUserEmailAddress { get; set; }
+
+        [JsonProperty("invitedUserMessageInfo")]
+        public InvitedUserMessageInfo InvitedUserMessageInfo { get; set; }
+
+        [JsonProperty("invitedUserType")]
+        public string InvitedUserType { get; set; }
+
+        [JsonProperty("inviteRedirectUrl")]
+        public string InviteRedirectUrl { get; set; }
+
+        [JsonProperty("resetRedemption")]
+        public bool? ResetRedemption { get; set; }
+
+        [JsonProperty("sendInvitationMessage")]
+        public bool? SendInvitationMessage { get; set; }
     }
 }
 

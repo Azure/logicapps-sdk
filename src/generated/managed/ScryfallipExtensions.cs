@@ -96,27 +96,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsCollectionPostResponse, ApiConnectionActionConfiguration> CardsCollection(Expression<Func<bodyidentifiersInputItem[]>> bodyidentifiers = null)
+        public IBodyWorkflowAction<CardsCollectionPostResponse, ApiConnectionActionConfiguration> CardsCollection(Expression<Func<CardsCollectionPostInput>> body = null)
         {
-            var __workflow_bodyidentifiers = WorkflowExpression.Compile(bodyidentifiers, nameof(bodyidentifiers), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CardsCollectionPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/cards/collection";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyidentifiers != null)
-                {
-                    body["identifiers"] = ExpressionConverter.ConvertO(__workflow_bodyidentifiers);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CardsCollectionPostResponse>(callPayload);
             });
         }
@@ -1719,16 +1708,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         public string Cardhoarder { get; set; }
     }
 
-    public class bodyidentifiersInputItem
+    public class CardsCollectionPostInput
+    {
+        [JsonProperty("identifiers")]
+        public CardsCollectionPostInputIdentifiersTypeItem[] Identifiers { get; set; }
+    }
+
+    public class CardsCollectionPostInputIdentifiersTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
 
         [JsonProperty("mtgo_id")]
-        public int MtgoId { get; set; }
+        public int? MtgoId { get; set; }
 
         [JsonProperty("multiverse_id")]
-        public int MultiverseId { get; set; }
+        public int? MultiverseId { get; set; }
 
         [JsonProperty("oracle_id")]
         public string OracleId { get; set; }

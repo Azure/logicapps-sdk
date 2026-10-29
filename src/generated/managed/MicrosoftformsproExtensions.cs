@@ -41,7 +41,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftformspro
                 if (__workflow_lastName != null)
                     callPayload.Queries["lastName"] = ExpressionConverter.Convert(__workflow_lastName);
                 callPayload.Headers["ProjectId"] = ExpressionConverter.Convert(__workflow_projectId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
+                if (__workflow_item != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -77,7 +78,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftformspro
                 if (__workflow_recipientInfo != null)
                     callPayload.Queries["RecipientInfo"] = ExpressionConverter.Convert(__workflow_recipientInfo);
                 callPayload.Headers["ProjectId"] = ExpressionConverter.Convert(__workflow_projectId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
+                if (__workflow_item != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_item);
                 return new ApiConnectionAction<CreateSurveyInviteResponse>(callPayload);
             });
         }

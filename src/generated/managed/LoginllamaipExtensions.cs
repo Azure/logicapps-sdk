@@ -13,50 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loginllamaip
     public class LoginllamaipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "loginllamaip")]
-        public IBodyWorkflowAction<LoginPostResponse, ApiConnectionActionConfiguration> Login(Expression<Func<string>> bodyipAddress, Expression<Func<string>> bodyuserAgent, Expression<Func<string>> bodyidentityKey, Expression<Func<string>> bodygeoCountry = null, Expression<Func<string>> bodygeoCity = null, Expression<Func<string>> bodyuserTimeOfDay = null)
+        public IBodyWorkflowAction<LoginPostResponse, ApiConnectionActionConfiguration> Login(Expression<Func<LoginPostInput>> body = null)
         {
-            var __workflow_bodyipAddress = WorkflowExpression.Compile(bodyipAddress, nameof(bodyipAddress), required: true);
-            var __workflow_bodyuserAgent = WorkflowExpression.Compile(bodyuserAgent, nameof(bodyuserAgent), required: true);
-            var __workflow_bodyidentityKey = WorkflowExpression.Compile(bodyidentityKey, nameof(bodyidentityKey), required: true);
-            var __workflow_bodygeoCountry = WorkflowExpression.Compile(bodygeoCountry, nameof(bodygeoCountry), required: false);
-            var __workflow_bodygeoCity = WorkflowExpression.Compile(bodygeoCity, nameof(bodygeoCity), required: false);
-            var __workflow_bodyuserTimeOfDay = WorkflowExpression.Compile(bodyuserTimeOfDay, nameof(bodyuserTimeOfDay), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<LoginPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/login/check";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["ip_address"] = ExpressionConverter.ConvertO(__workflow_bodyipAddress);
-                bodypropCount++;
-                body["user_agent"] = ExpressionConverter.ConvertO(__workflow_bodyuserAgent);
-                bodypropCount++;
-                body["identity_key"] = ExpressionConverter.ConvertO(__workflow_bodyidentityKey);
-                if (__workflow_bodygeoCountry != null)
-                {
-                    body["geo_country"] = ExpressionConverter.ConvertO(__workflow_bodygeoCountry);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygeoCity != null)
-                {
-                    body["geo_city"] = ExpressionConverter.ConvertO(__workflow_bodygeoCity);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuserTimeOfDay != null)
-                {
-                    body["user_time_of_day"] = ExpressionConverter.ConvertO(__workflow_bodyuserTimeOfDay);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<LoginPostResponse>(callPayload);
             });
         }
@@ -76,6 +42,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loginllamaip
 
         [JsonProperty("codes")]
         public string[] Codes { get; set; }
+    }
+
+    public class LoginPostInput
+    {
+        [JsonProperty("ip_address", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string IpAddress { get; set; }
+
+        [JsonProperty("user_agent", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UserAgent { get; set; }
+
+        [JsonProperty("identity_key", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string IdentityKey { get; set; }
+
+        [JsonProperty("geo_country")]
+        public string GeoCountry { get; set; }
+
+        [JsonProperty("geo_city")]
+        public string GeoCity { get; set; }
+
+        [JsonProperty("user_time_of_day")]
+        public string UserTimeOfDay { get; set; }
     }
 }
 

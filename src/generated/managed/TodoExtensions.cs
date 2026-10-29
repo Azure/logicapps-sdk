@@ -13,24 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
     public class TodoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
-        public IBodyWorkflowAction<TodoListV2, ApiConnectionActionConfiguration> UpdateToDoList(Expression<Func<string>> folderId, Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<TodoListV2, ApiConnectionActionConfiguration> UpdateToDoList(Expression<Func<string>> folderId, Expression<Func<UpdateToDoListInput>> body)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TodoListV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["displayName"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TodoListV2>(callPayload);
             });
         }
@@ -49,118 +41,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
-        public IBodyWorkflowAction<ToDoV2, ApiConnectionActionConfiguration> CreateToDo(Expression<Func<string>> folderId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodydueDateTimedueDate = null, Expression<Func<string>> bodyreminderDateTimereminderDateTime = null, Expression<Func<bodyimportanceInput>> bodyimportance = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodybodycontent = null, Expression<Func<bool>> bodyisReminderOn = null)
+        public IBodyWorkflowAction<ToDoV2, ApiConnectionActionConfiguration> CreateToDo(Expression<Func<string>> folderId, Expression<Func<CreateToDoV3Input>> body)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodydueDateTimedueDate = WorkflowExpression.Compile(bodydueDateTimedueDate, nameof(bodydueDateTimedueDate), required: false);
-            var __workflow_bodyreminderDateTimereminderDateTime = WorkflowExpression.Compile(bodyreminderDateTimereminderDateTime, nameof(bodyreminderDateTimereminderDateTime), required: false);
-            var __workflow_bodyimportance = WorkflowExpression.Compile(bodyimportance, nameof(bodyimportance), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodybodycontent = WorkflowExpression.Compile(bodybodycontent, nameof(bodybodycontent), required: false);
-            var __workflow_bodyisReminderOn = WorkflowExpression.Compile(bodyisReminderOn, nameof(bodyisReminderOn), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ToDoV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/tasks", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var dueDateTimeObject = new JObject();
-                var dueDateTimeObjectpropCount = 0;
-                if (__workflow_bodydueDateTimedueDate != null)
-                {
-                    dueDateTimeObject["dateTime"] = ExpressionConverter.ConvertO(__workflow_bodydueDateTimedueDate);
-                    dueDateTimeObjectpropCount++;
-                }
-
-                dueDateTimeObject["timeZone"] = "UTC";
-                dueDateTimeObjectpropCount++;
-                if (dueDateTimeObjectpropCount > 0)
-                {
-                    body["dueDateTime"] = dueDateTimeObject;
-                    bodypropCount++;
-                }
-
-                var reminderDateTimeObject = new JObject();
-                var reminderDateTimeObjectpropCount = 0;
-                if (__workflow_bodyreminderDateTimereminderDateTime != null)
-                {
-                    reminderDateTimeObject["dateTime"] = ExpressionConverter.ConvertO(__workflow_bodyreminderDateTimereminderDateTime);
-                    reminderDateTimeObjectpropCount++;
-                }
-
-                reminderDateTimeObject["timeZone"] = "UTC";
-                reminderDateTimeObjectpropCount++;
-                if (reminderDateTimeObjectpropCount > 0)
-                {
-                    body["reminderDateTime"] = reminderDateTimeObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyimportance != null)
-                {
-                    body["importance"] = ExpressionConverter.ConvertO(__workflow_bodyimportance);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                var bodyObject = new JObject();
-                var bodyObjectpropCount = 0;
-                bodyObject["contentType"] = "html";
-                bodyObjectpropCount++;
-                if (__workflow_bodybodycontent != null)
-                {
-                    bodyObject["content"] = ExpressionConverter.ConvertO(__workflow_bodybodycontent);
-                    bodyObjectpropCount++;
-                }
-
-                if (bodyObjectpropCount > 0)
-                {
-                    body["body"] = bodyObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisReminderOn != null)
-                {
-                    body["isReminderOn"] = ExpressionConverter.ConvertO(__workflow_bodyisReminderOn);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ToDoV2>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
-        public IBodyWorkflowAction<TodoListV2, ApiConnectionActionConfiguration> CreateToDoList(Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<TodoListV2, ApiConnectionActionConfiguration> CreateToDoList(Expression<Func<CreateToDoListV2Input>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TodoListV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/lists";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["displayName"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TodoListV2>(callPayload);
             });
         }
@@ -235,101 +139,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
-        public IBodyWorkflowAction<ToDoV2, ApiConnectionActionConfiguration> UpdateToDo(Expression<Func<string>> folderId, Expression<Func<string>> id, Expression<Func<string>> bodydueDateTimedueDate = null, Expression<Func<string>> bodyreminderDateTimereminderDateTime = null, Expression<Func<bodyimportanceInput>> bodyimportance = null, Expression<Func<string>> bodytitle = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodybodycontent = null, Expression<Func<bool>> bodyisReminderOn = null)
+        public IBodyWorkflowAction<ToDoV2, ApiConnectionActionConfiguration> UpdateToDo(Expression<Func<string>> folderId, Expression<Func<string>> id, Expression<Func<UpdateToDoV2Input>> body)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodydueDateTimedueDate = WorkflowExpression.Compile(bodydueDateTimedueDate, nameof(bodydueDateTimedueDate), required: false);
-            var __workflow_bodyreminderDateTimereminderDateTime = WorkflowExpression.Compile(bodyreminderDateTimereminderDateTime, nameof(bodyreminderDateTimereminderDateTime), required: false);
-            var __workflow_bodyimportance = WorkflowExpression.Compile(bodyimportance, nameof(bodyimportance), required: false);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodybodycontent = WorkflowExpression.Compile(bodybodycontent, nameof(bodybodycontent), required: false);
-            var __workflow_bodyisReminderOn = WorkflowExpression.Compile(bodyisReminderOn, nameof(bodyisReminderOn), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ToDoV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/tasks/{1}", __workflow_folderId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var dueDateTimeObject = new JObject();
-                var dueDateTimeObjectpropCount = 0;
-                if (__workflow_bodydueDateTimedueDate != null)
-                {
-                    dueDateTimeObject["dateTime"] = ExpressionConverter.ConvertO(__workflow_bodydueDateTimedueDate);
-                    dueDateTimeObjectpropCount++;
-                }
-
-                dueDateTimeObject["timeZone"] = "UTC";
-                dueDateTimeObjectpropCount++;
-                if (dueDateTimeObjectpropCount > 0)
-                {
-                    body["dueDateTime"] = dueDateTimeObject;
-                    bodypropCount++;
-                }
-
-                var reminderDateTimeObject = new JObject();
-                var reminderDateTimeObjectpropCount = 0;
-                if (__workflow_bodyreminderDateTimereminderDateTime != null)
-                {
-                    reminderDateTimeObject["dateTime"] = ExpressionConverter.ConvertO(__workflow_bodyreminderDateTimereminderDateTime);
-                    reminderDateTimeObjectpropCount++;
-                }
-
-                reminderDateTimeObject["timeZone"] = "UTC";
-                reminderDateTimeObjectpropCount++;
-                if (reminderDateTimeObjectpropCount > 0)
-                {
-                    body["reminderDateTime"] = reminderDateTimeObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyimportance != null)
-                {
-                    body["importance"] = ExpressionConverter.ConvertO(__workflow_bodyimportance);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                var bodyObject = new JObject();
-                var bodyObjectpropCount = 0;
-                bodyObject["contentType"] = "html";
-                bodyObjectpropCount++;
-                if (__workflow_bodybodycontent != null)
-                {
-                    bodyObject["content"] = ExpressionConverter.ConvertO(__workflow_bodybodycontent);
-                    bodyObjectpropCount++;
-                }
-
-                if (bodyObjectpropCount > 0)
-                {
-                    body["body"] = bodyObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisReminderOn != null)
-                {
-                    body["isReminderOn"] = ExpressionConverter.ConvertO(__workflow_bodyisReminderOn);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ToDoV2>(callPayload);
             });
         }
@@ -381,6 +201,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
 
         [JsonProperty("isShared")]
         public bool IsShared { get; set; }
+    }
+
+    public class UpdateToDoListInput
+    {
+        [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
     }
 
     public class ToDoV2
@@ -481,8 +307,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
         Deferred
     }
 
+    public class CreateToDoV3Input
+    {
+        [JsonProperty("dueDateTime")]
+        public CreateToDoV3InputDueDateTimeType DueDateTime { get; set; }
+
+        [JsonProperty("reminderDateTime")]
+        public CreateToDoV3InputReminderDateTimeType ReminderDateTime { get; set; }
+
+        [JsonProperty("importance")]
+        public CreateToDoV3InputImportanceType? Importance { get; set; }
+
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; } = "DefaultToDo";
+
+        [JsonProperty("status")]
+        public CreateToDoV3InputStatusType? Status { get; set; }
+
+        [JsonProperty("body")]
+        public CreateToDoV3InputBodyType Body { get; set; }
+
+        [JsonProperty("isReminderOn")]
+        public bool? IsReminderOn { get; set; }
+    }
+
+    public class CreateToDoV3InputDueDateTimeType
+    {
+        [JsonProperty("dateTime")]
+        public string DueDate { get; set; }
+
+        [JsonProperty("timeZone", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string DueTimeZone { get; set; } = "UTC";
+    }
+
+    public class CreateToDoV3InputReminderDateTimeType
+    {
+        [JsonProperty("dateTime")]
+        public string ReminderDateTime { get; set; }
+
+        [JsonProperty("timeZone", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ReminderTimeZone { get; set; } = "UTC";
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyimportanceInput
+    public enum CreateToDoV3InputImportanceType
     {
         [EnumMember(Value = "low")]
         Low,
@@ -493,7 +361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodystatusInput
+    public enum CreateToDoV3InputStatusType
     {
         [EnumMember(Value = "notStarted")]
         NotStarted,
@@ -505,6 +373,98 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
         WaitingOnOthers,
         [EnumMember(Value = "deferred")]
         Deferred
+    }
+
+    public class CreateToDoV3InputBodyType
+    {
+        [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ContentType { get; set; } = "html";
+
+        [JsonProperty("content")]
+        public string Content { get; set; }
+    }
+
+    public class CreateToDoListV2Input
+    {
+        [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+    }
+
+    public class UpdateToDoV2Input
+    {
+        [JsonProperty("dueDateTime")]
+        public UpdateToDoV2InputDueDateTimeType DueDateTime { get; set; }
+
+        [JsonProperty("reminderDateTime")]
+        public UpdateToDoV2InputReminderDateTimeType ReminderDateTime { get; set; }
+
+        [JsonProperty("importance")]
+        public UpdateToDoV2InputImportanceType? Importance { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("status")]
+        public UpdateToDoV2InputStatusType? Status { get; set; }
+
+        [JsonProperty("body")]
+        public UpdateToDoV2InputBodyType Body { get; set; }
+
+        [JsonProperty("isReminderOn")]
+        public bool? IsReminderOn { get; set; }
+    }
+
+    public class UpdateToDoV2InputDueDateTimeType
+    {
+        [JsonProperty("dateTime")]
+        public string DueDate { get; set; }
+
+        [JsonProperty("timeZone", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string DueTimeZone { get; set; } = "UTC";
+    }
+
+    public class UpdateToDoV2InputReminderDateTimeType
+    {
+        [JsonProperty("dateTime")]
+        public string ReminderDateTime { get; set; }
+
+        [JsonProperty("timeZone", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ReminderTimeZone { get; set; } = "UTC";
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum UpdateToDoV2InputImportanceType
+    {
+        [EnumMember(Value = "low")]
+        Low,
+        [EnumMember(Value = "normal")]
+        Normal,
+        [EnumMember(Value = "high")]
+        High
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum UpdateToDoV2InputStatusType
+    {
+        [EnumMember(Value = "notStarted")]
+        NotStarted,
+        [EnumMember(Value = "inProgress")]
+        InProgress,
+        [EnumMember(Value = "completed")]
+        Completed,
+        [EnumMember(Value = "waitingOnOthers")]
+        WaitingOnOthers,
+        [EnumMember(Value = "deferred")]
+        Deferred
+    }
+
+    public class UpdateToDoV2InputBodyType
+    {
+        [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ContentType { get; set; } = "html";
+
+        [JsonProperty("content")]
+        public string Content { get; set; }
     }
 }
 

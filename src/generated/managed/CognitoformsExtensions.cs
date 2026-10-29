@@ -26,15 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["module"] = Convert.ToString("forms");
                 callPayload.Queries["publisher"] = ExpressionConverter.Convert(__workflow_publisher);
-                var endpoint = new JObject();
-                var endpointpropCount = 0;
-                endpoint["notificationUrl"] = "#{listCallbackUrl()}";
-                endpointpropCount++;
-                if (endpointpropCount > 0)
-                {
-                    callPayload.Body = endpoint;
-                }
-
+                callPayload.Body = new NewEntryInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -49,15 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["module"] = Convert.ToString("forms");
                 callPayload.Queries["publisher"] = ExpressionConverter.Convert(__workflow_publisher);
-                var endpoint = new JObject();
-                var endpointpropCount = 0;
-                endpoint["notificationUrl"] = "#{listCallbackUrl()}";
-                endpointpropCount++;
-                if (endpointpropCount > 0)
-                {
-                    callPayload.Body = endpoint;
-                }
-
+                callPayload.Body = new UpdateEntryInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -72,18 +56,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["module"] = Convert.ToString("forms");
                 callPayload.Queries["publisher"] = ExpressionConverter.Convert(__workflow_publisher);
-                var endpoint = new JObject();
-                var endpointpropCount = 0;
-                endpoint["notificationUrl"] = "#{listCallbackUrl()}";
-                endpointpropCount++;
-                if (endpointpropCount > 0)
-                {
-                    callPayload.Body = endpoint;
-                }
-
+                callPayload.Body = new EntryDeletedInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
+    }
+
+    public class NewEntryInput
+    {
+        [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationURL { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class UpdateEntryInput
+    {
+        [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationURL { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class EntryDeletedInput
+    {
+        [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationURL { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

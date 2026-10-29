@@ -127,70 +127,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
-        public IBodyWorkflowAction<VstsListSubject, ApiConnectionActionConfiguration> GetSubject(Expression<Func<string>> account, Expression<Func<string>> subjectQueryDetailssearchTerm, Expression<Func<string[]>> subjectQueryDetailssubjectKind, Expression<Func<string>> subjectQueryDetailsscopeDescriptor = null)
+        public IBodyWorkflowAction<VstsListSubject, ApiConnectionActionConfiguration> GetSubject(Expression<Func<string>> account, Expression<Func<GetSubjectInput>> subjectQueryDetails)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
-            var __workflow_subjectQueryDetailssearchTerm = WorkflowExpression.Compile(subjectQueryDetailssearchTerm, nameof(subjectQueryDetailssearchTerm), required: true);
-            var __workflow_subjectQueryDetailssubjectKind = WorkflowExpression.Compile(subjectQueryDetailssubjectKind, nameof(subjectQueryDetailssubjectKind), required: true);
-            var __workflow_subjectQueryDetailsscopeDescriptor = WorkflowExpression.Compile(subjectQueryDetailsscopeDescriptor, nameof(subjectQueryDetailsscopeDescriptor), required: false);
+            var __workflow_subjectQueryDetails = WorkflowExpression.Compile(subjectQueryDetails, nameof(subjectQueryDetails), required: true);
             return new DeferredBodyAction<VstsListSubject, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/_apis/graph/subjectquery", __workflow_account.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var subjectQueryDetails = new JObject();
-                var subjectQueryDetailspropCount = 0;
-                subjectQueryDetailspropCount++;
-                subjectQueryDetails["query"] = ExpressionConverter.ConvertO(__workflow_subjectQueryDetailssearchTerm);
-                subjectQueryDetailspropCount++;
-                subjectQueryDetails["subjectKind"] = ExpressionConverter.ConvertO(__workflow_subjectQueryDetailssubjectKind);
-                if (__workflow_subjectQueryDetailsscopeDescriptor != null)
-                {
-                    subjectQueryDetails["scopeDescriptor"] = ExpressionConverter.ConvertO(__workflow_subjectQueryDetailsscopeDescriptor);
-                    subjectQueryDetailspropCount++;
-                }
-
-                if (subjectQueryDetailspropCount > 0)
-                {
-                    callPayload.Body = subjectQueryDetails;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_subjectQueryDetails);
                 return new ApiConnectionAction<VstsListSubject>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateWorkItem(Expression<Func<string>> account, Expression<Func<string>> id, Expression<Func<string>> project, Expression<Func<int>> workItempriority = null, Expression<Func<KeyValuePair[]>> workItemotherFields = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateWorkItem(Expression<Func<string>> account, Expression<Func<string>> id, Expression<Func<string>> project, Expression<Func<UpdateWorkItemInput>> workItem)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
-            var __workflow_workItempriority = WorkflowExpression.Compile(workItempriority, nameof(workItempriority), required: false);
-            var __workflow_workItemotherFields = WorkflowExpression.Compile(workItemotherFields, nameof(workItemotherFields), required: false);
+            var __workflow_workItem = WorkflowExpression.Compile(workItem, nameof(workItem), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/_apis/wit/workitems/{2}", __workflow_account.WithUrlEncoding(1), __workflow_project.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var workItem = new JObject();
-                var workItempropCount = 0;
-                if (__workflow_workItempriority != null)
-                {
-                    workItem["priority"] = ExpressionConverter.ConvertO(__workflow_workItempriority);
-                    workItempropCount++;
-                }
-
-                if (__workflow_workItemotherFields != null)
-                {
-                    workItem["userEnteredFields"] = ExpressionConverter.ConvertO(__workflow_workItemotherFields);
-                    workItempropCount++;
-                }
-
-                if (workItempropCount > 0)
-                {
-                    callPayload.Body = workItem;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_workItem);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -426,6 +389,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
 
         [JsonProperty("avatar")]
         public string Avatar { get; set; }
+    }
+
+    public class GetSubjectInput
+    {
+        [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SearchTerm { get; set; }
+
+        [JsonProperty("subjectKind", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] SubjectKind { get; set; }
+
+        [JsonProperty("scopeDescriptor")]
+        public string ScopeDescriptor { get; set; }
+    }
+
+    public class UpdateWorkItemInput
+    {
+        [JsonProperty("priority")]
+        public int? Priority { get; set; }
+
+        [JsonProperty("userEnteredFields")]
+        public KeyValuePair[] OtherFields { get; set; }
     }
 
     public class KeyValuePair

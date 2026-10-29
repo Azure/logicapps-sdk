@@ -13,78 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
     public class EduframeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eduframe")]
-        public IBodyWorkflowAction<Account, ApiConnectionActionConfiguration> PostAccounts(Expression<Func<string>> bodyname, Expression<Func<string>> bodyaddressAttributesaddress, Expression<Func<string>> bodyaddressAttributespostalCode, Expression<Func<string>> bodyaddressAttributescity, Expression<Func<string>> bodyaddressAttributescountry, Expression<Func<string>> bodyemail = null, Expression<Func<int>> bodyaddressAttributesid = null, Expression<Func<string>> bodyaddressAttributesaddressee = null, Expression<Func<string>> bodyaddressAttributesupdatedAt = null, Expression<Func<string>> bodyaddressAttributescreatedAt = null)
+        public IBodyWorkflowAction<Account, ApiConnectionActionConfiguration> PostAccounts(Expression<Func<PostAccountsInput>> body = null)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyaddressAttributesaddress = WorkflowExpression.Compile(bodyaddressAttributesaddress, nameof(bodyaddressAttributesaddress), required: true);
-            var __workflow_bodyaddressAttributespostalCode = WorkflowExpression.Compile(bodyaddressAttributespostalCode, nameof(bodyaddressAttributespostalCode), required: true);
-            var __workflow_bodyaddressAttributescity = WorkflowExpression.Compile(bodyaddressAttributescity, nameof(bodyaddressAttributescity), required: true);
-            var __workflow_bodyaddressAttributescountry = WorkflowExpression.Compile(bodyaddressAttributescountry, nameof(bodyaddressAttributescountry), required: true);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyaddressAttributesid = WorkflowExpression.Compile(bodyaddressAttributesid, nameof(bodyaddressAttributesid), required: false);
-            var __workflow_bodyaddressAttributesaddressee = WorkflowExpression.Compile(bodyaddressAttributesaddressee, nameof(bodyaddressAttributesaddressee), required: false);
-            var __workflow_bodyaddressAttributesupdatedAt = WorkflowExpression.Compile(bodyaddressAttributesupdatedAt, nameof(bodyaddressAttributesupdatedAt), required: false);
-            var __workflow_bodyaddressAttributescreatedAt = WorkflowExpression.Compile(bodyaddressAttributescreatedAt, nameof(bodyaddressAttributescreatedAt), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Account, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/accounts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (__workflow_bodyemail != null)
-                {
-                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                    bodypropCount++;
-                }
-
-                var addressAttributesObject = new JObject();
-                var addressAttributesObjectpropCount = 0;
-                if (__workflow_bodyaddressAttributesid != null)
-                {
-                    addressAttributesObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyaddressAttributesid);
-                    addressAttributesObjectpropCount++;
-                }
-
-                if (__workflow_bodyaddressAttributesaddressee != null)
-                {
-                    addressAttributesObject["addressee"] = ExpressionConverter.ConvertO(__workflow_bodyaddressAttributesaddressee);
-                    addressAttributesObjectpropCount++;
-                }
-
-                addressAttributesObjectpropCount++;
-                addressAttributesObject["address"] = ExpressionConverter.ConvertO(__workflow_bodyaddressAttributesaddress);
-                addressAttributesObjectpropCount++;
-                addressAttributesObject["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodyaddressAttributespostalCode);
-                addressAttributesObjectpropCount++;
-                addressAttributesObject["city"] = ExpressionConverter.ConvertO(__workflow_bodyaddressAttributescity);
-                addressAttributesObjectpropCount++;
-                addressAttributesObject["country"] = ExpressionConverter.ConvertO(__workflow_bodyaddressAttributescountry);
-                if (__workflow_bodyaddressAttributesupdatedAt != null)
-                {
-                    addressAttributesObject["updated_at"] = ExpressionConverter.ConvertO(__workflow_bodyaddressAttributesupdatedAt);
-                    addressAttributesObjectpropCount++;
-                }
-
-                if (__workflow_bodyaddressAttributescreatedAt != null)
-                {
-                    addressAttributesObject["created_at"] = ExpressionConverter.ConvertO(__workflow_bodyaddressAttributescreatedAt);
-                    addressAttributesObjectpropCount++;
-                }
-
-                if (addressAttributesObjectpropCount > 0)
-                {
-                    body["address_attributes"] = addressAttributesObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Account>(callPayload);
             });
         }
@@ -123,138 +61,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eduframe")]
-        public IBodyWorkflowAction<Authentication, ApiConnectionActionConfiguration> PostAuthentication(Expression<Func<int>> bodyuserId, Expression<Func<bodyauthenticationProviderTypeInput>> bodyauthenticationProviderType, Expression<Func<string>> bodyuid)
+        public IBodyWorkflowAction<Authentication, ApiConnectionActionConfiguration> PostAuthentication(Expression<Func<PostAuthenticationInput>> body = null)
         {
-            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: true);
-            var __workflow_bodyauthenticationProviderType = WorkflowExpression.Compile(bodyauthenticationProviderType, nameof(bodyauthenticationProviderType), required: true);
-            var __workflow_bodyuid = WorkflowExpression.Compile(bodyuid, nameof(bodyuid), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Authentication, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/authentications";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["user_id"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
-                bodypropCount++;
-                body["authentication_provider_type"] = ExpressionConverter.ConvertO(__workflow_bodyauthenticationProviderType);
-                bodypropCount++;
-                body["uid"] = ExpressionConverter.ConvertO(__workflow_bodyuid);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Authentication>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eduframe")]
-        public IBodyWorkflowAction<Category, ApiConnectionActionConfiguration> PostCategories(Expression<Func<string>> bodyname, Expression<Func<int>> bodyid = null, Expression<Func<string>> bodydescription = null, Expression<Func<double>> bodyposition = null, Expression<Func<double>> bodyparentId = null, Expression<Func<string>> bodyavatar = null, Expression<Func<bool>> bodyisPublished = null, Expression<Func<double>> bodycoursesCount = null, Expression<Func<double>> bodychildrenCount = null, Expression<Func<string>> bodyupdatedAt = null, Expression<Func<string>> bodycreatedAt = null, Expression<Func<string>> bodyavatarUrl = null)
+        public IBodyWorkflowAction<Category, ApiConnectionActionConfiguration> PostCategories(Expression<Func<PostCategoriesInput>> body = null)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyposition = WorkflowExpression.Compile(bodyposition, nameof(bodyposition), required: false);
-            var __workflow_bodyparentId = WorkflowExpression.Compile(bodyparentId, nameof(bodyparentId), required: false);
-            var __workflow_bodyavatar = WorkflowExpression.Compile(bodyavatar, nameof(bodyavatar), required: false);
-            var __workflow_bodyisPublished = WorkflowExpression.Compile(bodyisPublished, nameof(bodyisPublished), required: false);
-            var __workflow_bodycoursesCount = WorkflowExpression.Compile(bodycoursesCount, nameof(bodycoursesCount), required: false);
-            var __workflow_bodychildrenCount = WorkflowExpression.Compile(bodychildrenCount, nameof(bodychildrenCount), required: false);
-            var __workflow_bodyupdatedAt = WorkflowExpression.Compile(bodyupdatedAt, nameof(bodyupdatedAt), required: false);
-            var __workflow_bodycreatedAt = WorkflowExpression.Compile(bodycreatedAt, nameof(bodycreatedAt), required: false);
-            var __workflow_bodyavatarUrl = WorkflowExpression.Compile(bodyavatarUrl, nameof(bodyavatarUrl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Category, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/categories";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyposition != null)
-                {
-                    body["position"] = ExpressionConverter.ConvertO(__workflow_bodyposition);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyparentId != null)
-                {
-                    body["parent_id"] = ExpressionConverter.ConvertO(__workflow_bodyparentId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyavatar != null)
-                {
-                    body["avatar"] = ExpressionConverter.ConvertO(__workflow_bodyavatar);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisPublished != null)
-                {
-                    if (__workflow_bodyisPublished != null)
-                    {
-                        body["is_published"] = ExpressionConverter.ConvertO(__workflow_bodyisPublished);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["is_published"] = true;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycoursesCount != null)
-                {
-                    body["courses_count"] = ExpressionConverter.ConvertO(__workflow_bodycoursesCount);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodychildrenCount != null)
-                {
-                    body["children_count"] = ExpressionConverter.ConvertO(__workflow_bodychildrenCount);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyupdatedAt != null)
-                {
-                    body["updated_at"] = ExpressionConverter.ConvertO(__workflow_bodyupdatedAt);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycreatedAt != null)
-                {
-                    body["created_at"] = ExpressionConverter.ConvertO(__workflow_bodycreatedAt);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyavatarUrl != null)
-                {
-                    body["avatar_url"] = ExpressionConverter.ConvertO(__workflow_bodyavatarUrl);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Category>(callPayload);
             });
         }
@@ -296,109 +127,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eduframe")]
-        public IBodyWorkflowAction<Course, ApiConnectionActionConfiguration> PostCourses(Expression<Func<string>> bodyname, Expression<Func<double>> bodycategoryId, Expression<Func<string>> bodycode, Expression<Func<int>> bodyid = null, Expression<Func<double>> bodyposition = null, Expression<Func<string>> bodysignupUrl = null, Expression<Func<string>> bodyavatar = null, Expression<Func<double>> bodycertificateTemplateId = null, Expression<Func<string>> bodycost = null, Expression<Func<bodycostSchemeInput>> bodycostScheme = null, Expression<Func<bool>> bodyisPublished = null, Expression<Func<string>> bodyupdatedAt = null, Expression<Func<string>> bodycreatedAt = null)
+        public IBodyWorkflowAction<Course, ApiConnectionActionConfiguration> PostCourses(Expression<Func<PostCoursesInput>> body = null)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodycategoryId = WorkflowExpression.Compile(bodycategoryId, nameof(bodycategoryId), required: true);
-            var __workflow_bodycode = WorkflowExpression.Compile(bodycode, nameof(bodycode), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodyposition = WorkflowExpression.Compile(bodyposition, nameof(bodyposition), required: false);
-            var __workflow_bodysignupUrl = WorkflowExpression.Compile(bodysignupUrl, nameof(bodysignupUrl), required: false);
-            var __workflow_bodyavatar = WorkflowExpression.Compile(bodyavatar, nameof(bodyavatar), required: false);
-            var __workflow_bodycertificateTemplateId = WorkflowExpression.Compile(bodycertificateTemplateId, nameof(bodycertificateTemplateId), required: false);
-            var __workflow_bodycost = WorkflowExpression.Compile(bodycost, nameof(bodycost), required: false);
-            var __workflow_bodycostScheme = WorkflowExpression.Compile(bodycostScheme, nameof(bodycostScheme), required: false);
-            var __workflow_bodyisPublished = WorkflowExpression.Compile(bodyisPublished, nameof(bodyisPublished), required: false);
-            var __workflow_bodyupdatedAt = WorkflowExpression.Compile(bodyupdatedAt, nameof(bodyupdatedAt), required: false);
-            var __workflow_bodycreatedAt = WorkflowExpression.Compile(bodycreatedAt, nameof(bodycreatedAt), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Course, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/courses";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (__workflow_bodyposition != null)
-                {
-                    body["position"] = ExpressionConverter.ConvertO(__workflow_bodyposition);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysignupUrl != null)
-                {
-                    body["signup_url"] = ExpressionConverter.ConvertO(__workflow_bodysignupUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyavatar != null)
-                {
-                    body["avatar"] = ExpressionConverter.ConvertO(__workflow_bodyavatar);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycertificateTemplateId != null)
-                {
-                    body["certificate_template_id"] = ExpressionConverter.ConvertO(__workflow_bodycertificateTemplateId);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["category_id"] = ExpressionConverter.ConvertO(__workflow_bodycategoryId);
-                bodypropCount++;
-                body["code"] = ExpressionConverter.ConvertO(__workflow_bodycode);
-                if (__workflow_bodycost != null)
-                {
-                    body["cost"] = ExpressionConverter.ConvertO(__workflow_bodycost);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycostScheme != null)
-                {
-                    body["cost_scheme"] = ExpressionConverter.ConvertO(__workflow_bodycostScheme);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisPublished != null)
-                {
-                    if (__workflow_bodyisPublished != null)
-                    {
-                        body["is_published"] = ExpressionConverter.ConvertO(__workflow_bodyisPublished);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["is_published"] = true;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyupdatedAt != null)
-                {
-                    body["updated_at"] = ExpressionConverter.ConvertO(__workflow_bodyupdatedAt);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycreatedAt != null)
-                {
-                    body["created_at"] = ExpressionConverter.ConvertO(__workflow_bodycreatedAt);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Course>(callPayload);
             });
         }
@@ -440,146 +178,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eduframe")]
-        public IBodyWorkflowAction<User, ApiConnectionActionConfiguration> PostUsers(Expression<Func<string>> bodyfirstName, Expression<Func<string>> bodylastName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyaddressAttributesaddress, Expression<Func<string>> bodyaddressAttributespostalCode, Expression<Func<string>> bodyaddressAttributescity, Expression<Func<string>> bodyaddressAttributescountry, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodyphone = null, Expression<Func<bool>> bodywantsNewsletter = null, Expression<Func<bool>> bodywithAuthentication = null, Expression<Func<bodylocaleInput>> bodylocale = null, Expression<Func<double[]>> bodylabelIds = null, Expression<Func<int>> bodyaddressAttributesid = null, Expression<Func<string>> bodyaddressAttributesaddressee = null, Expression<Func<string>> bodyaddressAttributesupdatedAt = null, Expression<Func<string>> bodyaddressAttributescreatedAt = null, Expression<Func<string>> bodynotesUser = null)
+        public IBodyWorkflowAction<User, ApiConnectionActionConfiguration> PostUsers(Expression<Func<PostUsersInput>> body = null)
         {
-            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: true);
-            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: true);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyaddressAttributesaddress = WorkflowExpression.Compile(bodyaddressAttributesaddress, nameof(bodyaddressAttributesaddress), required: true);
-            var __workflow_bodyaddressAttributespostalCode = WorkflowExpression.Compile(bodyaddressAttributespostalCode, nameof(bodyaddressAttributespostalCode), required: true);
-            var __workflow_bodyaddressAttributescity = WorkflowExpression.Compile(bodyaddressAttributescity, nameof(bodyaddressAttributescity), required: true);
-            var __workflow_bodyaddressAttributescountry = WorkflowExpression.Compile(bodyaddressAttributescountry, nameof(bodyaddressAttributescountry), required: true);
-            var __workflow_bodymiddleName = WorkflowExpression.Compile(bodymiddleName, nameof(bodymiddleName), required: false);
-            var __workflow_bodyphone = WorkflowExpression.Compile(bodyphone, nameof(bodyphone), required: false);
-            var __workflow_bodywantsNewsletter = WorkflowExpression.Compile(bodywantsNewsletter, nameof(bodywantsNewsletter), required: false);
-            var __workflow_bodywithAuthentication = WorkflowExpression.Compile(bodywithAuthentication, nameof(bodywithAuthentication), required: false);
-            var __workflow_bodylocale = WorkflowExpression.Compile(bodylocale, nameof(bodylocale), required: false);
-            var __workflow_bodylabelIds = WorkflowExpression.Compile(bodylabelIds, nameof(bodylabelIds), required: false);
-            var __workflow_bodyaddressAttributesid = WorkflowExpression.Compile(bodyaddressAttributesid, nameof(bodyaddressAttributesid), required: false);
-            var __workflow_bodyaddressAttributesaddressee = WorkflowExpression.Compile(bodyaddressAttributesaddressee, nameof(bodyaddressAttributesaddressee), required: false);
-            var __workflow_bodyaddressAttributesupdatedAt = WorkflowExpression.Compile(bodyaddressAttributesupdatedAt, nameof(bodyaddressAttributesupdatedAt), required: false);
-            var __workflow_bodyaddressAttributescreatedAt = WorkflowExpression.Compile(bodyaddressAttributescreatedAt, nameof(bodyaddressAttributescreatedAt), required: false);
-            var __workflow_bodynotesUser = WorkflowExpression.Compile(bodynotesUser, nameof(bodynotesUser), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<User, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/users";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["first_name"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
-                if (__workflow_bodymiddleName != null)
-                {
-                    body["middle_name"] = ExpressionConverter.ConvertO(__workflow_bodymiddleName);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["last_name"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
-                bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                if (__workflow_bodyphone != null)
-                {
-                    body["phone"] = ExpressionConverter.ConvertO(__workflow_bodyphone);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodywantsNewsletter != null)
-                {
-                    if (__workflow_bodywantsNewsletter != null)
-                    {
-                        body["wants_newsletter"] = ExpressionConverter.ConvertO(__workflow_bodywantsNewsletter);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["wants_newsletter"] = false;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodywithAuthentication != null)
-                {
-                    if (__workflow_bodywithAuthentication != null)
-                    {
-                        body["with_authentication"] = ExpressionConverter.ConvertO(__workflow_bodywithAuthentication);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["with_authentication"] = true;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylocale != null)
-                {
-                    body["locale"] = ExpressionConverter.ConvertO(__workflow_bodylocale);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylabelIds != null)
-                {
-                    body["label_ids"] = ExpressionConverter.ConvertO(__workflow_bodylabelIds);
-                    bodypropCount++;
-                }
-
-                var addressAttributesObject = new JObject();
-                var addressAttributesObjectpropCount = 0;
-                if (__workflow_bodyaddressAttributesid != null)
-                {
-                    addressAttributesObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyaddressAttributesid);
-                    addressAttributesObjectpropCount++;
-                }
-
-                if (__workflow_bodyaddressAttributesaddressee != null)
-                {
-                    addressAttributesObject["addressee"] = ExpressionConverter.ConvertO(__workflow_bodyaddressAttributesaddressee);
-                    addressAttributesObjectpropCount++;
-                }
-
-                addressAttributesObjectpropCount++;
-                addressAttributesObject["address"] = ExpressionConverter.ConvertO(__workflow_bodyaddressAttributesaddress);
-                addressAttributesObjectpropCount++;
-                addressAttributesObject["postal_code"] = ExpressionConverter.ConvertO(__workflow_bodyaddressAttributespostalCode);
-                addressAttributesObjectpropCount++;
-                addressAttributesObject["city"] = ExpressionConverter.ConvertO(__workflow_bodyaddressAttributescity);
-                addressAttributesObjectpropCount++;
-                addressAttributesObject["country"] = ExpressionConverter.ConvertO(__workflow_bodyaddressAttributescountry);
-                if (__workflow_bodyaddressAttributesupdatedAt != null)
-                {
-                    addressAttributesObject["updated_at"] = ExpressionConverter.ConvertO(__workflow_bodyaddressAttributesupdatedAt);
-                    addressAttributesObjectpropCount++;
-                }
-
-                if (__workflow_bodyaddressAttributescreatedAt != null)
-                {
-                    addressAttributesObject["created_at"] = ExpressionConverter.ConvertO(__workflow_bodyaddressAttributescreatedAt);
-                    addressAttributesObjectpropCount++;
-                }
-
-                if (addressAttributesObjectpropCount > 0)
-                {
-                    body["address_attributes"] = addressAttributesObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynotesUser != null)
-                {
-                    body["notes_user"] = ExpressionConverter.ConvertO(__workflow_bodynotesUser);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<User>(callPayload);
             });
         }
@@ -656,50 +264,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eduframe")]
-        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> PostInvoices(Expression<Func<double>> bodyaccountId, Expression<Func<bodycurrencyInput>> bodycurrency, Expression<Func<InvoiceItem[]>> bodyinvoiceItemsAttributes, Expression<Func<string>> bodyaccountName = null, Expression<Func<string>> bodyfeature = null, Expression<Func<string>> bodyfootnote = null)
+        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> PostInvoices(Expression<Func<PostInvoicesInput>> body = null)
         {
-            var __workflow_bodyaccountId = WorkflowExpression.Compile(bodyaccountId, nameof(bodyaccountId), required: true);
-            var __workflow_bodycurrency = WorkflowExpression.Compile(bodycurrency, nameof(bodycurrency), required: true);
-            var __workflow_bodyinvoiceItemsAttributes = WorkflowExpression.Compile(bodyinvoiceItemsAttributes, nameof(bodyinvoiceItemsAttributes), required: true);
-            var __workflow_bodyaccountName = WorkflowExpression.Compile(bodyaccountName, nameof(bodyaccountName), required: false);
-            var __workflow_bodyfeature = WorkflowExpression.Compile(bodyfeature, nameof(bodyfeature), required: false);
-            var __workflow_bodyfootnote = WorkflowExpression.Compile(bodyfootnote, nameof(bodyfootnote), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Invoice, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/invoices";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["account_id"] = ExpressionConverter.ConvertO(__workflow_bodyaccountId);
-                if (__workflow_bodyaccountName != null)
-                {
-                    body["account_name"] = ExpressionConverter.ConvertO(__workflow_bodyaccountName);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["currency"] = ExpressionConverter.ConvertO(__workflow_bodycurrency);
-                bodypropCount++;
-                body["invoice_items_attributes"] = ExpressionConverter.ConvertO(__workflow_bodyinvoiceItemsAttributes);
-                if (__workflow_bodyfeature != null)
-                {
-                    body["feature"] = ExpressionConverter.ConvertO(__workflow_bodyfeature);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfootnote != null)
-                {
-                    body["footnote"] = ExpressionConverter.ConvertO(__workflow_bodyfootnote);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Invoice>(callPayload);
             });
         }
@@ -758,33 +332,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eduframe")]
-        public IBodyWorkflowAction<InvoiceVat, ApiConnectionActionConfiguration> PostInvoiceVats(Expression<Func<string>> bodyname, Expression<Func<string>> bodypercentage, Expression<Func<int>> bodyid = null)
+        public IBodyWorkflowAction<InvoiceVat, ApiConnectionActionConfiguration> PostInvoiceVats(Expression<Func<PostInvoiceVatsInput>> body = null)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodypercentage = WorkflowExpression.Compile(bodypercentage, nameof(bodypercentage), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<InvoiceVat, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/invoice_vats";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["percentage"] = ExpressionConverter.ConvertO(__workflow_bodypercentage);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<InvoiceVat>(callPayload);
             });
         }
@@ -835,49 +392,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
 
     public class EduframeTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Webhook, ApiConnectionTriggerConfiguration> PostWebhooks(Expression<Func<bodyeventsInputItem[]>> bodyevents, Expression<Func<string>> bodyid = null, Expression<Func<bool>> bodyactive = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Webhook, ApiConnectionTriggerConfiguration> PostWebhooks(Expression<Func<PostWebhooksInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyevents = WorkflowExpression.Compile(bodyevents, nameof(bodyevents), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodyactive = WorkflowExpression.Compile(bodyactive, nameof(bodyactive), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<Webhook, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (__workflow_bodyactive != null)
-                {
-                    if (__workflow_bodyactive != null)
-                    {
-                        body["active"] = ExpressionConverter.ConvertO(__workflow_bodyactive);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["active"] = true;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["events"] = ExpressionConverter.ConvertO(__workflow_bodyevents);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<Webhook>(callPayload, recurrence: recurrence);
             });
         }
@@ -961,6 +484,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         public int SignupQuestionId { get; set; }
     }
 
+    public class PostAccountsInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("address_attributes")]
+        public AddressInfo AddressAttributes { get; set; }
+    }
+
     public class Authentication
     {
         [JsonProperty("id")]
@@ -985,8 +520,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         public string CreatedAt { get; set; }
     }
 
+    public class PostAuthenticationInput
+    {
+        [JsonProperty("user_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int UserId { get; set; }
+
+        [JsonProperty("authentication_provider_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PostAuthenticationInputAuthenticationProviderTypeType AuthenticationProviderType { get; set; }
+
+        [JsonProperty("uid", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Uid { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyauthenticationProviderTypeInput
+    public enum PostAuthenticationInputAuthenticationProviderTypeType
     {
         [EnumMember(Value = "azure_active_directory")]
         AzureActiveDirectory,
@@ -1035,6 +582,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
 
         [JsonProperty("meta_description")]
         public string MetaDescription { get; set; }
+
+        [JsonProperty("updated_at")]
+        public string UpdatedAt { get; set; }
+
+        [JsonProperty("created_at")]
+        public string CreatedAt { get; set; }
+
+        [JsonProperty("avatar_url")]
+        public string AvatarUrl { get; set; }
+    }
+
+    public class PostCategoriesInput
+    {
+        [JsonProperty("id")]
+        public int? Id { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("position")]
+        public double? Position { get; set; }
+
+        [JsonProperty("parent_id")]
+        public double? ParentId { get; set; }
+
+        [JsonProperty("avatar")]
+        public string Avatar { get; set; }
+
+        [JsonProperty("is_published", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IsPublished { get; set; } = true;
+
+        [JsonProperty("courses_count")]
+        public double? CoursesCount { get; set; }
+
+        [JsonProperty("children_count")]
+        public double? ChildrenCount { get; set; }
 
         [JsonProperty("updated_at")]
         public string UpdatedAt { get; set; }
@@ -1133,8 +719,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         Free
     }
 
+    public class PostCoursesInput
+    {
+        [JsonProperty("id")]
+        public int? Id { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("position")]
+        public double? Position { get; set; }
+
+        [JsonProperty("signup_url")]
+        public string SignupUrl { get; set; }
+
+        [JsonProperty("avatar")]
+        public string Avatar { get; set; }
+
+        [JsonProperty("certificate_template_id")]
+        public double? CertificateTemplateId { get; set; }
+
+        [JsonProperty("category_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double CategoryId { get; set; }
+
+        [JsonProperty("code", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Code { get; set; }
+
+        [JsonProperty("cost")]
+        public string Cost { get; set; }
+
+        [JsonProperty("cost_scheme")]
+        public PostCoursesInputCostSchemeType? CostScheme { get; set; }
+
+        [JsonProperty("is_published", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IsPublished { get; set; } = true;
+
+        [JsonProperty("updated_at")]
+        public string UpdatedAt { get; set; }
+
+        [JsonProperty("created_at")]
+        public string CreatedAt { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodycostSchemeInput
+    public enum PostCoursesInputCostSchemeType
     {
         [EnumMember(Value = "student")]
         Student,
@@ -1265,8 +893,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         EnGB
     }
 
+    public class PostUsersInput
+    {
+        [JsonProperty("first_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FirstName { get; set; }
+
+        [JsonProperty("middle_name")]
+        public string MiddleName { get; set; }
+
+        [JsonProperty("last_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LastName { get; set; }
+
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty("phone")]
+        public string Phone { get; set; }
+
+        [JsonProperty("wants_newsletter", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? WantsNewsletter { get; set; } = false;
+
+        [JsonProperty("with_authentication", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? WithAuthentication { get; set; } = true;
+
+        [JsonProperty("locale")]
+        public PostUsersInputLocaleType? Locale { get; set; }
+
+        [JsonProperty("label_ids")]
+        public double[] LabelIds { get; set; }
+
+        [JsonProperty("address_attributes")]
+        public AddressInfo AddressAttributes { get; set; }
+
+        [JsonProperty("notes_user")]
+        public string NotesUser { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodylocaleInput
+    public enum PostUsersInputLocaleType
     {
         [EnumMember(Value = "nl")]
         Nl,
@@ -1402,8 +1066,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         public string CreatedAt { get; set; }
     }
 
+    public class PostInvoicesInput
+    {
+        [JsonProperty("account_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double AccountId { get; set; }
+
+        [JsonProperty("account_name")]
+        public string AccountName { get; set; }
+
+        [JsonProperty("currency", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PostInvoicesInputCurrencyType Currency { get; set; }
+
+        [JsonProperty("invoice_items_attributes", DefaultValueHandling = DefaultValueHandling.Include)]
+        public InvoiceItem[] InvoiceItemsAttributes { get; set; }
+
+        [JsonProperty("feature")]
+        public string Feature { get; set; }
+
+        [JsonProperty("footnote")]
+        public string Footnote { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodycurrencyInput
+    public enum PostInvoicesInputCurrencyType
     {
         EUR,
         ISK,
@@ -1420,6 +1105,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         public string Name { get; set; }
 
         [JsonProperty("percentage")]
+        public string Percentage { get; set; }
+    }
+
+    public class PostInvoiceVatsInput
+    {
+        [JsonProperty("id")]
+        public int? Id { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("percentage", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Percentage { get; set; }
     }
 
@@ -1639,8 +1336,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         UserUpdated
     }
 
+    public class PostWebhooksInput
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("active", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Active { get; set; } = true;
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PostWebhooksInputEventsTypeItem[] Events { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyeventsInputItem
+    public enum PostWebhooksInputEventsTypeItem
     {
         [EnumMember(Value = "account.created")]
         AccountCreated,

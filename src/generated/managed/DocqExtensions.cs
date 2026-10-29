@@ -13,56 +13,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
     public class DocqActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docq")]
-        public IBodyWorkflowAction<ExtractInformationResponse, ApiConnectionActionConfiguration> ExtractInformation(Expression<Func<string>> bodyimageFileContent = null)
+        public IBodyWorkflowAction<ExtractInformationResponse, ApiConnectionActionConfiguration> ExtractInformation(Expression<Func<ExtractInformationInput>> body = null)
         {
-            var __workflow_bodyimageFileContent = WorkflowExpression.Compile(bodyimageFileContent, nameof(bodyimageFileContent), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ExtractInformationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Flow/ExtractInformation";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["Image Content Type"] = "image/jpeg";
-                bodypropCount++;
-                if (__workflow_bodyimageFileContent != null)
-                {
-                    body["Image File Content"] = ExpressionConverter.ConvertO(__workflow_bodyimageFileContent);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExtractInformationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docq")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateDocument(Expression<Func<string>> bodydocumentInformation, Expression<Func<string>> bodydocumentTemplateContent)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateDocument(Expression<Func<GenerateDocumentInput>> body = null)
         {
-            var __workflow_bodydocumentInformation = WorkflowExpression.Compile(bodydocumentInformation, nameof(bodydocumentInformation), required: true);
-            var __workflow_bodydocumentTemplateContent = WorkflowExpression.Compile(bodydocumentTemplateContent, nameof(bodydocumentTemplateContent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Flow/GenerateDocument";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["documentInformation"] = ExpressionConverter.ConvertO(__workflow_bodydocumentInformation);
-                bodypropCount++;
-                body["templateFile"] = ExpressionConverter.ConvertO(__workflow_bodydocumentTemplateContent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -80,6 +57,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
         public string ObjectEntity { get; set; }
         public string ErrorDescription { get; set; }
         public bool IsSuccess { get; set; }
+    }
+
+    public class ExtractInformationInput
+    {
+        [JsonProperty("Image Content Type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ImageContentType { get; set; } = "image/jpeg";
+
+        [JsonProperty("Image File Content")]
+        public string ImageFileContent { get; set; }
+    }
+
+    public class GenerateDocumentInput
+    {
+        [JsonProperty("documentInformation", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DocumentInformation { get; set; }
+
+        [JsonProperty("templateFile", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DocumentTemplateContent { get; set; }
     }
 }
 

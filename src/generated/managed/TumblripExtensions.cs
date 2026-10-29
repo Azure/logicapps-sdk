@@ -39,103 +39,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostUnblock(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodyblockedTumblelog = null, Expression<Func<bool>> bodyanonymousOnly = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostUnblock(Expression<Func<string>> blogIdentifier, Expression<Func<PostUnblockPostInput>> body)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
-            var __workflow_bodyblockedTumblelog = WorkflowExpression.Compile(bodyblockedTumblelog, nameof(bodyblockedTumblelog), required: false);
-            var __workflow_bodyanonymousOnly = WorkflowExpression.Compile(bodyanonymousOnly, nameof(bodyanonymousOnly), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/blocks", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyblockedTumblelog != null)
-                {
-                    body["blocked_tumblelog"] = ExpressionConverter.ConvertO(__workflow_bodyblockedTumblelog);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyanonymousOnly != null)
-                {
-                    body["anonymous_only"] = ExpressionConverter.ConvertO(__workflow_bodyanonymousOnly);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostBlock(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodyblockedTumblelog = null, Expression<Func<string>> bodypostId = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostBlock(Expression<Func<string>> blogIdentifier, Expression<Func<PostBlockPostInput>> body)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
-            var __workflow_bodyblockedTumblelog = WorkflowExpression.Compile(bodyblockedTumblelog, nameof(bodyblockedTumblelog), required: false);
-            var __workflow_bodypostId = WorkflowExpression.Compile(bodypostId, nameof(bodypostId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/blocks", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyblockedTumblelog != null)
-                {
-                    body["blocked_tumblelog"] = ExpressionConverter.ConvertO(__workflow_bodyblockedTumblelog);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypostId != null)
-                {
-                    body["post_id"] = ExpressionConverter.ConvertO(__workflow_bodypostId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostsBlock(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodyblockedTumblelogs = null, Expression<Func<bool>> bodyforce = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostsBlock(Expression<Func<string>> blogIdentifier, Expression<Func<PostsBlockPostInput>> body)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
-            var __workflow_bodyblockedTumblelogs = WorkflowExpression.Compile(bodyblockedTumblelogs, nameof(bodyblockedTumblelogs), required: false);
-            var __workflow_bodyforce = WorkflowExpression.Compile(bodyforce, nameof(bodyforce), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/blocks/bulk", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyblockedTumblelogs != null)
-                {
-                    body["blocked_tumblelogs"] = ExpressionConverter.ConvertO(__workflow_bodyblockedTumblelogs);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyforce != null)
-                {
-                    body["force"] = ExpressionConverter.ConvertO(__workflow_bodyforce);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -241,35 +184,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostQueuedReorder(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodypostId = null, Expression<Func<string>> bodyinsertAfter = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostQueuedReorder(Expression<Func<string>> blogIdentifier, Expression<Func<PostQueuedReorderPostInput>> body = null)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
-            var __workflow_bodypostId = WorkflowExpression.Compile(bodypostId, nameof(bodypostId), required: false);
-            var __workflow_bodyinsertAfter = WorkflowExpression.Compile(bodyinsertAfter, nameof(bodyinsertAfter), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/posts/queue/reorder", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodypostId != null)
-                {
-                    body["post_id"] = ExpressionConverter.ConvertO(__workflow_bodypostId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinsertAfter != null)
-                {
-                    body["insert_after"] = ExpressionConverter.ConvertO(__workflow_bodyinsertAfter);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -348,126 +273,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<PostCreatePostResponse, ApiConnectionActionConfiguration> PostCreate(Expression<Func<string>> blogIdentifier, Expression<Func<bodycontentInputItem[]>> bodycontent = null, Expression<Func<bodylayoutInputItem[]>> bodylayout = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypublishedOn = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodysourceUrl = null, Expression<Func<bool>> bodysendToTwitter = null, Expression<Func<bool>> bodyisPrivate = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodyinteractabilityReblog = null, Expression<Func<string>> bodyparentTumblelogUuid = null, Expression<Func<int>> bodyparentPostId = null, Expression<Func<string>> bodyreblogKey = null, Expression<Func<bool>> bodyhideTrail = null)
+        public IBodyWorkflowAction<PostCreatePostResponse, ApiConnectionActionConfiguration> PostCreate(Expression<Func<string>> blogIdentifier, Expression<Func<PostCreatePostInput>> body)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
-            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
-            var __workflow_bodylayout = WorkflowExpression.Compile(bodylayout, nameof(bodylayout), required: false);
-            var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: false);
-            var __workflow_bodypublishedOn = WorkflowExpression.Compile(bodypublishedOn, nameof(bodypublishedOn), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
-            var __workflow_bodysourceUrl = WorkflowExpression.Compile(bodysourceUrl, nameof(bodysourceUrl), required: false);
-            var __workflow_bodysendToTwitter = WorkflowExpression.Compile(bodysendToTwitter, nameof(bodysendToTwitter), required: false);
-            var __workflow_bodyisPrivate = WorkflowExpression.Compile(bodyisPrivate, nameof(bodyisPrivate), required: false);
-            var __workflow_bodyslug = WorkflowExpression.Compile(bodyslug, nameof(bodyslug), required: false);
-            var __workflow_bodyinteractabilityReblog = WorkflowExpression.Compile(bodyinteractabilityReblog, nameof(bodyinteractabilityReblog), required: false);
-            var __workflow_bodyparentTumblelogUuid = WorkflowExpression.Compile(bodyparentTumblelogUuid, nameof(bodyparentTumblelogUuid), required: false);
-            var __workflow_bodyparentPostId = WorkflowExpression.Compile(bodyparentPostId, nameof(bodyparentPostId), required: false);
-            var __workflow_bodyreblogKey = WorkflowExpression.Compile(bodyreblogKey, nameof(bodyreblogKey), required: false);
-            var __workflow_bodyhideTrail = WorkflowExpression.Compile(bodyhideTrail, nameof(bodyhideTrail), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostCreatePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/posts", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycontent != null)
-                {
-                    body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylayout != null)
-                {
-                    body["layout"] = ExpressionConverter.ConvertO(__workflow_bodylayout);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystate != null)
-                {
-                    body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypublishedOn != null)
-                {
-                    body["published_on"] = ExpressionConverter.ConvertO(__workflow_bodypublishedOn);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytags != null)
-                {
-                    body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysourceUrl != null)
-                {
-                    body["source_url"] = ExpressionConverter.ConvertO(__workflow_bodysourceUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysendToTwitter != null)
-                {
-                    body["send_to_twitter"] = ExpressionConverter.ConvertO(__workflow_bodysendToTwitter);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisPrivate != null)
-                {
-                    body["is_private"] = ExpressionConverter.ConvertO(__workflow_bodyisPrivate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyslug != null)
-                {
-                    body["slug"] = ExpressionConverter.ConvertO(__workflow_bodyslug);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinteractabilityReblog != null)
-                {
-                    body["interactability_reblog"] = ExpressionConverter.ConvertO(__workflow_bodyinteractabilityReblog);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyparentTumblelogUuid != null)
-                {
-                    body["parent_tumblelog_uuid"] = ExpressionConverter.ConvertO(__workflow_bodyparentTumblelogUuid);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyparentPostId != null)
-                {
-                    body["parent_post_id"] = ExpressionConverter.ConvertO(__workflow_bodyparentPostId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreblogKey != null)
-                {
-                    body["reblog_key"] = ExpressionConverter.ConvertO(__workflow_bodyreblogKey);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyhideTrail != null)
-                {
-                    body["hide_trail"] = ExpressionConverter.ConvertO(__workflow_bodyhideTrail);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostCreatePostResponse>(callPayload);
             });
         }
@@ -491,150 +306,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<PostEditPutResponse, ApiConnectionActionConfiguration> PostEditPut(Expression<Func<string>> blogIdentifier, Expression<Func<string>> postId, Expression<Func<bodycontentInputItem[]>> bodycontent = null, Expression<Func<bodylayoutInputItem[]>> bodylayout = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypublishedOn = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodysourceUrl = null, Expression<Func<bool>> bodysendToTwitter = null, Expression<Func<bool>> bodyisPrivate = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodyinteractabilityReblog = null, Expression<Func<string>> bodyparentTumblelogUuid = null, Expression<Func<int>> bodyparentPostId = null, Expression<Func<string>> bodyreblogKey = null, Expression<Func<bool>> bodyhideTrail = null)
+        public IBodyWorkflowAction<PostEditPutResponse, ApiConnectionActionConfiguration> PostEditPut(Expression<Func<string>> blogIdentifier, Expression<Func<string>> postId, Expression<Func<PostEditPutInput>> body)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_postId = WorkflowExpression.Compile(postId, nameof(postId), required: true);
-            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
-            var __workflow_bodylayout = WorkflowExpression.Compile(bodylayout, nameof(bodylayout), required: false);
-            var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: false);
-            var __workflow_bodypublishedOn = WorkflowExpression.Compile(bodypublishedOn, nameof(bodypublishedOn), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
-            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
-            var __workflow_bodysourceUrl = WorkflowExpression.Compile(bodysourceUrl, nameof(bodysourceUrl), required: false);
-            var __workflow_bodysendToTwitter = WorkflowExpression.Compile(bodysendToTwitter, nameof(bodysendToTwitter), required: false);
-            var __workflow_bodyisPrivate = WorkflowExpression.Compile(bodyisPrivate, nameof(bodyisPrivate), required: false);
-            var __workflow_bodyslug = WorkflowExpression.Compile(bodyslug, nameof(bodyslug), required: false);
-            var __workflow_bodyinteractabilityReblog = WorkflowExpression.Compile(bodyinteractabilityReblog, nameof(bodyinteractabilityReblog), required: false);
-            var __workflow_bodyparentTumblelogUuid = WorkflowExpression.Compile(bodyparentTumblelogUuid, nameof(bodyparentTumblelogUuid), required: false);
-            var __workflow_bodyparentPostId = WorkflowExpression.Compile(bodyparentPostId, nameof(bodyparentPostId), required: false);
-            var __workflow_bodyreblogKey = WorkflowExpression.Compile(bodyreblogKey, nameof(bodyreblogKey), required: false);
-            var __workflow_bodyhideTrail = WorkflowExpression.Compile(bodyhideTrail, nameof(bodyhideTrail), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostEditPutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/posts/{1}", __workflow_blogIdentifier.WithUrlEncoding(1), __workflow_postId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycontent != null)
-                {
-                    body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylayout != null)
-                {
-                    body["layout"] = ExpressionConverter.ConvertO(__workflow_bodylayout);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystate != null)
-                {
-                    body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypublishedOn != null)
-                {
-                    body["published_on"] = ExpressionConverter.ConvertO(__workflow_bodypublishedOn);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytags != null)
-                {
-                    body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysourceUrl != null)
-                {
-                    body["source_url"] = ExpressionConverter.ConvertO(__workflow_bodysourceUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysendToTwitter != null)
-                {
-                    body["send_to_twitter"] = ExpressionConverter.ConvertO(__workflow_bodysendToTwitter);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisPrivate != null)
-                {
-                    body["is_private"] = ExpressionConverter.ConvertO(__workflow_bodyisPrivate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyslug != null)
-                {
-                    body["slug"] = ExpressionConverter.ConvertO(__workflow_bodyslug);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinteractabilityReblog != null)
-                {
-                    body["interactability_reblog"] = ExpressionConverter.ConvertO(__workflow_bodyinteractabilityReblog);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyparentTumblelogUuid != null)
-                {
-                    body["parent_tumblelog_uuid"] = ExpressionConverter.ConvertO(__workflow_bodyparentTumblelogUuid);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyparentPostId != null)
-                {
-                    body["parent_post_id"] = ExpressionConverter.ConvertO(__workflow_bodyparentPostId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreblogKey != null)
-                {
-                    body["reblog_key"] = ExpressionConverter.ConvertO(__workflow_bodyreblogKey);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyhideTrail != null)
-                {
-                    body["hide_trail"] = ExpressionConverter.ConvertO(__workflow_bodyhideTrail);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostEditPutResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<PostDeleteResponse, ApiConnectionActionConfiguration> PostDelete(Expression<Func<string>> blogIdentifier, Expression<Func<string>> bodyid)
+        public IBodyWorkflowAction<PostDeleteResponse, ApiConnectionActionConfiguration> PostDelete(Expression<Func<string>> blogIdentifier, Expression<Func<PostDeleteInput>> body)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/post/delete", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostDeleteResponse>(callPayload);
             });
         }
@@ -722,110 +419,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<BlogFollowPostResponse, ApiConnectionActionConfiguration> BlogFollow(Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodyemail = null)
+        public IBodyWorkflowAction<BlogFollowPostResponse, ApiConnectionActionConfiguration> BlogFollow(Expression<Func<BlogFollowPostInput>> body = null)
         {
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<BlogFollowPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/user/follow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyurl != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyemail != null)
-                {
-                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<BlogFollowPostResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<BlogUnfollowPostResponse, ApiConnectionActionConfiguration> BlogUnfollow(Expression<Func<string>> bodyurl = null)
+        public IBodyWorkflowAction<BlogUnfollowPostResponse, ApiConnectionActionConfiguration> BlogUnfollow(Expression<Func<BlogUnfollowPostInput>> body = null)
         {
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<BlogUnfollowPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/user/unfollow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyurl != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<BlogUnfollowPostResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostLike(Expression<Func<string>> bodyid, Expression<Func<string>> bodyreblogKey)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostLike(Expression<Func<PostLikePostInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyreblogKey = WorkflowExpression.Compile(bodyreblogKey, nameof(bodyreblogKey), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/user/like";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["reblog_key"] = ExpressionConverter.ConvertO(__workflow_bodyreblogKey);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostUnlike(Expression<Func<string>> bodyid, Expression<Func<string>> bodyreblogKey)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostUnlike(Expression<Func<PostUnlikePostInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyreblogKey = WorkflowExpression.Compile(bodyreblogKey, nameof(bodyreblogKey), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/user/unlike";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["reblog_key"] = ExpressionConverter.ConvertO(__workflow_bodyreblogKey);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -1087,6 +733,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
     {
         [JsonProperty("offset")]
         public int Offset { get; set; }
+    }
+
+    public class PostUnblockPostInput
+    {
+        [JsonProperty("blocked_tumblelog")]
+        public string BlockedTumblelog { get; set; }
+
+        [JsonProperty("anonymous_only")]
+        public bool? AnonymousOnly { get; set; }
+    }
+
+    public class PostBlockPostInput
+    {
+        [JsonProperty("blocked_tumblelog")]
+        public string BlockedTumblelog { get; set; }
+
+        [JsonProperty("post_id")]
+        public string PostId { get; set; }
+    }
+
+    public class PostsBlockPostInput
+    {
+        [JsonProperty("blocked_tumblelogs")]
+        public string BlockedTumblelogs { get; set; }
+
+        [JsonProperty("force")]
+        public bool? Force { get; set; }
     }
 
     public class BlogLikesGetResponse
@@ -1651,6 +1324,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class PostQueuedReorderPostInput
+    {
+        [JsonProperty("post_id")]
+        public string PostId { get; set; }
+
+        [JsonProperty("insert_after")]
+        public string InsertAfter { get; set; }
     }
 
     public class PostDraftsGetResponse
@@ -2247,19 +1929,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         public string Id { get; set; }
     }
 
-    public class bodycontentInputItem
+    public class PostCreatePostInput
+    {
+        [JsonProperty("content")]
+        public PostCreatePostInputContentTypeItem[] Content { get; set; }
+
+        [JsonProperty("layout")]
+        public PostCreatePostInputLayoutTypeItem[] Layout { get; set; }
+
+        [JsonProperty("state")]
+        public string State { get; set; }
+
+        [JsonProperty("published_on")]
+        public string PublishedOn { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("tags")]
+        public string Tags { get; set; }
+
+        [JsonProperty("source_url")]
+        public string SourceUrl { get; set; }
+
+        [JsonProperty("send_to_twitter")]
+        public bool? SendToTwitter { get; set; }
+
+        [JsonProperty("is_private")]
+        public bool? IsPrivate { get; set; }
+
+        [JsonProperty("slug")]
+        public string Slug { get; set; }
+
+        [JsonProperty("interactability_reblog")]
+        public string InteractabilityReblog { get; set; }
+
+        [JsonProperty("parent_tumblelog_uuid")]
+        public string ParentTumblelogUuid { get; set; }
+
+        [JsonProperty("parent_post_id")]
+        public int? ParentPostId { get; set; }
+
+        [JsonProperty("reblog_key")]
+        public string ReblogKey { get; set; }
+
+        [JsonProperty("hide_trail")]
+        public bool? HideTrail { get; set; }
+    }
+
+    public class PostCreatePostInputContentTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("media")]
-        public bodycontentInputItemMediaTypeItem[] Media { get; set; }
+        public PostCreatePostInputContentTypeItemMediaTypeItem[] Media { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class bodycontentInputItemMediaTypeItem
+    public class PostCreatePostInputContentTypeItemMediaTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -2268,22 +1998,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         public string Url { get; set; }
 
         [JsonProperty("width")]
-        public int Width { get; set; }
+        public int? Width { get; set; }
 
         [JsonProperty("height")]
-        public int Height { get; set; }
+        public int? Height { get; set; }
     }
 
-    public class bodylayoutInputItem
+    public class PostCreatePostInputLayoutTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("display")]
-        public bodylayoutInputItemDisplayTypeItem[] Display { get; set; }
+        public PostCreatePostInputLayoutTypeItemDisplayTypeItem[] Display { get; set; }
     }
 
-    public class bodylayoutInputItemDisplayTypeItem
+    public class PostCreatePostInputLayoutTypeItemDisplayTypeItem
     {
         [JsonProperty("blocks")]
         public int[] Blocks { get; set; }
@@ -2433,6 +2163,96 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         public string Id { get; set; }
     }
 
+    public class PostEditPutInput
+    {
+        [JsonProperty("content")]
+        public PostEditPutInputContentTypeItem[] Content { get; set; }
+
+        [JsonProperty("layout")]
+        public PostEditPutInputLayoutTypeItem[] Layout { get; set; }
+
+        [JsonProperty("state")]
+        public string State { get; set; }
+
+        [JsonProperty("published_on")]
+        public string PublishedOn { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("tags")]
+        public string Tags { get; set; }
+
+        [JsonProperty("source_url")]
+        public string SourceUrl { get; set; }
+
+        [JsonProperty("send_to_twitter")]
+        public bool? SendToTwitter { get; set; }
+
+        [JsonProperty("is_private")]
+        public bool? IsPrivate { get; set; }
+
+        [JsonProperty("slug")]
+        public string Slug { get; set; }
+
+        [JsonProperty("interactability_reblog")]
+        public string InteractabilityReblog { get; set; }
+
+        [JsonProperty("parent_tumblelog_uuid")]
+        public string ParentTumblelogUuid { get; set; }
+
+        [JsonProperty("parent_post_id")]
+        public int? ParentPostId { get; set; }
+
+        [JsonProperty("reblog_key")]
+        public string ReblogKey { get; set; }
+
+        [JsonProperty("hide_trail")]
+        public bool? HideTrail { get; set; }
+    }
+
+    public class PostEditPutInputContentTypeItem
+    {
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("media")]
+        public PostEditPutInputContentTypeItemMediaTypeItem[] Media { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+    }
+
+    public class PostEditPutInputContentTypeItemMediaTypeItem
+    {
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("width")]
+        public int? Width { get; set; }
+
+        [JsonProperty("height")]
+        public int? Height { get; set; }
+    }
+
+    public class PostEditPutInputLayoutTypeItem
+    {
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("display")]
+        public PostEditPutInputLayoutTypeItemDisplayTypeItem[] Display { get; set; }
+    }
+
+    public class PostEditPutInputLayoutTypeItemDisplayTypeItem
+    {
+        [JsonProperty("blocks")]
+        public int[] Blocks { get; set; }
+    }
+
     public class PostDeleteResponse
     {
         [JsonProperty("id")]
@@ -2440,6 +2260,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
 
         [JsonProperty("id_string")]
         public string IdString { get; set; }
+    }
+
+    public class PostDeleteInput
+    {
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
     }
 
     public class PostNotesGetResponse
@@ -3513,6 +3339,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         public string TitleFontWeight { get; set; }
     }
 
+    public class BlogFollowPostInput
+    {
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+    }
+
     public class BlogUnfollowPostResponse
     {
         [JsonProperty("blog")]
@@ -3667,6 +3502,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
 
         [JsonProperty("title_font_weight")]
         public string TitleFontWeight { get; set; }
+    }
+
+    public class BlogUnfollowPostInput
+    {
+        [JsonProperty("url")]
+        public string Url { get; set; }
+    }
+
+    public class PostLikePostInput
+    {
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("reblog_key", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ReblogKey { get; set; }
+    }
+
+    public class PostUnlikePostInput
+    {
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("reblog_key", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ReblogKey { get; set; }
     }
 
     public class PostTagGetResponseItem

@@ -13,11 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Htmltopdfconverter
     public class HtmltopdfconverterActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "htmltopdfconverter")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ConvertHTMLToPDF(Expression<Func<string>> contentType = null, Expression<Func<string>> bodyhtmlBody = null, Expression<Func<string>> bodycipher = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ConvertHTMLToPDF(Expression<Func<string>> contentType = null, Expression<Func<ConvertHTMLToPDFInput>> body = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
-            var __workflow_bodyhtmlBody = WorkflowExpression.Compile(bodyhtmlBody, nameof(bodyhtmlBody), required: false);
-            var __workflow_bodycipher = WorkflowExpression.Compile(bodycipher, nameof(bodycipher), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/";
@@ -26,35 +25,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Htmltopdfconverter
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 if (__workflow_contentType != null)
                     callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyhtmlBody != null)
-                {
-                    if (__workflow_bodyhtmlBody != null)
-                    {
-                        body["HtmlBody"] = ExpressionConverter.ConvertO(__workflow_bodyhtmlBody);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["HtmlBody"] = "<html><body><h1>Hello, World!</h1></body></html>";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycipher != null)
-                {
-                    body["Cipher"] = ExpressionConverter.ConvertO(__workflow_bodycipher);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -62,6 +34,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Htmltopdfconverter
 
     public class HtmltopdfconverterTriggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class ConvertHTMLToPDFInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string HtmlBody { get; set; } = "<html><body><h1>Hello, World!</h1></body></html>";
+        public string Cipher { get; set; }
     }
 }
 

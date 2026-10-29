@@ -47,36 +47,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RemoteActions(Expression<Func<string>> cloudPcId, Expression<Func<remoteActionInput>> remoteAction, Expression<Func<string>> bodycloudPcSnapshotId = null, Expression<Func<string>> bodydisplayName = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RemoteActions(Expression<Func<string>> cloudPcId, Expression<Func<remoteActionInput>> remoteAction, Expression<Func<RemoteActionsInput>> body = null)
         {
             var __workflow_cloudPcId = WorkflowExpression.Compile(cloudPcId, nameof(cloudPcId), required: true);
             var __workflow_remoteAction = WorkflowExpression.Compile(remoteAction, nameof(remoteAction), required: true);
-            var __workflow_bodycloudPcSnapshotId = WorkflowExpression.Compile(bodycloudPcSnapshotId, nameof(bodycloudPcSnapshotId), required: false);
-            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/deviceManagement/virtualEndpoint/cloudPCs/{0}/{1}", __workflow_cloudPcId.WithUrlEncoding(1), __workflow_remoteAction.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycloudPcSnapshotId != null)
-                {
-                    body["cloudPcSnapshotId"] = ExpressionConverter.ConvertO(__workflow_bodycloudPcSnapshotId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydisplayName != null)
-                {
-                    body["displayName"] = ExpressionConverter.ConvertO(__workflow_bodydisplayName);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -113,124 +95,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
                     callPayload.Headers["CustomHeader4"] = ExpressionConverter.Convert(__workflow_customHeader4);
                 if (__workflow_customHeader5 != null)
                     callPayload.Headers["CustomHeader5"] = ExpressionConverter.Convert(__workflow_customHeader5);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AssignAProvisioningPolicyToAGroup(Expression<Func<string>> id, Expression<Func<bodyassignmentsInputItem[]>> bodyassignments)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AssignAProvisioningPolicyToAGroup(Expression<Func<string>> id, Expression<Func<AssignAProvisioningPolicyToAGroupV1Input>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyassignments = WorkflowExpression.Compile(bodyassignments, nameof(bodyassignments), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/deviceManagement/virtualEndpoint/provisioningPolicies/{0}/assign", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["assignments"] = ExpressionConverter.ConvertO(__workflow_bodyassignments);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
-        public IBodyWorkflowAction<CreateAProvisioningPolicyV1Response, ApiConnectionActionConfiguration> CreateAProvisioningPolicy(Expression<Func<string>> bodydisplayName, Expression<Func<string>> bodydescription, Expression<Func<bodydomainJoinConfigurationsInputItem[]>> bodydomainJoinConfigurations, Expression<Func<string>> bodyimageId, Expression<Func<string>> bodyimageDisplayName, Expression<Func<bodyimageTypeInput>> bodyimageType, Expression<Func<bodyprovisioningTypeInput>> bodyprovisioningType, Expression<Func<bool>> bodyenableSingleSignOn = null, Expression<Func<string>> bodywindowsSettinglocale = null, Expression<Func<string>> bodymicrosoftManagedDesktopmanagedType = null, Expression<Func<string>> bodymicrosoftManagedDesktopprofile = null)
+        public IBodyWorkflowAction<CreateAProvisioningPolicyV1Response, ApiConnectionActionConfiguration> CreateAProvisioningPolicy(Expression<Func<CreateAProvisioningPolicyV1Input>> body)
         {
-            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
-            var __workflow_bodydomainJoinConfigurations = WorkflowExpression.Compile(bodydomainJoinConfigurations, nameof(bodydomainJoinConfigurations), required: true);
-            var __workflow_bodyimageId = WorkflowExpression.Compile(bodyimageId, nameof(bodyimageId), required: true);
-            var __workflow_bodyimageDisplayName = WorkflowExpression.Compile(bodyimageDisplayName, nameof(bodyimageDisplayName), required: true);
-            var __workflow_bodyimageType = WorkflowExpression.Compile(bodyimageType, nameof(bodyimageType), required: true);
-            var __workflow_bodyprovisioningType = WorkflowExpression.Compile(bodyprovisioningType, nameof(bodyprovisioningType), required: true);
-            var __workflow_bodyenableSingleSignOn = WorkflowExpression.Compile(bodyenableSingleSignOn, nameof(bodyenableSingleSignOn), required: false);
-            var __workflow_bodywindowsSettinglocale = WorkflowExpression.Compile(bodywindowsSettinglocale, nameof(bodywindowsSettinglocale), required: false);
-            var __workflow_bodymicrosoftManagedDesktopmanagedType = WorkflowExpression.Compile(bodymicrosoftManagedDesktopmanagedType, nameof(bodymicrosoftManagedDesktopmanagedType), required: false);
-            var __workflow_bodymicrosoftManagedDesktopprofile = WorkflowExpression.Compile(bodymicrosoftManagedDesktopprofile, nameof(bodymicrosoftManagedDesktopprofile), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateAProvisioningPolicyV1Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/beta/deviceManagement/virtualEndpoint/provisioningPolicies";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["displayName"] = ExpressionConverter.ConvertO(__workflow_bodydisplayName);
-                bodypropCount++;
-                body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                bodypropCount++;
-                body["domainJoinConfigurations"] = ExpressionConverter.ConvertO(__workflow_bodydomainJoinConfigurations);
-                var otherFieldsObject = new JObject();
-                var otherFieldsObjectpropCount = 0;
-                if (otherFieldsObjectpropCount > 0)
-                {
-                    body["otherFields"] = otherFieldsObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyenableSingleSignOn != null)
-                {
-                    body["enableSingleSignOn"] = ExpressionConverter.ConvertO(__workflow_bodyenableSingleSignOn);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["imageId"] = ExpressionConverter.ConvertO(__workflow_bodyimageId);
-                bodypropCount++;
-                body["imageDisplayName"] = ExpressionConverter.ConvertO(__workflow_bodyimageDisplayName);
-                bodypropCount++;
-                body["imageType"] = ExpressionConverter.ConvertO(__workflow_bodyimageType);
-                bodypropCount++;
-                body["provisioningType"] = ExpressionConverter.ConvertO(__workflow_bodyprovisioningType);
-                var windowsSettingObject = new JObject();
-                var windowsSettingObjectpropCount = 0;
-                if (__workflow_bodywindowsSettinglocale != null)
-                {
-                    windowsSettingObject["locale"] = ExpressionConverter.ConvertO(__workflow_bodywindowsSettinglocale);
-                    windowsSettingObjectpropCount++;
-                }
-
-                if (windowsSettingObjectpropCount > 0)
-                {
-                    body["windowsSetting"] = windowsSettingObject;
-                    bodypropCount++;
-                }
-
-                var microsoftManagedDesktopObject = new JObject();
-                var microsoftManagedDesktopObjectpropCount = 0;
-                if (__workflow_bodymicrosoftManagedDesktopmanagedType != null)
-                {
-                    microsoftManagedDesktopObject["managedType"] = ExpressionConverter.ConvertO(__workflow_bodymicrosoftManagedDesktopmanagedType);
-                    microsoftManagedDesktopObjectpropCount++;
-                }
-
-                if (__workflow_bodymicrosoftManagedDesktopprofile != null)
-                {
-                    microsoftManagedDesktopObject["profile"] = ExpressionConverter.ConvertO(__workflow_bodymicrosoftManagedDesktopprofile);
-                    microsoftManagedDesktopObjectpropCount++;
-                }
-
-                if (microsoftManagedDesktopObjectpropCount > 0)
-                {
-                    body["microsoftManagedDesktop"] = microsoftManagedDesktopObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateAProvisioningPolicyV1Response>(callPayload);
             });
         }
@@ -291,160 +188,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateAProvisioningPolicy(Expression<Func<string>> id, Expression<Func<string>> bodyautopatchautopatchGroupId = null, Expression<Func<string>> bodyautopilotConfigurationdevicePreparationProfileId = null, Expression<Func<int>> bodyautopilotConfigurationapplicationTimeoutInMinutes = null, Expression<Func<bool>> bodyautopilotConfigurationonFailureDeviceAccessDenied = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodydisplayName = null, Expression<Func<bodydomainJoinConfigurationsInputItem[]>> bodydomainJoinConfigurations = null, Expression<Func<bool>> bodyenableSingleSignOn = null, Expression<Func<string>> bodyimageDisplayName = null, Expression<Func<string>> bodyimageId = null, Expression<Func<string>> bodyimageType = null, Expression<Func<string>> bodymicrosoftManagedDesktopmanagedType = null, Expression<Func<string>> bodymicrosoftManagedDesktopprofile = null, Expression<Func<string>> bodywindowsSettinglocale = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateAProvisioningPolicy(Expression<Func<string>> id, Expression<Func<UpdateAProvisioningPolicyV1Input>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyautopatchautopatchGroupId = WorkflowExpression.Compile(bodyautopatchautopatchGroupId, nameof(bodyautopatchautopatchGroupId), required: false);
-            var __workflow_bodyautopilotConfigurationdevicePreparationProfileId = WorkflowExpression.Compile(bodyautopilotConfigurationdevicePreparationProfileId, nameof(bodyautopilotConfigurationdevicePreparationProfileId), required: false);
-            var __workflow_bodyautopilotConfigurationapplicationTimeoutInMinutes = WorkflowExpression.Compile(bodyautopilotConfigurationapplicationTimeoutInMinutes, nameof(bodyautopilotConfigurationapplicationTimeoutInMinutes), required: false);
-            var __workflow_bodyautopilotConfigurationonFailureDeviceAccessDenied = WorkflowExpression.Compile(bodyautopilotConfigurationonFailureDeviceAccessDenied, nameof(bodyautopilotConfigurationonFailureDeviceAccessDenied), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
-            var __workflow_bodydomainJoinConfigurations = WorkflowExpression.Compile(bodydomainJoinConfigurations, nameof(bodydomainJoinConfigurations), required: false);
-            var __workflow_bodyenableSingleSignOn = WorkflowExpression.Compile(bodyenableSingleSignOn, nameof(bodyenableSingleSignOn), required: false);
-            var __workflow_bodyimageDisplayName = WorkflowExpression.Compile(bodyimageDisplayName, nameof(bodyimageDisplayName), required: false);
-            var __workflow_bodyimageId = WorkflowExpression.Compile(bodyimageId, nameof(bodyimageId), required: false);
-            var __workflow_bodyimageType = WorkflowExpression.Compile(bodyimageType, nameof(bodyimageType), required: false);
-            var __workflow_bodymicrosoftManagedDesktopmanagedType = WorkflowExpression.Compile(bodymicrosoftManagedDesktopmanagedType, nameof(bodymicrosoftManagedDesktopmanagedType), required: false);
-            var __workflow_bodymicrosoftManagedDesktopprofile = WorkflowExpression.Compile(bodymicrosoftManagedDesktopprofile, nameof(bodymicrosoftManagedDesktopprofile), required: false);
-            var __workflow_bodywindowsSettinglocale = WorkflowExpression.Compile(bodywindowsSettinglocale, nameof(bodywindowsSettinglocale), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/beta/deviceManagement/virtualEndpoint/provisioningPolicies/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                var autopatchObject = new JObject();
-                var autopatchObjectpropCount = 0;
-                if (__workflow_bodyautopatchautopatchGroupId != null)
-                {
-                    autopatchObject["autopatchGroupId"] = ExpressionConverter.ConvertO(__workflow_bodyautopatchautopatchGroupId);
-                    autopatchObjectpropCount++;
-                }
-
-                if (autopatchObjectpropCount > 0)
-                {
-                    body["autopatch"] = autopatchObject;
-                    bodypropCount++;
-                }
-
-                var autopilotConfigurationObject = new JObject();
-                var autopilotConfigurationObjectpropCount = 0;
-                if (__workflow_bodyautopilotConfigurationdevicePreparationProfileId != null)
-                {
-                    autopilotConfigurationObject["devicePreparationProfileId"] = ExpressionConverter.ConvertO(__workflow_bodyautopilotConfigurationdevicePreparationProfileId);
-                    autopilotConfigurationObjectpropCount++;
-                }
-
-                if (__workflow_bodyautopilotConfigurationapplicationTimeoutInMinutes != null)
-                {
-                    autopilotConfigurationObject["applicationTimeoutInMinutes"] = ExpressionConverter.ConvertO(__workflow_bodyautopilotConfigurationapplicationTimeoutInMinutes);
-                    autopilotConfigurationObjectpropCount++;
-                }
-
-                if (__workflow_bodyautopilotConfigurationonFailureDeviceAccessDenied != null)
-                {
-                    autopilotConfigurationObject["onFailureDeviceAccessDenied"] = ExpressionConverter.ConvertO(__workflow_bodyautopilotConfigurationonFailureDeviceAccessDenied);
-                    autopilotConfigurationObjectpropCount++;
-                }
-
-                if (autopilotConfigurationObjectpropCount > 0)
-                {
-                    body["autopilotConfiguration"] = autopilotConfigurationObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydisplayName != null)
-                {
-                    body["displayName"] = ExpressionConverter.ConvertO(__workflow_bodydisplayName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydomainJoinConfigurations != null)
-                {
-                    body["domainJoinConfigurations"] = ExpressionConverter.ConvertO(__workflow_bodydomainJoinConfigurations);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyenableSingleSignOn != null)
-                {
-                    body["enableSingleSignOn"] = ExpressionConverter.ConvertO(__workflow_bodyenableSingleSignOn);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyimageDisplayName != null)
-                {
-                    body["imageDisplayName"] = ExpressionConverter.ConvertO(__workflow_bodyimageDisplayName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyimageId != null)
-                {
-                    body["imageId"] = ExpressionConverter.ConvertO(__workflow_bodyimageId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyimageType != null)
-                {
-                    body["imageType"] = ExpressionConverter.ConvertO(__workflow_bodyimageType);
-                    bodypropCount++;
-                }
-
-                var microsoftManagedDesktopObject = new JObject();
-                var microsoftManagedDesktopObjectpropCount = 0;
-                if (__workflow_bodymicrosoftManagedDesktopmanagedType != null)
-                {
-                    microsoftManagedDesktopObject["managedType"] = ExpressionConverter.ConvertO(__workflow_bodymicrosoftManagedDesktopmanagedType);
-                    microsoftManagedDesktopObjectpropCount++;
-                }
-
-                if (__workflow_bodymicrosoftManagedDesktopprofile != null)
-                {
-                    microsoftManagedDesktopObject["profile"] = ExpressionConverter.ConvertO(__workflow_bodymicrosoftManagedDesktopprofile);
-                    microsoftManagedDesktopObjectpropCount++;
-                }
-
-                if (microsoftManagedDesktopObjectpropCount > 0)
-                {
-                    body["microsoftManagedDesktop"] = microsoftManagedDesktopObject;
-                    bodypropCount++;
-                }
-
-                var windowsSettingObject = new JObject();
-                var windowsSettingObjectpropCount = 0;
-                if (__workflow_bodywindowsSettinglocale != null)
-                {
-                    windowsSettingObject["locale"] = ExpressionConverter.ConvertO(__workflow_bodywindowsSettinglocale);
-                    windowsSettingObjectpropCount++;
-                }
-
-                if (windowsSettingObjectpropCount > 0)
-                {
-                    body["windowsSetting"] = windowsSettingObject;
-                    bodypropCount++;
-                }
-
-                var otherFieldsObject = new JObject();
-                var otherFieldsObjectpropCount = 0;
-                if (otherFieldsObjectpropCount > 0)
-                {
-                    body["otherFields"] = otherFieldsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -452,206 +207,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
 
     public class Windows365Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCloudPcProvisionedResponse, ApiConnectionTriggerConfiguration> WebhookCloudPcProvisioned(Expression<Func<bodycloudPcWebhookEventFilterprovisioningTypeNamesInputItem[]>> bodycloudPcWebhookEventFilterprovisioningTypeNames = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> Webhook(Expression<Func<WebhookInput>> body = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodycloudPcWebhookEventFilterprovisioningTypeNames = WorkflowExpression.Compile(bodycloudPcWebhookEventFilterprovisioningTypeNames, nameof(bodycloudPcWebhookEventFilterprovisioningTypeNames), required: false);
-            return new DeferredBodyTrigger<WebhookCloudPcProvisionedResponse, ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                var apiCallPath = "/beta/deviceManagement/virtualEndpoint/webhooks/cloudPcProvisioned/activate";
+                var apiCallPath = "/beta/deviceManagement/virtualEndpoint/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["notificationUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                var cloudPcWebhookEventFilterObject = new JObject();
-                var cloudPcWebhookEventFilterObjectpropCount = 0;
-                if (__workflow_bodycloudPcWebhookEventFilterprovisioningTypeNames != null)
-                {
-                    cloudPcWebhookEventFilterObject["provisioningTypeNames"] = ExpressionConverter.ConvertO(__workflow_bodycloudPcWebhookEventFilterprovisioningTypeNames);
-                    cloudPcWebhookEventFilterObjectpropCount++;
-                }
-
-                if (cloudPcWebhookEventFilterObjectpropCount > 0)
-                {
-                    body["cloudPcWebhookEventFilter"] = cloudPcWebhookEventFilterObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<WebhookCloudPcProvisionedResponse>(callPayload, recurrence: recurrence);
-            });
-        }
-
-        public IBodyWorkflowTrigger<WebhookCloudPcRemoteActionTriggeredResponse, ApiConnectionTriggerConfiguration> WebhookCloudPcRemoteActionTriggered(Expression<Func<bodycloudPcWebhookEventFilterprovisioningTypeNamesInputItem[]>> bodycloudPcWebhookEventFilterprovisioningTypeNames = null, FlowRecurrence recurrence = null)
-        {
-            var __workflow_bodycloudPcWebhookEventFilterprovisioningTypeNames = WorkflowExpression.Compile(bodycloudPcWebhookEventFilterprovisioningTypeNames, nameof(bodycloudPcWebhookEventFilterprovisioningTypeNames), required: false);
-            return new DeferredBodyTrigger<WebhookCloudPcRemoteActionTriggeredResponse, ApiConnectionTriggerConfiguration>(() =>
-            {
-                var apiCallPath = "/beta/deviceManagement/virtualEndpoint/webhooks/cloudPcRemoteActionTriggered/activate";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["notificationUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                var cloudPcWebhookEventFilterObject = new JObject();
-                var cloudPcWebhookEventFilterObjectpropCount = 0;
-                if (__workflow_bodycloudPcWebhookEventFilterprovisioningTypeNames != null)
-                {
-                    cloudPcWebhookEventFilterObject["provisioningTypeNames"] = ExpressionConverter.ConvertO(__workflow_bodycloudPcWebhookEventFilterprovisioningTypeNames);
-                    cloudPcWebhookEventFilterObjectpropCount++;
-                }
-
-                if (cloudPcWebhookEventFilterObjectpropCount > 0)
-                {
-                    body["cloudPcWebhookEventFilter"] = cloudPcWebhookEventFilterObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<WebhookCloudPcRemoteActionTriggeredResponse>(callPayload, recurrence: recurrence);
-            });
-        }
-
-        public IBodyWorkflowTrigger<WebhookCloudPcRemoteActionCompletedResponse, ApiConnectionTriggerConfiguration> WebhookCloudPcRemoteActionCompleted(Expression<Func<bodycloudPcWebhookEventFilterprovisioningTypeNamesInputItem[]>> bodycloudPcWebhookEventFilterprovisioningTypeNames = null, FlowRecurrence recurrence = null)
-        {
-            var __workflow_bodycloudPcWebhookEventFilterprovisioningTypeNames = WorkflowExpression.Compile(bodycloudPcWebhookEventFilterprovisioningTypeNames, nameof(bodycloudPcWebhookEventFilterprovisioningTypeNames), required: false);
-            return new DeferredBodyTrigger<WebhookCloudPcRemoteActionCompletedResponse, ApiConnectionTriggerConfiguration>(() =>
-            {
-                var apiCallPath = "/beta/deviceManagement/virtualEndpoint/webhooks/cloudPcRemoteActionCompleted/activate";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["notificationUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                var cloudPcWebhookEventFilterObject = new JObject();
-                var cloudPcWebhookEventFilterObjectpropCount = 0;
-                if (__workflow_bodycloudPcWebhookEventFilterprovisioningTypeNames != null)
-                {
-                    cloudPcWebhookEventFilterObject["provisioningTypeNames"] = ExpressionConverter.ConvertO(__workflow_bodycloudPcWebhookEventFilterprovisioningTypeNames);
-                    cloudPcWebhookEventFilterObjectpropCount++;
-                }
-
-                if (cloudPcWebhookEventFilterObjectpropCount > 0)
-                {
-                    body["cloudPcWebhookEventFilter"] = cloudPcWebhookEventFilterObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<WebhookCloudPcRemoteActionCompletedResponse>(callPayload, recurrence: recurrence);
-            });
-        }
-
-        public IBodyWorkflowTrigger<WebhookProvisioningPolicyCreatedResponse, ApiConnectionTriggerConfiguration> WebhookProvisioningPolicyCreated(Expression<Func<string[]>> bodycloudPcWebhookEventFilterprovisioningPolicyNames = null, Expression<Func<string[]>> bodycloudPcWebhookEventFilterprovisioningPolicyIds = null, Expression<Func<bodycloudPcWebhookEventFilterprovisioningTypeNamesInputItem[]>> bodycloudPcWebhookEventFilterprovisioningTypeNames = null, FlowRecurrence recurrence = null)
-        {
-            var __workflow_bodycloudPcWebhookEventFilterprovisioningPolicyNames = WorkflowExpression.Compile(bodycloudPcWebhookEventFilterprovisioningPolicyNames, nameof(bodycloudPcWebhookEventFilterprovisioningPolicyNames), required: false);
-            var __workflow_bodycloudPcWebhookEventFilterprovisioningPolicyIds = WorkflowExpression.Compile(bodycloudPcWebhookEventFilterprovisioningPolicyIds, nameof(bodycloudPcWebhookEventFilterprovisioningPolicyIds), required: false);
-            var __workflow_bodycloudPcWebhookEventFilterprovisioningTypeNames = WorkflowExpression.Compile(bodycloudPcWebhookEventFilterprovisioningTypeNames, nameof(bodycloudPcWebhookEventFilterprovisioningTypeNames), required: false);
-            return new DeferredBodyTrigger<WebhookProvisioningPolicyCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
-            {
-                var apiCallPath = "/beta/deviceManagement/virtualEndpoint/webhooks/provisioningPolicyCreated/activate";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["notificationUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                var cloudPcWebhookEventFilterObject = new JObject();
-                var cloudPcWebhookEventFilterObjectpropCount = 0;
-                if (__workflow_bodycloudPcWebhookEventFilterprovisioningPolicyNames != null)
-                {
-                    cloudPcWebhookEventFilterObject["provisioningPolicyNames"] = ExpressionConverter.ConvertO(__workflow_bodycloudPcWebhookEventFilterprovisioningPolicyNames);
-                    cloudPcWebhookEventFilterObjectpropCount++;
-                }
-
-                if (__workflow_bodycloudPcWebhookEventFilterprovisioningPolicyIds != null)
-                {
-                    cloudPcWebhookEventFilterObject["provisioningPolicyIds"] = ExpressionConverter.ConvertO(__workflow_bodycloudPcWebhookEventFilterprovisioningPolicyIds);
-                    cloudPcWebhookEventFilterObjectpropCount++;
-                }
-
-                if (__workflow_bodycloudPcWebhookEventFilterprovisioningTypeNames != null)
-                {
-                    cloudPcWebhookEventFilterObject["provisioningTypeNames"] = ExpressionConverter.ConvertO(__workflow_bodycloudPcWebhookEventFilterprovisioningTypeNames);
-                    cloudPcWebhookEventFilterObjectpropCount++;
-                }
-
-                if (cloudPcWebhookEventFilterObjectpropCount > 0)
-                {
-                    body["cloudPcWebhookEventFilter"] = cloudPcWebhookEventFilterObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<WebhookProvisioningPolicyCreatedResponse>(callPayload, recurrence: recurrence);
-            });
-        }
-
-        public IBodyWorkflowTrigger<WebhookProvisioningPolicyUpdatedResponse, ApiConnectionTriggerConfiguration> WebhookProvisioningPolicyUpdated(Expression<Func<string[]>> bodycloudPcWebhookEventFilterprovisioningPolicyNames = null, Expression<Func<string[]>> bodycloudPcWebhookEventFilterprovisioningPolicyIds = null, Expression<Func<bodycloudPcWebhookEventFilterprovisioningTypeNamesInputItem[]>> bodycloudPcWebhookEventFilterprovisioningTypeNames = null, FlowRecurrence recurrence = null)
-        {
-            var __workflow_bodycloudPcWebhookEventFilterprovisioningPolicyNames = WorkflowExpression.Compile(bodycloudPcWebhookEventFilterprovisioningPolicyNames, nameof(bodycloudPcWebhookEventFilterprovisioningPolicyNames), required: false);
-            var __workflow_bodycloudPcWebhookEventFilterprovisioningPolicyIds = WorkflowExpression.Compile(bodycloudPcWebhookEventFilterprovisioningPolicyIds, nameof(bodycloudPcWebhookEventFilterprovisioningPolicyIds), required: false);
-            var __workflow_bodycloudPcWebhookEventFilterprovisioningTypeNames = WorkflowExpression.Compile(bodycloudPcWebhookEventFilterprovisioningTypeNames, nameof(bodycloudPcWebhookEventFilterprovisioningTypeNames), required: false);
-            return new DeferredBodyTrigger<WebhookProvisioningPolicyUpdatedResponse, ApiConnectionTriggerConfiguration>(() =>
-            {
-                var apiCallPath = "/beta/deviceManagement/virtualEndpoint/webhooks/provisioningPolicyUpdated/activate";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["notificationUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                var cloudPcWebhookEventFilterObject = new JObject();
-                var cloudPcWebhookEventFilterObjectpropCount = 0;
-                if (__workflow_bodycloudPcWebhookEventFilterprovisioningPolicyNames != null)
-                {
-                    cloudPcWebhookEventFilterObject["provisioningPolicyNames"] = ExpressionConverter.ConvertO(__workflow_bodycloudPcWebhookEventFilterprovisioningPolicyNames);
-                    cloudPcWebhookEventFilterObjectpropCount++;
-                }
-
-                if (__workflow_bodycloudPcWebhookEventFilterprovisioningPolicyIds != null)
-                {
-                    cloudPcWebhookEventFilterObject["provisioningPolicyIds"] = ExpressionConverter.ConvertO(__workflow_bodycloudPcWebhookEventFilterprovisioningPolicyIds);
-                    cloudPcWebhookEventFilterObjectpropCount++;
-                }
-
-                if (__workflow_bodycloudPcWebhookEventFilterprovisioningTypeNames != null)
-                {
-                    cloudPcWebhookEventFilterObject["provisioningTypeNames"] = ExpressionConverter.ConvertO(__workflow_bodycloudPcWebhookEventFilterprovisioningTypeNames);
-                    cloudPcWebhookEventFilterObjectpropCount++;
-                }
-
-                if (cloudPcWebhookEventFilterObjectpropCount > 0)
-                {
-                    body["cloudPcWebhookEventFilter"] = cloudPcWebhookEventFilterObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<WebhookProvisioningPolicyUpdatedResponse>(callPayload, recurrence: recurrence);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
     }
@@ -848,6 +414,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         Restore
     }
 
+    public class RemoteActionsInput
+    {
+        [JsonProperty("cloudPcSnapshotId")]
+        public string CloudPcSnapshotId { get; set; }
+
+        [JsonProperty("displayName")]
+        public string DisplayName { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum methodInput
     {
@@ -858,18 +433,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         DELETE
     }
 
-    public class bodyassignmentsInputItem
+    public class AssignAProvisioningPolicyToAGroupV1Input
+    {
+        [JsonProperty("assignments", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AssignAProvisioningPolicyToAGroupV1InputAssignmentsTypeItem[] Assignments { get; set; }
+    }
+
+    public class AssignAProvisioningPolicyToAGroupV1InputAssignmentsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
 
-        [JsonProperty("target")]
-        public bodyassignmentsInputItemTargetType Target { get; set; }
+        [JsonProperty("target", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AssignAProvisioningPolicyToAGroupV1InputAssignmentsTypeItemTargetType Target { get; set; }
     }
 
-    public class bodyassignmentsInputItemTargetType
+    public class AssignAProvisioningPolicyToAGroupV1InputAssignmentsTypeItemTargetType
     {
-        [JsonProperty("groupId")]
+        [JsonProperty("groupId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupId { get; set; }
 
         [JsonProperty("servicePlanId")]
@@ -972,7 +553,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         public string Language { get; set; }
     }
 
-    public class bodydomainJoinConfigurationsInputItem
+    public class CreateAProvisioningPolicyV1Input
+    {
+        [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DisplayName { get; set; }
+
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Description { get; set; }
+
+        [JsonProperty("domainJoinConfigurations", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateAProvisioningPolicyV1InputDomainJoinConfigurationsTypeItem[] DomainJoinConfigurations { get; set; }
+
+        [JsonProperty("otherFields")]
+        public JToken OtherFields { get; set; }
+
+        [JsonProperty("enableSingleSignOn")]
+        public bool? EnableSingleSignOn { get; set; }
+
+        [JsonProperty("imageId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ImageId { get; set; }
+
+        [JsonProperty("imageDisplayName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ImageDisplayName { get; set; }
+
+        [JsonProperty("imageType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateAProvisioningPolicyV1InputImageTypeType ImageType { get; set; }
+
+        [JsonProperty("provisioningType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateAProvisioningPolicyV1InputProvisioningTypeType ProvisioningType { get; set; }
+
+        [JsonProperty("windowsSetting", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateAProvisioningPolicyV1InputWindowsSettingType WindowsSetting { get; set; }
+
+        [JsonProperty("microsoftManagedDesktop")]
+        public CreateAProvisioningPolicyV1InputMicrosoftManagedDesktopType MicrosoftManagedDesktop { get; set; }
+    }
+
+    public class CreateAProvisioningPolicyV1InputDomainJoinConfigurationsTypeItem
     {
         [JsonProperty("domainJoinType")]
         public string DomainJoinType { get; set; }
@@ -991,7 +608,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyimageTypeInput
+    public enum CreateAProvisioningPolicyV1InputImageTypeType
     {
         [EnumMember(Value = "gallery")]
         Gallery,
@@ -1000,7 +617,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyprovisioningTypeInput
+    public enum CreateAProvisioningPolicyV1InputProvisioningTypeType
     {
         [EnumMember(Value = "dedicated")]
         Dedicated,
@@ -1010,6 +627,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         SharedByUser,
         [EnumMember(Value = "sharedByEntraGroup")]
         SharedByEntraGroup
+    }
+
+    public class CreateAProvisioningPolicyV1InputWindowsSettingType
+    {
+        [JsonProperty("locale", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Locale { get; set; }
+    }
+
+    public class CreateAProvisioningPolicyV1InputMicrosoftManagedDesktopType
+    {
+        [JsonProperty("managedType")]
+        public string ManagedType { get; set; }
+
+        [JsonProperty("profile")]
+        public string Profile { get; set; }
     }
 
     public class GetAProvisioningPolicyV1Response
@@ -1198,47 +830,118 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         public string Locale { get; set; }
     }
 
-    public class WebhookCloudPcProvisionedResponse
+    public class UpdateAProvisioningPolicyV1Input
     {
-        [JsonProperty("id")]
-        public string Id { get; set; }
+        [JsonProperty("autopatch")]
+        public UpdateAProvisioningPolicyV1InputAutopatchType Autopatch { get; set; }
+
+        [JsonProperty("autopilotConfiguration")]
+        public UpdateAProvisioningPolicyV1InputAutopilotConfigurationType AutopilotConfiguration { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("displayName")]
+        public string DisplayName { get; set; }
+
+        [JsonProperty("domainJoinConfigurations")]
+        public UpdateAProvisioningPolicyV1InputDomainJoinConfigurationsTypeItem[] DomainJoinConfigurations { get; set; }
+
+        [JsonProperty("enableSingleSignOn")]
+        public bool? EnableSingleSignOn { get; set; }
+
+        [JsonProperty("imageDisplayName")]
+        public string ImageDisplayName { get; set; }
+
+        [JsonProperty("imageId")]
+        public string ImageId { get; set; }
+
+        [JsonProperty("imageType")]
+        public string ImageType { get; set; }
+
+        [JsonProperty("microsoftManagedDesktop")]
+        public UpdateAProvisioningPolicyV1InputMicrosoftManagedDesktopType MicrosoftManagedDesktop { get; set; }
+
+        [JsonProperty("windowsSetting")]
+        public UpdateAProvisioningPolicyV1InputWindowsSettingType WindowsSetting { get; set; }
+
+        [JsonProperty("otherFields")]
+        public JToken OtherFields { get; set; }
+    }
+
+    public class UpdateAProvisioningPolicyV1InputAutopatchType
+    {
+        [JsonProperty("autopatchGroupId")]
+        public string AutopatchGroupId { get; set; }
+    }
+
+    public class UpdateAProvisioningPolicyV1InputAutopilotConfigurationType
+    {
+        [JsonProperty("devicePreparationProfileId")]
+        public string DevicePreparationProfileId { get; set; }
+
+        [JsonProperty("applicationTimeoutInMinutes")]
+        public int? ApplicationTimeoutInMinutes { get; set; }
+
+        [JsonProperty("onFailureDeviceAccessDenied")]
+        public bool? OnFailureDeviceAccessDenied { get; set; }
+    }
+
+    public class UpdateAProvisioningPolicyV1InputDomainJoinConfigurationsTypeItem
+    {
+        [JsonProperty("domainJoinType")]
+        public string DomainJoinType { get; set; }
+
+        [JsonProperty("onPremisesConnectionId")]
+        public string OnPremisesConnectionId { get; set; }
+
+        [JsonProperty("regionGroup")]
+        public string RegionGroup { get; set; }
+
+        [JsonProperty("regionName")]
+        public string RegionName { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public class UpdateAProvisioningPolicyV1InputMicrosoftManagedDesktopType
+    {
+        [JsonProperty("managedType")]
+        public string ManagedType { get; set; }
+
+        [JsonProperty("profile")]
+        public string Profile { get; set; }
+    }
+
+    public class UpdateAProvisioningPolicyV1InputWindowsSettingType
+    {
+        [JsonProperty("locale")]
+        public string Locale { get; set; }
+    }
+
+    public class WebhookInput
+    {
+        [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("scenario", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WebhookInputScenarioType Scenario { get; set; } = WebhookInputScenarioType.WhenACloudPCIsCreated;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodycloudPcWebhookEventFilterprovisioningTypeNamesInputItem
+    public enum WebhookInputScenarioType
     {
-        [EnumMember(Value = "Windows 365 Enterprise")]
-        Windows365Enterprise,
-        [EnumMember(Value = "Windows 365 Flex in Dedicated mode")]
-        Windows365FlexInDedicatedMode,
-        [EnumMember(Value = "Windows 365 Flex in Shared mode")]
-        Windows365FlexInSharedMode,
-        [EnumMember(Value = "Windows 365 Reserve")]
-        Windows365Reserve
-    }
-
-    public class WebhookCloudPcRemoteActionTriggeredResponse
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
-    public class WebhookCloudPcRemoteActionCompletedResponse
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
-    public class WebhookProvisioningPolicyCreatedResponse
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
-    public class WebhookProvisioningPolicyUpdatedResponse
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
+        [EnumMember(Value = "When a new provisioning policy is created")]
+        WhenANewProvisioningPolicyIsCreated,
+        [EnumMember(Value = "When a provisioning policy is updated")]
+        WhenAProvisioningPolicyIsUpdated,
+        [EnumMember(Value = "When a Cloud PC is created")]
+        WhenACloudPCIsCreated,
+        [EnumMember(Value = "When a remote action on a Cloud PC is triggered")]
+        WhenARemoteActionOnACloudPCIsTriggered,
+        [EnumMember(Value = "When a remote action on a Cloud PC completes")]
+        WhenARemoteActionOnACloudPCCompletes
     }
 }
 

@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
     public class As2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "as2")]
-        public IBodyWorkflowAction<MicUpdateResponse[], ApiConnectionActionConfiguration> AddOrUpdateMicValues(Expression<Func<As2ReplicableMicContent[]>> micContent = null)
+        public IBodyWorkflowAction<MicUpdateResponse[], ApiConnectionActionConfiguration> AddOrUpdateMicValues(Expression<Func<As2ReplicableMicContent[]>> micContent)
         {
-            var __workflow_micContent = WorkflowExpression.Compile(micContent, nameof(micContent), required: false);
+            var __workflow_micContent = WorkflowExpression.Compile(micContent, nameof(micContent), required: true);
             return new DeferredBodyAction<MicUpdateResponse[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/createOrUpdateMicValues";
@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "as2")]
-        public IBodyWorkflowAction<As2DecodeResponse, ApiConnectionActionConfiguration> Decode(Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<As2DecodeResponse, ApiConnectionActionConfiguration> Decode(Expression<Func<string>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<As2DecodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/decode";
@@ -57,12 +57,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "as2")]
-        public IBodyWorkflowAction<As2EncodeResponse, ApiConnectionActionConfiguration> Encode(Expression<Func<string>> as2From, Expression<Func<string>> as2To, Expression<Func<string>> fileName = null, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<As2EncodeResponse, ApiConnectionActionConfiguration> Encode(Expression<Func<string>> as2From, Expression<Func<string>> as2To, Expression<Func<string>> body, Expression<Func<string>> fileName = null, Expression<Func<string>> contentType = null)
         {
             var __workflow_as2From = WorkflowExpression.Compile(as2From, nameof(as2From), required: true);
             var __workflow_as2To = WorkflowExpression.Compile(as2To, nameof(as2To), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             return new DeferredBodyAction<As2EncodeResponse, ApiConnectionActionConfiguration>(() =>
             {

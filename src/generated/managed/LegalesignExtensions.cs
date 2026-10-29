@@ -109,43 +109,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostAttachment(Expression<Func<string>> bodygroup, Expression<Func<string>> bodypdfFile, Expression<Func<string>> bodyfilename, Expression<Func<string>> bodyuser = null, Expression<Func<string>> bodydescription = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostAttachment(Expression<Func<PostAttachmentInput>> body)
         {
-            var __workflow_bodygroup = WorkflowExpression.Compile(bodygroup, nameof(bodygroup), required: true);
-            var __workflow_bodypdfFile = WorkflowExpression.Compile(bodypdfFile, nameof(bodypdfFile), required: true);
-            var __workflow_bodyfilename = WorkflowExpression.Compile(bodyfilename, nameof(bodyfilename), required: true);
-            var __workflow_bodyuser = WorkflowExpression.Compile(bodyuser, nameof(bodyuser), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/attachment/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["group"] = ExpressionConverter.ConvertO(__workflow_bodygroup);
-                bodypropCount++;
-                body["pdf_file"] = ExpressionConverter.ConvertO(__workflow_bodypdfFile);
-                bodypropCount++;
-                body["filename"] = ExpressionConverter.ConvertO(__workflow_bodyfilename);
-                if (__workflow_bodyuser != null)
-                {
-                    body["user"] = ExpressionConverter.ConvertO(__workflow_bodyuser);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -245,28 +217,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostSignerReminder(Expression<Func<string>> recipientId, Expression<Func<string>> bodytext = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostSignerReminder(Expression<Func<string>> recipientId, Expression<Func<PostSignerReminderInput>> body)
         {
             var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/signer/{0}/send-reminder/", __workflow_recipientId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -350,227 +310,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostDocument(Expression<Func<string>> bodygroup, Expression<Func<string>> bodyname, Expression<Func<string>> bodytemplatepdf, Expression<Func<DocumentSignerPost[]>> bodysigners, Expression<Func<int>> bodysignatureType = null, Expression<Func<bool>> bodyappendPdf = null, Expression<Func<bool>> bodyautoArchive = null, Expression<Func<bool>> bodydoEmail = null, Expression<Func<string>> bodyccEmails = null, Expression<Func<bool>> bodyconvertSenderToSigner = null, Expression<Func<string>> bodypdfPassword = null, Expression<Func<bodypdfPasswordTypeInput>> bodypdfPasswordType = null, Expression<Func<string>> bodyredirect = null, Expression<Func<string>> bodyreminders = null, Expression<Func<bool>> bodyreturnSignerLinks = null, Expression<Func<bool>> bodysignersInOrder = null, Expression<Func<bool>> bodystrictFields = null, Expression<Func<string>> bodytag = null, Expression<Func<string>> bodytag1 = null, Expression<Func<string>> bodytag2 = null, Expression<Func<string>> bodyuser = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostDocument(Expression<Func<PostDocumentInput>> body)
         {
-            var __workflow_bodygroup = WorkflowExpression.Compile(bodygroup, nameof(bodygroup), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodytemplatepdf = WorkflowExpression.Compile(bodytemplatepdf, nameof(bodytemplatepdf), required: true);
-            var __workflow_bodysigners = WorkflowExpression.Compile(bodysigners, nameof(bodysigners), required: true);
-            var __workflow_bodysignatureType = WorkflowExpression.Compile(bodysignatureType, nameof(bodysignatureType), required: false);
-            var __workflow_bodyappendPdf = WorkflowExpression.Compile(bodyappendPdf, nameof(bodyappendPdf), required: false);
-            var __workflow_bodyautoArchive = WorkflowExpression.Compile(bodyautoArchive, nameof(bodyautoArchive), required: false);
-            var __workflow_bodydoEmail = WorkflowExpression.Compile(bodydoEmail, nameof(bodydoEmail), required: false);
-            var __workflow_bodyccEmails = WorkflowExpression.Compile(bodyccEmails, nameof(bodyccEmails), required: false);
-            var __workflow_bodyconvertSenderToSigner = WorkflowExpression.Compile(bodyconvertSenderToSigner, nameof(bodyconvertSenderToSigner), required: false);
-            var __workflow_bodypdfPassword = WorkflowExpression.Compile(bodypdfPassword, nameof(bodypdfPassword), required: false);
-            var __workflow_bodypdfPasswordType = WorkflowExpression.Compile(bodypdfPasswordType, nameof(bodypdfPasswordType), required: false);
-            var __workflow_bodyredirect = WorkflowExpression.Compile(bodyredirect, nameof(bodyredirect), required: false);
-            var __workflow_bodyreminders = WorkflowExpression.Compile(bodyreminders, nameof(bodyreminders), required: false);
-            var __workflow_bodyreturnSignerLinks = WorkflowExpression.Compile(bodyreturnSignerLinks, nameof(bodyreturnSignerLinks), required: false);
-            var __workflow_bodysignersInOrder = WorkflowExpression.Compile(bodysignersInOrder, nameof(bodysignersInOrder), required: false);
-            var __workflow_bodystrictFields = WorkflowExpression.Compile(bodystrictFields, nameof(bodystrictFields), required: false);
-            var __workflow_bodytag = WorkflowExpression.Compile(bodytag, nameof(bodytag), required: false);
-            var __workflow_bodytag1 = WorkflowExpression.Compile(bodytag1, nameof(bodytag1), required: false);
-            var __workflow_bodytag2 = WorkflowExpression.Compile(bodytag2, nameof(bodytag2), required: false);
-            var __workflow_bodyuser = WorkflowExpression.Compile(bodyuser, nameof(bodyuser), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/document/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["group"] = ExpressionConverter.ConvertO(__workflow_bodygroup);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["templatepdf"] = ExpressionConverter.ConvertO(__workflow_bodytemplatepdf);
-                bodypropCount++;
-                body["signers"] = ExpressionConverter.ConvertO(__workflow_bodysigners);
-                if (__workflow_bodysignatureType != null)
-                {
-                    if (__workflow_bodysignatureType != null)
-                    {
-                        body["signature_type"] = ExpressionConverter.ConvertO(__workflow_bodysignatureType);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["signature_type"] = 4;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyappendPdf != null)
-                {
-                    body["append_pdf"] = ExpressionConverter.ConvertO(__workflow_bodyappendPdf);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyautoArchive != null)
-                {
-                    if (__workflow_bodyautoArchive != null)
-                    {
-                        body["auto_archive"] = ExpressionConverter.ConvertO(__workflow_bodyautoArchive);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["auto_archive"] = true;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydoEmail != null)
-                {
-                    if (__workflow_bodydoEmail != null)
-                    {
-                        body["do_email"] = ExpressionConverter.ConvertO(__workflow_bodydoEmail);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["do_email"] = true;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyccEmails != null)
-                {
-                    body["cc_emails"] = ExpressionConverter.ConvertO(__workflow_bodyccEmails);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyconvertSenderToSigner != null)
-                {
-                    if (__workflow_bodyconvertSenderToSigner != null)
-                    {
-                        body["convert_sender_to_signer"] = ExpressionConverter.ConvertO(__workflow_bodyconvertSenderToSigner);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["convert_sender_to_signer"] = false;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypdfPassword != null)
-                {
-                    body["pdf_password"] = ExpressionConverter.ConvertO(__workflow_bodypdfPassword);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypdfPasswordType != null)
-                {
-                    body["pdf_password_type"] = ExpressionConverter.ConvertO(__workflow_bodypdfPasswordType);
-                    bodypropCount++;
-                }
-
-                var pdftextObject = new JObject();
-                var pdftextObjectpropCount = 0;
-                if (pdftextObjectpropCount > 0)
-                {
-                    body["pdftext"] = pdftextObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyredirect != null)
-                {
-                    body["redirect"] = ExpressionConverter.ConvertO(__workflow_bodyredirect);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreminders != null)
-                {
-                    body["reminders"] = ExpressionConverter.ConvertO(__workflow_bodyreminders);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreturnSignerLinks != null)
-                {
-                    if (__workflow_bodyreturnSignerLinks != null)
-                    {
-                        body["return_signer_links"] = ExpressionConverter.ConvertO(__workflow_bodyreturnSignerLinks);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["return_signer_links"] = false;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysignersInOrder != null)
-                {
-                    body["signers_in_order"] = ExpressionConverter.ConvertO(__workflow_bodysignersInOrder);
-                    bodypropCount++;
-                }
-
-                var signertextObject = new JObject();
-                var signertextObjectpropCount = 0;
-                if (signertextObjectpropCount > 0)
-                {
-                    body["signertext"] = signertextObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystrictFields != null)
-                {
-                    if (__workflow_bodystrictFields != null)
-                    {
-                        body["strict_fields"] = ExpressionConverter.ConvertO(__workflow_bodystrictFields);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["strict_fields"] = false;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytag != null)
-                {
-                    body["tag"] = ExpressionConverter.ConvertO(__workflow_bodytag);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytag1 != null)
-                {
-                    body["tag1"] = ExpressionConverter.ConvertO(__workflow_bodytag1);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytag2 != null)
-                {
-                    body["tag2"] = ExpressionConverter.ConvertO(__workflow_bodytag2);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuser != null)
-                {
-                    body["user"] = ExpressionConverter.ConvertO(__workflow_bodyuser);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -630,64 +378,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostPdfTemplate(Expression<Func<string>> bodygroup, Expression<Func<string>> bodypdfFile, Expression<Func<bool>> bodyarchiveUponSend = null, Expression<Func<bool>> bodyprocessTags = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyuser = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostPdfTemplate(Expression<Func<PostPdfTemplateInput>> body)
         {
-            var __workflow_bodygroup = WorkflowExpression.Compile(bodygroup, nameof(bodygroup), required: true);
-            var __workflow_bodypdfFile = WorkflowExpression.Compile(bodypdfFile, nameof(bodypdfFile), required: true);
-            var __workflow_bodyarchiveUponSend = WorkflowExpression.Compile(bodyarchiveUponSend, nameof(bodyarchiveUponSend), required: false);
-            var __workflow_bodyprocessTags = WorkflowExpression.Compile(bodyprocessTags, nameof(bodyprocessTags), required: false);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodyuser = WorkflowExpression.Compile(bodyuser, nameof(bodyuser), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/templatepdf/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyarchiveUponSend != null)
-                {
-                    if (__workflow_bodyarchiveUponSend != null)
-                    {
-                        body["archive_upon_send"] = ExpressionConverter.ConvertO(__workflow_bodyarchiveUponSend);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["archive_upon_send"] = false;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["group"] = ExpressionConverter.ConvertO(__workflow_bodygroup);
-                bodypropCount++;
-                body["pdf_file"] = ExpressionConverter.ConvertO(__workflow_bodypdfFile);
-                if (__workflow_bodyprocessTags != null)
-                {
-                    body["process_tags"] = ExpressionConverter.ConvertO(__workflow_bodyprocessTags);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuser != null)
-                {
-                    body["user"] = ExpressionConverter.ConvertO(__workflow_bodyuser);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -713,68 +412,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
 
     public class LegalesignTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> RecipientTrigger(Expression<Func<bodyeventFilterInput>> bodyeventFilter, Expression<Func<string>> bodygroup = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> RecipientTrigger(Expression<Func<RecipientTriggerInput>> body = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyeventFilter = WorkflowExpression.Compile(bodyeventFilter, nameof(bodyeventFilter), required: true);
-            var __workflow_bodygroup = WorkflowExpression.Compile(bodygroup, nameof(bodygroup), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/subscribe/recipient/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["notify"] = "realtime";
-                bodypropCount++;
-                bodypropCount++;
-                body["eventFilter"] = ExpressionConverter.ConvertO(__workflow_bodyeventFilter);
-                if (__workflow_bodygroup != null)
-                {
-                    body["group"] = ExpressionConverter.ConvertO(__workflow_bodygroup);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> DocumentTrigger(Expression<Func<bodyeventFilterInput>> bodyeventFilter, Expression<Func<string>> bodygroup = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> DocumentTrigger(Expression<Func<DocumentTriggerInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyeventFilter = WorkflowExpression.Compile(bodyeventFilter, nameof(bodyeventFilter), required: true);
-            var __workflow_bodygroup = WorkflowExpression.Compile(bodygroup, nameof(bodygroup), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/subscribe/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["notify"] = "realtime";
-                bodypropCount++;
-                bodypropCount++;
-                body["eventFilter"] = ExpressionConverter.ConvertO(__workflow_bodyeventFilter);
-                if (__workflow_bodygroup != null)
-                {
-                    body["group"] = ExpressionConverter.ConvertO(__workflow_bodygroup);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -923,6 +585,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
 
         [JsonProperty("uuid")]
         public string Uuid { get; set; }
+    }
+
+    public class PostAttachmentInput
+    {
+        [JsonProperty("group", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Group { get; set; }
+
+        [JsonProperty("pdf_file", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PdfFile { get; set; }
+
+        [JsonProperty("filename", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Filename { get; set; }
+
+        [JsonProperty("user")]
+        public string User { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
     }
 
     public class GetDocumentFieldsResponseItem
@@ -1164,6 +844,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         _60 = 60
     }
 
+    public class PostSignerReminderInput
+    {
+        [JsonProperty("text")]
+        public string Text { get; set; }
+    }
+
     public class GetSignerFieldsResponseItem
     {
         [JsonProperty("label")]
@@ -1281,6 +967,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         _1 = 1
     }
 
+    public class PostDocumentInput
+    {
+        [JsonProperty("group", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Group { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("templatepdf", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Templatepdf { get; set; }
+
+        [JsonProperty("signers", DefaultValueHandling = DefaultValueHandling.Include)]
+        public DocumentSignerPost[] Signers { get; set; }
+
+        [JsonProperty("signature_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? SignatureType { get; set; } = 4;
+
+        [JsonProperty("append_pdf")]
+        public bool? AppendPdf { get; set; }
+
+        [JsonProperty("auto_archive", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? AutoArchive { get; set; } = true;
+
+        [JsonProperty("do_email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? DoEmail { get; set; } = true;
+
+        [JsonProperty("cc_emails")]
+        public string CcEmails { get; set; }
+
+        [JsonProperty("convert_sender_to_signer", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ConvertSenderToSigner { get; set; } = false;
+
+        [JsonProperty("pdf_password")]
+        public string PdfPassword { get; set; }
+
+        [JsonProperty("pdf_password_type")]
+        public PostDocumentInputPdfPasswordTypeType? PdfPasswordType { get; set; }
+
+        [JsonProperty("pdftext")]
+        public JToken Pdftext { get; set; }
+
+        [JsonProperty("redirect")]
+        public string Redirect { get; set; }
+
+        [JsonProperty("reminders")]
+        public string Reminders { get; set; }
+
+        [JsonProperty("return_signer_links", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ReturnSignerLinks { get; set; } = false;
+
+        [JsonProperty("signers_in_order")]
+        public bool? SignersInOrder { get; set; }
+
+        [JsonProperty("signertext")]
+        public JToken Signertext { get; set; }
+
+        [JsonProperty("strict_fields", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? StrictFields { get; set; } = false;
+
+        [JsonProperty("tag")]
+        public string Tag { get; set; }
+
+        [JsonProperty("tag1")]
+        public string Tag1 { get; set; }
+
+        [JsonProperty("tag2")]
+        public string Tag2 { get; set; }
+
+        [JsonProperty("user")]
+        public string User { get; set; }
+    }
+
     public class DocumentSignerPost
     {
         [JsonProperty("email")]
@@ -1332,7 +1090,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         public bool IncludeLink { get; set; }
     }
 
-    public enum bodypdfPasswordTypeInput
+    public enum PostDocumentInputPdfPasswordTypeType
     {
         _1 = 1,
         _2 = 2
@@ -1383,6 +1141,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         public TemplatePdfResponse[] Objects { get; set; }
     }
 
+    public class PostPdfTemplateInput
+    {
+        [JsonProperty("archive_upon_send", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ArchiveUponSend { get; set; } = false;
+
+        [JsonProperty("group", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Group { get; set; }
+
+        [JsonProperty("pdf_file", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PdfFile { get; set; }
+
+        [JsonProperty("process_tags")]
+        public bool? ProcessTags { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("user")]
+        public string User { get; set; }
+    }
+
     public class GroupListResponse
     {
         [JsonProperty("meta")]
@@ -1425,8 +1204,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         public bool XframeAllowPdfEdit { get; set; }
     }
 
+    public class RecipientTriggerInput
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("notify", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Notify { get; set; } = "realtime";
+
+        [JsonProperty("eventFilter", DefaultValueHandling = DefaultValueHandling.Include)]
+        public RecipientTriggerInputEventFilterType EventFilter { get; set; } = RecipientTriggerInputEventFilterType.Recipient;
+
+        [JsonProperty("group")]
+        public string Group { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyeventFilterInput
+    public enum RecipientTriggerInputEventFilterType
+    {
+        [EnumMember(Value = "recipient.*")]
+        Recipient,
+        [EnumMember(Value = "recipient.completed")]
+        RecipientCompleted,
+        [EnumMember(Value = "recipient.rejected")]
+        RecipientRejected,
+        [EnumMember(Value = "recipient.emailOpened")]
+        RecipientEmailOpened,
+        [EnumMember(Value = "recipient.visiting")]
+        RecipientVisiting,
+        [EnumMember(Value = "recipient.bounced")]
+        RecipientBounced
+    }
+
+    public class DocumentTriggerInput
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("notify", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Notify { get; set; } = "realtime";
+
+        [JsonProperty("eventFilter", DefaultValueHandling = DefaultValueHandling.Include)]
+        public DocumentTriggerInputEventFilterType EventFilter { get; set; } = DocumentTriggerInputEventFilterType.Document;
+
+        [JsonProperty("group")]
+        public string Group { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum DocumentTriggerInputEventFilterType
     {
         [EnumMember(Value = "document.*")]
         Document,

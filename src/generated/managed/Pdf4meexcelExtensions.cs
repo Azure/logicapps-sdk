@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors.Passlet
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meexcel
 {
     using System.Linq.Expressions;
     using Microsoft.Azure.Workflows.Sdk.Expressions;
@@ -10,26 +10,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Passlet
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
-    public class PassletActions([ConnectionName] string connectionId)
+    public class Pdf4meexcelActions([ConnectionName] string connectionId)
     {
     }
 
-    public class PassletTriggers([ConnectionName] string connectionId)
+    public class Pdf4meexcelTriggers([ConnectionName] string connectionId)
     {
     }
 }
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
-    using Microsoft.Azure.Workflows.Sdk.Connectors.Passlet;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meexcel;
 
     public partial class WorkflowManagedActions
     {
-        public PassletActions Passlet(string connectionId) => new PassletActions(connectionId);
+        public Pdf4meexcelActions Pdf4meexcel(string connectionId) => new Pdf4meexcelActions(connectionId);
     }
 
     public partial class WorkflowManagedTriggers
     {
-        public PassletTriggers Passlet(string connectionId) => new PassletTriggers(connectionId);
+        public Pdf4meexcelTriggers Pdf4meexcel(string connectionId) => new Pdf4meexcelTriggers(connectionId);
     }
 }

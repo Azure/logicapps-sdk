@@ -13,24 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
     public class OpenqrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
-        public IBodyWorkflowAction<FolderUpdatePostResponse, ApiConnectionActionConfiguration> FolderUpdate(Expression<Func<string>> folderId, Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<FolderUpdatePostResponse, ApiConnectionActionConfiguration> FolderUpdate(Expression<Func<string>> folderId, Expression<Func<FolderUpdatePostInput>> body = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<FolderUpdatePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/folders/{0}", __workflow_folderId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FolderUpdatePostResponse>(callPayload);
             });
         }
@@ -48,23 +41,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
-        public IBodyWorkflowAction<FolderPostResponse, ApiConnectionActionConfiguration> Folder(Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<FolderPostResponse, ApiConnectionActionConfiguration> Folder(Expression<Func<FolderPostInput>> body = null)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<FolderPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/folders";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FolderPostResponse>(callPayload);
             });
         }
@@ -82,41 +68,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
-        public IBodyWorkflowAction<QRPostResponse, ApiConnectionActionConfiguration> QR(Expression<Func<string>> bodyname, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodydataurl = null)
+        public IBodyWorkflowAction<QRPostResponse, ApiConnectionActionConfiguration> QR(Expression<Func<QRPostInput>> body = null)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodydataurl = WorkflowExpression.Compile(bodydataurl, nameof(bodydataurl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<QRPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/qr-codes";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                var dataObject = new JObject();
-                var dataObjectpropCount = 0;
-                if (__workflow_bodydataurl != null)
-                {
-                    dataObject["url"] = ExpressionConverter.ConvertO(__workflow_bodydataurl);
-                    dataObjectpropCount++;
-                }
-
-                if (dataObjectpropCount > 0)
-                {
-                    body["data"] = dataObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QRPostResponse>(callPayload);
             });
         }
@@ -135,60 +96,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
-        public IBodyWorkflowAction<QRUpdatePostResponse, ApiConnectionActionConfiguration> QRUpdate(Expression<Func<string>> qrCodeId, Expression<Func<string>> bodyname = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<string>> bodydataurl = null)
+        public IBodyWorkflowAction<QRUpdatePostResponse, ApiConnectionActionConfiguration> QRUpdate(Expression<Func<string>> qrCodeId, Expression<Func<QRUpdatePostInput>> body = null)
         {
             var __workflow_qrCodeId = WorkflowExpression.Compile(qrCodeId, nameof(qrCodeId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodydataurl = WorkflowExpression.Compile(bodydataurl, nameof(bodydataurl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<QRUpdatePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/qr-codes/{0}", __workflow_qrCodeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytype != null)
-                {
-                    if (__workflow_bodytype != null)
-                    {
-                        body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["type"] = "url";
-                    bodypropCount++;
-                }
-
-                var dataObject = new JObject();
-                var dataObjectpropCount = 0;
-                if (__workflow_bodydataurl != null)
-                {
-                    dataObject["url"] = ExpressionConverter.ConvertO(__workflow_bodydataurl);
-                    dataObjectpropCount++;
-                }
-
-                if (dataObjectpropCount > 0)
-                {
-                    body["data"] = dataObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<QRUpdatePostResponse>(callPayload);
             });
         }
@@ -226,6 +144,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
 
         [JsonProperty("created_at")]
         public string CreatedAt { get; set; }
+    }
+
+    public class FolderUpdatePostInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
     }
 
     public class FoldersGetResponse
@@ -298,6 +222,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
 
         [JsonProperty("created_at")]
         public string CreatedAt { get; set; }
+    }
+
+    public class FolderPostInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
     }
 
     public class QRsGetResponse
@@ -408,8 +338,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
         public string UpdatedAt { get; set; }
     }
 
+    public class QRPostInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public QRPostInputTypeType Type { get; set; } = QRPostInputTypeType.Url;
+
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public QRPostInputDataType Data { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytypeInput
+    public enum QRPostInputTypeType
     {
         [EnumMember(Value = "url")]
         Url,
@@ -447,6 +389,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
         Wifi,
         [EnumMember(Value = "wifi_static")]
         WifiStatic
+    }
+
+    public class QRPostInputDataType
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Url { get; set; }
     }
 
     public class QRGetResponse
@@ -519,6 +467,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
 
         [JsonProperty("updated_at")]
         public string UpdatedAt { get; set; }
+    }
+
+    public class QRUpdatePostInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public QRUpdatePostInputTypeType? Type { get; set; } = QRUpdatePostInputTypeType.Url;
+
+        [JsonProperty("data")]
+        public QRUpdatePostInputDataType Data { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum QRUpdatePostInputTypeType
+    {
+        [EnumMember(Value = "url")]
+        Url,
+        [EnumMember(Value = "call")]
+        Call,
+        [EnumMember(Value = "call_static")]
+        CallStatic,
+        [EnumMember(Value = "email")]
+        Email,
+        [EnumMember(Value = "email_static")]
+        EmailStatic,
+        [EnumMember(Value = "event")]
+        Event,
+        [EnumMember(Value = "event_static")]
+        EventStatic,
+        [EnumMember(Value = "geo")]
+        Geo,
+        [EnumMember(Value = "geo_static")]
+        GeoStatic,
+        [EnumMember(Value = "sms")]
+        Sms,
+        [EnumMember(Value = "sms_static")]
+        SmsStatic,
+        [EnumMember(Value = "text")]
+        Text,
+        [EnumMember(Value = "text_static")]
+        TextStatic,
+        [EnumMember(Value = "url_static")]
+        UrlStatic,
+        [EnumMember(Value = "vcard")]
+        Vcard,
+        [EnumMember(Value = "vcard_static")]
+        VcardStatic,
+        [EnumMember(Value = "wifi")]
+        Wifi,
+        [EnumMember(Value = "wifi_static")]
+        WifiStatic
+    }
+
+    public class QRUpdatePostInputDataType
+    {
+        [JsonProperty("url")]
+        public string Url { get; set; }
     }
 
     public class FilesGetResponse

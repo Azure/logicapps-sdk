@@ -48,12 +48,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AppendFileConcurrent(Expression<Func<string>> account, Expression<Func<string>> filepath, Expression<Func<appendModeInput>> appendMode = null, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AppendFileConcurrent(Expression<Func<string>> account, Expression<Func<string>> filepath, Expression<Func<string>> body, Expression<Func<appendModeInput>> appendMode = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_filepath = WorkflowExpression.Compile(filepath, nameof(filepath), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_appendMode = WorkflowExpression.Compile(appendMode, nameof(appendMode), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhdfsext/{0}", __workflow_filepath.WithUrlEncoding(1)));
@@ -87,12 +87,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UploadFile(Expression<Func<string>> account, Expression<Func<string>> filepath, Expression<Func<bool>> overwrite = null, Expression<Func<string>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UploadFile(Expression<Func<string>> account, Expression<Func<string>> filepath, Expression<Func<string>> body, Expression<Func<bool>> overwrite = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_filepath = WorkflowExpression.Compile(filepath, nameof(filepath), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_overwrite = WorkflowExpression.Compile(overwrite, nameof(overwrite), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhdfs/v1/{0}", __workflow_filepath.WithUrlEncoding(1)));
@@ -110,11 +110,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AppendFileSequential(Expression<Func<string>> account, Expression<Func<string>> filepath, Expression<Func<string>> body = null, Expression<Func<int>> offset = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AppendFileSequential(Expression<Func<string>> account, Expression<Func<string>> filepath, Expression<Func<string>> body, Expression<Func<int>> offset = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_filepath = WorkflowExpression.Compile(filepath, nameof(filepath), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {

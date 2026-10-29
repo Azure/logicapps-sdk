@@ -26,63 +26,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oncehub
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oncehub")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BookATimeSlot(Expression<Func<string>> id, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyguestTimeZone, Expression<Func<string>> bodybookingFormname = null, Expression<Func<string>> bodybookingFormemail = null, Expression<Func<bodylocationTypeInput>> bodylocationType = null, Expression<Func<string>> bodylocationValue = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BookATimeSlot(Expression<Func<string>> id, Expression<Func<BookATimeSlotInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: true);
-            var __workflow_bodyguestTimeZone = WorkflowExpression.Compile(bodyguestTimeZone, nameof(bodyguestTimeZone), required: true);
-            var __workflow_bodybookingFormname = WorkflowExpression.Compile(bodybookingFormname, nameof(bodybookingFormname), required: false);
-            var __workflow_bodybookingFormemail = WorkflowExpression.Compile(bodybookingFormemail, nameof(bodybookingFormemail), required: false);
-            var __workflow_bodylocationType = WorkflowExpression.Compile(bodylocationType, nameof(bodylocationType), required: false);
-            var __workflow_bodylocationValue = WorkflowExpression.Compile(bodylocationValue, nameof(bodylocationValue), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/booking-calendars/{0}/schedule", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["start_time"] = ExpressionConverter.ConvertO(__workflow_bodystartTime);
-                bodypropCount++;
-                body["guest_time_zone"] = ExpressionConverter.ConvertO(__workflow_bodyguestTimeZone);
-                var bookingFormObject = new JObject();
-                var bookingFormObjectpropCount = 0;
-                if (__workflow_bodybookingFormname != null)
-                {
-                    bookingFormObject["name"] = ExpressionConverter.ConvertO(__workflow_bodybookingFormname);
-                    bookingFormObjectpropCount++;
-                }
-
-                if (__workflow_bodybookingFormemail != null)
-                {
-                    bookingFormObject["email"] = ExpressionConverter.ConvertO(__workflow_bodybookingFormemail);
-                    bookingFormObjectpropCount++;
-                }
-
-                if (bookingFormObjectpropCount > 0)
-                {
-                    body["booking_form"] = bookingFormObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylocationType != null)
-                {
-                    body["location_type"] = ExpressionConverter.ConvertO(__workflow_bodylocationType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylocationValue != null)
-                {
-                    body["location_value"] = ExpressionConverter.ConvertO(__workflow_bodylocationValue);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -124,8 +77,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oncehub
         Phone
     }
 
+    public class BookATimeSlotInput
+    {
+        [JsonProperty("start_time", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string StartTime { get; set; }
+
+        [JsonProperty("guest_time_zone", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string GuestTimeZone { get; set; }
+
+        [JsonProperty("booking_form", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BookATimeSlotInputBookingFormType BookingForm { get; set; }
+
+        [JsonProperty("location_type")]
+        public BookATimeSlotInputLocationTypeType? LocationType { get; set; }
+
+        [JsonProperty("location_value")]
+        public string LocationValue { get; set; }
+    }
+
+    public class BookATimeSlotInputBookingFormType
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodylocationTypeInput
+    public enum BookATimeSlotInputLocationTypeType
     {
         [EnumMember(Value = "physical")]
         Physical,

@@ -13,11 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedeclarativeconn
     public class OnedeclarativeconnActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedeclarativeconn")]
-        public IBodyWorkflowAction<GetInvoiceFromGetMyInvoicesResponse, ApiConnectionActionConfiguration> GetInvoiceFromGetMyInvoices(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodyapiKey)
+        public IBodyWorkflowAction<GetInvoiceFromGetMyInvoicesResponse, ApiConnectionActionConfiguration> GetInvoiceFromGetMyInvoices(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<GetInvoiceFromGetMyInvoicesInput>> body)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
-            var __workflow_bodyapiKey = WorkflowExpression.Compile(bodyapiKey, nameof(bodyapiKey), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetInvoiceFromGetMyInvoicesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/accounts/v2/sendDocumentsToPowerAutomate";
@@ -25,15 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedeclarativeconn
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["api_key"] = ExpressionConverter.ConvertO(__workflow_bodyapiKey);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetInvoiceFromGetMyInvoicesResponse>(callPayload);
             });
         }
@@ -125,6 +117,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedeclarativeconn
 
         [JsonProperty("readable_text")]
         public string ReadableText { get; set; }
+    }
+
+    public class GetInvoiceFromGetMyInvoicesInput
+    {
+        [JsonProperty("api_key", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ApiKey { get; set; }
     }
 }
 

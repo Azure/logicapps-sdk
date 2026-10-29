@@ -27,32 +27,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclivedoc")]
-        public IBodyWorkflowAction<SeismicLiveDocsLiveDocGenSuccinctResultResp, ApiConnectionActionConfiguration> SubmitLiveDocGeneration(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentVersionId, Expression<Func<bodyoutputsInputItem[]>> bodyoutputs, Expression<Func<JToken[]>> bodyadHocInputs = null)
+        public IBodyWorkflowAction<SeismicLiveDocsLiveDocGenSuccinctResultResp, ApiConnectionActionConfiguration> SubmitLiveDocGeneration(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentVersionId, Expression<Func<SubmitLiveDocGenerationInput>> body = null)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_libraryContentVersionId = WorkflowExpression.Compile(libraryContentVersionId, nameof(libraryContentVersionId), required: true);
-            var __workflow_bodyoutputs = WorkflowExpression.Compile(bodyoutputs, nameof(bodyoutputs), required: true);
-            var __workflow_bodyadHocInputs = WorkflowExpression.Compile(bodyadHocInputs, nameof(bodyadHocInputs), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SeismicLiveDocsLiveDocGenSuccinctResultResp, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/teamsites/{0}/livedocVersions/{1}", __workflow_teamsiteId.WithUrlEncoding(1), __workflow_libraryContentVersionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyadHocInputs != null)
-                {
-                    body["adHocInputs"] = ExpressionConverter.ConvertO(__workflow_bodyadHocInputs);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["outputs"] = ExpressionConverter.ConvertO(__workflow_bodyoutputs);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SeismicLiveDocsLiveDocGenSuccinctResultResp>(callPayload);
             });
         }
@@ -162,10 +148,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
         public string GeneratedLivedocId { get; set; }
     }
 
-    public class bodyoutputsInputItem
+    public class SubmitLiveDocGenerationInput
     {
-        [JsonProperty("format")]
-        public bodyoutputsInputItemFormatType Format { get; set; }
+        [JsonProperty("adHocInputs")]
+        public JToken[] AdHocInputs { get; set; }
+
+        [JsonProperty("outputs", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SubmitLiveDocGenerationInputOutputsTypeItem[] Outputs { get; set; }
+    }
+
+    public class SubmitLiveDocGenerationInputOutputsTypeItem
+    {
+        [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SubmitLiveDocGenerationInputOutputsTypeItemFormatType Format { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -174,20 +169,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
         public string FileName { get; set; }
 
         [JsonProperty("pptxOptions")]
-        public bodyoutputsInputItemPptxOptionsType PptxOptions { get; set; }
+        public SubmitLiveDocGenerationInputOutputsTypeItemPptxOptionsType PptxOptions { get; set; }
 
         [JsonProperty("docxOptions")]
-        public bodyoutputsInputItemDocxOptionsType DocxOptions { get; set; }
+        public SubmitLiveDocGenerationInputOutputsTypeItemDocxOptionsType DocxOptions { get; set; }
 
         [JsonProperty("pdfOptions")]
-        public bodyoutputsInputItemPdfOptionsType PdfOptions { get; set; }
+        public SubmitLiveDocGenerationInputOutputsTypeItemPdfOptionsType PdfOptions { get; set; }
 
         [JsonProperty("xlsxOptions")]
-        public bodyoutputsInputItemXlsxOptionsType XlsxOptions { get; set; }
+        public SubmitLiveDocGenerationInputOutputsTypeItemXlsxOptionsType XlsxOptions { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyoutputsInputItemFormatType
+    public enum SubmitLiveDocGenerationInputOutputsTypeItemFormatType
     {
         PPTX,
         DOCX,
@@ -195,16 +190,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
         XLSX
     }
 
-    public class bodyoutputsInputItemPptxOptionsType
+    public class SubmitLiveDocGenerationInputOutputsTypeItemPptxOptionsType
     {
-        [JsonProperty("imageDpi")]
-        public bodyoutputsInputItemPptxOptionsTypeImageDpiType ImageDpi { get; set; }
+        [JsonProperty("imageDpi", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SubmitLiveDocGenerationInputOutputsTypeItemPptxOptionsTypeImageDpiType? ImageDpi { get; set; } = SubmitLiveDocGenerationInputOutputsTypeItemPptxOptionsTypeImageDpiType._200;
 
-        [JsonProperty("clearNotes")]
-        public bool ClearNotes { get; set; }
+        [JsonProperty("clearNotes", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ClearNotes { get; set; } = false;
     }
 
-    public enum bodyoutputsInputItemPptxOptionsTypeImageDpiType
+    public enum SubmitLiveDocGenerationInputOutputsTypeItemPptxOptionsTypeImageDpiType
     {
         _0 = 0,
         _96 = 96,
@@ -215,13 +210,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
         _400 = 400
     }
 
-    public class bodyoutputsInputItemDocxOptionsType
+    public class SubmitLiveDocGenerationInputOutputsTypeItemDocxOptionsType
     {
-        [JsonProperty("imageDpi")]
-        public bodyoutputsInputItemDocxOptionsTypeImageDpiType ImageDpi { get; set; }
+        [JsonProperty("imageDpi", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SubmitLiveDocGenerationInputOutputsTypeItemDocxOptionsTypeImageDpiType? ImageDpi { get; set; } = SubmitLiveDocGenerationInputOutputsTypeItemDocxOptionsTypeImageDpiType._200;
     }
 
-    public enum bodyoutputsInputItemDocxOptionsTypeImageDpiType
+    public enum SubmitLiveDocGenerationInputOutputsTypeItemDocxOptionsTypeImageDpiType
     {
         _0 = 0,
         _96 = 96,
@@ -232,13 +227,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
         _400 = 400
     }
 
-    public class bodyoutputsInputItemPdfOptionsType
+    public class SubmitLiveDocGenerationInputOutputsTypeItemPdfOptionsType
     {
-        [JsonProperty("layout")]
-        public bodyoutputsInputItemPdfOptionsTypeLayoutType Layout { get; set; }
+        [JsonProperty("layout", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SubmitLiveDocGenerationInputOutputsTypeItemPdfOptionsTypeLayoutType? Layout { get; set; } = SubmitLiveDocGenerationInputOutputsTypeItemPdfOptionsTypeLayoutType.FullPageSlides;
 
-        [JsonProperty("compatibility")]
-        public bodyoutputsInputItemPdfOptionsTypeCompatibilityType Compatibility { get; set; }
+        [JsonProperty("compatibility", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SubmitLiveDocGenerationInputOutputsTypeItemPdfOptionsTypeCompatibilityType? Compatibility { get; set; } = SubmitLiveDocGenerationInputOutputsTypeItemPdfOptionsTypeCompatibilityType.Acrobat90;
 
         [JsonProperty("openPassword")]
         public string OpenPassword { get; set; }
@@ -251,7 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyoutputsInputItemPdfOptionsTypeLayoutType
+    public enum SubmitLiveDocGenerationInputOutputsTypeItemPdfOptionsTypeLayoutType
     {
         [EnumMember(Value = "0")]
         _0,
@@ -262,7 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyoutputsInputItemPdfOptionsTypeCompatibilityType
+    public enum SubmitLiveDocGenerationInputOutputsTypeItemPdfOptionsTypeCompatibilityType
     {
         [EnumMember(Value = "Acrobat 5.0")]
         Acrobat50,
@@ -272,9 +267,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
         Acrobat90
     }
 
-    public class bodyoutputsInputItemXlsxOptionsType
+    public class SubmitLiveDocGenerationInputOutputsTypeItemXlsxOptionsType
     {
-        [JsonProperty("datasource")]
+        [JsonProperty("datasource", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Datasource { get; set; }
     }
 

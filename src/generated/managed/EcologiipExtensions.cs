@@ -13,69 +13,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
     public class EcologiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
-        public IBodyWorkflowAction<PurchaseTreesResponse, ApiConnectionActionConfiguration> PurchaseTrees(Expression<Func<int>> bodynumber, Expression<Func<string>> bodyname = null, Expression<Func<bool>> bodytest = null)
+        public IBodyWorkflowAction<PurchaseTreesResponse, ApiConnectionActionConfiguration> PurchaseTrees(Expression<Func<PurchaseTreesInput>> body)
         {
-            var __workflow_bodynumber = WorkflowExpression.Compile(bodynumber, nameof(bodynumber), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodytest = WorkflowExpression.Compile(bodytest, nameof(bodytest), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PurchaseTreesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/impact/trees";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["number"] = ExpressionConverter.ConvertO(__workflow_bodynumber);
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytest != null)
-                {
-                    body["test"] = ExpressionConverter.ConvertO(__workflow_bodytest);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PurchaseTreesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
-        public IBodyWorkflowAction<PurchaseOffsetsResponse, ApiConnectionActionConfiguration> PurchaseOffsets(Expression<Func<int>> bodynumber, Expression<Func<string>> bodyunits, Expression<Func<bool>> bodytest = null)
+        public IBodyWorkflowAction<PurchaseOffsetsResponse, ApiConnectionActionConfiguration> PurchaseOffsets(Expression<Func<PurchaseOffsetsInput>> body)
         {
-            var __workflow_bodynumber = WorkflowExpression.Compile(bodynumber, nameof(bodynumber), required: true);
-            var __workflow_bodyunits = WorkflowExpression.Compile(bodyunits, nameof(bodyunits), required: true);
-            var __workflow_bodytest = WorkflowExpression.Compile(bodytest, nameof(bodytest), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PurchaseOffsetsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/impact/carbon";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["number"] = ExpressionConverter.ConvertO(__workflow_bodynumber);
-                bodypropCount++;
-                body["units"] = ExpressionConverter.ConvertO(__workflow_bodyunits);
-                if (__workflow_bodytest != null)
-                {
-                    body["test"] = ExpressionConverter.ConvertO(__workflow_bodytest);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PurchaseOffsetsResponse>(callPayload);
             });
         }
@@ -139,6 +99,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
         public string Name { get; set; }
     }
 
+    public class PurchaseTreesInput
+    {
+        [JsonProperty("number", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Number { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("test")]
+        public bool? Test { get; set; }
+    }
+
     public class PurchaseOffsetsResponse
     {
         [JsonProperty("number")]
@@ -155,6 +127,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
+    }
+
+    public class PurchaseOffsetsInput
+    {
+        [JsonProperty("number", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Number { get; set; }
+
+        [JsonProperty("units", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Units { get; set; }
+
+        [JsonProperty("test")]
+        public bool? Test { get; set; }
     }
 
     public class GetImpactResponse

@@ -26,29 +26,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entraidpasswordreset
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entraidpasswordreset")]
-        public IBodyWorkflowAction<PasswordResetPostResponse, ApiConnectionActionConfiguration> PasswordReset(Expression<Func<string>> id, Expression<Func<string>> passwordId, Expression<Func<string>> bodynewPassword = null)
+        public IBodyWorkflowAction<PasswordResetPostResponse, ApiConnectionActionConfiguration> PasswordReset(Expression<Func<string>> id, Expression<Func<string>> passwordId, Expression<Func<PasswordResetPostInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_passwordId = WorkflowExpression.Compile(passwordId, nameof(passwordId), required: true);
-            var __workflow_bodynewPassword = WorkflowExpression.Compile(bodynewPassword, nameof(bodynewPassword), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PasswordResetPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1.0/users/{0}/authentication/methods/{1}/resetPassword", __workflow_id.WithUrlEncoding(1), __workflow_passwordId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodynewPassword != null)
-                {
-                    body["newPassword"] = ExpressionConverter.ConvertO(__workflow_bodynewPassword);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PasswordResetPostResponse>(callPayload);
             });
         }
@@ -84,6 +73,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entraidpasswordreset
         [JsonProperty("@odata.context")]
         public string Context { get; set; }
 
+        [JsonProperty("newPassword")]
+        public string NewPassword { get; set; }
+    }
+
+    public class PasswordResetPostInput
+    {
         [JsonProperty("newPassword")]
         public string NewPassword { get; set; }
     }

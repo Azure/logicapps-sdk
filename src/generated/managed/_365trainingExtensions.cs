@@ -159,62 +159,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
 
     public class _365trainingTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewCourseUserNotification(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewCourseUserNotification(Expression<Func<NewCourseUserNotificationInput>> body, FlowRecurrence recurrence = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/NewCourseUserNotification";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["targeturl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewIdeaNotification(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewIdeaNotification(Expression<Func<NewIdeaNotificationInput>> body, FlowRecurrence recurrence = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/NewIdeaNotification";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["targeturl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewCoursePublishedNotification(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewCoursePublishedNotification(Expression<Func<NewCoursePublishedNotificationInput>> body, FlowRecurrence recurrence = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/NewCoursePublishedNotification";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["targeturl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -701,6 +680,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
 
         [JsonProperty("snippet")]
         public string Snippet { get; set; }
+    }
+
+    public class NewCourseUserNotificationInput
+    {
+        [JsonProperty("targeturl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Targeturl { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class NewIdeaNotificationInput
+    {
+        [JsonProperty("targeturl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Targeturl { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class NewCoursePublishedNotificationInput
+    {
+        [JsonProperty("targeturl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Targeturl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

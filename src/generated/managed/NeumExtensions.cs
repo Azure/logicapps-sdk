@@ -13,149 +13,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Neum
     public class NeumActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "neum")]
-        public IBodyWorkflowAction<PipelinePostResponse, ApiConnectionActionConfiguration> Pipeline(Expression<Func<string>> bodysourcesourceName, Expression<Func<string>> bodysourcemetadataconnectionString, Expression<Func<string>> bodysourcemetadatacontainerName, Expression<Func<string>> bodyembedembedName, Expression<Func<string>> bodyembedmetadataapiKey, Expression<Func<string>> bodyembedmetadataorganization, Expression<Func<string>> bodysinksinkName, Expression<Func<string>> bodysinkmetadataapiKey, Expression<Func<string>> bodysinkmetadataenvironment, Expression<Func<string>> bodysinkmetadataindex, Expression<Func<string>> bodysinkmetadataNamespace, Expression<Func<string>> bodytriggerSchedulestartDate = null, Expression<Func<string>> bodytriggerSchedulecadence = null)
+        public IBodyWorkflowAction<PipelinePostResponse, ApiConnectionActionConfiguration> Pipeline(Expression<Func<PipelinePostInput>> body = null)
         {
-            var __workflow_bodysourcesourceName = WorkflowExpression.Compile(bodysourcesourceName, nameof(bodysourcesourceName), required: true);
-            var __workflow_bodysourcemetadataconnectionString = WorkflowExpression.Compile(bodysourcemetadataconnectionString, nameof(bodysourcemetadataconnectionString), required: true);
-            var __workflow_bodysourcemetadatacontainerName = WorkflowExpression.Compile(bodysourcemetadatacontainerName, nameof(bodysourcemetadatacontainerName), required: true);
-            var __workflow_bodyembedembedName = WorkflowExpression.Compile(bodyembedembedName, nameof(bodyembedembedName), required: true);
-            var __workflow_bodyembedmetadataapiKey = WorkflowExpression.Compile(bodyembedmetadataapiKey, nameof(bodyembedmetadataapiKey), required: true);
-            var __workflow_bodyembedmetadataorganization = WorkflowExpression.Compile(bodyembedmetadataorganization, nameof(bodyembedmetadataorganization), required: true);
-            var __workflow_bodysinksinkName = WorkflowExpression.Compile(bodysinksinkName, nameof(bodysinksinkName), required: true);
-            var __workflow_bodysinkmetadataapiKey = WorkflowExpression.Compile(bodysinkmetadataapiKey, nameof(bodysinkmetadataapiKey), required: true);
-            var __workflow_bodysinkmetadataenvironment = WorkflowExpression.Compile(bodysinkmetadataenvironment, nameof(bodysinkmetadataenvironment), required: true);
-            var __workflow_bodysinkmetadataindex = WorkflowExpression.Compile(bodysinkmetadataindex, nameof(bodysinkmetadataindex), required: true);
-            var __workflow_bodysinkmetadataNamespace = WorkflowExpression.Compile(bodysinkmetadataNamespace, nameof(bodysinkmetadataNamespace), required: true);
-            var __workflow_bodytriggerSchedulestartDate = WorkflowExpression.Compile(bodytriggerSchedulestartDate, nameof(bodytriggerSchedulestartDate), required: false);
-            var __workflow_bodytriggerSchedulecadence = WorkflowExpression.Compile(bodytriggerSchedulecadence, nameof(bodytriggerSchedulecadence), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PipelinePostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pipelines";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var sourceObject = new JObject();
-                var sourceObjectpropCount = 0;
-                sourceObjectpropCount++;
-                sourceObject["source_name"] = ExpressionConverter.ConvertO(__workflow_bodysourcesourceName);
-                var metadataObject = new JObject();
-                var metadataObjectpropCount = 0;
-                metadataObjectpropCount++;
-                metadataObject["connection_string"] = ExpressionConverter.ConvertO(__workflow_bodysourcemetadataconnectionString);
-                metadataObjectpropCount++;
-                metadataObject["container_name"] = ExpressionConverter.ConvertO(__workflow_bodysourcemetadatacontainerName);
-                if (metadataObjectpropCount > 0)
-                {
-                    sourceObject["metadata"] = metadataObject;
-                    sourceObjectpropCount++;
-                }
-
-                if (sourceObjectpropCount > 0)
-                {
-                    body["source"] = sourceObject;
-                    bodypropCount++;
-                }
-
-                var embedObject = new JObject();
-                var embedObjectpropCount = 0;
-                embedObjectpropCount++;
-                embedObject["embed_name"] = ExpressionConverter.ConvertO(__workflow_bodyembedembedName);
-                var metadataObject2 = new JObject();
-                var metadataObject2propCount = 0;
-                metadataObject2propCount++;
-                metadataObject2["api_key"] = ExpressionConverter.ConvertO(__workflow_bodyembedmetadataapiKey);
-                metadataObject2propCount++;
-                metadataObject2["organization"] = ExpressionConverter.ConvertO(__workflow_bodyembedmetadataorganization);
-                if (metadataObject2propCount > 0)
-                {
-                    embedObject["metadata"] = metadataObject2;
-                    embedObjectpropCount++;
-                }
-
-                if (embedObjectpropCount > 0)
-                {
-                    body["embed"] = embedObject;
-                    bodypropCount++;
-                }
-
-                var sinkObject = new JObject();
-                var sinkObjectpropCount = 0;
-                sinkObjectpropCount++;
-                sinkObject["sink_name"] = ExpressionConverter.ConvertO(__workflow_bodysinksinkName);
-                var metadataObject3 = new JObject();
-                var metadataObject3propCount = 0;
-                metadataObject3propCount++;
-                metadataObject3["api_key"] = ExpressionConverter.ConvertO(__workflow_bodysinkmetadataapiKey);
-                metadataObject3propCount++;
-                metadataObject3["environment"] = ExpressionConverter.ConvertO(__workflow_bodysinkmetadataenvironment);
-                metadataObject3propCount++;
-                metadataObject3["index"] = ExpressionConverter.ConvertO(__workflow_bodysinkmetadataindex);
-                metadataObject3propCount++;
-                metadataObject3["namespace"] = ExpressionConverter.ConvertO(__workflow_bodysinkmetadataNamespace);
-                if (metadataObject3propCount > 0)
-                {
-                    sinkObject["metadata"] = metadataObject3;
-                    sinkObjectpropCount++;
-                }
-
-                if (sinkObjectpropCount > 0)
-                {
-                    body["sink"] = sinkObject;
-                    bodypropCount++;
-                }
-
-                var triggerScheduleObject = new JObject();
-                var triggerScheduleObjectpropCount = 0;
-                if (__workflow_bodytriggerSchedulestartDate != null)
-                {
-                    triggerScheduleObject["start_date"] = ExpressionConverter.ConvertO(__workflow_bodytriggerSchedulestartDate);
-                    triggerScheduleObjectpropCount++;
-                }
-
-                if (__workflow_bodytriggerSchedulecadence != null)
-                {
-                    triggerScheduleObject["cadence"] = ExpressionConverter.ConvertO(__workflow_bodytriggerSchedulecadence);
-                    triggerScheduleObjectpropCount++;
-                }
-
-                if (triggerScheduleObjectpropCount > 0)
-                {
-                    body["trigger_schedule"] = triggerScheduleObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PipelinePostResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "neum")]
-        public IBodyWorkflowAction<PipelineTestPostResponse, ApiConnectionActionConfiguration> PipelineTest(Expression<Func<string>> pipelineId, Expression<Func<string>> bodyquery, Expression<Func<int>> bodynumberOfResults)
+        public IBodyWorkflowAction<PipelineTestPostResponse, ApiConnectionActionConfiguration> PipelineTest(Expression<Func<string>> pipelineId, Expression<Func<PipelineTestPostInput>> body = null)
         {
             var __workflow_pipelineId = WorkflowExpression.Compile(pipelineId, nameof(pipelineId), required: true);
-            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
-            var __workflow_bodynumberOfResults = WorkflowExpression.Compile(bodynumberOfResults, nameof(bodynumberOfResults), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PipelineTestPostResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pipelines/{0}/search", __workflow_pipelineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
-                bodypropCount++;
-                body["number_of_results"] = ExpressionConverter.ConvertO(__workflow_bodynumberOfResults);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PipelineTestPostResponse>(callPayload);
             });
         }
@@ -213,10 +96,103 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Neum
         public string Cadence { get; set; }
     }
 
+    public class PipelinePostInput
+    {
+        [JsonProperty("source")]
+        public PipelinePostInputSourceType Source { get; set; }
+
+        [JsonProperty("embed")]
+        public PipelinePostInputEmbedType Embed { get; set; }
+
+        [JsonProperty("sink")]
+        public PipelinePostInputSinkType Sink { get; set; }
+
+        [JsonProperty("trigger_schedule")]
+        public PipelinePostInputTriggerScheduleType TriggerSchedule { get; set; }
+    }
+
+    public class PipelinePostInputSourceType
+    {
+        [JsonProperty("source_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SourceName { get; set; }
+
+        [JsonProperty("metadata")]
+        public PipelinePostInputSourceTypeMetadataType Metadata { get; set; }
+    }
+
+    public class PipelinePostInputSourceTypeMetadataType
+    {
+        [JsonProperty("connection_string", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ConnectionString { get; set; }
+
+        [JsonProperty("container_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ContainerName { get; set; }
+    }
+
+    public class PipelinePostInputEmbedType
+    {
+        [JsonProperty("embed_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EmbedName { get; set; }
+
+        [JsonProperty("metadata")]
+        public PipelinePostInputEmbedTypeMetadataType Metadata { get; set; }
+    }
+
+    public class PipelinePostInputEmbedTypeMetadataType
+    {
+        [JsonProperty("api_key", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ApiKey { get; set; }
+
+        [JsonProperty("organization", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Organization { get; set; }
+    }
+
+    public class PipelinePostInputSinkType
+    {
+        [JsonProperty("sink_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SinkName { get; set; }
+
+        [JsonProperty("metadata")]
+        public PipelinePostInputSinkTypeMetadataType Metadata { get; set; }
+    }
+
+    public class PipelinePostInputSinkTypeMetadataType
+    {
+        [JsonProperty("api_key", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ApiKey { get; set; }
+
+        [JsonProperty("environment", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Environment { get; set; }
+
+        [JsonProperty("index", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Index { get; set; }
+
+        [JsonProperty("namespace", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Namespace { get; set; }
+    }
+
+    public class PipelinePostInputTriggerScheduleType
+    {
+        [JsonProperty("start_date")]
+        public string StartDate { get; set; }
+
+        [JsonProperty("cadence")]
+        public string Cadence { get; set; }
+    }
+
     public class PipelineTestPostResponse
     {
         [JsonProperty("results")]
         public string[] Results { get; set; }
+    }
+
+    public class PipelineTestPostInput
+    {
+        [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Query { get; set; }
+
+        [JsonProperty("number_of_results", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int NumberOfResults { get; set; }
     }
 }
 

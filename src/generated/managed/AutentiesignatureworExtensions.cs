@@ -40,45 +40,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
-        public IBodyWorkflowAction<DocumentProcessParticipantsResponse, ApiConnectionActionConfiguration> DocumentProcessParticipants(Expression<Func<string>> documentProcessId, Expression<Func<bodyparticipantTypeInput>> bodyparticipantType, Expression<Func<bodyroleTypeInput>> bodyroleType = null, Expression<Func<string>> bodysignatureType = null, Expression<Func<object>> bodyparticipantData = null)
+        public IBodyWorkflowAction<DocumentProcessParticipantsResponse, ApiConnectionActionConfiguration> DocumentProcessParticipants(Expression<Func<string>> documentProcessId, Expression<Func<DocumentProcessParticipantsInput>> body)
         {
             var __workflow_documentProcessId = WorkflowExpression.Compile(documentProcessId, nameof(documentProcessId), required: true);
-            var __workflow_bodyparticipantType = WorkflowExpression.Compile(bodyparticipantType, nameof(bodyparticipantType), required: true);
-            var __workflow_bodyroleType = WorkflowExpression.Compile(bodyroleType, nameof(bodyroleType), required: false);
-            var __workflow_bodysignatureType = WorkflowExpression.Compile(bodysignatureType, nameof(bodysignatureType), required: false);
-            var __workflow_bodyparticipantData = WorkflowExpression.Compile(bodyparticipantData, nameof(bodyparticipantData), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DocumentProcessParticipantsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document-processes/{0}/parties", __workflow_documentProcessId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["participantType"] = ExpressionConverter.ConvertO(__workflow_bodyparticipantType);
-                if (__workflow_bodyroleType != null)
-                {
-                    body["roleType"] = ExpressionConverter.ConvertO(__workflow_bodyroleType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysignatureType != null)
-                {
-                    body["signatureType"] = ExpressionConverter.ConvertO(__workflow_bodysignatureType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyparticipantData != null)
-                {
-                    body["participantData"] = ExpressionConverter.ConvertO(__workflow_bodyparticipantData);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DocumentProcessParticipantsResponse>(callPayload);
             });
         }
@@ -101,24 +72,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
-        public IBodyWorkflowAction<ActionsAvailabilityResponse, ApiConnectionActionConfiguration> ActionsAvailability(Expression<Func<string>> documentProcessId, Expression<Func<bodyeventTypeInput>> bodyeventType)
+        public IBodyWorkflowAction<ActionsAvailabilityResponse, ApiConnectionActionConfiguration> ActionsAvailability(Expression<Func<string>> documentProcessId, Expression<Func<ActionsAvailabilityInput>> body = null)
         {
             var __workflow_documentProcessId = WorkflowExpression.Compile(documentProcessId, nameof(documentProcessId), required: true);
-            var __workflow_bodyeventType = WorkflowExpression.Compile(bodyeventType, nameof(bodyeventType), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ActionsAvailabilityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document-processes/{0}/actions", __workflow_documentProcessId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["event_type"] = ExpressionConverter.ConvertO(__workflow_bodyeventType);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ActionsAvailabilityResponse>(callPayload);
             });
         }
@@ -151,28 +115,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddTag(Expression<Func<string>> documentProcessId, Expression<Func<string>> bodyid = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddTag(Expression<Func<string>> documentProcessId, Expression<Func<AddTagInput>> body = null)
         {
             var __workflow_documentProcessId = WorkflowExpression.Compile(documentProcessId, nameof(documentProcessId), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document-processes/{0}/tags", __workflow_documentProcessId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -180,9 +133,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
 
     public class AutentiesignatureworTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> DocumentChange(Expression<Func<string>> bodycallbackAdapterId, Expression<Func<string>> responseVariant = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> DocumentChange(Expression<Func<DocumentChangeInput>> body, Expression<Func<string>> responseVariant = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodycallbackAdapterId = WorkflowExpression.Compile(bodycallbackAdapterId, nameof(bodycallbackAdapterId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_responseVariant = WorkflowExpression.Compile(responseVariant, nameof(responseVariant), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
@@ -192,25 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
                 callPayload.Queries["responseVariant"] = Convert.ToString("microsoft_power_automate");
                 if (__workflow_responseVariant != null)
                     callPayload.Queries["responseVariant"] = ExpressionConverter.Convert(__workflow_responseVariant);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["callbackAdapterId"] = ExpressionConverter.ConvertO(__workflow_bodycallbackAdapterId);
-                var callbackParametersObject = new JObject();
-                var callbackParametersObjectpropCount = 0;
-                callbackParametersObject["callbackUrl"] = "#{listCallbackUrl()}";
-                callbackParametersObjectpropCount++;
-                if (callbackParametersObjectpropCount > 0)
-                {
-                    body["callbackParameters"] = callbackParametersObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -394,8 +329,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         public string[] RequiredClassifiers { get; set; }
     }
 
+    public class DocumentProcessParticipantsInput
+    {
+        [JsonProperty("participantType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public DocumentProcessParticipantsInputParticipantTypeType ParticipantType { get; set; }
+
+        [JsonProperty("roleType")]
+        public DocumentProcessParticipantsInputRoleTypeType? RoleType { get; set; }
+
+        [JsonProperty("signatureType")]
+        public string SignatureType { get; set; }
+
+        [JsonProperty("participantData")]
+        public JToken ParticipantData { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyparticipantTypeInput
+    public enum DocumentProcessParticipantsInputParticipantTypeType
     {
         [EnumMember(Value = "company")]
         Company,
@@ -404,7 +354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyroleTypeInput
+    public enum DocumentProcessParticipantsInputRoleTypeType
     {
         VIEWER,
         SIGNER,
@@ -468,8 +418,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         public string Meta { get; set; }
     }
 
+    public class ActionsAvailabilityInput
+    {
+        [JsonProperty("event_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ActionsAvailabilityInputEventTypeType EventType { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyeventTypeInput
+    public enum ActionsAvailabilityInputEventTypeType
     {
         [EnumMember(Value = "Start document signing process")]
         StartDocumentSigningProcess,
@@ -694,6 +650,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
 
         [JsonProperty("visualisationId")]
         public string VisualisationId { get; set; }
+    }
+
+    public class AddTagInput
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+    }
+
+    public class DocumentChangeInput
+    {
+        [JsonProperty("callbackAdapterId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CallbackAdapterId { get; set; } = "CALLBACK_ADAPTER:API_V2";
+
+        [JsonProperty("callbackParameters", DefaultValueHandling = DefaultValueHandling.Include)]
+        public DocumentChangeInputCallbackParametersType CallbackParameters { get; set; }
+    }
+
+    public class DocumentChangeInputCallbackParametersType
+    {
+        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

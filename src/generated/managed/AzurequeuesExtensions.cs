@@ -63,11 +63,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurequeues")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PutMessage(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<string>> message = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PutMessage(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<string>> message)
         {
             var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
-            var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: false);
+            var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/storageAccounts/{0}/queues/{1}/messages", __workflow_storageAccountName.WithUrlEncoding(2), __workflow_queueName.WithUrlEncoding(1)));

@@ -53,11 +53,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alembaitsm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alembaitsm")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateResource(Expression<Func<string>> categoryId, Expression<Func<string>> resource, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateResource(Expression<Func<string>> categoryId, Expression<Func<string>> resource, Expression<Func<object>> body)
         {
             var __workflow_categoryId = WorkflowExpression.Compile(categoryId, nameof(categoryId), required: true);
             var __workflow_resource = WorkflowExpression.Compile(resource, nameof(resource), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/execute/{0}", __workflow_resource.WithUrlEncoding(1)));
@@ -70,12 +70,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alembaitsm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alembaitsm")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateResource(Expression<Func<string>> categoryId, Expression<Func<string>> resource, Expression<Func<int>> id, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateResource(Expression<Func<string>> categoryId, Expression<Func<string>> resource, Expression<Func<int>> id, Expression<Func<object>> body)
         {
             var __workflow_categoryId = WorkflowExpression.Compile(categoryId, nameof(categoryId), required: true);
             var __workflow_resource = WorkflowExpression.Compile(resource, nameof(resource), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/execute/{0}/{1}", __workflow_resource.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
@@ -88,13 +88,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alembaitsm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alembaitsm")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ResourceInteractions(Expression<Func<string>> categoryId, Expression<Func<string>> resource, Expression<Func<string>> interaction, Expression<Func<int>> id, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ResourceInteractions(Expression<Func<string>> categoryId, Expression<Func<string>> resource, Expression<Func<string>> interaction, Expression<Func<int>> id, Expression<Func<object>> body)
         {
             var __workflow_categoryId = WorkflowExpression.Compile(categoryId, nameof(categoryId), required: true);
             var __workflow_resource = WorkflowExpression.Compile(resource, nameof(resource), required: true);
             var __workflow_interaction = WorkflowExpression.Compile(interaction, nameof(interaction), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/execute/{0}/{1}/{2}", __workflow_resource.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1), __workflow_interaction.WithUrlEncoding(1)));
@@ -109,57 +109,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alembaitsm
 
     public class AlembaitsmTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookTrigger(Expression<Func<string>> bodyeventHandling, Expression<Func<int>> bodyentity, Expression<Func<string>> bodypayloadColumns, Expression<Func<string>> bodytriggerSecret = null, Expression<Func<string>> bodytriggerFilter = null, Expression<Func<string[]>> bodyindividualTrigger = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookTrigger(Expression<Func<WebhookTriggerInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyeventHandling = WorkflowExpression.Compile(bodyeventHandling, nameof(bodyeventHandling), required: true);
-            var __workflow_bodyentity = WorkflowExpression.Compile(bodyentity, nameof(bodyentity), required: true);
-            var __workflow_bodypayloadColumns = WorkflowExpression.Compile(bodypayloadColumns, nameof(bodypayloadColumns), required: true);
-            var __workflow_bodytriggerSecret = WorkflowExpression.Compile(bodytriggerSecret, nameof(bodytriggerSecret), required: false);
-            var __workflow_bodytriggerFilter = WorkflowExpression.Compile(bodytriggerFilter, nameof(bodytriggerFilter), required: false);
-            var __workflow_bodyindividualTrigger = WorkflowExpression.Compile(bodyindividualTrigger, nameof(bodyindividualTrigger), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["PayloadUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                bodypropCount++;
-                body["Events"] = ExpressionConverter.ConvertO(__workflow_bodyeventHandling);
-                body["Active"] = true;
-                bodypropCount++;
-                bodypropCount++;
-                body["EntityType"] = ExpressionConverter.ConvertO(__workflow_bodyentity);
-                bodypropCount++;
-                body["PayloadSelect"] = ExpressionConverter.ConvertO(__workflow_bodypayloadColumns);
-                if (__workflow_bodytriggerSecret != null)
-                {
-                    body["Secret"] = ExpressionConverter.ConvertO(__workflow_bodytriggerSecret);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytriggerFilter != null)
-                {
-                    body["PayloadFilter"] = ExpressionConverter.ConvertO(__workflow_bodytriggerFilter);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyindividualTrigger != null)
-                {
-                    body["IndividualTriggers"] = ExpressionConverter.ConvertO(__workflow_bodyindividualTrigger);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
+    }
+
+    public class WebhookTriggerInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string PayloadUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("Events", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EventHandling { get; set; }
+
+        [JsonProperty("Active", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal bool TriggerActive { get; set; } = true;
+
+        [JsonProperty("EntityType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Entity { get; set; }
+
+        [JsonProperty("PayloadSelect", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PayloadColumns { get; set; }
+
+        [JsonProperty("Secret")]
+        public string TriggerSecret { get; set; }
+
+        [JsonProperty("PayloadFilter")]
+        public string TriggerFilter { get; set; }
+
+        [JsonProperty("IndividualTriggers")]
+        public string[] IndividualTrigger { get; set; }
     }
 }
 

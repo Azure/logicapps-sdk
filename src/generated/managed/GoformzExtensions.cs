@@ -13,49 +13,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
     public class GoformzActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "goformz")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportForm(Expression<Func<string>> formId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodypages = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportForm(Expression<Func<string>> formId, Expression<Func<ExportFormInput>> body = null)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodypages = WorkflowExpression.Compile(bodypages, nameof(bodypages), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/formz/{0}/exports", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytype != null)
-                {
-                    body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypages != null)
-                {
-                    body["pages"] = ExpressionConverter.ConvertO(__workflow_bodypages);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "goformz")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateForm(Expression<Func<bool>> runCalculations = null, Expression<Func<string>> bodyname = null, Expression<Func<bool>> bodyoverrideDefaultFormName = null, Expression<Func<string>> bodytemplateId = null, Expression<Func<string>> bodyassignmentid = null, Expression<Func<string>> bodyassignmenttype = null, Expression<Func<string>> bodyassignmenturl = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateForm(Expression<Func<bool>> runCalculations = null, Expression<Func<CreateFormInput>> body = null)
         {
             var __workflow_runCalculations = WorkflowExpression.Compile(runCalculations, nameof(runCalculations), required: false);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyoverrideDefaultFormName = WorkflowExpression.Compile(bodyoverrideDefaultFormName, nameof(bodyoverrideDefaultFormName), required: false);
-            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: false);
-            var __workflow_bodyassignmentid = WorkflowExpression.Compile(bodyassignmentid, nameof(bodyassignmentid), required: false);
-            var __workflow_bodyassignmenttype = WorkflowExpression.Compile(bodyassignmenttype, nameof(bodyassignmenttype), required: false);
-            var __workflow_bodyassignmenturl = WorkflowExpression.Compile(bodyassignmenturl, nameof(bodyassignmenturl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/formz";
@@ -64,65 +41,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
                 callPayload.Queries["runCalculations"] = Convert.ToString(false);
                 if (__workflow_runCalculations != null)
                     callPayload.Queries["runCalculations"] = ExpressionConverter.Convert(__workflow_runCalculations);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyoverrideDefaultFormName != null)
-                {
-                    body["overrideDefaultFormName"] = ExpressionConverter.ConvertO(__workflow_bodyoverrideDefaultFormName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytemplateId != null)
-                {
-                    body["templateId"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
-                    bodypropCount++;
-                }
-
-                var assignmentObject = new JObject();
-                var assignmentObjectpropCount = 0;
-                if (__workflow_bodyassignmentid != null)
-                {
-                    assignmentObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyassignmentid);
-                    assignmentObjectpropCount++;
-                }
-
-                if (__workflow_bodyassignmenttype != null)
-                {
-                    assignmentObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyassignmenttype);
-                    assignmentObjectpropCount++;
-                }
-
-                if (__workflow_bodyassignmenturl != null)
-                {
-                    assignmentObject["url"] = ExpressionConverter.ConvertO(__workflow_bodyassignmenturl);
-                    assignmentObjectpropCount++;
-                }
-
-                if (assignmentObjectpropCount > 0)
-                {
-                    body["assignment"] = assignmentObject;
-                    bodypropCount++;
-                }
-
-                var fieldsObject = new JObject();
-                var fieldsObjectpropCount = 0;
-                if (fieldsObjectpropCount > 0)
-                {
-                    body["fields"] = fieldsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -143,42 +63,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
 
     public class GoformzTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FormCompleted(Expression<Func<string>> bodyentityId, Expression<Func<string>> bodyeventType = null, Expression<Func<bool>> bodyenabled = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FormCompleted(Expression<Func<FormCompletedInput>> body = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyentityId = WorkflowExpression.Compile(bodyentityId, nameof(bodyentityId), required: true);
-            var __workflow_bodyeventType = WorkflowExpression.Compile(bodyeventType, nameof(bodyeventType), required: false);
-            var __workflow_bodyenabled = WorkflowExpression.Compile(bodyenabled, nameof(bodyenabled), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyeventType != null)
-                {
-                    body["eventType"] = ExpressionConverter.ConvertO(__workflow_bodyeventType);
-                    bodypropCount++;
-                }
-
-                body["targetUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                bodypropCount++;
-                body["entityId"] = ExpressionConverter.ConvertO(__workflow_bodyentityId);
-                if (__workflow_bodyenabled != null)
-                {
-                    body["enabled"] = ExpressionConverter.ConvertO(__workflow_bodyenabled);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
+    }
+
+    public class ExportFormInput
+    {
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("pages")]
+        public string Pages { get; set; }
+    }
+
+    public class CreateFormInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("overrideDefaultFormName")]
+        public bool? OverrideDefaultFormName { get; set; }
+
+        [JsonProperty("templateId")]
+        public string TemplateId { get; set; }
+
+        [JsonProperty("assignment")]
+        public AssignmentDto Assignment { get; set; }
+
+        [JsonProperty("fields")]
+        public JToken Fields { get; set; }
+    }
+
+    public class AssignmentDto
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
     }
 
     public class FormDto
@@ -223,18 +159,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
         public string ChangeDate { get; set; }
     }
 
-    public class AssignmentDto
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("url")]
-        public string Url { get; set; }
-    }
-
     public class LocationDto
     {
         [JsonProperty("latitude")]
@@ -245,6 +169,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
 
         [JsonProperty("accuracy")]
         public double Accuracy { get; set; }
+    }
+
+    public class FormCompletedInput
+    {
+        [JsonProperty("eventType")]
+        public string EventType { get; set; }
+
+        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("entityId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EntityId { get; set; }
+
+        [JsonProperty("enabled")]
+        public bool? Enabled { get; set; }
     }
 }
 

@@ -13,13 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciscowebexmeetings
     public class CiscowebexmeetingsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciscowebexmeetings")]
-        public IBodyWorkflowAction<NewMeetingResponse, ApiConnectionActionConfiguration> NewMeeting(Expression<Func<string>> bodytopic, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<string>> bodyattendees = null, Expression<Func<string>> bodyagenda = null)
+        public IBodyWorkflowAction<NewMeetingResponse, ApiConnectionActionConfiguration> NewMeeting(Expression<Func<NewMeetingInput>> body)
         {
-            var __workflow_bodytopic = WorkflowExpression.Compile(bodytopic, nameof(bodytopic), required: true);
-            var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: true);
-            var __workflow_bodyendTime = WorkflowExpression.Compile(bodyendTime, nameof(bodyendTime), required: true);
-            var __workflow_bodyattendees = WorkflowExpression.Compile(bodyattendees, nameof(bodyattendees), required: false);
-            var __workflow_bodyagenda = WorkflowExpression.Compile(bodyagenda, nameof(bodyagenda), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<NewMeetingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/workflow/meetings/create";
@@ -27,31 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciscowebexmeetings
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["topic"] = ExpressionConverter.ConvertO(__workflow_bodytopic);
-                bodypropCount++;
-                body["startTime"] = ExpressionConverter.ConvertO(__workflow_bodystartTime);
-                bodypropCount++;
-                body["endTime"] = ExpressionConverter.ConvertO(__workflow_bodyendTime);
-                if (__workflow_bodyattendees != null)
-                {
-                    body["attendees"] = ExpressionConverter.ConvertO(__workflow_bodyattendees);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyagenda != null)
-                {
-                    body["agenda"] = ExpressionConverter.ConvertO(__workflow_bodyagenda);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<NewMeetingResponse>(callPayload);
             });
         }
@@ -89,6 +61,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciscowebexmeetings
 
         [JsonProperty("topic")]
         public string Topic { get; set; }
+    }
+
+    public class NewMeetingInput
+    {
+        [JsonProperty("topic", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Topic { get; set; }
+
+        [JsonProperty("startTime", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string StartTime { get; set; }
+
+        [JsonProperty("endTime", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EndTime { get; set; }
+
+        [JsonProperty("attendees")]
+        public string Attendees { get; set; }
+
+        [JsonProperty("agenda")]
+        public string Agenda { get; set; }
     }
 }
 

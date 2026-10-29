@@ -13,903 +13,203 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
     public class Data8Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsUsableNameResponse, ApiConnectionActionConfiguration> IsUsableName(Expression<Func<string>> bodynametitle = null, Expression<Func<string>> bodynameforename = null, Expression<Func<string>> bodynamemiddleName = null, Expression<Func<string>> bodynamesurname = null)
+        public IBodyWorkflowAction<IsUsableNameResponse, ApiConnectionActionConfiguration> IsUsableName(Expression<Func<IsUsableNameInput>> body)
         {
-            var __workflow_bodynametitle = WorkflowExpression.Compile(bodynametitle, nameof(bodynametitle), required: false);
-            var __workflow_bodynameforename = WorkflowExpression.Compile(bodynameforename, nameof(bodynameforename), required: false);
-            var __workflow_bodynamemiddleName = WorkflowExpression.Compile(bodynamemiddleName, nameof(bodynamemiddleName), required: false);
-            var __workflow_bodynamesurname = WorkflowExpression.Compile(bodynamesurname, nameof(bodynamesurname), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<IsUsableNameResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SalaciousName/IsUnusableName.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var nameObject = new JObject();
-                var nameObjectpropCount = 0;
-                if (__workflow_bodynametitle != null)
-                {
-                    nameObject["Title"] = ExpressionConverter.ConvertO(__workflow_bodynametitle);
-                    nameObjectpropCount++;
-                }
-
-                if (__workflow_bodynameforename != null)
-                {
-                    nameObject["Forename"] = ExpressionConverter.ConvertO(__workflow_bodynameforename);
-                    nameObjectpropCount++;
-                }
-
-                if (__workflow_bodynamemiddleName != null)
-                {
-                    nameObject["MiddleName"] = ExpressionConverter.ConvertO(__workflow_bodynamemiddleName);
-                    nameObjectpropCount++;
-                }
-
-                if (__workflow_bodynamesurname != null)
-                {
-                    nameObject["Surname"] = ExpressionConverter.ConvertO(__workflow_bodynamesurname);
-                    nameObjectpropCount++;
-                }
-
-                if (nameObjectpropCount > 0)
-                {
-                    body["name"] = nameObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<IsUsableNameResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsCallableTPSResponse, ApiConnectionActionConfiguration> IsCallableTPS(Expression<Func<string>> bodynumber)
+        public IBodyWorkflowAction<IsCallableTPSResponse, ApiConnectionActionConfiguration> IsCallableTPS(Expression<Func<IsCallableTPSInput>> body)
         {
-            var __workflow_bodynumber = WorkflowExpression.Compile(bodynumber, nameof(bodynumber), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<IsCallableTPSResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/TPS/IsCallable.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["number"] = ExpressionConverter.ConvertO(__workflow_bodynumber);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<IsCallableTPSResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsCallableCTPSResponse, ApiConnectionActionConfiguration> IsCallableCTPS(Expression<Func<string>> bodynumber)
+        public IBodyWorkflowAction<IsCallableCTPSResponse, ApiConnectionActionConfiguration> IsCallableCTPS(Expression<Func<IsCallableCTPSInput>> body)
         {
-            var __workflow_bodynumber = WorkflowExpression.Compile(bodynumber, nameof(bodynumber), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<IsCallableCTPSResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CTPS/IsCallable.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["number"] = ExpressionConverter.ConvertO(__workflow_bodynumber);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<IsCallableCTPSResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsValidBankAccountResponse, ApiConnectionActionConfiguration> IsValidBankAccount(Expression<Func<string>> bodysortCode, Expression<Func<string>> bodybankAccountNumber = null)
+        public IBodyWorkflowAction<IsValidBankAccountResponse, ApiConnectionActionConfiguration> IsValidBankAccount(Expression<Func<IsValidBankAccountInput>> body)
         {
-            var __workflow_bodysortCode = WorkflowExpression.Compile(bodysortCode, nameof(bodysortCode), required: true);
-            var __workflow_bodybankAccountNumber = WorkflowExpression.Compile(bodybankAccountNumber, nameof(bodybankAccountNumber), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<IsValidBankAccountResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/BankAccountValidation/IsValid.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["sortCode"] = ExpressionConverter.ConvertO(__workflow_bodysortCode);
-                if (__workflow_bodybankAccountNumber != null)
-                {
-                    body["bankAccountNumber"] = ExpressionConverter.ConvertO(__workflow_bodybankAccountNumber);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<IsValidBankAccountResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsValidEmailResponse, ApiConnectionActionConfiguration> IsValidEmail(Expression<Func<string>> bodyemail, Expression<Func<bodylevelInput>> bodylevel)
+        public IBodyWorkflowAction<IsValidEmailResponse, ApiConnectionActionConfiguration> IsValidEmail(Expression<Func<IsValidEmailInput>> body)
         {
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodylevel = WorkflowExpression.Compile(bodylevel, nameof(bodylevel), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<IsValidEmailResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/EmailValidation/IsValid.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                bodypropCount++;
-                body["level"] = ExpressionConverter.ConvertO(__workflow_bodylevel);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<IsValidEmailResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsValidTelephoneResponse, ApiConnectionActionConfiguration> IsValidTelephone(Expression<Func<string>> bodytelephoneNumber, Expression<Func<string>> bodydefaultCountry, Expression<Func<bool>> bodyoptionsuseLineValidation = null, Expression<Func<bool>> bodyoptionsuseMobileValidation = null)
+        public IBodyWorkflowAction<IsValidTelephoneResponse, ApiConnectionActionConfiguration> IsValidTelephone(Expression<Func<IsValidTelephoneInput>> body)
         {
-            var __workflow_bodytelephoneNumber = WorkflowExpression.Compile(bodytelephoneNumber, nameof(bodytelephoneNumber), required: true);
-            var __workflow_bodydefaultCountry = WorkflowExpression.Compile(bodydefaultCountry, nameof(bodydefaultCountry), required: true);
-            var __workflow_bodyoptionsuseLineValidation = WorkflowExpression.Compile(bodyoptionsuseLineValidation, nameof(bodyoptionsuseLineValidation), required: false);
-            var __workflow_bodyoptionsuseMobileValidation = WorkflowExpression.Compile(bodyoptionsuseMobileValidation, nameof(bodyoptionsuseMobileValidation), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<IsValidTelephoneResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/InternationalTelephoneValidation/IsValid.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["telephoneNumber"] = ExpressionConverter.ConvertO(__workflow_bodytelephoneNumber);
-                bodypropCount++;
-                body["defaultCountry"] = ExpressionConverter.ConvertO(__workflow_bodydefaultCountry);
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsuseLineValidation != null)
-                {
-                    optionsObject["UseLineValidation"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseLineValidation);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsuseMobileValidation != null)
-                {
-                    optionsObject["UseMobileValidation"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseMobileValidation);
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<IsValidTelephoneResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<CleanAddressResponse, ApiConnectionActionConfiguration> CleanAddress(Expression<Func<string[]>> bodyaddresslines = null, Expression<Func<string>> bodyoptionsdefaultCountryCode = null, Expression<Func<bool>> bodyoptionsdetectCountry = null, Expression<Func<string>> bodyoptionscountry = null, Expression<Func<bool>> bodyoptionsincludeCountry = null)
+        public IBodyWorkflowAction<CleanAddressResponse, ApiConnectionActionConfiguration> CleanAddress(Expression<Func<CleanAddressInput>> body = null)
         {
-            var __workflow_bodyaddresslines = WorkflowExpression.Compile(bodyaddresslines, nameof(bodyaddresslines), required: false);
-            var __workflow_bodyoptionsdefaultCountryCode = WorkflowExpression.Compile(bodyoptionsdefaultCountryCode, nameof(bodyoptionsdefaultCountryCode), required: false);
-            var __workflow_bodyoptionsdetectCountry = WorkflowExpression.Compile(bodyoptionsdetectCountry, nameof(bodyoptionsdetectCountry), required: false);
-            var __workflow_bodyoptionscountry = WorkflowExpression.Compile(bodyoptionscountry, nameof(bodyoptionscountry), required: false);
-            var __workflow_bodyoptionsincludeCountry = WorkflowExpression.Compile(bodyoptionsincludeCountry, nameof(bodyoptionsincludeCountry), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CleanAddressResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Postcoder/CleanAddress.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var addressObject = new JObject();
-                var addressObjectpropCount = 0;
-                if (__workflow_bodyaddresslines != null)
-                {
-                    addressObject["Lines"] = ExpressionConverter.ConvertO(__workflow_bodyaddresslines);
-                    addressObjectpropCount++;
-                }
-
-                if (addressObjectpropCount > 0)
-                {
-                    body["address"] = addressObject;
-                    bodypropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsdefaultCountryCode != null)
-                {
-                    optionsObject["DefaultCountryCode"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsdefaultCountryCode);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsdetectCountry != null)
-                {
-                    optionsObject["DetectCountry"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsdetectCountry);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionscountry != null)
-                {
-                    optionsObject["Country"] = ExpressionConverter.ConvertO(__workflow_bodyoptionscountry);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsincludeCountry != null)
-                {
-                    optionsObject["IncludeCountry"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsincludeCountry);
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CleanAddressResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<GetFullAddressResponse, ApiConnectionActionConfiguration> GetFullAddress(Expression<Func<bodylicenceInput>> bodylicence, Expression<Func<string>> bodypostcode, Expression<Func<string>> bodybuilding = null, Expression<Func<bool>> bodyoptionsfixTownCounty = null, Expression<Func<int>> bodyoptionsmaxLines = null, Expression<Func<int>> bodyoptionsmaxLineLength = null, Expression<Func<bool>> bodyoptionsnormalizeCase = null, Expression<Func<bool>> bodyoptionsnormalizeTownCase = null, Expression<Func<bool>> bodyoptionsexcludeCounty = null, Expression<Func<bool>> bodyoptionsuseAnyAvailableCounty = null, Expression<Func<bool>> bodyoptionsunwantedPunctuation = null, Expression<Func<bool>> bodyoptionsfixBuilding = null, Expression<Func<bool>> bodyoptionsincludeUDPRN = null, Expression<Func<bool>> bodyoptionsincludeLocation = null, Expression<Func<bool>> bodyoptionsreturnResultCount = null, Expression<Func<bool>> bodyoptionsincludeNYB = null, Expression<Func<bool>> bodyoptionsincludeMR = null, Expression<Func<bodyoptionsformatterInput>> bodyoptionsformatter = null)
+        public IBodyWorkflowAction<GetFullAddressResponse, ApiConnectionActionConfiguration> GetFullAddress(Expression<Func<GetFullAddressInput>> body)
         {
-            var __workflow_bodylicence = WorkflowExpression.Compile(bodylicence, nameof(bodylicence), required: true);
-            var __workflow_bodypostcode = WorkflowExpression.Compile(bodypostcode, nameof(bodypostcode), required: true);
-            var __workflow_bodybuilding = WorkflowExpression.Compile(bodybuilding, nameof(bodybuilding), required: false);
-            var __workflow_bodyoptionsfixTownCounty = WorkflowExpression.Compile(bodyoptionsfixTownCounty, nameof(bodyoptionsfixTownCounty), required: false);
-            var __workflow_bodyoptionsmaxLines = WorkflowExpression.Compile(bodyoptionsmaxLines, nameof(bodyoptionsmaxLines), required: false);
-            var __workflow_bodyoptionsmaxLineLength = WorkflowExpression.Compile(bodyoptionsmaxLineLength, nameof(bodyoptionsmaxLineLength), required: false);
-            var __workflow_bodyoptionsnormalizeCase = WorkflowExpression.Compile(bodyoptionsnormalizeCase, nameof(bodyoptionsnormalizeCase), required: false);
-            var __workflow_bodyoptionsnormalizeTownCase = WorkflowExpression.Compile(bodyoptionsnormalizeTownCase, nameof(bodyoptionsnormalizeTownCase), required: false);
-            var __workflow_bodyoptionsexcludeCounty = WorkflowExpression.Compile(bodyoptionsexcludeCounty, nameof(bodyoptionsexcludeCounty), required: false);
-            var __workflow_bodyoptionsuseAnyAvailableCounty = WorkflowExpression.Compile(bodyoptionsuseAnyAvailableCounty, nameof(bodyoptionsuseAnyAvailableCounty), required: false);
-            var __workflow_bodyoptionsunwantedPunctuation = WorkflowExpression.Compile(bodyoptionsunwantedPunctuation, nameof(bodyoptionsunwantedPunctuation), required: false);
-            var __workflow_bodyoptionsfixBuilding = WorkflowExpression.Compile(bodyoptionsfixBuilding, nameof(bodyoptionsfixBuilding), required: false);
-            var __workflow_bodyoptionsincludeUDPRN = WorkflowExpression.Compile(bodyoptionsincludeUDPRN, nameof(bodyoptionsincludeUDPRN), required: false);
-            var __workflow_bodyoptionsincludeLocation = WorkflowExpression.Compile(bodyoptionsincludeLocation, nameof(bodyoptionsincludeLocation), required: false);
-            var __workflow_bodyoptionsreturnResultCount = WorkflowExpression.Compile(bodyoptionsreturnResultCount, nameof(bodyoptionsreturnResultCount), required: false);
-            var __workflow_bodyoptionsincludeNYB = WorkflowExpression.Compile(bodyoptionsincludeNYB, nameof(bodyoptionsincludeNYB), required: false);
-            var __workflow_bodyoptionsincludeMR = WorkflowExpression.Compile(bodyoptionsincludeMR, nameof(bodyoptionsincludeMR), required: false);
-            var __workflow_bodyoptionsformatter = WorkflowExpression.Compile(bodyoptionsformatter, nameof(bodyoptionsformatter), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetFullAddressResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AddressCapture/GetFullAddress.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["licence"] = ExpressionConverter.ConvertO(__workflow_bodylicence);
-                bodypropCount++;
-                body["postcode"] = ExpressionConverter.ConvertO(__workflow_bodypostcode);
-                if (__workflow_bodybuilding != null)
-                {
-                    body["building"] = ExpressionConverter.ConvertO(__workflow_bodybuilding);
-                    bodypropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsfixTownCounty != null)
-                {
-                    optionsObject["FixTownCounty"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsfixTownCounty);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsmaxLines != null)
-                {
-                    if (__workflow_bodyoptionsmaxLines != null)
-                    {
-                        optionsObject["MaxLines"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsmaxLines);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["MaxLines"] = 6;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsmaxLineLength != null)
-                {
-                    optionsObject["MaxLineLength"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsmaxLineLength);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsnormalizeCase != null)
-                {
-                    optionsObject["NormalizeCase"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsnormalizeCase);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsnormalizeTownCase != null)
-                {
-                    optionsObject["NormalizeTownCase"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsnormalizeTownCase);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsexcludeCounty != null)
-                {
-                    optionsObject["ExcludeCounty"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsexcludeCounty);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsuseAnyAvailableCounty != null)
-                {
-                    optionsObject["UseAnyAvailableCounty"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseAnyAvailableCounty);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsunwantedPunctuation != null)
-                {
-                    optionsObject["UnwantedPunctuation"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsunwantedPunctuation);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsfixBuilding != null)
-                {
-                    optionsObject["FixBuilding"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsfixBuilding);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsincludeUDPRN != null)
-                {
-                    optionsObject["IncludeUDPRN"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsincludeUDPRN);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsincludeLocation != null)
-                {
-                    if (__workflow_bodyoptionsincludeLocation != null)
-                    {
-                        optionsObject["IncludeLocation"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsincludeLocation);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["IncludeLocation"] = true;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsreturnResultCount != null)
-                {
-                    optionsObject["ReturnResultCount"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsreturnResultCount);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsincludeNYB != null)
-                {
-                    optionsObject["IncludeNYB"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsincludeNYB);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsincludeMR != null)
-                {
-                    optionsObject["IncludeMR"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsincludeMR);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsformatter != null)
-                {
-                    optionsObject["Formatter"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsformatter);
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GetFullAddressResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsDeceasedResponse, ApiConnectionActionConfiguration> IsDeceased(Expression<Func<string>> bodyRecordnamesurname, Expression<Func<string[]>> bodyRecordaddresslines, Expression<Func<bool>> bodymarketing, Expression<Func<string>> bodyRecordnametitle = null, Expression<Func<string>> bodyRecordnameforename = null, Expression<Func<string>> bodyRecordnamemiddleName = null, Expression<Func<bodyoptionsmatchLevelInput>> bodyoptionsmatchLevel = null)
+        public IBodyWorkflowAction<IsDeceasedResponse, ApiConnectionActionConfiguration> IsDeceased(Expression<Func<IsDeceasedInput>> body = null)
         {
-            var __workflow_bodyRecordnamesurname = WorkflowExpression.Compile(bodyRecordnamesurname, nameof(bodyRecordnamesurname), required: true);
-            var __workflow_bodyRecordaddresslines = WorkflowExpression.Compile(bodyRecordaddresslines, nameof(bodyRecordaddresslines), required: true);
-            var __workflow_bodymarketing = WorkflowExpression.Compile(bodymarketing, nameof(bodymarketing), required: true);
-            var __workflow_bodyRecordnametitle = WorkflowExpression.Compile(bodyRecordnametitle, nameof(bodyRecordnametitle), required: false);
-            var __workflow_bodyRecordnameforename = WorkflowExpression.Compile(bodyRecordnameforename, nameof(bodyRecordnameforename), required: false);
-            var __workflow_bodyRecordnamemiddleName = WorkflowExpression.Compile(bodyRecordnamemiddleName, nameof(bodyRecordnamemiddleName), required: false);
-            var __workflow_bodyoptionsmatchLevel = WorkflowExpression.Compile(bodyoptionsmatchLevel, nameof(bodyoptionsmatchLevel), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<IsDeceasedResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Deceased/IsDeceased.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var @recordObject = new JObject();
-                var @recordObjectpropCount = 0;
-                var nameObject = new JObject();
-                var nameObjectpropCount = 0;
-                if (__workflow_bodyRecordnametitle != null)
-                {
-                    nameObject["Title"] = ExpressionConverter.ConvertO(__workflow_bodyRecordnametitle);
-                    nameObjectpropCount++;
-                }
-
-                if (__workflow_bodyRecordnameforename != null)
-                {
-                    nameObject["Forename"] = ExpressionConverter.ConvertO(__workflow_bodyRecordnameforename);
-                    nameObjectpropCount++;
-                }
-
-                if (__workflow_bodyRecordnamemiddleName != null)
-                {
-                    nameObject["MiddleName"] = ExpressionConverter.ConvertO(__workflow_bodyRecordnamemiddleName);
-                    nameObjectpropCount++;
-                }
-
-                nameObjectpropCount++;
-                nameObject["Surname"] = ExpressionConverter.ConvertO(__workflow_bodyRecordnamesurname);
-                if (nameObjectpropCount > 0)
-                {
-                    @recordObject["Name"] = nameObject;
-                    @recordObjectpropCount++;
-                }
-
-                var addressObject = new JObject();
-                var addressObjectpropCount = 0;
-                addressObjectpropCount++;
-                addressObject["Lines"] = ExpressionConverter.ConvertO(__workflow_bodyRecordaddresslines);
-                if (addressObjectpropCount > 0)
-                {
-                    @recordObject["Address"] = addressObject;
-                    @recordObjectpropCount++;
-                }
-
-                if (@recordObjectpropCount > 0)
-                {
-                    body["record"] = @recordObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["marketing"] = ExpressionConverter.ConvertO(__workflow_bodymarketing);
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsmatchLevel != null)
-                {
-                    if (__workflow_bodyoptionsmatchLevel != null)
-                    {
-                        optionsObject["MatchLevel"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsmatchLevel);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["MatchLevel"] = "I";
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<IsDeceasedResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<SearchPredictiveAddressResponse, ApiConnectionActionConfiguration> SearchPredictiveAddress(Expression<Func<string>> bodycountry, Expression<Func<string>> bodysearch, Expression<Func<string>> bodytelephoneNumber = null, Expression<Func<string>> bodysession = null, Expression<Func<bool>> bodyoptionsincludeMR = null, Expression<Func<bool>> bodyoptionsincludeNYB = null)
+        public IBodyWorkflowAction<SearchPredictiveAddressResponse, ApiConnectionActionConfiguration> SearchPredictiveAddress(Expression<Func<SearchPredictiveAddressInput>> body = null)
         {
-            var __workflow_bodycountry = WorkflowExpression.Compile(bodycountry, nameof(bodycountry), required: true);
-            var __workflow_bodysearch = WorkflowExpression.Compile(bodysearch, nameof(bodysearch), required: true);
-            var __workflow_bodytelephoneNumber = WorkflowExpression.Compile(bodytelephoneNumber, nameof(bodytelephoneNumber), required: false);
-            var __workflow_bodysession = WorkflowExpression.Compile(bodysession, nameof(bodysession), required: false);
-            var __workflow_bodyoptionsincludeMR = WorkflowExpression.Compile(bodyoptionsincludeMR, nameof(bodyoptionsincludeMR), required: false);
-            var __workflow_bodyoptionsincludeNYB = WorkflowExpression.Compile(bodyoptionsincludeNYB, nameof(bodyoptionsincludeNYB), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SearchPredictiveAddressResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PredictiveAddress/Search.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["country"] = ExpressionConverter.ConvertO(__workflow_bodycountry);
-                bodypropCount++;
-                body["search"] = ExpressionConverter.ConvertO(__workflow_bodysearch);
-                if (__workflow_bodytelephoneNumber != null)
-                {
-                    body["telephoneNumber"] = ExpressionConverter.ConvertO(__workflow_bodytelephoneNumber);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysession != null)
-                {
-                    body["session"] = ExpressionConverter.ConvertO(__workflow_bodysession);
-                    bodypropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsincludeMR != null)
-                {
-                    optionsObject["IncludeMR"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsincludeMR);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsincludeNYB != null)
-                {
-                    optionsObject["IncludeNYB"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsincludeNYB);
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SearchPredictiveAddressResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<DrilldownPredictiveAddressResponse, ApiConnectionActionConfiguration> DrilldownPredictiveAddress(Expression<Func<string>> bodycountry, Expression<Func<string>> bodyid, Expression<Func<bool>> bodyoptionsincludeMR = null, Expression<Func<bool>> bodyoptionsincludeNYB = null)
+        public IBodyWorkflowAction<DrilldownPredictiveAddressResponse, ApiConnectionActionConfiguration> DrilldownPredictiveAddress(Expression<Func<DrilldownPredictiveAddressInput>> body = null)
         {
-            var __workflow_bodycountry = WorkflowExpression.Compile(bodycountry, nameof(bodycountry), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyoptionsincludeMR = WorkflowExpression.Compile(bodyoptionsincludeMR, nameof(bodyoptionsincludeMR), required: false);
-            var __workflow_bodyoptionsincludeNYB = WorkflowExpression.Compile(bodyoptionsincludeNYB, nameof(bodyoptionsincludeNYB), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DrilldownPredictiveAddressResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PredictiveAddress/DrillDown.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["country"] = ExpressionConverter.ConvertO(__workflow_bodycountry);
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsincludeMR != null)
-                {
-                    optionsObject["IncludeMR"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsincludeMR);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsincludeNYB != null)
-                {
-                    optionsObject["IncludeNYB"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsincludeNYB);
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DrilldownPredictiveAddressResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<RetrievePredictiveAddressResponse, ApiConnectionActionConfiguration> RetrievePredictiveAddress(Expression<Func<string>> bodycountry, Expression<Func<string>> bodyid, Expression<Func<int>> bodyoptionsmaxLineLength = null, Expression<Func<int>> bodyoptionsmaxLines = null, Expression<Func<bool>> bodyoptionsfixTownCounty = null, Expression<Func<bool>> bodyoptionsfixPostcode = null, Expression<Func<bool>> bodyoptionsfixBuilding = null, Expression<Func<string>> bodyoptionsunwantedPunctuation = null, Expression<Func<bodyoptionsformatterInput>> bodyoptionsformatter = null, Expression<Func<bool>> bodyoptionsincludeUDPRN = null, Expression<Func<bool>> bodyoptionsincludeUPRN = null)
+        public IBodyWorkflowAction<RetrievePredictiveAddressResponse, ApiConnectionActionConfiguration> RetrievePredictiveAddress(Expression<Func<RetrievePredictiveAddressInput>> body = null)
         {
-            var __workflow_bodycountry = WorkflowExpression.Compile(bodycountry, nameof(bodycountry), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyoptionsmaxLineLength = WorkflowExpression.Compile(bodyoptionsmaxLineLength, nameof(bodyoptionsmaxLineLength), required: false);
-            var __workflow_bodyoptionsmaxLines = WorkflowExpression.Compile(bodyoptionsmaxLines, nameof(bodyoptionsmaxLines), required: false);
-            var __workflow_bodyoptionsfixTownCounty = WorkflowExpression.Compile(bodyoptionsfixTownCounty, nameof(bodyoptionsfixTownCounty), required: false);
-            var __workflow_bodyoptionsfixPostcode = WorkflowExpression.Compile(bodyoptionsfixPostcode, nameof(bodyoptionsfixPostcode), required: false);
-            var __workflow_bodyoptionsfixBuilding = WorkflowExpression.Compile(bodyoptionsfixBuilding, nameof(bodyoptionsfixBuilding), required: false);
-            var __workflow_bodyoptionsunwantedPunctuation = WorkflowExpression.Compile(bodyoptionsunwantedPunctuation, nameof(bodyoptionsunwantedPunctuation), required: false);
-            var __workflow_bodyoptionsformatter = WorkflowExpression.Compile(bodyoptionsformatter, nameof(bodyoptionsformatter), required: false);
-            var __workflow_bodyoptionsincludeUDPRN = WorkflowExpression.Compile(bodyoptionsincludeUDPRN, nameof(bodyoptionsincludeUDPRN), required: false);
-            var __workflow_bodyoptionsincludeUPRN = WorkflowExpression.Compile(bodyoptionsincludeUPRN, nameof(bodyoptionsincludeUPRN), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<RetrievePredictiveAddressResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PredictiveAddress/Retrieve.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["country"] = ExpressionConverter.ConvertO(__workflow_bodycountry);
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsmaxLineLength != null)
-                {
-                    if (__workflow_bodyoptionsmaxLineLength != null)
-                    {
-                        optionsObject["MaxLineLength"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsmaxLineLength);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["MaxLineLength"] = 100;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsmaxLines != null)
-                {
-                    if (__workflow_bodyoptionsmaxLines != null)
-                    {
-                        optionsObject["MaxLines"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsmaxLines);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["MaxLines"] = 5;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsfixTownCounty != null)
-                {
-                    if (__workflow_bodyoptionsfixTownCounty != null)
-                    {
-                        optionsObject["FixTownCounty"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsfixTownCounty);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["FixTownCounty"] = false;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsfixPostcode != null)
-                {
-                    if (__workflow_bodyoptionsfixPostcode != null)
-                    {
-                        optionsObject["FixPostcode"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsfixPostcode);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["FixPostcode"] = false;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsfixBuilding != null)
-                {
-                    if (__workflow_bodyoptionsfixBuilding != null)
-                    {
-                        optionsObject["FixBuilding"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsfixBuilding);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["FixBuilding"] = false;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsunwantedPunctuation != null)
-                {
-                    optionsObject["UnwantedPunctuation"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsunwantedPunctuation);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsformatter != null)
-                {
-                    if (__workflow_bodyoptionsformatter != null)
-                    {
-                        optionsObject["Formatter"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsformatter);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["Formatter"] = "DefaultFormatter";
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsincludeUDPRN != null)
-                {
-                    if (__workflow_bodyoptionsincludeUDPRN != null)
-                    {
-                        optionsObject["IncludeUDPRN"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsincludeUDPRN);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["IncludeUDPRN"] = false;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionsincludeUPRN != null)
-                {
-                    if (__workflow_bodyoptionsincludeUPRN != null)
-                    {
-                        optionsObject["IncludeUPRN"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsincludeUPRN);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["IncludeUPRN"] = false;
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<RetrievePredictiveAddressResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<CleanseEmailResponse, ApiConnectionActionConfiguration> CleanseEmail(Expression<Func<string>> bodyemail, Expression<Func<bodylevelInput>> bodylevel, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyforename = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodysurname = null, Expression<Func<string>> bodycompany = null)
+        public IBodyWorkflowAction<CleanseEmailResponse, ApiConnectionActionConfiguration> CleanseEmail(Expression<Func<CleanseEmailInput>> body = null)
         {
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodylevel = WorkflowExpression.Compile(bodylevel, nameof(bodylevel), required: true);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodyforename = WorkflowExpression.Compile(bodyforename, nameof(bodyforename), required: false);
-            var __workflow_bodymiddleName = WorkflowExpression.Compile(bodymiddleName, nameof(bodymiddleName), required: false);
-            var __workflow_bodysurname = WorkflowExpression.Compile(bodysurname, nameof(bodysurname), required: false);
-            var __workflow_bodycompany = WorkflowExpression.Compile(bodycompany, nameof(bodycompany), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CleanseEmailResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/EmailValidation/CleanseSimple.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["Email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                bodypropCount++;
-                body["Level"] = ExpressionConverter.ConvertO(__workflow_bodylevel);
-                if (__workflow_bodytitle != null)
-                {
-                    body["Title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyforename != null)
-                {
-                    body["Forename"] = ExpressionConverter.ConvertO(__workflow_bodyforename);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymiddleName != null)
-                {
-                    body["MiddleName"] = ExpressionConverter.ConvertO(__workflow_bodymiddleName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysurname != null)
-                {
-                    body["Surname"] = ExpressionConverter.ConvertO(__workflow_bodysurname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycompany != null)
-                {
-                    body["Company"] = ExpressionConverter.ConvertO(__workflow_bodycompany);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CleanseEmailResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsValidPhoneResponse, ApiConnectionActionConfiguration> IsValidPhone(Expression<Func<string>> bodytelephoneNumber, Expression<Func<int>> bodydefaultCountry)
+        public IBodyWorkflowAction<IsValidPhoneResponse, ApiConnectionActionConfiguration> IsValidPhone(Expression<Func<IsValidPhoneInput>> body)
         {
-            var __workflow_bodytelephoneNumber = WorkflowExpression.Compile(bodytelephoneNumber, nameof(bodytelephoneNumber), required: true);
-            var __workflow_bodydefaultCountry = WorkflowExpression.Compile(bodydefaultCountry, nameof(bodydefaultCountry), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<IsValidPhoneResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/PhoneValidation/IsValid.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["telephoneNumber"] = ExpressionConverter.ConvertO(__workflow_bodytelephoneNumber);
-                bodypropCount++;
-                body["defaultCountry"] = ExpressionConverter.ConvertO(__workflow_bodydefaultCountry);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<IsValidPhoneResponse>(callPayload);
             });
         }
@@ -942,6 +242,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         SalaciousName
     }
 
+    public class IsUsableNameInput
+    {
+        [JsonProperty("name")]
+        public IsUsableNameInputNameType Name { get; set; }
+    }
+
+    public class IsUsableNameInputNameType
+    {
+        public string Title { get; set; }
+        public string Forename { get; set; }
+        public string MiddleName { get; set; }
+        public string Surname { get; set; }
+    }
+
     public class IsCallableTPSResponse
     {
         public IsCallableTPSResponseStatusType Status { get; set; }
@@ -956,6 +270,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public double CreditsRemaining { get; set; }
     }
 
+    public class IsCallableTPSInput
+    {
+        [JsonProperty("number", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Number { get; set; }
+    }
+
     public class IsCallableCTPSResponse
     {
         public IsCallableCTPSResponseStatusType Status { get; set; }
@@ -968,6 +288,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public bool Success { get; set; }
         public string ErrorMessage { get; set; }
         public double CreditsRemaining { get; set; }
+    }
+
+    public class IsCallableCTPSInput
+    {
+        [JsonProperty("number", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Number { get; set; }
     }
 
     public class IsValidBankAccountResponse
@@ -1011,6 +337,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public string[] Lines { get; set; }
     }
 
+    public class IsValidBankAccountInput
+    {
+        [JsonProperty("sortCode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SortCode { get; set; }
+
+        [JsonProperty("bankAccountNumber")]
+        public string BankAccountNumber { get; set; }
+    }
+
     public class IsValidEmailResponse
     {
         public IsValidEmailResponseStatusType Status { get; set; }
@@ -1024,8 +359,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public double CreditsRemaining { get; set; }
     }
 
+    public class IsValidEmailInput
+    {
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty("level", DefaultValueHandling = DefaultValueHandling.Include)]
+        public IsValidEmailInputLevelType Level { get; set; } = IsValidEmailInputLevelType.Server;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodylevelInput
+    public enum IsValidEmailInputLevelType
     {
         Syntax,
         MX,
@@ -1058,6 +402,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public string CountryName { get; set; }
     }
 
+    public class IsValidTelephoneInput
+    {
+        [JsonProperty("telephoneNumber", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TelephoneNumber { get; set; }
+
+        [JsonProperty("defaultCountry", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DefaultCountry { get; set; }
+
+        [JsonProperty("options")]
+        public IsValidTelephoneInputOptionsType Options { get; set; }
+    }
+
+    public class IsValidTelephoneInputOptionsType
+    {
+        public bool? UseLineValidation { get; set; }
+        public bool? UseMobileValidation { get; set; }
+    }
+
     public class CleanAddressResponse
     {
         public CleanAddressResponseStatusType Status { get; set; }
@@ -1081,6 +443,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
     public class CleanAddressResponseResultTypeAddressType
     {
         public string[] Lines { get; set; }
+    }
+
+    public class CleanAddressInput
+    {
+        [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CleanAddressInputAddressType Address { get; set; }
+
+        [JsonProperty("options")]
+        public CleanAddressInputOptionsType Options { get; set; }
+    }
+
+    public class CleanAddressInputAddressType
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] Lines { get; set; }
+    }
+
+    public class CleanAddressInputOptionsType
+    {
+        public string DefaultCountryCode { get; set; }
+        public bool? DetectCountry { get; set; }
+        public string Country { get; set; }
+        public bool? IncludeCountry { get; set; }
     }
 
     public class GetFullAddressResponse
@@ -1152,8 +537,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public string Country { get; set; }
     }
 
+    public class GetFullAddressInput
+    {
+        [JsonProperty("licence", DefaultValueHandling = DefaultValueHandling.Include)]
+        public GetFullAddressInputLicenceType Licence { get; set; }
+
+        [JsonProperty("postcode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Postcode { get; set; }
+
+        [JsonProperty("building")]
+        public string Building { get; set; }
+
+        [JsonProperty("options")]
+        public GetFullAddressInputOptionsType Options { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodylicenceInput
+    public enum GetFullAddressInputLicenceType
     {
         InternalUserFull,
         InternalUserFullArea,
@@ -1165,8 +565,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         FreeTrial
     }
 
+    public class GetFullAddressInputOptionsType
+    {
+        public bool? FixTownCounty { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? MaxLines { get; set; } = 6;
+        public int? MaxLineLength { get; set; }
+        public bool? NormalizeCase { get; set; }
+        public bool? NormalizeTownCase { get; set; }
+        public bool? ExcludeCounty { get; set; }
+        public bool? UseAnyAvailableCounty { get; set; }
+        public bool? UnwantedPunctuation { get; set; }
+        public bool? FixBuilding { get; set; }
+        public bool? IncludeUDPRN { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IncludeLocation { get; set; } = true;
+        public bool? ReturnResultCount { get; set; }
+        public bool? IncludeNYB { get; set; }
+        public bool? IncludeMR { get; set; }
+        public GetFullAddressInputOptionsTypeFormatterType? Formatter { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyoptionsformatterInput
+    public enum GetFullAddressInputOptionsTypeFormatterType
     {
         DefaultFormatter,
         PAFStandardFormatter,
@@ -1186,8 +609,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public double CreditsRemaining { get; set; }
     }
 
+    public class IsDeceasedInput
+    {
+        [JsonProperty("record", DefaultValueHandling = DefaultValueHandling.Include)]
+        public IsDeceasedInputRecordType Record { get; set; }
+
+        [JsonProperty("marketing", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool Marketing { get; set; } = true;
+
+        [JsonProperty("options")]
+        public IsDeceasedInputOptionsType Options { get; set; }
+    }
+
+    public class IsDeceasedInputRecordType
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public IsDeceasedInputRecordTypeNameType Name { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public IsDeceasedInputRecordTypeAddressType Address { get; set; }
+    }
+
+    public class IsDeceasedInputRecordTypeNameType
+    {
+        public string Title { get; set; }
+        public string Forename { get; set; }
+        public string MiddleName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Surname { get; set; }
+    }
+
+    public class IsDeceasedInputRecordTypeAddressType
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] Lines { get; set; }
+    }
+
+    public class IsDeceasedInputOptionsType
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public IsDeceasedInputOptionsTypeMatchLevelType? MatchLevel { get; set; } = IsDeceasedInputOptionsTypeMatchLevelType.I;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyoptionsmatchLevelInput
+    public enum IsDeceasedInputOptionsTypeMatchLevelType
     {
         S,
         I,
@@ -1226,6 +692,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public int Items { get; set; }
     }
 
+    public class SearchPredictiveAddressInput
+    {
+        [JsonProperty("country", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Country { get; set; }
+
+        [JsonProperty("search", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Search { get; set; }
+
+        [JsonProperty("telephoneNumber")]
+        public string TelephoneNumber { get; set; }
+
+        [JsonProperty("session")]
+        public string Session { get; set; }
+
+        [JsonProperty("options")]
+        public SearchPredictiveAddressInputOptionsType Options { get; set; }
+    }
+
+    public class SearchPredictiveAddressInputOptionsType
+    {
+        public bool? IncludeMR { get; set; }
+        public bool? IncludeNYB { get; set; }
+    }
+
     public class DrilldownPredictiveAddressResponse
     {
         public DrilldownPredictiveAddressResponseStatusType Status { get; set; }
@@ -1256,6 +746,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
 
         [JsonProperty("items")]
         public int Items { get; set; }
+    }
+
+    public class DrilldownPredictiveAddressInput
+    {
+        [JsonProperty("country", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Country { get; set; }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("options")]
+        public DrilldownPredictiveAddressInputOptionsType Options { get; set; }
+    }
+
+    public class DrilldownPredictiveAddressInputOptionsType
+    {
+        public bool? IncludeMR { get; set; }
+        public bool? IncludeNYB { get; set; }
     }
 
     public class RetrievePredictiveAddressResponse
@@ -1327,6 +835,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public string Country { get; set; }
     }
 
+    public class RetrievePredictiveAddressInput
+    {
+        [JsonProperty("country", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Country { get; set; }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("options")]
+        public RetrievePredictiveAddressInputOptionsType Options { get; set; }
+    }
+
+    public class RetrievePredictiveAddressInputOptionsType
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? MaxLineLength { get; set; } = 100;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? MaxLines { get; set; } = 5;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? FixTownCounty { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? FixPostcode { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? FixBuilding { get; set; } = false;
+        public string UnwantedPunctuation { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public RetrievePredictiveAddressInputOptionsTypeFormatterType? Formatter { get; set; } = RetrievePredictiveAddressInputOptionsTypeFormatterType.DefaultFormatter;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IncludeUDPRN { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IncludeUPRN { get; set; } = false;
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum RetrievePredictiveAddressInputOptionsTypeFormatterType
+    {
+        DefaultFormatter,
+        PAFStandardFormatter,
+        NoOrganisationFormatter
+    }
+
     public class CleanseEmailResponse
     {
         public CleanseEmailResponseStatusType Status { get; set; }
@@ -1345,6 +901,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public bool Success { get; set; }
         public string ErrorMessage { get; set; }
         public int CreditsRemaining { get; set; }
+    }
+
+    public class CleanseEmailInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public CleanseEmailInputLevelType Level { get; set; } = CleanseEmailInputLevelType.Server;
+        public string Title { get; set; }
+        public string Forename { get; set; }
+        public string MiddleName { get; set; }
+        public string Surname { get; set; }
+        public string Company { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CleanseEmailInputLevelType
+    {
+        Syntax,
+        MX,
+        Server,
+        Address
     }
 
     public class IsValidPhoneResponse
@@ -1370,6 +949,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public string Provider { get; set; }
         public string CountryCode { get; set; }
         public string CountryName { get; set; }
+    }
+
+    public class IsValidPhoneInput
+    {
+        [JsonProperty("telephoneNumber", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TelephoneNumber { get; set; }
+
+        [JsonProperty("defaultCountry", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int DefaultCountry { get; set; } = 1;
     }
 }
 

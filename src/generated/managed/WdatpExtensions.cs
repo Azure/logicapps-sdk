@@ -13,66 +13,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
     public class WdatpActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<AdvancedHuntingResponse, ApiConnectionActionConfiguration> AdvancedHunting(Expression<Func<string>> bodyquery)
+        public IBodyWorkflowAction<AdvancedHuntingResponse, ApiConnectionActionConfiguration> AdvancedHunting(Expression<Func<AdvancedHuntingInput>> body)
         {
-            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AdvancedHuntingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/advancedqueries/run";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["Query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AdvancedHuntingResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<Alert, ApiConnectionActionConfiguration> CreateAlertByReference(Expression<Func<string>> bodymachineId, Expression<Func<string>> bodyreportId, Expression<Func<string>> bodyeventTime, Expression<Func<bodyseverityInput>> bodyseverity, Expression<Func<bodycategoryInput>> bodycategory, Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription, Expression<Func<string>> bodyrecommendedAction)
+        public IBodyWorkflowAction<Alert, ApiConnectionActionConfiguration> CreateAlertByReference(Expression<Func<CreateAlertByReferenceInput>> body)
         {
-            var __workflow_bodymachineId = WorkflowExpression.Compile(bodymachineId, nameof(bodymachineId), required: true);
-            var __workflow_bodyreportId = WorkflowExpression.Compile(bodyreportId, nameof(bodyreportId), required: true);
-            var __workflow_bodyeventTime = WorkflowExpression.Compile(bodyeventTime, nameof(bodyeventTime), required: true);
-            var __workflow_bodyseverity = WorkflowExpression.Compile(bodyseverity, nameof(bodyseverity), required: true);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: true);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
-            var __workflow_bodyrecommendedAction = WorkflowExpression.Compile(bodyrecommendedAction, nameof(bodyrecommendedAction), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Alert, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/alerts/createAlertByReference";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["machineId"] = ExpressionConverter.ConvertO(__workflow_bodymachineId);
-                bodypropCount++;
-                body["reportId"] = ExpressionConverter.ConvertO(__workflow_bodyreportId);
-                bodypropCount++;
-                body["eventTime"] = ExpressionConverter.ConvertO(__workflow_bodyeventTime);
-                bodypropCount++;
-                body["severity"] = ExpressionConverter.ConvertO(__workflow_bodyseverity);
-                bodypropCount++;
-                body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                bodypropCount++;
-                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                bodypropCount++;
-                body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                bodypropCount++;
-                body["recommendedAction"] = ExpressionConverter.ConvertO(__workflow_bodyrecommendedAction);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Alert>(callPayload);
             });
         }
@@ -124,95 +87,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<Alert, ApiConnectionActionConfiguration> PatchAlert(Expression<Func<string>> alertId, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodyassignedTo = null, Expression<Func<bodyclassificationInput>> bodyclassification = null, Expression<Func<bodydeterminationInput>> bodydetermination = null)
+        public IBodyWorkflowAction<Alert, ApiConnectionActionConfiguration> PatchAlert(Expression<Func<string>> alertId, Expression<Func<PatchAlertInput>> body)
         {
             var __workflow_alertId = WorkflowExpression.Compile(alertId, nameof(alertId), required: true);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyassignedTo = WorkflowExpression.Compile(bodyassignedTo, nameof(bodyassignedTo), required: false);
-            var __workflow_bodyclassification = WorkflowExpression.Compile(bodyclassification, nameof(bodyclassification), required: false);
-            var __workflow_bodydetermination = WorkflowExpression.Compile(bodydetermination, nameof(bodydetermination), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Alert, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/alerts/{0}", __workflow_alertId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyassignedTo != null)
-                {
-                    body["assignedTo"] = ExpressionConverter.ConvertO(__workflow_bodyassignedTo);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyclassification != null)
-                {
-                    body["classification"] = ExpressionConverter.ConvertO(__workflow_bodyclassification);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydetermination != null)
-                {
-                    body["determination"] = ExpressionConverter.ConvertO(__workflow_bodydetermination);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Alert>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<InitiateInvestigationResponse, ApiConnectionActionConfiguration> InitiateInvestigation(Expression<Func<string>> machineId, Expression<Func<string>> bodycomment)
+        public IBodyWorkflowAction<InitiateInvestigationResponse, ApiConnectionActionConfiguration> InitiateInvestigation(Expression<Func<string>> machineId, Expression<Func<InitiateInvestigationInput>> body)
         {
             var __workflow_machineId = WorkflowExpression.Compile(machineId, nameof(machineId), required: true);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<InitiateInvestigationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/machines/{0}/initiateInvestigation", __workflow_machineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["Comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<InitiateInvestigationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<Investigation, ApiConnectionActionConfiguration> StartInvestigation(Expression<Func<string>> machineId, Expression<Func<string>> bodycomment)
+        public IBodyWorkflowAction<Investigation, ApiConnectionActionConfiguration> StartInvestigation(Expression<Func<string>> machineId, Expression<Func<StartInvestigationInput>> body)
         {
             var __workflow_machineId = WorkflowExpression.Compile(machineId, nameof(machineId), required: true);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Investigation, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/machines/{0}/startInvestigation", __workflow_machineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["Comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Investigation>(callPayload);
             });
         }
@@ -231,24 +145,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> CancelSingleMachineAction(Expression<Func<string>> machineActionId, Expression<Func<string>> bodycomment)
+        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> CancelSingleMachineAction(Expression<Func<string>> machineActionId, Expression<Func<CancelSingleMachineActionInput>> body)
         {
             var __workflow_machineActionId = WorkflowExpression.Compile(machineActionId, nameof(machineActionId), required: true);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MachineAction, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/machineactions/{0}/cancel", __workflow_machineActionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["Comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MachineAction>(callPayload);
             });
         }
@@ -392,24 +298,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> CollectInvestigationPackage(Expression<Func<string>> machineId, Expression<Func<string>> bodycomment)
+        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> CollectInvestigationPackage(Expression<Func<string>> machineId, Expression<Func<CollectInvestigationPackageInput>> body)
         {
             var __workflow_machineId = WorkflowExpression.Compile(machineId, nameof(machineId), required: true);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MachineAction, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/machines/{0}/collectInvestigationPackage", __workflow_machineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["Comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MachineAction>(callPayload);
             });
         }
@@ -428,148 +326,91 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> IsolateMachine(Expression<Func<string>> machineId, Expression<Func<string>> bodycomment, Expression<Func<bodyisolationTypeInput>> bodyisolationType)
+        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> IsolateMachine(Expression<Func<string>> machineId, Expression<Func<IsolateMachineInput>> body)
         {
             var __workflow_machineId = WorkflowExpression.Compile(machineId, nameof(machineId), required: true);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: true);
-            var __workflow_bodyisolationType = WorkflowExpression.Compile(bodyisolationType, nameof(bodyisolationType), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MachineAction, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/machines/{0}/isolate", __workflow_machineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["Comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                bodypropCount++;
-                body["IsolationType"] = ExpressionConverter.ConvertO(__workflow_bodyisolationType);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MachineAction>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> UnisolateMachine(Expression<Func<string>> machineId, Expression<Func<string>> bodycomment)
+        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> UnisolateMachine(Expression<Func<string>> machineId, Expression<Func<UnisolateMachineInput>> body)
         {
             var __workflow_machineId = WorkflowExpression.Compile(machineId, nameof(machineId), required: true);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MachineAction, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/machines/{0}/unisolate", __workflow_machineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["Comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MachineAction>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> RestrictAppExecution(Expression<Func<string>> machineId, Expression<Func<string>> bodycomment)
+        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> RestrictAppExecution(Expression<Func<string>> machineId, Expression<Func<RestrictAppExecutionInput>> body)
         {
             var __workflow_machineId = WorkflowExpression.Compile(machineId, nameof(machineId), required: true);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MachineAction, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/machines/{0}/restrictCodeExecution", __workflow_machineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["Comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MachineAction>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> UnrestrictAppExecution(Expression<Func<string>> machineId, Expression<Func<string>> bodycomment)
+        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> UnrestrictAppExecution(Expression<Func<string>> machineId, Expression<Func<UnrestrictAppExecutionInput>> body)
         {
             var __workflow_machineId = WorkflowExpression.Compile(machineId, nameof(machineId), required: true);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MachineAction, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/machines/{0}/unrestrictCodeExecution", __workflow_machineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["Comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MachineAction>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> RunAntivirusScan(Expression<Func<string>> machineId, Expression<Func<string>> bodycomment, Expression<Func<bodyscanTypeInput>> bodyscanType)
+        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> RunAntivirusScan(Expression<Func<string>> machineId, Expression<Func<RunAntivirusScanInput>> body)
         {
             var __workflow_machineId = WorkflowExpression.Compile(machineId, nameof(machineId), required: true);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: true);
-            var __workflow_bodyscanType = WorkflowExpression.Compile(bodyscanType, nameof(bodyscanType), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MachineAction, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/machines/{0}/runAntiVirusScan", __workflow_machineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["Comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                bodypropCount++;
-                body["ScanType"] = ExpressionConverter.ConvertO(__workflow_bodyscanType);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MachineAction>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> RunLiveResponse(Expression<Func<string>> machineId, Expression<Func<string>> bodycomment, Expression<Func<LiveResponseCommand[]>> bodycommands)
+        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> RunLiveResponse(Expression<Func<string>> machineId, Expression<Func<RunLiveResponseInput>> body)
         {
             var __workflow_machineId = WorkflowExpression.Compile(machineId, nameof(machineId), required: true);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: true);
-            var __workflow_bodycommands = WorkflowExpression.Compile(bodycommands, nameof(bodycommands), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MachineAction, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/machines/{0}/runliveresponse", __workflow_machineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["Comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                bodypropCount++;
-                body["Commands"] = ExpressionConverter.ConvertO(__workflow_bodycommands);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MachineAction>(callPayload);
             });
         }
@@ -674,27 +515,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<Machine, ApiConnectionActionConfiguration> MachineTag(Expression<Func<string>> machineId, Expression<Func<string>> bodyvalue, Expression<Func<bodyactionInput>> bodyaction)
+        public IBodyWorkflowAction<Machine, ApiConnectionActionConfiguration> MachineTag(Expression<Func<string>> machineId, Expression<Func<MachineTagInput>> body)
         {
             var __workflow_machineId = WorkflowExpression.Compile(machineId, nameof(machineId), required: true);
-            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
-            var __workflow_bodyaction = WorkflowExpression.Compile(bodyaction, nameof(bodyaction), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Machine, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/machines/{0}/tags", __workflow_machineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["Value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
-                bodypropCount++;
-                body["Action"] = ExpressionConverter.ConvertO(__workflow_bodyaction);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Machine>(callPayload);
             });
         }
@@ -702,30 +532,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
 
     public class WdatpTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebHookSubscriptionTableEntity, ApiConnectionTriggerConfiguration> WebHooksCreateWebHook(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionTableEntity, ApiConnectionTriggerConfiguration> WebHooksCreateWebHook(Expression<Func<WebHooksCreateWebHookInput>> request, FlowRecurrence recurrence = null)
         {
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyTrigger<WebHookSubscriptionTableEntity, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/subscriptions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                request["clientState"] = "flow";
-                requestpropCount++;
-                request["changeType"] = "created";
-                requestpropCount++;
-                request["resource"] = "alerts";
-                requestpropCount++;
-                request["expirationDateTime"] = "2038-09-20T12:00:00Z";
-                requestpropCount++;
-                request["notificationUrl"] = "#{listCallbackUrl()}";
-                requestpropCount++;
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionTrigger<WebHookSubscriptionTableEntity>(callPayload, recurrence: recurrence);
             });
         }
@@ -759,6 +574,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
     {
         [JsonProperty("table_row_count")]
         public int TableRowCount { get; set; }
+    }
+
+    public class AdvancedHuntingInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Query { get; set; }
     }
 
     public class Alert
@@ -857,8 +678,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         Other
     }
 
+    public class CreateAlertByReferenceInput
+    {
+        [JsonProperty("machineId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MachineId { get; set; }
+
+        [JsonProperty("reportId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ReportId { get; set; }
+
+        [JsonProperty("eventTime", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EventTime { get; set; }
+
+        [JsonProperty("severity", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateAlertByReferenceInputSeverityType Severity { get; set; }
+
+        [JsonProperty("category", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateAlertByReferenceInputCategoryType Category { get; set; }
+
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Description { get; set; }
+
+        [JsonProperty("recommendedAction", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RecommendedAction { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyseverityInput
+    public enum CreateAlertByReferenceInputSeverityType
     {
         Low,
         Medium,
@@ -866,7 +714,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodycategoryInput
+    public enum CreateAlertByReferenceInputCategoryType
     {
         General,
         CommandAndControl,
@@ -898,8 +746,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         public string NextLink { get; set; }
     }
 
+    public class PatchAlertInput
+    {
+        [JsonProperty("status")]
+        public PatchAlertInputStatusType? Status { get; set; }
+
+        [JsonProperty("assignedTo")]
+        public string AssignedTo { get; set; }
+
+        [JsonProperty("classification")]
+        public PatchAlertInputClassificationType? Classification { get; set; }
+
+        [JsonProperty("determination")]
+        public PatchAlertInputDeterminationType? Determination { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodystatusInput
+    public enum PatchAlertInputStatusType
     {
         New,
         InProgress,
@@ -907,7 +770,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyclassificationInput
+    public enum PatchAlertInputClassificationType
     {
         Unknown,
         FalsePositive,
@@ -915,7 +778,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodydeterminationInput
+    public enum PatchAlertInputDeterminationType
     {
         NotAvailable,
         Apt,
@@ -930,6 +793,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
     {
         [JsonProperty("value")]
         public string Value { get; set; }
+    }
+
+    public class InitiateInvestigationInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Comment { get; set; }
     }
 
     public class Investigation
@@ -978,6 +847,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         UnsupportedOs,
         UnsupportedAlertType,
         SuppressedAlert
+    }
+
+    public class StartInvestigationInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Comment { get; set; }
     }
 
     public class MachineAction
@@ -1089,6 +964,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         Created
     }
 
+    public class CancelSingleMachineActionInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Comment { get; set; }
+    }
+
     public class GetLiveResponseDownloadLinkResponse
     {
         [JsonProperty("value")]
@@ -1176,24 +1057,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         public string NextLink { get; set; }
     }
 
+    public class CollectInvestigationPackageInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Comment { get; set; }
+    }
+
     public class GetInvestigationPackageUriResponse
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
+    public class IsolateMachineInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Comment { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public IsolateMachineInputIsolationTypeType IsolationType { get; set; } = IsolateMachineInputIsolationTypeType.Full;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyisolationTypeInput
+    public enum IsolateMachineInputIsolationTypeType
     {
         Full,
         Selective
     }
 
+    public class UnisolateMachineInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Comment { get; set; }
+    }
+
+    public class RestrictAppExecutionInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Comment { get; set; }
+    }
+
+    public class UnrestrictAppExecutionInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Comment { get; set; }
+    }
+
+    public class RunAntivirusScanInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Comment { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public RunAntivirusScanInputScanTypeType ScanType { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyscanTypeInput
+    public enum RunAntivirusScanInputScanTypeType
     {
         Quick,
         Full
+    }
+
+    public class RunLiveResponseInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Comment { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public LiveResponseCommand[] Commands { get; set; }
     }
 
     public class LiveResponseCommand
@@ -1478,8 +1410,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         public string NextLink { get; set; }
     }
 
+    public class MachineTagInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Value { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public MachineTagInputActionType Action { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyactionInput
+    public enum MachineTagInputActionType
     {
         Add,
         Remove
@@ -1495,6 +1436,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
 
         [JsonProperty("clientState")]
         public string ClientState { get; set; }
+    }
+
+    public class WebHooksCreateWebHookInput
+    {
+        [JsonProperty("clientState", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ClientState { get; set; } = "flow";
+
+        [JsonProperty("changeType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ChangeType { get; set; } = "created";
+
+        [JsonProperty("resource", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Resource { get; set; } = "alerts";
+
+        [JsonProperty("expirationDateTime", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ExpirationDateTime { get; set; } = "2038-09-20T12:00:00Z";
+
+        [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
     }
 
     public class OnNewRemediationActivityResponse

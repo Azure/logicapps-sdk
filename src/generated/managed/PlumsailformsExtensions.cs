@@ -27,9 +27,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailforms")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteAttachment(Expression<Func<string>> fileUrl = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteAttachment(Expression<Func<string>> fileUrl)
         {
-            var __workflow_fileUrl = WorkflowExpression.Compile(fileUrl, nameof(fileUrl), required: false);
+            var __workflow_fileUrl = WorkflowExpression.Compile(fileUrl, nameof(fileUrl), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/attachments";
@@ -57,28 +57,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
 
     public class PlumsailformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FormIsSubmitted(Expression<Func<string>> subscriberform, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FormIsSubmitted(Expression<Func<FormIsSubmittedInput>> subscriber, FlowRecurrence recurrence = null)
         {
-            var __workflow_subscriberform = WorkflowExpression.Compile(subscriberform, nameof(subscriberform), required: true);
+            var __workflow_subscriber = WorkflowExpression.Compile(subscriber, nameof(subscriber), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/submissions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var subscriber = new JObject();
-                var subscriberpropCount = 0;
-                subscriber["callbackUrl"] = "#{listCallbackUrl()}";
-                subscriberpropCount++;
-                subscriberpropCount++;
-                subscriber["formId"] = ExpressionConverter.ConvertO(__workflow_subscriberform);
-                if (subscriberpropCount > 0)
-                {
-                    callPayload.Body = subscriber;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscriber);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
+    }
+
+    public class FormIsSubmittedInput
+    {
+        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("formId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Form { get; set; }
     }
 }
 

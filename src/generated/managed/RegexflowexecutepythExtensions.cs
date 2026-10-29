@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Regexflowexecutepyth
     public class RegexflowexecutepythActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "regexflowexecutepyth")]
-        public IBodyWorkflowAction<ExecutePythonResponse, ApiConnectionActionConfiguration> ExecutePython(Expression<Func<string>> pythonCode = null)
+        public IBodyWorkflowAction<ExecutePythonResponse, ApiConnectionActionConfiguration> ExecutePython(Expression<Func<string>> pythonCode)
         {
-            var __workflow_pythonCode = WorkflowExpression.Compile(pythonCode, nameof(pythonCode), required: false);
+            var __workflow_pythonCode = WorkflowExpression.Compile(pythonCode, nameof(pythonCode), required: true);
             return new DeferredBodyAction<ExecutePythonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ExecutePython";

@@ -13,34 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
     public class AmazonsqsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazonsqs")]
-        public IBodyWorkflowAction<QueueMessageMetadata, ApiConnectionActionConfiguration> SendMessageToQueue(Expression<Func<int>> sendMessageOperationInputmessageVisibilityDelayInSeconds = null, Expression<Func<string>> sendMessageOperationInputmessageContent = null)
+        public IBodyWorkflowAction<QueueMessageMetadata, ApiConnectionActionConfiguration> SendMessageToQueue(Expression<Func<SendMessageToQueueInput>> sendMessageOperationInput)
         {
-            var __workflow_sendMessageOperationInputmessageVisibilityDelayInSeconds = WorkflowExpression.Compile(sendMessageOperationInputmessageVisibilityDelayInSeconds, nameof(sendMessageOperationInputmessageVisibilityDelayInSeconds), required: false);
-            var __workflow_sendMessageOperationInputmessageContent = WorkflowExpression.Compile(sendMessageOperationInputmessageContent, nameof(sendMessageOperationInputmessageContent), required: false);
+            var __workflow_sendMessageOperationInput = WorkflowExpression.Compile(sendMessageOperationInput, nameof(sendMessageOperationInput), required: true);
             return new DeferredBodyAction<QueueMessageMetadata, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/message";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var sendMessageOperationInput = new JObject();
-                var sendMessageOperationInputpropCount = 0;
-                if (__workflow_sendMessageOperationInputmessageVisibilityDelayInSeconds != null)
-                {
-                    sendMessageOperationInput["messageVisibilityDelaySeconds"] = ExpressionConverter.ConvertO(__workflow_sendMessageOperationInputmessageVisibilityDelayInSeconds);
-                    sendMessageOperationInputpropCount++;
-                }
-
-                if (__workflow_sendMessageOperationInputmessageContent != null)
-                {
-                    sendMessageOperationInput["messageContent"] = ExpressionConverter.ConvertO(__workflow_sendMessageOperationInputmessageContent);
-                    sendMessageOperationInputpropCount++;
-                }
-
-                if (sendMessageOperationInputpropCount > 0)
-                {
-                    callPayload.Body = sendMessageOperationInput;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_sendMessageOperationInput);
                 return new ApiConnectionAction<QueueMessageMetadata>(callPayload);
             });
         }
@@ -116,6 +97,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
 
         [JsonProperty("contentMD5")]
         public string ContentMD5 { get; set; }
+    }
+
+    public class SendMessageToQueueInput
+    {
+        [JsonProperty("messageVisibilityDelaySeconds")]
+        public int? MessageVisibilityDelayInSeconds { get; set; }
+
+        [JsonProperty("messageContent")]
+        public string MessageContent { get; set; }
     }
 
     public class QueueMessage

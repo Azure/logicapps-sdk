@@ -49,67 +49,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tago")]
-        public IBodyWorkflowAction<PostDataResponse, ApiConnectionActionConfiguration> PostData(Expression<Func<string>> bodydeviceId, Expression<Func<string>> bodyvariable, Expression<Func<string>> bodyvalue, Expression<Func<bodytimezoneInput>> bodytimezone = null, Expression<Func<string>> bodytimestamp = null, Expression<Func<string>> bodyserie = null, Expression<Func<string>> bodyunit = null)
+        public IBodyWorkflowAction<PostDataResponse, ApiConnectionActionConfiguration> PostData(Expression<Func<PostDataInput>> body)
         {
-            var __workflow_bodydeviceId = WorkflowExpression.Compile(bodydeviceId, nameof(bodydeviceId), required: true);
-            var __workflow_bodyvariable = WorkflowExpression.Compile(bodyvariable, nameof(bodyvariable), required: true);
-            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
-            var __workflow_bodytimezone = WorkflowExpression.Compile(bodytimezone, nameof(bodytimezone), required: false);
-            var __workflow_bodytimestamp = WorkflowExpression.Compile(bodytimestamp, nameof(bodytimestamp), required: false);
-            var __workflow_bodyserie = WorkflowExpression.Compile(bodyserie, nameof(bodyserie), required: false);
-            var __workflow_bodyunit = WorkflowExpression.Compile(bodyunit, nameof(bodyunit), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostDataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/prod/data";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["device"] = ExpressionConverter.ConvertO(__workflow_bodydeviceId);
-                bodypropCount++;
-                body["variable"] = ExpressionConverter.ConvertO(__workflow_bodyvariable);
-                bodypropCount++;
-                body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
-                if (__workflow_bodytimezone != null)
-                {
-                    if (__workflow_bodytimezone != null)
-                    {
-                        body["timezone"] = ExpressionConverter.ConvertO(__workflow_bodytimezone);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["timezone"] = "(GMT+00:00) UTC";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytimestamp != null)
-                {
-                    body["time"] = ExpressionConverter.ConvertO(__workflow_bodytimestamp);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyserie != null)
-                {
-                    body["serie"] = ExpressionConverter.ConvertO(__workflow_bodyserie);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyunit != null)
-                {
-                    body["unit"] = ExpressionConverter.ConvertO(__workflow_bodyunit);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PostDataResponse>(callPayload);
             });
         }
@@ -117,11 +65,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
 
     public class TagoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<PostDataResponse, ApiConnectionTriggerConfiguration> DataTrigger(Expression<Func<string>> device, Expression<Func<string>> variable, Expression<Func<conditionInput>> condition, Expression<Func<string>> value = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PostDataResponse, ApiConnectionTriggerConfiguration> DataTrigger(Expression<Func<string>> device, Expression<Func<string>> variable, Expression<Func<conditionInput>> condition, Expression<Func<DataTriggerInput>> body, Expression<Func<string>> value = null, FlowRecurrence recurrence = null)
         {
             var __workflow_device = WorkflowExpression.Compile(device, nameof(device), required: true);
             var __workflow_variable = WorkflowExpression.Compile(variable, nameof(variable), required: true);
             var __workflow_condition = WorkflowExpression.Compile(condition, nameof(condition), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: false);
             return new DeferredBodyTrigger<PostDataResponse, ApiConnectionTriggerConfiguration>(() =>
             {
@@ -133,23 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
                 callPayload.Queries["condition"] = ExpressionConverter.Convert(__workflow_condition);
                 if (__workflow_value != null)
                     callPayload.Queries["value"] = ExpressionConverter.Convert(__workflow_value);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var configObject = new JObject();
-                var configObjectpropCount = 0;
-                configObject["callback"] = "#{listCallbackUrl()}";
-                configObjectpropCount++;
-                if (configObjectpropCount > 0)
-                {
-                    body["config"] = configObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger<PostDataResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -1013,8 +946,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
         public string Result { get; set; }
     }
 
+    public class PostDataInput
+    {
+        [JsonProperty("device", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DeviceId { get; set; }
+
+        [JsonProperty("variable", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Variable { get; set; }
+
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Value { get; set; }
+
+        [JsonProperty("timezone", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PostDataInputTimezoneType? Timezone { get; set; } = PostDataInputTimezoneType.GMT0000UTC;
+
+        [JsonProperty("time")]
+        public string Timestamp { get; set; }
+
+        [JsonProperty("serie")]
+        public string Serie { get; set; }
+
+        [JsonProperty("unit")]
+        public string Unit { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytimezoneInput
+    public enum PostDataInputTimezoneType
     {
         [EnumMember(Value = "(GMT+00:00) UTC")]
         GMT0000UTC,
@@ -1864,6 +1821,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
         EqualTo,
         [EnumMember(Value = "Different from")]
         DifferentFrom
+    }
+
+    public class DataTriggerInput
+    {
+        [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
+        public DataTriggerInputConfigType Config { get; set; }
+    }
+
+    public class DataTriggerInputConfigType
+    {
+        [JsonProperty("callback", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callback { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

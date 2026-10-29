@@ -13,1133 +13,211 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
     public class SparsepowerboxtoolsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfStampImage, ApiConnectionActionConfiguration> PdfStampImage(Expression<Func<string>> reqPdfStampImagepDF, Expression<Func<string>> reqPdfStampImageimage, Expression<Func<double>> reqPdfStampImageoptionsopacity = null, Expression<Func<double>> reqPdfStampImageoptionsscale = null, Expression<Func<int>> reqPdfStampImageoptionsrotate = null, Expression<Func<int>> reqPdfStampImageoptionspositionyOffset = null, Expression<Func<string>> reqPdfStampImageoptionspositionstartOfYOffset = null, Expression<Func<int>> reqPdfStampImageoptionspositionxOffset = null)
+        public IBodyWorkflowAction<Resp200PdfStampImage, ApiConnectionActionConfiguration> PdfStampImage(Expression<Func<PdfStampImageInput>> reqPdfStampImage = null)
         {
-            var __workflow_reqPdfStampImagepDF = WorkflowExpression.Compile(reqPdfStampImagepDF, nameof(reqPdfStampImagepDF), required: true);
-            var __workflow_reqPdfStampImageimage = WorkflowExpression.Compile(reqPdfStampImageimage, nameof(reqPdfStampImageimage), required: true);
-            var __workflow_reqPdfStampImageoptionsopacity = WorkflowExpression.Compile(reqPdfStampImageoptionsopacity, nameof(reqPdfStampImageoptionsopacity), required: false);
-            var __workflow_reqPdfStampImageoptionsscale = WorkflowExpression.Compile(reqPdfStampImageoptionsscale, nameof(reqPdfStampImageoptionsscale), required: false);
-            var __workflow_reqPdfStampImageoptionsrotate = WorkflowExpression.Compile(reqPdfStampImageoptionsrotate, nameof(reqPdfStampImageoptionsrotate), required: false);
-            var __workflow_reqPdfStampImageoptionspositionyOffset = WorkflowExpression.Compile(reqPdfStampImageoptionspositionyOffset, nameof(reqPdfStampImageoptionspositionyOffset), required: false);
-            var __workflow_reqPdfStampImageoptionspositionstartOfYOffset = WorkflowExpression.Compile(reqPdfStampImageoptionspositionstartOfYOffset, nameof(reqPdfStampImageoptionspositionstartOfYOffset), required: false);
-            var __workflow_reqPdfStampImageoptionspositionxOffset = WorkflowExpression.Compile(reqPdfStampImageoptionspositionxOffset, nameof(reqPdfStampImageoptionspositionxOffset), required: false);
+            var __workflow_reqPdfStampImage = WorkflowExpression.Compile(reqPdfStampImage, nameof(reqPdfStampImage), required: false);
             return new DeferredBodyAction<Resp200PdfStampImage, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pdf/stamp/image";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var reqPdfStampImage = new JObject();
-                var reqPdfStampImagepropCount = 0;
-                reqPdfStampImagepropCount++;
-                reqPdfStampImage["pdf"] = ExpressionConverter.ConvertO(__workflow_reqPdfStampImagepDF);
-                reqPdfStampImagepropCount++;
-                reqPdfStampImage["image"] = ExpressionConverter.ConvertO(__workflow_reqPdfStampImageimage);
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_reqPdfStampImageoptionsopacity != null)
-                {
-                    if (__workflow_reqPdfStampImageoptionsopacity != null)
-                    {
-                        optionsObject["opacity"] = ExpressionConverter.ConvertO(__workflow_reqPdfStampImageoptionsopacity);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["opacity"] = 1;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_reqPdfStampImageoptionsscale != null)
-                {
-                    if (__workflow_reqPdfStampImageoptionsscale != null)
-                    {
-                        optionsObject["scale"] = ExpressionConverter.ConvertO(__workflow_reqPdfStampImageoptionsscale);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["scale"] = 1;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_reqPdfStampImageoptionsrotate != null)
-                {
-                    if (__workflow_reqPdfStampImageoptionsrotate != null)
-                    {
-                        optionsObject["rotate"] = ExpressionConverter.ConvertO(__workflow_reqPdfStampImageoptionsrotate);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["rotate"] = 0;
-                    optionsObjectpropCount++;
-                }
-
-                var positionObject = new JObject();
-                var positionObjectpropCount = 0;
-                if (__workflow_reqPdfStampImageoptionspositionyOffset != null)
-                {
-                    if (__workflow_reqPdfStampImageoptionspositionyOffset != null)
-                    {
-                        positionObject["yOffset"] = ExpressionConverter.ConvertO(__workflow_reqPdfStampImageoptionspositionyOffset);
-                        positionObjectpropCount++;
-                    }
-
-                    positionObjectpropCount++;
-                }
-                else
-                {
-                    positionObject["yOffset"] = 25;
-                    positionObjectpropCount++;
-                }
-
-                if (__workflow_reqPdfStampImageoptionspositionstartOfYOffset != null)
-                {
-                    if (__workflow_reqPdfStampImageoptionspositionstartOfYOffset != null)
-                    {
-                        positionObject["yOffsetStart"] = ExpressionConverter.ConvertO(__workflow_reqPdfStampImageoptionspositionstartOfYOffset);
-                        positionObjectpropCount++;
-                    }
-
-                    positionObjectpropCount++;
-                }
-                else
-                {
-                    positionObject["yOffsetStart"] = "bottom";
-                    positionObjectpropCount++;
-                }
-
-                if (__workflow_reqPdfStampImageoptionspositionxOffset != null)
-                {
-                    if (__workflow_reqPdfStampImageoptionspositionxOffset != null)
-                    {
-                        positionObject["xOffset"] = ExpressionConverter.ConvertO(__workflow_reqPdfStampImageoptionspositionxOffset);
-                        positionObjectpropCount++;
-                    }
-
-                    positionObjectpropCount++;
-                }
-                else
-                {
-                    positionObject["xOffset"] = 50;
-                    positionObjectpropCount++;
-                }
-
-                if (positionObjectpropCount > 0)
-                {
-                    optionsObject["position"] = positionObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    reqPdfStampImage["options"] = optionsObject;
-                    reqPdfStampImagepropCount++;
-                }
-
-                if (reqPdfStampImagepropCount > 0)
-                {
-                    callPayload.Body = reqPdfStampImage;
-                }
-
+                if (__workflow_reqPdfStampImage != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqPdfStampImage);
                 return new ApiConnectionAction<Resp200PdfStampImage>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200ExcelSheetAddRows, ApiConnectionActionConfiguration> ExcelSheetAddRows(Expression<Func<string>> reqExcelSheetAddrowssheetname, Expression<Func<string>> reqExcelSheetAddrowsexcel, Expression<Func<JToken[]>> reqExcelSheetAddrowsdata = null)
+        public IBodyWorkflowAction<Resp200ExcelSheetAddRows, ApiConnectionActionConfiguration> ExcelSheetAddRows(Expression<Func<ExcelSheetAddRowsInput>> reqExcelSheetAddrows = null)
         {
-            var __workflow_reqExcelSheetAddrowssheetname = WorkflowExpression.Compile(reqExcelSheetAddrowssheetname, nameof(reqExcelSheetAddrowssheetname), required: true);
-            var __workflow_reqExcelSheetAddrowsexcel = WorkflowExpression.Compile(reqExcelSheetAddrowsexcel, nameof(reqExcelSheetAddrowsexcel), required: true);
-            var __workflow_reqExcelSheetAddrowsdata = WorkflowExpression.Compile(reqExcelSheetAddrowsdata, nameof(reqExcelSheetAddrowsdata), required: false);
+            var __workflow_reqExcelSheetAddrows = WorkflowExpression.Compile(reqExcelSheetAddrows, nameof(reqExcelSheetAddrows), required: false);
             return new DeferredBodyAction<Resp200ExcelSheetAddRows, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/excel/sheet/add-rows";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var reqExcelSheetAddrows = new JObject();
-                var reqExcelSheetAddrowspropCount = 0;
-                reqExcelSheetAddrowspropCount++;
-                reqExcelSheetAddrows["sheet"] = ExpressionConverter.ConvertO(__workflow_reqExcelSheetAddrowssheetname);
-                if (__workflow_reqExcelSheetAddrowsdata != null)
-                {
-                    reqExcelSheetAddrows["data"] = ExpressionConverter.ConvertO(__workflow_reqExcelSheetAddrowsdata);
-                    reqExcelSheetAddrowspropCount++;
-                }
-
-                reqExcelSheetAddrowspropCount++;
-                reqExcelSheetAddrows["excelFile"] = ExpressionConverter.ConvertO(__workflow_reqExcelSheetAddrowsexcel);
-                if (reqExcelSheetAddrowspropCount > 0)
-                {
-                    callPayload.Body = reqExcelSheetAddrows;
-                }
-
+                if (__workflow_reqExcelSheetAddrows != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqExcelSheetAddrows);
                 return new ApiConnectionAction<Resp200ExcelSheetAddRows>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfCreateByHtml, ApiConnectionActionConfiguration> PdfCreateByHtml(Expression<Func<string>> reqPdfCreateByHtmlhTML, Expression<Func<string>> reqPdfCreateByHtmloptionsmediaType = null, Expression<Func<string>> reqPdfCreateByHtmloptionspageFormat = null, Expression<Func<bool>> reqPdfCreateByHtmloptionslandscape = null, Expression<Func<string>> reqPdfCreateByHtmloptionsmarginmarginLeft = null, Expression<Func<string>> reqPdfCreateByHtmloptionsmarginmarginRight = null, Expression<Func<string>> reqPdfCreateByHtmloptionsmarginmarginTop = null, Expression<Func<string>> reqPdfCreateByHtmloptionsmarginmarginBottom = null)
+        public IBodyWorkflowAction<Resp200PdfCreateByHtml, ApiConnectionActionConfiguration> PdfCreateByHtml(Expression<Func<PdfCreateByHtmlInput>> reqPdfCreateByHtml = null)
         {
-            var __workflow_reqPdfCreateByHtmlhTML = WorkflowExpression.Compile(reqPdfCreateByHtmlhTML, nameof(reqPdfCreateByHtmlhTML), required: true);
-            var __workflow_reqPdfCreateByHtmloptionsmediaType = WorkflowExpression.Compile(reqPdfCreateByHtmloptionsmediaType, nameof(reqPdfCreateByHtmloptionsmediaType), required: false);
-            var __workflow_reqPdfCreateByHtmloptionspageFormat = WorkflowExpression.Compile(reqPdfCreateByHtmloptionspageFormat, nameof(reqPdfCreateByHtmloptionspageFormat), required: false);
-            var __workflow_reqPdfCreateByHtmloptionslandscape = WorkflowExpression.Compile(reqPdfCreateByHtmloptionslandscape, nameof(reqPdfCreateByHtmloptionslandscape), required: false);
-            var __workflow_reqPdfCreateByHtmloptionsmarginmarginLeft = WorkflowExpression.Compile(reqPdfCreateByHtmloptionsmarginmarginLeft, nameof(reqPdfCreateByHtmloptionsmarginmarginLeft), required: false);
-            var __workflow_reqPdfCreateByHtmloptionsmarginmarginRight = WorkflowExpression.Compile(reqPdfCreateByHtmloptionsmarginmarginRight, nameof(reqPdfCreateByHtmloptionsmarginmarginRight), required: false);
-            var __workflow_reqPdfCreateByHtmloptionsmarginmarginTop = WorkflowExpression.Compile(reqPdfCreateByHtmloptionsmarginmarginTop, nameof(reqPdfCreateByHtmloptionsmarginmarginTop), required: false);
-            var __workflow_reqPdfCreateByHtmloptionsmarginmarginBottom = WorkflowExpression.Compile(reqPdfCreateByHtmloptionsmarginmarginBottom, nameof(reqPdfCreateByHtmloptionsmarginmarginBottom), required: false);
+            var __workflow_reqPdfCreateByHtml = WorkflowExpression.Compile(reqPdfCreateByHtml, nameof(reqPdfCreateByHtml), required: false);
             return new DeferredBodyAction<Resp200PdfCreateByHtml, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pdf/create/by-html";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var reqPdfCreateByHtml = new JObject();
-                var reqPdfCreateByHtmlpropCount = 0;
-                reqPdfCreateByHtmlpropCount++;
-                reqPdfCreateByHtml["content"] = ExpressionConverter.ConvertO(__workflow_reqPdfCreateByHtmlhTML);
-                var dataObject = new JObject();
-                var dataObjectpropCount = 0;
-                if (dataObjectpropCount > 0)
-                {
-                    reqPdfCreateByHtml["data"] = dataObject;
-                    reqPdfCreateByHtmlpropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_reqPdfCreateByHtmloptionsmediaType != null)
-                {
-                    if (__workflow_reqPdfCreateByHtmloptionsmediaType != null)
-                    {
-                        optionsObject["mediaType"] = ExpressionConverter.ConvertO(__workflow_reqPdfCreateByHtmloptionsmediaType);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["mediaType"] = "print";
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_reqPdfCreateByHtmloptionspageFormat != null)
-                {
-                    if (__workflow_reqPdfCreateByHtmloptionspageFormat != null)
-                    {
-                        optionsObject["format"] = ExpressionConverter.ConvertO(__workflow_reqPdfCreateByHtmloptionspageFormat);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["format"] = "A4";
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_reqPdfCreateByHtmloptionslandscape != null)
-                {
-                    if (__workflow_reqPdfCreateByHtmloptionslandscape != null)
-                    {
-                        optionsObject["landscape"] = ExpressionConverter.ConvertO(__workflow_reqPdfCreateByHtmloptionslandscape);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["landscape"] = false;
-                    optionsObjectpropCount++;
-                }
-
-                var marginObject = new JObject();
-                var marginObjectpropCount = 0;
-                if (__workflow_reqPdfCreateByHtmloptionsmarginmarginLeft != null)
-                {
-                    if (__workflow_reqPdfCreateByHtmloptionsmarginmarginLeft != null)
-                    {
-                        marginObject["left"] = ExpressionConverter.ConvertO(__workflow_reqPdfCreateByHtmloptionsmarginmarginLeft);
-                        marginObjectpropCount++;
-                    }
-
-                    marginObjectpropCount++;
-                }
-                else
-                {
-                    marginObject["left"] = "0px";
-                    marginObjectpropCount++;
-                }
-
-                if (__workflow_reqPdfCreateByHtmloptionsmarginmarginRight != null)
-                {
-                    if (__workflow_reqPdfCreateByHtmloptionsmarginmarginRight != null)
-                    {
-                        marginObject["right"] = ExpressionConverter.ConvertO(__workflow_reqPdfCreateByHtmloptionsmarginmarginRight);
-                        marginObjectpropCount++;
-                    }
-
-                    marginObjectpropCount++;
-                }
-                else
-                {
-                    marginObject["right"] = "0px";
-                    marginObjectpropCount++;
-                }
-
-                if (__workflow_reqPdfCreateByHtmloptionsmarginmarginTop != null)
-                {
-                    if (__workflow_reqPdfCreateByHtmloptionsmarginmarginTop != null)
-                    {
-                        marginObject["top"] = ExpressionConverter.ConvertO(__workflow_reqPdfCreateByHtmloptionsmarginmarginTop);
-                        marginObjectpropCount++;
-                    }
-
-                    marginObjectpropCount++;
-                }
-                else
-                {
-                    marginObject["top"] = "0px";
-                    marginObjectpropCount++;
-                }
-
-                if (__workflow_reqPdfCreateByHtmloptionsmarginmarginBottom != null)
-                {
-                    if (__workflow_reqPdfCreateByHtmloptionsmarginmarginBottom != null)
-                    {
-                        marginObject["bottom"] = ExpressionConverter.ConvertO(__workflow_reqPdfCreateByHtmloptionsmarginmarginBottom);
-                        marginObjectpropCount++;
-                    }
-
-                    marginObjectpropCount++;
-                }
-                else
-                {
-                    marginObject["bottom"] = "0px";
-                    marginObjectpropCount++;
-                }
-
-                if (marginObjectpropCount > 0)
-                {
-                    optionsObject["margin"] = marginObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    reqPdfCreateByHtml["options"] = optionsObject;
-                    reqPdfCreateByHtmlpropCount++;
-                }
-
-                if (reqPdfCreateByHtmlpropCount > 0)
-                {
-                    callPayload.Body = reqPdfCreateByHtml;
-                }
-
+                if (__workflow_reqPdfCreateByHtml != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqPdfCreateByHtml);
                 return new ApiConnectionAction<Resp200PdfCreateByHtml>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200ImageMergeDrawing, ApiConnectionActionConfiguration> ImageMergeDrawing(Expression<Func<string>> reqImageMergeDrawingbackground, Expression<Func<string>> reqImageMergeDrawingdrawing)
+        public IBodyWorkflowAction<Resp200ImageMergeDrawing, ApiConnectionActionConfiguration> ImageMergeDrawing(Expression<Func<ImageMergeDrawingInput>> reqImageMergeDrawing = null)
         {
-            var __workflow_reqImageMergeDrawingbackground = WorkflowExpression.Compile(reqImageMergeDrawingbackground, nameof(reqImageMergeDrawingbackground), required: true);
-            var __workflow_reqImageMergeDrawingdrawing = WorkflowExpression.Compile(reqImageMergeDrawingdrawing, nameof(reqImageMergeDrawingdrawing), required: true);
+            var __workflow_reqImageMergeDrawing = WorkflowExpression.Compile(reqImageMergeDrawing, nameof(reqImageMergeDrawing), required: false);
             return new DeferredBodyAction<Resp200ImageMergeDrawing, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/image/merge/drawing";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var reqImageMergeDrawing = new JObject();
-                var reqImageMergeDrawingpropCount = 0;
-                reqImageMergeDrawingpropCount++;
-                reqImageMergeDrawing["background"] = ExpressionConverter.ConvertO(__workflow_reqImageMergeDrawingbackground);
-                reqImageMergeDrawingpropCount++;
-                reqImageMergeDrawing["drawing"] = ExpressionConverter.ConvertO(__workflow_reqImageMergeDrawingdrawing);
-                if (reqImageMergeDrawingpropCount > 0)
-                {
-                    callPayload.Body = reqImageMergeDrawing;
-                }
-
+                if (__workflow_reqImageMergeDrawing != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqImageMergeDrawing);
                 return new ApiConnectionAction<Resp200ImageMergeDrawing>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfStampText, ApiConnectionActionConfiguration> PdfStampText(Expression<Func<string>> reqPdfStampTextpDF, Expression<Func<string>> reqPdfStampTexttext, Expression<Func<string>> reqPdfStampTextoptionsfontColor = null, Expression<Func<int>> reqPdfStampTextoptionsfontSize = null, Expression<Func<int>> reqPdfStampTextoptionsrotate = null, Expression<Func<int>> reqPdfStampTextoptionspositionyOffset = null, Expression<Func<string>> reqPdfStampTextoptionspositionstartOfYOffset = null, Expression<Func<int>> reqPdfStampTextoptionspositionxOffset = null)
+        public IBodyWorkflowAction<Resp200PdfStampText, ApiConnectionActionConfiguration> PdfStampText(Expression<Func<PdfStampTextInput>> reqPdfStampText = null)
         {
-            var __workflow_reqPdfStampTextpDF = WorkflowExpression.Compile(reqPdfStampTextpDF, nameof(reqPdfStampTextpDF), required: true);
-            var __workflow_reqPdfStampTexttext = WorkflowExpression.Compile(reqPdfStampTexttext, nameof(reqPdfStampTexttext), required: true);
-            var __workflow_reqPdfStampTextoptionsfontColor = WorkflowExpression.Compile(reqPdfStampTextoptionsfontColor, nameof(reqPdfStampTextoptionsfontColor), required: false);
-            var __workflow_reqPdfStampTextoptionsfontSize = WorkflowExpression.Compile(reqPdfStampTextoptionsfontSize, nameof(reqPdfStampTextoptionsfontSize), required: false);
-            var __workflow_reqPdfStampTextoptionsrotate = WorkflowExpression.Compile(reqPdfStampTextoptionsrotate, nameof(reqPdfStampTextoptionsrotate), required: false);
-            var __workflow_reqPdfStampTextoptionspositionyOffset = WorkflowExpression.Compile(reqPdfStampTextoptionspositionyOffset, nameof(reqPdfStampTextoptionspositionyOffset), required: false);
-            var __workflow_reqPdfStampTextoptionspositionstartOfYOffset = WorkflowExpression.Compile(reqPdfStampTextoptionspositionstartOfYOffset, nameof(reqPdfStampTextoptionspositionstartOfYOffset), required: false);
-            var __workflow_reqPdfStampTextoptionspositionxOffset = WorkflowExpression.Compile(reqPdfStampTextoptionspositionxOffset, nameof(reqPdfStampTextoptionspositionxOffset), required: false);
+            var __workflow_reqPdfStampText = WorkflowExpression.Compile(reqPdfStampText, nameof(reqPdfStampText), required: false);
             return new DeferredBodyAction<Resp200PdfStampText, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pdf/stamp/text";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var reqPdfStampText = new JObject();
-                var reqPdfStampTextpropCount = 0;
-                reqPdfStampTextpropCount++;
-                reqPdfStampText["pdf"] = ExpressionConverter.ConvertO(__workflow_reqPdfStampTextpDF);
-                reqPdfStampTextpropCount++;
-                reqPdfStampText["text"] = ExpressionConverter.ConvertO(__workflow_reqPdfStampTexttext);
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_reqPdfStampTextoptionsfontColor != null)
-                {
-                    if (__workflow_reqPdfStampTextoptionsfontColor != null)
-                    {
-                        optionsObject["color"] = ExpressionConverter.ConvertO(__workflow_reqPdfStampTextoptionsfontColor);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["color"] = "#000000";
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_reqPdfStampTextoptionsfontSize != null)
-                {
-                    if (__workflow_reqPdfStampTextoptionsfontSize != null)
-                    {
-                        optionsObject["size"] = ExpressionConverter.ConvertO(__workflow_reqPdfStampTextoptionsfontSize);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["size"] = 50;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_reqPdfStampTextoptionsrotate != null)
-                {
-                    if (__workflow_reqPdfStampTextoptionsrotate != null)
-                    {
-                        optionsObject["rotate"] = ExpressionConverter.ConvertO(__workflow_reqPdfStampTextoptionsrotate);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["rotate"] = 0;
-                    optionsObjectpropCount++;
-                }
-
-                var positionObject = new JObject();
-                var positionObjectpropCount = 0;
-                if (__workflow_reqPdfStampTextoptionspositionyOffset != null)
-                {
-                    if (__workflow_reqPdfStampTextoptionspositionyOffset != null)
-                    {
-                        positionObject["yOffset"] = ExpressionConverter.ConvertO(__workflow_reqPdfStampTextoptionspositionyOffset);
-                        positionObjectpropCount++;
-                    }
-
-                    positionObjectpropCount++;
-                }
-                else
-                {
-                    positionObject["yOffset"] = 25;
-                    positionObjectpropCount++;
-                }
-
-                if (__workflow_reqPdfStampTextoptionspositionstartOfYOffset != null)
-                {
-                    if (__workflow_reqPdfStampTextoptionspositionstartOfYOffset != null)
-                    {
-                        positionObject["yOffsetStart"] = ExpressionConverter.ConvertO(__workflow_reqPdfStampTextoptionspositionstartOfYOffset);
-                        positionObjectpropCount++;
-                    }
-
-                    positionObjectpropCount++;
-                }
-                else
-                {
-                    positionObject["yOffsetStart"] = "bottom";
-                    positionObjectpropCount++;
-                }
-
-                if (__workflow_reqPdfStampTextoptionspositionxOffset != null)
-                {
-                    if (__workflow_reqPdfStampTextoptionspositionxOffset != null)
-                    {
-                        positionObject["xOffset"] = ExpressionConverter.ConvertO(__workflow_reqPdfStampTextoptionspositionxOffset);
-                        positionObjectpropCount++;
-                    }
-
-                    positionObjectpropCount++;
-                }
-                else
-                {
-                    positionObject["xOffset"] = 50;
-                    positionObjectpropCount++;
-                }
-
-                if (positionObjectpropCount > 0)
-                {
-                    optionsObject["position"] = positionObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    reqPdfStampText["options"] = optionsObject;
-                    reqPdfStampTextpropCount++;
-                }
-
-                if (reqPdfStampTextpropCount > 0)
-                {
-                    callPayload.Body = reqPdfStampText;
-                }
-
+                if (__workflow_reqPdfStampText != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqPdfStampText);
                 return new ApiConnectionAction<Resp200PdfStampText>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200CsvToJson, ApiConnectionActionConfiguration> CsvToJson(Expression<Func<string>> reqCsvToJsoncSV, Expression<Func<bool>> reqCsvToJsonoptionshasHeaders = null, Expression<Func<string>> reqCsvToJsonoptionsdelimiter = null)
+        public IBodyWorkflowAction<Resp200CsvToJson, ApiConnectionActionConfiguration> CsvToJson(Expression<Func<CsvToJsonInput>> reqCsvToJson = null)
         {
-            var __workflow_reqCsvToJsoncSV = WorkflowExpression.Compile(reqCsvToJsoncSV, nameof(reqCsvToJsoncSV), required: true);
-            var __workflow_reqCsvToJsonoptionshasHeaders = WorkflowExpression.Compile(reqCsvToJsonoptionshasHeaders, nameof(reqCsvToJsonoptionshasHeaders), required: false);
-            var __workflow_reqCsvToJsonoptionsdelimiter = WorkflowExpression.Compile(reqCsvToJsonoptionsdelimiter, nameof(reqCsvToJsonoptionsdelimiter), required: false);
+            var __workflow_reqCsvToJson = WorkflowExpression.Compile(reqCsvToJson, nameof(reqCsvToJson), required: false);
             return new DeferredBodyAction<Resp200CsvToJson, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/csv/to-json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var reqCsvToJson = new JObject();
-                var reqCsvToJsonpropCount = 0;
-                reqCsvToJsonpropCount++;
-                reqCsvToJson["csv"] = ExpressionConverter.ConvertO(__workflow_reqCsvToJsoncSV);
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_reqCsvToJsonoptionshasHeaders != null)
-                {
-                    if (__workflow_reqCsvToJsonoptionshasHeaders != null)
-                    {
-                        optionsObject["hasHeaders"] = ExpressionConverter.ConvertO(__workflow_reqCsvToJsonoptionshasHeaders);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["hasHeaders"] = true;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_reqCsvToJsonoptionsdelimiter != null)
-                {
-                    if (__workflow_reqCsvToJsonoptionsdelimiter != null)
-                    {
-                        optionsObject["delimiter"] = ExpressionConverter.ConvertO(__workflow_reqCsvToJsonoptionsdelimiter);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["delimiter"] = ",";
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    reqCsvToJson["options"] = optionsObject;
-                    reqCsvToJsonpropCount++;
-                }
-
-                if (reqCsvToJsonpropCount > 0)
-                {
-                    callPayload.Body = reqCsvToJson;
-                }
-
+                if (__workflow_reqCsvToJson != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqCsvToJson);
                 return new ApiConnectionAction<Resp200CsvToJson>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfCreateByUrl, ApiConnectionActionConfiguration> PdfCreateByUrl(Expression<Func<string>> reqPdfCreateByUrlhTML, Expression<Func<string>> reqPdfCreateByUrloptionsmediaType = null, Expression<Func<string>> reqPdfCreateByUrloptionspageFormat = null, Expression<Func<bool>> reqPdfCreateByUrloptionslandscape = null, Expression<Func<string>> reqPdfCreateByUrloptionsmarginmarginLeft = null, Expression<Func<string>> reqPdfCreateByUrloptionsmarginmarginRight = null, Expression<Func<string>> reqPdfCreateByUrloptionsmarginmarginTop = null, Expression<Func<string>> reqPdfCreateByUrloptionsmarginmarginBottom = null)
+        public IBodyWorkflowAction<Resp200PdfCreateByUrl, ApiConnectionActionConfiguration> PdfCreateByUrl(Expression<Func<PdfCreateByUrlInput>> reqPdfCreateByUrl = null)
         {
-            var __workflow_reqPdfCreateByUrlhTML = WorkflowExpression.Compile(reqPdfCreateByUrlhTML, nameof(reqPdfCreateByUrlhTML), required: true);
-            var __workflow_reqPdfCreateByUrloptionsmediaType = WorkflowExpression.Compile(reqPdfCreateByUrloptionsmediaType, nameof(reqPdfCreateByUrloptionsmediaType), required: false);
-            var __workflow_reqPdfCreateByUrloptionspageFormat = WorkflowExpression.Compile(reqPdfCreateByUrloptionspageFormat, nameof(reqPdfCreateByUrloptionspageFormat), required: false);
-            var __workflow_reqPdfCreateByUrloptionslandscape = WorkflowExpression.Compile(reqPdfCreateByUrloptionslandscape, nameof(reqPdfCreateByUrloptionslandscape), required: false);
-            var __workflow_reqPdfCreateByUrloptionsmarginmarginLeft = WorkflowExpression.Compile(reqPdfCreateByUrloptionsmarginmarginLeft, nameof(reqPdfCreateByUrloptionsmarginmarginLeft), required: false);
-            var __workflow_reqPdfCreateByUrloptionsmarginmarginRight = WorkflowExpression.Compile(reqPdfCreateByUrloptionsmarginmarginRight, nameof(reqPdfCreateByUrloptionsmarginmarginRight), required: false);
-            var __workflow_reqPdfCreateByUrloptionsmarginmarginTop = WorkflowExpression.Compile(reqPdfCreateByUrloptionsmarginmarginTop, nameof(reqPdfCreateByUrloptionsmarginmarginTop), required: false);
-            var __workflow_reqPdfCreateByUrloptionsmarginmarginBottom = WorkflowExpression.Compile(reqPdfCreateByUrloptionsmarginmarginBottom, nameof(reqPdfCreateByUrloptionsmarginmarginBottom), required: false);
+            var __workflow_reqPdfCreateByUrl = WorkflowExpression.Compile(reqPdfCreateByUrl, nameof(reqPdfCreateByUrl), required: false);
             return new DeferredBodyAction<Resp200PdfCreateByUrl, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pdf/create/by-url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var reqPdfCreateByUrl = new JObject();
-                var reqPdfCreateByUrlpropCount = 0;
-                reqPdfCreateByUrlpropCount++;
-                reqPdfCreateByUrl["url"] = ExpressionConverter.ConvertO(__workflow_reqPdfCreateByUrlhTML);
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_reqPdfCreateByUrloptionsmediaType != null)
-                {
-                    if (__workflow_reqPdfCreateByUrloptionsmediaType != null)
-                    {
-                        optionsObject["mediaType"] = ExpressionConverter.ConvertO(__workflow_reqPdfCreateByUrloptionsmediaType);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["mediaType"] = "print";
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_reqPdfCreateByUrloptionspageFormat != null)
-                {
-                    if (__workflow_reqPdfCreateByUrloptionspageFormat != null)
-                    {
-                        optionsObject["format"] = ExpressionConverter.ConvertO(__workflow_reqPdfCreateByUrloptionspageFormat);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["format"] = "A4";
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_reqPdfCreateByUrloptionslandscape != null)
-                {
-                    if (__workflow_reqPdfCreateByUrloptionslandscape != null)
-                    {
-                        optionsObject["landscape"] = ExpressionConverter.ConvertO(__workflow_reqPdfCreateByUrloptionslandscape);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["landscape"] = false;
-                    optionsObjectpropCount++;
-                }
-
-                var marginObject = new JObject();
-                var marginObjectpropCount = 0;
-                if (__workflow_reqPdfCreateByUrloptionsmarginmarginLeft != null)
-                {
-                    if (__workflow_reqPdfCreateByUrloptionsmarginmarginLeft != null)
-                    {
-                        marginObject["left"] = ExpressionConverter.ConvertO(__workflow_reqPdfCreateByUrloptionsmarginmarginLeft);
-                        marginObjectpropCount++;
-                    }
-
-                    marginObjectpropCount++;
-                }
-                else
-                {
-                    marginObject["left"] = "0px";
-                    marginObjectpropCount++;
-                }
-
-                if (__workflow_reqPdfCreateByUrloptionsmarginmarginRight != null)
-                {
-                    if (__workflow_reqPdfCreateByUrloptionsmarginmarginRight != null)
-                    {
-                        marginObject["right"] = ExpressionConverter.ConvertO(__workflow_reqPdfCreateByUrloptionsmarginmarginRight);
-                        marginObjectpropCount++;
-                    }
-
-                    marginObjectpropCount++;
-                }
-                else
-                {
-                    marginObject["right"] = "0px";
-                    marginObjectpropCount++;
-                }
-
-                if (__workflow_reqPdfCreateByUrloptionsmarginmarginTop != null)
-                {
-                    if (__workflow_reqPdfCreateByUrloptionsmarginmarginTop != null)
-                    {
-                        marginObject["top"] = ExpressionConverter.ConvertO(__workflow_reqPdfCreateByUrloptionsmarginmarginTop);
-                        marginObjectpropCount++;
-                    }
-
-                    marginObjectpropCount++;
-                }
-                else
-                {
-                    marginObject["top"] = "0px";
-                    marginObjectpropCount++;
-                }
-
-                if (__workflow_reqPdfCreateByUrloptionsmarginmarginBottom != null)
-                {
-                    if (__workflow_reqPdfCreateByUrloptionsmarginmarginBottom != null)
-                    {
-                        marginObject["bottom"] = ExpressionConverter.ConvertO(__workflow_reqPdfCreateByUrloptionsmarginmarginBottom);
-                        marginObjectpropCount++;
-                    }
-
-                    marginObjectpropCount++;
-                }
-                else
-                {
-                    marginObject["bottom"] = "0px";
-                    marginObjectpropCount++;
-                }
-
-                if (marginObjectpropCount > 0)
-                {
-                    optionsObject["margin"] = marginObject;
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    reqPdfCreateByUrl["options"] = optionsObject;
-                    reqPdfCreateByUrlpropCount++;
-                }
-
-                if (reqPdfCreateByUrlpropCount > 0)
-                {
-                    callPayload.Body = reqPdfCreateByUrl;
-                }
-
+                if (__workflow_reqPdfCreateByUrl != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqPdfCreateByUrl);
                 return new ApiConnectionAction<Resp200PdfCreateByUrl>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200ImageStampText, ApiConnectionActionConfiguration> ImageStampText(Expression<Func<string>> reqImageStampTextimage = null, Expression<Func<string>> reqImageStampTexttextToStamp = null, Expression<Func<string>> reqImageStampTextoptionslocationOfTheStamp = null, Expression<Func<string>> reqImageStampTextoptionsfontcolor = null, Expression<Func<int>> reqImageStampTextoptionsfontsize = null)
+        public IBodyWorkflowAction<Resp200ImageStampText, ApiConnectionActionConfiguration> ImageStampText(Expression<Func<ImageStampTextInput>> reqImageStampText = null)
         {
-            var __workflow_reqImageStampTextimage = WorkflowExpression.Compile(reqImageStampTextimage, nameof(reqImageStampTextimage), required: false);
-            var __workflow_reqImageStampTexttextToStamp = WorkflowExpression.Compile(reqImageStampTexttextToStamp, nameof(reqImageStampTexttextToStamp), required: false);
-            var __workflow_reqImageStampTextoptionslocationOfTheStamp = WorkflowExpression.Compile(reqImageStampTextoptionslocationOfTheStamp, nameof(reqImageStampTextoptionslocationOfTheStamp), required: false);
-            var __workflow_reqImageStampTextoptionsfontcolor = WorkflowExpression.Compile(reqImageStampTextoptionsfontcolor, nameof(reqImageStampTextoptionsfontcolor), required: false);
-            var __workflow_reqImageStampTextoptionsfontsize = WorkflowExpression.Compile(reqImageStampTextoptionsfontsize, nameof(reqImageStampTextoptionsfontsize), required: false);
+            var __workflow_reqImageStampText = WorkflowExpression.Compile(reqImageStampText, nameof(reqImageStampText), required: false);
             return new DeferredBodyAction<Resp200ImageStampText, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/image/stamp/text";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var reqImageStampText = new JObject();
-                var reqImageStampTextpropCount = 0;
-                if (__workflow_reqImageStampTextimage != null)
-                {
-                    reqImageStampText["image"] = ExpressionConverter.ConvertO(__workflow_reqImageStampTextimage);
-                    reqImageStampTextpropCount++;
-                }
-
-                if (__workflow_reqImageStampTexttextToStamp != null)
-                {
-                    reqImageStampText["text"] = ExpressionConverter.ConvertO(__workflow_reqImageStampTexttextToStamp);
-                    reqImageStampTextpropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_reqImageStampTextoptionslocationOfTheStamp != null)
-                {
-                    if (__workflow_reqImageStampTextoptionslocationOfTheStamp != null)
-                    {
-                        optionsObject["location"] = ExpressionConverter.ConvertO(__workflow_reqImageStampTextoptionslocationOfTheStamp);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["location"] = "Center";
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_reqImageStampTextoptionsfontcolor != null)
-                {
-                    if (__workflow_reqImageStampTextoptionsfontcolor != null)
-                    {
-                        optionsObject["fontColor"] = ExpressionConverter.ConvertO(__workflow_reqImageStampTextoptionsfontcolor);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["fontColor"] = "#ffffff";
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_reqImageStampTextoptionsfontsize != null)
-                {
-                    if (__workflow_reqImageStampTextoptionsfontsize != null)
-                    {
-                        optionsObject["fontSize"] = ExpressionConverter.ConvertO(__workflow_reqImageStampTextoptionsfontsize);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["fontSize"] = 25;
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    reqImageStampText["options"] = optionsObject;
-                    reqImageStampTextpropCount++;
-                }
-
-                if (reqImageStampTextpropCount > 0)
-                {
-                    callPayload.Body = reqImageStampText;
-                }
-
+                if (__workflow_reqImageStampText != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqImageStampText);
                 return new ApiConnectionAction<Resp200ImageStampText>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200ImageResize, ApiConnectionActionConfiguration> ImageResize(Expression<Func<string>> reqImageResizeimage = null, Expression<Func<int>> reqImageResizewidth = null, Expression<Func<int>> reqImageResizeheight = null, Expression<Func<bool>> reqImageResizeoptionsignoreTheAspectRation = null)
+        public IBodyWorkflowAction<Resp200ImageResize, ApiConnectionActionConfiguration> ImageResize(Expression<Func<ImageResizeInput>> reqImageResize = null)
         {
-            var __workflow_reqImageResizeimage = WorkflowExpression.Compile(reqImageResizeimage, nameof(reqImageResizeimage), required: false);
-            var __workflow_reqImageResizewidth = WorkflowExpression.Compile(reqImageResizewidth, nameof(reqImageResizewidth), required: false);
-            var __workflow_reqImageResizeheight = WorkflowExpression.Compile(reqImageResizeheight, nameof(reqImageResizeheight), required: false);
-            var __workflow_reqImageResizeoptionsignoreTheAspectRation = WorkflowExpression.Compile(reqImageResizeoptionsignoreTheAspectRation, nameof(reqImageResizeoptionsignoreTheAspectRation), required: false);
+            var __workflow_reqImageResize = WorkflowExpression.Compile(reqImageResize, nameof(reqImageResize), required: false);
             return new DeferredBodyAction<Resp200ImageResize, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/image/resize";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var reqImageResize = new JObject();
-                var reqImageResizepropCount = 0;
-                if (__workflow_reqImageResizeimage != null)
-                {
-                    reqImageResize["image"] = ExpressionConverter.ConvertO(__workflow_reqImageResizeimage);
-                    reqImageResizepropCount++;
-                }
-
-                if (__workflow_reqImageResizewidth != null)
-                {
-                    reqImageResize["width"] = ExpressionConverter.ConvertO(__workflow_reqImageResizewidth);
-                    reqImageResizepropCount++;
-                }
-
-                if (__workflow_reqImageResizeheight != null)
-                {
-                    reqImageResize["height"] = ExpressionConverter.ConvertO(__workflow_reqImageResizeheight);
-                    reqImageResizepropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_reqImageResizeoptionsignoreTheAspectRation != null)
-                {
-                    if (__workflow_reqImageResizeoptionsignoreTheAspectRation != null)
-                    {
-                        optionsObject["ignoreAspectRation"] = ExpressionConverter.ConvertO(__workflow_reqImageResizeoptionsignoreTheAspectRation);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["ignoreAspectRation"] = false;
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    reqImageResize["options"] = optionsObject;
-                    reqImageResizepropCount++;
-                }
-
-                if (reqImageResizepropCount > 0)
-                {
-                    callPayload.Body = reqImageResize;
-                }
-
+                if (__workflow_reqImageResize != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqImageResize);
                 return new ApiConnectionAction<Resp200ImageResize>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfSplitByPage, ApiConnectionActionConfiguration> PdfSplitByPage(Expression<Func<string>> reqPdfSplitByPagepDFFile = null, Expression<Func<double>> reqPdfSplitByPageoptionsnumberOfPages = null)
+        public IBodyWorkflowAction<Resp200PdfSplitByPage, ApiConnectionActionConfiguration> PdfSplitByPage(Expression<Func<PdfSplitByPageInput>> reqPdfSplitByPage = null)
         {
-            var __workflow_reqPdfSplitByPagepDFFile = WorkflowExpression.Compile(reqPdfSplitByPagepDFFile, nameof(reqPdfSplitByPagepDFFile), required: false);
-            var __workflow_reqPdfSplitByPageoptionsnumberOfPages = WorkflowExpression.Compile(reqPdfSplitByPageoptionsnumberOfPages, nameof(reqPdfSplitByPageoptionsnumberOfPages), required: false);
+            var __workflow_reqPdfSplitByPage = WorkflowExpression.Compile(reqPdfSplitByPage, nameof(reqPdfSplitByPage), required: false);
             return new DeferredBodyAction<Resp200PdfSplitByPage, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pdf/split/by-page";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var reqPdfSplitByPage = new JObject();
-                var reqPdfSplitByPagepropCount = 0;
-                if (__workflow_reqPdfSplitByPagepDFFile != null)
-                {
-                    reqPdfSplitByPage["pdf"] = ExpressionConverter.ConvertO(__workflow_reqPdfSplitByPagepDFFile);
-                    reqPdfSplitByPagepropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_reqPdfSplitByPageoptionsnumberOfPages != null)
-                {
-                    if (__workflow_reqPdfSplitByPageoptionsnumberOfPages != null)
-                    {
-                        optionsObject["numberOfPages"] = ExpressionConverter.ConvertO(__workflow_reqPdfSplitByPageoptionsnumberOfPages);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["numberOfPages"] = 1;
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    reqPdfSplitByPage["options"] = optionsObject;
-                    reqPdfSplitByPagepropCount++;
-                }
-
-                if (reqPdfSplitByPagepropCount > 0)
-                {
-                    callPayload.Body = reqPdfSplitByPage;
-                }
-
+                if (__workflow_reqPdfSplitByPage != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqPdfSplitByPage);
                 return new ApiConnectionAction<Resp200PdfSplitByPage>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200ImageStampExif, ApiConnectionActionConfiguration> ImageStampExif(Expression<Func<string>> reqImageStampExifimage = null, Expression<Func<string[]>> reqImageStampExifoptionstags = null, Expression<Func<string>> reqImageStampExifoptionslocationOfTheStamp = null, Expression<Func<string>> reqImageStampExifoptionsfontcolor = null, Expression<Func<int>> reqImageStampExifoptionsfontsize = null, Expression<Func<bool>> reqImageStampExifoptionsprintTagName = null)
+        public IBodyWorkflowAction<Resp200ImageStampExif, ApiConnectionActionConfiguration> ImageStampExif(Expression<Func<ImageStampExifInput>> reqImageStampExif = null)
         {
-            var __workflow_reqImageStampExifimage = WorkflowExpression.Compile(reqImageStampExifimage, nameof(reqImageStampExifimage), required: false);
-            var __workflow_reqImageStampExifoptionstags = WorkflowExpression.Compile(reqImageStampExifoptionstags, nameof(reqImageStampExifoptionstags), required: false);
-            var __workflow_reqImageStampExifoptionslocationOfTheStamp = WorkflowExpression.Compile(reqImageStampExifoptionslocationOfTheStamp, nameof(reqImageStampExifoptionslocationOfTheStamp), required: false);
-            var __workflow_reqImageStampExifoptionsfontcolor = WorkflowExpression.Compile(reqImageStampExifoptionsfontcolor, nameof(reqImageStampExifoptionsfontcolor), required: false);
-            var __workflow_reqImageStampExifoptionsfontsize = WorkflowExpression.Compile(reqImageStampExifoptionsfontsize, nameof(reqImageStampExifoptionsfontsize), required: false);
-            var __workflow_reqImageStampExifoptionsprintTagName = WorkflowExpression.Compile(reqImageStampExifoptionsprintTagName, nameof(reqImageStampExifoptionsprintTagName), required: false);
+            var __workflow_reqImageStampExif = WorkflowExpression.Compile(reqImageStampExif, nameof(reqImageStampExif), required: false);
             return new DeferredBodyAction<Resp200ImageStampExif, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/image/stamp/exif";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var reqImageStampExif = new JObject();
-                var reqImageStampExifpropCount = 0;
-                if (__workflow_reqImageStampExifimage != null)
-                {
-                    reqImageStampExif["image"] = ExpressionConverter.ConvertO(__workflow_reqImageStampExifimage);
-                    reqImageStampExifpropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_reqImageStampExifoptionstags != null)
-                {
-                    optionsObject["tags"] = ExpressionConverter.ConvertO(__workflow_reqImageStampExifoptionstags);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_reqImageStampExifoptionslocationOfTheStamp != null)
-                {
-                    if (__workflow_reqImageStampExifoptionslocationOfTheStamp != null)
-                    {
-                        optionsObject["location"] = ExpressionConverter.ConvertO(__workflow_reqImageStampExifoptionslocationOfTheStamp);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["location"] = "Center";
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_reqImageStampExifoptionsfontcolor != null)
-                {
-                    if (__workflow_reqImageStampExifoptionsfontcolor != null)
-                    {
-                        optionsObject["fontColor"] = ExpressionConverter.ConvertO(__workflow_reqImageStampExifoptionsfontcolor);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["fontColor"] = "#ffffff";
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_reqImageStampExifoptionsfontsize != null)
-                {
-                    if (__workflow_reqImageStampExifoptionsfontsize != null)
-                    {
-                        optionsObject["fontSize"] = ExpressionConverter.ConvertO(__workflow_reqImageStampExifoptionsfontsize);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["fontSize"] = 25;
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_reqImageStampExifoptionsprintTagName != null)
-                {
-                    if (__workflow_reqImageStampExifoptionsprintTagName != null)
-                    {
-                        optionsObject["printTagName"] = ExpressionConverter.ConvertO(__workflow_reqImageStampExifoptionsprintTagName);
-                        optionsObjectpropCount++;
-                    }
-
-                    optionsObjectpropCount++;
-                }
-                else
-                {
-                    optionsObject["printTagName"] = false;
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    reqImageStampExif["options"] = optionsObject;
-                    reqImageStampExifpropCount++;
-                }
-
-                if (reqImageStampExifpropCount > 0)
-                {
-                    callPayload.Body = reqImageStampExif;
-                }
-
+                if (__workflow_reqImageStampExif != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqImageStampExif);
                 return new ApiConnectionAction<Resp200ImageStampExif>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfFillForm, ApiConnectionActionConfiguration> PdfFillForm(Expression<Func<string>> reqPdfFillFormpDFFile = null)
+        public IBodyWorkflowAction<Resp200PdfFillForm, ApiConnectionActionConfiguration> PdfFillForm(Expression<Func<PdfFillFormInput>> reqPdfFillForm = null)
         {
-            var __workflow_reqPdfFillFormpDFFile = WorkflowExpression.Compile(reqPdfFillFormpDFFile, nameof(reqPdfFillFormpDFFile), required: false);
+            var __workflow_reqPdfFillForm = WorkflowExpression.Compile(reqPdfFillForm, nameof(reqPdfFillForm), required: false);
             return new DeferredBodyAction<Resp200PdfFillForm, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/form/fill";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var reqPdfFillForm = new JObject();
-                var reqPdfFillFormpropCount = 0;
-                if (__workflow_reqPdfFillFormpDFFile != null)
-                {
-                    reqPdfFillForm["pdf"] = ExpressionConverter.ConvertO(__workflow_reqPdfFillFormpDFFile);
-                    reqPdfFillFormpropCount++;
-                }
-
-                var dataObject = new JObject();
-                var dataObjectpropCount = 0;
-                if (dataObjectpropCount > 0)
-                {
-                    reqPdfFillForm["data"] = dataObject;
-                    reqPdfFillFormpropCount++;
-                }
-
-                if (reqPdfFillFormpropCount > 0)
-                {
-                    callPayload.Body = reqPdfFillForm;
-                }
-
+                if (__workflow_reqPdfFillForm != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqPdfFillForm);
                 return new ApiConnectionAction<Resp200PdfFillForm>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfGetFormData, ApiConnectionActionConfiguration> PdfGetFormData(Expression<Func<string>> reqPdfGetFormDatapDFFile = null)
+        public IBodyWorkflowAction<Resp200PdfGetFormData, ApiConnectionActionConfiguration> PdfGetFormData(Expression<Func<PdfGetFormDataInput>> reqPdfGetFormData = null)
         {
-            var __workflow_reqPdfGetFormDatapDFFile = WorkflowExpression.Compile(reqPdfGetFormDatapDFFile, nameof(reqPdfGetFormDatapDFFile), required: false);
+            var __workflow_reqPdfGetFormData = WorkflowExpression.Compile(reqPdfGetFormData, nameof(reqPdfGetFormData), required: false);
             return new DeferredBodyAction<Resp200PdfGetFormData, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/form/getdata";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var reqPdfGetFormData = new JObject();
-                var reqPdfGetFormDatapropCount = 0;
-                if (__workflow_reqPdfGetFormDatapDFFile != null)
-                {
-                    reqPdfGetFormData["pdf"] = ExpressionConverter.ConvertO(__workflow_reqPdfGetFormDatapDFFile);
-                    reqPdfGetFormDatapropCount++;
-                }
-
-                if (reqPdfGetFormDatapropCount > 0)
-                {
-                    callPayload.Body = reqPdfGetFormData;
-                }
-
+                if (__workflow_reqPdfGetFormData != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqPdfGetFormData);
                 return new ApiConnectionAction<Resp200PdfGetFormData>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfMergeSimple, ApiConnectionActionConfiguration> PdfMergeSimple(Expression<Func<string[]>> reqPdfMergeSimplepDFFile = null)
+        public IBodyWorkflowAction<Resp200PdfMergeSimple, ApiConnectionActionConfiguration> PdfMergeSimple(Expression<Func<PdfMergeSimpleInput>> reqPdfMergeSimple = null)
         {
-            var __workflow_reqPdfMergeSimplepDFFile = WorkflowExpression.Compile(reqPdfMergeSimplepDFFile, nameof(reqPdfMergeSimplepDFFile), required: false);
+            var __workflow_reqPdfMergeSimple = WorkflowExpression.Compile(reqPdfMergeSimple, nameof(reqPdfMergeSimple), required: false);
             return new DeferredBodyAction<Resp200PdfMergeSimple, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pdf/merge/simple";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var reqPdfMergeSimple = new JObject();
-                var reqPdfMergeSimplepropCount = 0;
-                if (__workflow_reqPdfMergeSimplepDFFile != null)
-                {
-                    reqPdfMergeSimple["pdfs"] = ExpressionConverter.ConvertO(__workflow_reqPdfMergeSimplepDFFile);
-                    reqPdfMergeSimplepropCount++;
-                }
-
-                if (reqPdfMergeSimplepropCount > 0)
-                {
-                    callPayload.Body = reqPdfMergeSimple;
-                }
-
+                if (__workflow_reqPdfMergeSimple != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_reqPdfMergeSimple);
                 return new ApiConnectionAction<Resp200PdfMergeSimple>(callPayload);
             });
         }
@@ -1155,10 +233,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public string PDFFile { get; set; }
     }
 
+    public class PdfStampImageInput
+    {
+        [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PDF { get; set; }
+
+        [JsonProperty("image", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Image { get; set; }
+
+        [JsonProperty("options")]
+        public PdfStampImageInputOptionsType Options { get; set; }
+    }
+
+    public class PdfStampImageInputOptionsType
+    {
+        [JsonProperty("opacity", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? Opacity { get; set; } = 1;
+
+        [JsonProperty("scale", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? Scale { get; set; } = 1;
+
+        [JsonProperty("rotate", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Rotate { get; set; } = 0;
+
+        [JsonProperty("position")]
+        public PdfStampImageInputOptionsTypePositionType Position { get; set; }
+    }
+
+    public class PdfStampImageInputOptionsTypePositionType
+    {
+        [JsonProperty("yOffset", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? YOffset { get; set; } = 25;
+
+        [JsonProperty("yOffsetStart", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string StartOfYOffset { get; set; } = "bottom";
+
+        [JsonProperty("xOffset", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? XOffset { get; set; } = 50;
+    }
+
     public class Resp200ExcelSheetAddRows
     {
         [JsonProperty("result")]
         public string ExcelSheet { get; set; }
+    }
+
+    public class ExcelSheetAddRowsInput
+    {
+        [JsonProperty("sheet", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Sheetname { get; set; }
+
+        [JsonProperty("data")]
+        public JToken[] Data { get; set; }
+
+        [JsonProperty("excelFile", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Excel { get; set; }
     }
 
     public class Resp200PdfCreateByHtml
@@ -1167,10 +296,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public string PDFFile { get; set; }
     }
 
+    public class PdfCreateByHtmlInput
+    {
+        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string HTML { get; set; }
+
+        [JsonProperty("data")]
+        public JToken Data { get; set; }
+
+        [JsonProperty("options")]
+        public PdfCreateByHtmlInputOptionsType Options { get; set; }
+    }
+
+    public class PdfCreateByHtmlInputOptionsType
+    {
+        [JsonProperty("mediaType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MediaType { get; set; } = "print";
+
+        [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PageFormat { get; set; } = "A4";
+
+        [JsonProperty("landscape", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Landscape { get; set; } = false;
+
+        [JsonProperty("margin")]
+        public PdfCreateByHtmlInputOptionsTypeMarginType Margin { get; set; }
+    }
+
+    public class PdfCreateByHtmlInputOptionsTypeMarginType
+    {
+        [JsonProperty("left", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarginLeft { get; set; } = "0px";
+
+        [JsonProperty("right", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarginRight { get; set; } = "0px";
+
+        [JsonProperty("top", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarginTop { get; set; } = "0px";
+
+        [JsonProperty("bottom", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarginBottom { get; set; } = "0px";
+    }
+
     public class Resp200ImageMergeDrawing
     {
         [JsonProperty("result")]
         public string Image { get; set; }
+    }
+
+    public class ImageMergeDrawingInput
+    {
+        [JsonProperty("background", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Background { get; set; }
+
+        [JsonProperty("drawing", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Drawing { get; set; }
     }
 
     public class Resp200PdfStampText
@@ -1179,10 +359,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public string PDFFile { get; set; }
     }
 
+    public class PdfStampTextInput
+    {
+        [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PDF { get; set; }
+
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
+
+        [JsonProperty("options")]
+        public PdfStampTextInputOptionsType Options { get; set; }
+    }
+
+    public class PdfStampTextInputOptionsType
+    {
+        [JsonProperty("color", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FontColor { get; set; } = "#000000";
+
+        [JsonProperty("size", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? FontSize { get; set; } = 50;
+
+        [JsonProperty("rotate", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Rotate { get; set; } = 0;
+
+        [JsonProperty("position")]
+        public PdfStampTextInputOptionsTypePositionType Position { get; set; }
+    }
+
+    public class PdfStampTextInputOptionsTypePositionType
+    {
+        [JsonProperty("yOffset", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? YOffset { get; set; } = 25;
+
+        [JsonProperty("yOffsetStart", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string StartOfYOffset { get; set; } = "bottom";
+
+        [JsonProperty("xOffset", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? XOffset { get; set; } = 50;
+    }
+
     public class Resp200CsvToJson
     {
         [JsonProperty("records")]
         public JToken[] Records { get; set; }
+    }
+
+    public class CsvToJsonInput
+    {
+        [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CSV { get; set; }
+
+        [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CsvToJsonInputOptionsType Options { get; set; }
+    }
+
+    public class CsvToJsonInputOptionsType
+    {
+        [JsonProperty("hasHeaders", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool HasHeaders { get; set; } = true;
+
+        [JsonProperty("delimiter", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Delimiter { get; set; } = ",";
     }
 
     public class Resp200PdfCreateByUrl
@@ -1191,10 +428,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public string PDFFile { get; set; }
     }
 
+    public class PdfCreateByUrlInput
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string HTML { get; set; }
+
+        [JsonProperty("options")]
+        public PdfCreateByUrlInputOptionsType Options { get; set; }
+    }
+
+    public class PdfCreateByUrlInputOptionsType
+    {
+        [JsonProperty("mediaType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MediaType { get; set; } = "print";
+
+        [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PageFormat { get; set; } = "A4";
+
+        [JsonProperty("landscape", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Landscape { get; set; } = false;
+
+        [JsonProperty("margin")]
+        public PdfCreateByUrlInputOptionsTypeMarginType Margin { get; set; }
+    }
+
+    public class PdfCreateByUrlInputOptionsTypeMarginType
+    {
+        [JsonProperty("left", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarginLeft { get; set; } = "0px";
+
+        [JsonProperty("right", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarginRight { get; set; } = "0px";
+
+        [JsonProperty("top", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarginTop { get; set; } = "0px";
+
+        [JsonProperty("bottom", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MarginBottom { get; set; } = "0px";
+    }
+
     public class Resp200ImageStampText
     {
         [JsonProperty("result")]
         public string StampedImage { get; set; }
+    }
+
+    public class ImageStampTextInput
+    {
+        [JsonProperty("image")]
+        public string Image { get; set; }
+
+        [JsonProperty("text")]
+        public string TextToStamp { get; set; }
+
+        [JsonProperty("options")]
+        public ImageStampTextInputOptionsType Options { get; set; }
+    }
+
+    public class ImageStampTextInputOptionsType
+    {
+        [JsonProperty("location", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LocationOfTheStamp { get; set; } = "Center";
+
+        [JsonProperty("fontColor", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Fontcolor { get; set; } = "#ffffff";
+
+        [JsonProperty("fontSize", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Fontsize { get; set; } = 25;
     }
 
     public class Resp200ImageResize
@@ -1203,10 +503,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public string ResizedImage { get; set; }
     }
 
+    public class ImageResizeInput
+    {
+        [JsonProperty("image")]
+        public string Image { get; set; }
+
+        [JsonProperty("width")]
+        public int? Width { get; set; }
+
+        [JsonProperty("height")]
+        public int? Height { get; set; }
+
+        [JsonProperty("options")]
+        public ImageResizeInputOptionsType Options { get; set; }
+    }
+
+    public class ImageResizeInputOptionsType
+    {
+        [JsonProperty("ignoreAspectRation", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IgnoreTheAspectRation { get; set; } = false;
+    }
+
     public class Resp200PdfSplitByPage
     {
         [JsonProperty("results")]
         public string[] PDFFile { get; set; }
+    }
+
+    public class PdfSplitByPageInput
+    {
+        [JsonProperty("pdf")]
+        public string PDFFile { get; set; }
+
+        [JsonProperty("options")]
+        public PdfSplitByPageInputOptionsType Options { get; set; }
+    }
+
+    public class PdfSplitByPageInputOptionsType
+    {
+        [JsonProperty("numberOfPages", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? NumberOfPages { get; set; } = 1;
     }
 
     public class Resp200ImageStampExif
@@ -1218,10 +554,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public string[] PrintedTags { get; set; }
     }
 
+    public class ImageStampExifInput
+    {
+        [JsonProperty("image")]
+        public string Image { get; set; }
+
+        [JsonProperty("options")]
+        public ImageStampExifInputOptionsType Options { get; set; }
+    }
+
+    public class ImageStampExifInputOptionsType
+    {
+        [JsonProperty("tags")]
+        public string[] Tags { get; set; }
+
+        [JsonProperty("location", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LocationOfTheStamp { get; set; } = "Center";
+
+        [JsonProperty("fontColor", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Fontcolor { get; set; } = "#ffffff";
+
+        [JsonProperty("fontSize", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? Fontsize { get; set; } = 25;
+
+        [JsonProperty("printTagName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? PrintTagName { get; set; } = false;
+    }
+
     public class Resp200PdfFillForm
     {
         [JsonProperty("result")]
         public string PDFFile { get; set; }
+    }
+
+    public class PdfFillFormInput
+    {
+        [JsonProperty("pdf")]
+        public string PDFFile { get; set; }
+
+        [JsonProperty("data")]
+        public JToken Data { get; set; }
     }
 
     public class Resp200PdfGetFormData
@@ -1230,10 +602,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public JToken FormData { get; set; }
     }
 
+    public class PdfGetFormDataInput
+    {
+        [JsonProperty("pdf")]
+        public string PDFFile { get; set; }
+    }
+
     public class Resp200PdfMergeSimple
     {
         [JsonProperty("result")]
         public string PDFFile { get; set; }
+    }
+
+    public class PdfMergeSimpleInput
+    {
+        [JsonProperty("pdfs")]
+        public string[] PDFFile { get; set; }
     }
 }
 

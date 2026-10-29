@@ -28,11 +28,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<InjectResponse, ApiConnectionActionConfiguration> Inject(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionId, Expression<Func<bodyInputItem[]>> body = null)
+        public IBodyWorkflowAction<InjectResponse, ApiConnectionActionConfiguration> Inject(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionId, Expression<Func<bodyInputItem[]>> body)
         {
             var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<InjectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/inject", __workflow_sessionId.WithUrlEncoding(1)));
@@ -45,91 +45,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Query(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionId, Expression<Func<string>> bodyrelationship, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyObject = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Query(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionId, Expression<Func<QueryInput>> body)
         {
             var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
-            var __workflow_bodyrelationship = WorkflowExpression.Compile(bodyrelationship, nameof(bodyrelationship), required: true);
-            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
-            var __workflow_bodyObject = WorkflowExpression.Compile(bodyObject, nameof(bodyObject), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/query", __workflow_sessionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["environment"] = ExpressionConverter.Convert(__workflow_environment);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodysubject != null)
-                {
-                    body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["relationship"] = ExpressionConverter.ConvertO(__workflow_bodyrelationship);
-                if (__workflow_bodyObject != null)
-                {
-                    body["object"] = ExpressionConverter.ConvertO(__workflow_bodyObject);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Response(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionId, Expression<Func<bodyanswersInputItem[]>> bodyanswers = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Response(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionId, Expression<Func<ResponseInput>> body)
         {
             var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
-            var __workflow_bodyanswers = WorkflowExpression.Compile(bodyanswers, nameof(bodyanswers), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/response", __workflow_sessionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["environment"] = ExpressionConverter.Convert(__workflow_environment);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyanswers != null)
-                {
-                    body["answers"] = ExpressionConverter.ConvertO(__workflow_bodyanswers);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Undo(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionId)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Undo(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionId, Expression<Func<object>> body = null)
         {
             var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/undo", __workflow_sessionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["environment"] = ExpressionConverter.Convert(__workflow_environment);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -214,18 +176,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         public double Certainty { get; set; }
     }
 
-    public class bodyanswersInputItem
+    public class QueryInput
     {
         [JsonProperty("subject")]
-        public JToken Subject { get; set; }
+        public string Subject { get; set; }
 
-        [JsonProperty("relationship")]
+        [JsonProperty("relationship", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Relationship { get; set; }
 
         [JsonProperty("object")]
+        public string ObjectEntity { get; set; }
+    }
+
+    public class ResponseInput
+    {
+        [JsonProperty("answers")]
+        public ResponseInputAnswersTypeItem[] Answers { get; set; }
+    }
+
+    public class ResponseInputAnswersTypeItem
+    {
+        [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Subject { get; set; }
+
+        [JsonProperty("relationship", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Relationship { get; set; }
+
+        [JsonProperty("object", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken ObjectEntity { get; set; }
 
-        [JsonProperty("certainty")]
+        [JsonProperty("certainty", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Certainty { get; set; }
     }
 

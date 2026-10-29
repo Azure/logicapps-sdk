@@ -13,137 +13,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
     public class StripeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
-        public IBodyWorkflowAction<ProductResponse, ApiConnectionActionConfiguration> UpdateProduct(Expression<Func<string>> id, Expression<Func<string>> bodyname, Expression<Func<bool>> bodyactive = null, Expression<Func<string>> bodycaption = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyimages = null, Expression<Func<bool>> bodyshippable = null, Expression<Func<string>> bodyuRL = null)
+        public IBodyWorkflowAction<ProductResponse, ApiConnectionActionConfiguration> UpdateProduct(Expression<Func<string>> id, Expression<Func<UpdateProductInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyactive = WorkflowExpression.Compile(bodyactive, nameof(bodyactive), required: false);
-            var __workflow_bodycaption = WorkflowExpression.Compile(bodycaption, nameof(bodycaption), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyimages = WorkflowExpression.Compile(bodyimages, nameof(bodyimages), required: false);
-            var __workflow_bodyshippable = WorkflowExpression.Compile(bodyshippable, nameof(bodyshippable), required: false);
-            var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ProductResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/products/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (__workflow_bodyactive != null)
-                {
-                    body["active"] = ExpressionConverter.ConvertO(__workflow_bodyactive);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycaption != null)
-                {
-                    body["caption"] = ExpressionConverter.ConvertO(__workflow_bodycaption);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyimages != null)
-                {
-                    body["images"] = ExpressionConverter.ConvertO(__workflow_bodyimages);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyshippable != null)
-                {
-                    body["shippable"] = ExpressionConverter.ConvertO(__workflow_bodyshippable);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuRL != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ProductResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
-        public IBodyWorkflowAction<ProductResponse, ApiConnectionActionConfiguration> CreateProduct(Expression<Func<string>> bodyname, Expression<Func<string>> bodyid = null, Expression<Func<bool>> bodyactive = null, Expression<Func<string>> bodycaption = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyimages = null, Expression<Func<bool>> bodyshippable = null, Expression<Func<string>> bodyuRL = null)
+        public IBodyWorkflowAction<ProductResponse, ApiConnectionActionConfiguration> CreateProduct(Expression<Func<CreateProductInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodyactive = WorkflowExpression.Compile(bodyactive, nameof(bodyactive), required: false);
-            var __workflow_bodycaption = WorkflowExpression.Compile(bodycaption, nameof(bodycaption), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyimages = WorkflowExpression.Compile(bodyimages, nameof(bodyimages), required: false);
-            var __workflow_bodyshippable = WorkflowExpression.Compile(bodyshippable, nameof(bodyshippable), required: false);
-            var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ProductResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/products";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyactive != null)
-                {
-                    body["active"] = ExpressionConverter.ConvertO(__workflow_bodyactive);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycaption != null)
-                {
-                    body["caption"] = ExpressionConverter.ConvertO(__workflow_bodycaption);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyimages != null)
-                {
-                    body["images"] = ExpressionConverter.ConvertO(__workflow_bodyimages);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyshippable != null)
-                {
-                    body["shippable"] = ExpressionConverter.ConvertO(__workflow_bodyshippable);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuRL != null)
-                {
-                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ProductResponse>(callPayload);
             });
         }
@@ -162,68 +55,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
-        public IBodyWorkflowAction<CustomerResponse, ApiConnectionActionConfiguration> UpdateCustomer(Expression<Func<string>> id, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null)
+        public IBodyWorkflowAction<CustomerResponse, ApiConnectionActionConfiguration> UpdateCustomer(Expression<Func<string>> id, Expression<Func<UpdateCustomerInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CustomerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/customers/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyemail != null)
-                {
-                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CustomerResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
-        public IBodyWorkflowAction<CustomerResponse, ApiConnectionActionConfiguration> CreateCustomer(Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null)
+        public IBodyWorkflowAction<CustomerResponse, ApiConnectionActionConfiguration> CreateCustomer(Expression<Func<CreateCustomerInput>> body = null)
         {
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CustomerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/customers";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyemail != null)
-                {
-                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CustomerResponse>(callPayload);
             });
         }
@@ -309,6 +166,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
         public string URL { get; set; }
     }
 
+    public class UpdateProductInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("active")]
+        public bool? Active { get; set; }
+
+        [JsonProperty("caption")]
+        public string Caption { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("images")]
+        public string Images { get; set; }
+
+        [JsonProperty("shippable")]
+        public bool? Shippable { get; set; }
+
+        [JsonProperty("url")]
+        public string URL { get; set; }
+    }
+
+    public class CreateProductInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("active")]
+        public bool? Active { get; set; }
+
+        [JsonProperty("caption")]
+        public string Caption { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("images")]
+        public string Images { get; set; }
+
+        [JsonProperty("shippable")]
+        public bool? Shippable { get; set; }
+
+        [JsonProperty("url")]
+        public string URL { get; set; }
+    }
+
     public class CustomerResponse
     {
         [JsonProperty("id")]
@@ -370,6 +278,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
 
         [JsonProperty("amount_off")]
         public double AmountOff { get; set; }
+    }
+
+    public class UpdateCustomerInput
+    {
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+    }
+
+    public class CreateCustomerInput
+    {
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
     }
 
     public class ListCustomersResponseItem

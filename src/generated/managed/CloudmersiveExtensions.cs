@@ -13,27 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
     public class CloudmersiveActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersive")]
-        public IBodyWorkflowAction<WebsiteScanResult, ApiConnectionActionConfiguration> ScanWebsite(Expression<Func<string>> inputurl = null)
+        public IBodyWorkflowAction<WebsiteScanResult, ApiConnectionActionConfiguration> ScanWebsite(Expression<Func<ScanWebsiteInput>> input)
         {
-            var __workflow_inputurl = WorkflowExpression.Compile(inputurl, nameof(inputurl), required: false);
+            var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<WebsiteScanResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/virus/scan/website";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var input = new JObject();
-                var inputpropCount = 0;
-                if (__workflow_inputurl != null)
-                {
-                    input["Url"] = ExpressionConverter.ConvertO(__workflow_inputurl);
-                    inputpropCount++;
-                }
-
-                if (inputpropCount > 0)
-                {
-                    callPayload.Body = input;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
                 return new ApiConnectionAction<WebsiteScanResult>(callPayload);
             });
         }
@@ -57,6 +45,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
         Phishing,
         ForcedDownload,
         UnableToConnect
+    }
+
+    public class ScanWebsiteInput
+    {
+        public string Url { get; set; }
     }
 }
 

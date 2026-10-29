@@ -28,37 +28,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "axtensioncontentgate")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateContentEntityRequirements(Expression<Func<string>> providerReferenceId, Expression<Func<string>> externalType, Expression<Func<string>> externalId, Expression<Func<int>> bodycontentEntityTemplateId = null, Expression<Func<int>> bodycontentEntityTemplateGroupId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateContentEntityRequirements(Expression<Func<string>> providerReferenceId, Expression<Func<string>> externalType, Expression<Func<string>> externalId, Expression<Func<CreateContentEntityRequirementsInput>> body = null)
         {
             var __workflow_providerReferenceId = WorkflowExpression.Compile(providerReferenceId, nameof(providerReferenceId), required: true);
             var __workflow_externalType = WorkflowExpression.Compile(externalType, nameof(externalType), required: true);
             var __workflow_externalId = WorkflowExpression.Compile(externalId, nameof(externalId), required: true);
-            var __workflow_bodycontentEntityTemplateId = WorkflowExpression.Compile(bodycontentEntityTemplateId, nameof(bodycontentEntityTemplateId), required: false);
-            var __workflow_bodycontentEntityTemplateGroupId = WorkflowExpression.Compile(bodycontentEntityTemplateGroupId, nameof(bodycontentEntityTemplateGroupId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/businessentities/{0}/{1}/{2}/Requirements", __workflow_providerReferenceId.WithUrlEncoding(1), __workflow_externalType.WithUrlEncoding(1), __workflow_externalId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodycontentEntityTemplateId != null)
-                {
-                    body["ContentEntityTemplateId"] = ExpressionConverter.ConvertO(__workflow_bodycontentEntityTemplateId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontentEntityTemplateGroupId != null)
-                {
-                    body["ContentEntityTemplateGroupId"] = ExpressionConverter.ConvertO(__workflow_bodycontentEntityTemplateGroupId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -150,7 +132,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/contententities/{0}/properties/{1}", __workflow_contentEntityId.WithUrlEncoding(1), __workflow_propertyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -210,91 +193,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "axtensioncontentgate")]
-        public IBodyWorkflowAction<SearchContentEntitiesResponse, ApiConnectionActionConfiguration> SearchContentEntities(Expression<Func<int[]>> searchRequesttemplates = null, Expression<Func<int[]>> searchRequeststorageProviders = null, Expression<Func<int[]>> searchRequestbusinessEntities = null, Expression<Func<int[]>> searchRequestbusinessEntityTypes = null, Expression<Func<searchRequestpropertiesInputItem[]>> searchRequestproperties = null, Expression<Func<int>> searchRequestpagingpage = null, Expression<Func<int>> searchRequestpagingpageSize = null, Expression<Func<string>> searchRequestpagingsortBy = null, Expression<Func<string>> searchRequestpagingsortOrder = null)
+        public IBodyWorkflowAction<SearchContentEntitiesResponse, ApiConnectionActionConfiguration> SearchContentEntities(Expression<Func<SearchContentEntitiesInput>> searchRequest)
         {
-            var __workflow_searchRequesttemplates = WorkflowExpression.Compile(searchRequesttemplates, nameof(searchRequesttemplates), required: false);
-            var __workflow_searchRequeststorageProviders = WorkflowExpression.Compile(searchRequeststorageProviders, nameof(searchRequeststorageProviders), required: false);
-            var __workflow_searchRequestbusinessEntities = WorkflowExpression.Compile(searchRequestbusinessEntities, nameof(searchRequestbusinessEntities), required: false);
-            var __workflow_searchRequestbusinessEntityTypes = WorkflowExpression.Compile(searchRequestbusinessEntityTypes, nameof(searchRequestbusinessEntityTypes), required: false);
-            var __workflow_searchRequestproperties = WorkflowExpression.Compile(searchRequestproperties, nameof(searchRequestproperties), required: false);
-            var __workflow_searchRequestpagingpage = WorkflowExpression.Compile(searchRequestpagingpage, nameof(searchRequestpagingpage), required: false);
-            var __workflow_searchRequestpagingpageSize = WorkflowExpression.Compile(searchRequestpagingpageSize, nameof(searchRequestpagingpageSize), required: false);
-            var __workflow_searchRequestpagingsortBy = WorkflowExpression.Compile(searchRequestpagingsortBy, nameof(searchRequestpagingsortBy), required: false);
-            var __workflow_searchRequestpagingsortOrder = WorkflowExpression.Compile(searchRequestpagingsortOrder, nameof(searchRequestpagingsortOrder), required: false);
+            var __workflow_searchRequest = WorkflowExpression.Compile(searchRequest, nameof(searchRequest), required: true);
             return new DeferredBodyAction<SearchContentEntitiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/contententities/search";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var searchRequest = new JObject();
-                var searchRequestpropCount = 0;
-                if (__workflow_searchRequesttemplates != null)
-                {
-                    searchRequest["Templates"] = ExpressionConverter.ConvertO(__workflow_searchRequesttemplates);
-                    searchRequestpropCount++;
-                }
-
-                if (__workflow_searchRequeststorageProviders != null)
-                {
-                    searchRequest["StorageProviders"] = ExpressionConverter.ConvertO(__workflow_searchRequeststorageProviders);
-                    searchRequestpropCount++;
-                }
-
-                if (__workflow_searchRequestbusinessEntities != null)
-                {
-                    searchRequest["BusinessEntities"] = ExpressionConverter.ConvertO(__workflow_searchRequestbusinessEntities);
-                    searchRequestpropCount++;
-                }
-
-                if (__workflow_searchRequestbusinessEntityTypes != null)
-                {
-                    searchRequest["BusinessEntityTypes"] = ExpressionConverter.ConvertO(__workflow_searchRequestbusinessEntityTypes);
-                    searchRequestpropCount++;
-                }
-
-                if (__workflow_searchRequestproperties != null)
-                {
-                    searchRequest["Properties"] = ExpressionConverter.ConvertO(__workflow_searchRequestproperties);
-                    searchRequestpropCount++;
-                }
-
-                var pagingObject = new JObject();
-                var pagingObjectpropCount = 0;
-                if (__workflow_searchRequestpagingpage != null)
-                {
-                    pagingObject["Page"] = ExpressionConverter.ConvertO(__workflow_searchRequestpagingpage);
-                    pagingObjectpropCount++;
-                }
-
-                if (__workflow_searchRequestpagingpageSize != null)
-                {
-                    pagingObject["PageSize"] = ExpressionConverter.ConvertO(__workflow_searchRequestpagingpageSize);
-                    pagingObjectpropCount++;
-                }
-
-                if (__workflow_searchRequestpagingsortBy != null)
-                {
-                    pagingObject["SortBy"] = ExpressionConverter.ConvertO(__workflow_searchRequestpagingsortBy);
-                    pagingObjectpropCount++;
-                }
-
-                if (__workflow_searchRequestpagingsortOrder != null)
-                {
-                    pagingObject["SortOrder"] = ExpressionConverter.ConvertO(__workflow_searchRequestpagingsortOrder);
-                    pagingObjectpropCount++;
-                }
-
-                if (pagingObjectpropCount > 0)
-                {
-                    searchRequest["Paging"] = pagingObject;
-                    searchRequestpropCount++;
-                }
-
-                if (searchRequestpropCount > 0)
-                {
-                    callPayload.Body = searchRequest;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_searchRequest);
                 return new ApiConnectionAction<SearchContentEntitiesResponse>(callPayload);
             });
         }
@@ -313,49 +220,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "axtensioncontentgate")]
-        public IBodyWorkflowAction<ExceptionResponse, ApiConnectionActionConfiguration> AddBusinessEntityReference(Expression<Func<int>> contentEntityId, Expression<Func<int>> bodybusinessEntityId = null, Expression<Func<string>> bodyproviderReferenceId = null, Expression<Func<string>> bodyexternalType = null, Expression<Func<string>> bodyexternalId = null)
+        public IBodyWorkflowAction<ExceptionResponse, ApiConnectionActionConfiguration> AddBusinessEntityReference(Expression<Func<int>> contentEntityId, Expression<Func<AddBusinessEntityReferenceInput>> body = null)
         {
             var __workflow_contentEntityId = WorkflowExpression.Compile(contentEntityId, nameof(contentEntityId), required: true);
-            var __workflow_bodybusinessEntityId = WorkflowExpression.Compile(bodybusinessEntityId, nameof(bodybusinessEntityId), required: false);
-            var __workflow_bodyproviderReferenceId = WorkflowExpression.Compile(bodyproviderReferenceId, nameof(bodyproviderReferenceId), required: false);
-            var __workflow_bodyexternalType = WorkflowExpression.Compile(bodyexternalType, nameof(bodyexternalType), required: false);
-            var __workflow_bodyexternalId = WorkflowExpression.Compile(bodyexternalId, nameof(bodyexternalId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ExceptionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/contententities/{0}/references", __workflow_contentEntityId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodybusinessEntityId != null)
-                {
-                    body["businessEntityId"] = ExpressionConverter.ConvertO(__workflow_bodybusinessEntityId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyproviderReferenceId != null)
-                {
-                    body["providerReferenceId"] = ExpressionConverter.ConvertO(__workflow_bodyproviderReferenceId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexternalType != null)
-                {
-                    body["externalType"] = ExpressionConverter.ConvertO(__workflow_bodyexternalType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyexternalId != null)
-                {
-                    body["externalId"] = ExpressionConverter.ConvertO(__workflow_bodyexternalId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ExceptionResponse>(callPayload);
             });
         }
@@ -393,254 +268,100 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
 
     public class AxtensioncontentgateTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenContentAdded(Expression<Func<string[]>> bodycontentCategories = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenContentAdded(Expression<Func<WhenContentAddedInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodycontentCategories = WorkflowExpression.Compile(bodycontentCategories, nameof(bodycontentCategories), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/subscriptions/contentcreated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-Subscription-Client"] = Convert.ToString("PowerAutomate");
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["name"] = "Power Automate Trigger";
-                bodypropCount++;
-                body["changeType"] = "Created";
-                bodypropCount++;
-                if (__workflow_bodycontentCategories != null)
-                {
-                    body["contentCategories"] = ExpressionConverter.ConvertO(__workflow_bodycontentCategories);
-                    bodypropCount++;
-                }
-
-                body["latestSupportedTlsVersion"] = "v1_2";
-                bodypropCount++;
-                body["notificationContentType"] = "application/json";
-                bodypropCount++;
-                body["notificationUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["resource"] = "Content";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenContentUpdated(Expression<Func<string[]>> bodycontentCategories = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenContentUpdated(Expression<Func<WhenContentUpdatedInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodycontentCategories = WorkflowExpression.Compile(bodycontentCategories, nameof(bodycontentCategories), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/subscriptions/contentupdated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-Subscription-Client"] = Convert.ToString("PowerAutomate");
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["name"] = "Power Automate Trigger";
-                bodypropCount++;
-                body["changeType"] = "Updated";
-                bodypropCount++;
-                if (__workflow_bodycontentCategories != null)
-                {
-                    body["contentCategories"] = ExpressionConverter.ConvertO(__workflow_bodycontentCategories);
-                    bodypropCount++;
-                }
-
-                body["latestSupportedTlsVersion"] = "v1_2";
-                bodypropCount++;
-                body["notificationContentType"] = "application/json";
-                bodypropCount++;
-                body["notificationUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["resource"] = "Content";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenContentDeleted(Expression<Func<string[]>> bodycontentCategories = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenContentDeleted(Expression<Func<WhenContentDeletedInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodycontentCategories = WorkflowExpression.Compile(bodycontentCategories, nameof(bodycontentCategories), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/subscriptions/contentdeleted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-Subscription-Client"] = Convert.ToString("PowerAutomate");
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["name"] = "Power Automate Trigger";
-                bodypropCount++;
-                body["changeType"] = "Deleted";
-                bodypropCount++;
-                if (__workflow_bodycontentCategories != null)
-                {
-                    body["contentCategories"] = ExpressionConverter.ConvertO(__workflow_bodycontentCategories);
-                    bodypropCount++;
-                }
-
-                body["latestSupportedTlsVersion"] = "v1_2";
-                bodypropCount++;
-                body["notificationContentType"] = "application/json";
-                bodypropCount++;
-                body["notificationUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["resource"] = "Content";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenContentRequirementAdded(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenContentRequirementAdded(Expression<Func<WhenContentRequirementAddedInput>> body, FlowRecurrence recurrence = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/subscriptions/contentrequirementcreated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-Subscription-Client"] = Convert.ToString("PowerAutomate");
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["name"] = "Power Automate Trigger";
-                bodypropCount++;
-                body["changeType"] = "Created";
-                bodypropCount++;
-                body["latestSupportedTlsVersion"] = "v1_2";
-                bodypropCount++;
-                body["notificationContentType"] = "application/json";
-                bodypropCount++;
-                body["notificationUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["resource"] = "ContentRequirement";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenContentRequirementUpdated(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenContentRequirementUpdated(Expression<Func<WhenContentRequirementUpdatedInput>> body, FlowRecurrence recurrence = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/subscriptions/contentrequirementupdated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-Subscription-Client"] = Convert.ToString("PowerAutomate");
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["name"] = "Power Automate Trigger";
-                bodypropCount++;
-                body["changeType"] = "Updated";
-                bodypropCount++;
-                body["latestSupportedTlsVersion"] = "v1_2";
-                bodypropCount++;
-                body["notificationContentType"] = "application/json";
-                bodypropCount++;
-                body["notificationUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["resource"] = "ContentRequirement";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenContentRequirementDeleted(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenContentRequirementDeleted(Expression<Func<WhenContentRequirementDeletedInput>> body, FlowRecurrence recurrence = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/subscriptions/contentrequirementdeleted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-Subscription-Client"] = Convert.ToString("PowerAutomate");
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["name"] = "Power Automate Trigger";
-                bodypropCount++;
-                body["changeType"] = "Deleted";
-                bodypropCount++;
-                body["latestSupportedTlsVersion"] = "v1_2";
-                bodypropCount++;
-                body["notificationContentType"] = "application/json";
-                bodypropCount++;
-                body["notificationUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["resource"] = "ContentRequirement";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenTemplateNotificationTriggered(Expression<Func<int>> bodytemplateId = null, Expression<Func<int[]>> bodynotificationIds = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenTemplateNotificationTriggered(Expression<Func<WhenTemplateNotificationTriggeredInput>> body, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: false);
-            var __workflow_bodynotificationIds = WorkflowExpression.Compile(bodynotificationIds, nameof(bodynotificationIds), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/subscriptions/templatenotificationtriggered";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-Subscription-Client"] = Convert.ToString("PowerAutomate");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytemplateId != null)
-                {
-                    body["templateId"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynotificationIds != null)
-                {
-                    body["notificationIds"] = ExpressionConverter.ConvertO(__workflow_bodynotificationIds);
-                    bodypropCount++;
-                }
-
-                body["name"] = "Power Automate Trigger";
-                bodypropCount++;
-                body["changeType"] = "Triggered";
-                bodypropCount++;
-                body["latestSupportedTlsVersion"] = "v1_2";
-                bodypropCount++;
-                body["notificationContentType"] = "application/json";
-                bodypropCount++;
-                body["notificationUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["resource"] = "TemplateNotification";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -665,6 +386,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
 
         [JsonProperty("createdBy")]
         public string CreatedBy { get; set; }
+    }
+
+    public class CreateContentEntityRequirementsInput
+    {
+        public int? ContentEntityTemplateId { get; set; }
+        public int? ContentEntityTemplateGroupId { get; set; }
     }
 
     public class ListBusinessEntityTypesResponseItem
@@ -1150,12 +877,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         public QueryResultContentEntityItem[] Items { get; set; }
     }
 
-    public class searchRequestpropertiesInputItem
+    public class SearchContentEntitiesInput
+    {
+        public int[] Templates { get; set; }
+        public int[] StorageProviders { get; set; }
+        public int[] BusinessEntities { get; set; }
+        public int[] BusinessEntityTypes { get; set; }
+        public SearchContentEntitiesInputPropertiesTypeItem[] Properties { get; set; }
+        public SearchContentEntitiesInputPagingType Paging { get; set; }
+    }
+
+    public class SearchContentEntitiesInputPropertiesTypeItem
     {
         public string Property { get; set; }
         public string Operator { get; set; }
-        public bool Negate { get; set; }
+        public bool? Negate { get; set; }
         public JToken Value { get; set; }
+    }
+
+    public class SearchContentEntitiesInputPagingType
+    {
+        public int? Page { get; set; }
+        public int? PageSize { get; set; }
+        public string SortBy { get; set; }
+        public string SortOrder { get; set; }
     }
 
     public class ExceptionResponse
@@ -1195,6 +940,183 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
 
         [JsonProperty("contextInfo")]
         public JToken ContextInfo { get; set; }
+    }
+
+    public class AddBusinessEntityReferenceInput
+    {
+        [JsonProperty("businessEntityId")]
+        public int? BusinessEntityId { get; set; }
+
+        [JsonProperty("providerReferenceId")]
+        public string ProviderReferenceId { get; set; }
+
+        [JsonProperty("externalType")]
+        public string ExternalType { get; set; }
+
+        [JsonProperty("externalId")]
+        public string ExternalId { get; set; }
+    }
+
+    public class WhenContentAddedInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Name { get; set; } = "Power Automate Trigger";
+
+        [JsonProperty("changeType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ChangeType { get; set; } = "Created";
+
+        [JsonProperty("contentCategories")]
+        public string[] ContentCategories { get; set; }
+
+        [JsonProperty("latestSupportedTlsVersion", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string LatestSupportedTlsVersion { get; set; } = "v1_2";
+
+        [JsonProperty("notificationContentType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationContentType { get; set; } = "application/json";
+
+        [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("resource", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Resource { get; set; } = "Content";
+    }
+
+    public class WhenContentUpdatedInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Name { get; set; } = "Power Automate Trigger";
+
+        [JsonProperty("changeType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ChangeType { get; set; } = "Updated";
+
+        [JsonProperty("contentCategories")]
+        public string[] ContentCategories { get; set; }
+
+        [JsonProperty("latestSupportedTlsVersion", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string LatestSupportedTlsVersion { get; set; } = "v1_2";
+
+        [JsonProperty("notificationContentType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationContentType { get; set; } = "application/json";
+
+        [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("resource", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Resource { get; set; } = "Content";
+    }
+
+    public class WhenContentDeletedInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Name { get; set; } = "Power Automate Trigger";
+
+        [JsonProperty("changeType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ChangeType { get; set; } = "Deleted";
+
+        [JsonProperty("contentCategories")]
+        public string[] ContentCategories { get; set; }
+
+        [JsonProperty("latestSupportedTlsVersion", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string LatestSupportedTlsVersion { get; set; } = "v1_2";
+
+        [JsonProperty("notificationContentType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationContentType { get; set; } = "application/json";
+
+        [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("resource", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Resource { get; set; } = "Content";
+    }
+
+    public class WhenContentRequirementAddedInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Name { get; set; } = "Power Automate Trigger";
+
+        [JsonProperty("changeType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ChangeType { get; set; } = "Created";
+
+        [JsonProperty("latestSupportedTlsVersion", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string LatestSupportedTlsVersion { get; set; } = "v1_2";
+
+        [JsonProperty("notificationContentType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationContentType { get; set; } = "application/json";
+
+        [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("resource", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Resource { get; set; } = "ContentRequirement";
+    }
+
+    public class WhenContentRequirementUpdatedInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Name { get; set; } = "Power Automate Trigger";
+
+        [JsonProperty("changeType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ChangeType { get; set; } = "Updated";
+
+        [JsonProperty("latestSupportedTlsVersion", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string LatestSupportedTlsVersion { get; set; } = "v1_2";
+
+        [JsonProperty("notificationContentType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationContentType { get; set; } = "application/json";
+
+        [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("resource", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Resource { get; set; } = "ContentRequirement";
+    }
+
+    public class WhenContentRequirementDeletedInput
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Name { get; set; } = "Power Automate Trigger";
+
+        [JsonProperty("changeType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ChangeType { get; set; } = "Deleted";
+
+        [JsonProperty("latestSupportedTlsVersion", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string LatestSupportedTlsVersion { get; set; } = "v1_2";
+
+        [JsonProperty("notificationContentType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationContentType { get; set; } = "application/json";
+
+        [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("resource", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Resource { get; set; } = "ContentRequirement";
+    }
+
+    public class WhenTemplateNotificationTriggeredInput
+    {
+        [JsonProperty("templateId")]
+        public int? TemplateId { get; set; }
+
+        [JsonProperty("notificationIds")]
+        public int[] NotificationIds { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Name { get; set; } = "Power Automate Trigger";
+
+        [JsonProperty("changeType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ChangeType { get; set; } = "Triggered";
+
+        [JsonProperty("latestSupportedTlsVersion", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string LatestSupportedTlsVersion { get; set; } = "v1_2";
+
+        [JsonProperty("notificationContentType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationContentType { get; set; } = "application/json";
+
+        [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("resource", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Resource { get; set; } = "TemplateNotification";
     }
 }
 
