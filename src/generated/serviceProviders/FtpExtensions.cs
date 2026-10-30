@@ -117,11 +117,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
-        public IWorkflowAction<DeleteFtpFileActionConfiguration> DeleteFtpFile(Expression<Func<string>> filePath, Expression<Func<bool>> skipIfFileNotPresent = null)
+        public IOutputWorkflowAction<JToken, DeleteFtpFileActionConfiguration> DeleteFtpFile(Expression<Func<string>> filePath, Expression<Func<bool>> skipIfFileNotPresent = null)
         {
             var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: true);
             var __workflow_skipIfFileNotPresent = WorkflowExpression.Compile(skipIfFileNotPresent, nameof(skipIfFileNotPresent), required: false);
-            return new DeferredWorkflowAction<DeleteFtpFileActionConfiguration>(() =>
+            return new DeferredOutputAction<JToken, DeleteFtpFileActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "deleteFtpFile", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<DeleteFtpFileActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderOutputAction<JToken, DeleteFtpFileActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -195,64 +195,88 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
     public sealed class GetFtpFileContentActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class GetFtpFileContentV2ActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class GetFileMetadataActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class CreateFileActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class UpdateFileActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class DeleteFtpFileActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class ListFilesInFolderActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class ExtractArchiveActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
@@ -296,8 +320,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
     public sealed class WhenFtpFilesAreAddedOrModifiedTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration
     {
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+
         int? ITriggerConcurrencyConfiguration.ConcurrentRuns { get; set; }
+
         int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
     }
 

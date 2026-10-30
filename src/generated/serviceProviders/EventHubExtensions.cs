@@ -16,12 +16,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
     public class EventHubActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventHub")]
-        public IWorkflowAction<SendEventActionConfiguration> SendEvent(Expression<Func<string>> eventHubName, Expression<Func<SendEventInputEventDataType>> eventData, Expression<Func<string>> partitionKey = null)
+        public IOutputWorkflowAction<JToken, SendEventActionConfiguration> SendEvent(Expression<Func<string>> eventHubName, Expression<Func<SendEventInputEventDataType>> eventData, Expression<Func<string>> partitionKey = null)
         {
             var __workflow_eventHubName = WorkflowExpression.Compile(eventHubName, nameof(eventHubName), required: true);
             var __workflow_eventData = WorkflowExpression.Compile(eventData, nameof(eventData), required: true);
             var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: false);
-            return new DeferredWorkflowAction<SendEventActionConfiguration>(() =>
+            return new DeferredOutputAction<JToken, SendEventActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(__workflow_eventHubName);
@@ -36,17 +36,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "sendEvent", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<SendEventActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderOutputAction<JToken, SendEventActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventHub")]
-        public IWorkflowAction<SendEventsActionConfiguration> SendEvents(Expression<Func<string>> eventHubName, Expression<Func<SendEventsInputEventDatasTypeItem[]>> eventDatas, Expression<Func<string>> partitionKey = null)
+        public IOutputWorkflowAction<JToken, SendEventsActionConfiguration> SendEvents(Expression<Func<string>> eventHubName, Expression<Func<SendEventsInputEventDatasTypeItem[]>> eventDatas, Expression<Func<string>> partitionKey = null)
         {
             var __workflow_eventHubName = WorkflowExpression.Compile(eventHubName, nameof(eventHubName), required: true);
             var __workflow_eventDatas = WorkflowExpression.Compile(eventDatas, nameof(eventDatas), required: true);
             var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: false);
-            return new DeferredWorkflowAction<SendEventsActionConfiguration>(() =>
+            return new DeferredOutputAction<JToken, SendEventsActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(__workflow_eventHubName);
@@ -61,16 +61,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "sendEvents", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<SendEventsActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderOutputAction<JToken, SendEventsActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventHub")]
-        public IWorkflowAction<ReplicateEventsActionConfiguration> ReplicateEvents(Expression<Func<string>> eventHubName, Expression<Func<bool>> skipAlreadyReplicated)
+        public IOutputWorkflowAction<JToken, ReplicateEventsActionConfiguration> ReplicateEvents(Expression<Func<string>> eventHubName, Expression<Func<bool>> skipAlreadyReplicated)
         {
             var __workflow_eventHubName = WorkflowExpression.Compile(eventHubName, nameof(eventHubName), required: true);
             var __workflow_skipAlreadyReplicated = WorkflowExpression.Compile(skipAlreadyReplicated, nameof(skipAlreadyReplicated), required: true);
-            return new DeferredWorkflowAction<ReplicateEventsActionConfiguration>(() =>
+            return new DeferredOutputAction<JToken, ReplicateEventsActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(__workflow_eventHubName);
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "replicateEvents", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<ReplicateEventsActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderOutputAction<JToken, ReplicateEventsActionConfiguration>(serviceProviderInput);
             });
         }
     }
@@ -88,24 +88,33 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
     public sealed class SendEventActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class SendEventsActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
     public sealed class ReplicateEventsActionConfiguration : IRetryPolicyConfiguration, ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
+
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
@@ -159,16 +168,22 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
     public sealed class ReceiveEventsTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration
     {
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+
         int? ITriggerConcurrencyConfiguration.ConcurrentRuns { get; set; }
+
         int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
     }
 
     public sealed class ReceiveEventsForReplicationTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration
     {
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
+
         int? ITriggerConcurrencyConfiguration.ConcurrentRuns { get; set; }
+
         int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
     }
 

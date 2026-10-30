@@ -36,7 +36,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventGridPublisher
     public sealed class PublishEventsActionConfiguration : ITrackedPropertiesConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration
     {
         IDictionary<string, Func<JToken>> ITrackedPropertiesConfiguration.TrackedProperties { get; } = new Dictionary<string, Func<JToken>>(StringComparer.Ordinal);
+
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
+
         bool ISecureOutputsConfiguration.SecureOutputs { get; set; }
     }
 
