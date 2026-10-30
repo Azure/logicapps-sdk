@@ -80,12 +80,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azurequeues")]
-        public IOutputWorkflowAction<JToken, DeleteMessageActionConfiguration> DeleteMessage(Expression<Func<string>> queueName, Expression<Func<string>> messageId, Expression<Func<string>> popReceipt)
+        public IWorkflowAction<DeleteMessageActionConfiguration> DeleteMessage(Expression<Func<string>> queueName, Expression<Func<string>> messageId, Expression<Func<string>> popReceipt)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             var __workflow_popReceipt = WorkflowExpression.Compile(popReceipt, nameof(popReceipt), required: true);
-            return new DeferredOutputAction<JToken, DeleteMessageActionConfiguration>(() =>
+            return new DeferredWorkflowAction<DeleteMessageActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -96,15 +96,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azurequeues", operationId: "deleteMessage", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken, DeleteMessageActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderAction<DeleteMessageActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azurequeues")]
-        public IOutputWorkflowAction<JToken, PutQueueActionConfiguration> PutQueue(Expression<Func<string>> queueName)
+        public IWorkflowAction<PutQueueActionConfiguration> PutQueue(Expression<Func<string>> queueName)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
-            return new DeferredOutputAction<JToken, PutQueueActionConfiguration>(() =>
+            return new DeferredWorkflowAction<PutQueueActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azurequeues", operationId: "putQueue", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken, PutQueueActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderAction<PutQueueActionConfiguration>(serviceProviderInput);
             });
         }
 

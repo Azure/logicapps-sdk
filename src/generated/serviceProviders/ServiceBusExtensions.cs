@@ -1152,12 +1152,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             });
         }
 
-        public IOutputWorkflowTrigger<JToken, ReceiveQueueMessagesForReplicationTriggerConfiguration> ReceiveQueueMessagesForReplication(Expression<Func<string>> queueName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null)
+        public IWorkflowTrigger<ReceiveQueueMessagesForReplicationTriggerConfiguration> ReceiveQueueMessagesForReplication(Expression<Func<string>> queueName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_isSessionsEnabled = WorkflowExpression.Compile(isSessionsEnabled, nameof(isSessionsEnabled), required: false);
             var __workflow_maxMessageBatchSize = WorkflowExpression.Compile(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
-            return new DeferredOutputTrigger<JToken, ReceiveQueueMessagesForReplicationTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ReceiveQueueMessagesForReplicationTriggerConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -1180,17 +1180,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "receiveQueueMessagesForReplication", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputTrigger<JToken, ReceiveQueueMessagesForReplicationTriggerConfiguration>(serviceProviderInput);
+                return new ServiceProviderTrigger<ReceiveQueueMessagesForReplicationTriggerConfiguration>(serviceProviderInput);
             });
         }
 
-        public IOutputWorkflowTrigger<JToken, ReceiveTopicMessagesForReplicationTriggerConfiguration> ReceiveTopicMessagesForReplication(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null)
+        public IWorkflowTrigger<ReceiveTopicMessagesForReplicationTriggerConfiguration> ReceiveTopicMessagesForReplication(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<bool>> isSessionsEnabled = null, Expression<Func<double>> maxMessageBatchSize = null)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_subscriptionName = WorkflowExpression.Compile(subscriptionName, nameof(subscriptionName), required: true);
             var __workflow_isSessionsEnabled = WorkflowExpression.Compile(isSessionsEnabled, nameof(isSessionsEnabled), required: false);
             var __workflow_maxMessageBatchSize = WorkflowExpression.Compile(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
-            return new DeferredOutputTrigger<JToken, ReceiveTopicMessagesForReplicationTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ReceiveTopicMessagesForReplicationTriggerConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["topicName"] = ExpressionConverter.ConvertO(__workflow_topicName);
@@ -1214,7 +1214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "receiveTopicMessagesForReplication", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputTrigger<JToken, ReceiveTopicMessagesForReplicationTriggerConfiguration>(serviceProviderInput);
+                return new ServiceProviderTrigger<ReceiveTopicMessagesForReplicationTriggerConfiguration>(serviceProviderInput);
             });
         }
 

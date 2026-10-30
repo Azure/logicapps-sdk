@@ -142,11 +142,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
             });
         }
 
-        public IOutputWorkflowTrigger<JToken, ReceiveEventsForReplicationTriggerConfiguration> ReceiveEventsForReplication(Expression<Func<string>> eventHubName, Expression<Func<string>> consumerGroup = null)
+        public IWorkflowTrigger<ReceiveEventsForReplicationTriggerConfiguration> ReceiveEventsForReplication(Expression<Func<string>> eventHubName, Expression<Func<string>> consumerGroup = null)
         {
             var __workflow_eventHubName = WorkflowExpression.Compile(eventHubName, nameof(eventHubName), required: true);
             var __workflow_consumerGroup = WorkflowExpression.Compile(consumerGroup, nameof(consumerGroup), required: false);
-            return new DeferredOutputTrigger<JToken, ReceiveEventsForReplicationTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ReceiveEventsForReplicationTriggerConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["eventHubName"] = ExpressionConverter.ConvertO(__workflow_eventHubName);
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "receiveEventsForReplication", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputTrigger<JToken, ReceiveEventsForReplicationTriggerConfiguration>(serviceProviderInput);
+                return new ServiceProviderTrigger<ReceiveEventsForReplicationTriggerConfiguration>(serviceProviderInput);
             });
         }
     }

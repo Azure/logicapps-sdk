@@ -16,10 +16,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventGridPublisher
     public class EventGridPublisherActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventGridPublisher")]
-        public IOutputWorkflowAction<JToken, PublishEventsActionConfiguration> PublishEvents(Expression<Func<PublishEventsInputEventsTypeItem[]>> events)
+        public IWorkflowAction<PublishEventsActionConfiguration> PublishEvents(Expression<Func<PublishEventsInputEventsTypeItem[]>> events)
         {
             var __workflow_events = WorkflowExpression.Compile(events, nameof(events), required: true);
-            return new DeferredOutputAction<JToken, PublishEventsActionConfiguration>(() =>
+            return new DeferredWorkflowAction<PublishEventsActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["events"] = ExpressionConverter.ConvertO(__workflow_events);
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventGridPublisher
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventGridPublisher", operationId: "publishEvents", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken, PublishEventsActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderAction<PublishEventsActionConfiguration>(serviceProviderInput);
             });
         }
     }
