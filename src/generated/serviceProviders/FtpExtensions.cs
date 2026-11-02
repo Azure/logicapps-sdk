@@ -117,11 +117,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Ftp")]
-        public IOutputWorkflowAction<JToken, DeleteFtpFileActionConfiguration> DeleteFtpFile(Expression<Func<string>> filePath, Expression<Func<bool>> skipIfFileNotPresent = null)
+        public IBodyWorkflowAction<JToken, DeleteFtpFileActionConfiguration> DeleteFtpFile(Expression<Func<string>> filePath, Expression<Func<bool>> skipIfFileNotPresent = null)
         {
             var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: true);
             var __workflow_skipIfFileNotPresent = WorkflowExpression.Compile(skipIfFileNotPresent, nameof(skipIfFileNotPresent), required: false);
-            return new DeferredOutputAction<JToken, DeleteFtpFileActionConfiguration>(() =>
+            return new DeferredBodyAction<JToken, DeleteFtpFileActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(__workflow_filePath);
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "deleteFtpFile", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<JToken, DeleteFtpFileActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, DeleteFtpFileActionConfiguration>(serviceProviderInput);
             });
         }
 

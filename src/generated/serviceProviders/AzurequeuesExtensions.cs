@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
     public class AzurequeuesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azurequeues")]
-        public IOutputWorkflowAction<PutMessageOutput, PutMessageActionConfiguration> PutMessage(Expression<Func<string>> queueName, Expression<Func<string>> message, Expression<Func<string>> timeToLive = null, Expression<Func<string>> visibilityTimeout = null)
+        public IBodyWorkflowAction<PutMessageOutput, PutMessageActionConfiguration> PutMessage(Expression<Func<string>> queueName, Expression<Func<string>> message, Expression<Func<string>> timeToLive = null, Expression<Func<string>> visibilityTimeout = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
             var __workflow_timeToLive = WorkflowExpression.Compile(timeToLive, nameof(timeToLive), required: false);
             var __workflow_visibilityTimeout = WorkflowExpression.Compile(visibilityTimeout, nameof(visibilityTimeout), required: false);
-            return new DeferredOutputAction<PutMessageOutput, PutMessageActionConfiguration>(() =>
+            return new DeferredBodyAction<PutMessageOutput, PutMessageActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azurequeues", operationId: "putMessage", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<PutMessageOutput, PutMessageActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderBodyAction<PutMessageOutput, PutMessageActionConfiguration>(serviceProviderInput);
             });
         }
 
