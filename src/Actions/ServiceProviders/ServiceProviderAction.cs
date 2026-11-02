@@ -65,29 +65,4 @@ namespace Microsoft.Azure.Workflows.Sdk
         public T Body { get; private set; }
     }
 
-    /// <summary>
-    /// Represents a service provider action with a strongly-typed structured output that does
-    /// not have a <c>body</c> wrapper. Use this when the operation manifest declares outputs with
-    /// properties directly (i.e., <c>outputs.properties</c> exists but has no <c>body</c> key).
-    /// </summary>
-    /// <typeparam name="T">The type of the output value returned by the action.</typeparam>
-    public class ServiceProviderOutputAction<T, TConfiguration> :
-        ServiceProviderAction<TConfiguration>,
-        IOutputWorkflowAction<T, TConfiguration>
-        where TConfiguration : class, IWorkflowOperationConfiguration, new()
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceProviderOutputAction{T}"/> class.
-        /// </summary>
-        /// <param name="serviceProviderActionInput">The service provider action input.</param>
-        internal ServiceProviderOutputAction(ServiceProviderOperationInput serviceProviderActionInput)
-            : base(serviceProviderActionInput)
-        {
-        }
-
-        /// <summary>
-        /// Gets the strongly-typed output of this action.
-        /// </summary>
-        public T Output { get; private set; }
-    }
 }
