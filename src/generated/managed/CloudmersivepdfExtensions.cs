@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
     public class CloudmersivepdfActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditPdfAddAnnotations(Expression<Func<PdfAnnotation[]>> requestannotationsToAdd = null, Expression<Func<string>> requestinputFileBytes = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditPdfAddAnnotations(Expression<Func<PdfAnnotation[]>> requestannotationsToAdd = null, Expression<Func<WorkflowBinaryContent>> requestinputFileBytes = null)
         {
             var __workflow_requestannotationsToAdd = WorkflowExpression.Compile(requestannotationsToAdd, nameof(requestannotationsToAdd), required: false);
             var __workflow_requestinputFileBytes = WorkflowExpression.Compile(requestinputFileBytes, nameof(requestinputFileBytes), required: false);
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditPdfSetFormFields(Expression<Func<SetFormFieldValue[]>> fieldValuesfieldValues = null, Expression<Func<string>> fieldValuesinputFileBytes = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditPdfSetFormFields(Expression<Func<SetFormFieldValue[]>> fieldValuesfieldValues = null, Expression<Func<WorkflowBinaryContent>> fieldValuesinputFileBytes = null)
         {
             var __workflow_fieldValuesfieldValues = WorkflowExpression.Compile(fieldValuesfieldValues, nameof(fieldValuesfieldValues), required: false);
             var __workflow_fieldValuesinputFileBytes = WorkflowExpression.Compile(fieldValuesinputFileBytes, nameof(fieldValuesinputFileBytes), required: false);
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditPdfSetMetadata(Expression<Func<string>> requestinputFileBytes = null, Expression<Func<string>> requestmetadataToSetauthor = null, Expression<Func<string>> requestmetadataToSetcreator = null, Expression<Func<string>> requestmetadataToSetdateCreated = null, Expression<Func<string>> requestmetadataToSetdateModified = null, Expression<Func<string>> requestmetadataToSetkeywords = null, Expression<Func<int>> requestmetadataToSetpageCount = null, Expression<Func<string>> requestmetadataToSetsubject = null, Expression<Func<bool>> requestmetadataToSetsuccessful = null, Expression<Func<string>> requestmetadataToSettitle = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditPdfSetMetadata(Expression<Func<WorkflowBinaryContent>> requestinputFileBytes = null, Expression<Func<string>> requestmetadataToSetauthor = null, Expression<Func<string>> requestmetadataToSetcreator = null, Expression<Func<string>> requestmetadataToSetdateCreated = null, Expression<Func<string>> requestmetadataToSetdateModified = null, Expression<Func<string>> requestmetadataToSetkeywords = null, Expression<Func<int>> requestmetadataToSetpageCount = null, Expression<Func<string>> requestmetadataToSetsubject = null, Expression<Func<bool>> requestmetadataToSetsuccessful = null, Expression<Func<string>> requestmetadataToSettitle = null)
         {
             var __workflow_requestinputFileBytes = WorkflowExpression.Compile(requestinputFileBytes, nameof(requestinputFileBytes), required: false);
             var __workflow_requestmetadataToSetauthor = WorkflowExpression.Compile(requestmetadataToSetauthor, nameof(requestmetadataToSetauthor), required: false);

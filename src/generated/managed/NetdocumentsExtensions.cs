@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> extension = null, Expression<Func<bool>> base64 = null, Expression<Func<string>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> extension = null, Expression<Func<bool>> base64 = null, Expression<Func<WorkflowBinaryContent>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_extension = WorkflowExpression.Compile(extension, nameof(extension), required: false);

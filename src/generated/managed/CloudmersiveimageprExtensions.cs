@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveimagepr
     public class CloudmersiveimageprActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveimagepr")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditDrawPolygon(Expression<Func<string>> requestbaseImageBytes = null, Expression<Func<string>> requestbaseImageUrl = null, Expression<Func<DrawPolygonInstance[]>> requestpolygonsToDraw = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditDrawPolygon(Expression<Func<WorkflowBinaryContent>> requestbaseImageBytes = null, Expression<Func<string>> requestbaseImageUrl = null, Expression<Func<DrawPolygonInstance[]>> requestpolygonsToDraw = null)
         {
             var __workflow_requestbaseImageBytes = WorkflowExpression.Compile(requestbaseImageBytes, nameof(requestbaseImageBytes), required: false);
             var __workflow_requestbaseImageUrl = WorkflowExpression.Compile(requestbaseImageUrl, nameof(requestbaseImageUrl), required: false);
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveimagepr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveimagepr")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditDrawRectangle(Expression<Func<string>> requestbaseImageBytes = null, Expression<Func<string>> requestbaseImageUrl = null, Expression<Func<DrawRectangleInstance[]>> requestrectanglesToDraw = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditDrawRectangle(Expression<Func<WorkflowBinaryContent>> requestbaseImageBytes = null, Expression<Func<string>> requestbaseImageUrl = null, Expression<Func<DrawRectangleInstance[]>> requestrectanglesToDraw = null)
         {
             var __workflow_requestbaseImageBytes = WorkflowExpression.Compile(requestbaseImageBytes, nameof(requestbaseImageBytes), required: false);
             var __workflow_requestbaseImageUrl = WorkflowExpression.Compile(requestbaseImageUrl, nameof(requestbaseImageUrl), required: false);
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveimagepr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveimagepr")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditDrawText(Expression<Func<string>> requestbaseImageBytes = null, Expression<Func<string>> requestbaseImageUrl = null, Expression<Func<DrawTextInstance[]>> requesttextToDraw = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditDrawText(Expression<Func<WorkflowBinaryContent>> requestbaseImageBytes = null, Expression<Func<string>> requestbaseImageUrl = null, Expression<Func<DrawTextInstance[]>> requesttextToDraw = null)
         {
             var __workflow_requestbaseImageBytes = WorkflowExpression.Compile(requestbaseImageBytes, nameof(requestbaseImageBytes), required: false);
             var __workflow_requestbaseImageUrl = WorkflowExpression.Compile(requestbaseImageUrl, nameof(requestbaseImageUrl), required: false);

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
     public class OpentextcsbyonefoxActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocumentContent(Expression<Func<string>> id, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocumentContent(Expression<Func<string>> id, Expression<Func<string>> bodyfileName, Expression<Func<WorkflowBinaryContent>> bodyfileContent)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<string>> configurationKey, Expression<Func<string>> bodyparentId, Expression<Func<string>> bodymetadatadisplayName, Expression<Func<object>> bodymetadatafields, Expression<Func<string>> bodyFilefileName, Expression<Func<string>> bodyFilefileContent, Expression<Func<string>> bodymetadatadescription = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<string>> configurationKey, Expression<Func<string>> bodyparentId, Expression<Func<string>> bodymetadatadisplayName, Expression<Func<object>> bodymetadatafields, Expression<Func<string>> bodyFilefileName, Expression<Func<WorkflowBinaryContent>> bodyFilefileContent, Expression<Func<string>> bodymetadatadescription = null)
         {
             var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
             var __workflow_bodyparentId = WorkflowExpression.Compile(bodyparentId, nameof(bodyparentId), required: true);
@@ -531,7 +531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> configurationKey, Expression<Func<string>> bodymetadatadisplayName, Expression<Func<object>> bodymetadatafields, Expression<Func<string>> bodyFilefileName, Expression<Func<string>> bodyFilefileContent, Expression<Func<string>> bodymetadatadescription = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> configurationKey, Expression<Func<string>> bodymetadatadisplayName, Expression<Func<object>> bodymetadatafields, Expression<Func<string>> bodyFilefileName, Expression<Func<WorkflowBinaryContent>> bodyFilefileContent, Expression<Func<string>> bodymetadatadescription = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);

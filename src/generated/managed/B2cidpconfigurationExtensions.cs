@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
-        public IBodyWorkflowAction<Application, ApiConnectionActionConfiguration> PostApplication(Expression<Func<string>> bodydisplayName = null, Expression<Func<bool>> bodyisFallbackPublicClient = null, Expression<Func<string[]>> bodywebredirectUris = null, Expression<Func<bool>> bodywebimplicitGrantSettingsenableIdTokenIssuance = null, Expression<Func<bool>> bodywebimplicitGrantSettingsenableAccessTokenIssuance = null)
+        public IBodyWorkflowAction<Application, ApiConnectionActionConfiguration> PostApplication(Expression<Func<WorkflowBinaryContent>> bodydisplayName = null, Expression<Func<bool>> bodyisFallbackPublicClient = null, Expression<Func<string[]>> bodywebredirectUris = null, Expression<Func<bool>> bodywebimplicitGrantSettingsenableIdTokenIssuance = null, Expression<Func<bool>> bodywebimplicitGrantSettingsenableAccessTokenIssuance = null)
         {
             var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
             var __workflow_bodyisFallbackPublicClient = WorkflowExpression.Compile(bodyisFallbackPublicClient, nameof(bodyisFallbackPublicClient), required: false);

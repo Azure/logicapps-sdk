@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IBodyWorkflowAction<AddDocumentOutput, ApiConnectionActionConfiguration> AddDocument(Expression<Func<string>> envelopeId, Expression<Func<string>> bodydocumentTitle = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<string>> bodyextraProperties = null)
+        public IBodyWorkflowAction<AddDocumentOutput, ApiConnectionActionConfiguration> AddDocument(Expression<Func<string>> envelopeId, Expression<Func<string>> bodydocumentTitle = null, Expression<Func<WorkflowBinaryContent>> bodyfileContent = null, Expression<Func<string>> bodyextraProperties = null)
         {
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
             var __workflow_bodydocumentTitle = WorkflowExpression.Compile(bodydocumentTitle, nameof(bodydocumentTitle), required: false);
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IBodyWorkflowAction<AddDocumentOutput, ApiConnectionActionConfiguration> AddDocumentDocx(Expression<Func<string>> envelopeId, Expression<Func<string>> bodydocumentTitle = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<string>> bodyextraProperties = null)
+        public IBodyWorkflowAction<AddDocumentOutput, ApiConnectionActionConfiguration> AddDocumentDocx(Expression<Func<string>> envelopeId, Expression<Func<string>> bodydocumentTitle = null, Expression<Func<WorkflowBinaryContent>> bodyfileContent = null, Expression<Func<string>> bodyextraProperties = null)
         {
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
             var __workflow_bodydocumentTitle = WorkflowExpression.Compile(bodydocumentTitle, nameof(bodydocumentTitle), required: false);
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IBodyWorkflowAction<AddDocumentOutput, ApiConnectionActionConfiguration> AddTemplate(Expression<Func<string>> envelopeId, Expression<Func<string>> bodydocumentTitle = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<string[]>> bodytemplateData = null, Expression<Func<string>> bodyextraProperties = null)
+        public IBodyWorkflowAction<AddDocumentOutput, ApiConnectionActionConfiguration> AddTemplate(Expression<Func<string>> envelopeId, Expression<Func<string>> bodydocumentTitle = null, Expression<Func<WorkflowBinaryContent>> bodyfileContent = null, Expression<Func<string[]>> bodytemplateData = null, Expression<Func<string>> bodyextraProperties = null)
         {
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
             var __workflow_bodydocumentTitle = WorkflowExpression.Compile(bodydocumentTitle, nameof(bodydocumentTitle), required: false);

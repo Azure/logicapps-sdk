@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
         public string ContentType { get; set; }
 
         [JsonProperty("contentInBase64")]
-        public string ContentInBase64 { get; set; }
+        public WorkflowBinaryContent ContentInBase64 { get; set; }
     }
 
     public class EmailCustomHeader

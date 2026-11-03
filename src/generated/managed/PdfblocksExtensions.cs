@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfblocks
     public class bodydocumentsInputItem
     {
         [JsonProperty("fileContent")]
-        public string FileContent { get; set; }
+        public WorkflowBinaryContent FileContent { get; set; }
 
         [JsonProperty("fileName")]
         public string FileName { get; set; }

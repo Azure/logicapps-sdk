@@ -506,7 +506,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
     public class bodyattachmentInputItem
     {
         [JsonProperty("attachmentContent")]
-        public string AttachmentContent { get; set; }
+        public WorkflowBinaryContent AttachmentContent { get; set; }
 
         [JsonProperty("attachmentName")]
         public string AttachmentName { get; set; }

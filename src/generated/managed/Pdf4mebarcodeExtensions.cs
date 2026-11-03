@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
     public class Pdf4mebarcodeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddBarcode(Expression<Func<string>> bodydocContent, Expression<Func<string>> bodydocName, Expression<Func<string>> bodytext, Expression<Func<bodybarcodeTypeInput>> bodybarcodeType, Expression<Func<string>> bodypages, Expression<Func<bodyalignXInput>> bodyalignX, Expression<Func<bodyalignYInput>> bodyalignY, Expression<Func<string>> bodyheightInMM, Expression<Func<string>> bodywidthInMM, Expression<Func<string>> bodymarginXInMM, Expression<Func<string>> bodymarginYInMM, Expression<Func<int>> bodyopacity, Expression<Func<string>> bodydisplayText = null, Expression<Func<bool>> bodyisTextAbove = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddBarcode(Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<string>> bodydocName, Expression<Func<string>> bodytext, Expression<Func<bodybarcodeTypeInput>> bodybarcodeType, Expression<Func<string>> bodypages, Expression<Func<bodyalignXInput>> bodyalignX, Expression<Func<bodyalignYInput>> bodyalignY, Expression<Func<string>> bodyheightInMM, Expression<Func<string>> bodywidthInMM, Expression<Func<string>> bodymarginXInMM, Expression<Func<string>> bodymarginYInMM, Expression<Func<int>> bodyopacity, Expression<Func<string>> bodydisplayText = null, Expression<Func<bool>> bodyisTextAbove = null)
         {
             var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
             var __workflow_bodydocName = WorkflowExpression.Compile(bodydocName, nameof(bodydocName), required: true);
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        public IBodyWorkflowAction<ReadBarcodesV1Response, ApiConnectionActionConfiguration> ReadBarcodes(Expression<Func<string>> bodydocContent, Expression<Func<bodybarcodeTypeInputItem[]>> bodybarcodeType, Expression<Func<string>> bodydocumentname = null, Expression<Func<string>> bodypages = null)
+        public IBodyWorkflowAction<ReadBarcodesV1Response, ApiConnectionActionConfiguration> ReadBarcodes(Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<bodybarcodeTypeInputItem[]>> bodybarcodeType, Expression<Func<string>> bodydocumentname = null, Expression<Func<string>> bodypages = null)
         {
             var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
             var __workflow_bodybarcodeType = WorkflowExpression.Compile(bodybarcodeType, nameof(bodybarcodeType), required: true);
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        public IBodyWorkflowAction<ReadBarcodesFromImageV1Response, ApiConnectionActionConfiguration> ReadBarcodesFromImage(Expression<Func<string>> bodydocContent, Expression<Func<string>> bodydocumentname = null)
+        public IBodyWorkflowAction<ReadBarcodesFromImageV1Response, ApiConnectionActionConfiguration> ReadBarcodesFromImage(Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<string>> bodydocumentname = null)
         {
             var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
             var __workflow_bodydocumentname = WorkflowExpression.Compile(bodydocumentname, nameof(bodydocumentname), required: false);
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ReadSwissQrBill(Expression<Func<string>> bodydocContent, Expression<Func<string>> bodydocumentname = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ReadSwissQrBill(Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<string>> bodydocumentname = null)
         {
             var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
             var __workflow_bodydocumentname = WorkflowExpression.Compile(bodydocumentname, nameof(bodydocumentname), required: false);
@@ -423,7 +423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        public IBodyWorkflowAction<SplitDocByBarcodeV1Response, ApiConnectionActionConfiguration> SplitDocByBarcode(Expression<Func<string>> bodydocContent, Expression<Func<bodybarcodeFilterInput>> bodybarcodeFilter, Expression<Func<string>> bodybarcodeString, Expression<Func<bodybarcodeTypeInput>> bodybarcodeType, Expression<Func<bodysplitBarcodePageInput>> bodysplitBarcodePage, Expression<Func<string>> bodydocumentname = null, Expression<Func<bool>> bodycombinePagesWithSameConsecutiveBarcodes = null, Expression<Func<string>> bodypdfRenderDpi = null, Expression<Func<bool>> bodyisAsync = null)
+        public IBodyWorkflowAction<SplitDocByBarcodeV1Response, ApiConnectionActionConfiguration> SplitDocByBarcode(Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<bodybarcodeFilterInput>> bodybarcodeFilter, Expression<Func<string>> bodybarcodeString, Expression<Func<bodybarcodeTypeInput>> bodybarcodeType, Expression<Func<bodysplitBarcodePageInput>> bodysplitBarcodePage, Expression<Func<string>> bodydocumentname = null, Expression<Func<bool>> bodycombinePagesWithSameConsecutiveBarcodes = null, Expression<Func<string>> bodypdfRenderDpi = null, Expression<Func<bool>> bodyisAsync = null)
         {
             var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
             var __workflow_bodybarcodeFilter = WorkflowExpression.Compile(bodybarcodeFilter, nameof(bodybarcodeFilter), required: true);

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
     public class Pdf4meconvertActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertHtmlToPdf(Expression<Func<string>> bodydocContent, Expression<Func<string>> bodydocName, Expression<Func<string>> bodyindexFilePath = null, Expression<Func<bodylayoutInput>> bodylayout = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<double>> bodyscale = null, Expression<Func<string>> bodytopMargin = null, Expression<Func<string>> bodybottomMargin = null, Expression<Func<string>> bodyleftMargin = null, Expression<Func<string>> bodyrightMargin = null, Expression<Func<bool>> bodyprintBackground = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertHtmlToPdf(Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<string>> bodydocName, Expression<Func<string>> bodyindexFilePath = null, Expression<Func<bodylayoutInput>> bodylayout = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<double>> bodyscale = null, Expression<Func<string>> bodytopMargin = null, Expression<Func<string>> bodybottomMargin = null, Expression<Func<string>> bodyleftMargin = null, Expression<Func<string>> bodyrightMargin = null, Expression<Func<bool>> bodyprintBackground = null)
         {
             var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
             var __workflow_bodydocName = WorkflowExpression.Compile(bodydocName, nameof(bodydocName), required: true);
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertJsonToExcel(Expression<Func<string>> bodydocContent, Expression<Func<string>> bodydocumentname = null, Expression<Func<int>> bodyfirstRow = null, Expression<Func<int>> bodyfirstColumn = null, Expression<Func<string>> bodyworksheetName = null, Expression<Func<bool>> bodyconvertNumberAndDate = null, Expression<Func<string>> bodydateFormat = null, Expression<Func<string>> bodynumberFormat = null, Expression<Func<bool>> bodyignoreNullValues = null, Expression<Func<bool>> bodyisTitleBold = null, Expression<Func<bool>> bodyisTitleWrapText = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertJsonToExcel(Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<string>> bodydocumentname = null, Expression<Func<int>> bodyfirstRow = null, Expression<Func<int>> bodyfirstColumn = null, Expression<Func<string>> bodyworksheetName = null, Expression<Func<bool>> bodyconvertNumberAndDate = null, Expression<Func<string>> bodydateFormat = null, Expression<Func<string>> bodynumberFormat = null, Expression<Func<bool>> bodyignoreNullValues = null, Expression<Func<bool>> bodyisTitleBold = null, Expression<Func<bool>> bodyisTitleWrapText = null)
         {
             var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
             var __workflow_bodydocumentname = WorkflowExpression.Compile(bodydocumentname, nameof(bodydocumentname), required: false);
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertMdToPdf(Expression<Func<string>> bodydocContent, Expression<Func<string>> bodydocName, Expression<Func<string>> bodymdFilePath = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertMdToPdf(Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<string>> bodydocName, Expression<Func<string>> bodymdFilePath = null)
         {
             var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
             var __workflow_bodydocName = WorkflowExpression.Compile(bodydocName, nameof(bodydocName), required: true);
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertToPdf(Expression<Func<string>> bodydocContent, Expression<Func<string>> bodydocumentname = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertToPdf(Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<string>> bodydocumentname = null)
         {
             var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
             var __workflow_bodydocumentname = WorkflowExpression.Compile(bodydocumentname, nameof(bodydocumentname), required: false);
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertWordToPdfForm(Expression<Func<string>> bodydocContent, Expression<Func<string>> bodydocumentname = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertWordToPdfForm(Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<string>> bodydocumentname = null)
         {
             var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
             var __workflow_bodydocumentname = WorkflowExpression.Compile(bodydocumentname, nameof(bodydocumentname), required: false);
@@ -528,7 +528,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreatePdfA(Expression<Func<bodycomplianceInput>> bodycompliance, Expression<Func<string>> bodydocContent, Expression<Func<string>> bodydocumentname = null, Expression<Func<bool>> bodyallowUpgrade = null, Expression<Func<bool>> bodyallowDowngrade = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreatePdfA(Expression<Func<bodycomplianceInput>> bodycompliance, Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<string>> bodydocumentname = null, Expression<Func<bool>> bodyallowUpgrade = null, Expression<Func<bool>> bodyallowDowngrade = null)
         {
             var __workflow_bodycompliance = WorkflowExpression.Compile(bodycompliance, nameof(bodycompliance), required: true);
             var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
@@ -618,7 +618,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfToExcel(Expression<Func<string>> bodydocContent, Expression<Func<bodyqualityTypeInput>> bodyqualityType, Expression<Func<string>> bodydocumentname = null, Expression<Func<string>> bodylanguage = null, Expression<Func<bool>> bodymergeAllSheets = null, Expression<Func<bodyoutputFormatInput>> bodyoutputFormat = null, Expression<Func<bool>> bodyisAsync = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfToExcel(Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<bodyqualityTypeInput>> bodyqualityType, Expression<Func<string>> bodydocumentname = null, Expression<Func<string>> bodylanguage = null, Expression<Func<bool>> bodymergeAllSheets = null, Expression<Func<bodyoutputFormatInput>> bodyoutputFormat = null, Expression<Func<bool>> bodyisAsync = null)
         {
             var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
             var __workflow_bodyqualityType = WorkflowExpression.Compile(bodyqualityType, nameof(bodyqualityType), required: true);
@@ -716,7 +716,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfToPowerPoint(Expression<Func<string>> bodydocContent, Expression<Func<string>> bodydocumentname = null, Expression<Func<bodyqualityTypeInput>> bodyqualityType = null, Expression<Func<string>> bodylanguage = null, Expression<Func<bool>> bodyisAsync = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfToPowerPoint(Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<string>> bodydocumentname = null, Expression<Func<bodyqualityTypeInput>> bodyqualityType = null, Expression<Func<string>> bodylanguage = null, Expression<Func<bool>> bodyisAsync = null)
         {
             var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
             var __workflow_bodydocumentname = WorkflowExpression.Compile(bodydocumentname, nameof(bodydocumentname), required: false);
@@ -794,7 +794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfToWord(Expression<Func<string>> bodydocContent, Expression<Func<bodyqualityTypeInput>> bodyqualityType, Expression<Func<string>> bodydocumentname = null, Expression<Func<string>> bodylanguage = null, Expression<Func<bool>> bodyisAsync = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfToWord(Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<bodyqualityTypeInput>> bodyqualityType, Expression<Func<string>> bodydocumentname = null, Expression<Func<string>> bodylanguage = null, Expression<Func<bool>> bodyisAsync = null)
         {
             var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
             var __workflow_bodyqualityType = WorkflowExpression.Compile(bodyqualityType, nameof(bodyqualityType), required: true);

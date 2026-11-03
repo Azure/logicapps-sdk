@@ -89,6 +89,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         [Fact]
+        public void BinaryWorkflowFunctionsPreserveContentEnvelopes()
+        {
+            AssertReturnExpression(
+                """binary("value")""",
+                Input(WorkflowActions.BuiltIn.Compose(() => WorkflowFunctions.Binary("value"))));
+            AssertReturnExpression(
+                """base64ToBinary("dmFsdWU=")""",
+                Input(WorkflowActions.BuiltIn.Compose(() => WorkflowFunctions.Base64ToBinary("dmFsdWU="))));
+            AssertReturnExpression(
+                """dataUriToBinary("data:text/plain;base64,dmFsdWU=")""",
+                Input(WorkflowActions.BuiltIn.Compose(() => WorkflowFunctions.DataUriToBinary("data:text/plain;base64,dmFsdWU="))));
+        }
+
+        [Fact]
         public void ObjectCollectionAndAnonymousInitializersRemainCSharp()
         {
             var previous = WorkflowActions.BuiltIn.Compose<string>(() => "id").WithName("Source");

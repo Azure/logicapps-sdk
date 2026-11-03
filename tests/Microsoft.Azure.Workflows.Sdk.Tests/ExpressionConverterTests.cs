@@ -4,6 +4,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
     using Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip;
     using Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax;
     using Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus;
     using Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus;
     using Newtonsoft.Json.Linq;
     using Xunit;
@@ -120,6 +121,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             Assert.Equal(
                 """#{"/current/" + (encodeURIComponent("98058"))}""",
                 ((ApiConnectionActionInput)action.GetActionDefinition("flow").Inputs).Path);
+        }
+
+        [Fact]
+        public void ByteFormattedInputsUseBinaryContentWrapper()
+        {
+            var compose = WorkflowActions.BuiltIn.Compose(() => "message").WithName("Message");
+            var action = new ServicebusActions("connection").SendMessage(
+                () => "queue",
+                () => WorkflowBinaryContent.FromWorkflowContent(compose.Output));
+            var inputs = (ApiConnectionActionInput)action.GetActionDefinition("flow").Inputs;
+            var source = ((JObject)inputs.Body)["ContentData"].Value<string>();
+
+            AssertReturnExpression(
+                """
+                global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent.FromWorkflowContent(
+                    outputs("Message"))
+                """,
+                source);
         }
 
     }

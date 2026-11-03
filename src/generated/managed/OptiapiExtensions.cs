@@ -547,7 +547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<GetPdfMetadataInformationResponse, ApiConnectionActionConfiguration> GetPdfMetadataInformation(Expression<Func<string>> bodypdf)
+        public IBodyWorkflowAction<GetPdfMetadataInformationResponse, ApiConnectionActionConfiguration> GetPdfMetadataInformation(Expression<Func<WorkflowBinaryContent>> bodypdf)
         {
             var __workflow_bodypdf = WorkflowExpression.Compile(bodypdf, nameof(bodypdf), required: true);
             return new DeferredBodyAction<GetPdfMetadataInformationResponse, ApiConnectionActionConfiguration>(() =>
@@ -571,7 +571,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<StandardArrayResponse, ApiConnectionActionConfiguration> ConvertAPdfFileToText(Expression<Func<bodylayoutInput>> bodylayout, Expression<Func<string>> bodypdf, Expression<Func<int>> bodyendPage = null, Expression<Func<int>> bodystartPage = null)
+        public IBodyWorkflowAction<StandardArrayResponse, ApiConnectionActionConfiguration> ConvertAPdfFileToText(Expression<Func<bodylayoutInput>> bodylayout, Expression<Func<WorkflowBinaryContent>> bodypdf, Expression<Func<int>> bodyendPage = null, Expression<Func<int>> bodystartPage = null)
         {
             var __workflow_bodylayout = WorkflowExpression.Compile(bodylayout, nameof(bodylayout), required: true);
             var __workflow_bodypdf = WorkflowExpression.Compile(bodypdf, nameof(bodypdf), required: true);
@@ -612,7 +612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<SetPasswordOnAPdfFileResponse, ApiConnectionActionConfiguration> SetPasswordOnAPdfFile(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodypassword, Expression<Func<string>> bodypdf)
+        public IBodyWorkflowAction<SetPasswordOnAPdfFileResponse, ApiConnectionActionConfiguration> SetPasswordOnAPdfFile(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodypassword, Expression<Func<WorkflowBinaryContent>> bodypdf)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);

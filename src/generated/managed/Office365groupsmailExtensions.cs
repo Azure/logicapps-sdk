@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
     public class Office365groupsmailActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        public IBodyWorkflowAction<CreateConversationResponse, ApiConnectionActionConfiguration> CreateConversation(Expression<Func<string>> groupId, Expression<Func<string>> bodynewTopic, Expression<Func<string>> bodypostbodycontent, Expression<Func<string[]>> bodypostpostCategories = null, Expression<Func<GetUsersGraphAction[]>> bodypostnewParticipants = null, Expression<Func<ClientSendAttachment[]>> bodypostfileAttachments = null)
+        public IBodyWorkflowAction<CreateConversationResponse, ApiConnectionActionConfiguration> CreateConversation(Expression<Func<string>> groupId, Expression<Func<string>> bodynewTopic, Expression<Func<string>> bodypostbodycontent, Expression<Func<string[]>> bodypostpostCategories = null, Expression<Func<GetUsersGraphAction[]>> bodypostnewParticipants = null, Expression<Func<ClientSendAttachmentInput[]>> bodypostfileAttachments = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_bodynewTopic = WorkflowExpression.Compile(bodynewTopic, nameof(bodynewTopic), required: true);
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        public IBodyWorkflowAction<NewConversationThreadResponse, ApiConnectionActionConfiguration> CreateConversationThread(Expression<Func<string>> groupId, Expression<Func<string>> conversationId, Expression<Func<string>> bodynewTopic, Expression<Func<string>> bodypostbodycontent, Expression<Func<string[]>> bodypostpostCategories = null, Expression<Func<GetUsersGraphAction[]>> bodypostnewParticipants = null, Expression<Func<ClientSendAttachment[]>> bodypostfileAttachments = null)
+        public IBodyWorkflowAction<NewConversationThreadResponse, ApiConnectionActionConfiguration> CreateConversationThread(Expression<Func<string>> groupId, Expression<Func<string>> conversationId, Expression<Func<string>> bodynewTopic, Expression<Func<string>> bodypostbodycontent, Expression<Func<string[]>> bodypostpostCategories = null, Expression<Func<GetUsersGraphAction[]>> bodypostnewParticipants = null, Expression<Func<ClientSendAttachmentInput[]>> bodypostfileAttachments = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_conversationId = WorkflowExpression.Compile(conversationId, nameof(conversationId), required: true);
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        public IBodyWorkflowAction<NewConversationThreadResponse, ApiConnectionActionConfiguration> CreateGroupThread(Expression<Func<string>> groupId, Expression<Func<string>> bodynewTopic, Expression<Func<string>> bodypostbodycontent, Expression<Func<string[]>> bodypostpostCategories = null, Expression<Func<GetUsersGraphAction[]>> bodypostnewParticipants = null, Expression<Func<ClientSendAttachment[]>> bodypostfileAttachments = null)
+        public IBodyWorkflowAction<NewConversationThreadResponse, ApiConnectionActionConfiguration> CreateGroupThread(Expression<Func<string>> groupId, Expression<Func<string>> bodynewTopic, Expression<Func<string>> bodypostbodycontent, Expression<Func<string[]>> bodypostpostCategories = null, Expression<Func<GetUsersGraphAction[]>> bodypostnewParticipants = null, Expression<Func<ClientSendAttachmentInput[]>> bodypostfileAttachments = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_bodynewTopic = WorkflowExpression.Compile(bodynewTopic, nameof(bodynewTopic), required: true);
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReplyToAThread(Expression<Func<string>> groupId, Expression<Func<string>> threadId, Expression<Func<string>> bodypostbodycontent, Expression<Func<string[]>> bodypostpostCategories = null, Expression<Func<GetUsersGraphAction[]>> bodypostnewParticipants = null, Expression<Func<ClientSendAttachment[]>> bodypostfileAttachments = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReplyToAThread(Expression<Func<string>> groupId, Expression<Func<string>> threadId, Expression<Func<string>> bodypostbodycontent, Expression<Func<string[]>> bodypostpostCategories = null, Expression<Func<GetUsersGraphAction[]>> bodypostnewParticipants = null, Expression<Func<ClientSendAttachmentInput[]>> bodypostfileAttachments = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Reply(Expression<Func<string>> groupId, Expression<Func<string>> threadId, Expression<Func<string>> postId, Expression<Func<string>> bodypostbodycontent, Expression<Func<string[]>> bodypostpostCategories = null, Expression<Func<GetUsersGraphAction[]>> bodypostnewParticipants = null, Expression<Func<ClientSendAttachment[]>> bodypostfileAttachments = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Reply(Expression<Func<string>> groupId, Expression<Func<string>> threadId, Expression<Func<string>> postId, Expression<Func<string>> bodypostbodycontent, Expression<Func<string[]>> bodypostpostCategories = null, Expression<Func<GetUsersGraphAction[]>> bodypostnewParticipants = null, Expression<Func<ClientSendAttachmentInput[]>> bodypostfileAttachments = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
@@ -576,7 +576,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         public string Address { get; set; }
     }
 
-    public class ClientSendAttachment
+    public class ClientSendAttachmentInput
     {
         [JsonProperty("@odata.type")]
         public string FileAttachmentOdataType { get; set; }
@@ -585,7 +585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         public string AttachmentName { get; set; }
 
         [JsonProperty("ContentBytes")]
-        public string AttachmentContent { get; set; }
+        public WorkflowBinaryContent AttachmentContent { get; set; }
     }
 
     public class Conversation

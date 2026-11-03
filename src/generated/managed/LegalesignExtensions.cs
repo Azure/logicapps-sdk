@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostAttachment(Expression<Func<string>> bodygroup, Expression<Func<string>> bodypdfFile, Expression<Func<string>> bodyfilename, Expression<Func<string>> bodyuser = null, Expression<Func<string>> bodydescription = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostAttachment(Expression<Func<string>> bodygroup, Expression<Func<WorkflowBinaryContent>> bodypdfFile, Expression<Func<string>> bodyfilename, Expression<Func<string>> bodyuser = null, Expression<Func<string>> bodydescription = null)
         {
             var __workflow_bodygroup = WorkflowExpression.Compile(bodygroup, nameof(bodygroup), required: true);
             var __workflow_bodypdfFile = WorkflowExpression.Compile(bodypdfFile, nameof(bodypdfFile), required: true);
@@ -630,7 +630,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostPdfTemplate(Expression<Func<string>> bodygroup, Expression<Func<string>> bodypdfFile, Expression<Func<bool>> bodyarchiveUponSend = null, Expression<Func<bool>> bodyprocessTags = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyuser = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostPdfTemplate(Expression<Func<string>> bodygroup, Expression<Func<WorkflowBinaryContent>> bodypdfFile, Expression<Func<bool>> bodyarchiveUponSend = null, Expression<Func<bool>> bodyprocessTags = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyuser = null)
         {
             var __workflow_bodygroup = WorkflowExpression.Compile(bodygroup, nameof(bodygroup), required: true);
             var __workflow_bodypdfFile = WorkflowExpression.Compile(bodypdfFile, nameof(bodypdfFile), required: true);

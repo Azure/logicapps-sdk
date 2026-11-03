@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
     public class AdobepdftoolsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
-        public IBodyWorkflowAction<CombinePDFResponse, ApiConnectionActionConfiguration> CombinePDF(Expression<Func<string>> filesArraymergedPDFFileName, Expression<Func<string[]>> filesArrayfiles, Expression<Func<xRegionValueInput>> xRegionValue = null)
+        public IBodyWorkflowAction<CombinePDFResponse, ApiConnectionActionConfiguration> CombinePDF(Expression<Func<string>> filesArraymergedPDFFileName, Expression<Func<WorkflowBinaryContent[]>> filesArrayfiles, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
             var __workflow_filesArraymergedPDFFileName = WorkflowExpression.Compile(filesArraymergedPDFFileName, nameof(filesArraymergedPDFFileName), required: true);
             var __workflow_filesArrayfiles = WorkflowExpression.Compile(filesArrayfiles, nameof(filesArrayfiles), required: true);

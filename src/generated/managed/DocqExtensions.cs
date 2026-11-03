@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
     public class DocqActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docq")]
-        public IBodyWorkflowAction<ExtractInformationResponse, ApiConnectionActionConfiguration> ExtractInformation(Expression<Func<string>> bodyimageFileContent = null)
+        public IBodyWorkflowAction<ExtractInformationResponse, ApiConnectionActionConfiguration> ExtractInformation(Expression<Func<WorkflowBinaryContent>> bodyimageFileContent = null)
         {
             var __workflow_bodyimageFileContent = WorkflowExpression.Compile(bodyimageFileContent, nameof(bodyimageFileContent), required: false);
             return new DeferredBodyAction<ExtractInformationResponse, ApiConnectionActionConfiguration>(() =>
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docq")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateDocument(Expression<Func<string>> bodydocumentInformation, Expression<Func<string>> bodydocumentTemplateContent)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateDocument(Expression<Func<string>> bodydocumentInformation, Expression<Func<WorkflowBinaryContent>> bodydocumentTemplateContent)
         {
             var __workflow_bodydocumentInformation = WorkflowExpression.Compile(bodydocumentInformation, nameof(bodydocumentInformation), required: true);
             var __workflow_bodydocumentTemplateContent = WorkflowExpression.Compile(bodydocumentTemplateContent, nameof(bodydocumentTemplateContent), required: true);

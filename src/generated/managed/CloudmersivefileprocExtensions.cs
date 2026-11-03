@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
     public class CloudmersivefileprocActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<GetDocxCommentsResponse, ApiConnectionActionConfiguration> EditDocumentDocxGetComments(Expression<Func<string>> reqConfiginputFileBytes = null, Expression<Func<string>> reqConfiginputFileUrl = null)
+        public IBodyWorkflowAction<GetDocxCommentsResponse, ApiConnectionActionConfiguration> EditDocumentDocxGetComments(Expression<Func<WorkflowBinaryContent>> reqConfiginputFileBytes = null, Expression<Func<string>> reqConfiginputFileUrl = null)
         {
             var __workflow_reqConfiginputFileBytes = WorkflowExpression.Compile(reqConfiginputFileBytes, nameof(reqConfiginputFileBytes), required: false);
             var __workflow_reqConfiginputFileUrl = WorkflowExpression.Compile(reqConfiginputFileUrl, nameof(reqConfiginputFileUrl), required: false);
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<Base64EncodeResponse, ApiConnectionActionConfiguration> EditTextBase64Encode(Expression<Func<string>> requestcontentToEncode = null)
+        public IBodyWorkflowAction<Base64EncodeResponse, ApiConnectionActionConfiguration> EditTextBase64Encode(Expression<Func<WorkflowBinaryContent>> requestcontentToEncode = null)
         {
             var __workflow_requestcontentToEncode = WorkflowExpression.Compile(requestcontentToEncode, nameof(requestcontentToEncode), required: false);
             return new DeferredBodyAction<Base64EncodeResponse, ApiConnectionActionConfiguration>(() =>
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ZipArchiveZipCreateAdvanced(Expression<Func<ZipFile[]>> requestfilesInZip = null, Expression<Func<ZipDirectory[]>> requestdirectoriesInZip = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ZipArchiveZipCreateAdvanced(Expression<Func<ZipFileInput[]>> requestfilesInZip = null, Expression<Func<ZipDirectoryInput[]>> requestdirectoriesInZip = null)
         {
             var __workflow_requestfilesInZip = WorkflowExpression.Compile(requestfilesInZip, nameof(requestfilesInZip), required: false);
             var __workflow_requestdirectoriesInZip = WorkflowExpression.Compile(requestdirectoriesInZip, nameof(requestdirectoriesInZip), required: false);
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ZipArchiveZipEncryptAdvanced(Expression<Func<string>> encryptionRequestinputFileContents = null, Expression<Func<string>> encryptionRequestpassword = null, Expression<Func<string>> encryptionRequestencryptionAlgorithm = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ZipArchiveZipEncryptAdvanced(Expression<Func<WorkflowBinaryContent>> encryptionRequestinputFileContents = null, Expression<Func<string>> encryptionRequestpassword = null, Expression<Func<string>> encryptionRequestencryptionAlgorithm = null)
         {
             var __workflow_encryptionRequestinputFileContents = WorkflowExpression.Compile(encryptionRequestinputFileContents, nameof(encryptionRequestinputFileContents), required: false);
             var __workflow_encryptionRequestpassword = WorkflowExpression.Compile(encryptionRequestpassword, nameof(encryptionRequestpassword), required: false);
@@ -524,17 +524,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         public string TextContentResult { get; set; }
     }
 
-    public class ZipFile
+    public class ZipFileInput
     {
         public string FileName { get; set; }
-        public string FileContents { get; set; }
+        public WorkflowBinaryContent FileContents { get; set; }
     }
 
-    public class ZipDirectory
+    public class ZipDirectoryInput
     {
         public string DirectoryName { get; set; }
-        public ZipDirectory[] DirectoriesInDirectory { get; set; }
-        public ZipFile[] FilesInDirectory { get; set; }
+        public ZipDirectoryInput[] DirectoriesInDirectory { get; set; }
+        public ZipFileInput[] FilesInDirectory { get; set; }
     }
 }
 
