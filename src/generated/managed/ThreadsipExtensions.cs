@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
 {
     using System.Linq.Expressions;
@@ -12,10 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
     public class ThreadsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<ThreadPostResponse, ApiConnectionActionConfiguration> Thread(Expression<Func<string>> bodychannel = null, Expression<Func<string>> bodychannelID = null, Expression<Func<string[]>> bodyblocks = null)
+        public IBodyWorkflowAction<ThreadPostResponse, ApiConnectionActionConfiguration> Thread(Expression<Func<string>> bodychannel = null, Expression<Func<string>> bodychannelId = null, Expression<Func<string[]>> bodyblocks = null)
         {
             var __workflow_bodychannel = WorkflowExpression.Compile(bodychannel, nameof(bodychannel), required: false);
-            var __workflow_bodychannelID = WorkflowExpression.Compile(bodychannelID, nameof(bodychannelID), required: false);
+            var __workflow_bodychannelId = WorkflowExpression.Compile(bodychannelId, nameof(bodychannelId), required: false);
             var __workflow_bodyblocks = WorkflowExpression.Compile(bodyblocks, nameof(bodyblocks), required: false);
             return new DeferredBodyAction<ThreadPostResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -30,9 +31,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
                     bodypropCount++;
                 }
 
-                if (__workflow_bodychannelID != null)
+                if (__workflow_bodychannelId != null)
                 {
-                    body["channelID"] = ExpressionConverter.ConvertO(__workflow_bodychannelID);
+                    body["channelID"] = ExpressionConverter.ConvertO(__workflow_bodychannelId);
                     bodypropCount++;
                 }
 
@@ -52,9 +53,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<ThreadDeleteResponse, ApiConnectionActionConfiguration> ThreadDelete(Expression<Func<string>> bodythreadID)
+        public IBodyWorkflowAction<ThreadDeleteResponse, ApiConnectionActionConfiguration> ThreadDelete(Expression<Func<string>> bodythreadId)
         {
-            var __workflow_bodythreadID = WorkflowExpression.Compile(bodythreadID, nameof(bodythreadID), required: true);
+            var __workflow_bodythreadId = WorkflowExpression.Compile(bodythreadId, nameof(bodythreadId), required: true);
             return new DeferredBodyAction<ThreadDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/deleteThread";
@@ -63,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["threadID"] = ExpressionConverter.ConvertO(__workflow_bodythreadID);
+                body["threadID"] = ExpressionConverter.ConvertO(__workflow_bodythreadId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -76,17 +77,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
         public IBodyWorkflowAction<ChannelsPostResponse, ApiConnectionActionConfiguration> Channels()
         {
-            var apiCallPath = "/channels";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChannelsPostResponse>(callPayload);
+            return new DeferredBodyAction<ChannelsPostResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/channels";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ChannelsPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<ChatPostResponse, ApiConnectionActionConfiguration> Chat(Expression<Func<string>> bodychat = null, Expression<Func<string>> bodychatID = null, Expression<Func<string>> bodybody = null)
+        public IBodyWorkflowAction<ChatPostResponse, ApiConnectionActionConfiguration> Chat(Expression<Func<string>> bodychat = null, Expression<Func<string>> bodychatId = null, Expression<Func<string>> bodybody = null)
         {
             var __workflow_bodychat = WorkflowExpression.Compile(bodychat, nameof(bodychat), required: false);
-            var __workflow_bodychatID = WorkflowExpression.Compile(bodychatID, nameof(bodychatID), required: false);
+            var __workflow_bodychatId = WorkflowExpression.Compile(bodychatId, nameof(bodychatId), required: false);
             var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: false);
             return new DeferredBodyAction<ChatPostResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -101,9 +105,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
                     bodypropCount++;
                 }
 
-                if (__workflow_bodychatID != null)
+                if (__workflow_bodychatId != null)
                 {
-                    body["chatID"] = ExpressionConverter.ConvertO(__workflow_bodychatID);
+                    body["chatID"] = ExpressionConverter.ConvertO(__workflow_bodychatId);
                     bodypropCount++;
                 }
 
@@ -123,9 +127,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<ChatDeleteResponse, ApiConnectionActionConfiguration> ChatDelete(Expression<Func<string>> bodymessageID = null)
+        public IBodyWorkflowAction<ChatDeleteResponse, ApiConnectionActionConfiguration> ChatDelete(Expression<Func<string>> bodymessageId = null)
         {
-            var __workflow_bodymessageID = WorkflowExpression.Compile(bodymessageID, nameof(bodymessageID), required: false);
+            var __workflow_bodymessageId = WorkflowExpression.Compile(bodymessageId, nameof(bodymessageId), required: false);
             return new DeferredBodyAction<ChatDeleteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/deleteChatMessage";
@@ -133,9 +137,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (__workflow_bodymessageID != null)
+                if (__workflow_bodymessageId != null)
                 {
-                    body["messageID"] = ExpressionConverter.ConvertO(__workflow_bodymessageID);
+                    body["messageID"] = ExpressionConverter.ConvertO(__workflow_bodymessageId);
                     bodypropCount++;
                 }
 
@@ -145,19 +149,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
                 }
 
                 return new ApiConnectionAction<ChatDeleteResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<FilePostResponse, ApiConnectionActionConfiguration> File(Expression<Func<object>> data = null)
-        {
-            var __workflow_data = WorkflowExpression.Compile(data, nameof(data), required: false);
-            return new DeferredBodyAction<FilePostResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/uploadFile";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<FilePostResponse>(callPayload);
             });
         }
     }
@@ -178,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
     public class ThreadPostResponseResultType
     {
         [JsonProperty("threadID")]
-        public string ThreadID { get; set; }
+        public string ThreadId { get; set; }
 
         [JsonProperty("threadURL")]
         public string ThreadURL { get; set; }
@@ -202,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
     public class ChannelsPostResponseResultTypeItem
     {
         [JsonProperty("channelID")]
-        public string ChannelID { get; set; }
+        public string ChannelId { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -220,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
     public class ChatPostResponseResultType
     {
         [JsonProperty("chatMessageID")]
-        public string ChatMessageID { get; set; }
+        public string ChatMessageId { get; set; }
 
         [JsonProperty("chatMessageURL")]
         public string ChatMessageURL { get; set; }
@@ -230,21 +221,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
     {
         [JsonProperty("ok")]
         public bool Ok { get; set; }
-    }
-
-    public class FilePostResponse
-    {
-        [JsonProperty("ok")]
-        public bool Ok { get; set; }
-
-        [JsonProperty("result")]
-        public FilePostResponseResultType Result { get; set; }
-    }
-
-    public class FilePostResponseResultType
-    {
-        [JsonProperty("fileID")]
-        public string FileID { get; set; }
     }
 }
 

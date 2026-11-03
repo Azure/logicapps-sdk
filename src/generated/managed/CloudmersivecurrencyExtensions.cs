@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivecurrency
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivecurrency
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivecurrency")]
         public IBodyWorkflowAction<AvailableCurrencyResponse, ApiConnectionActionConfiguration> CurrencyExchangeGetAvailableCurrencies()
         {
-            var apiCallPath = "/currency/exchange-rates/list-available";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AvailableCurrencyResponse>(callPayload);
+            return new DeferredBodyAction<AvailableCurrencyResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/currency/exchange-rates/list-available";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AvailableCurrencyResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivecurrency")]

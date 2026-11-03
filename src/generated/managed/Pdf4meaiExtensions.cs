@@ -4,6 +4,8 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meai
 {
+    using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
 {
     using System.Linq.Expressions;
@@ -389,7 +390,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         public string CountyFIPS { get; set; }
         public string CensusTract { get; set; }
         public string CensusBlock { get; set; }
-        public string CensusGeoID { get; set; }
+
+        [JsonProperty("CensusGeoID")]
+        public string CensusGeoId { get; set; }
         public string ClassFP { get; set; }
         public string CongressCode { get; set; }
         public string SLDUST { get; set; }
@@ -462,7 +465,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         public string CountyFIPS { get; set; }
         public string CensusTract { get; set; }
         public string CensusBlock { get; set; }
-        public string CensusGeoID { get; set; }
+
+        [JsonProperty("CensusGeoID")]
+        public string CensusGeoId { get; set; }
         public string ClassFP { get; set; }
         public string CongressCode { get; set; }
         public string SLDUST { get; set; }

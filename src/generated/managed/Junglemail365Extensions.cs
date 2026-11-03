@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
 {
     using System.Linq.Expressions;
@@ -57,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
-        public IBodyWorkflowAction<JsCreateJobResponse, ApiConnectionActionConfiguration> JobCreate(Expression<Func<requestrecipientSourceInput>> requestrecipientSource, Expression<Func<string>> requestsendingAccount, Expression<Func<string>> requestnewsletterTitle, Expression<Func<string>> requestoffice365Groups = null, Expression<Func<string>> requestattachmentContent = null, Expression<Func<string>> requestattachmentName = null, Expression<Func<string>> requestemailAddresses = null, Expression<Func<string>> requestemailContent = null, Expression<Func<requestemailContentTypeInput>> requestemailContentType = null, Expression<Func<string>> requestemailSubject = null, Expression<Func<string>> requestexchangeGroups = null, Expression<Func<requestwhenToSendTypeInput>> requestwhenToSendType = null, Expression<Func<string>> requestwhenToSend = null, Expression<Func<string>> requestrecipientEmailField = null, Expression<Func<string>> requestrecipientListURL = null, Expression<Func<string>> requestrecipientFilterView = null, Expression<Func<bool>> requestremoveDuplicates = null, Expression<Func<bool>> requestsendReport = null, Expression<Func<string>> requesttimeZone = null, Expression<Func<string>> requesttemplate = null, Expression<Func<bool>> requesttrackClicks = null, Expression<Func<bool>> requesttrackOpens = null)
+        public IBodyWorkflowAction<JsCreateJobResponse, ApiConnectionActionConfiguration> JobCreate(Expression<Func<requestrecipientSourceInput>> requestrecipientSource, Expression<Func<string>> requestsendingAccount, Expression<Func<string>> requestnewsletterTitle, Expression<Func<string>> requestoffice365Groups = null, Expression<Func<WorkflowBinaryContent>> requestattachmentContent = null, Expression<Func<string>> requestattachmentName = null, Expression<Func<string>> requestemailAddresses = null, Expression<Func<string>> requestemailContent = null, Expression<Func<requestemailContentTypeInput>> requestemailContentType = null, Expression<Func<string>> requestemailSubject = null, Expression<Func<string>> requestexchangeGroups = null, Expression<Func<requestwhenToSendTypeInput>> requestwhenToSendType = null, Expression<Func<string>> requestwhenToSend = null, Expression<Func<string>> requestrecipientEmailField = null, Expression<Func<string>> requestrecipientListURL = null, Expression<Func<string>> requestrecipientFilterView = null, Expression<Func<bool>> requestremoveDuplicates = null, Expression<Func<bool>> requestsendReport = null, Expression<Func<string>> requesttimeZone = null, Expression<Func<string>> requesttemplate = null, Expression<Func<bool>> requesttrackClicks = null, Expression<Func<bool>> requesttrackOpens = null)
         {
             var __workflow_requestrecipientSource = WorkflowExpression.Compile(requestrecipientSource, nameof(requestrecipientSource), required: true);
             var __workflow_requestsendingAccount = WorkflowExpression.Compile(requestsendingAccount, nameof(requestsendingAccount), required: true);

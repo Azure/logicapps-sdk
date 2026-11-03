@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
         public IBodyWorkflowAction<PredictionListResponse, ApiConnectionActionConfiguration> PredictionList()
         {
-            var apiCallPath = "/predictions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PredictionListResponse>(callPayload);
+            return new DeferredBodyAction<PredictionListResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/predictions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PredictionListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]

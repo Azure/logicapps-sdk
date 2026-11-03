@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
 {
     using System.Linq.Expressions;
@@ -366,20 +367,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp, ApiConnectionActionConfiguration> CreateWorkSpaceFile(Expression<Func<string>> metadata = null, Expression<Func<object>> content = null)
-        {
-            var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
-            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: false);
-            return new DeferredBodyAction<SeismicWorkSpaceContentManagerWsFileResp, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/integration/v2/workspace/files";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFileResp>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp, ApiConnectionActionConfiguration> GetWorkspaceFileDetails(Expression<Func<string>> workspaceContentId)
         {
             var __workflow_workspaceContentId = WorkflowExpression.Compile(workspaceContentId, nameof(workspaceContentId), required: true);
@@ -480,20 +467,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
                 if (__workflow_redirect != null)
                     callPayload.Queries["redirect"] = ExpressionConverter.Convert(__workflow_redirect);
                 return new ApiConnectionAction<SeismicCommonDownloadLocationResp>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp, ApiConnectionActionConfiguration> CreateWorkspaceFileVersion(Expression<Func<string>> workspaceContentId, Expression<Func<object>> content = null)
-        {
-            var __workflow_workspaceContentId = WorkflowExpression.Compile(workspaceContentId, nameof(workspaceContentId), required: true);
-            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: false);
-            return new DeferredBodyAction<SeismicWorkSpaceContentManagerWsFileResp, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/integration/v2/workspace/files/{0}/content", __workflow_workspaceContentId.WithUrlEncoding(1)));
-                var apiCallHttpMethod = "put";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFileResp>(callPayload);
             });
         }
 

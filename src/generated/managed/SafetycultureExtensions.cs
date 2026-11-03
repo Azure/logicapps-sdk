@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
 {
     using System.Linq.Expressions;
@@ -170,9 +171,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<ActionsSearchResponse, ApiConnectionActionConfiguration> SearchActions(Expression<Func<string[]>> searchActionsBodyauditIDS = null, Expression<Func<searchActionsBodyassigneesInputItem[]>> searchActionsBodyassignees = null, Expression<Func<string>> searchActionsBodycreatedafterDate = null, Expression<Func<string>> searchActionsBodycreatedbeforeDate = null, Expression<Func<string>> searchActionsBodymodifiedafterDate = null, Expression<Func<string>> searchActionsBodymodifiedbeforeDate = null, Expression<Func<string>> searchActionsBodydueafterDate = null, Expression<Func<string>> searchActionsBodyduebeforeDate = null)
+        public IBodyWorkflowAction<ActionsSearchResponse, ApiConnectionActionConfiguration> SearchActions(Expression<Func<string[]>> searchActionsBodyauditIdS = null, Expression<Func<searchActionsBodyassigneesInputItem[]>> searchActionsBodyassignees = null, Expression<Func<string>> searchActionsBodycreatedafterDate = null, Expression<Func<string>> searchActionsBodycreatedbeforeDate = null, Expression<Func<string>> searchActionsBodymodifiedafterDate = null, Expression<Func<string>> searchActionsBodymodifiedbeforeDate = null, Expression<Func<string>> searchActionsBodydueafterDate = null, Expression<Func<string>> searchActionsBodyduebeforeDate = null)
         {
-            var __workflow_searchActionsBodyauditIDS = WorkflowExpression.Compile(searchActionsBodyauditIDS, nameof(searchActionsBodyauditIDS), required: false);
+            var __workflow_searchActionsBodyauditIdS = WorkflowExpression.Compile(searchActionsBodyauditIdS, nameof(searchActionsBodyauditIdS), required: false);
             var __workflow_searchActionsBodyassignees = WorkflowExpression.Compile(searchActionsBodyassignees, nameof(searchActionsBodyassignees), required: false);
             var __workflow_searchActionsBodycreatedafterDate = WorkflowExpression.Compile(searchActionsBodycreatedafterDate, nameof(searchActionsBodycreatedafterDate), required: false);
             var __workflow_searchActionsBodycreatedbeforeDate = WorkflowExpression.Compile(searchActionsBodycreatedbeforeDate, nameof(searchActionsBodycreatedbeforeDate), required: false);
@@ -187,9 +188,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var searchActionsBody = new JObject();
                 var searchActionsBodypropCount = 0;
-                if (__workflow_searchActionsBodyauditIDS != null)
+                if (__workflow_searchActionsBodyauditIdS != null)
                 {
-                    searchActionsBody["audit_id"] = ExpressionConverter.ConvertO(__workflow_searchActionsBodyauditIDS);
+                    searchActionsBody["audit_id"] = ExpressionConverter.ConvertO(__workflow_searchActionsBodyauditIdS);
                     searchActionsBodypropCount++;
                 }
 
@@ -269,10 +270,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<Action, ApiConnectionActionConfiguration> CreateAction(Expression<Func<string>> createActionBodyauditID = null, Expression<Func<string>> createActionBodyitemID = null, Expression<Func<string>> createActionBodytitle = null, Expression<Func<string>> createActionBodydescription = null, Expression<Func<createActionBodypriorityInput>> createActionBodypriority = null, Expression<Func<createActionBodystatusInput>> createActionBodystatus = null, Expression<Func<string>> createActionBodydueAt = null, Expression<Func<createActionBodyassigneesInputItem[]>> createActionBodyassignees = null)
+        public IBodyWorkflowAction<Action, ApiConnectionActionConfiguration> CreateAction(Expression<Func<string>> createActionBodyauditId = null, Expression<Func<string>> createActionBodyitemId = null, Expression<Func<string>> createActionBodytitle = null, Expression<Func<string>> createActionBodydescription = null, Expression<Func<createActionBodypriorityInput>> createActionBodypriority = null, Expression<Func<createActionBodystatusInput>> createActionBodystatus = null, Expression<Func<string>> createActionBodydueAt = null, Expression<Func<createActionBodyassigneesInputItem[]>> createActionBodyassignees = null)
         {
-            var __workflow_createActionBodyauditID = WorkflowExpression.Compile(createActionBodyauditID, nameof(createActionBodyauditID), required: false);
-            var __workflow_createActionBodyitemID = WorkflowExpression.Compile(createActionBodyitemID, nameof(createActionBodyitemID), required: false);
+            var __workflow_createActionBodyauditId = WorkflowExpression.Compile(createActionBodyauditId, nameof(createActionBodyauditId), required: false);
+            var __workflow_createActionBodyitemId = WorkflowExpression.Compile(createActionBodyitemId, nameof(createActionBodyitemId), required: false);
             var __workflow_createActionBodytitle = WorkflowExpression.Compile(createActionBodytitle, nameof(createActionBodytitle), required: false);
             var __workflow_createActionBodydescription = WorkflowExpression.Compile(createActionBodydescription, nameof(createActionBodydescription), required: false);
             var __workflow_createActionBodypriority = WorkflowExpression.Compile(createActionBodypriority, nameof(createActionBodypriority), required: false);
@@ -286,15 +287,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var createActionBody = new JObject();
                 var createActionBodypropCount = 0;
-                if (__workflow_createActionBodyauditID != null)
+                if (__workflow_createActionBodyauditId != null)
                 {
-                    createActionBody["audit_id"] = ExpressionConverter.ConvertO(__workflow_createActionBodyauditID);
+                    createActionBody["audit_id"] = ExpressionConverter.ConvertO(__workflow_createActionBodyauditId);
                     createActionBodypropCount++;
                 }
 
-                if (__workflow_createActionBodyitemID != null)
+                if (__workflow_createActionBodyitemId != null)
                 {
-                    createActionBody["item_id"] = ExpressionConverter.ConvertO(__workflow_createActionBodyitemID);
+                    createActionBody["item_id"] = ExpressionConverter.ConvertO(__workflow_createActionBodyitemId);
                     createActionBodypropCount++;
                 }
 
@@ -433,11 +434,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<InitInspectionExportResponse, ApiConnectionActionConfiguration> InitiateInspectionExport(Expression<Func<string>> auditId, Expression<Func<formatexportFormatInput>> formatexportFormat = null, Expression<Func<string>> formatpreferenceID = null)
+        public IBodyWorkflowAction<InitInspectionExportResponse, ApiConnectionActionConfiguration> InitiateInspectionExport(Expression<Func<string>> auditId, Expression<Func<formatexportFormatInput>> formatexportFormat = null, Expression<Func<string>> formatpreferenceId = null)
         {
             var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
             var __workflow_formatexportFormat = WorkflowExpression.Compile(formatexportFormat, nameof(formatexportFormat), required: false);
-            var __workflow_formatpreferenceID = WorkflowExpression.Compile(formatpreferenceID, nameof(formatpreferenceID), required: false);
+            var __workflow_formatpreferenceId = WorkflowExpression.Compile(formatpreferenceId, nameof(formatpreferenceId), required: false);
             return new DeferredBodyAction<InitInspectionExportResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audits/{0}/report", __workflow_auditId.WithUrlEncoding(1)));
@@ -461,9 +462,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
                     formatpropCount++;
                 }
 
-                if (__workflow_formatpreferenceID != null)
+                if (__workflow_formatpreferenceId != null)
                 {
-                    format["preference_id"] = ExpressionConverter.ConvertO(__workflow_formatpreferenceID);
+                    format["preference_id"] = ExpressionConverter.ConvertO(__workflow_formatpreferenceId);
                     formatpropCount++;
                 }
 
@@ -510,13 +511,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     public class AuditSearchResponseInspectionTypeItem
     {
         [JsonProperty("audit_id")]
-        public string AuditID { get; set; }
+        public string AuditId { get; set; }
 
         [JsonProperty("modified_at")]
         public string DateModified { get; set; }
 
         [JsonProperty("template_id")]
-        public string TemplateID { get; set; }
+        public string TemplateId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -564,10 +565,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     public class GetAuditByIdResponse
     {
         [JsonProperty("template_id")]
-        public string TemplateID { get; set; }
+        public string TemplateId { get; set; }
 
         [JsonProperty("audit_id")]
-        public string AuditID { get; set; }
+        public string AuditId { get; set; }
 
         [JsonProperty("audit_data")]
         public GetAuditByIdResponseAuditDataType AuditData { get; set; }
@@ -612,13 +613,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         public string InspectionOwner { get; set; }
 
         [JsonProperty("owner_id")]
-        public string InspectionOwnerID { get; set; }
+        public string InspectionOwnerId { get; set; }
 
         [JsonProperty("author")]
         public string InspectionAuthor { get; set; }
 
         [JsonProperty("author_id")]
-        public string InspectionAuthorID { get; set; }
+        public string InspectionAuthorId { get; set; }
     }
 
     public class GetAuditByIdResponseTemplateDataType
@@ -636,13 +637,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         public string TemplateOwner { get; set; }
 
         [JsonProperty("owner_id")]
-        public string TemplateOwnerID { get; set; }
+        public string TemplateOwnerId { get; set; }
 
         [JsonProperty("author")]
         public string TemplateAuthor { get; set; }
 
         [JsonProperty("author_id")]
-        public string TemplateAuthorID { get; set; }
+        public string TemplateAuthorId { get; set; }
     }
 
     public class GetAuditByIdResponseTemplateDataTypeMetadataType
@@ -657,7 +658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     public class InitExportResponse
     {
         [JsonProperty("id")]
-        public string ExportTaskID { get; set; }
+        public string ExportTaskId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -783,7 +784,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     public class ActionInspectionType
     {
         [JsonProperty("audit_id")]
-        public string AuditID { get; set; }
+        public string AuditId { get; set; }
 
         [JsonProperty("name")]
         public string InspectionTitle { get; set; }
@@ -792,7 +793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     public class ActionItemType
     {
         [JsonProperty("item_id")]
-        public string ItemID { get; set; }
+        public string ItemId { get; set; }
 
         [JsonProperty("label")]
         public string ItemLabel { get; set; }
@@ -801,7 +802,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     public class ActionAssigneesTypeItem
     {
         [JsonProperty("id")]
-        public string AssigneeID { get; set; }
+        public string AssigneeId { get; set; }
 
         [JsonProperty("name")]
         public string AssigneeName { get; set; }
@@ -813,7 +814,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     public class ActionCreatedByType
     {
         [JsonProperty("user_id")]
-        public string CreatorID { get; set; }
+        public string CreatorId { get; set; }
 
         [JsonProperty("name")]
         public string CreatorName { get; set; }
@@ -822,7 +823,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     public class searchActionsBodyassigneesInputItem
     {
         [JsonProperty("id")]
-        public string AssigneeID { get; set; }
+        public string AssigneeId { get; set; }
 
         [JsonProperty("type")]
         public searchActionsBodyassigneesInputItemTypeType Type { get; set; }
@@ -866,7 +867,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     public class createActionBodyassigneesInputItem
     {
         [JsonProperty("id")]
-        public string AssigneeID { get; set; }
+        public string AssigneeId { get; set; }
 
         [JsonProperty("type")]
         public createActionBodyassigneesInputItemTypeType Type { get; set; }
@@ -916,7 +917,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     public class updateActionBodyassigneesInputItem
     {
         [JsonProperty("id")]
-        public string AssigneeID { get; set; }
+        public string AssigneeId { get; set; }
 
         [JsonProperty("type")]
         public updateActionBodyassigneesInputItemTypeType Type { get; set; }
@@ -934,7 +935,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     public class InitInspectionExportResponse
     {
         [JsonProperty("messageId")]
-        public string ExportTaskID { get; set; }
+        public string ExportTaskId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

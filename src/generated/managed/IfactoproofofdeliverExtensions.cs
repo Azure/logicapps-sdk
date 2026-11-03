@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ifactoproofofdeliver
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ifactoproofofdeliver
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ifactoproofofdeliver")]
         public IBodyWorkflowAction<ListEnvironmentResponse, ApiConnectionActionConfiguration> ListEnvironment()
         {
-            var apiCallPath = "/environments/v1.0";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListEnvironmentResponse>(callPayload);
+            return new DeferredBodyAction<ListEnvironmentResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/environments/v1.0";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListEnvironmentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ifactoproofofdeliver")]

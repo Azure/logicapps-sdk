@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 {
     using System.Linq.Expressions;
@@ -4227,10 +4228,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetSampleCardDetailResponseResponse, ApiConnectionActionConfiguration> GetSampleCardDetailResponse()
         {
-            var apiCallPath = "/crm/v3/extensions/cards-dev/sample-response";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSampleCardDetailResponseResponse>(callPayload);
+            return new DeferredBodyAction<GetSampleCardDetailResponseResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/crm/v3/extensions/cards-dev/sample-response";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetSampleCardDetailResponseResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mandrill")]
         public IBodyWorkflowAction<UserInfo, ApiConnectionActionConfiguration> CurrentUser()
         {
-            var apiCallPath = "/users/info.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserInfo>(callPayload);
+            return new DeferredBodyAction<UserInfo, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/users/info.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UserInfo>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mandrill")]
@@ -47,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mandrill")]
-        public IBodyWorkflowAction<SendMessageResponse[], ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> sendMessageRequestmessagesubject, Expression<Func<string>> sendMessageRequestmessagefromEmail, Expression<Func<RecipientInfo[]>> sendMessageRequestmessagesendTo, Expression<Func<string>> sendMessageRequestmessagecontentOfTheMessage = null, Expression<Func<string>> sendMessageRequestmessagefromName = null, Expression<Func<string>> sendMessageRequestmessageextraHeaders = null, Expression<Func<bool>> sendMessageRequestmessageisThisMessageImportantTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagetrackWhenMessageOpensTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagetrackClicksForThisMessageTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessageremoveContentLoggingTrueFalse = null, Expression<Func<string>> sendMessageRequestmessageoptionalBCCAddress = null, Expression<Func<string>> sendMessageRequestmessagecustomDomaingForTracking = null, Expression<Func<string[]>> sendMessageRequestmessagetags = null, Expression<Func<AttachmentInfo[]>> sendMessageRequestmessageattachments = null, Expression<Func<string>> sendMessageRequestsendAt = null, Expression<Func<bool>> sendMessageRequestenableAsyncTrueFalse = null, Expression<Func<string>> sendMessageRequestdedicatedIpPoolName = null)
+        public IBodyWorkflowAction<SendMessageResponse[], ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> sendMessageRequestmessagesubject, Expression<Func<string>> sendMessageRequestmessagefromEmail, Expression<Func<RecipientInfo[]>> sendMessageRequestmessagesendTo, Expression<Func<string>> sendMessageRequestmessagecontentOfTheMessage = null, Expression<Func<string>> sendMessageRequestmessagefromName = null, Expression<Func<string>> sendMessageRequestmessageextraHeaders = null, Expression<Func<bool>> sendMessageRequestmessageisThisMessageImportantTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagetrackWhenMessageOpensTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagetrackClicksForThisMessageTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessageremoveContentLoggingTrueFalse = null, Expression<Func<string>> sendMessageRequestmessageoptionalBCCAddress = null, Expression<Func<string>> sendMessageRequestmessagecustomDomaingForTracking = null, Expression<Func<string[]>> sendMessageRequestmessagetags = null, Expression<Func<AttachmentInfoInput[]>> sendMessageRequestmessageattachments = null, Expression<Func<string>> sendMessageRequestsendAt = null, Expression<Func<bool>> sendMessageRequestenableAsyncTrueFalse = null, Expression<Func<string>> sendMessageRequestdedicatedIpPoolName = null)
         {
             var __workflow_sendMessageRequestmessagesubject = WorkflowExpression.Compile(sendMessageRequestmessagesubject, nameof(sendMessageRequestmessagesubject), required: true);
             var __workflow_sendMessageRequestmessagefromEmail = WorkflowExpression.Compile(sendMessageRequestmessagefromEmail, nameof(sendMessageRequestmessagefromEmail), required: true);
@@ -302,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         public ListScheduledInfoRejectionReasonType RejectionReason { get; set; }
 
         [JsonProperty("_id")]
-        public string MessageID { get; set; }
+        public string MessageId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -361,7 +365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         public string RejectReason { get; set; }
 
         [JsonProperty("_id")]
-        public string MessageID { get; set; }
+        public string MessageId { get; set; }
     }
 
     public class RecipientInfo
@@ -387,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         Bcc
     }
 
-    public class AttachmentInfo
+    public class AttachmentInfoInput
     {
         [JsonProperty("type")]
         public string MIMEType { get; set; }
@@ -396,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         public string FileName { get; set; }
 
         [JsonProperty("content")]
-        public string Content { get; set; }
+        public WorkflowBinaryContent Content { get; set; }
     }
 }
 

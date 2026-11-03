@@ -4,6 +4,8 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powellteams
 {
+    using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -13,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powellteams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powellteams")]
         public IBodyWorkflowAction<PowellTeamsCommonCoreOperationResultSystemCollectionsGenericListPowellTeamsAPIModelsApprovalApiApprovalModel, ApiConnectionActionConfiguration> GetBetaApprovalsPending()
         {
-            var apiCallPath = "/beta/approvals/pending";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PowellTeamsCommonCoreOperationResultSystemCollectionsGenericListPowellTeamsAPIModelsApprovalApiApprovalModel>(callPayload);
+            return new DeferredBodyAction<PowellTeamsCommonCoreOperationResultSystemCollectionsGenericListPowellTeamsAPIModelsApprovalApiApprovalModel, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/beta/approvals/pending";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PowellTeamsCommonCoreOperationResultSystemCollectionsGenericListPowellTeamsAPIModelsApprovalApiApprovalModel>(callPayload);
+            });
         }
     }
 

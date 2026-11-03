@@ -125,7 +125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
     internal sealed class WorkflowExpression<T> : WorkflowExpression
     {
         private const string EncodeUriComponentFunction = "encodeURIComponent";
-        private const string Base64Function = "base64";
 
         private readonly JToken literal;
         private readonly WorkflowExpressionFragment root;
@@ -163,34 +162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             return WorkflowExpression.Create<string>(fragment);
         }
 
-        internal WorkflowExpression<string> WithBase64Encoding()
-        {
-            if (this.literal != null)
-            {
-                if (typeof(T) == typeof(byte[]))
-                    return WorkflowExpression.Literal(this.literal.Value<string>("$content"));
-
-                var text = this.literal.Type == JTokenType.String
-                    ? this.literal.Value<string>()
-                    : this.literal.ToString(Formatting.None);
-                return WorkflowExpression.Create<string>(
-                    CSharpSyntaxGenerator.Invocation(
-                        Base64Function,
-                        new[] { CSharpSyntaxGenerator.Literal(text, typeof(string)) }));
-            }
-
-            var fragment = typeof(T) == typeof(byte[])
-                ? CSharpSyntaxGenerator.Invocation(
-                    CSharpSyntaxGenerator.StaticMemberAccess(
-                        typeof(Convert),
-                        nameof(Convert.ToBase64String)),
-                    Array.Empty<Type>(),
-                    new[] { this.root })
-                : CSharpSyntaxGenerator.Invocation(
-                    Base64Function,
-                    new[] { this.root });
-            return WorkflowExpression.Create<string>(fragment);
-        }
     }
 
     /// <summary>

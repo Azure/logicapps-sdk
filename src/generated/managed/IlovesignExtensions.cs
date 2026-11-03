@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovesign
 {
     using System.Linq.Expressions;
@@ -12,11 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovesign
     public class IlovesignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovesign")]
-        public IBodyWorkflowAction<SignResponse, ApiConnectionActionConfiguration> Sign(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<string>> bodysigners = null, Expression<Func<string>> bodysignersEmails = null, Expression<Func<string>> bodysignsPositions = null, Expression<Func<bodysignTypeInput>> bodysignType = null, Expression<Func<string>> bodyexpirationDays = null, Expression<Func<bodysignerRemindersInput>> bodysignerReminders = null, Expression<Func<string>> bodysignerReminderDaysCycle = null, Expression<Func<string>> bodypages = null, Expression<Func<string>> bodysize = null)
+        public IBodyWorkflowAction<SignResponse, ApiConnectionActionConfiguration> Sign(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyFile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<string>> bodysigners = null, Expression<Func<string>> bodysignersEmails = null, Expression<Func<string>> bodysignsPositions = null, Expression<Func<bodysignTypeInput>> bodysignType = null, Expression<Func<string>> bodyexpirationDays = null, Expression<Func<bodysignerRemindersInput>> bodysignerReminders = null, Expression<Func<string>> bodysignerReminderDaysCycle = null, Expression<Func<string>> bodypages = null, Expression<Func<string>> bodysize = null)
         {
             var __workflow_bodyfileSource = WorkflowExpression.Compile(bodyfileSource, nameof(bodyfileSource), required: true);
             var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
             var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
             var __workflow_bodysigners = WorkflowExpression.Compile(bodysigners, nameof(bodysigners), required: false);
             var __workflow_bodysignersEmails = WorkflowExpression.Compile(bodysignersEmails, nameof(bodysignersEmails), required: false);
@@ -38,9 +39,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovesign
                 body["file_source"] = ExpressionConverter.ConvertO(__workflow_bodyfileSource);
                 bodypropCount++;
                 body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                if (__workflow_bodyfile != null)
+                if (__workflow_bodyFile != null)
                 {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
+                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
                     bodypropCount++;
                 }
 

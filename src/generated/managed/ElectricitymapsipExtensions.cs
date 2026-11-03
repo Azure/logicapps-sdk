@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
 {
     using System.Linq.Expressions;
@@ -179,19 +180,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
         public IBodyWorkflowAction<GetZonesResponse, ApiConnectionActionConfiguration> GetZones()
         {
-            var apiCallPath = "/zones";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetZonesResponse>(callPayload);
+            return new DeferredBodyAction<GetZonesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/zones";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetZonesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
         public IBodyWorkflowAction<CheckHealthResponse, ApiConnectionActionConfiguration> CheckHealth()
         {
-            var apiCallPath = "/health";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CheckHealthResponse>(callPayload);
+            return new DeferredBodyAction<CheckHealthResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/health";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CheckHealthResponse>(callPayload);
+            });
         }
     }
 

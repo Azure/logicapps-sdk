@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
 {
     using System.Linq.Expressions;
@@ -74,10 +75,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
         public IBodyWorkflowAction<ImagesGetResponseItem[], ApiConnectionActionConfiguration> ImagesGet()
         {
-            var apiCallPath = "/images";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ImagesGetResponseItem[]>(callPayload);
+            return new DeferredBodyAction<ImagesGetResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/images";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ImagesGetResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
@@ -139,10 +143,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
         public IBodyWorkflowAction<TemplatesGetResponseItem[], ApiConnectionActionConfiguration> TemplatesGet()
         {
-            var apiCallPath = "/templates";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TemplatesGetResponseItem[]>(callPayload);
+            return new DeferredBodyAction<TemplatesGetResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/templates";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TemplatesGetResponseItem[]>(callPayload);
+            });
         }
     }
 

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         public IBodyWorkflowAction<CandidatesResponse, ApiConnectionActionConfiguration> Candidates()
         {
-            var apiCallPath = "/spi/v3/candidates";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CandidatesResponse>(callPayload);
+            return new DeferredBodyAction<CandidatesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/spi/v3/candidates";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CandidatesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
@@ -36,19 +40,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         public IBodyWorkflowAction<AccountsResponse, ApiConnectionActionConfiguration> Accounts()
         {
-            var apiCallPath = "/spi/v3/accounts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AccountsResponse>(callPayload);
+            return new DeferredBodyAction<AccountsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/spi/v3/accounts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AccountsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         public IBodyWorkflowAction<JobsResponse, ApiConnectionActionConfiguration> Jobs()
         {
-            var apiCallPath = "/spi/v3/jobs";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JobsResponse>(callPayload);
+            return new DeferredBodyAction<JobsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/spi/v3/jobs";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<JobsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
@@ -67,19 +77,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         public IBodyWorkflowAction<MembersResponse, ApiConnectionActionConfiguration> Members()
         {
-            var apiCallPath = "/spi/v3/members";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MembersResponse>(callPayload);
+            return new DeferredBodyAction<MembersResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/spi/v3/members";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<MembersResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         public IBodyWorkflowAction<StagesResponse, ApiConnectionActionConfiguration> Stages()
         {
-            var apiCallPath = "/spi/v3/stages";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<StagesResponse>(callPayload);
+            return new DeferredBodyAction<StagesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/spi/v3/stages";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<StagesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
@@ -98,10 +114,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         public IBodyWorkflowAction<EventsResponse, ApiConnectionActionConfiguration> Events()
         {
-            var apiCallPath = "/spi/v3/events";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EventsResponse>(callPayload);
+            return new DeferredBodyAction<EventsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/spi/v3/events";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EventsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
@@ -120,10 +139,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         public IBodyWorkflowAction<SubscriptionsResponse, ApiConnectionActionConfiguration> Subscriptions()
         {
-            var apiCallPath = "/spi/v3/subscriptions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SubscriptionsResponse>(callPayload);
+            return new DeferredBodyAction<SubscriptionsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/spi/v3/subscriptions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SubscriptionsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
@@ -194,10 +216,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         public IBodyWorkflowAction<CustomAttributesResponse, ApiConnectionActionConfiguration> CustomAttributes()
         {
-            var apiCallPath = "/spi/v3/custom_attributes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CustomAttributesResponse>(callPayload);
+            return new DeferredBodyAction<CustomAttributesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/spi/v3/custom_attributes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CustomAttributesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Progressusadvancedpr
 {
     using System.Linq.Expressions;
@@ -12,21 +13,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Progressusadvancedpr
     public class ProgressusadvancedprActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "progressusadvancedpr")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Get(Expression<Func<string>> aPIVersion, Expression<Func<string>> tenantID, Expression<Func<string>> environmentName, Expression<Func<aPINameInput>> aPIName, Expression<Func<string>> aPIVersion2, Expression<Func<string>> companyID, Expression<Func<pluralAPINameInput>> pluralAPIName, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> orderby = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Get(Expression<Func<string>> aPIVersion, Expression<Func<string>> tenantId, Expression<Func<string>> environmentName, Expression<Func<aPINameInput>> aPIName, Expression<Func<string>> aPIVersion2, Expression<Func<string>> companyId, Expression<Func<pluralAPINameInput>> pluralAPIName, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> orderby = null)
         {
             var __workflow_aPIVersion = WorkflowExpression.Compile(aPIVersion, nameof(aPIVersion), required: true);
-            var __workflow_tenantID = WorkflowExpression.Compile(tenantID, nameof(tenantID), required: true);
+            var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: true);
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_aPIName = WorkflowExpression.Compile(aPIName, nameof(aPIName), required: true);
             var __workflow_aPIVersion2 = WorkflowExpression.Compile(aPIVersion2, nameof(aPIVersion2), required: true);
-            var __workflow_companyID = WorkflowExpression.Compile(companyID, nameof(companyID), required: true);
+            var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
             var __workflow_pluralAPIName = WorkflowExpression.Compile(pluralAPIName, nameof(pluralAPIName), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/{2}/api/progressus/{3}/{4}/companies({5})/{6}", __workflow_aPIVersion.WithUrlEncoding(1), __workflow_tenantID.WithUrlEncoding(1), __workflow_environmentName.WithUrlEncoding(1), __workflow_aPIName.WithUrlEncoding(1), __workflow_aPIVersion2.WithUrlEncoding(1), __workflow_companyID.WithUrlEncoding(1), __workflow_pluralAPIName.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}/{2}/api/progressus/{3}/{4}/companies({5})/{6}", __workflow_aPIVersion.WithUrlEncoding(1), __workflow_tenantId.WithUrlEncoding(1), __workflow_environmentName.WithUrlEncoding(1), __workflow_aPIName.WithUrlEncoding(1), __workflow_aPIVersion2.WithUrlEncoding(1), __workflow_companyId.WithUrlEncoding(1), __workflow_pluralAPIName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_filter != null)

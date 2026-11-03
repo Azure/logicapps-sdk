@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
 {
     using System.Linq.Expressions;
@@ -763,7 +764,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
 
     public class SearchJobsResponseSearchResultTypeSearchResultItemsTypeItemMatchedObjectDescriptorType
     {
-        public string PositionID { get; set; }
+        [JsonProperty("PositionID")]
+        public string PositionId { get; set; }
         public string PositionTitle { get; set; }
         public string PositionURI { get; set; }
         public string[] ApplyURI { get; set; }
@@ -1659,7 +1661,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
     public class ListPostalCodesResponseCodeListTypeItemValidValueTypeItem
     {
         public string Code { get; set; }
-        public int RefLocID { get; set; }
+
+        [JsonProperty("RefLocID")]
+        public int RefLocId { get; set; }
         public string City { get; set; }
         public string USCounty { get; set; }
         public string CountrySubdivision { get; set; }

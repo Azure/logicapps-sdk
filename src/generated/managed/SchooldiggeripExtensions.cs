@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
 {
     using System.Linq.Expressions;
@@ -172,12 +173,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
-        public IBodyWorkflowAction<APISchoolList2, ApiConnectionActionConfiguration> SchoolsGetAllSchools20(Expression<Func<string>> st, Expression<Func<string>> q = null, Expression<Func<bool>> qSearchSchoolNameOnly = null, Expression<Func<string>> districtID = null, Expression<Func<levelInput>> level = null, Expression<Func<string>> city = null, Expression<Func<string>> zip = null, Expression<Func<bool>> isMagnet = null, Expression<Func<bool>> isCharter = null, Expression<Func<bool>> isVirtual = null, Expression<Func<bool>> isTitleI = null, Expression<Func<bool>> isTitleISchoolwide = null, Expression<Func<double>> nearLatitude = null, Expression<Func<double>> nearLongitude = null, Expression<Func<string>> nearAddress = null, Expression<Func<int>> distanceMiles = null, Expression<Func<double>> boundaryLatitude = null, Expression<Func<double>> boundaryLongitude = null, Expression<Func<string>> boundaryAddress = null, Expression<Func<bool>> isInBoundaryOnly = null, Expression<Func<double>> boxLatitudeNW = null, Expression<Func<double>> boxLongitudeNW = null, Expression<Func<double>> boxLatitudeSE = null, Expression<Func<double>> boxLongitudeSE = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<sortByInput>> sortBy = null, Expression<Func<bool>> includeUnrankedSchoolsInRankSort = null)
+        public IBodyWorkflowAction<APISchoolList2, ApiConnectionActionConfiguration> SchoolsGetAllSchools20(Expression<Func<string>> st, Expression<Func<string>> q = null, Expression<Func<bool>> qSearchSchoolNameOnly = null, Expression<Func<string>> districtId = null, Expression<Func<levelInput>> level = null, Expression<Func<string>> city = null, Expression<Func<string>> zip = null, Expression<Func<bool>> isMagnet = null, Expression<Func<bool>> isCharter = null, Expression<Func<bool>> isVirtual = null, Expression<Func<bool>> isTitleI = null, Expression<Func<bool>> isTitleISchoolwide = null, Expression<Func<double>> nearLatitude = null, Expression<Func<double>> nearLongitude = null, Expression<Func<string>> nearAddress = null, Expression<Func<int>> distanceMiles = null, Expression<Func<double>> boundaryLatitude = null, Expression<Func<double>> boundaryLongitude = null, Expression<Func<string>> boundaryAddress = null, Expression<Func<bool>> isInBoundaryOnly = null, Expression<Func<double>> boxLatitudeNW = null, Expression<Func<double>> boxLongitudeNW = null, Expression<Func<double>> boxLatitudeSE = null, Expression<Func<double>> boxLongitudeSE = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<sortByInput>> sortBy = null, Expression<Func<bool>> includeUnrankedSchoolsInRankSort = null)
         {
             var __workflow_st = WorkflowExpression.Compile(st, nameof(st), required: true);
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             var __workflow_qSearchSchoolNameOnly = WorkflowExpression.Compile(qSearchSchoolNameOnly, nameof(qSearchSchoolNameOnly), required: false);
-            var __workflow_districtID = WorkflowExpression.Compile(districtID, nameof(districtID), required: false);
+            var __workflow_districtId = WorkflowExpression.Compile(districtId, nameof(districtId), required: false);
             var __workflow_level = WorkflowExpression.Compile(level, nameof(level), required: false);
             var __workflow_city = WorkflowExpression.Compile(city, nameof(city), required: false);
             var __workflow_zip = WorkflowExpression.Compile(zip, nameof(zip), required: false);
@@ -212,8 +213,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
                     callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
                 if (__workflow_qSearchSchoolNameOnly != null)
                     callPayload.Queries["qSearchSchoolNameOnly"] = ExpressionConverter.Convert(__workflow_qSearchSchoolNameOnly);
-                if (__workflow_districtID != null)
-                    callPayload.Queries["districtID"] = ExpressionConverter.Convert(__workflow_districtID);
+                if (__workflow_districtId != null)
+                    callPayload.Queries["districtID"] = ExpressionConverter.Convert(__workflow_districtId);
                 if (__workflow_level != null)
                     callPayload.Queries["level"] = ExpressionConverter.Convert(__workflow_level);
                 if (__workflow_city != null)
@@ -361,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
     public class APIDistrict2Summary
     {
         [JsonProperty("districtID")]
-        public string DistrictID { get; set; }
+        public string DistrictId { get; set; }
 
         [JsonProperty("districtName")]
         public string DistrictName { get; set; }
@@ -573,7 +574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
     public class APIDistrict12
     {
         [JsonProperty("districtID")]
-        public string DistrictID { get; set; }
+        public string DistrictId { get; set; }
 
         [JsonProperty("districtName")]
         public string DistrictName { get; set; }
@@ -849,7 +850,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
     public class APIDistrictSum
     {
         [JsonProperty("districtID")]
-        public string DistrictID { get; set; }
+        public string DistrictId { get; set; }
 
         [JsonProperty("districtName")]
         public string DistrictName { get; set; }

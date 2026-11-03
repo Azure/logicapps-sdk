@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
 {
     using System.Linq.Expressions;
@@ -12,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
     public class BlackbaudcrmconstituActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmconstitu")]
-        public IBodyWorkflowAction<ConmgCreatedConstituentAddress, ApiConnectionActionConfiguration> CreateConstituentAddress(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodycountry, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypostalCode = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<bool>> bodydoNotMail = null, Expression<Func<string>> bodydoNotMailReason = null, Expression<Func<bool>> bodyisConfidential = null, Expression<Func<int>> bodyseasonalStartmonth = null, Expression<Func<int>> bodyseasonalStartday = null, Expression<Func<int>> bodyseasonalEndmonth = null, Expression<Func<int>> bodyseasonalEndday = null, Expression<Func<string>> bodyhistoricalStartDate = null, Expression<Func<string>> bodycounty = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodydPC = null, Expression<Func<string>> bodycART = null, Expression<Func<string>> bodylOT = null, Expression<Func<string>> bodycongressionalDistrict = null, Expression<Func<string>> bodystateHouseDistrict = null, Expression<Func<string>> bodystateSenateDistrict = null, Expression<Func<string>> bodylocalPrecinct = null, Expression<Func<bodyoriginInput>> bodyorigin = null, Expression<Func<string>> bodyinformationSource = null, Expression<Func<string>> bodyinfoSourceComments = null, Expression<Func<bool>> bodyrecentlyMoved = null, Expression<Func<string>> bodyoldAddress = null, Expression<Func<bool>> bodyomitFromValidation = null, Expression<Func<bool>> bodycopyToSpouse = null, Expression<Func<bool>> bodycopyToHousehold = null)
+        public IBodyWorkflowAction<ConmgCreatedConstituentAddress, ApiConnectionActionConfiguration> CreateConstituentAddress(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodycountry, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypostalCode = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<bool>> bodydoNotMail = null, Expression<Func<string>> bodydoNotMailReason = null, Expression<Func<bool>> bodyisConfidential = null, Expression<Func<int>> bodyseasonalStartmonth = null, Expression<Func<int>> bodyseasonalStartday = null, Expression<Func<int>> bodyseasonalEndmonth = null, Expression<Func<int>> bodyseasonalEndday = null, Expression<Func<string>> bodyhistoricalStartDate = null, Expression<Func<string>> bodycounty = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodydPC = null, Expression<Func<string>> bodycART = null, Expression<Func<string>> bodylOT = null, Expression<Func<string>> bodycongressionalDistrict = null, Expression<Func<string>> bodystateHouseDistrict = null, Expression<Func<string>> bodystateSenateDistrict = null, Expression<Func<string>> bodylocalPrecinct = null, Expression<Func<bodyoriginInput>> bodyorigin = null, Expression<Func<string>> bodyinformationSource = null, Expression<Func<string>> bodyinfoSourceComments = null, Expression<Func<bool>> bodyrecentlyMoved = null, Expression<Func<string>> bodyoldAddress = null, Expression<Func<bool>> bodyomitFromValidation = null, Expression<Func<bool>> bodycopyToSpouse = null, Expression<Func<bool>> bodycopyToHousehold = null)
         {
-            var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: true);
+            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
             var __workflow_bodycountry = WorkflowExpression.Compile(bodycountry, nameof(bodycountry), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
             var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: false);
@@ -55,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentID);
+                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
                 bodypropCount++;
                 body["country"] = ExpressionConverter.ConvertO(__workflow_bodycountry);
                 if (__workflow_bodytype != null)
@@ -529,12 +530,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmconstitu")]
-        public IBodyWorkflowAction<ConmgCreatedConstituentAlternateLookupID, ApiConnectionActionConfiguration> CreateConstituentAlternateLookupID(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodytype, Expression<Func<string>> bodyalternateLookupID)
+        public IBodyWorkflowAction<ConmgCreatedConstituentAlternateLookupId, ApiConnectionActionConfiguration> CreateConstituentAlternateLookupId(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodytype, Expression<Func<string>> bodyalternateLookupId)
         {
-            var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: true);
+            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodyalternateLookupID = WorkflowExpression.Compile(bodyalternateLookupID, nameof(bodyalternateLookupID), required: true);
-            return new DeferredBodyAction<ConmgCreatedConstituentAlternateLookupID, ApiConnectionActionConfiguration>(() =>
+            var __workflow_bodyalternateLookupId = WorkflowExpression.Compile(bodyalternateLookupId, nameof(bodyalternateLookupId), required: true);
+            return new DeferredBodyAction<ConmgCreatedConstituentAlternateLookupId, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/crm-conmg/alternatelookupids";
                 var apiCallHttpMethod = "post";
@@ -542,22 +543,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentID);
+                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
                 bodypropCount++;
                 body["alternate_lookup_id_type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
                 bodypropCount++;
-                body["alternate_lookup_id"] = ExpressionConverter.ConvertO(__workflow_bodyalternateLookupID);
+                body["alternate_lookup_id"] = ExpressionConverter.ConvertO(__workflow_bodyalternateLookupId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionAction<ConmgCreatedConstituentAlternateLookupID>(callPayload);
+                return new ApiConnectionAction<ConmgCreatedConstituentAlternateLookupId>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmconstitu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteConstituentAlternateLookupID(Expression<Func<string>> alternateLookupId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteConstituentAlternateLookupId(Expression<Func<string>> alternateLookupId)
         {
             var __workflow_alternateLookupId = WorkflowExpression.Compile(alternateLookupId, nameof(alternateLookupId), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -570,11 +571,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmconstitu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentAlternateLookupID(Expression<Func<string>> alternateLookupId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyalternateLookupID = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentAlternateLookupId(Expression<Func<string>> alternateLookupId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyalternateLookupId = null)
         {
             var __workflow_alternateLookupId = WorkflowExpression.Compile(alternateLookupId, nameof(alternateLookupId), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
-            var __workflow_bodyalternateLookupID = WorkflowExpression.Compile(bodyalternateLookupID, nameof(bodyalternateLookupID), required: false);
+            var __workflow_bodyalternateLookupId = WorkflowExpression.Compile(bodyalternateLookupId, nameof(bodyalternateLookupId), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/alternatelookupids/{0}", __workflow_alternateLookupId.WithUrlEncoding(1)));
@@ -588,9 +589,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyalternateLookupID != null)
+                if (__workflow_bodyalternateLookupId != null)
                 {
-                    body["alternate_lookup_id"] = ExpressionConverter.ConvertO(__workflow_bodyalternateLookupID);
+                    body["alternate_lookup_id"] = ExpressionConverter.ConvertO(__workflow_bodyalternateLookupId);
                     bodypropCount++;
                 }
 
@@ -604,9 +605,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmconstitu")]
-        public IBodyWorkflowAction<ConmgCreatedConstituentAppealResponse, ApiConnectionActionConfiguration> CreateConstituentAppealResponse(Expression<Func<string>> bodyconstituentAppealID, Expression<Func<string>> bodycategory, Expression<Func<string>> bodyresponse, Expression<Func<string>> bodydate = null)
+        public IBodyWorkflowAction<ConmgCreatedConstituentAppealResponse, ApiConnectionActionConfiguration> CreateConstituentAppealResponse(Expression<Func<string>> bodyconstituentAppealId, Expression<Func<string>> bodycategory, Expression<Func<string>> bodyresponse, Expression<Func<string>> bodydate = null)
         {
-            var __workflow_bodyconstituentAppealID = WorkflowExpression.Compile(bodyconstituentAppealID, nameof(bodyconstituentAppealID), required: true);
+            var __workflow_bodyconstituentAppealId = WorkflowExpression.Compile(bodyconstituentAppealId, nameof(bodyconstituentAppealId), required: true);
             var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: true);
             var __workflow_bodyresponse = WorkflowExpression.Compile(bodyresponse, nameof(bodyresponse), required: true);
             var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
@@ -618,7 +619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["constituent_appeal_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentAppealID);
+                body["constituent_appeal_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentAppealId);
                 bodypropCount++;
                 body["response_category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
                 bodypropCount++;
@@ -639,10 +640,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmconstitu")]
-        public IBodyWorkflowAction<ConmgCreatedConstituentAppeal, ApiConnectionActionConfiguration> CreateConstituentAppeal(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodyappealID, Expression<Func<string>> bodymailing = null, Expression<Func<string>> bodydateSent = null, Expression<Func<string>> bodypackage = null, Expression<Func<string>> bodysourceCode = null, Expression<Func<string>> bodycomments = null)
+        public IBodyWorkflowAction<ConmgCreatedConstituentAppeal, ApiConnectionActionConfiguration> CreateConstituentAppeal(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodyappealId, Expression<Func<string>> bodymailing = null, Expression<Func<string>> bodydateSent = null, Expression<Func<string>> bodypackage = null, Expression<Func<string>> bodysourceCode = null, Expression<Func<string>> bodycomments = null)
         {
-            var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: true);
-            var __workflow_bodyappealID = WorkflowExpression.Compile(bodyappealID, nameof(bodyappealID), required: true);
+            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
+            var __workflow_bodyappealId = WorkflowExpression.Compile(bodyappealId, nameof(bodyappealId), required: true);
             var __workflow_bodymailing = WorkflowExpression.Compile(bodymailing, nameof(bodymailing), required: false);
             var __workflow_bodydateSent = WorkflowExpression.Compile(bodydateSent, nameof(bodydateSent), required: false);
             var __workflow_bodypackage = WorkflowExpression.Compile(bodypackage, nameof(bodypackage), required: false);
@@ -656,9 +657,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentID);
+                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
                 bodypropCount++;
-                body["appeal_id"] = ExpressionConverter.ConvertO(__workflow_bodyappealID);
+                body["appeal_id"] = ExpressionConverter.ConvertO(__workflow_bodyappealId);
                 if (__workflow_bodymailing != null)
                 {
                     body["mkt_segmentation"] = ExpressionConverter.ConvertO(__workflow_bodymailing);
@@ -712,10 +713,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmconstitu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentAppeal(Expression<Func<string>> constituentAppealId, Expression<Func<string>> bodyappealID = null, Expression<Func<string>> bodymailing = null, Expression<Func<string>> bodydateSent = null, Expression<Func<string>> bodypackage = null, Expression<Func<string>> bodysourceCode = null, Expression<Func<string>> bodycomments = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentAppeal(Expression<Func<string>> constituentAppealId, Expression<Func<string>> bodyappealId = null, Expression<Func<string>> bodymailing = null, Expression<Func<string>> bodydateSent = null, Expression<Func<string>> bodypackage = null, Expression<Func<string>> bodysourceCode = null, Expression<Func<string>> bodycomments = null)
         {
             var __workflow_constituentAppealId = WorkflowExpression.Compile(constituentAppealId, nameof(constituentAppealId), required: true);
-            var __workflow_bodyappealID = WorkflowExpression.Compile(bodyappealID, nameof(bodyappealID), required: false);
+            var __workflow_bodyappealId = WorkflowExpression.Compile(bodyappealId, nameof(bodyappealId), required: false);
             var __workflow_bodymailing = WorkflowExpression.Compile(bodymailing, nameof(bodymailing), required: false);
             var __workflow_bodydateSent = WorkflowExpression.Compile(bodydateSent, nameof(bodydateSent), required: false);
             var __workflow_bodypackage = WorkflowExpression.Compile(bodypackage, nameof(bodypackage), required: false);
@@ -728,9 +729,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (__workflow_bodyappealID != null)
+                if (__workflow_bodyappealId != null)
                 {
-                    body["appeal_id"] = ExpressionConverter.ConvertO(__workflow_bodyappealID);
+                    body["appeal_id"] = ExpressionConverter.ConvertO(__workflow_bodyappealId);
                     bodypropCount++;
                 }
 
@@ -800,9 +801,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmconstitu")]
-        public IBodyWorkflowAction<ConmgCreatedConstituentCorrespondence, ApiConnectionActionConfiguration> CreateConstituentCorrespondence(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodycorrespondenceCode, Expression<Func<string>> bodydateSent, Expression<Func<string>> bodycomments = null)
+        public IBodyWorkflowAction<ConmgCreatedConstituentCorrespondence, ApiConnectionActionConfiguration> CreateConstituentCorrespondence(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodycorrespondenceCode, Expression<Func<string>> bodydateSent, Expression<Func<string>> bodycomments = null)
         {
-            var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: true);
+            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
             var __workflow_bodycorrespondenceCode = WorkflowExpression.Compile(bodycorrespondenceCode, nameof(bodycorrespondenceCode), required: true);
             var __workflow_bodydateSent = WorkflowExpression.Compile(bodydateSent, nameof(bodydateSent), required: true);
             var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
@@ -814,7 +815,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentID);
+                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
                 bodypropCount++;
                 body["correspondence_code"] = ExpressionConverter.ConvertO(__workflow_bodycorrespondenceCode);
                 bodypropCount++;
@@ -889,13 +890,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmconstitu")]
-        public IBodyWorkflowAction<ConmgCreatedConstituentNote, ApiConnectionActionConfiguration> CreateConstituentNote(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodytype, Expression<Func<string>> bodydate, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyauthorID = null, Expression<Func<string>> bodynote = null, Expression<Func<string>> bodyhTML = null)
+        public IBodyWorkflowAction<ConmgCreatedConstituentNote, ApiConnectionActionConfiguration> CreateConstituentNote(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodytype, Expression<Func<string>> bodydate, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyauthorId = null, Expression<Func<string>> bodynote = null, Expression<Func<string>> bodyhTML = null)
         {
-            var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: true);
+            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
             var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: true);
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodyauthorID = WorkflowExpression.Compile(bodyauthorID, nameof(bodyauthorID), required: false);
+            var __workflow_bodyauthorId = WorkflowExpression.Compile(bodyauthorId, nameof(bodyauthorId), required: false);
             var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
             var __workflow_bodyhTML = WorkflowExpression.Compile(bodyhTML, nameof(bodyhTML), required: false);
             return new DeferredBodyAction<ConmgCreatedConstituentNote, ApiConnectionActionConfiguration>(() =>
@@ -906,7 +907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentID);
+                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
                 bodypropCount++;
                 body["note_type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
                 bodypropCount++;
@@ -917,9 +918,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyauthorID != null)
+                if (__workflow_bodyauthorId != null)
                 {
-                    body["author_id"] = ExpressionConverter.ConvertO(__workflow_bodyauthorID);
+                    body["author_id"] = ExpressionConverter.ConvertO(__workflow_bodyauthorId);
                     bodypropCount++;
                 }
 
@@ -958,13 +959,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmconstitu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentNote(Expression<Func<string>> constituentNoteId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyauthorID = null, Expression<Func<string>> bodynote = null, Expression<Func<string>> bodyhTML = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentNote(Expression<Func<string>> constituentNoteId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyauthorId = null, Expression<Func<string>> bodynote = null, Expression<Func<string>> bodyhTML = null)
         {
             var __workflow_constituentNoteId = WorkflowExpression.Compile(constituentNoteId, nameof(constituentNoteId), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
             var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodyauthorID = WorkflowExpression.Compile(bodyauthorID, nameof(bodyauthorID), required: false);
+            var __workflow_bodyauthorId = WorkflowExpression.Compile(bodyauthorId, nameof(bodyauthorId), required: false);
             var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
             var __workflow_bodyhTML = WorkflowExpression.Compile(bodyhTML, nameof(bodyhTML), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -992,9 +993,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyauthorID != null)
+                if (__workflow_bodyauthorId != null)
                 {
-                    body["author_id"] = ExpressionConverter.ConvertO(__workflow_bodyauthorID);
+                    body["author_id"] = ExpressionConverter.ConvertO(__workflow_bodyauthorId);
                     bodypropCount++;
                 }
 
@@ -1142,15 +1143,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmconstitu")]
-        public IBodyWorkflowAction<ConmgAlternateLookupIDCollection, ApiConnectionActionConfiguration> ListConstituentAlternateLookupIDs(Expression<Func<string>> constituentId)
+        public IBodyWorkflowAction<ConmgAlternateLookupIdCollection, ApiConnectionActionConfiguration> ListConstituentAlternateLookupIDs(Expression<Func<string>> constituentId)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
-            return new DeferredBodyAction<ConmgAlternateLookupIDCollection, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ConmgAlternateLookupIdCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/crm-conmg/constituents/{0}/alternatelookupids", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<ConmgAlternateLookupIDCollection>(callPayload);
+                return new ApiConnectionAction<ConmgAlternateLookupIdCollection>(callPayload);
             });
         }
 
@@ -1294,9 +1295,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmconstitu")]
-        public IBodyWorkflowAction<ConmgCreatedConstituentEducation, ApiConnectionActionConfiguration> CreateConstituentEducation(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodyeducationalInstitution, Expression<Func<string>> bodystatus, Expression<Func<bool>> bodyprimary = null, Expression<Func<string>> bodyprogram = null, Expression<Func<string>> bodydegree = null, Expression<Func<string>> bodyhonorAwarded = null, Expression<Func<string>> bodysource = null, Expression<Func<int>> bodysourceDateyear = null, Expression<Func<int>> bodysourceDatemonth = null, Expression<Func<int>> bodysourceDateday = null, Expression<Func<string>> bodycomments = null, Expression<Func<int>> bodydateGraduatedyear = null, Expression<Func<int>> bodydateGraduatedmonth = null, Expression<Func<int>> bodydateGraduatedday = null, Expression<Func<int>> bodyclassOf = null, Expression<Func<int>> bodypreferredClassOf = null, Expression<Func<bool>> bodyaffiliated = null, Expression<Func<int>> bodyfromyear = null, Expression<Func<int>> bodyfrommonth = null, Expression<Func<int>> bodyfromday = null, Expression<Func<int>> bodytoyear = null, Expression<Func<int>> bodytomonth = null, Expression<Func<int>> bodytoday = null, Expression<Func<string>> bodyreason = null, Expression<Func<string>> bodylevel = null)
+        public IBodyWorkflowAction<ConmgCreatedConstituentEducation, ApiConnectionActionConfiguration> CreateConstituentEducation(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodyeducationalInstitution, Expression<Func<string>> bodystatus, Expression<Func<bool>> bodyprimary = null, Expression<Func<string>> bodyprogram = null, Expression<Func<string>> bodydegree = null, Expression<Func<string>> bodyhonorAwarded = null, Expression<Func<string>> bodysource = null, Expression<Func<int>> bodysourceDateyear = null, Expression<Func<int>> bodysourceDatemonth = null, Expression<Func<int>> bodysourceDateday = null, Expression<Func<string>> bodycomments = null, Expression<Func<int>> bodydateGraduatedyear = null, Expression<Func<int>> bodydateGraduatedmonth = null, Expression<Func<int>> bodydateGraduatedday = null, Expression<Func<int>> bodyclassOf = null, Expression<Func<int>> bodypreferredClassOf = null, Expression<Func<bool>> bodyaffiliated = null, Expression<Func<int>> bodyfromyear = null, Expression<Func<int>> bodyfrommonth = null, Expression<Func<int>> bodyfromday = null, Expression<Func<int>> bodytoyear = null, Expression<Func<int>> bodytomonth = null, Expression<Func<int>> bodytoday = null, Expression<Func<string>> bodyreason = null, Expression<Func<string>> bodylevel = null)
         {
-            var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: true);
+            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
             var __workflow_bodyeducationalInstitution = WorkflowExpression.Compile(bodyeducationalInstitution, nameof(bodyeducationalInstitution), required: true);
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: true);
             var __workflow_bodyprimary = WorkflowExpression.Compile(bodyprimary, nameof(bodyprimary), required: false);
@@ -1330,7 +1331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentID);
+                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
                 bodypropCount++;
                 body["educational_institution_id"] = ExpressionConverter.ConvertO(__workflow_bodyeducationalInstitution);
                 bodypropCount++;
@@ -1755,9 +1756,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmconstitu")]
-        public IBodyWorkflowAction<ConmgCreatedConstituentEmailAddress, ApiConnectionActionConfiguration> CreateConstituentEmailAddress(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodyemailAddress, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodystartDate = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<bool>> bodydoNotEmail = null, Expression<Func<string>> bodydoNotEmailReason = null, Expression<Func<bool>> bodyisConfidential = null, Expression<Func<bodyoriginInput>> bodyorigin = null, Expression<Func<string>> bodyinformationSource = null, Expression<Func<string>> bodyinfoSourceComments = null, Expression<Func<bool>> bodycopyToSpouse = null, Expression<Func<bool>> bodycopyToHousehold = null)
+        public IBodyWorkflowAction<ConmgCreatedConstituentEmailAddress, ApiConnectionActionConfiguration> CreateConstituentEmailAddress(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodyemailAddress, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodystartDate = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<bool>> bodydoNotEmail = null, Expression<Func<string>> bodydoNotEmailReason = null, Expression<Func<bool>> bodyisConfidential = null, Expression<Func<bodyoriginInput>> bodyorigin = null, Expression<Func<string>> bodyinformationSource = null, Expression<Func<string>> bodyinfoSourceComments = null, Expression<Func<bool>> bodycopyToSpouse = null, Expression<Func<bool>> bodycopyToHousehold = null)
         {
-            var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: true);
+            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
             var __workflow_bodyemailAddress = WorkflowExpression.Compile(bodyemailAddress, nameof(bodyemailAddress), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
             var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
@@ -1778,7 +1779,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentID);
+                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
                 if (__workflow_bodytype != null)
                 {
                     body["email_address_type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
@@ -1974,9 +1975,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmconstitu")]
-        public IBodyWorkflowAction<ConmgCreatedFundraiserConstituency, ApiConnectionActionConfiguration> CreateFundraiserConstituency(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodydateFrom = null, Expression<Func<string>> bodydateTo = null)
+        public IBodyWorkflowAction<ConmgCreatedFundraiserConstituency, ApiConnectionActionConfiguration> CreateFundraiserConstituency(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodydateFrom = null, Expression<Func<string>> bodydateTo = null)
         {
-            var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: true);
+            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
             var __workflow_bodydateFrom = WorkflowExpression.Compile(bodydateFrom, nameof(bodydateFrom), required: false);
             var __workflow_bodydateTo = WorkflowExpression.Compile(bodydateTo, nameof(bodydateTo), required: false);
             return new DeferredBodyAction<ConmgCreatedFundraiserConstituency, ApiConnectionActionConfiguration>(() =>
@@ -1987,7 +1988,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentID);
+                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
                 if (__workflow_bodydateFrom != null)
                 {
                     body["date_from"] = ExpressionConverter.ConvertO(__workflow_bodydateFrom);
@@ -2471,9 +2472,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmconstitu")]
-        public IBodyWorkflowAction<ConmgCreatedConstituentInteraction, ApiConnectionActionConfiguration> CreateConstituentInteraction(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodysummary, Expression<Func<bodystatusInput>> bodystatus, Expression<Func<string>> bodyexpectedDate, Expression<Func<string>> bodycontactMethod, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodysubcategory = null, Expression<Func<int>> bodyexpectedStarthour = null, Expression<Func<int>> bodyexpectedStartminute = null, Expression<Func<int>> bodyexpectedEndhour = null, Expression<Func<int>> bodyexpectedEndminute = null, Expression<Func<string>> bodyactualDate = null, Expression<Func<int>> bodyactualStarthour = null, Expression<Func<int>> bodyactualStartminute = null, Expression<Func<int>> bodyactualEndhour = null, Expression<Func<int>> bodyactualEndminute = null, Expression<Func<string>> bodytimeZone = null, Expression<Func<bool>> bodyallDayEvent = null, Expression<Func<string>> bodyownerID = null, Expression<Func<string>> bodyeventID = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodyotherLocation = null, Expression<Func<string>> bodycomments = null, Expression<Func<ConmgNewConstituentInteractionParticipant[]>> bodyparticipants = null)
+        public IBodyWorkflowAction<ConmgCreatedConstituentInteraction, ApiConnectionActionConfiguration> CreateConstituentInteraction(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodysummary, Expression<Func<bodystatusInput>> bodystatus, Expression<Func<string>> bodyexpectedDate, Expression<Func<string>> bodycontactMethod, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodysubcategory = null, Expression<Func<int>> bodyexpectedStarthour = null, Expression<Func<int>> bodyexpectedStartminute = null, Expression<Func<int>> bodyexpectedEndhour = null, Expression<Func<int>> bodyexpectedEndminute = null, Expression<Func<string>> bodyactualDate = null, Expression<Func<int>> bodyactualStarthour = null, Expression<Func<int>> bodyactualStartminute = null, Expression<Func<int>> bodyactualEndhour = null, Expression<Func<int>> bodyactualEndminute = null, Expression<Func<string>> bodytimeZone = null, Expression<Func<bool>> bodyallDayEvent = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodyeventId = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodyotherLocation = null, Expression<Func<string>> bodycomments = null, Expression<Func<ConmgNewConstituentInteractionParticipant[]>> bodyparticipants = null)
         {
-            var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: true);
+            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
             var __workflow_bodysummary = WorkflowExpression.Compile(bodysummary, nameof(bodysummary), required: true);
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: true);
             var __workflow_bodyexpectedDate = WorkflowExpression.Compile(bodyexpectedDate, nameof(bodyexpectedDate), required: true);
@@ -2491,8 +2492,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_bodyactualEndminute = WorkflowExpression.Compile(bodyactualEndminute, nameof(bodyactualEndminute), required: false);
             var __workflow_bodytimeZone = WorkflowExpression.Compile(bodytimeZone, nameof(bodytimeZone), required: false);
             var __workflow_bodyallDayEvent = WorkflowExpression.Compile(bodyallDayEvent, nameof(bodyallDayEvent), required: false);
-            var __workflow_bodyownerID = WorkflowExpression.Compile(bodyownerID, nameof(bodyownerID), required: false);
-            var __workflow_bodyeventID = WorkflowExpression.Compile(bodyeventID, nameof(bodyeventID), required: false);
+            var __workflow_bodyownerId = WorkflowExpression.Compile(bodyownerId, nameof(bodyownerId), required: false);
+            var __workflow_bodyeventId = WorkflowExpression.Compile(bodyeventId, nameof(bodyeventId), required: false);
             var __workflow_bodylocation = WorkflowExpression.Compile(bodylocation, nameof(bodylocation), required: false);
             var __workflow_bodyotherLocation = WorkflowExpression.Compile(bodyotherLocation, nameof(bodyotherLocation), required: false);
             var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
@@ -2505,7 +2506,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentID);
+                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
                 bodypropCount++;
                 body["objective"] = ExpressionConverter.ConvertO(__workflow_bodysummary);
                 bodypropCount++;
@@ -2622,17 +2623,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyownerID != null)
+                if (__workflow_bodyownerId != null)
                 {
-                    body["fundraiser_id"] = ExpressionConverter.ConvertO(__workflow_bodyownerID);
+                    body["fundraiser_id"] = ExpressionConverter.ConvertO(__workflow_bodyownerId);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
                 body["interaction_type"] = ExpressionConverter.ConvertO(__workflow_bodycontactMethod);
-                if (__workflow_bodyeventID != null)
+                if (__workflow_bodyeventId != null)
                 {
-                    body["event_id"] = ExpressionConverter.ConvertO(__workflow_bodyeventID);
+                    body["event_id"] = ExpressionConverter.ConvertO(__workflow_bodyeventId);
                     bodypropCount++;
                 }
 
@@ -2696,7 +2697,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmconstitu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentInteraction(Expression<Func<string>> constituentInteractionId, Expression<Func<string>> bodysummary = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodysubcategory = null, Expression<Func<string>> bodyexpectedDate = null, Expression<Func<int>> bodyexpectedStarthour = null, Expression<Func<int>> bodyexpectedStartminute = null, Expression<Func<int>> bodyexpectedEndhour = null, Expression<Func<int>> bodyexpectedEndminute = null, Expression<Func<string>> bodyactualDate = null, Expression<Func<int>> bodyactualStarthour = null, Expression<Func<int>> bodyactualStartminute = null, Expression<Func<int>> bodyactualEndhour = null, Expression<Func<int>> bodyactualEndminute = null, Expression<Func<string>> bodytimeZone = null, Expression<Func<bool>> bodyallDayEvent = null, Expression<Func<string>> bodyownerID = null, Expression<Func<string>> bodycontactMethod = null, Expression<Func<string>> bodyeventID = null, Expression<Func<string>> bodycomments = null, Expression<Func<ConmgUpdateConstituentInteractionParticipant[]>> bodyparticipants = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentInteraction(Expression<Func<string>> constituentInteractionId, Expression<Func<string>> bodysummary = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodysubcategory = null, Expression<Func<string>> bodyexpectedDate = null, Expression<Func<int>> bodyexpectedStarthour = null, Expression<Func<int>> bodyexpectedStartminute = null, Expression<Func<int>> bodyexpectedEndhour = null, Expression<Func<int>> bodyexpectedEndminute = null, Expression<Func<string>> bodyactualDate = null, Expression<Func<int>> bodyactualStarthour = null, Expression<Func<int>> bodyactualStartminute = null, Expression<Func<int>> bodyactualEndhour = null, Expression<Func<int>> bodyactualEndminute = null, Expression<Func<string>> bodytimeZone = null, Expression<Func<bool>> bodyallDayEvent = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodycontactMethod = null, Expression<Func<string>> bodyeventId = null, Expression<Func<string>> bodycomments = null, Expression<Func<ConmgUpdateConstituentInteractionParticipant[]>> bodyparticipants = null)
         {
             var __workflow_constituentInteractionId = WorkflowExpression.Compile(constituentInteractionId, nameof(constituentInteractionId), required: true);
             var __workflow_bodysummary = WorkflowExpression.Compile(bodysummary, nameof(bodysummary), required: false);
@@ -2715,9 +2716,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
             var __workflow_bodyactualEndminute = WorkflowExpression.Compile(bodyactualEndminute, nameof(bodyactualEndminute), required: false);
             var __workflow_bodytimeZone = WorkflowExpression.Compile(bodytimeZone, nameof(bodytimeZone), required: false);
             var __workflow_bodyallDayEvent = WorkflowExpression.Compile(bodyallDayEvent, nameof(bodyallDayEvent), required: false);
-            var __workflow_bodyownerID = WorkflowExpression.Compile(bodyownerID, nameof(bodyownerID), required: false);
+            var __workflow_bodyownerId = WorkflowExpression.Compile(bodyownerId, nameof(bodyownerId), required: false);
             var __workflow_bodycontactMethod = WorkflowExpression.Compile(bodycontactMethod, nameof(bodycontactMethod), required: false);
-            var __workflow_bodyeventID = WorkflowExpression.Compile(bodyeventID, nameof(bodyeventID), required: false);
+            var __workflow_bodyeventId = WorkflowExpression.Compile(bodyeventId, nameof(bodyeventId), required: false);
             var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
             var __workflow_bodyparticipants = WorkflowExpression.Compile(bodyparticipants, nameof(bodyparticipants), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -2855,9 +2856,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyownerID != null)
+                if (__workflow_bodyownerId != null)
                 {
-                    body["fundraiser_id"] = ExpressionConverter.ConvertO(__workflow_bodyownerID);
+                    body["fundraiser_id"] = ExpressionConverter.ConvertO(__workflow_bodyownerId);
                     bodypropCount++;
                 }
 
@@ -2867,9 +2868,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
                     bodypropCount++;
                 }
 
-                if (__workflow_bodyeventID != null)
+                if (__workflow_bodyeventId != null)
                 {
-                    body["event_id"] = ExpressionConverter.ConvertO(__workflow_bodyeventID);
+                    body["event_id"] = ExpressionConverter.ConvertO(__workflow_bodyeventId);
                     bodypropCount++;
                 }
 
@@ -2895,10 +2896,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmconstitu")]
-        public IBodyWorkflowAction<ConmgMergedConstituent, ApiConnectionActionConfiguration> MergeTwoConstituents(Expression<Func<string>> bodysourceConstituentID, Expression<Func<string>> bodytargetConstituentID, Expression<Func<string>> bodyconfiguration, Expression<Func<bool>> bodydeleteSource, Expression<Func<bodydeleteActionInput>> bodydeleteAction, Expression<Func<string>> bodyinactiveReason = null, Expression<Func<string>> bodyinactivityDetails = null)
+        public IBodyWorkflowAction<ConmgMergedConstituent, ApiConnectionActionConfiguration> MergeTwoConstituents(Expression<Func<string>> bodysourceConstituentId, Expression<Func<string>> bodytargetConstituentId, Expression<Func<string>> bodyconfiguration, Expression<Func<bool>> bodydeleteSource, Expression<Func<bodydeleteActionInput>> bodydeleteAction, Expression<Func<string>> bodyinactiveReason = null, Expression<Func<string>> bodyinactivityDetails = null)
         {
-            var __workflow_bodysourceConstituentID = WorkflowExpression.Compile(bodysourceConstituentID, nameof(bodysourceConstituentID), required: true);
-            var __workflow_bodytargetConstituentID = WorkflowExpression.Compile(bodytargetConstituentID, nameof(bodytargetConstituentID), required: true);
+            var __workflow_bodysourceConstituentId = WorkflowExpression.Compile(bodysourceConstituentId, nameof(bodysourceConstituentId), required: true);
+            var __workflow_bodytargetConstituentId = WorkflowExpression.Compile(bodytargetConstituentId, nameof(bodytargetConstituentId), required: true);
             var __workflow_bodyconfiguration = WorkflowExpression.Compile(bodyconfiguration, nameof(bodyconfiguration), required: true);
             var __workflow_bodydeleteSource = WorkflowExpression.Compile(bodydeleteSource, nameof(bodydeleteSource), required: true);
             var __workflow_bodydeleteAction = WorkflowExpression.Compile(bodydeleteAction, nameof(bodydeleteAction), required: true);
@@ -2912,9 +2913,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["source_id"] = ExpressionConverter.ConvertO(__workflow_bodysourceConstituentID);
+                body["source_id"] = ExpressionConverter.ConvertO(__workflow_bodysourceConstituentId);
                 bodypropCount++;
-                body["target_id"] = ExpressionConverter.ConvertO(__workflow_bodytargetConstituentID);
+                body["target_id"] = ExpressionConverter.ConvertO(__workflow_bodytargetConstituentId);
                 bodypropCount++;
                 body["config"] = ExpressionConverter.ConvertO(__workflow_bodyconfiguration);
                 bodypropCount++;
@@ -3243,9 +3244,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmconstitu")]
-        public IBodyWorkflowAction<ConmgCreatedConstituentPhone, ApiConnectionActionConfiguration> CreateConstituentPhone(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodynumber, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodycountry = null, Expression<Func<int>> bodycallAfterhour = null, Expression<Func<int>> bodycallAfterminute = null, Expression<Func<int>> bodycallBeforehour = null, Expression<Func<int>> bodycallBeforeminute = null, Expression<Func<string>> bodystartDate = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<bool>> bodydoNotCall = null, Expression<Func<string>> bodydoNotCallReason = null, Expression<Func<bool>> bodydoNotText = null, Expression<Func<bool>> bodyisConfidential = null, Expression<Func<int>> bodyseasonalStartmonth = null, Expression<Func<int>> bodyseasonalStartday = null, Expression<Func<int>> bodyseasonalEndmonth = null, Expression<Func<int>> bodyseasonalEndday = null, Expression<Func<bodyoriginInput>> bodyorigin = null, Expression<Func<string>> bodyinformationSource = null, Expression<Func<string>> bodyinfoSourceComments = null, Expression<Func<bool>> bodycopyToSpouse = null, Expression<Func<bool>> bodycopyToHousehold = null)
+        public IBodyWorkflowAction<ConmgCreatedConstituentPhone, ApiConnectionActionConfiguration> CreateConstituentPhone(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodynumber, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodycountry = null, Expression<Func<int>> bodycallAfterhour = null, Expression<Func<int>> bodycallAfterminute = null, Expression<Func<int>> bodycallBeforehour = null, Expression<Func<int>> bodycallBeforeminute = null, Expression<Func<string>> bodystartDate = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<bool>> bodydoNotCall = null, Expression<Func<string>> bodydoNotCallReason = null, Expression<Func<bool>> bodydoNotText = null, Expression<Func<bool>> bodyisConfidential = null, Expression<Func<int>> bodyseasonalStartmonth = null, Expression<Func<int>> bodyseasonalStartday = null, Expression<Func<int>> bodyseasonalEndmonth = null, Expression<Func<int>> bodyseasonalEndday = null, Expression<Func<bodyoriginInput>> bodyorigin = null, Expression<Func<string>> bodyinformationSource = null, Expression<Func<string>> bodyinfoSourceComments = null, Expression<Func<bool>> bodycopyToSpouse = null, Expression<Func<bool>> bodycopyToHousehold = null)
         {
-            var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: true);
+            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
             var __workflow_bodynumber = WorkflowExpression.Compile(bodynumber, nameof(bodynumber), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
             var __workflow_bodycountry = WorkflowExpression.Compile(bodycountry, nameof(bodycountry), required: false);
@@ -3276,7 +3277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentID);
+                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
                 if (__workflow_bodytype != null)
                 {
                     body["phone_type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
@@ -3666,9 +3667,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmconstitu")]
-        public IBodyWorkflowAction<ConmgCreatedConstituentEmploymentHistory, ApiConnectionActionConfiguration> CreateConstituentEmploymentHistory(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodyrelationship, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodycareerLevel = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<bool>> bodysyncEndDate = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodydivision = null, Expression<Func<string>> bodycareerLevel2 = null, Expression<Func<string>> bodyresponsibilities = null, Expression<Func<bool>> bodyisPrivate = null)
+        public IBodyWorkflowAction<ConmgCreatedConstituentEmploymentHistory, ApiConnectionActionConfiguration> CreateConstituentEmploymentHistory(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodyrelationship, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodycareerLevel = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<bool>> bodysyncEndDate = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodydivision = null, Expression<Func<string>> bodycareerLevel2 = null, Expression<Func<string>> bodyresponsibilities = null, Expression<Func<bool>> bodyisPrivate = null)
         {
-            var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: true);
+            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
             var __workflow_bodyrelationship = WorkflowExpression.Compile(bodyrelationship, nameof(bodyrelationship), required: true);
             var __workflow_bodyjobTitle = WorkflowExpression.Compile(bodyjobTitle, nameof(bodyjobTitle), required: false);
             var __workflow_bodycareerLevel = WorkflowExpression.Compile(bodycareerLevel, nameof(bodycareerLevel), required: false);
@@ -3689,7 +3690,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["context_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentID);
+                body["context_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
                 bodypropCount++;
                 body["relationship"] = ExpressionConverter.ConvertO(__workflow_bodyrelationship);
                 if (__workflow_bodyjobTitle != null)
@@ -3878,9 +3879,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmconstitu")]
-        public IBodyWorkflowAction<ConmgCreatedConstituentSolicitCode, ApiConnectionActionConfiguration> CreateConstituentSolicitCode(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodysolicitCode, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodycomments = null)
+        public IBodyWorkflowAction<ConmgCreatedConstituentSolicitCode, ApiConnectionActionConfiguration> CreateConstituentSolicitCode(Expression<Func<string>> bodyconstituentId, Expression<Func<string>> bodysolicitCode, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodycomments = null)
         {
-            var __workflow_bodyconstituentID = WorkflowExpression.Compile(bodyconstituentID, nameof(bodyconstituentID), required: true);
+            var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
             var __workflow_bodysolicitCode = WorkflowExpression.Compile(bodysolicitCode, nameof(bodysolicitCode), required: true);
             var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
             var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
@@ -3893,7 +3894,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentID);
+                body["constituent_id"] = ExpressionConverter.ConvertO(__workflow_bodyconstituentId);
                 bodypropCount++;
                 body["solicit_code"] = ExpressionConverter.ConvertO(__workflow_bodysolicitCode);
                 if (__workflow_bodystartDate != null)
@@ -3992,7 +3993,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
     public class ConmgCreatedConstituentAddress
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -4004,22 +4005,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         WebForms
     }
 
-    public class ConmgCreatedConstituentAlternateLookupID
+    public class ConmgCreatedConstituentAlternateLookupId
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 
     public class ConmgCreatedConstituentAppealResponse
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 
     public class ConmgCreatedConstituentAppeal
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 
     public class ConmgConstituentAppealCollection
@@ -4034,10 +4035,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
     public class ConmgConstituentAppeal
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("appeal_id")]
-        public string AppealID { get; set; }
+        public string AppealId { get; set; }
 
         [JsonProperty("appeal")]
         public string AppealName { get; set; }
@@ -4046,7 +4047,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public string AppealDescription { get; set; }
 
         [JsonProperty("mkt_segmentation_id")]
-        public string MailingID { get; set; }
+        public string MailingId { get; set; }
 
         [JsonProperty("mailing")]
         public string MailingName { get; set; }
@@ -4064,7 +4065,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public string SourceCode { get; set; }
 
         [JsonProperty("mkt_segmentation_segment_id")]
-        public string SegmentID { get; set; }
+        public string SegmentId { get; set; }
 
         [JsonProperty("segment")]
         public string Segment { get; set; }
@@ -4097,13 +4098,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
     public class ConmgCreatedConstituentCorrespondence
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 
     public class ConmgCreatedConstituentNote
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 
     public class ConmgConstituentSearchResultCollection
@@ -4118,7 +4119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
     public class ConmgConstituentSearchResult
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -4127,16 +4128,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public string MiddleName { get; set; }
 
         [JsonProperty("suffixcodeid")]
-        public string SuffixCodeID { get; set; }
+        public string SuffixCodeId { get; set; }
 
         [JsonProperty("lookup_id")]
-        public string LookupID { get; set; }
+        public string LookupId { get; set; }
 
         [JsonProperty("sort_constituent_name")]
         public string SortName { get; set; }
 
         [JsonProperty("country_id")]
-        public string CountryID { get; set; }
+        public string CountryId { get; set; }
 
         [JsonProperty("address")]
         public string Address { get; set; }
@@ -4187,7 +4188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
     public class ConmgAddress
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -4223,28 +4224,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public bool InvalidGeocode { get; set; }
 
         [JsonProperty("map_context_id")]
-        public string MapContextID { get; set; }
+        public string MapContextId { get; set; }
     }
 
-    public class ConmgAlternateLookupIDCollection
+    public class ConmgAlternateLookupIdCollection
     {
         [JsonProperty("count")]
         public int Count { get; set; }
 
         [JsonProperty("value")]
-        public ConmgAlternateLookupID[] Value { get; set; }
+        public ConmgAlternateLookupId[] Value { get; set; }
     }
 
-    public class ConmgAlternateLookupID
+    public class ConmgAlternateLookupId
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("alternate_lookup_id")]
-        public string AlternateLookupID { get; set; }
+        public string AlternateLookupId { get; set; }
     }
 
     public class ConmgAttributeCollection
@@ -4259,13 +4260,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
     public class ConmgAttribute
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("category")]
         public string Category { get; set; }
 
         [JsonProperty("attribute_category_id")]
-        public string CategoryID { get; set; }
+        public string CategoryId { get; set; }
 
         [JsonProperty("attribute_group")]
         public string Group { get; set; }
@@ -4289,10 +4290,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public string AddressType { get; set; }
 
         [JsonProperty("address_type_id")]
-        public string AddressTypeID { get; set; }
+        public string AddressTypeId { get; set; }
 
         [JsonProperty("country_id")]
-        public string PrimaryAddressCountryID { get; set; }
+        public string PrimaryAddressCountryId { get; set; }
 
         [JsonProperty("address")]
         public string PrimaryAddress { get; set; }
@@ -4301,7 +4302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public string PrimaryAddressCity { get; set; }
 
         [JsonProperty("state_id")]
-        public string PrimaryAddressStateID { get; set; }
+        public string PrimaryAddressStateId { get; set; }
 
         [JsonProperty("post_code")]
         public string PrimaryAddressPostalCode { get; set; }
@@ -4313,13 +4314,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public bool DoNotMail { get; set; }
 
         [JsonProperty("do_not_mail_reason_code_id")]
-        public string DoNotMailReasonID { get; set; }
+        public string DoNotMailReasonId { get; set; }
 
         [JsonProperty("phone_type_label")]
         public string PrimaryPhoneType { get; set; }
 
         [JsonProperty("phone_type_id")]
-        public string PrimaryPhoneTypeID { get; set; }
+        public string PrimaryPhoneTypeId { get; set; }
 
         [JsonProperty("phone")]
         public string PrimaryPhoneNumber { get; set; }
@@ -4331,13 +4332,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public bool DoNotCall { get; set; }
 
         [JsonProperty("do_not_call_reason_code_id")]
-        public string DoNotCallReasonID { get; set; }
+        public string DoNotCallReasonId { get; set; }
 
         [JsonProperty("email_type_label")]
         public string PrimaryEmailAddressType { get; set; }
 
         [JsonProperty("email_type_id")]
-        public string PrimaryEmailAddressTypeID { get; set; }
+        public string PrimaryEmailAddressTypeId { get; set; }
 
         [JsonProperty("email")]
         public string PrimaryEmailAddress { get; set; }
@@ -4361,7 +4362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
     public class ConmgEducation
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string EducationalInstitution { get; set; }
@@ -4427,7 +4428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
     public class ConmgEmailAddress
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("type")]
         public string EmailType { get; set; }
@@ -4463,7 +4464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
     public class ConmgPhone
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -4559,7 +4560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
     public class ConmgEmploymentHistory
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
         public string Relationship { get; set; }
@@ -4604,7 +4605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
     public class ConmgSolicitCode
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("description")]
         public string SolicitCode { get; set; }
@@ -4653,7 +4654,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
     public class ConmgTribute
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("tribute_type")]
         public string TributeType { get; set; }
@@ -4680,7 +4681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public string Name { get; set; }
 
         [JsonProperty("lookup_id")]
-        public string LookupID { get; set; }
+        public string LookupId { get; set; }
 
         [JsonProperty("constituent_profile")]
         public bool IsAConstituentProfile { get; set; }
@@ -4692,7 +4693,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public string ParentOrganization { get; set; }
 
         [JsonProperty("top_parent_id")]
-        public string ParentOrganizationID { get; set; }
+        public string ParentOrganizationId { get; set; }
 
         [JsonProperty("group")]
         public bool IsGroup { get; set; }
@@ -4713,7 +4714,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public bool IsHousehold { get; set; }
 
         [JsonProperty("household_id")]
-        public string HouseholdID { get; set; }
+        public string HouseholdId { get; set; }
 
         [JsonProperty("household_text")]
         public string HouseholdText { get; set; }
@@ -4749,13 +4750,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public string PrimaryBusiness { get; set; }
 
         [JsonProperty("primary_business_id")]
-        public string PrimaryBusinessID { get; set; }
+        public string PrimaryBusinessId { get; set; }
 
         [JsonProperty("primary_education")]
         public string PrimaryEducation { get; set; }
 
         [JsonProperty("primary_education_id")]
-        public string PrimaryEducationID { get; set; }
+        public string PrimaryEducationId { get; set; }
 
         [JsonProperty("education_attribute_defined")]
         public bool EducationAttributesDefined { get; set; }
@@ -4764,13 +4765,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public string RelatedConstituent { get; set; }
 
         [JsonProperty("related_constituent_id")]
-        public string RelatedConstituentID { get; set; }
+        public string RelatedConstituentId { get; set; }
 
         [JsonProperty("solicit_code_count")]
         public int SolicitCodeCount { get; set; }
 
         [JsonProperty("address_id")]
-        public string PrimaryAddressID { get; set; }
+        public string PrimaryAddressId { get; set; }
 
         [JsonProperty("address")]
         public string PrimaryAddress { get; set; }
@@ -4782,7 +4783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public bool DoNotMail { get; set; }
 
         [JsonProperty("phone_number_id")]
-        public string PrimaryPhoneID { get; set; }
+        public string PrimaryPhoneId { get; set; }
 
         [JsonProperty("phone_type")]
         public string PrimaryPhoneType { get; set; }
@@ -4797,7 +4798,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public bool DoNotCall { get; set; }
 
         [JsonProperty("email_address_id")]
-        public string PrimaryEmailAddressID { get; set; }
+        public string PrimaryEmailAddressId { get; set; }
 
         [JsonProperty("email_address")]
         public string PrimaryEmailAddress { get; set; }
@@ -4818,10 +4819,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public string AlumnusStatusText { get; set; }
 
         [JsonProperty("alumnus_enrollment_id")]
-        public string AlumnusEnrollmentID { get; set; }
+        public string AlumnusEnrollmentId { get; set; }
 
         [JsonProperty("current_enrollment_id")]
-        public string CurrentEnrollmentID { get; set; }
+        public string CurrentEnrollmentId { get; set; }
 
         [JsonProperty("current_enrollment_id_2")]
         public string CurrentEnrollmentID2 { get; set; }
@@ -4830,7 +4831,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public string CurrentEnrollmentID3 { get; set; }
 
         [JsonProperty("student_enrollment_id")]
-        public string StudentEnrollmentID { get; set; }
+        public string StudentEnrollmentId { get; set; }
 
         [JsonProperty("current_school")]
         public string CurrentSchool { get; set; }
@@ -4911,7 +4912,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public string MatchFinderConstituencyText { get; set; }
 
         [JsonProperty("matchfinder_online_record_id")]
-        public int MatchFinderOnlineRecordID { get; set; }
+        public int MatchFinderOnlineRecordId { get; set; }
 
         [JsonProperty("member_constituency_text")]
         public string MemberConstituencyText { get; set; }
@@ -4980,7 +4981,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
     public class ConmgConstituencyDisplayOrder
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -5013,10 +5014,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
     public class ConmgConstituentSocialMediaAccount
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("social_media_service_id")]
-        public string ServiceID { get; set; }
+        public string ServiceId { get; set; }
 
         [JsonProperty("social_media_service_name")]
         public string ServiceName { get; set; }
@@ -5025,19 +5026,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public string Icon { get; set; }
 
         [JsonProperty("social_media_account_type_code_id")]
-        public string AccountTypeID { get; set; }
+        public string AccountTypeId { get; set; }
 
         [JsonProperty("social_media_account_type")]
         public string AccountType { get; set; }
 
         [JsonProperty("user_id")]
-        public string UserID { get; set; }
+        public string UserId { get; set; }
 
         [JsonProperty("url")]
         public string Url { get; set; }
 
         [JsonProperty("info_source_code_id")]
-        public string InfoSourceCodeID { get; set; }
+        public string InfoSourceCodeId { get; set; }
 
         [JsonProperty("info_source")]
         public string InfoSource { get; set; }
@@ -5052,25 +5053,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
     public class ConmgCreatedConstituentEducation
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 
     public class ConmgCreatedConstituentEmailAddress
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 
     public class ConmgCreatedFundraiserConstituency
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 
     public class ConmgCreatedIndividualConstituent
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 
     public class ConmgIndividualConstituent
@@ -5145,7 +5146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
     public class ConmgCreatedConstituentInteraction
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -5160,13 +5161,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
     public class ConmgNewConstituentInteractionParticipant
     {
         [JsonProperty("constituent_id")]
-        public string ConstitID { get; set; }
+        public string ConstitId { get; set; }
     }
 
     public class ConmgConstituentInteraction
     {
         [JsonProperty("constituent_id")]
-        public string ConstituentID { get; set; }
+        public string ConstituentId { get; set; }
 
         [JsonProperty("constituent_name")]
         public string ConstituentName { get; set; }
@@ -5208,13 +5209,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public bool AllDayEvent { get; set; }
 
         [JsonProperty("fundraiser_id")]
-        public string OwnerID { get; set; }
+        public string OwnerId { get; set; }
 
         [JsonProperty("interaction_type")]
         public string ContactMethod { get; set; }
 
         [JsonProperty("event_id")]
-        public string EventID { get; set; }
+        public string EventId { get; set; }
 
         [JsonProperty("comment")]
         public string Comments { get; set; }
@@ -5262,25 +5263,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
     public class ConmgConstituentInteractionParticipant
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("constituent_id")]
-        public string ConstituentID { get; set; }
+        public string ConstituentId { get; set; }
     }
 
     public class ConmgUpdateConstituentInteractionParticipant
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("constituent_id")]
-        public string ConstituentID { get; set; }
+        public string ConstituentId { get; set; }
     }
 
     public class ConmgMergedConstituent
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -5295,7 +5296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
     public class ConmgCreatedOrganizationConstituent
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 
     public class ConmgOrganizationConstituent
@@ -5328,7 +5329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public string ProfilePictureThumbnail { get; set; }
 
         [JsonProperty("primary_address_id")]
-        public string PrimaryAddressID { get; set; }
+        public string PrimaryAddressId { get; set; }
 
         [JsonProperty("address_type")]
         public string PrimaryAddressType { get; set; }
@@ -5355,7 +5356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public string DoNotMailReason { get; set; }
 
         [JsonProperty("primary_phone_id")]
-        public string PrimaryPhoneID { get; set; }
+        public string PrimaryPhoneId { get; set; }
 
         [JsonProperty("phone_type")]
         public string PrimaryPhoneType { get; set; }
@@ -5364,7 +5365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public string PrimaryPhoneNumber { get; set; }
 
         [JsonProperty("primary_email_address_id")]
-        public string PrimaryEmailAddressID { get; set; }
+        public string PrimaryEmailAddressId { get; set; }
 
         [JsonProperty("email_address_type")]
         public string PrimaryEmailAddressType { get; set; }
@@ -5376,19 +5377,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
     public class ConmgCreatedConstituentPhone
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 
     public class ConmgCreatedConstituentEmploymentHistory
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 
     public class ConmgCreatedConstituentSolicitCode
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
     }
 }
 

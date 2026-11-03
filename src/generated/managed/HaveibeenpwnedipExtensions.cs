@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
 {
     using System.Linq.Expressions;
@@ -38,10 +39,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
         public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> DataClasses()
         {
-            var apiCallPath = "/api/v3/dataclasses";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/v3/dataclasses";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
@@ -60,10 +64,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
         public IBodyWorkflowAction<AllBreachesResponseItem[], ApiConnectionActionConfiguration> AllBreaches()
         {
-            var apiCallPath = "/api/v3/breaches";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AllBreachesResponseItem[]>(callPayload);
+            return new DeferredBodyAction<AllBreachesResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/v3/breaches";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AllBreachesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
@@ -82,10 +89,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
         public IBodyWorkflowAction<BreachRecentResponse, ApiConnectionActionConfiguration> BreachRecent()
         {
-            var apiCallPath = "/api/v3/latestbreach";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BreachRecentResponse>(callPayload);
+            return new DeferredBodyAction<BreachRecentResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/v3/latestbreach";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<BreachRecentResponse>(callPayload);
+            });
         }
     }
 

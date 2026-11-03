@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
         public IBodyWorkflowAction<ListCountriesResponse, ApiConnectionActionConfiguration> ListCountries()
         {
-            var apiCallPath = "/countries";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListCountriesResponse>(callPayload);
+            return new DeferredBodyAction<ListCountriesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/countries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListCountriesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]

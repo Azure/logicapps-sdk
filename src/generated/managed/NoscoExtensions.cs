@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nosco")]
         public IBodyWorkflowAction<IdeaboxesResponse, ApiConnectionActionConfiguration> Ideaboxes()
         {
-            var apiCallPath = "/integration/v1/ideaboxes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<IdeaboxesResponse>(callPayload);
+            return new DeferredBodyAction<IdeaboxesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/integration/v1/ideaboxes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<IdeaboxesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nosco")]

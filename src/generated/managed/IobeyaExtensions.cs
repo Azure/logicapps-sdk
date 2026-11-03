@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
 {
     using System.Linq.Expressions;
@@ -14,12 +15,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
         public IBodyWorkflowAction<ListRoomsResponse, ApiConnectionActionConfiguration> ListRooms()
         {
-            var apiCallPath = "/rooms";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["page"] = Convert.ToString(1);
-            callPayload.Queries["size"] = Convert.ToString(200);
-            return new ApiConnectionAction<ListRoomsResponse>(callPayload);
+            return new DeferredBodyAction<ListRoomsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/rooms";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["page"] = Convert.ToString(1);
+                callPayload.Queries["size"] = Convert.ToString(200);
+                return new ApiConnectionAction<ListRoomsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
@@ -192,21 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
                 if (__workflow_size != null)
                     callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
                 return new ApiConnectionAction<ListCardsActivityResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateAssetBoardImage(Expression<Func<string>> boardImageId, Expression<Func<object>> file, Expression<Func<fileContentTypeInput>> fileContentType)
-        {
-            var __workflow_boardImageId = WorkflowExpression.Compile(boardImageId, nameof(boardImageId), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            var __workflow_fileContentType = WorkflowExpression.Compile(fileContentType, nameof(fileContentType), required: true);
-            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/board-images/{0}/asset", __workflow_boardImageId.WithUrlEncoding(1)));
-                var apiCallHttpMethod = "put";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
@@ -438,15 +427,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
 
         [JsonProperty("endDate")]
         public string EndDate { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fileContentTypeInput
-    {
-        [EnumMember(Value = "image/png")]
-        ImagePng,
-        [EnumMember(Value = "image/jpg")]
-        ImageJpg
     }
 }
 

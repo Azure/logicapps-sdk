@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
 {
     using System.Linq.Expressions;
@@ -27,37 +28,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smileback")]
         public IBodyWorkflowAction<CSATCompaniesResponseItem[], ApiConnectionActionConfiguration> CSATCompanies()
         {
-            var apiCallPath = "/api/v3/csat-companies/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CSATCompaniesResponseItem[]>(callPayload);
+            return new DeferredBodyAction<CSATCompaniesResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/v3/csat-companies/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CSATCompaniesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smileback")]
         public IBodyWorkflowAction<CSATContactsResponseItem[], ApiConnectionActionConfiguration> CSATContacts()
         {
-            var apiCallPath = "/api/v3/csat-contacts/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CSATContactsResponseItem[]>(callPayload);
+            return new DeferredBodyAction<CSATContactsResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/v3/csat-contacts/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CSATContactsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smileback")]
         public IBodyWorkflowAction<NPSCampaignsResponseItem[], ApiConnectionActionConfiguration> NPSCampaigns()
         {
-            var apiCallPath = "/api/v3/nps-campaigns/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<NPSCampaignsResponseItem[]>(callPayload);
+            return new DeferredBodyAction<NPSCampaignsResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/v3/nps-campaigns/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<NPSCampaignsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smileback")]
         public IBodyWorkflowAction<PRJSurveysResponseItem[], ApiConnectionActionConfiguration> PRJSurveys()
         {
-            var apiCallPath = "/api/v3/prj-surveys/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PRJSurveysResponseItem[]>(callPayload);
+            return new DeferredBodyAction<PRJSurveysResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/v3/prj-surveys/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PRJSurveysResponseItem[]>(callPayload);
+            });
         }
     }
 

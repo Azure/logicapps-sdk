@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
 {
     using System.Linq.Expressions;
@@ -12,10 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
     public class ProjectumActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GeneratePowerpointDoc(Expression<Func<string>> generationInfodataMap, Expression<Func<string>> generationInfofile = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GeneratePowerpointDoc(Expression<Func<string>> generationInfodataMap, Expression<Func<string>> generationInfoFile = null)
         {
             var __workflow_generationInfodataMap = WorkflowExpression.Compile(generationInfodataMap, nameof(generationInfodataMap), required: true);
-            var __workflow_generationInfofile = WorkflowExpression.Compile(generationInfofile, nameof(generationInfofile), required: false);
+            var __workflow_generationInfoFile = WorkflowExpression.Compile(generationInfoFile, nameof(generationInfoFile), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Powerpoint";
@@ -25,9 +26,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
                 var generationInfopropCount = 0;
                 generationInfopropCount++;
                 generationInfo["dataMap"] = ExpressionConverter.ConvertO(__workflow_generationInfodataMap);
-                if (__workflow_generationInfofile != null)
+                if (__workflow_generationInfoFile != null)
                 {
-                    generationInfo["file"] = ExpressionConverter.ConvertO(__workflow_generationInfofile);
+                    generationInfo["file"] = ExpressionConverter.ConvertO(__workflow_generationInfoFile);
                     generationInfopropCount++;
                 }
 
@@ -41,10 +42,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateWordDoc(Expression<Func<string>> generationInfodataMap, Expression<Func<string>> generationInfofile = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateWordDoc(Expression<Func<string>> generationInfodataMap, Expression<Func<string>> generationInfoFile = null)
         {
             var __workflow_generationInfodataMap = WorkflowExpression.Compile(generationInfodataMap, nameof(generationInfodataMap), required: true);
-            var __workflow_generationInfofile = WorkflowExpression.Compile(generationInfofile, nameof(generationInfofile), required: false);
+            var __workflow_generationInfoFile = WorkflowExpression.Compile(generationInfoFile, nameof(generationInfoFile), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Word";
@@ -54,9 +55,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
                 var generationInfopropCount = 0;
                 generationInfopropCount++;
                 generationInfo["dataMap"] = ExpressionConverter.ConvertO(__workflow_generationInfodataMap);
-                if (__workflow_generationInfofile != null)
+                if (__workflow_generationInfoFile != null)
                 {
-                    generationInfo["file"] = ExpressionConverter.ConvertO(__workflow_generationInfofile);
+                    generationInfo["file"] = ExpressionConverter.ConvertO(__workflow_generationInfoFile);
                     generationInfopropCount++;
                 }
 

@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vimeo
 {
     using System.Linq.Expressions;
@@ -17,12 +18,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vimeo
     {
         public IBodyWorkflowTrigger<Video[], ApiConnectionTriggerConfiguration> OnVideoUpload(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/me/videos";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fields"] = Convert.ToString("user,uri,name,description,link,created_time,modified_time");
-            callPayload.Queries["sort"] = Convert.ToString("date");
-            return new ApiConnectionTrigger<Video[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<Video[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/me/videos";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fields"] = Convert.ToString("user,uri,name,description,link,created_time,modified_time");
+                callPayload.Queries["sort"] = Convert.ToString("date");
+                return new ApiConnectionTrigger<Video[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<VideoWithChannelId[], ApiConnectionTriggerConfiguration> OnNewVideoInChannel(Expression<Func<string>> channelId, FlowRecurrence recurrence = null)
@@ -90,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vimeo
         public string ModifiedTime { get; set; }
 
         [JsonProperty("channel_id")]
-        public string ChannelID { get; set; }
+        public string ChannelId { get; set; }
 
         [JsonProperty("channel_name")]
         public string ChannelName { get; set; }

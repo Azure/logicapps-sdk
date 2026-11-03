@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
 {
     using System.Linq.Expressions;
@@ -459,7 +460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
-        public IBodyWorkflowAction<DtoResponseT01A004AV01CV01ConvertExcelToCsv, ApiConnectionActionConfiguration> T01A004AV01CV01ConvertExcelToCsv(Expression<Func<string>> dtoRequestT01A004AV01CV01ConvertExcelToCsvexcelFile)
+        public IBodyWorkflowAction<DtoResponseT01A004AV01CV01ConvertExcelToCsv, ApiConnectionActionConfiguration> T01A004AV01CV01ConvertExcelToCsv(Expression<Func<WorkflowBinaryContent>> dtoRequestT01A004AV01CV01ConvertExcelToCsvexcelFile)
         {
             var __workflow_dtoRequestT01A004AV01CV01ConvertExcelToCsvexcelFile = WorkflowExpression.Compile(dtoRequestT01A004AV01CV01ConvertExcelToCsvexcelFile, nameof(dtoRequestT01A004AV01CV01ConvertExcelToCsvexcelFile), required: true);
             return new DeferredBodyAction<DtoResponseT01A004AV01CV01ConvertExcelToCsv, ApiConnectionActionConfiguration>(() =>

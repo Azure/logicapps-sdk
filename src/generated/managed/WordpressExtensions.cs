@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
 {
     using System.Linq.Expressions;
@@ -92,10 +93,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
     {
         public IBodyWorkflowTrigger<ListPostsResponse, ApiConnectionTriggerConfiguration> OnTriggerNewPost(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/me/posts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListPostsResponse>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<ListPostsResponse, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/me/posts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<ListPostsResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -170,10 +174,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
 
     public class PostModel
     {
-        public int ID { get; set; }
+        [JsonProperty("guid")]
+        public string Id { get; set; }
 
         [JsonProperty("site_ID")]
-        public int SiteID { get; set; }
+        public int SiteId { get; set; }
 
         [JsonProperty("date")]
         public string Date { get; set; }
@@ -196,9 +201,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
 
         [JsonProperty("slug")]
         public string Slug { get; set; }
-
-        [JsonProperty("guid")]
-        public string Id { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -234,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
         public bool IsFollowing { get; set; }
 
         [JsonProperty("global_ID")]
-        public string GlobalID { get; set; }
+        public string GlobalId { get; set; }
 
         [JsonProperty("featured_image")]
         public string FeaturedImage { get; set; }
@@ -274,13 +276,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
 
     public class PostResponse
     {
-        public int ID { get; set; }
+        [JsonProperty("guid")]
+        public string Id { get; set; }
 
         [JsonProperty("comment_count")]
         public int CommentCount { get; set; }
 
         [JsonProperty("site_ID")]
-        public int SiteID { get; set; }
+        public int SiteId { get; set; }
 
         [JsonProperty("date")]
         public string Date { get; set; }
@@ -294,9 +297,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
 
         [JsonProperty("slug")]
         public string Slug { get; set; }
-
-        [JsonProperty("guid")]
-        public string Id { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }

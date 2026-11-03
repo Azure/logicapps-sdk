@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
 {
     using System.Linq.Expressions;
@@ -1256,15 +1257,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public bodyInputItemLineItemsTypeItem2[] LineItems { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyInputItemPurchaseOrderTypeType
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3
+        _1 = 1,
+        _2 = 2,
+        _3 = 3
     }
 
     public class bodyInputItemLineItemsTypeItem2
@@ -1579,7 +1576,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string WarehouseName { get; set; }
         public GetSalesOrdersResponseItemLineItemsTypeItemPickRecordsTypeItem[] PickRecords { get; set; }
         public string AllocationSetName { get; set; }
-        public string InventoryRequestTaskID { get; set; }
+
+        [JsonProperty("InventoryRequestTaskID")]
+        public string InventoryRequestTaskId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1694,7 +1693,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
 
     public class SingleScanInventoryLookupResponseItem
     {
-        public int POID { get; set; }
+        [JsonProperty("POID")]
+        public int POId { get; set; }
         public string PONumber { get; set; }
         public SingleScanInventoryLookupResponseItemPODetailsTypeItem[] PODetails { get; set; }
         public int TotalLpReceived { get; set; }
@@ -1709,16 +1709,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
     {
         public SingleScanInventoryLookupResponseItemPODetailsTypeItemItemType Item { get; set; }
         public double Qty { get; set; }
-        public int ASNDetailID { get; set; }
+
+        [JsonProperty("ASNDetailID")]
+        public int ASNDetailId { get; set; }
     }
 
     public class SingleScanInventoryLookupResponseItemPODetailsTypeItemItemType
     {
-        public int ItemID { get; set; }
+        [JsonProperty("ItemID")]
+        public int ItemId { get; set; }
         public string ItemNumber { get; set; }
         public SingleScanInventoryLookupResponseItemPODetailsTypeItemItemTypeCoreItemTypeType CoreItemType { get; set; }
         public SingleScanInventoryLookupResponseItemPODetailsTypeItemItemTypeCoreValueType CoreValue { get; set; }
-        public int UomTypeID { get; set; }
+
+        [JsonProperty("UomTypeID")]
+        public int UomTypeId { get; set; }
         public string UomDescription { get; set; }
         public int SignificantDigits { get; set; }
         public string BinNumber { get; set; }
@@ -1838,7 +1843,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string WarehouseName { get; set; }
         public GetTransferOrdersResponseItemLineItemsTypeItemPickRecordsTypeItem[] PickRecords { get; set; }
         public string AllocationSetName { get; set; }
-        public string InventoryRequestTaskID { get; set; }
+
+        [JsonProperty("InventoryRequestTaskID")]
+        public string InventoryRequestTaskId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -2068,7 +2075,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string WarehouseName { get; set; }
         public GetManufacturingOrderResponseItemLineItemsTypeItemPickRecordsTypeItem[] PickRecords { get; set; }
         public string AllocationSetName { get; set; }
-        public string InventoryRequestTaskID { get; set; }
+
+        [JsonProperty("InventoryRequestTaskID")]
+        public string InventoryRequestTaskId { get; set; }
     }
 
     public class GetManufacturingOrderResponseItemLineItemsTypeItemUomTypeType

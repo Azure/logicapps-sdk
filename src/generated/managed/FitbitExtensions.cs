@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
 {
     using System.Linq.Expressions;
@@ -155,10 +156,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetAllActivityTypesResponse, ApiConnectionActionConfiguration> GetAllActivityTypes()
         {
-            var apiCallPath = "/1/activities.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAllActivityTypesResponse>(callPayload);
+            return new DeferredBodyAction<GetAllActivityTypesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/1/activities.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetAllActivityTypesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]

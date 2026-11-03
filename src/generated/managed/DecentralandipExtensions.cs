@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "decentralandip")]
         public IBodyWorkflowAction<GetDistrictsResponse, ApiConnectionActionConfiguration> GetDistricts()
         {
-            var apiCallPath = "/districts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetDistrictsResponse>(callPayload);
+            return new DeferredBodyAction<GetDistrictsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/districts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetDistrictsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "decentralandip")]

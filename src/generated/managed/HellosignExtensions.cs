@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hellosign
 {
     using System.Linq.Expressions;
@@ -73,26 +74,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hellosign
     {
         public IBodyWorkflowTrigger<RequestResponse[], ApiConnectionTriggerConfiguration> OnNewRequest(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/request_trigger/v3/signature_request/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<RequestResponse[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<RequestResponse[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/request_trigger/v3/signature_request/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<RequestResponse[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<RequestResponse[], ApiConnectionTriggerConfiguration> OnRequestCompleted(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/complete_trigger/v3/signature_request/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<RequestResponse[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<RequestResponse[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/complete_trigger/v3/signature_request/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<RequestResponse[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<RequestResponse[], ApiConnectionTriggerConfiguration> OnRequestDeclined(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/decline_trigger/v3/signature_request/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<RequestResponse[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<RequestResponse[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/decline_trigger/v3/signature_request/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<RequestResponse[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

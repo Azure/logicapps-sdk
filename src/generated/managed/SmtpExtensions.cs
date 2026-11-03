@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smtp
 {
     using System.Linq.Expressions;
@@ -12,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smtp
     public class SmtpActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smtp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendEmail(Expression<Func<string>> emailMessagefrom = null, Expression<Func<string>> emailMessageto = null, Expression<Func<string>> emailMessagecC = null, Expression<Func<string>> emailMessagesubject = null, Expression<Func<string>> emailMessagebody = null, Expression<Func<string>> emailMessagebcc = null, Expression<Func<emailMessageimportanceInput>> emailMessageimportance = null, Expression<Func<string>> emailMessagereadReceipt = null, Expression<Func<string>> emailMessagedeliveryReceipt = null, Expression<Func<AttachmentV2[]>> emailMessageattachments = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendEmail(Expression<Func<string>> emailMessagefrom = null, Expression<Func<string>> emailMessageto = null, Expression<Func<string>> emailMessagecC = null, Expression<Func<string>> emailMessagesubject = null, Expression<Func<string>> emailMessagebody = null, Expression<Func<string>> emailMessagebcc = null, Expression<Func<emailMessageimportanceInput>> emailMessageimportance = null, Expression<Func<string>> emailMessagereadReceipt = null, Expression<Func<string>> emailMessagedeliveryReceipt = null, Expression<Func<AttachmentV2Input[]>> emailMessageattachments = null)
         {
             var __workflow_emailMessagefrom = WorkflowExpression.Compile(emailMessagefrom, nameof(emailMessagefrom), required: false);
             var __workflow_emailMessageto = WorkflowExpression.Compile(emailMessageto, nameof(emailMessageto), required: false);
@@ -113,9 +114,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smtp
         High
     }
 
-    public class AttachmentV2
+    public class AttachmentV2Input
     {
-        public string ContentData { get; set; }
+        public WorkflowBinaryContent ContentData { get; set; }
         public string ContentType { get; set; }
         public string FileName { get; set; }
         public string ContentId { get; set; }

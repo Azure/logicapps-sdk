@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
 {
     using System.Linq.Expressions;
@@ -318,10 +319,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
         public IBodyWorkflowAction<ResponseAccountInformation, ApiConnectionActionConfiguration> GetAccountInfo()
         {
-            var apiCallPath = "/get-account-info";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ResponseAccountInformation>(callPayload);
+            return new DeferredBodyAction<ResponseAccountInformation, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/get-account-info";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ResponseAccountInformation>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]

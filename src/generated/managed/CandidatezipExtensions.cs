@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
 {
     using System.Linq.Expressions;
@@ -12,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
     public class CandidatezipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        public IBodyWorkflowAction<ParseResumeStandardViaFileContentResponse, ApiConnectionActionConfiguration> ParseResumeStandardViaFileContent(Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent)
+        public IBodyWorkflowAction<ParseResumeStandardViaFileContentResponse, ApiConnectionActionConfiguration> ParseResumeStandardViaFileContent(Expression<Func<string>> bodyfileName, Expression<Func<WorkflowBinaryContent>> bodyfileContent)
         {
             var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
             var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: true);
@@ -37,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        public IBodyWorkflowAction<ParseResumeDetailViaFileContentResponse, ApiConnectionActionConfiguration> ParseResumeDetailViaFileContent(Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent)
+        public IBodyWorkflowAction<ParseResumeDetailViaFileContentResponse, ApiConnectionActionConfiguration> ParseResumeDetailViaFileContent(Expression<Func<string>> bodyfileName, Expression<Func<WorkflowBinaryContent>> bodyfileContent)
         {
             var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
             var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: true);
@@ -87,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        public IBodyWorkflowAction<ParseJDViaFileContentResponse, ApiConnectionActionConfiguration> ParseJDViaFileContent(Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent)
+        public IBodyWorkflowAction<ParseJDViaFileContentResponse, ApiConnectionActionConfiguration> ParseJDViaFileContent(Expression<Func<string>> bodyfileName, Expression<Func<WorkflowBinaryContent>> bodyfileContent)
         {
             var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
             var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: true);
@@ -162,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        public IBodyWorkflowAction<ParseResumeBasicViaFileContentResponse, ApiConnectionActionConfiguration> ParseResumeBasicViaFileContent(Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent)
+        public IBodyWorkflowAction<ParseResumeBasicViaFileContentResponse, ApiConnectionActionConfiguration> ParseResumeBasicViaFileContent(Expression<Func<string>> bodyfileName, Expression<Func<WorkflowBinaryContent>> bodyfileContent)
         {
             var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
             var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: true);
@@ -1086,7 +1087,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         public string ContactFirstName { get; set; }
 
         [JsonProperty("Personal_UniqueID")]
-        public string PersonalUniqueID { get; set; }
+        public string PersonalUniqueId { get; set; }
 
         [JsonProperty("Contact_MiddleName")]
         public string ContactMiddleName { get; set; }
@@ -2016,7 +2017,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         public string ContactFirstName { get; set; }
 
         [JsonProperty("Personal_UniqueID")]
-        public string PersonalUniqueID { get; set; }
+        public string PersonalUniqueId { get; set; }
 
         [JsonProperty("Other_AverageStay")]
         public string OtherAverageStay { get; set; }

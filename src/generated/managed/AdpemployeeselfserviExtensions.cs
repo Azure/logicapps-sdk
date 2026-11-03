@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
 {
     using System.Linq.Expressions;
@@ -127,37 +128,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
         public IBodyWorkflowAction<GetContactsResponse, ApiConnectionActionConfiguration> GetContacts()
         {
-            var apiCallPath = "/api/get-emergency-contacts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetContactsResponse>(callPayload);
+            return new DeferredBodyAction<GetContactsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/get-emergency-contacts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetContactsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
         public IBodyWorkflowAction<GetPayDistributionsResponse, ApiConnectionActionConfiguration> GetPayDistributions()
         {
-            var apiCallPath = "/api/get-pay-distributions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetPayDistributionsResponse>(callPayload);
+            return new DeferredBodyAction<GetPayDistributionsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/get-pay-distributions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetPayDistributionsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
         public IBodyWorkflowAction<GetPayStatementsResponse, ApiConnectionActionConfiguration> GetPayStatements()
         {
-            var apiCallPath = "/api/get-pay-statements";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetPayStatementsResponse>(callPayload);
+            return new DeferredBodyAction<GetPayStatementsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/get-pay-statements";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetPayStatementsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
         public IBodyWorkflowAction<GetUserResponse, ApiConnectionActionConfiguration> GetUser()
         {
-            var apiCallPath = "/api/get-worker";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetUserResponse>(callPayload);
+            return new DeferredBodyAction<GetUserResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/get-worker";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetUserResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]

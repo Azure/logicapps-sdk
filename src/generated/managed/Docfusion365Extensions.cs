@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docfusion365
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docfusion365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docfusion365")]
         public IBodyWorkflowAction<VersionResponse, ApiConnectionActionConfiguration> GetApiVersion()
         {
-            var apiCallPath = "/api/DocFusion365/GetVersion";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<VersionResponse>(callPayload);
+            return new DeferredBodyAction<VersionResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/DocFusion365/GetVersion";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<VersionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docfusion365")]

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ppdf
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ppdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ppdf")]
         public IBodyWorkflowAction<DataSetsList, ApiConnectionActionConfiguration> GetDataSets()
         {
-            var apiCallPath = "/datasets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DataSetsList>(callPayload);
+            return new DeferredBodyAction<DataSetsList, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/datasets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DataSetsList>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ppdf")]

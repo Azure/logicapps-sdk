@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
 {
     using System.Linq.Expressions;
@@ -381,10 +382,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<User, ApiConnectionActionConfiguration> UserMe()
         {
-            var apiCallPath = "/user/me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<User>(callPayload);
+            return new DeferredBodyAction<User, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/user/me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<User>(callPayload);
+            });
         }
     }
 
@@ -392,36 +396,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
     {
         public IBodyWorkflowTrigger<NodeSummary, ApiConnectionTriggerConfiguration> AddedToBoard(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook/added-to-board";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callback"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredBodyTrigger<NodeSummary, ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhook/added-to-board";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callback"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<NodeSummary>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<NodeSummary>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<NodeSummary, ApiConnectionTriggerConfiguration> AssignedTask(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook/assigned-task";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callback"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredBodyTrigger<NodeSummary, ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhook/assigned-task";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callback"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<NodeSummary>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<NodeSummary>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<NodeSummary, ApiConnectionTriggerConfiguration> BoardTaskCompleted(Expression<Func<string>> boardId, FlowRecurrence recurrence = null)
@@ -468,19 +478,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
 
         public IBodyWorkflowTrigger<NodeSummary, ApiConnectionTriggerConfiguration> MyTaskCompleted(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook/my-task-completed";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callback"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredBodyTrigger<NodeSummary, ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhook/my-task-completed";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callback"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<NodeSummary>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<NodeSummary>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

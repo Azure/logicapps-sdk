@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 {
     using System.Linq.Expressions;
@@ -625,9 +626,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringCapitalizeResponse, ApiConnectionActionConfiguration> StringCapitalize(Expression<Func<string>> bodystring)
+        public IBodyWorkflowAction<StringCapitalizeResponse, ApiConnectionActionConfiguration> StringCapitalize(Expression<Func<string>> bodyString)
         {
-            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodyString = WorkflowExpression.Compile(bodyString, nameof(bodyString), required: true);
             return new DeferredBodyAction<StringCapitalizeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/string/capitalize";
@@ -636,7 +637,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodyString);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -647,9 +648,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringTrimResponse, ApiConnectionActionConfiguration> StringTrim(Expression<Func<string>> bodystring, Expression<Func<string>> bodycharacters = null)
+        public IBodyWorkflowAction<StringTrimResponse, ApiConnectionActionConfiguration> StringTrim(Expression<Func<string>> bodyString, Expression<Func<string>> bodycharacters = null)
         {
-            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodyString = WorkflowExpression.Compile(bodyString, nameof(bodyString), required: true);
             var __workflow_bodycharacters = WorkflowExpression.Compile(bodycharacters, nameof(bodycharacters), required: false);
             return new DeferredBodyAction<StringTrimResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -659,7 +660,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodyString);
                 if (__workflow_bodycharacters != null)
                 {
                     body["characters"] = ExpressionConverter.ConvertO(__workflow_bodycharacters);
@@ -676,9 +677,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringTrimStartResponse, ApiConnectionActionConfiguration> StringTrimStart(Expression<Func<string>> bodystring, Expression<Func<string>> bodycharacters = null)
+        public IBodyWorkflowAction<StringTrimStartResponse, ApiConnectionActionConfiguration> StringTrimStart(Expression<Func<string>> bodyString, Expression<Func<string>> bodycharacters = null)
         {
-            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodyString = WorkflowExpression.Compile(bodyString, nameof(bodyString), required: true);
             var __workflow_bodycharacters = WorkflowExpression.Compile(bodycharacters, nameof(bodycharacters), required: false);
             return new DeferredBodyAction<StringTrimStartResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -688,7 +689,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodyString);
                 if (__workflow_bodycharacters != null)
                 {
                     body["characters"] = ExpressionConverter.ConvertO(__workflow_bodycharacters);
@@ -705,9 +706,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringTrimEndResponse, ApiConnectionActionConfiguration> StringTrimEnd(Expression<Func<string>> bodystring, Expression<Func<string>> bodycharacters = null)
+        public IBodyWorkflowAction<StringTrimEndResponse, ApiConnectionActionConfiguration> StringTrimEnd(Expression<Func<string>> bodyString, Expression<Func<string>> bodycharacters = null)
         {
-            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodyString = WorkflowExpression.Compile(bodyString, nameof(bodyString), required: true);
             var __workflow_bodycharacters = WorkflowExpression.Compile(bodycharacters, nameof(bodycharacters), required: false);
             return new DeferredBodyAction<StringTrimEndResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -717,7 +718,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodyString);
                 if (__workflow_bodycharacters != null)
                 {
                     body["characters"] = ExpressionConverter.ConvertO(__workflow_bodycharacters);
@@ -734,9 +735,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringSlugifyResponse, ApiConnectionActionConfiguration> StringSlugify(Expression<Func<string>> bodystring)
+        public IBodyWorkflowAction<StringSlugifyResponse, ApiConnectionActionConfiguration> StringSlugify(Expression<Func<string>> bodyString)
         {
-            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodyString = WorkflowExpression.Compile(bodyString, nameof(bodyString), required: true);
             return new DeferredBodyAction<StringSlugifyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/string/slugify";
@@ -745,7 +746,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodyString);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -756,9 +757,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringWordsResponse, ApiConnectionActionConfiguration> StringWords(Expression<Func<string>> bodystring, Expression<Func<string>> bodydelimiter = null)
+        public IBodyWorkflowAction<StringWordsResponse, ApiConnectionActionConfiguration> StringWords(Expression<Func<string>> bodyString, Expression<Func<string>> bodydelimiter = null)
         {
-            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodyString = WorkflowExpression.Compile(bodyString, nameof(bodyString), required: true);
             var __workflow_bodydelimiter = WorkflowExpression.Compile(bodydelimiter, nameof(bodydelimiter), required: false);
             return new DeferredBodyAction<StringWordsResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -768,7 +769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodyString);
                 if (__workflow_bodydelimiter != null)
                 {
                     body["delimiter"] = ExpressionConverter.ConvertO(__workflow_bodydelimiter);
@@ -785,9 +786,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringWordCountResponse, ApiConnectionActionConfiguration> StringWordCount(Expression<Func<string>> bodystring, Expression<Func<string>> bodydelimiter = null)
+        public IBodyWorkflowAction<StringWordCountResponse, ApiConnectionActionConfiguration> StringWordCount(Expression<Func<string>> bodyString, Expression<Func<string>> bodydelimiter = null)
         {
-            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodyString = WorkflowExpression.Compile(bodyString, nameof(bodyString), required: true);
             var __workflow_bodydelimiter = WorkflowExpression.Compile(bodydelimiter, nameof(bodydelimiter), required: false);
             return new DeferredBodyAction<StringWordCountResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -797,7 +798,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodyString);
                 if (__workflow_bodydelimiter != null)
                 {
                     body["delimiter"] = ExpressionConverter.ConvertO(__workflow_bodydelimiter);
@@ -814,9 +815,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringStripHtmlResponse, ApiConnectionActionConfiguration> StringStripHtml(Expression<Func<string>> bodystring)
+        public IBodyWorkflowAction<StringStripHtmlResponse, ApiConnectionActionConfiguration> StringStripHtml(Expression<Func<string>> bodyString)
         {
-            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodyString = WorkflowExpression.Compile(bodyString, nameof(bodyString), required: true);
             return new DeferredBodyAction<StringStripHtmlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/string/stripHtml";
@@ -825,7 +826,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodyString);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -836,9 +837,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringCleanResponse, ApiConnectionActionConfiguration> StringClean(Expression<Func<string>> bodystring)
+        public IBodyWorkflowAction<StringCleanResponse, ApiConnectionActionConfiguration> StringClean(Expression<Func<string>> bodyString)
         {
-            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodyString = WorkflowExpression.Compile(bodyString, nameof(bodyString), required: true);
             return new DeferredBodyAction<StringCleanResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/string/clean";
@@ -847,7 +848,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodyString);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -858,9 +859,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringCleanDiacriticsResponse, ApiConnectionActionConfiguration> StringCleanDiacritics(Expression<Func<string>> bodystring)
+        public IBodyWorkflowAction<StringCleanDiacriticsResponse, ApiConnectionActionConfiguration> StringCleanDiacritics(Expression<Func<string>> bodyString)
         {
-            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodyString = WorkflowExpression.Compile(bodyString, nameof(bodyString), required: true);
             return new DeferredBodyAction<StringCleanDiacriticsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/string/cleanDiacritics";
@@ -869,7 +870,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodyString);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -880,9 +881,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringEscapeHtmlResponse, ApiConnectionActionConfiguration> StringEscapeHtml(Expression<Func<string>> bodystring)
+        public IBodyWorkflowAction<StringEscapeHtmlResponse, ApiConnectionActionConfiguration> StringEscapeHtml(Expression<Func<string>> bodyString)
         {
-            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodyString = WorkflowExpression.Compile(bodyString, nameof(bodyString), required: true);
             return new DeferredBodyAction<StringEscapeHtmlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/string/escapeHtml";
@@ -891,7 +892,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodyString);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -902,9 +903,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringUnescapeHtmlResponse, ApiConnectionActionConfiguration> StringUnescapeHtml(Expression<Func<string>> bodystring)
+        public IBodyWorkflowAction<StringUnescapeHtmlResponse, ApiConnectionActionConfiguration> StringUnescapeHtml(Expression<Func<string>> bodyString)
         {
-            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodyString = WorkflowExpression.Compile(bodyString, nameof(bodyString), required: true);
             return new DeferredBodyAction<StringUnescapeHtmlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/string/unescapeHtml";
@@ -913,7 +914,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodyString);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -924,9 +925,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringCountInstancesResponse, ApiConnectionActionConfiguration> StringCountInstances(Expression<Func<string>> bodystring, Expression<Func<string>> bodysubstring, Expression<Func<bool>> bodyignoreCase = null)
+        public IBodyWorkflowAction<StringCountInstancesResponse, ApiConnectionActionConfiguration> StringCountInstances(Expression<Func<string>> bodyString, Expression<Func<string>> bodysubstring, Expression<Func<bool>> bodyignoreCase = null)
         {
-            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodyString = WorkflowExpression.Compile(bodyString, nameof(bodyString), required: true);
             var __workflow_bodysubstring = WorkflowExpression.Compile(bodysubstring, nameof(bodysubstring), required: true);
             var __workflow_bodyignoreCase = WorkflowExpression.Compile(bodyignoreCase, nameof(bodyignoreCase), required: false);
             return new DeferredBodyAction<StringCountInstancesResponse, ApiConnectionActionConfiguration>(() =>
@@ -937,7 +938,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodyString);
                 bodypropCount++;
                 body["substring"] = ExpressionConverter.ConvertO(__workflow_bodysubstring);
                 if (__workflow_bodyignoreCase != null)
@@ -966,9 +967,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringChopResponse, ApiConnectionActionConfiguration> StringChop(Expression<Func<string>> bodystring, Expression<Func<int>> bodyinterval)
+        public IBodyWorkflowAction<StringChopResponse, ApiConnectionActionConfiguration> StringChop(Expression<Func<string>> bodyString, Expression<Func<int>> bodyinterval)
         {
-            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodyString = WorkflowExpression.Compile(bodyString, nameof(bodyString), required: true);
             var __workflow_bodyinterval = WorkflowExpression.Compile(bodyinterval, nameof(bodyinterval), required: true);
             return new DeferredBodyAction<StringChopResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -978,7 +979,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodyString);
                 bodypropCount++;
                 body["interval"] = ExpressionConverter.ConvertO(__workflow_bodyinterval);
                 if (bodypropCount > 0)
@@ -1126,9 +1127,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ValidateRegexResponse, ApiConnectionActionConfiguration> ValidateRegex(Expression<Func<string>> bodystring, Expression<Func<string>> bodypattern)
+        public IBodyWorkflowAction<ValidateRegexResponse, ApiConnectionActionConfiguration> ValidateRegex(Expression<Func<string>> bodyString, Expression<Func<string>> bodypattern)
         {
-            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodyString = WorkflowExpression.Compile(bodyString, nameof(bodyString), required: true);
             var __workflow_bodypattern = WorkflowExpression.Compile(bodypattern, nameof(bodypattern), required: true);
             return new DeferredBodyAction<ValidateRegexResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -1138,7 +1139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodyString);
                 bodypropCount++;
                 body["pattern"] = ExpressionConverter.ConvertO(__workflow_bodypattern);
                 if (bodypropCount > 0)

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
 {
     using System.Linq.Expressions;
@@ -132,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
     public class WantedPerson
     {
         [JsonProperty("@id")]
-        public string RecordID { get; set; }
+        public string RecordId { get; set; }
 
         [JsonProperty("uid")]
         public string UniqueIdentifier { get; set; }
@@ -485,7 +486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
     public class ArtCrime
     {
         [JsonProperty("@id")]
-        public string ODataID { get; set; }
+        public string ODataId { get; set; }
 
         [JsonProperty("uid")]
         public string UniqueIdentifier { get; set; }

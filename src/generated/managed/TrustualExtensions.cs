@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
 {
     using System.Linq.Expressions;
@@ -12,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
     public class TrustualActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trustual")]
-        public IBodyWorkflowAction<CertificationOutput, ApiConnectionActionConfiguration> CertifyFile(Expression<Func<string>> bodyfileContent = null, Expression<Func<bodycertificateLanguageInput>> bodycertificateLanguage = null, Expression<Func<double>> bodytimeZoneOffset = null, Expression<Func<string>> bodyreference = null, Expression<Func<bool>> bodysandboxMode = null)
+        public IBodyWorkflowAction<CertificationOutput, ApiConnectionActionConfiguration> CertifyFile(Expression<Func<WorkflowBinaryContent>> bodyfileContent = null, Expression<Func<bodycertificateLanguageInput>> bodycertificateLanguage = null, Expression<Func<double>> bodytimeZoneOffset = null, Expression<Func<string>> bodyreference = null, Expression<Func<bool>> bodysandboxMode = null)
         {
             var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: false);
             var __workflow_bodycertificateLanguage = WorkflowExpression.Compile(bodycertificateLanguage, nameof(bodycertificateLanguage), required: false);

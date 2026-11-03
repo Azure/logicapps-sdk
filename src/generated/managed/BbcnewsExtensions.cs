@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bbcnews
 {
     using System.Linq.Expressions;
@@ -53,10 +54,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bbcnews
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bbcnews")]
         public IBodyWorkflowAction<LanguagesResponse, ApiConnectionActionConfiguration> GetLanguages()
         {
-            var apiCallPath = "/languages";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<LanguagesResponse>(callPayload);
+            return new DeferredBodyAction<LanguagesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/languages";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<LanguagesResponse>(callPayload);
+            });
         }
     }
 

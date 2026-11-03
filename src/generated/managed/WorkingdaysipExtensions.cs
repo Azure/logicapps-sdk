@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
 {
     using System.Linq.Expressions;
@@ -321,11 +322,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
         public IBodyWorkflowAction<QuotaResponse, ApiConnectionActionConfiguration> Quota()
         {
-            var apiCallPath = "/1.2/quota";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
-            return new ApiConnectionAction<QuotaResponse>(callPayload);
+            return new DeferredBodyAction<QuotaResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/1.2/quota";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
+                return new ApiConnectionAction<QuotaResponse>(callPayload);
+            });
         }
     }
 

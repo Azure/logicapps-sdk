@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
 {
     using System.Linq.Expressions;
@@ -120,10 +121,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<ProjectsGetResponse, ApiConnectionActionConfiguration> ProjectsGet()
         {
-            var apiCallPath = "/projects";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProjectsGetResponse>(callPayload);
+            return new DeferredBodyAction<ProjectsGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/projects";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ProjectsGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]

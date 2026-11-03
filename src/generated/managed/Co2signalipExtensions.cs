@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Co2signalip
 {
     using System.Linq.Expressions;
@@ -46,10 +47,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Co2signalip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "co2signalip")]
         public IBodyWorkflowAction<GetZonesResponse, ApiConnectionActionConfiguration> GetZones()
         {
-            var apiCallPath = "/zones";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetZonesResponse>(callPayload);
+            return new DeferredBodyAction<GetZonesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/zones";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetZonesResponse>(callPayload);
+            });
         }
     }
 

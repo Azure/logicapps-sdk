@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Screenshotoneip
 {
     using System.Linq.Expressions;
@@ -405,19 +406,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Screenshotoneip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "screenshotoneip")]
         public IBodyWorkflowAction<DeviceGetResponseItem[], ApiConnectionActionConfiguration> DeviceGet()
         {
-            var apiCallPath = "/devices";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DeviceGetResponseItem[]>(callPayload);
+            return new DeferredBodyAction<DeviceGetResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/devices";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DeviceGetResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "screenshotoneip")]
         public IBodyWorkflowAction<UsageGetResponse, ApiConnectionActionConfiguration> UsageGet()
         {
-            var apiCallPath = "/usage";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UsageGetResponse>(callPayload);
+            return new DeferredBodyAction<UsageGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/usage";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UsageGetResponse>(callPayload);
+            });
         }
     }
 

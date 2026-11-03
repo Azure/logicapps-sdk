@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coinbaseip
 {
     using System.Linq.Expressions;
@@ -27,10 +28,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coinbaseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coinbaseip")]
         public IBodyWorkflowAction<GetCurrenciesResponse, ApiConnectionActionConfiguration> GetCurrencies()
         {
-            var apiCallPath = "/currencies";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetCurrenciesResponse>(callPayload);
+            return new DeferredBodyAction<GetCurrenciesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/currencies";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetCurrenciesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coinbaseip")]

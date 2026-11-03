@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
 {
     using System.Linq.Expressions;
@@ -12,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
     public class PdfcrossActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergePDF(Expression<Func<string[]>> filesfileContent)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergePDF(Expression<Func<WorkflowBinaryContent[]>> filesfileContent)
         {
             var __workflow_filesfileContent = WorkflowExpression.Compile(filesfileContent, nameof(filesfileContent), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -34,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddWatermarkText(Expression<Func<string>> filefileContent, Expression<Func<string>> filewatermarkText)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddWatermarkText(Expression<Func<WorkflowBinaryContent>> filefileContent, Expression<Func<string>> filewatermarkText)
         {
             var __workflow_filefileContent = WorkflowExpression.Compile(filefileContent, nameof(filefileContent), required: true);
             var __workflow_filewatermarkText = WorkflowExpression.Compile(filewatermarkText, nameof(filewatermarkText), required: true);
@@ -43,15 +44,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
                 var apiCallPath = "/watermark_text";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var file = new JObject();
-                var filepropCount = 0;
-                filepropCount++;
-                file["fileContent"] = ExpressionConverter.ConvertO(__workflow_filefileContent);
-                filepropCount++;
-                file["watermarkText"] = ExpressionConverter.ConvertO(__workflow_filewatermarkText);
-                if (filepropCount > 0)
+                var @file = new JObject();
+                var @filepropCount = 0;
+                @filepropCount++;
+                @file["fileContent"] = ExpressionConverter.ConvertO(__workflow_filefileContent);
+                @filepropCount++;
+                @file["watermarkText"] = ExpressionConverter.ConvertO(__workflow_filewatermarkText);
+                if (@filepropCount > 0)
                 {
-                    callPayload.Body = file;
+                    callPayload.Body = @file;
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
@@ -59,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddPassword(Expression<Func<string>> filefileContent, Expression<Func<string>> filepassword)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddPassword(Expression<Func<WorkflowBinaryContent>> filefileContent, Expression<Func<string>> filepassword)
         {
             var __workflow_filefileContent = WorkflowExpression.Compile(filefileContent, nameof(filefileContent), required: true);
             var __workflow_filepassword = WorkflowExpression.Compile(filepassword, nameof(filepassword), required: true);
@@ -68,15 +69,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
                 var apiCallPath = "/password";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var file = new JObject();
-                var filepropCount = 0;
-                filepropCount++;
-                file["fileContent"] = ExpressionConverter.ConvertO(__workflow_filefileContent);
-                filepropCount++;
-                file["password"] = ExpressionConverter.ConvertO(__workflow_filepassword);
-                if (filepropCount > 0)
+                var @file = new JObject();
+                var @filepropCount = 0;
+                @filepropCount++;
+                @file["fileContent"] = ExpressionConverter.ConvertO(__workflow_filefileContent);
+                @filepropCount++;
+                @file["password"] = ExpressionConverter.ConvertO(__workflow_filepassword);
+                if (@filepropCount > 0)
                 {
-                    callPayload.Body = file;
+                    callPayload.Body = @file;
                 }
 
                 return new ApiConnectionAction<string>(callPayload);
@@ -84,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddImage(Expression<Func<string>> filefileContent, Expression<Func<string>> fileimageContent, Expression<Func<double>> filepositionX, Expression<Func<double>> filepositionY, Expression<Func<string>> fileaddType, Expression<Func<double>> filefromPage = null, Expression<Func<double>> filetoPage = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddImage(Expression<Func<WorkflowBinaryContent>> filefileContent, Expression<Func<WorkflowBinaryContent>> fileimageContent, Expression<Func<double>> filepositionX, Expression<Func<double>> filepositionY, Expression<Func<string>> fileaddType, Expression<Func<double>> filefromPage = null, Expression<Func<double>> filetoPage = null)
         {
             var __workflow_filefileContent = WorkflowExpression.Compile(filefileContent, nameof(filefileContent), required: true);
             var __workflow_fileimageContent = WorkflowExpression.Compile(fileimageContent, nameof(fileimageContent), required: true);
@@ -98,33 +99,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
                 var apiCallPath = "/image";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var file = new JObject();
-                var filepropCount = 0;
-                filepropCount++;
-                file["fileContent"] = ExpressionConverter.ConvertO(__workflow_filefileContent);
-                filepropCount++;
-                file["imageContent"] = ExpressionConverter.ConvertO(__workflow_fileimageContent);
-                filepropCount++;
-                file["positionX"] = ExpressionConverter.ConvertO(__workflow_filepositionX);
-                filepropCount++;
-                file["positionY"] = ExpressionConverter.ConvertO(__workflow_filepositionY);
-                filepropCount++;
-                file["addType"] = ExpressionConverter.ConvertO(__workflow_fileaddType);
+                var @file = new JObject();
+                var @filepropCount = 0;
+                @filepropCount++;
+                @file["fileContent"] = ExpressionConverter.ConvertO(__workflow_filefileContent);
+                @filepropCount++;
+                @file["imageContent"] = ExpressionConverter.ConvertO(__workflow_fileimageContent);
+                @filepropCount++;
+                @file["positionX"] = ExpressionConverter.ConvertO(__workflow_filepositionX);
+                @filepropCount++;
+                @file["positionY"] = ExpressionConverter.ConvertO(__workflow_filepositionY);
+                @filepropCount++;
+                @file["addType"] = ExpressionConverter.ConvertO(__workflow_fileaddType);
                 if (__workflow_filefromPage != null)
                 {
-                    file["fromPage"] = ExpressionConverter.ConvertO(__workflow_filefromPage);
-                    filepropCount++;
+                    @file["fromPage"] = ExpressionConverter.ConvertO(__workflow_filefromPage);
+                    @filepropCount++;
                 }
 
                 if (__workflow_filetoPage != null)
                 {
-                    file["toPage"] = ExpressionConverter.ConvertO(__workflow_filetoPage);
-                    filepropCount++;
+                    @file["toPage"] = ExpressionConverter.ConvertO(__workflow_filetoPage);
+                    @filepropCount++;
                 }
 
-                if (filepropCount > 0)
+                if (@filepropCount > 0)
                 {
-                    callPayload.Body = file;
+                    callPayload.Body = @file;
                 }
 
                 return new ApiConnectionAction<string>(callPayload);

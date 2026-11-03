@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
 {
     using System.Linq.Expressions;
@@ -342,11 +343,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [EnumMember(Value = "eHerkenning")]
         EHerkenning,
         [EnumMember(Value = "eIDAS Login")]
-        EIDASLogin,
+        EIdASLogin,
         [EnumMember(Value = "iDeal")]
         IDeal,
         [EnumMember(Value = "iDIN")]
-        IDIN,
+        IdIN,
         [EnumMember(Value = "itsme Identification")]
         ItsmeIdentification,
         PhoneNumber,
@@ -386,37 +387,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         public string CreatedDateTime { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TransactionSignersTypeItemActivitiesTypeItemCodeType
     {
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "102")]
-        _102,
-        [EnumMember(Value = "103")]
-        _103,
-        [EnumMember(Value = "104")]
-        _104,
-        [EnumMember(Value = "105")]
-        _105,
-        [EnumMember(Value = "201")]
-        _201,
-        [EnumMember(Value = "202")]
-        _202,
-        [EnumMember(Value = "203")]
-        _203,
-        [EnumMember(Value = "301")]
-        _301,
-        [EnumMember(Value = "302")]
-        _302,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "402")]
-        _402,
-        [EnumMember(Value = "403")]
-        _403
+        _101 = 101,
+        _102 = 102,
+        _103 = 103,
+        _104 = 104,
+        _105 = 105,
+        _201 = 201,
+        _202 = 202,
+        _203 = 203,
+        _301 = 301,
+        _302 = 302,
+        _303 = 303,
+        _401 = 401,
+        _402 = 402,
+        _403 = 403
     }
 
     public class TransactionReceiversTypeItem
@@ -430,25 +416,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         public JToken Context { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TransactionStatusType
     {
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "40")]
-        _40,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70
+        _5 = 5,
+        _10 = 10,
+        _20 = 20,
+        _30 = 30,
+        _40 = 40,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70
     }
 
     public class ErrorModel
@@ -525,37 +502,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         public string CreatedDateTime { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum transactionsignersInputItemActivitiesTypeItemCodeType
     {
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "102")]
-        _102,
-        [EnumMember(Value = "103")]
-        _103,
-        [EnumMember(Value = "104")]
-        _104,
-        [EnumMember(Value = "105")]
-        _105,
-        [EnumMember(Value = "201")]
-        _201,
-        [EnumMember(Value = "202")]
-        _202,
-        [EnumMember(Value = "203")]
-        _203,
-        [EnumMember(Value = "301")]
-        _301,
-        [EnumMember(Value = "302")]
-        _302,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "402")]
-        _402,
-        [EnumMember(Value = "403")]
-        _403
+        _101 = 101,
+        _102 = 102,
+        _103 = 103,
+        _104 = 104,
+        _105 = 105,
+        _201 = 201,
+        _202 = 202,
+        _203 = 203,
+        _301 = 301,
+        _302 = 302,
+        _303 = 303,
+        _401 = 401,
+        _402 = 402,
+        _403 = 403
     }
 
     public class transactionreceiversInputItem

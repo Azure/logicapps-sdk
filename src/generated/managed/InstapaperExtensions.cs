@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
 {
     using System.Linq.Expressions;
@@ -93,10 +94,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<FoldersResponse, ApiConnectionActionConfiguration> ListFolders()
         {
-            var apiCallPath = "/1/folders/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FoldersResponse>(callPayload);
+            return new DeferredBodyAction<FoldersResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/1/folders/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FoldersResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
@@ -270,26 +274,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
 
         public IBodyWorkflowTrigger<BookmarksResponse, ApiConnectionTriggerConfiguration> OnBookmarkArchived(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/bookmark_archive_trigger/1/bookmarks/list/archive";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<BookmarksResponse>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<BookmarksResponse, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/bookmark_archive_trigger/1/bookmarks/list/archive";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<BookmarksResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<BookmarksResponse, ApiConnectionTriggerConfiguration> OnBookmarkLiked(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/bookmark_starred_trigger/1/bookmarks/list/starred";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<BookmarksResponse>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<BookmarksResponse, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/bookmark_starred_trigger/1/bookmarks/list/starred";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<BookmarksResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<FoldersResponse, ApiConnectionTriggerConfiguration> OnFolderCreated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/folder_trigger/1/folders/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<FoldersResponse>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<FoldersResponse, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/folder_trigger/1/folders/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<FoldersResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<BookmarksResponse, ApiConnectionTriggerConfiguration> OnBookmarkProgressUpdated(Expression<Func<string>> folderId, FlowRecurrence recurrence = null)

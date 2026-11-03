@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
 {
     using System.Linq.Expressions;
@@ -275,10 +276,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<ComputeMetadataResponse, ApiConnectionActionConfiguration> ComputeMetadata()
         {
-            var apiCallPath = "/compute";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ComputeMetadataResponse>(callPayload);
+            return new DeferredBodyAction<ComputeMetadataResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/compute";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ComputeMetadataResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]

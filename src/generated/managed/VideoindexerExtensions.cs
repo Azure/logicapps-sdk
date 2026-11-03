@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
 {
     using System.Linq.Expressions;
@@ -29,41 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["videoUrl"] = ExpressionConverter.Convert(__workflow_videoUrl);
-                if (__workflow_language != null)
-                    callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
-                if (__workflow_externalId != null)
-                    callPayload.Queries["externalId"] = ExpressionConverter.Convert(__workflow_externalId);
-                if (__workflow_metadata != null)
-                    callPayload.Queries["metadata"] = ExpressionConverter.Convert(__workflow_metadata);
-                if (__workflow_description != null)
-                    callPayload.Queries["description"] = ExpressionConverter.Convert(__workflow_description);
-                if (__workflow_partition != null)
-                    callPayload.Queries["partition"] = ExpressionConverter.Convert(__workflow_partition);
-                callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
-                callPayload.Queries["privacy"] = ExpressionConverter.Convert(__workflow_privacy);
-                if (__workflow_callbackUrl != null)
-                    callPayload.Queries["callbackUrl"] = ExpressionConverter.Convert(__workflow_callbackUrl);
-                return new ApiConnectionAction<string>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UploadVideoFileContent(Expression<Func<string>> fileContent, Expression<Func<string>> name, Expression<Func<privacyInput>> privacy, Expression<Func<languageInput>> language = null, Expression<Func<string>> externalId = null, Expression<Func<string>> metadata = null, Expression<Func<string>> description = null, Expression<Func<string>> partition = null, Expression<Func<string>> callbackUrl = null)
-        {
-            var __workflow_fileContent = WorkflowExpression.Compile(fileContent, nameof(fileContent), required: true);
-            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
-            var __workflow_privacy = WorkflowExpression.Compile(privacy, nameof(privacy), required: true);
-            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
-            var __workflow_externalId = WorkflowExpression.Compile(externalId, nameof(externalId), required: false);
-            var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
-            var __workflow_description = WorkflowExpression.Compile(description, nameof(description), required: false);
-            var __workflow_partition = WorkflowExpression.Compile(partition, nameof(partition), required: false);
-            var __workflow_callbackUrl = WorkflowExpression.Compile(callbackUrl, nameof(callbackUrl), required: false);
-            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/Api/Partner/Breakdowns/FileContent";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_language != null)
                     callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
                 if (__workflow_externalId != null)
@@ -240,10 +206,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<GetAccountsResponseItem[], ApiConnectionActionConfiguration> GetAccounts()
         {
-            var apiCallPath = "/Api/Partner/Accounts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAccountsResponseItem[]>(callPayload);
+            return new DeferredBodyAction<GetAccountsResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/Api/Partner/Accounts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetAccountsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlephotosip
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlephotosip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlephotosip")]
         public IWorkflowAction<ApiConnectionActionConfiguration> ListAlbums()
         {
-            var apiCallPath = "/v1/albums";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/albums";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlephotosip")]
@@ -37,10 +41,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlephotosip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlephotosip")]
         public IWorkflowAction<ApiConnectionActionConfiguration> ListItems()
         {
-            var apiCallPath = "/v1/mediaItems";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/mediaItems";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlephotosip")]
@@ -60,10 +67,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlephotosip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlephotosip")]
         public IWorkflowAction<ApiConnectionActionConfiguration> ListSharedAlbums()
         {
-            var apiCallPath = "/v1/sharedAlbums";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/sharedAlbums";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

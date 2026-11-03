@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
 {
     using System.Linq.Expressions;
@@ -197,10 +198,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<ModelsGetResponse, ApiConnectionActionConfiguration> ModelsGet()
         {
-            var apiCallPath = "/v2/images/models";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ModelsGetResponse>(callPayload);
+            return new DeferredBodyAction<ModelsGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v2/images/models";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ModelsGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
@@ -232,10 +236,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<MusicsGetResponseItem[], ApiConnectionActionConfiguration> MusicsGet()
         {
-            var apiCallPath = "/v1/music";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MusicsGetResponseItem[]>(callPayload);
+            return new DeferredBodyAction<MusicsGetResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/music";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<MusicsGetResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]

@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         public IBodyWorkflowAction<BlogList, ApiConnectionActionConfiguration> ListBlogs()
         {
-            var apiCallPath = "/users/self/blogs";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BlogList>(callPayload);
+            return new DeferredBodyAction<BlogList, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/users/self/blogs";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<BlogList>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
@@ -199,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
     public class Blog
     {
         [JsonProperty("id")]
-        public string BlogID { get; set; }
+        public string BlogId { get; set; }
 
         [JsonProperty("name")]
         public string BlogName { get; set; }

@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
 {
     using System.Linq.Expressions;
@@ -138,10 +139,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
         public IBodyWorkflowAction<UnreadCount[], ApiConnectionActionConfiguration> GetUnreadCount()
         {
-            var apiCallPath = "/unread-count";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UnreadCount[]>(callPayload);
+            return new DeferredBodyAction<UnreadCount[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/unread-count";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UnreadCount[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
@@ -165,10 +169,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
     {
         public IBodyWorkflowTrigger<Subscription[], ApiConnectionTriggerConfiguration> OnNewSubscription(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/subscription/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<Subscription[]>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<Subscription[], ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/subscription/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<Subscription[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<UnreadCount, ApiConnectionTriggerConfiguration> OnUnreadItemCountForStreamExceedsTarget(Expression<Func<string>> streamId, Expression<Func<int>> target, FlowRecurrence recurrence = null)

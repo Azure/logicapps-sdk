@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
 {
     using System.Linq.Expressions;
@@ -14,12 +15,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bttn")]
         public IBodyWorkflowAction<BttnListData[], ApiConnectionActionConfiguration> ListBttns()
         {
-            var apiCallPath = "/bttns";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fields"] = Convert.ToString("bid,name_id");
-            callPayload.Queries["filter"] = Convert.ToString("all");
-            return new ApiConnectionAction<BttnListData[]>(callPayload);
+            return new DeferredBodyAction<BttnListData[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/bttns";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fields"] = Convert.ToString("bid,name_id");
+                callPayload.Queries["filter"] = Convert.ToString("all");
+                return new ApiConnectionAction<BttnListData[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bttn")]

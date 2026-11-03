@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
 {
     using System.Linq.Expressions;
@@ -270,10 +271,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
         public IBodyWorkflowAction<BlobMetadata[], ApiConnectionActionConfiguration> ListRootFolder()
         {
-            var apiCallPath = "/datasets/default/folders";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BlobMetadata[]>(callPayload);
+            return new DeferredBodyAction<BlobMetadata[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/datasets/default/folders";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<BlobMetadata[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]

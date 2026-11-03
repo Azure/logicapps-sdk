@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
 {
     using System.Linq.Expressions;
@@ -97,10 +98,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
         public IBodyWorkflowAction<ListGetResponse, ApiConnectionActionConfiguration> ListGet()
         {
-            var apiCallPath = "/domains";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListGetResponse>(callPayload);
+            return new DeferredBodyAction<ListGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/domains";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
 {
     using System.Linq.Expressions;
@@ -38,24 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
                 callPayload.Queries["method"] = ExpressionConverter.Convert(__workflow_method);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<UploadDocumentResponse, ApiConnectionActionConfiguration> UploadDocument(Expression<Func<object>> content, Expression<Func<string>> dataOwnerModelModelType, Expression<Func<int>> dataOwnerModelId, Expression<Func<string>> dataContentType, Expression<Func<int>> dataCreatedById)
-        {
-            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
-            var __workflow_dataOwnerModelModelType = WorkflowExpression.Compile(dataOwnerModelModelType, nameof(dataOwnerModelModelType), required: true);
-            var __workflow_dataOwnerModelId = WorkflowExpression.Compile(dataOwnerModelId, nameof(dataOwnerModelId), required: true);
-            var __workflow_dataContentType = WorkflowExpression.Compile(dataContentType, nameof(dataContentType), required: true);
-            var __workflow_dataCreatedById = WorkflowExpression.Compile(dataCreatedById, nameof(dataCreatedById), required: true);
-            return new DeferredBodyAction<UploadDocumentResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/api/rest/v2/model_document";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["cols"] = Convert.ToString("[\"document_file_name\",\"document_content_type\",\"doc_label\"]");
-                return new ApiConnectionAction<UploadDocumentResponse>(callPayload);
             });
         }
 
@@ -219,18 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         GET,
         PUT,
         POST
-    }
-
-    public class UploadDocumentResponse
-    {
-        [JsonProperty("document_file_name")]
-        public string DocumentFileName { get; set; }
-
-        [JsonProperty("document_content_type")]
-        public string DocumentContentType { get; set; }
-
-        [JsonProperty("doc_label")]
-        public string DocLabel { get; set; }
     }
 
     public class ModelResponse

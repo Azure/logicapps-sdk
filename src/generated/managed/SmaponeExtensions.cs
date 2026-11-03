@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
 {
     using System.Linq.Expressions;
@@ -14,28 +15,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         public IBodyWorkflowAction<UserInfoModel, ApiConnectionActionConfiguration> GETAccount()
         {
-            var apiCallPath = "/intern/Account";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserInfoModel>(callPayload);
+            return new DeferredBodyAction<UserInfoModel, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/intern/Account";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UserInfoModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         public IBodyWorkflowAction<AccountStatistics, ApiConnectionActionConfiguration> GETAccountStats()
         {
-            var apiCallPath = "/intern/Account/Stats";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AccountStatistics>(callPayload);
+            return new DeferredBodyAction<AccountStatistics, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/intern/Account/Stats";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AccountStatistics>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         public IBodyWorkflowAction<DataSourceListModel[], ApiConnectionActionConfiguration> GETDataSources()
         {
-            var apiCallPath = "/intern/DataSource";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DataSourceListModel[]>(callPayload);
+            return new DeferredBodyAction<DataSourceListModel[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/intern/DataSource";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DataSourceListModel[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
@@ -84,10 +94,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
         public IBodyWorkflowAction<SmapModel[], ApiConnectionActionConfiguration> GETSmaps()
         {
-            var apiCallPath = "/v1/Smaps";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SmapModel[]>(callPayload);
+            return new DeferredBodyAction<SmapModel[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/Smaps";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SmapModel[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
@@ -875,11 +888,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         public JToken Data { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DataRecordApiSchemaVersionType
     {
-        [EnumMember(Value = "1")]
-        _1
+        _1 = 1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

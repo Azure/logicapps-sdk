@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
 {
     using System.Linq.Expressions;
@@ -65,10 +66,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         public IBodyWorkflowAction<GetSpacesResponseItem[], ApiConnectionActionConfiguration> GetSpaces()
         {
-            var apiCallPath = "/api/connector/v2/networks";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSpacesResponseItem[]>(callPayload);
+            return new DeferredBodyAction<GetSpacesResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/connector/v2/networks";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetSpacesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]

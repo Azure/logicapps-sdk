@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
 {
     using System.Linq.Expressions;
@@ -12,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
     public class EonetbynasaipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
-        public IBodyWorkflowAction<EventsResponse, ApiConnectionActionConfiguration> Events(Expression<Func<string>> source = null, Expression<Func<string>> category = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<int>> days = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> magID = null, Expression<Func<string>> magMin = null, Expression<Func<string>> magMax = null, Expression<Func<string>> bbox = null)
+        public IBodyWorkflowAction<EventsResponse, ApiConnectionActionConfiguration> Events(Expression<Func<string>> source = null, Expression<Func<string>> category = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<int>> days = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> magId = null, Expression<Func<string>> magMin = null, Expression<Func<string>> magMax = null, Expression<Func<string>> bbox = null)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
@@ -21,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
             var __workflow_days = WorkflowExpression.Compile(days, nameof(days), required: false);
             var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
             var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
-            var __workflow_magID = WorkflowExpression.Compile(magID, nameof(magID), required: false);
+            var __workflow_magId = WorkflowExpression.Compile(magId, nameof(magId), required: false);
             var __workflow_magMin = WorkflowExpression.Compile(magMin, nameof(magMin), required: false);
             var __workflow_magMax = WorkflowExpression.Compile(magMax, nameof(magMax), required: false);
             var __workflow_bbox = WorkflowExpression.Compile(bbox, nameof(bbox), required: false);
@@ -45,8 +46,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
                     callPayload.Queries["start"] = ExpressionConverter.Convert(__workflow_start);
                 if (__workflow_end != null)
                     callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
-                if (__workflow_magID != null)
-                    callPayload.Queries["magID"] = ExpressionConverter.Convert(__workflow_magID);
+                if (__workflow_magId != null)
+                    callPayload.Queries["magID"] = ExpressionConverter.Convert(__workflow_magId);
                 if (__workflow_magMin != null)
                     callPayload.Queries["magMin"] = ExpressionConverter.Convert(__workflow_magMin);
                 if (__workflow_magMax != null)
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
-        public IBodyWorkflowAction<EventsGeoJSONResponse, ApiConnectionActionConfiguration> EventsGeoJSON(Expression<Func<string>> source = null, Expression<Func<string>> category = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<int>> days = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> magID = null, Expression<Func<string>> magMin = null, Expression<Func<string>> magMax = null, Expression<Func<string>> bbox = null)
+        public IBodyWorkflowAction<EventsGeoJSONResponse, ApiConnectionActionConfiguration> EventsGeoJSON(Expression<Func<string>> source = null, Expression<Func<string>> category = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<int>> days = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> magId = null, Expression<Func<string>> magMin = null, Expression<Func<string>> magMax = null, Expression<Func<string>> bbox = null)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
@@ -67,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
             var __workflow_days = WorkflowExpression.Compile(days, nameof(days), required: false);
             var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
             var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
-            var __workflow_magID = WorkflowExpression.Compile(magID, nameof(magID), required: false);
+            var __workflow_magId = WorkflowExpression.Compile(magId, nameof(magId), required: false);
             var __workflow_magMin = WorkflowExpression.Compile(magMin, nameof(magMin), required: false);
             var __workflow_magMax = WorkflowExpression.Compile(magMax, nameof(magMax), required: false);
             var __workflow_bbox = WorkflowExpression.Compile(bbox, nameof(bbox), required: false);
@@ -91,8 +92,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
                     callPayload.Queries["start"] = ExpressionConverter.Convert(__workflow_start);
                 if (__workflow_end != null)
                     callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
-                if (__workflow_magID != null)
-                    callPayload.Queries["magID"] = ExpressionConverter.Convert(__workflow_magID);
+                if (__workflow_magId != null)
+                    callPayload.Queries["magID"] = ExpressionConverter.Convert(__workflow_magId);
                 if (__workflow_magMin != null)
                     callPayload.Queries["magMin"] = ExpressionConverter.Convert(__workflow_magMin);
                 if (__workflow_magMax != null)
@@ -137,10 +138,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
         public IBodyWorkflowAction<CategoriesResponse, ApiConnectionActionConfiguration> Categories()
         {
-            var apiCallPath = "/categories";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CategoriesResponse>(callPayload);
+            return new DeferredBodyAction<CategoriesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/categories";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CategoriesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
@@ -159,10 +163,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
         public IBodyWorkflowAction<SourcesResponse, ApiConnectionActionConfiguration> Sources()
         {
-            var apiCallPath = "/sources";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SourcesResponse>(callPayload);
+            return new DeferredBodyAction<SourcesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/sources";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SourcesResponse>(callPayload);
+            });
         }
     }
 

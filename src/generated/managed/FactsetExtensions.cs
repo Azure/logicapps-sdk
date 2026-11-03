@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
 {
     using System.Linq.Expressions;
@@ -259,19 +260,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         public IBodyWorkflowAction<GetBookListResponseItem[], ApiConnectionActionConfiguration> GetBookList()
         {
-            var apiCallPath = "/book-builder-api/v1/book-list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetBookListResponseItem[]>(callPayload);
+            return new DeferredBodyAction<GetBookListResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/book-builder-api/v1/book-list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetBookListResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         public IBodyWorkflowAction<GetTemplateListResponseItem[], ApiConnectionActionConfiguration> GetTemplateList()
         {
-            var apiCallPath = "/book-builder-api/v1/template-list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTemplateListResponseItem[]>(callPayload);
+            return new DeferredBodyAction<GetTemplateListResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/book-builder-api/v1/template-list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetTemplateListResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
@@ -820,7 +827,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
     public class GetBookListResponseItem
     {
         [JsonProperty("bookID")]
-        public int BookID { get; set; }
+        public int BookId { get; set; }
 
         [JsonProperty("book_name")]
         public string BookName { get; set; }
@@ -856,7 +863,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         public string BookName { get; set; }
 
         [JsonProperty("bookID")]
-        public string BookID { get; set; }
+        public string BookId { get; set; }
     }
 }
 

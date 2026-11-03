@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
 {
     using System.Linq.Expressions;
@@ -79,20 +80,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
                 }
 
                 return new ApiConnectionAction<DocumentProcessParticipantsResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
-        public IBodyWorkflowAction<AddFileResponse, ApiConnectionActionConfiguration> AddFile(Expression<Func<string>> documentProcessId, Expression<Func<object>> file)
-        {
-            var __workflow_documentProcessId = WorkflowExpression.Compile(documentProcessId, nameof(documentProcessId), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            return new DeferredBodyAction<AddFileResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document-processes/{0}/files", __workflow_documentProcessId.WithUrlEncoding(1)));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<AddFileResponse>(callPayload);
             });
         }
 
@@ -423,27 +410,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         SIGNER,
         APPROVER,
         REVIEWER
-    }
-
-    public class AddFileResponse
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("filename")]
-        public string Filename { get; set; }
-
-        [JsonProperty("version")]
-        public string Version { get; set; }
-
-        [JsonProperty("size")]
-        public int Size { get; set; }
-
-        [JsonProperty("filePurpose")]
-        public string FilePurpose { get; set; }
-
-        [JsonProperty("mimeType")]
-        public string MimeType { get; set; }
     }
 
     public class GetFilesInfoResponse

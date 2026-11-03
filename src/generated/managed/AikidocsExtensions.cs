@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
 {
     using System.Linq.Expressions;
@@ -64,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<AppendDocumentResponse, ApiConnectionActionConfiguration> WordAppendDocuments(Expression<Func<string[]>> bodyappendDocumentList = null)
+        public IBodyWorkflowAction<AppendDocumentResponse, ApiConnectionActionConfiguration> WordAppendDocuments(Expression<Func<WorkflowBinaryContent[]>> bodyappendDocumentList = null)
         {
             var __workflow_bodyappendDocumentList = WorkflowExpression.Compile(bodyappendDocumentList, nameof(bodyappendDocumentList), required: false);
             return new DeferredBodyAction<AppendDocumentResponse, ApiConnectionActionConfiguration>(() =>
@@ -90,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<ExtractContentByHeadingResponse, ApiConnectionActionConfiguration> WordExtractContentByHeading(Expression<Func<string>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null, Expression<Func<string>> bodyheadingStyleName = null)
+        public IBodyWorkflowAction<ExtractContentByHeadingResponse, ApiConnectionActionConfiguration> WordExtractContentByHeading(Expression<Func<WorkflowBinaryContent>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null, Expression<Func<string>> bodyheadingStyleName = null)
         {
             var __workflow_bodysourceDocumentdocumentContent = WorkflowExpression.Compile(bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
             var __workflow_bodysourceDocumentdocumentName = WorkflowExpression.Compile(bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
@@ -138,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<ExtractSectionByTitleResponse, ApiConnectionActionConfiguration> WordExtractContentByTitle(Expression<Func<string>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null, Expression<Func<string>> bodyheadingText = null, Expression<Func<string>> bodyheadingStyleName = null, Expression<Func<string[]>> bodyheadingEscapeStyleNames = null)
+        public IBodyWorkflowAction<ExtractSectionByTitleResponse, ApiConnectionActionConfiguration> WordExtractContentByTitle(Expression<Func<WorkflowBinaryContent>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null, Expression<Func<string>> bodyheadingText = null, Expression<Func<string>> bodyheadingStyleName = null, Expression<Func<string[]>> bodyheadingEscapeStyleNames = null)
         {
             var __workflow_bodysourceDocumentdocumentContent = WorkflowExpression.Compile(bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
             var __workflow_bodysourceDocumentdocumentName = WorkflowExpression.Compile(bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
@@ -200,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<ExtractContentByBookMarksResponse, ApiConnectionActionConfiguration> WordExtractContentByBookmarks(Expression<Func<string>> bodystartBookMark = null, Expression<Func<string>> bodyendBookMark = null, Expression<Func<string>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null)
+        public IBodyWorkflowAction<ExtractContentByBookMarksResponse, ApiConnectionActionConfiguration> WordExtractContentByBookmarks(Expression<Func<string>> bodystartBookMark = null, Expression<Func<string>> bodyendBookMark = null, Expression<Func<WorkflowBinaryContent>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null)
         {
             var __workflow_bodystartBookMark = WorkflowExpression.Compile(bodystartBookMark, nameof(bodystartBookMark), required: false);
             var __workflow_bodyendBookMark = WorkflowExpression.Compile(bodyendBookMark, nameof(bodyendBookMark), required: false);
@@ -255,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<InsertDocumentResponse, ApiConnectionActionConfiguration> WordInsertDocuments(Expression<Func<string>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null, Expression<Func<string[]>> bodyinsertDocumentList = null, Expression<Func<string>> bodybookmarkName = null, Expression<Func<bool>> bodydeleteBookmark = null)
+        public IBodyWorkflowAction<InsertDocumentResponse, ApiConnectionActionConfiguration> WordInsertDocuments(Expression<Func<WorkflowBinaryContent>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null, Expression<Func<WorkflowBinaryContent[]>> bodyinsertDocumentList = null, Expression<Func<string>> bodybookmarkName = null, Expression<Func<bool>> bodydeleteBookmark = null)
         {
             var __workflow_bodysourceDocumentdocumentContent = WorkflowExpression.Compile(bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
             var __workflow_bodysourceDocumentdocumentName = WorkflowExpression.Compile(bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);
@@ -317,7 +318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<ApplyStylesResponse, ApiConnectionActionConfiguration> WordApplyStyleToDocument(Expression<Func<string>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null, Expression<Func<string>> bodydestinationDocumentdocumentContent = null, Expression<Func<string>> bodydestinationDocumentdocumentName = null)
+        public IBodyWorkflowAction<ApplyStylesResponse, ApiConnectionActionConfiguration> WordApplyStyleToDocument(Expression<Func<WorkflowBinaryContent>> bodysourceDocumentdocumentContent = null, Expression<Func<string>> bodysourceDocumentdocumentName = null, Expression<Func<WorkflowBinaryContent>> bodydestinationDocumentdocumentContent = null, Expression<Func<string>> bodydestinationDocumentdocumentName = null)
         {
             var __workflow_bodysourceDocumentdocumentContent = WorkflowExpression.Compile(bodysourceDocumentdocumentContent, nameof(bodysourceDocumentdocumentContent), required: false);
             var __workflow_bodysourceDocumentdocumentName = WorkflowExpression.Compile(bodysourceDocumentdocumentName, nameof(bodysourceDocumentdocumentName), required: false);

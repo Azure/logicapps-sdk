@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureeventgridpublish
 {
     using System.Linq.Expressions;
@@ -33,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureeventgridpublish
     public class bodyInputItem
     {
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("subject")]
         public string Subject { get; set; }

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fantasypremierleagueip
 {
     using System.Linq.Expressions;
@@ -66,19 +67,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fantasypremierleagueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
         public IBodyWorkflowAction<CurrentYearFixturesResponseItem[], ApiConnectionActionConfiguration> CurrentYearFixtures()
         {
-            var apiCallPath = "/api/fixtures/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CurrentYearFixturesResponseItem[]>(callPayload);
+            return new DeferredBodyAction<CurrentYearFixturesResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/fixtures/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CurrentYearFixturesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]
         public IBodyWorkflowAction<GeneralInformationResponse, ApiConnectionActionConfiguration> GeneralInformation()
         {
-            var apiCallPath = "/api/bootstrap-static/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GeneralInformationResponse>(callPayload);
+            return new DeferredBodyAction<GeneralInformationResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/bootstrap-static/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GeneralInformationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fantasypremierleagueip")]

@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zapiernlaip
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zapiernlaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zapiernlaip")]
         public IBodyWorkflowAction<ExposedActionResponseSchema, ApiConnectionActionConfiguration> ExposedGet()
         {
-            var apiCallPath = "/api/v1/exposed/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ExposedActionResponseSchema>(callPayload);
+            return new DeferredBodyAction<ExposedActionResponseSchema, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/v1/exposed/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ExposedActionResponseSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zapiernlaip")]

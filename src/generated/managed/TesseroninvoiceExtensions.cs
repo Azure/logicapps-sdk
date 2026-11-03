@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
 {
     using System.Linq.Expressions;
@@ -375,7 +376,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
         public int EnterpriseId { get; set; }
         public string EnterpriseName { get; set; }
         public int AreaId { get; set; }
-        public string ServiceContractID { get; set; }
+
+        [JsonProperty("ServiceContractID")]
+        public string ServiceContractId { get; set; }
         public string ClosedDate { get; set; }
     }
 

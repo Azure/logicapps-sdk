@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
 {
     using System.Linq.Expressions;
@@ -739,11 +740,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
                     messageObjectpropCount++;
                 }
 
-                var overrideObject = new JObject();
-                var overrideObjectpropCount = 0;
-                if (overrideObjectpropCount > 0)
+                var @overrideObject = new JObject();
+                var @overrideObjectpropCount = 0;
+                if (@overrideObjectpropCount > 0)
                 {
-                    messageObject["override"] = overrideObject;
+                    messageObject["override"] = @overrideObject;
                     messageObjectpropCount++;
                 }
 
@@ -943,10 +944,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<ListsGetResponse, ApiConnectionActionConfiguration> ListsGet()
         {
-            var apiCallPath = "/lists";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListsGetResponse>(callPayload);
+            return new DeferredBodyAction<ListsGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/lists";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListsGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
@@ -1232,7 +1236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Profile(Expression<Func<string>> recipientId, Expression<Func<string>> bodyprofileemail = null, Expression<Func<string>> bodyprofilephoneNumber = null, Expression<Func<string>> bodyprofileaddressformatted = null, Expression<Func<string>> bodyprofileaddressstreetAddress = null, Expression<Func<string>> bodyprofileaddresslocality = null, Expression<Func<string>> bodyprofileaddressregion = null, Expression<Func<string>> bodyprofileaddresspostalCode = null, Expression<Func<string>> bodyprofileaddresscountry = null, Expression<Func<string>> bodyprofilebirthdate = null, Expression<Func<bool>> bodyprofileemailVerified = null, Expression<Func<bool>> bodyprofilephoneNumberVerified = null, Expression<Func<string>> bodyprofilegivenName = null, Expression<Func<string>> bodyprofilemiddleName = null, Expression<Func<string>> bodyprofilefamilyName = null, Expression<Func<string>> bodyprofilepreferredName = null, Expression<Func<string>> bodyprofilegender = null, Expression<Func<string>> bodyprofilelocale = null, Expression<Func<string>> bodyprofilepicture = null, Expression<Func<string>> bodyprofileprofile = null, Expression<Func<string>> bodyprofilesub = null, Expression<Func<string>> bodyprofileupdatedAt = null, Expression<Func<string>> bodyprofilewebsite = null, Expression<Func<string>> bodyprofilezoneinfo = null, Expression<Func<string>> bodyprofileairshipaudiencenamedUser = null, Expression<Func<string[]>> bodyprofileairshipdeviceTypes = null, Expression<Func<string>> bodyprofileairshipapn = null, Expression<Func<string>> bodyprofileairshiptargetArn = null, Expression<Func<string>> bodyprofileairshipdiscordchannelId = null, Expression<Func<string>> bodyprofileairshipdiscorduserId = null, Expression<Func<string>> bodyprofileairshipexpotoken = null, Expression<Func<string[]>> bodyprofileairshipexpotokens = null, Expression<Func<string>> bodyprofileairshipfacebookPSID = null, Expression<Func<string>> bodyprofileairshipfirebaseToken = null, Expression<Func<string>> bodyprofileairshipintercomfrom = null, Expression<Func<string>> bodyprofileairshipintercomtoid = null, Expression<Func<string>> bodyprofileairshipmsTeamsuserId = null, Expression<Func<string>> bodyprofileairshipmsTeamsconversationId = null, Expression<Func<string>> bodyprofileairshipmsTeamstenantId = null, Expression<Func<string>> bodyprofileairshipmsTeamsserviceUrl = null, Expression<Func<string>> bodyprofileairshiponeSignalPlayerID = null, Expression<Func<string>> bodyprofileairshipslackaccessToken = null, Expression<Func<string>> bodyprofileairshipslackchannel = null, Expression<Func<string>> bodyprofileairshipslackemail = null, Expression<Func<string>> bodyprofileairshipslackuserId = null, Expression<Func<string>> bodyprofileairshipslackincomingWebhookurl = null, Expression<Func<string>> bodyprofileairshipwebhookurl = null, Expression<Func<string>> bodyprofileairshipwebhookmethod = null, Expression<Func<string>> bodyprofileairshipwebhookauthenticationmode = null, Expression<Func<string>> bodyprofileairshipwebhookauthenticationusername = null, Expression<Func<string>> bodyprofileairshipwebhookauthenticationpassword = null, Expression<Func<string>> bodyprofileairshipwebhookauthenticationtoken = null, Expression<Func<string>> bodyprofileairshipwebhookprofile = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Profile(Expression<Func<string>> recipientId, Expression<Func<string>> bodyprofileemail = null, Expression<Func<string>> bodyprofilephoneNumber = null, Expression<Func<string>> bodyprofileaddressformatted = null, Expression<Func<string>> bodyprofileaddressstreetAddress = null, Expression<Func<string>> bodyprofileaddresslocality = null, Expression<Func<string>> bodyprofileaddressregion = null, Expression<Func<string>> bodyprofileaddresspostalCode = null, Expression<Func<string>> bodyprofileaddresscountry = null, Expression<Func<string>> bodyprofilebirthdate = null, Expression<Func<bool>> bodyprofileemailVerified = null, Expression<Func<bool>> bodyprofilephoneNumberVerified = null, Expression<Func<string>> bodyprofilegivenName = null, Expression<Func<string>> bodyprofilemiddleName = null, Expression<Func<string>> bodyprofilefamilyName = null, Expression<Func<string>> bodyprofilepreferredName = null, Expression<Func<string>> bodyprofilegender = null, Expression<Func<string>> bodyprofilelocale = null, Expression<Func<string>> bodyprofilepicture = null, Expression<Func<string>> bodyprofileprofile = null, Expression<Func<string>> bodyprofilesub = null, Expression<Func<string>> bodyprofileupdatedAt = null, Expression<Func<string>> bodyprofilewebsite = null, Expression<Func<string>> bodyprofilezoneinfo = null, Expression<Func<string>> bodyprofileairshipaudiencenamedUser = null, Expression<Func<string[]>> bodyprofileairshipdeviceTypes = null, Expression<Func<string>> bodyprofileairshipapn = null, Expression<Func<string>> bodyprofileairshiptargetArn = null, Expression<Func<string>> bodyprofileairshipdiscordchannelId = null, Expression<Func<string>> bodyprofileairshipdiscorduserId = null, Expression<Func<string>> bodyprofileairshipexpotoken = null, Expression<Func<string[]>> bodyprofileairshipexpotokens = null, Expression<Func<string>> bodyprofileairshipfacebookPSId = null, Expression<Func<string>> bodyprofileairshipfirebaseToken = null, Expression<Func<string>> bodyprofileairshipintercomfrom = null, Expression<Func<string>> bodyprofileairshipintercomtoid = null, Expression<Func<string>> bodyprofileairshipmsTeamsuserId = null, Expression<Func<string>> bodyprofileairshipmsTeamsconversationId = null, Expression<Func<string>> bodyprofileairshipmsTeamstenantId = null, Expression<Func<string>> bodyprofileairshipmsTeamsserviceUrl = null, Expression<Func<string>> bodyprofileairshiponeSignalPlayerId = null, Expression<Func<string>> bodyprofileairshipslackaccessToken = null, Expression<Func<string>> bodyprofileairshipslackchannel = null, Expression<Func<string>> bodyprofileairshipslackemail = null, Expression<Func<string>> bodyprofileairshipslackuserId = null, Expression<Func<string>> bodyprofileairshipslackincomingWebhookurl = null, Expression<Func<string>> bodyprofileairshipwebhookurl = null, Expression<Func<string>> bodyprofileairshipwebhookmethod = null, Expression<Func<string>> bodyprofileairshipwebhookauthenticationmode = null, Expression<Func<string>> bodyprofileairshipwebhookauthenticationusername = null, Expression<Func<string>> bodyprofileairshipwebhookauthenticationpassword = null, Expression<Func<string>> bodyprofileairshipwebhookauthenticationtoken = null, Expression<Func<string>> bodyprofileairshipwebhookprofile = null)
         {
             var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
             var __workflow_bodyprofileemail = WorkflowExpression.Compile(bodyprofileemail, nameof(bodyprofileemail), required: false);
@@ -1266,7 +1270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var __workflow_bodyprofileairshipdiscorduserId = WorkflowExpression.Compile(bodyprofileairshipdiscorduserId, nameof(bodyprofileairshipdiscorduserId), required: false);
             var __workflow_bodyprofileairshipexpotoken = WorkflowExpression.Compile(bodyprofileairshipexpotoken, nameof(bodyprofileairshipexpotoken), required: false);
             var __workflow_bodyprofileairshipexpotokens = WorkflowExpression.Compile(bodyprofileairshipexpotokens, nameof(bodyprofileairshipexpotokens), required: false);
-            var __workflow_bodyprofileairshipfacebookPSID = WorkflowExpression.Compile(bodyprofileairshipfacebookPSID, nameof(bodyprofileairshipfacebookPSID), required: false);
+            var __workflow_bodyprofileairshipfacebookPSId = WorkflowExpression.Compile(bodyprofileairshipfacebookPSId, nameof(bodyprofileairshipfacebookPSId), required: false);
             var __workflow_bodyprofileairshipfirebaseToken = WorkflowExpression.Compile(bodyprofileairshipfirebaseToken, nameof(bodyprofileairshipfirebaseToken), required: false);
             var __workflow_bodyprofileairshipintercomfrom = WorkflowExpression.Compile(bodyprofileairshipintercomfrom, nameof(bodyprofileairshipintercomfrom), required: false);
             var __workflow_bodyprofileairshipintercomtoid = WorkflowExpression.Compile(bodyprofileairshipintercomtoid, nameof(bodyprofileairshipintercomtoid), required: false);
@@ -1274,7 +1278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
             var __workflow_bodyprofileairshipmsTeamsconversationId = WorkflowExpression.Compile(bodyprofileairshipmsTeamsconversationId, nameof(bodyprofileairshipmsTeamsconversationId), required: false);
             var __workflow_bodyprofileairshipmsTeamstenantId = WorkflowExpression.Compile(bodyprofileairshipmsTeamstenantId, nameof(bodyprofileairshipmsTeamstenantId), required: false);
             var __workflow_bodyprofileairshipmsTeamsserviceUrl = WorkflowExpression.Compile(bodyprofileairshipmsTeamsserviceUrl, nameof(bodyprofileairshipmsTeamsserviceUrl), required: false);
-            var __workflow_bodyprofileairshiponeSignalPlayerID = WorkflowExpression.Compile(bodyprofileairshiponeSignalPlayerID, nameof(bodyprofileairshiponeSignalPlayerID), required: false);
+            var __workflow_bodyprofileairshiponeSignalPlayerId = WorkflowExpression.Compile(bodyprofileairshiponeSignalPlayerId, nameof(bodyprofileairshiponeSignalPlayerId), required: false);
             var __workflow_bodyprofileairshipslackaccessToken = WorkflowExpression.Compile(bodyprofileairshipslackaccessToken, nameof(bodyprofileairshipslackaccessToken), required: false);
             var __workflow_bodyprofileairshipslackchannel = WorkflowExpression.Compile(bodyprofileairshipslackchannel, nameof(bodyprofileairshipslackchannel), required: false);
             var __workflow_bodyprofileairshipslackemail = WorkflowExpression.Compile(bodyprofileairshipslackemail, nameof(bodyprofileairshipslackemail), required: false);
@@ -1524,9 +1528,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
                     airshipObjectpropCount++;
                 }
 
-                if (__workflow_bodyprofileairshipfacebookPSID != null)
+                if (__workflow_bodyprofileairshipfacebookPSId != null)
                 {
-                    airshipObject["facebookPSID"] = ExpressionConverter.ConvertO(__workflow_bodyprofileairshipfacebookPSID);
+                    airshipObject["facebookPSID"] = ExpressionConverter.ConvertO(__workflow_bodyprofileairshipfacebookPSId);
                     airshipObjectpropCount++;
                 }
 
@@ -1596,9 +1600,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
                     airshipObjectpropCount++;
                 }
 
-                if (__workflow_bodyprofileairshiponeSignalPlayerID != null)
+                if (__workflow_bodyprofileairshiponeSignalPlayerId != null)
                 {
-                    airshipObject["oneSignalPlayerID"] = ExpressionConverter.ConvertO(__workflow_bodyprofileairshiponeSignalPlayerID);
+                    airshipObject["oneSignalPlayerID"] = ExpressionConverter.ConvertO(__workflow_bodyprofileairshiponeSignalPlayerId);
                     airshipObjectpropCount++;
                 }
 

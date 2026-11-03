@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
 {
     using System.Linq.Expressions;
@@ -125,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
     public class GetCreditUsageResponseUsageTypeItem
     {
         [JsonProperty("contentID")]
-        public string ContentID { get; set; }
+        public string ContentId { get; set; }
 
         [JsonProperty("credits_used")]
         public int CreditsUsed { get; set; }
@@ -281,7 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
     public class PostUrlAIDetectionResponseResultsTypeResultsType
     {
         [JsonProperty("pageID")]
-        public int PageID { get; set; }
+        public int PageId { get; set; }
 
         [JsonProperty("url")]
         public string Url { get; set; }

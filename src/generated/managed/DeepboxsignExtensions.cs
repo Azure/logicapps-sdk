@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
 {
     using System.Linq.Expressions;
@@ -11,20 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
 
     public class DeepboxsignActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
-        public IBodyWorkflowAction<Document, ApiConnectionActionConfiguration> UploadDocument(Expression<Func<object>> data, Expression<Func<object>> file)
-        {
-            var __workflow_data = WorkflowExpression.Compile(data, nameof(data), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            return new DeferredBodyAction<Document, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/api/v1/documents/file";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<Document>(callPayload);
-            });
-        }
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IBodyWorkflowAction<Document, ApiConnectionActionConfiguration> GetDocumentDetails(Expression<Func<string>> documentId)
         {

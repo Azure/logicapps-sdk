@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filesystem
 {
     using System.Linq.Expressions;
@@ -177,28 +178,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filesystem
                 callPayload.Headers["ReadFileMetadataFromServer"] = Convert.ToString(true);
                 return new ApiConnectionAction<BlobMetadata>(callPayload);
             });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filesystem")]
-        public IBodyWorkflowAction<BlobMetadata[], ApiConnectionActionConfiguration> ListFolder(Expression<Func<string>> id)
-        {
-            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<BlobMetadata[], ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/datasets/default/folders/{0}", __workflow_id.WithUrlEncoding(2)));
-                var apiCallHttpMethod = "get";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<BlobMetadata[]>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filesystem")]
-        public IBodyWorkflowAction<BlobMetadata[], ApiConnectionActionConfiguration> ListRootFolder()
-        {
-            var apiCallPath = "/datasets/default/folders";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BlobMetadata[]>(callPayload);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filesystem")]

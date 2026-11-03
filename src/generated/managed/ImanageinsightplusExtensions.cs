@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
 {
     using System.Linq.Expressions;
@@ -313,6 +314,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
                 }
 
                 return new ApiConnectionAction<SearchCurationTaxonomyNodeValuesResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
+        public IBodyWorkflowAction<SearchKnowledgeDocumentsResponse, ApiConnectionActionConfiguration> SearchKnowledgeDocuments(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodycontainerId = null, Expression<Func<bool>> bodyincludeSubfolders = null, Expression<Func<bodysearchFiltersInputItem[]>> bodysearchFilters = null)
+        {
+            var __workflow_bodylibraryId = WorkflowExpression.Compile(bodylibraryId, nameof(bodylibraryId), required: true);
+            var __workflow_bodycontainerId = WorkflowExpression.Compile(bodycontainerId, nameof(bodycontainerId), required: false);
+            var __workflow_bodyincludeSubfolders = WorkflowExpression.Compile(bodyincludeSubfolders, nameof(bodyincludeSubfolders), required: false);
+            var __workflow_bodysearchFilters = WorkflowExpression.Compile(bodysearchFilters, nameof(bodysearchFilters), required: false);
+            return new DeferredBodyAction<SearchKnowledgeDocumentsResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/searchKnowledgeDocuments";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["libraryId"] = ExpressionConverter.ConvertO(__workflow_bodylibraryId);
+                if (__workflow_bodycontainerId != null)
+                {
+                    body["container_id"] = ExpressionConverter.ConvertO(__workflow_bodycontainerId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyincludeSubfolders != null)
+                {
+                    if (__workflow_bodyincludeSubfolders != null)
+                    {
+                        body["include_subfolders"] = ExpressionConverter.ConvertO(__workflow_bodyincludeSubfolders);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["include_subfolders"] = false;
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodysearchFilters != null)
+                {
+                    body["searchFilters"] = ExpressionConverter.ConvertO(__workflow_bodysearchFilters);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SearchKnowledgeDocumentsResponse>(callPayload);
             });
         }
     }
@@ -659,6 +713,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
         [JsonProperty("curation_indraft")]
         public string CurationIndraft { get; set; }
 
+        [JsonProperty("curation_new_version_replace")]
+        public string CurationNewVersionReplace { get; set; }
+
         [JsonProperty("curation_published")]
         public string CurationPublished { get; set; }
 
@@ -833,6 +890,115 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
         Disabled,
         [EnumMember(Value = "Both Enabled and Disabled")]
         BothEnabledAndDisabled
+    }
+
+    public class SearchKnowledgeDocumentsResponse
+    {
+        [JsonProperty("data")]
+        public SearchKnowledgeDocumentsResponseDataType Data { get; set; }
+    }
+
+    public class SearchKnowledgeDocumentsResponseDataType
+    {
+        [JsonProperty("topMatchingId")]
+        public string TopMatchingId { get; set; }
+
+        [JsonProperty("topMatchingName")]
+        public string TopMatchingName { get; set; }
+
+        [JsonProperty("total_count")]
+        public int TotalCount { get; set; }
+
+        [JsonProperty("results")]
+        public KnowledgeDocumentProfile[] Results { get; set; }
+    }
+
+    public class KnowledgeDocumentProfile
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("document_url")]
+        public string DocumentUrl { get; set; }
+
+        [JsonProperty("author")]
+        public string Author { get; set; }
+
+        [JsonProperty("basic_properties")]
+        public string BasicProperties { get; set; }
+
+        [JsonProperty("class")]
+        public string Class { get; set; }
+
+        [JsonProperty("create_date")]
+        public string CreateDate { get; set; }
+
+        [JsonProperty("default_security")]
+        public KnowledgeDocumentProfileDefaultSecurityType DefaultSecurity { get; set; }
+
+        [JsonProperty("extension")]
+        public string Extension { get; set; }
+
+        [JsonProperty("file_create_date")]
+        public string FileCreateDate { get; set; }
+
+        [JsonProperty("file_edit_date")]
+        public string FileEditDate { get; set; }
+
+        [JsonProperty("full_file_name")]
+        public string FullFileName { get; set; }
+
+        [JsonProperty("size")]
+        public int Size { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("is_hipaa")]
+        public bool IsHipaa { get; set; }
+
+        [JsonProperty("iwl")]
+        public string Iwl { get; set; }
+
+        [JsonProperty("database")]
+        public string Database { get; set; }
+
+        [JsonProperty("document_number")]
+        public int DocumentNumber { get; set; }
+
+        [JsonProperty("version")]
+        public int Version { get; set; }
+
+        [JsonProperty("wstype")]
+        public string Wstype { get; set; }
+
+        [JsonProperty("curation")]
+        public CurationProperties Curation { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum KnowledgeDocumentProfileDefaultSecurityType
+    {
+        [EnumMember(Value = "inherit")]
+        Inherit,
+        [EnumMember(Value = "private")]
+        Private,
+        [EnumMember(Value = "view")]
+        View,
+        [EnumMember(Value = "public")]
+        Public
+    }
+
+    public class bodysearchFiltersInputItem
+    {
+        [JsonProperty("key")]
+        public string Key { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
     }
 }
 

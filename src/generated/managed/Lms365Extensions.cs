@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
 {
     using System.Linq.Expressions;
@@ -134,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IBodyWorkflowAction<CreateCourseResponse, ApiConnectionActionConfiguration> CreateCourse(Expression<Func<string>> bodycourseCatalogId, Expression<Func<bodycoursetypeInput>> bodycoursetype, Expression<Func<string>> bodytrainingTitle, Expression<Func<string>> bodydescription, Expression<Func<string>> bodyculture, Expression<Func<string>> bodyuICulture, Expression<Func<string>> bodyurl, Expression<Func<bodycategoriesInputItem[]>> bodycategories = null, Expression<Func<bodytagsInputItem[]>> bodytags = null, Expression<Func<bodyenrollmentFlowInput>> bodyenrollmentFlow = null, Expression<Func<string>> bodysiteTemplate = null, Expression<Func<string[]>> bodylearningModules = null, Expression<Func<string[]>> bodyquizzes = null, Expression<Func<bool>> bodyautoResolveUrlConflict = null, Expression<Func<string>> bodycourseLayoutId = null, Expression<Func<bodycourseSessionEnrollmentTypeInput>> bodycourseSessionEnrollmentType = null, Expression<Func<string[]>> bodyteacherLogins = null, Expression<Func<string[]>> bodytrainerLogins = null, Expression<Func<string>> bodycertificateTemplateId = null, Expression<Func<string>> bodycourseID = null, Expression<Func<string>> bodyduration = null, Expression<Func<string>> bodylongDescription = null, Expression<Func<bool>> bodypublishingSettingsisEnabled = null, Expression<Func<string>> bodypublishingSettingsstartDate = null, Expression<Func<string>> bodypublishingSettingsendDate = null, Expression<Func<bool>> bodyexpirySettingsisEnabled = null, Expression<Func<string>> bodyexpirySettingsfixedDate = null, Expression<Func<string>> bodyexpirySettingsdaysAfterCompletion = null, Expression<Func<bool>> bodydueDateSettingsisEnabled = null, Expression<Func<string>> bodydueDateSettingsfixedDate = null, Expression<Func<string>> bodydueDateSettingsdaysAfterEnrollment = null, Expression<Func<bool>> bodyshowInCatalog = null, Expression<Func<double>> bodycontinuingEducationUnits = null, Expression<Func<string>> bodyimageUrl = null, Expression<Func<string>> bodyfailedCourseId = null, Expression<Func<string>> lMS365UserId = null)
+        public IBodyWorkflowAction<CreateCourseResponse, ApiConnectionActionConfiguration> CreateCourse(Expression<Func<string>> bodycourseCatalogId, Expression<Func<bodycoursetypeInput>> bodycoursetype, Expression<Func<string>> bodytrainingTitle, Expression<Func<string>> bodydescription, Expression<Func<string>> bodyculture, Expression<Func<string>> bodyuICulture, Expression<Func<string>> bodyurl, Expression<Func<bodycategoriesInputItem[]>> bodycategories = null, Expression<Func<bodytagsInputItem[]>> bodytags = null, Expression<Func<bodyenrollmentFlowInput>> bodyenrollmentFlow = null, Expression<Func<string>> bodysiteTemplate = null, Expression<Func<string[]>> bodylearningModules = null, Expression<Func<string[]>> bodyquizzes = null, Expression<Func<bool>> bodyautoResolveUrlConflict = null, Expression<Func<string>> bodycourseLayoutId = null, Expression<Func<bodycourseSessionEnrollmentTypeInput>> bodycourseSessionEnrollmentType = null, Expression<Func<string[]>> bodyteacherLogins = null, Expression<Func<string[]>> bodytrainerLogins = null, Expression<Func<string>> bodycertificateTemplateId = null, Expression<Func<string>> bodycourseId = null, Expression<Func<string>> bodyduration = null, Expression<Func<string>> bodylongDescription = null, Expression<Func<bool>> bodypublishingSettingsisEnabled = null, Expression<Func<string>> bodypublishingSettingsstartDate = null, Expression<Func<string>> bodypublishingSettingsendDate = null, Expression<Func<bool>> bodyexpirySettingsisEnabled = null, Expression<Func<string>> bodyexpirySettingsfixedDate = null, Expression<Func<string>> bodyexpirySettingsdaysAfterCompletion = null, Expression<Func<bool>> bodydueDateSettingsisEnabled = null, Expression<Func<string>> bodydueDateSettingsfixedDate = null, Expression<Func<string>> bodydueDateSettingsdaysAfterEnrollment = null, Expression<Func<bool>> bodyshowInCatalog = null, Expression<Func<double>> bodycontinuingEducationUnits = null, Expression<Func<string>> bodyimageUrl = null, Expression<Func<string>> bodyfailedCourseId = null, Expression<Func<string>> lMS365UserId = null)
         {
             var __workflow_bodycourseCatalogId = WorkflowExpression.Compile(bodycourseCatalogId, nameof(bodycourseCatalogId), required: true);
             var __workflow_bodycoursetype = WorkflowExpression.Compile(bodycoursetype, nameof(bodycoursetype), required: true);
@@ -155,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             var __workflow_bodyteacherLogins = WorkflowExpression.Compile(bodyteacherLogins, nameof(bodyteacherLogins), required: false);
             var __workflow_bodytrainerLogins = WorkflowExpression.Compile(bodytrainerLogins, nameof(bodytrainerLogins), required: false);
             var __workflow_bodycertificateTemplateId = WorkflowExpression.Compile(bodycertificateTemplateId, nameof(bodycertificateTemplateId), required: false);
-            var __workflow_bodycourseID = WorkflowExpression.Compile(bodycourseID, nameof(bodycourseID), required: false);
+            var __workflow_bodycourseId = WorkflowExpression.Compile(bodycourseId, nameof(bodycourseId), required: false);
             var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: false);
             var __workflow_bodylongDescription = WorkflowExpression.Compile(bodylongDescription, nameof(bodylongDescription), required: false);
             var __workflow_bodypublishingSettingsisEnabled = WorkflowExpression.Compile(bodypublishingSettingsisEnabled, nameof(bodypublishingSettingsisEnabled), required: false);
@@ -267,9 +268,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                     bodypropCount++;
                 }
 
-                if (__workflow_bodycourseID != null)
+                if (__workflow_bodycourseId != null)
                 {
-                    body["CourseID"] = ExpressionConverter.ConvertO(__workflow_bodycourseID);
+                    body["CourseID"] = ExpressionConverter.ConvertO(__workflow_bodycourseId);
                     bodypropCount++;
                 }
 
@@ -714,20 +715,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FileUpload(Expression<Func<string>> fileUploadUrl, Expression<Func<object>> file)
-        {
-            var __workflow_fileUploadUrl = WorkflowExpression.Compile(fileUploadUrl, nameof(fileUploadUrl), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_fileUploadUrl.WithUrlEncoding(1)));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IWorkflowAction<ApiConnectionActionConfiguration> HttpRequest(Expression<Func<parametersmethodInput>> parametersmethod, Expression<Func<string>> parametersuri, Expression<Func<string>> parametersbody = null)
         {
             var __workflow_parametersmethod = WorkflowExpression.Compile(parametersmethod, nameof(parametersmethod), required: true);
@@ -735,7 +722,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
             var __workflow_parametersbody = WorkflowExpression.Compile(parametersbody, nameof(parametersbody), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = "/httprequest";
+                var apiCallPath = "/v2/httprequest";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var parameters = new JObject();
@@ -772,189 +759,222 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
     {
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> EnrollmentApprovalRequest(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/subscribe/EnrollmentApprovalRequest";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhooks/subscribe/EnrollmentApprovalRequest";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CourseEnrollment(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/subscribe/CourseEnrollment";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhooks/subscribe/CourseEnrollment";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CourseUnenrollment(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/subscribe/CourseUnenrollment";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhooks/subscribe/CourseUnenrollment";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CourseStarted(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/subscribe/CourseStarted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhooks/subscribe/CourseStarted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CourseCompleted(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/subscribe/CourseCompleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhooks/subscribe/CourseCompleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CoursePublished(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/subscribe/CoursePublished";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhooks/subscribe/CoursePublished";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CourseUnpublished(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/subscribe/CourseUnpublished";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhooks/subscribe/CourseUnpublished";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UserCreated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/subscribe/UserCreated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhooks/subscribe/UserCreated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UserDeleted(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/subscribe/UserDeleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhooks/subscribe/UserDeleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CourseCreated(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/subscribe/CourseCreated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhooks/subscribe/CourseCreated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CourseDeleted(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/subscribe/CourseDeleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhooks/subscribe/CourseDeleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -1038,7 +1058,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public bool IsRequired { get; set; }
         public bool IsPublished { get; set; }
         public bool IsEnded { get; set; }
-        public string CourseID { get; set; }
+
+        [JsonProperty("CourseID")]
+        public string CourseId { get; set; }
         public string Duration { get; set; }
 
         [JsonProperty("CourseType")]
@@ -1114,7 +1136,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public bool IsRequired { get; set; }
         public bool IsPublished { get; set; }
         public bool IsEnded { get; set; }
-        public string CourseID { get; set; }
+
+        [JsonProperty("CourseID")]
+        public string CourseId { get; set; }
         public string Duration { get; set; }
         public string CourseType { get; set; }
         public string ImageUrl { get; set; }
@@ -1355,7 +1379,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public bool IsRequired { get; set; }
         public bool IsPublished { get; set; }
         public bool IsEnded { get; set; }
-        public string CourseID { get; set; }
+
+        [JsonProperty("CourseID")]
+        public string CourseId { get; set; }
         public string Duration { get; set; }
         public string CourseType { get; set; }
         public string ImageUrl { get; set; }

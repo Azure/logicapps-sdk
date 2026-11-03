@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
 {
     using System.Linq.Expressions;
@@ -60,12 +61,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
         public IBodyWorkflowAction<Forum[], ApiConnectionActionConfiguration> GetFollowedForums()
         {
-            var apiCallPath = "/users/listFollowingForums.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["order"] = Convert.ToString("desc");
-            callPayload.Queries["limit"] = Convert.ToString(100);
-            return new ApiConnectionAction<Forum[]>(callPayload);
+            return new DeferredBodyAction<Forum[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/users/listFollowingForums.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["order"] = Convert.ToString("desc");
+                callPayload.Queries["limit"] = Convert.ToString(100);
+                return new ApiConnectionAction<Forum[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]

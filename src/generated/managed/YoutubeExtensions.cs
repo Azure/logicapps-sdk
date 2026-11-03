@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtube
 {
     using System.Linq.Expressions;
@@ -30,10 +31,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtube
 
         public IBodyWorkflowTrigger<VideoList, ApiConnectionTriggerConfiguration> OnMyNewVideo(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/mine";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<VideoList>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<VideoList, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger/mine";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<VideoList>(callPayload, recurrence: recurrence);
+            });
         }
 
         public IBodyWorkflowTrigger<VideoList, ApiConnectionTriggerConfiguration> OnNewVideoMatchingSearch(Expression<Func<string>> q, FlowRecurrence recurrence = null)

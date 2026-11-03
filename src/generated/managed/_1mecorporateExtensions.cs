@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]
         public IBodyWorkflowAction<ReturnCardTempleteItem[], ApiConnectionActionConfiguration> RetrieveCardTemplates()
         {
-            var apiCallPath = "/api/CardTempletes/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ReturnCardTempleteItem[]>(callPayload);
+            return new DeferredBodyAction<ReturnCardTempleteItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/CardTempletes/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ReturnCardTempleteItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]
@@ -89,10 +93,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]
         public IBodyWorkflowAction<AccountInvitationsItem[], ApiConnectionActionConfiguration> RetrieveAllInvitations()
         {
-            var apiCallPath = "/api/Invitation/GetAccountInvitations/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AccountInvitationsItem[]>(callPayload);
+            return new DeferredBodyAction<AccountInvitationsItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/Invitation/GetAccountInvitations/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AccountInvitationsItem[]>(callPayload);
+            });
         }
     }
 
@@ -124,7 +131,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
         public string Code { get; set; }
         public string Date { get; set; }
         public string ModifiedOn { get; set; }
-        public string CardTemplateID { get; set; }
+
+        [JsonProperty("CardTemplateID")]
+        public string CardTemplateId { get; set; }
         public string NameOnCard { get; set; }
         public string WorkEmail { get; set; }
         public string JobTitle { get; set; }

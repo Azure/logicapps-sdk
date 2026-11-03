@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
 {
     using System.Linq.Expressions;
@@ -88,55 +89,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         public IBodyWorkflowAction<CurrentUserResponse, ApiConnectionActionConfiguration> GetCurrentUser()
         {
-            var apiCallPath = "/users/me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CurrentUserResponse>(callPayload);
+            return new DeferredBodyAction<CurrentUserResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/users/me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CurrentUserResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         public IBodyWorkflowAction<PinResponse, ApiConnectionActionConfiguration> ListAllPins()
         {
-            var apiCallPath = "/users/me/pins";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PinResponse>(callPayload);
+            return new DeferredBodyAction<PinResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/users/me/pins";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PinResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         public IBodyWorkflowAction<BoardResponse, ApiConnectionActionConfiguration> ListFollowBoards()
         {
-            var apiCallPath = "/users/me/boards/following";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BoardResponse>(callPayload);
+            return new DeferredBodyAction<BoardResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/users/me/boards/following";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<BoardResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         public IBodyWorkflowAction<BoardResponse, ApiConnectionActionConfiguration> ListMyBoards()
         {
-            var apiCallPath = "/users/me/boards/feed";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BoardResponse>(callPayload);
+            return new DeferredBodyAction<BoardResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/users/me/boards/feed";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<BoardResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         public IBodyWorkflowAction<UserResponse, ApiConnectionActionConfiguration> ListMyFollowers()
         {
-            var apiCallPath = "/users/me/followers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserResponse>(callPayload);
+            return new DeferredBodyAction<UserResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/users/me/followers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UserResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         public IBodyWorkflowAction<UserResponse, ApiConnectionActionConfiguration> ListMyFollowings()
         {
-            var apiCallPath = "/users/me/following";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserResponse>(callPayload);
+            return new DeferredBodyAction<UserResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/users/me/following";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UserResponse>(callPayload);
+            });
         }
     }
 
@@ -168,10 +187,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
 
         public IBodyWorkflowTrigger<UserResponse, ApiConnectionTriggerConfiguration> OnSomeoneFollowsMe(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger4/users/me/followers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<UserResponse>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<UserResponse, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/trigger4/users/me/followers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<UserResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

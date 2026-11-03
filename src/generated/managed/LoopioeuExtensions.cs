@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loopioeu
 {
     using System.Linq.Expressions;
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loopioeu
         public int Id { get; set; }
 
         [JsonProperty("stackID")]
-        public int StackID { get; set; }
+        public int StackId { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -77,10 +78,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loopioeu
         public int Id { get; set; }
 
         [JsonProperty("stackID")]
-        public int StackID { get; set; }
+        public int StackId { get; set; }
 
         [JsonProperty("categoryID")]
-        public int CategoryID { get; set; }
+        public int CategoryId { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }

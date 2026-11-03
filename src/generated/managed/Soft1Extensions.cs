@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 {
     using System.Linq.Expressions;
@@ -792,22 +793,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<GetSystemParamsResponse, ApiConnectionActionConfiguration> GetSystemParams()
         {
-            var apiCallPath = "/getSystemParams";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["appId"] = "702";
-            bodypropCount++;
-            body["service"] = "getSystemParams";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredBodyAction<GetSystemParamsResponse, ApiConnectionActionConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/getSystemParams";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["appId"] = "702";
+                bodypropCount++;
+                body["service"] = "getSystemParams";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<GetSystemParamsResponse>(callPayload);
+                return new ApiConnectionAction<GetSystemParamsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
@@ -1179,7 +1183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetContact(Expression<Func<string>> bodyvaluepRSNOUTcode, Expression<Func<string>> bodyvaluepRSNOUTname, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluepRSNOUTaddress = null, Expression<Func<string>> bodyvaluepRSNOUTtRNo = null, Expression<Func<string>> bodyvaluepRSNOUTgeographicalAreas = null, Expression<Func<string>> bodyvaluepRSNOUTbIRTHDATE = null, Expression<Func<string>> bodyvaluepRSNOUTcity = null, Expression<Func<string>> bodyvaluepRSNOUTcountry = null, Expression<Func<string>> bodyvaluepRSNOUTarea = null, Expression<Func<string>> bodyvaluepRSNOUTprefecture = null, Expression<Func<string>> bodyvaluepRSNOUTeducationLevel = null, Expression<Func<string>> bodyvaluepRSNOUTemail = null, Expression<Func<string>> bodyvaluepRSNOUTemail2 = null, Expression<Func<string>> bodyvaluepRSNOUTfax = null, Expression<Func<string>> bodyvaluepRSNOUTiDCardNo = null, Expression<Func<string>> bodyvaluepRSNOUTtaxOffice = null, Expression<Func<string>> bodyvaluepRSNOUTmobileTelephone = null, Expression<Func<string>> bodyvaluepRSNOUTsurname = null, Expression<Func<string>> bodyvaluepRSNOUTfatherSName = null, Expression<Func<string>> bodyvaluepRSNOUTmotherSName = null, Expression<Func<string>> bodyvaluepRSNOUTnameOfSpouse = null, Expression<Func<string>> bodyvaluepRSNOUTnationality = null, Expression<Func<string>> bodyvaluepRSNOUTtel1 = null, Expression<Func<string>> bodyvaluepRSNOUTtel2 = null, Expression<Func<string>> bodyvaluepRSNOUTinternalTelephone = null, Expression<Func<string>> bodyvaluepRSNOUTpersonalTelephone = null, Expression<Func<string>> bodyvaluepRSNOUTcomments = null, Expression<Func<bodyvaluepRSNOUTgenderInput>> bodyvaluepRSNOUTgender = null, Expression<Func<string>> bodyvaluepRSNOUTwebPage = null, Expression<Func<string>> bodyvaluepRSNOUTzip = null, Expression<Func<bodyvaluexTRDOCDATAInputItem[]>> bodyvaluexTRDOCDATA = null)
+        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetContact(Expression<Func<string>> bodyvaluepRSNOUTcode, Expression<Func<string>> bodyvaluepRSNOUTname, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluepRSNOUTaddress = null, Expression<Func<string>> bodyvaluepRSNOUTtRNo = null, Expression<Func<string>> bodyvaluepRSNOUTgeographicalAreas = null, Expression<Func<string>> bodyvaluepRSNOUTbIRTHDATE = null, Expression<Func<string>> bodyvaluepRSNOUTcity = null, Expression<Func<string>> bodyvaluepRSNOUTcountry = null, Expression<Func<string>> bodyvaluepRSNOUTarea = null, Expression<Func<string>> bodyvaluepRSNOUTprefecture = null, Expression<Func<string>> bodyvaluepRSNOUTeducationLevel = null, Expression<Func<string>> bodyvaluepRSNOUTemail = null, Expression<Func<string>> bodyvaluepRSNOUTemail2 = null, Expression<Func<string>> bodyvaluepRSNOUTfax = null, Expression<Func<string>> bodyvaluepRSNOUTidCardNo = null, Expression<Func<string>> bodyvaluepRSNOUTtaxOffice = null, Expression<Func<string>> bodyvaluepRSNOUTmobileTelephone = null, Expression<Func<string>> bodyvaluepRSNOUTsurname = null, Expression<Func<string>> bodyvaluepRSNOUTfatherSName = null, Expression<Func<string>> bodyvaluepRSNOUTmotherSName = null, Expression<Func<string>> bodyvaluepRSNOUTnameOfSpouse = null, Expression<Func<string>> bodyvaluepRSNOUTnationality = null, Expression<Func<string>> bodyvaluepRSNOUTtel1 = null, Expression<Func<string>> bodyvaluepRSNOUTtel2 = null, Expression<Func<string>> bodyvaluepRSNOUTinternalTelephone = null, Expression<Func<string>> bodyvaluepRSNOUTpersonalTelephone = null, Expression<Func<string>> bodyvaluepRSNOUTcomments = null, Expression<Func<bodyvaluepRSNOUTgenderInput>> bodyvaluepRSNOUTgender = null, Expression<Func<string>> bodyvaluepRSNOUTwebPage = null, Expression<Func<string>> bodyvaluepRSNOUTzip = null, Expression<Func<bodyvaluexTRDOCDATAInputItem[]>> bodyvaluexTRDOCDATA = null)
         {
             var __workflow_bodyvaluepRSNOUTcode = WorkflowExpression.Compile(bodyvaluepRSNOUTcode, nameof(bodyvaluepRSNOUTcode), required: true);
             var __workflow_bodyvaluepRSNOUTname = WorkflowExpression.Compile(bodyvaluepRSNOUTname, nameof(bodyvaluepRSNOUTname), required: true);
@@ -1197,7 +1201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var __workflow_bodyvaluepRSNOUTemail = WorkflowExpression.Compile(bodyvaluepRSNOUTemail, nameof(bodyvaluepRSNOUTemail), required: false);
             var __workflow_bodyvaluepRSNOUTemail2 = WorkflowExpression.Compile(bodyvaluepRSNOUTemail2, nameof(bodyvaluepRSNOUTemail2), required: false);
             var __workflow_bodyvaluepRSNOUTfax = WorkflowExpression.Compile(bodyvaluepRSNOUTfax, nameof(bodyvaluepRSNOUTfax), required: false);
-            var __workflow_bodyvaluepRSNOUTiDCardNo = WorkflowExpression.Compile(bodyvaluepRSNOUTiDCardNo, nameof(bodyvaluepRSNOUTiDCardNo), required: false);
+            var __workflow_bodyvaluepRSNOUTidCardNo = WorkflowExpression.Compile(bodyvaluepRSNOUTidCardNo, nameof(bodyvaluepRSNOUTidCardNo), required: false);
             var __workflow_bodyvaluepRSNOUTtaxOffice = WorkflowExpression.Compile(bodyvaluepRSNOUTtaxOffice, nameof(bodyvaluepRSNOUTtaxOffice), required: false);
             var __workflow_bodyvaluepRSNOUTmobileTelephone = WorkflowExpression.Compile(bodyvaluepRSNOUTmobileTelephone, nameof(bodyvaluepRSNOUTmobileTelephone), required: false);
             var __workflow_bodyvaluepRSNOUTsurname = WorkflowExpression.Compile(bodyvaluepRSNOUTsurname, nameof(bodyvaluepRSNOUTsurname), required: false);
@@ -1318,9 +1322,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                     pRSNOUTObjectpropCount++;
                 }
 
-                if (__workflow_bodyvaluepRSNOUTiDCardNo != null)
+                if (__workflow_bodyvaluepRSNOUTidCardNo != null)
                 {
-                    pRSNOUTObject["IDENTITYNUM"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTiDCardNo);
+                    pRSNOUTObject["IDENTITYNUM"] = ExpressionConverter.ConvertO(__workflow_bodyvaluepRSNOUTidCardNo);
                     pRSNOUTObjectpropCount++;
                 }
 
@@ -1608,7 +1612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetDraftEntry(Expression<Func<string>> bodyvaluesODRAFTcode, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluesODRAFTaddress = null, Expression<Func<string>> bodyvaluesODRAFTtRNo = null, Expression<Func<string>> bodyvaluesODRAFTcity = null, Expression<Func<string>> bodyvaluesODRAFTcountry = null, Expression<Func<string>> bodyvaluesODRAFTarea = null, Expression<Func<string>> bodyvaluesODRAFTprefecture = null, Expression<Func<string>> bodyvaluesODRAFTcategory = null, Expression<Func<string>> bodyvaluesODRAFTcompanyEmail = null, Expression<Func<string>> bodyvaluesODRAFTbusinessEmail = null, Expression<Func<string>> bodyvaluesODRAFTpersonalEmail = null, Expression<Func<string>> bodyvaluesODRAFTiDCardNo = null, Expression<Func<string>> bodyvaluesODRAFTactivity = null, Expression<Func<string>> bodyvaluesODRAFTmobileTelephone = null, Expression<Func<string>> bodyvaluesODRAFTnameTitle = null, Expression<Func<string>> bodyvaluesODRAFTfirstName = null, Expression<Func<string>> bodyvaluesODRAFTsurname = null, Expression<Func<string>> bodyvaluesODRAFTzip = null, Expression<Func<string>> bodyvaluesODRAFTbusinessTelephone = null, Expression<Func<string>> bodyvaluesODRAFTinternalTelephone = null, Expression<Func<string>> bodyvaluesODRAFTpersonalTelephone = null, Expression<Func<string>> bodyvaluesODRAFTcomments = null, Expression<Func<string>> bodyvaluesODRAFTtitle = null, Expression<Func<string>> bodyvaluesODRAFTwebPage = null, Expression<Func<string>> bodyvaluesODRAFTzip2 = null, Expression<Func<string>> bodyvaluesODRAFTLNKbranch = null, Expression<Func<string>> bodyvaluesODRAFTLNKbusinessUnit = null, Expression<Func<string>> bodyvaluesODRAFTLNKdepartment = null, Expression<Func<string>> bodyvaluesODRAFTLNKproject = null, Expression<Func<string>> bodyvaluesODRAFTLNKsource = null)
+        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetDraftEntry(Expression<Func<string>> bodyvaluesODRAFTcode, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluesODRAFTaddress = null, Expression<Func<string>> bodyvaluesODRAFTtRNo = null, Expression<Func<string>> bodyvaluesODRAFTcity = null, Expression<Func<string>> bodyvaluesODRAFTcountry = null, Expression<Func<string>> bodyvaluesODRAFTarea = null, Expression<Func<string>> bodyvaluesODRAFTprefecture = null, Expression<Func<string>> bodyvaluesODRAFTcategory = null, Expression<Func<string>> bodyvaluesODRAFTcompanyEmail = null, Expression<Func<string>> bodyvaluesODRAFTbusinessEmail = null, Expression<Func<string>> bodyvaluesODRAFTpersonalEmail = null, Expression<Func<string>> bodyvaluesODRAFTidCardNo = null, Expression<Func<string>> bodyvaluesODRAFTactivity = null, Expression<Func<string>> bodyvaluesODRAFTmobileTelephone = null, Expression<Func<string>> bodyvaluesODRAFTnameTitle = null, Expression<Func<string>> bodyvaluesODRAFTfirstName = null, Expression<Func<string>> bodyvaluesODRAFTsurname = null, Expression<Func<string>> bodyvaluesODRAFTzip = null, Expression<Func<string>> bodyvaluesODRAFTbusinessTelephone = null, Expression<Func<string>> bodyvaluesODRAFTinternalTelephone = null, Expression<Func<string>> bodyvaluesODRAFTpersonalTelephone = null, Expression<Func<string>> bodyvaluesODRAFTcomments = null, Expression<Func<string>> bodyvaluesODRAFTtitle = null, Expression<Func<string>> bodyvaluesODRAFTwebPage = null, Expression<Func<string>> bodyvaluesODRAFTzip2 = null, Expression<Func<string>> bodyvaluesODRAFTLNKbranch = null, Expression<Func<string>> bodyvaluesODRAFTLNKbusinessUnit = null, Expression<Func<string>> bodyvaluesODRAFTLNKdepartment = null, Expression<Func<string>> bodyvaluesODRAFTLNKproject = null, Expression<Func<string>> bodyvaluesODRAFTLNKsource = null)
         {
             var __workflow_bodyvaluesODRAFTcode = WorkflowExpression.Compile(bodyvaluesODRAFTcode, nameof(bodyvaluesODRAFTcode), required: true);
             var __workflow_bodyfORM = WorkflowExpression.Compile(bodyfORM, nameof(bodyfORM), required: false);
@@ -1623,7 +1627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
             var __workflow_bodyvaluesODRAFTcompanyEmail = WorkflowExpression.Compile(bodyvaluesODRAFTcompanyEmail, nameof(bodyvaluesODRAFTcompanyEmail), required: false);
             var __workflow_bodyvaluesODRAFTbusinessEmail = WorkflowExpression.Compile(bodyvaluesODRAFTbusinessEmail, nameof(bodyvaluesODRAFTbusinessEmail), required: false);
             var __workflow_bodyvaluesODRAFTpersonalEmail = WorkflowExpression.Compile(bodyvaluesODRAFTpersonalEmail, nameof(bodyvaluesODRAFTpersonalEmail), required: false);
-            var __workflow_bodyvaluesODRAFTiDCardNo = WorkflowExpression.Compile(bodyvaluesODRAFTiDCardNo, nameof(bodyvaluesODRAFTiDCardNo), required: false);
+            var __workflow_bodyvaluesODRAFTidCardNo = WorkflowExpression.Compile(bodyvaluesODRAFTidCardNo, nameof(bodyvaluesODRAFTidCardNo), required: false);
             var __workflow_bodyvaluesODRAFTactivity = WorkflowExpression.Compile(bodyvaluesODRAFTactivity, nameof(bodyvaluesODRAFTactivity), required: false);
             var __workflow_bodyvaluesODRAFTmobileTelephone = WorkflowExpression.Compile(bodyvaluesODRAFTmobileTelephone, nameof(bodyvaluesODRAFTmobileTelephone), required: false);
             var __workflow_bodyvaluesODRAFTnameTitle = WorkflowExpression.Compile(bodyvaluesODRAFTnameTitle, nameof(bodyvaluesODRAFTnameTitle), required: false);
@@ -1734,9 +1738,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                     sODRAFTObjectpropCount++;
                 }
 
-                if (__workflow_bodyvaluesODRAFTiDCardNo != null)
+                if (__workflow_bodyvaluesODRAFTidCardNo != null)
                 {
-                    sODRAFTObject["IDENTITYNUM"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTiDCardNo);
+                    sODRAFTObject["IDENTITYNUM"] = ExpressionConverter.ConvertO(__workflow_bodyvaluesODRAFTidCardNo);
                     sODRAFTObjectpropCount++;
                 }
 
@@ -2924,10 +2928,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetMeeting(Expression<Func<string>> bodydATAsOACTIONsERIES, Expression<Func<string>> bodydATAsOACTIONoperator = null, Expression<Func<string>> bodydATAsOACTIONoperatorContact = null, Expression<Func<bodydATAsOACTIONaCTSTATUSInput>> bodydATAsOACTIONaCTSTATUS = null, Expression<Func<string>> bodydATAsOACTIONcOMMENTS = null, Expression<Func<string>> bodydATAsOACTIONfINALDATE = null, Expression<Func<string>> bodydATAsOACTIONfROMDATE = null, Expression<Func<string>> bodydATAsOACTIONorderedBy = null, Expression<Func<string>> bodydATAsOACTIONorderedByContact = null, Expression<Func<string>> bodydATAsOACTIONpriority = null, Expression<Func<string>> bodydATAsOACTIONproject = null, Expression<Func<string>> bodydATAsOACTIONrEMARKS = null, Expression<Func<string>> bodydATAsOACTIONtRDR = null, Expression<Func<string>> bodydATAsOACTIONtRNDATE = null, Expression<Func<bodydATAxTRDOCDATAInputItem[]>> bodydATAxTRDOCDATA = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
+        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetMeeting(Expression<Func<string>> bodydATAsOACTIONsERIES, Expression<Func<string>> bodydATAsOACTIONOperator = null, Expression<Func<string>> bodydATAsOACTIONoperatorContact = null, Expression<Func<bodydATAsOACTIONaCTSTATUSInput>> bodydATAsOACTIONaCTSTATUS = null, Expression<Func<string>> bodydATAsOACTIONcOMMENTS = null, Expression<Func<string>> bodydATAsOACTIONfINALDATE = null, Expression<Func<string>> bodydATAsOACTIONfROMDATE = null, Expression<Func<string>> bodydATAsOACTIONorderedBy = null, Expression<Func<string>> bodydATAsOACTIONorderedByContact = null, Expression<Func<string>> bodydATAsOACTIONpriority = null, Expression<Func<string>> bodydATAsOACTIONproject = null, Expression<Func<string>> bodydATAsOACTIONrEMARKS = null, Expression<Func<string>> bodydATAsOACTIONtRDR = null, Expression<Func<string>> bodydATAsOACTIONtRNDATE = null, Expression<Func<bodydATAxTRDOCDATAInputItem[]>> bodydATAxTRDOCDATA = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
         {
             var __workflow_bodydATAsOACTIONsERIES = WorkflowExpression.Compile(bodydATAsOACTIONsERIES, nameof(bodydATAsOACTIONsERIES), required: true);
-            var __workflow_bodydATAsOACTIONoperator = WorkflowExpression.Compile(bodydATAsOACTIONoperator, nameof(bodydATAsOACTIONoperator), required: false);
+            var __workflow_bodydATAsOACTIONOperator = WorkflowExpression.Compile(bodydATAsOACTIONOperator, nameof(bodydATAsOACTIONOperator), required: false);
             var __workflow_bodydATAsOACTIONoperatorContact = WorkflowExpression.Compile(bodydATAsOACTIONoperatorContact, nameof(bodydATAsOACTIONoperatorContact), required: false);
             var __workflow_bodydATAsOACTIONaCTSTATUS = WorkflowExpression.Compile(bodydATAsOACTIONaCTSTATUS, nameof(bodydATAsOACTIONaCTSTATUS), required: false);
             var __workflow_bodydATAsOACTIONcOMMENTS = WorkflowExpression.Compile(bodydATAsOACTIONcOMMENTS, nameof(bodydATAsOACTIONcOMMENTS), required: false);
@@ -2957,9 +2961,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 var dATAObjectpropCount = 0;
                 var sOACTIONObject = new JObject();
                 var sOACTIONObjectpropCount = 0;
-                if (__workflow_bodydATAsOACTIONoperator != null)
+                if (__workflow_bodydATAsOACTIONOperator != null)
                 {
-                    sOACTIONObject["ACTOR"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONoperator);
+                    sOACTIONObject["ACTOR"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONOperator);
                     sOACTIONObjectpropCount++;
                 }
 
@@ -3083,10 +3087,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetSOTASK(Expression<Func<string>> bodydATAsOACTIONsERIES, Expression<Func<string>> bodydATAsOACTIONoperator = null, Expression<Func<string>> bodydATAsOACTIONoperatorContact = null, Expression<Func<bodydATAsOACTIONaCTSTATUSInput>> bodydATAsOACTIONaCTSTATUS = null, Expression<Func<string>> bodydATAsOACTIONcOMMENTS = null, Expression<Func<string>> bodydATAsOACTIONfINALDATE = null, Expression<Func<string>> bodydATAsOACTIONfROMDATE = null, Expression<Func<string>> bodydATAsOACTIONorderedBy = null, Expression<Func<string>> bodydATAsOACTIONorderedByContact = null, Expression<Func<string>> bodydATAsOACTIONpriority = null, Expression<Func<string>> bodydATAsOACTIONproject = null, Expression<Func<string>> bodydATAsOACTIONrEMARKS = null, Expression<Func<string>> bodydATAsOACTIONtRDR = null, Expression<Func<string>> bodydATAsOACTIONtRNDATE = null, Expression<Func<bodydATAxTRDOCDATAInputItem[]>> bodydATAxTRDOCDATA = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
+        public IBodyWorkflowAction<SetData200response, ApiConnectionActionConfiguration> SetSOTASK(Expression<Func<string>> bodydATAsOACTIONsERIES, Expression<Func<string>> bodydATAsOACTIONOperator = null, Expression<Func<string>> bodydATAsOACTIONoperatorContact = null, Expression<Func<bodydATAsOACTIONaCTSTATUSInput>> bodydATAsOACTIONaCTSTATUS = null, Expression<Func<string>> bodydATAsOACTIONcOMMENTS = null, Expression<Func<string>> bodydATAsOACTIONfINALDATE = null, Expression<Func<string>> bodydATAsOACTIONfROMDATE = null, Expression<Func<string>> bodydATAsOACTIONorderedBy = null, Expression<Func<string>> bodydATAsOACTIONorderedByContact = null, Expression<Func<string>> bodydATAsOACTIONpriority = null, Expression<Func<string>> bodydATAsOACTIONproject = null, Expression<Func<string>> bodydATAsOACTIONrEMARKS = null, Expression<Func<string>> bodydATAsOACTIONtRDR = null, Expression<Func<string>> bodydATAsOACTIONtRNDATE = null, Expression<Func<bodydATAxTRDOCDATAInputItem[]>> bodydATAxTRDOCDATA = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
         {
             var __workflow_bodydATAsOACTIONsERIES = WorkflowExpression.Compile(bodydATAsOACTIONsERIES, nameof(bodydATAsOACTIONsERIES), required: true);
-            var __workflow_bodydATAsOACTIONoperator = WorkflowExpression.Compile(bodydATAsOACTIONoperator, nameof(bodydATAsOACTIONoperator), required: false);
+            var __workflow_bodydATAsOACTIONOperator = WorkflowExpression.Compile(bodydATAsOACTIONOperator, nameof(bodydATAsOACTIONOperator), required: false);
             var __workflow_bodydATAsOACTIONoperatorContact = WorkflowExpression.Compile(bodydATAsOACTIONoperatorContact, nameof(bodydATAsOACTIONoperatorContact), required: false);
             var __workflow_bodydATAsOACTIONaCTSTATUS = WorkflowExpression.Compile(bodydATAsOACTIONaCTSTATUS, nameof(bodydATAsOACTIONaCTSTATUS), required: false);
             var __workflow_bodydATAsOACTIONcOMMENTS = WorkflowExpression.Compile(bodydATAsOACTIONcOMMENTS, nameof(bodydATAsOACTIONcOMMENTS), required: false);
@@ -3116,9 +3120,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                 var dATAObjectpropCount = 0;
                 var sOACTIONObject = new JObject();
                 var sOACTIONObjectpropCount = 0;
-                if (__workflow_bodydATAsOACTIONoperator != null)
+                if (__workflow_bodydATAsOACTIONOperator != null)
                 {
-                    sOACTIONObject["ACTOR"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONoperator);
+                    sOACTIONObject["ACTOR"] = ExpressionConverter.ConvertO(__workflow_bodydATAsOACTIONOperator);
                     sOACTIONObjectpropCount++;
                 }
 
@@ -3890,7 +3894,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string Fax { get; set; }
 
         [JsonProperty("IDENTITYNUM")]
-        public string IDCardNo { get; set; }
+        public string IdCardNo { get; set; }
 
         [JsonProperty("IRSDATA")]
         public string TaxOffice { get; set; }
@@ -4086,7 +4090,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string PersonalEmail { get; set; }
 
         [JsonProperty("IDENTITYNUM")]
-        public string IDCardNo { get; set; }
+        public string IdCardNo { get; set; }
 
         [JsonProperty("JOBTYPETRD")]
         public string Activity { get; set; }
@@ -4245,7 +4249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string ItemName { get; set; }
 
         [JsonProperty("VAT")]
-        public string VATID { get; set; }
+        public string VATId { get; set; }
 
         [JsonProperty("VATAMNT")]
         public string VATAmount { get; set; }
@@ -4270,7 +4274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string SumAmount { get; set; }
 
         [JsonProperty("TRDR")]
-        public string SupplierID { get; set; }
+        public string SupplierId { get; set; }
 
         [JsonProperty("TRDR_SUPPLIER_AFM")]
         public string SupplierTRNo { get; set; }
@@ -4628,7 +4632,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string ValueSubjectToVAT { get; set; }
 
         [JsonProperty("VAT")]
-        public string IDAndCategory { get; set; }
+        public string IdAndCategory { get; set; }
 
         [JsonProperty("VATVAL")]
         public string Value { get; set; }
@@ -4744,7 +4748,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string SumAmount { get; set; }
 
         [JsonProperty("TRDR")]
-        public string CustomerID { get; set; }
+        public string CustomerId { get; set; }
 
         [JsonProperty("TRDR_CUSTOMER_ADDRESS")]
         public string CustomerAddress { get; set; }
@@ -4796,7 +4800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string ValueSubjectToVAT { get; set; }
 
         [JsonProperty("VAT")]
-        public string IDAndCategory { get; set; }
+        public string IdAndCategory { get; set; }
 
         [JsonProperty("VATVAL")]
         public string Value { get; set; }

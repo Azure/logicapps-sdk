@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
 {
     using System.Linq.Expressions;
@@ -343,7 +344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
     public class bodyattachmentsInputItem
     {
         public string FileName { get; set; }
-        public string Data { get; set; }
+        public WorkflowBinaryContent Data { get; set; }
     }
 
     public class UpdateAssetResponse

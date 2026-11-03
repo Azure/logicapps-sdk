@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
 {
     using System.Linq.Expressions;
@@ -12,37 +13,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     public class DqondemandActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<GetUsage, ApiConnectionActionConfiguration> UsageGet(Expression<Func<string>> startDate, Expression<Func<string>> endDate)
-        {
-            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
-            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
-            return new DeferredBodyAction<GetUsage, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/Account/Usage";
-                var apiCallHttpMethod = "get";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["StartDate"] = ExpressionConverter.Convert(__workflow_startDate);
-                callPayload.Queries["EndDate"] = ExpressionConverter.Convert(__workflow_endDate);
-                return new ApiConnectionAction<GetUsage>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<GetPricesOutput, ApiConnectionActionConfiguration> PricingGet()
         {
-            var apiCallPath = "/Account/Prices";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetPricesOutput>(callPayload);
+            return new DeferredBodyAction<GetPricesOutput, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/Account/Prices";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetPricesOutput>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobalInt, ApiConnectionActionConfiguration> BalanceGet()
         {
-            var apiCallPath = "/Account/Balance";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DQGlobalInt>(callPayload);
+            return new DeferredBodyAction<DQGlobalInt, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/Account/Balance";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DQGlobalInt>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
@@ -1407,55 +1398,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 return new ApiConnectionAction<DQGlobalBool>(callPayload);
             });
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
+        public IBodyWorkflowAction<GetUsageV2, ApiConnectionActionConfiguration> UsageGet(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<summariseByInput>> summariseBy = null)
+        {
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
+            var __workflow_summariseBy = WorkflowExpression.Compile(summariseBy, nameof(summariseBy), required: false);
+            return new DeferredBodyAction<GetUsageV2, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/Account/Usage/v2.0";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["StartDate"] = ExpressionConverter.Convert(__workflow_startDate);
+                callPayload.Queries["EndDate"] = ExpressionConverter.Convert(__workflow_endDate);
+                if (__workflow_summariseBy != null)
+                    callPayload.Queries["SummariseBy"] = ExpressionConverter.Convert(__workflow_summariseBy);
+                return new ApiConnectionAction<GetUsageV2>(callPayload);
+            });
+        }
     }
 
     public class DqondemandTriggers([ConnectionName] string connectionId)
     {
-    }
-
-    public class GetUsage
-    {
-        [JsonProperty("status")]
-        public int Status { get; set; }
-
-        [JsonProperty("message")]
-        public string Message { get; set; }
-
-        [JsonProperty("data")]
-        public GetUsageDataType Data { get; set; }
-    }
-
-    public class GetUsageDataType
-    {
-        public GetUsageDataTypeFilterCriteriaType FilterCriteria { get; set; }
-        public GetUsageDataTypeResultsTypeItem[] Results { get; set; }
-    }
-
-    public class GetUsageDataTypeFilterCriteriaType
-    {
-        [JsonProperty("startDate")]
-        public string StartDate { get; set; }
-
-        [JsonProperty("endDate")]
-        public string EndDate { get; set; }
-    }
-
-    public class GetUsageDataTypeResultsTypeItem
-    {
-        [JsonProperty("providerName")]
-        public string ProviderName { get; set; }
-
-        [JsonProperty("usage")]
-        public GetUsageDataTypeResultsTypeItemUsageTypeItem[] Usage { get; set; }
-    }
-
-    public class GetUsageDataTypeResultsTypeItemUsageTypeItem
-    {
-        [JsonProperty("functionName")]
-        public string FunctionName { get; set; }
-
-        [JsonProperty("creditsUsed")]
-        public int CreditsUsed { get; set; }
     }
 
     public class GetPricesOutput
@@ -1711,7 +1676,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public string ISO3 { get; set; }
 
         [JsonProperty("iDD")]
-        public string IDD { get; set; }
+        public string IdD { get; set; }
     }
 
     public class DerivePostCodeGetResponse
@@ -1826,7 +1791,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     {
         public string Input { get; set; }
         public GenerateSettings PatternSetting { get; set; }
-        public string UID { get; set; }
+
+        [JsonProperty("UID")]
+        public string UId { get; set; }
     }
 
     public class GenerateSettings
@@ -2079,7 +2046,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     public class ScoringResponseDataTypeItemGroupOutputTypeItem
     {
         [JsonProperty("groupFieldID")]
-        public string GroupFieldID { get; set; }
+        public string GroupFieldId { get; set; }
 
         [JsonProperty("groupPercentageScore")]
         public double GroupPercentageScore { get; set; }
@@ -2907,6 +2874,100 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     {
         Start,
         End
+    }
+
+    public class GetUsageV2
+    {
+        [JsonProperty("status")]
+        public int Status { get; set; }
+
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("data")]
+        public GetUsageV2DataType Data { get; set; }
+    }
+
+    public class GetUsageV2DataType
+    {
+        public GetUsageV2DataTypeFilterCriteriaType FilterCriteria { get; set; }
+        public GetUsageV2DataTypeResultsTypeItem[] Results { get; set; }
+        public GetUsageV2DataTypeSummaryTypeItem[] Summary { get; set; }
+    }
+
+    public class GetUsageV2DataTypeFilterCriteriaType
+    {
+        [JsonProperty("startDate")]
+        public string StartDate { get; set; }
+
+        [JsonProperty("endDate")]
+        public string EndDate { get; set; }
+    }
+
+    public class GetUsageV2DataTypeResultsTypeItem
+    {
+        [JsonProperty("providerName")]
+        public string ProviderName { get; set; }
+
+        [JsonProperty("usage")]
+        public GetUsageV2DataTypeResultsTypeItemUsageTypeItem[] Usage { get; set; }
+    }
+
+    public class GetUsageV2DataTypeResultsTypeItemUsageTypeItem
+    {
+        [JsonProperty("functionName")]
+        public string FunctionName { get; set; }
+
+        [JsonProperty("creditsUsed")]
+        public int CreditsUsed { get; set; }
+
+        [JsonProperty("creditsUsedBy")]
+        public GetUsageV2DataTypeResultsTypeItemUsageTypeItemCreditsUsedByTypeItem[] CreditsUsedBy { get; set; }
+    }
+
+    public class GetUsageV2DataTypeResultsTypeItemUsageTypeItemCreditsUsedByTypeItem
+    {
+        [JsonProperty("applicationName")]
+        public string ApplicationName { get; set; }
+
+        [JsonProperty("creditsUsed")]
+        public int CreditsUsed { get; set; }
+    }
+
+    public class GetUsageV2DataTypeSummaryTypeItem
+    {
+        [JsonProperty("periodStart")]
+        public string PeriodStart { get; set; }
+
+        [JsonProperty("periodEnd")]
+        public string PeriodEnd { get; set; }
+
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        [JsonProperty("creditsUsed")]
+        public int CreditsUsed { get; set; }
+
+        [JsonProperty("creditsUsedBy")]
+        public GetUsageV2DataTypeSummaryTypeItemCreditsUsedByTypeItem[] CreditsUsedBy { get; set; }
+    }
+
+    public class GetUsageV2DataTypeSummaryTypeItemCreditsUsedByTypeItem
+    {
+        [JsonProperty("applicationName")]
+        public string ApplicationName { get; set; }
+
+        [JsonProperty("creditsUsed")]
+        public int CreditsUsed { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum summariseByInput
+    {
+        Day,
+        Month,
+        Year,
+        Quarter
     }
 }
 

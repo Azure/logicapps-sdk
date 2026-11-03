@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
 {
     using System.Linq.Expressions;
@@ -507,10 +508,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<TicketGetResponse, ApiConnectionActionConfiguration> TicketGet()
         {
-            var apiCallPath = "/tickets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TicketGetResponse>(callPayload);
+            return new DeferredBodyAction<TicketGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/tickets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TicketGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
@@ -529,10 +533,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<TransactionGetResponse, ApiConnectionActionConfiguration> TransactionGet()
         {
-            var apiCallPath = "/transactions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TransactionGetResponse>(callPayload);
+            return new DeferredBodyAction<TransactionGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/transactions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TransactionGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
@@ -551,10 +558,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<PayoutGetResponse, ApiConnectionActionConfiguration> PayoutGet()
         {
-            var apiCallPath = "/payouts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PayoutGetResponse>(callPayload);
+            return new DeferredBodyAction<PayoutGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/payouts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PayoutGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
@@ -573,10 +583,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<PlanGetResponse, ApiConnectionActionConfiguration> PlanGet()
         {
-            var apiCallPath = "/plans";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PlanGetResponse>(callPayload);
+            return new DeferredBodyAction<PlanGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/plans";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PlanGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
@@ -595,10 +608,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<FundGetResponse, ApiConnectionActionConfiguration> FundGet()
         {
-            var apiCallPath = "/funds";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FundGetResponse>(callPayload);
+            return new DeferredBodyAction<FundGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/funds";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FundGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]

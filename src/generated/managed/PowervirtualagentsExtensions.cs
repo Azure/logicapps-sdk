@@ -4,6 +4,8 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powervirtualagents
 {
+    using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -13,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powervirtualagents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powervirtualagents")]
         public IWorkflowAction<ApiConnectionActionConfiguration> PowerVirtualAgents()
         {
-            var apiCallPath = "/hybridtriggers/powerVirtualAgents";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/hybridtriggers/powerVirtualAgents";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

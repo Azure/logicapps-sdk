@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
         public IBodyWorkflowAction<TodoList[], ApiConnectionActionConfiguration> GetAllTodoLists()
         {
-            var apiCallPath = "/lists";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TodoList[]>(callPayload);
+            return new DeferredBodyAction<TodoList[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/lists";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TodoList[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]

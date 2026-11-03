@@ -1,9 +1,11 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ascregulatorycomplianceassessment
 {
+    using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -16,19 +18,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ascregulatorycomplianceassess
     {
         public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> ASCRegulatoryComplianceAssessmentTriggerSubscribe(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Microsoft.Security/RegulatoryComplianceAssessment/subscribe";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callback_url"] = "#{listCallbackUrl()}";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/Microsoft.Security/RegulatoryComplianceAssessment/subscribe";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callback_url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

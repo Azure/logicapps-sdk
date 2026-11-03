@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarificip
 {
     using System.Linq.Expressions;
@@ -45,19 +46,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarificip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendarificip")]
         public IBodyWorkflowAction<ListLanguagesResponse, ApiConnectionActionConfiguration> ListLanguages()
         {
-            var apiCallPath = "/api/v2/languages";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListLanguagesResponse>(callPayload);
+            return new DeferredBodyAction<ListLanguagesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/v2/languages";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListLanguagesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendarificip")]
         public IBodyWorkflowAction<ListCountriesResponse, ApiConnectionActionConfiguration> ListCountries()
         {
-            var apiCallPath = "/api/v2/countries";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListCountriesResponse>(callPayload);
+            return new DeferredBodyAction<ListCountriesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/api/v2/countries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListCountriesResponse>(callPayload);
+            });
         }
     }
 

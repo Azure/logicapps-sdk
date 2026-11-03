@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
 {
     using System.Linq.Expressions;
@@ -12,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
     public class CloudbotActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudbot")]
-        public IBodyWorkflowAction<UploadFileResponse, ApiConnectionActionConfiguration> UploadFile(Expression<Func<xCbotContentLanguageInput>> xCbotContentLanguage, Expression<Func<string>> publicId, Expression<Func<string>> xCbotFilename, Expression<Func<string>> fileContents = null)
+        public IBodyWorkflowAction<UploadFileResponse, ApiConnectionActionConfiguration> UploadFile(Expression<Func<xCbotContentLanguageInput>> xCbotContentLanguage, Expression<Func<string>> publicId, Expression<Func<string>> xCbotFilename, Expression<Func<WorkflowBinaryContent>> fileContents = null)
         {
             var __workflow_xCbotContentLanguage = WorkflowExpression.Compile(xCbotContentLanguage, nameof(xCbotContentLanguage), required: true);
             var __workflow_publicId = WorkflowExpression.Compile(publicId, nameof(publicId), required: true);
@@ -202,10 +203,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
         public int Code { get; set; }
 
         [JsonProperty("job_id")]
-        public string JobID { get; set; }
+        public string JobId { get; set; }
 
         [JsonProperty("bot_id")]
-        public string BOTID { get; set; }
+        public string BOTId { get; set; }
 
         [JsonProperty("bot_name")]
         public string BOTName { get; set; }

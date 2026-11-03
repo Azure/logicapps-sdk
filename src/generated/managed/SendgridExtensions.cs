@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
 {
     using System.Linq.Expressions;
@@ -104,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendEmail(Expression<Func<string>> requestfrom, Expression<Func<string>> requestto, Expression<Func<string>> requestsubject, Expression<Func<string>> requestemailBody, Expression<Func<EmailAttachment[]>> requestattachment = null, Expression<Func<string>> requestfromName = null, Expression<Func<string>> requesttoNames = null, Expression<Func<string>> requestcC = null, Expression<Func<string>> requestcCNames = null, Expression<Func<string>> requestbcc = null, Expression<Func<string>> requestbCCNames = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendEmail(Expression<Func<string>> requestfrom, Expression<Func<string>> requestto, Expression<Func<string>> requestsubject, Expression<Func<string>> requestemailBody, Expression<Func<EmailAttachmentInput[]>> requestattachment = null, Expression<Func<string>> requestfromName = null, Expression<Func<string>> requesttoNames = null, Expression<Func<string>> requestcC = null, Expression<Func<string>> requestcCNames = null, Expression<Func<string>> requestbcc = null, Expression<Func<string>> requestbCCNames = null)
         {
             var __workflow_requestfrom = WorkflowExpression.Compile(requestfrom, nameof(requestfrom), required: true);
             var __workflow_requestto = WorkflowExpression.Compile(requestto, nameof(requestto), required: true);
@@ -217,10 +218,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         public bool IsEmailUnsubscribed { get; set; }
     }
 
-    public class EmailAttachment
+    public class EmailAttachmentInput
     {
         [JsonProperty("content")]
-        public string Content { get; set; }
+        public WorkflowBinaryContent Content { get; set; }
 
         [JsonProperty("filename")]
         public string Name { get; set; }

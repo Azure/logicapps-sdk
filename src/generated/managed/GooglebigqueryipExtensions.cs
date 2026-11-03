@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlebigqueryip
 {
     using System.Linq.Expressions;
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlebigqueryip
         public string Etag { get; set; }
 
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("selfLink")]
         public string SelfLink { get; set; }
@@ -72,10 +73,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlebigqueryip
     public class GetDatasetResponseDatasetReferenceType
     {
         [JsonProperty("datasetId")]
-        public string DatasetID { get; set; }
+        public string DatasetId { get; set; }
 
         [JsonProperty("projectId")]
-        public string ProjectID { get; set; }
+        public string ProjectId { get; set; }
     }
 
     public class GetDatasetResponseAccessTypeItem

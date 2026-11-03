@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureautomation
 {
     using System.Linq.Expressions;
@@ -105,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureautomation
     public class CreateJobResponse
     {
         [JsonProperty("id")]
-        public string ResourceID { get; set; }
+        public string ResourceId { get; set; }
 
         [JsonProperty("properties")]
         public CreateJobResponsePropertiesType Properties { get; set; }
@@ -114,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureautomation
     public class CreateJobResponsePropertiesType
     {
         [JsonProperty("jobId")]
-        public string JobID { get; set; }
+        public string JobId { get; set; }
 
         [JsonProperty("provisioningState")]
         public string ProvisioningState { get; set; }

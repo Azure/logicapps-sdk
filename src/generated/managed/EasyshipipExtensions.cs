@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
 {
     using System.Linq.Expressions;
@@ -1168,19 +1169,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         public IBodyWorkflowAction<GetItemCategoriesResponse, ApiConnectionActionConfiguration> GetItemCategories()
         {
-            var apiCallPath = "/reference/v1/categories";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetItemCategoriesResponse>(callPayload);
+            return new DeferredBodyAction<GetItemCategoriesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/reference/v1/categories";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetItemCategoriesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
         public IBodyWorkflowAction<ListAllBoxesResponse, ApiConnectionActionConfiguration> ListAllBoxes()
         {
-            var apiCallPath = "/v2/boxes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListAllBoxesResponse>(callPayload);
+            return new DeferredBodyAction<ListAllBoxesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/v2/boxes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListAllBoxesResponse>(callPayload);
+            });
         }
     }
 

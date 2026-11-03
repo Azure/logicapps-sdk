@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
 {
     using System.Linq.Expressions;
@@ -14,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
         public IBodyWorkflowAction<AccountGetResponse, ApiConnectionActionConfiguration> AccountGet()
         {
-            var apiCallPath = "/account/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AccountGetResponse>(callPayload);
+            return new DeferredBodyAction<AccountGetResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/account/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AccountGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
@@ -83,10 +87,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
         public IBodyWorkflowAction<UsersGetResponseItem[], ApiConnectionActionConfiguration> UsersGet()
         {
-            var apiCallPath = "/user";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UsersGetResponseItem[]>(callPayload);
+            return new DeferredBodyAction<UsersGetResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/user";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UsersGetResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]

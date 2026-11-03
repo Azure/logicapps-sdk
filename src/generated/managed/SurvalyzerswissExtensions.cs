@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
 {
     using System.Linq.Expressions;
@@ -1164,17 +1165,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
         public IBodyWorkflowAction<ReadCreditBalanceResponse, ApiConnectionActionConfiguration> ReadCreditBalance()
         {
-            var apiCallPath = "/publicapi/Incentive/v3/ReadCreditBalance";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            return new DeferredBodyAction<ReadCreditBalanceResponse, ApiConnectionActionConfiguration>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/publicapi/Incentive/v3/ReadCreditBalance";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ReadCreditBalanceResponse>(callPayload);
+                return new ApiConnectionAction<ReadCreditBalanceResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]

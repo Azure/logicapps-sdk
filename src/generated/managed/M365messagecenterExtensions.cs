@@ -4,6 +4,8 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.M365messagecenter
 {
+    using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -13,10 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.M365messagecenter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "m365messagecenter")]
         public IWorkflowAction<ApiConnectionActionConfiguration> SyncMessages()
         {
-            var apiCallPath = "/admin/api/messagecenter/SyncMessagesToPlanner";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/admin/api/messagecenter/SyncMessagesToPlanner";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

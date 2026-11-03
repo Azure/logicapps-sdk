@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3bucket
 {
     using System.Linq.Expressions;
@@ -131,7 +132,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3bucket
 
     public class ListObjectsS3ResponseListBucketResultTypeContentsTypeItemOwnerType
     {
-        public string ID { get; set; }
+        [JsonProperty("ID")]
+        public string Id { get; set; }
         public string DisplayName { get; set; }
     }
 }

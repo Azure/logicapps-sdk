@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
 {
     using System.Linq.Expressions;
@@ -25,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
-        public IBodyWorkflowAction<UserResponse, ApiConnectionActionConfiguration> GetUserByID(Expression<Func<string>> userid)
+        public IBodyWorkflowAction<UserResponse, ApiConnectionActionConfiguration> GetUserById(Expression<Func<string>> userid)
         {
             var __workflow_userid = WorkflowExpression.Compile(userid, nameof(userid), required: true);
             return new DeferredBodyAction<UserResponse, ApiConnectionActionConfiguration>(() =>
@@ -103,10 +104,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
 
         public IBodyWorkflowTrigger<RoomList, ApiConnectionTriggerConfiguration> OnNewRoom(FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/room_trigger/room";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<RoomList>(callPayload, recurrence: recurrence);
+            return new DeferredBodyTrigger<RoomList, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/room_trigger/room";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<RoomList>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

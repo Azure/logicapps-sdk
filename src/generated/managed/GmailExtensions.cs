@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
 {
     using System.Linq.Expressions;
@@ -55,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gmail")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReplyTo(Expression<Func<string>> id, Expression<Func<string>> replyMessageto = null, Expression<Func<string>> replyMessagecC = null, Expression<Func<string>> replyMessagebCC = null, Expression<Func<string>> replyMessagesubject = null, Expression<Func<string>> replyMessagebody = null, Expression<Func<bool>> replyMessagereplyAll = null, Expression<Func<replyMessageimportanceInput>> replyMessageimportance = null, Expression<Func<Attachment[]>> replyMessageattachments = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReplyTo(Expression<Func<string>> id, Expression<Func<string>> replyMessageto = null, Expression<Func<string>> replyMessagecC = null, Expression<Func<string>> replyMessagebCC = null, Expression<Func<string>> replyMessagesubject = null, Expression<Func<string>> replyMessagebody = null, Expression<Func<bool>> replyMessagereplyAll = null, Expression<Func<replyMessageimportanceInput>> replyMessageimportance = null, Expression<Func<AttachmentInput[]>> replyMessageattachments = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_replyMessageto = WorkflowExpression.Compile(replyMessageto, nameof(replyMessageto), required: false);
@@ -131,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gmail")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendEmail(Expression<Func<string>> emailMessageto, Expression<Func<string>> emailMessagecC = null, Expression<Func<string>> emailMessagebCC = null, Expression<Func<string>> emailMessagesubject = null, Expression<Func<string>> emailMessagebody = null, Expression<Func<emailMessageimportanceInput>> emailMessageimportance = null, Expression<Func<Attachment[]>> emailMessageattachments = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendEmail(Expression<Func<string>> emailMessageto, Expression<Func<string>> emailMessagecC = null, Expression<Func<string>> emailMessagebCC = null, Expression<Func<string>> emailMessagesubject = null, Expression<Func<string>> emailMessagebody = null, Expression<Func<emailMessageimportanceInput>> emailMessageimportance = null, Expression<Func<AttachmentInput[]>> emailMessageattachments = null)
         {
             var __workflow_emailMessageto = WorkflowExpression.Compile(emailMessageto, nameof(emailMessageto), required: true);
             var __workflow_emailMessagecC = WorkflowExpression.Compile(emailMessagecC, nameof(emailMessagecC), required: false);
@@ -269,10 +270,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         public Attachment[] Attachments { get; set; }
 
         [JsonProperty("Id")]
-        public string MessageID { get; set; }
-
-        [JsonProperty("ThreadId")]
-        public string ThreadID { get; set; }
+        public string MessageId { get; set; }
+        public string ThreadId { get; set; }
     }
 
     public class Attachment
@@ -290,6 +289,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         Normal,
         Low,
         High
+    }
+
+    public class AttachmentInput
+    {
+        public string Name { get; set; }
+
+        [JsonProperty("ContentBytes")]
+        public WorkflowBinaryContent Content { get; set; }
+        public string ContentType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

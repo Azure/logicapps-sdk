@@ -1,6 +1,7 @@
-﻿//------------------------------------------------------------
+//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
 {
     using System.Linq.Expressions;
@@ -11,23 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
 
     public class DocparserActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docparser")]
-        public IBodyWorkflowAction<UploadDocumentResponse, ApiConnectionActionConfiguration> UploadDocument(Expression<Func<string>> parserId, Expression<Func<object>> file, Expression<Func<string>> remoteId = null)
-        {
-            var __workflow_parserId = WorkflowExpression.Compile(parserId, nameof(parserId), required: true);
-            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
-            var __workflow_remoteId = WorkflowExpression.Compile(remoteId, nameof(remoteId), required: false);
-            return new DeferredBodyAction<UploadDocumentResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/document/upload/{0}", __workflow_parserId.WithUrlEncoding(1)));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_remoteId != null)
-                    callPayload.Queries["remote_id"] = ExpressionConverter.Convert(__workflow_remoteId);
-                return new ApiConnectionAction<UploadDocumentResponse>(callPayload);
-            });
-        }
-
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docparser")]
         public IBodyWorkflowAction<FetchDocumentResponse, ApiConnectionActionConfiguration> FetchDocument(Expression<Func<string>> parserId, Expression<Func<string>> url, Expression<Func<string>> remoteId = null)
         {
@@ -69,24 +53,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
                 return new ApiConnectionTrigger<WebhookCreateReponse>(callPayload, recurrence: recurrence);
             });
         }
-    }
-
-    public class UploadDocumentResponse
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("file_size")]
-        public int Size { get; set; }
-
-        [JsonProperty("quota_used")]
-        public int QuotaUsed { get; set; }
-
-        [JsonProperty("quota_left")]
-        public int QuotaLeft { get; set; }
-
-        [JsonProperty("quota_refill")]
-        public string QuotaRefill { get; set; }
     }
 
     public class FetchDocumentResponse

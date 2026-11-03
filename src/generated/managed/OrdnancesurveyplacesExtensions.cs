@@ -1,6 +1,7 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
+
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
 {
     using System.Linq.Expressions;
@@ -396,7 +397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         public string BLPUSTATECODEDESCRIPTION { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOID { get; set; }
+        public string TOPOGRAPHYLAYERTOId { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
         public string LASTUPDATEDATE { get; set; }
@@ -470,7 +471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         public string BLPUSTATECODEDESCRIPTION { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOID { get; set; }
+        public string TOPOGRAPHYLAYERTOId { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
         public string LASTUPDATEDATE { get; set; }
@@ -610,7 +611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         public string BLPUSTATECODEDESCRIPTION { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOID { get; set; }
+        public string TOPOGRAPHYLAYERTOId { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
         public string LASTUPDATEDATE { get; set; }
@@ -684,7 +685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         public string BLPUSTATECODEDESCRIPTION { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOID { get; set; }
+        public string TOPOGRAPHYLAYERTOId { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
         public string LASTUPDATEDATE { get; set; }
@@ -824,7 +825,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         public string BLPUSTATECODEDESCRIPTION { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOID { get; set; }
+        public string TOPOGRAPHYLAYERTOId { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
         public string LASTUPDATEDATE { get; set; }
@@ -898,7 +899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         public string BLPUSTATECODEDESCRIPTION { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOID { get; set; }
+        public string TOPOGRAPHYLAYERTOId { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
         public string LASTUPDATEDATE { get; set; }
@@ -1038,7 +1039,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         public string BLPUSTATECODEDESCRIPTION { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOID { get; set; }
+        public string TOPOGRAPHYLAYERTOId { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
         public string LASTUPDATEDATE { get; set; }
@@ -1112,7 +1113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         public string BLPUSTATECODEDESCRIPTION { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOID { get; set; }
+        public string TOPOGRAPHYLAYERTOId { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
         public string LASTUPDATEDATE { get; set; }
@@ -1252,7 +1253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         public string BLPUSTATECODEDESCRIPTION { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOID { get; set; }
+        public string TOPOGRAPHYLAYERTOId { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
         public string LASTUPDATEDATE { get; set; }
@@ -1326,7 +1327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         public string BLPUSTATECODEDESCRIPTION { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOID { get; set; }
+        public string TOPOGRAPHYLAYERTOId { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
         public string LASTUPDATEDATE { get; set; }
@@ -1466,7 +1467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         public string BLPUSTATECODEDESCRIPTION { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOID { get; set; }
+        public string TOPOGRAPHYLAYERTOId { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
         public string LASTUPDATEDATE { get; set; }
@@ -1540,7 +1541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         public string BLPUSTATECODEDESCRIPTION { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOID { get; set; }
+        public string TOPOGRAPHYLAYERTOId { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
         public string LASTUPDATEDATE { get; set; }
@@ -1680,7 +1681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         public string BLPUSTATECODEDESCRIPTION { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOID { get; set; }
+        public string TOPOGRAPHYLAYERTOId { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
         public string LASTUPDATEDATE { get; set; }
@@ -1754,7 +1755,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         public string BLPUSTATECODEDESCRIPTION { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOID { get; set; }
+        public string TOPOGRAPHYLAYERTOId { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
         public string LASTUPDATEDATE { get; set; }
