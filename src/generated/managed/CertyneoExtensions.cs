@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "certyneo")]
-        public IBodyWorkflowAction<Envelope, ApiConnectionActionConfiguration> CreateEnvelope(Expression<Func<string>> bodysubject, Expression<Func<Recipient[]>> bodyrecipients, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodytemplate = null, Expression<Func<string[]>> bodydocuments = null, Expression<Func<EnvelopeField[]>> bodyfields = null, Expression<Func<bodysignatureLevelInput>> bodysignatureLevel = null, Expression<Func<string>> bodyexpiresAt = null, Expression<Func<bodycategoryInput>> bodycategory = null, Expression<Func<string[]>> bodytags = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodyredirectURL = null, Expression<Func<bool>> bodyinitialsOnEveryPage = null, Expression<Func<string>> bodyworkspace = null)
+        public IBodyWorkflowAction<Envelope, ApiConnectionActionConfiguration> CreateEnvelope(Expression<Func<string>> bodysubject, Expression<Func<Recipient[]>> bodyrecipients, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodytemplate = null, Expression<Func<string[]>> bodydocuments = null, Expression<Func<EnvelopeField[]>> bodyfields = null, Expression<Func<bodysignatureLevelInput>> bodysignatureLevel = null, Expression<Func<string>> bodyexpiresAt = null)
         {
             var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: true);
             var __workflow_bodyrecipients = WorkflowExpression.Compile(bodyrecipients, nameof(bodyrecipients), required: true);
@@ -58,12 +58,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
             var __workflow_bodyfields = WorkflowExpression.Compile(bodyfields, nameof(bodyfields), required: false);
             var __workflow_bodysignatureLevel = WorkflowExpression.Compile(bodysignatureLevel, nameof(bodysignatureLevel), required: false);
             var __workflow_bodyexpiresAt = WorkflowExpression.Compile(bodyexpiresAt, nameof(bodyexpiresAt), required: false);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodyredirectURL = WorkflowExpression.Compile(bodyredirectURL, nameof(bodyredirectURL), required: false);
-            var __workflow_bodyinitialsOnEveryPage = WorkflowExpression.Compile(bodyinitialsOnEveryPage, nameof(bodyinitialsOnEveryPage), required: false);
-            var __workflow_bodyworkspace = WorkflowExpression.Compile(bodyworkspace, nameof(bodyworkspace), required: false);
             return new DeferredBodyAction<Envelope, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/envelopes";
@@ -118,42 +112,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
                 if (__workflow_bodyexpiresAt != null)
                 {
                     body["expiresAt"] = ExpressionConverter.ConvertO(__workflow_bodyexpiresAt);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycategory != null)
-                {
-                    body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytags != null)
-                {
-                    body["tags"] = ExpressionConverter.ConvertO(__workflow_bodytags);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylanguage != null)
-                {
-                    body["locale"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyredirectURL != null)
-                {
-                    body["redirectUrl"] = ExpressionConverter.ConvertO(__workflow_bodyredirectURL);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyinitialsOnEveryPage != null)
-                {
-                    body["initialsOnEveryPage"] = ExpressionConverter.ConvertO(__workflow_bodyinitialsOnEveryPage);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyworkspace != null)
-                {
-                    body["workspaceId"] = ExpressionConverter.ConvertO(__workflow_bodyworkspace);
                     bodypropCount++;
                 }
 
@@ -447,22 +405,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
         SIMPLE,
         ADVANCED,
         QUALIFIED
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodycategoryInput
-    {
-        CONTRACT,
-        AGREEMENT,
-        INVOICE,
-        LETTER,
-        QUOTE,
-        NDA,
-        HR,
-        LEGAL,
-        REPORT,
-        PROPOSAL,
-        OTHER
     }
 
     public class WebhookSubscription
