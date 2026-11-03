@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <SignAssembly>false</SignAssembly>
+    <ArtifactsBinOutputName>bin/src</ArtifactsBinOutputName>
+    <IsPackable>true</IsPackable>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>logicapps-sdk-pack</ToolCommandName>
+    <PackageId>Microsoft.Azure.Workflows.Sdk.Packager</PackageId>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Description>Builds and packages SDK-based Azure Logic Apps projects for ZIP deployment.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Microsoft.Azure.Workflows.Sdk.Packager.Tests" />
+  </ItemGroup>
+
+</Project>
