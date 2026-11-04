@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionAddCardResponse, ApiConnectionActionConfiguration> ActionAddCard(Expression<Func<string>> boardUUID, Expression<Func<WorkflowBinaryContent>> accept, Expression<Func<string>> bodyname, Expression<Func<string>> bodylistuuid)
+        public IBodyWorkflowAction<ActionAddCardResponse, ApiConnectionActionConfiguration> ActionAddCard(Expression<Func<string>> boardUUID, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> accept, Expression<Func<string>> bodyname, Expression<Func<string>> bodylistuuid)
         {
             var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);

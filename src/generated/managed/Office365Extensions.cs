@@ -3331,7 +3331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string Name { get; set; }
 
         [JsonProperty("ContentBytes")]
-        public WorkflowBinaryContent Content { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

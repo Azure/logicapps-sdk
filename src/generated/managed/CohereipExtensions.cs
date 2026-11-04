@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
-        public IBodyWorkflowAction<ClassifyPostResponse, ApiConnectionActionConfiguration> Classify(Expression<Func<string[]>> bodyinputs = null, Expression<Func<bodymodelInput>> bodymodel = null, Expression<Func<bodyexamplesInputItem[]>> bodyexamples = null, Expression<Func<string>> bodypreset = null, Expression<Func<bodytruncateInput>> bodytruncate = null)
+        public IBodyWorkflowAction<ClassifyPostResponse, ApiConnectionActionConfiguration> Classify(Expression<Func<string[]>> bodyinputs = null, Expression<Func<bodymodelInput2>> bodymodel = null, Expression<Func<bodyexamplesInputItem[]>> bodyexamples = null, Expression<Func<string>> bodypreset = null, Expression<Func<bodytruncateInput>> bodytruncate = null)
         {
             var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
             var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: false);
@@ -410,9 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         [EnumMember(Value = "large")]
         Large,
         [EnumMember(Value = "small")]
-        Small,
-        [EnumMember(Value = "multilingual-22-12")]
-        Multilingual2212
+        Small
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -497,6 +495,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
 
         [JsonProperty("is_deprecated")]
         public bool IsDeprecated { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodymodelInput2
+    {
+        [EnumMember(Value = "large")]
+        Large,
+        [EnumMember(Value = "small")]
+        Small,
+        [EnumMember(Value = "multilingual-22-12")]
+        Multilingual2212
     }
 
     public class bodyexamplesInputItem

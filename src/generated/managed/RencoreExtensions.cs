@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencore
     public class RencoreActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rencore")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ApiAnalyze(Expression<Func<WorkflowBinaryContent>> analysisRequestFile, Expression<Func<string>> analysisRequestfileName, Expression<Func<string>> analysisRequestlicense = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ApiAnalyze(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> analysisRequestFile, Expression<Func<string>> analysisRequestfileName, Expression<Func<string>> analysisRequestlicense = null)
         {
             var __workflow_analysisRequestFile = WorkflowExpression.Compile(analysisRequestFile, nameof(analysisRequestFile), required: true);
             var __workflow_analysisRequestfileName = WorkflowExpression.Compile(analysisRequestfileName, nameof(analysisRequestfileName), required: true);

@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnationalvulnerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nistnationalvulnerip")]
-        public IBodyWorkflowAction<GetCPECollectionResponse, ApiConnectionActionConfiguration> GetCPECollection(Expression<Func<addOnsInput>> addOns = null, Expression<Func<string>> cpeMatchString = null, Expression<Func<bool>> includeDeprecated = null, Expression<Func<string>> keyword = null, Expression<Func<string>> modStartDate = null, Expression<Func<string>> modEndDate = null, Expression<Func<int>> resultsPerPage = null, Expression<Func<int>> startIndex = null)
+        public IBodyWorkflowAction<GetCPECollectionResponse, ApiConnectionActionConfiguration> GetCPECollection(Expression<Func<addOnsInput2>> addOns = null, Expression<Func<string>> cpeMatchString = null, Expression<Func<bool>> includeDeprecated = null, Expression<Func<string>> keyword = null, Expression<Func<string>> modStartDate = null, Expression<Func<string>> modEndDate = null, Expression<Func<int>> resultsPerPage = null, Expression<Func<int>> startIndex = null)
         {
             var __workflow_addOns = WorkflowExpression.Compile(addOns, nameof(addOns), required: false);
             var __workflow_cpeMatchString = WorkflowExpression.Compile(cpeMatchString, nameof(cpeMatchString), required: false);
@@ -422,8 +422,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnationalvulnerip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOnsInput
     {
-        [EnumMember(Value = "cves")]
-        Cves
+        [EnumMember(Value = "dictionaryCpes")]
+        DictionaryCpes
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -507,6 +507,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnationalvulnerip
 
         [JsonProperty("lang")]
         public string Lang { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum addOnsInput2
+    {
+        [EnumMember(Value = "cves")]
+        Cves
     }
 }
 

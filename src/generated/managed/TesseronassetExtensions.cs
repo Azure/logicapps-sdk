@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
-        public IBodyWorkflowAction<UpdateAssetResponse, ApiConnectionActionConfiguration> UpdateAsset(Expression<Func<int>> bodyassetId, Expression<Func<int>> bodyassetTemplateId, Expression<Func<bodyfieldsInputItem[]>> bodyfields, Expression<Func<string>> bodyreferenceNumber = null, Expression<Func<int>> bodyenterpriseId = null, Expression<Func<int>> bodydocumentationId = null, Expression<Func<string>> bodydocumentationName = null, Expression<Func<int>> bodystatus = null, Expression<Func<string>> bodyliveCycleState = null, Expression<Func<bodyattachmentsInputItem[]>> bodyattachments = null)
+        public IBodyWorkflowAction<UpdateAssetResponse, ApiConnectionActionConfiguration> UpdateAsset(Expression<Func<int>> bodyassetId, Expression<Func<int>> bodyassetTemplateId, Expression<Func<bodyfieldsInputItem[]>> bodyfields, Expression<Func<string>> bodyreferenceNumber = null, Expression<Func<int>> bodyenterpriseId = null, Expression<Func<int>> bodydocumentationId = null, Expression<Func<string>> bodydocumentationName = null, Expression<Func<int>> bodystatus = null, Expression<Func<string>> bodyliveCycleState = null, Expression<Func<bodyattachmentsInputItem2[]>> bodyattachments = null)
         {
             var __workflow_bodyassetId = WorkflowExpression.Compile(bodyassetId, nameof(bodyassetId), required: true);
             var __workflow_bodyassetTemplateId = WorkflowExpression.Compile(bodyassetTemplateId, nameof(bodyassetTemplateId), required: true);
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
     public class bodyattachmentsInputItem
     {
         public string FileName { get; set; }
-        public WorkflowBinaryContent Data { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Data { get; set; }
     }
 
     public class UpdateAssetResponse
@@ -356,6 +356,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
 
         [JsonProperty("success")]
         public bool Success { get; set; }
+    }
+
+    public class bodyattachmentsInputItem2
+    {
+        public string FileName { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Data { get; set; }
     }
 
     public class GetAssetSearchResponse

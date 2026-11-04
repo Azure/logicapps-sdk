@@ -1840,7 +1840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
-        public IBodyWorkflowAction<AddressSaveData, ApiConnectionActionConfiguration> AddOrUpdateAddressToOrganization(Expression<Func<string>> idOrRecordNumber, Expression<Func<string>> bodyid = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<string>> bodyline1 = null, Expression<Func<string>> bodyline2 = null, Expression<Func<string>> bodyline3 = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodyzipcode = null, Expression<Func<string>> bodycountry = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<bool>> bodyshowInDirectory = null, Expression<Func<bool>> bodyisPreferredShipping = null, Expression<Func<bool>> bodyisPreferredBilling = null, Expression<Func<bool>> bodyisBadAddress = null)
+        public IBodyWorkflowAction<AddressSaveData, ApiConnectionActionConfiguration> AddOrUpdateAddressToOrganization(Expression<Func<string>> idOrRecordNumber, Expression<Func<string>> bodyid = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<string>> bodyline1 = null, Expression<Func<string>> bodyline2 = null, Expression<Func<string>> bodyline3 = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodyzipcode = null, Expression<Func<string>> bodycountry = null, Expression<Func<bodytypeInput2>> bodytype = null, Expression<Func<bool>> bodyshowInDirectory = null, Expression<Func<bool>> bodyisPreferredShipping = null, Expression<Func<bool>> bodyisPreferredBilling = null, Expression<Func<bool>> bodyisBadAddress = null)
         {
             var __workflow_idOrRecordNumber = WorkflowExpression.Compile(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
@@ -2369,7 +2369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impexium")]
-        public IBodyWorkflowAction<AddressSaveData, ApiConnectionActionConfiguration> AddOrUpdateAddressToIndividual(Expression<Func<string>> idOrRecordNumber, Expression<Func<string>> bodyid = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<string>> bodyline1 = null, Expression<Func<string>> bodyline2 = null, Expression<Func<string>> bodyline3 = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodyzipcode = null, Expression<Func<string>> bodycountry = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<bool>> bodyshowInDirectory = null, Expression<Func<bool>> bodyisPreferredShipping = null, Expression<Func<bool>> bodyisPreferredBilling = null, Expression<Func<bool>> bodyisBadAddress = null)
+        public IBodyWorkflowAction<AddressSaveData, ApiConnectionActionConfiguration> AddOrUpdateAddressToIndividual(Expression<Func<string>> idOrRecordNumber, Expression<Func<string>> bodyid = null, Expression<Func<bool>> bodyprimary = null, Expression<Func<string>> bodyline1 = null, Expression<Func<string>> bodyline2 = null, Expression<Func<string>> bodyline3 = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodyzipcode = null, Expression<Func<string>> bodycountry = null, Expression<Func<bodytypeInput3>> bodytype = null, Expression<Func<bool>> bodyshowInDirectory = null, Expression<Func<bool>> bodyisPreferredShipping = null, Expression<Func<bool>> bodyisPreferredBilling = null, Expression<Func<bool>> bodyisBadAddress = null)
         {
             var __workflow_idOrRecordNumber = WorkflowExpression.Compile(idOrRecordNumber, nameof(idOrRecordNumber), required: true);
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
@@ -8617,9 +8617,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
-        Home,
-        Work,
-        Other
+        Blog,
+        LinkedIn,
+        Facebook,
+        Twitter,
+        Website,
+        Domain,
+        Other,
+        Instagram,
+        YouTube
     }
 
     public class GetNomineesByCommitteeResponse
@@ -10049,6 +10055,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         Other
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodytypeInput2
+    {
+        Home,
+        Work,
+        Other
+    }
+
     public class bodyInputItem
     {
         [JsonProperty("name")]
@@ -10768,6 +10782,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
 
         [JsonProperty("showInDirectory")]
         public bool ShowInDirectory { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodytypeInput3
+    {
+        Home,
+        Work,
+        Other
     }
 
     public class FindMembersOrIndividualsByFirstAndLastNameResponse

@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smtp
 
     public class AttachmentV2Input
     {
-        public WorkflowBinaryContent ContentData { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ContentData { get; set; }
         public string ContentType { get; set; }
         public string FileName { get; set; }
         public string ContentId { get; set; }

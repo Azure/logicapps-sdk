@@ -3612,8 +3612,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrecordtypeInput
     {
-        L,
-        C
+        C,
+        L
     }
 
     public class MembersGetValueResponse

@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateGoal(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<string>> goalname = null, Expression<Func<string>> goalowner = null, Expression<Func<double>> goalcurrentValue = null, Expression<Func<double>> goaltargetValue = null, Expression<Func<goalstatusInput>> goalstatus = null, Expression<Func<string>> goalstartDate = null, Expression<Func<string>> goalcompletionDate = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateGoal(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<string>> goalname = null, Expression<Func<string>> goalowner = null, Expression<Func<double>> goalcurrentValue = null, Expression<Func<double>> goaltargetValue = null, Expression<Func<goalstatusInput2>> goalstatus = null, Expression<Func<string>> goalstartDate = null, Expression<Func<string>> goalcompletionDate = null)
         {
             var __workflow_groupid = WorkflowExpression.Compile(groupid, nameof(groupid), required: true);
             var __workflow_scorecardId = WorkflowExpression.Compile(scorecardId, nameof(scorecardId), required: true);
@@ -799,6 +799,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum goalstatusInput
+    {
+        [EnumMember(Value = "Not started")]
+        NotStarted,
+        [EnumMember(Value = "On track")]
+        OnTrack,
+        [EnumMember(Value = "At risk")]
+        AtRisk,
+        Behind,
+        Overdue,
+        Completed
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum goalstatusInput2
     {
         [EnumMember(Value = "Leave unchanged")]
         LeaveUnchanged,

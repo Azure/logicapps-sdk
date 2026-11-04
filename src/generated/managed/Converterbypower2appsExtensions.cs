@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class Converterbypower2appsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5102AddHtmlToWord, ApiConnectionActionConfiguration> AddHtmlToWord(Expression<Func<string>> dtoRequesthTML, Expression<Func<WorkflowBinaryContent>> dtoRequestexistingFileContent = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
+        public IBodyWorkflowAction<DtoResponseV5102AddHtmlToWord, ApiConnectionActionConfiguration> AddHtmlToWord(Expression<Func<string>> dtoRequesthTML, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestexistingFileContent = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
         {
             var __workflow_dtoRequesthTML = WorkflowExpression.Compile(dtoRequesthTML, nameof(dtoRequesthTML), required: true);
             var __workflow_dtoRequestexistingFileContent = WorkflowExpression.Compile(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: false);
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5032AddImageToWord, ApiConnectionActionConfiguration> AddImageToWord(Expression<Func<WorkflowBinaryContent>> dtoRequestimage, Expression<Func<WorkflowBinaryContent>> dtoRequestexistingFileContent = null, Expression<Func<string>> dtoRequestcaptionText = null, Expression<Func<int>> dtoRequestmaximumImageWidth = null, Expression<Func<int>> dtoRequestmaximumImageHeight = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
+        public IBodyWorkflowAction<DtoResponseV5032AddImageToWord, ApiConnectionActionConfiguration> AddImageToWord(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestimage, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestexistingFileContent = null, Expression<Func<string>> dtoRequestcaptionText = null, Expression<Func<int>> dtoRequestmaximumImageWidth = null, Expression<Func<int>> dtoRequestmaximumImageHeight = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
         {
             var __workflow_dtoRequestimage = WorkflowExpression.Compile(dtoRequestimage, nameof(dtoRequestimage), required: true);
             var __workflow_dtoRequestexistingFileContent = WorkflowExpression.Compile(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: false);
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5043AddImageWithinTableToWord, ApiConnectionActionConfiguration> AddImageWithinTableToWord(Expression<Func<WorkflowBinaryContent>> dtoRequestimage, Expression<Func<WorkflowBinaryContent>> dtoRequestexistingFileContent = null, Expression<Func<string>> dtoRequestdescriptionText = null, Expression<Func<int>> dtoRequestmaximumImageWidth = null, Expression<Func<int>> dtoRequestmaximumImageHeight = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
+        public IBodyWorkflowAction<DtoResponseV5043AddImageWithinTableToWord, ApiConnectionActionConfiguration> AddImageWithinTableToWord(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestimage, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestexistingFileContent = null, Expression<Func<string>> dtoRequestdescriptionText = null, Expression<Func<int>> dtoRequestmaximumImageWidth = null, Expression<Func<int>> dtoRequestmaximumImageHeight = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
         {
             var __workflow_dtoRequestimage = WorkflowExpression.Compile(dtoRequestimage, nameof(dtoRequestimage), required: true);
             var __workflow_dtoRequestexistingFileContent = WorkflowExpression.Compile(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: false);
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5053AddTableToWord, ApiConnectionActionConfiguration> AddTableToWord(Expression<Func<string>> dtoRequesttableData, Expression<Func<WorkflowBinaryContent>> dtoRequestexistingFileContent = null, Expression<Func<bool>> dtoRequestshowHeaders = null, Expression<Func<string>> dtoRequesttableStyle = null, Expression<Func<string>> dtoRequesttableCaption = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
+        public IBodyWorkflowAction<DtoResponseV5053AddTableToWord, ApiConnectionActionConfiguration> AddTableToWord(Expression<Func<string>> dtoRequesttableData, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestexistingFileContent = null, Expression<Func<bool>> dtoRequestshowHeaders = null, Expression<Func<string>> dtoRequesttableStyle = null, Expression<Func<string>> dtoRequesttableCaption = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
         {
             var __workflow_dtoRequesttableData = WorkflowExpression.Compile(dtoRequesttableData, nameof(dtoRequesttableData), required: true);
             var __workflow_dtoRequestexistingFileContent = WorkflowExpression.Compile(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: false);
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5062AddTextToWord, ApiConnectionActionConfiguration> AddTextToWord(Expression<Func<string>> dtoRequesttype, Expression<Func<string>> dtoRequesttext, Expression<Func<WorkflowBinaryContent>> dtoRequestexistingFileContent = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
+        public IBodyWorkflowAction<DtoResponseV5062AddTextToWord, ApiConnectionActionConfiguration> AddTextToWord(Expression<Func<string>> dtoRequesttype, Expression<Func<string>> dtoRequesttext, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestexistingFileContent = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
         {
             var __workflow_dtoRequesttype = WorkflowExpression.Compile(dtoRequesttype, nameof(dtoRequesttype), required: true);
             var __workflow_dtoRequesttext = WorkflowExpression.Compile(dtoRequesttext, nameof(dtoRequesttext), required: true);
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV3042CompressImage, ApiConnectionActionConfiguration> CompressImage(Expression<Func<WorkflowBinaryContent>> dtoRequestimageFile, Expression<Func<int>> dtoRequestimageQuality = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
+        public IBodyWorkflowAction<DtoResponseV3042CompressImage, ApiConnectionActionConfiguration> CompressImage(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestimageFile, Expression<Func<int>> dtoRequestimageQuality = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
         {
             var __workflow_dtoRequestimageFile = WorkflowExpression.Compile(dtoRequestimageFile, nameof(dtoRequestimageFile), required: true);
             var __workflow_dtoRequestimageQuality = WorkflowExpression.Compile(dtoRequestimageQuality, nameof(dtoRequestimageQuality), required: false);
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4081CompressPdf, ApiConnectionActionConfiguration> CompressPdf(Expression<Func<WorkflowBinaryContent>> dtoRequestpDF, Expression<Func<bool>> dtoRequestcompressImages = null, Expression<Func<int>> dtoRequestimageQuality = null, Expression<Func<bool>> dtoRequestoptimizeFonts = null, Expression<Func<bool>> dtoRequestoptimizePageContents = null, Expression<Func<bool>> dtoRequestremoveMetadata = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
+        public IBodyWorkflowAction<DtoResponseV4081CompressPdf, ApiConnectionActionConfiguration> CompressPdf(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestpDF, Expression<Func<bool>> dtoRequestcompressImages = null, Expression<Func<int>> dtoRequestimageQuality = null, Expression<Func<bool>> dtoRequestoptimizeFonts = null, Expression<Func<bool>> dtoRequestoptimizePageContents = null, Expression<Func<bool>> dtoRequestremoveMetadata = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
         {
             var __workflow_dtoRequestpDF = WorkflowExpression.Compile(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
             var __workflow_dtoRequestcompressImages = WorkflowExpression.Compile(dtoRequestcompressImages, nameof(dtoRequestcompressImages), required: false);
@@ -944,7 +944,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV1100ConvertExcelToJson, ApiConnectionActionConfiguration> ConvertExcelToJson(Expression<Func<WorkflowBinaryContent>> dtoRequestV1100ConvertExcelToJsonexcelFile, Expression<Func<bool>> dtoRequestV1100ConvertExcelToJsonexcelHasHeaders = null, Expression<Func<string>> dtoRequestV1100ConvertExcelToJsonstartCell = null, Expression<Func<string>> dtoRequestV1100ConvertExcelToJsonsheetName = null)
+        public IBodyWorkflowAction<DtoResponseV1100ConvertExcelToJson, ApiConnectionActionConfiguration> ConvertExcelToJson(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestV1100ConvertExcelToJsonexcelFile, Expression<Func<bool>> dtoRequestV1100ConvertExcelToJsonexcelHasHeaders = null, Expression<Func<string>> dtoRequestV1100ConvertExcelToJsonstartCell = null, Expression<Func<string>> dtoRequestV1100ConvertExcelToJsonsheetName = null)
         {
             var __workflow_dtoRequestV1100ConvertExcelToJsonexcelFile = WorkflowExpression.Compile(dtoRequestV1100ConvertExcelToJsonexcelFile, nameof(dtoRequestV1100ConvertExcelToJsonexcelFile), required: true);
             var __workflow_dtoRequestV1100ConvertExcelToJsonexcelHasHeaders = WorkflowExpression.Compile(dtoRequestV1100ConvertExcelToJsonexcelHasHeaders, nameof(dtoRequestV1100ConvertExcelToJsonexcelHasHeaders), required: false);
@@ -997,7 +997,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV1140ConvertExcelToMarkdown, ApiConnectionActionConfiguration> ConvertExcelToMarkdown(Expression<Func<WorkflowBinaryContent>> dtoRequestexcel, Expression<Func<bool>> dtoRequestfirstRowIsTheHeader = null, Expression<Func<bool>> dtoRequestaddSheetNames = null, Expression<Func<string>> dtoRequestfileName = null, Expression<Func<int>> dtoRequestoutputFormat = null)
+        public IBodyWorkflowAction<DtoResponseV1140ConvertExcelToMarkdown, ApiConnectionActionConfiguration> ConvertExcelToMarkdown(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestexcel, Expression<Func<bool>> dtoRequestfirstRowIsTheHeader = null, Expression<Func<bool>> dtoRequestaddSheetNames = null, Expression<Func<string>> dtoRequestfileName = null, Expression<Func<int>> dtoRequestoutputFormat = null)
         {
             var __workflow_dtoRequestexcel = WorkflowExpression.Compile(dtoRequestexcel, nameof(dtoRequestexcel), required: true);
             var __workflow_dtoRequestfirstRowIsTheHeader = WorkflowExpression.Compile(dtoRequestfirstRowIsTheHeader, nameof(dtoRequestfirstRowIsTheHeader), required: false);
@@ -1047,7 +1047,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4014ConvertFileToPdf, ApiConnectionActionConfiguration> ConvertFileToPdf(Expression<Func<WorkflowBinaryContent>> dtoRequestFile, Expression<Func<string>> dtoRequestoriginFileName = null, Expression<Func<string>> dtoRequestoriginFileExtension = null, Expression<Func<int>> dtoRequestconformanceLevel = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
+        public IBodyWorkflowAction<DtoResponseV4014ConvertFileToPdf, ApiConnectionActionConfiguration> ConvertFileToPdf(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestFile, Expression<Func<string>> dtoRequestoriginFileName = null, Expression<Func<string>> dtoRequestoriginFileExtension = null, Expression<Func<int>> dtoRequestconformanceLevel = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
         {
             var __workflow_dtoRequestFile = WorkflowExpression.Compile(dtoRequestFile, nameof(dtoRequestFile), required: true);
             var __workflow_dtoRequestoriginFileName = WorkflowExpression.Compile(dtoRequestoriginFileName, nameof(dtoRequestoriginFileName), required: false);
@@ -1408,7 +1408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseFile, ApiConnectionActionConfiguration> ConvertImage(Expression<Func<WorkflowBinaryContent>> dtoRequestV3012ConvertImageimageFile, Expression<Func<string>> dtoRequestV3012ConvertImageoutputFormat = null)
+        public IBodyWorkflowAction<DtoResponseFile, ApiConnectionActionConfiguration> ConvertImage(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestV3012ConvertImageimageFile, Expression<Func<string>> dtoRequestV3012ConvertImageoutputFormat = null)
         {
             var __workflow_dtoRequestV3012ConvertImageimageFile = WorkflowExpression.Compile(dtoRequestV3012ConvertImageimageFile, nameof(dtoRequestV3012ConvertImageimageFile), required: true);
             var __workflow_dtoRequestV3012ConvertImageoutputFormat = WorkflowExpression.Compile(dtoRequestV3012ConvertImageoutputFormat, nameof(dtoRequestV3012ConvertImageoutputFormat), required: false);
@@ -1824,7 +1824,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4130ConvertPdfToMarkdown, ApiConnectionActionConfiguration> ConvertPdfToMarkdown(Expression<Func<WorkflowBinaryContent>> dtoRequestpDF, Expression<Func<int>> dtoRequestfromPage = null, Expression<Func<int>> dtoRequesttoPage = null, Expression<Func<bool>> dtoRequestkeepReadingOrder = null, Expression<Func<bool>> dtoRequestmarkHeadings = null, Expression<Func<bool>> dtoRequestaddPageMarkers = null, Expression<Func<string>> dtoRequestfileName = null, Expression<Func<int>> dtoRequestoutputFormat = null)
+        public IBodyWorkflowAction<DtoResponseV4130ConvertPdfToMarkdown, ApiConnectionActionConfiguration> ConvertPdfToMarkdown(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestpDF, Expression<Func<int>> dtoRequestfromPage = null, Expression<Func<int>> dtoRequesttoPage = null, Expression<Func<bool>> dtoRequestkeepReadingOrder = null, Expression<Func<bool>> dtoRequestmarkHeadings = null, Expression<Func<bool>> dtoRequestaddPageMarkers = null, Expression<Func<string>> dtoRequestfileName = null, Expression<Func<int>> dtoRequestoutputFormat = null)
         {
             var __workflow_dtoRequestpDF = WorkflowExpression.Compile(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
             var __workflow_dtoRequestfromPage = WorkflowExpression.Compile(dtoRequestfromPage, nameof(dtoRequestfromPage), required: false);
@@ -1895,7 +1895,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4071ConvertPdfToPdfA, ApiConnectionActionConfiguration> ConvertPdfToPdfA(Expression<Func<WorkflowBinaryContent>> dtoRequestpDF, Expression<Func<int>> dtoRequestconformanceLevel = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
+        public IBodyWorkflowAction<DtoResponseV4071ConvertPdfToPdfA, ApiConnectionActionConfiguration> ConvertPdfToPdfA(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestpDF, Expression<Func<int>> dtoRequestconformanceLevel = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
         {
             var __workflow_dtoRequestpDF = WorkflowExpression.Compile(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
             var __workflow_dtoRequestconformanceLevel = WorkflowExpression.Compile(dtoRequestconformanceLevel, nameof(dtoRequestconformanceLevel), required: false);
@@ -1953,7 +1953,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5160ConvertWordToHtml, ApiConnectionActionConfiguration> ConvertWordToHtml(Expression<Func<WorkflowBinaryContent>> dtoRequestword, Expression<Func<bool>> dtoRequestembedImages = null, Expression<Func<bool>> dtoRequestfullHTMLDocument = null, Expression<Func<string>> dtoRequesttitle = null)
+        public IBodyWorkflowAction<DtoResponseV5160ConvertWordToHtml, ApiConnectionActionConfiguration> ConvertWordToHtml(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestword, Expression<Func<bool>> dtoRequestembedImages = null, Expression<Func<bool>> dtoRequestfullHTMLDocument = null, Expression<Func<string>> dtoRequesttitle = null)
         {
             var __workflow_dtoRequestword = WorkflowExpression.Compile(dtoRequestword, nameof(dtoRequestword), required: true);
             var __workflow_dtoRequestembedImages = WorkflowExpression.Compile(dtoRequestembedImages, nameof(dtoRequestembedImages), required: false);
@@ -1996,7 +1996,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5170ConvertWordToMarkdown, ApiConnectionActionConfiguration> ConvertWordToMarkdown(Expression<Func<WorkflowBinaryContent>> dtoRequestword, Expression<Func<bool>> dtoRequestkeepImagePlaceholders = null, Expression<Func<string>> dtoRequestfileName = null, Expression<Func<int>> dtoRequestoutputFormat = null)
+        public IBodyWorkflowAction<DtoResponseV5170ConvertWordToMarkdown, ApiConnectionActionConfiguration> ConvertWordToMarkdown(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestword, Expression<Func<bool>> dtoRequestkeepImagePlaceholders = null, Expression<Func<string>> dtoRequestfileName = null, Expression<Func<int>> dtoRequestoutputFormat = null)
         {
             var __workflow_dtoRequestword = WorkflowExpression.Compile(dtoRequestword, nameof(dtoRequestword), required: true);
             var __workflow_dtoRequestkeepImagePlaceholders = WorkflowExpression.Compile(dtoRequestkeepImagePlaceholders, nameof(dtoRequestkeepImagePlaceholders), required: false);
@@ -2354,7 +2354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV3063CreateCode, ApiConnectionActionConfiguration> CreateCode(Expression<Func<string>> dtoRequestcontent, Expression<Func<string>> dtoRequestcodeFormat = null, Expression<Func<int>> dtoRequestwidth = null, Expression<Func<int>> dtoRequestheight = null, Expression<Func<string>> dtoRequestoutputFormat = null, Expression<Func<WorkflowBinaryContent>> dtoRequestembeddedImage = null, Expression<Func<double>> dtoRequestembeddedImageOpacity = null, Expression<Func<double>> dtoRequestembeddedImageRatio = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
+        public IBodyWorkflowAction<DtoResponseV3063CreateCode, ApiConnectionActionConfiguration> CreateCode(Expression<Func<string>> dtoRequestcontent, Expression<Func<string>> dtoRequestcodeFormat = null, Expression<Func<int>> dtoRequestwidth = null, Expression<Func<int>> dtoRequestheight = null, Expression<Func<string>> dtoRequestoutputFormat = null, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestembeddedImage = null, Expression<Func<double>> dtoRequestembeddedImageOpacity = null, Expression<Func<double>> dtoRequestembeddedImageRatio = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
         {
             var __workflow_dtoRequestcontent = WorkflowExpression.Compile(dtoRequestcontent, nameof(dtoRequestcontent), required: true);
             var __workflow_dtoRequestcodeFormat = WorkflowExpression.Compile(dtoRequestcodeFormat, nameof(dtoRequestcodeFormat), required: false);
@@ -2570,7 +2570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV3082CreateWatermarkImage, ApiConnectionActionConfiguration> CreateWatermarkImage(Expression<Func<WorkflowBinaryContent>> dtoRequestmainImage, Expression<Func<WorkflowBinaryContent>> dtoRequestwatermarkImage, Expression<Func<int>> dtoRequestwatermarkOpacity = null, Expression<Func<int>> dtoRequestwatermarkRatio = null, Expression<Func<string>> dtoRequestwatermarkHorizontalPosition = null, Expression<Func<string>> dtoRequestwatermarkVerticalPosition = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
+        public IBodyWorkflowAction<DtoResponseV3082CreateWatermarkImage, ApiConnectionActionConfiguration> CreateWatermarkImage(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestmainImage, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestwatermarkImage, Expression<Func<int>> dtoRequestwatermarkOpacity = null, Expression<Func<int>> dtoRequestwatermarkRatio = null, Expression<Func<string>> dtoRequestwatermarkHorizontalPosition = null, Expression<Func<string>> dtoRequestwatermarkVerticalPosition = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
         {
             var __workflow_dtoRequestmainImage = WorkflowExpression.Compile(dtoRequestmainImage, nameof(dtoRequestmainImage), required: true);
             var __workflow_dtoRequestwatermarkImage = WorkflowExpression.Compile(dtoRequestwatermarkImage, nameof(dtoRequestwatermarkImage), required: true);
@@ -2630,7 +2630,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5012CreateWordFile, ApiConnectionActionConfiguration> CreateWordFile(Expression<Func<Section[]>> dtoRequestsection, Expression<Func<WorkflowBinaryContent>> dtoRequestexistingFileContent = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
+        public IBodyWorkflowAction<DtoResponseV5012CreateWordFile, ApiConnectionActionConfiguration> CreateWordFile(Expression<Func<Section[]>> dtoRequestsection, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestexistingFileContent = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
         {
             var __workflow_dtoRequestsection = WorkflowExpression.Compile(dtoRequestsection, nameof(dtoRequestsection), required: true);
             var __workflow_dtoRequestexistingFileContent = WorkflowExpression.Compile(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: false);
@@ -2666,7 +2666,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4090ExtractImagesFromPdf, ApiConnectionActionConfiguration> ExtractImagesFromPdf(Expression<Func<WorkflowBinaryContent>> dtoRequestpDF, Expression<Func<int>> dtoRequestfromPage = null, Expression<Func<int>> dtoRequesttoPage = null, Expression<Func<string>> dtoRequestfileNamePrefix = null, Expression<Func<bool>> dtoRequestincludeBase64String = null)
+        public IBodyWorkflowAction<DtoResponseV4090ExtractImagesFromPdf, ApiConnectionActionConfiguration> ExtractImagesFromPdf(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestpDF, Expression<Func<int>> dtoRequestfromPage = null, Expression<Func<int>> dtoRequesttoPage = null, Expression<Func<string>> dtoRequestfileNamePrefix = null, Expression<Func<bool>> dtoRequestincludeBase64String = null)
         {
             var __workflow_dtoRequestpDF = WorkflowExpression.Compile(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
             var __workflow_dtoRequestfromPage = WorkflowExpression.Compile(dtoRequestfromPage, nameof(dtoRequestfromPage), required: false);
@@ -2755,7 +2755,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4061ExtractPdfPages, ApiConnectionActionConfiguration> ExtractPdfPages(Expression<Func<WorkflowBinaryContent>> dtoRequestpDFFile, Expression<Func<string>> dtoRequestpagesToExtract, Expression<Func<int>> dtoRequestreduceResponseSize = null)
+        public IBodyWorkflowAction<DtoResponseV4061ExtractPdfPages, ApiConnectionActionConfiguration> ExtractPdfPages(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestpDFFile, Expression<Func<string>> dtoRequestpagesToExtract, Expression<Func<int>> dtoRequestreduceResponseSize = null)
         {
             var __workflow_dtoRequestpDFFile = WorkflowExpression.Compile(dtoRequestpDFFile, nameof(dtoRequestpDFFile), required: true);
             var __workflow_dtoRequestpagesToExtract = WorkflowExpression.Compile(dtoRequestpagesToExtract, nameof(dtoRequestpagesToExtract), required: true);
@@ -2787,7 +2787,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4160ExtractPdfTablesToCsv, ApiConnectionActionConfiguration> ExtractPdfTablesToCsv(Expression<Func<WorkflowBinaryContent>> dtoRequestpDF, Expression<Func<int>> dtoRequestfromPage = null, Expression<Func<int>> dtoRequesttoPage = null, Expression<Func<int>> dtoRequestheaderRow = null, Expression<Func<string>> dtoRequestseparator = null, Expression<Func<string>> dtoRequestcSVFileName = null, Expression<Func<int>> dtoRequestoutputFormat = null)
+        public IBodyWorkflowAction<DtoResponseV4160ExtractPdfTablesToCsv, ApiConnectionActionConfiguration> ExtractPdfTablesToCsv(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestpDF, Expression<Func<int>> dtoRequestfromPage = null, Expression<Func<int>> dtoRequesttoPage = null, Expression<Func<int>> dtoRequestheaderRow = null, Expression<Func<string>> dtoRequestseparator = null, Expression<Func<string>> dtoRequestcSVFileName = null, Expression<Func<int>> dtoRequestoutputFormat = null)
         {
             var __workflow_dtoRequestpDF = WorkflowExpression.Compile(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
             var __workflow_dtoRequestfromPage = WorkflowExpression.Compile(dtoRequestfromPage, nameof(dtoRequestfromPage), required: false);
@@ -2851,7 +2851,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4150ExtractPdfTablesToExcel, ApiConnectionActionConfiguration> ExtractPdfTablesToExcel(Expression<Func<WorkflowBinaryContent>> dtoRequestpDF, Expression<Func<int>> dtoRequestfromPage = null, Expression<Func<int>> dtoRequesttoPage = null, Expression<Func<int>> dtoRequestheaderRow = null, Expression<Func<string>> dtoRequestexcelFileName = null, Expression<Func<int>> dtoRequestfileResponse = null)
+        public IBodyWorkflowAction<DtoResponseV4150ExtractPdfTablesToExcel, ApiConnectionActionConfiguration> ExtractPdfTablesToExcel(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestpDF, Expression<Func<int>> dtoRequestfromPage = null, Expression<Func<int>> dtoRequesttoPage = null, Expression<Func<int>> dtoRequestheaderRow = null, Expression<Func<string>> dtoRequestexcelFileName = null, Expression<Func<int>> dtoRequestfileResponse = null)
         {
             var __workflow_dtoRequestpDF = WorkflowExpression.Compile(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
             var __workflow_dtoRequestfromPage = WorkflowExpression.Compile(dtoRequestfromPage, nameof(dtoRequestfromPage), required: false);
@@ -2908,7 +2908,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4170ExtractPdfTablesToHtml, ApiConnectionActionConfiguration> ExtractPdfTablesToHtml(Expression<Func<WorkflowBinaryContent>> dtoRequestpDF, Expression<Func<int>> dtoRequestfromPage = null, Expression<Func<int>> dtoRequesttoPage = null, Expression<Func<int>> dtoRequestheaderRow = null, Expression<Func<string>> dtoRequesthTMLFileName = null, Expression<Func<int>> dtoRequestoutputFormat = null)
+        public IBodyWorkflowAction<DtoResponseV4170ExtractPdfTablesToHtml, ApiConnectionActionConfiguration> ExtractPdfTablesToHtml(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestpDF, Expression<Func<int>> dtoRequestfromPage = null, Expression<Func<int>> dtoRequesttoPage = null, Expression<Func<int>> dtoRequestheaderRow = null, Expression<Func<string>> dtoRequesthTMLFileName = null, Expression<Func<int>> dtoRequestoutputFormat = null)
         {
             var __workflow_dtoRequestpDF = WorkflowExpression.Compile(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
             var __workflow_dtoRequestfromPage = WorkflowExpression.Compile(dtoRequestfromPage, nameof(dtoRequestfromPage), required: false);
@@ -2965,7 +2965,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4140ExtractPdfTablesToJson, ApiConnectionActionConfiguration> ExtractPdfTablesToJson(Expression<Func<WorkflowBinaryContent>> dtoRequestpDF, Expression<Func<int>> dtoRequestfromPage = null, Expression<Func<int>> dtoRequesttoPage = null, Expression<Func<int>> dtoRequestheaderRow = null)
+        public IBodyWorkflowAction<DtoResponseV4140ExtractPdfTablesToJson, ApiConnectionActionConfiguration> ExtractPdfTablesToJson(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestpDF, Expression<Func<int>> dtoRequestfromPage = null, Expression<Func<int>> dtoRequesttoPage = null, Expression<Func<int>> dtoRequestheaderRow = null)
         {
             var __workflow_dtoRequestpDF = WorkflowExpression.Compile(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
             var __workflow_dtoRequestfromPage = WorkflowExpression.Compile(dtoRequestfromPage, nameof(dtoRequestfromPage), required: false);
@@ -3047,7 +3047,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4100ExtractTextFromPdf, ApiConnectionActionConfiguration> ExtractTextFromPdf(Expression<Func<WorkflowBinaryContent>> dtoRequestpDF, Expression<Func<int>> dtoRequestfromPage = null, Expression<Func<int>> dtoRequesttoPage = null, Expression<Func<bool>> dtoRequestlayoutBased = null, Expression<Func<bool>> dtoRequestincludePages = null, Expression<Func<string>> dtoRequestpageSeparator = null, Expression<Func<bool>> dtoRequestnormalizeWhitespace = null)
+        public IBodyWorkflowAction<DtoResponseV4100ExtractTextFromPdf, ApiConnectionActionConfiguration> ExtractTextFromPdf(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestpDF, Expression<Func<int>> dtoRequestfromPage = null, Expression<Func<int>> dtoRequesttoPage = null, Expression<Func<bool>> dtoRequestlayoutBased = null, Expression<Func<bool>> dtoRequestincludePages = null, Expression<Func<string>> dtoRequestpageSeparator = null, Expression<Func<bool>> dtoRequestnormalizeWhitespace = null)
         {
             var __workflow_dtoRequestpDF = WorkflowExpression.Compile(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
             var __workflow_dtoRequestfromPage = WorkflowExpression.Compile(dtoRequestfromPage, nameof(dtoRequestfromPage), required: false);
@@ -3111,7 +3111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5021ExtractWordBookmarks, ApiConnectionActionConfiguration> ExtractWordBookmarks(Expression<Func<WorkflowBinaryContent>> dtoRequestV5021ExtractWordBookmarksFile, Expression<Func<bool>> dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks = null, Expression<Func<string>> dtoRequestV5021ExtractWordBookmarkssearchName = null, Expression<Func<string>> dtoRequestV5021ExtractWordBookmarkssearchContent = null)
+        public IBodyWorkflowAction<DtoResponseV5021ExtractWordBookmarks, ApiConnectionActionConfiguration> ExtractWordBookmarks(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestV5021ExtractWordBookmarksFile, Expression<Func<bool>> dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks = null, Expression<Func<string>> dtoRequestV5021ExtractWordBookmarkssearchName = null, Expression<Func<string>> dtoRequestV5021ExtractWordBookmarkssearchContent = null)
         {
             var __workflow_dtoRequestV5021ExtractWordBookmarksFile = WorkflowExpression.Compile(dtoRequestV5021ExtractWordBookmarksFile, nameof(dtoRequestV5021ExtractWordBookmarksFile), required: true);
             var __workflow_dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks = WorkflowExpression.Compile(dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks, nameof(dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks), required: false);
@@ -3164,7 +3164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5120ExtractWordContentControls, ApiConnectionActionConfiguration> ExtractWordContentControls(Expression<Func<WorkflowBinaryContent>> dtoRequestV5120ExtractWordContentControlsFile, Expression<Func<string>> dtoRequestV5120ExtractWordContentControlssearchTag = null, Expression<Func<string>> dtoRequestV5120ExtractWordContentControlssearchTitle = null)
+        public IBodyWorkflowAction<DtoResponseV5120ExtractWordContentControls, ApiConnectionActionConfiguration> ExtractWordContentControls(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestV5120ExtractWordContentControlsFile, Expression<Func<string>> dtoRequestV5120ExtractWordContentControlssearchTag = null, Expression<Func<string>> dtoRequestV5120ExtractWordContentControlssearchTitle = null)
         {
             var __workflow_dtoRequestV5120ExtractWordContentControlsFile = WorkflowExpression.Compile(dtoRequestV5120ExtractWordContentControlsFile, nameof(dtoRequestV5120ExtractWordContentControlsFile), required: true);
             var __workflow_dtoRequestV5120ExtractWordContentControlssearchTag = WorkflowExpression.Compile(dtoRequestV5120ExtractWordContentControlssearchTag, nameof(dtoRequestV5120ExtractWordContentControlssearchTag), required: false);
@@ -3222,7 +3222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV3071ImageMetaData, ApiConnectionActionConfiguration> ImageMetaData(Expression<Func<WorkflowBinaryContent>> dtoRequestV3071ImageMetaDataimageFile)
+        public IBodyWorkflowAction<DtoResponseV3071ImageMetaData, ApiConnectionActionConfiguration> ImageMetaData(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestV3071ImageMetaDataimageFile)
         {
             var __workflow_dtoRequestV3071ImageMetaDataimageFile = WorkflowExpression.Compile(dtoRequestV3071ImageMetaDataimageFile, nameof(dtoRequestV3071ImageMetaDataimageFile), required: true);
             return new DeferredBodyAction<DtoResponseV3071ImageMetaData, ApiConnectionActionConfiguration>(() =>
@@ -3244,7 +3244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseFile, ApiConnectionActionConfiguration> InsertImageToPowerPoint(Expression<Func<WorkflowBinaryContent>> dtoRequestV9020InsertImagePowerPointexistingFileContent, Expression<Func<WorkflowBinaryContent>> dtoRequestV9020InsertImagePowerPointplaceholderImage, Expression<Func<string>> dtoRequestV9020InsertImagePowerPointplaceholderName = null, Expression<Func<int>> dtoRequestV9020InsertImagePowerPointmaximumImageWidth = null, Expression<Func<int>> dtoRequestV9020InsertImagePowerPointmaximumImageHeight = null, Expression<Func<string>> dtoRequestV9020InsertImagePowerPointplaceholderPrefix = null, Expression<Func<string>> dtoRequestV9020InsertImagePowerPointplaceholderSuffix = null)
+        public IBodyWorkflowAction<DtoResponseFile, ApiConnectionActionConfiguration> InsertImageToPowerPoint(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestV9020InsertImagePowerPointexistingFileContent, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestV9020InsertImagePowerPointplaceholderImage, Expression<Func<string>> dtoRequestV9020InsertImagePowerPointplaceholderName = null, Expression<Func<int>> dtoRequestV9020InsertImagePowerPointmaximumImageWidth = null, Expression<Func<int>> dtoRequestV9020InsertImagePowerPointmaximumImageHeight = null, Expression<Func<string>> dtoRequestV9020InsertImagePowerPointplaceholderPrefix = null, Expression<Func<string>> dtoRequestV9020InsertImagePowerPointplaceholderSuffix = null)
         {
             var __workflow_dtoRequestV9020InsertImagePowerPointexistingFileContent = WorkflowExpression.Compile(dtoRequestV9020InsertImagePowerPointexistingFileContent, nameof(dtoRequestV9020InsertImagePowerPointexistingFileContent), required: true);
             var __workflow_dtoRequestV9020InsertImagePowerPointplaceholderImage = WorkflowExpression.Compile(dtoRequestV9020InsertImagePowerPointplaceholderImage, nameof(dtoRequestV9020InsertImagePowerPointplaceholderImage), required: true);
@@ -3304,7 +3304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5082InsertImageToWord, ApiConnectionActionConfiguration> InsertImageToWord(Expression<Func<WorkflowBinaryContent>> dtoRequestexistingFileContent, Expression<Func<WorkflowBinaryContent>> dtoRequestimage, Expression<Func<string>> dtoRequestplaceholderName = null, Expression<Func<int>> dtoRequestmaximumImageWidth = null, Expression<Func<int>> dtoRequestmaximumImageHeight = null, Expression<Func<string>> dtoRequestplaceholderPrefix = null, Expression<Func<string>> dtoRequestplaceholderSuffix = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
+        public IBodyWorkflowAction<DtoResponseV5082InsertImageToWord, ApiConnectionActionConfiguration> InsertImageToWord(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestexistingFileContent, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestimage, Expression<Func<string>> dtoRequestplaceholderName = null, Expression<Func<int>> dtoRequestmaximumImageWidth = null, Expression<Func<int>> dtoRequestmaximumImageHeight = null, Expression<Func<string>> dtoRequestplaceholderPrefix = null, Expression<Func<string>> dtoRequestplaceholderSuffix = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
         {
             var __workflow_dtoRequestexistingFileContent = WorkflowExpression.Compile(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: true);
             var __workflow_dtoRequestimage = WorkflowExpression.Compile(dtoRequestimage, nameof(dtoRequestimage), required: true);
@@ -3371,7 +3371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5111InsertMultipleTextSectionsToWord, ApiConnectionActionConfiguration> InsertMultipleTextSectionsToWord(Expression<Func<WorkflowBinaryContent>> dtoRequestexistingFileContent, Expression<Func<InsertSection[]>> dtoRequestplaceholder, Expression<Func<string>> dtoRequestplaceholderPrefix = null, Expression<Func<string>> dtoRequestplaceholderSuffix = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
+        public IBodyWorkflowAction<DtoResponseV5111InsertMultipleTextSectionsToWord, ApiConnectionActionConfiguration> InsertMultipleTextSectionsToWord(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestexistingFileContent, Expression<Func<InsertSection[]>> dtoRequestplaceholder, Expression<Func<string>> dtoRequestplaceholderPrefix = null, Expression<Func<string>> dtoRequestplaceholderSuffix = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
         {
             var __workflow_dtoRequestexistingFileContent = WorkflowExpression.Compile(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: true);
             var __workflow_dtoRequestplaceholder = WorkflowExpression.Compile(dtoRequestplaceholder, nameof(dtoRequestplaceholder), required: true);
@@ -3417,7 +3417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5092InsertTableToWord, ApiConnectionActionConfiguration> InsertTableToWord(Expression<Func<WorkflowBinaryContent>> dtoRequestexistingFileContent, Expression<Func<string>> dtoRequestplaceholderName = null, Expression<Func<string>> dtoRequestplaceholderTable = null, Expression<Func<string>> dtoRequesttableStyle = null, Expression<Func<bool>> dtoRequestshowHeaders = null, Expression<Func<string>> dtoRequestplaceholderPrefix = null, Expression<Func<string>> dtoRequestplaceholderSuffix = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
+        public IBodyWorkflowAction<DtoResponseV5092InsertTableToWord, ApiConnectionActionConfiguration> InsertTableToWord(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestexistingFileContent, Expression<Func<string>> dtoRequestplaceholderName = null, Expression<Func<string>> dtoRequestplaceholderTable = null, Expression<Func<string>> dtoRequesttableStyle = null, Expression<Func<bool>> dtoRequestshowHeaders = null, Expression<Func<string>> dtoRequestplaceholderPrefix = null, Expression<Func<string>> dtoRequestplaceholderSuffix = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
         {
             var __workflow_dtoRequestexistingFileContent = WorkflowExpression.Compile(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: true);
             var __workflow_dtoRequestplaceholderName = WorkflowExpression.Compile(dtoRequestplaceholderName, nameof(dtoRequestplaceholderName), required: false);
@@ -3508,7 +3508,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseFile, ApiConnectionActionConfiguration> InsertTextToPowerPoint(Expression<Func<WorkflowBinaryContent>> dtoRequestV9010InsertTextToPowerPointexistingFileContent, Expression<Func<string>> dtoRequestV9010InsertTextToPowerPointplaceholderName, Expression<Func<string>> dtoRequestV9010InsertTextToPowerPointplaceholderText = null, Expression<Func<string>> dtoRequestV9010InsertTextToPowerPointplaceholderPrefix = null, Expression<Func<string>> dtoRequestV9010InsertTextToPowerPointplaceholderSuffix = null)
+        public IBodyWorkflowAction<DtoResponseFile, ApiConnectionActionConfiguration> InsertTextToPowerPoint(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestV9010InsertTextToPowerPointexistingFileContent, Expression<Func<string>> dtoRequestV9010InsertTextToPowerPointplaceholderName, Expression<Func<string>> dtoRequestV9010InsertTextToPowerPointplaceholderText = null, Expression<Func<string>> dtoRequestV9010InsertTextToPowerPointplaceholderPrefix = null, Expression<Func<string>> dtoRequestV9010InsertTextToPowerPointplaceholderSuffix = null)
         {
             var __workflow_dtoRequestV9010InsertTextToPowerPointexistingFileContent = WorkflowExpression.Compile(dtoRequestV9010InsertTextToPowerPointexistingFileContent, nameof(dtoRequestV9010InsertTextToPowerPointexistingFileContent), required: true);
             var __workflow_dtoRequestV9010InsertTextToPowerPointplaceholderName = WorkflowExpression.Compile(dtoRequestV9010InsertTextToPowerPointplaceholderName, nameof(dtoRequestV9010InsertTextToPowerPointplaceholderName), required: true);
@@ -3554,7 +3554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5072InsertTextToWord, ApiConnectionActionConfiguration> InsertTextToWord(Expression<Func<WorkflowBinaryContent>> dtoRequestexistingFileContent, Expression<Func<string>> dtoRequestplaceholderName, Expression<Func<string>> dtoRequestplaceholderText = null, Expression<Func<string>> dtoRequestplaceholderPrefix = null, Expression<Func<string>> dtoRequestplaceholderSuffix = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
+        public IBodyWorkflowAction<DtoResponseV5072InsertTextToWord, ApiConnectionActionConfiguration> InsertTextToWord(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestexistingFileContent, Expression<Func<string>> dtoRequestplaceholderName, Expression<Func<string>> dtoRequestplaceholderText = null, Expression<Func<string>> dtoRequestplaceholderPrefix = null, Expression<Func<string>> dtoRequestplaceholderSuffix = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
         {
             var __workflow_dtoRequestexistingFileContent = WorkflowExpression.Compile(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: true);
             var __workflow_dtoRequestplaceholderName = WorkflowExpression.Compile(dtoRequestplaceholderName, nameof(dtoRequestplaceholderName), required: true);
@@ -3705,7 +3705,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4022MergePdfs, ApiConnectionActionConfiguration> MergePdfs(Expression<Func<WorkflowBinaryContent>> dtoRequestfile1, Expression<Func<WorkflowBinaryContent>> dtoRequestfile2, Expression<Func<int>> dtoRequestreduceResponseSize = null)
+        public IBodyWorkflowAction<DtoResponseV4022MergePdfs, ApiConnectionActionConfiguration> MergePdfs(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestfile1, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestfile2, Expression<Func<int>> dtoRequestreduceResponseSize = null)
         {
             var __workflow_dtoRequestfile1 = WorkflowExpression.Compile(dtoRequestfile1, nameof(dtoRequestfile1), required: true);
             var __workflow_dtoRequestfile2 = WorkflowExpression.Compile(dtoRequestfile2, nameof(dtoRequestfile2), required: true);
@@ -3762,7 +3762,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4031PdfMetadata, ApiConnectionActionConfiguration> PdfMetadata(Expression<Func<WorkflowBinaryContent>> dtoRequestV4031PdfMetadataFile)
+        public IBodyWorkflowAction<DtoResponseV4031PdfMetadata, ApiConnectionActionConfiguration> PdfMetadata(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestV4031PdfMetadataFile)
         {
             var __workflow_dtoRequestV4031PdfMetadataFile = WorkflowExpression.Compile(dtoRequestV4031PdfMetadataFile, nameof(dtoRequestV4031PdfMetadataFile), required: true);
             return new DeferredBodyAction<DtoResponseV4031PdfMetadata, ApiConnectionActionConfiguration>(() =>
@@ -3784,7 +3784,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4042ProtectPdf, ApiConnectionActionConfiguration> ProtectPdf(Expression<Func<WorkflowBinaryContent>> dtoRequestFile, Expression<Func<string>> dtoRequestownerPassword = null, Expression<Func<string>> dtoRequestuserPassword = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
+        public IBodyWorkflowAction<DtoResponseV4042ProtectPdf, ApiConnectionActionConfiguration> ProtectPdf(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestFile, Expression<Func<string>> dtoRequestownerPassword = null, Expression<Func<string>> dtoRequestuserPassword = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
         {
             var __workflow_dtoRequestFile = WorkflowExpression.Compile(dtoRequestFile, nameof(dtoRequestFile), required: true);
             var __workflow_dtoRequestownerPassword = WorkflowExpression.Compile(dtoRequestownerPassword, nameof(dtoRequestownerPassword), required: false);
@@ -3827,7 +3827,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV3051ReadCode, ApiConnectionActionConfiguration> ReadCode(Expression<Func<WorkflowBinaryContent>> dtoRequestReadCodeDataqROrBarcode)
+        public IBodyWorkflowAction<DtoResponseV3051ReadCode, ApiConnectionActionConfiguration> ReadCode(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestReadCodeDataqROrBarcode)
         {
             var __workflow_dtoRequestReadCodeDataqROrBarcode = WorkflowExpression.Compile(dtoRequestReadCodeDataqROrBarcode, nameof(dtoRequestReadCodeDataqROrBarcode), required: true);
             return new DeferredBodyAction<DtoResponseV3051ReadCode, ApiConnectionActionConfiguration>(() =>
@@ -3885,7 +3885,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4111RemovePagesFromPdf, ApiConnectionActionConfiguration> RemovePagesFromPdf(Expression<Func<WorkflowBinaryContent>> dtoRequestpDF, Expression<Func<string>> dtoRequestpages, Expression<Func<bool>> dtoRequestinputIs1Based = null, Expression<Func<int>> dtoRequestmode = null, Expression<Func<bool>> dtoRequestfailIfPageOutOfRange = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
+        public IBodyWorkflowAction<DtoResponseV4111RemovePagesFromPdf, ApiConnectionActionConfiguration> RemovePagesFromPdf(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestpDF, Expression<Func<string>> dtoRequestpages, Expression<Func<bool>> dtoRequestinputIs1Based = null, Expression<Func<int>> dtoRequestmode = null, Expression<Func<bool>> dtoRequestfailIfPageOutOfRange = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
         {
             var __workflow_dtoRequestpDF = WorkflowExpression.Compile(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
             var __workflow_dtoRequestpages = WorkflowExpression.Compile(dtoRequestpages, nameof(dtoRequestpages), required: true);
@@ -3970,7 +3970,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV3023ResizeImage, ApiConnectionActionConfiguration> ResizeImage(Expression<Func<WorkflowBinaryContent>> dtoRequestimageFile, Expression<Func<double>> dtoRequestimageWidth = null, Expression<Func<double>> dtoRequestimageHeight = null, Expression<Func<string>> dtoRequestresizeBy = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
+        public IBodyWorkflowAction<DtoResponseV3023ResizeImage, ApiConnectionActionConfiguration> ResizeImage(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestimageFile, Expression<Func<double>> dtoRequestimageWidth = null, Expression<Func<double>> dtoRequestimageHeight = null, Expression<Func<string>> dtoRequestresizeBy = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
         {
             var __workflow_dtoRequestimageFile = WorkflowExpression.Compile(dtoRequestimageFile, nameof(dtoRequestimageFile), required: true);
             var __workflow_dtoRequestimageWidth = WorkflowExpression.Compile(dtoRequestimageWidth, nameof(dtoRequestimageWidth), required: false);
@@ -4020,7 +4020,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV3032RotateImage, ApiConnectionActionConfiguration> RotateImage(Expression<Func<WorkflowBinaryContent>> dtoRequestimageFile, Expression<Func<double>> dtoRequestrotate = null, Expression<Func<string>> dtoRequestoutputFormat = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
+        public IBodyWorkflowAction<DtoResponseV3032RotateImage, ApiConnectionActionConfiguration> RotateImage(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestimageFile, Expression<Func<double>> dtoRequestrotate = null, Expression<Func<string>> dtoRequestoutputFormat = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
         {
             var __workflow_dtoRequestimageFile = WorkflowExpression.Compile(dtoRequestimageFile, nameof(dtoRequestimageFile), required: true);
             var __workflow_dtoRequestrotate = WorkflowExpression.Compile(dtoRequestrotate, nameof(dtoRequestrotate), required: false);
@@ -4383,7 +4383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4052UnProtectPdf, ApiConnectionActionConfiguration> UnProtectPdf(Expression<Func<WorkflowBinaryContent>> dtoRequestFile, Expression<Func<string>> dtoRequestownerPassword = null, Expression<Func<bool>> dtoRequestremovePermissions = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
+        public IBodyWorkflowAction<DtoResponseV4052UnProtectPdf, ApiConnectionActionConfiguration> UnProtectPdf(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestFile, Expression<Func<string>> dtoRequestownerPassword = null, Expression<Func<bool>> dtoRequestremovePermissions = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
         {
             var __workflow_dtoRequestFile = WorkflowExpression.Compile(dtoRequestFile, nameof(dtoRequestFile), required: true);
             var __workflow_dtoRequestownerPassword = WorkflowExpression.Compile(dtoRequestownerPassword, nameof(dtoRequestownerPassword), required: false);
@@ -4426,7 +4426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5151UpdateMultipleWordContentControls, ApiConnectionActionConfiguration> UpdateMultipleWordContentControls(Expression<Func<WorkflowBinaryContent>> dtoRequestexistingFileContent, Expression<Func<ContentControl[]>> dtoRequestcontentControl, Expression<Func<int>> dtoRequestreduceResponseSize = null)
+        public IBodyWorkflowAction<DtoResponseV5151UpdateMultipleWordContentControls, ApiConnectionActionConfiguration> UpdateMultipleWordContentControls(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestexistingFileContent, Expression<Func<ContentControl[]>> dtoRequestcontentControl, Expression<Func<int>> dtoRequestreduceResponseSize = null)
         {
             var __workflow_dtoRequestexistingFileContent = WorkflowExpression.Compile(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: true);
             var __workflow_dtoRequestcontentControl = WorkflowExpression.Compile(dtoRequestcontentControl, nameof(dtoRequestcontentControl), required: true);
@@ -4458,7 +4458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5141UpdateWordContentControl, ApiConnectionActionConfiguration> UpdateWordContentControl(Expression<Func<WorkflowBinaryContent>> dtoRequestexistingFileContent, Expression<Func<string>> dtoRequestname, Expression<Func<string>> dtoRequestvalue = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
+        public IBodyWorkflowAction<DtoResponseV5141UpdateWordContentControl, ApiConnectionActionConfiguration> UpdateWordContentControl(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestexistingFileContent, Expression<Func<string>> dtoRequestname, Expression<Func<string>> dtoRequestvalue = null, Expression<Func<int>> dtoRequestreduceResponseSize = null)
         {
             var __workflow_dtoRequestexistingFileContent = WorkflowExpression.Compile(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: true);
             var __workflow_dtoRequestname = WorkflowExpression.Compile(dtoRequestname, nameof(dtoRequestname), required: true);
@@ -4497,7 +4497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5131UpdateWordTableOfContents, ApiConnectionActionConfiguration> UpdateWordTableOfContents(Expression<Func<WorkflowBinaryContent>> dtoRequestexistingFileContent, Expression<Func<int>> dtoRequestreduceResponseSize = null)
+        public IBodyWorkflowAction<DtoResponseV5131UpdateWordTableOfContents, ApiConnectionActionConfiguration> UpdateWordTableOfContents(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> dtoRequestexistingFileContent, Expression<Func<int>> dtoRequestreduceResponseSize = null)
         {
             var __workflow_dtoRequestexistingFileContent = WorkflowExpression.Compile(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: true);
             var __workflow_dtoRequestreduceResponseSize = WorkflowExpression.Compile(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
@@ -5630,7 +5630,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class PdfMergeItemInput
     {
         [JsonProperty("file")]
-        public WorkflowBinaryContent File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
     }
 
     public class DtoResponseV4022MergePdfs

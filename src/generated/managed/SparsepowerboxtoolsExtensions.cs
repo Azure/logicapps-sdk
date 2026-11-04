@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
     public class SparsepowerboxtoolsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfStampImage, ApiConnectionActionConfiguration> PdfStampImage(Expression<Func<WorkflowBinaryContent>> reqPdfStampImagepDF, Expression<Func<WorkflowBinaryContent>> reqPdfStampImageimage, Expression<Func<double>> reqPdfStampImageoptionsopacity = null, Expression<Func<double>> reqPdfStampImageoptionsscale = null, Expression<Func<int>> reqPdfStampImageoptionsrotate = null, Expression<Func<int>> reqPdfStampImageoptionspositionyOffset = null, Expression<Func<string>> reqPdfStampImageoptionspositionstartOfYOffset = null, Expression<Func<int>> reqPdfStampImageoptionspositionxOffset = null)
+        public IBodyWorkflowAction<Resp200PdfStampImage, ApiConnectionActionConfiguration> PdfStampImage(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> reqPdfStampImagepDF, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> reqPdfStampImageimage, Expression<Func<double>> reqPdfStampImageoptionsopacity = null, Expression<Func<double>> reqPdfStampImageoptionsscale = null, Expression<Func<int>> reqPdfStampImageoptionsrotate = null, Expression<Func<int>> reqPdfStampImageoptionspositionyOffset = null, Expression<Func<string>> reqPdfStampImageoptionspositionstartOfYOffset = null, Expression<Func<int>> reqPdfStampImageoptionspositionxOffset = null)
         {
             var __workflow_reqPdfStampImagepDF = WorkflowExpression.Compile(reqPdfStampImagepDF, nameof(reqPdfStampImagepDF), required: true);
             var __workflow_reqPdfStampImageimage = WorkflowExpression.Compile(reqPdfStampImageimage, nameof(reqPdfStampImageimage), required: true);
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200ExcelSheetAddRows, ApiConnectionActionConfiguration> ExcelSheetAddRows(Expression<Func<string>> reqExcelSheetAddrowssheetname, Expression<Func<WorkflowBinaryContent>> reqExcelSheetAddrowsexcel, Expression<Func<JToken[]>> reqExcelSheetAddrowsdata = null)
+        public IBodyWorkflowAction<Resp200ExcelSheetAddRows, ApiConnectionActionConfiguration> ExcelSheetAddRows(Expression<Func<string>> reqExcelSheetAddrowssheetname, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> reqExcelSheetAddrowsexcel, Expression<Func<JToken[]>> reqExcelSheetAddrowsdata = null)
         {
             var __workflow_reqExcelSheetAddrowssheetname = WorkflowExpression.Compile(reqExcelSheetAddrowssheetname, nameof(reqExcelSheetAddrowssheetname), required: true);
             var __workflow_reqExcelSheetAddrowsexcel = WorkflowExpression.Compile(reqExcelSheetAddrowsexcel, nameof(reqExcelSheetAddrowsexcel), required: true);
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200ImageMergeDrawing, ApiConnectionActionConfiguration> ImageMergeDrawing(Expression<Func<WorkflowBinaryContent>> reqImageMergeDrawingbackground, Expression<Func<WorkflowBinaryContent>> reqImageMergeDrawingdrawing)
+        public IBodyWorkflowAction<Resp200ImageMergeDrawing, ApiConnectionActionConfiguration> ImageMergeDrawing(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> reqImageMergeDrawingbackground, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> reqImageMergeDrawingdrawing)
         {
             var __workflow_reqImageMergeDrawingbackground = WorkflowExpression.Compile(reqImageMergeDrawingbackground, nameof(reqImageMergeDrawingbackground), required: true);
             var __workflow_reqImageMergeDrawingdrawing = WorkflowExpression.Compile(reqImageMergeDrawingdrawing, nameof(reqImageMergeDrawingdrawing), required: true);
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfStampText, ApiConnectionActionConfiguration> PdfStampText(Expression<Func<WorkflowBinaryContent>> reqPdfStampTextpDF, Expression<Func<string>> reqPdfStampTexttext, Expression<Func<string>> reqPdfStampTextoptionsfontColor = null, Expression<Func<int>> reqPdfStampTextoptionsfontSize = null, Expression<Func<int>> reqPdfStampTextoptionsrotate = null, Expression<Func<int>> reqPdfStampTextoptionspositionyOffset = null, Expression<Func<string>> reqPdfStampTextoptionspositionstartOfYOffset = null, Expression<Func<int>> reqPdfStampTextoptionspositionxOffset = null)
+        public IBodyWorkflowAction<Resp200PdfStampText, ApiConnectionActionConfiguration> PdfStampText(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> reqPdfStampTextpDF, Expression<Func<string>> reqPdfStampTexttext, Expression<Func<string>> reqPdfStampTextoptionsfontColor = null, Expression<Func<int>> reqPdfStampTextoptionsfontSize = null, Expression<Func<int>> reqPdfStampTextoptionsrotate = null, Expression<Func<int>> reqPdfStampTextoptionspositionyOffset = null, Expression<Func<string>> reqPdfStampTextoptionspositionstartOfYOffset = null, Expression<Func<int>> reqPdfStampTextoptionspositionxOffset = null)
         {
             var __workflow_reqPdfStampTextpDF = WorkflowExpression.Compile(reqPdfStampTextpDF, nameof(reqPdfStampTextpDF), required: true);
             var __workflow_reqPdfStampTexttext = WorkflowExpression.Compile(reqPdfStampTexttext, nameof(reqPdfStampTexttext), required: true);
@@ -521,7 +521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200CsvToJson, ApiConnectionActionConfiguration> CsvToJson(Expression<Func<WorkflowBinaryContent>> reqCsvToJsoncSV, Expression<Func<bool>> reqCsvToJsonoptionshasHeaders = null, Expression<Func<string>> reqCsvToJsonoptionsdelimiter = null)
+        public IBodyWorkflowAction<Resp200CsvToJson, ApiConnectionActionConfiguration> CsvToJson(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> reqCsvToJsoncSV, Expression<Func<bool>> reqCsvToJsonoptionshasHeaders = null, Expression<Func<string>> reqCsvToJsonoptionsdelimiter = null)
         {
             var __workflow_reqCsvToJsoncSV = WorkflowExpression.Compile(reqCsvToJsoncSV, nameof(reqCsvToJsoncSV), required: true);
             var __workflow_reqCsvToJsonoptionshasHeaders = WorkflowExpression.Compile(reqCsvToJsonoptionshasHeaders, nameof(reqCsvToJsonoptionshasHeaders), required: false);
@@ -742,7 +742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200ImageStampText, ApiConnectionActionConfiguration> ImageStampText(Expression<Func<WorkflowBinaryContent>> reqImageStampTextimage = null, Expression<Func<string>> reqImageStampTexttextToStamp = null, Expression<Func<string>> reqImageStampTextoptionslocationOfTheStamp = null, Expression<Func<string>> reqImageStampTextoptionsfontcolor = null, Expression<Func<int>> reqImageStampTextoptionsfontsize = null)
+        public IBodyWorkflowAction<Resp200ImageStampText, ApiConnectionActionConfiguration> ImageStampText(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> reqImageStampTextimage = null, Expression<Func<string>> reqImageStampTexttextToStamp = null, Expression<Func<string>> reqImageStampTextoptionslocationOfTheStamp = null, Expression<Func<string>> reqImageStampTextoptionsfontcolor = null, Expression<Func<int>> reqImageStampTextoptionsfontsize = null)
         {
             var __workflow_reqImageStampTextimage = WorkflowExpression.Compile(reqImageStampTextimage, nameof(reqImageStampTextimage), required: false);
             var __workflow_reqImageStampTexttextToStamp = WorkflowExpression.Compile(reqImageStampTexttextToStamp, nameof(reqImageStampTexttextToStamp), required: false);
@@ -834,7 +834,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200ImageResize, ApiConnectionActionConfiguration> ImageResize(Expression<Func<WorkflowBinaryContent>> reqImageResizeimage = null, Expression<Func<int>> reqImageResizewidth = null, Expression<Func<int>> reqImageResizeheight = null, Expression<Func<bool>> reqImageResizeoptionsignoreTheAspectRation = null)
+        public IBodyWorkflowAction<Resp200ImageResize, ApiConnectionActionConfiguration> ImageResize(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> reqImageResizeimage = null, Expression<Func<int>> reqImageResizewidth = null, Expression<Func<int>> reqImageResizeheight = null, Expression<Func<bool>> reqImageResizeoptionsignoreTheAspectRation = null)
         {
             var __workflow_reqImageResizeimage = WorkflowExpression.Compile(reqImageResizeimage, nameof(reqImageResizeimage), required: false);
             var __workflow_reqImageResizewidth = WorkflowExpression.Compile(reqImageResizewidth, nameof(reqImageResizewidth), required: false);
@@ -899,7 +899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfSplitByPage, ApiConnectionActionConfiguration> PdfSplitByPage(Expression<Func<WorkflowBinaryContent>> reqPdfSplitByPagepDFFile = null, Expression<Func<double>> reqPdfSplitByPageoptionsnumberOfPages = null)
+        public IBodyWorkflowAction<Resp200PdfSplitByPage, ApiConnectionActionConfiguration> PdfSplitByPage(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> reqPdfSplitByPagepDFFile = null, Expression<Func<double>> reqPdfSplitByPageoptionsnumberOfPages = null)
         {
             var __workflow_reqPdfSplitByPagepDFFile = WorkflowExpression.Compile(reqPdfSplitByPagepDFFile, nameof(reqPdfSplitByPagepDFFile), required: false);
             var __workflow_reqPdfSplitByPageoptionsnumberOfPages = WorkflowExpression.Compile(reqPdfSplitByPageoptionsnumberOfPages, nameof(reqPdfSplitByPageoptionsnumberOfPages), required: false);
@@ -950,7 +950,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200ImageStampExif, ApiConnectionActionConfiguration> ImageStampExif(Expression<Func<WorkflowBinaryContent>> reqImageStampExifimage = null, Expression<Func<string[]>> reqImageStampExifoptionstags = null, Expression<Func<string>> reqImageStampExifoptionslocationOfTheStamp = null, Expression<Func<string>> reqImageStampExifoptionsfontcolor = null, Expression<Func<int>> reqImageStampExifoptionsfontsize = null, Expression<Func<bool>> reqImageStampExifoptionsprintTagName = null)
+        public IBodyWorkflowAction<Resp200ImageStampExif, ApiConnectionActionConfiguration> ImageStampExif(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> reqImageStampExifimage = null, Expression<Func<string[]>> reqImageStampExifoptionstags = null, Expression<Func<string>> reqImageStampExifoptionslocationOfTheStamp = null, Expression<Func<string>> reqImageStampExifoptionsfontcolor = null, Expression<Func<int>> reqImageStampExifoptionsfontsize = null, Expression<Func<bool>> reqImageStampExifoptionsprintTagName = null)
         {
             var __workflow_reqImageStampExifimage = WorkflowExpression.Compile(reqImageStampExifimage, nameof(reqImageStampExifimage), required: false);
             var __workflow_reqImageStampExifoptionstags = WorkflowExpression.Compile(reqImageStampExifoptionstags, nameof(reqImageStampExifoptionstags), required: false);
@@ -1059,7 +1059,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfFillForm, ApiConnectionActionConfiguration> PdfFillForm(Expression<Func<WorkflowBinaryContent>> reqPdfFillFormpDFFile = null)
+        public IBodyWorkflowAction<Resp200PdfFillForm, ApiConnectionActionConfiguration> PdfFillForm(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> reqPdfFillFormpDFFile = null)
         {
             var __workflow_reqPdfFillFormpDFFile = WorkflowExpression.Compile(reqPdfFillFormpDFFile, nameof(reqPdfFillFormpDFFile), required: false);
             return new DeferredBodyAction<Resp200PdfFillForm, ApiConnectionActionConfiguration>(() =>
@@ -1093,7 +1093,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfGetFormData, ApiConnectionActionConfiguration> PdfGetFormData(Expression<Func<WorkflowBinaryContent>> reqPdfGetFormDatapDFFile = null)
+        public IBodyWorkflowAction<Resp200PdfGetFormData, ApiConnectionActionConfiguration> PdfGetFormData(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> reqPdfGetFormDatapDFFile = null)
         {
             var __workflow_reqPdfGetFormDatapDFFile = WorkflowExpression.Compile(reqPdfGetFormDatapDFFile, nameof(reqPdfGetFormDatapDFFile), required: false);
             return new DeferredBodyAction<Resp200PdfGetFormData, ApiConnectionActionConfiguration>(() =>
@@ -1119,7 +1119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfMergeSimple, ApiConnectionActionConfiguration> PdfMergeSimple(Expression<Func<WorkflowBinaryContent[]>> reqPdfMergeSimplepDFFile = null)
+        public IBodyWorkflowAction<Resp200PdfMergeSimple, ApiConnectionActionConfiguration> PdfMergeSimple(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent[]>> reqPdfMergeSimplepDFFile = null)
         {
             var __workflow_reqPdfMergeSimplepDFFile = WorkflowExpression.Compile(reqPdfMergeSimplepDFFile, nameof(reqPdfMergeSimplepDFFile), required: false);
             return new DeferredBodyAction<Resp200PdfMergeSimple, ApiConnectionActionConfiguration>(() =>

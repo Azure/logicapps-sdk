@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayPrependResponse, ApiConnectionActionConfiguration> ArrayPrepend(Expression<Func<JToken[]>> bodyarray, Expression<Func<object>> bodyvalue, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
+        public IBodyWorkflowAction<ArrayPrependResponse, ApiConnectionActionConfiguration> ArrayPrepend(Expression<Func<JToken[]>> bodyarray, Expression<Func<object>> bodyvalue, Expression<Func<bodyvalueTypeInput2>> bodyvalueType = null)
         {
             var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
             var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
@@ -1209,6 +1209,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
     public class ArrayPrependResponse
     {
         public JToken[] Result { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodyvalueTypeInput2
+    {
+        String,
+        Boolean,
+        Integer,
+        Float,
+        Array,
+        [EnumMember(Value = "Object")]
+        ObjectEntity
     }
 
     public class ArrayAnyResponse

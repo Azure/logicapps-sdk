@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
-        public IBodyWorkflowAction<DataFeedModelEntitiesCompanyCompanyFinance, ApiConnectionActionConfiguration> GetCompanyFinace(Expression<Func<jurisdictionCodeInput>> jurisdictionCode, Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<DataFeedModelEntitiesCompanyCompanyFinance, ApiConnectionActionConfiguration> GetCompanyFinace(Expression<Func<jurisdictionCodeInput2>> jurisdictionCode, Expression<Func<string>> companyNumber)
         {
             var __workflow_jurisdictionCode = WorkflowExpression.Compile(jurisdictionCode, nameof(jurisdictionCode), required: true);
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
@@ -152,9 +152,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum jurisdictionCodeInput
     {
-        CZ,
-        SK,
-        DE
+        [EnumMember(Value = "cz")]
+        Cz,
+        [EnumMember(Value = "sk")]
+        Sk
     }
 
     public class DataFeedModelEntitiesCompanyCompanyDetail
@@ -361,6 +362,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
     public class DataFeedModelEntitiesCompanyCompanyFinanceLegalFormType
     {
         public string Text { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum jurisdictionCodeInput2
+    {
+        CZ,
+        SK,
+        DE
     }
 
     public class GetWeekOfYearResponse

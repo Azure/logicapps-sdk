@@ -2250,30 +2250,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum referralInputItemFieldPathType
     {
-        [EnumMember(Value = "/registrations/0/contract/startDateTime")]
-        Registrations0ContractStartDateTime,
-        [EnumMember(Value = "/registrations/0/contract/endDateTime")]
-        Registrations0ContractEndDateTime,
-        [EnumMember(Value = "/registrations/0/contract/signDateTime")]
-        Registrations0ContractSignDateTime,
-        [EnumMember(Value = "/registrations/0/contract/term")]
-        Registrations0ContractTerm,
-        [EnumMember(Value = "/registrations/0/contract/value")]
-        Registrations0ContractValue,
-        [EnumMember(Value = "/registrations/0/solutionDetails/0/value")]
-        Registrations0SolutionDetails0Value,
-        [EnumMember(Value = "/registrations/0/solutionDetails/0/currency")]
-        Registrations0SolutionDetails0Currency,
-        [EnumMember(Value = "/registrations/0/solutionDetails/0/isDeployedOnAzure")]
-        Registrations0SolutionDetails0IsDeployedOnAzure,
-        [EnumMember(Value = "/registrations/0/solutionDetails/0/primaryDeploymentOn")]
-        Registrations0SolutionDetails0PrimaryDeploymentOn,
-        [EnumMember(Value = "/registrations/0/solutionDetails/0/pricingModel")]
-        Registrations0SolutionDetails0PricingModel,
-        [EnumMember(Value = "/registrations/0/solutionDetails/0/marketplaceTransactionDetails/isMarketplaceTransacted")]
-        Registrations0SolutionDetails0MarketplaceTransactionDetailsIsMarketplaceTransacted,
-        [EnumMember(Value = "/registrations/0/solutionDetails/0/marketplaceTransactionDetails/marketplaceTransactionDateTime")]
-        Registrations0SolutionDetails0MarketplaceTransactionDetailsMarketplaceTransactionDateTime
+        [EnumMember(Value = "/campaignId")]
+        CampaignId,
+        [EnumMember(Value = "/consent/consentToShareReferralWithMicrosoftSellers")]
+        ConsentConsentToShareReferralWithMicrosoftSellers,
+        [EnumMember(Value = "/customerProfile/team")]
+        CustomerProfileTeam,
+        [EnumMember(Value = "/customerProfile/team/-")]
+        CustomerProfileTeam2,
+        [EnumMember(Value = "/details/closingDateTime")]
+        DetailsClosingDateTime,
+        [EnumMember(Value = "/details/currency")]
+        DetailsCurrency,
+        [EnumMember(Value = "/details/dealValue")]
+        DetailsDealValue,
+        [EnumMember(Value = "/details/notes")]
+        DetailsNotes,
+        [EnumMember(Value = "/details/requirements/solutions")]
+        DetailsRequirementsSolutions,
+        [EnumMember(Value = "/details/requirements/solutions/-")]
+        DetailsRequirementsSolutions2,
+        [EnumMember(Value = "/details/requirements/additionalRequirements")]
+        DetailsRequirementsAdditionalRequirements,
+        [EnumMember(Value = "/details/requirements/additionalRequirements/attributes")]
+        DetailsRequirementsAdditionalRequirementsAttributes,
+        [EnumMember(Value = "/details/requirements/additionalRequirements/attributes/-")]
+        DetailsRequirementsAdditionalRequirementsAttributes2,
+        [EnumMember(Value = "/externalReferenceId")]
+        ExternalReferenceId,
+        [EnumMember(Value = "/referralProgram")]
+        ReferralProgram,
+        [EnumMember(Value = "/salesStage")]
+        SalesStage,
+        [EnumMember(Value = "/status")]
+        Status,
+        [EnumMember(Value = "/substatus")]
+        Substatus,
+        [EnumMember(Value = "/statusReason")]
+        StatusReason,
+        [EnumMember(Value = "/team")]
+        Team,
+        [EnumMember(Value = "/team/-")]
+        Team2
     }
 
     public class referralInputItem2
@@ -2401,10 +2419,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public referralInputItemUpdateOperationType UpdateOperation { get; set; }
 
         [JsonProperty("path")]
-        public referralInputItemFieldPathType FieldPath { get; set; }
+        public referralInputItemFieldPathType2 FieldPath { get; set; }
 
         [JsonProperty("value")]
         public JToken Value { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum referralInputItemFieldPathType2
+    {
+        [EnumMember(Value = "/registrations/0/contract/startDateTime")]
+        Registrations0ContractStartDateTime,
+        [EnumMember(Value = "/registrations/0/contract/endDateTime")]
+        Registrations0ContractEndDateTime,
+        [EnumMember(Value = "/registrations/0/contract/signDateTime")]
+        Registrations0ContractSignDateTime,
+        [EnumMember(Value = "/registrations/0/contract/term")]
+        Registrations0ContractTerm,
+        [EnumMember(Value = "/registrations/0/contract/value")]
+        Registrations0ContractValue,
+        [EnumMember(Value = "/registrations/0/solutionDetails/0/value")]
+        Registrations0SolutionDetails0Value,
+        [EnumMember(Value = "/registrations/0/solutionDetails/0/currency")]
+        Registrations0SolutionDetails0Currency,
+        [EnumMember(Value = "/registrations/0/solutionDetails/0/isDeployedOnAzure")]
+        Registrations0SolutionDetails0IsDeployedOnAzure,
+        [EnumMember(Value = "/registrations/0/solutionDetails/0/primaryDeploymentOn")]
+        Registrations0SolutionDetails0PrimaryDeploymentOn,
+        [EnumMember(Value = "/registrations/0/solutionDetails/0/pricingModel")]
+        Registrations0SolutionDetails0PricingModel,
+        [EnumMember(Value = "/registrations/0/solutionDetails/0/marketplaceTransactionDetails/isMarketplaceTransacted")]
+        Registrations0SolutionDetails0MarketplaceTransactionDetailsIsMarketplaceTransacted,
+        [EnumMember(Value = "/registrations/0/solutionDetails/0/marketplaceTransactionDetails/marketplaceTransactionDateTime")]
+        Registrations0SolutionDetails0MarketplaceTransactionDetailsMarketplaceTransactionDateTime
     }
 }
 

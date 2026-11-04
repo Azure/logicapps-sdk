@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
 
     public class NetvolutionTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnNewEventResponse, ApiConnectionTriggerConfiguration> OnNewEvent(Expression<Func<eventNameInput>> eventName, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewEventResponse, ApiConnectionTriggerConfiguration> OnNewEvent(Expression<Func<eventNameInput2>> eventName, FlowRecurrence recurrence = null)
         {
             var __workflow_eventName = WorkflowExpression.Compile(eventName, nameof(eventName), required: true);
             return new DeferredBodyTrigger<OnNewEventResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -173,10 +173,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
     {
         [EnumMember(Value = "add_to_cart")]
         AddToCart,
+        [EnumMember(Value = "view_item")]
+        ViewItem,
         [EnumMember(Value = "view_page")]
         ViewPage,
-        [EnumMember(Value = "vies_item")]
-        ViesItem,
         [EnumMember(Value = "begin_checkout")]
         BeginCheckout
     }
@@ -266,6 +266,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
         public string ItemParentId { get; set; }
         public string ItemName { get; set; }
         public string Category { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum eventNameInput2
+    {
+        [EnumMember(Value = "add_to_cart")]
+        AddToCart,
+        [EnumMember(Value = "view_page")]
+        ViewPage,
+        [EnumMember(Value = "vies_item")]
+        ViesItem,
+        [EnumMember(Value = "begin_checkout")]
+        BeginCheckout
     }
 
     public class OnNewUserInSegmentResponse

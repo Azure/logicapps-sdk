@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
     public class DocumentaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<DocumentPolicyResult, ApiConnectionActionConfiguration> ApplyRules(Expression<Func<WorkflowBinaryContent>> bodyinputFile = null, Expression<Func<PolicyRule[]>> bodyrules = null, Expression<Func<string>> bodyrecognitionMode = null)
+        public IBodyWorkflowAction<DocumentPolicyResult, ApiConnectionActionConfiguration> ApplyRules(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> bodyinputFile = null, Expression<Func<PolicyRule[]>> bodyrules = null, Expression<Func<string>> bodyrecognitionMode = null)
         {
             var __workflow_bodyinputFile = WorkflowExpression.Compile(bodyinputFile, nameof(bodyinputFile), required: false);
             var __workflow_bodyrules = WorkflowExpression.Compile(bodyrules, nameof(bodyrules), required: false);
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<DocumentQuestionAnswersResult, ApiConnectionActionConfiguration> AnswerQuestions(Expression<Func<WorkflowBinaryContent>> bodyinputFile = null, Expression<Func<DocumentQuestionBoolean[]>> bodyquestionsYesNo = null, Expression<Func<DocumentQuestionMultipleChoice[]>> bodyquestionsMultipleChoice = null, Expression<Func<DocumentQuestionFreeResponse[]>> bodyquestionsFreeResponse = null, Expression<Func<string>> bodyrecognitionMode = null)
+        public IBodyWorkflowAction<DocumentQuestionAnswersResult, ApiConnectionActionConfiguration> AnswerQuestions(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> bodyinputFile = null, Expression<Func<DocumentQuestionBoolean[]>> bodyquestionsYesNo = null, Expression<Func<DocumentQuestionMultipleChoice[]>> bodyquestionsMultipleChoice = null, Expression<Func<DocumentQuestionFreeResponse[]>> bodyquestionsFreeResponse = null, Expression<Func<string>> bodyrecognitionMode = null)
         {
             var __workflow_bodyinputFile = WorkflowExpression.Compile(bodyinputFile, nameof(bodyinputFile), required: false);
             var __workflow_bodyquestionsYesNo = WorkflowExpression.Compile(bodyquestionsYesNo, nameof(bodyquestionsYesNo), required: false);
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<ExtractFieldsAdvancedResponse, ApiConnectionActionConfiguration> ExtractFieldsAdvanced(Expression<Func<string>> recognitionMode = null, Expression<Func<WorkflowBinaryContent>> bodyinputFile = null, Expression<Func<FieldToExtract[]>> bodyfieldsToExtract = null, Expression<Func<int>> bodymaximumPagesProcessed = null, Expression<Func<string>> bodypreprocessing = null, Expression<Func<string>> bodyresultCrossCheck = null, Expression<Func<double>> bodyrotateImageDegrees = null)
+        public IBodyWorkflowAction<ExtractFieldsAdvancedResponse, ApiConnectionActionConfiguration> ExtractFieldsAdvanced(Expression<Func<string>> recognitionMode = null, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> bodyinputFile = null, Expression<Func<FieldToExtract[]>> bodyfieldsToExtract = null, Expression<Func<int>> bodymaximumPagesProcessed = null, Expression<Func<string>> bodypreprocessing = null, Expression<Func<string>> bodyresultCrossCheck = null, Expression<Func<double>> bodyrotateImageDegrees = null)
         {
             var __workflow_recognitionMode = WorkflowExpression.Compile(recognitionMode, nameof(recognitionMode), required: false);
             var __workflow_bodyinputFile = WorkflowExpression.Compile(bodyinputFile, nameof(bodyinputFile), required: false);
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<DocumentAdvancedClassificationResult, ApiConnectionActionConfiguration> ExtractClassificationAdvanced(Expression<Func<string>> recognitionMode = null, Expression<Func<WorkflowBinaryContent>> bodyinputFile = null, Expression<Func<DocumentCategories[]>> bodycategories = null, Expression<Func<string>> bodypreprocessing = null, Expression<Func<string>> bodyresultCrossCheck = null, Expression<Func<int>> bodymaximumPagesProcessed = null, Expression<Func<double>> bodyrotateImageDegrees = null)
+        public IBodyWorkflowAction<DocumentAdvancedClassificationResult, ApiConnectionActionConfiguration> ExtractClassificationAdvanced(Expression<Func<string>> recognitionMode = null, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> bodyinputFile = null, Expression<Func<DocumentCategories[]>> bodycategories = null, Expression<Func<string>> bodypreprocessing = null, Expression<Func<string>> bodyresultCrossCheck = null, Expression<Func<int>> bodymaximumPagesProcessed = null, Expression<Func<double>> bodyrotateImageDegrees = null)
         {
             var __workflow_recognitionMode = WorkflowExpression.Compile(recognitionMode, nameof(recognitionMode), required: false);
             var __workflow_bodyinputFile = WorkflowExpression.Compile(bodyinputFile, nameof(bodyinputFile), required: false);
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<ExtractDocumentBatchJobResult, ApiConnectionActionConfiguration> ExtractFieldsFromDocumentAdvancedBatchJob(Expression<Func<string>> recognitionMode = null, Expression<Func<WorkflowBinaryContent>> bodyinputFile = null, Expression<Func<FieldToExtract[]>> bodyfieldsToExtract = null, Expression<Func<int>> bodymaximumPagesProcessed = null, Expression<Func<string>> bodypreprocessing = null, Expression<Func<string>> bodyresultCrossCheck = null, Expression<Func<double>> bodyrotateImageDegrees = null)
+        public IBodyWorkflowAction<ExtractDocumentBatchJobResult, ApiConnectionActionConfiguration> ExtractFieldsFromDocumentAdvancedBatchJob(Expression<Func<string>> recognitionMode = null, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> bodyinputFile = null, Expression<Func<FieldToExtract[]>> bodyfieldsToExtract = null, Expression<Func<int>> bodymaximumPagesProcessed = null, Expression<Func<string>> bodypreprocessing = null, Expression<Func<string>> bodyresultCrossCheck = null, Expression<Func<double>> bodyrotateImageDegrees = null)
         {
             var __workflow_recognitionMode = WorkflowExpression.Compile(recognitionMode, nameof(recognitionMode), required: false);
             var __workflow_bodyinputFile = WorkflowExpression.Compile(bodyinputFile, nameof(bodyinputFile), required: false);

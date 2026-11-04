@@ -967,7 +967,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookSettings, ApiConnectionTriggerConfiguration> CreateActionLogWebhook(Expression<Func<bodywebhookSettingsworkItemClassTypeInput>> bodywebhookSettingsworkItemClassType = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSettings, ApiConnectionTriggerConfiguration> CreateActionLogWebhook(Expression<Func<bodywebhookSettingsworkItemClassTypeInput2>> bodywebhookSettingsworkItemClassType = null, FlowRecurrence recurrence = null)
         {
             var __workflow_bodywebhookSettingsworkItemClassType = WorkflowExpression.Compile(bodywebhookSettingsworkItemClassType, nameof(bodywebhookSettingsworkItemClassType), required: false);
             return new DeferredBodyTrigger<WebhookSettings, ApiConnectionTriggerConfiguration>(() =>
@@ -1114,6 +1114,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodywebhookSettingsworkItemClassTypeInput
+    {
+        Incident,
+        [EnumMember(Value = "Service Request")]
+        ServiceRequest,
+        [EnumMember(Value = "Change Request")]
+        ChangeRequest,
+        Problem,
+        [EnumMember(Value = "Release Record")]
+        ReleaseRecord
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodywebhookSettingsworkItemClassTypeInput2
     {
         [EnumMember(Value = "Analyst Comment")]
         AnalystComment,

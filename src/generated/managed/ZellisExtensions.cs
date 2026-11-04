@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zellis")]
-        public IBodyWorkflowAction<StaticResponseWriteSchema, ApiConnectionActionConfiguration> UpdateObject(Expression<Func<entityInput>> entity, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<StaticResponseWriteSchema, ApiConnectionActionConfiguration> UpdateObject(Expression<Func<entityInput2>> entity, Expression<Func<object>> body = null)
         {
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -242,6 +242,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum entityInput
+    {
+        AbsenceHeaders,
+        CostCentres,
+        Grades,
+        Jobs,
+        Locations,
+        OperatorBackgroundMessage,
+        Posts,
+        StructureUnit,
+        WorkerAttainments,
+        WorkerDrivingLicences,
+        WorkPatterns,
+        Workers,
+        WorkerPRSIDetails,
+        WorkerPensionSchemes,
+        WorkerPosts,
+        WorkerRelationships,
+        WorkerUSCDetails
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum entityInput2
     {
         AbsenceDailyDetails,
         AbsenceHeaders,

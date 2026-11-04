@@ -543,7 +543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacongressip")]
-        public IBodyWorkflowAction<CommunicationRecentCategoryResponse, ApiConnectionActionConfiguration> CommunicationRecentCategory(Expression<Func<string>> congress, Expression<Func<categoryInput>> category)
+        public IBodyWorkflowAction<CommunicationRecentCategoryResponse, ApiConnectionActionConfiguration> CommunicationRecentCategory(Expression<Func<string>> congress, Expression<Func<categoryInput2>> category)
         {
             var __workflow_congress = WorkflowExpression.Compile(congress, nameof(congress), required: true);
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: true);
@@ -1759,12 +1759,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum categoryInput
     {
-        [EnumMember(Value = "ec")]
-        Ec,
-        [EnumMember(Value = "pm")]
-        Pm,
-        [EnumMember(Value = "pom")]
-        Pom
+        [EnumMember(Value = "travel")]
+        Travel,
+        [EnumMember(Value = "personnel")]
+        Personnel,
+        [EnumMember(Value = "rent-utilities")]
+        RentUtilities,
+        [EnumMember(Value = "other-services")]
+        OtherServices,
+        [EnumMember(Value = "supplies")]
+        Supplies,
+        [EnumMember(Value = "franked-mail")]
+        FrankedMail,
+        [EnumMember(Value = "printing")]
+        Printing,
+        [EnumMember(Value = "equipment")]
+        Equipment,
+        [EnumMember(Value = "total")]
+        Total
     }
 
     public class HouseOfficeQuarterCategoryResponse
@@ -4536,6 +4548,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacongressip
 
         [JsonProperty("committee_name")]
         public string CommitteeName { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum categoryInput2
+    {
+        [EnumMember(Value = "ec")]
+        Ec,
+        [EnumMember(Value = "pm")]
+        Pm,
+        [EnumMember(Value = "pom")]
+        Pom
     }
 
     public class CommunicationDateResponse

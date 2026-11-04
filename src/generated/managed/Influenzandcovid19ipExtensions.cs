@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19totalsforallcontinentsResponseItem[], ApiConnectionActionConfiguration> GetCOVID19totalsforallcontinents(Expression<Func<bool>> yesterday = null, Expression<Func<bool>> twoDaysAgo = null, Expression<Func<sortInput>> sort = null, Expression<Func<bool>> allowNull = null)
+        public IBodyWorkflowAction<GetCOVID19totalsforallcontinentsResponseItem[], ApiConnectionActionConfiguration> GetCOVID19totalsforallcontinents(Expression<Func<bool>> yesterday = null, Expression<Func<bool>> twoDaysAgo = null, Expression<Func<sortInput2>> sort = null, Expression<Func<bool>> allowNull = null)
         {
             var __workflow_yesterday = WorkflowExpression.Compile(yesterday, nameof(yesterday), required: false);
             var __workflow_twoDaysAgo = WorkflowExpression.Compile(twoDaysAgo, nameof(twoDaysAgo), required: false);
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19governmentreporteddataforaspecificcountryResponseItem[], ApiConnectionActionConfiguration> GetCOVID19governmentreporteddataforaspecificcountry(Expression<Func<countryInput>> country, Expression<Func<string>> allowNull = null)
+        public IBodyWorkflowAction<GetCOVID19governmentreporteddataforaspecificcountryResponseItem[], ApiConnectionActionConfiguration> GetCOVID19governmentreporteddataforaspecificcountry(Expression<Func<countryInput2>> country, Expression<Func<string>> allowNull = null)
         {
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
             var __workflow_allowNull = WorkflowExpression.Compile(allowNull, nameof(allowNull), required: false);
@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19vaccinedoseforasinglecountryResponse, ApiConnectionActionConfiguration> GetCOVID19vaccinedoseforasinglecountry(Expression<Func<countryInput>> country, Expression<Func<string>> lastdays = null, Expression<Func<string>> fullData = null)
+        public IBodyWorkflowAction<GetCOVID19vaccinedoseforasinglecountryResponse, ApiConnectionActionConfiguration> GetCOVID19vaccinedoseforasinglecountry(Expression<Func<countryInput3>> country, Expression<Func<string>> lastdays = null, Expression<Func<string>> fullData = null)
         {
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
             var __workflow_lastdays = WorkflowExpression.Compile(lastdays, nameof(lastdays), required: false);
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19vaccinedoseforastateResponse, ApiConnectionActionConfiguration> GetCOVID19vaccinedoseforastate(Expression<Func<stateInput>> state, Expression<Func<string>> lastdays = null, Expression<Func<string>> fullData = null)
+        public IBodyWorkflowAction<GetCOVID19vaccinedoseforastateResponse, ApiConnectionActionConfiguration> GetCOVID19vaccinedoseforastate(Expression<Func<stateInput2>> state, Expression<Func<string>> lastdays = null, Expression<Func<string>> fullData = null)
         {
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
             var __workflow_lastdays = WorkflowExpression.Compile(lastdays, nameof(lastdays), required: false);
@@ -561,8 +561,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         TodayCases,
         [EnumMember(Value = "deaths")]
         Deaths,
-        [EnumMember(Value = "recovered")]
-        Recovered,
         [EnumMember(Value = "active")]
         Active
     }
@@ -800,6 +798,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
 
         [JsonProperty("long")]
         public double Long { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum sortInput2
+    {
+        [EnumMember(Value = "cases")]
+        Cases,
+        [EnumMember(Value = "todayCases")]
+        TodayCases,
+        [EnumMember(Value = "deaths")]
+        Deaths,
+        [EnumMember(Value = "recovered")]
+        Recovered,
+        [EnumMember(Value = "active")]
+        Active
     }
 
     public class GetCOVID19totalsforaspecificcontinentResponse
@@ -1077,265 +1090,284 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum countryInput
     {
-        Afghanistan,
-        Albania,
-        Algeria,
-        Andorra,
-        Angola,
-        Anguilla,
-        [EnumMember(Value = "Antigua and Barbuda")]
-        AntiguaAndBarbuda,
-        Argentina,
-        Armenia,
-        Aruba,
         Australia,
-        Austria,
-        Azerbaijan,
-        Bahamas,
-        Bahrain,
-        Bangladesh,
-        Barbados,
-        Belarus,
-        Belgium,
-        Belize,
-        Benin,
-        Bermuda,
-        Bhutan,
-        Bolivia,
-        [EnumMember(Value = "Caribbean Netherlands")]
-        CaribbeanNetherlands,
-        Bosnia,
-        Botswana,
-        Brazil,
-        [EnumMember(Value = "British Virgin Islands")]
-        BritishVirginIslands,
-        Brunei,
-        Bulgaria,
-        [EnumMember(Value = "Burkina Faso")]
-        BurkinaFaso,
-        Burundi,
-        Cambodia,
-        Cameroon,
-        Canada,
-        [EnumMember(Value = "Cabo Verde")]
-        CaboVerde,
-        [EnumMember(Value = "Cayman Islands")]
-        CaymanIslands,
-        [EnumMember(Value = "Central African Republic")]
-        CentralAfricanRepublic,
-        Chad,
-        Chile,
-        China,
-        Colombia,
-        Comoros,
-        Congo,
         [EnumMember(Value = "Cook Islands")]
         CookIslands,
-        [EnumMember(Value = "Costa Rica")]
-        CostaRica,
-        [EnumMember(Value = "Côte d'Ivoire")]
-        CôteDIvoire,
-        Croatia,
-        Cuba,
-        Curaçao,
-        Cyprus,
-        Czechia,
-        DRC,
-        Denmark,
-        Djibouti,
-        Dominica,
-        [EnumMember(Value = "Dominican Republic")]
-        DominicanRepublic,
-        Ecuador,
-        Egypt,
-        [EnumMember(Value = "El Salvador")]
-        ElSalvador,
-        [EnumMember(Value = "Equatorial Guinea")]
-        EquatorialGuinea,
-        Estonia,
-        Swaziland,
-        Ethiopia,
-        [EnumMember(Value = "Faroe Islands")]
-        FaroeIslands,
-        [EnumMember(Value = "Falkland Islands (Malvinas)")]
-        FalklandIslandsMalvinas,
         Fiji,
-        Finland,
-        France,
         [EnumMember(Value = "French Polynesia")]
         FrenchPolynesia,
-        Gabon,
-        Gambia,
-        Georgia,
-        Germany,
-        Ghana,
-        Gibraltar,
-        Greece,
-        Greenland,
-        Grenada,
-        Guatemala,
-        Guernsey,
-        Guinea,
-        [EnumMember(Value = "Guinea-Bissau")]
-        GuineaBissau,
-        Guyana,
-        Haiti,
-        Honduras,
-        [EnumMember(Value = "Hong Kong")]
-        HongKong,
-        Hungary,
-        Iceland,
-        India,
-        Indonesia,
-        Iran,
-        Iraq,
-        Ireland,
-        [EnumMember(Value = "Isle of Man")]
-        IsleOfMan,
-        Israel,
-        Italy,
-        Jamaica,
-        Japan,
-        [EnumMember(Value = "Channel Islands")]
-        ChannelIslands,
-        Jordan,
-        Kazakhstan,
-        Kenya,
         Kiribati,
-        Kuwait,
-        Kyrgyzstan,
-        [EnumMember(Value = "Lao People's Democratic Republic")]
-        LaoPeopleSDemocraticRepublic,
-        Latvia,
-        Lebanon,
-        Lesotho,
-        Liberia,
-        [EnumMember(Value = "Libyan Arab Jamahiriya")]
-        LibyanArabJamahiriya,
-        Liechtenstein,
-        Lithuania,
-        Luxembourg,
-        Macao,
-        Madagascar,
-        Malawi,
-        Malaysia,
-        Maldives,
-        Mali,
-        Malta,
-        Mauritania,
-        Mauritius,
-        Mexico,
-        Moldova,
-        Monaco,
-        Mongolia,
-        Montenegro,
-        Montserrat,
-        Morocco,
-        Mozambique,
-        Myanmar,
-        Namibia,
+        [EnumMember(Value = "Marshall Islands")]
+        MarshallIslands,
+        Micronesia,
         Nauru,
-        Nepal,
-        Netherlands,
         [EnumMember(Value = "New Caledonia")]
         NewCaledonia,
         [EnumMember(Value = "New Zealand")]
         NewZealand,
-        Nicaragua,
-        Niger,
-        Nigeria,
         Niue,
+        Palau,
+        [EnumMember(Value = "Papua New Guinea")]
+        PapuaNewGuinea,
+        Samoa,
+        [EnumMember(Value = "Solomon Islands")]
+        SolomonIslands,
+        Tonga,
+        Tuvalu,
+        Vanuatu,
+        [EnumMember(Value = "Wallis and Futuna")]
+        WallisAndFutuna,
+        Argentina,
+        Bolivia,
+        Brazil,
+        Chile,
+        Colombia,
+        Ecuador,
+        [EnumMember(Value = "Falkland Islands (Malvinas)")]
+        FalklandIslandsMalvinas,
+        [EnumMember(Value = "French Guiana")]
+        FrenchGuiana,
+        Guyana,
+        Paraguay,
+        Peru,
+        Suriname,
+        Uruguay,
+        Venezuela,
+        Albania,
+        Andorra,
+        Austria,
+        Belarus,
+        Belgium,
+        Bosnia,
+        Bulgaria,
+        [EnumMember(Value = "Channel Islands")]
+        ChannelIslands,
+        Croatia,
+        Czechia,
+        Denmark,
+        Estonia,
+        [EnumMember(Value = "Faroe Islands")]
+        FaroeIslands,
+        Finland,
+        France,
+        Germany,
+        Gibraltar,
+        Greece,
+        [EnumMember(Value = "Holy See (Vatican City State)")]
+        HolySeeVaticanCityState,
+        Hungary,
+        Iceland,
+        Ireland,
+        [EnumMember(Value = "Isle of Man")]
+        IsleOfMan,
+        Italy,
+        Latvia,
+        Liechtenstein,
+        Lithuania,
+        Luxembourg,
         Macedonia,
+        Malta,
+        Moldova,
+        Monaco,
+        Montenegro,
+        Netherlands,
         Norway,
+        Poland,
+        Portugal,
+        Romania,
+        Russia,
+        [EnumMember(Value = "San Marino")]
+        SanMarino,
+        Serbia,
+        Slovakia,
+        Slovenia,
+        Spain,
+        Sweden,
+        Switzerland,
+        UK,
+        Ukraine,
+        Afghanistan,
+        Armenia,
+        Azerbaijan,
+        Bahrain,
+        Bangladesh,
+        Bhutan,
+        Brunei,
+        Cambodia,
+        China,
+        Cyprus,
+        Georgia,
+        [EnumMember(Value = "Hong Kong")]
+        HongKong,
+        India,
+        Indonesia,
+        Iran,
+        Iraq,
+        Israel,
+        Japan,
+        Jordan,
+        Kazakhstan,
+        Kuwait,
+        Kyrgyzstan,
+        [EnumMember(Value = "Lao People's Democratic Republic")]
+        LaoPeopleSDemocraticRepublic,
+        Lebanon,
+        Macao,
+        Malaysia,
+        Maldives,
+        Mongolia,
+        Myanmar,
+        [EnumMember(Value = "N. Korea")]
+        NKorea,
+        Nepal,
         Oman,
         Pakistan,
         Palestine,
-        Panama,
-        [EnumMember(Value = "Papua New Guinea")]
-        PapuaNewGuinea,
-        Paraguay,
-        Peru,
         Philippines,
-        Pitcairn,
-        Poland,
-        Portugal,
         Qatar,
-        Romania,
-        Russia,
-        Rwanda,
-        [EnumMember(Value = "Saint Helena")]
-        SaintHelena,
-        [EnumMember(Value = "Saint Kitts and Nevis")]
-        SaintKittsAndNevis,
-        [EnumMember(Value = "Saint Lucia")]
-        SaintLucia,
-        [EnumMember(Value = "Saint Vincent and the Grenadines")]
-        SaintVincentAndTheGrenadines,
-        Samoa,
-        [EnumMember(Value = "San Marino")]
-        SanMarino,
-        [EnumMember(Value = "Sao Tome and Principe")]
-        SaoTomeAndPrincipe,
-        [EnumMember(Value = "Saudi Arabia")]
-        SaudiArabia,
-        Senegal,
-        Serbia,
-        Seychelles,
-        [EnumMember(Value = "Sierra Leone")]
-        SierraLeone,
-        Singapore,
-        [EnumMember(Value = "Sint Maarten")]
-        SintMaarten,
-        Slovakia,
-        Slovenia,
-        [EnumMember(Value = "Solomon Islands")]
-        SolomonIslands,
-        Somalia,
-        [EnumMember(Value = "South Africa")]
-        SouthAfrica,
         [EnumMember(Value = "S. Korea")]
         SKorea,
-        [EnumMember(Value = "South Sudan")]
-        SouthSudan,
-        Spain,
+        [EnumMember(Value = "Saudi Arabia")]
+        SaudiArabia,
+        Singapore,
         [EnumMember(Value = "Sri Lanka")]
         SriLanka,
-        Sudan,
-        Suriname,
-        Sweden,
-        Switzerland,
         [EnumMember(Value = "Syrian Arab Republic")]
         SyrianArabRepublic,
         Taiwan,
         Tajikistan,
-        Tanzania,
         Thailand,
         [EnumMember(Value = "Timor-Leste")]
         TimorLeste,
-        Togo,
-        Tokelau,
-        Tonga,
+        Türkiye,
+        UAE,
+        Uzbekistan,
+        Vietnam,
+        Yemen,
+        Anguilla,
+        [EnumMember(Value = "Antigua and Barbuda")]
+        AntiguaAndBarbuda,
+        Aruba,
+        Bahamas,
+        Barbados,
+        Belize,
+        Bermuda,
+        [EnumMember(Value = "British Virgin Islands")]
+        BritishVirginIslands,
+        Canada,
+        [EnumMember(Value = "Caribbean Netherlands")]
+        CaribbeanNetherlands,
+        [EnumMember(Value = "Cayman Islands")]
+        CaymanIslands,
+        [EnumMember(Value = "Costa Rica")]
+        CostaRica,
+        Cuba,
+        Curaçao,
+        Dominica,
+        [EnumMember(Value = "Dominican Republic")]
+        DominicanRepublic,
+        [EnumMember(Value = "El Salvador")]
+        ElSalvador,
+        Greenland,
+        Grenada,
+        Guadeloupe,
+        Guatemala,
+        Haiti,
+        Honduras,
+        Jamaica,
+        Martinique,
+        Mexico,
+        Montserrat,
+        Nicaragua,
+        Panama,
+        [EnumMember(Value = "Saint Kitts and Nevis")]
+        SaintKittsAndNevis,
+        [EnumMember(Value = "Saint Lucia")]
+        SaintLucia,
+        [EnumMember(Value = "Saint Martin")]
+        SaintMartin,
+        [EnumMember(Value = "Saint Pierre Miquelon")]
+        SaintPierreMiquelon,
+        [EnumMember(Value = "Saint Vincent and the Grenadines")]
+        SaintVincentAndTheGrenadines,
+        [EnumMember(Value = "Sint Maarten")]
+        SintMaarten,
+        [EnumMember(Value = "St. Barth")]
+        StBarth,
         [EnumMember(Value = "Trinidad and Tobago")]
         TrinidadAndTobago,
-        Tunisia,
-        Türkiye,
-        Turkmenistan,
         [EnumMember(Value = "Turks and Caicos Islands")]
         TurksAndCaicosIslands,
-        Tuvalu,
-        Uganda,
-        Ukraine,
-        UAE,
-        UK,
         USA,
-        Uruguay,
-        Uzbekistan,
-        Vanuatu,
-        Venezuela,
-        Vietnam,
-        [EnumMember(Value = "Wallis and Futuna")]
-        WallisAndFutuna,
-        Yemen,
+        Algeria,
+        Angola,
+        Benin,
+        Botswana,
+        [EnumMember(Value = "Burkina Faso")]
+        BurkinaFaso,
+        Burundi,
+        [EnumMember(Value = "Cabo Verde")]
+        CaboVerde,
+        Cameroon,
+        [EnumMember(Value = "Central African Republic")]
+        CentralAfricanRepublic,
+        Chad,
+        Comoros,
+        Congo,
+        [EnumMember(Value = "Côte d'Ivoire")]
+        CôteDIvoire,
+        DRC,
+        Djibouti,
+        Egypt,
+        [EnumMember(Value = "Equatorial Guinea")]
+        EquatorialGuinea,
+        Eritrea,
+        Ethiopia,
+        Gabon,
+        Gambia,
+        Ghana,
+        Guinea,
+        [EnumMember(Value = "Guinea-Bissau")]
+        GuineaBissau,
+        Kenya,
+        Lesotho,
+        Liberia,
+        [EnumMember(Value = "Libyan Arab Jamahiriya")]
+        LibyanArabJamahiriya,
+        Madagascar,
+        Malawi,
+        Mali,
+        Mauritania,
+        Mauritius,
+        Mayotte,
+        Morocco,
+        Mozambique,
+        Namibia,
+        Niger,
+        Nigeria,
+        Rwanda,
+        Réunion,
+        [EnumMember(Value = "Saint Helena")]
+        SaintHelena,
+        [EnumMember(Value = "Sao Tome and Principe")]
+        SaoTomeAndPrincipe,
+        Senegal,
+        Seychelles,
+        [EnumMember(Value = "Sierra Leone")]
+        SierraLeone,
+        Somalia,
+        [EnumMember(Value = "South Africa")]
+        SouthAfrica,
+        [EnumMember(Value = "South Sudan")]
+        SouthSudan,
+        Sudan,
+        Swaziland,
+        Tanzania,
+        Togo,
+        Tunisia,
+        Uganda,
+        [EnumMember(Value = "Western Sahara")]
+        WesternSahara,
         Zambia,
         Zimbabwe
     }
@@ -3400,94 +3432,121 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum stateInput
     {
+        [EnumMember(Value = "alabama")]
         Alabama,
+        [EnumMember(Value = "alaska")]
         Alaska,
-        [EnumMember(Value = "American Samoa")]
+        [EnumMember(Value = "american samoa")]
         AmericanSamoa,
+        [EnumMember(Value = "arizona")]
         Arizona,
+        [EnumMember(Value = "arkansas")]
         Arkansas,
-        [EnumMember(Value = "Bureau of Prisons")]
-        BureauOfPrisons,
+        [EnumMember(Value = "california")]
         California,
+        [EnumMember(Value = "colorado")]
         Colorado,
+        [EnumMember(Value = "connecticut")]
         Connecticut,
+        [EnumMember(Value = "delaware")]
         Delaware,
-        [EnumMember(Value = "Dept of Defense")]
-        DeptOfDefense,
-        [EnumMember(Value = "District of Columbia")]
+        [EnumMember(Value = "diamond princess")]
+        DiamondPrincess,
+        [EnumMember(Value = "district of columbia")]
         DistrictOfColumbia,
-        [EnumMember(Value = "Federated States of Micronesia")]
-        FederatedStatesOfMicronesia,
+        [EnumMember(Value = "florida")]
         Florida,
+        [EnumMember(Value = "georgia")]
         Georgia,
+        [EnumMember(Value = "grand princess")]
+        GrandPrincess,
+        [EnumMember(Value = "guam")]
         Guam,
+        [EnumMember(Value = "hawaii")]
         Hawaii,
+        [EnumMember(Value = "idaho")]
         Idaho,
+        [EnumMember(Value = "illinois")]
         Illinois,
-        [EnumMember(Value = "Indian Health Svc")]
-        IndianHealthSvc,
+        [EnumMember(Value = "indiana")]
         Indiana,
+        [EnumMember(Value = "iowa")]
         Iowa,
+        [EnumMember(Value = "kansas")]
         Kansas,
+        [EnumMember(Value = "kentucky")]
         Kentucky,
-        [EnumMember(Value = "Long Term Care")]
-        LongTermCare,
+        [EnumMember(Value = "louisiana")]
         Louisiana,
+        [EnumMember(Value = "maine")]
         Maine,
-        [EnumMember(Value = "Marshall Islands")]
-        MarshallIslands,
+        [EnumMember(Value = "maryland")]
         Maryland,
+        [EnumMember(Value = "massachusetts")]
         Massachusetts,
+        [EnumMember(Value = "michigan")]
         Michigan,
+        [EnumMember(Value = "minnesota")]
         Minnesota,
+        [EnumMember(Value = "mississippi")]
         Mississippi,
+        [EnumMember(Value = "missouri")]
         Missouri,
+        [EnumMember(Value = "montana")]
         Montana,
+        [EnumMember(Value = "nebraska")]
         Nebraska,
+        [EnumMember(Value = "nevada")]
         Nevada,
-        [EnumMember(Value = "New Hampshire")]
+        [EnumMember(Value = "new hampshire")]
         NewHampshire,
-        [EnumMember(Value = "New Jersey")]
+        [EnumMember(Value = "new jersey")]
         NewJersey,
-        [EnumMember(Value = "New Mexico")]
+        [EnumMember(Value = "new mexico")]
         NewMexico,
-        [EnumMember(Value = "New York State")]
-        NewYorkState,
-        [EnumMember(Value = "North Carolina")]
+        [EnumMember(Value = "new york")]
+        NewYork,
+        [EnumMember(Value = "north carolina")]
         NorthCarolina,
-        [EnumMember(Value = "North Dakota")]
+        [EnumMember(Value = "north dakota")]
         NorthDakota,
-        [EnumMember(Value = "Northern Mariana Islands")]
+        [EnumMember(Value = "northern mariana islands")]
         NorthernMarianaIslands,
+        [EnumMember(Value = "ohio")]
         Ohio,
+        [EnumMember(Value = "oklahoma")]
         Oklahoma,
+        [EnumMember(Value = "oregon")]
         Oregon,
+        [EnumMember(Value = "pennsylvania")]
         Pennsylvania,
-        [EnumMember(Value = "Puerto Rico")]
+        [EnumMember(Value = "puerto rico")]
         PuertoRico,
-        [EnumMember(Value = "Republic of Palau")]
-        RepublicOfPalau,
-        [EnumMember(Value = "Rhode Island")]
+        [EnumMember(Value = "rhode island")]
         RhodeIsland,
-        [EnumMember(Value = "South Carolina")]
+        [EnumMember(Value = "south carolina")]
         SouthCarolina,
-        [EnumMember(Value = "South Dakota")]
+        [EnumMember(Value = "south dakota")]
         SouthDakota,
+        [EnumMember(Value = "tennessee")]
         Tennessee,
+        [EnumMember(Value = "texas")]
         Texas,
-        [EnumMember(Value = "United States")]
-        UnitedStates,
+        [EnumMember(Value = "utah")]
         Utah,
+        [EnumMember(Value = "vermont")]
         Vermont,
-        [EnumMember(Value = "Veterans Health")]
-        VeteransHealth,
-        [EnumMember(Value = "Virgin Islands")]
+        [EnumMember(Value = "virgin islands")]
         VirginIslands,
+        [EnumMember(Value = "virginia")]
         Virginia,
+        [EnumMember(Value = "washington")]
         Washington,
-        [EnumMember(Value = "West Virginia")]
+        [EnumMember(Value = "west virginia")]
         WestVirginia,
+        [EnumMember(Value = "wisconsin")]
         Wisconsin,
+        [EnumMember(Value = "wyoming")]
         Wyoming
     }
 
@@ -3641,6 +3700,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public int Deaths { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum countryInput2
+    {
+        Austria,
+        Canada,
+        Germany,
+        India,
+        Indonesia,
+        Israel,
+        Italy,
+        Mexico,
+        [EnumMember(Value = "New Zealand")]
+        NewZealand,
+        Nigeria,
+        [EnumMember(Value = "S. Korea")]
+        SKorea,
+        [EnumMember(Value = "South Africa")]
+        SouthAfrica,
+        Switzerland,
+        UK,
+        Vietnam
+    }
+
     public class GetCOVID19vaccinedosesforallcountriesResponseItem
     {
         [JsonProperty("country")]
@@ -3671,6 +3753,272 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public int DayMonthYear { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum countryInput3
+    {
+        Afghanistan,
+        Albania,
+        Algeria,
+        Andorra,
+        Angola,
+        Anguilla,
+        [EnumMember(Value = "Antigua and Barbuda")]
+        AntiguaAndBarbuda,
+        Argentina,
+        Armenia,
+        Aruba,
+        Australia,
+        Austria,
+        Azerbaijan,
+        Bahamas,
+        Bahrain,
+        Bangladesh,
+        Barbados,
+        Belarus,
+        Belgium,
+        Belize,
+        Benin,
+        Bermuda,
+        Bhutan,
+        Bolivia,
+        [EnumMember(Value = "Caribbean Netherlands")]
+        CaribbeanNetherlands,
+        Bosnia,
+        Botswana,
+        Brazil,
+        [EnumMember(Value = "British Virgin Islands")]
+        BritishVirginIslands,
+        Brunei,
+        Bulgaria,
+        [EnumMember(Value = "Burkina Faso")]
+        BurkinaFaso,
+        Burundi,
+        Cambodia,
+        Cameroon,
+        Canada,
+        [EnumMember(Value = "Cabo Verde")]
+        CaboVerde,
+        [EnumMember(Value = "Cayman Islands")]
+        CaymanIslands,
+        [EnumMember(Value = "Central African Republic")]
+        CentralAfricanRepublic,
+        Chad,
+        Chile,
+        China,
+        Colombia,
+        Comoros,
+        Congo,
+        [EnumMember(Value = "Cook Islands")]
+        CookIslands,
+        [EnumMember(Value = "Costa Rica")]
+        CostaRica,
+        [EnumMember(Value = "Côte d'Ivoire")]
+        CôteDIvoire,
+        Croatia,
+        Cuba,
+        Curaçao,
+        Cyprus,
+        Czechia,
+        DRC,
+        Denmark,
+        Djibouti,
+        Dominica,
+        [EnumMember(Value = "Dominican Republic")]
+        DominicanRepublic,
+        Ecuador,
+        Egypt,
+        [EnumMember(Value = "El Salvador")]
+        ElSalvador,
+        [EnumMember(Value = "Equatorial Guinea")]
+        EquatorialGuinea,
+        Estonia,
+        Swaziland,
+        Ethiopia,
+        [EnumMember(Value = "Faroe Islands")]
+        FaroeIslands,
+        [EnumMember(Value = "Falkland Islands (Malvinas)")]
+        FalklandIslandsMalvinas,
+        Fiji,
+        Finland,
+        France,
+        [EnumMember(Value = "French Polynesia")]
+        FrenchPolynesia,
+        Gabon,
+        Gambia,
+        Georgia,
+        Germany,
+        Ghana,
+        Gibraltar,
+        Greece,
+        Greenland,
+        Grenada,
+        Guatemala,
+        Guernsey,
+        Guinea,
+        [EnumMember(Value = "Guinea-Bissau")]
+        GuineaBissau,
+        Guyana,
+        Haiti,
+        Honduras,
+        [EnumMember(Value = "Hong Kong")]
+        HongKong,
+        Hungary,
+        Iceland,
+        India,
+        Indonesia,
+        Iran,
+        Iraq,
+        Ireland,
+        [EnumMember(Value = "Isle of Man")]
+        IsleOfMan,
+        Israel,
+        Italy,
+        Jamaica,
+        Japan,
+        [EnumMember(Value = "Channel Islands")]
+        ChannelIslands,
+        Jordan,
+        Kazakhstan,
+        Kenya,
+        Kiribati,
+        Kuwait,
+        Kyrgyzstan,
+        [EnumMember(Value = "Lao People's Democratic Republic")]
+        LaoPeopleSDemocraticRepublic,
+        Latvia,
+        Lebanon,
+        Lesotho,
+        Liberia,
+        [EnumMember(Value = "Libyan Arab Jamahiriya")]
+        LibyanArabJamahiriya,
+        Liechtenstein,
+        Lithuania,
+        Luxembourg,
+        Macao,
+        Madagascar,
+        Malawi,
+        Malaysia,
+        Maldives,
+        Mali,
+        Malta,
+        Mauritania,
+        Mauritius,
+        Mexico,
+        Moldova,
+        Monaco,
+        Mongolia,
+        Montenegro,
+        Montserrat,
+        Morocco,
+        Mozambique,
+        Myanmar,
+        Namibia,
+        Nauru,
+        Nepal,
+        Netherlands,
+        [EnumMember(Value = "New Caledonia")]
+        NewCaledonia,
+        [EnumMember(Value = "New Zealand")]
+        NewZealand,
+        Nicaragua,
+        Niger,
+        Nigeria,
+        Niue,
+        Macedonia,
+        Norway,
+        Oman,
+        Pakistan,
+        Palestine,
+        Panama,
+        [EnumMember(Value = "Papua New Guinea")]
+        PapuaNewGuinea,
+        Paraguay,
+        Peru,
+        Philippines,
+        Pitcairn,
+        Poland,
+        Portugal,
+        Qatar,
+        Romania,
+        Russia,
+        Rwanda,
+        [EnumMember(Value = "Saint Helena")]
+        SaintHelena,
+        [EnumMember(Value = "Saint Kitts and Nevis")]
+        SaintKittsAndNevis,
+        [EnumMember(Value = "Saint Lucia")]
+        SaintLucia,
+        [EnumMember(Value = "Saint Vincent and the Grenadines")]
+        SaintVincentAndTheGrenadines,
+        Samoa,
+        [EnumMember(Value = "San Marino")]
+        SanMarino,
+        [EnumMember(Value = "Sao Tome and Principe")]
+        SaoTomeAndPrincipe,
+        [EnumMember(Value = "Saudi Arabia")]
+        SaudiArabia,
+        Senegal,
+        Serbia,
+        Seychelles,
+        [EnumMember(Value = "Sierra Leone")]
+        SierraLeone,
+        Singapore,
+        [EnumMember(Value = "Sint Maarten")]
+        SintMaarten,
+        Slovakia,
+        Slovenia,
+        [EnumMember(Value = "Solomon Islands")]
+        SolomonIslands,
+        Somalia,
+        [EnumMember(Value = "South Africa")]
+        SouthAfrica,
+        [EnumMember(Value = "S. Korea")]
+        SKorea,
+        [EnumMember(Value = "South Sudan")]
+        SouthSudan,
+        Spain,
+        [EnumMember(Value = "Sri Lanka")]
+        SriLanka,
+        Sudan,
+        Suriname,
+        Sweden,
+        Switzerland,
+        [EnumMember(Value = "Syrian Arab Republic")]
+        SyrianArabRepublic,
+        Taiwan,
+        Tajikistan,
+        Tanzania,
+        Thailand,
+        [EnumMember(Value = "Timor-Leste")]
+        TimorLeste,
+        Togo,
+        Tokelau,
+        Tonga,
+        [EnumMember(Value = "Trinidad and Tobago")]
+        TrinidadAndTobago,
+        Tunisia,
+        Türkiye,
+        Turkmenistan,
+        [EnumMember(Value = "Turks and Caicos Islands")]
+        TurksAndCaicosIslands,
+        Tuvalu,
+        Uganda,
+        Ukraine,
+        UAE,
+        UK,
+        USA,
+        Uruguay,
+        Uzbekistan,
+        Vanuatu,
+        Venezuela,
+        Vietnam,
+        [EnumMember(Value = "Wallis and Futuna")]
+        WallisAndFutuna,
+        Yemen,
+        Zambia,
+        Zimbabwe
+    }
+
     public class GetCOVID19vaccinedosesforallstatesResponseItem
     {
         [JsonProperty("state")]
@@ -3699,6 +4047,100 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
     {
         [JsonProperty("day-month-year")]
         public int DayMonthYear { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum stateInput2
+    {
+        Alabama,
+        Alaska,
+        [EnumMember(Value = "American Samoa")]
+        AmericanSamoa,
+        Arizona,
+        Arkansas,
+        [EnumMember(Value = "Bureau of Prisons")]
+        BureauOfPrisons,
+        California,
+        Colorado,
+        Connecticut,
+        Delaware,
+        [EnumMember(Value = "Dept of Defense")]
+        DeptOfDefense,
+        [EnumMember(Value = "District of Columbia")]
+        DistrictOfColumbia,
+        [EnumMember(Value = "Federated States of Micronesia")]
+        FederatedStatesOfMicronesia,
+        Florida,
+        Georgia,
+        Guam,
+        Hawaii,
+        Idaho,
+        Illinois,
+        [EnumMember(Value = "Indian Health Svc")]
+        IndianHealthSvc,
+        Indiana,
+        Iowa,
+        Kansas,
+        Kentucky,
+        [EnumMember(Value = "Long Term Care")]
+        LongTermCare,
+        Louisiana,
+        Maine,
+        [EnumMember(Value = "Marshall Islands")]
+        MarshallIslands,
+        Maryland,
+        Massachusetts,
+        Michigan,
+        Minnesota,
+        Mississippi,
+        Missouri,
+        Montana,
+        Nebraska,
+        Nevada,
+        [EnumMember(Value = "New Hampshire")]
+        NewHampshire,
+        [EnumMember(Value = "New Jersey")]
+        NewJersey,
+        [EnumMember(Value = "New Mexico")]
+        NewMexico,
+        [EnumMember(Value = "New York State")]
+        NewYorkState,
+        [EnumMember(Value = "North Carolina")]
+        NorthCarolina,
+        [EnumMember(Value = "North Dakota")]
+        NorthDakota,
+        [EnumMember(Value = "Northern Mariana Islands")]
+        NorthernMarianaIslands,
+        Ohio,
+        Oklahoma,
+        Oregon,
+        Pennsylvania,
+        [EnumMember(Value = "Puerto Rico")]
+        PuertoRico,
+        [EnumMember(Value = "Republic of Palau")]
+        RepublicOfPalau,
+        [EnumMember(Value = "Rhode Island")]
+        RhodeIsland,
+        [EnumMember(Value = "South Carolina")]
+        SouthCarolina,
+        [EnumMember(Value = "South Dakota")]
+        SouthDakota,
+        Tennessee,
+        Texas,
+        [EnumMember(Value = "United States")]
+        UnitedStates,
+        Utah,
+        Vermont,
+        [EnumMember(Value = "Veterans Health")]
+        VeteransHealth,
+        [EnumMember(Value = "Virgin Islands")]
+        VirginIslands,
+        Virginia,
+        Washington,
+        [EnumMember(Value = "West Virginia")]
+        WestVirginia,
+        Wisconsin,
+        Wyoming
     }
 
     public class GettotalglobalCOVID19vaccinedosesResponse

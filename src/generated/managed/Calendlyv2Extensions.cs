@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
             });
         }
 
-        public IBodyWorkflowTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse, ApiConnectionTriggerConfiguration> CreateWebhookSubscriptionRoutingFormSubmission(Expression<Func<bodyeventsInputItem[]>> bodyevents, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse, ApiConnectionTriggerConfiguration> CreateWebhookSubscriptionRoutingFormSubmission(Expression<Func<bodyeventsInputItem2[]>> bodyevents, FlowRecurrence recurrence = null)
         {
             var __workflow_bodyevents = WorkflowExpression.Compile(bodyevents, nameof(bodyevents), required: true);
             return new DeferredBodyTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -385,8 +385,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyeventsInputItem
     {
-        [EnumMember(Value = "routing_form_submission.created")]
-        RoutingFormSubmissionCreated
+        [EnumMember(Value = "invitee.created")]
+        InviteeCreated,
+        [EnumMember(Value = "invitee.canceled")]
+        InviteeCanceled,
+        [EnumMember(Value = "invitee_no_show.created")]
+        InviteeNoShowCreated,
+        [EnumMember(Value = "invitee_no_show.deleted")]
+        InviteeNoShowDeleted
     }
 
     public class CreateWebhookSubscriptionRoutingFormSubmissionResponse
@@ -477,6 +483,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
 
         [JsonProperty("salesforce_uuid")]
         public string SalesforceUuid { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodyeventsInputItem2
+    {
+        [EnumMember(Value = "routing_form_submission.created")]
+        RoutingFormSubmissionCreated
     }
 }
 

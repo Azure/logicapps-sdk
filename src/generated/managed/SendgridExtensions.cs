@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
     public class EmailAttachmentInput
     {
         [JsonProperty("content")]
-        public WorkflowBinaryContent Content { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
 
         [JsonProperty("filename")]
         public string Name { get; set; }

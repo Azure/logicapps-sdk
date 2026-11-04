@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
-        public IBodyWorkflowAction<AdHocBulkRequestResponse, ApiConnectionActionConfiguration> AdHocBulkRequest(Expression<Func<string>> relativePath, Expression<Func<entryInputhttpMethodInput>> entryInputhttpMethod, Expression<Func<JToken[]>> entryInputpayload = null, Expression<Func<bool>> bypassMetadata = null)
+        public IBodyWorkflowAction<AdHocBulkRequestResponse, ApiConnectionActionConfiguration> AdHocBulkRequest(Expression<Func<string>> relativePath, Expression<Func<entryInputhttpMethodInput2>> entryInputhttpMethod, Expression<Func<JToken[]>> entryInputpayload = null, Expression<Func<bool>> bypassMetadata = null)
         {
             var __workflow_relativePath = WorkflowExpression.Compile(relativePath, nameof(relativePath), required: true);
             var __workflow_entryInputhttpMethod = WorkflowExpression.Compile(entryInputhttpMethod, nameof(entryInputhttpMethod), required: true);
@@ -292,7 +292,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         GET,
         POST,
         DELETE,
-        PUT
+        PUT,
+        PATCH
     }
 
     public class AdHocBulkRequestResponse
@@ -311,6 +312,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
 
         [JsonProperty("unstructured")]
         public string Unstructured { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum entryInputhttpMethodInput2
+    {
+        GET,
+        POST,
+        DELETE,
+        PUT
     }
 }
 

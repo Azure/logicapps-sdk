@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditGiftReceipt(Expression<Func<string>> receiptId, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<double>> bodyamountamount = null, Expression<Func<string>> bodydate = null, Expression<Func<int>> bodynumber = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditGiftReceipt(Expression<Func<string>> receiptId, Expression<Func<bodystatusInput2>> bodystatus = null, Expression<Func<double>> bodyamountamount = null, Expression<Func<string>> bodydate = null, Expression<Func<int>> bodynumber = null)
         {
             var __workflow_receiptId = WorkflowExpression.Compile(receiptId, nameof(receiptId), required: true);
             var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
@@ -518,7 +518,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IBodyWorkflowAction<GiftApiCreatedGiftAttachment, ApiConnectionActionConfiguration> CreateGiftAttachment(Expression<Func<string>> bodygiftId, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodyuRL = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodyfileId = null, Expression<Func<string>> bodythumbnailId = null, Expression<Func<string[]>> bodytags = null)
+        public IBodyWorkflowAction<GiftApiCreatedGiftAttachment, ApiConnectionActionConfiguration> CreateGiftAttachment(Expression<Func<string>> bodygiftId, Expression<Func<bodytypeInput2>> bodytype, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodyuRL = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodyfileId = null, Expression<Func<string>> bodythumbnailId = null, Expression<Func<string[]>> bodytags = null)
         {
             var __workflow_bodygiftId = WorkflowExpression.Compile(bodygiftId, nameof(bodygiftId), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
@@ -1174,7 +1174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IBodyWorkflowAction<GiftApiCreatedGift, ApiConnectionActionConfiguration> CreatePledge(Expression<Func<string>> bodydate, Expression<Func<Gift2ApiNewGiftSplit[]>> bodysplits, Expression<Func<bodyreceiptsreceiptStatusInput>> bodyreceiptsreceiptStatus, Expression<Func<double>> bodyreceiptsreceiptAmountreceiptAmount, Expression<Func<bodyacknowledgementsacknowledgeStatusInput>> bodyacknowledgementsacknowledgeStatus, Expression<Func<string>> bodyconstituentconstituentId = null, Expression<Func<double>> bodyamountamount = null, Expression<Func<bodyschedulefrequencyInput>> bodyschedulefrequency = null, Expression<Func<int>> bodyscheduleOfInstallments = null, Expression<Func<string>> bodyschedulestartDate = null, Expression<Func<bodypaymentspaymentMethodInput>> bodypaymentspaymentMethod = null, Expression<Func<string>> bodypaymentscheckNumber = null, Expression<Func<string>> bodypaymentsreference = null, Expression<Func<bool>> bodysendReminder = null, Expression<Func<bool>> bodyisAnonymous = null, Expression<Func<string>> bodygiftSubtypesubtype = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodylookupId = null, Expression<Func<string>> bodygiftCodegiftCode = null, Expression<Func<string>> bodygiftConstituencyconstituency = null, Expression<Func<bodypostStatusInput>> bodypostStatus = null, Expression<Func<string>> bodypostDate = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<int>> bodygiftStatusDateday = null, Expression<Func<int>> bodygiftStatusDatemonth = null, Expression<Func<int>> bodygiftStatusDateyear = null, Expression<Func<string>> bodyreceiptsreceiptDate = null, Expression<Func<int>> bodyreceiptsreceiptNumber = null, Expression<Func<string>> bodyreceiptsreceiptStackreceiptStack = null, Expression<Func<string>> bodyacknowledgementsacknowledgeDate = null, Expression<Func<string>> bodyacknowledgementsletterletter = null, Expression<Func<Gift2ApiNewRecognitionCredit[]>> bodycredits = null, Expression<Func<Gift2ApiNewInstallment[]>> bodyinstallments = null)
+        public IBodyWorkflowAction<GiftApiCreatedGift, ApiConnectionActionConfiguration> CreatePledge(Expression<Func<string>> bodydate, Expression<Func<Gift2ApiNewGiftSplit[]>> bodysplits, Expression<Func<bodyreceiptsreceiptStatusInput2>> bodyreceiptsreceiptStatus, Expression<Func<double>> bodyreceiptsreceiptAmountreceiptAmount, Expression<Func<bodyacknowledgementsacknowledgeStatusInput>> bodyacknowledgementsacknowledgeStatus, Expression<Func<string>> bodyconstituentconstituentId = null, Expression<Func<double>> bodyamountamount = null, Expression<Func<bodyschedulefrequencyInput>> bodyschedulefrequency = null, Expression<Func<int>> bodyscheduleOfInstallments = null, Expression<Func<string>> bodyschedulestartDate = null, Expression<Func<bodypaymentspaymentMethodInput2>> bodypaymentspaymentMethod = null, Expression<Func<string>> bodypaymentscheckNumber = null, Expression<Func<string>> bodypaymentsreference = null, Expression<Func<bool>> bodysendReminder = null, Expression<Func<bool>> bodyisAnonymous = null, Expression<Func<string>> bodygiftSubtypesubtype = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodylookupId = null, Expression<Func<string>> bodygiftCodegiftCode = null, Expression<Func<string>> bodygiftConstituencyconstituency = null, Expression<Func<bodypostStatusInput2>> bodypostStatus = null, Expression<Func<string>> bodypostDate = null, Expression<Func<bodystatusInput3>> bodystatus = null, Expression<Func<int>> bodygiftStatusDateday = null, Expression<Func<int>> bodygiftStatusDatemonth = null, Expression<Func<int>> bodygiftStatusDateyear = null, Expression<Func<string>> bodyreceiptsreceiptDate = null, Expression<Func<int>> bodyreceiptsreceiptNumber = null, Expression<Func<string>> bodyreceiptsreceiptStackreceiptStack = null, Expression<Func<string>> bodyacknowledgementsacknowledgeDate = null, Expression<Func<string>> bodyacknowledgementsletterletter = null, Expression<Func<Gift2ApiNewRecognitionCredit[]>> bodycredits = null, Expression<Func<Gift2ApiNewInstallment[]>> bodyinstallments = null)
         {
             var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: true);
             var __workflow_bodysplits = WorkflowExpression.Compile(bodysplits, nameof(bodysplits), required: true);
@@ -1522,7 +1522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IBodyWorkflowAction<GiftApiCreatedGift, ApiConnectionActionConfiguration> CreatePledgePayment(Expression<Func<string>> bodydate, Expression<Func<Gift2ApiNewGiftSplit[]>> bodysplits, Expression<Func<Gift2ApiNewInstallmentPayment[]>> bodyapplyTo, Expression<Func<bodyreceiptsreceiptStatusInput>> bodyreceiptsreceiptStatus, Expression<Func<double>> bodyreceiptsreceiptAmountreceiptAmount, Expression<Func<bodyacknowledgementsacknowledgeStatusInput>> bodyacknowledgementsacknowledgeStatus, Expression<Func<string>> bodyconstituentconstituentId = null, Expression<Func<double>> bodyamountamount = null, Expression<Func<bodypaymentspaymentMethodInput>> bodypaymentspaymentMethod = null, Expression<Func<string>> bodypaymentscheckNumber = null, Expression<Func<string>> bodypaymentsreference = null, Expression<Func<bool>> bodyisAnonymous = null, Expression<Func<string>> bodygiftSubtypesubtype = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodylookupId = null, Expression<Func<string>> bodygiftCodegiftCode = null, Expression<Func<string>> bodygiftConstituencyconstituency = null, Expression<Func<bodypostStatusInput>> bodypostStatus = null, Expression<Func<string>> bodypostDate = null, Expression<Func<string>> bodyreceiptsreceiptDate = null, Expression<Func<int>> bodyreceiptsreceiptNumber = null, Expression<Func<string>> bodyreceiptsreceiptStackreceiptStack = null, Expression<Func<string>> bodyacknowledgementsacknowledgeDate = null, Expression<Func<string>> bodyacknowledgementsletterletter = null, Expression<Func<Gift2ApiNewRecognitionCredit[]>> bodycredits = null)
+        public IBodyWorkflowAction<GiftApiCreatedGift, ApiConnectionActionConfiguration> CreatePledgePayment(Expression<Func<string>> bodydate, Expression<Func<Gift2ApiNewGiftSplit[]>> bodysplits, Expression<Func<Gift2ApiNewInstallmentPayment[]>> bodyapplyTo, Expression<Func<bodyreceiptsreceiptStatusInput3>> bodyreceiptsreceiptStatus, Expression<Func<double>> bodyreceiptsreceiptAmountreceiptAmount, Expression<Func<bodyacknowledgementsacknowledgeStatusInput>> bodyacknowledgementsacknowledgeStatus, Expression<Func<string>> bodyconstituentconstituentId = null, Expression<Func<double>> bodyamountamount = null, Expression<Func<bodypaymentspaymentMethodInput3>> bodypaymentspaymentMethod = null, Expression<Func<string>> bodypaymentscheckNumber = null, Expression<Func<string>> bodypaymentsreference = null, Expression<Func<bool>> bodyisAnonymous = null, Expression<Func<string>> bodygiftSubtypesubtype = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodylookupId = null, Expression<Func<string>> bodygiftCodegiftCode = null, Expression<Func<string>> bodygiftConstituencyconstituency = null, Expression<Func<bodypostStatusInput3>> bodypostStatus = null, Expression<Func<string>> bodypostDate = null, Expression<Func<string>> bodyreceiptsreceiptDate = null, Expression<Func<int>> bodyreceiptsreceiptNumber = null, Expression<Func<string>> bodyreceiptsreceiptStackreceiptStack = null, Expression<Func<string>> bodyacknowledgementsacknowledgeDate = null, Expression<Func<string>> bodyacknowledgementsletterletter = null, Expression<Func<Gift2ApiNewRecognitionCredit[]>> bodycredits = null)
         {
             var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: true);
             var __workflow_bodysplits = WorkflowExpression.Compile(bodysplits, nameof(bodysplits), required: true);
@@ -1794,7 +1794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IBodyWorkflowAction<GiftApiCreatedGift, ApiConnectionActionConfiguration> CreateStock(Expression<Func<string>> bodydate, Expression<Func<Gift2ApiNewGiftSplit[]>> bodysplits, Expression<Func<bodyreceiptsreceiptStatusInput>> bodyreceiptsreceiptStatus, Expression<Func<double>> bodyreceiptsreceiptAmountreceiptAmount, Expression<Func<bodyacknowledgementsacknowledgeStatusInput>> bodyacknowledgementsacknowledgeStatus, Expression<Func<string>> bodyconstituentconstituentId = null, Expression<Func<double>> bodyamountamount = null, Expression<Func<string>> bodyissuerDetailsissuer = null, Expression<Func<string>> bodyissuerDetailsissuerSymbol = null, Expression<Func<int>> bodyissuerDetailsnumberOfUnits = null, Expression<Func<double>> bodyissuerDetailsmedianPricePerUnit = null, Expression<Func<bodypaymentspaymentMethodInput>> bodypaymentspaymentMethod = null, Expression<Func<string>> bodypaymentscheckNumber = null, Expression<Func<string>> bodypaymentsreference = null, Expression<Func<bool>> bodyisAnonymous = null, Expression<Func<string>> bodygiftSubtypesubtype = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodylookupId = null, Expression<Func<string>> bodygiftCodegiftCode = null, Expression<Func<string>> bodygiftConstituencyconstituency = null, Expression<Func<bodypostStatusInput>> bodypostStatus = null, Expression<Func<string>> bodypostDate = null, Expression<Func<string>> bodyreceiptsreceiptDate = null, Expression<Func<int>> bodyreceiptsreceiptNumber = null, Expression<Func<string>> bodyreceiptsreceiptStackreceiptStack = null, Expression<Func<string>> bodyacknowledgementsacknowledgeDate = null, Expression<Func<string>> bodyacknowledgementsletterletter = null, Expression<Func<Gift2ApiNewRecognitionCredit[]>> bodycredits = null)
+        public IBodyWorkflowAction<GiftApiCreatedGift, ApiConnectionActionConfiguration> CreateStock(Expression<Func<string>> bodydate, Expression<Func<Gift2ApiNewGiftSplit[]>> bodysplits, Expression<Func<bodyreceiptsreceiptStatusInput4>> bodyreceiptsreceiptStatus, Expression<Func<double>> bodyreceiptsreceiptAmountreceiptAmount, Expression<Func<bodyacknowledgementsacknowledgeStatusInput>> bodyacknowledgementsacknowledgeStatus, Expression<Func<string>> bodyconstituentconstituentId = null, Expression<Func<double>> bodyamountamount = null, Expression<Func<string>> bodyissuerDetailsissuer = null, Expression<Func<string>> bodyissuerDetailsissuerSymbol = null, Expression<Func<int>> bodyissuerDetailsnumberOfUnits = null, Expression<Func<double>> bodyissuerDetailsmedianPricePerUnit = null, Expression<Func<bodypaymentspaymentMethodInput4>> bodypaymentspaymentMethod = null, Expression<Func<string>> bodypaymentscheckNumber = null, Expression<Func<string>> bodypaymentsreference = null, Expression<Func<bool>> bodyisAnonymous = null, Expression<Func<string>> bodygiftSubtypesubtype = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodylookupId = null, Expression<Func<string>> bodygiftCodegiftCode = null, Expression<Func<string>> bodygiftConstituencyconstituency = null, Expression<Func<bodypostStatusInput4>> bodypostStatus = null, Expression<Func<string>> bodypostDate = null, Expression<Func<string>> bodyreceiptsreceiptDate = null, Expression<Func<int>> bodyreceiptsreceiptNumber = null, Expression<Func<string>> bodyreceiptsreceiptStackreceiptStack = null, Expression<Func<string>> bodyacknowledgementsacknowledgeDate = null, Expression<Func<string>> bodyacknowledgementsletterletter = null, Expression<Func<Gift2ApiNewRecognitionCredit[]>> bodycredits = null)
         {
             var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: true);
             var __workflow_bodysplits = WorkflowExpression.Compile(bodysplits, nameof(bodysplits), required: true);
@@ -2740,11 +2740,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystatusInput
     {
-        Active,
-        Held,
-        Terminated,
-        Completed,
-        Canceled
+        Acknowledged,
+        NeedsAcknowledgement,
+        DoNotAcknowledge
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodystatusInput2
+    {
+        Receipted,
+        NeedsReceipt,
+        DoNotReceipt
     }
 
     public class GiftApiApiCollectionOfGiftRead
@@ -3062,8 +3068,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
-        Link,
-        Physical
+        Donation,
+        Other,
+        GiftInKind
     }
 
     public class GiftApiGiftSplitAdd
@@ -3093,21 +3100,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyreceiptsreceiptStatusInput
     {
-        [EnumMember(Value = "NotReceipted")]
+        Receipted,
         NeedsReceipt,
-        DoNotReceipt,
-        Receipted
+        DoNotReceipt
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypaymentspaymentMethodInput
     {
         Cash,
-        Check,
         CreditCard,
-        StandingOrder,
+        PersonalCheck,
         DirectDebit,
-        Voucher,
         Other,
         PayPal,
         Venmo
@@ -3116,10 +3120,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypostStatusInput
     {
-        [EnumMember(Value = "NotPosted")]
-        PostToLedger,
-        DoNotPost,
-        Posted
+        Posted,
+        NotPosted,
+        DoNotPost
     }
 
     public class GiftApiApiCollectionOfGiftAttachmentRead
@@ -3272,6 +3275,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodytypeInput2
+    {
+        Link,
+        Physical
     }
 
     public class GiftApiCreatedGiftCustomField
@@ -3676,6 +3686,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodyreceiptsreceiptStatusInput2
+    {
+        [EnumMember(Value = "NotReceipted")]
+        NeedsReceipt,
+        DoNotReceipt,
+        Receipted
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyacknowledgementsacknowledgeStatusInput
     {
         [EnumMember(Value = "NotAcknowledged")]
@@ -3694,6 +3713,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         EveryTwoWeeks,
         Single,
         Irregular
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodypaymentspaymentMethodInput2
+    {
+        Cash,
+        Check,
+        CreditCard,
+        StandingOrder,
+        DirectDebit,
+        Voucher,
+        Other,
+        PayPal,
+        Venmo
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodypostStatusInput2
+    {
+        [EnumMember(Value = "NotPosted")]
+        PostToLedger,
+        DoNotPost,
+        Posted
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodystatusInput3
+    {
+        Active,
+        Held,
+        Terminated,
+        Completed,
+        Canceled
     }
 
     public class Gift2ApiNewRecognitionCredit
@@ -3740,6 +3792,70 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
         [JsonProperty("amount_applied")]
         public double Amount { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodyreceiptsreceiptStatusInput3
+    {
+        [EnumMember(Value = "NotReceipted")]
+        NeedsReceipt,
+        DoNotReceipt,
+        Receipted
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodypaymentspaymentMethodInput3
+    {
+        Cash,
+        Check,
+        CreditCard,
+        StandingOrder,
+        DirectDebit,
+        Voucher,
+        Other,
+        PayPal,
+        Venmo
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodypostStatusInput3
+    {
+        [EnumMember(Value = "NotPosted")]
+        PostToLedger,
+        DoNotPost,
+        Posted
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodyreceiptsreceiptStatusInput4
+    {
+        [EnumMember(Value = "NotReceipted")]
+        NeedsReceipt,
+        DoNotReceipt,
+        Receipted
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodypaymentspaymentMethodInput4
+    {
+        Cash,
+        Check,
+        CreditCard,
+        StandingOrder,
+        DirectDebit,
+        Voucher,
+        Other,
+        PayPal,
+        Venmo
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodypostStatusInput4
+    {
+        [EnumMember(Value = "NotPosted")]
+        PostToLedger,
+        DoNotPost,
+        Posted
     }
 
     public class NXTDataIntegrationApiTaxDeclarationCollection

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
     public class IntegrablepdfActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> LockPdf(Expression<Func<WorkflowBinaryContent>> lockPdfInputfileContent, Expression<Func<string>> lockPdfInputpermissionsPassword, Expression<Func<bool>> lockPdfInputallowAccessibility = null, Expression<Func<bool>> lockPdfInputallowCopy = null, Expression<Func<bool>> lockPdfInputallowDocumentAssembly = null, Expression<Func<bool>> lockPdfInputallowEdit = null, Expression<Func<bool>> lockPdfInputallowFormFilling = null, Expression<Func<bool>> lockPdfInputallowPrint = null, Expression<Func<bool>> lockPdfInputallowUpdateAnnotationsAndFields = null, Expression<Func<string>> lockPdfInputdocumentOpenPassword = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> LockPdf(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> lockPdfInputfileContent, Expression<Func<string>> lockPdfInputpermissionsPassword, Expression<Func<bool>> lockPdfInputallowAccessibility = null, Expression<Func<bool>> lockPdfInputallowCopy = null, Expression<Func<bool>> lockPdfInputallowDocumentAssembly = null, Expression<Func<bool>> lockPdfInputallowEdit = null, Expression<Func<bool>> lockPdfInputallowFormFilling = null, Expression<Func<bool>> lockPdfInputallowPrint = null, Expression<Func<bool>> lockPdfInputallowUpdateAnnotationsAndFields = null, Expression<Func<string>> lockPdfInputdocumentOpenPassword = null)
         {
             var __workflow_lockPdfInputfileContent = WorkflowExpression.Compile(lockPdfInputfileContent, nameof(lockPdfInputfileContent), required: true);
             var __workflow_lockPdfInputpermissionsPassword = WorkflowExpression.Compile(lockPdfInputpermissionsPassword, nameof(lockPdfInputpermissionsPassword), required: true);
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergePdf(Expression<Func<WorkflowBinaryContent>> mergePdfInput1stFileContent, Expression<Func<WorkflowBinaryContent>> mergePdfInput2ndFileContent, Expression<Func<WorkflowBinaryContent>> mergePdfInput3rdFileContent = null, Expression<Func<WorkflowBinaryContent>> mergePdfInput4thFileContent = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergePdf(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> mergePdfInput1stFileContent, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> mergePdfInput2ndFileContent, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> mergePdfInput3rdFileContent = null, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> mergePdfInput4thFileContent = null)
         {
             var __workflow_mergePdfInput1stFileContent = WorkflowExpression.Compile(mergePdfInput1stFileContent, nameof(mergePdfInput1stFileContent), required: true);
             var __workflow_mergePdfInput2ndFileContent = WorkflowExpression.Compile(mergePdfInput2ndFileContent, nameof(mergePdfInput2ndFileContent), required: true);
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PasswordProtectPdf(Expression<Func<WorkflowBinaryContent>> passwordProtectPdfInputfileContent, Expression<Func<string>> passwordProtectPdfInputpassword)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PasswordProtectPdf(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> passwordProtectPdfInputfileContent, Expression<Func<string>> passwordProtectPdfInputpassword)
         {
             var __workflow_passwordProtectPdfInputfileContent = WorkflowExpression.Compile(passwordProtectPdfInputfileContent, nameof(passwordProtectPdfInputfileContent), required: true);
             var __workflow_passwordProtectPdfInputpassword = WorkflowExpression.Compile(passwordProtectPdfInputpassword, nameof(passwordProtectPdfInputpassword), required: true);
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SplitPdf(Expression<Func<WorkflowBinaryContent>> splitPdfInputfileContent, Expression<Func<int>> splitPdfInputfirstPage = null, Expression<Func<int>> splitPdfInputlastPage = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SplitPdf(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> splitPdfInputfileContent, Expression<Func<int>> splitPdfInputfirstPage = null, Expression<Func<int>> splitPdfInputlastPage = null)
         {
             var __workflow_splitPdfInputfileContent = WorkflowExpression.Compile(splitPdfInputfileContent, nameof(splitPdfInputfileContent), required: true);
             var __workflow_splitPdfInputfirstPage = WorkflowExpression.Compile(splitPdfInputfirstPage, nameof(splitPdfInputfirstPage), required: false);
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UnlockPdf(Expression<Func<WorkflowBinaryContent>> unlockPdfInputfileContent, Expression<Func<string>> unlockPdfInputpassword)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UnlockPdf(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> unlockPdfInputfileContent, Expression<Func<string>> unlockPdfInputpassword)
         {
             var __workflow_unlockPdfInputfileContent = WorkflowExpression.Compile(unlockPdfInputfileContent, nameof(unlockPdfInputfileContent), required: true);
             var __workflow_unlockPdfInputpassword = WorkflowExpression.Compile(unlockPdfInputpassword, nameof(unlockPdfInputpassword), required: true);
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> WatermarkPdfBackground(Expression<Func<WorkflowBinaryContent>> watermarkPdfBackgroundInputfileContent, Expression<Func<string>> watermarkPdfBackgroundInput1stLine, Expression<Func<watermarkPdfBackgroundInputcolorInput>> watermarkPdfBackgroundInputcolor = null, Expression<Func<string>> watermarkPdfBackgroundInput2ndLine = null, Expression<Func<string>> watermarkPdfBackgroundInput3rdLine = null, Expression<Func<double>> watermarkPdfBackgroundInputmargin = null, Expression<Func<watermarkPdfBackgroundInputorientationInput>> watermarkPdfBackgroundInputorientation = null, Expression<Func<watermarkPdfBackgroundInputstyleInput>> watermarkPdfBackgroundInputstyle = null, Expression<Func<double>> watermarkPdfBackgroundInputtransparency = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> WatermarkPdfBackground(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> watermarkPdfBackgroundInputfileContent, Expression<Func<string>> watermarkPdfBackgroundInput1stLine, Expression<Func<watermarkPdfBackgroundInputcolorInput>> watermarkPdfBackgroundInputcolor = null, Expression<Func<string>> watermarkPdfBackgroundInput2ndLine = null, Expression<Func<string>> watermarkPdfBackgroundInput3rdLine = null, Expression<Func<double>> watermarkPdfBackgroundInputmargin = null, Expression<Func<watermarkPdfBackgroundInputorientationInput>> watermarkPdfBackgroundInputorientation = null, Expression<Func<watermarkPdfBackgroundInputstyleInput>> watermarkPdfBackgroundInputstyle = null, Expression<Func<double>> watermarkPdfBackgroundInputtransparency = null)
         {
             var __workflow_watermarkPdfBackgroundInputfileContent = WorkflowExpression.Compile(watermarkPdfBackgroundInputfileContent, nameof(watermarkPdfBackgroundInputfileContent), required: true);
             var __workflow_watermarkPdfBackgroundInput1stLine = WorkflowExpression.Compile(watermarkPdfBackgroundInput1stLine, nameof(watermarkPdfBackgroundInput1stLine), required: true);
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> WatermarkPdfCustom(Expression<Func<WorkflowBinaryContent>> watermarkPdfCustomInputfileContent, Expression<Func<string>> watermarkPdfCustomInputtemplateId, Expression<Func<string>> watermarkPdfCustomInput1stLine = null, Expression<Func<string>> watermarkPdfCustomInput2ndLine = null, Expression<Func<string>> watermarkPdfCustomInput3rdLine = null, Expression<Func<string>> watermarkPdfCustomInput4thLine = null, Expression<Func<string>> watermarkPdfCustomInput5thLine = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> WatermarkPdfCustom(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> watermarkPdfCustomInputfileContent, Expression<Func<string>> watermarkPdfCustomInputtemplateId, Expression<Func<string>> watermarkPdfCustomInput1stLine = null, Expression<Func<string>> watermarkPdfCustomInput2ndLine = null, Expression<Func<string>> watermarkPdfCustomInput3rdLine = null, Expression<Func<string>> watermarkPdfCustomInput4thLine = null, Expression<Func<string>> watermarkPdfCustomInput5thLine = null)
         {
             var __workflow_watermarkPdfCustomInputfileContent = WorkflowExpression.Compile(watermarkPdfCustomInputfileContent, nameof(watermarkPdfCustomInputfileContent), required: true);
             var __workflow_watermarkPdfCustomInputtemplateId = WorkflowExpression.Compile(watermarkPdfCustomInputtemplateId, nameof(watermarkPdfCustomInputtemplateId), required: true);
@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> WatermarkPdfOverlay(Expression<Func<WorkflowBinaryContent>> watermarkPdfOverlayInputfileContent, Expression<Func<string>> watermarkPdfOverlayInput1stLine, Expression<Func<watermarkPdfOverlayInputcolorInput>> watermarkPdfOverlayInputcolor = null, Expression<Func<string>> watermarkPdfOverlayInput2ndLine = null, Expression<Func<string>> watermarkPdfOverlayInput3rdLine = null, Expression<Func<double>> watermarkPdfOverlayInputmargin = null, Expression<Func<watermarkPdfOverlayInputorientationInput>> watermarkPdfOverlayInputorientation = null, Expression<Func<watermarkPdfOverlayInputstyleInput>> watermarkPdfOverlayInputstyle = null, Expression<Func<double>> watermarkPdfOverlayInputtransparency = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> WatermarkPdfOverlay(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> watermarkPdfOverlayInputfileContent, Expression<Func<string>> watermarkPdfOverlayInput1stLine, Expression<Func<watermarkPdfOverlayInputcolorInput>> watermarkPdfOverlayInputcolor = null, Expression<Func<string>> watermarkPdfOverlayInput2ndLine = null, Expression<Func<string>> watermarkPdfOverlayInput3rdLine = null, Expression<Func<double>> watermarkPdfOverlayInputmargin = null, Expression<Func<watermarkPdfOverlayInputorientationInput>> watermarkPdfOverlayInputorientation = null, Expression<Func<watermarkPdfOverlayInputstyleInput>> watermarkPdfOverlayInputstyle = null, Expression<Func<double>> watermarkPdfOverlayInputtransparency = null)
         {
             var __workflow_watermarkPdfOverlayInputfileContent = WorkflowExpression.Compile(watermarkPdfOverlayInputfileContent, nameof(watermarkPdfOverlayInputfileContent), required: true);
             var __workflow_watermarkPdfOverlayInput1stLine = WorkflowExpression.Compile(watermarkPdfOverlayInput1stLine, nameof(watermarkPdfOverlayInput1stLine), required: true);

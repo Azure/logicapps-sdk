@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentunderstanding
     public class ContentunderstandingActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentunderstanding")]
-        public IBodyWorkflowAction<AnalyzeOperationResult, ApiConnectionActionConfiguration> AnalyzeContent(Expression<Func<string>> analyzerId, Expression<Func<WorkflowBinaryContent>> bodyfileContent = null, Expression<Func<string>> bodyinputFileURL = null, Expression<Func<string>> bodyrange = null, Expression<Func<string>> bodyfileMIMEType = null, Expression<Func<AnalysisInputInput[]>> bodyinputs = null, Expression<Func<processingLocationInput>> processingLocation = null, Expression<Func<string>> stringEncoding = null)
+        public IBodyWorkflowAction<AnalyzeOperationResult, ApiConnectionActionConfiguration> AnalyzeContent(Expression<Func<string>> analyzerId, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> bodyfileContent = null, Expression<Func<string>> bodyinputFileURL = null, Expression<Func<string>> bodyrange = null, Expression<Func<string>> bodyfileMIMEType = null, Expression<Func<AnalysisInputInput[]>> bodyinputs = null, Expression<Func<processingLocationInput>> processingLocation = null, Expression<Func<string>> stringEncoding = null)
         {
             var __workflow_analyzerId = WorkflowExpression.Compile(analyzerId, nameof(analyzerId), required: true);
             var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: false);
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentunderstanding
         public string Url { get; set; }
 
         [JsonProperty("data")]
-        public WorkflowBinaryContent Data { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Data { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }

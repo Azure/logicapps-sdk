@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
-        public IBodyWorkflowAction<SharingLink, ApiConnectionActionConfiguration> CreateShareLink(Expression<Func<string>> id, Expression<Func<typeInput>> type)
+        public IBodyWorkflowAction<SharingLink, ApiConnectionActionConfiguration> CreateShareLink(Expression<Func<string>> id, Expression<Func<typeInput2>> type)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
-        public IBodyWorkflowAction<SharingLink, ApiConnectionActionConfiguration> CreateShareLinkByPath(Expression<Func<string>> path, Expression<Func<typeInput>> type)
+        public IBodyWorkflowAction<SharingLink, ApiConnectionActionConfiguration> CreateShareLinkByPath(Expression<Func<string>> path, Expression<Func<typeInput3>> type)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
@@ -566,9 +566,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
-        View,
-        Edit,
-        Embed
+        PDF,
+        GLB,
+        HTML,
+        JPG
     }
 
     public class TagsInfo
@@ -602,6 +603,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
     {
         [JsonProperty("WebUrl")]
         public string WebURL { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum typeInput2
+    {
+        View,
+        Edit,
+        Embed
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum typeInput3
+    {
+        View,
+        Edit,
+        Embed
     }
 
     public class BlobMetadataPage

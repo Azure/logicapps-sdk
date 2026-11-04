@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             );
 
             var msg = WorkflowActions.Managed.Teams("teams").PostMessageToConversation(
-                poster: () => posterInput.User,
+                poster: () => posterInput2.User,
                 location: () => "Group chat",
                 body: () => new
                 {

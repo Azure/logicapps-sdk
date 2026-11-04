@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
-        public IBodyWorkflowAction<SendMmsResponse, ApiConnectionActionConfiguration> SendMms(Expression<Func<string>> bodyto, Expression<Func<string>> bodymessage, Expression<Func<WorkflowBinaryContent>> bodymedia = null, Expression<Func<string>> bodysourceNumber = null, Expression<Func<bodymetadataInputItem[]>> bodymetadata = null)
+        public IBodyWorkflowAction<SendMmsResponse, ApiConnectionActionConfiguration> SendMms(Expression<Func<string>> bodyto, Expression<Func<string>> bodymessage, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> bodymedia = null, Expression<Func<string>> bodysourceNumber = null, Expression<Func<bodymetadataInputItem[]>> bodymetadata = null)
         {
             var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
             var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);

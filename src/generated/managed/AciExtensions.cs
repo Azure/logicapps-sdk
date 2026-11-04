@@ -804,14 +804,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
     public class PortInfo
     {
         [JsonProperty("protocol")]
-        public PortProtocolType Protocol { get; set; }
+        public PortInfoProtocolType Protocol { get; set; }
 
         [JsonProperty("port")]
         public int Port { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PortProtocolType
+    public enum PortInfoProtocolType
     {
         TCP,
         UDP
@@ -1154,10 +1154,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         public string Gpu { get; set; }
 
         [JsonProperty("capabilities")]
-        public CapabilitiesCapabilitiesType Capabilities { get; set; }
+        public CapabilitiesInfoCapabilitiesType Capabilities { get; set; }
     }
 
-    public class CapabilitiesCapabilitiesType
+    public class CapabilitiesInfoCapabilitiesType
     {
         [JsonProperty("maxMemoryInGB")]
         public double MaxMemoryInGB { get; set; }
