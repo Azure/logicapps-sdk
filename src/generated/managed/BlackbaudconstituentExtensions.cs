@@ -2805,7 +2805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudconstituent")]
-        public IBodyWorkflowAction<ConstituentApiCreatedNameFormat, ApiConnectionActionConfiguration> CreateConstituentPrimaryNameFormat(Expression<Func<string>> bodyconstituentId, Expression<Func<bodytypeInput>> bodytype, Expression<Func<bool>> bodycustomNameFormat = null, Expression<Func<string>> bodyformat = null, Expression<Func<string>> bodycustomName = null)
+        public IBodyWorkflowAction<ConstituentApiCreatedNameFormat, ApiConnectionActionConfiguration> CreateConstituentPrimaryNameFormat(Expression<Func<string>> bodyconstituentId, Expression<Func<bodytypeInput2>> bodytype, Expression<Func<bool>> bodycustomNameFormat = null, Expression<Func<string>> bodyformat = null, Expression<Func<string>> bodycustomName = null)
         {
             var __workflow_bodyconstituentId = WorkflowExpression.Compile(bodyconstituentId, nameof(bodyconstituentId), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
@@ -5826,8 +5826,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
-        Addressee,
-        Salutation
+        Link,
+        Physical
     }
 
     public class ConstituentApiCreatedConstituentCustomField
@@ -5954,6 +5954,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudconstituent
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodytypeInput2
+    {
+        Addressee,
+        Salutation
     }
 
     public class ConstituentApiCreatedIndividualConstituent

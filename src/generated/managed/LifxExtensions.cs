@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IBodyWorkflowAction<SetStateResponse, ApiConnectionActionConfiguration> SetState(Expression<Func<string>> lights, Expression<Func<bodypowerInput>> bodypower = null, Expression<Func<bodycolorInput>> bodycolor = null, Expression<Func<double>> bodybrightness = null, Expression<Func<double>> bodyduration = null, Expression<Func<double>> bodyinfrared = null)
+        public IBodyWorkflowAction<SetStateResponse, ApiConnectionActionConfiguration> SetState(Expression<Func<string>> lights, Expression<Func<bodypowerInput>> bodypower = null, Expression<Func<bodycolorInput2>> bodycolor = null, Expression<Func<double>> bodybrightness = null, Expression<Func<double>> bodyduration = null, Expression<Func<double>> bodyinfrared = null)
         {
             var __workflow_lights = WorkflowExpression.Compile(lights, nameof(lights), required: true);
             var __workflow_bodypower = WorkflowExpression.Compile(bodypower, nameof(bodypower), required: false);
@@ -430,7 +430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BreatheEffect(Expression<Func<string>> lights, Expression<Func<bodycolorInput>> bodycolor, Expression<Func<bodyfromColorInput>> bodyfromColor = null, Expression<Func<double>> bodyperiod = null, Expression<Func<double>> bodycycles = null, Expression<Func<bool>> bodypersist = null, Expression<Func<bool>> bodypowerOn = null, Expression<Func<double>> bodypeak = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BreatheEffect(Expression<Func<string>> lights, Expression<Func<bodycolorInput>> bodycolor, Expression<Func<bodyfromColorInput2>> bodyfromColor = null, Expression<Func<double>> bodyperiod = null, Expression<Func<double>> bodycycles = null, Expression<Func<bool>> bodypersist = null, Expression<Func<bool>> bodypowerOn = null, Expression<Func<double>> bodypeak = null)
         {
             var __workflow_lights = WorkflowExpression.Compile(lights, nameof(lights), required: true);
             var __workflow_bodycolor = WorkflowExpression.Compile(bodycolor, nameof(bodycolor), required: true);
@@ -677,7 +677,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
     public enum bodyfromColorInput
     {
         [EnumMember(Value = "")]
-        ExistingColor,
+        LeaveUnchanged,
         [EnumMember(Value = "kelvin:1500")]
         Candlelight,
         [EnumMember(Value = "kelvin:2000")]
@@ -775,6 +775,83 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         On,
         [EnumMember(Value = "off")]
         Off
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodycolorInput2
+    {
+        [EnumMember(Value = "")]
+        LeaveUnchanged,
+        [EnumMember(Value = "kelvin:1500")]
+        Candlelight,
+        [EnumMember(Value = "kelvin:2000")]
+        Sunset,
+        [EnumMember(Value = "kelvin:2500")]
+        UltraWarm,
+        [EnumMember(Value = "kelvin:2750")]
+        Incandescent,
+        [EnumMember(Value = "kelvin:3000")]
+        Warm,
+        [EnumMember(Value = "kelvin:3200")]
+        NeutralWarm,
+        [EnumMember(Value = "kelvin:3500")]
+        Neutral,
+        [EnumMember(Value = "kelvin:4000")]
+        Cool,
+        [EnumMember(Value = "kelvin:4500")]
+        CoolDaylight,
+        [EnumMember(Value = "kelvin:5000")]
+        SoftDaylight,
+        [EnumMember(Value = "kelvin:5500")]
+        Daylight,
+        [EnumMember(Value = "kelvin:6000")]
+        NoonDaylight,
+        [EnumMember(Value = "kelvin:6500")]
+        BrightDaylight,
+        [EnumMember(Value = "kelvin:7000")]
+        CloudyDaylight,
+        [EnumMember(Value = "kelvin:7500")]
+        BlueDaylight,
+        [EnumMember(Value = "kelvin:8000")]
+        BlueOvercast,
+        [EnumMember(Value = "kelvin:8500")]
+        BlueWater,
+        [EnumMember(Value = "kelvin:9000")]
+        BlueIce,
+        [EnumMember(Value = "red")]
+        Red,
+        [EnumMember(Value = "orange")]
+        Orange,
+        [EnumMember(Value = "yellow")]
+        Yellow,
+        [EnumMember(Value = "green")]
+        Green,
+        [EnumMember(Value = "cyan")]
+        Cyan,
+        [EnumMember(Value = "blue")]
+        Blue,
+        [EnumMember(Value = "purple")]
+        Purple,
+        [EnumMember(Value = "pink")]
+        Pink,
+        [EnumMember(Value = "red saturation:0.5")]
+        PastelRed,
+        [EnumMember(Value = "orange saturation:0.5")]
+        PastelOrange,
+        [EnumMember(Value = "yellow saturation:0.5")]
+        PastelYellow,
+        [EnumMember(Value = "green saturation:0.5")]
+        PastelGreen,
+        [EnumMember(Value = "cyan saturation:0.5")]
+        PastelCyan,
+        [EnumMember(Value = "blue saturation:0.5")]
+        PastelBlue,
+        [EnumMember(Value = "purple saturation:0.5")]
+        PastelPurple,
+        [EnumMember(Value = "pink saturation:0.5")]
+        PastelPink,
+        [EnumMember(Value = "random")]
+        Random
     }
 
     public class bodystatesInputItem
@@ -898,6 +975,83 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
     {
         [EnumMember(Value = "")]
         LeaveUnchanged,
+        [EnumMember(Value = "kelvin:1500")]
+        Candlelight,
+        [EnumMember(Value = "kelvin:2000")]
+        Sunset,
+        [EnumMember(Value = "kelvin:2500")]
+        UltraWarm,
+        [EnumMember(Value = "kelvin:2750")]
+        Incandescent,
+        [EnumMember(Value = "kelvin:3000")]
+        Warm,
+        [EnumMember(Value = "kelvin:3200")]
+        NeutralWarm,
+        [EnumMember(Value = "kelvin:3500")]
+        Neutral,
+        [EnumMember(Value = "kelvin:4000")]
+        Cool,
+        [EnumMember(Value = "kelvin:4500")]
+        CoolDaylight,
+        [EnumMember(Value = "kelvin:5000")]
+        SoftDaylight,
+        [EnumMember(Value = "kelvin:5500")]
+        Daylight,
+        [EnumMember(Value = "kelvin:6000")]
+        NoonDaylight,
+        [EnumMember(Value = "kelvin:6500")]
+        BrightDaylight,
+        [EnumMember(Value = "kelvin:7000")]
+        CloudyDaylight,
+        [EnumMember(Value = "kelvin:7500")]
+        BlueDaylight,
+        [EnumMember(Value = "kelvin:8000")]
+        BlueOvercast,
+        [EnumMember(Value = "kelvin:8500")]
+        BlueWater,
+        [EnumMember(Value = "kelvin:9000")]
+        BlueIce,
+        [EnumMember(Value = "red")]
+        Red,
+        [EnumMember(Value = "orange")]
+        Orange,
+        [EnumMember(Value = "yellow")]
+        Yellow,
+        [EnumMember(Value = "green")]
+        Green,
+        [EnumMember(Value = "cyan")]
+        Cyan,
+        [EnumMember(Value = "blue")]
+        Blue,
+        [EnumMember(Value = "purple")]
+        Purple,
+        [EnumMember(Value = "pink")]
+        Pink,
+        [EnumMember(Value = "red saturation:0.5")]
+        PastelRed,
+        [EnumMember(Value = "orange saturation:0.5")]
+        PastelOrange,
+        [EnumMember(Value = "yellow saturation:0.5")]
+        PastelYellow,
+        [EnumMember(Value = "green saturation:0.5")]
+        PastelGreen,
+        [EnumMember(Value = "cyan saturation:0.5")]
+        PastelCyan,
+        [EnumMember(Value = "blue saturation:0.5")]
+        PastelBlue,
+        [EnumMember(Value = "purple saturation:0.5")]
+        PastelPurple,
+        [EnumMember(Value = "pink saturation:0.5")]
+        PastelPink,
+        [EnumMember(Value = "random")]
+        Random
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodyfromColorInput2
+    {
+        [EnumMember(Value = "")]
+        ExistingColor,
         [EnumMember(Value = "kelvin:1500")]
         Candlelight,
         [EnumMember(Value = "kelvin:2000")]

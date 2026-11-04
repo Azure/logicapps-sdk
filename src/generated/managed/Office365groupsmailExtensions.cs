@@ -585,7 +585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         public string AttachmentName { get; set; }
 
         [JsonProperty("ContentBytes")]
-        public WorkflowBinaryContent AttachmentContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent AttachmentContent { get; set; }
     }
 
     public class Conversation
@@ -648,10 +648,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
     public class EmailAddressInfo
     {
         [JsonProperty("emailAddress")]
-        public EmailAddressEmailAddressType EmailAddress { get; set; }
+        public EmailAddressInfoEmailAddressType EmailAddress { get; set; }
     }
 
-    public class EmailAddressEmailAddressType
+    public class EmailAddressInfoEmailAddressType
     {
         [JsonProperty("name")]
         public string NameOfTheUser { get; set; }

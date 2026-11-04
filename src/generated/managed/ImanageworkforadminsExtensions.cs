@@ -477,7 +477,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<UpdateFolderPropertiesResponseBody, ApiConnectionActionConfiguration> UpdateFolder(Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodyname = null, Expression<Func<bodydefaultSecurityInput>> bodydefaultSecurity = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyowner = null, Expression<Func<string>> bodyClass = null, Expression<Func<string>> bodysubclass = null, Expression<Func<bool>> bodyisExternalAsNormal = null, Expression<Func<object>> bodyprofile = null)
+        public IBodyWorkflowAction<UpdateFolderPropertiesResponseBody, ApiConnectionActionConfiguration> UpdateFolder(Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodyname = null, Expression<Func<bodydefaultSecurityInput2>> bodydefaultSecurity = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyowner = null, Expression<Func<string>> bodyClass = null, Expression<Func<string>> bodysubclass = null, Expression<Func<bool>> bodyisExternalAsNormal = null, Expression<Func<object>> bodyprofile = null)
         {
             var __workflow_bodyfolderId = WorkflowExpression.Compile(bodyfolderId, nameof(bodyfolderId), required: true);
             var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
@@ -1038,8 +1038,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodydefaultSecurityInput
     {
-        [EnumMember(Value = "no change")]
-        NoChange,
         [EnumMember(Value = "inherit")]
         Inherit,
         [EnumMember(Value = "private")]
@@ -1235,6 +1233,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
     {
         [JsonProperty("data")]
         public NewFolderProfile Data { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodydefaultSecurityInput2
+    {
+        [EnumMember(Value = "no change")]
+        NoChange,
+        [EnumMember(Value = "inherit")]
+        Inherit,
+        [EnumMember(Value = "private")]
+        Private,
+        [EnumMember(Value = "view")]
+        View,
+        [EnumMember(Value = "public")]
+        Public
     }
 }
 

@@ -1974,7 +1974,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SearchMetadata(Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<bodyhasKeyInputItem[]>> bodyhasKey = null, Expression<Func<bodykeyWithValueInputItem[]>> bodykeyWithValue = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SearchMetadata(Expression<Func<bodytypeInput2>> bodytype = null, Expression<Func<bodyhasKeyInputItem[]>> bodyhasKey = null, Expression<Func<bodykeyWithValueInputItem[]>> bodykeyWithValue = null)
         {
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
             var __workflow_bodyhasKey = WorkflowExpression.Compile(bodyhasKey, nameof(bodyhasKey), required: false);
@@ -2113,7 +2113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<DeepLinksByIdResponse, ApiConnectionActionConfiguration> DeepLinksById(Expression<Func<string>> bodyid, Expression<Func<bodytypeInput>> bodytype)
+        public IBodyWorkflowAction<DeepLinksByIdResponse, ApiConnectionActionConfiguration> DeepLinksById(Expression<Func<string>> bodyid, Expression<Func<bodytypeInput3>> bodytype)
         {
             var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
@@ -2182,7 +2182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<CreateLinkResponse, ApiConnectionActionConfiguration> CreateLink(Expression<Func<string>> bodypath, Expression<Func<bodytypeInput>> bodytype, Expression<Func<bool>> bodyuseDefaultSettings, Expression<Func<bodyaccessibilityInput>> bodyaccessibility = null, Expression<Func<bool>> bodysendEmail = null, Expression<Func<string[]>> bodyrecipients = null, Expression<Func<string>> bodymessage = null, Expression<Func<bool>> bodycopyMe = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bool>> bodylinkToCurrent = null, Expression<Func<string>> bodyexpiryDate = null, Expression<Func<double>> bodyexpiryClicks = null, Expression<Func<bool>> bodyaddFileName = null, Expression<Func<string>> bodypassword = null, Expression<Func<bodyprotectionInput>> bodyprotection = null, Expression<Func<bool>> bodyfolderPerRecipient = null)
+        public IBodyWorkflowAction<CreateLinkResponse, ApiConnectionActionConfiguration> CreateLink(Expression<Func<string>> bodypath, Expression<Func<bodytypeInput4>> bodytype, Expression<Func<bool>> bodyuseDefaultSettings, Expression<Func<bodyaccessibilityInput>> bodyaccessibility = null, Expression<Func<bool>> bodysendEmail = null, Expression<Func<string[]>> bodyrecipients = null, Expression<Func<string>> bodymessage = null, Expression<Func<bool>> bodycopyMe = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bool>> bodylinkToCurrent = null, Expression<Func<string>> bodyexpiryDate = null, Expression<Func<double>> bodyexpiryClicks = null, Expression<Func<bool>> bodyaddFileName = null, Expression<Func<string>> bodypassword = null, Expression<Func<bodyprotectionInput>> bodyprotection = null, Expression<Func<bool>> bodyfolderPerRecipient = null)
         {
             var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
@@ -2570,7 +2570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<KnowledgeBaseListResponse, ApiConnectionActionConfiguration> ListKnowledgeBases(Expression<Func<bodysortByInput>> bodysortBy, Expression<Func<bodysortDirectionInput>> bodysortDirection, Expression<Func<bodystatusInput>> bodystatus, Expression<Func<int>> bodypage = null, Expression<Func<int>> bodysize = null, Expression<Func<string>> bodycreatedBy = null, Expression<Func<int>> bodycreatedAfter = null, Expression<Func<int>> bodycreatedBefore = null, Expression<Func<bool>> bodyincludePlaceholderData = null, Expression<Func<bool>> bodyincludeProcessingStatistics = null, Expression<Func<bool>> bodyincludePrompts = null)
+        public IBodyWorkflowAction<KnowledgeBaseListResponse, ApiConnectionActionConfiguration> ListKnowledgeBases(Expression<Func<bodysortByInput>> bodysortBy, Expression<Func<bodysortDirectionInput>> bodysortDirection, Expression<Func<bodystatusInput2>> bodystatus, Expression<Func<int>> bodypage = null, Expression<Func<int>> bodysize = null, Expression<Func<string>> bodycreatedBy = null, Expression<Func<int>> bodycreatedAfter = null, Expression<Func<int>> bodycreatedBefore = null, Expression<Func<bool>> bodyincludePlaceholderData = null, Expression<Func<bool>> bodyincludeProcessingStatistics = null, Expression<Func<bool>> bodyincludePrompts = null)
         {
             var __workflow_bodysortBy = WorkflowExpression.Compile(bodysortBy, nameof(bodysortBy), required: true);
             var __workflow_bodysortDirection = WorkflowExpression.Compile(bodysortDirection, nameof(bodysortDirection), required: true);
@@ -2967,7 +2967,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<ListLinksV2Response, ApiConnectionActionConfiguration> ListLinks(Expression<Func<string>> bodypath = null, Expression<Func<string>> bodyusername = null, Expression<Func<string>> bodycreatedBefore = null, Expression<Func<string>> bodycreatedAfter = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<bodyaccessibilityInput>> bodyaccessibility = null, Expression<Func<string>> bodyoffset = null, Expression<Func<string>> bodycount = null)
+        public IBodyWorkflowAction<ListLinksV2Response, ApiConnectionActionConfiguration> ListLinks(Expression<Func<string>> bodypath = null, Expression<Func<string>> bodyusername = null, Expression<Func<string>> bodycreatedBefore = null, Expression<Func<string>> bodycreatedAfter = null, Expression<Func<bodytypeInput5>> bodytype = null, Expression<Func<bodyaccessibilityInput2>> bodyaccessibility = null, Expression<Func<string>> bodyoffset = null, Expression<Func<string>> bodycount = null)
         {
             var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: false);
             var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: false);
@@ -3042,7 +3042,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<SearchV2Response, ApiConnectionActionConfiguration> Search(Expression<Func<string>> bodyquery, Expression<Func<bool>> bodyenableAISafeguards = null, Expression<Func<int>> bodyoffset = null, Expression<Func<int>> bodycount = null, Expression<Func<string>> bodyfolder = null, Expression<Func<int>> bodymodifiedBefore = null, Expression<Func<int>> bodymodifiedAfter = null, Expression<Func<int>> bodyuploadedBefore = null, Expression<Func<int>> bodyuploadedAfter = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<bool>> bodysnippetRequested = null, Expression<Func<bodysortByInput>> bodysortBy = null, Expression<Func<bodysortDirectionInput>> bodysortDirection = null, Expression<Func<bodyfileQueryFieldsInputItem[]>> bodyfileQueryFields = null, Expression<Func<bodyfolderQueryFieldsInputItem[]>> bodyfolderQueryFields = null, Expression<Func<bodyqueryOperatorInput>> bodyqueryOperator = null, Expression<Func<string[]>> bodymlt = null, Expression<Func<string[]>> bodymltt = null)
+        public IBodyWorkflowAction<SearchV2Response, ApiConnectionActionConfiguration> Search(Expression<Func<string>> bodyquery, Expression<Func<bool>> bodyenableAISafeguards = null, Expression<Func<int>> bodyoffset = null, Expression<Func<int>> bodycount = null, Expression<Func<string>> bodyfolder = null, Expression<Func<int>> bodymodifiedBefore = null, Expression<Func<int>> bodymodifiedAfter = null, Expression<Func<int>> bodyuploadedBefore = null, Expression<Func<int>> bodyuploadedAfter = null, Expression<Func<bodytypeInput6>> bodytype = null, Expression<Func<bool>> bodysnippetRequested = null, Expression<Func<bodysortByInput2>> bodysortBy = null, Expression<Func<bodysortDirectionInput2>> bodysortDirection = null, Expression<Func<bodyfileQueryFieldsInputItem[]>> bodyfileQueryFields = null, Expression<Func<bodyfolderQueryFieldsInputItem[]>> bodyfolderQueryFields = null, Expression<Func<bodyqueryOperatorInput>> bodyqueryOperator = null, Expression<Func<string[]>> bodymlt = null, Expression<Func<string[]>> bodymltt = null)
         {
             var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
             var __workflow_bodyenableAISafeguards = WorkflowExpression.Compile(bodyenableAISafeguards, nameof(bodyenableAISafeguards), required: false);
@@ -4863,9 +4863,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
-        FOLDER,
-        FILE,
-        ALL
+        [EnumMember(Value = "integer")]
+        Integer,
+        [EnumMember(Value = "string")]
+        String,
+        [EnumMember(Value = "decimal")]
+        Decimal,
+        [EnumMember(Value = "date")]
+        Date,
+        [EnumMember(Value = "enum")]
+        Enum
     }
 
     public class ProjectItem
@@ -4943,9 +4950,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystatusInput
     {
-        ACTIVE,
-        DELETED,
-        CREATED
+        [EnumMember(Value = "pending")]
+        Pending,
+        [EnumMember(Value = "in-progress")]
+        InProgress,
+        [EnumMember(Value = "completed")]
+        Completed,
+        [EnumMember(Value = "on-hold")]
+        OnHold,
+        [EnumMember(Value = "canceled")]
+        Canceled
     }
 
     public class CreateProjectFromTemplateResponse
@@ -4967,6 +4981,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     {
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodytypeInput2
+    {
+        ALL,
+        FOLDER,
+        FILE
     }
 
     public class bodyhasKeyInputItem
@@ -5027,6 +5049,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     {
         [JsonProperty("url")]
         public string Url { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodytypeInput3
+    {
+        [EnumMember(Value = "file")]
+        File,
+        [EnumMember(Value = "folder")]
+        Folder
     }
 
     public class DeepLinksByPathResponse
@@ -5123,6 +5154,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodytypeInput4
+    {
+        [EnumMember(Value = "file")]
+        File,
+        [EnumMember(Value = "folder")]
+        Folder,
+        [EnumMember(Value = "upload")]
+        Upload
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyaccessibilityInput
     {
         [EnumMember(Value = "anyone")]
@@ -5132,7 +5174,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [EnumMember(Value = "domain")]
         Domain,
         [EnumMember(Value = "recipients")]
-        Recipients
+        Recipients,
+        [EnumMember(Value = "none")]
+        None
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -5346,23 +5390,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysortByInput
     {
-        [EnumMember(Value = "last_modified")]
-        LastModified,
-        [EnumMember(Value = "size")]
-        Size,
+        [EnumMember(Value = "createdOn")]
+        CreatedOn,
         [EnumMember(Value = "name")]
-        Name,
-        [EnumMember(Value = "score")]
-        Score
+        Name
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysortDirectionInput
     {
-        [EnumMember(Value = "ascending")]
-        Ascending,
-        [EnumMember(Value = "descending")]
-        Descending
+        ASC,
+        DESC
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodystatusInput2
+    {
+        ACTIVE,
+        DELETED,
+        CREATED
     }
 
     public class HybridSearchResponse
@@ -5536,6 +5582,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string ExpiryDate { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodytypeInput5
+    {
+        [EnumMember(Value = "file")]
+        File,
+        [EnumMember(Value = "folder")]
+        Folder
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodyaccessibilityInput2
+    {
+        [EnumMember(Value = "anyone")]
+        Anyone,
+        [EnumMember(Value = "password")]
+        Password,
+        [EnumMember(Value = "domain")]
+        Domain,
+        [EnumMember(Value = "recipients")]
+        Recipients
+    }
+
     public class SearchV2Response
     {
         [JsonProperty("results")]
@@ -5612,6 +5680,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         [JsonProperty("value")]
         public string Value { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodytypeInput6
+    {
+        FOLDER,
+        FILE,
+        ALL
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodysortByInput2
+    {
+        [EnumMember(Value = "last_modified")]
+        LastModified,
+        [EnumMember(Value = "size")]
+        Size,
+        [EnumMember(Value = "name")]
+        Name,
+        [EnumMember(Value = "score")]
+        Score
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodysortDirectionInput2
+    {
+        [EnumMember(Value = "ascending")]
+        Ascending,
+        [EnumMember(Value = "descending")]
+        Descending
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

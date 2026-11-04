@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
     public class ConnectiveesignaturesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<CreateInstantPackageResponse, ApiConnectionActionConfiguration> CreateInstantPackage(Expression<Func<WorkflowBinaryContent>> bodydocument = null, Expression<Func<bodydocumentLanguageInput>> bodydocumentLanguage = null, Expression<Func<string>> bodydocumentName = null, Expression<Func<string>> bodyexternalPackageData = null, Expression<Func<string>> bodyinitiator = null, Expression<Func<Stakeholder[]>> bodystakeholders = null, Expression<Func<string>> bodycallBackUrl = null, Expression<Func<string>> bodycorrelationId = null, Expression<Func<string>> bodydocumentGroupCode = null, Expression<Func<string>> bodythemeCode = null, Expression<Func<bool>> bodydownloadUnsignedFiles = null, Expression<Func<bool>> bodyreassignEnabled = null, Expression<Func<int>> bodyactionUrlExpirationPeriodInDays = null, Expression<Func<string>> bodyexpiryTimestamp = null, Expression<Func<string>> bodyexternalDocumentReference = null, Expression<Func<string>> bodyexternalPackageReference = null, Expression<Func<string>> bodyf2FRedirectUrl = null, Expression<Func<string>> bodynotificationCallBackUrl = null, Expression<Func<string>> bodypdfErrorHandling = null, Expression<Func<string>> bodyrepresentation = null, Expression<Func<string>> bodyrepresentationType = null, Expression<Func<string>> bodysigningTemplateCode = null, Expression<Func<string>> bodytargetType = null)
+        public IBodyWorkflowAction<CreateInstantPackageResponse, ApiConnectionActionConfiguration> CreateInstantPackage(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> bodydocument = null, Expression<Func<bodydocumentLanguageInput>> bodydocumentLanguage = null, Expression<Func<string>> bodydocumentName = null, Expression<Func<string>> bodyexternalPackageData = null, Expression<Func<string>> bodyinitiator = null, Expression<Func<Stakeholder[]>> bodystakeholders = null, Expression<Func<string>> bodycallBackUrl = null, Expression<Func<string>> bodycorrelationId = null, Expression<Func<string>> bodydocumentGroupCode = null, Expression<Func<string>> bodythemeCode = null, Expression<Func<bool>> bodydownloadUnsignedFiles = null, Expression<Func<bool>> bodyreassignEnabled = null, Expression<Func<int>> bodyactionUrlExpirationPeriodInDays = null, Expression<Func<string>> bodyexpiryTimestamp = null, Expression<Func<string>> bodyexternalDocumentReference = null, Expression<Func<string>> bodyexternalPackageReference = null, Expression<Func<string>> bodyf2FRedirectUrl = null, Expression<Func<string>> bodynotificationCallBackUrl = null, Expression<Func<string>> bodypdfErrorHandling = null, Expression<Func<string>> bodyrepresentation = null, Expression<Func<string>> bodyrepresentationType = null, Expression<Func<string>> bodysigningTemplateCode = null, Expression<Func<string>> bodytargetType = null)
         {
             var __workflow_bodydocument = WorkflowExpression.Compile(bodydocument, nameof(bodydocument), required: false);
             var __workflow_bodydocumentLanguage = WorkflowExpression.Compile(bodydocumentLanguage, nameof(bodydocumentLanguage), required: false);
@@ -892,7 +892,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         public string F2FSigningUrl { get; set; }
         public string PackageStatus { get; set; }
         public PackageDocument[] PackageDocuments { get; set; }
-        public PackageStatusStakeholdersTypeItem[] Stakeholders { get; set; }
+        public PackageStatusInfoStakeholdersTypeItem[] Stakeholders { get; set; }
     }
 
     public class PackageDocument
@@ -903,7 +903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         public string DocumentType { get; set; }
     }
 
-    public class PackageStatusStakeholdersTypeItem
+    public class PackageStatusInfoStakeholdersTypeItem
     {
         public string Type { get; set; }
         public string PersonGroupName { get; set; }
@@ -911,29 +911,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         public string EmailAddress { get; set; }
         public string ExternalStakeholderReference { get; set; }
         public string StakeholderId { get; set; }
-        public PackageStatusStakeholdersTypeItemActorsTypeItem[] Actors { get; set; }
+        public PackageStatusInfoStakeholdersTypeItemActorsTypeItem[] Actors { get; set; }
     }
 
-    public class PackageStatusStakeholdersTypeItemActorsTypeItem
+    public class PackageStatusInfoStakeholdersTypeItemActorsTypeItem
     {
         public string ActorId { get; set; }
         public string ActionUrl { get; set; }
-        public PackageStatusStakeholdersTypeItemActorsTypeItemActionUrlsTypeItem[] ActionUrls { get; set; }
+        public PackageStatusInfoStakeholdersTypeItemActorsTypeItemActionUrlsTypeItem[] ActionUrls { get; set; }
         public string ActorStatus { get; set; }
         public string Type { get; set; }
         public string CompletedBy { get; set; }
         public string CompletedTimestamp { get; set; }
         public string Reason { get; set; }
-        public PackageStatusStakeholdersTypeItemActorsTypeItemLocationsTypeItem[] Locations { get; set; }
+        public PackageStatusInfoStakeholdersTypeItemActorsTypeItemLocationsTypeItem[] Locations { get; set; }
     }
 
-    public class PackageStatusStakeholdersTypeItemActorsTypeItemActionUrlsTypeItem
+    public class PackageStatusInfoStakeholdersTypeItemActorsTypeItemActionUrlsTypeItem
     {
         public string EmailAddress { get; set; }
         public string Url { get; set; }
     }
 
-    public class PackageStatusStakeholdersTypeItemActorsTypeItemLocationsTypeItem
+    public class PackageStatusInfoStakeholdersTypeItemActorsTypeItemLocationsTypeItem
     {
         public string Id { get; set; }
         public string UsedSigningType { get; set; }

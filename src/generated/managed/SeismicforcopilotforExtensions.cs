@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
-        public IBodyWorkflowAction<ActivityListResponseEnvelope, ApiConnectionActionConfiguration> ScpGetRelatedActivities(Expression<Func<recordTypeInput>> recordType, Expression<Func<string>> recordId, Expression<Func<string>> startDateTime = null, Expression<Func<string>> endDateTime = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<crmTypeInput>> crmType = null, Expression<Func<string>> crmOrgUrl = null)
+        public IBodyWorkflowAction<ActivityListResponseEnvelope, ApiConnectionActionConfiguration> ScpGetRelatedActivities(Expression<Func<recordTypeInput2>> recordType, Expression<Func<string>> recordId, Expression<Func<string>> startDateTime = null, Expression<Func<string>> endDateTime = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<crmTypeInput>> crmType = null, Expression<Func<string>> crmOrgUrl = null)
         {
             var __workflow_recordType = WorkflowExpression.Compile(recordType, nameof(recordType), required: true);
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
-        public IBodyWorkflowAction<SalesHighlightListResponseEnvelope, ApiConnectionActionConfiguration> ScpGetSalesHighlights(Expression<Func<recordTypeInput>> recordType, Expression<Func<string>> recordId, Expression<Func<string>> crmType = null, Expression<Func<string>> crmOrgUrl = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<SalesHighlightListResponseEnvelope, ApiConnectionActionConfiguration> ScpGetSalesHighlights(Expression<Func<recordTypeInput3>> recordType, Expression<Func<string>> recordId, Expression<Func<string>> crmType = null, Expression<Func<string>> crmOrgUrl = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
             var __workflow_recordType = WorkflowExpression.Compile(recordType, nameof(recordType), required: true);
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
@@ -331,9 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum recordTypeInput
     {
-        [EnumMember(Value = "account")]
         Account,
-        [EnumMember(Value = "opportunity")]
         Opportunity
     }
 
@@ -371,6 +369,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         public JToken AdditionalProperties { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum recordTypeInput2
+    {
+        [EnumMember(Value = "account")]
+        Account,
+        [EnumMember(Value = "opportunity")]
+        Opportunity
+    }
+
     public class SalesHighlightListResponseEnvelope
     {
         [JsonProperty("value")]
@@ -396,6 +403,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
 
         [JsonProperty("additionalProperties")]
         public JToken AdditionalProperties { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum recordTypeInput3
+    {
+        [EnumMember(Value = "account")]
+        Account,
+        [EnumMember(Value = "opportunity")]
+        Opportunity
     }
 
     public class EmailSummeryResponseEnvelope

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
     public class Pdf4meimageActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CompressImage(Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<bodyimageTypeInput>> bodyimageType, Expression<Func<string>> bodydocumentname = null, Expression<Func<bodycompressionLevelInput>> bodycompressionLevel = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CompressImage(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> bodydocContent, Expression<Func<bodyimageTypeInput>> bodyimageType, Expression<Func<string>> bodydocumentname = null, Expression<Func<bodycompressionLevelInput>> bodycompressionLevel = null)
         {
             var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
             var __workflow_bodyimageType = WorkflowExpression.Compile(bodyimageType, nameof(bodyimageType), required: true);
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertImageFormat(Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<bodycurrentImageFormatInput>> bodycurrentImageFormat, Expression<Func<bodynewImageFormatInput>> bodynewImageFormat, Expression<Func<string>> bodydocumentname = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertImageFormat(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> bodydocContent, Expression<Func<bodycurrentImageFormatInput>> bodycurrentImageFormat, Expression<Func<bodynewImageFormatInput>> bodynewImageFormat, Expression<Func<string>> bodydocumentname = null)
         {
             var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
             var __workflow_bodycurrentImageFormat = WorkflowExpression.Compile(bodycurrentImageFormat, nameof(bodycurrentImageFormat), required: true);
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FlipImage(Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<bodyorientationTypeInput>> bodyorientationType, Expression<Func<string>> bodydocumentname = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FlipImage(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> bodydocContent, Expression<Func<bodyorientationTypeInput>> bodyorientationType, Expression<Func<string>> bodydocumentname = null)
         {
             var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
             var __workflow_bodyorientationType = WorkflowExpression.Compile(bodyorientationType, nameof(bodyorientationType), required: true);
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
-        public IBodyWorkflowAction<ImageExtractTextV1Response, ApiConnectionActionConfiguration> ImageExtractText(Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<bodyimageTypeExtractInput>> bodyimageTypeExtract, Expression<Func<string>> bodydocumentname = null)
+        public IBodyWorkflowAction<ImageExtractTextV1Response, ApiConnectionActionConfiguration> ImageExtractText(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> bodydocContent, Expression<Func<bodyimageTypeExtractInput>> bodyimageTypeExtract, Expression<Func<string>> bodydocumentname = null)
         {
             var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
             var __workflow_bodyimageTypeExtract = WorkflowExpression.Compile(bodyimageTypeExtract, nameof(bodyimageTypeExtract), required: true);
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RemoveExifTagsFromImage(Expression<Func<WorkflowBinaryContent>> bodydocContent, Expression<Func<bodyimageTypeInput>> bodyimageType, Expression<Func<string>> bodydocumentname = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RemoveExifTagsFromImage(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> bodydocContent, Expression<Func<bodyimageTypeInput>> bodyimageType, Expression<Func<string>> bodydocumentname = null)
         {
             var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
             var __workflow_bodyimageType = WorkflowExpression.Compile(bodyimageType, nameof(bodyimageType), required: true);
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ResizeImage(Expression<Func<schemaValInput>> schemaVal = null, Expression<Func<object>> operation = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ResizeImage(Expression<Func<schemaValInput2>> schemaVal = null, Expression<Func<object>> operation = null)
         {
             var __workflow_schemaVal = WorkflowExpression.Compile(schemaVal, nameof(schemaVal), required: false);
             var __workflow_operation = WorkflowExpression.Compile(operation, nameof(operation), required: false);
@@ -317,8 +317,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum schemaValInput
     {
-        Percentage,
-        Specific
+        Border,
+        Rectangle
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -345,6 +345,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         PNG,
         TIFF,
         BMP
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum schemaValInput2
+    {
+        Percentage,
+        Specific
     }
 }
 

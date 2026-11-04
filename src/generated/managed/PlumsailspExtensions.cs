@@ -1174,7 +1174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsInviteExternalUserToSharePoint(Expression<Func<targetInput>> target, Expression<Func<object>> request = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsInviteExternalUserToSharePoint(Expression<Func<targetInput2>> target, Expression<Func<object>> request = null)
         {
             var __workflow_target = WorkflowExpression.Compile(target, nameof(target), required: true);
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: false);
@@ -1515,7 +1515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsProvisionPnPTemplate(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<WorkflowBinaryContent>> requesttemplateContent, Expression<Func<bool>> requestoverwriteSystemPropertyBagValues = null, Expression<Func<bool>> requestignoreDuplicateDataRowErrors = null, Expression<Func<bool>> requestclearNavigation = null, Expression<Func<bool>> requestprovisionContentTypesToSubWebs = null, Expression<Func<bool>> requestprovisionFieldsToSubWebs = null, Expression<Func<string>> requesthandlers = null, Expression<Func<string>> requestexcludeHandlers = null, Expression<Func<string>> requestparameters = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsProvisionPnPTemplate(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> requesttemplateContent, Expression<Func<bool>> requestoverwriteSystemPropertyBagValues = null, Expression<Func<bool>> requestignoreDuplicateDataRowErrors = null, Expression<Func<bool>> requestclearNavigation = null, Expression<Func<bool>> requestprovisionContentTypesToSubWebs = null, Expression<Func<bool>> requestprovisionFieldsToSubWebs = null, Expression<Func<string>> requesthandlers = null, Expression<Func<string>> requestexcludeHandlers = null, Expression<Func<string>> requestparameters = null)
         {
             var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
             var __workflow_requesttemplateContent = WorkflowExpression.Compile(requesttemplateContent, nameof(requesttemplateContent), required: true);
@@ -1596,7 +1596,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsProvisionPnPTenantTemplate(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<WorkflowBinaryContent>> requesttemplateContent, Expression<Func<bool>> requestoverwriteSystemPropertyBagValues = null, Expression<Func<bool>> requestignoreDuplicateDataRowErrors = null, Expression<Func<bool>> requestclearNavigation = null, Expression<Func<bool>> requestprovisionContentTypesToSubWebs = null, Expression<Func<bool>> requestprovisionFieldsToSubWebs = null, Expression<Func<string>> requesthandlers = null, Expression<Func<string>> requestexcludeHandlers = null, Expression<Func<string>> requestparameters = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsProvisionPnPTenantTemplate(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> requesttemplateContent, Expression<Func<bool>> requestoverwriteSystemPropertyBagValues = null, Expression<Func<bool>> requestignoreDuplicateDataRowErrors = null, Expression<Func<bool>> requestclearNavigation = null, Expression<Func<bool>> requestprovisionContentTypesToSubWebs = null, Expression<Func<bool>> requestprovisionFieldsToSubWebs = null, Expression<Func<string>> requesthandlers = null, Expression<Func<string>> requestexcludeHandlers = null, Expression<Func<string>> requestparameters = null)
         {
             var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
             var __workflow_requesttemplateContent = WorkflowExpression.Compile(requesttemplateContent, nameof(requesttemplateContent), required: true);
@@ -1853,7 +1853,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsParseCsv(Expression<Func<WorkflowBinaryContent>> requestcontentOfCSVDocument, Expression<Func<string>> requestheaders, Expression<Func<requestdelimiterInput>> requestdelimiter = null, Expression<Func<requestlocaleInput>> requestlocale = null, Expression<Func<int>> requestlimit = null, Expression<Func<bool>> requestskipFirstLine = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsParseCsv(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> requestcontentOfCSVDocument, Expression<Func<string>> requestheaders, Expression<Func<requestdelimiterInput>> requestdelimiter = null, Expression<Func<requestlocaleInput>> requestlocale = null, Expression<Func<int>> requestlimit = null, Expression<Func<bool>> requestskipFirstLine = null)
         {
             var __workflow_requestcontentOfCSVDocument = WorkflowExpression.Compile(requestcontentOfCSVDocument, nameof(requestcontentOfCSVDocument), required: true);
             var __workflow_requestheaders = WorkflowExpression.Compile(requestheaders, nameof(requestheaders), required: true);
@@ -2021,8 +2021,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
     public enum targetInput
     {
         Site,
+        List,
         Item,
-        Group
+        Folder,
+        Document
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -2105,6 +2107,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
     {
         [JsonProperty("optionValue")]
         public string OptionValue { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum targetInput2
+    {
+        Site,
+        Item,
+        Group
     }
 
     public class ListFileUrlsResponse

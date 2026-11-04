@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<AudioSpeechPostResponse, ApiConnectionActionConfiguration> AudioSpeech(Expression<Func<bodymodelInput>> bodymodel, Expression<Func<string>> bodyinput, Expression<Func<bodyvoiceInput>> bodyvoice, Expression<Func<bodyresponseFormatInput>> bodyresponseFormat = null, Expression<Func<double>> bodyspeed = null)
+        public IBodyWorkflowAction<AudioSpeechPostResponse, ApiConnectionActionConfiguration> AudioSpeech(Expression<Func<bodymodelInput2>> bodymodel, Expression<Func<string>> bodyinput, Expression<Func<bodyvoiceInput>> bodyvoice, Expression<Func<bodyresponseFormatInput>> bodyresponseFormat = null, Expression<Func<double>> bodyspeed = null)
         {
             var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
             var __workflow_bodyinput = WorkflowExpression.Compile(bodyinput, nameof(bodyinput), required: true);
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<ImagePostResponse, ApiConnectionActionConfiguration> Image(Expression<Func<string>> bodyprompt, Expression<Func<bodymodelInput>> bodymodel = null, Expression<Func<int>> bodyn = null, Expression<Func<bodyqualityInput>> bodyquality = null, Expression<Func<bodysizeInput>> bodysize = null, Expression<Func<bodystyleInput>> bodystyle = null, Expression<Func<string>> bodyuser = null)
+        public IBodyWorkflowAction<ImagePostResponse, ApiConnectionActionConfiguration> Image(Expression<Func<string>> bodyprompt, Expression<Func<bodymodelInput3>> bodymodel = null, Expression<Func<int>> bodyn = null, Expression<Func<bodyqualityInput>> bodyquality = null, Expression<Func<bodysizeInput>> bodysize = null, Expression<Func<bodystyleInput>> bodystyle = null, Expression<Func<string>> bodyuser = null)
         {
             var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: true);
             var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: false);
@@ -862,10 +862,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymodelInput
     {
-        [EnumMember(Value = "dall-e-2")]
-        DallE2,
-        [EnumMember(Value = "dall-e-3")]
-        DallE3
+        [EnumMember(Value = "text-moderation-latest")]
+        TextModerationLatest,
+        [EnumMember(Value = "text-moderation-stable")]
+        TextModerationStable
     }
 
     public class EmbedPostResponse
@@ -923,6 +923,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodymodelInput2
+    {
+        [EnumMember(Value = "tts-1")]
+        Tts1,
+        [EnumMember(Value = "tts-1-hd")]
+        Tts1Hd
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyvoiceInput
     {
         [EnumMember(Value = "alloy")]
@@ -968,6 +977,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
 
         [JsonProperty("revised_prompt")]
         public string RevisedPrompt { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodymodelInput3
+    {
+        [EnumMember(Value = "dall-e-2")]
+        DallE2,
+        [EnumMember(Value = "dall-e-3")]
+        DallE3
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

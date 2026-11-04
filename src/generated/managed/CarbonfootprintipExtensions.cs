@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
-        public IBodyWorkflowAction<CarbonFootprintFromFlightResponse, ApiConnectionActionConfiguration> CarbonFootprintFromFlight(Expression<Func<string>> distance, Expression<Func<typeInput>> type)
+        public IBodyWorkflowAction<CarbonFootprintFromFlightResponse, ApiConnectionActionConfiguration> CarbonFootprintFromFlight(Expression<Func<string>> distance, Expression<Func<typeInput2>> type)
         {
             var __workflow_distance = WorkflowExpression.Compile(distance, nameof(distance), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
-        public IBodyWorkflowAction<CarbonFootprintFromMotorBikeResponse, ApiConnectionActionConfiguration> CarbonFootprintFromMotorBike(Expression<Func<typeInput>> type, Expression<Func<string>> distance)
+        public IBodyWorkflowAction<CarbonFootprintFromMotorBikeResponse, ApiConnectionActionConfiguration> CarbonFootprintFromMotorBike(Expression<Func<typeInput3>> type, Expression<Func<string>> distance)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_distance = WorkflowExpression.Compile(distance, nameof(distance), required: true);
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
-        public IBodyWorkflowAction<CarbonFootprintFromPublicTransitResponse, ApiConnectionActionConfiguration> CarbonFootprintFromPublicTransit(Expression<Func<string>> distance, Expression<Func<typeInput>> type)
+        public IBodyWorkflowAction<CarbonFootprintFromPublicTransitResponse, ApiConnectionActionConfiguration> CarbonFootprintFromPublicTransit(Expression<Func<string>> distance, Expression<Func<typeInput4>> type)
         {
             var __workflow_distance = WorkflowExpression.Compile(distance, nameof(distance), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
@@ -230,15 +230,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
-        Taxi,
-        ClassicBus,
-        EcoBus,
-        Coach,
-        NationalTrain,
-        LightRail,
-        Subway,
-        FerryOnFoot,
-        FerryInCar
+        Petrol,
+        Diesel,
+        LPG
     }
 
     public class CarbonFootprintFromCarTravelResponse
@@ -280,16 +274,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         public double CarbonEquivalent { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum typeInput2
+    {
+        DomesticFlight,
+        ShortEconomyClassFlight,
+        ShortBusinessClassFlight,
+        LongEconomyClassFlight,
+        LongPremiumClassFlight,
+        LongBusinessClassFlight,
+        LongFirstClassFlight
+    }
+
     public class CarbonFootprintFromMotorBikeResponse
     {
         [JsonProperty("carbonEquivalent")]
         public double CarbonEquivalent { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum typeInput3
+    {
+        SmallMotorBike,
+        MediumMotorBike,
+        LargeMotorBike
+    }
+
     public class CarbonFootprintFromPublicTransitResponse
     {
         [JsonProperty("carbonEquivalent")]
         public double CarbonEquivalent { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum typeInput4
+    {
+        Taxi,
+        ClassicBus,
+        EcoBus,
+        Coach,
+        NationalTrain,
+        LightRail,
+        Subway,
+        FerryOnFoot,
+        FerryInCar
     }
 }
 

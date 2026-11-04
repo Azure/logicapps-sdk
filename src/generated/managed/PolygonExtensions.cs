@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
-        public IBodyWorkflowAction<GetStockSplitsResponse, ApiConnectionActionConfiguration> GetStockSplits(Expression<Func<string>> ticker, Expression<Func<string>> executionDate = null, Expression<Func<bool>> reverseSplit = null, Expression<Func<orderInput>> order = null, Expression<Func<int>> limit = null, Expression<Func<sortInput>> sort = null)
+        public IBodyWorkflowAction<GetStockSplitsResponse, ApiConnectionActionConfiguration> GetStockSplits(Expression<Func<string>> ticker, Expression<Func<string>> executionDate = null, Expression<Func<bool>> reverseSplit = null, Expression<Func<orderInput>> order = null, Expression<Func<int>> limit = null, Expression<Func<sortInput2>> sort = null)
         {
             var __workflow_ticker = WorkflowExpression.Compile(ticker, nameof(ticker), required: true);
             var __workflow_executionDate = WorkflowExpression.Compile(executionDate, nameof(executionDate), required: false);
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
-        public IBodyWorkflowAction<GetStockFinancialDetailsResponse, ApiConnectionActionConfiguration> GetStockFinancialDetails(Expression<Func<string>> ticker = null, Expression<Func<string>> cik = null, Expression<Func<string>> companyName = null, Expression<Func<string>> sic = null, Expression<Func<string>> filingDate = null, Expression<Func<string>> periodOfReportDate = null, Expression<Func<timeframeInput>> timeframe = null, Expression<Func<bool>> includeSources = null, Expression<Func<orderInput>> order = null, Expression<Func<int>> limit = null, Expression<Func<sortInput>> sort = null)
+        public IBodyWorkflowAction<GetStockFinancialDetailsResponse, ApiConnectionActionConfiguration> GetStockFinancialDetails(Expression<Func<string>> ticker = null, Expression<Func<string>> cik = null, Expression<Func<string>> companyName = null, Expression<Func<string>> sic = null, Expression<Func<string>> filingDate = null, Expression<Func<string>> periodOfReportDate = null, Expression<Func<timeframeInput>> timeframe = null, Expression<Func<bool>> includeSources = null, Expression<Func<orderInput>> order = null, Expression<Func<int>> limit = null, Expression<Func<sortInput3>> sort = null)
         {
             var __workflow_ticker = WorkflowExpression.Compile(ticker, nameof(ticker), required: false);
             var __workflow_cik = WorkflowExpression.Compile(cik, nameof(cik), required: false);
@@ -372,10 +372,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortInput
     {
-        [EnumMember(Value = "filing_date")]
-        FilingDate,
-        [EnumMember(Value = "period_of_report_date")]
-        PeriodOfReportDate
+        [EnumMember(Value = "ticker")]
+        Ticker,
+        [EnumMember(Value = "name")]
+        Name,
+        [EnumMember(Value = "market")]
+        Market,
+        [EnumMember(Value = "locale")]
+        Locale,
+        [EnumMember(Value = "primary_exchange")]
+        PrimaryExchange,
+        [EnumMember(Value = "type")]
+        Type,
+        [EnumMember(Value = "currency_symbol")]
+        CurrencySymbol,
+        [EnumMember(Value = "currency_name")]
+        CurrencyName,
+        [EnumMember(Value = "base_currency_symbol")]
+        BaseCurrencySymbol,
+        [EnumMember(Value = "base_currency_name")]
+        BaseCurrencyName,
+        [EnumMember(Value = "cik")]
+        Cik,
+        [EnumMember(Value = "composite_figi")]
+        CompositeFigi,
+        [EnumMember(Value = "share_class_figi")]
+        ShareClassFigi,
+        [EnumMember(Value = "last_updated_utc")]
+        LastUpdatedUtc,
+        [EnumMember(Value = "delisted_utc")]
+        DelistedUtc
     }
 
     public class GetTickerDetailsResponse
@@ -529,6 +555,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
 
         [JsonProperty("ticker")]
         public string Ticker { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum sortInput2
+    {
+        [EnumMember(Value = "execution_date")]
+        ExecutionDate,
+        [EnumMember(Value = "ticker")]
+        Ticker
     }
 
     public class GetStockDividendsResponse
@@ -753,6 +788,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
         Quarterly,
         [EnumMember(Value = "ttm")]
         Ttm
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum sortInput3
+    {
+        [EnumMember(Value = "filing_date")]
+        FilingDate,
+        [EnumMember(Value = "period_of_report_date")]
+        PeriodOfReportDate
     }
 
     public class GetExchangesResponse

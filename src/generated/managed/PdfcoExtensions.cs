@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<UrlToPdfResponse, ApiConnectionActionConfiguration> UrlToPdf(Expression<Func<string>> bodyurl, Expression<Func<string>> bodymargins = null, Expression<Func<string>> bodypaperSize = null, Expression<Func<bodyorientationInput>> bodyorientation = null, Expression<Func<bool>> bodyprintBackground = null, Expression<Func<string>> bodyheader = null, Expression<Func<string>> bodyfooter = null, Expression<Func<int>> bodyexpiration = null, Expression<Func<string>> bodyprofiles = null, Expression<Func<bool>> bodyasync = null)
+        public IBodyWorkflowAction<UrlToPdfResponse, ApiConnectionActionConfiguration> UrlToPdf(Expression<Func<string>> bodyurl, Expression<Func<string>> bodymargins = null, Expression<Func<string>> bodypaperSize = null, Expression<Func<bodyorientationInput2>> bodyorientation = null, Expression<Func<bool>> bodyprintBackground = null, Expression<Func<string>> bodyheader = null, Expression<Func<string>> bodyfooter = null, Expression<Func<int>> bodyexpiration = null, Expression<Func<string>> bodyprofiles = null, Expression<Func<bool>> bodyasync = null)
         {
             var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
             var __workflow_bodymargins = WorkflowExpression.Compile(bodymargins, nameof(bodymargins), required: false);
@@ -3198,7 +3198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFFromEmailResponse, ApiConnectionActionConfiguration> PDFFromEmail(Expression<Func<string>> bodyurl, Expression<Func<bool>> bodyembedAttachments = null, Expression<Func<bool>> bodyconvertAttachments = null, Expression<Func<string>> bodymargins = null, Expression<Func<string>> bodypaperSize = null, Expression<Func<bodyorientationInput>> bodyorientation = null, Expression<Func<string>> bodyname = null, Expression<Func<int>> bodyexpiration = null, Expression<Func<bool>> bodyasync = null, Expression<Func<string>> bodyprofiles = null)
+        public IBodyWorkflowAction<PDFFromEmailResponse, ApiConnectionActionConfiguration> PDFFromEmail(Expression<Func<string>> bodyurl, Expression<Func<bool>> bodyembedAttachments = null, Expression<Func<bool>> bodyconvertAttachments = null, Expression<Func<string>> bodymargins = null, Expression<Func<string>> bodypaperSize = null, Expression<Func<bodyorientationInput3>> bodyorientation = null, Expression<Func<string>> bodyname = null, Expression<Func<int>> bodyexpiration = null, Expression<Func<bool>> bodyasync = null, Expression<Func<string>> bodyprofiles = null)
         {
             var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
             var __workflow_bodyembedAttachments = WorkflowExpression.Compile(bodyembedAttachments, nameof(bodyembedAttachments), required: false);
@@ -4721,9 +4721,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyorientationInput
     {
-        [EnumMember(Value = "")]
-        None,
-        Portait,
+        [EnumMember(Value = "portrait")]
+        Portrait,
+        [EnumMember(Value = "landscape")]
         Landscape
     }
 
@@ -4755,6 +4755,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
         [JsonProperty("remainingCredits")]
         public int RemainingCredits { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodyorientationInput2
+    {
+        Portrait,
+        Landscape
     }
 
     public class PdfFillerResponse
@@ -6110,6 +6117,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
         [JsonProperty("duration")]
         public int Duration { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodyorientationInput3
+    {
+        [EnumMember(Value = "")]
+        None,
+        Portait,
+        Landscape
     }
 
     public class PDFAddSecurityResponse

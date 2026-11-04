@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
-        public IBodyWorkflowAction<GetAProvisioningPolicyV1Response, ApiConnectionActionConfiguration> GetAProvisioningPolicy(Expression<Func<string>> id, Expression<Func<selectInput>> select = null, Expression<Func<string>> expand = null)
+        public IBodyWorkflowAction<GetAProvisioningPolicyV1Response, ApiConnectionActionConfiguration> GetAProvisioningPolicy(Expression<Func<string>> id, Expression<Func<selectInput2>> select = null, Expression<Func<string>> expand = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
-        public IBodyWorkflowAction<GetProvisioningPoliciesV1Response, ApiConnectionActionConfiguration> GetProvisioningPolicies(Expression<Func<selectInput>> select = null, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null)
+        public IBodyWorkflowAction<GetProvisioningPoliciesV1Response, ApiConnectionActionConfiguration> GetProvisioningPolicies(Expression<Func<selectInput3>> select = null, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null)
         {
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
@@ -551,32 +551,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum selectInput
     {
-        [EnumMember(Value = "id")]
-        Id,
+        [EnumMember(Value = "allotmentDisplayName")]
+        AllotmentDisplayName,
+        [EnumMember(Value = "diskEncryptionState")]
+        DiskEncryptionState,
         [EnumMember(Value = "displayName")]
         DisplayName,
-        [EnumMember(Value = "description")]
-        Description,
-        [EnumMember(Value = "imageId")]
-        ImageId,
+        [EnumMember(Value = "gracePeriodEndDateTime")]
+        GracePeriodEndDateTime,
+        [EnumMember(Value = "id")]
+        Id,
         [EnumMember(Value = "imageDisplayName")]
         ImageDisplayName,
-        [EnumMember(Value = "imageType")]
-        ImageType,
-        [EnumMember(Value = "enableSingleSignOn")]
-        EnableSingleSignOn,
+        [EnumMember(Value = "lastModifiedDateTime")]
+        LastModifiedDateTime,
+        [EnumMember(Value = "managedDeviceId")]
+        ManagedDeviceId,
+        [EnumMember(Value = "managedDeviceName")]
+        ManagedDeviceName,
+        [EnumMember(Value = "onPremisesConnectionName")]
+        OnPremisesConnectionName,
+        [EnumMember(Value = "provisioningPolicyId")]
+        ProvisioningPolicyId,
+        [EnumMember(Value = "provisioningPolicyName")]
+        ProvisioningPolicyName,
+        [EnumMember(Value = "partnerAgentInstallResults")]
+        PartnerAgentInstallResults,
         [EnumMember(Value = "provisioningType")]
         ProvisioningType,
-        [EnumMember(Value = "autopatch")]
-        Autopatch,
-        [EnumMember(Value = "domainJoinConfigurations")]
-        DomainJoinConfigurations,
-        [EnumMember(Value = "microsoftManagedDesktop")]
-        MicrosoftManagedDesktop,
-        [EnumMember(Value = "windowsSetting")]
-        WindowsSetting,
-        [EnumMember(Value = "alternateResourceUrl,autopatch,cloudPcGroupDisplayName,cloudPcNamingTemplate,description,displayName,domainJoinConfigurations,enableSingleSignOn,gracePeriodInHours,id,imageDisplayName,imageId,imageType,localAdminEnabled,microsoftManagedDesktop,provisioningType,windowsSetting")]
-        AlternateResourceUrlAutopatchCloudPcGroupDisplayNameCloudPcNamingTemplateDescriptionDisplayNameDomainJoinConfigurationsEnableSingleSignOnGracePeriodInHoursIdImageDisplayNameImageIdImageTypeLocalAdminEnabledMicrosoftManagedDesktopProvisioningTypeWindowsSetting
+        [EnumMember(Value = "servicePlanId")]
+        ServicePlanId,
+        [EnumMember(Value = "servicePlanName")]
+        ServicePlanName,
+        [EnumMember(Value = "status")]
+        Status,
+        [EnumMember(Value = "statusDetail")]
+        StatusDetail,
+        [EnumMember(Value = "userPrincipalName")]
+        UserPrincipalName
     }
 
     public class GetACloudPCObjectResponse
@@ -922,6 +934,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         public string Locale { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum selectInput2
+    {
+        [EnumMember(Value = "id")]
+        Id,
+        [EnumMember(Value = "displayName")]
+        DisplayName,
+        [EnumMember(Value = "description")]
+        Description,
+        [EnumMember(Value = "imageId")]
+        ImageId,
+        [EnumMember(Value = "imageDisplayName")]
+        ImageDisplayName,
+        [EnumMember(Value = "imageType")]
+        ImageType,
+        [EnumMember(Value = "enableSingleSignOn")]
+        EnableSingleSignOn,
+        [EnumMember(Value = "provisioningType")]
+        ProvisioningType,
+        [EnumMember(Value = "autopatch")]
+        Autopatch,
+        [EnumMember(Value = "domainJoinConfigurations")]
+        DomainJoinConfigurations,
+        [EnumMember(Value = "microsoftManagedDesktop")]
+        MicrosoftManagedDesktop,
+        [EnumMember(Value = "windowsSetting")]
+        WindowsSetting,
+        [EnumMember(Value = "alternateResourceUrl,autopatch,cloudPcGroupDisplayName,cloudPcNamingTemplate,description,displayName,domainJoinConfigurations,enableSingleSignOn,gracePeriodInHours,id,imageDisplayName,imageId,imageType,localAdminEnabled,microsoftManagedDesktop,provisioningType,windowsSetting")]
+        AlternateResourceUrlAutopatchCloudPcGroupDisplayNameCloudPcNamingTemplateDescriptionDisplayNameDomainJoinConfigurationsEnableSingleSignOnGracePeriodInHoursIdImageDisplayNameImageIdImageTypeLocalAdminEnabledMicrosoftManagedDesktopProvisioningTypeWindowsSetting
+    }
+
     public class GetProvisioningPoliciesV1Response
     {
         [JsonProperty("value")]
@@ -1016,6 +1059,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
     {
         [JsonProperty("locale")]
         public string Locale { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum selectInput3
+    {
+        [EnumMember(Value = "id")]
+        Id,
+        [EnumMember(Value = "displayName")]
+        DisplayName,
+        [EnumMember(Value = "description")]
+        Description,
+        [EnumMember(Value = "imageId")]
+        ImageId,
+        [EnumMember(Value = "imageDisplayName")]
+        ImageDisplayName,
+        [EnumMember(Value = "imageType")]
+        ImageType,
+        [EnumMember(Value = "enableSingleSignOn")]
+        EnableSingleSignOn,
+        [EnumMember(Value = "provisioningType")]
+        ProvisioningType,
+        [EnumMember(Value = "autopatch")]
+        Autopatch,
+        [EnumMember(Value = "domainJoinConfigurations")]
+        DomainJoinConfigurations,
+        [EnumMember(Value = "microsoftManagedDesktop")]
+        MicrosoftManagedDesktop,
+        [EnumMember(Value = "windowsSetting")]
+        WindowsSetting,
+        [EnumMember(Value = "alternateResourceUrl,autopatch,cloudPcGroupDisplayName,cloudPcNamingTemplate,description,displayName,domainJoinConfigurations,enableSingleSignOn,gracePeriodInHours,id,imageDisplayName,imageId,imageType,localAdminEnabled,microsoftManagedDesktop,provisioningType,windowsSetting")]
+        AlternateResourceUrlAutopatchCloudPcGroupDisplayNameCloudPcNamingTemplateDescriptionDisplayNameDomainJoinConfigurationsEnableSingleSignOnGracePeriodInHoursIdImageDisplayNameImageIdImageTypeLocalAdminEnabledMicrosoftManagedDesktopProvisioningTypeWindowsSetting
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

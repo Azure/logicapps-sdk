@@ -907,7 +907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseVouchersPost, ApiConnectionActionConfiguration> CreateVoucher(Expression<Func<bodytaxTypeInput>> bodytaxType, Expression<Func<bodytypeInput>> bodytype, Expression<Func<bodyvoucherItemsInputItem[]>> bodyvoucherItems, Expression<Func<string>> bodycontactId = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyshippingDate = null, Expression<Func<double>> bodytotalGrossAmount = null, Expression<Func<double>> bodytotalTaxAmount = null, Expression<Func<bool>> bodyuseCollectiveContact = null, Expression<Func<string>> bodyvoucherDate = null, Expression<Func<string>> bodyvoucherNumber = null, Expression<Func<bodyvoucherStatusInput>> bodyvoucherStatus = null)
+        public IBodyWorkflowAction<ResponseVouchersPost, ApiConnectionActionConfiguration> CreateVoucher(Expression<Func<bodytaxTypeInput>> bodytaxType, Expression<Func<bodytypeInput2>> bodytype, Expression<Func<bodyvoucherItemsInputItem[]>> bodyvoucherItems, Expression<Func<string>> bodycontactId = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyshippingDate = null, Expression<Func<double>> bodytotalGrossAmount = null, Expression<Func<double>> bodytotalTaxAmount = null, Expression<Func<bool>> bodyuseCollectiveContact = null, Expression<Func<string>> bodyvoucherDate = null, Expression<Func<string>> bodyvoucherNumber = null, Expression<Func<bodyvoucherStatusInput>> bodyvoucherStatus = null)
         {
             var __workflow_bodytaxType = WorkflowExpression.Compile(bodytaxType, nameof(bodytaxType), required: true);
             var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
@@ -1021,7 +1021,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseVouchersIdPut, ApiConnectionActionConfiguration> UpdateVoucher(Expression<Func<string>> id, Expression<Func<bodytaxTypeInput>> bodytaxType, Expression<Func<bodytypeInput>> bodytype, Expression<Func<bodyvoucherItemsInputItem[]>> bodyvoucherItems, Expression<Func<string>> bodycontactId = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string[]>> bodyfiles = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyshippingDate = null, Expression<Func<double>> bodytotalGrossAmount = null, Expression<Func<double>> bodytotalTaxAmount = null, Expression<Func<bool>> bodyuseCollectiveContact = null, Expression<Func<int>> bodyversion = null, Expression<Func<string>> bodyvoucherDate = null, Expression<Func<string>> bodyvoucherNumber = null, Expression<Func<bodyvoucherStatusInput>> bodyvoucherStatus = null)
+        public IBodyWorkflowAction<ResponseVouchersIdPut, ApiConnectionActionConfiguration> UpdateVoucher(Expression<Func<string>> id, Expression<Func<bodytaxTypeInput>> bodytaxType, Expression<Func<bodytypeInput3>> bodytype, Expression<Func<bodyvoucherItemsInputItem[]>> bodyvoucherItems, Expression<Func<string>> bodycontactId = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string[]>> bodyfiles = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyshippingDate = null, Expression<Func<double>> bodytotalGrossAmount = null, Expression<Func<double>> bodytotalTaxAmount = null, Expression<Func<bool>> bodyuseCollectiveContact = null, Expression<Func<int>> bodyversion = null, Expression<Func<string>> bodyvoucherDate = null, Expression<Func<string>> bodyvoucherNumber = null, Expression<Func<bodyvoucherStatusInput>> bodyvoucherStatus = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_bodytaxType = WorkflowExpression.Compile(bodytaxType, nameof(bodytaxType), required: true);
@@ -1278,26 +1278,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
-        [EnumMember(Value = "salesinvoice")]
-        Salesinvoice,
-        [EnumMember(Value = "salescreditnote")]
-        Salescreditnote,
-        [EnumMember(Value = "purchaseinvoice")]
-        Purchaseinvoice,
-        [EnumMember(Value = "purchasecreditnote")]
-        Purchasecreditnote,
-        [EnumMember(Value = "invoice")]
-        Invoice,
-        [EnumMember(Value = "downpaymentinvoice")]
-        Downpaymentinvoice,
-        [EnumMember(Value = "creditnote")]
-        Creditnote,
-        [EnumMember(Value = "orderconfirmation")]
-        Orderconfirmation,
-        [EnumMember(Value = "quotation")]
-        Quotation,
-        [EnumMember(Value = "deliverynote")]
-        Deliverynote
+        PRODUCT,
+        SERVICE
     }
 
     public class RetrieveAnArticleResponse
@@ -3931,6 +3913,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         Gross
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodytypeInput2
+    {
+        [EnumMember(Value = "salesinvoice")]
+        Salesinvoice,
+        [EnumMember(Value = "salescreditnote")]
+        Salescreditnote,
+        [EnumMember(Value = "purchaseinvoice")]
+        Purchaseinvoice,
+        [EnumMember(Value = "purchasecreditnote")]
+        Purchasecreditnote,
+        [EnumMember(Value = "invoice")]
+        Invoice,
+        [EnumMember(Value = "downpaymentinvoice")]
+        Downpaymentinvoice,
+        [EnumMember(Value = "creditnote")]
+        Creditnote,
+        [EnumMember(Value = "orderconfirmation")]
+        Orderconfirmation,
+        [EnumMember(Value = "quotation")]
+        Quotation,
+        [EnumMember(Value = "deliverynote")]
+        Deliverynote
+    }
+
     public class bodyvoucherItemsInputItem
     {
         [JsonProperty("amount")]
@@ -4097,6 +4104,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
 
         [JsonProperty("taxRatePercent")]
         public double TaxRatePercent { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodytypeInput3
+    {
+        [EnumMember(Value = "salesinvoice")]
+        Salesinvoice,
+        [EnumMember(Value = "salescreditnote")]
+        Salescreditnote,
+        [EnumMember(Value = "purchaseinvoice")]
+        Purchaseinvoice,
+        [EnumMember(Value = "purchasecreditnote")]
+        Purchasecreditnote,
+        [EnumMember(Value = "invoice")]
+        Invoice,
+        [EnumMember(Value = "downpaymentinvoice")]
+        Downpaymentinvoice,
+        [EnumMember(Value = "creditnote")]
+        Creditnote,
+        [EnumMember(Value = "orderconfirmation")]
+        Orderconfirmation,
+        [EnumMember(Value = "quotation")]
+        Quotation,
+        [EnumMember(Value = "deliverynote")]
+        Deliverynote
     }
 
     public class ResponseEventSubscriptionsPost

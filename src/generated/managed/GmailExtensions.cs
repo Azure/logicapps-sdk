@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         public string Name { get; set; }
 
         [JsonProperty("ContentBytes")]
-        public WorkflowBinaryContent Content { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
         public string ContentType { get; set; }
     }
 

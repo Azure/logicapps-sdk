@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddItemLog(Expression<Func<string>> queueItemId, Expression<Func<bodylevelInput>> bodylevel = null, Expression<Func<string>> bodymessage = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddItemLog(Expression<Func<string>> queueItemId, Expression<Func<bodylevelInput2>> bodylevel = null, Expression<Func<string>> bodymessage = null)
         {
             var __workflow_queueItemId = WorkflowExpression.Compile(queueItemId, nameof(queueItemId), required: true);
             var __workflow_bodylevel = WorkflowExpression.Compile(bodylevel, nameof(bodylevel), required: false);
@@ -414,6 +414,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylevelInput
+    {
+        Trace,
+        Debug,
+        Information,
+        Warning,
+        Error,
+        Critical
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodylevelInput2
     {
         Information,
         Warning,

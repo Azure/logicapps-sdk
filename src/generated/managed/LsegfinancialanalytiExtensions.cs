@@ -450,7 +450,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BulkScenarioAnalytics(Expression<Func<string>> jobName, Expression<Func<int>> batchSize, Expression<Func<string>> bodyrequestId, Expression<Func<bodycurveTypeInput>> bodycurveType, Expression<Func<string>> bodypricingDate, Expression<Func<string>> bodysettlementType, Expression<Func<bodyprepayTypeInput>> bodyprepayType, Expression<Func<bool>> bodycalculatePartialDurations4pt, Expression<Func<bool>> bodycalculatePartialDurations7pt, Expression<Func<bool>> bodyretrieveModelProjections, Expression<Func<bodyvolatilityTypeInput>> bodyvolatilityType, Expression<Func<bool>> bodycalculateHorizonEffectiveMeasures, Expression<Func<bodyhorizonPYMethodInput>> bodyhorizonPYMethod, Expression<Func<bodycurrencyInput>> bodycurrency = null, Expression<Func<int>> bodyprepayRate = null, Expression<Func<int>> bodyhorizonMonths = null, Expression<Func<int>> bodyhorizonDays = null, Expression<Func<bool>> bodycalculateHorizonOptionMeasures = null, Expression<Func<bool>> bodyuseForwardIndex = null, Expression<Func<bool>> bodyimmediateForwardShift = null, Expression<Func<bool>> bodyscenarioCashflow = null, Expression<Func<bool>> bodycalcPrepaySensitivity = null, Expression<Func<ScenarioV3[]>> bodyscenarios = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BulkScenarioAnalytics(Expression<Func<string>> jobName, Expression<Func<int>> batchSize, Expression<Func<string>> bodyrequestId, Expression<Func<bodycurveTypeInput>> bodycurveType, Expression<Func<string>> bodypricingDate, Expression<Func<string>> bodysettlementType, Expression<Func<bodyprepayTypeInput>> bodyprepayType, Expression<Func<bool>> bodycalculatePartialDurations4pt, Expression<Func<bool>> bodycalculatePartialDurations7pt, Expression<Func<bool>> bodyretrieveModelProjections, Expression<Func<bodyvolatilityTypeInput2>> bodyvolatilityType, Expression<Func<bool>> bodycalculateHorizonEffectiveMeasures, Expression<Func<bodyhorizonPYMethodInput>> bodyhorizonPYMethod, Expression<Func<bodycurrencyInput>> bodycurrency = null, Expression<Func<int>> bodyprepayRate = null, Expression<Func<int>> bodyhorizonMonths = null, Expression<Func<int>> bodyhorizonDays = null, Expression<Func<bool>> bodycalculateHorizonOptionMeasures = null, Expression<Func<bool>> bodyuseForwardIndex = null, Expression<Func<bool>> bodyimmediateForwardShift = null, Expression<Func<bool>> bodyscenarioCashflow = null, Expression<Func<bool>> bodycalcPrepaySensitivity = null, Expression<Func<ScenarioV3[]>> bodyscenarios = null)
         {
             var __workflow_jobName = WorkflowExpression.Compile(jobName, nameof(jobName), required: true);
             var __workflow_batchSize = WorkflowExpression.Compile(batchSize, nameof(batchSize), required: true);
@@ -692,7 +692,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         MarketWSkew,
         LMMSOFR,
         LMMSOFRFLAT,
-        [EnumMember(Value = "default")]
         Default
     }
 
@@ -1541,6 +1540,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
 
         [JsonProperty("partialDurationPriceDown")]
         public double PartialDurationPriceDown { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodyvolatilityTypeInput2
+    {
+        MarketWSkew,
+        LMMSOFR,
+        LMMSOFRFLAT,
+        [EnumMember(Value = "default")]
+        Default
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

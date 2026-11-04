@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        public IBodyWorkflowAction<DetectionRuleSearchResponse, ApiConnectionActionConfiguration> DetectionRuleSearch(Expression<Func<bodytypesInputItem[]>> bodytypes = null, Expression<Func<bodyentitiesInputItem[]>> bodyentities = null, Expression<Func<string>> bodycreatedbefore = null, Expression<Func<string>> bodycreatedafter = null, Expression<Func<bodylimitInput>> bodylimit = null)
+        public IBodyWorkflowAction<DetectionRuleSearchResponse, ApiConnectionActionConfiguration> DetectionRuleSearch(Expression<Func<bodytypesInputItem[]>> bodytypes = null, Expression<Func<bodyentitiesInputItem2[]>> bodyentities = null, Expression<Func<string>> bodycreatedbefore = null, Expression<Func<string>> bodycreatedafter = null, Expression<Func<bodylimitInput>> bodylimit = null)
         {
             var __workflow_bodytypes = WorkflowExpression.Compile(bodytypes, nameof(bodytypes), required: false);
             var __workflow_bodyentities = WorkflowExpression.Compile(bodyentities, nameof(bodyentities), required: false);
@@ -1346,10 +1346,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyentitiesInputItem
     {
-        [EnumMember(Value = "CVE-2000-01")]
-        CVE200001,
-        [EnumMember(Value = "mitre:TA0001")]
-        MitreTA0001
+        [EnumMember(Value = "ip:8.8.8.8")]
+        Ip8888,
+        [EnumMember(Value = "idn:google.com")]
+        IdnGoogleCom,
+        [EnumMember(Value = "url:https://google.com")]
+        UrlHttpsGoogleCom
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1541,6 +1543,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         Yara,
         [EnumMember(Value = "snort")]
         Snort
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodyentitiesInputItem2
+    {
+        [EnumMember(Value = "CVE-2000-01")]
+        CVE200001,
+        [EnumMember(Value = "mitre:TA0001")]
+        MitreTA0001
     }
 
     public enum bodylimitInput

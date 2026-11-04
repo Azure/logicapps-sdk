@@ -1124,7 +1124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IBodyWorkflowAction<ApiUserApiListResult, ApiConnectionActionConfiguration> ListOfUsers(Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyfilterfirstNamevalue = null, Expression<Func<string>> bodyfilterlastNamevalue = null, Expression<Func<string>> bodyfilteremailvalue = null, Expression<Func<int>> bodycontrolskip = null, Expression<Func<int>> bodycontroltake = null, Expression<Func<bodysortfieldInput>> bodysortfield = null, Expression<Func<bodysortdirectionInput>> bodysortdirection = null)
+        public IBodyWorkflowAction<ApiUserApiListResult, ApiConnectionActionConfiguration> ListOfUsers(Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyfilterfirstNamevalue = null, Expression<Func<string>> bodyfilterlastNamevalue = null, Expression<Func<string>> bodyfilteremailvalue = null, Expression<Func<int>> bodycontrolskip = null, Expression<Func<int>> bodycontroltake = null, Expression<Func<bodysortfieldInput2>> bodysortfield = null, Expression<Func<bodysortdirectionInput>> bodysortdirection = null)
         {
             var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
             var __workflow_bodyfilterfirstNamevalue = WorkflowExpression.Compile(bodyfilterfirstNamevalue, nameof(bodyfilterfirstNamevalue), required: false);
@@ -1826,9 +1826,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysortfieldInput
     {
-        FirstName,
-        LastName,
-        Email
+        FileName,
+        CreationTime,
+        TotalAmount,
+        IssuedByName
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -2228,6 +2229,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
 
         [JsonProperty("offset")]
         public int Offset { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodysortfieldInput2
+    {
+        FirstName,
+        LastName,
+        Email
     }
 }
 

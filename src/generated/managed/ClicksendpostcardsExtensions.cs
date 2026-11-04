@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
     public class ClicksendpostcardsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendpostcards")]
-        public IBodyWorkflowAction<UploadMediaResponse, ApiConnectionActionConfiguration> UploadMedia(Expression<Func<WorkflowBinaryContent>> bodycontent)
+        public IBodyWorkflowAction<UploadMediaResponse, ApiConnectionActionConfiguration> UploadMedia(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> bodycontent)
         {
             var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: true);
             return new DeferredBodyAction<UploadMediaResponse, ApiConnectionActionConfiguration>(() =>

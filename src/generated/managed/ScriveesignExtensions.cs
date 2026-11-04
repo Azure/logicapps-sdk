@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SetFile(Expression<Func<string>> bodydocumentId, Expression<Func<WorkflowBinaryContent>> bodypdfContent)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SetFile(Expression<Func<string>> bodydocumentId, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> bodypdfContent)
         {
             var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
             var __workflow_bodypdfContent = WorkflowExpression.Compile(bodypdfContent, nameof(bodypdfContent), required: true);
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> NewFromPdf(Expression<Func<WorkflowBinaryContent>> bodypdfContent, Expression<Func<bodyauthorRoleInput>> bodyauthorRole)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> NewFromPdf(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> bodypdfContent, Expression<Func<bodyauthorRoleInput>> bodyauthorRole)
         {
             var __workflow_bodypdfContent = WorkflowExpression.Compile(bodypdfContent, nameof(bodypdfContent), required: true);
             var __workflow_bodyauthorRole = WorkflowExpression.Compile(bodyauthorRole, nameof(bodyauthorRole), required: true);
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AppendFile(Expression<Func<string>> bodydocumentId, Expression<Func<WorkflowBinaryContent>> bodypdfContent)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AppendFile(Expression<Func<string>> bodydocumentId, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> bodypdfContent)
         {
             var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
             var __workflow_bodypdfContent = WorkflowExpression.Compile(bodypdfContent, nameof(bodypdfContent), required: true);
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetAuthorAttachment(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodyattachmentName, Expression<Func<bodyRequiredInput>> bodyRequired, Expression<Func<bodyaddToSealedFileInput>> bodyaddToSealedFile, Expression<Func<string>> bodyfileId = null, Expression<Func<WorkflowBinaryContent>> bodypdfContent = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetAuthorAttachment(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodyattachmentName, Expression<Func<bodyRequiredInput>> bodyRequired, Expression<Func<bodyaddToSealedFileInput>> bodyaddToSealedFile, Expression<Func<string>> bodyfileId = null, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> bodypdfContent = null)
         {
             var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
             var __workflow_bodyattachmentName = WorkflowExpression.Compile(bodyattachmentName, nameof(bodyattachmentName), required: true);

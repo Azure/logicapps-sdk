@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
     public class SkribblesignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "skribblesign")]
-        public IBodyWorkflowAction<ErrorResponse, ApiConnectionActionConfiguration> CreateSeal(Expression<Func<WorkflowBinaryContent>> requestcontent, Expression<Func<string>> requesttitle = null, Expression<Func<string>> requestsealForSealing = null, Expression<Func<string>> requestvisualSignatureformField = null, Expression<Func<WorkflowBinaryContent>> requestvisualSignatureimagecontent = null, Expression<Func<string>> requestvisualSignatureimagecontentType = null, Expression<Func<Position[]>> requestvisualSignaturepositions = null)
+        public IBodyWorkflowAction<ErrorResponse, ApiConnectionActionConfiguration> CreateSeal(Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> requestcontent, Expression<Func<string>> requesttitle = null, Expression<Func<string>> requestsealForSealing = null, Expression<Func<string>> requestvisualSignatureformField = null, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> requestvisualSignatureimagecontent = null, Expression<Func<string>> requestvisualSignatureimagecontentType = null, Expression<Func<Position[]>> requestvisualSignaturepositions = null)
         {
             var __workflow_requestcontent = WorkflowExpression.Compile(requestcontent, nameof(requestcontent), required: true);
             var __workflow_requesttitle = WorkflowExpression.Compile(requesttitle, nameof(requesttitle), required: false);

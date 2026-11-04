@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "federalreservemarkets")]
-        public IBodyWorkflowAction<GetSecuritiesLendingOperationsResponse, ApiConnectionActionConfiguration> GetSecuritiesLendingOperations(Expression<Func<operationInput>> operation, Expression<Func<includeInput>> include, Expression<Func<formatInput>> format)
+        public IBodyWorkflowAction<GetSecuritiesLendingOperationsResponse, ApiConnectionActionConfiguration> GetSecuritiesLendingOperations(Expression<Func<operationInput2>> operation, Expression<Func<includeInput>> include, Expression<Func<formatInput>> format)
         {
             var __workflow_operation = WorkflowExpression.Compile(operation, nameof(operation), required: true);
             var __workflow_include = WorkflowExpression.Compile(include, nameof(include), required: true);
@@ -140,10 +140,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
     {
         [EnumMember(Value = "all")]
         All,
-        [EnumMember(Value = "seclending")]
-        Seclending,
-        [EnumMember(Value = "extensions")]
-        Extensions
+        [EnumMember(Value = "purchases")]
+        Purchases,
+        [EnumMember(Value = "sales")]
+        Sales
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -267,6 +267,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
 
         [JsonProperty("outstandingLoans")]
         public int OutstandingLoans { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum operationInput2
+    {
+        [EnumMember(Value = "all")]
+        All,
+        [EnumMember(Value = "seclending")]
+        Seclending,
+        [EnumMember(Value = "extensions")]
+        Extensions
     }
 }
 

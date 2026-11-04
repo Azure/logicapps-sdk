@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
-        public IBodyWorkflowAction<SaveDraftResponse, ApiConnectionActionConfiguration> SaveDraft(Expression<Func<string>> accountId, Expression<Func<bodymodeInput>> bodymode, Expression<Func<string>> bodyfromAddress, Expression<Func<string>> bodytoAddress, Expression<Func<string>> bodyccAddress = null, Expression<Func<string>> bodybccAddress = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodycontent = null, Expression<Func<bodyaskReceiptInput>> bodyaskReceipt = null, Expression<Func<bodymailFormatInput>> bodymailFormat = null, Expression<Func<bodyattachmentInputItem[]>> bodyattachment = null)
+        public IBodyWorkflowAction<SaveDraftResponse, ApiConnectionActionConfiguration> SaveDraft(Expression<Func<string>> accountId, Expression<Func<bodymodeInput>> bodymode, Expression<Func<string>> bodyfromAddress, Expression<Func<string>> bodytoAddress, Expression<Func<string>> bodyccAddress = null, Expression<Func<string>> bodybccAddress = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodycontent = null, Expression<Func<bodyaskReceiptInput>> bodyaskReceipt = null, Expression<Func<bodymailFormatInput>> bodymailFormat = null, Expression<Func<bodyattachmentInputItem2[]>> bodyattachment = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_bodymode = WorkflowExpression.Compile(bodymode, nameof(bodymode), required: true);
@@ -506,7 +506,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
     public class bodyattachmentInputItem
     {
         [JsonProperty("attachmentContent")]
-        public WorkflowBinaryContent AttachmentContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent AttachmentContent { get; set; }
 
         [JsonProperty("attachmentName")]
         public string AttachmentName { get; set; }
@@ -552,6 +552,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         Draft,
         [EnumMember(Value = "template")]
         Template
+    }
+
+    public class bodyattachmentInputItem2
+    {
+        [JsonProperty("attachmentContent")]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent AttachmentContent { get; set; }
+
+        [JsonProperty("attachmentName")]
+        public string AttachmentName { get; set; }
     }
 
     public class GetSenderDetailsResponse

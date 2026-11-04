@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
-        public IBodyWorkflowAction<EventCategoriesResponse, ApiConnectionActionConfiguration> EventCategories(Expression<Func<string>> category, Expression<Func<string>> source = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<int>> days = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null)
+        public IBodyWorkflowAction<EventCategoriesResponse, ApiConnectionActionConfiguration> EventCategories(Expression<Func<string>> category, Expression<Func<string>> source = null, Expression<Func<statusInput2>> status = null, Expression<Func<int>> limit = null, Expression<Func<int>> days = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null)
         {
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: true);
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
@@ -261,7 +261,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
         [EnumMember(Value = "open")]
         Open,
         [EnumMember(Value = "closed")]
-        Closed
+        Closed,
+        [EnumMember(Value = "all")]
+        All
     }
 
     public class EventsGeoJSONResponse
@@ -421,6 +423,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
 
         [JsonProperty("coordinates")]
         public double[] Coordinates { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum statusInput2
+    {
+        [EnumMember(Value = "open")]
+        Open,
+        [EnumMember(Value = "closed")]
+        Closed
     }
 
     public class CategoriesResponse

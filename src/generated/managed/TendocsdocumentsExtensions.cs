@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DocumentJsonTemplate(Expression<Func<string>> requesttemplatetemplateFile = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DocumentJsonTemplate(Expression<Func<string>> requesttemplatetemplateFile = null, Expression<Func<requestconfigurationdocumentFormatInput2>> requestconfigurationdocumentFormat = null)
         {
             var __workflow_requesttemplatetemplateFile = WorkflowExpression.Compile(requesttemplatetemplateFile, nameof(requesttemplatetemplateFile), required: false);
             var __workflow_requestconfigurationdocumentFormat = WorkflowExpression.Compile(requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DocumentTemplate(Expression<Func<string>> requesttemplatetemplateFile = null, Expression<Func<requestimageInputItem[]>> requestimage = null, Expression<Func<requestdocumentInputItem[]>> requestdocument = null, Expression<Func<requesttableInputItem[]>> requesttable = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DocumentTemplate(Expression<Func<string>> requesttemplatetemplateFile = null, Expression<Func<requestimageInputItem[]>> requestimage = null, Expression<Func<requestdocumentInputItem[]>> requestdocument = null, Expression<Func<requesttableInputItem[]>> requesttable = null, Expression<Func<requestconfigurationdocumentFormatInput3>> requestconfigurationdocumentFormat = null)
         {
             var __workflow_requesttemplatetemplateFile = WorkflowExpression.Compile(requesttemplatetemplateFile, nameof(requesttemplatetemplateFile), required: false);
             var __workflow_requestimage = WorkflowExpression.Compile(requestimage, nameof(requestimage), required: false);
@@ -644,6 +644,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestconfigurationdocumentFormatInput
     {
+        PDF,
+        HTML
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum requestconfigurationdocumentFormatInput2
+    {
         Original,
         PDF,
         HTML
@@ -674,6 +681,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 
         [JsonProperty("rows")]
         public JToken Rows { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum requestconfigurationdocumentFormatInput3
+    {
+        Original,
+        PDF,
+        HTML
     }
 
     public class InstancesResponse

@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisMerged(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisMerged(Expression<Func<hashTypeInput2>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisLatest(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisLatest(Expression<Func<hashTypeInput3>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisSpecific(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<string>> analysisId, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisSpecific(Expression<Func<hashTypeInput4>> hashType, Expression<Func<string>> hashValue, Expression<Func<string>> analysisId, Expression<Func<formatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisArchiveMerged(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisArchiveMerged(Expression<Func<hashTypeInput5>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisArchiveLatest(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisArchiveLatest(Expression<Func<hashTypeInput6>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -767,7 +767,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetReputationDataChanges(Expression<Func<formatInput>> format = null, Expression<Func<string>> events = null, Expression<Func<int>> limit = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetReputationDataChanges(Expression<Func<formatInput2>> format = null, Expression<Func<string>> events = null, Expression<Func<int>> limit = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_events = WorkflowExpression.Compile(events, nameof(events), required: false);
@@ -2814,19 +2814,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatInput
     {
-        [EnumMember(Value = "json")]
-        Json,
         [EnumMember(Value = "xml")]
-        Xml
+        Xml,
+        [EnumMember(Value = "json")]
+        Json
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum postFormatInput
     {
-        [EnumMember(Value = "json")]
-        Json,
         [EnumMember(Value = "xml")]
-        Xml
+        Xml,
+        [EnumMember(Value = "json")]
+        Json
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -2841,12 +2841,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum hashTypeInput2
+    {
+        [EnumMember(Value = "sha1")]
+        Sha1
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum hashTypeInput3
+    {
+        [EnumMember(Value = "sha1")]
+        Sha1
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum hashTypeInput4
+    {
+        [EnumMember(Value = "sha1")]
+        Sha1
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum hashTypeInput5
+    {
+        [EnumMember(Value = "sha1")]
+        Sha1
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum hashTypeInput6
+    {
+        [EnumMember(Value = "sha1")]
+        Sha1
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum timeFormatInput
     {
         [EnumMember(Value = "timestamp")]
         Timestamp,
         [EnumMember(Value = "utc")]
         Utc
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum formatInput2
+    {
+        [EnumMember(Value = "xml")]
+        Xml,
+        [EnumMember(Value = "json")]
+        Json,
+        [EnumMember(Value = "tsv")]
+        Tsv
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

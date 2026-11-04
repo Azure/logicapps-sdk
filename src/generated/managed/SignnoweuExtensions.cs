@@ -742,7 +742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<CreateDocGroupEmbeddedInviteSettingsLinkResponse, ApiConnectionActionConfiguration> CreateDocGroupEmbeddedInviteSettingsLink(Expression<Func<string>> id, Expression<Func<inviteSettingstypeInput>> inviteSettingstype = null, Expression<Func<string>> inviteSettingsredirectUri = null, Expression<Func<int>> inviteSettingslinkExpiration = null, Expression<Func<inviteSettingsredirectTargetInput>> inviteSettingsredirectTarget = null)
+        public IBodyWorkflowAction<CreateDocGroupEmbeddedInviteSettingsLinkResponse, ApiConnectionActionConfiguration> CreateDocGroupEmbeddedInviteSettingsLink(Expression<Func<string>> id, Expression<Func<inviteSettingstypeInput2>> inviteSettingstype = null, Expression<Func<string>> inviteSettingsredirectUri = null, Expression<Func<int>> inviteSettingslinkExpiration = null, Expression<Func<inviteSettingsredirectTargetInput>> inviteSettingsredirectTarget = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_inviteSettingstype = WorkflowExpression.Compile(inviteSettingstype, nameof(inviteSettingstype), required: false);
@@ -1752,10 +1752,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inviteSettingstypeInput
     {
-        Manage,
-        Edit,
-        [EnumMember(Value = "Send-invite")]
-        SendInvite
+        Invite,
+        Document
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1771,6 +1769,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
     {
         [JsonProperty("url")]
         public string Url { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum inviteSettingstypeInput2
+    {
+        Manage,
+        Edit,
+        [EnumMember(Value = "Send-invite")]
+        SendInvite
     }
 
     public class InviteToSignAllOptionsResponse

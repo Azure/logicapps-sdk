@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
     public class ServicebusActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> entityName, Expression<Func<WorkflowBinaryContent>> messagecontent = null, Expression<Func<string>> messagecontentType = null, Expression<Func<string>> messagemessageId = null, Expression<Func<string>> messageto = null, Expression<Func<string>> messagereplyTo = null, Expression<Func<string>> messagereplyToSessionId = null, Expression<Func<string>> messagelabel = null, Expression<Func<string>> messagescheduledEnqueueTimeUtc = null, Expression<Func<string>> messagesessionId = null, Expression<Func<string>> messagecorrelationId = null, Expression<Func<int>> messagesequenceNumber = null, Expression<Func<string>> messagelockToken = null, Expression<Func<string>> messagetimeToLive = null, Expression<Func<string>> systemProperties = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> entityName, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> messagecontent = null, Expression<Func<string>> messagecontentType = null, Expression<Func<string>> messagemessageId = null, Expression<Func<string>> messageto = null, Expression<Func<string>> messagereplyTo = null, Expression<Func<string>> messagereplyToSessionId = null, Expression<Func<string>> messagelabel = null, Expression<Func<string>> messagescheduledEnqueueTimeUtc = null, Expression<Func<string>> messagesessionId = null, Expression<Func<string>> messagecorrelationId = null, Expression<Func<int>> messagesequenceNumber = null, Expression<Func<string>> messagelockToken = null, Expression<Func<string>> messagetimeToLive = null, Expression<Func<string>> systemProperties = null)
         {
             var __workflow_entityName = WorkflowExpression.Compile(entityName, nameof(entityName), required: true);
             var __workflow_messagecontent = WorkflowExpression.Compile(messagecontent, nameof(messagecontent), required: false);
@@ -750,7 +750,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
     public class ServiceBusMessageInput
     {
         [JsonProperty("ContentData")]
-        public WorkflowBinaryContent Content { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
         public string ContentType { get; set; }
         public JToken Properties { get; set; }
         public string MessageId { get; set; }

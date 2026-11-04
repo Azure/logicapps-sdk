@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
-        public IBodyWorkflowAction<GraphVizResponse, ApiConnectionActionConfiguration> GraphViz(Expression<Func<string>> bodygraph, Expression<Func<bodylayoutInput>> bodylayout = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null)
+        public IBodyWorkflowAction<GraphVizResponse, ApiConnectionActionConfiguration> GraphViz(Expression<Func<string>> bodygraph, Expression<Func<bodylayoutInput>> bodylayout = null, Expression<Func<bodyformatInput2>> bodyformat = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null)
         {
             var __workflow_bodygraph = WorkflowExpression.Compile(bodygraph, nameof(bodygraph), required: true);
             var __workflow_bodylayout = WorkflowExpression.Compile(bodylayout, nameof(bodylayout), required: false);
@@ -436,10 +436,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyformatInput
     {
+        [EnumMember(Value = "png")]
+        Png,
+        [EnumMember(Value = "webp")]
+        Webp,
         [EnumMember(Value = "svg")]
         Svg,
-        [EnumMember(Value = "png")]
-        Png
+        [EnumMember(Value = "pdf")]
+        Pdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -490,10 +494,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatInput
     {
-        [EnumMember(Value = "svg")]
-        Svg,
         [EnumMember(Value = "png")]
-        Png
+        Png,
+        [EnumMember(Value = "svg")]
+        Svg
     }
 
     public class GraphVizResponse
@@ -520,6 +524,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         Twopi,
         [EnumMember(Value = "osage")]
         Osage
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodyformatInput2
+    {
+        [EnumMember(Value = "svg")]
+        Svg,
+        [EnumMember(Value = "png")]
+        Png
     }
 
     public class WordCloudResponse

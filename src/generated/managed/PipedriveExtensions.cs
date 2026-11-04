@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipedrive")]
-        public IBodyWorkflowAction<DealResponseV2, ApiConnectionActionConfiguration> AddDeal(Expression<Func<string>> bodytitle, Expression<Func<string>> bodypipelineId = null, Expression<Func<string>> bodystageId = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<int>> bodyvalue = null, Expression<Func<string>> bodycurrency = null, Expression<Func<string>> bodycontactId = null, Expression<Func<string>> bodyorganizationId = null, Expression<Func<string>> bodyexpectedCloseDate = null, Expression<Func<bodyvisiblityInput>> bodyvisiblity = null)
+        public IBodyWorkflowAction<DealResponseV2, ApiConnectionActionConfiguration> AddDeal(Expression<Func<string>> bodytitle, Expression<Func<string>> bodypipelineId = null, Expression<Func<string>> bodystageId = null, Expression<Func<bodystatusInput2>> bodystatus = null, Expression<Func<int>> bodyvalue = null, Expression<Func<string>> bodycurrency = null, Expression<Func<string>> bodycontactId = null, Expression<Func<string>> bodyorganizationId = null, Expression<Func<string>> bodyexpectedCloseDate = null, Expression<Func<bodyvisiblityInput>> bodyvisiblity = null)
         {
             var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             var __workflow_bodypipelineId = WorkflowExpression.Compile(bodypipelineId, nameof(bodypipelineId), required: false);
@@ -461,9 +461,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystatusInput
     {
+        [EnumMember(Value = "open")]
         Open,
+        [EnumMember(Value = "won")]
         Won,
+        [EnumMember(Value = "lost")]
         Lost,
+        [EnumMember(Value = "deleted")]
         Deleted
     }
 
@@ -708,6 +712,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
 
         [JsonProperty("value")]
         public int Id { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodystatusInput2
+    {
+        Open,
+        Won,
+        Lost,
+        Deleted
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
