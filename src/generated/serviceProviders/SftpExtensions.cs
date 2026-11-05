@@ -68,10 +68,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
-        public IWorkflowAction<GetMetadataActionConfiguration> GetMetadata(Expression<Func<string>> fileOrFolderPath)
+        public IOutputWorkflowAction<JToken, GetMetadataActionConfiguration> GetMetadata(Expression<Func<string>> fileOrFolderPath)
         {
             var __workflow_fileOrFolderPath = WorkflowExpression.Compile(fileOrFolderPath, nameof(fileOrFolderPath), required: true);
-            return new DeferredWorkflowAction<GetMetadataActionConfiguration>(() =>
+            return new DeferredOutputAction<JToken, GetMetadataActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["fileOrFolderPath"] = ExpressionConverter.ConvertO(__workflow_fileOrFolderPath);
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "getMetadata", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<GetMetadataActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderOutputAction<JToken, GetMetadataActionConfiguration>(serviceProviderInput);
             });
         }
 

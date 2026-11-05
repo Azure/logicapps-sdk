@@ -119,11 +119,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "oracledb")]
-        public IWorkflowAction<InsertRowActionConfiguration> InsertRow(Expression<Func<string>> tableName, Expression<Func<object>> setColumns = null)
+        public IBodyWorkflowAction<JToken, InsertRowActionConfiguration> InsertRow(Expression<Func<string>> tableName, Expression<Func<object>> setColumns = null)
         {
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
             var __workflow_setColumns = WorkflowExpression.Compile(setColumns, nameof(setColumns), required: false);
-            return new DeferredWorkflowAction<InsertRowActionConfiguration>(() =>
+            return new DeferredBodyAction<JToken, InsertRowActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["tableName"] = ExpressionConverter.ConvertO(__workflow_tableName);
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/oracledb", operationId: "insertRow", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderAction<InsertRowActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderBodyAction<JToken, InsertRowActionConfiguration>(serviceProviderInput);
             });
         }
 
